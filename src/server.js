@@ -1,4 +1,5 @@
 require("dotenv").config();
+const data = require("./page.json");
 const express = require("express");
 const next = require("next");
 const notifier = require("node-notifier");
@@ -8,11 +9,16 @@ const port = process.env.APP_PORT;
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const fs = require("fs");
 
 app.prepare().then(() => {
   const server = express();
 
   server.all("*", (req, res) => {
+    data.response.forEach((page) => {
+      makePage(`./src/pages/${page.name}`, generateComponent(page.components));
+    });
+
     return handle(req, res);
   });
 
@@ -31,8 +37,29 @@ app.prepare().then(() => {
         wait: true,
       },
       function (err, response, metadata) {
-        open(`http://localhost:${port}`);
+        // open(`http://localhost:${port}`);
       }
     );
   });
 });
+
+const generateComponent = (_content) => {
+  return `function Text() {
+    return (
+      <div>${_content}</div>
+    )
+  }
+  
+  export default Text`;
+};
+
+const makePage = async (folderName, content) => {
+  if (!fs.existsSync(folderName)) {
+    await fs.mkdirSync(folderName);
+    fs.writeFile(`${folderName}/index.js`, content, (err) => {
+      if (err) {
+        console.error(err);
+      }
+    });
+  }
+};

@@ -1,0 +1,20 @@
+{
+  "response": [
+    {
+      "name": "users",
+      "components": ["header", "aboutUs", "footer"]
+    },
+    {
+      "name": "product",
+      "components": ["header", "aboutUs", "footer"]
+    },
+    {
+      "name": "aboutUs",
+      "components": ["header", "aboutUs", "footer"]
+    },
+    {
+      "name": "contact",
+      "components": ["header", "aboutUs", "footer"]
+    }
+  ]
+}
