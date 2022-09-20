@@ -1,20 +1,67 @@
 {
-  "response": [
-    {
-      "name": "users",
-      "components": ["header", "aboutUs", "footer"]
-    },
-    {
-      "name": "product",
-      "components": ["header", "aboutUs", "footer"]
-    },
-    {
-      "name": "aboutUs",
-      "components": ["header", "aboutUs", "footer"]
-    },
-    {
-      "name": "contact",
-      "components": ["header", "aboutUs", "footer"]
-    }
-  ]
+	"response": [
+		{
+			"name": "Home",
+			"isHome": true,
+			"className": "home",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages",
+			"components": [
+				{
+					"name": "Header",
+					"data": "hello"
+				},
+
+				{
+					"name": "LandingSlider",
+					"data": "hello"
+				},
+				{
+					"name": "LandingProductsBox",
+					"data": "hello"
+				},
+				{
+					"name": "LandingVideoPlayer",
+					"data": "hello"
+				},
+				{
+					"name": "SendNewsToEmailBox",
+					"data": "hello"
+				},
+				{
+					"name": "Footer",
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"isHome": true,
+			"className": "all-tvs",
+			"dynamicRote": "[product].js",
+			"pageRoute": "./src/pages/product",
+			"components": [
+				{
+					"name": "Header",
+					"data": "hello"
+				},
+				{
+					"name": "ProductsHeadPage",
+					"data": "hello"
+				},
+				{
+					"name": "ProductsListAndAside",
+					"data": "hello"
+				},
+				{
+					"name": "SendNewsToEmailBox",
+					"data": "hello"
+				},
+				{
+					"name": "Footer",
+					"data": "hello"
+				}
+			]
+		}
+	]
 }

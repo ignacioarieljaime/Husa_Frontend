@@ -15,11 +15,13 @@
     "file-saver": "^2.0.5",
     "next": "12.3.0",
     "node-notifier": "^10.0.1",
+    "nodemon": "^2.0.20",
     "open": "^8.4.0",
     "react": "18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "18.2.0",
-    "sass": "^1.54.9"
+    "sass": "^1.54.9",
+    "swiper": "^8.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.11",
