@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 // image
@@ -20,13 +21,13 @@ function ProductsItem() {
 					<button className='buy-btn' disabled>
 						Coming Soon
 					</button>
-					<a href='#' className='view-product-btn'>
-						View Product
-					</a>
+					<Link href='/Product/2'>
+						<a className='view-product-btn'>View Product</a>
+					</Link>
 				</div>
-				<a href='#' className='compare-btn'>
-					Add To Compare
-				</a>
+				<Link href='/Product/2'>
+					<a className='compare-btn'>Add To Compare</a>
+				</Link>
 			</div>
 		</div>
 	)

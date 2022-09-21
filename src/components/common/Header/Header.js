@@ -7,10 +7,12 @@ function Header() {
 	return (
 		<header>
 			<nav
-			style={{ transitionDelay:"2s" }}
-				className={`navbar navbar-expand justify-content-center  top-nav theme-dark py-4 px-sm-4 fixed-top flex-wrap ${searchInputCondition && "search-mode"} ${
-					asideMenu && 'hidden'
-				}`}>
+				style={{ transitionDelay: '2s' }}
+				className={`navbar navbar-expand justify-content-center  ${
+					asideMenu ? 'theme-light' : ' theme-dark'
+				} top-nav py-4 px-sm-4 fixed-top flex-wrap ${
+					searchInputCondition && 'search-mode'
+				} ${asideMenu && 'hidden'}`}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<a
@@ -71,7 +73,9 @@ function Header() {
 															</li>
 															<li>
 																<a href='#'>
-																	<span className='underline-on-hover'>4K UHD</span>
+																	<span className='underline-on-hover'>
+																		4K UHD
+																	</span>
 																</a>
 															</li>
 															<li>
@@ -482,11 +486,11 @@ function Header() {
 					</form>
 				</div>
 			</nav>
-			{/* <div className='container-fluid home-top-advertisement'>
+			<div className='container-fluid home-top-advertisement'>
 				<a href='https://www.hisense-usa.com/product-safety-recall'>
 					Recall Information: French Door Refrigerator
 				</a>
-			</div> */}
+			</div>
 			<HamburgerMenu asideMenu={asideMenu} />
 		</header>
 	)

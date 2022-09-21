@@ -9,56 +9,137 @@
 			"components": [
 				{
 					"name": "Header",
+					"props": {},
 					"data": "hello"
 				},
 
 				{
 					"name": "LandingSlider",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "LandingProductsBox",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "LandingVideoPlayer",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "SendNewsToEmailBox",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "Footer",
+					"props": {},
 					"data": "hello"
 				}
 			]
 		},
 		{
 			"name": "Products",
-			"isHome": true,
+			"isHome": false,
 			"className": "all-tvs",
 			"dynamicRote": "[product].js",
-			"pageRoute": "./src/pages/product",
+			"pageRoute": "./src/pages/Products",
 			"components": [
 				{
 					"name": "Header",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "ProductsHeadPage",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "ProductsListAndAside",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "SendNewsToEmailBox",
+					"props": {},
 					"data": "hello"
 				},
 				{
 					"name": "Footer",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"isHome": false,
+			"className": "tv-page",
+			"dynamicRote": "[productId].js",
+			"pageRoute": "./src/pages/Product",
+			"components": [
+				{
+					"name": "Header",
+					"props": { "className": "theme-light" },
+					"data": "hello"
+				},
+				{
+					"name": "ProductInfoAndSliderBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductCategoryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductBigContent",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductNewsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductDetailsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductBottomImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductFineMeInStore",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductRecrossesBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SendNewsToEmailBox",
+					"props": {},
+					"data": "hello"
+				},
+
+				{
+					"name": "Footer",
+					"props": {},
 					"data": "hello"
 				}
 			]

@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 // image
@@ -8,19 +9,21 @@ function LandingProductItem() {
 		<div className='col-12 col-md-6'>
 			<figure>
 				<div>
-					<a href='#' title='Shop Televisions' className='img-link'>
-						<img
-							src={ProductImage.src}
-							alt='featured product image'
-							width='65%'
-						/>
-					</a>
+					<Link href='/Products/tv' title='Shop Televisions'>
+						<a className='img-link'>
+							<img
+								src={ProductImage.src}
+								alt='featured product image'
+								width='65%'
+							/>
+						</a>
+					</Link>
 				</div>
 				<figcaption>
 					<p className='title'>TELEVISIONS</p>
-					<a href='#' className='btn btn-outline-dark shop-btn'>
-						SHOP NOW
-					</a>
+					<Link href='/Products/tv'>
+						<a className='btn btn-outline-dark shop-btn'>SHOP NOW</a>
+					</Link>
 				</figcaption>
 			</figure>
 		</div>
