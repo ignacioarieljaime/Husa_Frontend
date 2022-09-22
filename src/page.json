@@ -4,12 +4,13 @@
 			"name": "Home",
 			"isHome": true,
 			"className": "home",
+			"meta": [],
 			"dynamicRote": null,
 			"pageRoute": "./src/pages",
 			"components": [
 				{
 					"name": "Header",
-					"props": {},
+					"props": [],
 					"data": "hello"
 				},
 

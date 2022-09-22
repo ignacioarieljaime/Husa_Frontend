@@ -4,7 +4,7 @@ import React from 'react'
 import FilterAside from './FilterAside'
 import ProductsItem from './ProductsItem'
 
-function ProductsListAndAside() {
+function ProductsListAndAside() {	
 	return (
 		<div className='category'>
 			<FilterAside />

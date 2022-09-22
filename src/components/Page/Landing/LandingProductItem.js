@@ -9,7 +9,7 @@ function LandingProductItem() {
 		<div className='col-12 col-md-6'>
 			<figure>
 				<div>
-					<Link href='/Products/tv' title='Shop Televisions'>
+					<Link href='/Products' title='Shop Televisions'>
 						<a className='img-link'>
 							<img
 								src={ProductImage.src}
@@ -21,7 +21,7 @@ function LandingProductItem() {
 				</div>
 				<figcaption>
 					<p className='title'>TELEVISIONS</p>
-					<Link href='/Products/tv'>
+					<Link href='/Products'>
 						<a className='btn btn-outline-dark shop-btn'>SHOP NOW</a>
 					</Link>
 				</figcaption>
