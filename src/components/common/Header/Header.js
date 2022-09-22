@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // component
 import HamburgerMenu from './HamburgerMenu'
@@ -17,18 +17,30 @@ import HamburgerMenuIcon from 'components/icons/HamburgerMenuIcon'
 import Logo from 'components/icons/Logo'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
 
-function Header() {
+function Header({ themeCondition = false }) {
 	const [asideMenu, setAsideMenu] = useState(false)
+	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
+
+	useEffect(() => {
+		if (!searchInputCondition) {
+			setTimeout(() => {
+				setTopNavCondition(true)
+			}, 800)
+		} else {
+			setTopNavCondition(false)
+		}
+	}, [searchInputCondition])
+
 	return (
 		<header>
 			<nav
 				style={{ transitionDelay: '2s' }}
 				className={`navbar navbar-expand justify-content-center  ${
-					asideMenu ? 'theme-light' : ' theme-dark'
+					themeCondition ? 'theme-light' : ' theme-dark'
 				} top-nav py-4 px-sm-4 fixed-top flex-wrap ${
-					searchInputCondition && 'search-mode'
-				} ${asideMenu && 'hidden'}`}>
+					!topNavCondition && 'search-mode'
+				} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<a
