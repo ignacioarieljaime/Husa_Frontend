@@ -15,13 +15,16 @@ const FindComponent = _componentData => {
 
 const GenerateComponentStructure = (_page, _content) => {
 	return `
+	import Layout from "components/common/Layout/Layout" 
 	  ${_content.map(item => `import ${item.name} from '${item.path}';`).join(' ')}
 
 	  function ${_page.name}() {
 	    return (
+			<Layout>
 	      <section className={'${_page.className}'}> ${_content
 		.map(item => `<${item.name} />`)
 		.join(' ')}</section>
+		</Layout>
 	    )
 	  }
 

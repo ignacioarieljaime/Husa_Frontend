@@ -12,12 +12,13 @@ import { FreeMode, Thumbs } from 'swiper'
 
 function ProductInfoSlider() {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
-	console.log(thumbsSwiper)
 	return (
 		<div className='col-12 col-md-6 product-gallery mb-12 mb-md-0 pe-md-10'>
 			<Swiper
 				spaceBetween={10}
-				thumbs={{ swiper: thumbsSwiper }}
+				thumbs={{
+					swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
+				}}
 				modules={[FreeMode, Thumbs]}
 				className=' gallery-top'>
 				<SwiperSlide>

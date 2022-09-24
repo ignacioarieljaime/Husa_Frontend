@@ -9,12 +9,6 @@
 			"pageRoute": "./src/pages",
 			"components": [
 				{
-					"name": "Header",
-					"props": [],
-					"data": "hello"
-				},
-
-				{
 					"name": "LandingSlider",
 					"props": {},
 					"data": "hello"
@@ -33,11 +27,6 @@
 					"name": "SendNewsToEmailBox",
 					"props": {},
 					"data": "hello"
-				},
-				{
-					"name": "Footer",
-					"props": {},
-					"data": "hello"
 				}
 			]
 		},
@@ -48,11 +37,6 @@
 			"dynamicRote": "[product].js",
 			"pageRoute": "./src/pages/Products",
 			"components": [
-				{
-					"name": "Header",
-					"props": {},
-					"data": "hello"
-				},
 				{
 					"name": "ProductsHeadPage",
 					"props": {},
@@ -67,11 +51,6 @@
 					"name": "SendNewsToEmailBox",
 					"props": {},
 					"data": "hello"
-				},
-				{
-					"name": "Footer",
-					"props": {},
-					"data": "hello"
 				}
 			]
 		},
@@ -82,11 +61,6 @@
 			"dynamicRote": "[productId].js",
 			"pageRoute": "./src/pages/Product",
 			"components": [
-				{
-					"name": "Header",
-					"props": { "className": "theme-light" },
-					"data": "hello"
-				},
 				{
 					"name": "ProductInfoAndSliderBox",
 					"props": {},
@@ -134,12 +108,6 @@
 				},
 				{
 					"name": "SendNewsToEmailBox",
-					"props": {},
-					"data": "hello"
-				},
-
-				{
-					"name": "Footer",
 					"props": {},
 					"data": "hello"
 				}
