@@ -22,11 +22,6 @@
 					"name": "LandingVideoPlayer",
 					"props": {},
 					"data": "hello"
-				},
-				{
-					"name": "SendNewsToEmailBox",
-					"props": {},
-					"data": "hello"
 				}
 			]
 		},
@@ -44,11 +39,6 @@
 				},
 				{
 					"name": "ProductsListAndAside",
-					"props": {},
-					"data": "hello"
-				},
-				{
-					"name": "SendNewsToEmailBox",
 					"props": {},
 					"data": "hello"
 				}
@@ -105,9 +95,53 @@
 					"name": "ProductRecrossesBox",
 					"props": {},
 					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "SmartInfo",
+			"isHome": false,
+			"className": "smart-tv-platforms",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/SmartInfo",
+			"components": [
+				{
+					"name": "SmartInfoHead",
+					"props": {},
+					"data": "hello"
 				},
 				{
-					"name": "SendNewsToEmailBox",
+					"name": "SmartInfoTvsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoTextAndImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoInteractBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoFindHisense",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoBetterNewOrOldBox",
 					"props": {},
 					"data": "hello"
 				}
