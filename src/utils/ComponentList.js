@@ -4,6 +4,10 @@ module.exports.ComponentList = [
 		path: 'components/common/SendNewsToEmailBox'
 	},
 	{
+		name: 'ImageBox',
+		path: 'components/common/ImageBox.js'
+	},
+	{
 		name: 'Header',
 		path: 'components/common/Header/Header'
 	},
@@ -92,10 +96,7 @@ module.exports.ComponentList = [
 		name: 'SmartInfoTextBox',
 		path: 'components/Page/SmartInfo/SmartInfoTextBox'
 	},
-	{
-		name: 'ImageBox',
-		path: 'components/common/ImageBox.js'
-	},
+
 	{
 		name: 'SmartInfoTextAndImageBox',
 		path: 'components/Page/SmartInfo/SmartInfoTextAndImageBox'
@@ -140,5 +141,70 @@ module.exports.ComponentList = [
 	{
 		name: 'SupportNeedAssistance',
 		path: 'components/Page/Support/SupportNeedAssistance'
+	},
+	// register
+	{
+		name: 'SupportNewHead',
+		path: 'components/Page/Register/SupportNewHead'
+	},
+	{
+		name: 'RegisterForm',
+		path: 'components/Page/Register/RegisterForm'
+	},
+
+	// FAQ
+	{
+		name: 'FAQHead',
+		path: 'components/Page/FAQ/FAQHead'
+	},
+	{
+		name: 'FAQContentBox',
+		path: 'components/Page/FAQ/FAQContentBox'
+	},
+	// contact us
+	{
+		name: 'ContactUsHead',
+		path: 'components/Page/ContactUs/ContactUsHead'
+	},
+	{
+		name: 'ContactUsForm',
+		path: 'components/Page/ContactUs/ContactUsForm'
+	},
+	{
+		name: 'ContactUsNewHead',
+		path: 'components/Page/ContactUs/ContactUsNewHead'
+	},
+	{
+		name: 'ContactUsNewForm',
+		path: 'components/Page/ContactUs/ContactUsNewForm'
+	},
+	{
+		name: 'ContactUsPhoneUs',
+		path: 'components/Page/ContactUs/ContactUsPhoneUs'
+	},
+	// company
+	{
+		name: 'CompanyHeaderIntro',
+		path: 'components/Page/Company/CompanyHeaderIntro'
+	},
+	{
+		name: 'CompanyNavBar',
+		path: 'components/Page/Company/CompanyNavBar'
+	},
+	{
+		name: 'CompanyInfo',
+		path: 'components/Page/Company/CompanyInfo'
+	},
+	// commercial
+	{
+		name: 'CommercialIntro',
+		path: 'components/Page/Commercial/CommercialIntro'
+	},{
+		name: 'CommercialTowImageBox',
+		path: 'components/Page/Commercial/CommercialTowImageBox'
+	},
+	{
+		name: 'CommercialBecomeAPartner',
+		path: 'components/Page/Commercial/CommercialBecomeAPartner'
 	}
 ]

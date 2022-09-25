@@ -204,6 +204,150 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "Register",
+			"isHome": false,
+			"className": "register",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/Register",
+			"components": [
+				{
+					"name": "SupportNewHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "RegisterForm",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "FAQ",
+			"isHome": false,
+			"className": "faq",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/FAQ",
+			"components": [
+				{
+					"name": "FAQHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FAQContentBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "ContactUs",
+			"isHome": false,
+			"className": "contact",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/ContactUs",
+			"components": [
+				{
+					"name": "ContactUsHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ContactUsForm",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "ContactUsNew",
+			"isHome": false,
+			"className": "new contact",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/ContactUsNew",
+			"components": [
+				{
+					"name": "ContactUsNewHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ContactUsNewForm",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ContactUsPhoneUs",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"isHome": false,
+			"className": "company",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/Company",
+			"components": [
+				{
+					"name": "CompanyHeaderIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CompanyNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CompanyInfo",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Commercial",
+			"isHome": false,
+			"className": "commercial",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/Commercial",
+			"components": [
+				{
+					"name": "CommercialIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CommercialIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CommercialTowImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CommercialBecomeAPartner",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }

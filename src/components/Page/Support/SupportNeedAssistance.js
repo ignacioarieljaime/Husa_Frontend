@@ -6,13 +6,13 @@ import ImageBg from './../../../../public/assets/images/support/support-bg.jpg'
 function SupportNeedAssistance() {
 	return (
 		<section>
-			<div class='heading support-heading'>
+			<div className='heading support-heading'>
 				<img src={ImageBg.src} alt='featured image' width='100%' />
-				<div class='heading-text'>
-					<h2 class='text-white fs-2qx mb-5' style={{ color: '#fff' }}>
+				<div className='heading-text'>
+					<h2 className='text-white fs-2qx mb-5' style={{ color: '#fff' }}>
 						Need more assistance?
 					</h2>
-					<a href='#' class='btn btn-light rounded-5 px-4 py-2'>
+					<a href='#' className='btn btn-light rounded-5 px-4 py-2'>
 						CONTACT US
 					</a>
 				</div>

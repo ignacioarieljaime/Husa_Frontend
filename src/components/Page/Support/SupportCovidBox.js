@@ -3,15 +3,15 @@ import React from 'react'
 function SupportCovidBox() {
 	return (
 		<section>
-			<div class='black-banner p-md-4'>
-				<div class='container px-6 px-md-8 py-20'>
-					<article class='article text-center'>
-						<h2 class='text-white mb-6'>
+			<div className='black-banner p-md-4'>
+				<div className='container px-6 px-md-8 py-20'>
+					<article className='article text-center'>
+						<h2 className='text-white mb-6'>
 							COVID-19
-							<span class='text-primary'>UPDATE</span>
+							<span className='text-primary'>UPDATE</span>
 						</h2>
 						<div>
-							<p class='text-white m-auto'>
+							<p className='text-white m-auto'>
 								In the current environment surrounding the COVID-19 virus things
 								are changing rapidly, but we re continuing to adapt. Hisense USA
 								has taken measures to prioritize our employees and customers
