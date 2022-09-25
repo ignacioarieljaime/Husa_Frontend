@@ -12,6 +12,10 @@ module.exports.ComponentList = [
 		name: 'Footer',
 		path: 'components/common/Footer'
 	},
+	{
+		name: 'NeedHelpBox',
+		path: 'components/common/NeedHelpBox'
+	},
 	// landing
 	{
 		name: 'LandingSlider',
@@ -107,5 +111,34 @@ module.exports.ComponentList = [
 	{
 		name: 'SmartInfoBetterNewOrOldBox',
 		path: 'components/Page/SmartInfo/SmartInfoBetterNewOrOldBox'
+	},
+	// support
+	{
+		name: 'SupportHeadIntro',
+		path: 'components/Page/Support/SupportHeadIntro'
+	},
+	{
+		name: 'SupportCovidBox',
+		path: 'components/Page/Support/SupportCovidBox'
+	},
+	{
+		name: 'SupportCategoryBox',
+		path: 'components/Page/Support/SupportCategoryBox'
+	},
+	{
+		name: 'SupportNewHead',
+		path: 'components/Page/Support/SupportNewHead'
+	},
+	{
+		name: 'SupportNewCategoryBox',
+		path: 'components/Page/Support/SupportNewCategoryBox'
+	},
+	{
+		name: 'SupportOurSupport',
+		path: 'components/Page/Support/SupportOurSupport'
+	},
+	{
+		name: 'SupportNeedAssistance',
+		path: 'components/Page/Support/SupportNeedAssistance'
 	}
 ]

@@ -25,14 +25,14 @@
 	<clipPath id="SVGID_2_">
 		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
 	</clipPath>
-	<g className="st0">
+	<g class="st0">
 		<defs>
 			<rect id="SVGID_3_" x="-737" y="-119" width="1600" height="900"/>
 		</defs>
 		<clipPath id="SVGID_4_">
 			<use xlink:href="#SVGID_3_"  style="overflow:visible;"/>
 		</clipPath>
-		<rect x="-4.3" y="-4" className="st1" width="44.6" height="72"/>
+		<rect x="-4.3" y="-4" class="st1" width="44.6" height="72"/>
 	</g>
 </g>
 <g>
@@ -42,7 +42,7 @@
 	<clipPath id="SVGID_6_">
 		<use xlink:href="#SVGID_5_"  style="overflow:visible;"/>
 	</clipPath>
-	<path className="st2" d="M2.4,2C2,2,1.7,2.4,1.7,2.8v58.4C1.7,61.6,2,62,2.4,62h31.1c0.4,0,0.8-0.4,0.8-0.8V2.8C34.3,2.4,34,2,33.6,2
+	<path class="st2" d="M2.4,2C2,2,1.7,2.4,1.7,2.8v58.4C1.7,61.6,2,62,2.4,62h31.1c0.4,0,0.8-0.4,0.8-0.8V2.8C34.3,2.4,34,2,33.6,2
 		H2.4z M33.6,63H2.4c-1,0-1.8-0.8-1.8-1.8V2.8c0-1,0.8-1.8,1.8-1.8h31.1c1,0,1.8,0.8,1.8,1.8v58.4C35.3,62.2,34.5,63,33.6,63z"/>
 </g>
 <g>
@@ -53,14 +53,14 @@
 	<clipPath id="SVGID_8_">
 		<use xlink:href="#SVGID_7_"  style="overflow:visible;"/>
 	</clipPath>
-	<g className="st3">
+	<g class="st3">
 		<defs>
 			<rect id="SVGID_9_" x="-737" y="-119" width="1600" height="900"/>
 		</defs>
 		<clipPath id="SVGID_10_">
 			<use xlink:href="#SVGID_9_"  style="overflow:visible;"/>
 		</clipPath>
-		<rect x="-4.3" y="22.6" className="st4" width="44.6" height="11"/>
+		<rect x="-4.3" y="22.6" class="st4" width="44.6" height="11"/>
 	</g>
 </g>
 <g>
@@ -70,7 +70,7 @@
 	<clipPath id="SVGID_12_">
 		<use xlink:href="#SVGID_11_"  style="overflow:visible;"/>
 	</clipPath>
-	<path className="st5" d="M34.8,28.5H1.2c-0.3,0-0.5-0.2-0.5-0.5c0-0.3,0.2-0.5,0.5-0.5h33.7c0.3,0,0.5,0.2,0.5,0.5
+	<path class="st5" d="M34.8,28.5H1.2c-0.3,0-0.5-0.2-0.5-0.5c0-0.3,0.2-0.5,0.5-0.5h33.7c0.3,0,0.5,0.2,0.5,0.5
 		C35.3,28.3,35.1,28.5,34.8,28.5z"/>
 </g>
 <g>
@@ -80,14 +80,14 @@
 	<clipPath id="SVGID_14_">
 		<use xlink:href="#SVGID_13_"  style="overflow:visible;"/>
 	</clipPath>
-	<g className="st6">
+	<g class="st6">
 		<defs>
 			<rect id="SVGID_15_" x="-737" y="-119" width="1600" height="900"/>
 		</defs>
 		<clipPath id="SVGID_16_">
 			<use xlink:href="#SVGID_15_"  style="overflow:visible;"/>
 		</clipPath>
-		<rect x="1.5" y="28.2" className="st7" width="11" height="19"/>
+		<rect x="1.5" y="28.2" class="st7" width="11" height="19"/>
 	</g>
 </g>
 <g>
@@ -97,7 +97,7 @@
 	<clipPath id="SVGID_18_">
 		<use xlink:href="#SVGID_17_"  style="overflow:visible;"/>
 	</clipPath>
-	<path className="st8" d="M7,42.2c-0.3,0-0.5-0.2-0.5-0.5v-8c0-0.3,0.2-0.5,0.5-0.5c0.3,0,0.5,0.2,0.5,0.5v8C7.5,42,7.3,42.2,7,42.2z"/>
+	<path class="st8" d="M7,42.2c-0.3,0-0.5-0.2-0.5-0.5v-8c0-0.3,0.2-0.5,0.5-0.5c0.3,0,0.5,0.2,0.5,0.5v8C7.5,42,7.3,42.2,7,42.2z"/>
 </g>
 <g>
 	<defs>
@@ -106,14 +106,14 @@
 	<clipPath id="SVGID_20_">
 		<use xlink:href="#SVGID_19_"  style="overflow:visible;"/>
 	</clipPath>
-	<g className="st9">
+	<g class="st9">
 		<defs>
 			<rect id="SVGID_21_" x="-737" y="-119" width="1600" height="900"/>
 		</defs>
 		<clipPath id="SVGID_22_">
 			<use xlink:href="#SVGID_21_"  style="overflow:visible;"/>
 		</clipPath>
-		<rect x="1.5" y="1.5" className="st10" width="11" height="19"/>
+		<rect x="1.5" y="1.5" class="st10" width="11" height="19"/>
 	</g>
 </g>
 <g>
@@ -123,7 +123,7 @@
 	<clipPath id="SVGID_24_">
 		<use xlink:href="#SVGID_23_"  style="overflow:visible;"/>
 	</clipPath>
-	<path className="st11" d="M7,15.5c-0.3,0-0.5-0.2-0.5-0.5V7c0-0.3,0.2-0.5,0.5-0.5c0.3,0,0.5,0.2,0.5,0.5v8C7.5,15.2,7.3,15.5,7,15.5z"
+	<path class="st11" d="M7,15.5c-0.3,0-0.5-0.2-0.5-0.5V7c0-0.3,0.2-0.5,0.5-0.5c0.3,0,0.5,0.2,0.5,0.5v8C7.5,15.2,7.3,15.5,7,15.5z"
 		/>
 </g>
 </svg>

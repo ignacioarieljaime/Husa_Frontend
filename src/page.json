@@ -146,6 +146,64 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "Support",
+			"isHome": false,
+			"className": "support",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/Support",
+			"components": [
+				{
+					"name": "SupportHeadIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportCovidBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportCategoryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NeedHelpBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "SupportNew",
+			"isHome": false,
+			"className": "support new",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/SupportNew",
+			"components": [
+				{
+					"name": "SupportNewHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportNewCategoryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportOurSupport",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportNeedAssistance",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }
