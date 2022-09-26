@@ -1,7 +1,6 @@
 const fs = require('fs')
 
-
-const PageController = async (page, content) => {
+module.exports = async (page, content) => {
 	if (page.isHome) {
 		fs.writeFile(
 			`${page.pageRoute}/${page.dynamicRote ? page.dynamicRote : 'index.js'}`,
@@ -25,8 +24,4 @@ const PageController = async (page, content) => {
 			}
 		)
 	}
-}
-
-module.exports = {
-	PageController
 }

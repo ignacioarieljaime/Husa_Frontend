@@ -1,36 +1,37 @@
 {
-  "name": "husa-next",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "node ./src/server.js",
-    "build": "next build",
-    "start": "cross-env NODE_ENV=production node ./src/server.js",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.2.0",
-    "@fortawesome/free-solid-svg-icons": "^6.2.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
-    "axios": "^0.27.2",
-    "bootstrap": "^5.2.1",
-    "dotenv": "^16.0.2",
-    "express": "^4.18.1",
-    "file-saver": "^2.0.5",
-    "next": "12.3.0",
-    "node-notifier": "^10.0.1",
-    "nodemon": "^2.0.20",
-    "open": "^8.4.0",
-    "react": "18.2.0",
-    "react-bootstrap": "^2.5.0",
-    "react-dom": "18.2.0",
-    "sass": "^1.54.9",
-    "swiper": "^8.4.2"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.11",
-    "eslint": "8.23.1",
-    "eslint-config-next": "12.3.0",
-    "postcss": "^8.4.16"
-  }
+	"name": "husa-next",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"remove": "node ./src/fileRemover.js",
+		"dev": "npm run remove && node ./src/server.js",
+		"build": "next build",
+		"start": "cross-env NODE_ENV=production node ./src/server.js",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^6.2.0",
+		"@fortawesome/free-solid-svg-icons": "^6.2.0",
+		"@fortawesome/react-fontawesome": "^0.2.0",
+		"axios": "^0.27.2",
+		"bootstrap": "^5.2.1",
+		"dotenv": "^16.0.2",
+		"express": "^4.18.1",
+		"file-saver": "^2.0.5",
+		"next": "12.3.0",
+		"node-notifier": "^10.0.1",
+		"nodemon": "^2.0.20",
+		"open": "^8.4.0",
+		"react": "18.2.0",
+		"react-bootstrap": "^2.5.0",
+		"react-dom": "18.2.0",
+		"sass": "^1.54.9",
+		"swiper": "^8.4.2"
+	},
+	"devDependencies": {
+		"autoprefixer": "^10.4.11",
+		"eslint": "8.23.1",
+		"eslint-config-next": "12.3.0",
+		"postcss": "^8.4.16"
+	}
 }

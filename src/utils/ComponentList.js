@@ -4,8 +4,12 @@ module.exports.ComponentList = [
 		path: 'components/common/SendNewsToEmailBox'
 	},
 	{
+		name: 'ProductsBox',
+		path: 'components/common/ProductsBox'
+	},
+	{
 		name: 'ImageBox',
-		path: 'components/common/ImageBox.js'
+		path: 'components/common/ImageBox'
 	},
 	{
 		name: 'Header',
@@ -199,12 +203,140 @@ module.exports.ComponentList = [
 	{
 		name: 'CommercialIntro',
 		path: 'components/Page/Commercial/CommercialIntro'
-	},{
+	},
+	{
 		name: 'CommercialTowImageBox',
 		path: 'components/Page/Commercial/CommercialTowImageBox'
 	},
 	{
 		name: 'CommercialBecomeAPartner',
 		path: 'components/Page/Commercial/CommercialBecomeAPartner'
+	},
+	// TV and Audio
+	{
+		name: 'TvAndAudioHead',
+		path: 'components/Page/TvAndAudio/TvAndAudioHead'
+	},
+	{
+		name: 'TvAndAudioTvShopBox',
+		path: 'components/Page/TvAndAudio/TvAndAudioTvShopBox'
+	},
+	{
+		name: 'TvAndAudioIntro',
+		path: 'components/Page/TvAndAudio/TvAndAudioIntro'
+	},
+	{
+		name: 'TvAndAudioLasterIntro',
+		path: 'components/Page/TvAndAudio/TvAndAudioLasterIntro'
+	},
+	{
+		name: 'TvAndAudioSmartChoice',
+		path: 'components/Page/TvAndAudio/TvAndAudioSmartChoice'
+	},
+	{
+		name: 'TvAndAudioFineHisense',
+		path: 'components/Page/TvAndAudio/TvAndAudioFineHisense'
+	},
+	{
+		name: 'TvAndAudioFindProduct',
+		path: 'components/Page/TvAndAudio/TvAndAudioFindProduct'
+	},
+
+	// UHD
+	{
+		name: 'UHDIntro',
+		path: 'components/Page/UHD/UHDIntro'
+	},
+	{
+		name: 'UHDNewsBox',
+		path: 'components/Page/UHD/UHDNewsBox'
+	},
+	{
+		name: 'UHDAbilityBox',
+		path: 'components/Page/UHD/UHDAbilityBox'
+	},
+	{
+		name: 'UHDFindTv',
+		path: 'components/Page/UHD/UHDFindTv'
+	},
+	// ULED
+	{
+		name: 'ULEDHead',
+		path: 'components/Page/ULED/ULEDHead'
+	},
+	{
+		name: 'ULEDProducts',
+		path: 'components/Page/ULED/ULEDProducts'
+	},
+	{
+		name: 'ULEDTextBox',
+		path: 'components/Page/ULED/ULEDTextBox'
+	},
+	{
+		name: 'ULEDImageBoxWithBtn',
+		path: 'components/Page/ULED/ULEDImageBoxWithBtn'
+	},
+	{
+		name: 'ULEDAllTech',
+		path: 'components/Page/ULED/ULEDAllTech'
+	},
+	{
+		name: 'ULEDImageAndTextBox',
+		path: 'components/Page/ULED/ULEDImageAndTextBox'
+	},
+	{
+		name: 'ULEDGreatTvTextBox',
+		path: 'components/Page/ULED/ULEDGreatTvTextBox'
+	},
+	// laster
+	{
+		name: 'LasterHead',
+		path: 'components/Page/Laster/LasterHead'
+	},
+	{
+		name: 'LasterImageAndTextBox',
+		path: 'components/Page/Laster/LasterImageAndTextBox'
+	},
+	{
+		name: 'LasterTitleAndSubTitleBox',
+		path: 'components/Page/Laster/LasterTitleAndSubTitleBox'
+	},
+	{
+		name: 'LasterFinedWithImage',
+		path: 'components/Page/Laster/LasterFinedWithImage'
+	},
+	// DishwashersHead
+	{
+		name: 'DishwashersHead',
+		path: 'components/Page/Dishwashers/DishwashersHead'
+	},
+	// product support
+	{
+		name: 'ProductSupportInfo',
+		path: 'components/Page/ProductSupport/ProductSupportInfo'
+	},
+	{
+		name: 'ProductSupportNewHead',
+		path: 'components/Page/ProductSupport/ProductSupportNewHead'
+	},
+	{
+		name: 'ProductSupportNavBar',
+		path: 'components/Page/ProductSupport/ProductSupportNavBar'
+	},
+	{
+		name: 'ProductSupportVideoBox',
+		path: 'components/Page/ProductSupport/ProductSupportVideoBox'
+	},
+	{
+		name: 'ProductSupportFAQ',
+		path: 'components/Page/ProductSupport/ProductSupportFAQ'
+	},
+	{
+		name: 'ProductSupportRegister',
+		path: 'components/Page/ProductSupport/ProductSupportRegister'
+	},
+	{
+		name: 'ProductSupportReplacement',
+		path: 'components/Page/ProductSupport/ProductSupportReplacement'
 	}
 ]

@@ -3119,6 +3119,11 @@ footer.footer {
 	color: #000;
 	text-decoration: none;
 	transition: all 0.3s ease-in;
+
+	svg{
+		width: 20px;
+		height: 20px;
+	}
 }
 .product-support .download-able-item:hover {
 	background-color: #f2f2f2;
