@@ -871,6 +871,100 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "Blog",
+			"isHome": false,
+			"className": "blog article-inner",
+			"dynamicRote": "[blogId].js",
+			"pageRoute": "./src/pages/Blog",
+			"components": [
+				{
+					"name": "BlogHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogImageGalleryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogSecondDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+
+				{
+					"name": "BlogTwoImage",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},	{
+					"name": "BlogSecondDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogEasySlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogBigImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionWithShare",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogCubeSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogMoreStories",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }
