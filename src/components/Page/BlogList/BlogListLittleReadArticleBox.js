@@ -1,0 +1,90 @@
+import React from 'react'
+
+// image
+import DessertsImage from './../../../../public/assets/images/blog/desserts.png'
+import CakeImage from './../../../../public/assets/images/blog/cake.png'
+
+function BlogListLittleReadArticleBox() {
+	return (
+		<section>
+			<div class='container'>
+				<div class='row justify-content-between align-items-start pb-0 pb-md-20'>
+					<div class='col-12 col-md-4 mb-20'>
+						<figure class='article-box'>
+							<div class='image-box'>
+								<a href='#'>
+									<img
+										src={DessertsImage.src}
+										alt='featured image'
+										width='100%'
+										height='100%'
+									/>
+								</a>
+							</div>
+							<figcaption>
+								<div class='row justify-content-between align-items-center mt-5'>
+									<div class='col-12 text-start mb-3'>
+										<a href='#' class='text-primary-dark'>
+											{' '}
+											Soundbars{' '}
+										</a>
+									</div>
+									<div class='col-12 mb-8'>
+										<h3 class='fs-3 mb-0'>
+											TV Room Feng Shui Tips with Cliff Tan
+										</h3>
+									</div>
+									<div class='col-12 order-3 text-start'>
+										<a
+											href='#'
+											class='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											Read article
+										</a>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+					</div>
+					<div class='col-12 col-md-6 mb-20'>
+						<figure class='article-box'>
+							<div class='image-box'>
+								<a href='#'>
+									<img
+										src={CakeImage.src}
+										alt='featured image'
+										width='100%'
+										height='100%'
+									/>
+								</a>
+							</div>
+							<figcaption>
+								<div class='row justify-content-between align-items-center mt-5'>
+									<div class='col-12 text-start mb-3'>
+										<a href='#' class='text-primary-dark'>
+											{' '}
+											Soundbars{' '}
+										</a>
+									</div>
+									<div class='col-12 mb-8'>
+										<h3 class='fs-3 mb-0'>
+											TV Room Feng Shui Tips with Cliff Tan
+										</h3>
+									</div>
+									<div class='col-12 order-3 text-start'>
+										<a
+											href='#'
+											class='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											Read article
+										</a>
+									</div>
+								</div>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+			</div>
+		</section>
+	)
+}
+
+export default BlogListLittleReadArticleBox

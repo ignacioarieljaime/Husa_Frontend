@@ -15,6 +15,7 @@
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"axios": "^0.27.2",
 		"bootstrap": "^5.2.1",
+		"chart.js": "^3.9.1",
 		"dotenv": "^16.0.2",
 		"express": "^4.18.1",
 		"file-saver": "^2.0.5",
@@ -24,6 +25,7 @@
 		"open": "^8.4.0",
 		"react": "18.2.0",
 		"react-bootstrap": "^2.5.0",
+		"react-chartjs-2": "^4.3.1",
 		"react-dom": "18.2.0",
 		"sass": "^1.54.9",
 		"swiper": "^8.4.2"

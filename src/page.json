@@ -646,6 +646,231 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "CESHomeApplication",
+			"isHome": false,
+			"className": "ces home-appliances",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/CESHomeApplication",
+			"components": [
+				{
+					"name": "CESHomeNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "CESLaster",
+			"isHome": false,
+			"className": "ces smart-tv",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/CESLaster",
+			"components": [
+				{
+					"name": "CESHomeNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESLasterLearnMore",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBoxWithPaddingAndBgBlack",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CEOLasterLikeBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "MoreTv",
+			"isHome": false,
+			"className": "more-tv",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/MoreTv",
+			"components": [
+				{
+					"name": "MoreTvHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvAmericaBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvGetReal",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalk",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvHisensePromise",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvGrabSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalkForm",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvExperts",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "MoreTvNew",
+			"isHome": false,
+			"className": "more-tv",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/MoreTvNew",
+			"components": [
+				{
+					"name": "MoreTvHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalk",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvExperts",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvNewHisensePromise",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvNewItemsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalkForm",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "BlogList",
+			"isHome": false,
+			"className": "blog",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/BlogList",
+			"components": [
+				{
+					"name": "BlogListHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListSearchBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListReadArticleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListLittleReadArticleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListSoundBarItemsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListReadArticleBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }

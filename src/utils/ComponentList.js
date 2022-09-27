@@ -338,5 +338,101 @@ module.exports.ComponentList = [
 	{
 		name: 'ProductSupportReplacement',
 		path: 'components/Page/ProductSupport/ProductSupportReplacement'
+	},
+	// ces home application
+	{
+		name: 'CESHomeNavBar',
+		path: 'components/Page/CES/HomeApplication/CESHomeNavBar'
+	},
+	{
+		name: 'CESHomeIntro',
+		path: 'components/Page/CES/HomeApplication/CESHomeIntro'
+	},
+	{
+		name: 'CESHomeImageAndText',
+		path: 'components/Page/CES/HomeApplication/CESHomeImageAndText'
+	},
+	// ces Laster
+	{
+		name: 'CESLasterLearnMore',
+		path: 'components/Page/CES/Laster/CESLasterLearnMore'
+	},
+	{
+		name: 'ImageBoxWithPaddingAndBgBlack',
+		path: 'components/Page/CES/Laster/ImageBoxWithPaddingAndBgBlack'
+	},
+	{
+		name: 'CEOLasterLikeBox',
+		path: 'components/Page/CES/Laster/CEOLasterLikeBox'
+	},
+	// more tv
+	{
+		name: 'MoreTvHead',
+		path: 'components/Page/MoreTv/MoreTvHead'
+	},
+	{
+		name: 'MoreTvBox',
+		path: 'components/Page/MoreTv/MoreTvBox'
+	},
+	{
+		name: 'MoreTvVideoBox',
+		path: 'components/Page/MoreTv/MoreTvVideoBox'
+	},
+	{
+		name: 'MoreTvAmericaBox',
+		path: 'components/Page/MoreTv/MoreTvAmericaBox'
+	},
+	{
+		name: 'MoreTvGetReal',
+		path: 'components/Page/MoreTv/MoreTvGetReal'
+	},
+	{
+		name: 'MoreTvLessTalk',
+		path: 'components/Page/MoreTv/MoreTvLessTalk'
+	},
+	{
+		name: 'MoreTvHisensePromise',
+		path: 'components/Page/MoreTv/MoreTvHisensePromise'
+	},
+	{
+		name: 'MoreTvGrabSlider',
+		path: 'components/Page/MoreTv/MoreTvGrabSlider'
+	},
+	{
+		name: 'MoreTvLessTalkForm',
+		path: 'components/Page/MoreTv/MoreTvLessTalkForm'
+	},
+	{
+		name: 'MoreTvExperts',
+		path: 'components/Page/MoreTv/MoreTvExperts'
+	},
+	{
+		name: 'MoreTvNewItemsBox',
+		path: 'components/Page/MoreTv/MoreTvNewItemsBox'
+	},
+	{
+		name: 'MoreTvNewHisensePromise',
+		path: 'components/Page/MoreTv/MoreTvNewHisensePromise'
+	},
+	// blog list
+	{
+		name: 'BlogListHead',
+		path: 'components/Page/BlogList/BlogListHead'
+	},
+	{
+		name: 'BlogListSearchBox',
+		path: 'components/Page/BlogList/BlogListSearchBox'
+	},
+	{
+		name: 'BlogListReadArticleBox',
+		path: 'components/Page/BlogList/BlogListReadArticleBox'
+	},
+	{
+		name: 'BlogListLittleReadArticleBox',
+		path: 'components/Page/BlogList/BlogListLittleReadArticleBox'
+	},
+	{
+		name: 'BlogListSoundBarItemsBox',
+		path: 'components/Page/BlogList/BlogListSoundBarItemsBox'
 	}
 ]

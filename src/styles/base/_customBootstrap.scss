@@ -1426,11 +1426,7 @@ article:hover > .img-box-shadow-hover {
 }
 .custom-checkbox [type='checkbox']:checked + label:after,
 .custom-checkbox [type='checkbox']:not(:checked) + label:after {
-	content: '\f00c';
-	font-family: 'Font Awesome 6 Free';
-	font-weight: 900;
-	line-height: 14px;
-	font-size: 20px;
+	content: url(./../../../public/assets/svgs/check-icon.svg);
 	width: 16px;
 	height: 16px;
 	position: absolute;
@@ -3120,7 +3116,7 @@ footer.footer {
 	text-decoration: none;
 	transition: all 0.3s ease-in;
 
-	svg{
+	svg {
 		width: 20px;
 		height: 20px;
 	}
@@ -3216,28 +3212,28 @@ footer.footer {
 
 /* ////////////////////////////////// more tv ////////////////////////////////////////////////////// */
 .more-tv .blue-bg {
-	background: url(/static/images/more-tv/blue-bg.jpg);
+	background: url(./../../../public/assets/images/more-tv/blue-bg.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .more-tv .blue-bg .bg-bubble-effect {
-	background: url(/static/images/more-tv/bg-effect.png);
+	background: url(./../../../public/assets/images/more-tv/bg-effect.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .more-tv .blue-bg .bg-bubble-dim-effect {
-	background: url(/static/images/more-tv/bg-dim-effect.png);
+	background: url(./../../../public/assets/images/more-tv/bg-dim-effect.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .more-tv .blue-bg .bg-single-bubble {
-	background: url(/static/images/more-tv/bubble.png);
+	background: url(./../../../public/assets/images/more-tv/bubble.png);
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: right center;
 }
 .more-tv .blue-bg .bg-single-bubble .bg-joel-pointer {
-	background: url(/static/images/more-tv/joel-pointer.png);
+	background: url(./../../../public/assets/images/more-tv/joel-pointer.png);
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: right bottom;
@@ -3294,28 +3290,31 @@ footer.footer {
 	margin: 0 auto 95px auto;
 }
 
-.more-tv .swiper-container {
+.more-tv .swiper {
 	width: 100%;
 	height: 100%;
 	max-width: 860px;
 	position: relative;
+	overflow: initial !important;
 	margin: 0 auto;
 }
-.more-tv .swiper-container img {
+.more-tv .swiper img {
 	width: 100%;
 	height: 100%;
 }
 
-.more-tv .swiper-container .swiper-wrapper {
-	cursor: url(/static/images/more-tv/cusror-drag-info.png) 64 43, auto !important;
+.more-tv .swiper .swiper-wrapper {
+	cursor: url(./../../../public/assets/images/more-tv/cusror-drag-info.png) 64
+			43,
+		auto !important;
 }
-.more-tv .swiper-container .swiper-pagination-bullets {
+.more-tv .swiper .swiper-pagination-bullets {
 	top: 0;
 	right: 0;
 	text-align: end;
 	height: fit-content;
 }
-.more-tv .swiper-container .swiper-pagination-bullet {
+.more-tv .swiper .swiper-pagination-bullet {
 	width: fit-content;
 	height: fit-content;
 	font-weight: 400;
@@ -3324,7 +3323,7 @@ footer.footer {
 	background: transparent;
 	margin: 0 10px !important;
 }
-.more-tv .swiper-container .swiper-pagination-bullet-active {
+.more-tv .swiper .swiper-pagination-bullet-active {
 	color: #1e518a;
 	text-decoration: underline;
 }
@@ -3739,7 +3738,8 @@ footer.footer {
 	height: 100%;
 }
 .blog .big-coverflow.swiper-container .swiper-wrapper {
-	cursor: url(/static/images/blog/cursor-drag-dark.png) 64 43, auto;
+	cursor: url(./../../../public/assets/images/blog/cursor-drag-dark.png) 64 43,
+		auto;
 }
 .blog .big-coverflow.swiper-container .swiper-pagination-bullets {
 	top: 0;
@@ -4011,5 +4011,25 @@ footer.footer {
 	}
 	.pdp .suggested-products::after {
 		height: 45%;
+	}
+}
+
+.home-appliances,
+.smart-tv {
+	.ces-product-carousel {
+		.swiper-pagination {
+			display: flex;
+			padding-left: 88px;
+		}
+		.swiper-pagination-bullet {
+			width: 20px;
+			height: 20px;
+			border: 2px solid #fff;
+			opacity: 1;
+			background: transparent;
+		}
+		.swiper-pagination-bullet-active {
+			background: #fff;
+		}
 	}
 }
