@@ -1055,6 +1055,70 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "SponsorShip",
+			"isHome": false,
+			"className": "sponsership",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/SponsorShip",
+			"components": [
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipDescriptionGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTextGradient",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTitleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipVideoAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipBigImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipImagesWithButton",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTextGradient",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTitleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorImageAndLogo",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }

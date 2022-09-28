@@ -4083,3 +4083,62 @@ footer.footer {
 		}
 	}
 }
+
+
+/* //////////////////////////////////////////////////// sponsership ////////////////////////////////////////////////////////////////////////// */
+.sponsership {
+	background: #161613;
+}
+.sponsership .border-light {
+	border-color: rgba(255, 255, 255, 0.3) !important;
+}
+.sponsership .play-btn {
+	color: #fff;
+	border: 2px solid #fff;
+	background: transparent;
+	padding: 30px 30px;
+}
+.sponsership .play-btn:hover {
+	padding: 40px 40px;
+}
+.sponsership .text-secondary {
+	color: #00aaa6 !important;
+}
+.sponsership .btn-secondary {
+	background-color: #00aaa6 !important;
+	color: #fff !important;
+	border: 1px solid #00aaa6 !important;
+}
+.sponsership .btn-secondary:hover {
+	background-color: #039693 !important;
+	border: 1px solid #039693 !important;
+}
+.sponsership .floating-text {
+	position: absolute;
+	/* top: 30%; */
+	width: 120%;
+	left: -20%;
+}
+.sponsership .floating-line {
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	width: 50%;
+	position: absolute;
+	top: 20%;
+	z-index: 0;
+}
+.sponsership .floating-line + * {
+	position: relative;
+	z-index: 1;
+}
+@media (max-width: 1200px) {
+	.sponsership .gradient-texts img {
+		width: 80%;
+	}
+}
+@media (max-width: 991px) {
+	.sponsership .floating-text {
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+}
