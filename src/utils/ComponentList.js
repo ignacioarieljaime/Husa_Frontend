@@ -499,5 +499,10 @@ module.exports.ComponentList = [
 	{
 		name: 'BlogMoreStories',
 		path: 'components/Page/Blog/BlogMoreStories'
+	},
+	// PDP
+	{
+		name: 'PDPProductInfoSliderAndText',
+		path: 'components/Page/PDP/PDPProductInfoSliderAndText'
 	}
 ]

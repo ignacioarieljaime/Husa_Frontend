@@ -5,8 +5,8 @@ import Image from './../../../../public/assets/images/4k-uled/one-billione-color
 
 function ULEDImageAndTextItem() {
 	return (
-		<div class='row description-blocks bg-black align-items-center'>
-			<article class='introduction text-white col-12 col-md-6 order-2 order-md-1'>
+		<div className='row description-blocks bg-black align-items-center'>
+			<article className='introduction text-white col-12 col-md-6 order-2 order-md-1'>
 				<h4>QUANTUM DOT COLOR</h4>
 				<h2>
 					Over one
@@ -23,7 +23,7 @@ function ULEDImageAndTextItem() {
 			<img
 				src={Image.src}
 				alt='tv platforms'
-				class='p-0 col-12 col-md-6 order-1 order-md-2'
+				className='p-0 col-12 col-md-6 order-1 order-md-2'
 			/>
 		</div>
 	)

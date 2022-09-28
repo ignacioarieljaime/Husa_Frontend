@@ -3,8 +3,8 @@ import React from 'react'
 function CompanyInfo() {
 	return (
 		<section>
-			<div class='about-company container-fluid'>
-				<article id='mission' class='article'>
+			<div className='about-company container-fluid'>
+				<article id='mission' className='article'>
 					<h2>Mission and vision</h2>
 					<h3>HISENSE USA's MISSION AND VISION.</h3>
 					<div>
@@ -24,7 +24,7 @@ function CompanyInfo() {
 						</p>
 					</div>
 				</article>
-				<article id='history' class='article pt-15'>
+				<article id='history' className='article pt-15'>
 					<h2>history</h2>
 					<h3>PUSHING THE BOUNDARIES OF INNOVATION SINCE 1969.</h3>
 					<div>
@@ -55,7 +55,7 @@ function CompanyInfo() {
 						</p>
 					</div>
 				</article>
-				<article id='quality' class='article pt-15'>
+				<article id='quality' className='article pt-15'>
 					<h2>quality</h2>
 					<h3>OUR COMMITMENT TO QUALITY.</h3>
 					<div>
@@ -68,7 +68,7 @@ function CompanyInfo() {
 						</p>
 					</div>
 				</article>
-				<article id='awards' class='article pt-15'>
+				<article id='awards' className='article pt-15'>
 					<h2>AWARDS & ACKNOW&shy;LEDGEMENTS</h2>
 					<div>
 						<p>

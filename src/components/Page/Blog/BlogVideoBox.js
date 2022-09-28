@@ -14,8 +14,8 @@ function BlogVideoBox() {
 	}
 	return (
 		<section>
-			<div class='container'>
-				<div class='video-container'>
+			<div className='container'>
+				<div className='video-container'>
 					<video ref={video} id='blog-video' width='100%' height='100%'>
 						<source
 							src='http://techslides.com/demos/sample-videos/small.mp4'
@@ -27,7 +27,7 @@ function BlogVideoBox() {
 						<button
 							id='video-play-btn'
 							onClick={() => videoHandler(true)}
-							class='play-btn'>
+							className='play-btn'>
 							<FontAwesomeIcon
 								icon={faPlay}
 								size={'xl'}

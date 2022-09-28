@@ -6,11 +6,11 @@ import MoreTvNewItem from './MoreTvNewItem'
 function MoreTvNewItemsBox() {
 	return (
 		<section>
-			<div class='container-fluid py-6'>
-				<h2 class='text-capitalize fs-2qx text-center mt-20 mb-9'>
+			<div className='container-fluid py-6'>
+				<h2 className='text-capitalize fs-2qx text-center mt-20 mb-9'>
 					All New U Series
 				</h2>
-				<div class='row mb-20'>
+				<div className='row mb-20'>
 					<MoreTvNewItem />
 					<MoreTvNewItem />
 					<MoreTvNewItem />

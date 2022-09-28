@@ -3,10 +3,10 @@ import React from 'react'
 function ContactUsHead() {
 	return (
 		<section>
-			<div class='container contact-info pt-12'>
+			<div className='container contact-info pt-12'>
 				<h1>Contact Us</h1>
-				<div class='row justify-content-center align-items-start'>
-					<ul class='col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 pe-sm-18'>
+				<div className='row justify-content-center align-items-start'>
+					<ul className='col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 pe-sm-18'>
 						<li>
 							<b>SUPPORT HOURS:</b>
 						</li>
@@ -20,16 +20,16 @@ function ContactUsHead() {
 						<li>105 SATELLITE BLVD SUITE I</li>
 						<li>SUWANEE, GA30024&nbsp;USA</li>
 					</ul>
-					<ul class='col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 ps-sm-18'>
+					<ul className='col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 ps-sm-18'>
 						<li>TVs and Tablets:</li>
 						<li>
-							<div class=''>
-								<a href='tel:18889358880' class='text-primary'>
+							<div className=''>
+								<a href='tel:18889358880' className='text-primary'>
 									1.888.935.8880
 								</a>
 							</div>
 							<div>Appliances:</div>
-							<a href='tel:18774653566' class='text-primary'>
+							<a href='tel:18774653566' className='text-primary'>
 								1.877.465.3566
 							</a>
 						</li>

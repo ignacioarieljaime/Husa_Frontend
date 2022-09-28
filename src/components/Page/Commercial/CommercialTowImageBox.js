@@ -7,16 +7,16 @@ import ImageTwo from './../../../../public/assets/images/commercial/commercial-r
 function CommercialTowImageBox() {
 	return (
 		<section>
-			<div class='px-3 mt-12 mb-20 row justify-content-center align-items-center mx-0'>
+			<div className='px-3 mt-12 mb-20 row justify-content-center align-items-center mx-0'>
 				<img
 					src={Image.src}
 					alt='featured image'
-					class='col-12 col-md-6 p-0 pe-md-3 mb-20 mb-md-0'
+					className='col-12 col-md-6 p-0 pe-md-3 mb-20 mb-md-0'
 				/>
 				<img
 					src={ImageTwo.src}
 					alt='featured image'
-					class='col-12 col-md-6 p-0 ps-md-3'
+					className='col-12 col-md-6 p-0 ps-md-3'
 				/>
 			</div>
 		</section>

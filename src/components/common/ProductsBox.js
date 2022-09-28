@@ -4,7 +4,7 @@ import ProductItem from './ProdctItem'
 function ProductsBox() {
 	return (
 		<section>
-			<div class='products-container row align-items-stretch mx-0'>
+			<div className='products-container row align-items-stretch mx-0'>
 				<ProductItem />
 				<ProductItem />
 				<ProductItem />

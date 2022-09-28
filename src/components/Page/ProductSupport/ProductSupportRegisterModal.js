@@ -10,18 +10,18 @@ function ProductSupportRegisterModal({ handler }) {
 		<div
 			onClick={() => outside && handler(false)}
 			style={{ background: 'rgba($color: #000000, $alpha: 0.3)' }}
-			class='modal fade show d-block'
+			className='modal fade show d-block'
 			id='serial-numbers-1'
 			tabindex='-1'
 			role='dialog'
 			aria-labelledby='exampleModalLabel'>
 			<div
-				class='modal-dialog modal-dialog-centered modal-lg'
+				className='modal-dialog modal-dialog-centered modal-lg'
 				role='document'
 				ref={modal}>
-				<div class='modal-content border-0 bg-white p-6 d-block serial-number-modal'>
+				<div className='modal-content border-0 bg-white p-6 d-block serial-number-modal'>
 					<button
-						class='btn modal-close-btn'
+						className='btn modal-close-btn'
 						onClick={() => handler(false)}
 						type='button'
 						data-dismiss='modal'

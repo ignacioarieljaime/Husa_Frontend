@@ -965,6 +965,20 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "PDP",
+			"isHome": false,
+			"className": "pdp",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/PDP",
+			"components": [
+				{
+					"name": "PDPProductInfoSliderAndText",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }

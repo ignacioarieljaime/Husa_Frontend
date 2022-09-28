@@ -6,7 +6,7 @@ import Image from './../../../../public/assets/images/company/company-header.jpg
 function CompanyHeaderIntro() {
 	return (
 		<section>
-			<div class='heading'>
+			<div className='heading'>
 				<img src={Image.src} alt='featured image' width='100%' height='100%' />
 			</div>
 		</section>

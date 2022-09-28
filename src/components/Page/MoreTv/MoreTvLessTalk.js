@@ -12,58 +12,58 @@ import VariableMotion from './../../../../public/assets/images/more-tv/variable-
 function MoreTvLessTalk() {
 	return (
 		<section>
-			<div class='container-fluid my-20 pt-md-20 overflow-hidden'>
-				<div class='row'>
-					<div class='col-12 col-md-6 mb-8'>
-						<h2 class='fs-4hx fw-normal mb-16'>
-							<span class='d-block'>
-								Why <span class='text-navy'>less talk</span>
+			<div className='container-fluid my-20 pt-md-20 overflow-hidden'>
+				<div className='row'>
+					<div className='col-12 col-md-6 mb-8'>
+						<h2 className='fs-4hx fw-normal mb-16'>
+							<span className='d-block'>
+								Why <span className='text-navy'>less talk</span>
 							</span>
 							means more TV.
 						</h2>
-						<h3 class='fs-2 fw-normal'>
+						<h3 className='fs-2 fw-normal'>
 							We let our technology do the talking, not our ads.
 						</h3>
 					</div>
-					<div class='col-12 col-md-6 mb-15 mb-md-0 position-relative'>
+					<div className='col-12 col-md-6 mb-15 mb-md-0 position-relative'>
 						<img
 							src={HeaderTv.src}
 							alt='featured image'
-							class='d-block d-md-none w-100'
+							className='d-block d-md-none w-100'
 						/>
 						<img
 							src={halfTv.src}
 							alt='featured image'
-							class='big-tv d-none d-md-block'
+							className='big-tv d-none d-md-block'
 						/>
 					</div>
-					<div class='col-12 col-md-7 col-xl-6'>
-						<div class='tech-items aos-init' data-aos='slide-right'>
+					<div className='col-12 col-md-7 col-xl-6'>
+						<div className='tech-items aos-init' data-aos='slide-right'>
 							<div>
-								<img src={Quantum.src} alt='featured image' class='w-sm-100' />
+								<img src={Quantum.src} alt='featured image' className='w-sm-100' />
 							</div>
 							<h4>One billion+ colors, we’ve counted</h4>
 						</div>
-						<div class='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items aos-init' data-aos='slide-right'>
 							<div>
-								<img src={Dolby.src} alt='featured image' class='w-sm-100' />
+								<img src={Dolby.src} alt='featured image' className='w-sm-100' />
 							</div>
 							<h4>Blockbuster audio in your very own home</h4>
 						</div>
-						<div class='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items aos-init' data-aos='slide-right'>
 							<div>
-								<img src={GoogleTv.src} alt='featured image' class='w-sm-100' />
+								<img src={GoogleTv.src} alt='featured image' className='w-sm-100' />
 							</div>
 							<h4>
 								The smartest, smoothest way to navigate your favorite shows
 							</h4>
 						</div>
-						<div class='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items aos-init' data-aos='slide-right'>
 							<div>
 								<img
 									src={FullArray.src}
 									alt='featured image'
-									class='w-sm-100'
+									className='w-sm-100'
 								/>
 							</div>
 							<h4>
@@ -71,12 +71,12 @@ function MoreTvLessTalk() {
 								darker darks
 							</h4>
 						</div>
-						<div class='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items aos-init' data-aos='slide-right'>
 							<div>
 								<img
 									src={VariableMotion}
 									alt='featured image'
-									class='w-sm-100'
+									className='w-sm-100'
 								/>
 							</div>
 							<h4>

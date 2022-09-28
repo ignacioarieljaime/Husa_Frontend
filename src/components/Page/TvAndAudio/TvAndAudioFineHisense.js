@@ -9,9 +9,9 @@ import TvAndAudioFineHisenseItem from './TvAndAudioFineHisenseItem'
 function TvAndAudioFineHisense() {
 	return (
 		<section>
-			<div class='p-md-4'>
-				<div class='container-fluid pt-20 pb-8'>
-					<div class='row align-items-start'>
+			<div className='p-md-4'>
+				<div className='container-fluid pt-20 pb-8'>
+					<div className='row align-items-start'>
 						<TvAndAudioFineHisenseItem image={Image} />
 						<TvAndAudioFineHisenseItem image={Image} />
 					</div>

@@ -5,24 +5,24 @@ import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons'
 function ProductSupportInfo() {
 	return (
 		<section>
-			<div class='mb-17'>
-				<h2 class='my-15 text-center'>Product Support</h2>
-				<div class='mx-auto support-time'>
-					<p class='fs-5 text-uppercase mb-1 fw-bold'>SUPPORT HOURS:</p>
-					<p class='fs-5 text-uppercase mb-1'>monday-friday</p>
-					<p class='fs-5 text-uppercase mb-8'>9AM - 9PM EST</p>
+			<div className='mb-17'>
+				<h2 className='my-15 text-center'>Product Support</h2>
+				<div className='mx-auto support-time'>
+					<p className='fs-5 text-uppercase mb-1 fw-bold'>SUPPORT HOURS:</p>
+					<p className='fs-5 text-uppercase mb-1'>monday-friday</p>
+					<p className='fs-5 text-uppercase mb-8'>9AM - 9PM EST</p>
 
-					<p class='fs-5 text-uppercase mb-1'>saturday-sunday</p>
-					<p class='fs-5 text-uppercase'>9AM - 6PM EST</p>
+					<p className='fs-5 text-uppercase mb-1'>saturday-sunday</p>
+					<p className='fs-5 text-uppercase'>9AM - 6PM EST</p>
 				</div>
 			</div>
-			<div class='container-fluid mb-20'>
-				<div class='row justify-content-evenly align-items-center'>
-					<div class='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
-						<a href='#' class='download-links p-4'>
+			<div className='container-fluid mb-20'>
+				<div className='row justify-content-evenly align-items-center'>
+					<div className='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
+						<a href='#' className='download-links p-4'>
 							<div>
-								<div class='text-muted text-capitalize fs-4'>User Manual</div>
-								<div class='text-muted text-uppercase fs-9'>download</div>
+								<div className='text-muted text-capitalize fs-4'>User Manual</div>
+								<div className='text-muted text-uppercase fs-9'>download</div>
 							</div>
 							<div>
 								<span className='text-light'>
@@ -31,11 +31,11 @@ function ProductSupportInfo() {
 							</div>
 						</a>
 					</div>
-					<div class='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
-						<a href='#' class='download-links p-4'>
+					<div className='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
+						<a href='#' className='download-links p-4'>
 							<div>
-								<div class='text-muted text-capitalize fs-4'>User Manual</div>
-								<div class='text-muted text-uppercase fs-9'>download</div>
+								<div className='text-muted text-capitalize fs-4'>User Manual</div>
+								<div className='text-muted text-uppercase fs-9'>download</div>
 							</div>
 							<div>
 								<span className='text-light'>
@@ -44,11 +44,11 @@ function ProductSupportInfo() {
 							</div>
 						</a>
 					</div>
-					<div class='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
-						<a href='#' class='download-links p-4'>
+					<div className='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
+						<a href='#' className='download-links p-4'>
 							<div>
-								<div class='text-muted text-capitalize fs-4'>User Manual</div>
-								<div class='text-muted text-uppercase fs-9'>download</div>
+								<div className='text-muted text-capitalize fs-4'>User Manual</div>
+								<div className='text-muted text-uppercase fs-9'>download</div>
 							</div>
 							<div>
 								<span className='text-light'>
@@ -57,11 +57,11 @@ function ProductSupportInfo() {
 							</div>
 						</a>
 					</div>
-					<div class='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
-						<a href='#' class='download-links p-4'>
+					<div className='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
+						<a href='#' className='download-links p-4'>
 							<div>
-								<div class='text-muted text-capitalize fs-4'>User Manual</div>
-								<div class='text-muted text-uppercase fs-9'>download</div>
+								<div className='text-muted text-capitalize fs-4'>User Manual</div>
+								<div className='text-muted text-uppercase fs-9'>download</div>
 							</div>
 							<div>
 								<span className='text-light'>

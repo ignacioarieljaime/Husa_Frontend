@@ -20,13 +20,13 @@ function MoreTvGrabSlider() {
 		clickable: true,
 		renderBullet: function (index, className) {
 			return (
-				'<span class="' + className + '">' + carouselItems[index] + '</span>'
+				'<span className="' + className + '">' + carouselItems[index] + '</span>'
 			)
 		}
 	}
 	return (
 		<section>
-			<div class='overflow-hidden my-20'>
+			<div className='overflow-hidden my-20'>
 				<Swiper
 					effect={'coverflow'}
 					grabCursor={true}
@@ -45,17 +45,17 @@ function MoreTvGrabSlider() {
 					<SwiperSlide>
 						{' '}
 						<span>
-							<img src={Image.src} alt='featured image' class='slider-media' />
+							<img src={Image.src} alt='featured image' className='slider-media' />
 						</span>
-						<div class='text-center'>
-							<h5 class='fs-4 fw-normal mb-3'>U6HF</h5>
-							<h6 class='fs-2qx mb-4'>Great for entertainment</h6>
-							<p class='text-muted fw-normal mb-5'>
+						<div className='text-center'>
+							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
+							<h6 className='fs-2qx mb-4'>Great for entertainment</h6>
+							<p className='text-muted fw-normal mb-5'>
 								With Fire TV Built-in, get all-in-one entertainmnet
 							</p>
 							<a
 								href='#'
-								class='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
+								className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
 								WHERE TO BUY
 							</a>
 						</div>
@@ -63,17 +63,17 @@ function MoreTvGrabSlider() {
 					<SwiperSlide>
 						{' '}
 						<span>
-							<img src={Image.src} alt='featured image' class='slider-media' />
+							<img src={Image.src} alt='featured image' className='slider-media' />
 						</span>
-						<div class='text-center'>
-							<h5 class='fs-4 fw-normal mb-3'>U6HF</h5>
-							<h6 class='fs-2qx mb-4'>Great for entertainment</h6>
-							<p class='text-muted fw-normal mb-5'>
+						<div className='text-center'>
+							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
+							<h6 className='fs-2qx mb-4'>Great for entertainment</h6>
+							<p className='text-muted fw-normal mb-5'>
 								With Fire TV Built-in, get all-in-one entertainmnet
 							</p>
 							<a
 								href='#'
-								class='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
+								className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
 								WHERE TO BUY
 							</a>
 						</div>
@@ -81,17 +81,17 @@ function MoreTvGrabSlider() {
 					<SwiperSlide>
 						{' '}
 						<span>
-							<img src={Image.src} alt='featured image' class='slider-media' />
+							<img src={Image.src} alt='featured image' className='slider-media' />
 						</span>
-						<div class='text-center'>
-							<h5 class='fs-4 fw-normal mb-3'>U6HF</h5>
-							<h6 class='fs-2qx mb-4'>Great for entertainment</h6>
-							<p class='text-muted fw-normal mb-5'>
+						<div className='text-center'>
+							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
+							<h6 className='fs-2qx mb-4'>Great for entertainment</h6>
+							<p className='text-muted fw-normal mb-5'>
 								With Fire TV Built-in, get all-in-one entertainmnet
 							</p>
 							<a
 								href='#'
-								class='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
+								className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
 								WHERE TO BUY
 							</a>
 						</div>

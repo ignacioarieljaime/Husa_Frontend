@@ -13,24 +13,24 @@ function ProductSupportRegister() {
 	const [acceptRole, setAcceptRole] = useState(false)
 	const [modalCondition, setModalCondition] = useState(false)
 	return (
-		<section class='border-bottom border-dark' id='#registeration'>
-			<div class='container py-20'>
-				<h2 class='mb-4 fs-2'>Register Laser TV</h2>
-				<p class='fs-8 fw-normal mb-15'>
+		<section className='border-bottom border-dark' id='#registeration'>
+			<div className='container py-20'>
+				<h2 className='mb-4 fs-2'>Register Laser TV</h2>
+				<p className='fs-8 fw-normal mb-15'>
 					Get started with registering your Hisense product.
 				</p>
-				<div class='form-container mx-auto'>
+				<div className='form-container mx-auto'>
 					<form
 						action=''
-						class='form-container-inner row active'
+						className='form-container-inner row active'
 						id='form-tab-1'>
-						<div class='col-12 mb-10 custom-select-box'>
+						<div className='col-12 mb-10 custom-select-box'>
 							<div
-								class='form-container-inner-input select-container'
+								className='form-container-inner-input select-container'
 								tabindex='1'>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='product'
 										value='1'
@@ -38,99 +38,99 @@ function ProductSupportRegister() {
 										checked='checked'
 										disabled
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										PLEASE SELECT YOUR PRODUCT
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='tv'
 										value='2'
 										name='product'
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										Televisions
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='refrigeration'
 										value='3'
 										name='product'
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										Refrigeration
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='air'
 										value='4'
 										name='product'
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										Air Products
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='soundbars'
 										value='5'
 										name='product'
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										Soundbars
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='dishwashers'
 										value='6'
 										name='product'
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										Dishwashers
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
 							</div>
-							<ul class='select-box-list'>
+							<ul className='select-box-list'>
 								<li>
-									<label class='option' for='tv' aria-hidden='aria-hidden'>
+									<label className='option' for='tv' aria-hidden='aria-hidden'>
 										Televisions
 									</label>
 								</li>
 								<li>
 									<label
-										class='option'
+										className='option'
 										for='refrigeration'
 										aria-hidden='aria-hidden'>
 										Refrigeration
 									</label>
 								</li>
 								<li>
-									<label class='option' for='air' aria-hidden='aria-hidden'>
+									<label className='option' for='air' aria-hidden='aria-hidden'>
 										Air Products
 									</label>
 								</li>
 								<li>
 									<label
-										class='option'
+										className='option'
 										for='soundbars'
 										aria-hidden='aria-hidden'>
 										Soundbars
@@ -138,22 +138,22 @@ function ProductSupportRegister() {
 								</li>
 								<li>
 									<label
-										class='option'
+										className='option'
 										for='dishwashers'
 										aria-hidden='aria-hidden'>
 										Dishwashers
 									</label>
 								</li>
 							</ul>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 mb-10 custom-select-box'>
+						<div className='col-12 mb-10 custom-select-box'>
 							<div
-								class='form-container-inner-input select-container'
+								className='form-container-inner-input select-container'
 								tabindex='1'>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='model'
 										value='1'
@@ -161,133 +161,133 @@ function ProductSupportRegister() {
 										checked='checked'
 										disabled
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										PLEASE SELECT YOUR MODEL
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
-								<div class='select-box-item'>
+								<div className='select-box-item'>
 									<input
-										class='input'
+										className='input'
 										type='radio'
 										id='none'
 										value='2'
 										name='model'
 									/>
-									<p class='input-text'>
+									<p className='input-text'>
 										None
 										<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
 									</p>
 								</div>
 							</div>
-							<ul class='select-box-list'>
+							<ul className='select-box-list'>
 								<li>
-									<label class='option' for='none' aria-hidden='aria-hidden'>
+									<label className='option' for='none' aria-hidden='aria-hidden'>
 										None
 									</label>
 								</li>
 							</ul>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-10'>
 							<input
 								type='tel'
-								class='form-container-inner-input'
+								className='form-container-inner-input'
 								placeholder='SERIAL NUMBER'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 col-md-6 mb-10 d-flex'>
+						<div className='col-12 col-md-6 mb-10 d-flex'>
 							<button
-								class='modal-btn'
+								className='modal-btn'
 								type='button'
 								onClick={() => setModalCondition(state => !state)}>
 								<FontAwesomeIcon icon={faCircleInfo} size={'xl'} />
 								Where do I find the serial number?
 							</button>
 						</div>
-						<div class='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-10'>
 							<input
 								type='text'
-								class='form-container-inner-input'
+								className='form-container-inner-input'
 								placeholder='FIRST NAME'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-10'>
 							<input
 								type='text'
-								class='form-container-inner-input'
+								className='form-container-inner-input'
 								placeholder='LAST NAME'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-10'>
 							<input
 								type='email'
-								class='form-container-inner-input'
+								className='form-container-inner-input'
 								placeholder='EMAIL'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-10'>
 							<input
 								type='number'
-								class='form-container-inner-input'
+								className='form-container-inner-input'
 								placeholder='POSTAL CODE/ZIP'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-10'>
 							<input
 								type='tel'
-								class='form-container-inner-input'
+								className='form-container-inner-input'
 								placeholder='PHONE NUMBER'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-10'>
 							<input
 								type='text'
-								class='form-container-inner-input'
+								className='form-container-inner-input'
 								placeholder='PURCHASED FROM'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 mb-10'>
+						<div className='col-12 mb-10'>
 							<label for='date-input'>Date of Purchase</label>
 							<input
 								name='date-input'
 								type='date'
-								class='form-container-inner-input date-input'
+								className='form-container-inner-input date-input'
 								value='mm/dd/yyyy'
 								required
 							/>
-							<span class='input-error'>This field is required.</span>
+							<span className='input-error'>This field is required.</span>
 						</div>
-						<div class='col-12 mb-10 file-upload'>
+						<div className='col-12 mb-10 file-upload'>
 							<input
 								type='file'
-								class='d-none'
+								className='d-none'
 								id='contact-file-input'
 								accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
 								multiple='multiple'
 							/>
-							<div class='file-upload-box' onclick='triggerFileUpload()'>
+							<div className='file-upload-box' onclick='triggerFileUpload()'>
 								<div>Drag & Drop a File Here</div>
 								<p>Upload Images</p>
 							</div>
 						</div>
-						<div class='col-12 mb-10 news-check'>
+						<div className='col-12 mb-10 news-check'>
 							<span
-								class='form-checkbox-span'
+								className='form-checkbox-span'
 								onClick={() => setAcceptRole(state => !state)}>
 								{acceptRole && <FontAwesomeIcon icon={faCheck} />}
 							</span>
@@ -296,15 +296,15 @@ function ProductSupportRegister() {
 									type='checkbox'
 									name='news'
 									id='form-checkbox-input'
-									class='d-none'
+									className='d-none'
 								/>
 								Sign me up for future news
 							</label>
 						</div>
-						<div class='col-12 text-center'>
+						<div className='col-12 text-center'>
 							<button
 								type='submit'
-								class='btn btn-outline-dark px-5 py-2 rounded-5'>
+								className='btn btn-outline-dark px-5 py-2 rounded-5'>
 								REGISTER
 							</button>
 						</div>

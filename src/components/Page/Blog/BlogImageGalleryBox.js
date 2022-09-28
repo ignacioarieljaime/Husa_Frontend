@@ -11,30 +11,30 @@ import Oranges from './../../../../public/assets/images/blog/oranges.png'
 function BlogImageGalleryBox() {
 	return (
 		<section>
-			<div class='container-fluid photo-gallery'>
-				<div class='row align-items-stretch h-100'>
-					<div class='col-12 col-md-6'>
-						<div class='row align-items-stretch justify-content-center first'>
-							<div class='col-3 col-sm-2 align-self-end mb-20'>
+			<div className='container-fluid photo-gallery'>
+				<div className='row align-items-stretch h-100'>
+					<div className='col-12 col-md-6'>
+						<div className='row align-items-stretch justify-content-center first'>
+							<div className='col-3 col-sm-2 align-self-end mb-20'>
 								<img src={Sample.src} alt='featured image' width='100%' />
 							</div>
-							<div class='col-4'>
+							<div className='col-4'>
 								<img src={Kids.src} alt='featured image' width='100%' />
 							</div>
-							<div class='col-6 align-self-end'>
+							<div className='col-6 align-self-end'>
 								<img src={Cake.src} alt='featured image' width='100%' />
 							</div>
 						</div>
 					</div>
-					<div class='col-12 col-md-6'>
-						<div class='row align-items-stretch justify-content-between seconde'>
-							<div class='col-6'>
+					<div className='col-12 col-md-6'>
+						<div className='row align-items-stretch justify-content-between seconde'>
+							<div className='col-6'>
 								<img src={Woman.src} alt='featured image' width='100%' />
 							</div>
-							<div class='col-5 align-self-center mb-n20'>
+							<div className='col-5 align-self-center mb-n20'>
 								<img src={Girl.src} alt='featured image' width='100%' />
 							</div>
-							<div class='col-3 col-md-2 offset-3 offset-md-5'>
+							<div className='col-3 col-md-2 offset-3 offset-md-5'>
 								<img src={Oranges.src} alt='featured image' width='100%' />
 							</div>
 						</div>

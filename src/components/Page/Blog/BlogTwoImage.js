@@ -7,9 +7,9 @@ import Cake from './../../../../public/assets/images/blog/cake.png'
 function BlogTwoImage() {
 	return (
 		<section>
-			<div class='mb-20'>
-				<div class='row double-banner mx-0'>
-					<div class='col-12 col-md-6 px-0 header-secondary'>
+			<div className='mb-20'>
+				<div className='row double-banner mx-0'>
+					<div className='col-12 col-md-6 px-0 header-secondary'>
 						<img
 							src={Dessert.src}
 							alt='featured image'
@@ -17,7 +17,7 @@ function BlogTwoImage() {
 							height='100%'
 						/>
 					</div>
-					<div class='col-12 col-md-6 px-0 header-secondary'>
+					<div className='col-12 col-md-6 px-0 header-secondary'>
 						<img
 							src={Cake.src}
 							alt='featured image'

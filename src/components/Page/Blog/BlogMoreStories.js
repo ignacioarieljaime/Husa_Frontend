@@ -5,8 +5,8 @@ import BlogListLittleReadArticleBox from './../BlogList/BlogListLittleReadArticl
 function BlogMoreStories() {
 	return (
 		<section>
-			<div class='container mt-20 pt-0 pt-md-15'>
-				<h2 class='fs-2tx fw-normal mb-15'>More Stories</h2>
+			<div className='container mt-20 pt-0 pt-md-15'>
+				<h2 className='fs-2tx fw-normal mb-15'>More Stories</h2>
 				<BlogListLittleReadArticleBox />
 			</div>
 		</section>

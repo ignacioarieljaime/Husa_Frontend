@@ -4,8 +4,8 @@ import UHDNewsItem from './UHDNewsItem'
 function UHDNewsBox() {
 	return (
 		<section>
-			<div class='container-fluid py-6'>
-				<div class='row align-items-start'>
+			<div className='container-fluid py-6'>
+				<div className='row align-items-start'>
 					<UHDNewsItem />
 					<UHDNewsItem />
 					<UHDNewsItem />

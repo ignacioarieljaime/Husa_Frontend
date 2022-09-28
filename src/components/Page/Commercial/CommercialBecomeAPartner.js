@@ -3,13 +3,13 @@ import React from 'react'
 function CommercialBecomeAPartner() {
 	return (
 		<section>
-			<div class='contact-banner container py-9'>
-				<article class='article text-center'>
-					<h2 class='mb-6'>Become A Partner</h2>
+			<div className='contact-banner container py-9'>
+				<article className='article text-center'>
+					<h2 className='mb-6'>Become A Partner</h2>
 					<div>
-						<p class='m-auto'>
+						<p className='m-auto'>
 							Contact us at:
-							<a href='mailto:commercialsales@hisense.com' class='text-primary'>
+							<a href='mailto:commercialsales@hisense.com' className='text-primary'>
 								commercialsales@hisense.com
 							</a>
 						</p>

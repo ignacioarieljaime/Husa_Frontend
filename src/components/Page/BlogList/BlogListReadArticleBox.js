@@ -6,11 +6,11 @@ import HouseImage from './../../../../public/assets/images/blog/house.png'
 function BlogListReadArticleBox() {
 	return (
 		<section>
-			<div class='container'>
-				<div class='row mb-20 pb-0 pb-md-20'>
-					<div class='col-12'>
-						<figure class='article-box'>
-							<div class='header-secondary image-box'>
+			<div className='container'>
+				<div className='row mb-20 pb-0 pb-md-20'>
+					<div className='col-12'>
+						<figure className='article-box'>
+							<div className='header-secondary image-box'>
 								<a href='#'>
 									<img
 										src={HouseImage.src}
@@ -21,22 +21,22 @@ function BlogListReadArticleBox() {
 								</a>
 							</div>
 							<figcaption>
-								<div class='row justify-content-between align-items-center mt-5'>
-									<div class='col-12 col-md-9 order-2 order-md-1 mb-8'>
-										<h3 class='fs-3 mb-0'>
+								<div className='row justify-content-between align-items-center mt-5'>
+									<div className='col-12 col-md-9 order-2 order-md-1 mb-8'>
+										<h3 className='fs-3 mb-0'>
 											TV Room Feng Shui Tips with Cliff Tan
 										</h3>
 									</div>
-									<div class='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
-										<a href='#' class='text-primary-dark'>
+									<div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
+										<a href='#' className='text-primary-dark'>
 											{' '}
 											Soundbars{' '}
 										</a>
 									</div>
-									<div class='col-12 order-3 text-start'>
+									<div className='col-12 order-3 text-start'>
 										<a
 											href='#'
-											class='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 											Read article
 										</a>
 									</div>

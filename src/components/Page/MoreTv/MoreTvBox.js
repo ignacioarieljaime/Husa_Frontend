@@ -4,8 +4,8 @@ import MoreTvItem from './MoreTvItem'
 function MoreTvBox() {
 	return (
 		<section>
-			<div class='container-fluid py-6'>
-				<div class='row'>
+			<div className='container-fluid py-6'>
+				<div className='row'>
 					<MoreTvItem />
 					<MoreTvItem />
 					<MoreTvItem />

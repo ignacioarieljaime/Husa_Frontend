@@ -5,8 +5,8 @@ function UHDAbilityBox() {
 	return (
 		<section>
 			<div>
-				<div class='container-fluid py-6'>
-					<div class='row align-items-start'>
+				<div className='container-fluid py-6'>
+					<div className='row align-items-start'>
 						<UHDAbilityItem />
 						<UHDAbilityItem />
 					</div>

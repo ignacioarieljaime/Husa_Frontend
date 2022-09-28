@@ -20,25 +20,25 @@ function CESSliderBox() {
 			<SwiperSlide>
 				{' '}
 				<span>
-					<img src={Image.src} alt='featured image' class='slider-media' />
+					<img src={Image.src} alt='featured image' className='slider-media' />
 				</span>
 			</SwiperSlide>
 			<SwiperSlide>
 				{' '}
 				<span>
-					<img src={Image.src} alt='featured image' class='slider-media' />
+					<img src={Image.src} alt='featured image' className='slider-media' />
 				</span>
 			</SwiperSlide>
 			<SwiperSlide>
 				{' '}
 				<span>
-					<img src={Image.src} alt='featured image' class='slider-media' />
+					<img src={Image.src} alt='featured image' className='slider-media' />
 				</span>
 			</SwiperSlide>
 			<SwiperSlide>
 				{' '}
 				<span>
-					<img src={Image.src} alt='featured image' class='slider-media' />
+					<img src={Image.src} alt='featured image' className='slider-media' />
 				</span>
 			</SwiperSlide>
 		</Swiper>

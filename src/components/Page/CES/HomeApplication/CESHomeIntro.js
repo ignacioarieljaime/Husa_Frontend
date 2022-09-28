@@ -7,14 +7,14 @@ import Logo from './../.././../../../public/assets/images/ces-2022-home-applianc
 function CESHomeIntro() {
 	return (
 		<section>
-			<div class='heading'>
+			<div className='heading'>
 				<img src={Image.src} alt='featured image' width='100%' height='100%' />
-				<div class='heading-text'>
-					<img src={Logo.src} alt='featured image' class='mb-4 mb-sm-9' />
-					<h1 class='fs-md-3qx fw-normal mw-50 mx-auto'>
+				<div className='heading-text'>
+					<img src={Logo.src} alt='featured image' className='mb-4 mb-sm-9' />
+					<h1 className='fs-md-3qx fw-normal mw-50 mx-auto'>
 						HOME APPLIANCES
-						<span class='d-block'>CES 2022</span>
-						<span class='d-block'>PRODUCT LINEUP</span>
+						<span className='d-block'>CES 2022</span>
+						<span className='d-block'>PRODUCT LINEUP</span>
 					</h1>
 				</div>
 			</div>

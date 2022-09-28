@@ -6,7 +6,7 @@ import Image from './../../../../public/assets/images/tv-and-audio/award-wining-
 function TvAndAudioHead() {
 	return (
 		<section>
-			<div class='header-secondary'>
+			<div className='header-secondary'>
 				<img
 					src={Image.src}
 					alt='award-wining-television-lineup'

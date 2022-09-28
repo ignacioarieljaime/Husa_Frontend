@@ -6,15 +6,15 @@ import Image from './../../../../public/assets/images/all-dishwashers/dishwasher
 function DishwashersHead() {
 	return (
 		<section>
-			<div class='heading'>
+			<div className='heading'>
 				<img
 					src={Image.src}
 					alt='smart tv platforms'
 					width='100%'
 					height='100%'
 				/>
-				<div class='heading-text'>
-					<h1 class='fw-normal fs-3x'>Dishwashers</h1>
+				<div className='heading-text'>
+					<h1 className='fw-normal fs-3x'>Dishwashers</h1>
 				</div>
 			</div>
 		</section>

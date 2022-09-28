@@ -14,8 +14,8 @@ import { Navigation } from 'swiper'
 function BlogEasySlider() {
 	return (
 		<section>
-			<div class=' mb-20'>
-				<div class='carousel-container'>
+			<div className=' mb-20'>
+				<div className='carousel-container'>
 					<Swiper
 						navigation={true}
 						modules={[Navigation]}

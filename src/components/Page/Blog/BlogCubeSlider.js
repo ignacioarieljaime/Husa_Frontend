@@ -20,15 +20,15 @@ function BlogCubeSlider() {
 		clickable: true,
 		renderBullet: function (index, className) {
 			return (
-				'<span class="' + className + '">' + carouselItems[index] + '</span>'
+				'<span className="' + className + '">' + carouselItems[index] + '</span>'
 			)
 		}
 	}
 
 	return (
 		<section>
-			<div class='bg-light-orange-gradient'>
-				<div class='overflow-hidden'>
+			<div className='bg-light-orange-gradient'>
+				<div className='overflow-hidden'>
 					<Swiper
 						effect={'coverflow'}
 						grabCursor={true}
@@ -45,76 +45,76 @@ function BlogCubeSlider() {
 						modules={[EffectCoverflow, Pagination]}
 						className='big-coverflow my-20'>
 						<SwiperSlide>
-							<div class='row align-items-center px-10'>
-								<div class='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>
-									<h5 class='fs-4 fw-normal mb-3'>U6HF</h5>
-									<h6 class='fs-3qx fw-normal mb-4 text-break'>
+							<div className='row align-items-center px-10'>
+								<div className='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>
+									<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
+									<h6 className='fs-3qx fw-normal mb-4 text-break'>
 										Great for entertainment
 									</h6>
-									<p class='text-muted fw-normal mb-5'>
+									<p className='text-muted fw-normal mb-5'>
 										With Fire TV Built-in, get all-in-one entertainmnet
 									</p>
 									<a
 										href='#'
-										class='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
+										className='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
 										WHERE TO BUY
 									</a>
 								</div>
-								<div class='col-12 col-md-7 order-1 order-md-2'>
+								<div className='col-12 col-md-7 order-1 order-md-2'>
 									<img
 										src={Image.src}
 										alt='featured image'
-										class='slider-media'
+										className='slider-media'
 									/>
 								</div>
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div class='row align-items-center px-10'>
-								<div class='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>
-									<h5 class='fs-4 fw-normal mb-3'>U6HF</h5>
-									<h6 class='fs-3qx fw-normal mb-4 text-break'>
+							<div className='row align-items-center px-10'>
+								<div className='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>
+									<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
+									<h6 className='fs-3qx fw-normal mb-4 text-break'>
 										Great for entertainment
 									</h6>
-									<p class='text-muted fw-normal mb-5'>
+									<p className='text-muted fw-normal mb-5'>
 										With Fire TV Built-in, get all-in-one entertainmnet
 									</p>
 									<a
 										href='#'
-										class='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
+										className='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
 										WHERE TO BUY
 									</a>
 								</div>
-								<div class='col-12 col-md-7 order-1 order-md-2'>
+								<div className='col-12 col-md-7 order-1 order-md-2'>
 									<img
 										src={Image.src}
 										alt='featured image'
-										class='slider-media'
+										className='slider-media'
 									/>
 								</div>
 							</div>
 						</SwiperSlide>
 						<SwiperSlide>
-							<div class='row align-items-center px-10'>
-								<div class='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>
-									<h5 class='fs-4 fw-normal mb-3'>U6HF</h5>
-									<h6 class='fs-3qx fw-normal mb-4 text-break'>
+							<div className='row align-items-center px-10'>
+								<div className='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>
+									<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
+									<h6 className='fs-3qx fw-normal mb-4 text-break'>
 										Great for entertainment
 									</h6>
-									<p class='text-muted fw-normal mb-5'>
+									<p className='text-muted fw-normal mb-5'>
 										With Fire TV Built-in, get all-in-one entertainmnet
 									</p>
 									<a
 										href='#'
-										class='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
+										className='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
 										WHERE TO BUY
 									</a>
 								</div>
-								<div class='col-12 col-md-7 order-1 order-md-2'>
+								<div className='col-12 col-md-7 order-1 order-md-2'>
 									<img
 										src={Image.src}
 										alt='featured image'
-										class='slider-media'
+										className='slider-media'
 									/>
 								</div>
 							</div>

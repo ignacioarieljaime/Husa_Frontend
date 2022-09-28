@@ -6,7 +6,7 @@ import Image from './../../../../../public/assets/images/ces-2022-smart-tv/color
 function ImageBoxWithPaddingAndBgBlack() {
 	return (
 		<section>
-			<div class='header-secondary bg-black px-md-20 py-md-16'>
+			<div className='header-secondary bg-black px-md-20 py-md-16'>
 				<img
 					src={Image.src}
 					alt='award-wining-television-lineup'

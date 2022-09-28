@@ -10,50 +10,50 @@ import EditorChoice from './../../../../public/assets/images/more-tv/editors-cho
 function MoreTvExperts() {
 	return (
 		<section>
-			<div class='bg-light-blue'>
-				<div class='container-fluid px-md-8 py-10 py-md-20'>
-					<div class='row'>
-						<div class='col-12 col-md-6 pe-lg-10 mb-20 mb-md-0'>
-							<h2 class='fs-3tx fw-normal'>
+			<div className='bg-light-blue'>
+				<div className='container-fluid px-md-8 py-10 py-md-20'>
+					<div className='row'>
+						<div className='col-12 col-md-6 pe-lg-10 mb-20 mb-md-0'>
+							<h2 className='fs-3tx fw-normal'>
 								The experts agree.
-								<span class='d-block'>We make awesome TVs.</span>
+								<span className='d-block'>We make awesome TVs.</span>
 							</h2>
-							<img src={Badge.src} alt='featured image' class='banner-logo' />
+							<img src={Badge.src} alt='featured image' className='banner-logo' />
 						</div>
-						<div class='col-12 col-md-6 ps-lg-10'>
-							<div class='mb-10'>
-								<div class='position-relative px-20'>
-									<span class='double-quote start'>“</span>
-									<h3 class='fs-2hx fw-normal text-center'>
+						<div className='col-12 col-md-6 ps-lg-10'>
+							<div className='mb-10'>
+								<div className='position-relative px-20'>
+									<span className='double-quote start'>“</span>
+									<h3 className='fs-2hx fw-normal text-center'>
 										Best Budget TV for watching sports
 									</h3>
-									<span class='double-quote end'>“</span>
+									<span className='double-quote end'>“</span>
 								</div>
-								<div class='text-center'>
+								<div className='text-center'>
 									<img src={Rtings.src} alt='featured image' />
 								</div>
 							</div>
-							<div class='mb-10'>
-								<div class='position-relative px-20'>
-									<span class='double-quote start'>“</span>
-									<h3 class='fs-2hx fw-normal text-center'>
+							<div className='mb-10'>
+								<div className='position-relative px-20'>
+									<span className='double-quote start'>“</span>
+									<h3 className='fs-2hx fw-normal text-center'>
 										In a class all of its own
 									</h3>
-									<span class='double-quote end'>“</span>
+									<span className='double-quote end'>“</span>
 								</div>
-								<div class='text-center'>
+								<div className='text-center'>
 									<img src={PC.src} alt='featured image' />
 								</div>
 							</div>
-							<div class='mb-10'>
-								<div class='position-relative px-20'>
-									<span class='double-quote start'>“</span>
-									<h3 class='fs-2hx fw-normal text-center'>
+							<div className='mb-10'>
+								<div className='position-relative px-20'>
+									<span className='double-quote start'>“</span>
+									<h3 className='fs-2hx fw-normal text-center'>
 										Dazzlingly bright and full of features
 									</h3>
-									<span class='double-quote end'>“</span>
+									<span className='double-quote end'>“</span>
 								</div>
-								<div class='text-center'>
+								<div className='text-center'>
 									<img
 										src={EditorChoice.src}
 										alt='featured image'

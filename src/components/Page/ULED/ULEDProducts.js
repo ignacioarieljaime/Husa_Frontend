@@ -4,7 +4,7 @@ import ULEDProductItem from './ULEDProductItem'
 function ULEDProducts() {
 	return (
 		<section>
-			<div class='row mx-0'>
+			<div className='row mx-0'>
 				<ULEDProductItem />
 				<ULEDProductItem />
 				<ULEDProductItem />
