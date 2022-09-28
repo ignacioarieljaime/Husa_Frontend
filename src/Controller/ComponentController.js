@@ -14,9 +14,10 @@ const FindComponent = _componentData => {
 }
 
 const GenerateComponentStructure = (_page, _content) => {
+	let uniqueImport = [...new Set(_content)]
 	return `
-	import Layout from "components/common/Layout/Layout" 
-	  ${_content.map(item => `import ${item.name} from '${item.path}';`).join(' ')}
+	import Layout from "components/common/Layout/Layout"
+	  ${uniqueImport.map(item => `import ${item.name} from '${item.path}';`).join(' ')}
 
 	  function ${_page.name}() {
 	    return (

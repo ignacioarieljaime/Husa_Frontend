@@ -456,11 +456,11 @@ function Header({ themeCondition = false }) {
 					</form>
 				</div>
 			</nav>
-			<div className='container-fluid home-top-advertisement'>
+			{/* <div className='container-fluid home-top-advertisement'>
 				<a href='https://www.hisense-usa.com/product-safety-recall'>
 					Recall Information: French Door Refrigerator
 				</a>
-			</div>
+			</div> */}
 			<HamburgerMenu asideMenu={asideMenu} />
 		</header>
 	)

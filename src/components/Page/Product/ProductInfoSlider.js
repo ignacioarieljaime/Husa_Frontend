@@ -22,21 +22,21 @@ function ProductInfoSlider() {
 				modules={[FreeMode, Thumbs]}
 				className=' gallery-top'>
 				<SwiperSlide>
-					<span class='media-slider-wrapper'>
+					<span className='media-slider-wrapper'>
 						<img
 							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxHeightWzc1MF0.png'
 							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxHeightWzEyOF0.png'
 							data-large='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxWidthWzc1MF0.png'
 							alt='Front U8G Hisense s'
-							class='slider-media'
+							className='slider-media'
 						/>
 					</span>
-					<figcaption class='figure-caption'>
+					<figcaption className='figure-caption'>
 						65 4K ULED™ Premium Hisense Android Smart TV (2021)
 					</figcaption>
 				</SwiperSlide>
 				<SwiperSlide>
-					<span class='media-slider-wrapper'>
+					<span className='media-slider-wrapper'>
 						<img
 							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/fb706a5ece/Front-U8G-Hisense__ScaleMaxHeightWzc1MF0.png'
 							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/fb706a5ece/Front-U8G-Hisense__ScaleMaxHeightWzEyOF0.png'
@@ -44,12 +44,12 @@ function ProductInfoSlider() {
 							alt='Front U8G Hisense'
 						/>
 					</span>
-					<figcaption class='figure-caption'>
+					<figcaption className='figure-caption'>
 						65 4K ULED™ Premium Hisense Android Smart TV (2021)
 					</figcaption>
 				</SwiperSlide>
 				<SwiperSlide>
-					<span class='media-slider-wrapper'>
+					<span className='media-slider-wrapper'>
 						<img
 							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/d9a37d4c76/Side1-U8G-min__ScaleMaxHeightWzc1MF0.png'
 							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/d9a37d4c76/Side1-U8G-min__ScaleMaxHeightWzEyOF0.png'
@@ -57,12 +57,12 @@ function ProductInfoSlider() {
 							alt='Side1 U8G min'
 						/>
 					</span>
-					<figcaption class='figure-caption'>
+					<figcaption className='figure-caption'>
 						65 4K ULED™ Premium Hisense Android Smart TV (2021)
 					</figcaption>
 				</SwiperSlide>
 				<SwiperSlide>
-					<span class='media-slider-wrapper'>
+					<span className='media-slider-wrapper'>
 						<img
 							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/e6d6ac9c75/Side2-U8G-min__ScaleMaxHeightWzc1MF0.png'
 							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/e6d6ac9c75/Side2-U8G-min__ScaleMaxHeightWzEyOF0.png'
@@ -70,12 +70,12 @@ function ProductInfoSlider() {
 							alt='Side2 U8G min'
 						/>
 					</span>
-					<figcaption class='figure-caption'>
+					<figcaption className='figure-caption'>
 						65 4K ULED™ Premium Hisense Android Smart TV (2021)
 					</figcaption>
 				</SwiperSlide>
 				<SwiperSlide>
-					<span class='media-slider-wrapper'>
+					<span className='media-slider-wrapper'>
 						<img
 							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/f18f97a790/pdp-3_4-u8-packshot-ang-port__ScaleMaxHeightWzc1MF0.png'
 							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/f18f97a790/pdp-3_4-u8-packshot-ang-port__ScaleMaxHeightWzEyOF0.png'
@@ -83,7 +83,7 @@ function ProductInfoSlider() {
 							alt='pdp 3 4 u8 packshot ang port'
 						/>
 					</span>
-					<figcaption class='figure-caption'>
+					<figcaption className='figure-caption'>
 						65 4K ULED™ Premium Hisense Android Smart TV (2021)
 					</figcaption>
 				</SwiperSlide>
