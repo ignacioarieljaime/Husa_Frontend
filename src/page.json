@@ -929,7 +929,8 @@
 					"name": "BlogDescriptionBox",
 					"props": {},
 					"data": "hello"
-				},	{
+				},
+				{
 					"name": "BlogSecondDescriptionBox",
 					"props": {},
 					"data": "hello"
@@ -975,6 +976,81 @@
 			"components": [
 				{
 					"name": "PDPProductInfoSliderAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoLightGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoDarkBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoLightGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoLightGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDMImageAndInfoSilverBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPTopFeatures",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPDescriptionSliderWithDarkGray",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPTextAndLongImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPReviewsAndAwards",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPReadyToBuyBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPChooseULEDTvBox",
 					"props": {},
 					"data": "hello"
 				}
