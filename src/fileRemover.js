@@ -5,9 +5,8 @@ fs.readdir(path.resolve(__dirname, 'pages'), (err, files) => {
 	if (err) throw err
 	if (files.includes('index.js')) {
 		files.forEach(file => {
-			console.log()
 			if (file !== '404.js' && file !== '_app.js') {
-				fs.rmdir(
+				fs.rm(
 					path.resolve(__dirname, 'pages', file),
 					{ recursive: true, force: true },
 					err => {

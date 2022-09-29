@@ -6,7 +6,7 @@
 		"remove": "node ./src/fileRemover.js",
 		"dev": "npm run remove && node ./src/server.js",
 		"build": "next build",
-		"start": "cross-env NODE_ENV=production node ./src/server.js",
+		"start": "cross-env NODE_ENV=production && npm run remove && node ./src/server.js",
 		"lint": "next lint"
 	},
 	"dependencies": {
