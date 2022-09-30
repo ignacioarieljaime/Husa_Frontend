@@ -25,6 +25,48 @@
 	color: var(--secondary-color) !important;
 }
 
+header .search-articles {
+	background: transparent;
+	border: none;
+	font-weight: 400;
+	font-size: 18px;
+	color: #101010;
+	width: 100px;
+}
+header .search-articles:focus,
+header .search-articles:focus-visible {
+	background: transparent;
+	outline: none;
+}
+header .search-articles::placeholder {
+	font-weight: 400;
+	font-size: 18px;
+	color: #101010;
+}
+header .search-articles:focus::placeholder {
+	color: #10101071;
+}
+header .search-articles-btn {
+	background: transparent;
+	border: none;
+	border-radius: 10px;
+	transition: all 0.3s;
+}
+header .bg-light-orange-gradient-light {
+	background: radial-gradient(
+		44.68% 678.49% at 18.49% 76.76%,
+		rgba(67, 137, 138, 0.04) 0%,
+		rgba(255, 153, 0, 0.04) 100%
+	);
+}
+header .bg-light-orange-gradient {
+	background: radial-gradient(
+		44.68% 678.49% at 18.49% 76.76%,
+		rgba(67, 137, 138, 0.1) 0%,
+		rgba(255, 153, 0, 0.1) 100%
+	);
+}
+
 .btn-primary {
 	background-color: var(--primary-color) !important;
 	border-color: var(--primary-color) !important;
@@ -122,6 +164,7 @@
 	font-size: 21px !important;
 }
 /* ///////////////////////////////////////////////////// Generals ////////////////////////////////////////////////////////////////////////////////////////// */
+
 .bottom-border {
 	border-bottom: 1px solid #b5b5b5;
 }
@@ -3515,48 +3558,6 @@ footer.footer {
 	color: var(--secondary-color);
 }
 
-.blog .search-articles {
-	background: transparent;
-	border: none;
-	font-weight: 400;
-	font-size: 18px;
-	color: #101010;
-	width: 100px;
-}
-.blog .search-articles:focus,
-.blog .search-articles:focus-visible {
-	background: transparent;
-	outline: none;
-}
-.blog .search-articles::placeholder {
-	font-weight: 400;
-	font-size: 18px;
-	color: #101010;
-}
-.blog .search-articles:focus::placeholder {
-	color: #10101071;
-}
-.blog .search-articles-btn {
-	background: transparent;
-	border: none;
-	border-radius: 10px;
-	transition: all 0.3s;
-}
-.blog .bg-light-orange-gradient-light {
-	background: radial-gradient(
-		44.68% 678.49% at 18.49% 76.76%,
-		rgba(67, 137, 138, 0.04) 0%,
-		rgba(255, 153, 0, 0.04) 100%
-	);
-}
-.blog .bg-light-orange-gradient {
-	background: radial-gradient(
-		44.68% 678.49% at 18.49% 76.76%,
-		rgba(67, 137, 138, 0.1) 0%,
-		rgba(255, 153, 0, 0.1) 100%
-	);
-}
-
 @media (max-width: 1200px) {
 	.blog .blog-header .header-text {
 		font-size: 120px;
@@ -3839,7 +3840,7 @@ footer.footer {
 	padding: 10px 0;
 	max-width: 100px;
 }
-.pdp .product-gallery .gallery-thumbs .swiper-slide.swiper-slide-thumb-active{
+.pdp .product-gallery .gallery-thumbs .swiper-slide.swiper-slide-thumb-active {
 	opacity: 1;
 }
 
@@ -4083,7 +4084,6 @@ footer.footer {
 		}
 	}
 }
-
 
 /* //////////////////////////////////////////////////// sponsership ////////////////////////////////////////////////////////////////////////// */
 .sponsership {
