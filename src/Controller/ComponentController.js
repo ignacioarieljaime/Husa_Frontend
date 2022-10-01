@@ -17,7 +17,9 @@ const GenerateComponentStructure = (_page, _content) => {
 	let uniqueImport = [...new Set(_content)]
 	return `
 	import Layout from "components/common/Layout/Layout"
-	  ${uniqueImport.map(item => `import ${item.name} from '${item.path}';`).join(' ')}
+	  ${uniqueImport
+			.map(item => `import ${item.name} from '${item.path}';`)
+			.join(' ')}
 
 	  function ${_page.name}() {
 	    return (
