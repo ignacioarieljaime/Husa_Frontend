@@ -3,10 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"remove": "node ./src/fileRemover.js",
-		"dev": "npm run remove && node ./src/server.js",
-		"build": "next build",
-		"start": "cross-env NODE_ENV=production node ./src/server.js",
+		"generatePages": "node ./src/config/GeneratePage.js",
+		"removePages": "node ./src/config/RemovePages.js",
+		"dev": "npm run removePages && npm run generatePages &&  node ./src/server.js",
+		"build": "npm run removePages && npm run generatePages && next build",
+		"start": "cross-env NODE_ENV=production && node ./src/server.js",
 		"lint": "next lint"
 	},
 	"dependencies": {

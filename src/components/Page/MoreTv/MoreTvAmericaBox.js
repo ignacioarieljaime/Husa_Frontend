@@ -1,25 +1,38 @@
 import React from 'react'
+import { Doughnut, Pie } from 'react-chartjs-2'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
 // image
 import Image from './../../../../public/assets/images/more-tv/people-heat-map.png'
 
+ChartJS.register(ArcElement, Tooltip, Legend)
+
 function MoreTvAmericaBox() {
+	const data = {
+		datasets: [
+			{
+				backgroundColor: ['#259CCC', '#CEEAF9'],
+				data: [60, 40],
+				borderColor: 'transparent',
+				responsive: true
+			}
+		]
+	}
+
 	return (
 		<section>
 			<div className='blue-bg'>
 				<div className='bg-single-bubble pt-20 text-center text-white'>
 					<h2 className='fw-normal fs-3hx mb-7'>Lets get real</h2>
-					<h3 className='fw-normal fs-2'>America wants less talk and more TV</h3>
+					<h3 className='fw-normal fs-2'>
+						America wants less talk and more TV
+					</h3>
 					<div className='bg-joel-pointer pb-20 px-md-8'>
 						<div className='container-fluid'>
 							<div className='row justify-content-center justify-content-md-start charts-align'>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
-										<canvas
-											id='ads-charts'
-											className='charts'
-											width='400'
-											height='400'></canvas>
+										<Doughnut data={data} width={297} height={297} />
 										<p className='mb-3 lh-1 text-start text-gradient fs-4x fw-bolder-700'>
 											60<span className='fs-2hx'>%</span>
 										</p>
@@ -30,11 +43,7 @@ function MoreTvAmericaBox() {
 								</div>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
-										<canvas
-											id='invest-chart'
-											className='charts'
-											width='400'
-											height='400'></canvas>
+										<Pie data={data}  width={297} height={297} />
 										<p className='mb-3 lh-1 text-start text-gradient fs-4x fw-bolder-700'>
 											8<span className='fs-2hx'>/10</span>
 										</p>
@@ -48,11 +57,7 @@ function MoreTvAmericaBox() {
 							<div className='row align-items-end justify-content-center justify-content-md-start charts-align'>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
-										<canvas
-											id='value-chart'
-											className='charts'
-											width='400'
-											height='400'></canvas>
+										<Pie data={data} width={297} height={297}  />
 										<p className='mb-3 lh-1 text-start text-gradient fs-4x fw-bolder-700'>
 											61<span className='fs-2hx'>%</span> v 4
 											<span className='fs-2hx'>%</span>

@@ -1,5 +1,4 @@
 require('dotenv').config()
-const PageRequestController = require('./Controller/PageRequestController')
 const express = require('express')
 const next = require('next')
 const notifier = require('node-notifier')
@@ -9,7 +8,6 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-PageRequestController()
 app.prepare().then(() => {
 	const server = express()
 	server.all('*', (req, res) => {

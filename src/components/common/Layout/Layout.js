@@ -8,7 +8,7 @@ function Layout({ children }) {
 	return (
 		<>
 			<Head>
-				<title>تست</title>
+				<title>hisense</title>
 			</Head>
 			<section>
 				<Header />
