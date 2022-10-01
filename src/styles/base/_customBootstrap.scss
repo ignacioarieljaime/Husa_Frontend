@@ -4150,5 +4150,188 @@ footer.footer {
 		-moz-transform: scale(0.75);
 		-ms-transform: scale(0.75);
 		-o-transform: scale(0.75);
+}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////// 100 day///////////////////////////////////////////////////////////
+
+.day-100 {
+	.bg-eggplant {
+		background: #220237;
+	}
+	.bg-purple {
+		background: #441353;
+	}
+	.star {
+		position: absolute;
+		top: -17px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.warranty-adv {
+		border-radius: 40px;
+		background-color: #511865;
+		text-align: center;
+		padding: 80px 40px;
+		h2 {
+			font-size: 42px;
+			font-weight: bold;
+			color: #fffefe;
+			margin-bottom: 50px;
+		}
+		p {
+			font-size: 18px;
+			font-weight: bold;
+			color: #ffbbf3;
+			margin: 0;
+		}
+	}
+	.guarantee-details {
+		color: #bfbfbf;
+		font-size: 20px;
+		text-align: center;
+		a {
+			text-decoration: none;
+			&:hover {
+				text-decoration: none;
+				color: #ffbbf3;
+			}
+		}
+	}
+	.expert-adv{
+		text-align: center;
+		h2{
+			color:#3b1855;
+			font-size: 42px;
+			text-transform: uppercase;
+			margin: 0;
+		}
+	}
+}
+.text-pink {
+	color: #ffbbf3;
+}
+
+.under-line {
+	position: relative;
+	&::after {
+		content: '';
+		position: absolute;
+		left: 10%;
+		top: 50%;
+		transform: translateY(-50%);
+		display: block;
+		border: 1px solid rgba(255, 255, 255, 0.53);
+		width: 80%;
+		z-index: 1;
+	}
+	p {
+		font-size: 28px;
+		font-weight: 500;
+		color: #fff;
+		text-transform: uppercase;
+		position: relative;
+		z-index: 2;
+		width: fit-content;
+		margin: 0 auto;
+	}
+}
+.claim-prize {
+	.col-12 {
+		.claim-prize-level {
+			border-radius: 40px;
+			background-color: #ffbbf3;
+			text-align: center;
+			padding: 30px 20px;
+			height: 100%;
+			margin: 0 20px;
+			position: relative;
+			div {
+				background-color: #00a6a5;
+				border-radius: 50%;
+				padding: 5px;
+				width: 50px;
+				height: 50px;
+				font-size: 30px;
+				font-weight: 700;
+				color: #fff;
+				margin: 0 auto 25px;
+			}
+			p {
+				text-align: center;
+				color: #220237;
+				font-size: 24px;
+				font-weight: bold;
+			}
+			a {
+				text-align: center;
+				color: #009c9b;
+				font-size: 22px;
+				font-weight: normal;
+				text-decoration: none;
+			}
+			&::after {
+				content: '';
+				display: block;
+				width: 0;
+				height: 0;
+				position: absolute;
+				right: -55px;
+				top: 50%;
+				transform: translate(0, -50%);
+				border-left: 20px solid #fff;
+				border-right: 15px solid transparent;
+				border-top: 15px solid transparent;
+				border-bottom: 15px solid transparent;
+			}
+		}
+		&:last-of-type .claim-prize-level::after {
+			display: none;
+		}
+	}
+	.tiny-banner {
+		p {
+			color: #bfbfbf;
+			font-size: 14px;
+			margin-bottom: 0;
+		}
+	}
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+	.claim-prize {
+		.col-12 {
+			&:nth-child(2) .claim-prize-level::after {
+				right: 50%;
+				top: unset;
+				bottom: -55px;
+				transform: translate(50%, 0) rotate(90deg);
+			}
+			&:nth-child(3) .claim-prize-level::after {
+				right: unset;
+				left: -55px;
+				top: 50%;
+				transform: translate(0, -50%) rotate(180deg);
+			}
+		}
+	}
+}
+@media (max-width: 767px) {
+	.claim-prize {
+		.col-12 {
+			.claim-prize-level::after {
+				right: 50%;
+				top: unset;
+				bottom: -55px;
+				transform: translate(50%, 0) rotate(90deg);
+			}
+		}
+	}
+	.day-100 {
+		.warranty-adv {
+			padding: 70px 30px;
+
+			h2 {
+				font-size: 35px;
+			}
+		}
 	}
 }
