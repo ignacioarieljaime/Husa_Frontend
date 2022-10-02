@@ -18,9 +18,9 @@ function PDPProductInfoSlider() {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
 	return (
-		<div class='col-12 col-md-8 product-gallery mb-12 mb-md-0 pe-md-10'>
-			<div class='row justify-content-evenly align-items-stretch flex-nowrap'>
-				<div class='col-3'>
+		<div className='col-12 col-md-8 product-gallery mb-12 mb-md-0 pe-md-10'>
+			<div className='row justify-content-evenly align-items-stretch flex-nowrap'>
+				<div className='col-3'>
 					<Swiper
 						onSwiper={setThumbsSwiper}
 						spaceBetween={10}
@@ -64,7 +64,7 @@ function PDPProductInfoSlider() {
 						</SwiperSlide>
 					</Swiper>
 				</div>
-				<div class='col-9'>
+				<div className='col-9'>
 					<Swiper
 						spaceBetween={10}
 						thumbs={{
@@ -74,50 +74,50 @@ function PDPProductInfoSlider() {
 						modules={[FreeMode, Thumbs]}
 						className='gallery-top'>
 						<SwiperSlide>
-							<span class='media-slider-wrapper'>
+							<span className='media-slider-wrapper'>
 								<img
 									src={Image.src}
 									alt='featured image'
-									class='slider-media'
+									className='slider-media'
 								/>
 							</span>
-							<figcaption class='figure-caption'>
+							<figcaption className='figure-caption'>
 								65" 4K ULED™ Premium Hisense Android Smart TV (2021)
 							</figcaption>
 						</SwiperSlide>
 						<SwiperSlide>
-							<span class='media-slider-wrapper'>
+							<span className='media-slider-wrapper'>
 								<img
 									src={Image.src}
 									alt='featured image'
-									class='slider-media'
+									className='slider-media'
 								/>
 							</span>
-							<figcaption class='figure-caption'>
+							<figcaption className='figure-caption'>
 								65" 4K ULED™ Premium Hisense Android Smart TV (2021)
 							</figcaption>
 						</SwiperSlide>
 						<SwiperSlide>
-							<span class='media-slider-wrapper'>
+							<span className='media-slider-wrapper'>
 								<img
 									src={Image.src}
 									alt='featured image'
-									class='slider-media'
+									className='slider-media'
 								/>
 							</span>
-							<figcaption class='figure-caption'>
+							<figcaption className='figure-caption'>
 								65" 4K ULED™ Premium Hisense Android Smart TV (2021)
 							</figcaption>
 						</SwiperSlide>
 						<SwiperSlide>
-							<span class='media-slider-wrapper'>
+							<span className='media-slider-wrapper'>
 								<img
 									src={Image.src}
 									alt='featured image'
-									class='slider-media'
+									className='slider-media'
 								/>
 							</span>
-							<figcaption class='figure-caption'>
+							<figcaption className='figure-caption'>
 								65" 4K ULED™ Premium Hisense Android Smart TV (2021)
 							</figcaption>
 						</SwiperSlide>

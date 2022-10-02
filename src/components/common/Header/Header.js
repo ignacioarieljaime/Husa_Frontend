@@ -13,11 +13,12 @@ import ImageSix from './../../../../public/assets/images/dropdown-air-products-2
 import ImageSeven from './../../../../public/assets/images/dropdown-air-products-3.png'
 
 // icon
-import HamburgerMenuIcon from 'components/icons/HamburgerMenuIcon'
-import Logo from 'components/icons/Logo'
-import MagnifierIcon from 'components/icons/MagnifierIcon'
+import HamburgerMenuIcon from '@/components/icons/HamburgerMenuIcon'
+import Logo from '@/components/icons/Logo'
+import MagnifierIcon from '@/components/icons/MagnifierIcon'
+import SubMenuHeader from './SubMenuHeader'
 
-function Header({ themeCondition = false }) {
+function Header({ themeCondition = true }) {
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
@@ -455,7 +456,9 @@ function Header({ themeCondition = false }) {
 						<input placeholder='SEARCH' className='search-box' type='text' />
 					</form>
 				</div>
+				<SubMenuHeader />
 			</nav>
+			
 			{/* <div className='container-fluid home-top-advertisement'>
 				<a href='https://www.hisense-usa.com/product-safety-recall'>
 					Recall Information: French Door Refrigerator
