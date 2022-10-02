@@ -13,7 +13,8 @@ import { Navigation, Pagination } from 'swiper'
 import SliderImage from '../../../../public/assets/images/home/home-carousel-item-1.jpg'
 import SliderResImage from '../../../../public/assets/images/home/home-carousel-item-1-resp.jpg'
 
-function LandingSlider() {
+function LandingSlider({ data: { props } }) {
+	console.log(props)
 	return (
 		<>
 			<Swiper

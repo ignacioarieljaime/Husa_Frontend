@@ -12,10 +12,6 @@ module.exports.ProductComponent = [
 		path: 'components/Page/Product/ProductImageBox'
 	},
 	{
-		name: 'ProductImageBox',
-		path: 'components/Page/Product/ProductImageBox'
-	},
-	{
 		name: 'ProductBigContent',
 		path: 'components/Page/Product/ProductBigContent'
 	},

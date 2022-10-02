@@ -17,20 +17,20 @@ app.prepare().then(() => {
 	server.listen(port, err => {
 		if (err) throw err
 		console.log(`> Ready on http://localhost:${port}`)
-		notifier.notify(
-			{
-				title: 'husa',
-				message: `husa  App is run! \nmode : ${
-					process.env.NODE_ENV === 'production' ? 'production' : 'development'
-				}`,
-				appID: '\t',
-				icon: path.join(__dirname, '../', 'public', 'logo.png'),
-				sound: true,
-				wait: true
-			},
-			function (err, response, metadata) {
-				// open(`http://localhost:${port}`);
-			}
-		)
+		// notifier.notify(
+		// 	{
+		// 		title: 'husa',
+		// 		message: `husa  App is run! \nmode : ${
+		// 			process.env.NODE_ENV === 'production' ? 'production' : 'development'
+		// 		}`,
+		// 		appID: '\t',
+		// 		icon: path.join(__dirname, '../', 'public', 'logo.png'),
+		// 		sound: true,
+		// 		wait: true
+		// 	},
+		// 	function (err, response, metadata) {
+		// 		// open(`http://localhost:${port}`);
+		// 	}
+		// )
 	})
 })

@@ -11,10 +11,7 @@ module.exports.BlogComponents = [
 		name: 'BlogImageGalleryBox',
 		path: 'components/Page/Blog/BlogImageGalleryBox'
 	},
-	{
-		name: 'BlogSecondDescriptionBox',
-		path: 'components/Page/Blog/BlogSecondDescriptionBox'
-	},
+
 	{
 		name: 'BlogImageAndTextBox',
 		path: 'components/Page/Blog/BlogImageAndTextBox'
@@ -23,18 +20,12 @@ module.exports.BlogComponents = [
 		name: 'BlogVideoBox',
 		path: 'components/Page/Blog/BlogVideoBox'
 	},
-	{
-		name: 'BlogDescriptionBox',
-		path: 'components/Page/Blog/BlogDescriptionBox'
-	},
+
 	{
 		name: 'BlogTwoImage',
 		path: 'components/Page/Blog/BlogTwoImage'
 	},
-	{
-		name: 'BlogDescriptionBox',
-		path: 'components/Page/Blog/BlogDescriptionBox'
-	},
+
 	{
 		name: 'BlogSecondDescriptionBox',
 		path: 'components/Page/Blog/BlogSecondDescriptionBox'

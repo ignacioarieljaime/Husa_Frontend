@@ -2,7 +2,7 @@ import React from 'react'
 
 function LandingVideoPlayer() {
 	return (
-		<div className='video-container'>
+		<div className='video-container landing'>
 			<iframe
 				title='TV advertisement'
 				src='https://player.vimeo.com/video/408847720?autoplay=1&amp;muted=1&amp;loop=1&amp;controls=0&amp;background=1'

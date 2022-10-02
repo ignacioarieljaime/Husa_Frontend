@@ -3,14 +3,7 @@ module.exports.SponsorComponents = [
 		name: 'SponsorshipDescriptionGrayBg',
 		path: 'components/Page/Sponsorship/SponsorshipDescriptionGrayBg'
 	},
-	{
-		name: 'SponsorshipTextGradient',
-		path: 'components/Page/Sponsorship/SponsorshipTextGradient'
-	},
-	{
-		name: 'SponsorshipTitleBox',
-		path: 'components/Page/Sponsorship/SponsorshipTitleBox'
-	},
+
 	{
 		name: 'SponsorshipVideoAndTextBox',
 		path: 'components/Page/Sponsorship/SponsorshipVideoAndTextBox'
@@ -22,14 +15,6 @@ module.exports.SponsorComponents = [
 	{
 		name: 'SponsorshipImagesWithButton',
 		path: 'components/Page/Sponsorship/SponsorshipImagesWithButton'
-	},
-	{
-		name: 'SponsorImageAndText',
-		path: 'components/Page/Sponsorship/SponsorImageAndText'
-	},
-	{
-		name: 'SponsorImageAndLogo',
-		path: 'components/Page/Sponsorship/SponsorImageAndLogo'
 	},
 
 	{

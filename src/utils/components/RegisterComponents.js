@@ -1,7 +1,7 @@
 module.exports.RegisterComponents = [
 	{
-		name: 'SupportNewHead',
-		path: 'components/Page/Register/SupportNewHead'
+		name: 'RegisterHead',
+		path: 'components/Page/Register/RegisterHead'
 	},
 	{
 		name: 'RegisterForm',
