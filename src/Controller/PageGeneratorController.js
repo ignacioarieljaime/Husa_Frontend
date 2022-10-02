@@ -3,7 +3,7 @@ const { ComponentList } = require('../utils/ComponentList')
 const PageGeneratorController = _page => {
 	return `
 const axios = require('axios')
-import Layout from 'components/common/Layout/Layout';
+import Layout from '@/components/common/Layout/Layout';
 import {  useEffect,useState } from 'react'
 import dynamic from 'next/dynamic'
 

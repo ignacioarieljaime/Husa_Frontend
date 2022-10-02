@@ -13,9 +13,9 @@ import ImageSix from './../../../../public/assets/images/dropdown-air-products-2
 import ImageSeven from './../../../../public/assets/images/dropdown-air-products-3.png'
 
 // icon
-import HamburgerMenuIcon from 'components/icons/HamburgerMenuIcon'
-import Logo from 'components/icons/Logo'
-import MagnifierIcon from 'components/icons/MagnifierIcon'
+import HamburgerMenuIcon from '@/components/icons/HamburgerMenuIcon'
+import Logo from '@/components/icons/Logo'
+import MagnifierIcon from '@/components/icons/MagnifierIcon'
 import SubMenuHeader from './SubMenuHeader'
 
 function Header({ themeCondition = true }) {

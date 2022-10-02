@@ -1,4 +1,4 @@
-import DownloadIcon from 'components/icons/DownloadIcon'
+import DownloadIcon from '@/components/icons/DownloadIcon'
 import React from 'react'
 
 // image
