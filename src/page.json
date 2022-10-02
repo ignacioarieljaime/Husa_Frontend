@@ -9,6 +9,16 @@
 			"pageRoute": "./src/pages",
 			"components": [
 				{
+					"name": "LandingSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LandingProductsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
 					"name": "LandingVideoPlayer",
 					"props": {},
 					"data": "hello"
