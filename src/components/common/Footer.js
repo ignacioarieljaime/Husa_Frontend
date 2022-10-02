@@ -1,4 +1,4 @@
-import FaceBookIcon from '../icons/FaceBookIcon'
+import FaceBookIcon from '../icons/FacebookIcon'
 import InstagramIcon from '../icons/InstagramIcon'
 import Logo from '../icons/Logo'
 import TwitterIcon from '../icons/TwitterIcon'
