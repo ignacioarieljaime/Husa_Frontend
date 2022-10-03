@@ -1119,6 +1119,60 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "Day100",
+			"isHome": false,
+			"className": "day-100",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/Day100",
+			"components": [
+				{
+					"name": "HeaderGoogleTv",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "HeaderBanner",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ClaimPrize",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DoubleWarranty",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "EligibleModels",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ExpertsAdv",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DigitalTrends",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FeatureBadges",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "Guarantee",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }
