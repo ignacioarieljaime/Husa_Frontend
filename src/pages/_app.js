@@ -6,9 +6,9 @@ import '../styles/App.scss'
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<ErrorBoundary>
+		// <ErrorBoundary>
 			<Component {...pageProps} />
-		</ErrorBoundary>
+		// </ErrorBoundary>
 	)
 }
 
