@@ -38,7 +38,7 @@ export async function getServerSideProps() {
 	console.log('send ssr request')
 	let data = await axios
 		.get(
-			'https://imcxm.exodusapi.influencedev.com/api/husa/getBlocksByPageId/4'
+			'https://imcxm.exodusapi.influencedev.com/api/husa/getBlocksByPageId/${_page.id}'
 		)
 		.then(response => {
 			console.log('get ssr data')
