@@ -14,7 +14,7 @@ function MoreTvVideoBox() {
 							title='YouTube video player'
 							frameborder='0'
 							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-							allowfullscreen></iframe>
+							allowFullScreen></iframe>
 					</div>
 				</div>
 				<h3 className='fs-3hx fw-normal'>

@@ -35,11 +35,13 @@ function ${_page.name}({data}) {
 }
 	
 export async function getServerSideProps() {
+	console.log('send ssr request')
 	let data = await axios
 		.get(
 			'https://imcxm.exodusapi.influencedev.com/api/husa/getBlocksByPageId/4'
 		)
 		.then(response => {
+			console.log('get ssr data')
 			return response.data
 		})
 		.catch(error => {

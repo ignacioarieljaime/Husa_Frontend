@@ -21,7 +21,7 @@ function LandingSlider({ data: { props } }) {
 				pagination={true}
 				modules={[Navigation, Pagination]}
 				className='home-header-carousel lower-main'>
-				{JSON.parse(props).data.map((item, index) => (
+				{/* {JSON.parse(props).data.map((item, index) => (
 					<SwiperSlide key={index}>
 						{' '}
 						<div className='carousel-item-wrapper'>
@@ -42,7 +42,7 @@ function LandingSlider({ data: { props } }) {
 							<div className='text-box cursor-pointer'></div>
 						</div>
 					</SwiperSlide>
-				))}
+				))} */}
 			</Swiper>
 		</>
 	)
