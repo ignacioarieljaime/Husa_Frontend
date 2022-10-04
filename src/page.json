@@ -1119,6 +1119,159 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "Day100",
+			"isHome": false,
+			"className": "day-100",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/Day100",
+			"components": [
+				{
+					"name": "HeaderGoogleTv",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "HeaderBanner",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ClaimPrize",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DoubleWarranty",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "EligibleModels",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ExpertsAdv",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DigitalTrends",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FeatureBadges",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "Guarantee",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "L9G",
+			"isHome": false,
+			"className": "l9g",
+			"dynamicRote": null,
+			"pageRoute": "./src/pages/L9G",
+			"components": [
+				{
+					"name": "HeroBanner",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ScrollableVideo",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PureColor",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ColorFeature",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LumensOfBrightness",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmoothMotion",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ScreenSize",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LightRejection",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DolbyVision",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DolbyAtmos",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FineTouches",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "AndroidTv",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FeatureBlocks",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "Awards",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "Comments",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FAQs",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "Specs",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "Resources",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }
