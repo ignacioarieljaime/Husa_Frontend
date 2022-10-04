@@ -1,6 +1,6 @@
 
 	import Layout from "components/common/Layout/Layout"
-	  import UHDIntro from 'components/Page/UHD/UHDIntro'; import ImageBox from 'components/common/ImageBox'; import UHDNewsBox from 'components/Page/UHD/UHDNewsBox'; import UHDAbilityBox from 'components/Page/UHD/UHDAbilityBox'; import UHDFindTv from 'components/Page/UHD/UHDFindTv';
+	  import UHDIntro from '@/components/Page/UHD/UHDIntro'; import ImageBox from '@/components/common/ImageBox'; import UHDNewsBox from '@/components/Page/UHD/UHDNewsBox'; import UHDAbilityBox from '@/components/Page/UHD/UHDAbilityBox'; import UHDFindTv from '@/components/Page/UHD/UHDFindTv';
 
 	  function UHD() {
 	    return (

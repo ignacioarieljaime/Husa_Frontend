@@ -1,6 +1,6 @@
 
 	import Layout from "components/common/Layout/Layout"
-	  import CompanyHeaderIntro from 'components/Page/Company/CompanyHeaderIntro'; import CompanyNavBar from 'components/Page/Company/CompanyNavBar'; import CompanyInfo from 'components/Page/Company/CompanyInfo';
+	  import CompanyHeaderIntro from '@/components/Page/Company/CompanyHeaderIntro'; import CompanyNavBar from '@/components/Page/Company/CompanyNavBar'; import CompanyInfo from '@/components/Page/Company/CompanyInfo';
 
 	  function Company() {
 	    return (

@@ -1,6 +1,6 @@
 
 	import Layout from "components/common/Layout/Layout"
-	  import ContactUsHead from 'components/Page/ContactUs/ContactUsHead'; import ContactUsForm from 'components/Page/ContactUs/ContactUsForm';
+	  import ContactUsHead from '@/components/Page/ContactUs/ContactUsHead'; import ContactUsForm from '@/components/Page/ContactUs/ContactUsForm';
 
 	  function ContactUs() {
 	    return (
