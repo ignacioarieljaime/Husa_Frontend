@@ -9,16 +9,16 @@ function LandingProductItem({ data: { title, link, image } }) {
 		<div className='col-12 col-md-6'>
 			<figure>
 				<div>
-					<Link href={`/${link}`} title={image.alt}>
+					<Link href={link.value} title={image.alt}>
 						<a className='img-link'>
 							<img src={image.src} alt={image.alt} width='65%' />
 						</a>
 					</Link>
 				</div>
 				<figcaption>
-					<p className='title'>{title}</p>
-					<Link href={`/${link}`}>
-						<a className='btn btn-outline-dark shop-btn'>SHOP NOW</a>
+					<p className='title'>{title.value}</p>
+					<Link href={link.value}>
+						<a className='btn btn-outline-dark shop-btn'>{link.title}</a>
 					</Link>
 				</figcaption>
 			</figure>
