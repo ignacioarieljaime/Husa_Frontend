@@ -25,6 +25,7 @@
 	color: var(--secondary-color) !important;
 }
 
+.blog .search-articles,
 header .search-articles {
 	background: transparent;
 	border: none;
@@ -33,25 +34,31 @@ header .search-articles {
 	color: #101010;
 	width: 100px;
 }
+.blog .search-articles:focus,
+.blog .search-articles:focus-visible,
 header .search-articles:focus,
 header .search-articles:focus-visible {
 	background: transparent;
 	outline: none;
 }
+.blog .search-articles::placeholder,
 header .search-articles::placeholder {
 	font-weight: 400;
 	font-size: 18px;
 	color: #101010;
 }
+.blog .search-articles:focus::placeholder,
 header .search-articles:focus::placeholder {
 	color: #10101071;
 }
+.blog .search-articles-btn,
 header .search-articles-btn {
 	background: transparent;
 	border: none;
 	border-radius: 10px;
 	transition: all 0.3s;
 }
+.blog .bg-light-orange-gradient-light,
 header .bg-light-orange-gradient-light {
 	background: radial-gradient(
 		44.68% 678.49% at 18.49% 76.76%,
@@ -59,6 +66,7 @@ header .bg-light-orange-gradient-light {
 		rgba(255, 153, 0, 0.04) 100%
 	);
 }
+.blog .bg-light-orange-gradient,
 header .bg-light-orange-gradient {
 	background: radial-gradient(
 		44.68% 678.49% at 18.49% 76.76%,

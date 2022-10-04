@@ -1,5 +1,5 @@
 import React from 'react'
-import PDPChooseULEDTvItem from './PDPChooseULEDTvItem'
+import PDPChooseULEDTvItem from './PDPChooseULEDTvitem'
 
 function PDPChooseULEDTvBox() {
 	return (

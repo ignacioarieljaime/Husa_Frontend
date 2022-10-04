@@ -1,14 +1,16 @@
 import React from 'react'
 import LandingProductItem from './LandingProductItem'
 
-function LandingProductsBox({ data: { props } }) {
+function LandingProductsBox() {
 	return (
-		<div className='container-fluid products-container landing'>
+		<div className='container-fluid products-container'>
 			<h2>French Door Refrigerator Recall Information</h2>
 			<div className='row justify-content-evenly products'>
-				{props.data.map((item, index) => (
-					<LandingProductItem key={index} data={item} />
-				))}
+				<LandingProductItem />
+				<LandingProductItem />
+				<LandingProductItem />
+				<LandingProductItem />
+				<LandingProductItem />
 			</div>
 		</div>
 	)
