@@ -21,6 +21,7 @@ const { TvAndAudioComponents } = require('./components/TvAndAudioComponents')
 const { UhdComponents } = require('./components/UhdComponents')
 const { UledComponents } = require('./components/UledComponents')
 const { MoreTvComponents } = require('./components/MoreTvComponents')
+const { Day100Components } = require('./components/Day100Components')
 
 module.exports.ComponentList = [
 	...CommonComponents,
@@ -45,5 +46,6 @@ module.exports.ComponentList = [
 	...BlogListComponents,
 	...BlogComponents,
 	...PdpComponents,
-	...SponsorComponents
+	...SponsorComponents,
+	...Day100Components
 ]

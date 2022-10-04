@@ -20,7 +20,11 @@ function MoreTvGrabSlider() {
 		clickable: true,
 		renderBullet: function (index, className) {
 			return (
-				'<span className="' + className + '">' + carouselItems[index] + '</span>'
+				'<span className="' +
+				className +
+				'">' +
+				carouselItems[index] +
+				'</span>'
 			)
 		}
 	}
@@ -45,7 +49,11 @@ function MoreTvGrabSlider() {
 					<SwiperSlide>
 						{' '}
 						<span>
-							<img src={Image.src} alt='featured image' className='slider-media' />
+							<img
+								src={Image.src}
+								alt='featured image'
+								className='slider-media'
+							/>
 						</span>
 						<div className='text-center'>
 							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
@@ -63,7 +71,11 @@ function MoreTvGrabSlider() {
 					<SwiperSlide>
 						{' '}
 						<span>
-							<img src={Image.src} alt='featured image' className='slider-media' />
+							<img
+								src={Image.src}
+								alt='featured image'
+								className='slider-media'
+							/>
 						</span>
 						<div className='text-center'>
 							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
@@ -81,7 +93,11 @@ function MoreTvGrabSlider() {
 					<SwiperSlide>
 						{' '}
 						<span>
-							<img src={Image.src} alt='featured image' className='slider-media' />
+							<img
+								src={Image.src}
+								alt='featured image'
+								className='slider-media'
+							/>
 						</span>
 						<div className='text-center'>
 							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>

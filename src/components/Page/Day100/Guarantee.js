@@ -1,4 +1,5 @@
 import GauranteeBadge from '../../../../public/assets/images/100-day/guarantee.png'
+import Day100Tv from '../../../../public/assets/images/100-day/day-100-tv.png'
 
 const Gaurantee = () => {
 	return (
@@ -15,9 +16,15 @@ const Gaurantee = () => {
 						<div className='col-12 my-5 my-lg-0 col-md-6 order-1 order-md-1 order-lg-2 offset-md-3 offset-lg-0 col-lg-4'>
 							<div className='text-center'>
 								<img
+									src={Day100Tv.src}
+									alt='2 year badge'
+									className='mb-6 d-block d-md-none mx-auto'
+									width='80%'
+								/>
+								<img
 									src={GauranteeBadge.src}
 									alt='2 year badge'
-									className='mb-6'
+									className='mb-6 d-none d-md-block mx-auto'
 									width='50%'
 								/>
 							</div>
