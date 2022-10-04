@@ -3,10 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
+		"prebuild": "node ./src/config/GenerateRobotsTxt.js",
 		"generatePages": "node ./src/config/GeneratePage.js",
 		"removePages": "node ./src/config/RemovePages.js",
 		"dev": "npm run removePages && npm run generatePages &&  node ./src/server.js",
-		"build": "npm run removePages && npm run generatePages && next build",
+		"build": "npm run removePages && npm run prebuild && npm run generatePages && next build",
 		"start": "node ./src/server.js",
 		"lint": "next lint"
 	},
