@@ -860,8 +860,8 @@ header .bg-light-orange-gradient {
 	overflow: hidden;
 }
 .form-container input.form-container-inner-input {
-	background: url(../../public/assets/svgs/required-star.svg) no-repeat right center / 8px
-		auto;
+	background: url(../../public/assets/svgs/required-star.svg) no-repeat right
+		center / 8px auto;
 	padding-right: 12px;
 }
 .form-container input.form-container-inner-input.date-input {
@@ -2417,31 +2417,44 @@ footer.footer {
 .all-tvs-category .filters-container {
 	padding: 0 16px;
 	min-width: 230px;
+	> div {
+		border-bottom: 1px solid #5a5b75;
+		padding: 20px 0;
+		h4 {
+			font-size: 16px;
+			line-height: 24px;
+			color: #5a5b75;
+		}
+	}
+	.filter-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		li {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			font-size: 14px;
+			line-height: 16px;
+			text-align: right;
+			color: #5a5b75;
+			padding: 4px 4px 4px 0;
+			> div {
+				display: flex;
+				justify-content: flex-start;
+				label {
+					display: inline-block;
+					margin-left: 5px;
+					width: 80%;
+					white-space: nowrap;
+					overflow: hidden !important;
+					text-overflow: ellipsis;
+				}
+			}
+		}
+	}
 }
-.all-tvs-category .filters-container > div {
-	border-bottom: 1px solid #5a5b75;
-	padding: 20px 0;
-}
-.all-tvs-category .filters-container > div h4 {
-	font-size: 16px;
-	line-height: 24px;
-	color: #5a5b75;
-}
-.all-tvs-category .filters-container .filter-list {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.all-tvs-category .filters-container .filter-list li {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 14px;
-	line-height: 16px;
-	text-align: right;
-	color: #5a5b75;
-	padding: 4px 4px 4px 0;
-}
+
 .all-tvs-category .filters-container .clear-fields button {
 	font-size: 12px;
 	line-height: 27px;
@@ -3351,8 +3364,7 @@ footer.footer {
 }
 
 .more-tv .swiper .swiper-wrapper {
-	cursor: url(../../public/assets/images/more-tv/cusror-drag-info.png) 64
-			43,
+	cursor: url(../../public/assets/images/more-tv/cusror-drag-info.png) 64 43,
 		auto !important;
 }
 .more-tv .swiper .swiper-pagination-bullets {
@@ -3757,8 +3769,7 @@ footer.footer {
 	height: 100%;
 }
 .blog .big-coverflow.swiper .swiper-wrapper {
-	cursor: url(../../public/assets/images/blog/cursor-drag-dark.png) 64 43,
-		auto;
+	cursor: url(../../public/assets/images/blog/cursor-drag-dark.png) 64 43, auto;
 }
 .blog .big-coverflow.swiper .swiper-pagination-bullets {
 	top: 0;
