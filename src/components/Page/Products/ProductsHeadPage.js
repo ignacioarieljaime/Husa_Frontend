@@ -5,7 +5,7 @@ import TvImage from './../../../../public/assets/images/all-tvs/all-tvs-header.p
 
 function ProductsHeadPage() {
 	return (
-		<div className='heading'>
+		<div className='all-tvs-heading'>
 			<img src={TvImage.src} alt='smart tv platforms' className='col-12 col-md-6' />
 		</div>
 	)

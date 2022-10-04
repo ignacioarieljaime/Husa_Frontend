@@ -6,7 +6,7 @@ import ProductsItem from './ProductsItem'
 
 function ProductsListAndAside() {	
 	return (
-		<div className='category'>
+		<div className='all-tvs-category'>
 			<FilterAside />
 			<div>
 				<div className='result-box'>
