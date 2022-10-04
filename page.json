@@ -1,0 +1,1178 @@
+{
+	"response": [
+		{
+			"name": "Home",
+			"isHome": true,
+			"className": "home",
+			"meta": [],
+			"dynamicRote": null,
+			"pageRoute": "./pages",
+			"components": [
+				{
+					"name": "LandingSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LandingProductsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LandingVideoPlayer",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"isHome": false,
+			"className": "all-tvs",
+			"dynamicRote": "[product].js",
+			"pageRoute": "./pages/Products",
+			"components": [
+				{
+					"name": "ProductsHeadPage",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductsListAndAside",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"isHome": false,
+			"className": "tv-page",
+			"dynamicRote": "[productId].js",
+			"pageRoute": "./pages/Product",
+			"components": [
+				{
+					"name": "ProductInfoAndSliderBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductCategoryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductBigContent",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductNewsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductDetailsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductBottomImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductFineMeInStore",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductRecrossesBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "SmartInfo",
+			"isHome": false,
+			"className": "smart-tv-platforms",
+			"dynamicRote": null,
+			"pageRoute": "./pages/SmartInfo",
+			"components": [
+				{
+					"name": "SmartInfoHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoTvsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoTextAndImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoInteractBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoFindHisense",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoBetterNewOrOldBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Support",
+			"isHome": false,
+			"className": "support",
+			"dynamicRote": null,
+			"pageRoute": "./pages/Support",
+			"components": [
+				{
+					"name": "SupportHeadIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportCovidBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportCategoryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NeedHelpBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "SupportNew",
+			"isHome": false,
+			"className": "support new",
+			"dynamicRote": null,
+			"pageRoute": "./pages/SupportNew",
+			"components": [
+				{
+					"name": "SupportNewHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportNewCategoryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportOurSupport",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportNeedAssistance",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"isHome": false,
+			"className": "register",
+			"dynamicRote": null,
+			"pageRoute": "./pages/Register",
+			"components": [
+				{
+					"name": "SupportNewHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "RegisterForm",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "FAQ",
+			"isHome": false,
+			"className": "faq",
+			"dynamicRote": null,
+			"pageRoute": "./pages/FAQ",
+			"components": [
+				{
+					"name": "FAQHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FAQContentBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "ContactUs",
+			"isHome": false,
+			"className": "contact",
+			"dynamicRote": null,
+			"pageRoute": "./pages/ContactUs",
+			"components": [
+				{
+					"name": "ContactUsHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ContactUsForm",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "ContactUsNew",
+			"isHome": false,
+			"className": "new contact",
+			"dynamicRote": null,
+			"pageRoute": "./pages/ContactUsNew",
+			"components": [
+				{
+					"name": "ContactUsNewHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ContactUsNewForm",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ContactUsPhoneUs",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"isHome": false,
+			"className": "company",
+			"dynamicRote": null,
+			"pageRoute": "./pages/Company",
+			"components": [
+				{
+					"name": "CompanyHeaderIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CompanyNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CompanyInfo",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Commercial",
+			"isHome": false,
+			"className": "commercial",
+			"dynamicRote": null,
+			"pageRoute": "./pages/Commercial",
+			"components": [
+				{
+					"name": "CommercialIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CommercialIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CommercialTowImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CommercialBecomeAPartner",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "TvAndAudio",
+			"isHome": false,
+			"className": "tv-and-audio",
+			"dynamicRote": null,
+			"pageRoute": "./pages/TvAndAudio",
+			"components": [
+				{
+					"name": "TvAndAudioHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TvAndAudioTvShopBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TvAndAudioIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TvAndAudioLasterIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TvAndAudioSmartChoice",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TvAndAudioFineHisense",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TvAndAudioFindProduct",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "UHD",
+			"isHome": false,
+			"className": "uhd-4k",
+			"dynamicRote": null,
+			"pageRoute": "./pages/UHD",
+			"components": [
+				{
+					"name": "UHDIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "UHDNewsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "UHDAbilityBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "UHDFindTv",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "ULED",
+			"isHome": false,
+			"className": "uled-4k",
+			"dynamicRote": null,
+			"pageRoute": "./pages/ULED",
+			"components": [
+				{
+					"name": "ULEDHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ULEDProducts",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ULEDTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ULEDImageBoxWithBtn",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ULEDAllTech",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ULEDImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ULEDGreatTvTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SmartInfoBetterNewOrOldBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Laster",
+			"isHome": false,
+			"className": "laser-tv",
+			"dynamicRote": null,
+			"pageRoute": "./pages/Laster",
+			"components": [
+				{
+					"name": "LasterHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CommercialIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LasterImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LasterTitleAndSubTitleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LasterImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "UHDNewsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "LasterFinedWithImage",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Dishwashers",
+			"isHome": false,
+			"className": "all-dishwasher",
+			"dynamicRote": null,
+			"pageRoute": "./pages/Dishwashers",
+			"components": [
+				{
+					"name": "DishwashersHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductsBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "ProductSupport",
+			"isHome": false,
+			"className": "product-support",
+			"dynamicRote": null,
+			"pageRoute": "./pages/ProductSupport",
+			"components": [
+				{
+					"name": "ProductInfoAndSliderBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductSupportInfo",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NeedHelpBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "ProductSupportNew",
+			"isHome": false,
+			"className": "product-support",
+			"dynamicRote": null,
+			"pageRoute": "./pages/ProductSupportNew",
+			"components": [
+				{
+					"name": "ProductSupportNewHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductSupportNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductSupportVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductSupportFAQ",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductSupportRegister",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductSupportReplacement",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SupportNeedAssistance",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "CESHomeApplication",
+			"isHome": false,
+			"className": "ces home-appliances",
+			"dynamicRote": null,
+			"pageRoute": "./pages/CESHomeApplication",
+			"components": [
+				{
+					"name": "CESHomeNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeIntro",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "CESLaster",
+			"isHome": false,
+			"className": "ces smart-tv",
+			"dynamicRote": null,
+			"pageRoute": "./pages/CESLaster",
+			"components": [
+				{
+					"name": "CESHomeNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESLasterLearnMore",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CESHomeImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBoxWithPaddingAndBgBlack",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "CEOLasterLikeBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "MoreTv",
+			"isHome": false,
+			"className": "more-tv",
+			"dynamicRote": null,
+			"pageRoute": "./pages/MoreTv",
+			"components": [
+				{
+					"name": "MoreTvHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvAmericaBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvGetReal",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalk",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvHisensePromise",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvGrabSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalkForm",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvExperts",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "MoreTvNew",
+			"isHome": false,
+			"className": "more-tv",
+			"dynamicRote": null,
+			"pageRoute": "./pages/MoreTvNew",
+			"components": [
+				{
+					"name": "MoreTvHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalk",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvExperts",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvNewHisensePromise",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvNewItemsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "MoreTvLessTalkForm",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "BlogList",
+			"isHome": false,
+			"className": "blog",
+			"dynamicRote": null,
+			"pageRoute": "./pages/BlogList",
+			"components": [
+				{
+					"name": "BlogListHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListSearchBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListReadArticleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListLittleReadArticleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListSoundBarItemsBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogListReadArticleBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Blog",
+			"isHome": false,
+			"className": "blog article-inner",
+			"dynamicRote": "[blogId].js",
+			"pageRoute": "./pages/Blog",
+			"components": [
+				{
+					"name": "BlogHead",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogImageGalleryBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogSecondDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+
+				{
+					"name": "BlogTwoImage",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogSecondDescriptionBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogEasySlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogBigImageAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogDescriptionWithShare",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogCubeSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "BlogMoreStories",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "PDP",
+			"isHome": false,
+			"className": "pdp",
+			"dynamicRote": null,
+			"pageRoute": "./pages/PDP",
+			"components": [
+				{
+					"name": "PDPProductInfoSliderAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPNavBar",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoLightGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoDarkBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoLightGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPVideoBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPImageAndInfoLightGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDMImageAndInfoSilverBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPTopFeatures",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPDescriptionSliderWithDarkGray",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPTextAndLongImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPReviewsAndAwards",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPReadyToBuyBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "PDPChooseULEDTvBox",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "SponsorShip",
+			"isHome": false,
+			"className": "sponsership",
+			"dynamicRote": null,
+			"pageRoute": "./pages/SponsorShip",
+			"components": [
+				{
+					"name": "ImageBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipDescriptionGrayBg",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTextGradient",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTitleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipVideoAndTextBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipBigImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipImagesWithButton",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTextGradient",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorshipTitleBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorImageAndText",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "SponsorImageAndLogo",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		},
+		{
+			"name": "Day100",
+			"isHome": false,
+			"className": "day-100",
+			"dynamicRote": null,
+			"pageRoute": "./pages/Day100",
+			"components": [
+				{
+					"name": "HeaderGoogleTv",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "HeaderBanner",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ClaimPrize",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DoubleWarranty",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "EligibleModels",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ExpertsAdv",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "DigitalTrends",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FeatureBadges",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "Guarantee",
+					"props": {},
+					"data": "hello"
+				}
+			]
+		}
+	]
+}
