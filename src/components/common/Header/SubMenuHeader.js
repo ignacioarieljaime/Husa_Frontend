@@ -9,15 +9,15 @@ function SubMenuHeader() {
 	const [dropDownCondition, setDropDownCondition] = useState(false)
 
 	return (
-		<div class='container'>
-			<div class='row pt-4 mx-0 border-top w-100 stories-row'>
-				<div class='col-12 col-md-7 px-0 fs-5'>
+		<div className='container'>
+			<div className='row pt-4 mx-0 border-top w-100 stories-row'>
+				<div className='col-12 col-md-7 px-0 fs-5'>
 					Scroll for Stories & Inspiration from
-					<span class='text-primary-dark'>Hisense</span>
+					<span className='text-primary-dark ms-2'>Hisense</span>
 				</div>
-				<div class='col-12 col-md-5 px-0'>
-					<div class='row justify-content-start justify-content-md-end align-items-center'>
-						<div class='col-xl-4 col-xxl-3 dropdown'>
+				<div className='col-12 col-md-5 px-0'>
+					<div className='row justify-content-start justify-content-md-end align-items-center'>
+						<div className='col-xl-4 col-xxl-3 dropdown'>
 							<button
 								className='bg-transparent border-0'
 								onClick={() => setDropDownCondition(!dropDownCondition)}>
@@ -47,9 +47,9 @@ function SubMenuHeader() {
 								</ul>
 							)}
 						</div>
-						<div class='col-xl-4 col-xxl-3 d-flex justify-content-between align-items-center'>
-							<input type='text' placeholder='Search' class='search-articles' />
-							<button class='search-articles-btn'>
+						<div className='col-xl-4 col-xxl-3 d-flex justify-content-between align-items-center'>
+							<input type='text' placeholder='Search' className='search-articles' />
+							<button className='search-articles-btn'>
 								<FontAwesomeIcon
 									icon={faMagnifyingGlass}
 									color={'text-primary-dark'}

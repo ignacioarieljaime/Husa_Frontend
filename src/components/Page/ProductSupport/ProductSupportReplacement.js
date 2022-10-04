@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import WerenchIcon from 'components/icons/WerenchIcon'
+import WerenchIcon from '@/components/icons/WerenchIcon'
 
 function ProductSupportReplacement() {
 	return (
