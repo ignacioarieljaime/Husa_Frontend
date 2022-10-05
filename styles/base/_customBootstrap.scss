@@ -1534,6 +1534,9 @@ article:hover > .img-box-shadow-hover {
 .video-container {
 	width: 100%;
 	position: relative;
+	iframe{
+		position: absolute;
+	}
 }
 .video-container .video-wrapper {
 	position: relative;
