@@ -3,11 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"generatePages": "node ./src/config/GeneratePage.js",
-		"removePages": "node ./src/config/RemovePages.js",
-		"dev": "npm run removePages && npm run generatePages &&  node ./src/server.js",
+		"generatePages": "node ./config/GeneratePage.js",
+		"removePages": "node ./config/RemovePages.js",
+		"dev": "npm run removePages && npm run generatePages &&  node ./server.js",
 		"build": "npm run removePages && npm run generatePages && next build",
-		"start": "node ./src/server.js",
+		"start": "node ./server.js",
 		"lint": "next lint"
 	},
 	"dependencies": {
