@@ -2402,6 +2402,10 @@ footer.footer {
 
 .all-tvs-category {
 	display: flex;
+	overflow: hidden;
+	.result_box__product_container {
+		width: 100%;
+	}
 }
 .all-tvs-category .accordion-btn {
 	font-size: 14px;

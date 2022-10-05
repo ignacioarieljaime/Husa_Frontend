@@ -1,7 +1,13 @@
 import useFetch from '../hooks/useFetch'
-const endPoint = '/getProductsByFilterValue'
 
 export async function GetProductByFilterApi(navigate, _filter) {
-	let response = await useFetch(navigate).post(`${endPoint}`, { data: _filter })
+	let response = await useFetch(navigate).post(`/getProductsByFilterValue`, {
+		data: _filter
+	})
+	return response
+}
+
+export async function GetProductsApi(navigate, _categoryId) {
+	let response = await useFetch(navigate).post(`/getProducts/${_categoryId}`)
 	return response
 }

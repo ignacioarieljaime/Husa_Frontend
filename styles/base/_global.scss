@@ -44,3 +44,29 @@ input {
 		box-shadow: 0px 0px 8px rgba(145, 145, 145, 0.15);
 	}
 }
+#loading-spinner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	svg {
+		animation: loading-spinner 1s linear infinite;
+		-webkit-animation: loading-spinner 1s linear infinite;
+	}
+}
+
+@keyframes loading-spinner {
+	from {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+	}
+}

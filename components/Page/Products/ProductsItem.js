@@ -5,12 +5,12 @@ import React from 'react'
 import ProductImage from 'public/assets/images/hisense-u8-uled-4k/related-product-item-1.png'
 
 function ProductsItem({ data }) {
-	let { brand, image, name, model, id } = data
+	let { brand, image, name, model, id, order } = data
 	return (
 		<div className='item bottom-border-sm col-12 col-md-6 col-xl-4 col-xxl-3'>
 			<div>
 				<div className='d-flex justify-content-between align-items-center mb-20 w-100'>
-					<span className='class'>100 Class</span>
+					<span className='class'>{order} Class</span>
 					<span className='code'>{model}</span>
 				</div>
 				<img src={image} alt='featured image' width='100%' />
