@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 // image
-import ProductImage from 'public/assets/images/hisense-u8-uled-4k/related-product-item-1.png'
+import ProductImage from './../../../public/assets/images/hisense-u8-uled-4k/related-product-item-1.png'
 
 function ProductsItem() {
 	return (

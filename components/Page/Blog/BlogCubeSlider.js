@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import Image from 'public/assets/images/more-tv/carousel-item.png'
+import Image from './../../../public/assets/images/more-tv/carousel-item.png'
 
 // Import Swiper styles
 import 'swiper/css'

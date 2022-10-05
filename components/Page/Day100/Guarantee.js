@@ -1,5 +1,5 @@
-import GauranteeBadge from 'public/assets/images/100-day/guarantee.png'
-import Day100Tv from 'public/assets/images/100-day/day-100-tv.png'
+import GauranteeBadge from './../../../public/assets/images/100-day/guarantee.png'
+import Day100Tv from './../../../public/assets/images/100-day/day-100-tv.png'
 
 const Gaurantee = () => {
 	return (

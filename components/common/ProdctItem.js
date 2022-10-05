@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Image from 'public/assets/images/all-dishwashers/dishwasher-item.png'
+import Image from './../../public/assets/images/all-dishwashers/dishwasher-item.png'
 
 function ProductItem() {
 	return (

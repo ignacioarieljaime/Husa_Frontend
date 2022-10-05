@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import ImageBg from 'public/assets/images/support/support-bg.jpg'
+import ImageBg from './../../../public/assets/images/support/support-bg.jpg'
 
 function SupportNeedAssistance() {
 	return (

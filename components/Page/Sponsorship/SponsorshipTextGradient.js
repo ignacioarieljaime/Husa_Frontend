@@ -1,9 +1,9 @@
 import React from 'react'
 
 // image
-import CreatingText from 'public/assets/images/sponsership/creating-great.png'
-import Product from 'public/assets/images/sponsership/products-that-are.png'
-import Accessible from 'public/assets/images/sponsership/accessible-to-all.png'
+import CreatingText from './../../../public/assets/images/sponsership/creating-great.png'
+import Product from './../../../public/assets/images/sponsership/products-that-are.png'
+import Accessible from './../../../public/assets/images/sponsership/accessible-to-all.png'
 
 function SponsorshipTextGradient() {
 	return (

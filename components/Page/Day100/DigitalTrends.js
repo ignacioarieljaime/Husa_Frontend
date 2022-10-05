@@ -1,4 +1,4 @@
-import DigitalTrendsLogo from 'public/assets/images/100-day/dt_logo.png'
+import DigitalTrendsLogo from './../../../public/assets/images/100-day/dt_logo.png'
 
 const DigitalTrends = () => {
 	return (

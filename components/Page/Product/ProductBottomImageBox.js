@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/tv-page/laser-tv.jpg'
+import Image from './../../../public/assets/images/tv-page/laser-tv.jpg'
 
 function ProductBottomImageBox() {
 	return (

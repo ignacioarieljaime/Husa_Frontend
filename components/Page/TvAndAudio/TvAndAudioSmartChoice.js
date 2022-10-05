@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/tv-and-audio/ai-programms.png'
+import Image from './../../../public/assets/images/tv-and-audio/ai-programms.png'
 
 function TvAndAudioSmartChoice() {
 	return (

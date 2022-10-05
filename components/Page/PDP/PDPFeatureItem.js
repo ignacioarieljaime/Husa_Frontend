@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import CardImage from 'public/assets/images/pdp/cards.png'
+import CardImage from './../../../public/assets/images/pdp/cards.png'
 
 function PDPFeatureItem() {
 	return (

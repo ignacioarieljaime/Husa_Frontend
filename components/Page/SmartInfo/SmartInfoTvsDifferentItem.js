@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/smart-tv-android.png'
+import Image from './../../../public/assets/images/smart-tv-android.png'
 function SmartInfoTvsDifferentItem() {
 	return (
 		<div className='col-12 col-md-6 col-xxl-6 platform'>

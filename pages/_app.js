@@ -1,5 +1,5 @@
 // component
-import ErrorBoundary from 'components/common/ErrorBoundary/ErrorBoundary'
+// import ErrorBoundary from './../common/ErrorBoundary/ErrorBoundary'
 
 // style
 import '../styles/App.scss'

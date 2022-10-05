@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Tv from 'public/assets/images/contact/tv.png'
+import Tv from './../../../public/assets/images/contact/tv.png'
 
 function ContactUsPhoneUs() {
 	return (

@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/4k-uhd/4k-uhd-logo.png'
+import Image from './../../../public/assets/images/4k-uhd/4k-uhd-logo.png'
 
 function UHDIntro() {
 	return (

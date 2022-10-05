@@ -9,7 +9,7 @@ import 'swiper/css/pagination'
 import { Pagination } from 'swiper'
 
 // image
-import Image from 'public/assets/images/ces-2022-home-appliances/oven.png'
+import Image from './../../../../public/assets/images/ces-2022-home-appliances/oven.png'
 
 function CESSliderBox() {
 	return (

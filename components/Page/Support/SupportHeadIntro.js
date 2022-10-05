@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/support/support-bg.jpg'
+import Image from './../../../public/assets/images/support/support-bg.jpg'
 
 function SupportHeadIntro() {
 	return (

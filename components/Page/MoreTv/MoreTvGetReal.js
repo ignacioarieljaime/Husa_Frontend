@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import PeopleHeat from "public/assets/images/more-tv/people-heat-map.png"
+import PeopleHeat from "./../../../public/assets/images/more-tv/people-heat-map.png"
 
 function MoreTvGetReal() {
 	return (

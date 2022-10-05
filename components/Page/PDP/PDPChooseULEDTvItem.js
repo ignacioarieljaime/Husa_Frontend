@@ -2,7 +2,7 @@ import { faTv } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
-import TvImage from 'public/assets/images/pdp/U6GR-front-shadow.png'
+import TvImage from './../../../public/assets/images/pdp/U6GR-front-shadow.png'
 function PDPChooseULEDTvItem() {
 	return (
 		<div className='col-12 col-md-4 my-5 my-md-0'>

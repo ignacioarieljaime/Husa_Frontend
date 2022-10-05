@@ -1,5 +1,5 @@
 import ClaimPrizeLevels from './ClaimPrizeLevels'
-import star from 'public/assets/images/100-day/star.png'
+import star from './../../../public/assets/images/100-day/star.png'
 
 const ClaimPrize = () => {
 	return (

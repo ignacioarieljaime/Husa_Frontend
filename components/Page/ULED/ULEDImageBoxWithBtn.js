@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/4k-uled/jargo.jpg'
+import Image from './../../../public/assets/images/4k-uled/jargo.jpg'
 
 function ULEDImageBoxWithBtn() {
 	return (

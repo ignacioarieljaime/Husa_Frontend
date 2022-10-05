@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/pdp/labeled-tv.png'
+import Image from './../../../public/assets/images/pdp/labeled-tv.png'
 
 function PDPImageAndInfoGrayBg() {
 	return (

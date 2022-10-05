@@ -1,10 +1,10 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/pdp/45png.png'
-import RectAngle from 'public/assets/images/pdp/rectangle.png'
-import Square from 'public/assets/images/pdp/square.png'
-import TvCircle from 'public/assets/images/pdp/tv-circles.png'
+import Image from './../../../public/assets/images/pdp/45png.png'
+import RectAngle from './../../../public/assets/images/pdp/rectangle.png'
+import Square from './../../../public/assets/images/pdp/square.png'
+import TvCircle from './../../../public/assets/images/pdp/tv-circles.png'
 
 function PDPImageAndInfoDarkBg() {
 	return (

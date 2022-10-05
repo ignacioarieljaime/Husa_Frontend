@@ -1,6 +1,6 @@
-import PC from 'public/assets/images/100-day/pc.png'
-import EditorsChoice from 'public/assets/images/100-day/editors-choice.png'
-import NyTimes from 'public/assets/images/100-day/ny-times.png'
+import PC from './../../../public/assets/images/100-day/pc.png'
+import EditorsChoice from './../../../public/assets/images/100-day/editors-choice.png'
+import NyTimes from './../../../public/assets/images/100-day/ny-times.png'
 
 const FeatureBadges = () => {
 	return (

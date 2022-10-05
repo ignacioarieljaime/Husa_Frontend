@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Image from 'public/assets/images/blog/woman.png'
+import Image from './../../../public/assets/images/blog/woman.png'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 

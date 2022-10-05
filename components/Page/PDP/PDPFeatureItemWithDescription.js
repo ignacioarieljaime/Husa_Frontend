@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/pdp/g-assistant.png'
+import Image from './../../../public/assets/images/pdp/g-assistant.png'
 function PDPFeatureItemWithDescription() {
 	return (
 		<div className='col-12 col-sm-6 col-md-4 col-lg-3 text-center p-5'>

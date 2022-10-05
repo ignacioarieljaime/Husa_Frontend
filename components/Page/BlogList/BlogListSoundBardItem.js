@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/blog/woman.png'
+import Image from './../../../public/assets/images/blog/woman.png'
 
 function BlogListSoundBardItem() {
 	return (

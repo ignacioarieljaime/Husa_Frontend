@@ -1,10 +1,10 @@
 import React from 'react'
 
 // image
-import Badge from 'public/assets/images/more-tv/badges.png'
-import Rtings from 'public/assets/images/more-tv/rtings.png'
-import PC from 'public/assets/images/more-tv/pc.png'
-import EditorChoice from 'public/assets/images/more-tv/editors-choice.png'
+import Badge from './../../../public/assets/images/more-tv/badges.png'
+import Rtings from './../../../public/assets/images/more-tv/rtings.png'
+import PC from './../../../public/assets/images/more-tv/pc.png'
+import EditorChoice from './../../../public/assets/images/more-tv/editors-choice.png'
 
 
 function MoreTvExperts() {

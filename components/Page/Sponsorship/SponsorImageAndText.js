@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Banner from 'public/assets/images/sponsership/fnatic-banner.png'
+import Banner from './../../../public/assets/images/sponsership/fnatic-banner.png'
 function SponsorImageAndText() {
 	return (
 		<section>

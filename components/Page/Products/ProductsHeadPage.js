@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import TvImage from 'public/assets/images/all-tvs/all-tvs-header.png'
+import TvImage from './../../../public/assets/images/all-tvs/all-tvs-header.png'
 
 function ProductsHeadPage() {
 	return (

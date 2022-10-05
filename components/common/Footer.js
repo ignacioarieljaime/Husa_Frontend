@@ -1,8 +1,8 @@
-import FaceBookIcon from 'components/icons/FaceBookIcon'
-import InstagramIcon from 'components/icons/InstagramIcon'
-import Logo from 'components/icons/Logo'
-import TwitterIcon from 'components/icons/TwitterIcon'
-import YouTubeIcon from 'components/icons/YouTubeIcon'
+import FaceBookIcon from './../icons/FaceBookIcon'
+import InstagramIcon from './../icons/InstagramIcon'
+import Logo from './../icons/Logo'
+import TwitterIcon from './../icons/TwitterIcon'
+import YouTubeIcon from './../icons/YouTubeIcon'
 import React from 'react'
 
 function Footer() {

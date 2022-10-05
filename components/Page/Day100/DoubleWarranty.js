@@ -1,5 +1,5 @@
-import Badge from 'public/assets/images/100-day/2-year.png'
-import DoubleWarrantyText from 'public/assets/images/100-day/double-warranty.png'
+import Badge from './../../../public/assets/images/100-day/2-year.png'
+import DoubleWarrantyText from './../../../public/assets/images/100-day/double-warranty.png'
 
 const DoubleWarranty = () => {
 	return (

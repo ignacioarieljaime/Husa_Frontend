@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Logo from 'public/assets/images/sponsership/fnatic-logo.png'
-import Team from 'public/assets/images/sponsership/fnatic-team.png'
+import Logo from './../../../public/assets/images/sponsership/fnatic-logo.png'
+import Team from './../../../public/assets/images/sponsership/fnatic-team.png'
 
 function SponsorImageAndLogo() {
 	return (

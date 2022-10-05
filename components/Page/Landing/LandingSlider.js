@@ -10,8 +10,8 @@ import 'swiper/css/pagination'
 // import required modules
 import { Navigation, Pagination } from 'swiper'
 // image
-import SliderImage from 'public/assets/images/home/home-carousel-item-1.jpg'
-import SliderResImage from 'public/assets/images/home/home-carousel-item-1-resp.jpg'
+import SliderImage from './../../../public/assets/images/home/home-carousel-item-1.jpg'
+import SliderResImage from './../../../public/assets/images/home/home-carousel-item-1-resp.jpg'
 
 function LandingSlider() {
 	return (

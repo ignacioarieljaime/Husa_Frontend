@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/4k-uled-hisense-android-tv.png'
+import Image from './../../../public/assets/images/4k-uled-hisense-android-tv.png'
 
 function SmartInfoBetterNewOrOldBox() {
 	return (

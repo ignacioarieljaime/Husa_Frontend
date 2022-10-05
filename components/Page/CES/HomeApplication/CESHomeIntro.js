@@ -1,8 +1,8 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/ces-2022-home-appliances/header.png'
-import Logo from 'public/assets/images/ces-2022-home-appliances/ces-logo.png'
+import Image from './../../../../public/assets/images/ces-2022-home-appliances/header.png'
+import Logo from './../../../../public/assets/images/ces-2022-home-appliances/ces-logo.png'
 
 function CESHomeIntro() {
 	return (

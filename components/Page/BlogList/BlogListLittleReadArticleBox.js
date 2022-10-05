@@ -1,8 +1,8 @@
 import React from 'react'
 
 // image
-import DessertsImage from 'public/assets/images/blog/desserts.png'
-import CakeImage from 'public/assets/images/blog/cake.png'
+import DessertsImage from './../../../public/assets/images/blog/desserts.png'
+import CakeImage from './../../../public/assets/images/blog/cake.png'
 
 function BlogListLittleReadArticleBox() {
 	return (

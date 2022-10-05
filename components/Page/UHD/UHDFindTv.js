@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from 'public/assets/images/4k-uhd/shop-now-banner.jpg'
+import Image from './../../../public/assets/images/4k-uhd/shop-now-banner.jpg'
 
 function UHDFindTv() {
 	return (
