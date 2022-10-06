@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import BlogListHead from './../../components/Page/BlogList/BlogListHead'; import BlogListSearchBox from './../../components/Page/BlogList/BlogListSearchBox'; import BlogListReadArticleBox from './../../components/Page/BlogList/BlogListReadArticleBox'; import BlogListLittleReadArticleBox from './../../components/Page/BlogList/BlogListLittleReadArticleBox'; import BlogListSoundBarItemsBox from './../../components/Page/BlogList/BlogListSoundBarItemsBox';
+	  import BlogListHead from './../../components/page/BlogList/BlogListHead'; import BlogListSearchBox from './../../components/page/BlogList/BlogListSearchBox'; import BlogListReadArticleBox from './../../components/page/BlogList/BlogListReadArticleBox'; import BlogListLittleReadArticleBox from './../../components/page/BlogList/BlogListLittleReadArticleBox'; import BlogListSoundBarItemsBox from './../../components/page/BlogList/BlogListSoundBarItemsBox';
 
 	  function BlogList() {
 	    return (

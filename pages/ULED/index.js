@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import ULEDHead from './../../components/Page/ULED/ULEDHead'; import ULEDProducts from './../../components/Page/ULED/ULEDProducts'; import ULEDTextBox from './../../components/Page/ULED/ULEDTextBox'; import ULEDImageBoxWithBtn from './../../components/Page/ULED/ULEDImageBoxWithBtn'; import ULEDAllTech from './../../components/Page/ULED/ULEDAllTech'; import ImageBox from './../../components/common/ImageBox'; import ULEDImageAndTextBox from './../../components/Page/ULED/ULEDImageAndTextBox'; import ULEDGreatTvTextBox from './../../components/Page/ULED/ULEDGreatTvTextBox'; import SmartInfoBetterNewOrOldBox from './../../components/Page/SmartInfo/SmartInfoBetterNewOrOldBox';
+	  import ULEDHead from './../../components/page/ULED/ULEDHead'; import ULEDProducts from './../../components/page/ULED/ULEDProducts'; import ULEDTextBox from './../../components/page/ULED/ULEDTextBox'; import ULEDImageBoxWithBtn from './../../components/page/ULED/ULEDImageBoxWithBtn'; import ULEDAllTech from './../../components/page/ULED/ULEDAllTech'; import ImageBox from './../../components/common/ImageBox'; import ULEDImageAndTextBox from './../../components/page/ULED/ULEDImageAndTextBox'; import ULEDGreatTvTextBox from './../../components/page/ULED/ULEDGreatTvTextBox'; import SmartInfoBetterNewOrOldBox from './../../components/page/SmartInfo/SmartInfoBetterNewOrOldBox';
 
 	  function ULED() {
 	    return (

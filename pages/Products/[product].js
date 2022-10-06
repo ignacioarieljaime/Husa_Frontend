@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import ProductsHeadPage from './../../components/Page/Products/ProductsHeadPage'; import ProductsListAndAside from './../../components/Page/Products/ProductsListAndAside';
+	  import ProductsHeadPage from './../../components/page/Products/ProductsHeadPage'; import ProductsListAndAside from './../../components/page/Products/ProductsListAndAside';
 
 	  function Products() {
 	    return (

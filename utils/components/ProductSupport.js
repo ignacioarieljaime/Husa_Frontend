@@ -1,30 +1,30 @@
 module.exports.ProductSupportComponents = [
 	{
 		name: 'ProductSupportInfo',
-		path: './../../components/Page/ProductSupport/ProductSupportInfo'
+		path: './../../components/page/ProductSupport/ProductSupportInfo'
 	},
 	{
 		name: 'ProductSupportNewHead',
-		path: './../../components/Page/ProductSupport/ProductSupportNewHead'
+		path: './../../components/page/ProductSupport/ProductSupportNewHead'
 	},
 	{
 		name: 'ProductSupportNavBar',
-		path: './../../components/Page/ProductSupport/ProductSupportNavBar'
+		path: './../../components/page/ProductSupport/ProductSupportNavBar'
 	},
 	{
 		name: 'ProductSupportVideoBox',
-		path: './../../components/Page/ProductSupport/ProductSupportVideoBox'
+		path: './../../components/page/ProductSupport/ProductSupportVideoBox'
 	},
 	{
 		name: 'ProductSupportFAQ',
-		path: './../../components/Page/ProductSupport/ProductSupportFAQ'
+		path: './../../components/page/ProductSupport/ProductSupportFAQ'
 	},
 	{
 		name: 'ProductSupportRegister',
-		path: './../../components/Page/ProductSupport/ProductSupportRegister'
+		path: './../../components/page/ProductSupport/ProductSupportRegister'
 	},
 	{
 		name: 'ProductSupportReplacement',
-		path: './../../components/Page/ProductSupport/ProductSupportReplacement'
+		path: './../../components/page/ProductSupport/ProductSupportReplacement'
 	}
 ]

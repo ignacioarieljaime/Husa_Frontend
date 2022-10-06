@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import TvAndAudioHead from './../../components/Page/TvAndAudio/TvAndAudioHead'; import TvAndAudioTvShopBox from './../../components/Page/TvAndAudio/TvAndAudioTvShopBox'; import TvAndAudioIntro from './../../components/Page/TvAndAudio/TvAndAudioIntro'; import ImageBox from './../../components/common/ImageBox'; import TvAndAudioLasterIntro from './../../components/Page/TvAndAudio/TvAndAudioLasterIntro'; import TvAndAudioSmartChoice from './../../components/Page/TvAndAudio/TvAndAudioSmartChoice'; import TvAndAudioFineHisense from './../../components/Page/TvAndAudio/TvAndAudioFineHisense'; import TvAndAudioFindProduct from './../../components/Page/TvAndAudio/TvAndAudioFindProduct';
+	  import TvAndAudioHead from './../../components/page/TvAndAudio/TvAndAudioHead'; import TvAndAudioTvShopBox from './../../components/page/TvAndAudio/TvAndAudioTvShopBox'; import TvAndAudioIntro from './../../components/page/TvAndAudio/TvAndAudioIntro'; import ImageBox from './../../components/common/ImageBox'; import TvAndAudioLasterIntro from './../../components/page/TvAndAudio/TvAndAudioLasterIntro'; import TvAndAudioSmartChoice from './../../components/page/TvAndAudio/TvAndAudioSmartChoice'; import TvAndAudioFineHisense from './../../components/page/TvAndAudio/TvAndAudioFineHisense'; import TvAndAudioFindProduct from './../../components/page/TvAndAudio/TvAndAudioFindProduct';
 
 	  function TvAndAudio() {
 	    return (

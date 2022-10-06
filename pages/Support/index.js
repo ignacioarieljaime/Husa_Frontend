@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import SupportHeadIntro from './../../components/Page/Support/SupportHeadIntro'; import SupportCovidBox from './../../components/Page/Support/SupportCovidBox'; import SupportCategoryBox from './../../components/Page/Support/SupportCategoryBox'; import NeedHelpBox from './../../components/common/NeedHelpBox';
+	  import SupportHeadIntro from './../../components/page/Support/SupportHeadIntro'; import SupportCovidBox from './../../components/page/Support/SupportCovidBox'; import SupportCategoryBox from './../../components/page/Support/SupportCategoryBox'; import NeedHelpBox from './../../components/common/NeedHelpBox';
 
 	  function Support() {
 	    return (

@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import SupportNewHead from './../../components/Page/Support/SupportNewHead'; import RegisterForm from './../../components/Page/Register/RegisterForm';
+	  import SupportNewHead from './../../components/page/Support/SupportNewHead'; import RegisterForm from './../../components/page/Register/RegisterForm';
 
 	  function Register() {
 	    return (

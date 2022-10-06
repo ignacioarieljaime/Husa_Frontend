@@ -1,26 +1,26 @@
 module.exports.CesComponents = [
 	{
 		name: 'CESHomeNavBar',
-		path: './../../components/Page/CES/HomeApplication/CESHomeNavBar'
+		path: './../../components/page/CES/HomeApplication/CESHomeNavBar'
 	},
 	{
 		name: 'CESHomeIntro',
-		path: './../../components/Page/CES/HomeApplication/CESHomeIntro'
+		path: './../../components/page/CES/HomeApplication/CESHomeIntro'
 	},
 	{
 		name: 'CESHomeImageAndText',
-		path: './../../components/Page/CES/HomeApplication/CESHomeImageAndText'
+		path: './../../components/page/CES/HomeApplication/CESHomeImageAndText'
 	},
 	{
 		name: 'CESLasterLearnMore',
-		path: './../../components/Page/CES/Laster/CESLasterLearnMore'
+		path: './../../components/page/CES/Laster/CESLasterLearnMore'
 	},
 	{
 		name: 'ImageBoxWithPaddingAndBgBlack',
-		path: './../../components/Page/CES/Laster/ImageBoxWithPaddingAndBgBlack'
+		path: './../../components/page/CES/Laster/ImageBoxWithPaddingAndBgBlack'
 	},
 	{
 		name: 'CEOLasterLikeBox',
-		path: './../../components/Page/CES/Laster/CEOLasterLikeBox'
+		path: './../../components/page/CES/Laster/CEOLasterLikeBox'
 	}
 ]

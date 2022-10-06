@@ -9,6 +9,6 @@ module.exports.LandingComponents = [
 	},
 	{
 		name: 'LandingVideoPlayer',
-		path: './../components/Page/Landing/LandingVideoPlayer.js'
+		path: './../components/page/Landing/LandingVideoPlayer.js'
 	}
 ]

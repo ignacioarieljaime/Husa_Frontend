@@ -1,31 +1,31 @@
 module.exports.SmartPageComponents = [
 	{
 		name: 'SmartInfoHead',
-		path: './../../components/Page/SmartInfo/SmartInfoHead'
+		path: './../../components/page/SmartInfo/SmartInfoHead'
 	},
 	{
 		name: 'SmartInfoTvsBox',
-		path: './../../components/Page/SmartInfo/SmartInfoTvsBox'
+		path: './../../components/page/SmartInfo/SmartInfoTvsBox'
 	},
 	{
 		name: 'SmartInfoTextBox',
-		path: './../../components/Page/SmartInfo/SmartInfoTextBox'
+		path: './../../components/page/SmartInfo/SmartInfoTextBox'
 	},
 
 	{
 		name: 'SmartInfoTextAndImageBox',
-		path: './../../components/Page/SmartInfo/SmartInfoTextAndImageBox'
+		path: './../../components/page/SmartInfo/SmartInfoTextAndImageBox'
 	},
 	{
 		name: 'SmartInfoInteractBox',
-		path: './../../components/Page/SmartInfo/SmartInfoInteractBox'
+		path: './../../components/page/SmartInfo/SmartInfoInteractBox'
 	},
 	{
 		name: 'SmartInfoFindHisense',
-		path: './../../components/Page/SmartInfo/SmartInfoFindHisense'
+		path: './../../components/page/SmartInfo/SmartInfoFindHisense'
 	},
 	{
 		name: 'SmartInfoBetterNewOrOldBox',
-		path: './../../components/Page/SmartInfo/SmartInfoBetterNewOrOldBox'
+		path: './../../components/page/SmartInfo/SmartInfoBetterNewOrOldBox'
 	}
 ]

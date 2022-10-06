@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import FAQHead from './../../components/Page/FAQ/FAQHead'; import FAQContentBox from './../../components/Page/FAQ/FAQContentBox';
+	  import FAQHead from './../../components/page/FAQ/FAQHead'; import FAQContentBox from './../../components/page/FAQ/FAQContentBox';
 
 	  function FAQ() {
 	    return (

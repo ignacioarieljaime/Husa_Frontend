@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import CommercialIntro from './../../components/Page/Commercial/CommercialIntro'; import ImageBox from './../../components/common/ImageBox'; import CommercialTowImageBox from './../../components/Page/Commercial/CommercialTowImageBox'; import CommercialBecomeAPartner from './../../components/Page/Commercial/CommercialBecomeAPartner';
+	  import CommercialIntro from './../../components/page/Commercial/CommercialIntro'; import ImageBox from './../../components/common/ImageBox'; import CommercialTowImageBox from './../../components/page/Commercial/CommercialTowImageBox'; import CommercialBecomeAPartner from './../../components/page/Commercial/CommercialBecomeAPartner';
 
 	  function Commercial() {
 	    return (

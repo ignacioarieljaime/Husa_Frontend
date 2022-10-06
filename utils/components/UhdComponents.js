@@ -1,18 +1,18 @@
 module.exports.UhdComponents = [
 	{
 		name: 'UHDIntro',
-		path: './../../components/Page/UHD/UHDIntro'
+		path: './../../components/page/UHD/UHDIntro'
 	},
 	{
 		name: 'UHDNewsBox',
-		path: './../../components/Page/UHD/UHDNewsBox'
+		path: './../../components/page/UHD/UHDNewsBox'
 	},
 	{
 		name: 'UHDAbilityBox',
-		path: './../../components/Page/UHD/UHDAbilityBox'
+		path: './../../components/page/UHD/UHDAbilityBox'
 	},
 	{
 		name: 'UHDFindTv',
-		path: './../../components/Page/UHD/UHDFindTv'
+		path: './../../components/page/UHD/UHDFindTv'
 	}
 ]

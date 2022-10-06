@@ -1,6 +1,6 @@
 
 	import Layout from "./../../components/common/Layout/Layout"
-	  import MoreTvHead from './../../components/Page/MoreTv/MoreTvHead'; import MoreTvLessTalk from './../../components/Page/MoreTv/MoreTvLessTalk'; import MoreTvExperts from './../../components/Page/MoreTv/MoreTvExperts'; import MoreTvNewHisensePromise from './../../components/Page/MoreTv/MoreTvNewHisensePromise'; import MoreTvNewItemsBox from './../../components/Page/MoreTv/MoreTvNewItemsBox'; import MoreTvLessTalkForm from './../../components/Page/MoreTv/MoreTvLessTalkForm';
+	  import MoreTvHead from './../../components/page/MoreTv/MoreTvHead'; import MoreTvLessTalk from './../../components/page/MoreTv/MoreTvLessTalk'; import MoreTvExperts from './../../components/page/MoreTv/MoreTvExperts'; import MoreTvNewHisensePromise from './../../components/page/MoreTv/MoreTvNewHisensePromise'; import MoreTvNewItemsBox from './../../components/page/MoreTv/MoreTvNewItemsBox'; import MoreTvLessTalkForm from './../../components/page/MoreTv/MoreTvLessTalkForm';
 
 	  function MoreTvNew() {
 	    return (

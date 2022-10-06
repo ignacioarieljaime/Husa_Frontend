@@ -1,10 +1,10 @@
 module.exports.RegisterComponents = [
 	{
 		name: 'RegisterHead',
-		path: './../../components/Page/Register/RegisterHead'
+		path: './../../components/page/Register/RegisterHead'
 	},
 	{
 		name: 'RegisterForm',
-		path: './../../components/Page/Register/RegisterForm'
+		path: './../../components/page/Register/RegisterForm'
 	}
 ]

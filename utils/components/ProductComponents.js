@@ -1,38 +1,38 @@
 module.exports.ProductComponent = [
 	{
 		name: 'ProductInfoAndSliderBox',
-		path: './../../components/Page/Product/ProductInfoAndSliderBox'
+		path: './../../components/page/Product/ProductInfoAndSliderBox'
 	},
 	{
 		name: 'ProductCategoryBox',
-		path: './../../components/Page/Product/ProductCategoryBox'
+		path: './../../components/page/Product/ProductCategoryBox'
 	},
 	{
 		name: 'ProductImageBox',
-		path: './../../components/Page/Product/ProductImageBox'
+		path: './../../components/page/Product/ProductImageBox'
 	},
 	{
 		name: 'ProductBigContent',
-		path: './../../components/Page/Product/ProductBigContent'
+		path: './../../components/page/Product/ProductBigContent'
 	},
 	{
 		name: 'ProductNewsBox',
-		path: './../../components/Page/Product/ProductNewsBox'
+		path: './../../components/page/Product/ProductNewsBox'
 	},
 	{
 		name: 'ProductBottomImageBox',
-		path: './../../components/Page/Product/ProductBottomImageBox'
+		path: './../../components/page/Product/ProductBottomImageBox'
 	},
 	{
 		name: 'ProductDetailsBox',
-		path: './../../components/Page/Product/ProductDetailsBox'
+		path: './../../components/page/Product/ProductDetailsBox'
 	},
 	{
 		name: 'ProductFineMeInStore',
-		path: './../../components/Page/Product/ProductFineMeInStore'
+		path: './../../components/page/Product/ProductFineMeInStore'
 	},
 	{
 		name: 'ProductRecrossesBox',
-		path: './../../components/Page/Product/ProductRecrossesBox'
+		path: './../../components/page/Product/ProductRecrossesBox'
 	}
 ]
