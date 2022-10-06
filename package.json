@@ -3,10 +3,11 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
+		"prebuild": "node ./config/GenerateRobotsTxt.js",
 		"generatePages": "node ./config/GeneratePage.js",
 		"removePages": "node ./config/RemovePages.js",
 		"dev": "npm run removePages && npm run generatePages &&  node ./server.js",
-		"build": "npm run removePages && npm run generatePages && next build",
+		"build": "npm run removePages && npm run prebuild && npm run generatePages && next build",
 		"start": "node ./server.js",
 		"lint": "next lint"
 	},
@@ -15,7 +16,6 @@
 		"@fortawesome/free-brands-svg-icons": "^6.2.0",
 		"@fortawesome/free-solid-svg-icons": "^6.2.0",
 		"@fortawesome/react-fontawesome": "^0.2.0",
-		"aos": "^2.3.4",
 		"axios": "^0.27.2",
 		"bootstrap": "^5.2.1",
 		"chart.js": "^3.9.1",
@@ -23,7 +23,6 @@
 		"dotenv": "^16.0.2",
 		"express": "^4.18.1",
 		"file-saver": "^2.0.5",
-		"jsconfig.json": "^2.3.3",
 		"next": "12.3.0",
 		"node-notifier": "^10.0.1",
 		"nodemon": "^2.0.20",
