@@ -1,57 +1,57 @@
 module.exports.BlogComponents = [
 	{
 		name: 'BloHeadBanner',
-		path: 'components/Page/Blog/BloHeadBanner'
+		path: 'components/page/Blog/BloHeadBanner'
 	},
 	{
 		name: 'BlogDescriptionBox',
-		path: 'components/Page/Blog/BlogDescriptionBox'
+		path: 'components/page/Blog/BlogDescriptionBox'
 	},
 	{
 		name: 'BlogImageGalleryBox',
-		path: 'components/Page/Blog/BlogImageGalleryBox'
+		path: 'components/page/Blog/BlogImageGalleryBox'
 	},
 
 	{
 		name: 'BlogImageAndTextBox',
-		path: 'components/Page/Blog/BlogImageAndTextBox'
+		path: 'components/page/Blog/BlogImageAndTextBox'
 	},
 	{
 		name: 'BlogVideoBox',
-		path: 'components/Page/Blog/BlogVideoBox'
+		path: 'components/page/Blog/BlogVideoBox'
 	},
 
 	{
 		name: 'BlogTwoImage',
-		path: 'components/Page/Blog/BlogTwoImage'
+		path: 'components/page/Blog/BlogTwoImage'
 	},
 
 	{
 		name: 'BlogSecondDescriptionBox',
-		path: 'components/Page/Blog/BlogSecondDescriptionBox'
+		path: 'components/page/Blog/BlogSecondDescriptionBox'
 	},
 	{
 		name: 'BlogEasySlider',
-		path: 'components/Page/Blog/BlogEasySlider'
+		path: 'components/page/Blog/BlogEasySlider'
 	},
 	{
 		name: 'BlogBigImageAndTextBox',
-		path: 'components/Page/Blog/BlogBigImageAndTextBox'
+		path: 'components/page/Blog/BlogBigImageAndTextBox'
 	},
 	{
 		name: 'BlogDescriptionWithShare',
-		path: 'components/Page/Blog/BlogDescriptionWithShare'
+		path: 'components/page/Blog/BlogDescriptionWithShare'
 	},
 	{
 		name: 'BlogHead',
-		path: 'components/Page/Blog/BlogHead'
+		path: 'components/page/Blog/BlogHead'
 	},
 	{
 		name: 'BlogCubeSlider',
-		path: 'components/Page/Blog/BlogCubeSlider'
+		path: 'components/page/Blog/BlogCubeSlider'
 	},
 	{
 		name: 'BlogMoreStories',
-		path: 'components/Page/Blog/BlogMoreStories'
+		path: 'components/page/Blog/BlogMoreStories'
 	}
 ]

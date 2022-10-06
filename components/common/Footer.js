@@ -1,4 +1,4 @@
-import FaceBookIcon from 'components/icons/FaceBookIcon'
+import FacebookIcon from 'components/icons/FacebookIcon'
 import InstagramIcon from 'components/icons/InstagramIcon'
 import Logo from 'components/icons/Logo'
 import TwitterIcon from 'components/icons/TwitterIcon'
@@ -113,7 +113,7 @@ function Footer() {
 										<TwitterIcon />
 									</a>
 									<a href='#'>
-										<FaceBookIcon />
+										<FacebookIcon />
 									</a>
 								</div>
 							</div>

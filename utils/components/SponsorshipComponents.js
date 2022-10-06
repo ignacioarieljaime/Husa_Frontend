@@ -1,36 +1,36 @@
 module.exports.SponsorComponents = [
 	{
 		name: 'SponsorshipDescriptionGrayBg',
-		path: 'components/Page/Sponsorship/SponsorshipDescriptionGrayBg'
+		path: 'components/page/Sponsorship/SponsorshipDescriptionGrayBg'
 	},
 
 	{
 		name: 'SponsorshipVideoAndTextBox',
-		path: 'components/Page/Sponsorship/SponsorshipVideoAndTextBox'
+		path: 'components/page/Sponsorship/SponsorshipVideoAndTextBox'
 	},
 	{
 		name: 'SponsorshipBigImageAndText',
-		path: 'components/Page/Sponsorship/SponsorshipBigImageAndText'
+		path: 'components/page/Sponsorship/SponsorshipBigImageAndText'
 	},
 	{
 		name: 'SponsorshipImagesWithButton',
-		path: 'components/Page/Sponsorship/SponsorshipImagesWithButton'
+		path: 'components/page/Sponsorship/SponsorshipImagesWithButton'
 	},
 
 	{
 		name: 'SponsorshipTitleBox',
-		path: 'components/Page/Sponsorship/SponsorshipTitleBox'
+		path: 'components/page/Sponsorship/SponsorshipTitleBox'
 	},
 	{
 		name: 'SponsorshipTextGradient',
-		path: 'components/Page/Sponsorship/SponsorshipTextGradient'
+		path: 'components/page/Sponsorship/SponsorshipTextGradient'
 	},
 	{
 		name: 'SponsorImageAndText',
-		path: 'components/Page/Sponsorship/SponsorImageAndText'
+		path: 'components/page/Sponsorship/SponsorImageAndText'
 	},
 	{
 		name: 'SponsorImageAndLogo',
-		path: 'components/Page/Sponsorship/SponsorImageAndLogo'
+		path: 'components/page/Sponsorship/SponsorImageAndLogo'
 	}
 ]
