@@ -3,8 +3,8 @@ const data = require('./../page.json')
 const {
 	FindComponent,
 	GenerateComponentStructure
-} = require('./../Controller/ComponentController')
-const PageController = require('./../Controller/PageController')
+} = require('../controller/ComponentController')
+const PageController = require('../controller/PageController')
 
 // Axios.get('https://imcxm.exodusapi.influencedev.com/api/page/getPages', {
 // 	headers: {
