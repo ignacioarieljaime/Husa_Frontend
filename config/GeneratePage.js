@@ -1,9 +1,8 @@
 const Axios = require('axios').default
-const data = require('./../page.json')
-const {
-	PageGeneratorController
-} = require('../controller/PageGeneratorController')
 const PageController = require('./../controller/PageController')
+const { PageGeneratorController } = require('./../controller/PageGeneratorController')
+const data = require('./../page.json')
+
 
 const requestHandler = (async () => {
 	console.log('send request')
