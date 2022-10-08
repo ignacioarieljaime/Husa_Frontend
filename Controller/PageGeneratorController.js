@@ -15,7 +15,7 @@ ${ComponentList.map(
 function ${_page.name}({data}) {
 	const [components, setComponents] = useState([])
 	useEffect(() => {
-		let componentName = data.map(item => item.name)
+		let componentName = data.content.map(item => item.name)
 		setComponents(componentName)
 	}, [])
 
@@ -27,7 +27,7 @@ function ${_page.name}({data}) {
 			componentItem =>
 				`{components.includes('${componentItem.name}') && <${
 					componentItem.name
-				} data={data.find(item => item.name === '${componentItem.name}')}/>}`
+				} data={data.content.find(item => item.name === '${componentItem.name}')}/>}`
 		).join('')}</section>
 		</Layout>
 			
@@ -38,7 +38,7 @@ export async function getServerSideProps() {
 	console.log('send ssr request')
 	let data = await axios
 		.get(
-			'https://imcxm.exodusapi.influencedev.com/api/husa/getBlocksByPageId/${_page.id}'
+			'https://imcxm.exodusapi.influencedev.com/api/husa/getPageInfo/${_page.id}'
 		)
 		.then(response => {
 			console.log('get ssr data')

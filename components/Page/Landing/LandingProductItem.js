@@ -4,14 +4,19 @@ import React from 'react'
 // image
 import ProductImage from 'public/assets/images/home/tv.png'
 
-function LandingProductItem({ data: { title, link, image } }) {
+function LandingProductItem({ data: { image, link, title } }) {
 	return (
 		<div className='col-12 col-md-6'>
 			<figure>
 				<div>
 					<Link href={link.value} title={image.alt}>
 						<a className='img-link'>
-							<img src={image.src} alt={image.alt} width='65%' />
+							<img
+								src={image.src}
+								alt={image.alt}
+								title={image.title}
+								width='65%'
+							/>
 						</a>
 					</Link>
 				</div>

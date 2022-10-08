@@ -9,11 +9,12 @@ import 'swiper/css/pagination'
 
 // import required modules
 import { Navigation, Pagination } from 'swiper'
-// image
-import SliderImage from 'public/assets/images/home/home-carousel-item-1.jpg'
-import SliderResImage from 'public/assets/images/home/home-carousel-item-1-resp.jpg'
 
-function LandingSlider({ data: { props } }) {
+function LandingSlider({
+	data: {
+		structure: { list }
+	}
+}) {
 	return (
 		<>
 			<Swiper
@@ -21,28 +22,36 @@ function LandingSlider({ data: { props } }) {
 				pagination={true}
 				modules={[Navigation, Pagination]}
 				className='home-header-carousel lower-main'>
-				{/* {JSON.parse(props).data.map((item, index) => (
+				{list.value.map((item, index) => (
 					<SwiperSlide key={index}>
-						{' '}
 						<div className='carousel-item-wrapper'>
 							<img
-								src={item}
-								alt='featured image'
+								src={item.desktop.src}
+								alt={item.desktop.alt}
+								title={item.desktop.title}
 								className='main-img'
 								width='100%'
 								height='100%'
 							/>
+							{/* <img
+								src={item.tablet.src}
+								alt={item.tablet.alt}
+								title={item.tablet.title}
+								className='main-img'
+								width='100%'
+								height='100%'
+							/> */}
 							<img
-								src={item}
-								alt='featured image'
+								src={item.mobile.src}
+								alt={item.mobile.alt}
+								title={item.mobile.title}
 								className='responsive-img'
 								width='100%'
 								height='100%'
 							/>
-							<div className='text-box cursor-pointer'></div>
 						</div>
 					</SwiperSlide>
-				))} */}
+				))}
 			</Swiper>
 		</>
 	)
