@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/tv-and-audio/laser-tv-logo.png'
+import Image from 'public/assets/images/tv-and-audio/laser-tv-logo.png'
 
 function TvAndAudioLasterIntro() {
 	return (

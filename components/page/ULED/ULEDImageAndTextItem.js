@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/4k-uled/one-billione-colors-block.jpg'
+import Image from 'public/assets/images/4k-uled/one-billione-colors-block.jpg'
 
 function ULEDImageAndTextItem() {
 	return (

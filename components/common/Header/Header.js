@@ -4,18 +4,18 @@ import React, { useEffect, useState } from 'react'
 import HamburgerMenu from './HamburgerMenu'
 
 // image
-import ImageOne from './../../../public/assets/images/dropdown-tv-audio-1.png'
-import ImageTwo from './../../../public/assets/images/dropdown-tv-audio-2.png'
-import ImageThree from './../../../public/assets/images/dropdown-home-appliance-1.png'
-import ImageFour from './../../../public/assets/images/dropdown-home-appliance-2.png'
-import ImageFive from './../../../public/assets/images/dropdown-air-products-1.png'
-import ImageSix from './../../../public/assets/images/dropdown-air-products-2.png'
-import ImageSeven from './../../../public/assets/images/dropdown-air-products-3.png'
+import ImageOne from 'public/assets/images/dropdown-tv-audio-1.png'
+import ImageTwo from 'public/assets/images/dropdown-tv-audio-2.png'
+import ImageThree from 'public/assets/images/dropdown-home-appliance-1.png'
+import ImageFour from 'public/assets/images/dropdown-home-appliance-2.png'
+import ImageFive from 'public/assets/images/dropdown-air-products-1.png'
+import ImageSix from 'public/assets/images/dropdown-air-products-2.png'
+import ImageSeven from 'public/assets/images/dropdown-air-products-3.png'
 
 // icon
-import HamburgerMenuIcon from './../../icons/HamburgerMenuIcon'
-import Logo from './../../icons/Logo'
-import MagnifierIcon from './../../icons/MagnifierIcon'
+import HamburgerMenuIcon from 'components/icons/HamburgerMenuIcon'
+import Logo from 'components/icons/Logo'
+import MagnifierIcon from 'components/icons/MagnifierIcon'
 import SubMenuHeader from './SubMenuHeader'
 
 function Header({ themeCondition = false, isBlog = false }) {

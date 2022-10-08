@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Image from './../../../public/assets/images/smart-tv-android-descriptions.png'
+import Image from 'public/assets/images/smart-tv-android-descriptions.png'
 
 function SmartInfoTextAndImageBox() {
 	return (

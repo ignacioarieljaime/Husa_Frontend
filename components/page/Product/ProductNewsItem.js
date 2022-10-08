@@ -2,7 +2,7 @@ import React from 'react'
 
 
 // image
-import Image from "./../../../public/assets/images/tv-page/ultra-show.jpg"
+import Image from "public/assets/images/tv-page/ultra-show.jpg"
 
 function ProductNewsItem() {
 	return (

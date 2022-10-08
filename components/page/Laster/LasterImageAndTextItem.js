@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/laser-tv/big-screen.png'
+import Image from 'public/assets/images/laser-tv/big-screen.png'
 
 function LasterImageAndTextItem() {
 	return (

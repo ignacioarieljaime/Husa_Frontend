@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 // image
-import ProductImage from './../../../public/assets/images/home/tv.png'
+import ProductImage from 'public/assets/images/home/tv.png'
 
 function LandingProductItem() {
 	return (

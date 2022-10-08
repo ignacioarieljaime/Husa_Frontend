@@ -516,7 +516,7 @@ header .bg-light-orange-gradient {
 	margin-left: 4px;
 }
 .products-container .item .compare-btn {
-	background: url(./../../public/assets/svgs/compare-items.svg);
+	background: url(../../public/assets/svgs/compare-items.svg);
 	background-repeat: no-repeat;
 	background-size: 16px;
 	background-position: left;
@@ -532,7 +532,7 @@ header .bg-light-orange-gradient {
 	margin-bottom: 0;
 }
 .products-container .item .compare-btn:hover {
-	background: url(./../../public/assets/svgs/compare-items.svg);
+	background: url(../../public/assets/svgs/compare-items.svg);
 	background-repeat: no-repeat;
 	background-size: 16px;
 	background-position: left;
@@ -872,7 +872,7 @@ header .bg-light-orange-gradient {
 	overflow: hidden;
 }
 .form-container input.form-container-inner-input {
-	background: url(./../../public/assets/svgs/required-star.svg) no-repeat right center / 8px
+	background: url(../../public/assets/svgs/required-star.svg) no-repeat right center / 8px
 		auto;
 	padding-right: 12px;
 }
@@ -1358,7 +1358,7 @@ article:hover > .img-box-shadow-hover {
 }
 /* help */
 .support-help {
-	background: url(./../../public/assets/images/support/support-help-bg.jpg);
+	background: url(../../public/assets/images/support/support-help-bg.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	text-align: center;
@@ -1485,7 +1485,7 @@ article:hover > .img-box-shadow-hover {
 }
 .custom-checkbox [type='checkbox']:checked + label:after,
 .custom-checkbox [type='checkbox']:not(:checked) + label:after {
-	content: url(./../../public/assets/svgs/check-icon.svg);
+	content: url(../../public/assets/svgs/check-icon.svg);
 	width: 16px;
 	height: 16px;
 	position: absolute;
@@ -3274,28 +3274,28 @@ footer.footer {
 
 /* ////////////////////////////////// more tv ////////////////////////////////////////////////////// */
 .more-tv .blue-bg {
-	background: url(./../../public/assets/images/more-tv/blue-bg.jpg);
+	background: url(../../public/assets/images/more-tv/blue-bg.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .more-tv .blue-bg .bg-bubble-effect {
-	background: url(./../../public/assets/images/more-tv/bg-effect.png);
+	background: url(../../public/assets/images/more-tv/bg-effect.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .more-tv .blue-bg .bg-bubble-dim-effect {
-	background: url(./../../public/assets/images/more-tv/bg-dim-effect.png);
+	background: url(../../public/assets/images/more-tv/bg-dim-effect.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
 .more-tv .blue-bg .bg-single-bubble {
-	background: url(./../../public/assets/images/more-tv/bubble.png);
+	background: url(../../public/assets/images/more-tv/bubble.png);
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: right center;
 }
 .more-tv .blue-bg .bg-single-bubble .bg-joel-pointer {
-	background: url(./../../public/assets/images/more-tv/joel-pointer.png);
+	background: url(../../public/assets/images/more-tv/joel-pointer.png);
 	background-repeat: no-repeat;
 	background-size: auto;
 	background-position: right bottom;
@@ -3366,7 +3366,7 @@ footer.footer {
 }
 
 .more-tv .swiper .swiper-wrapper {
-	cursor: url(./../../public/assets/images/more-tv/cusror-drag-info.png) 64
+	cursor: url(../../public/assets/images/more-tv/cusror-drag-info.png) 64
 			43,
 		auto !important;
 }
@@ -3444,7 +3444,7 @@ footer.footer {
 /*////////////////////////////////////////// main ////////////////////////////////////*/
 /* header blog */
 .blog {
-	background-image: url(./../../public/assets/images/blog/Noise.png);
+	background-image: url(../../public/assets/images/blog/Noise.png);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -3772,7 +3772,7 @@ footer.footer {
 	height: 100%;
 }
 .blog .big-coverflow.swiper .swiper-wrapper {
-	cursor: url(./../../public/assets/images/blog/cursor-drag-dark.png) 64 43,
+	cursor: url(../../public/assets/images/blog/cursor-drag-dark.png) 64 43,
 		auto;
 }
 .blog .big-coverflow.swiper .swiper-pagination-bullets {

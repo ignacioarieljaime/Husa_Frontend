@@ -1,12 +1,12 @@
 import React from 'react'
 
 // image
-import Sample from './../../../public/assets/images/blog/sample.png'
-import Kids from './../../../public/assets/images/blog/kid.png'
-import Cake from './../../../public/assets/images/blog/cake.png'
-import Woman from './../../../public/assets/images/blog/woman.png'
-import Girl from './../../../public/assets/images/blog/girl.png'
-import Oranges from './../../../public/assets/images/blog/oranges.png'
+import Sample from 'public/assets/images/blog/sample.png'
+import Kids from 'public/assets/images/blog/kid.png'
+import Cake from 'public/assets/images/blog/cake.png'
+import Woman from 'public/assets/images/blog/woman.png'
+import Girl from 'public/assets/images/blog/girl.png'
+import Oranges from 'public/assets/images/blog/oranges.png'
 
 function BlogImageGalleryBox() {
 	return (

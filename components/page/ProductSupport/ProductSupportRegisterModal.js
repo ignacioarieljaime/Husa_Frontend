@@ -1,6 +1,6 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import useOutsideClick from './../../../hooks/useOutsideClick'
+import useOutsideClick from 'hooks/useOutsideClick'
 import React, { useRef } from 'react'
 
 function ProductSupportRegisterModal({ handler }) {

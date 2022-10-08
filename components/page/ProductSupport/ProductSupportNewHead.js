@@ -1,8 +1,8 @@
-import DownloadIcon from './../../icons/DownloadIcon'
+import DownloadIcon from 'components/icons/DownloadIcon'
 import React from 'react'
 
 // image
-import Tv from './../../../public/assets/images/uled-u6.png'
+import Tv from 'public/assets/images/uled-u6.png'
 
 function ProductSupportNewHead() {
 	return (

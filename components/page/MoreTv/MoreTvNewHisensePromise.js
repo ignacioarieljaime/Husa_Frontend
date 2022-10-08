@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/more-tv/hisense-sign.png'
+import Image from 'public/assets/images/more-tv/hisense-sign.png'
 
 function MoreTvNewHisensePromise() {
 	return (

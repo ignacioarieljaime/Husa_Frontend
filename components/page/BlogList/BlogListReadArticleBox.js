@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import HouseImage from './../../../public/assets/images/blog/house.png'
+import HouseImage from 'public/assets/images/blog/house.png'
 
 function BlogListReadArticleBox() {
 	return (

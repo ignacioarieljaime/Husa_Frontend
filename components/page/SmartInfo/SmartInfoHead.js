@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/smart-tv-header.png'
+import Image from 'public/assets/images/smart-tv-header.png'
 
 function SmartInfoHead() {
 	return (

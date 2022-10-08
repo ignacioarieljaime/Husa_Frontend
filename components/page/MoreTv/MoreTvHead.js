@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/more-tv/header-television.png'
+import Image from 'public/assets/images/more-tv/header-television.png'
 
 function MoreTvHead() {
 	return (

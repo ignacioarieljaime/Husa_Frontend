@@ -1,4 +1,4 @@
-import WerenchIcon from './../../icons/WerenchIcon'
+import WerenchIcon from 'components/icons/WerenchIcon'
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboardList, faQuestion } from '@fortawesome/free-solid-svg-icons'

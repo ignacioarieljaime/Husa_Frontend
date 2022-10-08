@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../../public/assets/images/ces-2022-smart-tv/color-banner.png'
+import Image from 'public/assets/images/ces-2022-smart-tv/color-banner.png'
 
 function ImageBoxWithPaddingAndBgBlack() {
 	return (

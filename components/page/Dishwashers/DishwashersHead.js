@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/all-dishwashers/dishwasher.jpg'
+import Image from 'public/assets/images/all-dishwashers/dishwasher.jpg'
 
 function DishwashersHead() {
 	return (

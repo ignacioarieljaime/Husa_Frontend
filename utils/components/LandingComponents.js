@@ -1,14 +1,14 @@
 module.exports.LandingComponents = [
 	{
 		name: 'LandingSlider',
-		path: './../components/page/Landing/LandingSlider'
+		path: 'components/page/Landing/LandingSlider'
 	},
 	{
 		name: 'LandingProductsBox',
-		path: './../components/page/Landing/LandingProductsBox'
+		path: 'components/page/Landing/LandingProductsBox'
 	},
 	{
 		name: 'LandingVideoPlayer',
-		path: './../components/page/Landing/LandingVideoPlayer.js'
+		path: 'components/page/Landing/LandingVideoPlayer.js'
 	}
 ]

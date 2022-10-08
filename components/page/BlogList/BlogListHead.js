@@ -1,8 +1,8 @@
 import React from 'react'
 
 // image
-import MiniTvImage from './../../../public/assets/images/blog/mini-tv-img.png'
-import SeaImage from './../../../public/assets/images/blog/sea.png'
+import MiniTvImage from 'public/assets/images/blog/mini-tv-img.png'
+import SeaImage from 'public/assets/images/blog/sea.png'
 
 function BlogListHead() {
 	return (

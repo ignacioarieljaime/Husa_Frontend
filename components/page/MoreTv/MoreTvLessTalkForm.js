@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import TvFlipped from './../../../public/assets/images/more-tv/tv-flipped.png'
+import TvFlipped from 'public/assets/images/more-tv/tv-flipped.png'
 
 function MoreTvLessTalkForm() {
 	return (

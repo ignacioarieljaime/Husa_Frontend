@@ -1,13 +1,13 @@
 import React from 'react'
 
 // image
-import HeaderTv from './../../../public/assets/images/more-tv/header-television.png'
-import halfTv from './../../../public/assets/images/more-tv/half-tv.png'
-import Quantum from './../../../public/assets/images/more-tv/quantum-item.png'
-import Dolby from './../../../public/assets/images/more-tv/dolby-item.png'
-import GoogleTv from './../../../public/assets/images/more-tv/google-tv-item.png'
-import FullArray from './../../../public/assets/images/more-tv/full-array-item.png'
-import VariableMotion from './../../../public/assets/images/more-tv/variable-motion-item.png'
+import HeaderTv from 'public/assets/images/more-tv/header-television.png'
+import halfTv from 'public/assets/images/more-tv/half-tv.png'
+import Quantum from 'public/assets/images/more-tv/quantum-item.png'
+import Dolby from 'public/assets/images/more-tv/dolby-item.png'
+import GoogleTv from 'public/assets/images/more-tv/google-tv-item.png'
+import FullArray from 'public/assets/images/more-tv/full-array-item.png'
+import VariableMotion from 'public/assets/images/more-tv/variable-motion-item.png'
 
 function MoreTvLessTalk() {
 	return (

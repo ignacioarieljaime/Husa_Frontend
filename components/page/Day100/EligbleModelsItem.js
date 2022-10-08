@@ -1,4 +1,4 @@
-import Tv from './../../../public/assets/images/100-day/tv.png'
+import Tv from 'public/assets/images/100-day/tv.png'
 const EligbleModelsItem = () => {
 	return (
 		<div className='item'>

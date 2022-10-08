@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/blog/desserts.png'
+import Image from 'public/assets/images/blog/desserts.png'
 
 function BlogBigImageAndTextBox() {
 	return (

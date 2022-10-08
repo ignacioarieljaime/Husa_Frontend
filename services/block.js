@@ -1,4 +1,4 @@
-import useFetch from '../hooks/useFetch'
+import useFetch from 'hooks/useFetch'
 const endPoint = '/block'
 
 export async function GetPageBlocks(navigate, pageId) {

@@ -1,7 +1,7 @@
-import HeaderBannerPng from './../../../public/assets/images/100-day/header-banner.png'
-import HeaderBannerSmallPng from './../../../public/assets/images/100-day/header-banner-small.png'
-import Logo from './../../icons/Logo'
-import GoogleTv from './../../../public/assets/images/100-day/googletv.png'
+import HeaderBannerPng from 'public/assets/images/100-day/header-banner.png'
+import HeaderBannerSmallPng from 'public/assets/images/100-day/header-banner-small.png'
+import Logo from 'components/icons/Logo'
+import GoogleTv from 'public/assets/images/100-day/googletv.png'
 
 function HeaderBanner() {
 	return (

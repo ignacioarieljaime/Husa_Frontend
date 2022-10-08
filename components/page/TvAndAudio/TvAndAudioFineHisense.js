@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/tv-and-audio/4k-uled.png'
+import Image from 'public/assets/images/tv-and-audio/4k-uled.png'
 
 // components
 import TvAndAudioFineHisenseItem from './TvAndAudioFineHisenseItem'

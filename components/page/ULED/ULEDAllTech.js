@@ -1,11 +1,11 @@
 import React from 'react'
 
 // image
-import FourKItem from './../../../public/assets/images/4k-uled/4k-item.png'
-import Color from './../../../public/assets/images/4k-uled/colors-item.png'
-import Dolby from './../../../public/assets/images/4k-uled/dolby-item.png'
-import Voice from './../../../public/assets/images/4k-uled/voice-remote-item.png'
-import Light from './../../../public/assets/images/4k-uled/light-item.png'
+import FourKItem from 'public/assets/images/4k-uled/4k-item.png'
+import Color from 'public/assets/images/4k-uled/colors-item.png'
+import Dolby from 'public/assets/images/4k-uled/dolby-item.png'
+import Voice from 'public/assets/images/4k-uled/voice-remote-item.png'
+import Light from 'public/assets/images/4k-uled/light-item.png'
 
 function ULEDAllTech() {
 	return (

@@ -1,12 +1,12 @@
 import React from 'react'
 
 // image
-import ImageOne from './../../../public/assets/svgs/support-televisions.svg'
-import ImageTwo from './../../../public/assets/svgs/support-refrigerators.svg'
-import ImageThree from './../../../public/assets/svgs/support-air-products.svg'
-import ImageFour from './../../../public/assets/svgs/support-soundbars.svg'
-import ImageFive from './../../../public/assets/svgs/support-dishwasher.svg'
-import ImageSix from './../../../public/assets/svgs/support-microwave-oven.svg'
+import ImageOne from 'public/assets/svgs/support-televisions.svg'
+import ImageTwo from 'public/assets/svgs/support-refrigerators.svg'
+import ImageThree from 'public/assets/svgs/support-air-products.svg'
+import ImageFour from 'public/assets/svgs/support-soundbars.svg'
+import ImageFive from 'public/assets/svgs/support-dishwasher.svg'
+import ImageSix from 'public/assets/svgs/support-microwave-oven.svg'
 
 function SupportNewCategoryBox() {
 	return (

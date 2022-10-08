@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/smart-tv-xclass-descriptions.png'
+import Image from 'public/assets/images/smart-tv-xclass-descriptions.png'
 
 function ContactUsInfo() {
 	return (

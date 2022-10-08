@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/company/company-header.jpg'
+import Image from 'public/assets/images/company/company-header.jpg'
 
 function CompanyHeaderIntro() {
 	return (

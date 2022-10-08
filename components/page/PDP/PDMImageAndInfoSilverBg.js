@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import ScreenSizeImage from './../../../public/assets/images/pdp/sizes.png'
+import ScreenSizeImage from 'public/assets/images/pdp/sizes.png'
 
 function PDMImageAndInfoSilverBg() {
 	return (

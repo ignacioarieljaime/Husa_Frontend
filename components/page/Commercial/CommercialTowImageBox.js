@@ -1,8 +1,8 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/commercial/commercial-refrigirator-1.jpg'
-import ImageTwo from './../../../public/assets/images/commercial/commercial-refrigirator-1.jpg'
+import Image from 'public/assets/images/commercial/commercial-refrigirator-1.jpg'
+import ImageTwo from 'public/assets/images/commercial/commercial-refrigirator-1.jpg'
 
 function CommercialTowImageBox() {
 	return (

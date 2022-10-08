@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/pdp/45png.png'
+import Image from 'public/assets/images/pdp/45png.png'
 
 function PDPImageAndInfoLightGrayBg() {
 	return (

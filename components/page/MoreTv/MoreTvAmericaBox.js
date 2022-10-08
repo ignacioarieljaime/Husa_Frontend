@@ -3,7 +3,7 @@ import { Doughnut, Pie } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 
 // image
-import Image from './../../../public/assets/images/more-tv/people-heat-map.png'
+import Image from 'public/assets/images/more-tv/people-heat-map.png'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 

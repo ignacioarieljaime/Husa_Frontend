@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/tv-and-audio/award-wining-television-lineup-banner.png'
+import Image from 'public/assets/images/tv-and-audio/award-wining-television-lineup-banner.png'
 
 function TvAndAudioHead() {
 	return (

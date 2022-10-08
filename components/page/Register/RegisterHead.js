@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Image from './../../../public/assets/images/support/support-bg.jpg'
+import Image from 'public/assets/images/support/support-bg.jpg'
 
 function RegisterHead() {
 	return (

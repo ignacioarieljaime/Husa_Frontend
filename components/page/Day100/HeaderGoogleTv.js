@@ -1,5 +1,5 @@
-import Logo from './../../icons/Logo'
-import GoogleTv from './../../../public/assets/images/100-day/googletv.png'
+import Logo from 'components/icons/Logo'
+import GoogleTv from 'public/assets/images/100-day/googletv.png'
 
 const HeaderGoogleTv = () => (
 	<section>

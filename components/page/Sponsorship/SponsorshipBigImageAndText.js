@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Image from './../../../public/assets/images/sponsership/stadium.png'
+import Image from 'public/assets/images/sponsership/stadium.png'
 
 function SponsorshipBigImageAndText() {
 	return (

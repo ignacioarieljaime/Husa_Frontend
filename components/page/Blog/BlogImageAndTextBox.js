@@ -1,8 +1,8 @@
 import React from 'react'
 
 // image
-import Dessert from './../../../public/assets/images/blog/desserts.png'
-import Cake from './../../../public/assets/images/blog/cake.png'
+import Dessert from 'public/assets/images/blog/desserts.png'
+import Cake from 'public/assets/images/blog/cake.png'
 
 
 function BlogImageAndTextBox() {

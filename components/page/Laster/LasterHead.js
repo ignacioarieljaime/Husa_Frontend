@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/laser-tv/lasertv-4k-logo.png'
+import Image from 'public/assets/images/laser-tv/lasertv-4k-logo.png'
 
 function LasterHead() {
 	return (

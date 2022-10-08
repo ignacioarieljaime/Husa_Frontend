@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Image from './../../../public/assets/images/tv-and-audio/three-tv-banner.png'
+import Image from 'public/assets/images/tv-and-audio/three-tv-banner.png'
 
 function TvAndAudioFindProduct() {
 	return (

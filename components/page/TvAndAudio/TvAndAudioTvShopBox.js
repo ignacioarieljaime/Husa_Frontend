@@ -1,7 +1,7 @@
 import React from 'react'
 
 // image
-import TvImage from './../../../public/assets/images/tv-and-audio/laser-tvs.png'
+import TvImage from 'public/assets/images/tv-and-audio/laser-tvs.png'
 
 // component
 import TvAndAudioTvShopItem from './TvAndAudioTvShopItem'

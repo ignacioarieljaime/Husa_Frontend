@@ -1,8 +1,8 @@
 import React from 'react'
 
 // image
-import Image from './../../../public/assets/images/pdp/45png.png'
-import Rectangle from './../../../public/assets/images/pdp/rectangle.png'
+import Image from 'public/assets/images/pdp/45png.png'
+import Rectangle from 'public/assets/images/pdp/rectangle.png'
 
 // component
 import CardImage from './PDPFeatureItem'

@@ -1,9 +1,9 @@
 import React from 'react'
 
 // image
-import HisenseFiFa from './../../../public/assets/images/sponsership/hisense-fifa.png'
-import Sweepstakes from './../../../public/assets/images/sponsership/sweepstakes.png'
-import Trip from './../../../public/assets/images/sponsership/win-a-trip.png'
+import HisenseFiFa from 'public/assets/images/sponsership/hisense-fifa.png'
+import Sweepstakes from 'public/assets/images/sponsership/sweepstakes.png'
+import Trip from 'public/assets/images/sponsership/win-a-trip.png'
 
 function SponsorshipImagesWithButton() {
 	return (

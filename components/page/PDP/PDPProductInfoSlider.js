@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // image
-import Image from './../../../public/assets/images/pdp/U6GR-front-shadow.png'
+import Image from 'public/assets/images/pdp/U6GR-front-shadow.png'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
