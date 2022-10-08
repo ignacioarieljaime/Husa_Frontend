@@ -2,7 +2,8 @@ const { Axios } = require('axios')
 const data = require('./../page.json')
 const {
 	FindComponent,
-	GenerateComponentStructure
+	GenerateComponentStructure,
+	GenerateAllComponentStructure
 } = require('../controller/ComponentController')
 const PageController = require('../controller/PageController')
 
@@ -26,3 +27,15 @@ data.response.forEach(page => {
 	let pageComponents = FindComponent(page.components)
 	PageController(page, GenerateComponentStructure(page, pageComponents))
 })
+
+PageController(
+	{
+		name: 'AllComponents',
+		isHome: false,
+		className: 'AllComponents',
+		meta: [],
+		dynamicRote: null,
+		pageRoute: './pages/AllComponents'
+	},
+	GenerateAllComponentStructure()
+)
