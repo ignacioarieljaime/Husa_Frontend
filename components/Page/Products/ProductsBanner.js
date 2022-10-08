@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import TvImage from 'public/assets/images/all-tvs/all-tvs-header.png'
 
-function ProductsHeadPage({ data: { props } }) {
+function ProductsBanner({ data: { props } }) {
 	return (
 		<div className='all-tvs-heading'>
 			<img
@@ -15,4 +15,4 @@ function ProductsHeadPage({ data: { props } }) {
 	)
 }
 
-export default ProductsHeadPage
+export default ProductsBanner
