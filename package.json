@@ -8,7 +8,7 @@
 		"removePages": "node ./config/RemovePages.js",
 		"dev": "npm run removePages && npm run generatePages &&  node ./server.js",
 		"build": "npm run removePages && npm run prebuild && npm run generatePages && next build",
-		"start": "node ./server.js",
+		"start": "cross-env NODE_ENV=production node ./server.js",
 		"lint": "next lint"
 	},
 	"dependencies": {
@@ -19,7 +19,6 @@
 		"axios": "^0.27.2",
 		"bootstrap": "^5.2.1",
 		"chart.js": "^3.9.1",
-		"cross-env": "^7.0.3",
 		"dotenv": "^16.0.2",
 		"express": "^4.18.1",
 		"file-saver": "^2.0.5",
@@ -37,6 +36,7 @@
 	},
 	"devDependencies": {
 		"autoprefixer": "^10.4.11",
+		"cross-env": "^7.0.3",
 		"eslint": "8.23.1",
 		"eslint-config-next": "12.3.0",
 		"postcss": "^8.4.16"
