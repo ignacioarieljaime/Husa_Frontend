@@ -20,7 +20,7 @@ function LandingProductItem() {
 					</Link>
 				</div>
 				<figcaption>
-					<p className='title'>TELEVISIONS</p>
+					<h4 className='title'>TELEVISIONS</h4>
 					<Link href='/Products'>
 						<a className='btn btn-outline-dark shop-btn'>SHOP NOW</a>
 					</Link>

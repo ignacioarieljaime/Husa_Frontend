@@ -12,3 +12,15 @@
 
 // base
 @import './base/global';
+
+// components
+//common
+@import './components/common/header.scss';
+@import './components/common/footer.scss';
+@import './components/common/newsSubscribe.scss';
+
+// landing
+@import './components/page/Landing/landingSlider.scss';
+@import './components/page/Landing/landingProducts.scss';
+@import './components/page/Landing/landingVideoPlayer.scss';
+
