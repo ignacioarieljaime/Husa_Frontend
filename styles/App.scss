@@ -18,9 +18,18 @@
 @import './components/common/header.scss';
 @import './components/common/footer.scss';
 @import './components/common/newsSubscribe.scss';
+@import './components/common/videoPlayer.scss';
+@import './components/common/videoIframe.scss';
 
 // landing
 @import './components/page/Landing/landingSlider.scss';
 @import './components/page/Landing/landingProducts.scss';
 @import './components/page/Landing/landingVideoPlayer.scss';
 
+// blog
+@import './components/page/Blog/blog.scss';
+@import './components/page/Blog/blogHead.scss';
+@import './components/page/Blog/blogDescriptionBox.scss';
+@import './components/page/Blog/blogImageGalleryBox.scss';
+@import './components/page/Blog/blogEasySlider.scss';
+@import './components/page/Blog/blogCubeSlider.scss';

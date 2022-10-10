@@ -5,7 +5,7 @@ import Image from 'public/assets/images/blog/woman.png'
 
 function BlogListSoundBardItem() {
 	return (
-		<div className='row align-items-center py-8 border-bottom mx-0 article-box'>
+		<div className='row align-items-center py-8 border-bottom mx-0 blog-article-box'>
 			<figure className='col-12 col-md-9 mb-0 px-0'>
 				<div className='row justify-content-between align-items-center'>
 					<div className='col-12 col-md-4 col-lg-3 mb-5 mb-md-0'>

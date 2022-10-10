@@ -10,7 +10,7 @@ function BlogListLittleReadArticleBox() {
 			<div className='container'>
 				<div className='row justify-content-between align-items-start pb-0 pb-md-20'>
 					<div className='col-12 col-md-4 mb-20'>
-						<figure className='article-box'>
+						<figure className='blog-article-box'>
 							<div className='image-box'>
 								<a href='#'>
 									<img
@@ -46,7 +46,7 @@ function BlogListLittleReadArticleBox() {
 						</figure>
 					</div>
 					<div className='col-12 col-md-6 mb-20'>
-						<figure className='article-box'>
+						<figure className='blog-article-box'>
 							<div className='image-box'>
 								<a href='#'>
 									<img

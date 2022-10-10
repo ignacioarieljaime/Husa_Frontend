@@ -38,7 +38,7 @@ function Header({ themeCondition = false, isBlog = false }) {
 			<nav
 				style={{ transitionDelay: '2s' }}
 				className={`navbar navbar-expand justify-content-center  ${
-					themeCondition ? 'theme-light' : ' theme-dark'
+					themeCondition ? 'theme-light' : ' theme-light'
 				} top-nav py-4 px-sm-4 fixed-top flex-wrap ${
 					!topNavCondition && 'search-mode'
 				} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
@@ -457,14 +457,14 @@ function Header({ themeCondition = false, isBlog = false }) {
 						<input placeholder='SEARCH' className='search-box' type='text' />
 					</form>
 				</div>
-				{isBlog && <SubMenuHeader />}
+				<SubMenuHeader />
 			</nav>
 
-			<div className='container-fluid home-top-advertisement'>
+			{/* <div className='container-fluid home-top-advertisement'>
 				<a href='https://www.hisense-usa.com/product-safety-recall'>
 					Recall Information: French Door Refrigerator
 				</a>
-			</div>
+			</div> */}
 			<HamburgerMenu asideMenu={asideMenu} />
 		</header>
 	)

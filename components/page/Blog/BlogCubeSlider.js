@@ -43,7 +43,7 @@ function BlogCubeSlider() {
 						}}
 						pagination={pagination}
 						modules={[EffectCoverflow, Pagination]}
-						className='big-coverflow my-20'>
+						className='blog-big-coverflow my-20'>
 						<SwiperSlide>
 							<div className='row align-items-center px-10'>
 								<div className='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>

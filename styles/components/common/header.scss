@@ -35,20 +35,22 @@ header.blog {
 		transition: all 0.3s;
 	}
 
-	.bg-light-orange-gradient-light {
-		background: radial-gradient(
-			44.68% 678.49% at 18.49% 76.76%,
-			rgba(67, 137, 138, 0.04) 0%,
-			rgba(255, 153, 0, 0.04) 100%
-		);
-	}
-
-	.bg-light-orange-gradient {
-		background: radial-gradient(
-			44.68% 678.49% at 18.49% 76.76%,
-			rgba(67, 137, 138, 0.1) 0%,
-			rgba(255, 153, 0, 0.1) 100%
-		);
+	.theme-light {
+		&:hover {
+			.stories-row {
+				* {
+					color: #fff;
+				}
+			}
+			input {
+				&::placeholder {
+					color: #fff;
+				}
+			}
+			.dropdown-menu {
+				background: #000;
+			}
+		}
 	}
 }
 

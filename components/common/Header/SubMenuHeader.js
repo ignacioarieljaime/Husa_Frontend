@@ -13,7 +13,7 @@ function SubMenuHeader() {
 			<div class='row pt-4 mx-0 border-top w-100 stories-row'>
 				<div class='col-12 col-md-7 px-0 fs-5'>
 					Scroll for Stories & Inspiration from
-					<span class='text-primary-dark'>Hisense</span>
+					<span class='text-primary-dark ms-2'>Hisense</span>
 				</div>
 				<div class='col-12 col-md-5 px-0'>
 					<div class='row justify-content-start justify-content-md-end align-items-center'>
