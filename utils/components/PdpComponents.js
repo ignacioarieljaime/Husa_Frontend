@@ -1,54 +1,54 @@
 module.exports.PdpComponents = [
 	{
 		name: 'PDPProductInfoSliderAndText',
-		path: 'components/page/PDP/PDPProductInfoSliderAndText'
+		path: 'components/Page/PDP/PDPProductInfoSliderAndText'
 	},
 	{
 		name: 'PDPNavBar',
-		path: 'components/page/PDP/PDPNavBar'
+		path: 'components/Page/PDP/PDPNavBar'
 	},
 	{
 		name: 'PDPImageAndInfoGrayBg',
-		path: 'components/page/PDP/PDPImageAndInfoGrayBg'
+		path: 'components/Page/PDP/PDPImageAndInfoGrayBg'
 	},
 	{
 		name: 'PDPVideoBox',
-		path: 'components/page/PDP/PDPVideoBox'
+		path: 'components/Page/PDP/PDPVideoBox'
 	},
 	{
 		name: 'PDPImageAndInfoDarkBg',
-		path: 'components/page/PDP/PDPImageAndInfoDarkBg'
+		path: 'components/Page/PDP/PDPImageAndInfoDarkBg'
 	},
 	{
 		name: 'PDPImageAndInfoLightGrayBg',
-		path: 'components/page/PDP/PDPImageAndInfoLightGrayBg'
+		path: 'components/Page/PDP/PDPImageAndInfoLightGrayBg'
 	},
 	{
 		name: 'PDMImageAndInfoSilverBg',
-		path: 'components/page/PDP/PDMImageAndInfoSilverBg'
+		path: 'components/Page/PDP/PDMImageAndInfoSilverBg'
 	},
 	{
 		name: 'PDPTopFeatures',
-		path: 'components/page/PDP/PDPTopFeatures'
+		path: 'components/Page/PDP/PDPTopFeatures'
 	},
 	{
 		name: 'PDPDescriptionSliderWithDarkGray',
-		path: 'components/page/PDP/PDPDescriptionSliderWithDarkGray'
+		path: 'components/Page/PDP/PDPDescriptionSliderWithDarkGray'
 	},
 	{
 		name: 'PDPTextAndLongImageBox',
-		path: 'components/page/PDP/PDPTextAndLongImageBox'
+		path: 'components/Page/PDP/PDPTextAndLongImageBox'
 	},
 	{
 		name: 'PDPReviewsAndAwards',
-		path: 'components/page/PDP/PDPReviewsAndAwards'
+		path: 'components/Page/PDP/PDPReviewsAndAwards'
 	},
 	{
 		name: 'PDPReadyToBuyBox',
-		path: 'components/page/PDP/PDPReadyToBuyBox'
+		path: 'components/Page/PDP/PDPReadyToBuyBox'
 	},
 	{
 		name: 'PDPChooseULEDTvBox',
-		path: 'components/page/PDP/PDPChooseULEDTvBox'
+		path: 'components/Page/PDP/PDPChooseULEDTvBox'
 	}
 ]

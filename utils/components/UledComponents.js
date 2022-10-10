@@ -1,30 +1,30 @@
 module.exports.UledComponents = [
 	{
 		name: 'ULEDHead',
-		path: 'components/page/ULED/ULEDHead'
+		path: 'components/Page/ULED/ULEDHead'
 	},
 	{
 		name: 'ULEDProducts',
-		path: 'components/page/ULED/ULEDProducts'
+		path: 'components/Page/ULED/ULEDProducts'
 	},
 	{
 		name: 'ULEDTextBox',
-		path: 'components/page/ULED/ULEDTextBox'
+		path: 'components/Page/ULED/ULEDTextBox'
 	},
 	{
 		name: 'ULEDImageBoxWithBtn',
-		path: 'components/page/ULED/ULEDImageBoxWithBtn'
+		path: 'components/Page/ULED/ULEDImageBoxWithBtn'
 	},
 	{
 		name: 'ULEDAllTech',
-		path: 'components/page/ULED/ULEDAllTech'
+		path: 'components/Page/ULED/ULEDAllTech'
 	},
 	{
 		name: 'ULEDImageAndTextBox',
-		path: 'components/page/ULED/ULEDImageAndTextBox'
+		path: 'components/Page/ULED/ULEDImageAndTextBox'
 	},
 	{
 		name: 'ULEDGreatTvTextBox',
-		path: 'components/page/ULED/ULEDGreatTvTextBox'
+		path: 'components/Page/ULED/ULEDGreatTvTextBox'
 	}
 ]

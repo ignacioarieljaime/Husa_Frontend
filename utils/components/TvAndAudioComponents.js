@@ -1,30 +1,30 @@
 module.exports.TvAndAudioComponents = [
 	{
 		name: 'TvAndAudioHead',
-		path: 'components/page/TvAndAudio/TvAndAudioHead'
+		path: 'components/Page/TvAndAudio/TvAndAudioHead'
 	},
 	{
 		name: 'TvAndAudioTvShopBox',
-		path: 'components/page/TvAndAudio/TvAndAudioTvShopBox'
+		path: 'components/Page/TvAndAudio/TvAndAudioTvShopBox'
 	},
 	{
 		name: 'TvAndAudioIntro',
-		path: 'components/page/TvAndAudio/TvAndAudioIntro'
+		path: 'components/Page/TvAndAudio/TvAndAudioIntro'
 	},
 	{
 		name: 'TvAndAudioLasterIntro',
-		path: 'components/page/TvAndAudio/TvAndAudioLasterIntro'
+		path: 'components/Page/TvAndAudio/TvAndAudioLasterIntro'
 	},
 	{
 		name: 'TvAndAudioSmartChoice',
-		path: 'components/page/TvAndAudio/TvAndAudioSmartChoice'
+		path: 'components/Page/TvAndAudio/TvAndAudioSmartChoice'
 	},
 	{
 		name: 'TvAndAudioFineHisense',
-		path: 'components/page/TvAndAudio/TvAndAudioFineHisense'
+		path: 'components/Page/TvAndAudio/TvAndAudioFineHisense'
 	},
 	{
 		name: 'TvAndAudioFindProduct',
-		path: 'components/page/TvAndAudio/TvAndAudioFindProduct'
+		path: 'components/Page/TvAndAudio/TvAndAudioFindProduct'
 	}
 ]

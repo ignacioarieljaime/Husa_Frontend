@@ -1,18 +1,18 @@
 module.exports.LasterComponents = [
 	{
 		name: 'LasterHead',
-		path: 'components/page/Laster/LasterHead'
+		path: 'components/Page/Laster/LasterHead'
 	},
 	{
 		name: 'LasterImageAndTextBox',
-		path: 'components/page/Laster/LasterImageAndTextBox'
+		path: 'components/Page/Laster/LasterImageAndTextBox'
 	},
 	{
 		name: 'LasterTitleAndSubTitleBox',
-		path: 'components/page/Laster/LasterTitleAndSubTitleBox'
+		path: 'components/Page/Laster/LasterTitleAndSubTitleBox'
 	},
 	{
 		name: 'LasterFinedWithImage',
-		path: 'components/page/Laster/LasterFinedWithImage'
+		path: 'components/Page/Laster/LasterFinedWithImage'
 	}
 ]

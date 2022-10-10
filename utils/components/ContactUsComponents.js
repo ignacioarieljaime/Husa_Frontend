@@ -1,22 +1,22 @@
 module.exports.ContactUsComponents = [
 	{
 		name: 'ContactUsHead',
-		path: 'components/page/ContactUs/ContactUsHead'
+		path: 'components/Page/ContactUs/ContactUsHead'
 	},
 	{
 		name: 'ContactUsForm',
-		path: 'components/page/ContactUs/ContactUsForm'
+		path: 'components/Page/ContactUs/ContactUsForm'
 	},
 	{
 		name: 'ContactUsNewHead',
-		path: 'components/page/ContactUs/ContactUsNewHead'
+		path: 'components/Page/ContactUs/ContactUsNewHead'
 	},
 	{
 		name: 'ContactUsNewForm',
-		path: 'components/page/ContactUs/ContactUsNewForm'
+		path: 'components/Page/ContactUs/ContactUsNewForm'
 	},
 	{
 		name: 'ContactUsPhoneUs',
-		path: 'components/page/ContactUs/ContactUsPhoneUs'
+		path: 'components/Page/ContactUs/ContactUsPhoneUs'
 	}
 ]

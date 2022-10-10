@@ -1,14 +1,14 @@
 module.exports.CommercialComponents = [
 	{
 		name: 'CommercialIntro',
-		path: 'components/page/Commercial/CommercialIntro'
+		path: 'components/Page/Commercial/CommercialIntro'
 	},
 	{
 		name: 'CommercialTowImageBox',
-		path: 'components/page/Commercial/CommercialTowImageBox'
+		path: 'components/Page/Commercial/CommercialTowImageBox'
 	},
 	{
 		name: 'CommercialBecomeAPartner',
-		path: 'components/page/Commercial/CommercialBecomeAPartner'
+		path: 'components/Page/Commercial/CommercialBecomeAPartner'
 	}
 ]

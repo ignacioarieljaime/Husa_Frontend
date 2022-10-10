@@ -1,30 +1,30 @@
 module.exports.SupportComponents = [
 	{
 		name: 'SupportHeadIntro',
-		path: 'components/page/Support/SupportHeadIntro'
+		path: 'components/Page/Support/SupportHeadIntro'
 	},
 	{
 		name: 'SupportCovidBox',
-		path: 'components/page/Support/SupportCovidBox'
+		path: 'components/Page/Support/SupportCovidBox'
 	},
 	{
 		name: 'SupportCategoryBox',
-		path: 'components/page/Support/SupportCategoryBox'
+		path: 'components/Page/Support/SupportCategoryBox'
 	},
 	{
 		name: 'SupportNewHead',
-		path: 'components/page/Support/SupportNewHead'
+		path: 'components/Page/Support/SupportNewHead'
 	},
 	{
 		name: 'SupportNewCategoryBox',
-		path: 'components/page/Support/SupportNewCategoryBox'
+		path: 'components/Page/Support/SupportNewCategoryBox'
 	},
 	{
 		name: 'SupportOurSupport',
-		path: 'components/page/Support/SupportOurSupport'
+		path: 'components/Page/Support/SupportOurSupport'
 	},
 	{
 		name: 'SupportNeedAssistance',
-		path: 'components/page/Support/SupportNeedAssistance'
+		path: 'components/Page/Support/SupportNeedAssistance'
 	}
 ]
