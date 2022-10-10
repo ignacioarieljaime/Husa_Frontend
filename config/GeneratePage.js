@@ -9,7 +9,7 @@ const requestHandler = (async () => {
 	console.log('send request')
 	try {
 		let response = await Axios.get(
-			'https://imcxm.exodusapi.influencedev.com/api/husa/getPages'
+			'https://imcxm.dev-api.hisenseportal.com/api/husa/getPages'
 		)
 		console.log('get data')
 		response.data.data.forEach(page => {

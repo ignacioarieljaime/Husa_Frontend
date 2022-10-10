@@ -3656,6 +3656,10 @@ footer.footer {
 	position: relative;
 	overflow: hidden;
 	border-radius: 10px;
+
+	iframe{
+		position: absolute;
+	}
 }
 .video-container video {
 	width: 100%;
