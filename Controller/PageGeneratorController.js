@@ -15,7 +15,7 @@ ${ComponentList.map(
 function ${_page.title}({data}) {
 	const [components, setComponents] = useState([])
 	useEffect(() => {
-		let componentName = data.content.map(item => item.name)
+		let componentName = data ? data.content.map(item => item.name) : []
 		setComponents(componentName)
 	}, [])
 
