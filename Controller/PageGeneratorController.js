@@ -12,7 +12,7 @@ ${ComponentList.map(
 ).join(';')}
 
 
-function ${_page.name}({data}) {
+function ${_page.title}({data}) {
 	const [components, setComponents] = useState([])
 	useEffect(() => {
 		let componentName = data.content.map(item => item.name)
@@ -51,7 +51,7 @@ export async function getServerSideProps() {
 
 	return { props: { data } }
 }
-export default ${_page.name}`
+export default ${_page.title}`
 }
 
 module.exports = {

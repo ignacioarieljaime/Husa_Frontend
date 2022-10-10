@@ -8,7 +8,7 @@ import { GetProductByFilterApi } from 'services/Product'
 import FilterAside from './FilterAside'
 import ProductsItem from './ProductsItem'
 
-function ProductsListAndAside() {
+function ProductGrid() {
 	const [products, setProducts] = useState([])
 	const [filter, setFilter] = useState([])
 	const router = useRouter()
@@ -61,4 +61,4 @@ function ProductsListAndAside() {
 	)
 }
 
-export default ProductsListAndAside
+export default ProductGrid
