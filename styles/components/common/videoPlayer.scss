@@ -1,4 +1,4 @@
-.blog .video-container video:hover {
+.blog-video-container video:hover {
 	transform: rotate(1.12deg) scale(1.035);
 }
 .video-container {
@@ -62,12 +62,12 @@
 }
 
 @media (max-width: 768px) {
-	.blog .video-container .play-btn {
+	.blog-video-container .play-btn {
 		padding: 25px 28px;
 	}
 
-	.blog .video-container .playing:hover + .play-btn:hover,
-	.blog .video-container .play-btn:hover {
+	.blog-video-container .playing:hover + .play-btn:hover,
+	.blog-video-container .play-btn:hover {
 		padding: 35px 38px;
 	}
 }

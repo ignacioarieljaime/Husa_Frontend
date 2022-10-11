@@ -869,6 +869,10 @@
 					"name": "BlogListReadArticleBox",
 					"props": {},
 					"data": "hello"
+				},{
+					"name": "BlogListWithBigTitleAndLittleItem",
+					"props": {},
+					"data": "hello"
 				}
 			]
 		},

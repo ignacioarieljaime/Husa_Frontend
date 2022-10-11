@@ -45,17 +45,18 @@ input {
 	}
 }
 
+.btn-outline-dark {
+	transition: all 0.3s ease-in-out;
+}
+.btn-outline-dark.green-hover {
+	&:hover {
+		background-color: #43898a !important;
+		border-color: #43898a !important;
+		color: #fff;
+	}
+}
+
 @media (max-width: 768px) {
-	.btn-outline-dark.green-hover {
-		background-color: #43898a !important;
-		border-color: #43898a !important;
-		color: #fff;
-	}
-	.btn-outline-dark.green-hover {
-		background-color: #43898a !important;
-		border-color: #43898a !important;
-		color: #fff;
-	}
 	.btn-primary-dark-hover:hover {
 		opacity: 0.7;
 	}

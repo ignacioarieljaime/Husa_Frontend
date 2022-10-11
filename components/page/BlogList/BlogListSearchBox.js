@@ -14,7 +14,7 @@ function BlogListSearchBox() {
 				<div className='row mb-9 pt-9 mx-0 border-top'>
 					<div className='col-12 col-md-7 py-3 px-0 fs-5'>
 						Scroll for Stories & Inspiration from
-						<span className='text-primary-dark'>Hisense</span>
+						<span className='text-primary-dark ms-2'>Hisense</span>
 					</div>
 					<div className='col-12 col-md-5 py-3 px-0'>
 						<div className='row justify-content-start justify-content-md-end align-items-center'>

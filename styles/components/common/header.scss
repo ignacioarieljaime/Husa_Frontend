@@ -3,37 +3,6 @@ header.blog {
 	h1 {
 		display: none;
 	}
-	.search-articles {
-		background: transparent;
-		border: none;
-		font-weight: 400;
-		font-size: 18px;
-		color: #101010;
-		width: 100px;
-
-		&:focus,
-		&:focus-visible {
-			background: transparent !important;
-			outline: none;
-
-			&::placeholder {
-				color: #10101071;
-			}
-		}
-
-		&::placeholder {
-			font-weight: 400;
-			font-size: 18px;
-			color: #101010;
-		}
-	}
-
-	.search-articles-btn {
-		background: transparent;
-		border: none;
-		border-radius: 10px;
-		transition: all 0.3s;
-	}
 
 	.theme-light {
 		&:hover {
@@ -52,6 +21,37 @@ header.blog {
 			}
 		}
 	}
+}
+.search-articles {
+	background: transparent;
+	border: none;
+	font-weight: 400;
+	font-size: 18px;
+	color: #101010;
+	width: 100px;
+
+	&:focus,
+	&:focus-visible {
+		background: transparent !important;
+		outline: none;
+
+		&::placeholder {
+			color: #10101071;
+		}
+	}
+
+	&::placeholder {
+		font-weight: 400;
+		font-size: 18px;
+		color: #101010;
+	}
+}
+
+.search-articles-btn {
+	background: transparent;
+	border: none;
+	border-radius: 10px;
+	transition: all 0.3s;
 }
 
 /* header secondary */
