@@ -763,11 +763,6 @@
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvGetReal",
-					"props": {},
-					"data": "hello"
-				},
-				{
 					"name": "MoreTvLessTalk",
 					"props": {},
 					"data": "hello"

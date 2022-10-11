@@ -9,7 +9,7 @@ function SupportNewHead() {
 			<div className='heading support-heading'>
 				<img src={Image.src} alt='featured image' width='100%' />
 				<div className='heading-text'>
-					<h1>Hisense Support</h1>
+					<h3>Hisense Support</h3>
 				</div>
 			</div>
 		</section>

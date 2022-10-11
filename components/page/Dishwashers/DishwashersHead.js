@@ -14,7 +14,7 @@ function DishwashersHead() {
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h1 className='fw-normal fs-3x'>Dishwashers</h1>
+					<h3 className='fw-normal fs-3x'>Dishwashers</h3>
 				</div>
 			</div>
 		</section>

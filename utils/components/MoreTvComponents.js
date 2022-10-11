@@ -1,5 +1,5 @@
 module.exports.MoreTvComponents = [
-    {
+	{
 		name: 'MoreTvHead',
 		path: 'components/page/MoreTv/MoreTvHead'
 	},
@@ -15,10 +15,7 @@ module.exports.MoreTvComponents = [
 		name: 'MoreTvAmericaBox',
 		path: 'components/page/MoreTv/MoreTvAmericaBox'
 	},
-	{
-		name: 'MoreTvGetReal',
-		path: 'components/page/MoreTv/MoreTvGetReal'
-	},
+
 	{
 		name: 'MoreTvLessTalk',
 		path: 'components/page/MoreTv/MoreTvLessTalk'
