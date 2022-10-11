@@ -9,7 +9,7 @@ function BlogListReadArticleBox() {
 			<div className='container'>
 				<div className='row mb-20 pb-0 pb-md-20'>
 					<div className='col-12'>
-						<figure className='article-box'>
+						<figure className='blog-article-box'>
 							<div className='header-secondary image-box'>
 								<a href='#'>
 									<img

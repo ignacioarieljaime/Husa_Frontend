@@ -113,7 +113,7 @@ function Footer() {
 										<TwitterIcon />
 									</a>
 									<a href='#'>
-										<FaceBookIcon />
+										<FacebookIcon />
 									</a>
 								</div>
 							</div>

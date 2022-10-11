@@ -38,7 +38,7 @@ function Header({ themeCondition = false, isBlog = false }) {
 			<nav
 				style={{ transitionDelay: '2s' }}
 				className={`navbar navbar-expand justify-content-center  ${
-					themeCondition ? 'theme-light' : ' theme-dark'
+					themeCondition ? 'theme-light' : ' theme-light'
 				} top-nav py-4 px-sm-4 fixed-top flex-wrap ${
 					!topNavCondition && 'search-mode'
 				} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
@@ -49,6 +49,7 @@ function Header({ themeCondition = false, isBlog = false }) {
 							className='navbar-brand m-0 col-xl-4 text-start'>
 							<Logo />
 						</a>
+						<h1>Hisense</h1>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
 							<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
 								<a className='nav-link' href='#'>
@@ -456,7 +457,7 @@ function Header({ themeCondition = false, isBlog = false }) {
 						<input placeholder='SEARCH' className='search-box' type='text' />
 					</form>
 				</div>
-				{isBlog && <SubMenuHeader />}
+				{/* <SubMenuHeader /> */}
 			</nav>
 
 			{/* <div className='container-fluid home-top-advertisement'>

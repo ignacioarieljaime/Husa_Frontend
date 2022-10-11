@@ -1,3 +1,5 @@
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import BlogListLittleReadArticleBox from './BlogListLittleReadArticleBox'
 
@@ -17,11 +19,11 @@ function BlogListWithBigTitleAndLittleItem() {
 					</a>
 				</div>
 				<BlogListLittleReadArticleBox />
-				<BlogListLittleReadArticleBox />
 
 				<div className='container text-center mb-20 pb-0 pb-md-20'>
 					<button className='btn btn-outline-dark green-hover btn-primary-dark-hover px-6 py-3 rounded-5 text-uppercase'>
-						load more <i className='fa-solid fa-sm fa-chevron-down ms-3'></i>
+						<span className='me-3'>load more </span>
+						<FontAwesomeIcon icon={faChevronDown} size={"sm"}  />
 					</button>
 				</div>
 			</div>

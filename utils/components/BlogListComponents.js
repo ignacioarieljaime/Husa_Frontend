@@ -18,5 +18,9 @@ module.exports.BlogListComponents = [
 	{
 		name: 'BlogListSoundBarItemsBox',
 		path: 'components/page/BlogList/BlogListSoundBarItemsBox'
+	},
+	{
+		name: 'BlogListWithBigTitleAndLittleItem',
+		path: 'components/page/BlogList/BlogListWithBigTitleAndLittleItem'
 	}
 ]

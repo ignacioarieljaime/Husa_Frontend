@@ -15,7 +15,7 @@ function BlogVideoBox() {
 	return (
 		<section>
 			<div className='container'>
-				<div className='video-container'>
+				<div className='video-container blog-video-container'>
 					<video ref={video} id='blog-video' width='100%' height='100%'>
 						<source
 							src='http://techslides.com/demos/sample-videos/small.mp4'
