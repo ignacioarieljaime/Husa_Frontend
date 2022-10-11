@@ -1,22 +1,22 @@
 module.exports.BlogListComponents = [
 	{
 		name: 'BlogListHead',
-		path: 'components/Page/BlogList/BlogListHead'
+		path: 'components/page/BlogList/BlogListHead'
 	},
 	{
 		name: 'BlogListSearchBox',
-		path: 'components/Page/BlogList/BlogListSearchBox'
+		path: 'components/page/BlogList/BlogListSearchBox'
 	},
 	{
 		name: 'BlogListReadArticleBox',
-		path: 'components/Page/BlogList/BlogListReadArticleBox'
+		path: 'components/page/BlogList/BlogListReadArticleBox'
 	},
 	{
 		name: 'BlogListLittleReadArticleBox',
-		path: 'components/Page/BlogList/BlogListLittleReadArticleBox'
+		path: 'components/page/BlogList/BlogListLittleReadArticleBox'
 	},
 	{
 		name: 'BlogListSoundBarItemsBox',
-		path: 'components/Page/BlogList/BlogListSoundBarItemsBox'
+		path: 'components/page/BlogList/BlogListSoundBarItemsBox'
 	}
 ]

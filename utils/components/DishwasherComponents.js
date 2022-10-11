@@ -1,6 +1,6 @@
 module.exports.DishwasherComponents = [
 	{
 		name: 'DishwashersHead',
-		path: 'components/Page/Dishwashers/DishwashersHead'
+		path: 'components/page/Dishwashers/DishwashersHead'
 	}
 ]

@@ -1,14 +1,14 @@
 module.exports.CompanyComponents = [
 	{
 		name: 'CompanyHeaderIntro',
-		path: 'components/Page/Company/CompanyHeaderIntro'
+		path: 'components/page/Company/CompanyHeaderIntro'
 	},
 	{
 		name: 'CompanyNavBar',
-		path: 'components/Page/Company/CompanyNavBar'
+		path: 'components/page/Company/CompanyNavBar'
 	},
 	{
 		name: 'CompanyInfo',
-		path: 'components/Page/Company/CompanyInfo'
+		path: 'components/page/Company/CompanyInfo'
 	}
 ]
