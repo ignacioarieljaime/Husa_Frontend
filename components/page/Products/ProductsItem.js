@@ -1,9 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
 
-// image
-import ProductImage from 'public/assets/images/hisense-u8-uled-4k/related-product-item-1.png'
-
 function ProductsItem({ data }) {
 	let { brand, image, name, model, id, order } = data
 	return (
