@@ -4,7 +4,7 @@ import CESSliderBox from './CESSliderBox'
 function CESHomeImageAndText() {
 	return (
 		<section>
-			<div className='bg-gradient-dark py-5 py-md-20'>
+			<div className='ces-bg-gradient-dark py-5 py-md-20'>
 				<div className='container py-md-10'>
 					<div className='row align-items-center'>
 						<div className='col-12 col-md-6 text-white'>

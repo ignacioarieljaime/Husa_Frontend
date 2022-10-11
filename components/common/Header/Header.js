@@ -457,7 +457,7 @@ function Header({ themeCondition = false, isBlog = false }) {
 						<input placeholder='SEARCH' className='search-box' type='text' />
 					</form>
 				</div>
-				<SubMenuHeader />
+				{/* <SubMenuHeader /> */}
 			</nav>
 
 			{/* <div className='container-fluid home-top-advertisement'>
