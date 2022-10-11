@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProductBanner({
+function ProductsBanner({
 	data: {
 		structure: { image }
 	}
@@ -12,4 +12,4 @@ function ProductBanner({
 	)
 }
 
-export default ProductBanner
+export default ProductsBanner

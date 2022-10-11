@@ -57,6 +57,7 @@ function FilterAside({ filterHandler, filter }) {
 									<div
 										key={`filter-${filter.filter_name}-${filter.filter_type_id}`}>
 										<h4>{filter.filter_name}</h4>
+						
 										<ul ref={checkboxWrapper} className='filter-list'>
 											{filter.filter_values.map((item, index) => (
 												<ProductFilterAideItem

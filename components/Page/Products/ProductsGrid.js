@@ -8,7 +8,11 @@ import { GetProductByFilterApi } from 'services/Product'
 import FilterAside from './FilterAside'
 import ProductsItem from './ProductsItem'
 
-function ProductGrid() {
+function ProductsGrid({
+	data: {
+		structure: { category }
+	}
+}) {
 	const [products, setProducts] = useState([])
 	const [filter, setFilter] = useState([])
 	const router = useRouter()
@@ -20,7 +24,7 @@ function ProductGrid() {
 		setProducts('loading')
 		try {
 			let response = await axios.get(
-				'https://impim.dev-api.hisenseportal.com/api/cms/getProducts/4'
+				`https://impim.dev-api.hisenseportal.com/api/cms/getProducts/${category.value}`
 			)
 			setProducts(response.data.data)
 		} catch (error) {
@@ -61,4 +65,4 @@ function ProductGrid() {
 	)
 }
 
-export default ProductGrid
+export default ProductsGrid

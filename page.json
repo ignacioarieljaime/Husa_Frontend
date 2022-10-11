@@ -33,12 +33,12 @@
 			"pageRoute": "./pages/Products",
 			"components": [
 				{
-					"name": "ProductBanner",
+					"name": "ProductsBanner",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "ProductGrid",
+					"name": "ProductsGrid",
 					"props": {},
 					"data": "hello"
 				}

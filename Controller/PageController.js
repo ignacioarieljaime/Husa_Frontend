@@ -13,6 +13,7 @@ module.exports = async (page, content) => {
 				: (route = page.route)
 		}
 	}
+
 	if (route === '/') {
 		fs.writeFile(`./pages/index.js`, content, err => {
 			if (err) {
@@ -20,7 +21,7 @@ module.exports = async (page, content) => {
 			}
 		})
 	} else if (!fs.existsSync(route)) {
-		await fs.mkdirSync(`./pages/${route}`)
+		await fs.mkdirSync(`./pages/${route}`, { recursive: true })
 		fs.writeFile(`./pages/${route}/index.js`, content, err => {
 			if (err) {
 				console.error(err)
