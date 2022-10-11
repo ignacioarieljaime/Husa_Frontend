@@ -1,10 +1,10 @@
 module.exports.ProductsComponents = [
 	{
-		name: 'ProductsHeadPage',
-		path: 'components/page/Products/ProductsHeadPage'
+		name: 'ProductsBanner',
+		path: 'components/page/Products/ProductsBanner'
 	},
 	{
-		name: 'ProductsListAndAside',
-		path: 'components/page/Products/ProductsListAndAside'
+		name: 'ProductsGrid',
+		path: 'components/page/Products/ProductsGrid'
 	}
 ]
