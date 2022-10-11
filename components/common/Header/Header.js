@@ -38,7 +38,7 @@ function Header({ themeCondition = false, isBlog = false }) {
 			<nav
 				style={{ transitionDelay: '2s' }}
 				className={`navbar navbar-expand justify-content-center  ${
-					themeCondition ? 'theme-light' : ' theme-light'
+					themeCondition ? 'theme-light' : ' theme-dark'
 				} top-nav py-4 px-sm-4 fixed-top flex-wrap ${
 					!topNavCondition && 'search-mode'
 				} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
