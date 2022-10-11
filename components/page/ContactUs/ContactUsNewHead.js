@@ -14,7 +14,7 @@ function ContactUsNewHead() {
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h1 className='mw-50 mx-auto'>Contact Us</h1>
+					<h3 className='mw-50 mx-auto'>Contact Us</h3>
 				</div>
 			</div>
 		</section>
