@@ -2,7 +2,7 @@ import React from 'react'
 
 function CompanyNavBar() {
 	return (
-		<div className='catalog-navbar bg-black'>
+		<div className='catalog-navbar company bg-black'>
 			<nav>
 				<ul className='row justify-content-center justify-content-md-end align-items-center p-0 m-0'>
 					<li>

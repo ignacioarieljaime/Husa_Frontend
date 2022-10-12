@@ -1797,8 +1797,6 @@ article:hover > .img-box-shadow-hover {
 
 /* //////////////////////////// commercial ///////////////////////////////////////////////////////////////////////////////// */
 
-
-
 .contact.new .form-container input.form-container-inner-input {
 	background: none;
 	padding-right: 12px;
@@ -1977,59 +1975,6 @@ article:hover > .img-box-shadow-hover {
 @media (max-width: 768px) {
 	.support.new .supports > div:nth-child(n + 2) {
 		border-left: none;
-	}
-}
-/* ///////////////////////////// company ////////////////////////////////////////////////////////////////////////////////////////////// */
-/* header */
-
-.company .catalog-navbar {
-	position: relative;
-}
-.company .catalog-navbar ul li {
-	text-transform: uppercase;
-	text-align: center;
-}
-.company .catalog-navbar ul li:last-child {
-	padding: 14px 20px;
-}
-.company .catalog-navbar .underline-on-hover:after {
-	background-color: var(--primary-color);
-}
-@media (max-width: 768px) {
-	.company .catalog-navbar ul li {
-		width: 100%;
-	}
-}
-
-/* about-company */
-.company .about-company {
-	padding: 40px 23%;
-}
-.company .about-company article {
-	color: #292929;
-}
-.company .about-company h2 {
-	text-transform: uppercase;
-	-webkit-hyphens: manual;
-	-ms-hyphens: manual;
-	hyphens: manual;
-	font-weight: 600;
-}
-.company .about-company h3 {
-	font-weight: 500;
-	font-size: 33px;
-	line-height: 36px;
-	margin: 45px 0;
-}
-.company .about-company h4 {
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 30px;
-	margin: 24px 0;
-}
-@media (max-width: 991px) {
-	.company .about-company {
-		padding: 40px 24px;
 	}
 }
 /* /////////////////////////////////////contact //////////////////////////////////////////////////////////////////////////////// */
