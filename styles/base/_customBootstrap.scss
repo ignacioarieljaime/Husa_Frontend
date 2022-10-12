@@ -1979,34 +1979,6 @@ article:hover > .img-box-shadow-hover {
 }
 /* /////////////////////////////////////contact //////////////////////////////////////////////////////////////////////////////// */
 
-/* contact info */
-.contact .contact-info h1 {
-	text-align: center;
-	font-size: 42px;
-	line-height: 48px;
-	text-transform: uppercase;
-	color: #292929;
-	margin-bottom: 48px;
-}
-.contact .contact-info ul {
-	list-style: none;
-}
-.contact .contact-info ul:last-child {
-	margin-top: 30px;
-}
-.contact .contact-info ul li,
-.contact .contact-info ul li a {
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 30px;
-	text-decoration: none;
-}
-@media (max-width: 575px) {
-	.contact .contact-info ul {
-		padding: 0 20%;
-	}
-}
-
 /* //////////////////////////////////// faq /////////////////////////////////////////////////////////////////////////////// */
 
 .faq .single-color-header {
