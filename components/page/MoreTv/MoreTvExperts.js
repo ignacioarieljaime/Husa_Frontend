@@ -14,19 +14,19 @@ function MoreTvExperts() {
 				<div className='container-fluid px-md-8 py-10 py-md-20'>
 					<div className='row'>
 						<div className='col-12 col-md-6 pe-lg-10 mb-20 mb-md-0'>
-							<h2 className='fs-3tx fw-normal'>
+							<h4 className='fs-3tx fw-normal'>
 								The experts agree.
 								<span className='d-block'>We make awesome TVs.</span>
-							</h2>
+							</h4>
 							<img src={Badge.src} alt='featured image' className='banner-logo' />
 						</div>
 						<div className='col-12 col-md-6 ps-lg-10'>
 							<div className='mb-10'>
 								<div className='position-relative px-20'>
 									<span className='double-quote start'>“</span>
-									<h3 className='fs-2hx fw-normal text-center'>
+									<h5 className='fs-2hx fw-normal text-center'>
 										Best Budget TV for watching sports
-									</h3>
+									</h5>
 									<span className='double-quote end'>“</span>
 								</div>
 								<div className='text-center'>
@@ -36,9 +36,9 @@ function MoreTvExperts() {
 							<div className='mb-10'>
 								<div className='position-relative px-20'>
 									<span className='double-quote start'>“</span>
-									<h3 className='fs-2hx fw-normal text-center'>
+									<h5 className='fs-2hx fw-normal text-center'>
 										In a class all of its own
-									</h3>
+									</h5>
 									<span className='double-quote end'>“</span>
 								</div>
 								<div className='text-center'>
@@ -48,9 +48,9 @@ function MoreTvExperts() {
 							<div className='mb-10'>
 								<div className='position-relative px-20'>
 									<span className='double-quote start'>“</span>
-									<h3 className='fs-2hx fw-normal text-center'>
+									<h5 className='fs-2hx fw-normal text-center'>
 										Dazzlingly bright and full of features
-									</h3>
+									</h5>
 									<span className='double-quote end'>“</span>
 								</div>
 								<div className='text-center'>

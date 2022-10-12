@@ -21,6 +21,9 @@
 @import './components/common/videoPlayer.scss';
 @import './components/common/videoIframe.scss';
 @import './components/common/headingBanner';
+@import './components/common/checkbox';
+@import './components/common/input';
+
 
 // landing
 @import './components/page/Landing/landingSlider.scss';
@@ -50,6 +53,9 @@
 
 // Faq
 @import './components/page/Faq/Faq';
+
+// Faq
+@import './components/page/MoreTv/moreTv';
 
 // Ces Home Application
 @import './components/page/CesHomeApplication/CESHomeNavBar';

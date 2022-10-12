@@ -102,7 +102,7 @@ function ContactUsNewForm() {
 								<li>
 									<label
 										className='option'
-										for='marketing'
+										htmlFor='marketing'
 										aria-hidden='aria-hidden'>
 										marketing or PR
 									</label>
@@ -110,7 +110,7 @@ function ContactUsNewForm() {
 								<li>
 									<label
 										className='option'
-										for='customer-support'
+										htmlFor='customer-support'
 										aria-hidden='aria-hidden'>
 										Customer Support
 									</label>
@@ -118,7 +118,7 @@ function ContactUsNewForm() {
 								<li>
 									<label
 										className='option'
-										for='human-resources'
+										htmlFor='human-resources'
 										aria-hidden='aria-hidden'>
 										Human Resources
 									</label>

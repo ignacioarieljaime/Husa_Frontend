@@ -62,7 +62,7 @@ function ServiceSupportForm() {
 					<span className='input-error'>This field is required.</span>
 				</div>
 				<div className='col-12 mb-10 file-upload'>
-					<label for='file-upload'>
+					<label htmlFor='file-upload'>
 						SUPPORTING PHOTOS OR IMAGES OF THE PROBLEM
 					</label>
 					<span>Max 3 Images (Optional)</span>

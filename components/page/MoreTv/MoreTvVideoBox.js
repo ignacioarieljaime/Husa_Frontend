@@ -5,7 +5,7 @@ function MoreTvVideoBox() {
 		<section>
 			<div className='container-fluid py-9 text-center'>
 				<h2 className='fs-1 fw-normal mb-9'>Watch the video</h2>
-				<div className='video-container'>
+				<div className='video-container more-tv-video-container'>
 					<div className='video-wrapper'>
 						<iframe
 							width='100%'
@@ -14,7 +14,7 @@ function MoreTvVideoBox() {
 							title='YouTube video player'
 							frameborder='0'
 							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-							allowfullscreen></iframe>
+							allowFullScreen></iframe>
 					</div>
 				</div>
 				<h3 className='fs-3hx fw-normal'>

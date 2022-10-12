@@ -24,30 +24,30 @@ function CustomSelectBox({ required = false, title }) {
 			</div>
 			<ul className='select-box-list'>
 				<li>
-					<label className='option' for='tv' aria-hidden='aria-hidden'>
+					<label className='option' htmlFor='tv' aria-hidden='aria-hidden'>
 						Televisions
 					</label>
 				</li>
 				<li>
 					<label
 						className='option'
-						for='refrigeration'
+						htmlFor='refrigeration'
 						aria-hidden='aria-hidden'>
 						Refrigeration
 					</label>
 				</li>
 				<li>
-					<label className='option' for='air' aria-hidden='aria-hidden'>
+					<label className='option' htmlFor='air' aria-hidden='aria-hidden'>
 						Air Products
 					</label>
 				</li>
 				<li>
-					<label className='option' for='soundbars' aria-hidden='aria-hidden'>
+					<label className='option' htmlFor='soundbars' aria-hidden='aria-hidden'>
 						Soundbars
 					</label>
 				</li>
 				<li>
-					<label className='option' for='dishwashers' aria-hidden='aria-hidden'>
+					<label className='option' htmlFor='dishwashers' aria-hidden='aria-hidden'>
 						Dishwashers
 					</label>
 				</li>

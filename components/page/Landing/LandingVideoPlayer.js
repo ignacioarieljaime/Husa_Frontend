@@ -10,7 +10,7 @@ function LandingVideoPlayer() {
 				height='100%'
 				frameborder='0'
 				allow='autoplay; fullscreen'
-				allowfullscreen=''
+				allowFullScreen=''
 				data-ready='true'></iframe>
 		</div>
 	)

@@ -24,7 +24,7 @@ function ULEDImageBoxWithBtn() {
 									className='switch-button'
 									id='jarg-switch'
 								/>
-								<label for='jarg-switch'></label>
+								<label htmlFor='jarg-switch'></label>
 								<span className='jarg-off'>JARGOFF</span>
 							</div>
 						</div>
