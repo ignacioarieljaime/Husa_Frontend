@@ -1795,51 +1795,7 @@ article:hover > .img-box-shadow-hover {
 	}
 }
 
-/* //////////////////////////// commercial ///////////////////////////////////////////////////////////////////////////////// */
 
-.contact.new .form-container input.form-container-inner-input {
-	background: none;
-	padding-right: 12px;
-}
-.contact.new .support-type {
-	background: #fff;
-	padding: 45px 0;
-	text-align: center;
-	color: #000;
-	border: 1px solid #000;
-	transition: all 0.2s ease;
-	cursor: pointer;
-}
-.contact.new .support-type:hover {
-	background: var(--primary-color);
-	color: #fff;
-	border: 1px solid var(--primary-color);
-}
-.contact.new .tab-btn::after {
-	bottom: -22px;
-	height: 3px;
-}
-
-.contact.new .contact-info > div:nth-child(n + 2) {
-	border-left: 1px solid #000;
-}
-.contact.new .contact-info > div img {
-	max-width: 80px;
-}
-.contact.new .contact-info > div:nth-child(n + 2) p::after {
-	content: '';
-	display: block;
-	width: 100%;
-	height: 4px;
-	background-color: var(--primary-color);
-	position: relative;
-}
-
-@media (max-width: 768px) {
-	.contact.new .contact-info > div:nth-child(n + 2) {
-		border-left: none;
-	}
-}
 /* /////////////////////////////support ////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* category */

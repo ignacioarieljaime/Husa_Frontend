@@ -283,6 +283,11 @@
 					"name": "ContactUsPhoneUs",
 					"props": {},
 					"data": "hello"
+				},
+				{
+					"name": "ContactUsAboutHisense",
+					"props": {},
+					"data": "hello"
 				}
 			]
 		},

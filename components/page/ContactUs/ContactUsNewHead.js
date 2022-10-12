@@ -6,7 +6,7 @@ import Image from 'public/assets/images/4k-uled/heading.jpg'
 function ContactUsNewHead() {
 	return (
 		<section>
-			<div className='heading'>
+			<div className='heading heading-contact-us'>
 				<img
 					src={Image.src}
 					alt='smart tv platforms'

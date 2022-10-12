@@ -1,10 +1,8 @@
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CustomInput from 'components/common/Input'
 import CustomSelectBox from 'components/common/selectBox'
 import React from 'react'
 
-function GeneralInquiriesForm() {
+function GeneralInquiriesForm({ btnClass }) {
 	return (
 		<form
 			action=''
@@ -33,7 +31,9 @@ function GeneralInquiriesForm() {
 				<span className='input-error'>This field is required.</span>
 			</div>
 			<div className='col-12 text-center'>
-				<button type='submit' className='form-submit-btn'>
+				<button
+					type='submit'
+					className={btnClass ? btnClass : 'form-submit-btn'}>
 					SUBMIT
 				</button>
 			</div>

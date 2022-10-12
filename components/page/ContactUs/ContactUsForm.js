@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 // components
-import GeneralInquiriesForm from './GeneralInquiriesForm'
+import GeneralInquiriesForm from './GeneralInquiriesForm1'
 import ServiceSupportForm from './ServiceSupportForm'
 
 function ContactUsForm() {
