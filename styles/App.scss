@@ -22,7 +22,6 @@
 @import './components/common/videoIframe.scss';
 @import './components/common/headingBanner';
 
-
 // landing
 @import './components/page/Landing/landingSlider.scss';
 @import './components/page/Landing/landingProducts.scss';
@@ -39,10 +38,10 @@
 // blog list
 @import './components/page/Blog/BlogListHead.scss';
 
+// commercial
+@import './components/page/commercial/Commercial';
+
 // Ces Home Application
 @import './components/page/CesHomeApplication/CESHomeNavBar';
 @import './components/page/CesHomeApplication/CESHomeImageAndText';
 @import './components/page/CesHomeApplication/CESProductCarousel';
-
-
-

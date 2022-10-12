@@ -484,13 +484,6 @@
 #back-to-top-button:hover {
 	background: var(--primary-color);
 }
-/* black banner */
-.black-banner {
-	background: #141414;
-}
-.black-banner p {
-	max-width: 800px;
-}
 
 /* custom select box */
 
@@ -1804,13 +1797,7 @@ article:hover > .img-box-shadow-hover {
 
 /* //////////////////////////// commercial ///////////////////////////////////////////////////////////////////////////////// */
 
-.commercial .contact-banner {
-	color: #292929;
-}
-.commercial .contact-banner p {
-	font-size: 18px !important;
-	font-weight: 400 !important;
-}
+
 
 .contact.new .form-container input.form-container-inner-input {
 	background: none;

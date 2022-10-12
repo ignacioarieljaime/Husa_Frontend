@@ -77,6 +77,14 @@ input {
 	}
 }
 
+/* black banner */
+.black-banner {
+	background: #141414;
+	p {
+		max-width: 800px;
+	}
+}
+
 @media (max-width: 768px) {
 	.article {
 		h2,
