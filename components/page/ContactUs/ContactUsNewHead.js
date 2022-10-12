@@ -6,7 +6,7 @@ import Image from 'public/assets/images/4k-uled/heading.jpg'
 function ContactUsNewHead() {
 	return (
 		<section>
-			<div className='heading'>
+			<div className='heading heading-contact-us'>
 				<img
 					src={Image.src}
 					alt='smart tv platforms'
@@ -14,7 +14,7 @@ function ContactUsNewHead() {
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h1 className='mw-50 mx-auto'>Contact Us</h1>
+					<h3 className='mw-50 mx-auto'>Contact Us</h3>
 				</div>
 			</div>
 		</section>

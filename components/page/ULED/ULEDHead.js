@@ -14,10 +14,10 @@ function ULEDHead() {
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h1 className='mw-50 mx-auto'>
+					<h3 className='mw-50 mx-auto'>
 						<span className='d-block'>Let’s get real.</span>
 						These are the TVs your old TV should be worried about.
-					</h1>
+					</h3>
 					<a href='#' className='btn btn-light text'>
 						See the range
 					</a>

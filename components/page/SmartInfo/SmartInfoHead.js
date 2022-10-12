@@ -9,7 +9,7 @@ function SmartInfoHead() {
 			<div className='heading'>
 				<img src={Image.src} alt='smart tv platforms' width='100%' height='100%' />
 				<div className='heading-text'>
-					<h1>Smart TV made simple</h1>
+					<h3>Smart TV made simple</h3>
 					<a href='#' className='btn btn-light text'>
 						See the range
 					</a>

@@ -8,7 +8,7 @@ function CommercialIntro() {
 					<article className='article text-center'>
 						<h2 className='text-white mb-6'>
 							Hisense - A World Leader
-							<span className='text-primary'>in Refrigeration</span>
+							<span className='text-primary ms-2'>in Refrigeration</span>
 						</h2>
 						<div>
 							<p className='text-white m-auto'>

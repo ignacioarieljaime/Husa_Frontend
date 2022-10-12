@@ -9,7 +9,7 @@ function SupportHeadIntro() {
 			<div className='heading support-heading'>
 				<img src={Image.src} alt='featured image' width='100%' />
 				<div className='heading-text'>
-					<h1>SUPPORT</h1>
+					<h3>SUPPORT</h3>
 					<p className='text text-white fs-5 px-3 p-sm-0'>
 						Download Manuals, Firmware and access our Self-Support Center for
 						answers to questions about your product.

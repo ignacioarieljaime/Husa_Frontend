@@ -6,14 +6,14 @@ import Image from 'public/assets/images/more-tv/header-television.png'
 function MoreTvHead() {
 	return (
 		<section>
-			<div className='blue-bg'>
+			<div className='blue-bg-more-tv '>
 				<div className='container-fluid bg-bubble-effect px-md-8 py-20'>
 					<div className='row align-items-center overflow-hidden'>
 						<div className='col-12 col-md-6'>
-							<h1 className='header-texts'>
-								<span className='d-block text-gradient'>Less talk.</span>
+							<h4 className='header-texts'>
+								<span className='d-block text-gradient-more-tv'>Less talk.</span>
 								More TV.
-							</h1>
+							</h4>
 							<p className='fs-5 text-white fw-normal mb-7'>
 								8 in 10 Americans believe a brand should invest in products, not
 								ads.

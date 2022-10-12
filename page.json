@@ -283,6 +283,11 @@
 					"name": "ContactUsPhoneUs",
 					"props": {},
 					"data": "hello"
+				},
+				{
+					"name": "ContactUsAboutHisense",
+					"props": {},
+					"data": "hello"
 				}
 			]
 		},
@@ -759,11 +764,6 @@
 				},
 				{
 					"name": "MoreTvAmericaBox",
-					"props": {},
-					"data": "hello"
-				},
-				{
-					"name": "MoreTvGetReal",
 					"props": {},
 					"data": "hello"
 				},

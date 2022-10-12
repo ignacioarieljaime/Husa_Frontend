@@ -1,0 +1,41 @@
+/* custom-checkbox */
+.custom-checkbox [type='checkbox']:checked + label,
+.custom-checkbox [type='checkbox']:not(:checked) + label {
+	position: relative;
+	padding-left: 35px;
+	cursor: pointer;
+	line-height: 28px;
+	display: inline-block;
+}
+.custom-checkbox [type='checkbox']:checked + label:before,
+.custom-checkbox [type='checkbox']:not(:checked) + label:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 28px;
+	height: 28px;
+	border: 1px solid #ddd;
+	background: transparent;
+}
+.custom-checkbox [type='checkbox']:checked + label:after,
+.custom-checkbox [type='checkbox']:not(:checked) + label:after {
+	content: url(../../../public/assets/svgs/check-icon.svg);
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	top: 8px;
+	left: 6px;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+.custom-checkbox [type='checkbox']:not(:checked) + label:after {
+	opacity: 0;
+	-webkit-transform: scale(0);
+	transform: scale(0);
+}
+.custom-checkbox [type='checkbox']:checked + label:after {
+	opacity: 1;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}

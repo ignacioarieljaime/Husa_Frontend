@@ -21,7 +21,7 @@ function MoreTvAmericaBox() {
 
 	return (
 		<section>
-			<div className='blue-bg'>
+			<div className='blue-bg-more-tv'>
 				<div className='bg-single-bubble pt-20 text-center text-white'>
 					<h2 className='fw-normal fs-3hx mb-7'>Lets get real</h2>
 					<h3 className='fw-normal fs-2'>
@@ -29,11 +29,11 @@ function MoreTvAmericaBox() {
 					</h3>
 					<div className='bg-joel-pointer pb-20 px-md-8'>
 						<div className='container-fluid'>
-							<div className='row justify-content-center justify-content-md-start charts-align'>
+							<div className='row justify-content-center justify-content-md-start charts-align-more-tv'>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
 										<Doughnut data={data} width={297} height={297} />
-										<p className='mb-3 lh-1 text-start text-gradient fs-4x fw-bolder-700'>
+										<p className='mb-3 lh-1 text-start text-gradient-more-tv fs-4x fw-bolder-700'>
 											60<span className='fs-2hx'>%</span>
 										</p>
 										<p className='fw-normal'>
@@ -44,7 +44,7 @@ function MoreTvAmericaBox() {
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
 										<Pie data={data}  width={297} height={297} />
-										<p className='mb-3 lh-1 text-start text-gradient fs-4x fw-bolder-700'>
+										<p className='mb-3 lh-1 text-start text-gradient-more-tv fs-4x fw-bolder-700'>
 											8<span className='fs-2hx'>/10</span>
 										</p>
 										<p className='fw-normal'>
@@ -54,11 +54,11 @@ function MoreTvAmericaBox() {
 									</div>
 								</div>
 							</div>
-							<div className='row align-items-end justify-content-center justify-content-md-start charts-align'>
+							<div className='row align-items-end justify-content-center justify-content-md-start charts-align-more-tv'>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
 										<Pie data={data} width={297} height={297}  />
-										<p className='mb-3 lh-1 text-start text-gradient fs-4x fw-bolder-700'>
+										<p className='mb-3 lh-1 text-start text-gradient-more-tv fs-4x fw-bolder-700'>
 											61<span className='fs-2hx'>%</span> v 4
 											<span className='fs-2hx'>%</span>
 										</p>
@@ -73,10 +73,10 @@ function MoreTvAmericaBox() {
 										<img
 											src={Image.src}
 											alt='featured image'
-											className='people-heat-map'
+											className='people-heat-map-more-tv'
 										/>
 										<div className='mt-auto'>
-											<p className='mb-3 lh-1 text-start text-gradient fs-4x fw-bolder-700'>
+											<p className='mb-3 lh-1 text-start text-gradient-more-tv fs-4x fw-bolder-700'>
 												80<span className='fs-2hx'>%</span>
 											</p>
 											<p className='fw-normal'>

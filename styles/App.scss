@@ -22,6 +22,8 @@
 @import './components/common/videoPlayer.scss';
 @import './components/common/videoIframe.scss';
 @import './components/common/headingBanner';
+@import './components/common/checkbox';
+@import './components/common/input';
 
 
 // landing
@@ -39,6 +41,22 @@
 
 // blog list
 @import './components/page/Blog/BlogListHead.scss';
+
+// commercial
+@import './components/page/commercial/Commercial';
+
+// company
+@import './components/page/Company/CompanyNavBar';
+@import './components/page/Company/CompanyInfo';
+
+// contact
+@import './components/page/ContactUs/ContactUs';
+
+// Faq
+@import './components/page/Faq/Faq';
+
+// Faq
+@import './components/page/MoreTv/moreTv';
 
 // Ces Home Application
 @import './components/page/CesHomeApplication/CESHomeNavBar';

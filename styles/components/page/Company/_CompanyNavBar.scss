@@ -1,0 +1,28 @@
+.catalog-navbar.company {
+	position: relative;
+
+	ul {
+		li {
+			text-transform: uppercase;
+			text-align: center;
+
+			&:last-child {
+				padding: 14px 20px;
+			}
+		}
+	}
+	.underline-on-hover {
+        &:hover{
+            background-color: transparent !important;
+        }
+		&::after {
+			background-color: var(--primary-color) !important;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.catalog-navbar ul li {
+		width: 100%;
+	}
+}

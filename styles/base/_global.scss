@@ -70,3 +70,44 @@ input {
 		-o-transform: rotate(360deg);
 	}
 }
+
+/* black banner */
+.black-banner {
+	background: #141414;
+	p {
+		max-width: 800px;
+	}
+}
+
+@media (max-width: 768px) {
+	.article {
+		h2,
+		h3 {
+			font-size: 32px !important;
+		}
+		p,
+		li {
+			font-size: 14px !important;
+		}
+	}
+}
+
+.bg-light-orange-gradient-light {
+	background: radial-gradient(
+		44.68% 678.49% at 18.49% 76.76%,
+		rgba(67, 137, 138, 0.04) 0%,
+		rgba(255, 153, 0, 0.04) 100%
+	);
+}
+
+.bg-light-orange-gradient {
+	background: radial-gradient(
+		44.68% 678.49% at 18.49% 76.76%,
+		rgba(67, 137, 138, 0.1) 0%,
+		rgba(255, 153, 0, 0.1) 100%
+	);
+}
+
+.modal {
+	background: rgba(0, 0, 0, 0.3) !important;
+}

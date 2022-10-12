@@ -9,7 +9,7 @@ function LasterImageAndTextItem() {
 			<article className='article text-start'>
 				<img src={Image.src} alt='featured image' width='100%' />
 				<div className='px-4 text-center'>
-					<h2 className='fs-2 mb-3 mt-13'>100" to 120" Screen</h2>
+					<h4 className='fs-2 mb-3 mt-13'>100" to 120" Screen</h4>
 					<p className='fw-normal m-auto mb-4'>
 						Bigger is Better. Experience all your favorite content on a screen
 						that's 4X bigger than a 55" TV. TV this big makes old favorites feel

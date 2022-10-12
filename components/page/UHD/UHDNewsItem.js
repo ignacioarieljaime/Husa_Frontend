@@ -14,7 +14,7 @@ function UHDNewsItem() {
 					className='img-box-shadow-hover'
 				/>
 				<div className='px-4 divider-border position-relative'>
-					<h2 className='fs-2 mb-3 mt-13'>Start streaming with Roku TV</h2>
+					<h4 className='fs-2 mb-3 mt-13'>Start streaming with Roku TV</h4>
 					<p className='fw-normal m-auto mb-4'>
 						It’s easy to watch what you love with a Hisense 4K Roku TV. Search
 						by title, actor or director to stream for free or at the lowest cost

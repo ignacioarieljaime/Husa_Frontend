@@ -103,32 +103,32 @@ function RegisterForm() {
 						</div>
 						<ul className='select-box-list'>
 							<li>
-								<label className='option' for='tv' aria-hidden='aria-hidden'>
+								<label className='option' htmlFor='tv' aria-hidden='aria-hidden'>
 									Televisions
 								</label>
 							</li>
 							<li>
 								<label
 									className='option'
-									for='refrigeration'
+									htmlFor='refrigeration'
 									aria-hidden='aria-hidden'>
 									Refrigeration
 								</label>
 							</li>
 							<li>
-								<label className='option' for='air' aria-hidden='aria-hidden'>
+								<label className='option' htmlFor='air' aria-hidden='aria-hidden'>
 									Air Products
 								</label>
 							</li>
 							<li>
-								<label className='option' for='soundbars' aria-hidden='aria-hidden'>
+								<label className='option' htmlFor='soundbars' aria-hidden='aria-hidden'>
 									Soundbars
 								</label>
 							</li>
 							<li>
 								<label
 									className='option'
-									for='dishwashers'
+									htmlFor='dishwashers'
 									aria-hidden='aria-hidden'>
 									Dishwashers
 								</label>
@@ -171,7 +171,7 @@ function RegisterForm() {
 						</div>
 						<ul className='select-box-list'>
 							<li>
-								<label className='option' for='none' aria-hidden='aria-hidden'>
+								<label className='option' htmlFor='none' aria-hidden='aria-hidden'>
 									None
 								</label>
 							</li>
@@ -252,7 +252,7 @@ function RegisterForm() {
 						<span className='input-error'>This field is required.</span>
 					</div>
 					<div className='col-12 mb-10'>
-						<label for='date-input'>Date of Purchase</label>
+						<label htmlFor='date-input'>Date of Purchase</label>
 						<input
 							name='date-input'
 							type='date'
@@ -282,7 +282,7 @@ function RegisterForm() {
 							{/* <i className='fa-solid fa-check d-none' id='form-checkbox-check'></i> */}
 							{activeCheckBox && <FontAwesomeIcon icon={faCheck} />}
 						</span>
-						<label for='news'>
+						<label htmlFor='news'>
 							<input
 								type='checkbox'
 								name='news'

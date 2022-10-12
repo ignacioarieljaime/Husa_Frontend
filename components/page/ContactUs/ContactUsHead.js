@@ -4,7 +4,7 @@ function ContactUsHead() {
 	return (
 		<section>
 			<div className='container contact-info pt-12'>
-				<h1>Contact Us</h1>
+				<h2>Contact Us</h2>
 				<div className='row justify-content-center align-items-start'>
 					<ul className='col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 pe-sm-18'>
 						<li>

@@ -45,7 +45,7 @@ function MoreTvGrabSlider() {
 					}}
 					pagination={pagination}
 					modules={[EffectCoverflow, Pagination]}
-					className='big-coverflow'>
+					className='blog-big-coverflow '>
 					<SwiperSlide>
 						{' '}
 						<span>
