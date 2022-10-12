@@ -12,17 +12,19 @@ function MoreTvNewItem() {
 						<h3 className='fs-2'>
 							U8G<span className='fs-8 ms-2'>Fire TV</span>
 						</h3>
-						<p className='mb-7'>Great for everyone</p>
-						<p className='mb-0 lh-20'>U6H</p>
-						<p className='mb-0 lh-20'>Great for Everyone</p>
-						<p className='mb-0 lh-20'>Google TV</p>
-						<p className='mb-0 lh-20'>Quantum Dot Color</p>
-						<p className='mb-0 lh-20'>Dolby Vision HDR and HDR10</p>
-						<p className='mb-0 lh-20'>Full Array backlight</p>
-						<p className='mb-0 lh-20'>600 nits peak brightness</p>
-						<p className='mb-0 lh-20'>Dolby Atmos Audio</p>
-						<p className='mb-0 lh-20'>Game Mode Plus (60Hz)</p>
-						<p className='mb-0 lh-20'>Voice remote</p>
+						<ul>
+							<li className='mb-7'>Great for everyone</li>
+							<li className='mb-0 lh-20'>U6H</li>
+							<li className='mb-0 lh-20'>Great for Everyone</li>
+							<li className='mb-0 lh-20'>Google TV</li>
+							<li className='mb-0 lh-20'>Quantum Dot Color</li>
+							<li className='mb-0 lh-20'>Dolby Vision HDR and HDR10</li>
+							<li className='mb-0 lh-20'>Full Array backlight</li>
+							<li className='mb-0 lh-20'>600 nits lieak brightness</li>
+							<li className='mb-0 lh-20'>Dolby Atmos Audio</li>
+							<li className='mb-0 lh-20'>Game Mode lilus (60Hz)</li>
+							<li className='mb-0 lh-20'>Voice remote</li>
+						</ul>
 					</div>
 				</div>
 				<div className='text-center'>
