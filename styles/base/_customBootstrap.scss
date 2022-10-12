@@ -1795,7 +1795,6 @@ article:hover > .img-box-shadow-hover {
 	}
 }
 
-
 /* /////////////////////////////support ////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* category */
@@ -1935,38 +1934,7 @@ article:hover > .img-box-shadow-hover {
 }
 /* /////////////////////////////////////contact //////////////////////////////////////////////////////////////////////////////// */
 
-/* //////////////////////////////////// faq /////////////////////////////////////////////////////////////////////////////// */
 
-.faq .single-color-header {
-	background-color: #000;
-	color: #fff;
-	text-align: center;
-	padding: 192px 24px;
-}
-.faq .faq-article,
-.video-tutorials .videos-container {
-	max-width: 850px;
-}
-.faq .faq-article article h2 {
-	color: #292929;
-	font-size: 33px;
-}
-.faq .faq-article article p {
-	font-weight: 400;
-}
-.faq .faq-article article b,
-.video-tutorials b {
-	font-size: 18px;
-}
-@media (max-width: 767px) {
-	.faq .faq-article article h2 {
-		font-size: 24px !important;
-	}
-	.faq .faq-article b,
-	.faq .faq-article a {
-		font-size: 14px;
-	}
-}
 
 /* ///////////////////////////// video tutorials  /////////////////////////////////////////////////////////////////////////////////// */
 

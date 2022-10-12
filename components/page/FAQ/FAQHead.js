@@ -3,9 +3,9 @@ import React from 'react'
 function FAQHead() {
 	return (
 		<section>
-			<div className='single-color-header'>
+			<div className='faq-single-color-header'>
 				<div className='heading-text'>
-					<h1>FREQUENTLY ASKED QUESTIONS</h1>
+					<h3>FREQUENTLY ASKED QUESTIONS</h3>
 				</div>
 			</div>
 		</section>
