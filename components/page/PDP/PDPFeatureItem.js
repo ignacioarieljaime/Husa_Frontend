@@ -6,7 +6,7 @@ import CardImage from 'public/assets/images/pdp/cards.png'
 function PDPFeatureItem() {
 	return (
 		<button
-			className='top-feature-block'
+			className='pdp-top-feature-block'
 			type='button'
 			data-bs-toggle='modal'
 			data-bs-target='#specs-modal'>

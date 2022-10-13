@@ -24,7 +24,6 @@
 @import './components/common/checkbox';
 @import './components/common/input';
 
-
 // landing
 @import './components/page/Landing/landingSlider.scss';
 @import './components/page/Landing/landingProducts.scss';
@@ -40,6 +39,9 @@
 
 // blog list
 @import './components/page/Blog/BlogListHead.scss';
+
+// Pdp
+@import './components/page/Pdp/Pdp';
 
 // commercial
 @import './components/page/commercial/Commercial';
