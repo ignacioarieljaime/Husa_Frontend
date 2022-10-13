@@ -8,6 +8,10 @@ module.exports.UledComponents = [
 		path: 'components/page/ULED/ULEDProducts'
 	},
 	{
+		name: 'ULEDImageAndTextItem',
+		path: 'components/page/ULED/ULEDImageAndTextItem'
+	},
+	{
 		name: 'ULEDTextBox',
 		path: 'components/page/ULED/ULEDTextBox'
 	},
