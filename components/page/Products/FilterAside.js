@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { GetFiltersApi } from 'services/Filter'
 import ProductFilterAideItem from './ProductFilterAideItem'
 
-function FilterAside({ filterHandler, filter }) {
+function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 	const checkboxWrapper = useRef()
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [filterListCondition, setFilterListCondition] = useState(false)
@@ -16,7 +16,7 @@ function FilterAside({ filterHandler, filter }) {
 
 	const getFilters = async () => {
 		try {
-			let response = await GetFiltersApi(router)
+			let response = await GetFiltersApi(router, value)
 			setFilterList(response.data.data)
 		} catch (error) {
 			console.log(error)
@@ -51,13 +51,13 @@ function FilterAside({ filterHandler, filter }) {
 					<Spinner />
 				) : (
 					<>
-						{
+						{/* {
 							<>
 								{filterList[0].filters.map(filter => (
 									<div
 										key={`filter-${filter.filter_name}-${filter.filter_type_id}`}>
 										<h4>{filter.filter_name}</h4>
-						
+
 										<ul ref={checkboxWrapper} className='filter-list'>
 											{filter.filter_values.map((item, index) => (
 												<ProductFilterAideItem
@@ -76,7 +76,7 @@ function FilterAside({ filterHandler, filter }) {
 									</button>
 								</span>
 							</>
-						}
+						} */}
 					</>
 				)}
 			</aside>
