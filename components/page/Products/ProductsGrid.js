@@ -45,7 +45,11 @@ function ProductsGrid({
 
 	return (
 		<div className='all-tvs-category'>
-			<FilterAside filterHandler={setFilter} filter={filter} />
+			<FilterAside
+				filterHandler={setFilter}
+				categoryId={category}
+				filter={filter}
+			/>
 			<div className='result_box__product_container'>
 				<div className='result-box'>
 					Total Results: 77 <a href='#'>View All</a>

@@ -15,7 +15,7 @@ ${ComponentList.map(
 function Index({data}) {
 	const [components, setComponents] = useState([])
 	useEffect(() => {
-		let componentName = data ? data.content.map(item => item.name) : []
+		let componentName = data ? data.widgets.map(item => item.name) : []
 		setComponents(componentName)
 	}, [])
 
@@ -27,7 +27,7 @@ function Index({data}) {
 			componentItem =>
 				`{components.includes('${componentItem.name}') && <${
 					componentItem.name
-				} data={data.content.find(item => item.name === '${componentItem.name}')}/>}`
+				} data={data.widgets.find(item => item.name === '${componentItem.name}')}/>}`
 		).join('')}</section>
 		</Layout>
 			

@@ -24,7 +24,7 @@ function ProductFilterAideItem({
 				/>
 				<label htmlFor='filter'>{data.title}</label>
 			</div>
-			<span>3</span>
+			<span>{data.total}</span>
 		</li>
 	)
 }

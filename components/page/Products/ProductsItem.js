@@ -2,7 +2,14 @@ import Link from 'next/link'
 import React from 'react'
 
 function ProductsItem({ data }) {
-	let { brand, image, name, model, id, order } = data
+	let {
+		brand,
+		media,
+		name,
+		model,
+		id,
+		order
+	} = data
 	return (
 		<div className='item bottom-border-sm col-12 col-md-6 col-xl-4 col-xxl-3'>
 			<div>
@@ -10,7 +17,7 @@ function ProductsItem({ data }) {
 					<span className='class'>{order} Class</span>
 					<span className='code'>{model}</span>
 				</div>
-				<img src={image} alt='featured image' width='100%' />
+				<img src={media?.url} alt='featured image' width='100%' />
 				<h3>{brand.name}</h3>
 				<p>{name}</p>
 			</div>

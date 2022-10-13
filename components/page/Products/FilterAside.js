@@ -11,13 +11,15 @@ function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 	const [filterList, setFilterList] = useState()
 	const router = useRouter()
 	useEffect(() => {
-		getFilters()
-	}, [])
+		value && getFilters()
+	}, [value])
 
 	const getFilters = async () => {
+		let filters = []
 		try {
 			let response = await GetFiltersApi(router, value)
-			setFilterList(response.data.data)
+			response.data.filterTypes.forEach(item => filters.push(...item.filters))
+			setFilterList(filters)
 		} catch (error) {
 			console.log(error)
 		}
@@ -30,7 +32,7 @@ function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 		} else {
 			filterHandler(state => [
 				...state,
-				{ filter_name: _filter.title, filter_value: _filter.value }
+				{ filter_name: _filter.title, filter_value: _filter.filter_value }
 			])
 		}
 	}
@@ -51,22 +53,24 @@ function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 					<Spinner />
 				) : (
 					<>
-						{/* {
+						{
 							<>
-								{filterList[0].filters.map(filter => (
-									<div
-										key={`filter-${filter.filter_name}-${filter.filter_type_id}`}>
-										<h4>{filter.filter_name}</h4>
+								{filterList.map(filter => (
+									<div key={`filter-${filter.name}-${filter.id}`}>
+										<h4>{filter.name}</h4>
 
 										<ul ref={checkboxWrapper} className='filter-list'>
-											{filter.filter_values.map((item, index) => (
-												<ProductFilterAideItem
-													checkboxConditionRender={checkBoxCondition}
-													filterController={filterController}
-													data={item}
-													key={`filter-${item.title}-${index}`}
-												/>
-											))}
+											{filter.filter_values.map(
+												(item, index) =>
+													item.title && (
+														<ProductFilterAideItem
+															checkboxConditionRender={checkBoxCondition}
+															filterController={filterController}
+															data={item}
+															key={`filter-${item.title}-${index}`}
+														/>
+													)
+											)}
 										</ul>
 									</div>
 								))}
@@ -76,7 +80,7 @@ function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 									</button>
 								</span>
 							</>
-						} */}
+						}
 					</>
 				)}
 			</aside>

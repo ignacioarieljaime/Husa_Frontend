@@ -1,7 +1,7 @@
 import useFetch from '../hooks/useFetch'
-const endPoint = '/getFilters'
+const endPoint = '/getCategoryFilterTypes'
 
-export async function GetFiltersApi(navigate) {
-	let response = await useFetch(navigate).get(`${endPoint}`)
+export async function GetFiltersApi(navigate, categoryId) {
+	let response = await useFetch(navigate).get(`${endPoint}/${categoryId}`)
 	return response
 }
