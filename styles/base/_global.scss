@@ -117,3 +117,17 @@ input {
 .modal {
 	background: rgba(0, 0, 0, 0.3) !important;
 }
+
+.tiny-banner {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+	.tiny-banner img {
+		width: 80%;
+	}
+	.banner-logo {
+		width: 80%;
+	}
+}

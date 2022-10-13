@@ -23,6 +23,12 @@
 @import './components/common/headingBanner';
 @import './components/common/checkbox';
 @import './components/common/input';
+@import './components/common/productSlider';
+
+
+// product detail
+@import './components/page/ProductDetail/productDetail';
+@import './components/page/ProductDetail/resource';
 
 // landing
 @import './components/page/Landing/landingSlider.scss';

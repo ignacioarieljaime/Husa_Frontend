@@ -977,46 +977,6 @@ article:hover > .img-box-shadow-hover {
 }
 
 /* product */
-.product {
-	padding: 120px 30px 50px 30px;
-}
-.product .product-info h1 {
-	font-weight: 700;
-	font-size: 48px;
-	margin-bottom: 50px;
-}
-.product .product-info h2 {
-	font-weight: 500;
-	font-size: 28px;
-	line-height: 32px;
-	margin-bottom: 50px;
-}
-.product .product-info span {
-	font-size: 34px;
-	line-height: 1.3;
-}
-.product .product-info p {
-	font-size: 20px;
-	line-height: 32px;
-	margin-top: 40px;
-	margin-bottom: 27px;
-}
-.product .product-info .model-toggle {
-	margin-bottom: 35px;
-}
-.product .product-info .model-toggle a {
-	border-radius: 18px;
-}
-.product .product-info .model-toggle a:nth-child(n + 1) {
-	margin-left: 10px;
-}
-.product .product-info .product-rating {
-	margin-bottom: 20px;
-}
-.product.bg-turquoise {
-	background-color: #0c4955;
-	color: #ffffff;
-}
 
 /* help */
 .support-help {
@@ -1249,81 +1209,6 @@ article:hover > .img-box-shadow-hover {
 	}
 }
 
-/* specs */
-.specs {
-	padding: 45px 30px;
-}
-.specs .specs-btn {
-	padding: 0 24px;
-	width: 180px;
-	height: 50px;
-	overflow-y: hidden;
-}
-.specs .specs-btn span {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	position: relative;
-	transition: all 0.3s ease;
-}
-.specs .specs-btn .hide {
-	top: 0;
-	transform: translateY(-50%);
-}
-.specs .specs-btn .show {
-	top: -100%;
-}
-.specs.close .specs-btn .hide {
-	top: 100%;
-}
-.specs.close .specs-btn .show {
-	top: 0;
-	transform: translateY(50%);
-}
-.specs .specs-container {
-	max-height: 0;
-	overflow-y: hidden;
-	transition: max-height 0.8s ease-out;
-}
-.specs h3 {
-	font-weight: 700;
-	font-size: 24px;
-	line-height: 30px;
-	margin-bottom: 35px;
-	padding: 5px;
-}
-.specs .discription-list dt {
-	display: none;
-	visibility: hidden;
-	pointer-events: none;
-	text-indent: 0;
-	width: 100%;
-}
-.specs .discription-list dd {
-	font-size: 15px;
-	line-height: 30px;
-	margin: 0;
-	padding: 5px;
-	color: #292929;
-}
-.specs .discription-list dd::before {
-	content: attr(data-label);
-	font-weight: 700;
-	font-size: 15px;
-	line-height: 30px;
-	color: #000000;
-	display: block;
-}
-
-@media (max-width: 575px) {
-	.specs .discription-list dd {
-		font-size: 15px;
-	}
-	.specs .discription-list dd::before {
-		font-weight: 600;
-		font-size: 13px;
-	}
-}
 /* buy-green-banner */
 .buy-green-banner {
 	background: #00aaa6;
@@ -1341,57 +1226,6 @@ article:hover > .img-box-shadow-hover {
 .buy-green-banner h2:last-of-type {
 	color: #000000;
 	margin-bottom: 60px;
-}
-
-/* resources */
-.resources {
-	background: #252525;
-	padding-top: 75px;
-	padding-bottom: 40px;
-	text-align: center;
-	color: #fff;
-}
-.resources h2 {
-	font-weight: 700;
-	font-size: 48px;
-	margin-bottom: 65px;
-}
-.resources ul {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	list-style: none;
-	padding: 0;
-	margin: 0;
-}
-.resources li {
-	padding: 4px 20px;
-}
-.resources a {
-	text-decoration: none;
-	color: #fff;
-	opacity: 0.8;
-	font-weight: 300;
-	font-size: 24px;
-	line-height: 30px;
-}
-.resources .underline-on-hover:hover::after {
-	width: 100%;
-}
-@media (max-width: 575px) {
-	.resources h2 {
-		font-weight: 400;
-		font-size: 18px;
-		margin-bottom: 25px;
-	}
-	.resources a {
-		font-size: 12px;
-		font-weight: 300;
-	}
-	.resources li {
-		width: 100%;
-	}
 }
 
 /* white-advertisement-banner */
@@ -1800,19 +1634,6 @@ article:hover > .img-box-shadow-hover {
 
 /* ////////////////////////////////////////////////////////////////////////////////// components ////////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////// tv-and-audio //////////////////////////////////////////////// */
-.tiny-banner {
-	max-width: 800px;
-	margin: 0 auto;
-}
-
-@media (max-width: 600px) {
-	.tiny-banner img {
-		width: 80%;
-	}
-	.banner-logo {
-		width: 80%;
-	}
-}
 
 /* //////////////////////////////////////// 4k uled ///////////////////////////////////////// */
 .uled-4k .platform:first-child {

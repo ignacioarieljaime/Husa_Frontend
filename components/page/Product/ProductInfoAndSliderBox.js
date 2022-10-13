@@ -5,7 +5,7 @@ import ProductInfoSlider from './ProductInfoSlider'
 
 function ProductInfoAndSliderBox() {
 	return (
-		<section className='product'>
+		<section className='product single-product'>
 			<div className='container'>
 				<div className='row'>
 					<ProductInfoSlider />
