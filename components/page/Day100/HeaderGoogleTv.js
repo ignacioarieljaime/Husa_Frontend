@@ -2,7 +2,7 @@ import Logo from 'components/icons/Logo'
 import GoogleTv from 'public/assets/images/100-day/googletv.png'
 
 const HeaderGoogleTv = () => (
-	<section>
+	<section className='day-100'>
 		<div className='bg-black container-fluid'>
 			<div className='row align-items-center justify-content-start justify-content-md-center py-3'>
 				<Logo />

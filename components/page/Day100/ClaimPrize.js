@@ -3,7 +3,7 @@ import star from 'public/assets/images/100-day/star.png'
 
 const ClaimPrize = () => {
 	return (
-		<section className='position-relative'>
+		<section className='position-relative day-100 '>
 			<div className='star'>
 				<img src={star.src} alt='star' width='35' />
 			</div>

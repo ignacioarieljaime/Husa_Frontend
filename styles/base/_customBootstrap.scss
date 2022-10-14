@@ -978,7 +978,6 @@ article:hover > .img-box-shadow-hover {
 
 /* product */
 
-
 /* custom-radio */
 .custom-radio {
 	display: flex;
@@ -1454,7 +1453,6 @@ article:hover > .img-box-shadow-hover {
 	border-radius: 10px 10px 0 0;
 }
 
-
 .chart-block {
 	canvas {
 		transform: scale(0.75);
@@ -1466,137 +1464,6 @@ article:hover > .img-box-shadow-hover {
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////// 100 day///////////////////////////////////////////////////////////
 
-.day-100 {
-	.bg-eggplant {
-		background: #220237;
-	}
-	.bg-purple {
-		background: #441353;
-	}
-	.bg-gradient-blush {
-		background: linear-gradient(180deg, #ffd1fc 50%, #fad0c6bb 100%);
-	}
-	.bg-grey {
-		background: #e6e6e6;
-	}
-	.star {
-		position: absolute;
-		top: -17px;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-	.warranty-adv {
-		border-radius: 30px;
-		background-color: #511865;
-		text-align: center;
-		padding: 80px 40px;
-		h2 {
-			font-size: 42px;
-			font-weight: bold;
-			color: #fffefe;
-			margin-bottom: 50px;
-		}
-		p {
-			font-size: 18px;
-			font-weight: bold;
-			color: #ffbbf3;
-			margin: 0;
-		}
-	}
-	.guarantee-details {
-		color: #bfbfbf;
-		font-size: 20px;
-		text-align: center;
-		a {
-			text-decoration: none;
-			&:hover {
-				text-decoration: none;
-				color: #ffbbf3;
-			}
-		}
-	}
-	.expert-adv {
-		text-align: center;
-		h2 {
-			color: #3b1855;
-			font-size: 42px;
-			text-transform: uppercase;
-			margin: 0;
-		}
-	}
-	.feature-badge {
-		h3 {
-			position: relative;
-			z-index: 10;
-			color: #33124d;
-		}
-		.double-quote {
-			color: transparent;
-			-webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
-			position: absolute;
-		}
-	}
-	.eligble-models {
-		.text-purple {
-			text-decoration: none;
-			&:hover {
-				color: #885aa4;
-			}
-		}
-		.btn-primary {
-			background-color: #00a6a5 !important;
-			border-color: #00a6a5 !important;
-		}
-		.item {
-			width: 400px;
-			background-color: #fff;
-			border-radius: 15px;
-			padding: 25px;
-			.text-primary {
-				color: #62b7c7 !important;
-			}
-			.item-size {
-				font-size: 16px;
-				font-weight: 500;
-				text-align: left;
-				color: #6f6e6e;
-			}
-			.item-series {
-				font-size: 25px;
-				font-weight: 500;
-				text-align: left;
-				color: #2b0a42;
-				margin-bottom: 15px;
-			}
-			.item-features {
-				list-style: none;
-				padding: 0;
-				li {
-					font-size: 15px;
-					font-weight: normal;
-					text-align: left;
-					color: #6f6e6e;
-					padding: 7px 0;
-					border-bottom: solid 1px #6f6e6e;
-					&:last-child {
-						border-bottom: none;
-					}
-				}
-			}
-			.infill-overlay {
-				position: absolute;
-				left: 50%;
-				top: 50%;
-				font-size: 36px;
-				width: 95%;
-				padding: 10px;
-				transform: translate(-50%, -50%);
-				background-color: #ffcf6a;
-				color: #ff0101;
-			}
-		}
-	}
-}
 .text-pink {
 	color: #ffbbf3;
 }
@@ -1700,50 +1567,6 @@ article:hover > .img-box-shadow-hover {
 			.claim-prize-level::after {
 				display: none;
 			}
-		}
-	}
-}
-@media (max-width: 768px) {
-	.day-100 {
-		.warranty-adv {
-			border-radius: 20px;
-			padding: 50px 20px;
-
-			h2 {
-				font-size: 26px;
-			}
-			p {
-				font-size: 16px;
-			}
-		}
-		.guarantee-details {
-			font-size: 16px;
-		}
-		.star {
-			display: none;
-		}
-		.header-secondary {
-			padding: 60% 0;
-			position: relative;
-			.logos {
-				position: absolute;
-				left: 50%;
-				bottom: 0;
-				width: 100%;
-				text-align: center;
-				transform: translate(-50%, -30%);
-				img {
-					position: relative;
-				}
-			}
-		}
-	}
-	.under-line {
-		&::after {
-			display: none;
-		}
-		p {
-			font-size: 20px !important;
 		}
 	}
 }

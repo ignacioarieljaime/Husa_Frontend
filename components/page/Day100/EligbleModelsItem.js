@@ -1,7 +1,7 @@
 import Tv from 'public/assets/images/100-day/tv.png'
 const EligbleModelsItem = () => {
 	return (
-		<div className='item'>
+		<div className='item day-100'>
 			<div className='d-flex flex-column justify-content-between align-items-start'>
 				<div>
 					<span className='text-primary fs-4 fw-bold'>Great</span>
