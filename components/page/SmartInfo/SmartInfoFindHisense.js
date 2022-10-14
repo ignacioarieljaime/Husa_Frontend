@@ -3,7 +3,7 @@ import React from 'react'
 function SmartInfoFindHisense() {
 	return (
 		<section>
-			<div className='container-fluid explore px-8 py-11 p-md-20'>
+			<div className='container-fluid explore explore-smart-page px-8 py-11 p-md-20'>
 				<article className='row py-6'>
 					<h2 className='col-12 col-md-6 mb-7 my-md-auto'>
 						Find your
