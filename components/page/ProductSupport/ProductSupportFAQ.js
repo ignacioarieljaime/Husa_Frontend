@@ -8,7 +8,7 @@ function ProductSupportFAQ() {
 			<div className='container py-20'>
 				<h2 className='mb-15 fs-2'>Laser TV Frequently Asked Questions</h2>
 				<div
-					className='accordion accordion-flush form-container mx-auto custom-accordion'
+					className='accordion product-support-accordion accordion-flush form-container mx-auto custom-accordion'
 					id='accordionFlushExample'>
 					<ProductSupportFAQItem />
 					<ProductSupportFAQItem />

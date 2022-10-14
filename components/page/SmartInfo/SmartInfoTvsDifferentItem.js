@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'public/assets/images/smart-tv-android.png'
 function SmartInfoTvsDifferentItem() {
 	return (
-		<div className='col-12 col-md-6 col-xxl-6 platform'>
+		<div className='col-12 col-md-6 col-xxl-6 platform smart-platform'>
 			<h2>
 				Android <br />
 				TV

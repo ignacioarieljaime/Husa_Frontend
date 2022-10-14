@@ -10,10 +10,10 @@ function PDPImageAndInfoDarkBg() {
 	return (
 		<section style={{ marginBottom: '115px' }}>
 			<div className='bg-black'>
-				<div className='container spec-info-section pb-0'>
-					<h2 className='text-muted fs-2 fw-normal mb-4'>
+				<div className='container pdp-spec-info-section pb-0'>
+					<h3 className='text-muted fs-2 fw-normal mb-4'>
 						Peak Brightness • Local Dimming
-					</h2>
+					</h3>
 					<h3 className='fs-5tx mb-20 text-white'>Brighter picture, Better HDR</h3>
 					<div className='row mb-20'>
 						<div className='col-12 col-md-6 offset-0 offset-md-6'>
@@ -89,7 +89,7 @@ function PDPImageAndInfoDarkBg() {
 							</div>
 						</div>
 					</div>
-					<div className='middle-banner'>
+					<div className='pdp-middle-banner'>
 						<p className='fs-m5 fw-normal text-muted mt-12'>
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
 							sodales nisl vitae lorem lobortis dictum. Donec egestas lectus ut

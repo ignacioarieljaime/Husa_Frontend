@@ -14,7 +14,7 @@ function ProductSupportReplacement() {
 								<WerenchIcon />
 							</div>
 							<div>
-								<h2 className='mb-2 fs-2'>Replacement Parts</h2>
+								<h4 className='mb-2 fs-2'>Replacement Parts</h4>
 								<p className='fs-8 fw-normal mb-0'>
 									Find replacement parts for your
 								</p>

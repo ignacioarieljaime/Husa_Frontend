@@ -4,8 +4,8 @@ function ProductSupportVideoBox() {
 	return (
 		<section className='border-bottom border-dark' id='#videos'>
 			<div className='container py-20'>
-				<h2 className='mb-7 fs-2'>Laser TV Videos</h2>
-				<div className='row align-items-stretch videos-container'>
+				<h3 className='mb-7 fs-2'>Laser TV Videos</h3>
+				<div className='row align-items-stretch videos-container  videos-container-product-support'>
 					<div className='col-12 col-lg-7 py-3'>
 						<div className='video-container h-100'>
 							<div className='video-wrapper h-100'>

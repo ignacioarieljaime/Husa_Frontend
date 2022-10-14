@@ -3,7 +3,7 @@ import Day100Tv from 'public/assets/images/100-day/day-100-tv.png'
 
 const Gaurantee = () => {
 	return (
-		<section>
+		<section className='day-100'>
 			<div className='bg-purple py-15'>
 				<div className='container'>
 					<div className='row align-items-center mb-15'>

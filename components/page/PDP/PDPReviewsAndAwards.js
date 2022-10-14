@@ -4,7 +4,7 @@ function PDPReviewsAndAwards() {
 	return (
 		<section>
 			<div className='bg-muted'>
-				<div className='container spec-info-section'>
+				<div className='container pdp-spec-info-section'>
 					<div className='side-line mb-12'>
 						<span className='fs-5'>Reviews and Awards</span>
 					</div>

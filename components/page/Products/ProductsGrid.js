@@ -44,7 +44,7 @@ function ProductsGrid({
 	}
 
 	return (
-		<div className='all-tvs-category'>
+		<div className='category-products'>
 			<FilterAside filterHandler={setFilter} filter={filter} />
 			<div className='result_box__product_container'>
 				<div className='result-box'>

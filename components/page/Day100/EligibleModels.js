@@ -6,7 +6,7 @@ import 'swiper/css'
 
 const EligibleModels = () => {
 	return (
-		<section>
+		<section className='day-100'>
 			<div className='bg-grey eligble-models py-20'>
 				<div className='container text-center'>
 					<h2 className='text-eggplant fs-2hx fw-bolder-700 mb-6'>

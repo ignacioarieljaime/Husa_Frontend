@@ -4,8 +4,8 @@ import React from 'react'
 import Banner from 'public/assets/images/sponsership/fnatic-banner.png'
 function SponsorImageAndText() {
 	return (
-		<section>
-			<div className='container mt-20'>
+		<section className='sponsor-ship-bg'>
+			<div className='container pt-20'>
 				<div className='row position-relative'>
 					<div className='col-12 col-md-6'>
 						<img src={Banner.src} alt='featured image' width='100%' />
@@ -22,12 +22,12 @@ function SponsorImageAndText() {
 						<div className='floating-text'>
 							<p className='fs-4 text-white'>
 								“We are proud to partner with Hisense, a
-								<span className='text-secondary'>forward-thinking</span>, innovative
-								company, that is committed to bringing happiness into the homes
-								of millions of families. As a trusted partner, we are excited to
-								share this
-								<span className='text-secondary'>collaboration</span> with our fans,
-								players and creators.”
+								<span className='text-secondary'>forward-thinking</span>,
+								innovative company, that is committed to bringing happiness into
+								the homes of millions of families. As a trusted partner, we are
+								excited to share this
+								<span className='text-secondary'>collaboration</span> with our
+								fans, players and creators.”
 							</p>
 							<div className='fs-5 text-white'>
 								- Sam Mathews, Founder & CEO of Fnatics

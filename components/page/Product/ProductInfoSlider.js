@@ -95,7 +95,7 @@ function ProductInfoSlider() {
 				freeMode={true}
 				watchSlidesProgress={true}
 				modules={[FreeMode, Thumbs]}
-				className='gallery-thumbs product-gallery-thumbs'>
+				className='gallery-thumbs single-product-gallery-thumbs  product-gallery-thumbs'>
 				<SwiperSlide aria-hidden='true' tabIndex={'-1'} aria-label='slide-1'>
 					<img
 						src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxHeightWzEyOF0.png'

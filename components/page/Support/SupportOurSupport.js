@@ -7,7 +7,7 @@ import { faClipboardList, faQuestion } from '@fortawesome/free-solid-svg-icons'
 function SupportOurSupport() {
 	return (
 		<section className='border-top border-dark'>
-			<div className='supports row justify-content-center align-items-stretch mx-0'>
+			<div className='supports supports-new row justify-content-center align-items-stretch mx-0'>
 				<div className='col-12 col-sm-6 col-md-4 d-flex flex-column justify-content-between align-items-center px-13 py-18'>
 					<div className='bg-black p-4 px-6 mb-10'>
 						{/* <i className='fa-solid fs-2x text-white fa-clipboard-list'></i> */}

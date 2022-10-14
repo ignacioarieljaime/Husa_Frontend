@@ -6,7 +6,7 @@ import Tv from 'public/assets/images/uled-u6.png'
 
 function ProductSupportNewHead() {
 	return (
-		<section className='product'>
+		<section className='product product-support-head'>
 			<div className='container'>
 				<div className='row align-items-stretch'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0 pe-lg-10 text-center'>
@@ -14,10 +14,10 @@ function ProductSupportNewHead() {
 					</div>
 					<div className='col-12 col-lg-6'>
 						<div className='d-flex flex-column justify-content-evenly align-items-start h-100'>
-							<h1 className='fs-2 fw-bold mb-8'>
+							<h2 className='fs-2 fw-bold mb-8'>
 								HISENSE 14.8-CU.FT. 4 DOOR COUNTER-DEPTH FRENCH DOOR
 								REFRIGERATOR SUPPORT
-							</h1>
+							</h2>
 							<p className='text-primary mb-10'>Model: 100L5G-CINE100A</p>
 							<p className='fs-7 fw-normal mb-0'>Document Downloads</p>
 							<div className='row align-items-center'>

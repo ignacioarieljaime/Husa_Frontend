@@ -24,7 +24,32 @@
 @import './components/common/headingBanner';
 @import './components/common/checkbox';
 @import './components/common/input';
+@import './components/common/productSlider';
 
+// sponsor ship
+@import './components/page/sponsorShip';
+
+// sponsor ship
+@import './components/page/oneHundredDay';
+
+// uled
+@import './components/page/uled';
+
+// support
+@import './components/page/support';
+
+// products
+@import './components/page/products';
+
+// smart
+@import './components/page/smartPage';
+
+// product-support
+@import './components/page/productSupport';
+
+// product detail
+@import './components/page/ProductDetail/productDetail';
+@import './components/page/ProductDetail/resource';
 
 // landing
 @import './components/page/Landing/landingSlider.scss';
@@ -41,6 +66,9 @@
 
 // blog list
 @import './components/page/Blog/BlogListHead.scss';
+
+// Pdp
+@import './components/page/Pdp/Pdp';
 
 // commercial
 @import './components/page/commercial/Commercial';

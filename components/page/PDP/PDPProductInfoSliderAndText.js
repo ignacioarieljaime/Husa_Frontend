@@ -7,7 +7,7 @@ import PDPProductInfoSlider from './PDPProductInfoSlider'
 
 function PDPProductInfoSliderAndText() {
 	return (
-		<section className='product'>
+		<section className='product pdp-product'>
 			<div className='container'>
 				<div className='row align-items-stretch'>
 					<PDPProductInfoSlider />

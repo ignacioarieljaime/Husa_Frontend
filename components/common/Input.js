@@ -1,10 +1,15 @@
 import React from 'react'
 
-function CustomInput({ placeholder, required = false, className }) {
+function CustomInput({
+	placeholder,
+	required = false,
+	className,
+	type = 'text'
+}) {
 	return (
 		<div>
 			<input
-				type='text'
+				type={type}
 				className={`form-container-inner-input ${className}`}
 				placeholder={placeholder}
 				required={required}
