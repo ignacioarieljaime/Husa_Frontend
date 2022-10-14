@@ -5,7 +5,7 @@ import Image from 'public/assets/images/4k-uled/U6H.png'
 
 function ULEDProductItem() {
 	return (
-		<div className='col-12 col-lg-4 platform'>
+		<div className='col-12 col-lg-4 platform platform-uled'>
 			<h2>U6H</h2>
 			<p className='text-black fs-2 fw-normal'>Great for Entertainment</p>
 			<div className='py-9'>
@@ -18,7 +18,7 @@ function ULEDProductItem() {
 					</a>
 				</div>
 				<div className='col-12 col-sm-6 col-lg-6 col-xl-8 col-xxl-9'>
-					<a href='#' className='btn btn-outline-dark'>
+					<a href='#' className='btn where-to-buy-btn btn-outline-light'>
 						Where To Buy
 					</a>
 				</div>

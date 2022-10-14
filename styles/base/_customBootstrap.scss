@@ -1296,34 +1296,6 @@ article:hover > .img-box-shadow-hover {
 	}
 }
 
-/* ////////////////////////////////////////////////////////////////////////////////// components ////////////////////////////////////////////////////////////////////////////////// */
-/* /////////////////////////////////////////////////////// tv-and-audio //////////////////////////////////////////////// */
-
-/* //////////////////////////////////////// 4k uled ///////////////////////////////////////// */
-.uled-4k .platform:first-child {
-	background-color: #dee0ee;
-}
-.uled-4k .platform:nth-child(2) {
-	background-color: #b33846;
-}
-.uled-4k .platform:nth-child(3) {
-	background-color: #0c4955;
-}
-
-.uled-4k .jarg-flex > div {
-	width: fit-content;
-}
-.uled-4k .jarg-flex > div > .bg-light-2 {
-	width: fit-content;
-	margin: 0 auto;
-}
-.uled-4k .jarg-flex > div > .jarg-text-section {
-	max-width: 180px !important;
-}
-.uled-4k .jarg-flex > div > .jarg-text-section > span {
-	font-size: 14px !important;
-	line-height: 20px;
-}
 /* /////////////////////////////////////// tv page ////////////////////////////////////////////////////// */
 .tv-page .specs .discription-list dd::before {
 	color: #b3b3b3;
