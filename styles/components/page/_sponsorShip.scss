@@ -1,0 +1,49 @@
+.sponsor-ship-bg {
+	background: #161613;
+	.text-secondary {
+		color: #00aaa6 !important;
+	}
+	.btn-secondary {
+		background-color: #00aaa6 !important;
+		color: #fff !important;
+		border: 1px solid #00aaa6 !important;
+
+		&:hover {
+			background-color: #039693 !important;
+			border: 1px solid #039693 !important;
+		}
+	}
+	.floating-text {
+		position: absolute;
+		/* top: 30%; */
+		width: 120%;
+		left: -20%;
+	}
+	.floating-line {
+		border: 1px solid rgba(255, 255, 255, 0.3);
+		width: 50%;
+		position: absolute;
+		top: 20%;
+		z-index: 0;
+		+ * {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}
+.sponsor-ship-border-light {
+	border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+@media (max-width: 1200px) {
+	.sponsor-ship-bg .gradient-texts img {
+		width: 80%;
+	}
+}
+@media (max-width: 991px) {
+	.sponsor-ship-bg .floating-text {
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+}

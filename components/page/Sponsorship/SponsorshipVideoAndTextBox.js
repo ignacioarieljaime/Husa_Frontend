@@ -13,8 +13,8 @@ function SponsorshipVideoAndTextBox() {
 		}
 	}
 	return (
-		<section>
-			<div className='container mt-20'>
+		<section className='sponsor-ship-bg'>
+			<div className='container pt-20'>
 				<div className='video-container rounded-0'>
 					<video ref={video} id='blog-video' width='100%' height='100%'>
 						<source

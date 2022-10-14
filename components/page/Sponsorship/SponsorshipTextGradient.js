@@ -7,15 +7,15 @@ import Accessible from 'public/assets/images/sponsership/accessible-to-all.png'
 
 function SponsorshipTextGradient() {
 	return (
-		<section>
-			<div className='container gradient-texts'>
+		<section className='sponsor-ship-bg'>
+			<div className='container gradient-texts pb-7'>
 				<div className='text-start pb-7 mb-7 pb-md-11 mb-md-11 border-bottom border-light'>
 					<img src={CreatingText.src} alt='featured image' />
 				</div>
 				<div className='text-end pb-7 mb-7 pb-md-11 mb-md-11 border-bottom border-light'>
 					<img src={Product.src} alt='featured image' />
 				</div>
-				<div className='text-start pb-7 mb-7 pb-md-11 mb-md-11 border-bottom border-light'>
+				<div className='text-start pb-7  pb-md-11 mb-md-11 border-bottom border-light'>
 					<img src={Accessible.src} alt='featured image' />
 				</div>
 			</div>

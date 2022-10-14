@@ -7,8 +7,9 @@ import Trip from 'public/assets/images/sponsership/win-a-trip.png'
 
 function SponsorshipImagesWithButton() {
 	return (
-		<section>
-			<div className='container mt-20 text-center gradient-texts'>
+		<section className='sponsor-ship-bg'>
+
+			<div className='container py-20 text-center gradient-texts'>
 				<div>
 					<img src={HisenseFiFa.src} alt='featured image' className='mb-12' />
 				</div>
