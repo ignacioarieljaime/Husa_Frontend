@@ -1,0 +1,13 @@
+.color-feature {
+	.block-video {
+		position: relative;
+		video {
+			object-fit: cover;
+		}
+		.video-content {
+			position: absolute;
+			bottom: 5%;
+			left: 9%;
+		}
+	}
+}
