@@ -15,13 +15,13 @@ function BlogEasySlider() {
 	return (
 		<section>
 			<div className=' mb-20'>
-				<div className='carousel-container'>
+				<div className='blog-carousel-container'>
 					<Swiper
 						navigation={true}
 						modules={[Navigation]}
-            centeredSlides={true}
-            spaceBetween={10}
-						className='big-centered'>
+						centeredSlides={true}
+						spaceBetween={10}
+						className='blog-big-centered'>
 						<SwiperSlide>
 							<img src={Image.src} alt='featured image' />
 						</SwiperSlide>

@@ -4,7 +4,7 @@ function PDPReadyToBuyBox() {
 	return (
 		<section>
 			<div className='bg-dark'>
-				<div className='container spec-info-section'>
+				<div className='container pdp-spec-info-section'>
 					<div className='row align-items-center'>
 						<div className='col-12 col-md-6 py-3'>
 							<h2 className='fs-3x fw-bolder-700 text-white'>

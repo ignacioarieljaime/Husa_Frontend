@@ -18,5 +18,9 @@ module.exports.ContactUsComponents = [
 	{
 		name: 'ContactUsPhoneUs',
 		path: 'components/page/ContactUs/ContactUsPhoneUs'
+	},
+	{
+		name: 'ContactUsAboutHisense',
+		path: 'components/page/ContactUs/ContactUsAboutHisense'
 	}
 ]

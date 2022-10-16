@@ -6,9 +6,9 @@ function LasterFinedWithImage() {
 			<div className='black-banner p-md-4'>
 				<div className='container px-6 px-md-8 pt-20 pb-12'>
 					<article className='article text-center'>
-						<h2 className='text-white mb-7'>
+						<h3 className='text-white mb-7'>
 							Find Your <span className='text-primary'>Laser TV</span>
-						</h2>
+						</h3>
 						<div>
 							<p className='fw-normal mw-md-50 text-white m-auto'>
 								Rethink how you watch your favorite shows with Laser TV,

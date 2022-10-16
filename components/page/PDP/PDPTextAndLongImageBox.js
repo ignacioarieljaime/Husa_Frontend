@@ -3,7 +3,7 @@ import React from 'react'
 function PDPTextAndLongImageBox() {
 	return (
 		<section>
-			<div className='container spec-info-section text-center mb-20'>
+			<div className='container pdp-spec-info-section text-center mb-20'>
 				<div className='tiny-banner'>
 					<div className='text-muted fs-8 fw-normal mb-6'>SUBHEAD GOES HERE</div>
 					<h2 className='fs-3x mb-6'>Additional Section</h2>

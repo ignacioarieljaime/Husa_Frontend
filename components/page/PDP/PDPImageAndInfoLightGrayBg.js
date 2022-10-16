@@ -6,9 +6,9 @@ import Image from 'public/assets/images/pdp/45png.png'
 function PDPImageAndInfoLightGrayBg() {
 	return (
 		<section>
-			<div className='container spec-info-section'>
-				<h2 className='text-muted fs-2 fw-normal mb-4'>4K ULED ™</h2>
-				<h3 className='fs-5tx mb-20'>Sharper, smoother pictures</h3>
+			<div className='container pdp-spec-info-section'>
+				<h4 className='text-muted fs-2 fw-normal mb-4'>4K ULED ™</h4>
+				<h5 className='fs-5tx mb-20'>Sharper, smoother pictures</h5>
 				<div className='row mb-20'>
 					<div className='col-12 col-md-6 offset-0 offset-md-6'>
 						<p className='fs-3 fw-normal mb-4'>

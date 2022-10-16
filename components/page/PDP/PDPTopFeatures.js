@@ -12,10 +12,10 @@ function PDPTopFeatures() {
 	return (
 		<section>
 			<div className='bg-black'>
-				<div className='container spec-info-section pb-0'>
+				<div className='container pdp-spec-info-section pb-0'>
 					<div className='text-center'>
 						<div className='text-muted fs-8 fw-normal mb-5'>TOP FEATURES</div>
-						<h2 className='fs-3x mb-20 text-white'>One core to rule them all</h2>
+						<h4 className='fs-3x mb-20 text-white'>One core to rule them all</h4>
 					</div>
 					<div className='row justify-content-evenly align-items-center mb-20'>
 						<CardImage />
@@ -34,7 +34,7 @@ function PDPTopFeatures() {
 					</div>
 				</div>
 				<div className='border-top border-secondary'></div>
-				<div className='container spec-info-section'>
+				<div className='container pdp-spec-info-section'>
 					<div className='row align-items-center'>
 						<div className='col-12 col-md-7 order-2 order-md-1 position-relative'>
 							<img src={Image.src} alt='featured image' width='100%' />

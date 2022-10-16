@@ -2,265 +2,70 @@ import React, { useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    
-	faChevronDown,
 	faCircleInfo,
 	faCheck,
 	faXmark
 } from '@fortawesome/free-solid-svg-icons'
+import CustomSelectBox from 'components/common/selectBox'
+import CustomInput from 'components/common/Input'
+import RoleModal from '../ContactUs/RoleModal'
 
 function RegisterForm() {
 	const [activeCheckBox, setActiveCheckBox] = useState(false)
+	const [modalCondition, setModalCondition] = useState(false)
 	return (
 		<section>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
 				<h2 className='text-center mb-17'>REGISTER PRODUCT</h2>
-				<form action='' className='form-container-inner row active' id='form-tab-1'>
+				<form
+					action=''
+					className='form-container-inner row active'
+					id='form-tab-1'>
 					<div className='col-12 mb-10 custom-select-box'>
-						<div
-							className='form-container-inner-input select-container'
-							tabindex='1'>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='product'
-									value='1'
-									name='product'
-									checked='checked'
-									disabled
-								/>
-								<p className='input-text'>
-									PLEASE SELECT YOUR PRODUCT
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='tv'
-									value='2'
-									name='product'
-								/>
-								<p className='input-text'>
-									Televisions{' '}
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='refrigeration'
-									value='3'
-									name='product'
-								/>
-								<p className='input-text'>
-									Refrigeration{' '}
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='air'
-									value='4'
-									name='product'
-								/>
-								<p className='input-text'>
-									Air Products{' '}
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='soundbars'
-									value='5'
-									name='product'
-								/>
-								<p className='input-text'>
-									Soundbars{' '}
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='dishwashers'
-									value='6'
-									name='product'
-								/>
-								<p className='input-text'>
-									Dishwashers{' '}
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-						</div>
-						<ul className='select-box-list'>
-							<li>
-								<label className='option' for='tv' aria-hidden='aria-hidden'>
-									Televisions
-								</label>
-							</li>
-							<li>
-								<label
-									className='option'
-									for='refrigeration'
-									aria-hidden='aria-hidden'>
-									Refrigeration
-								</label>
-							</li>
-							<li>
-								<label className='option' for='air' aria-hidden='aria-hidden'>
-									Air Products
-								</label>
-							</li>
-							<li>
-								<label className='option' for='soundbars' aria-hidden='aria-hidden'>
-									Soundbars
-								</label>
-							</li>
-							<li>
-								<label
-									className='option'
-									for='dishwashers'
-									aria-hidden='aria-hidden'>
-									Dishwashers
-								</label>
-							</li>
-						</ul>
-						<span className='input-error'>This field is required.</span>
+						<CustomSelectBox
+							title={'PLEASE SELECT YOUR PRODUCT'}
+							required={true}
+						/>
 					</div>
 					<div className='col-12 mb-10 custom-select-box'>
-						<div
-							className='form-container-inner-input select-container'
-							tabindex='1'>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='model'
-									value='1'
-									name='model'
-									checked='checked'
-									disabled
-								/>
-								<p className='input-text'>
-									PLEASE SELECT YOUR MODEL
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-							<div className='select-box-item'>
-								<input
-									className='input'
-									type='radio'
-									id='none'
-									value='2'
-									name='model'
-								/>
-								<p className='input-text'>
-									None{' '}
-									<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
-								</p>
-							</div>
-						</div>
-						<ul className='select-box-list'>
-							<li>
-								<label className='option' for='none' aria-hidden='aria-hidden'>
-									None
-								</label>
-							</li>
-						</ul>
-						<span className='input-error'>This field is required.</span>
+						<CustomSelectBox
+							title={'PLEASE SELECT YOUR MODEL'}
+							required={true}
+						/>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<input
-							type='tel'
-							className='form-container-inner-input'
-							placeholder='SERIAL NUMBER'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<CustomInput placeholder={'SERIAL NUMBER'} required={true} />
 					</div>
 					<div className='col-12 col-md-6 mb-10 d-flex'>
 						<button
 							className='modal-btn'
 							type='button'
-							data-toggle='modal'
-							data-target='#serial-numbers'>
+							onClick={() => setModalCondition(true)}>
 							<FontAwesomeIcon icon={faCircleInfo} size={'xl'} />
-							Where do I find the serial number?
+							<span className='ms-2'> Where do I find the serial number?</span>
 						</button>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<input
-							type='text'
-							className='form-container-inner-input'
-							placeholder='FIRST NAME'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<CustomInput placeholder={'FIRST NAME'} required={true} />
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<input
-							type='text'
-							className='form-container-inner-input'
-							placeholder='LAST NAME'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<CustomInput placeholder={'LAST NAME'} required={true} />
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<input
-							type='email'
-							className='form-container-inner-input'
-							placeholder='EMAIL'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<CustomInput placeholder={'EMAIL'} required={true} />
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<input
-							type='number'
-							className='form-container-inner-input'
-							placeholder='POSTAL CODE/ZIP'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<CustomInput placeholder={'POSTAL CODE/ZIP'} required={true} />
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<input
-							type='tel'
-							className='form-container-inner-input'
-							placeholder='PHONE NUMBER'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<CustomInput placeholder={'PHONE NUMBER'} required={true} />
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<input
-							type='text'
-							className='form-container-inner-input'
-							placeholder='PURCHASED FROM'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<CustomInput placeholder={'PURCHASED FROM'} required={true} />
 					</div>
 					<div className='col-12 mb-10'>
-						<label for='date-input'>Date of Purchase</label>
-						<input
-							name='date-input'
-							type='date'
-							className='form-container-inner-input date-input'
-							value='mm/dd/yyyy'
-							required
-						/>
-						<span className='input-error'>This field is required.</span>
+						<label htmlFor='date-input'>Date of Purchase</label>
+						<CustomInput type='date' required={true} />
 					</div>
 					<div className='col-12 mb-10 file-upload'>
 						<input
@@ -282,7 +87,7 @@ function RegisterForm() {
 							{/* <i className='fa-solid fa-check d-none' id='form-checkbox-check'></i> */}
 							{activeCheckBox && <FontAwesomeIcon icon={faCheck} />}
 						</span>
-						<label for='news'>
+						<label htmlFor='news'>
 							<input
 								type='checkbox'
 								name='news'
@@ -346,6 +151,7 @@ function RegisterForm() {
 					</div>
 				</div>
 			</div>
+			{modalCondition && <RoleModal modalHandler={setModalCondition} />}
 		</section>
 	)
 }

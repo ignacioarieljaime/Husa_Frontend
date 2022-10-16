@@ -11,11 +11,11 @@ function CESHomeIntro() {
 				<img src={Image.src} alt='featured image' width='100%' height='100%' />
 				<div className='heading-text'>
 					<img src={Logo.src} alt='featured image' className='mb-4 mb-sm-9' />
-					<h1 className='fs-md-3qx fw-normal mw-50 mx-auto'>
+					<h3 className='fs-md-3qx fw-normal mw-50 mx-auto'>
 						HOME APPLIANCES
 						<span className='d-block'>CES 2022</span>
 						<span className='d-block'>PRODUCT LINEUP</span>
-					</h1>
+					</h3>
 				</div>
 			</div>
 		</section>

@@ -2,7 +2,7 @@ import React from 'react'
 
 function SponsorshipDescriptionGrayBg() {
 	return (
-		<section>
+		<section className='sponsor-ship-bg'>
 			<div className='container py-20'>
 				<p className='fs-4 text-white'>
 					Hisense sponsorship choices align beautifully with the products we

@@ -7,8 +7,8 @@ import SeaImage from 'public/assets/images/blog/sea.png'
 function BlogListHead() {
 	return (
 		<section>
-			<div className='blog-header mt-10'>
-				<div className='container-fluid container-xxl px-6 mb-13'>
+			<div className='blog-header blog-header-list mt-10'>
+				<div className='container-fluid container-xxl ps-6 mb-13'>
 					<div className='row mb-14 mb-md-0'>
 						<div className='col-4 col-sm-6 align-self-center align-self-md-start ms-xxl-n5'>
 							<img
@@ -25,10 +25,10 @@ function BlogListHead() {
 							/>
 						</div>
 					</div>
-					<h1 className='header-text floating-text'>
+					<h6 className='header-text floating-text'>
 						Stories &
 						<span className='header-gradient-text d-block'>Inspiration</span>
-					</h1>
+					</h6>
 				</div>
 			</div>
 		</section>

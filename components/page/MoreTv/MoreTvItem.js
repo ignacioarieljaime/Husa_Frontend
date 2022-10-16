@@ -11,9 +11,9 @@ function MoreTvItem() {
 					<img src={Image.src} alt='featured image' width='100%' />
 				</a>
 				<div className='text-center'>
-					<h3 className='fs-2 fw-normal'>
+					<h4 className='fs-2 fw-normal'>
 						U8G<span className='fs-8 ms-2'>"Fire TV"</span>
-					</h3>
+					</h4>
 					<p className='fw-normal text-muted mb-6'>Great for everyone</p>
 					<a href='#' className='text-black text-uppercase fw-normal fs-8'>
 						get notified

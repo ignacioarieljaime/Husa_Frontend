@@ -3,7 +3,7 @@ import DoubleWarrantyText from 'public/assets/images/100-day/double-warranty.png
 
 const DoubleWarranty = () => {
 	return (
-		<section>
+		<section className='day-100'>
 			<div className='bg-purple py-15'>
 				<div className='container'>
 					<div className='row align-items-center'>

@@ -2,19 +2,20 @@ import React from 'react'
 
 // image
 import TvFlipped from 'public/assets/images/more-tv/tv-flipped.png'
+import CustomInput from 'components/common/Input'
 
 function MoreTvLessTalkForm() {
 	return (
 		<section>
-			<div className='blue-bg'>
+			<div className='blue-bg-more-tv '>
 				<div className='bg-bubble-dim-effect'>
 					<div className='container px-md-8 py-20'>
 						<div className='row align-items-center'>
 							<div className='col-12 col-md-6 pe-lg-10'>
-								<h2 className='fs-3qx fw-normal text-white mb-10 mb-md-20'>
+								<h4 className='fs-3qx fw-normal text-white mb-10 mb-md-20'>
 									Less Talk.
 									<span className='d-block opacity-75'>More Winning.</span>
-								</h2>
+								</h4>
 								<p className='fs-2 text-white fw-normal mb-7'>
 									Answer the question and enter the draw to win a Hisense U6H 4K
 									ULED TV.
@@ -42,7 +43,7 @@ function MoreTvLessTalkForm() {
 												name='proportion'
 												className='d-none'
 											/>
-											<label for='8' className='fw-normal text-white mb-0 ms-1'>
+											<label htmlFor='8' className='fw-normal text-white mb-0 ms-1'>
 												8/10
 											</label>
 										</div>
@@ -53,7 +54,7 @@ function MoreTvLessTalkForm() {
 												name='proportion'
 												className='d-none'
 											/>
-											<label for='6' className='fw-normal text-white mb-0 ms-1'>
+											<label htmlFor='6' className='fw-normal text-white mb-0 ms-1'>
 												6/10
 											</label>
 										</div>
@@ -64,37 +65,33 @@ function MoreTvLessTalkForm() {
 												name='proportion'
 												className='d-none'
 											/>
-											<label for='1' className='fw-normal text-white mb-0 ms-1'>
+											<label htmlFor='1' className='fw-normal text-white mb-0 ms-1'>
 												1/10
 											</label>
 										</div>
 									</div>
 									<div className='form-group'>
-										<input
+										<CustomInput
+											placeholder={'First Name'}
 											className='form-control custom-input'
-											type='text'
-											placeholder='First Name'
 										/>
 									</div>
 									<div className='form-group'>
-										<input
+										<CustomInput
+											placeholder={'Last Name'}
 											className='form-control custom-input'
-											type='text'
-											placeholder='Last Name'
 										/>
 									</div>
 									<div className='form-group'>
-										<input
+										<CustomInput
+											placeholder={'Email'}
 											className='form-control custom-input'
-											type='email'
-											placeholder='Email'
 										/>
 									</div>
 									<div className='form-group'>
-										<input
+										<CustomInput
+											placeholder={'Phone Number'}
 											className='form-control custom-input'
-											type='tel'
-											placeholder='Phone Number'
 										/>
 									</div>
 									<div className='d-flex justify-content-start align-items-center mb-10'>
@@ -104,13 +101,12 @@ function MoreTvLessTalkForm() {
 												id='checkbox'
 												name='privacy-policy'
 												className='d-none'
-												
 											/>
 											<label
-												for='checkbox'
+												htmlFor='checkbox'
 												className='fw-normal text-white mb-0 ms-1'>
 												I agree to the
-												<a href='#' className='text-white'>
+												<a href='#' className='text-white ms-2'>
 													terms & conditions
 												</a>
 											</label>

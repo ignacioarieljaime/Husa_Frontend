@@ -1,0 +1,26 @@
+.custom-input {
+	border: none;
+	border-bottom: 1px solid #ffffff;
+	border-radius: 0;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 30px;
+	color: #ffffff;
+	background: transparent !important;
+	margin: 15px 0;
+
+	&::placeholder {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 30px;
+		color: #ffffff;
+	}
+
+	&:focus {
+		color: #ffffff;
+		border-color: #ffffff;
+		background: transparent !important;
+		box-shadow: none;
+		outline: none !important;
+	}
+}

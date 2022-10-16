@@ -15,15 +15,15 @@ function MoreTvLessTalk() {
 			<div className='container-fluid my-20 pt-md-20 overflow-hidden'>
 				<div className='row'>
 					<div className='col-12 col-md-6 mb-8'>
-						<h2 className='fs-4hx fw-normal mb-16'>
+						<h4 className='fs-4hx fw-normal mb-16'>
 							<span className='d-block'>
 								Why <span className='text-navy'>less talk</span>
 							</span>
 							means more TV.
-						</h2>
-						<h3 className='fs-2 fw-normal'>
+						</h4>
+						<h5 className='fs-2 fw-normal'>
 							We let our technology do the talking, not our ads.
-						</h3>
+						</h5>
 					</div>
 					<div className='col-12 col-md-6 mb-15 mb-md-0 position-relative'>
 						<img
@@ -34,31 +34,31 @@ function MoreTvLessTalk() {
 						<img
 							src={halfTv.src}
 							alt='featured image'
-							className='big-tv d-none d-md-block'
+							className='big-tv-more-tv d-none d-md-block'
 						/>
 					</div>
 					<div className='col-12 col-md-7 col-xl-6'>
-						<div className='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items-more-tv aos-init' data-aos='slide-right'>
 							<div>
 								<img src={Quantum.src} alt='featured image' className='w-sm-100' />
 							</div>
-							<h4>One billion+ colors, we’ve counted</h4>
+							<h6>One billion+ colors, we’ve counted</h6>
 						</div>
-						<div className='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items-more-tv aos-init' data-aos='slide-right'>
 							<div>
 								<img src={Dolby.src} alt='featured image' className='w-sm-100' />
 							</div>
-							<h4>Blockbuster audio in your very own home</h4>
+							<h6>Blockbuster audio in your very own home</h6>
 						</div>
-						<div className='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items-more-tv aos-init' data-aos='slide-right'>
 							<div>
 								<img src={GoogleTv.src} alt='featured image' className='w-sm-100' />
 							</div>
-							<h4>
+							<h6>
 								The smartest, smoothest way to navigate your favorite shows
-							</h4>
+							</h6>
 						</div>
-						<div className='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items-more-tv aos-init' data-aos='slide-right'>
 							<div>
 								<img
 									src={FullArray.src}
@@ -66,23 +66,23 @@ function MoreTvLessTalk() {
 									className='w-sm-100'
 								/>
 							</div>
-							<h4>
+							<h6>
 								Contrast managed in real time to give you brighter brights and
 								darker darks
-							</h4>
+							</h6>
 						</div>
-						<div className='tech-items aos-init' data-aos='slide-right'>
+						<div className='tech-items-more-tv aos-init' data-aos='slide-right'>
 							<div>
 								<img
-									src={VariableMotion}
+									src={VariableMotion.src}
 									alt='featured image'
 									className='w-sm-100'
 								/>
 							</div>
-							<h4>
+							<h6>
 								Refreshing the picture hundreds of times a second to give you a
 								picture as smooth as butter
-							</h4>
+							</h6>
 						</div>
 					</div>
 				</div>

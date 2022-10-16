@@ -1,0 +1,32 @@
+/* about-company */
+.about-company {
+	padding: 40px 23%;
+	article {
+		color: #292929;
+	}
+	h2 {
+		text-transform: uppercase;
+		-webkit-hyphens: manual;
+		-ms-hyphens: manual;
+		hyphens: manual;
+		font-weight: 600;
+	}
+	h3 {
+		font-weight: 500;
+		font-size: 33px;
+		line-height: 36px;
+		margin: 45px 0;
+	}
+	h4 {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 30px;
+		margin: 24px 0;
+	}
+}
+
+@media (max-width: 991px) {
+	.about-company {
+		padding: 40px 24px;
+	}
+}

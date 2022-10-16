@@ -5,17 +5,17 @@ function CompanyInfo() {
 		<section>
 			<div className='about-company container-fluid'>
 				<article id='mission' className='article'>
-					<h2>Mission and vision</h2>
-					<h3>HISENSE USA's MISSION AND VISION.</h3>
+					<h4>Mission and vision</h4>
+					<h5>HISENSE USA's MISSION AND VISION.</h5>
 					<div>
-						<h4>Mission:</h4>
+						<h6>Mission:</h6>
 						<p>
 							To improve consumers lives and add value to partners by developing
 							high-quality, innovative and affordable products while also
 							committing to exceed expectations and deliver results in the
 							United States.
 						</p>
-						<h4>Vision:</h4>
+						<h6>Vision:</h6>
 						<p>
 							To become the most trusted company and loved brand in the U.S.
 							Consumer Electronic and Home Appliance industries by offering
@@ -25,8 +25,8 @@ function CompanyInfo() {
 					</div>
 				</article>
 				<article id='history' className='article pt-15'>
-					<h2>history</h2>
-					<h3>PUSHING THE BOUNDARIES OF INNOVATION SINCE 1969.</h3>
+					<h4>history</h4>
+					<h5>PUSHING THE BOUNDARIES OF INNOVATION SINCE 1969.</h5>
 					<div>
 						<p>
 							Hisense USA is the U.S. headquarters that was established by our
@@ -56,8 +56,8 @@ function CompanyInfo() {
 					</div>
 				</article>
 				<article id='quality' className='article pt-15'>
-					<h2>quality</h2>
-					<h3>OUR COMMITMENT TO QUALITY.</h3>
+					<h4>quality</h4>
+					<h5>OUR COMMITMENT TO QUALITY.</h5>
 					<div>
 						<p>
 							Whether it is our stringent Quality Improvement Process, our
@@ -69,7 +69,7 @@ function CompanyInfo() {
 					</div>
 				</article>
 				<article id='awards' className='article pt-15'>
-					<h2>AWARDS & ACKNOW&shy;LEDGEMENTS</h2>
+					<h4>AWARDS & ACKNOW&shy;LEDGEMENTS</h4>
 					<div>
 						<p>
 							Since 1969, Hisense has been striving to push the boundaries of

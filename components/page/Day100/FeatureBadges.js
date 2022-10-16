@@ -4,7 +4,7 @@ import NyTimes from 'public/assets/images/100-day/ny-times.png'
 
 const FeatureBadges = () => {
 	return (
-		<section>
+		<section className='day-100'>
 			<div className='bg-gradient-blush py-20'>
 				<div className='container my-10 feature-badge'>
 					<div className='row justify-content-evenly align-items-stretch'>

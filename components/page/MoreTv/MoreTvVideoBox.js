@@ -5,7 +5,7 @@ function MoreTvVideoBox() {
 		<section>
 			<div className='container-fluid py-9 text-center'>
 				<h2 className='fs-1 fw-normal mb-9'>Watch the video</h2>
-				<div className='video-container'>
+				<div className='video-container more-tv-video-container'>
 					<div className='video-wrapper'>
 						<iframe
 							width='100%'

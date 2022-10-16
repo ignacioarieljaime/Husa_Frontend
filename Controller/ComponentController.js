@@ -34,7 +34,24 @@ const GenerateComponentStructure = (_page, _content) => {
 	  export default ${_page.name}`
 }
 
+const GenerateAllComponentStructure = () => {
+	return `
+	import Layout from "components/common/Layout/Layout"
+	  ${ComponentList.map(item => `import ${item.name} from '${item.path}';`).join(' ')}
+
+	  function AllComponents() {
+	    return (
+			<Layout>
+	      <section> ${ComponentList.map(item => `<${item.name} />`).join(' ')}</section>
+		</Layout>
+	    )
+	  }
+
+	  export default AllComponents`
+}
+
 module.exports = {
 	FindComponent,
-	GenerateComponentStructure
+	GenerateComponentStructure,
+	GenerateAllComponentStructure
 }

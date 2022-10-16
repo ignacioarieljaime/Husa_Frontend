@@ -3,7 +3,7 @@ import star from 'public/assets/images/100-day/star.png'
 
 const ClaimPrize = () => {
 	return (
-		<section className='position-relative'>
+		<section className='position-relative day-100 '>
 			<div className='star'>
 				<img src={star.src} alt='star' width='35' />
 			</div>
@@ -24,7 +24,7 @@ const ClaimPrize = () => {
 						</div>
 					</article>
 					<div className='row align-items-stretch'>
-						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3 order-1'>
+						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3 '>
 							<ClaimPrizeLevels
 								level='1'
 								description='Buy an eligible 65-inch or larger Hisense Google TV'
@@ -32,7 +32,7 @@ const ClaimPrize = () => {
 								linkTitle='Shop Now'
 							/>
 						</div>
-						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3 order-2'>
+						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3 '>
 							<ClaimPrizeLevels
 								level='2'
 								description='Register your TV within 14 days of purchase*'
@@ -40,13 +40,13 @@ const ClaimPrize = () => {
 								linkTitle='Register Here'
 							/>
 						</div>
-						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3 order-3 order-md-4 order-xl-3'>
+						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3'>
 							<ClaimPrizeLevels
 								level='3'
 								description='Enjoy your TV risk-free for 100 days'
 							/>
 						</div>
-						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3 order-4 order-md-3 order-xl-4'>
+						<div className='col-12 col-md-6 my-8 my-xl-0 col-xl-3 '>
 							<ClaimPrizeLevels
 								level='4'
 								description='Claim your $100 giftcard within 100 days'

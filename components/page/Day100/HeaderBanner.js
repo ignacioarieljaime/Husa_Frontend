@@ -5,7 +5,7 @@ import GoogleTv from 'public/assets/images/100-day/googletv.png'
 
 function HeaderBanner() {
 	return (
-		<section>
+		<section className='day-100'>
 			<div className='header-secondary'>
 				<img
 					src={HeaderBannerPng.src}

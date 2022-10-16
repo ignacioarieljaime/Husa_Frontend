@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons'
 function ProductSupportInfo() {
 	return (
-		<section>
+		<section className='product_support_support_box'>
 			<div className='mb-17'>
 				<h2 className='my-15 text-center'>Product Support</h2>
 				<div className='mx-auto support-time'>

@@ -9,7 +9,7 @@ function CommercialBecomeAPartner() {
 					<div>
 						<p className='m-auto'>
 							Contact us at:
-							<a href='mailto:commercialsales@hisense.com' className='text-primary'>
+							<a href='mailto:commercialsales@hisense.com' className='text-primary ms-2'>
 								commercialsales@hisense.com
 							</a>
 						</p>

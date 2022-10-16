@@ -2,7 +2,7 @@ import DigitalTrendsLogo from 'public/assets/images/100-day/dt_logo.png'
 
 const DigitalTrends = () => {
 	return (
-		<section>
+		<section className='day-100'>
 			<div className='bg-eggplant digital-trends py-20 d-none d-md-block'>
 				<div className='container text-center my-10'>
 					<h2 className='mb-10 fs-2hx text-white'>

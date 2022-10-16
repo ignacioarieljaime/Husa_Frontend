@@ -59,7 +59,7 @@ function FAQContentBox() {
 								order a replacement remote, then visit
 								<a
 									href='https://hisense.encompass.com/'
-									className='text-primary'
+									className='text-primary ms-2'
 									target='_blank'>
 									https://hisense.encompass.com/
 								</a>
@@ -75,7 +75,7 @@ function FAQContentBox() {
 								on drop-off locations, please visit
 								<a
 									href='https://hisense-usa.com/recycling-information/'
-									className='text-primary'
+									className='text-primary ms-2'
 									target='_blank'>
 									https://hisense-usa.com/recycling-information/
 								</a>

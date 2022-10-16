@@ -52,6 +52,7 @@ function Header({
 							className='navbar-brand m-0 col-xl-4 text-start'>
 							<Logo />
 						</a>
+						<h1>Hisense</h1>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
 							<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
 								<a className='nav-link' href='#'>
@@ -459,7 +460,7 @@ function Header({
 						<input placeholder='SEARCH' className='search-box' type='text' />
 					</form>
 				</div>
-				{isBlog && <SubMenuHeader />}
+				{/* <SubMenuHeader /> */}
 			</nav>
 
 			{/* <div className='container-fluid home-top-advertisement'>

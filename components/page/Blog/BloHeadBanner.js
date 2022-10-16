@@ -12,13 +12,13 @@ function BloHeadBanner() {
 		<section>
 			<div className='blog-header mt-20'>
 				<div className='container mb-13'>
-					<h2 className='text-primary-dark fs-5 fw-normal mb-10'>
+					<h4 className='text-primary-dark fs-5 fw-normal mb-10'>
 						Home Appliances
-					</h2>
-					<h1 className='header-text mb-12'>
+					</h4>
+					<h5 className='header-text mb-12'>
 						TV Room Feng Shui Tips with
 						<span className='header-gradient-text'>Cliff Tan</span>
-					</h1>
+					</h5>
 					<span>Share article</span>
 					<div className='row mt-7'>
 						<a href='#' className='text-primary-dark'>

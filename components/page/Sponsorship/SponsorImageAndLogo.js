@@ -5,8 +5,8 @@ import Team from 'public/assets/images/sponsership/fnatic-team.png'
 
 function SponsorImageAndLogo() {
 	return (
-		<section>
-			<div className='container mt-20 position-relative'>
+		<section className='sponsor-ship-bg'>
+			<div className='container pt-20 position-relative'>
 				<div className='floating-line d-none d-md-block'></div>
 				<div className='row align-items-center z-index-1'>
 					<div className='col-12 col-md-5 text-center mb-8 mb-md-0'>

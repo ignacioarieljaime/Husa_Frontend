@@ -29,7 +29,7 @@ function PDPProductInfoSlider() {
 						direction={'vertical'}
 						watchSlidesProgress={true}
 						modules={[FreeMode, Thumbs]}
-						className='gallery-thumbs vertical'>
+						className='pdp-gallery-thumbs gallery-thumbs vertical'>
 						<SwiperSlide>
 							<img
 								src={Image.src}
@@ -72,7 +72,7 @@ function PDPProductInfoSlider() {
 								thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
 						}}
 						modules={[FreeMode, Thumbs]}
-						className='gallery-top'>
+						className='pdp-gallery-top gallery-top'>
 						<SwiperSlide>
 							<span className='media-slider-wrapper'>
 								<img
