@@ -1,5 +1,7 @@
 .category-products {
 	display: flex;
+	overflow: hidden;
+
 	.result-box {
 		margin: 16px 30px;
 		padding: 16px;
@@ -25,6 +27,68 @@
 			&:nth-child(8n) {
 				background: #fafafa;
 			}
+		}
+	}
+	.result_box__product_container {
+		width: 100%;
+	}
+	.accordion-btn {
+		font-size: 14px;
+		line-height: 27px;
+		text-decoration-line: underline;
+		color: #808080;
+		text-align: center;
+		border: none;
+		background: transparent;
+		margin: 18px 0;
+		display: none;
+	}
+	.filters-container {
+		padding: 0 16px;
+		min-width: 230px;
+		> div {
+			border-bottom: 1px solid #5a5b75;
+			padding: 20px 0;
+			h4 {
+				font-size: 16px;
+				line-height: 24px;
+				color: #5a5b75;
+			}
+		}
+		.filter-list {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			li {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-size: 14px;
+				line-height: 16px;
+				text-align: right;
+				color: #5a5b75;
+				padding: 4px 4px 4px 0;
+				> div {
+					display: flex;
+					justify-content: flex-start;
+					label {
+						display: inline-block;
+						margin-left: 5px;
+						width: 80%;
+						white-space: nowrap;
+						overflow: hidden !important;
+						text-overflow: ellipsis;
+					}
+				}
+			}
+		}
+		.clear-fields button {
+			font-size: 12px;
+			line-height: 27px;
+			color: #808080;
+			padding: 0;
+			margin-top: 8px;
+			border: none;
 		}
 	}
 }
