@@ -1,22 +1,22 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const ScrollableVideo = () => {
 	return (
-		<section>
+		<section className='l9g'>
 			<div className='scorllable-video desktop'>
 				<div className='video-container full-screen-sticky'>
 					<video
 						width='100%'
 						height='100%'
 						muted={true}
-						autoplay={true}
+						autoPlay={true}
 						loop={true}
-						playsinline={true}
+						playsInline={true}
 						className='bg-video'>
 						<source src='https://player.vimeo.com/external/589889816.hd.mp4?s=3a4d44392283549cd4e6b8172bb7b8342ec44062&amp;profile_id=175' />
 					</video>
 				</div>
-				{/* <div
+				<div
 					className='text-heading full-screen-sticky'
 					data-gsap='{"opacity": 1, "duration": 15, "delay": 0}'>
 					<div className='line1'>
@@ -31,7 +31,7 @@ const ScrollableVideo = () => {
 					data-gsaptarget='.section1'>
 					<div className='gradient-blank'></div>
 					<div className='gradient'></div>
-				</div> */}
+				</div>
 			</div>
 		</section>
 	)

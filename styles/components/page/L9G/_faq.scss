@@ -1,0 +1,48 @@
+.l-nine-g-faqs {
+	.question-wrapper {
+		width: 100%;
+		border-bottom: 1px solid #d4d4d4;
+		.question {
+			width: 100%;
+			padding: 24px;
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 26px;
+			cursor: pointer;
+			position: relative;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			&::after {
+				content: '\f078';
+				font-weight: 900;
+				font-family: 'Font Awesome 6 Free';
+				display: inline-block;
+				position: relative;
+				font-size: 15px;
+				transition: all 0.3s ease-in-out;
+			}
+		}
+		.answer {
+			background-color: #e6e6e6;
+			max-height: 0px;
+			overflow: hidden;
+			border-left: 1px solid #e6e6e6;
+			border-right: 1px solid #e6e6e6;
+			transition: all 0.8s ease-in;
+			span {
+				font-size: 18px;
+				line-height: 26px;
+				font-weight: 300;
+			}
+		}
+		&.open {
+			.question::after {
+				transform: rotate(180deg);
+			}
+			.answer {
+				max-height: 500px;
+			}
+		}
+	}
+}

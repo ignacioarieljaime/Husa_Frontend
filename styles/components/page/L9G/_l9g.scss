@@ -1,0 +1,222 @@
+.smooth-motion,
+.screen-size,
+.light-rejection,
+.dolby-vision,
+.dolby-atmos,
+.lumens-of-brightness {
+	background: #1f1f1f;
+	video {
+		object-fit: cover;
+		vertical-align: middle;
+		width: 100%;
+		height: 100%;
+		max-height: 700px;
+	}
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: top center;
+	}
+	.tab-image {
+		&:last-child {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+		opacity: 0;
+		&.active {
+			transition: opacity 1s ease-in-out;
+			opacity: 1;
+		}
+	}
+	.tabs-container {
+		.tab-btn {
+			background-color: rgba(0, 0, 0, 0.6);
+			border-radius: 0;
+			.underline-on-hover {
+				display: block;
+				padding: 12px;
+			}
+		}
+	}
+	.caption {
+		color: #bbbbbb !important;
+	}
+	.feature {
+		flex-grow: 1;
+		.color-bar {
+			height: 2px;
+			width: 100%;
+			background-image: url(https://assets.hisense-usa.com/resources/themes/default/images/products/lg9/color-bar.jpg);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			-webkit-transition: all 1s ease;
+			transition: all 1s ease;
+		}
+		.discription {
+			color: #bbbbbb;
+		}
+	}
+	.blured-image-container {
+		position: relative;
+		overflow-x: hidden;
+		.screen-slider {
+			position: absolute;
+			z-index: 4;
+			cursor: ew-resize;
+			width: 6px;
+			height: 100%;
+			background-color: white;
+			top: 0;
+			&::after {
+				content: '';
+				display: block;
+				width: 24px;
+				height: 24px;
+				background-color: white;
+				border-radius: 50%;
+				top: 49%;
+				left: -9px;
+				position: relative;
+			}
+		}
+		.screen {
+			width: auto;
+			height: auto;
+			overflow: hidden;
+			img {
+				height: 65vh;
+				max-height: 600px;
+				object-fit: cover;
+				display: block;
+				vertical-align: middle;
+				width: 100vw;
+			}
+			&.overlay {
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+		}
+	}
+}
+
+.l9g {
+	.text-primary {
+		color: #00aaa6 !important;
+	}
+	.mobile {
+		display: none !important;
+	}
+
+	.desktop {
+		display: block !important;
+	}
+	.full-screen-sticky {
+		position: relative;
+		position: sticky;
+		top: 0;
+		width: 100%;
+		height: 100vh;
+		overflow: hidden;
+	}
+	.tabs-container {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 2;
+
+		.tab-btn {
+			border: none;
+			padding: 0;
+
+			&:hover {
+				border: none;
+			}
+
+			&.active .underline-on-hover {
+				font-weight: 500 !important;
+				transition: all 0.2s ease-in;
+
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+	}
+	.screen-size {
+		.tab-image {
+			position: relative;
+			p {
+				position: absolute;
+				padding: 20px;
+				bottom: 20px;
+				left: 60px;
+				width: 40%;
+				background-color: rgba(0, 0, 0, 0.6);
+				color: #fff;
+				margin: 0;
+			}
+		}
+	}
+
+}
+@media (max-width: 1024px) {
+	.l9g {
+		.specs {
+			.specs-container {
+				.specs-table {
+					max-height: unset !important;
+					.spec-block {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 767px) {
+	.l9g {
+		.mobile {
+			display: block !important;
+		}
+		.desktop {
+			display: none !important;
+		}
+
+		.gradient-container {
+			font-size: 12px;
+			line-height: 16px;
+			.gradient-blank {
+				font-size: 12px;
+				line-height: 16px;
+			}
+			.gradient {
+				font-size: 12px;
+				line-height: 16px;
+			}
+		}
+
+		.screen-size {
+			.tab-image {
+				p {
+					padding: 4px;
+					bottom: 4px;
+					left: 12px;
+					width: 90%;
+				}
+			}
+		}
+	}
+}
+

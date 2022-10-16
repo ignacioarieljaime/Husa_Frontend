@@ -1,0 +1,10 @@
+.pure-color {
+	overflow: hidden;
+	position: relative;
+	padding-top: 24px;
+	background-color: #000;
+	video {
+		object-fit: cover;
+		vertical-align: middle;
+	}
+}

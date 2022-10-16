@@ -2,13 +2,13 @@ import React from 'react'
 
 const HeroBanner = () => {
 	return (
-		<section>
+		<section className='l9g'>
 			<div className='hero-banner'>
 				<video
 					muted={true}
 					autoPlay={true}
 					loop={true}
-					playsinline={true}
+					playsInline={true}
 					className='galaxy-video desktop'>
 					<source src='https://player.vimeo.com/external/592327208.hd.mp4?s=8bdcaebd3de4874d5dbc3a573ec7f7e2eda1aa6e&profile_id=175' />
 				</video>
