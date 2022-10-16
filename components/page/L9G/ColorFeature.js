@@ -2,7 +2,7 @@ import React from 'react'
 
 const ColorFeature = () => {
 	return (
-		<section>
+		<section className='l9g'>
 			<div className='color-feature'>
 				<div className='px-md-20 px-4'>
 					<p className='fs-7 fs-md-3 fw-light mw-md-75 mb-0 py-10 py-md-20'>
@@ -19,9 +19,9 @@ const ColorFeature = () => {
 							width='100%'
 							height='100%'
 							muted={true}
-							autoplay={true}
+							autoPlay={true}
 							loop={true}
-							playsinline={true}>
+							playsInline={true}>
 							<source src='https://player.vimeo.com/external/585409801.hd.mp4?s=36b793ad850bc1bcdc5563fadff9d9218f620ec9&amp;profile_id=175' />
 						</video>
 						<div className='video-content'>
@@ -40,9 +40,9 @@ const ColorFeature = () => {
 							width='100%'
 							height='100%'
 							muted={true}
-							autoplay={true}
+							autoPlay={true}
 							loop={true}
-							playsinline={true}>
+							playsInline={true}>
 							<source src='https://player.vimeo.com/external/585409581.hd.mp4?s=302e82593e6e3329de848c6c31e971a1255c9db6&amp;profile_id=175' />
 						</video>
 						<div className='video-content'>

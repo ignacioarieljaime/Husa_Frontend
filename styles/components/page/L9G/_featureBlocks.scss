@@ -1,0 +1,35 @@
+.feature-blocks {
+	.description-blocks {
+		background-color: #1e1e1e;
+		p {
+			color: #bbbbbb;
+		}
+		video {
+			object-fit: cover;
+			vertical-align: middle;
+		}
+		&:nth-child(even) {
+			.introduction {
+				order: 1;
+			}
+			.video-half {
+				order: 2;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.feature-blocks {
+		.description-blocks {
+			&:nth-child(even) {
+				.introduction {
+					order: 2;
+				}
+				.video-half {
+					order: 1;
+				}
+			}
+		}
+	}
+}
