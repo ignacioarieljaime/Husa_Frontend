@@ -18,7 +18,10 @@ import Logo from 'components/icons/Logo'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
 import SubMenuHeader from './SubMenuHeader'
 
-function Header({ themeCondition = false, isBlog = false }) {
+function Header({
+	isBlog = false,
+	data: { structure }
+}) {
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
@@ -37,11 +40,11 @@ function Header({ themeCondition = false, isBlog = false }) {
 		<header>
 			<nav
 				style={{ transitionDelay: '2s' }}
-				className={`navbar navbar-expand justify-content-center  ${
-					themeCondition ? 'theme-light' : ' theme-dark'
-				} top-nav py-4 px-sm-4 fixed-top flex-wrap ${
-					!topNavCondition && 'search-mode'
-				} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
+				className={`navbar navbar-expand justify-content-center  
+					theme-${structure.theme.value}
+				 top-nav py-4 px-sm-4 fixed-top flex-wrap ${
+						!topNavCondition && 'search-mode'
+					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<a

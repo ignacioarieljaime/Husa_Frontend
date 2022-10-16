@@ -11,7 +11,7 @@ function Layout({ children }) {
 				<title>hisense</title>
 			</Head>
 			<section>
-				<Header />
+				{/* <Header /> */}
 				{children}
 				<SendNewsToEmailBox />
 				<Footer />
