@@ -3,25 +3,19 @@ import React, { useEffect, useState } from 'react'
 // component
 import HamburgerMenu from './HamburgerMenu'
 
-// image
-import ImageOne from 'public/assets/images/dropdown-tv-audio-1.png'
-import ImageTwo from 'public/assets/images/dropdown-tv-audio-2.png'
-import ImageThree from 'public/assets/images/dropdown-home-appliance-1.png'
-import ImageFour from 'public/assets/images/dropdown-home-appliance-2.png'
-import ImageFive from 'public/assets/images/dropdown-air-products-1.png'
-import ImageSix from 'public/assets/images/dropdown-air-products-2.png'
-import ImageSeven from 'public/assets/images/dropdown-air-products-3.png'
-
 // icon
 import HamburgerMenuIcon from 'components/icons/HamburgerMenuIcon'
 import Logo from 'components/icons/Logo'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
 import SubMenuHeader from './SubMenuHeader'
+import axios from 'axios'
+import { setHeaderData } from 'redux/slices/layout'
+import { useDispatch, useSelector } from 'react-redux'
+import NavBarDropDown from './NavBarDropDown'
 
-function Header({
-	isBlog = false,
-	data: { structure }
-}) {
+function Header({ isBlog = false, data: { structure } }) {
+	const dispatch = useDispatch()
+	const { headerData } = useSelector(state => state.layoutData)
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
@@ -35,6 +29,22 @@ function Header({
 			setTopNavCondition(false)
 		}
 	}, [searchInputCondition])
+	useEffect(() => {
+		!headerData && getMenu()
+	}, [])
+
+	const getMenu = async () => {
+		try {
+			let response = await axios.get(
+				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
+			)
+			dispatch(
+				setHeaderData(response.data.data.find(item => item.title === 'header'))
+			)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<header>
@@ -54,374 +64,15 @@ function Header({
 						</a>
 						<h1>Hisense</h1>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
-							<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
-								<a className='nav-link' href='#'>
-									<span className='underline-on-hover'>TV + AUDIO</span>
-								</a>
-								<div className='nav-dropdown-list'>
-									<div className='container-fluid'>
-										<div className='row align-items-center'>
-											<div className='col-5'>
-												<h3>TV + AUDIO</h3>
-												<div className='row'>
-													<div className='col-6'>
-														<h4>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	TELEVISIONS
-																</span>
-															</a>
-														</h4>
-														<ul>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		LASER TV
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		4K ULED
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		4K UHD
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='/pages/tv-and-audio/tv/smart-tv-platforms/index.html'>
-																	<span className='underline-on-hover'>
-																		SMART TV PLATFORMS
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='/pages/tv-and-audio/tv/all-tvs/index.html'>
-																	<span className='underline-on-hover fw-bolder-700'>
-																		ALL TVs
-																	</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-													<div className='col-6'>
-														<h4>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	HOME AUDIO
-																</span>
-															</a>
-														</h4>
-														<ul>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		2.0 CH SOUNDBARS
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		2.1 CH SOUNDBARS
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		3.1 CH SOUNDBARS
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover fw-bolder-700'>
-																		ALL HOME AUDIO
-																	</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div className='col-7'>
-												<div className='row'>
-													<a href='#' className='col-6'>
-														<img
-															src={ImageOne.src}
-															width='100%'
-															alt='featured image'
-														/>
-													</a>
-													<a href='#' className='col-6'>
-														<img
-															src={ImageTwo.src}
-															width='100%'
-															alt='featured image'
-														/>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li className='nav-item dropdown-list-toggle mx-4 mx-xl-6'>
-								<a className='nav-link' href='#'>
-									<span className='underline-on-hover'>HOME APPLIANCES</span>
-								</a>
-								<div className='nav-dropdown-list'>
-									<div className='container-fluid'>
-										<div className='row align-items-center'>
-											<div className='col-5 mb-8'>
-												<h3>HOME APPLIANCES</h3>
-												<div>
-													<h4>
-														<a href='#'>
-															<span className='underline-on-hover'>
-																EXPLORE HOME APPLIANCES
-															</span>
-														</a>
-													</h4>
-													<ul>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	DISHWASHERS
-																</span>
-															</a>
-														</li>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	BEVERAGE + WINE COOLERS
-																</span>
-															</a>
-														</li>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	REFRIGERATORS
-																</span>
-															</a>
-														</li>
-													</ul>
-												</div>
-											</div>
-											<div className='col-7'>
-												<div className='row'>
-													<a href='#' className='col-6'>
-														<img
-															src={ImageThree.src}
-															width='100%'
-															alt='featured image'
-														/>
-													</a>
-													<a href='#' className='col-6'>
-														<img
-															src={ImageFour.src}
-															width='100%'
-															alt='featured image'
-														/>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li className='nav-item dropdown-list-toggle mx-4 mx-xl-6'>
-								<a className='nav-link' href='#'>
-									<span className='underline-on-hover'>AIR PRODUCTS</span>
-								</a>
-								<div className='nav-dropdown-list'>
-									<div className='container-fluid'>
-										<div className='row align-items-center'>
-											<div className='col-5'>
-												<h3>AIR PRODUCTS</h3>
-												<div>
-													<h4>
-														<a href='#'>
-															<span className='underline-on-hover'>
-																EXPLORE AIR PRODUCTS
-															</span>
-														</a>
-													</h4>
-													<ul>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	WINDOW AC
-																</span>
-															</a>
-														</li>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	PORTABLE AC
-																</span>
-															</a>
-														</li>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	DEHUMIDIFIERS
-																</span>
-															</a>
-														</li>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover'>
-																	AIR PURIFIER
-																</span>
-															</a>
-														</li>
-														<li>
-															<a href='#'>
-																<span className='underline-on-hover fw-bolder-700'>
-																	ALL AIR PRODUCTS
-																</span>
-															</a>
-														</li>
-													</ul>
-												</div>
-											</div>
-											<div className='col-7'>
-												<div className='row'>
-													<a href='#' className='col-4'>
-														<img
-															src={ImageFive.src}
-															width='100%'
-															alt='featured image'
-														/>
-													</a>
-													<a href='#' className='col-4'>
-														<img
-															src={ImageSix.src}
-															width='100%'
-															alt='featured image'
-														/>
-													</a>
-													<a href='#' className='col-4'>
-														<img
-															src={ImageSeven.src}
-															width='100%'
-															alt='featured image'
-														/>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
+							{headerData?.widgets?.centerOption.map((item, index) => (
+								<NavBarDropDown key={`right-${index}`} data={item} />
+							))}
 						</ul>
 						<ul className='navbar-nav align-items-center justify-content-end p-0 col-4'>
-							<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
-								<a className='nav-link' href='/pages/commercial/index.html'>
-									<span className='underline-on-hover'>COMMERCIAL</span>
-								</a>
-								<div className='nav-dropdown-list'>
-									<div className='container-fluid'>
-										<div className='row align-items-center'>
-											<div className='col-5'>
-												<h3>COMMERCIAL</h3>
-												<div className='row'>
-													<div className='col-6'>
-														<ul>
-															<li>
-																<a href='https://www.hisense-b2b.com'>
-																	<span className='underline-on-hover'>
-																		Commercial Displays
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='/pages/commercial/index.html'>
-																	<span className='underline-on-hover'>
-																		Commercial Refrigerators
-																	</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
-								<a className='nav-link' href='/pages/support/index.html'>
-									<span className='underline-on-hover'>SUPPORT</span>
-								</a>
-								<div className='nav-dropdown-list'>
-									<div className='container-fluid'>
-										<div className='row align-items-center'>
-											<div className='col-5'>
-												<h3>SUPPORT</h3>
-												<div className='row'>
-													<div className='col-6'>
-														<ul>
-															<li>
-																<a href='/pages/support/register/index.html'>
-																	<span className='underline-on-hover'>
-																		Register
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='/pages/support/video-tutorials/index.html'>
-																	<span className='underline-on-hover'>
-																		Video Tutorials
-																	</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-													<div className='col-6'>
-														<h4>
-															<a href='/pages/support/faq/index.html'>
-																<span className='underline-on-hover'>FAQ</span>
-															</a>
-														</h4>
-														<ul>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		TV Products
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		Air Conditioners
-																	</span>
-																</a>
-															</li>
-															<li>
-																<a href='#'>
-																	<span className='underline-on-hover'>
-																		Dehumidifiers
-																	</span>
-																</a>
-															</li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
+							{headerData?.widgets?.rightOption.map((item, index) => (
+								<NavBarDropDown key={`right-${index}`} data={item} />
+							))}
+
 							<li className='nav-item-button' data-button='search'>
 								<button
 									className={`btn search-icon p-2  ${
@@ -468,7 +119,7 @@ function Header({
 					Recall Information: French Door Refrigerator
 				</a>
 			</div> */}
-			<HamburgerMenu asideMenu={asideMenu} />
+			{headerData && <HamburgerMenu data={headerData} asideMenu={asideMenu} />}
 		</header>
 	)
 }

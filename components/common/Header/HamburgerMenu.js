@@ -1,6 +1,8 @@
+import Link from 'next/link'
 import React from 'react'
 
-function HamburgerMenu({ asideMenu }) {
+function HamburgerMenu({ data: { widgets }, asideMenu }) {
+	let menus = [...widgets.centerOption, ...widgets.rightOption]
 	return (
 		<nav
 			className={`navbar navbar-expand-xxxl navbar-bg side-nav fixed-top ${
@@ -141,41 +143,15 @@ function HamburgerMenu({ asideMenu }) {
 			<ul
 				style={{ paddingRight: '30%' }}
 				className='navbar-nav col-lg-6 offset-lg-6 position-relative my-lg-auto'>
-				<li className='nav-item my-1'>
-					<a
-						className='nav-link mx-2 my-1 my-lg-5 fw-bolder-700 p-3'
-						href='/pages/company/index.html'>
-						<span className='underline-on-hover'>COMPANY</span>
-					</a>
-				</li>
-				<li className='nav-item my-1'>
-					<a
-						className='nav-link mx-2 my-1 my-lg-5 fw-bolder-700 p-3'
-						href='/pages/commercial/index.html'>
-						<span className='underline-on-hover'>COMMERCIAL</span>
-					</a>
-				</li>
-				<li className='nav-item my-1'>
-					<a
-						className='nav-link mx-2 my-1 my-lg-5 fw-bolder-700 p-3'
-						href='/pages/support/index.html'>
-						<span className='underline-on-hover'>SUPPORT</span>
-					</a>
-				</li>
-				<li className='nav-item my-1'>
-					<a
-						className='nav-link mx-2 my-1 my-lg-5 fw-bolder-700 p-3'
-						href='/pages/support/register/index.html'>
-						<span className='underline-on-hover'>REGISTER</span>
-					</a>
-				</li>
-				<li className='nav-item my-1'>
-					<a
-						className='nav-link mx-2 my-1 my-lg-5 fw-bolder-700 p-3'
-						href='/pages/contact/index.html'>
-						<span className='underline-on-hover'>CONTACT</span>
-					</a>
-				</li>
+				{widgets.hamburger.map((menu, index) => (
+					<li key={`menu-${index}`} className='nav-item my-1'>
+						<Link href={menu.url}>
+							<a className='nav-link mx-2 my-1 my-lg-5 fw-bolder-700 p-3'>
+								<span className='underline-on-hover'>{menu.name}</span>
+							</a>
+						</Link>
+					</li>
+				))}
 			</ul>
 		</nav>
 	)

@@ -1,101 +1,65 @@
+import axios from 'axios'
 import FaceBookIcon from 'components/icons/FacebookIcon'
 import InstagramIcon from 'components/icons/InstagramIcon'
 import Logo from 'components/icons/Logo'
 import TwitterIcon from 'components/icons/TwitterIcon'
 import YouTubeIcon from 'components/icons/YouTubeIcon'
-import React from 'react'
+import Link from 'next/link'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFooterData } from 'redux/slices/layout'
 
 function Footer() {
+	const dispatch = useDispatch()
+	const { footerData } = useSelector(state => state.layoutData)
+
+	useEffect(() => {
+		!footerData && getFooter()
+	}, [])
+
+	const getFooter = async () => {
+		try {
+			let response = await axios.get(
+				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
+			)
+
+			dispatch(
+				setFooterData(response.data.data.find(item => item.title === 'footer'))
+			)
+			setTimeout(() => {
+				console.log(footerData)
+			}, 1000)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
 		<footer className='footer p-6 pt-md-16 px-md-6 pb-md-6'>
 			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col-12 col-lg-7 col-xl-6 full-width-border-sm'>
 						<div className='row justify-content-between align-items-start'>
-							<a
-								href='/pages/landing/index.html'
-								className='p-0 px-md-3 mb-11'>
-								<Logo color={'#009E91'} height={"14"} width={"86"} />
+							<a href='/pages/landing/index.html' className='p-0 px-md-3 mb-11'>
+								<Logo color={'#009E91'} height={'14'} width={'86'} />
 							</a>
-							<div className='px-0 footer-nav'>
-								<ul>
-									<li className='pb-5 pt-2'>
-										<a href='/pages/company/index.html'>
-											<span className='underline-on-hover'>COMPANY</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='#'>
-											<span className='underline-on-hover'>
-												AUTHORIZED RETAILERS
-											</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='#'>
-											<span className='underline-on-hover'>CAREERS</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='#'>
-											<span className='underline-on-hover'>COMPLIANCE</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='#'>
-											<span className='underline-on-hover'>DO NOT SELL</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div className='px-0 footer-nav'>
-								<ul>
-									<li className='pb-5 pt-2'>
-										<a href='#'>
-											<span className='underline-on-hover'>TV + AUDIO</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='#'>
-											<span className='underline-on-hover'>HOME APPLIANCE</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='#'>
-											<span className='underline-on-hover'>AIR PRODUCTS</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div className='px-0 footer-nav'>
-								<ul>
-									<li className='pb-5 pt-2'>
-										<a href='/pages/commercial/index.html'>
-											<span className='underline-on-hover'>COMMERCIAL</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='/pages/support/index.html'>
-											<span className='underline-on-hover'>SUPPORT</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='/pages/support/faq/index.html'>
-											<span className='underline-on-hover'>FAQ</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='/pages/contact/index.html'>
-											<span className='underline-on-hover'>CONTACT</span>
-										</a>
-									</li>
-									<li className='py-5'>
-										<a href='/pages/support/register/index.html'>
-											<span className='underline-on-hover'>REGISTER</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+							{footerData?.widgets.columns.map(columns => (
+								<div className='px-0 footer-nav'>
+									<ul>
+										{columns.map(colum => (
+											<li className='pb-5 pt-2'>
+												<Link href={colum.url}>
+													<a>
+														<span className='underline-on-hover'>
+															{colum.name}
+														</span>
+													</a>
+												</Link>
+											</li>
+										))}
+									</ul>
+								</div>
+							))}
 						</div>
 					</div>
 					<div className='col-12 col-lg-5 col-xl-6 full-width-border-sm mt-6 mt-md-0'>
@@ -103,18 +67,21 @@ function Footer() {
 							<div className='social-media me-12'>
 								<label className='mb-4'>Follow Us</label>
 								<div className='row justify-content-start align-items-center'>
-									<a href='#'>
-										<YouTubeIcon />
-									</a>
-									<a href='#'>
-										<InstagramIcon />
-									</a>
-									<a href='#'>
-										<TwitterIcon />
-									</a>
-									<a href='#'>
-										<FaceBookIcon />
-									</a>
+									{footerData?.widgets.socials.map(item => (
+										<Link href={item.url}>
+											<a>
+												{item.name === 'facebook' ? (
+													<FaceBookIcon />
+												) : item.name === 'twitter' ? (
+													<TwitterIcon />
+												) : item.name === 'youtube' ? (
+													<YouTubeIcon />
+												) : item.name === "instagram" ? (
+													<InstagramIcon />
+												) : null}
+											</a>
+										</Link>
+									))}
 								</div>
 							</div>
 							<div className='footer-nav col-md-4 my-8 mt-md-0'>
@@ -126,23 +93,14 @@ function Footer() {
 					</div>
 				</div>
 				<div className='row website-info mt-md-16 mt-6'>
-					<a href='#'>
-						<span className='underline-on-hover'>Legal Disclaimer</span>
-					</a>
-					<a href='#'>
-						<span className='underline-on-hover'>Privacy Policy</span>
-					</a>
-					<a href='#'>
-						<span className='underline-on-hover'>Recycling Information</span>
-					</a>
-					<a href='#'>
-						<span className='underline-on-hover'>Sitemap</span>
-					</a>
-					<a href='#'>
-						<span className='underline-on-hover'>
-							California Consumer Privacy Act Portal
-						</span>
-					</a>
+					{footerData?.widgets.links.map(link => (
+						<Link href={link.url}>
+							<a>
+								<span className='underline-on-hover'>{link.name}</span>
+							</a>
+						</Link>
+					))}
+
 					<div className='full-width-border-sm'></div>
 					<span>2022 © Copyright Hisense.</span>
 				</div>
