@@ -13,7 +13,7 @@ function Layout({ children }) {
 			<section>
 				{/* <Header /> */}
 				{children}
-				<SendNewsToEmailBox />
+				{/* <SendNewsToEmailBox /> */}
 				{/* <Footer /> */}
 			</section>
 		</>

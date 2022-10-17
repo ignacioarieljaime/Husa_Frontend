@@ -49,5 +49,13 @@ module.exports.ComponentList = [
 	...PdpComponents,
 	...SponsorComponents,
 	...Day100Components,
-	...L9GComponents
+	...L9GComponents,
+	{
+		name: 'SendNewsToEmailBox',
+		path: 'components/common/SendNewsToEmailBox'
+	},
+	{
+		name: 'Footer',
+		path: 'components/common/Footer'
+	}
 ]

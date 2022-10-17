@@ -1,3 +1,5 @@
+import { faChevronDown, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import React from 'react'
 
@@ -9,136 +11,38 @@ function HamburgerMenu({ data: { widgets }, asideMenu }) {
 				!asideMenu && 'hidden'
 			}`}>
 			<ul className='navbar-nav d-flex d-lg-none'>
-				<li className='nav-item dropdown'>
-					<a
-						className='nav-link dropdown-toggle p-3 m-2'
-						href='#'
-						id='tv-audio-dropdown'
-						role='button'
-						data-toggle='dropdown'
-						aria-haspopup='true'
-						aria-expanded='false'>
-						<span>TV + AUDIO</span>
-						<i className='fa-solid fa-chevron-down'></i>
-					</a>
-					<div
-						className='dropdown-menu ps-6 pe-4'
-						aria-labelledby='tv-audio-dropdown'>
-						<span className='dropdown-item'>LEARN MORE</span>
-						<a className='dropdown-item' href='#'>
-							<span>LASER TV</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>4K ULED</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>4K UHD</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a
-							className='dropdown-item'
-							href='/pages/tv-and-audio/tv/smart-tv-platforms/index.html'>
-							<span>SMART TV PLATFORMS</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a
-							className='dropdown-item'
-							href='/pages/tv-and-audio/tv/all-tvs/index.html'>
-							<span>ALL TVs</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<span className='dropdown-item'>SHOP TVs</span>
-						<a
-							className='dropdown-item'
-							href='/pages/tv-and-audio/tv/all-tvs/index.html'>
-							<span>ALL TVs</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-					</div>
-				</li>
-				<li className='nav-item dropdown'>
-					<a
-						className='nav-link dropdown-toggle p-3 m-2'
-						href='#'
-						id='home-appliances-dropdown'
-						role='button'
-						data-toggle='dropdown'
-						aria-haspopup='true'
-						aria-expanded='false'>
-						<span>HOME APPLIANCES</span>
-						<i className='fa-solid fa-chevron-down'></i>
-					</a>
-					<div
-						className='dropdown-menu ps-6 pe-4'
-						aria-labelledby='tv-audio-dropdown'>
-						<span className='dropdown-item'>SHOP REFRIGERATORS</span>
-						<a className='dropdown-item' href='#'>
-							<span>FULL SIZE</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>COMPACT</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>FREEZERS</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>ALL BEVERAGE + WINE COOLERS</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>ALL REFRIGERATORS</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-					</div>
-				</li>
-				<li className='nav-item dropdown'>
-					<a
-						className='nav-link dropdown-toggle p-3 m-2'
-						href='#'
-						id='air-products-dropdown'
-						role='button'
-						data-toggle='dropdown'
-						aria-haspopup='true'
-						aria-expanded='false'>
-						<span>AIR PRODUCTS</span>
-						<i className='fa-solid fa-chevron-down'></i>
-					</a>
-					<div
-						className='dropdown-menu ps-6 pe-4'
-						aria-labelledby='tv-audio-dropdown'>
-						<span className='dropdown-item'>LEARN MORE </span>
-						<a className='dropdown-item' href='#'>
-							<span>AIR PRODUCTS</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<span className='dropdown-item'>SHOP AIR PRODUCTS</span>
-						<a className='dropdown-item' href='#'>
-							<span>AIR PURIFIER</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>DEHUMIDIFIERS</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>PORTABLE AIR CONDITIONER</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>WINDOW AC</span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-						<a className='dropdown-item' href='#'>
-							<span>ALL AIR PRODUCTS </span>
-							<i className='fa-solid fa-sm fa-chevron-left'></i>
-						</a>
-					</div>
-				</li>
+				{menus.map((columns, index) => (
+					<li key={`hamburger-menu-${index}`} className='nav-item dropdown'>
+						<Link href={columns.url}>
+							<a
+								className='nav-link dropdown-toggle p-3 m-2'
+								id='tv-audio-dropdown'
+								role='button'
+								data-toggle='dropdown'
+								aria-haspopup='true'
+								aria-expanded='false'>
+								<span>{columns.name}</span>
+								{/* <FontAwesomeIcon icon={faChevronDown} /> */}
+							</a>
+						</Link>
+						<div
+							className='dropdown-menu ps-6 pe-4'
+							aria-labelledby='tv-audio-dropdown'>
+							{columns.columns.map(colum => (
+								<>
+									{colum.map(item => (
+										<Link href={item.url}>
+											<a className='dropdown-item'>
+												<span>{item.name}</span>
+												{/* <FontAwesomeIcon icon={faChevronLeft} size='sm' /> */}
+											</a>
+										</Link>
+									))}
+								</>
+							))}
+						</div>
+					</li>
+				))}
 			</ul>
 			<ul
 				style={{ paddingRight: '30%' }}

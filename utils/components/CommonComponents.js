@@ -1,9 +1,5 @@
 module.exports.CommonComponents = [
 	{
-		name: 'SendNewsToEmailBox',
-		path: 'components/common/SendNewsToEmailBox'
-	},
-	{
 		name: 'ProductsBox',
 		path: 'components/common/ProductsBox'
 	},
@@ -16,10 +12,6 @@ module.exports.CommonComponents = [
 		path: 'components/common/Header/Header'
 	},
 
-	{
-		name: 'Footer',
-		path: 'components/common/Footer'
-	},
 	{
 		name: 'NeedHelpBox',
 		path: 'components/common/NeedHelpBox'
