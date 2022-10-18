@@ -12,7 +12,6 @@ function ProductInfoAndSliderBox({ pim: { data } }) {
 			)
 	}, [data])
 
-	console.log(data, 'ss')
 	return (
 		<section className='product single-product'>
 			<div className='container'>

@@ -26,9 +26,7 @@ function Footer() {
 			dispatch(
 				setFooterData(response.data.data.find(item => item.title === 'footer'))
 			)
-			setTimeout(() => {
-				console.log(footerData)
-			}, 1000)
+
 		} catch (error) {
 			console.log(error)
 		}

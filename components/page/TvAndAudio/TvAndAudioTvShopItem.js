@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 
 function TvAndAudioTvShopItem({ data: { image, title, link, description } }) {
-	console.log(description);
 	return (
 		<div className='d-flex flex-column col-12 col-md-6 col-lg-3 px-6 mb-10 mb-lg-0'>
 			<figure>
