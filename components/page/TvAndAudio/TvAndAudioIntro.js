@@ -8,10 +8,10 @@ function TvAndAudioIntro({ data: { structure } }) {
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
 						<h2 className='fs-3x mb-12'>
-							{structure.largeTitle.value.split('<br/>')[0]}
+							{structure.largeTitle.value}
 							<span className='text-primary d-block'>
 								{' '}
-								{structure.largeTitle.value.split('<br/>')[1]}
+								{structure.coloredTitle.value}
 							</span>
 						</h2>
 						<div>

@@ -10,8 +10,10 @@ function TvAndAudioFindProduct({ data: { structure } }) {
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
 						<h2 className='text-white fs-3x mb-12'>
-							Find Your
-							<span className='text-primary'>Hisense TV</span>
+								{structure.title.value}
+							<span className='text-primary ms-2'>
+								{structure.coloredTitle.value}
+							</span>
 						</h2>
 						<div>
 							<p className='text-white fw-normal m-auto mb-4'>
@@ -22,7 +24,11 @@ function TvAndAudioFindProduct({ data: { structure } }) {
 									{structure.link.title}
 								</a>
 							</Link>
-							<img src={structure.image.src} alt={structure.image.alt} width='90%' />
+							<img
+								src={structure.image.src}
+								alt={structure.image.alt}
+								width='90%'
+							/>
 						</div>
 					</article>
 				</div>

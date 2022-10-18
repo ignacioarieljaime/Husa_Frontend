@@ -5,7 +5,6 @@ import Image from 'public/assets/images/tv-and-audio/ai-programms.png'
 import Link from 'next/link'
 
 function TvAndAudioSmartChoice({ data: { structure } }) {
-	console.log(structure)
 	return (
 		<section>
 			<div className='tiny-banner p-md-4'>
@@ -19,7 +18,7 @@ function TvAndAudioSmartChoice({ data: { structure } }) {
 							<p className='fw-normal m-auto mb-4'>
 								{structure.paragraph.value}
 							</p>
-							<img src={Image.src} alt='featured image' />
+							<img className='tv_and_audio_laster_intro' src={structure.image.src} alt={structure.image.alt}  />
 						</div>
 						<Link href={structure.paragraph.value}>
 							<a className='text-decoration-underline d-block text-muted fs-5 text-uppercase mt-8'>
