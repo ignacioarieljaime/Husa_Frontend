@@ -1,10 +1,10 @@
+import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
 // component
 import ProductInfoSlider from './ProductInfoSlider'
 
 function ProductInfoAndSliderBox({ pim: { data } }) {
-console.log(data);
 	return (
 		<section className='product single-product'>
 			<div className='container'>
@@ -17,17 +17,17 @@ console.log(data);
 						<h1 className='fs-2hx mb-8'>{data?.custom_fields[0].value} </h1>
 						<span className='fs-2hx mb-5'>{data?.name}</span>
 						<p className='text-primary'>Model: {data.model}</p>
-						<div className='model-toggle'>
-							<a
-								href='/tv-and-audio/televisions/all-tvs/55U8G_55-4k-uled-premium-hisense-android-smart-tv-2021'
-								className='btn btn-primary rounded-3 m-0'>
-								100
-							</a>
-							<a
-								href='/tv-and-audio/televisions/all-tvs/65U8G_65-4k-uled-premium-hisense-android-smart-tv-2021'
-								className='btn btn-outline-dark rounded-3'>
-								120
-							</a>
+						<div className='model-toggle '>
+							{data.series[0]?.values.map(
+								(item, index) =>
+									item.title && (
+										<Link href={'/'} key={index}>
+											<a className={`btn  m-2 rounded-3 m-0 ${data?.custom_fields[2]?.value === item.title ?"btn-primary" :"btn-outline-dark"}`}>
+												{item.title}
+											</a>
+										</Link>
+									)
+							)}
 						</div>
 						<div className='product-rating'></div>
 						<button
