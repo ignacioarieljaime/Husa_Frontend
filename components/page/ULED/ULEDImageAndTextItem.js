@@ -1,14 +1,13 @@
 import React from 'react'
 
-function ULEDImageAndTextItem({ data: { structure } }) {
-	let { image, largeTitle, paragraph, smallTitle } = structure
+function ULEDImageAndTextItem({ image, littleTitle, title, description }) {
 	return (
 		// bg-black ,
 		<div className='row description-blocks  align-items-center'>
 			<article className='introduction text-black col-12 col-md-6 order-2 order-md-1'>
-				<h4>{smallTitle.value}</h4>
-				<h2>{largeTitle.value}</h2>
-				<p>{paragraph.value}</p>
+				<h4>{littleTitle}</h4>
+				<h2>{title}</h2>
+				<p>{description}</p>
 			</article>
 			<img
 				src={image.src}

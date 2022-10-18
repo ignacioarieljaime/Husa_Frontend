@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/4k-uled/jargo.jpg'
 
-function ULEDImageBoxWithBtn() {
+function ULEDImageBoxWithBtn({ data: { structure } }) {
 	return (
 		<section>
 			<div className='jarg-section pt-0'>
@@ -11,8 +11,8 @@ function ULEDImageBoxWithBtn() {
 					<div className='row'>
 						<div className='col-12'>
 							<img
-								src={Image.src}
-								alt='featured-image'
+								src={structure.image.src}
+								alt={structure.image.alt}
 								className='m-auto'
 								width='100%'
 							/>
