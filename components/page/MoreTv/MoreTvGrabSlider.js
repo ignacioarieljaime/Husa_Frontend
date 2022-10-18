@@ -13,7 +13,7 @@ import 'swiper/css/effect-coverflow'
 // import required modules
 import { Pagination, EffectCoverflow } from 'swiper'
 
-function MoreTvGrabSlider() {
+function MoreTvGrabSlider({ data }) {
 	const carouselItems = ['U6HF', 'U6H', 'U7G', 'U8G']
 
 	const pagination = {
@@ -28,6 +28,10 @@ function MoreTvGrabSlider() {
 			)
 		}
 	}
+
+	const { structure } = data
+	console.log(structure)
+
 	return (
 		<section>
 			<div className='overflow-hidden my-20'>
