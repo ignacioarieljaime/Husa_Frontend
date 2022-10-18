@@ -4,22 +4,17 @@ import React, { useEffect, useState } from 'react'
 import ProductInfoSlider from './ProductInfoSlider'
 
 function ProductInfoAndSliderBox({ pim: { data } }) {
-	const [titles, setTitles] = useState()
-	useEffect(() => {
-		data &&
-			setTitles(
-				data.features.find(item => item.custom_field_type_name === 'Top Titles')
-			)
-	}, [data])
-
+console.log(data);
 	return (
 		<section className='product single-product'>
 			<div className='container'>
 				<div className='row'>
-					<ProductInfoSlider pim={data} />
+					<ProductInfoSlider pim={data.assets} />
 					<div className='col-12 col-md-6 product-info my-auto'>
-						<h2 className='text-primary fs-2x mb-5'>{titles?.custom_fields[1].value}</h2>
-						<h1 className='fs-2hx mb-8'>{titles?.custom_fields[0].value} </h1>
+						<h2 className='text-primary fs-2x mb-5'>
+							{data?.custom_fields[1].value}
+						</h2>
+						<h1 className='fs-2hx mb-8'>{data?.custom_fields[0].value} </h1>
 						<span className='fs-2hx mb-5'>{data?.name}</span>
 						<p className='text-primary'>Model: {data.model}</p>
 						<div className='model-toggle'>

@@ -3,12 +3,12 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/tv-page/laser-tv.jpg'
 
-function ProductImageBox() {
+function ProductImageBox({ data: { structure } }) {
 	return (
 		<div className='header-secondary'>
 			<img
-				src={Image.src}
-				alt='award-wining-television-lineup'
+				src={structure.image.src}
+				alt={structure.image.alt}
 				width='100%'
 				height='100%'
 			/>

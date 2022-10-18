@@ -12,7 +12,7 @@ import ValueImage from 'public/assets/images/tv-page/value-electronics.png'
 import WalletsImage from 'public/assets/images/tv-page/wallts.png'
 import WWsImage from 'public/assets/images/tv-page/wws.png'
 
-function ProductFineMeInStore() {
+function ProductFineMeInStore({ pim: { data } }) {
 	return (
 		<div className='p-md-4'>
 			<div className='container px-6 px-md-8 py-12'>

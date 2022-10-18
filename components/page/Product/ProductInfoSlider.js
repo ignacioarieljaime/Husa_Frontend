@@ -21,70 +21,21 @@ function ProductInfoSlider({ pim }) {
 				}}
 				modules={[FreeMode, Thumbs]}
 				className=' gallery-top'>
-				<SwiperSlide>
-					<span className='media-slider-wrapper'>
-						<img
-							src={pim.image}
-							alt='Front U8G Hisense s'
-							className='slider-media'
-						/>
-					</span>
-					<figcaption className='figure-caption'>
-						65 4K ULED™ Premium Hisense Android Smart TV (2021)
-					</figcaption>
-				</SwiperSlide>
-				<SwiperSlide>
-					<span className='media-slider-wrapper'>
-						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/fb706a5ece/Front-U8G-Hisense__ScaleMaxHeightWzc1MF0.png'
-							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/fb706a5ece/Front-U8G-Hisense__ScaleMaxHeightWzEyOF0.png'
-							data-large='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/fb706a5ece/Front-U8G-Hisense__ScaleMaxWidthWzc1MF0.png'
-							alt='Front U8G Hisense'
-						/>
-					</span>
-					<figcaption className='figure-caption'>
-						65 4K ULED™ Premium Hisense Android Smart TV (2021)
-					</figcaption>
-				</SwiperSlide>
-				<SwiperSlide>
-					<span className='media-slider-wrapper'>
-						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/d9a37d4c76/Side1-U8G-min__ScaleMaxHeightWzc1MF0.png'
-							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/d9a37d4c76/Side1-U8G-min__ScaleMaxHeightWzEyOF0.png'
-							data-large='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/d9a37d4c76/Side1-U8G-min__ScaleMaxWidthWzc1MF0.png'
-							alt='Side1 U8G min'
-						/>
-					</span>
-					<figcaption className='figure-caption'>
-						65 4K ULED™ Premium Hisense Android Smart TV (2021)
-					</figcaption>
-				</SwiperSlide>
-				<SwiperSlide>
-					<span className='media-slider-wrapper'>
-						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/e6d6ac9c75/Side2-U8G-min__ScaleMaxHeightWzc1MF0.png'
-							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/e6d6ac9c75/Side2-U8G-min__ScaleMaxHeightWzEyOF0.png'
-							data-large='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/e6d6ac9c75/Side2-U8G-min__ScaleMaxWidthWzc1MF0.png'
-							alt='Side2 U8G min'
-						/>
-					</span>
-					<figcaption className='figure-caption'>
-						65 4K ULED™ Premium Hisense Android Smart TV (2021)
-					</figcaption>
-				</SwiperSlide>
-				<SwiperSlide>
-					<span className='media-slider-wrapper'>
-						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/f18f97a790/pdp-3_4-u8-packshot-ang-port__ScaleMaxHeightWzc1MF0.png'
-							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/f18f97a790/pdp-3_4-u8-packshot-ang-port__ScaleMaxHeightWzEyOF0.png'
-							data-large='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/f18f97a790/pdp-3_4-u8-packshot-ang-port__ScaleMaxWidthWzc1MF0.png'
-							alt='pdp 3 4 u8 packshot ang port'
-						/>
-					</span>
-					<figcaption className='figure-caption'>
-						65 4K ULED™ Premium Hisense Android Smart TV (2021)
-					</figcaption>
-				</SwiperSlide>
+				{pim.map(
+					(item, index) =>
+						item.type_id === 1 && (
+							<SwiperSlide key={index}>
+								<span className='media-slider-wrapper'>
+									<img
+										src={item.url}
+										alt='Front U8G Hisense s'
+										className='slider-media'
+									/>
+								</span>
+								<figcaption className='figure-caption'>{item.title}</figcaption>
+							</SwiperSlide>
+						)
+				)}
 			</Swiper>
 			<Swiper
 				onSwiper={setThumbsSwiper}
@@ -94,46 +45,22 @@ function ProductInfoSlider({ pim }) {
 				watchSlidesProgress={true}
 				modules={[FreeMode, Thumbs]}
 				className='gallery-thumbs single-product-gallery-thumbs  product-gallery-thumbs'>
-				<SwiperSlide aria-hidden='true' tabIndex={'-1'} aria-label='slide-1'>
-					<img
-						src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxHeightWzEyOF0.png'
-						alt='Front U8G Hisense s'
-						aria-hidden='true'
-						tabindex='-1'
-					/>
-				</SwiperSlide>
-				<SwiperSlide aria-hidden='true' tabIndex={'-1'} aria-label='slide-2'>
-					<img
-						src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/fb706a5ece/Front-U8G-Hisense__ScaleMaxHeightWzEyOF0.png'
-						alt='Front U8G Hisense'
-						aria-hidden='true'
-						tabindex='-1'
-					/>
-				</SwiperSlide>
-				<SwiperSlide aria-hidden='true' tabIndex={'-1'} aria-label='slide-3'>
-					<img
-						src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/d9a37d4c76/Side1-U8G-min__ScaleMaxHeightWzEyOF0.png'
-						alt='Side1 U8G min'
-						aria-hidden='true'
-						tabindex='-1'
-					/>
-				</SwiperSlide>
-				<SwiperSlide aria-hidden='true' tabIndex={'-1'} aria-label='slide-4'>
-					<img
-						src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/e6d6ac9c75/Side2-U8G-min__ScaleMaxHeightWzEyOF0.png'
-						alt='Side2 U8G min'
-						aria-hidden='true'
-						tabindex='-1'
-					/>
-				</SwiperSlide>
-				<SwiperSlide aria-hidden='true' tabIndex={'-1'} aria-label='slide-5'>
-					<img
-						src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/f18f97a790/pdp-3_4-u8-packshot-ang-port__ScaleMaxHeightWzEyOF0.png'
-						alt='pdp 3 4 u8 packshot ang port'
-						aria-hidden='true'
-						tabindex='-1'
-					/>
-				</SwiperSlide>
+				{pim.map(
+					(item, index) =>
+						item.type_id === 1 && (
+							<SwiperSlide
+								aria-hidden='true'
+								tabIndex={'-1'}
+								aria-label={`slide-${index + 1}`}>
+								<img
+									src={item.url}
+									alt='Front U8G Hisense s'
+									aria-hidden='true'
+									tabindex='-1'
+								/>
+							</SwiperSlide>
+						)
+				)}
 			</Swiper>
 		</div>
 	)
