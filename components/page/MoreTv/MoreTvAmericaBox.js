@@ -7,8 +7,8 @@ import Image from 'public/assets/images/more-tv/people-heat-map.png'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-function MoreTvAmericaBox() {
-	const data = {
+function MoreTvAmericaBox({ data }) {
+	const chartData = {
 		datasets: [
 			{
 				backgroundColor: ['#259CCC', '#CEEAF9'],
@@ -18,21 +18,20 @@ function MoreTvAmericaBox() {
 			}
 		]
 	}
+	const { structure } = data
 
 	return (
 		<section>
 			<div className='blue-bg-more-tv'>
 				<div className='bg-single-bubble pt-20 text-center text-white'>
-					<h2 className='fw-normal fs-3hx mb-7'>Lets get real</h2>
-					<h3 className='fw-normal fs-2'>
-						America wants less talk and more TV
-					</h3>
+					<h2 className='fw-normal fs-3hx mb-7'>{structure.title.value}</h2>
+					<h3 className='fw-normal fs-2'>{structure.littleTitle.value}</h3>
 					<div className='bg-joel-pointer pb-20 px-md-8'>
 						<div className='container-fluid'>
 							<div className='row justify-content-center justify-content-md-start charts-align-more-tv'>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
-										<Doughnut data={data} width={297} height={297} />
+										<Doughnut data={chartData} width={297} height={297} />
 										<p className='mb-3 lh-1 text-start text-gradient-more-tv fs-4x fw-bolder-700'>
 											60<span className='fs-2hx'>%</span>
 										</p>
@@ -43,7 +42,7 @@ function MoreTvAmericaBox() {
 								</div>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
-										<Pie data={data}  width={297} height={297} />
+										<Pie data={chartData} width={297} height={297} />
 										<p className='mb-3 lh-1 text-start text-gradient-more-tv fs-4x fw-bolder-700'>
 											8<span className='fs-2hx'>/10</span>
 										</p>
@@ -57,7 +56,7 @@ function MoreTvAmericaBox() {
 							<div className='row align-items-end justify-content-center justify-content-md-start charts-align-more-tv'>
 								<div className='col-12 col-md-6 col-lg-4 col-xl-3 col-xxl-4'>
 									<div className='chart-block'>
-										<Pie data={data} width={297} height={297}  />
+										<Pie data={chartData} width={297} height={297} />
 										<p className='mb-3 lh-1 text-start text-gradient-more-tv fs-4x fw-bolder-700'>
 											61<span className='fs-2hx'>%</span> v 4
 											<span className='fs-2hx'>%</span>

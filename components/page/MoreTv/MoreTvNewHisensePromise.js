@@ -3,7 +3,9 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/more-tv/hisense-sign.png'
 
-function MoreTvNewHisensePromise() {
+function MoreTvNewHisensePromise({ data }) {
+	const { structure } = data
+	console.log(structure)
 	return (
 		<section>
 			<div className='blue-bg-more-tv'>
@@ -11,17 +13,15 @@ function MoreTvNewHisensePromise() {
 					<div className='row align-items-end'>
 						<div className='col-12 col-md-6 mb-20'>
 							<h4 className='fs-3hx fw-normal text-white mb-15'>
-								The Hisense Promise
+								{structure.title.value}
 							</h4>
 							<h5 className='fs-2 text-white mb-10'>
-								Great TVs. Great Prices. No B.S.
+								{structure.tinyTitle.value}
 							</h5>
 							<p className='fs-5 text-white fw-normal mb-7'>
-								Sure, we may not be the biggest or the most well known but
-								there’s one thing you can count on – Hisense will always strive
-								to make the latest technologies available to all.
+								{structure.paragraph.value}
 							</p>
-							<img src={Image.src} alt='featured image' />
+							<img src={structure.image.src} alt={structure.image.alt} />
 						</div>
 						<div className='col-12 col-md-6'>
 							<div className='video-container m-0'>

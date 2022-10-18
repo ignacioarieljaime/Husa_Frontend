@@ -3,7 +3,8 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/more-tv/header-television.png'
 
-function MoreTvHead() {
+function MoreTvHead({ data }) {
+	const { structure } = data
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
@@ -11,7 +12,9 @@ function MoreTvHead() {
 					<div className='row align-items-center overflow-hidden'>
 						<div className='col-12 col-md-6'>
 							<h4 className='header-texts'>
-								<span className='d-block text-gradient-more-tv'>Less talk.</span>
+								<span className='d-block text-gradient-more-tv'>
+									Less talk.
+								</span>
 								More TV.
 							</h4>
 							<p className='fs-5 text-white fw-normal mb-7'>
@@ -24,7 +27,11 @@ function MoreTvHead() {
 							</a>
 						</div>
 						<div className='col-12 col-md-6'>
-							<img src={Image.src} alt='featured image' width='100%' />
+							<img
+								src={structure.image.src}
+								alt={structure.image.alt}
+								width='100%'
+							/>
 						</div>
 					</div>
 				</div>
