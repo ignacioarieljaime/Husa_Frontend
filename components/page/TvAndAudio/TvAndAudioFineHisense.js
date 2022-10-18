@@ -1,19 +1,17 @@
 import React from 'react'
 
-// image
-import Image from 'public/assets/images/tv-and-audio/4k-uled.png'
-
 // components
 import TvAndAudioFineHisenseItem from './TvAndAudioFineHisenseItem'
 
-function TvAndAudioFineHisense() {
+function TvAndAudioFineHisense({ data: { structure } }) {
 	return (
 		<section>
 			<div className='p-md-4'>
 				<div className='container-fluid pt-20 pb-8'>
 					<div className='row align-items-start'>
-						<TvAndAudioFineHisenseItem image={Image} />
-						<TvAndAudioFineHisenseItem image={Image} />
+						{structure.list.value.map((item, index) => (
+							<TvAndAudioFineHisenseItem key={index} data={item} />
+						))}
 					</div>
 				</div>
 			</div>

@@ -1,8 +1,9 @@
 import React from 'react'
 
 import Image from 'public/assets/images/tv-and-audio/three-tv-banner.png'
+import Link from 'next/link'
 
-function TvAndAudioFindProduct() {
+function TvAndAudioFindProduct({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
@@ -14,15 +15,14 @@ function TvAndAudioFindProduct() {
 						</h2>
 						<div>
 							<p className='text-white fw-normal m-auto mb-4'>
-								Take a look at our selection of models and see whats right for
-								you.
+								{structure.tinyTitle.value}
 							</p>
-							<a
-								href='#'
-								className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 mt-8'>
-								shop now
-							</a>
-							<img src={Image.src} alt='featured image' width='90%' />
+							<Link href={structure.link.value}>
+								<a className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 mt-8'>
+									{structure.link.title}
+								</a>
+							</Link>
+							<img src={structure.image.src} alt={structure.image.alt} width='90%' />
 						</div>
 					</article>
 				</div>
