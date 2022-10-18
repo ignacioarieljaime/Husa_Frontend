@@ -10,7 +10,7 @@ import 'swiper/css/thumbs'
 // import required modules
 import { FreeMode, Thumbs } from 'swiper'
 
-function ProductInfoSlider() {
+function ProductInfoSlider({ pim }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 	return (
 		<div className='col-12 col-md-6 product-gallery mb-12 mb-md-0 pe-md-10'>
@@ -24,9 +24,7 @@ function ProductInfoSlider() {
 				<SwiperSlide>
 					<span className='media-slider-wrapper'>
 						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxHeightWzc1MF0.png'
-							data-thumbnail='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxHeightWzEyOF0.png'
-							data-large='https://assets.hisense-usa.com/assets/GalleryImages/Product/340/a7c5bd0fc2/Hisense-U8G-4K-ULED-Premium__ScaleMaxWidthWzc1MF0.png'
+							src={pim.image}
 							alt='Front U8G Hisense s'
 							className='slider-media'
 						/>

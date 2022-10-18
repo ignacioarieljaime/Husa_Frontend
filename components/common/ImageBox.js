@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/smart-tv-second-header.png'
 
-function ImageBox({}) {
+function ImageBox({ data }) {
 	return (
 		<section>
 			<div className='header-secondary'>

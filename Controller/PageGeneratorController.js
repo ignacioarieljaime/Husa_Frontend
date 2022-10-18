@@ -12,10 +12,10 @@ ${ComponentList.map(
 ).join(';')}
 
 
-function Index({data}) {
+function Index({data,pim}) {
 	const [components, setComponents] = useState([])
 	useEffect(() => {
-		let componentName = data ? data.widgets.map(item => item.name) : []
+		let componentName =	data && data.widgets ? data.widgets.map(item => item.name) : []
 		setComponents(componentName)
 	}, [])
 
@@ -25,7 +25,7 @@ function Index({data}) {
 		<Layout>
 		<section> ${ComponentList.map(
 			componentItem =>
-				`{components.includes('${componentItem.name}') && <${componentItem.name} data={data.widgets.find(item => item.name === '${componentItem.name}')}/>}`
+				`{components.includes('${componentItem.name}') && <${componentItem.name} pim={pim} data={data.widgets.find(item => item.name === '${componentItem.name}')}/>}`
 		).join('')}</section>
 		</Layout>
 			
@@ -33,10 +33,9 @@ function Index({data}) {
 }
 	
 export async function getServerSideProps(context) {
-	console.log(context?.query?.param)
 	console.log('send ssr request')
 	${
-		_page.model_id === 0 && _page.model_type
+		!_page.model_id && _page.model_id === 0
 			? `	let data = await axios
 		.get(
 			'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
@@ -51,8 +50,10 @@ export async function getServerSideProps(context) {
 		})
 		return { props: { data } }
 		`
-			: `let data = await axios.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getDynamicPages/${_page.model_id}'
+			: `
+			let productId = context?.query?.param[0]
+			let data = await axios.get(
+			'https://imcxm.dev-api.hisenseportal.com/api/husa/getDynamicPages/' + productId
 		)
 		.then(response => {
 			console.log('get ssr data')
@@ -62,9 +63,20 @@ export async function getServerSideProps(context) {
 			console.error('Error:', error)
 			return null
 		});
-		return { props: { data } }
-		
-		
+		let pim = await axios
+		.get(
+			'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/' + productId
+		)
+		.then(response => {
+			console.log('get pim ssr data')
+			return response.data
+		})
+		.catch(error => {
+			console.error('Error:', error)
+			return null
+		})
+
+	return { props: { data, pim } }	
 		`
 	}
 
