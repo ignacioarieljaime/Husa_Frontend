@@ -38,9 +38,11 @@ function Header({ isBlog = false, data: { structure } }) {
 			let response = await axios.get(
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
+			console.log(response.data.data)
 			dispatch(
 				setHeaderData(response.data.data.find(item => item.title === 'header'))
 			)
+			console.log(response.data.data);
 		} catch (error) {
 			console.log(error)
 		}

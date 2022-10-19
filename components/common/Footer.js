@@ -41,7 +41,7 @@ function Footer() {
 							<a href='/pages/landing/index.html' className='p-0 px-md-3 mb-11'>
 								<Logo color={'#009E91'} height={'14'} width={'86'} />
 							</a>
-							{footerData?.widgets.columns.map(columns => (
+							{/* {footerData?.widgets.columns.map(columns => (
 								<div className='px-0 footer-nav'>
 									<ul>
 										{columns.map(colum => (
@@ -57,7 +57,7 @@ function Footer() {
 										))}
 									</ul>
 								</div>
-							))}
+							))} */}
 						</div>
 					</div>
 					<div className='col-12 col-lg-5 col-xl-6 full-width-border-sm mt-6 mt-md-0'>
@@ -65,7 +65,7 @@ function Footer() {
 							<div className='social-media me-12'>
 								<label className='mb-4'>Follow Us</label>
 								<div className='row justify-content-start align-items-center'>
-									{footerData?.widgets.socials.map(item => (
+									{/* {footerData?.widgets.socials.map(item => (
 										<Link href={item.url}>
 											<a>
 												{item.name === 'facebook' ? (
@@ -79,7 +79,7 @@ function Footer() {
 												) : null}
 											</a>
 										</Link>
-									))}
+									))} */}
 								</div>
 							</div>
 							<div className='footer-nav col-md-4 my-8 mt-md-0'>
@@ -91,7 +91,7 @@ function Footer() {
 					</div>
 				</div>
 				<div className='row website-info mt-md-16 mt-6'>
-					{footerData?.widgets.links.map(link => (
+					{footerData?.widgets?.links.map(link => (
 						<Link href={link.url}>
 							<a>
 								<span className='underline-on-hover'>{link.name}</span>

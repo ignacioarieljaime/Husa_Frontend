@@ -1,9 +1,6 @@
 const Axios = require('axios').default
-const data = require('./../page.json')
-const {
-	PageGeneratorController
-} = require('../Controller/PageGeneratorController')
-const PageController = require('./../Controller/PageController')
+const PageController = require('./../controller/PageController')
+const { FindComponent, GenerateComponentStructure } = require('./../controller/ComponentController')
 
 const requestHandler = (async () => {
 	console.log('send request')
@@ -13,7 +10,8 @@ const requestHandler = (async () => {
 		)
 		console.log('get data')
 		response.data.data.forEach(page => {
-			PageController(page, PageGeneratorController(page))
+			let pageComponents = FindComponent(page.widgets)
+			PageController(page, GenerateComponentStructure(page, pageComponents))
 		})
 	} catch (error) {
 		console.log(error)
