@@ -30,8 +30,7 @@ const GenerateComponentStructure = (_page, _content) => {
 			)
 			.join(';')}
 
-	  function Index({pim}) {
-		let data = ${JSON.stringify(_page.widgets)}
+	function Index${_page.id}({pim,data}) {
 	    return (
 			<Layout meta={${_page.meta}}>
 	      		<section>
@@ -48,12 +47,13 @@ const GenerateComponentStructure = (_page, _content) => {
 			</Layout>
 	    )
 	  }
-	  ${
-			_page.model_type
-				? `	
+
 export async function getServerSideProps(context) {
-	console.log('send ssr request')
-		let pim = await axios
+	${
+		_page.model_type
+			? `
+			console.log('send pim ssr request')
+			let pim = await axios
 		.get(
 			'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/${_page.model_id}'
 		)
@@ -64,13 +64,19 @@ export async function getServerSideProps(context) {
 		.catch(error => {
 			console.error('Error:', error)
 			return null
-		})
+			})`
+			: ''
+	}
 
-				return { props: {pim} }}`
-				: ''
-		}
 
-	  export default Index`
+	return { props: {${_page.model_type ? 'pim ,' : ''} data:${JSON.stringify(
+		_page.widgets
+	)} }}
+}
+		
+
+
+	  export default Index${_page.id}`
 }
 
 const GenerateAllComponentStructure = () => {
