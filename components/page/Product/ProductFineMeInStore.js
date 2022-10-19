@@ -22,40 +22,11 @@ function ProductFineMeInStore({ pim: { data } }) {
 						Check with these retailers for product availability.
 					</p>
 					<div className='row justify-content-evenly align-items-center'>
-						<div>
-							<img src={AmazonImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img src={BAndHImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img src={BestByImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img src={CostcoImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img
-								src={CrutchfieldImage.src}
-								alt='featured-image'
-								width='150'
-							/>
-						</div>
-						<div>
-							<img src={CuracaoImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img src={ProjectImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img src={ValueImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img src={WalletsImage.src} alt='featured-image' width='150' />
-						</div>
-						<div>
-							<img src={WWsImage.src} alt='featured-image' width='150' />
-						</div>
+						{data.retailers.map((item, index) => (
+							<div key={index}>
+								<img src={item.Media.url} alt='featured-image' width='150' />
+							</div>
+						))}
 					</div>
 				</article>
 			</div>
