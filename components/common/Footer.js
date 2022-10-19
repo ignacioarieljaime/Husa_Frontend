@@ -5,16 +5,19 @@ import Logo from 'components/icons/Logo'
 import TwitterIcon from 'components/icons/TwitterIcon'
 import YouTubeIcon from 'components/icons/YouTubeIcon'
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setFooterData } from 'redux/slices/layout'
+// import { setFooterData } from 'redux/slices/layout'
 
 function Footer() {
 	const dispatch = useDispatch()
-	const { footerData } = useSelector(state => state.layoutData)
+	const [footerData, setFooterData] = useState()
+	// const { footerData } = useSelector(state => state.layoutData)
 
 	useEffect(() => {
-		!footerData && getFooter()
+		localStorage.getItem('footerData')
+			? setFooterData(JSON.parse(localStorage.getItem('footerData')))
+			: getFooter()
 	}, [])
 
 	const getFooter = async () => {
@@ -23,10 +26,13 @@ function Footer() {
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
 
-			dispatch(
-				setFooterData(response.data.data.find(item => item.title === 'footer'))
+			// dispatch(
+			// setFooterData(response.data.data.find(item => item.title === 'footer'))
+			// )
+			localStorage.setItem(
+				'footerData',
+				JSON.stringify(response.data.data.find(item => item.title === 'footer'))
 			)
-
 		} catch (error) {
 			console.log(error)
 		}
@@ -41,7 +47,8 @@ function Footer() {
 							<a href='/pages/landing/index.html' className='p-0 px-md-3 mb-11'>
 								<Logo color={'#009E91'} height={'14'} width={'86'} />
 							</a>
-							{/* {footerData?.widgets.columns.map(columns => (
+					
+							{footerData?.widgets?.columns.map(columns => (
 								<div className='px-0 footer-nav'>
 									<ul>
 										{columns.map(colum => (
@@ -57,7 +64,7 @@ function Footer() {
 										))}
 									</ul>
 								</div>
-							))} */}
+							))}
 						</div>
 					</div>
 					<div className='col-12 col-lg-5 col-xl-6 full-width-border-sm mt-6 mt-md-0'>
@@ -65,7 +72,7 @@ function Footer() {
 							<div className='social-media me-12'>
 								<label className='mb-4'>Follow Us</label>
 								<div className='row justify-content-start align-items-center'>
-									{/* {footerData?.widgets.socials.map(item => (
+									{footerData?.widgets?.socials.map(item => (
 										<Link href={item.url}>
 											<a>
 												{item.name === 'facebook' ? (
@@ -74,12 +81,12 @@ function Footer() {
 													<TwitterIcon />
 												) : item.name === 'youtube' ? (
 													<YouTubeIcon />
-												) : item.name === "instagram" ? (
+												) : item.name === 'instagram' ? (
 													<InstagramIcon />
 												) : null}
 											</a>
 										</Link>
-									))} */}
+									))}
 								</div>
 							</div>
 							<div className='footer-nav col-md-4 my-8 mt-md-0'>

@@ -6,7 +6,6 @@ import ImageJoel from 'public/assets/images/more-tv/joel-reading.png'
 
 function MoreTvHisensePromise({ data }) {
 	const { structure } = data
-	console.log(structure)
 
 	return (
 		<section>

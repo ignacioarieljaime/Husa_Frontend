@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import ProductDetailLstItem from './ProductDetailLstItem'
 
 function ProductDetailsBox({ pim: { data } }) {
-	console.log(data)
 	const [showMore, setShowMore] = useState(false)
 	const spaceContainer = useRef()
 

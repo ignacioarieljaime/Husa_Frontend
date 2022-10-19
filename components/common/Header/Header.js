@@ -9,13 +9,14 @@ import Logo from 'components/icons/Logo'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
 import SubMenuHeader from './SubMenuHeader'
 import axios from 'axios'
-import { setHeaderData } from 'redux/slices/layout'
+// import { setHeaderData } from 'redux/slices/layout'
 import { useDispatch, useSelector } from 'react-redux'
 import NavBarDropDown from './NavBarDropDown'
 
 function Header({ isBlog = false, data: { structure } }) {
 	const dispatch = useDispatch()
-	const { headerData } = useSelector(state => state.layoutData)
+	// const { headerData } = useSelector(state => state.layoutData)
+	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
@@ -30,7 +31,9 @@ function Header({ isBlog = false, data: { structure } }) {
 		}
 	}, [searchInputCondition])
 	useEffect(() => {
-		!headerData && getMenu()
+		localStorage.getItem('headerData')
+			? setHeaderData(JSON.parse(localStorage.getItem('headerData')))
+			: getMenu()
 	}, [])
 
 	const getMenu = async () => {
@@ -38,11 +41,13 @@ function Header({ isBlog = false, data: { structure } }) {
 			let response = await axios.get(
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
-			console.log(response.data.data)
-			dispatch(
-				setHeaderData(response.data.data.find(item => item.title === 'header'))
+			// dispatch(
+			// 	setHeaderData(response.data.data.find(item => item.title === 'header'))
+			// )
+			localStorage.setItem(
+				'headerData',
+				JSON.stringify(response.data.data.find(item => item.title === 'header'))
 			)
-			console.log(response.data.data);
 		} catch (error) {
 			console.log(error)
 		}

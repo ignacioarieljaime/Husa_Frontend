@@ -30,7 +30,6 @@ function MoreTvGrabSlider({ data }) {
 	}
 
 	const { structure } = data
-	console.log(structure)
 
 	return (
 		<section>

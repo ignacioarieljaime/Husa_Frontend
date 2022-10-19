@@ -5,7 +5,6 @@ import Image from 'public/assets/images/more-tv/hisense-sign.png'
 
 function MoreTvNewHisensePromise({ data }) {
 	const { structure } = data
-	console.log(structure)
 	return (
 		<section>
 			<div className='blue-bg-more-tv'>

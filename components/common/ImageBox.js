@@ -3,13 +3,13 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/smart-tv-second-header.png'
 
-function ImageBox({ data }) {
+function ImageBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='header-secondary'>
 				<img
-					src={Image.src}
-					alt='smart tv platforms'
+					src={structure.image.src}
+					alt={structure.image.alt}
 					width='100%'
 					height='100%'
 				/>

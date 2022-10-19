@@ -14,7 +14,7 @@ function MoreTvBox({ data }) {
 								image={item.image}
 								title={item.title.value}
 								model={item.model.value}
-								description={item.discription.value}
+								description={item.description.value}
 								link={item.link}
 							/>
 						)

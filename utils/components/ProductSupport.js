@@ -2,6 +2,9 @@ module.exports.ProductSupportComponents = [
 	{
 		name: 'ProductSupportInfo',
 		path: 'components/page/ProductSupport/ProductSupportInfo'
+	},{
+		name: 'ProductSupportLinks',
+		path: 'components/page/ProductSupport/ProductSupportLinks'
 	},
 	{
 		name: 'ProductSupportNewHead',

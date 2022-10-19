@@ -1,23 +1,30 @@
+import Link from 'next/link'
 import React from 'react'
 
-function LasterFinedWithImage() {
+function LasterFinedWithImage({ data: { structure } }) {
+	console.log(structure)
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
 				<div className='container px-6 px-md-8 pt-20 pb-12'>
 					<article className='article text-center'>
 						<h3 className='text-white mb-7'>
-							Find Your <span className='text-primary'>Laser TV</span>
+							{structure.title.value}
+							<span className='text-primary'>
+								{' '}
+								{structure.coloredTitle.value}
+							</span>
 						</h3>
 						<div>
 							<p className='fw-normal mw-md-50 text-white m-auto'>
-								Rethink how you watch your favorite shows with Laser TV,
-								bringing a new type of cinema experience to your home.
+								{structure.description.value}
 							</p>
 						</div>
-						<a href='#' className='btn btn-outline-light rounded-5 mt-12 px-8'>
-							SHOP LASER TVs
-						</a>
+						<Link href={structure.link.value}>
+							<a className='btn btn-outline-light rounded-5 mt-12 px-8'>
+								{structure.link.title}
+							</a>
+						</Link>
 					</article>
 				</div>
 			</div>

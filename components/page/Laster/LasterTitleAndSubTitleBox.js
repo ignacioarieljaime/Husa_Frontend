@@ -1,19 +1,14 @@
 import React from 'react'
 
-function LasterTitleAndSubTitleBox() {
+function LasterTitleAndSubTitleBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='tiny-banner p-md-4'>
 				<div className='container px-6 px-md-8 py-17'>
 					<article className='article text-center'>
-						<h4 className='fs-2 fw-normal mb-12'>
-							Stunning Detail with 4K Picture Quality
-						</h4>
+						<h4 className='fs-2 fw-normal mb-12'>{structure.title.value}</h4>
 						<div>
-							<p className='fw-normal m-auto'>
-								Hisense Soundbars creates incredible sound in a simple, compact
-								design. Big sound that delivers a huge entertainment experience.
-							</p>
+							<p className='fw-normal m-auto'>{structure.description.value}</p>
 						</div>
 					</article>
 				</div>

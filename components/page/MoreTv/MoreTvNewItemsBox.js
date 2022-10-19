@@ -5,7 +5,6 @@ import MoreTvNewItem from './MoreTvNewItem'
 
 function MoreTvNewItemsBox({ data }) {
 	const { structure } = data
-	console.log(structure)
 	return (
 		<section>
 			<div className='container-fluid py-6'>
