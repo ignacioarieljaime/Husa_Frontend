@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ProductDetailLstItem({ data }) {
+function ProductDetailLstItem({ title, value }) {
 	return (
 		<>
-			<dt>{data?.title}</dt>
-			<dd className='col-6 text-white col-md-3 mb-5' data-label={data?.title}>
-				{data?.value}
+			<dt>{title}</dt>
+			<dd className='col-6 text-white col-md-3 mb-5' data-label={title}>
+				{value}
 			</dd>
 		</>
 	)

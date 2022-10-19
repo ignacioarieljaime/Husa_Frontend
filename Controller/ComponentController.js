@@ -33,7 +33,7 @@ const GenerateComponentStructure = (_page, _content) => {
 	  function Index({pim}) {
 		let data = ${JSON.stringify(_page.widgets)}
 	    return (
-			<Layout>
+			<Layout meta={${_page.meta}}>
 	      		<section>
 		  		 ${_content
 							.map(
