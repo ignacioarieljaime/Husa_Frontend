@@ -1,6 +1,6 @@
 const Axios = require('axios').default
-const PageController = require('./../controller/PageController')
-const { FindComponent, GenerateComponentStructure } = require('./../controller/ComponentController')
+const PageController = require('../Controller/PageC')
+const { FindComponent, GenerateComponentStructure } = require('../Controller/ComponentController')
 
 const requestHandler = (async () => {
 	console.log('send request')

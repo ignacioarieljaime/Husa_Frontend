@@ -1,4 +1,4 @@
-const { ComponentList } = require('./../utils/ComponentList')
+const { ComponentList } = require('../utils/ComponentList')
 
 const FindComponent = _componentData => {
 	const components = Array.isArray(_componentData)
