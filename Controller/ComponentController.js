@@ -51,27 +51,27 @@ const GenerateComponentStructure = (_page, _content) => {
 	${
 		_page.model_type
 			? `  export async function getServerSideProps(context) {
-			console.log('send ssr request')
+			console.log('send cxm request')
 			let data = await axios
 				.get(
 					'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
 				)
 				.then(response => {
-					console.log('get ssr data')
+					console.log('get cxm data')
 					return response.data.widgets
 				})
 				.catch(error => {
 					console.error('Error:', error)
 					return null
 				})			
-				
+				console.log('send pim request')
 				 let pim = await axios
 						.get(
 							'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/${_page.model_id}'
 						)
 						.then(response => {
-							console.log('get pim ssr data')
-							return response.data
+							console.log('get pim data')
+							return response.data.data
 						})
 						.catch(error => {
 							console.error('Error:', error)
