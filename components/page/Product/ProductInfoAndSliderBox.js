@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import ProductInfoSlider from './ProductInfoSlider'
 
 function ProductInfoAndSliderBox({ pim: { data } }) {
+
 	return (
 		<section className='product single-product'>
 			<div className='container'>

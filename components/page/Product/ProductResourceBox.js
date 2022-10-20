@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProductRecrossesBox({ pim: { data } }) {
+function ProductResourceBox({ pim: { data } }) {
 	return (
 		<div className='resources py-7 py-sm-18'>
 			<h2>Resources</h2>
@@ -31,4 +31,4 @@ function ProductRecrossesBox({ pim: { data } }) {
 	)
 }
 
-export default ProductRecrossesBox
+export default ProductResourceBox

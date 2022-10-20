@@ -51,8 +51,8 @@ module.exports.ComponentList = [
 	...Day100Components,
 	...L9GComponents,
 	{
-		name: 'SendNewsToEmailBox',
-		path: 'components/common/SendNewsToEmailBox'
+		name: 'Subscribe',
+		path: 'components/common/Subscribe'
 	},
 	{
 		name: 'Footer',

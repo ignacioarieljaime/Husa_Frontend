@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SendNewsToEmailBox() {
+function Subscribe() {
 	return (
 		<div className='container-fluid email-form px-8 py-14 px-md-12 p-md-20'>
 			<article className='row p-lg-8'>
@@ -22,4 +22,4 @@ function SendNewsToEmailBox() {
 	)
 }
 
-export default SendNewsToEmailBox
+export default Subscribe

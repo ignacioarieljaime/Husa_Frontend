@@ -32,7 +32,7 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductFineMeInStore'
 	},
 	{
-		name: 'ProductRecrossesBox',
-		path: 'components/page/Product/ProductRecrossesBox'
+		name: 'ProductResourceBox',
+		path: 'components/page/Product/ProductResourceBox'
 	}
 ]

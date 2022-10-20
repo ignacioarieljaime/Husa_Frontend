@@ -38,9 +38,9 @@ const GenerateComponentStructure = (_page, _content) => {
 							.map(
 								(item, index) =>
 									item &&
-									`<${item.name} ${
+									`{ data && <${item.name} ${
 										_page.model_type ? `pim={pim}` : ''
-									} data={data[${index}]} />`
+									} data={data[${index}]}/> }`
 							)
 							.join(' ')}
 				</section>
@@ -48,33 +48,56 @@ const GenerateComponentStructure = (_page, _content) => {
 	    )
 	  }
 
-export async function getServerSideProps(context) {
 	${
 		_page.model_type
-			? `
-			console.log('send pim ssr request')
-			let pim = await axios
-		.get(
-			'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/${_page.model_id}'
-		)
-		.then(response => {
-			console.log('get pim ssr data')
-			return response.data
-		})
-		.catch(error => {
-			console.error('Error:', error)
-			return null
-			})`
-			: ''
-	}
-
-
-	return { props: {${_page.model_type ? 'pim ,' : ''} data:${JSON.stringify(
-		_page.widgets
-	)} }}
-}
+			? `  export async function getServerSideProps(context) {
+			console.log('send ssr request')
+			let data = await axios
+				.get(
+					'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
+				)
+				.then(response => {
+					console.log('get ssr data')
+					return response.data.widgets
+				})
+				.catch(error => {
+					console.error('Error:', error)
+					return null
+				})			
+				
+				 let pim = await axios
+						.get(
+							'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/${_page.model_id}'
+						)
+						.then(response => {
+							console.log('get pim ssr data')
+							return response.data
+						})
+						.catch(error => {
+							console.error('Error:', error)
+							return null
+						})
+	
 		
+			return { props: { data , pim }} }`
+			: `  export async function getServerSideProps(context) {
+			console.log('send ssr request')
+			let data = await axios
+				.get(
+					'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
+				)
+				.then(response => {
+					console.log('get ssr data')
+					return response.data.widgets
+				})
+				.catch(error => {
+					console.error('Error:', error)
+					return null
+				})			
 
+			return { props: { data }} }`
+	}
+	
 
 	  export default Index${_page.id}`
 }
