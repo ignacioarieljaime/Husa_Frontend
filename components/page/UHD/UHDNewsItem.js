@@ -3,7 +3,8 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/4k-uhd/roku-tv.jpg'
 
-function UHDNewsItem({ data: { image, title, discription } }) {
+function UHDNewsItem({ data }) {
+	let { image, title, description } = data
 	return (
 		<div className='col-12 col-md-4'>
 			<article className='article text-start'>
@@ -15,7 +16,7 @@ function UHDNewsItem({ data: { image, title, discription } }) {
 				/>
 				<div className='px-4 divider-border position-relative'>
 					<h4 className='fs-2 mb-3 mt-13'>{title.value}</h4>
-					<p className='fw-normal m-auto mb-4'>{discription.value}</p>
+					<p className='fw-normal m-auto mb-4'>{description.value}</p>
 				</div>
 			</article>
 		</div>
