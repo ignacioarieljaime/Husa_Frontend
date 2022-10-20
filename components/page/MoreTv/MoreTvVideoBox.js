@@ -13,7 +13,7 @@ function MoreTvVideoBox({ data }) {
 							height='100%'
 							src='https://www.youtube.com/embed/9EjXJfswb0s'
 							title='YouTube video player'
-							frameborder='0'
+							frameBorder='0'
 							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
 							allowFullScreen></iframe>
 					</div>
