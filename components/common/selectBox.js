@@ -5,7 +5,7 @@ import React from 'react'
 function CustomSelectBox({ required = false, title }) {
 	return (
 		<div className=' custom-select-box'>
-			<div className='form-container-inner-input select-container' tabindex='1'>
+			<div className='form-container-inner-input select-container' tabIndex='1'>
 				<div className='select-box-item'>
 					<input
 						className='input'
