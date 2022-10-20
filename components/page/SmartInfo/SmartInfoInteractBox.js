@@ -7,7 +7,7 @@ function SmartInfoInteractBox() {
 				<div style={{ height: '766px' }} className='iframe-container'>
 					<iframe
 						src='https://touchlessdemos.withgoogle.com/retail/nest/streamingdemo/en-us'
-						frameborder='0'
+						frameBorder='0'
 						width='100%'
 						height='100%'></iframe>
 				</div>
