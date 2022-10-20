@@ -35,7 +35,7 @@ function PDPProductInfoSlider() {
 								src={Image.src}
 								alt='featured image'
 								aria-hidden='true'
-								tabindex='-1'
+								tabIndex='-1'
 							/>
 						</SwiperSlide>
 						<SwiperSlide>
@@ -43,7 +43,7 @@ function PDPProductInfoSlider() {
 								src={Image.src}
 								alt='featured image'
 								aria-hidden='true'
-								tabindex='-1'
+								tabIndex='-1'
 							/>
 						</SwiperSlide>
 						<SwiperSlide>
@@ -51,7 +51,7 @@ function PDPProductInfoSlider() {
 								src={Image.src}
 								alt='featured image'
 								aria-hidden='true'
-								tabindex='-1'
+								tabIndex='-1'
 							/>
 						</SwiperSlide>
 						<SwiperSlide>
@@ -59,7 +59,7 @@ function PDPProductInfoSlider() {
 								src={Image.src}
 								alt='featured image'
 								aria-hidden='true'
-								tabindex='-1'
+								tabIndex='-1'
 							/>
 						</SwiperSlide>
 					</Swiper>
