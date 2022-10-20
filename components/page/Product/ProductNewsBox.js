@@ -1,9 +1,10 @@
 import React from 'react'
 import ProductNewsItem from './ProductNewsItem'
 
-function ProductNewsBox({ data: { structure } }) {
+function ProductNewsBox({ data, index }) {
+	let { structure } = data
 	return (
-		<div className='container-fluid py-6'>
+		<div id={data.name + data.id} className='container-fluid py-6'>
 			<div className='row align-items-start'>
 				{structure.list.value.map((item, index) => (
 					<ProductNewsItem data={item} key={index} />

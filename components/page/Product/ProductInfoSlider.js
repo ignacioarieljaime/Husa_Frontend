@@ -21,21 +21,24 @@ function ProductInfoSlider({ pim }) {
 				}}
 				modules={[FreeMode, Thumbs]}
 				className=' gallery-top'>
-				{pim.map(
-					(item, index) =>
-						item.type_id === 1 && (
-							<SwiperSlide key={index}>
-								<span className='media-slider-wrapper'>
-									<img
-										src={item.url}
-										alt='Front U8G Hisense s'
-										className='slider-media'
-									/>
-								</span>
-								<figcaption className='figure-caption'>{item.title}</figcaption>
-							</SwiperSlide>
-						)
-				)}
+				{pim &&
+					pim.map(
+						(item, index) =>
+							item.type_id === 1 && (
+								<SwiperSlide key={index}>
+									<span className='media-slider-wrapper'>
+										<img
+											src={item.url}
+											alt='Front U8G Hisense s'
+											className='slider-media'
+										/>
+									</span>
+									<figcaption className='figure-caption'>
+										{item.title}
+									</figcaption>
+								</SwiperSlide>
+							)
+					)}
 			</Swiper>
 			<Swiper
 				onSwiper={setThumbsSwiper}
@@ -45,22 +48,23 @@ function ProductInfoSlider({ pim }) {
 				watchSlidesProgress={true}
 				modules={[FreeMode, Thumbs]}
 				className='gallery-thumbs single-product-gallery-thumbs  product-gallery-thumbs'>
-				{pim.map(
-					(item, index) =>
-						item.type_id === 1 && (
-							<SwiperSlide
-								aria-hidden='true'
-								tabIndex={'-1'}
-								aria-label={`slide-${index + 1}`}>
-								<img
-									src={item.url}
-									alt='Front U8G Hisense s'
+				{pim &&
+					pim.map(
+						(item, index) =>
+							item.type_id === 1 && (
+								<SwiperSlide
 									aria-hidden='true'
-									tabindex='-1'
-								/>
-							</SwiperSlide>
-						)
-				)}
+									tabIndex={'-1'}
+									aria-label={`slide-${index + 1}`}>
+									<img
+										src={item.url}
+										alt='Front U8G Hisense s'
+										aria-hidden='true'
+										tabIndex='-1'
+									/>
+								</SwiperSlide>
+							)
+					)}
 			</Swiper>
 		</div>
 	)

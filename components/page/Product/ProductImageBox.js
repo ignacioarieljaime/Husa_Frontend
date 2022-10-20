@@ -3,9 +3,10 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/tv-page/laser-tv.jpg'
 
-function ProductImageBox({ data: { structure } }) {
+function ProductImageBox({ data }) {
+	let { structure } = data
 	return (
-		<div className='header-secondary'>
+		<div id={data.name + data.id} className='header-secondary'>
 			<img
 				src={structure.image.src}
 				alt={structure.image.alt}

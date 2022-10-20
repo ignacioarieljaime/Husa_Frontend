@@ -1,39 +1,40 @@
 import Link from 'next/link'
 import React from 'react'
 
-function ProductCategoryBox() {
+function ProductCategoryBox({ data, pim }) {
+	console.log(data);
+	let { structure } = data
 	return (
-		<div className='catalog-navbar bg-dark'>
+		<div id={data.name + data.id} className='catalog-navbar bg-dark'>
 			<nav className=''>
 				<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 					<li className='me-md-auto'>
-						<span>65U8G</span>
+						<span>{pim.model}</span>
 					</li>
+					{structure.tags.value.map((item, index) => (
+						<li>
+							<Link href={item.target.value}>
+								<a>
+									<span className='underline-on-hover'>{item.title.value}</span>
+								</a>
+							</Link>
+						</li>
+					))}
+
 					<li>
-						<Link href='#overview'>
-							<a>
-								<span className='underline-on-hover'> Overview</span>
+						<Link href={structure.support.value}>
+							<a target='_blank'>
+								<span className='underline-on-hover'> Support</span>
 							</a>
 						</Link>
 					</li>
 					<li>
-						<a href='#features-video'>
-							<span className='underline-on-hover'> Features</span>
-						</a>
-					</li>
-					<li>
-						<a href='#specs'>
-							<span className='underline-on-hover'> Specifications</span>
-						</a>
-					</li>
-					<li>
-						<a href='/pages/support/index.html' target='_blank'>
-							<span className='underline-on-hover'> Support</span>
-						</a>
-					</li>
-					<li>
 						<button className='btn-primary' onclick='toggleWhereToBuyDrawer()'>
-							Where To Buy
+							{
+								structure.whereToBuy ? "Coming Soon":"Where To Buy"
+
+							}
+					
 						</button>
 					</li>
 				</ul>

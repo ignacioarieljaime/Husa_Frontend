@@ -5,7 +5,7 @@ import ProductTextWithIconItem from './ProductTextWithIconItem'
 const ProductTextWithIcon = ({ data }) => {
 	const { structure } = data
 	return (
-		<div class='container'>
+		<div id={data.name + data.id} class='container'>
 			<div class='row'>
 				{structure.list.value.map((item, index) => (
 					<ProductTextWithIconItem

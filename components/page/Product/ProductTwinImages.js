@@ -3,7 +3,7 @@ import React from 'react'
 const ProductTwinImages = ({ data }) => {
 	const { structure } = data
 	return (
-		<div class='p-6 p-md-16 row justify-content-center align-items-center mx-0'>
+		<div id={data.name + data.id} class='p-6 p-md-16 row justify-content-center align-items-center mx-0'>
 			<img
 				src={structure.imageLeft.src}
 				alt={structure.imageLeft.alt}

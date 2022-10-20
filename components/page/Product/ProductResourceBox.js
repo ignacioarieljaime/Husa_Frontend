@@ -1,11 +1,11 @@
 import React from 'react'
 
-function ProductResourceBox({ pim: { data } }) {
+function ProductResourceBox({ pim, data }) {
 	return (
-		<div className='resources py-7 py-sm-18'>
+		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
 			<h2>Resources</h2>
 			<ul>
-				{data.assets.map(
+				{pim.assets.map(
 					(item, index) =>
 						item.type_id === 3 && (
 							<li key={index}>

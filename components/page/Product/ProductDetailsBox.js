@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ProductDetailLstItem from './ProductDetailLstItem'
 
-function ProductDetailsBox({ pim: { data } }) {
+function ProductDetailsBox({ pim, data }) {
 	const [showMore, setShowMore] = useState(false)
 	const spaceContainer = useRef()
 
@@ -15,9 +15,11 @@ function ProductDetailsBox({ pim: { data } }) {
 	}, [showMore])
 
 	return (
-		<div className={`specs  black-banner ${!showMore && 'close'}`}>
+		<div
+			id={data.name + data.id}
+			className={`specs  black-banner ${!showMore && 'close'}`}>
 			<div ref={spaceContainer} className='specs-container'>
-				{data.properties.map((item, index) => (
+				{pim.properties.map((item, index) => (
 					<div key={`specs-${index}`} className='discription-list mb-10'>
 						<h3 className='text-white'>{item.title}</h3>
 						<dl className='row m-0'>
