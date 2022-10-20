@@ -42,7 +42,7 @@ function ContactUsNewForm() {
 						<div className='col-12 mb-10 custom-select-box'>
 							<div
 								className='form-container-inner-input select-container'
-								tabindex='1'>
+								tabIndex='1'>
 								<div className='select-box-item'>
 									<input
 										className='input'

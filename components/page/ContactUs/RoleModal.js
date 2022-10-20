@@ -10,7 +10,7 @@ function RoleModal({ modalHandler }) {
 		<div
 			onClick={() => outSide && modalHandler(false)}
 			className='modal d-block '
-			tabindex='2000'
+			tabIndex='2000'
 			role='dialog'>
 			<div
 				ref={modal}
