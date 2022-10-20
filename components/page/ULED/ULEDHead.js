@@ -3,23 +3,20 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/4k-uled/heading.jpg'
 
-function ULEDHead() {
+function ULEDHead({ data: { structure } }) {
 	return (
 		<section>
 			<div className='heading'>
 				<img
-					src={Image.src}
-					alt='smart tv platforms'
+					src={structure.image.src}
+					alt={structure.image.alt}
 					width='100%'
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h3 className='mw-50 mx-auto'>
-						<span className='d-block'>Let’s get real.</span>
-						These are the TVs your old TV should be worried about.
-					</h3>
-					<a href='#' className='btn btn-light text'>
-						See the range
+					<h3 className='mw-50 mx-auto'>{structure.title.value}</h3>
+					<a href={structure.link.value} className='btn btn-light text'>
+						{structure.link.title}
 					</a>
 				</div>
 			</div>

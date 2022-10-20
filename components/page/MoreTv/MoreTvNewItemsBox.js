@@ -18,6 +18,7 @@ function MoreTvNewItemsBox({ data }) {
 							title={item.title.value}
 							model={item.model.value}
 							link={item.link}
+							Btn={item.Btn}
 							image={item.image}
 							description={item.description.value}
 						/>
