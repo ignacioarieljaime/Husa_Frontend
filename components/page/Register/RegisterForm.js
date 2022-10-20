@@ -106,7 +106,7 @@ function RegisterForm() {
 				<div
 					className='modal fade'
 					id='serial-numbers'
-					tabindex='-1'
+					tabIndex='-1'
 					role='dialog'
 					aria-labelledby='exampleModalLabel'
 					aria-hidden='true'>
