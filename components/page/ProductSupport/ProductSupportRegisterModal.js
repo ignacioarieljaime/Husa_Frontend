@@ -12,7 +12,7 @@ function ProductSupportRegisterModal({ handler }) {
 			style={{ background: 'rgba($color: #000000, $alpha: 0.3)' }}
 			className='modal fade show d-block'
 			id='serial-numbers-1'
-			tabindex='-1'
+			tabIndex='-1'
 			role='dialog'
 			aria-labelledby='exampleModalLabel'>
 			<div
