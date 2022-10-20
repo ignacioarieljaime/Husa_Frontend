@@ -1,6 +1,13 @@
 import React from 'react'
 
-function ULEDProductItem({ title, description, image, link }) {
+function ULEDProductItem({
+	title,
+	description,
+	image,
+	link,
+	linkTitle,
+	btnTitle
+}) {
 	return (
 		<div className='col-12 col-lg-4 platform platform-uled'>
 			<h2>{title}</h2>
@@ -10,14 +17,14 @@ function ULEDProductItem({ title, description, image, link }) {
 			</div>
 			<div className='row'>
 				<div className='col-12 col-sm-3 col-lg-6 col-xl-4 col-xxl-3 mb-5 mb-sm-0'>
-					<a href={link.value} className='btn btn-light'>
-						{link.title}
+					<a href={link} className='btn btn-light'>
+						{linkTitle}
 					</a>
 				</div>
 				<div className='col-12 col-sm-6 col-lg-6 col-xl-8 col-xxl-9'>
-					<a href='#' className='btn where-to-buy-btn btn-outline-light'>
-						Where To Buy
-					</a>
+					<button className='btn where-to-buy-btn btn-outline-light'>
+						{btnTitle}
+					</button>
 				</div>
 			</div>
 		</div>

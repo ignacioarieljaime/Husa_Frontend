@@ -15,7 +15,9 @@ function ULEDProducts({
 						image={item.image}
 						title={item.title.value}
 						description={item.description.value}
-						link={item.link}
+						link={item.link.value}
+						linkTitle={item.linkTitle.value}
+						btnTitle={item.btnTitle.value}
 					/>
 				))}
 			</div>
