@@ -10,11 +10,11 @@ function Layout({ children, meta }) {
 				<title>hisense</title>
 
 				<meta name='og:url' content={router.route} />
-				{meta.map(item =>
+				{meta && meta.map(item =>
 					item.rel === 'blank' ? (
 						<meta name={item.name} content={item.content} />
 					) : (
-						<meta name={`og:${item.name}`} content={item.content} />
+						<meta property={`og:${item.name}`} content={item.content} />
 					)
 				)}
 			</Head>
