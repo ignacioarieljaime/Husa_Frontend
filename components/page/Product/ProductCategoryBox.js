@@ -2,18 +2,17 @@ import Link from 'next/link'
 import React from 'react'
 
 function ProductCategoryBox({ data, pim }) {
-	console.log(data);
 	let { structure } = data
 	return (
 		<div id={data.name + data.id} className='catalog-navbar bg-dark'>
 			<nav className=''>
 				<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 					<li className='me-md-auto'>
-						<span>{pim.model}</span>
+						<span>{pim?.model}</span>
 					</li>
 					{structure.tags.value.map((item, index) => (
 						<li>
-							<Link href={item.target.value}>
+							<Link href={item.target.value ? item.target.value : '/'}>
 								<a>
 									<span className='underline-on-hover'>{item.title.value}</span>
 								</a>
@@ -22,7 +21,8 @@ function ProductCategoryBox({ data, pim }) {
 					))}
 
 					<li>
-						<Link href={structure.support.value}>
+						<Link
+							href={structure.support.value ? structure.support.value : '/'}>
 							<a target='_blank'>
 								<span className='underline-on-hover'> Support</span>
 							</a>
@@ -30,11 +30,7 @@ function ProductCategoryBox({ data, pim }) {
 					</li>
 					<li>
 						<button className='btn-primary' onclick='toggleWhereToBuyDrawer()'>
-							{
-								structure.whereToBuy ? "Coming Soon":"Where To Buy"
-
-							}
-					
+							{structure.whereToBuy ? 'Coming Soon' : 'Where To Buy'}
 						</button>
 					</li>
 				</ul>

@@ -4,7 +4,7 @@ import React from 'react'
 function NavBarDropDown({ data }) {
 	return (
 		<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
-			<Link href={data.url}>
+			<Link href={data.url ? data.url : ''}>
 				<a className='nav-link'>
 					<span className='underline-on-hover'>{data.name}</span>
 				</a>
@@ -25,7 +25,7 @@ function NavBarDropDown({ data }) {
 										<ul>
 											{columns.map((colum, index) => (
 												<li key={`colum-${index}`}>
-													<Link href={colum.url}>
+													<Link href={colum.url ? colum.url : ''}>
 														<a>
 															<span className='underline-on-hover'>
 																{colum.name}
@@ -43,8 +43,8 @@ function NavBarDropDown({ data }) {
 							<div className='col-7'>
 								<div className='row'>
 									{data.products.map((product, index) => (
-										<Link href={product.url}>
-											<a className={`col-${12 / data.products.length }`}>
+										<Link href={product.url ? product.url : ''}>
+											<a className={`col-${12 / data.products.length}`}>
 												<img
 													src={product.image}
 													width='100%'

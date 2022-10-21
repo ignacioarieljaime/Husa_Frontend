@@ -13,10 +13,9 @@ function LandingVideoPlayer({
 				title={video.title}
 				width='100%'
 				height='100%'
-				frameBorder='0'
 				allow='autoplay; fullscreen'
 				allowFullScreen=''
-				data-ready='true'></iframe>
+				dataready={true}></iframe>
 		</div>
 	)
 }

@@ -13,7 +13,7 @@ function HamburgerMenu({ data: { widgets }, asideMenu }) {
 			<ul className='navbar-nav d-flex d-lg-none'>
 				{menus.map((columns, index) => (
 					<li key={`hamburger-menu-${index}`} className='nav-item dropdown'>
-						<Link href={columns.url}>
+						<Link href={columns.url ? columns.url : ''}>
 							<a
 								className='nav-link dropdown-toggle p-3 m-2'
 								id='tv-audio-dropdown'
@@ -31,7 +31,7 @@ function HamburgerMenu({ data: { widgets }, asideMenu }) {
 							{columns.columns.map(colum => (
 								<>
 									{colum.map(item => (
-										<Link href={item.url}>
+										<Link href={item.url ? item.url : ''}>
 											<a className='dropdown-item'>
 												<span>{item.name}</span>
 												{/* <FontAwesomeIcon icon={faChevronLeft} size='sm' /> */}
@@ -49,7 +49,7 @@ function HamburgerMenu({ data: { widgets }, asideMenu }) {
 				className='navbar-nav col-lg-6 offset-lg-6 position-relative my-lg-auto'>
 				{widgets.hamburger.map((menu, index) => (
 					<li key={`menu-${index}`} className='nav-item my-1'>
-						<Link href={menu.url}>
+						<Link href={menu.url ? menu.url : ''}>
 							<a className='nav-link mx-2 my-1 my-lg-5 fw-bolder-700 p-3'>
 								<span className='underline-on-hover'>{menu.name}</span>
 							</a>

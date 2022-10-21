@@ -1,8 +1,5 @@
 import React from 'react'
 
-// image
-import Image from 'public/assets/images/4k-uhd/roku-tv.jpg'
-
 function UHDNewsItem({ data }) {
 	let { image, title, description } = data
 	return (

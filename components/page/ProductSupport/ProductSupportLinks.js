@@ -13,7 +13,10 @@ function ProductSupportLinks({ pim }) {
 								<div
 									key={index}
 									className='col-12 col-md-6 col-lg-4 col-xl-3 py-3'>
-									<a href={item.url} download className='download-links p-4'>
+									<a
+										href={item.url ? item.url : ''}
+										download
+										className='download-links p-4'>
 										<div>
 											<div className='text-muted text-capitalize fs-4'>
 												User Manual

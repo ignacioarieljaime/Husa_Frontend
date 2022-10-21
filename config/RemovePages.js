@@ -20,3 +20,16 @@ fs.readdir(path.resolve(__dirname, '../pages'), (err, files) => {
 		console.log('Directory deleted successfully')
 	}
 })
+
+fs.readdir(path.resolve(__dirname, '../utils'), (err, files) => {
+	if (err) throw err
+	fs.rm(
+		path.resolve(__dirname, '../utils/urlData.json'),
+		{ recursive: true, force: true },
+		err => {
+			if (err) {
+				return console.log('url files removed', err)
+			}
+		}
+	)
+})

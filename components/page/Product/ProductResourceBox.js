@@ -9,7 +9,7 @@ function ProductResourceBox({ pim, data }) {
 					(item, index) =>
 						item.type_id === 3 && (
 							<li key={index}>
-								<a href={item.url} download>
+								<a href={item.url ? item.url : ''} download>
 									<span className='underline-on-hover'>{item.title}</span>
 								</a>
 							</li>

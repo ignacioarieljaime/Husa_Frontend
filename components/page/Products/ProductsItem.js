@@ -1,15 +1,10 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
+import { RouteHandler } from 'utils/routeHandler'
 
 function ProductsItem({ data }) {
-	let {
-		brand,
-		media,
-		name,
-		model,
-		id,
-		order
-	} = data
+	let { brand, media, name, model, id, order } = data
+	const [url] = useState(RouteHandler(id))
 	return (
 		<div className='item bottom-border-sm col-12 col-md-6 col-xl-4 col-xxl-3'>
 			<div>
@@ -26,11 +21,11 @@ function ProductsItem({ data }) {
 					<button className='buy-btn' disabled>
 						Coming Soon
 					</button>
-					<Link href={`/product/${id}`}>
+					<Link href={url}>
 						<a className='view-product-btn'>View Product</a>
 					</Link>
 				</div>
-				<Link href='/Product/2'>
+				<Link href={url}>
 					<a className='compare-btn'>Add To Compare</a>
 				</Link>
 			</div>

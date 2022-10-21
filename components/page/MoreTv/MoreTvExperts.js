@@ -18,7 +18,7 @@ function MoreTvExperts({ data }) {
 							/>
 						</div>
 						<div className='col-12 col-md-6 ps-lg-10'>
-							{structure.list.value.map((item, index) => (
+							{structure?.list?.value.map((item, index) => (
 								<MoreTvExpertsItem
 									key={index}
 									image={item.image}

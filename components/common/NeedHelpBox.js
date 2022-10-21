@@ -11,7 +11,7 @@ function NeedHelpBox({ data: { structure } }) {
 							<div className='help-box'>
 								<h4>{item.title.value}</h4>
 								<a
-									href={item.url.value}
+									href={item.url.value ? item.url.value : ''}
 									className='btn btn-secondary btn-hover-primary'>
 									Get Started
 								</a>

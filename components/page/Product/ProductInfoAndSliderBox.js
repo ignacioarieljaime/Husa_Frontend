@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import React from 'react'
 
 // component
 import ProductInfoSlider from './ProductInfoSlider'
+import ProductSliderLinkButton from './ProductSliderLinkButton'
 
 function ProductInfoAndSliderBox({ pim, data }) {
 	return (
@@ -21,16 +21,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 							{pim?.series[0]?.values.map(
 								(item, index) =>
 									item.title && (
-										<Link href={'/'} key={index}>
-											<a
-												className={`btn  m-2 rounded-3 m-0 ${
-													pim?.custom_fields[2]?.value === item.title
-														? 'btn-primary'
-														: 'btn-outline-dark'
-												}`}>
-												{item.title}
-											</a>
-										</Link>
+										<ProductSliderLinkButton key={index} data={item} pim={pim} />
 									)
 							)}
 						</div>
@@ -38,7 +29,9 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						<button
 							className='btn btn-primary rounded-0 px-6 py-3'
 							onclick='toggleWhereToBuyDrawer()'>
-							{data.structure?.whereToBuy?.value ? 'Where To Buy' : 'coming soon'}
+							{data.structure?.whereToBuy?.value
+								? 'Where To Buy'
+								: 'coming soon'}
 						</button>
 					</div>
 				</div>
