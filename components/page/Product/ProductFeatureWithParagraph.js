@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 
 const ProductFeatureWithParagraph = ({ data }) => {
-	const [detailCondition, setDetailCondition] = useState(false)
+	const [btnCondition, setBtnCondition] = useState(false)
 	const { structure } = data
 	return (
 		<section id={data.name + data.id}>
 			<div class='jarg-section bg-light'>
-				<div class='container px-lg-20'>
+				<div class='px-lg-20'>
 					<div class='row'>
-						<div>
+						<div class='col-12'>
 							<img
 								src={structure.image.src}
 								alt={structure.image.alt}
@@ -21,16 +21,16 @@ const ProductFeatureWithParagraph = ({ data }) => {
 									type='checkbox'
 									name='jarg-switch'
 									class='switch-button'
-									id='jarg-switch'
-									onChange={() => setDetailCondition(!detailCondition)}
+									id='jarg-switch-paragraph'
+									onChange={() => setBtnCondition(!btnCondition)}
 								/>
-								<label for='jarg-switch'></label>
+								<label for='jarg-switch-paragraph'></label>
 								<span class='jarg-off'>JARGOFF</span>
 							</div>
 						</div>
 						<div class='jarg-text-section mt-5'>
 							<span class='jarg-toggle-text'>
-								{detailCondition ? (
+								{btnCondition ? (
 									<>{structure.paragraphOn.value}</>
 								) : (
 									<>{structure.paragraphOff.value}</>

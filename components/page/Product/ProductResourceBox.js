@@ -5,7 +5,7 @@ function ProductResourceBox({ pim, data }) {
 		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
 			<h2>Resources</h2>
 			<ul>
-				{pim.assets.map(
+				{pim?.assets.map(
 					(item, index) =>
 						item.type_id === 3 && (
 							<li key={index}>
