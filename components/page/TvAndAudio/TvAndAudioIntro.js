@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-function TvAndAudioIntro({ data: { structure } }) {
+function TVAndAudioIntro({ data: { structure } }) {
 	return (
 		<section>
 			<div className='tiny-banner p-md-4'>
@@ -29,4 +29,4 @@ function TvAndAudioIntro({ data: { structure } }) {
 	)
 }
 
-export default TvAndAudioIntro
+export default TVAndAudioIntro

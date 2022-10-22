@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/more-tv/hisense-sign.png'
 
-function MoreTvNewHisensePromise({ data }) {
+function MoreTVNewHisensePromise({ data }) {
 	const { structure } = data
 	return (
 		<section>
@@ -43,4 +43,4 @@ function MoreTvNewHisensePromise({ data }) {
 	)
 }
 
-export default MoreTvNewHisensePromise
+export default MoreTVNewHisensePromise

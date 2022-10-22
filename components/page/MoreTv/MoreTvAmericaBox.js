@@ -7,7 +7,7 @@ import Image from 'public/assets/images/more-tv/people-heat-map.png'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-function MoreTvAmericaBox({ data }) {
+function MoreTVAmericaBox({ data }) {
 	const chartData = {
 		datasets: [
 			{
@@ -94,4 +94,4 @@ function MoreTvAmericaBox({ data }) {
 	)
 }
 
-export default MoreTvAmericaBox
+export default MoreTVAmericaBox

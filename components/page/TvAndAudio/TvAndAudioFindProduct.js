@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'public/assets/images/tv-and-audio/three-tv-banner.png'
 import Link from 'next/link'
 
-function TvAndAudioFindProduct({ data: { structure } }) {
+function TVAndAudioFindProduct({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
@@ -37,4 +37,4 @@ function TvAndAudioFindProduct({ data: { structure } }) {
 	)
 }
 
-export default TvAndAudioFindProduct
+export default TVAndAudioFindProduct

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CEOLasterLikeBox() {
+function CEOLaserLikeBox() {
 	return (
 		<section>
 			<div className='bg-black px-5 py-8 py-md-20 text-center'>
@@ -31,4 +31,4 @@ function CEOLasterLikeBox() {
 	)
 }
 
-export default CEOLasterLikeBox
+export default CEOLaserLikeBox

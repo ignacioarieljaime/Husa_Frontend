@@ -4,7 +4,7 @@ import React from 'react'
 import TvFlipped from 'public/assets/images/more-tv/tv-flipped.png'
 import CustomInput from 'components/common/Input'
 
-function MoreTvLessTalkForm() {
+function MoreTVLessTalkForm() {
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
@@ -132,4 +132,4 @@ function MoreTvLessTalkForm() {
 	)
 }
 
-export default MoreTvLessTalkForm
+export default MoreTVLessTalkForm

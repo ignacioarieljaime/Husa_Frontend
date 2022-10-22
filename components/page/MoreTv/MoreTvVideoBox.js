@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MoreTvVideoBox({ data }) {
+function MoreTVVideoBox({ data }) {
 	const { structure } = data
 	return (
 		<section>
@@ -32,4 +32,4 @@ function MoreTvVideoBox({ data }) {
 	)
 }
 
-export default MoreTvVideoBox
+export default MoreTVVideoBox

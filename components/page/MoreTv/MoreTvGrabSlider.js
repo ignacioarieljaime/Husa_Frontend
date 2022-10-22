@@ -13,7 +13,7 @@ import 'swiper/css/effect-coverflow'
 // import required modules
 import { Pagination, EffectCoverflow } from 'swiper'
 
-function MoreTvGrabSlider({ data }) {
+function MoreTVGrabSlider({ data }) {
 	const carouselItems = ['U6HF', 'U6H', 'U7G', 'U8G']
 
 	const pagination = {
@@ -121,4 +121,4 @@ function MoreTvGrabSlider({ data }) {
 	)
 }
 
-export default MoreTvGrabSlider
+export default MoreTVGrabSlider

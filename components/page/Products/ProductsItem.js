@@ -3,17 +3,27 @@ import React, { useState } from 'react'
 import { RouteHandler } from 'utils/routeHandler'
 
 function ProductsItem({ data }) {
-	let { brand, media, name, model, id, order } = data
+	let { media, name, model, id } = data
 	const [url] = useState(RouteHandler(id))
+	const [series] = useState(
+		data.features.find(item => item.custom_field_type_name === 'Top Titles')
+			.custom_fields
+	)
+	const [screenSize] = useState(
+		data.features.find(item => item.custom_field_type_name === 'TV filters')
+			.custom_fields
+	)
 	return (
 		<div className='item bottom-border-sm col-12 col-md-6 col-xl-4 col-xxl-3'>
 			<div>
 				<div className='d-flex justify-content-between align-items-center mb-20 w-100'>
-					<span className='class'>{order} Class</span>
+					<span className='class'>
+						{screenSize.find(item => item.name === 'Size class').value} Class
+					</span>
 					<span className='code'>{model}</span>
 				</div>
 				<img src={media?.url} alt='featured image' width='100%' />
-				<h3>{brand.name}</h3>
+				<h3>{series.find(item => item.name === 'h2 Title').value}</h3>
 				<p>{name}</p>
 			</div>
 			<div className='w-100'>

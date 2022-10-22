@@ -9,9 +9,9 @@ import GoogleTv from 'public/assets/images/more-tv/google-tv-item.png'
 import FullArray from 'public/assets/images/more-tv/full-array-item.png'
 import VariableMotion from 'public/assets/images/more-tv/variable-motion-item.png'
 
-import MoreTvLessTalkItem from './MoreTvLessTalkItem'
+import MoreTVLessTalkItem from './MoreTVLessTalkItem'
 
-function MoreTvLessTalk({ data }) {
+function MoreTVLessTalk({ data }) {
 	const { structure } = data
 	return (
 		<section>
@@ -35,7 +35,7 @@ function MoreTvLessTalk({ data }) {
 					</div>
 					<div className='col-12 col-md-7 col-xl-6'>
 						{structure.list.value.map((item, index) => (
-							<MoreTvLessTalkItem
+							<MoreTVLessTalkItem
 								key={index}
 								image={item.image}
 								title={item.description.value}
@@ -48,4 +48,4 @@ function MoreTvLessTalk({ data }) {
 	)
 }
 
-export default MoreTvLessTalk
+export default MoreTVLessTalk

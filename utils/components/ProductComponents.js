@@ -4,6 +4,22 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductInfoAndSliderBox'
 	},
 	{
+		name: 'ProductTextWithImageBox',
+		path: 'components/page/Product/ProductTextWithImageBox'
+	},
+	{
+		name: 'ProductFeatureWithParagraph',
+		path: 'components/page/Product/ProductFeatureWithParagraph'
+	},
+	{
+		name: 'ProductTextWithIcon',
+		path: 'components/page/Product/ProductTextWithIcon'
+	},
+	{
+		name: 'ProductStaticContent',
+		path: 'components/page/Product/ProductStaticContent'
+	},
+	{
 		name: 'ProductCategoryBox',
 		path: 'components/page/Product/ProductCategoryBox'
 	},
@@ -14,6 +30,18 @@ module.exports.ProductComponent = [
 	{
 		name: 'ProductBigContent',
 		path: 'components/page/Product/ProductBigContent'
+	},
+	{
+		name: 'ProductFeaturesWithIcon',
+		path: 'components/page/Product/ProductFeaturesWithIcon'
+	},
+	{
+		name: 'ProductRelatedItemsBox',
+		path: 'components/page/Product/ProductRelatedItemsBox'
+	},
+	{
+		name: 'ProductReviewBox',
+		path: 'components/page/Product/ProductReviewBox'
 	},
 	{
 		name: 'ProductNewsBox',

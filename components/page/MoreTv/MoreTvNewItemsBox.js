@@ -1,9 +1,9 @@
 import React from 'react'
 
 // component
-import MoreTvNewItem from './MoreTvNewItem'
+import MoreTVNewItem from './MoreTVNewItem'
 
-function MoreTvNewItemsBox({ data }) {
+function MoreTVNewItemsBox({ data }) {
 	const { structure } = data
 	return (
 		<section>
@@ -13,7 +13,7 @@ function MoreTvNewItemsBox({ data }) {
 				</h2>
 				<div className='row mb-20'>
 					{structure.list.value.map((item, index) => (
-						<MoreTvNewItem
+						<MoreTVNewItem
 							key={index}
 							title={item.title.value}
 							model={item.model.value}
@@ -29,4 +29,4 @@ function MoreTvNewItemsBox({ data }) {
 	)
 }
 
-export default MoreTvNewItemsBox
+export default MoreTVNewItemsBox

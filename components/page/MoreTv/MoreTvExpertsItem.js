@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MoreTvExpertsItem = ({ quote, image }) => {
+const MoreTVExpertsItem = ({ quote, image }) => {
 	return (
 		<div className='mb-10'>
 			<div className='position-relative px-20'>
@@ -15,4 +15,4 @@ const MoreTvExpertsItem = ({ quote, image }) => {
 	)
 }
 
-export default MoreTvExpertsItem
+export default MoreTVExpertsItem

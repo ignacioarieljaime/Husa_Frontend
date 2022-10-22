@@ -1,7 +1,7 @@
 import React from 'react'
-import MoreTvItem from './MoreTvItem'
+import MoreTVItem from './MoreTVItem'
 
-function MoreTvBox({ data }) {
+function MoreTVBox({ data }) {
 	const { value } = data.structure.list
 	return (
 		<section>
@@ -9,7 +9,7 @@ function MoreTvBox({ data }) {
 				<div className='row'>
 					{value?.map((item, index) => {
 						return (
-							<MoreTvItem
+							<MoreTVItem
 								key={index}
 								image={item.image}
 								title={item.title.value}
@@ -25,4 +25,4 @@ function MoreTvBox({ data }) {
 	)
 }
 
-export default MoreTvBox
+export default MoreTVBox

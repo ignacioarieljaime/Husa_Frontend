@@ -362,27 +362,17 @@
 			"pageRoute": "./pages/TvAndAudio",
 			"components": [
 				{
-					"name": "TvAndAudioHead",
+					"name": "TVAndAudioHead",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "TvAndAudioTvShopBox",
+					"name": "TVAndAudioTVShopBox",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "TvAndAudioIntro",
-					"props": {},
-					"data": "hello"
-				},
-				{
-					"name": "ImageBox",
-					"props": {},
-					"data": "hello"
-				},
-				{
-					"name": "TvAndAudioLasterIntro",
+					"name": "TVAndAudioIntro",
 					"props": {},
 					"data": "hello"
 				},
@@ -392,17 +382,27 @@
 					"data": "hello"
 				},
 				{
-					"name": "TvAndAudioSmartChoice",
+					"name": "TvAndAudioLaserIntro",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "TvAndAudioFineHisense",
+					"name": "ImageBox",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "TvAndAudioFindProduct",
+					"name": "TVAndAudioSmartChoice",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TVAndAudioFineHisense",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "TVAndAudioFindProduct",
 					"props": {},
 					"data": "hello"
 				}
@@ -502,14 +502,14 @@
 			]
 		},
 		{
-			"name": "Laster",
+			"name": "Laser",
 			"isHome": false,
 			"className": "laser-tv",
 			"dynamicRote": null,
-			"pageRoute": "./pages/Laster",
+			"pageRoute": "./pages/Laser",
 			"components": [
 				{
-					"name": "LasterHead",
+					"name": "LaserHead",
 					"props": {},
 					"data": "hello"
 				},
@@ -529,7 +529,7 @@
 					"data": "hello"
 				},
 				{
-					"name": "LasterImageAndTextBox",
+					"name": "LaserImageAndTextBox",
 					"props": {},
 					"data": "hello"
 				},
@@ -539,12 +539,12 @@
 					"data": "hello"
 				},
 				{
-					"name": "LasterTitleAndSubTitleBox",
+					"name": "LaserTitleAndSubtitleBox",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "LasterImageAndTextBox",
+					"name": "LaserImageAndTextBox",
 					"props": {},
 					"data": "hello"
 				},
@@ -554,7 +554,7 @@
 					"data": "hello"
 				},
 				{
-					"name": "LasterFinedWithImage",
+					"name": "LaserFinedWithImage",
 					"props": {},
 					"data": "hello"
 				},
@@ -702,11 +702,11 @@
 			]
 		},
 		{
-			"name": "CESLaster",
+			"name": "CESLaser",
 			"isHome": false,
 			"className": "ces smart-tv",
 			"dynamicRote": null,
-			"pageRoute": "./pages/CESLaster",
+			"pageRoute": "./pages/CESLaser",
 			"components": [
 				{
 					"name": "CESHomeNavBar",
@@ -719,7 +719,7 @@
 					"data": "hello"
 				},
 				{
-					"name": "CESLasterLearnMore",
+					"name": "CESLaserLearnMore",
 					"props": {},
 					"data": "hello"
 				},
@@ -734,7 +734,7 @@
 					"data": "hello"
 				},
 				{
-					"name": "CEOLasterLikeBox",
+					"name": "CEOLaserLikeBox",
 					"props": {},
 					"data": "hello"
 				}
@@ -748,47 +748,47 @@
 			"pageRoute": "./pages/MoreTv",
 			"components": [
 				{
-					"name": "MoreTvHead",
+					"name": "MoreTVHead",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvBox",
+					"name": "MoreTVBox",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvVideoBox",
+					"name": "MoreTVVideoBox",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvAmericaBox",
+					"name": "MoreTVAmericaBox",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvLessTalk",
+					"name": "MoreTVLessTalk",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvHisensePromise",
+					"name": "MoreTVHisensePromise",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvGrabSlider",
+					"name": "MoreTVGrabSlider",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvLessTalkForm",
+					"name": "MoreTVLessTalkForm",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvExperts",
+					"name": "MoreTVExperts",
 					"props": {},
 					"data": "hello"
 				}
@@ -802,32 +802,32 @@
 			"pageRoute": "./pages/MoreTvNew",
 			"components": [
 				{
-					"name": "MoreTvHead",
+					"name": "MoreTVHead",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvLessTalk",
+					"name": "MoreTVLessTalk",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvExperts",
+					"name": "MoreTVExperts",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvNewHisensePromise",
+					"name": "MoreTVNewHisensePromise",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvNewItemsBox",
+					"name": "MoreTVNewItemsBox",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "MoreTvLessTalkForm",
+					"name": "MoreTVLessTalkForm",
 					"props": {},
 					"data": "hello"
 				}

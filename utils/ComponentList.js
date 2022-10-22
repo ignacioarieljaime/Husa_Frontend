@@ -8,7 +8,7 @@ const { ContactUsComponents } = require('./components/ContactUsComponents')
 const { DishwasherComponents } = require('./components/DishwasherComponents')
 const { FaqComponents } = require('./components/FaqComponents')
 const { LandingComponents } = require('./components/LandingComponents')
-const { LasterComponents } = require('./components/LasterComponents')
+const { LaserComponents } = require('./components/LaserComponents')
 const { PdpComponents } = require('./components/PdpComponents')
 const { ProductComponent } = require('./components/ProductComponents')
 const { ProductsComponents } = require('./components/ProductsComponents')
@@ -39,7 +39,7 @@ module.exports.ComponentList = [
 	...TvAndAudioComponents,
 	...UhdComponents,
 	...UledComponents,
-	...LasterComponents,
+	...LaserComponents,
 	...DishwasherComponents,
 	...ProductSupportComponents,
 	...CesComponents,

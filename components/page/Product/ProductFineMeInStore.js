@@ -1,6 +1,7 @@
 import React from 'react'
 
 function ProductFineMeInStore({ pim, data }) {
+	let { structure } = data
 	return (
 		<div id={data.name + data.id} className='p-md-4'>
 			<div className='container px-6 px-md-8 py-12'>

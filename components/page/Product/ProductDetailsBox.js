@@ -19,7 +19,7 @@ function ProductDetailsBox({ pim, data }) {
 			id={data.name + data.id}
 			className={`specs  black-banner ${!showMore && 'close'}`}>
 			<div ref={spaceContainer} className='specs-container'>
-				{pim.properties.map((item, index) => (
+				{pim?.properties.map((item, index) => (
 					<div key={`specs-${index}`} className='discription-list mb-10'>
 						<h3 className='text-white'>{item.title}</h3>
 						<dl className='row m-0'>

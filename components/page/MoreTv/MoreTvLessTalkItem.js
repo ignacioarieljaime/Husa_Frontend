@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MoreTvLessTalkItem = ({ image, title }) => {
+const MoreTVLessTalkItem = ({ image, title }) => {
 	return (
 		<div className='tech-items-more-tv aos-init' data-aos='slide-right'>
 			<div>
@@ -11,4 +11,4 @@ const MoreTvLessTalkItem = ({ image, title }) => {
 	)
 }
 
-export default MoreTvLessTalkItem
+export default MoreTVLessTalkItem

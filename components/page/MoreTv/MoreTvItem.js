@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/more-tv/U6H.png'
 
-function MoreTvItem({ image, title, model, description, link }) {
+function MoreTVItem({ image, title, model, description, link }) {
 	return (
 		<div className='col-12 col-sm-6 col-lg-4 col-xxl-2 py-3'>
 			<div className='d-flex flex-column align-items-center justify-content-between'>
@@ -27,4 +27,4 @@ function MoreTvItem({ image, title, model, description, link }) {
 	)
 }
 
-export default MoreTvItem
+export default MoreTVItem

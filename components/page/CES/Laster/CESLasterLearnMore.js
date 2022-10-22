@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/ces-2022-smart-tv/laser-tv-banner.png'
 
-function CESLasterLearnMore() {
+function CESLaserLearnMore() {
 	return (
 		<section>
 			<div className='heading'>
@@ -26,4 +26,4 @@ function CESLasterLearnMore() {
 	)
 }
 
-export default CESLasterLearnMore
+export default CESLaserLearnMore

@@ -12,15 +12,15 @@ module.exports.CesComponents = [
 		path: 'components/page/CES/HomeApplication/CESHomeImageAndText'
 	},
 	{
-		name: 'CESLasterLearnMore',
-		path: 'components/page/CES/Laster/CESLasterLearnMore'
+		name: 'CESLaserLearnMore',
+		path: 'components/page/CES/Laser/CESLaserLearnMore'
 	},
 	{
 		name: 'ImageBoxWithPaddingAndBgBlack',
-		path: 'components/page/CES/Laster/ImageBoxWithPaddingAndBgBlack'
+		path: 'components/page/CES/Laser/ImageBoxWithPaddingAndBgBlack'
 	},
 	{
-		name: 'CEOLasterLikeBox',
-		path: 'components/page/CES/Laster/CEOLasterLikeBox'
+		name: 'CEOLaserLikeBox',
+		path: 'components/page/CES/Laser/CEOLaserLikeBox'
 	}
 ]

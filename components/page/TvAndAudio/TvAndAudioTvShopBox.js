@@ -2,9 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 
 // component
-import TvAndAudioTvShopItem from './TvAndAudioTvShopItem'
+import TVAndAudioTvShopItem from './TVAndAudioTvShopItem'
 
-function TvAndAudioTvShopBox({ data: { structure } }) {
+function TVAndAudioTVShopBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
@@ -13,7 +13,7 @@ function TvAndAudioTvShopBox({ data: { structure } }) {
 						<h2 className='text-white mb-10'>{structure.title.value}</h2>
 						<div className='row justify-content-evenly align-items-stretch mb-14'>
 							{structure.list.value.map((item, index) => (
-								<TvAndAudioTvShopItem data={item} key={index} />
+								<TVAndAudioTvShopItem data={item} key={index} />
 							))}
 						</div>
 						<div>
@@ -30,4 +30,4 @@ function TvAndAudioTvShopBox({ data: { structure } }) {
 	)
 }
 
-export default TvAndAudioTvShopBox
+export default TVAndAudioTVShopBox

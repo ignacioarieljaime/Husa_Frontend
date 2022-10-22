@@ -1,7 +1,7 @@
 import React from 'react'
-import MoreTvExpertsItem from './MoreTvExpertsItem'
+import MoreTVExpertsItem from './MoreTVExpertsItem'
 
-function MoreTvExperts({ data }) {
+function MoreTVExperts({ data }) {
 	const { structure } = data
 
 	return (
@@ -19,7 +19,7 @@ function MoreTvExperts({ data }) {
 						</div>
 						<div className='col-12 col-md-6 ps-lg-10'>
 							{structure?.list?.value.map((item, index) => (
-								<MoreTvExpertsItem
+								<MoreTVExpertsItem
 									key={index}
 									image={item.image}
 									quote={item.quote.value}
@@ -33,4 +33,4 @@ function MoreTvExperts({ data }) {
 	)
 }
 
-export default MoreTvExperts
+export default MoreTVExperts

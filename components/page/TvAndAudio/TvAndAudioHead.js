@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TvAndAudioHead({ data: { structure } }) {
+function TVAndAudioHead({ data: { structure } }) {
 	return (
 		<section>
 			<div className='header-secondary'>
@@ -15,4 +15,4 @@ function TvAndAudioHead({ data: { structure } }) {
 	)
 }
 
-export default TvAndAudioHead
+export default TVAndAudioHead

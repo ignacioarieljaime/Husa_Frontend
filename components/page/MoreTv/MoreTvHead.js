@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/more-tv/header-television.png'
 
-function MoreTvHead({ data }) {
+function MoreTVHead({ data }) {
 	const { structure } = data
 	return (
 		<section>
@@ -40,4 +40,4 @@ function MoreTvHead({ data }) {
 	)
 }
 
-export default MoreTvHead
+export default MoreTVHead
