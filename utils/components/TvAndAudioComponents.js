@@ -12,8 +12,8 @@ module.exports.TvAndAudioComponents = [
 		path: 'components/page/TvAndAudio/TVAndAudioIntro'
 	},
 	{
-		name: 'TvAndAudioLaserIntro',
-		path: 'components/page/TvAndAudio/TvAndAudioLaserIntro'
+		name: 'TVAndAudioLaserIntro',
+		path: 'components/page/TvAndAudio/TVAndAudioLaserIntro'
 	},
 	{
 		name: 'TVAndAudioSmartChoice',

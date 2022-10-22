@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 // component
-import TVAndAudioTvShopItem from './TVAndAudioTvShopItem'
+import TVAndAudioFindHisenseItem from './TVAndAudioFineHisenseItem'
 
 function TVAndAudioTVShopBox({ data: { structure } }) {
 	return (
@@ -13,7 +13,7 @@ function TVAndAudioTVShopBox({ data: { structure } }) {
 						<h2 className='text-white mb-10'>{structure.title.value}</h2>
 						<div className='row justify-content-evenly align-items-stretch mb-14'>
 							{structure.list.value.map((item, index) => (
-								<TVAndAudioTvShopItem data={item} key={index} />
+								<TVAndAudioFindHisenseItem data={item} key={index} />
 							))}
 						</div>
 						<div>

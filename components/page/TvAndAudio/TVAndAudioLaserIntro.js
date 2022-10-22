@@ -3,7 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/tv-and-audio/laser-tv-logo.png'
 
-function TvAndAudioLaserIntro({ data: { structure } }) {
+function TVAndAudioLaserIntro({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
@@ -35,4 +35,4 @@ function TvAndAudioLaserIntro({ data: { structure } }) {
 	)
 }
 
-export default TvAndAudioLaserIntro
+export default TVAndAudioLaserIntro
