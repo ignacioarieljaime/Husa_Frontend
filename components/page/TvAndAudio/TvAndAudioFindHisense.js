@@ -1,9 +1,8 @@
 import React from 'react'
-
-// components
 import TVAndAudioFindHisenseItem from './TVAndAudioFineHisenseItem'
 
-function TvAndAudioFindHisense({ data: { structure } }) {
+
+function TVAndAudioFindHisense({ data: { structure } }) {
 	return (
 		<section>
 			<div className='p-md-4'>
@@ -19,4 +18,4 @@ function TvAndAudioFindHisense({ data: { structure } }) {
 	)
 }
 
-export default TvAndAudioFindHisense
+export default TVAndAudioFindHisense
