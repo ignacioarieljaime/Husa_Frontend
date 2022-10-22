@@ -62,6 +62,34 @@
 	transform: translate(0);
 }
 
+.home-page-mb-slider {
+	.swiper-pagination-bullets {
+		.swiper-pagination-bullet {
+			background: transparent;
+			border: 1px solid #ffffff;
+			width: 15px;
+			height: 15px;
+			&.swiper-pagination-bullet-active {
+				background: #ffffff;
+			}
+		}
+	}
+	.slider-item {
+		position: relative;
+		.slider-content {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			font-weight: 400;
+			font-size: 48px;
+			color: #fff;
+			text-align: center;
+			
+		}
+	}
+}
+
 @media (max-width: 768px) {
 	.heading {
 		padding-top: 75%;

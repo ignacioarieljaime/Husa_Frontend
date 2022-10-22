@@ -18,7 +18,11 @@ function TvAndAudioSmartChoice({ data: { structure } }) {
 							<p className='fw-normal m-auto mb-4'>
 								{structure.paragraph.value}
 							</p>
-							<img className='tv_and_audio_laster_intro' src={structure.image.src} alt={structure.image.alt}  />
+							<img
+								className='tv_and_audio_laster_intro'
+								src={structure.image.src}
+								alt={structure.image.alt}
+							/>
 						</div>
 						<Link href={structure.paragraph.value}>
 							<a className='text-decoration-underline d-block text-muted fs-5 text-uppercase mt-8'>
