@@ -13,6 +13,7 @@ import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import NavBarDropDown from './NavBarDropDown'
 import Link from 'next/link'
+import HeaderSearchBox from './HeaderSearchBox'
 
 function Header({ isBlog = false, data: { structure } }) {
 	const dispatch = useDispatch()
@@ -108,17 +109,11 @@ function Header({ isBlog = false, data: { structure } }) {
 						</ul>
 					</div>
 				</div>
-				<div className='container-fluid'>
-					<form
-						className={`search-form col-12 col-sm-7 ${
-							searchInputCondition && 'visible'
-						}`}>
-						<button className='btn py-0' type='button' aria-label='search item'>
-							<MagnifierIcon />
-						</button>
-						<input placeholder='SEARCH' className='search-box' type='text' />
-					</form>
-				</div>
+				<HeaderSearchBox
+					theme={structure.theme.value}
+					searchInputCondition={searchInputCondition}
+				/>
+
 				{/* <SubMenuHeader /> */}
 			</nav>
 

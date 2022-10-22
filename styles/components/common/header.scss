@@ -513,3 +513,49 @@ header.blog {
 		}
 	}
 }
+
+.header_search_box {
+	.search_result_box {
+		position: absolute;
+		padding: 28px 36px 48px;
+		overflow: auto;
+		max-height: 550px;
+		top: 100%;
+		width: 80%;
+		left: 13%;
+		border-radius: 0px 0px 10px 10px;
+
+		> div {
+			margin-bottom: 47px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			h6 {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 120%;
+				color: #a6a8ac !important;
+				margin-bottom: 22px;
+			}
+
+			ul {
+				display: grid;
+				gap: 22px;
+				li {
+					display: block !important;
+					a {
+						text-decoration: unset;
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 22px;
+						color: #221f20;
+
+						svg{
+							margin-right: 13px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

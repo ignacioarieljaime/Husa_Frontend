@@ -10,8 +10,8 @@ function ProductCategoryBox({ data, pim }) {
 					<li className='me-md-auto'>
 						<span>{pim?.model}</span>
 					</li>
-					{structure.tags.value.map((item, index) => (
-						<li>
+					{structure?.tags?.value.map((item, index) => (
+						<li key={`category-item-${index}`}>
 							<Link href={item.target.value ? item.target.value : '/'}>
 								<a>
 									<span className='underline-on-hover'>{item.title.value}</span>
@@ -22,7 +22,7 @@ function ProductCategoryBox({ data, pim }) {
 
 					<li>
 						<Link
-							href={structure.support.value ? structure.support.value : '/'}>
+							href={structure?.support.value ? structure?.support.value : '/'}>
 							<a target='_blank'>
 								<span className='underline-on-hover'> Support</span>
 							</a>
@@ -30,7 +30,7 @@ function ProductCategoryBox({ data, pim }) {
 					</li>
 					<li>
 						<button className='btn-primary' onclick='toggleWhereToBuyDrawer()'>
-							{structure.whereToBuy ? 'Coming Soon' : 'Where To Buy'}
+							{structure?.whereToBuy ? 'Coming Soon' : 'Where To Buy'}
 						</button>
 					</li>
 				</ul>
