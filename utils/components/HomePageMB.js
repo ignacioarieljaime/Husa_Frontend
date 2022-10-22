@@ -22,5 +22,9 @@ module.exports.HomePageMB = [
 	{
 		name: 'HomePageMBDiscovery',
 		path: 'components/page/HomePageMB/HomePageMBDiscovery'
+	},
+	{
+		name: 'HomePageMBDiscoveryItem',
+		path: 'components/page/HomePageMB/HomePageMBDiscoveryItem'
 	}
 ]

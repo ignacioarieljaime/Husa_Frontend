@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVolumeXmark } from '@fortawesome/free-solid-svg-icons'
-import { faArrowsMaximize } from '@fortawesome/free-solid-svg-icons'
+import { faMaximize } from '@fortawesome/free-solid-svg-icons'
 
 const HomePageMBVideoPlayer = ({ data }) => {
 	const video = useRef()
@@ -29,18 +29,18 @@ const HomePageMBVideoPlayer = ({ data }) => {
 					</video>
 					<div className='control-buttons'>
 						<button
-							className='n-btn white rounded'
+							className='n-btn white rounded me-2'
 							onClick={() =>
 								setVideoFullScreen(videoFullScreen => !videoFullScreen)
 							}>
 							<FontAwesomeIcon
-								icon={faArrowsMaximize}
+								icon={faMaximize}
 								size={'xl'}
 								color={'text-primary-dark'}
 							/>
 						</button>
 						<button
-							className='n-btn white rounded'
+							className='n-btn white rounded ms-2'
 							onClick={() => setVideoMuted(videoMuted => !videoMuted)}>
 							<FontAwesomeIcon
 								icon={faVolumeXmark}

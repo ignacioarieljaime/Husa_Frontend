@@ -78,12 +78,16 @@ const HomePageMBTextedBoxes = ({ data }) => {
 					}
 				}
 			]
+		},
+		link: {
+			value: '/',
+			title: 'See More Hisense'
 		}
 	}
 
 	return (
 		<section>
-			<div className='row justify-content-center align-items-center mx-0  px-12'>
+			<div className='row justify-content-center align-items-center mx-0 px-3 px-md-9 my-20'>
 				{structure.list.value.map((item, index) => (
 					<HomePageMBTextedBoxesItem
 						key={index}
@@ -94,6 +98,9 @@ const HomePageMBTextedBoxes = ({ data }) => {
 						link={item.link}
 					/>
 				))}
+				<a href={structure.link.value} className='n-btn outline-black mt-20'>
+					{structure.link.title}
+				</a>
 			</div>
 		</section>
 	)
