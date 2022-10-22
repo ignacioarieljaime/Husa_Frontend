@@ -11,9 +11,12 @@ module.exports.CommonComponents = [
 		name: 'Header',
 		path: 'components/common/Header/Header'
 	},
-
 	{
 		name: 'NeedHelpBox',
 		path: 'components/common/NeedHelpBox'
+	},
+	{
+		name: 'BreadCrumb',
+		path: 'components/common/BreadCrumb'
 	}
 ]

@@ -46,6 +46,17 @@
 			color: #000 !important;
 		}
 	}
+	&.grey-text {
+		color: #A6A8AC !important;
+		background-color: transparent !important;
+		font-weight: 400;
+		font-size: 16px;
+		border: none !important;
+		padding: 5px !important;
+		&:hover {
+			color: #000 !important;
+		}
+	}
 	&.rounded {
 		border-radius: 50% !important;
 		width: 80px;
