@@ -2,26 +2,26 @@ import React from 'react'
 
 // image
 import Image from 'public/assets/images/4k-uled-hisense-android-tv.png'
+import Link from 'next/link'
 
-function SmartInfoBetterNewOrOldBox() {
+function SmartInfoBetterNewOrOldBox({ data }) {
+	let { structure } = data
 	return (
 		<section>
 			<div className='position-relative'>
 				<div className='shade mt-n19'></div>
 				<div className='container advertise mt-19 px-6 px-md-3'>
-					<h2>
-						You want a TV that’s better than your old TV.
-						<br />
-						You want a Hisense smart TV.
-					</h2>
+					<h2>{structure.title.value}</h2>
 					<div>
-						<a href='#'>
-							<img src={Image.src} alt='featured image' />
-						</a>
+						<Link href={structure.link.value}>
+							<a>
+								<img src={structure.image.src} width={"640px"} height={"640px"} alt={structure.image.alt} />
+							</a>
+						</Link>
 					</div>
-					<a href='#' className='btn btn-dark'>
-						Shop Now
-					</a>
+					<Link href={structure.link.value}>
+						<a className='btn btn-dark'>{structure.link.title}</a>
+					</Link>
 				</div>
 			</div>
 		</section>

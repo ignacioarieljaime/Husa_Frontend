@@ -20,8 +20,8 @@ module.exports.TvAndAudioComponents = [
 		path: 'components/page/TvAndAudio/TVAndAudioSmartChoice'
 	},
 	{
-		name: 'TVAndAudioFineHisense',
-		path: 'components/page/TvAndAudio/TVAndAudioFineHisense'
+		name: 'TvAndAudioFindHisense',
+		path: 'components/page/TvAndAudio/TvAndAudioFindHisense'
 	},
 	{
 		name: 'TVAndAudioFindProduct',

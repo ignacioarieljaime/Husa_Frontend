@@ -2,6 +2,9 @@ module.exports.SmartPageComponents = [
 	{
 		name: 'SmartInfoHead',
 		path: 'components/page/SmartInfo/SmartInfoHead'
+	},{
+		name: 'ProductFeatureWithImageWithBTN',
+		path: 'components/page/SmartInfo/ProductFeatureWithImageWithBTN'
 	},
 	{
 		name: 'SmartInfoTvsBox',

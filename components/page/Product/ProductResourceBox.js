@@ -1,6 +1,7 @@
 import React from 'react'
 
 function ProductResourceBox({ pim, data }) {
+	console.log(data);
 	return (
 		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
 			<h2>Resources</h2>
@@ -16,7 +17,7 @@ function ProductResourceBox({ pim, data }) {
 						)
 				)}
 
-				<li>
+				{/* <li>
 					<a href='#'>
 						<span className='underline-on-hover'>PRODUCT SUPPORT</span>
 					</a>
@@ -25,7 +26,7 @@ function ProductResourceBox({ pim, data }) {
 					<a href='#'>
 						<span className='underline-on-hover'>INSTALLATION REQUEST</span>
 					</a>
-				</li>
+				</li> */}
 			</ul>
 		</div>
 	)

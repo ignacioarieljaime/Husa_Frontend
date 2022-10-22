@@ -1,16 +1,16 @@
 import React from 'react'
 
 // components
-import TVAndAudioFineHisenseItem from './TVAndAudioFineHisenseItem'
+import TvAndAudioFindHisenseItem from './TvAndAudioFindHisenseItem'
 
-function TVAndAudioFineHisense({ data: { structure } }) {
+function TvAndAudioFindHisense({ data: { structure } }) {
 	return (
 		<section>
 			<div className='p-md-4'>
 				<div className='container-fluid pt-20 pb-8'>
 					<div className='row align-items-start'>
 						{structure.list.value.map((item, index) => (
-							<TVAndAudioFineHisenseItem key={index} data={item} />
+							<TvAndAudioFindHisenseItem key={index} data={item} />
 						))}
 					</div>
 				</div>
@@ -19,4 +19,4 @@ function TVAndAudioFineHisense({ data: { structure } }) {
 	)
 }
 
-export default TVAndAudioFineHisense
+export default TvAndAudioFindHisense

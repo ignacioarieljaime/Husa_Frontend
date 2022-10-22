@@ -12,6 +12,7 @@ import axios from 'axios'
 // import { setHeaderData } from 'redux/slices/layout'
 import { useDispatch, useSelector } from 'react-redux'
 import NavBarDropDown from './NavBarDropDown'
+import Link from 'next/link'
 
 function Header({ isBlog = false, data: { structure } }) {
 	const dispatch = useDispatch()
@@ -64,11 +65,11 @@ function Header({ isBlog = false, data: { structure } }) {
 					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
-						<a
-							href='/pages/landing/index.html'
-							className='navbar-brand m-0 col-xl-4 text-start'>
-							<Logo />
-						</a>
+						<Link href='/'>
+							<a className='navbar-brand m-0 col-xl-4 text-start'>
+								<Logo />
+							</a>
+						</Link>
 						<h1>Hisense</h1>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
 							{headerData?.widgets?.centerOption.map((item, index) => (

@@ -1,14 +1,18 @@
 import React from 'react'
 import SmartInfoTvsDifferentItem from './SmartInfoTvsDifferentItem'
 
-function SmartInfoTvsBox() {
+function SmartInfoTvsBox({ data }) {
+	let { structure } = data
 	return (
 		<section>
 			<div className='row mx-0'>
-				<SmartInfoTvsDifferentItem />
-				<SmartInfoTvsDifferentItem />
-				<SmartInfoTvsDifferentItem />
-				<SmartInfoTvsDifferentItem />
+				{structure.list.value.map((item, index) => (
+					<SmartInfoTvsDifferentItem
+						listCount={structure.list.value.length}
+						key={`SmartInfoTvsDifferentItem-${index}`}
+						data={item}
+					/>
+				))}
 			</div>
 		</section>
 	)
