@@ -11,54 +11,7 @@ import 'swiper/css/pagination'
 import SwiperCore, { Pagination, Autoplay } from 'swiper'
 
 const HomePageMBSlider = ({ data }) => {
-	let structure1 = {
-		list: {
-			value: [
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/9ae312d30e/cat-uled-tvs-header-img__ScaleMaxWidthWzMwNDhd.jpg-er4sxv.jpg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'WOW'
-					},
-					link: {
-						value: '/',
-						title: 'link'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/9ae312d30e/cat-uled-tvs-header-img__ScaleMaxWidthWzMwNDhd.jpg-er4sxv.jpg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'WOW'
-					},
-					link: {
-						value: '/',
-						title: 'link'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/9ae312d30e/cat-uled-tvs-header-img__ScaleMaxWidthWzMwNDhd.jpg-er4sxv.jpg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'WOW'
-					},
-					link: {
-						value: '/',
-						title: 'link'
-					}
-				}
-			]
-		}
-	}
+	let { structure } = data
 
 	SwiperCore.use([Autoplay])
 	return (
@@ -73,23 +26,23 @@ const HomePageMBSlider = ({ data }) => {
 				}}
 				modules={[Pagination]}
 				className='home-page-mb-slider'>
-				{structure1.list.value.map((item, index) => (
+				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
 						<div className='slider-item heading'>
 							<img
-								src={item.image.src}
-								alt={item.image.alt}
-								title={item.image.title}
+								src={item?.desktop?.src}
+								alt={item?.desktop?.alt}
+								title={item?.desktop?.title}
 								className='slider-image'
 								width='100%'
 								height='100%'
 							/>
 							<div className='slider-content'>
-								<h2 className='mb-0'>{item.title.value}</h2>
+								<h2 className='mb-0'>{item?.title?.value}</h2>
 								<a
-									href={item.link.value}
+									href={item?.url?.value}
 									className='slider-link n-btn outline-white transparent'>
-									{item.link.title}
+									{item?.url?.title}
 								</a>
 							</div>
 						</div>

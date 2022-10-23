@@ -38,7 +38,7 @@ const GenerateComponentStructure = (_page, _content) => {
 							.map(
 								(item, index) =>
 									item &&
-									`{ data && <${item.name} ${
+									`{ data[${index}].structure && <${item.name} ${
 										_page.model_type ? `pim={pim}` : ''
 									} data={data[${index}]}/> }`
 							)

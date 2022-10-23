@@ -12,16 +12,28 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					<ProductInfoSlider pim={pim?.assets} />
 					<div className='col-12 col-md-6 product-info my-auto'>
 						<h2 className='text-primary fs-2x mb-5'>
-							{pim?.custom_fields[1]?.value}
+							{
+								pim?.custom_fields.find(item => item.title === 'h2 Title')
+									?.value
+							}
 						</h2>
-						<h1 className='fs-2hx mb-8'>{pim?.custom_fields[0]?.value} </h1>
+						<h1 className='fs-2hx mb-8'>
+							{
+								pim?.custom_fields.find(item => item.title === 'span Title')
+									?.value
+							}
+						</h1>
 						<span className='fs-2hx mb-5'>{pim?.name}</span>
 						<p className='text-primary'>Model: {pim?.model}</p>
 						<div className='model-toggle '>
 							{pim?.series[0]?.values.map(
 								(item, index) =>
 									item.title && (
-										<ProductSliderLinkButton key={index} data={item} pim={pim} />
+										<ProductSliderLinkButton
+											key={index}
+											data={item}
+											pim={pim}
+										/>
 									)
 							)}
 						</div>

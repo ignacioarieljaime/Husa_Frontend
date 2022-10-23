@@ -6,166 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 
 const HomePageMBProductsSlider = ({ data }) => {
-	let structure1 = {
-		list: {
-			value: [
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg',
-						alt: '',
-						title: ''
-					},
-					title: {
-						value: 'Television'
-					},
-					link: {
-						value: '/',
-						title: 'Television'
-					}
-				}
-			]
-		}
-	}
+	let { structure } = data
 	return (
 		<section>
 			<div className='home-page-mb-products'>
@@ -178,19 +19,21 @@ const HomePageMBProductsSlider = ({ data }) => {
 					centeredSlides={true}
 					grabCursor={true}
 					className='home-page-mb-products-slider'>
-					{structure1.list.value.map((item, index) => (
+					{structure.list.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item'>
 							<div>
 								<img
-									src={item.image.src}
-									alt={item.image?.alt}
-									title={item.image?.title}
+									width={'123px'}
+									height={'95px'}
+									src={item?.image?.src}
+									alt={item?.image?.alt}
+									title={item?.image?.title}
 									className='slider-image'
 								/>
 								<a
-									href={item.link.value}
-									className='slider-title n-btn outline-black'>
-									{item.link.title}
+									href={item?.link.value}
+									className='slider-title text-nowrap n-btn outline-black'>
+									{item?.link.title}
 								</a>
 							</div>
 						</SwiperSlide>

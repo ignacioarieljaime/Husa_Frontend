@@ -7,13 +7,7 @@ const HomePageMBVideoPlayer = ({ data }) => {
 	const video = useRef()
 	const [videoMuted, setVideoMuted] = useState(false)
 	const [videoFullScreen, setVideoFullScreen] = useState(false)
-
-	let structure = {
-		video: {
-			src: 'http://techslides.com/demos/sample-videos/small.mp4'
-		}
-	}
-
+	let { structure } = data
 	return (
 		<section>
 			<div className='home-page-mb-video-player px-6 px-md-12 py-6'>
@@ -24,7 +18,7 @@ const HomePageMBVideoPlayer = ({ data }) => {
 						height='100%'
 						//  autoPlay={true}
 					>
-						<source src={structure?.video?.src} type={structure?.video?.type} />
+						<source src={structure?.video?.value} type={structure?.video?.type} />
 						Your browser does not support the video tag.
 					</video>
 					<div className='control-buttons'>

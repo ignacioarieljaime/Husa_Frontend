@@ -5,7 +5,6 @@ import Image from 'public/assets/images/commercial/commercial-refrigirator-1.jpg
 import ImageTwo from 'public/assets/images/commercial/commercial-refrigirator-1.jpg'
 
 function CommercialTowImageBox({ data: { structure } }) {
-	console.log(structure)
 	return (
 		<section>
 			<div className='px-3 mt-12 mb-20 row justify-content-center align-items-center mx-0'>
