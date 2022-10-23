@@ -91,7 +91,7 @@ const ProductsGridV2 = ({
 
 	return (
 		<section>
-			<div className='container mt-7 mb-11'>
+			<div className='container mt-7 mb-11 d-none d-md-block'>
 				<div className='row justify-content-start align-items-center px-3 mb-15'>
 					<BreadCrumb list={sort.breadCrumbList} />
 				</div>
@@ -106,7 +106,7 @@ const ProductsGridV2 = ({
 				</div>
 			</div>
 			<div className='products-v2 mx-3 mx-md-13'>
-				<div className='products-sorting'>
+				<div className='products-sorting d-none d-md-block'>
 					<DropDownSelectBox
 						options={options}
 						value={sortingMethod}
@@ -114,8 +114,8 @@ const ProductsGridV2 = ({
 						onChange={setSortingMethod}
 					/>
 				</div>
-				<div className='products-grid'>
-					<div className='products-filtering'>
+				<div className='products-grid mt-4 mt-md-0'>
+					<div className='products-filtering me-md-12'>
 						<ProductsFilter
 							filterHandler={setFilter}
 							categoryId={category}

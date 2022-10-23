@@ -28,25 +28,30 @@ const ProductsFilter = ({ filterHandler, filter, categoryId: { value } }) => {
 		filterHandler([])
 	}
 	return (
-		<aside>
+		<aside className='mobile-filter-line'>
 			<div>
-				<div>
+				<div className='d-flex justify-content-between align-items-center mb-4 mb-md-0'>
+					<div className='fw-normal fs-8 d-block d-md-none'>Filter</div>
 					<button
-						className='n-btn outline-primary mb-8'
+						className='n-btn outline-primary mb-md-8'
 						onClick={checkboxClearHandler}>
 						Clear Filters
 						{filter.length > 0 ? '(' + filter.length + ')' : ''}
 					</button>
 				</div>
-				{filterList.map(filterItem => (
-					<ProductFiltersGroup
-						filter={filterItem}
-						passedFilter={filter}
-						filterHandler={filterHandler}
-						checkBoxCondition={checkBoxCondition}
-					/>
-				))}
-				<button className='n-btn outline-black'>Show More</button>
+				<div className='filter-group-container pb-4 pb-md-0'>
+					{filterList.map(filterItem => (
+						<ProductFiltersGroup
+							filter={filterItem}
+							passedFilter={filter}
+							filterHandler={filterHandler}
+							checkBoxCondition={checkBoxCondition}
+						/>
+					))}
+					<button className='n-btn outline-black text-nowrap mx-2'>
+						Show More
+					</button>
+				</div>
 			</div>
 		</aside>
 	)
