@@ -4,7 +4,7 @@ import React from 'react'
 // component
 import TVAndAudioFindHisenseItem from './TVAndAudioFineHisenseItem'
 
-function TVAndAudioTVShopBox({ data: { structure } }) {
+function TVAndAudioTvShopBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
@@ -30,4 +30,4 @@ function TVAndAudioTVShopBox({ data: { structure } }) {
 	)
 }
 
-export default TVAndAudioTVShopBox
+export default TVAndAudioTvShopBox
