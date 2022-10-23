@@ -50,29 +50,67 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 			</form>{' '}
 			{input && searchInputCondition ? (
 				<div className='search_result_box theme-dark '>
-					<div>
-						<h6>Products</h6>
-						<ul>
-							{result === 'loading' ? (
-								<Spinner />
-							) : Array.isArray(result) && result.length !== 0 ? (
-								<>
-									{result.map((item, index) => (
-										<li key={`search-item-${index}`}>
-											<Link href={item.route}>
-												<a>
+					{result === 'loading' ? (
+						<Spinner />
+					) : (
+						<div>
+							<div>
+								<h6>Products</h6>
+								<ul>
+									{result?.products.length !== 0 ? (
+										result?.products.map((item, index) => (
+											<li key={`search-item-${index}`}>
+												<Link href={item.route}>
+													<a>
+														<TelevisionSearchIcon />
+														{item.title}
+													</a>
+												</Link>
+											</li>
+										))
+									) : (
+										<div>it's empty</div>
+									)}
+								</ul>
+							</div>
+							<div>
+								<h6>supports</h6>
+								<ul>
+									{result?.support.length !== 0 ? (
+										result?.support.map((item, index) => (
+											<li key={`search-item-${index}`}>
+												<Link href={item.route}>
+													<a>
+														<TelevisionSearchIcon />
+														{item.title}
+													</a>
+												</Link>
+											</li>
+										))
+									) : (
+										<div>it's empty</div>
+									)}
+								</ul>
+							</div>
+							<div>
+								<h6>documents</h6>
+								<ul>
+									{result?.documents.length !== 0 ? (
+										result?.documents.map((item, index) => (
+											<li key={`search-item-${index}`}>
+												<a href={item.url} download>
 													<TelevisionSearchIcon />
 													{item.title}
 												</a>
-											</Link>
-										</li>
-									))}
-								</>
-							) : (
-								<li>it's empty</li>
-							)}
-						</ul>
-					</div>
+											</li>
+										))
+									) : (
+										<div>it's empty</div>
+									)}
+								</ul>
+							</div>
+						</div>
+					)}
 				</div>
 			) : null}
 		</div>
