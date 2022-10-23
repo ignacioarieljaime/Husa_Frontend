@@ -8,19 +8,18 @@ function Layout({ children, meta }) {
 		<>
 			<Head>
 				<title>hisense</title>
-
+				<meta name='viewport' />
 				<meta name='og:url' content={router.route} />
-				{meta && meta.map(item =>
-					item.rel === 'blank' ? (
-						<meta name={item.name} content={item.content} />
-					) : (
-						<meta property={`og:${item.name}`} content={item.content} />
-					)
-				)}
+				{meta &&
+					meta.map(item =>
+						item.rel === 'blank' ? (
+							<meta name={item.name} content={item.content} />
+						) : (
+							<meta property={`og:${item.name}`} content={item.content} />
+						)
+					)}
 			</Head>
-			<section>
-				{children}
-			</section>
+			<section>{children}</section>
 		</>
 	)
 }

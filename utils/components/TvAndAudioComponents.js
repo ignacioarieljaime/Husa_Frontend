@@ -4,8 +4,8 @@ module.exports.TvAndAudioComponents = [
 		path: 'components/page/TvAndAudio/TVAndAudioHead'
 	},
 	{
-		name: 'TVAndAudioTVShopBox',
-		path: 'components/page/TvAndAudio/TVAndAudioTVShopBox'
+		name: 'TVAndAudioTvShopBox',
+		path: 'components/page/TvAndAudio/TVAndAudioTvShopBox'
 	},
 	{
 		name: 'TVAndAudioIntro',
