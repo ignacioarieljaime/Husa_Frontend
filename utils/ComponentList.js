@@ -23,6 +23,7 @@ const { UledComponents } = require('./components/UledComponents')
 const { MoreTvComponents } = require('./components/MoreTvComponents')
 const { Day100Components } = require('./components/Day100Components')
 const { L9GComponents } = require('./components/L9GComponents')
+const { HomePageMB } = require('./components/HomePageMB')
 
 module.exports.ComponentList = [
 	...CommonComponents,
