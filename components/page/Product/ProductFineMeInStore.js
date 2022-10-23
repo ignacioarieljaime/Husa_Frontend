@@ -11,7 +11,7 @@ function ProductFineMeInStore({ pim, data }) {
 						Check with these retailers for product availability.
 					</p>
 					<div className='row justify-content-evenly align-items-center'>
-						{pim.retailers.map((item, index) => (
+						{pim?.retailers.map((item, index) => (
 							<div key={index}>
 								<img src={item.Media?.url} alt='featured-image' width='150' />
 							</div>

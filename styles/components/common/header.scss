@@ -543,12 +543,14 @@ header.blog {
 				gap: 22px;
 				li {
 					display: block !important;
+					color: #fff;
+
 					a {
 						text-decoration: unset;
 						font-weight: 400;
 						font-size: 16px;
 						line-height: 22px;
-						color: #221f20;
+						color: #fff;
 
 						svg{
 							margin-right: 13px;
@@ -557,5 +559,9 @@ header.blog {
 				}
 			}
 		}
+	}
+
+	.search_result_box.theme-light{
+		
 	}
 }

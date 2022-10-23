@@ -49,7 +49,7 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 				/>
 			</form>{' '}
 			{input && searchInputCondition ? (
-				<div className={`search_result_box theme-${theme}`}>
+				<div className='search_result_box theme-dark '>
 					<div>
 						<h6>Products</h6>
 						<ul>
@@ -69,7 +69,7 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 									))}
 								</>
 							) : (
-								"it's empty"
+								<li>it's empty</li>
 							)}
 						</ul>
 					</div>
