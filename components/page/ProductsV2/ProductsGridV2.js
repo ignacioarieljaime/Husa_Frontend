@@ -24,25 +24,6 @@ const ProductsGridV2 = ({
 	const [filter, setFilter] = useState([])
 	const router = useRouter()
 
-	let sort = {
-		breadCrumbList: {
-			value: [
-				{
-					title: 'home',
-					value: '/'
-				},
-				{
-					title: 'all televisions',
-					value: '/all-tvs'
-				}
-			]
-		},
-		title: {
-			value: 'All',
-			primaryText: 'Televisions'
-		}
-	}
-
 	const options = [
 		{
 			title: 'Newest',
@@ -93,12 +74,12 @@ const ProductsGridV2 = ({
 		<section>
 			<div className='container mt-7 mb-11 d-none d-md-block'>
 				<div className='row justify-content-start align-items-center px-3 mb-15'>
-					<BreadCrumb list={sort.breadCrumbList} />
+					<BreadCrumb />
 				</div>
 				<div>
 					<h2 className='fw-normal fs-2hx mb-4'>
-						{sort.title.value}{' '}
-						<span className='primary-text'>{sort.title.primaryText}</span>
+						All
+						<span className='primary-text'>Televisions</span>
 					</h2>
 					<h3 className='fw-normal fs-base black-text'>
 						Find your next television.
@@ -122,15 +103,18 @@ const ProductsGridV2 = ({
 							filter={filter}
 						/>
 					</div>
-					<div className='products'>
-						{!Array.isArray(products) ? (
+
+					{!Array.isArray(products) ? (
+						<div className='w-100 d-flex justify-content-center'>
 							<Spinner className={'mt-5'} size={80} />
-						) : (
-							products.map((item, index) => (
+						</div>
+					) : (
+						<div className='products'>
+							{products.map((item, index) => (
 								<ProductItemV2 key={index} data={item} />
-							))
-						)}
-					</div>
+							))}
+						</div>
+					)}
 				</div>
 			</div>
 		</section>

@@ -11,9 +11,9 @@ import 'styles/App.scss'
 function MyApp({ Component, pageProps }) {
 	return (
 		<Provider store={store}>
-			{/* <ErrorBoundary> */}
+			<ErrorBoundary>
 				<Component {...pageProps} />
-			{/* </ErrorBoundary> */}
+			</ErrorBoundary>
 		</Provider>
 	)
 }
