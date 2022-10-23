@@ -51,7 +51,7 @@ module.exports.ComponentList = [
 	...SponsorComponents,
 	...Day100Components,
 	...L9GComponents,
-	// ...HomePageMB,
+	...HomePageMB,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'
