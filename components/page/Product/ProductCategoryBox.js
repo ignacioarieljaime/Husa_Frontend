@@ -22,7 +22,7 @@ function ProductCategoryBox({ data, pim }) {
 
 					<li>
 						<Link
-							href={structure?.support.value ? structure?.support.value : '/'}>
+							href={structure?.support?.value ? structure?.support.value : '/'}>
 							<a target='_blank'>
 								<span className='underline-on-hover'> Support</span>
 							</a>

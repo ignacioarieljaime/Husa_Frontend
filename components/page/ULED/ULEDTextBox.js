@@ -8,7 +8,12 @@ function ULEDTextBox({ data: { structure } }) {
 					<h3 className='col-12 col-md-6 mb-7 my-md-auto px-0 px-md-8'>
 						{structure.title.value}
 					</h3>
-					<p className='col-12 col-md-6 m-0'>{structure.description.value}</p>
+					{structure.paragraphOne.value && (
+						<p className='col-12 col-md-6 m-0'>{structure.paragraphOne.value}</p>
+					)}
+					{structure.paragraphTwo.value && (
+						<p className='col-12 col-md-6 m-0'>{structure.paragraphTwo.value}</p>
+					)}
 				</article>
 			</div>
 		</section>
