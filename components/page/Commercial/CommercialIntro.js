@@ -7,11 +7,11 @@ function CommercialIntro({ data: { structure } }) {
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
 						<h2 className='text-white mb-6'>
-							{structure.title.value}
-							<span className='text-primary ms-2'>{structure.coloredTitle.value}</span>
+							{structure?.title?.value}
+							<span className='text-primary ms-2'>{structure?.coloredTitle?.value}</span>
 						</h2>
 						<div>
-							<p className='text-white m-auto'>{structure.paragraph.value}</p>
+							<p className='text-white m-auto'>{structure?.paragraph?.value}</p>
 						</div>
 					</article>
 				</div>
