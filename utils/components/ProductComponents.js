@@ -8,6 +8,10 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductTextWithImageBox'
 	},
 	{
+		name: 'ProductFeatureWithImage',
+		path: 'components/page/Product/ProductFeatureWithImage'
+	},
+	{
 		name: 'ProductFeatureWithParagraph',
 		path: 'components/page/Product/ProductFeatureWithParagraph'
 	},
