@@ -60,6 +60,24 @@
 	}
 }
 
+.home-page-mb-video-player {
+	height: 100%;
+	.video-container {
+		height: 100%;
+	}
+	.control-buttons {
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
+
 @media (max-width: 768px) {
 	.blog-video-container .play-btn {
 		padding: 25px 28px;

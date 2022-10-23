@@ -263,12 +263,20 @@
 .products-container .item:hover img {
 	transform: scale(1.08);
 }
-.products-container .item .code {
-	font-size: 20px;
-	line-height: 30px;
-	text-align: right;
-	color: #000000;
-	opacity: 0.6;
+.products-container {
+	.item {
+		.code {
+			font-size: 20px;
+			line-height: 30px;
+			text-align: right;
+			color: #000000;
+			opacity: 0.6;
+		}
+		.new_product{
+			font-weight: 500;
+			color: var(--primary-color) !important;
+		}
+	}
 }
 .products-container .item h3 {
 	font-weight: 500;
@@ -1519,4 +1527,3 @@ article:hover > .img-box-shadow-hover {
 		}
 	}
 }
-

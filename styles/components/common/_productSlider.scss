@@ -36,7 +36,6 @@
 			margin-bottom: 20px;
 		}
 	}
-	
 
 	&.bg-turquoise {
 		background-color: #0c4955;
@@ -47,8 +46,6 @@
 		height: unset !important;
 	}
 }
-
-
 
 .pdp-product {
 	.product-gallery {
@@ -127,5 +124,29 @@
 	}
 	.swiper-slide {
 		cursor: pointer;
+	}
+}
+
+.home-page-mb-products {
+	padding-top: 75px;
+	padding-bottom:100px;
+	.section-title {
+		font-weight: 400;
+		font-size: 34px;
+		color: #221f20;
+		text-align: center;
+		margin-bottom: 60px;
+	}
+	.home-page-mb-products-slider{
+		.slider-item{
+			border: 1px solid #DBDDDE;
+			max-width: 225px;
+			padding: 30px 50px;
+			text-align: center;
+			.slider-image{
+				margin-bottom: 35px;
+			}
+						.slider-title {}
+		}
 	}
 }
