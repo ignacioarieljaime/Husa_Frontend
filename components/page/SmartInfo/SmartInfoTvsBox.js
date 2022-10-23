@@ -6,7 +6,7 @@ function SmartInfoTvsBox({ data }) {
 	return (
 		<section>
 			<div className='row mx-0'>
-				{structure.list.value.map((item, index) => (
+				{structure?.list?.value.map((item, index) => (
 					<SmartInfoTvsDifferentItem
 						listCount={structure.list.value.length}
 						key={`SmartInfoTvsDifferentItem-${index}`}

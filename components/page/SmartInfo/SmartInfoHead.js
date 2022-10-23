@@ -10,15 +10,15 @@ function SmartInfoHead({ data }) {
 		<section>
 			<div className='heading'>
 				<img
-					src={structure.image.src}
-					alt='smart tv platforms'
+					src={structure?.image?.src}
+					alt={structure?.image?.alt}
 					width='100%'
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h3>{structure.title.value}</h3>
-					<Link href={structure.link.value}>
-						<a className='btn btn-light text'>{structure.link.title}</a>
+					<h3>{structure?.title?.value}</h3>
+					<Link href={structure?.link?.value}>
+						<a className='btn btn-light text'>{structure?.link?.title}</a>
 					</Link>
 				</div>
 			</div>

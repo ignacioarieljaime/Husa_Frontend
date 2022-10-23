@@ -32,13 +32,19 @@
 			}
 			a {
 				font-size: 18px;
-				color: #00aaa6;
 				text-decoration: none;
 			}
 		}
 	}
 }
-
+.white_border_link_btn {
+	font-weight: 400 !important;
+	font-size: 16px !important ;
+	color: #ffffff !important;
+	border: 1px solid #fff !important;
+	padding: 10px 29px;
+	border-radius: 26px;
+}
 @media (max-width: 768px) {
 	.smart-platform {
 		.platform-description {
