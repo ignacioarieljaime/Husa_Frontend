@@ -26,5 +26,17 @@ module.exports.SupportComponents = [
 	{
 		name: 'SupportNeedAssistance',
 		path: 'components/page/Support/SupportNeedAssistance'
+	},
+	{
+		name: 'SupportNewProducts',
+		path: 'components/page/Support/SupportNewProducts'
+	},
+	{
+		name: 'SupportNewHeadV2',
+		path: 'components/page/Support/SupportNewHeadV2'
+	},
+	{
+		name: 'SupportNeedAssistanceV2',
+		path: 'components/page/Support/SupportNeedAssistanceV2'
 	}
 ]

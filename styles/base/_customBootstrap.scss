@@ -1,3 +1,9 @@
+.primary-text{
+	color: #00A29C ;
+}
+.black-text {
+	color: #221F20;
+}
 .text-primary {
 	color: var(--primary-color) !important;
 	transition: all 0.2s ease-in;
@@ -346,11 +352,22 @@
 	background: var(--primary-color);
 	margin-left: 4px;
 }
-.products-container .item .compare-btn {
+.compare-btn {
 	background: url(../../public/assets/svgs/compare-items.svg);
 	background-repeat: no-repeat;
 	background-size: 16px;
 	background-position: left;
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+.compare-btn:hover {
+	background: url(../../public/assets/svgs/compare-items.svg);
+	background-repeat: no-repeat;
+	background-size: 16px;
+	background-position: left;
+}
+.products-container .item .compare-btn {
 	text-align: center;
 	padding: 5px;
 	padding-left: 30px;
@@ -363,10 +380,6 @@
 	margin-bottom: 0;
 }
 .products-container .item .compare-btn:hover {
-	background: url(../../public/assets/svgs/compare-items.svg);
-	background-repeat: no-repeat;
-	background-size: 16px;
-	background-position: left;
 	color: var(--primary-color);
 	fill: var(--primary-color);
 }
