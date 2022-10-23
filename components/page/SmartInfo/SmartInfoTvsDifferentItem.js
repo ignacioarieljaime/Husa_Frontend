@@ -9,7 +9,7 @@ function SmartInfoTvsDifferentItem({
 }) {
 	return (
 		<div
-			style={{ background: color.value }}
+			style={{ background: color?.value }}
 			className={`col-12 col-md-${
 				12 / listCount
 			}  platform smart-platform`}>
