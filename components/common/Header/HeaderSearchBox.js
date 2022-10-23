@@ -1,6 +1,8 @@
 import axios from 'axios'
+import DocumentIcon from 'components/icons/DocumentIcon'
 import GoToPageIcon from 'components/icons/GoToPageIcon'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
+import SupportIcon from 'components/icons/SupportIcon'
 import TelevisionSearchIcon from 'components/icons/TelevisionSearchIcon'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
@@ -81,8 +83,11 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 											<li key={`search-item-${index}`}>
 												<Link href={item.route}>
 													<a>
-														<TelevisionSearchIcon />
+														<SupportIcon />
 														{item.title}
+														<span className='ms-2'>
+															<GoToPageIcon />
+														</span>
 													</a>
 												</Link>
 											</li>
@@ -99,7 +104,7 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 										result?.documents.map((item, index) => (
 											<li key={`search-item-${index}`}>
 												<a href={item.url} download>
-													<TelevisionSearchIcon />
+													<DocumentIcon />
 													{item.title}
 												</a>
 											</li>
