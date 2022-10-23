@@ -9,6 +9,7 @@ import Spinner from '../Spinner'
 function HeaderSearchBox({ searchInputCondition, theme }) {
 	const [result, setResult] = useState()
 	const [input, setInput] = useState()
+
 	useEffect(() => {
 		setResult()
 		setInput('')
@@ -20,9 +21,8 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 			setResult('loading')
 			try {
 				let response = await axios.get(
-					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchPage/${input}`
+					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchPage/${_value}`
 				)
-
 				setResult(response.data)
 			} catch (error) {
 				console.log(error)

@@ -5,8 +5,8 @@ function ImageBox({ data: { structure } }) {
 		<section>
 			<div className='header-secondary'>
 				<img
-					src={structure.image.src}
-					alt={structure.image.alt}
+					src={structure?.image?.src}
+					alt={structure?.image?.alt}
 					width='100%'
 					height='100%'
 				/>

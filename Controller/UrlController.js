@@ -5,6 +5,7 @@ module.exports = UrlController = async _pages => {
 		return {
 			route: item.route,
 			id: item.id,
+			modelType: item.model_type,
 			modelId: item.model_id
 		}
 	})
