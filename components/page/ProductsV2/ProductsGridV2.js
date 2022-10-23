@@ -1,17 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import BreadCrumb from '../../common/BreadCrumb'
 import ProductItemV2 from './ProductItemV2'
+import ProductsFilter from './ProductsFilter'
+import axios from 'axios'
+import Spinner from 'components/common/Spinner'
+import { useRouter } from 'next/router'
+import { GetProductByFilterApi } from 'services/Product'
 
-const ProductsGridV2 = ({ data }) => {
+const ProductsGridV2 = ({
+	data: {
+		structure: { category }
+	}
+}) => {
 	const [sortingMethod, setSortingMethod] = useState([
 		{
 			title: 'Newest',
 			value: 'new'
 		}
 	])
+	const [filters, setFilters] = useState([])
+	const [products, setProducts] = useState([])
+	const [filter, setFilter] = useState([])
+	const router = useRouter()
 
-	let structure = {
+	let sort = {
 		breadCrumbList: {
 			value: [
 				{
@@ -27,184 +40,6 @@ const ProductsGridV2 = ({ data }) => {
 		title: {
 			value: 'All',
 			primaryText: 'Televisions'
-		},
-		products: {
-			value: [
-				{
-					title: {
-						value: 'U8H'
-					},
-					description: {
-						value: 'HISENSE MINI-LED ULED 4K SMART GOOGLE TV'
-					},
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/ca24e975cc/U8H-Infill-Front-Review__ScaleMaxWidthWzMwNDhd.png-xdmsfe.png',
-						alt: 'TV'
-					},
-					link: {
-						title: 'View Product',
-						value: '/'
-					},
-					types: {
-						value: [
-							{
-								value: '50"'
-							},
-							{
-								value: '60"'
-							},
-							{
-								value: '70"'
-							}
-						]
-					}
-				},
-				{
-					title: {
-						value: 'U8H'
-					},
-					description: {
-						value: 'HISENSE MINI-LED ULED 4K SMART GOOGLE TV'
-					},
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/ca24e975cc/U8H-Infill-Front-Review__ScaleMaxWidthWzMwNDhd.png-xdmsfe.png',
-						alt: 'TV'
-					},
-					link: {
-						title: 'View Product',
-						value: '/'
-					},
-					types: {
-						value: [
-							{
-								value: '50"'
-							},
-							{
-								value: '60"'
-							},
-							{
-								value: '70"'
-							}
-						]
-					}
-				},
-				{
-					title: {
-						value: 'U8H'
-					},
-					description: {
-						value: 'HISENSE MINI-LED ULED 4K SMART GOOGLE TV'
-					},
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/ca24e975cc/U8H-Infill-Front-Review__ScaleMaxWidthWzMwNDhd.png-xdmsfe.png',
-						alt: 'TV'
-					},
-					link: {
-						title: 'View Product',
-						value: '/'
-					},
-					types: {
-						value: [
-							{
-								value: '50"'
-							},
-							{
-								value: '60"'
-							},
-							{
-								value: '70"'
-							}
-						]
-					}
-				},
-				{
-					title: {
-						value: 'U8H'
-					},
-					description: {
-						value: 'HISENSE MINI-LED ULED 4K SMART GOOGLE TV'
-					},
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/ca24e975cc/U8H-Infill-Front-Review__ScaleMaxWidthWzMwNDhd.png-xdmsfe.png',
-						alt: 'TV'
-					},
-					link: {
-						title: 'View Product',
-						value: '/'
-					},
-					types: {
-						value: [
-							{
-								value: '50"'
-							},
-							{
-								value: '60"'
-							},
-							{
-								value: '70"'
-							}
-						]
-					}
-				},
-				{
-					title: {
-						value: 'U8H'
-					},
-					description: {
-						value: 'HISENSE MINI-LED ULED 4K SMART GOOGLE TV'
-					},
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/ca24e975cc/U8H-Infill-Front-Review__ScaleMaxWidthWzMwNDhd.png-xdmsfe.png',
-						alt: 'TV'
-					},
-					link: {
-						title: 'View Product',
-						value: '/'
-					},
-					types: {
-						value: [
-							{
-								value: '50"'
-							},
-							{
-								value: '60"'
-							},
-							{
-								value: '70"'
-							}
-						]
-					}
-				},
-				{
-					title: {
-						value: 'U8H'
-					},
-					description: {
-						value: 'HISENSE MINI-LED ULED 4K SMART GOOGLE TV'
-					},
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/ca24e975cc/U8H-Infill-Front-Review__ScaleMaxWidthWzMwNDhd.png-xdmsfe.png',
-						alt: 'TV'
-					},
-					link: {
-						title: 'View Product',
-						value: '/'
-					},
-					types: {
-						value: [
-							{
-								value: '50"'
-							},
-							{
-								value: '60"'
-							},
-							{
-								value: '70"'
-							}
-						]
-					}
-				}
-			]
 		}
 	}
 
@@ -227,23 +62,50 @@ const ProductsGridV2 = ({ data }) => {
 		}
 	]
 
+	useEffect(() => {
+		filter.length === 0 ? getProducts() : getProductByFilter()
+	}, [filter])
+
+	const getProducts = async () => {
+		setProducts('loading')
+		try {
+			let response = await axios.get(
+				`https://impim.dev-api.hisenseportal.com/api/cms/getProducts/${category.value}`
+			)
+			setProducts(response.data.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const getProductByFilter = async () => {
+		setProducts('loading')
+
+		try {
+			let response = await GetProductByFilterApi(router, filter)
+			setProducts(response.data.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
 		<section>
 			<div className='container mt-7 mb-11'>
 				<div className='row justify-content-start align-items-center px-3 mb-15'>
-					<BreadCrumb list={structure.breadCrumbList} />
+					<BreadCrumb list={sort.breadCrumbList} />
 				</div>
 				<div>
 					<h2 className='fw-normal fs-2hx mb-4'>
-						{structure.title.value}{' '}
-						<span className='primary-text'>{structure.title.primaryText}</span>
+						{sort.title.value}{' '}
+						<span className='primary-text'>{sort.title.primaryText}</span>
 					</h2>
 					<h3 className='fw-normal fs-base black-text'>
 						Find your next television.
 					</h3>
 				</div>
 			</div>
-			<div className='products-v2 mx-4 mx-md-13'>
+			<div className='products-v2 mx-3 mx-md-13'>
 				<div className='products-sorting'>
 					<DropDownSelectBox
 						options={options}
@@ -253,18 +115,21 @@ const ProductsGridV2 = ({ data }) => {
 					/>
 				</div>
 				<div className='products-grid'>
-					<div className='products-filtering'></div>
+					<div className='products-filtering'>
+						<ProductsFilter
+							filterHandler={setFilter}
+							categoryId={category}
+							filter={filter}
+						/>
+					</div>
 					<div className='products'>
-						{structure.products.value.map((item, index) => (
-							<ProductItemV2
-								key={index}
-								image={item.image}
-								title={item.title.value}
-								description={item.description.value}
-								types={item.types.value}
-								link={item.link}
-							/>
-						))}
+						{!Array.isArray(products) ? (
+							<Spinner className={'mt-5'} size={80} />
+						) : (
+							products.map((item, index) => (
+								<ProductItemV2 key={index} data={item} />
+							))
+						)}
 					</div>
 				</div>
 			</div>

@@ -3,14 +3,19 @@
 	position: relative;
 	min-width: 200px;
 	width: fit-content;
-    .dropdown-select-box-button {
-        width: 100%;
+	.dropdown-select-box-button {
+		width: 100%;
 		font-size: 14px;
 		font-weight: 400;
 		border-radius: 20px;
 		padding: 8px 16px;
 		background-color: inherit;
 		border: inherit;
+		svg {
+			transform: rotate(0deg);
+			transform-origin: center;
+			transition: all 0.2s ease-in;
+		}
 	}
 	.dropdown-select-box-options {
 		position: absolute;
@@ -31,15 +36,18 @@
 				margin: 6px 0;
 				padding: 2px 0;
 				cursor: pointer;
-                display: flex;
-                justify-content:flex-start;
-                align-items: center;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
 			}
 		}
 	}
 	&.show {
 		.dropdown-select-box-button {
 			border-radius: 20px 20px 0 0;
+			svg {
+				transform: rotate(180deg);
+			}
 		}
 	}
 }

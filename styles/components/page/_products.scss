@@ -101,33 +101,89 @@
 			margin: 0 0 54px auto;
 		}
 	}
-	.products-grid{
-		.products-filtering{
-			width: 230px;
+	.products-grid {
+		display: flex;
+		justify-content: center;
+		align-items: start;
+		.products-filtering {
+			width: 270px;
+			margin-right: 50px;
+			.filter-group {
+				margin-bottom: 40px;
+				.filter-list {
+					list-style: none;
+					padding: 0 5px;
+					margin: 0;
+					height: 0;
+					overflow: hidden;
+					transition: all 0.3s ease-in;
+					li {
+						padding: 8px 0;
+						.filter-label {
+							font-weight: 400;
+							font-size: 12px;
+							line-height: 17px;
+							color: #221f20;
+						}
+					}
+				}
+				.filter-btn {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+					font-weight: 400;
+					font-size: 14px;
+					color: #221f20;
+					svg {
+						transform: rotate(0deg);
+						transform-origin: center;
+						transition: all 0.2s ease-in;
+					}
+				}
+				&.open {
+					.filter-btn {
+						svg {
+							transform: rotate(180deg);
+						}
+					}
+					.filter-list {
+						height: 100%;
+					}
+				}
+			}
 		}
-		.products{
+		.products {
+			width: 100%;
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
 			grid-template-rows: auto;
 			gap: 16px;
+			.product-item-v2 {
+				background: #ffffff;
+				border: 1px solid #dbddde;
+				border-radius: 50px;
+				box-shadow: none;
+				transition: all 0.3s ease-in;
 
-		}
-	}
-}
-.product-item-v2 {
-	background: #ffffff;
-	border: 1px solid #dbddde;
-	border-radius: 50px;
-	box-shadow: none;
-	transition: all 0.3s ease-in;
-	&:hover {
-		box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
-	}
-	.product-item-v2-content{
-		color: #221F20;
-		div:first-child,
-		div:last-child{
-			color: #A6A8AC;
+				&:hover {
+					box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+				}
+				.product-item-v2-content {
+					color: #221f20;
+					div:first-child,
+					div:last-child {
+						color: #a6a8ac;
+					}
+				}
+				.compare-btn {
+					font-size: 10px;
+					line-height: 14px;
+					letter-spacing: 0.1em;
+					text-transform: uppercase;
+					text-decoration: none;
+				}
+			}
 		}
 	}
 }
@@ -171,6 +227,25 @@
 				&:nth-child(2n-1) {
 					background: #f1f1f2;
 				}
+			}
+		}
+	}
+	.products-v2 {
+		.products-sorting {
+			.dropdown-select-box {
+				background-color: #fbfbfb;
+				border: none;
+				margin: 0 0 54px auto;
+			}
+		}
+
+		.products-grid {
+			flex-wrap: wrap;
+			.products-filtering {
+				width: 270px;
+			}
+			.products {
+				grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
 			}
 		}
 	}
