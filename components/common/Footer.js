@@ -6,11 +6,9 @@ import TwitterIcon from 'components/icons/TwitterIcon'
 import YouTubeIcon from 'components/icons/YouTubeIcon'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 // import { setFooterData } from 'redux/slices/layout'
 
 function Footer() {
-	const dispatch = useDispatch()
 	const [footerData, setFooterData] = useState()
 	// const { footerData } = useSelector(state => state.layoutData)
 
@@ -26,9 +24,6 @@ function Footer() {
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
 
-			// dispatch(
-			// setFooterData(response.data.data.find(item => item.title === 'footer'))
-			// )
 			localStorage.setItem(
 				'footerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'footer'))

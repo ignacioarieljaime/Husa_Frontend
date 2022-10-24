@@ -2,12 +2,12 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React from 'react'
 
-function Layout({ children, meta }) {
+function Layout({ children, meta, title }) {
 	const router = useRouter()
 	return (
 		<>
 			<Head>
-				<title>hisense</title>
+				<title>{title}</title>
 				<meta name='viewport' />
 				<meta name='og:url' content={router.route} />
 				{meta &&

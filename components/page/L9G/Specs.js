@@ -1,29 +1,38 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useWindowSize } from '../../../hooks/useWindowSize'
 
-const Specs = () => {
+const Specs = ({ data }) => {
+	let { structure } = data
 	const [showMore, setShowMore] = useState(false)
 	const spaceContainer = useRef()
 	const tableGrid = useRef()
 	const widthSize = useWindowSize()[0]
 
-	useEffect(() => {
-		if (showMore) {
-			spaceContainer.current.style.maxHeight =
-				spaceContainer.current.scrollHeight + 'px'
-		} else {
-			spaceContainer.current.style.maxHeight = '0px'
-		}
-	}, [showMore, widthSize])
+	// useEffect(() => {
+	// 	if (showMore) {
+	// 		spaceContainer.current.style.maxHeight =
+	// 			spaceContainer.current.scrollHeight + 'px'
+	// 	} else {
+	// 		spaceContainer.current.style.maxHeight = '0px'
+	// 	}
+	// }, [showMore, widthSize])
 
 	return (
 		<section className='l9g'>
 			<div
-				className={`specs specs-l-nine-g px-4 px-md-20 black-banner ${!showMore && 'close'}`}>
+				className={`specs specs-l-nine-g px-4 px-md-20 black-banner ${
+					!showMore && 'close'
+				}`}>
 				<h2 className='fs-md-2tx text-white text-center'>
-					Now, here's the technical bit...
+					{structure?.title?.value}
+					<span class=' text-primary ms-2'>
+						{structure?.coloredTitle?.value}
+					</span>
 				</h2>
-				<div className='text-center py-3'>
+				<p className='text-center specs_title_paragraph '>
+				{structure?.greyText?.value}
+				</p>
+				{/* <div className='text-center py-3'>
 					<button
 						className='btn btn-outline-light rounded-5 specs-btn'
 						onClick={() => setShowMore(!showMore)}>
@@ -510,7 +519,7 @@ const Specs = () => {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</section>
 	)

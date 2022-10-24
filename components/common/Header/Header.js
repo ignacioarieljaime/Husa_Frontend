@@ -10,13 +10,11 @@ import MagnifierIcon from 'components/icons/MagnifierIcon'
 import SubMenuHeader from './SubMenuHeader'
 import axios from 'axios'
 // import { setHeaderData } from 'redux/slices/layout'
-import { useDispatch, useSelector } from 'react-redux'
 import NavBarDropDown from './NavBarDropDown'
 import Link from 'next/link'
 import HeaderSearchBox from './HeaderSearchBox'
 
 function Header({ isBlog = false, data: { structure } }) {
-	const dispatch = useDispatch()
 	// const { headerData } = useSelector(state => state.layoutData)
 	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
@@ -43,9 +41,7 @@ function Header({ isBlog = false, data: { structure } }) {
 			let response = await axios.get(
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
-			// dispatch(
-			// 	setHeaderData(response.data.data.find(item => item.title === 'header'))
-			// )
+
 			localStorage.setItem(
 				'headerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'header'))

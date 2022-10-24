@@ -111,6 +111,16 @@
 	.text-primary {
 		color: #00aaa6 !important;
 	}
+	.specs {
+		padding: 45px 30px 0 !important;
+		margin-bottom: -25px;
+		.specs_title_paragraph {
+			margin: 20px auto 0 !important;
+			color: #b3b3b3 !important;
+			font-size: 18px !important;
+		}
+	}
+
 	.mobile {
 		display: none !important;
 	}
@@ -169,7 +179,6 @@
 			}
 		}
 	}
-
 }
 @media (max-width: 1024px) {
 	.l9g {
@@ -219,4 +228,3 @@
 		}
 	}
 }
-

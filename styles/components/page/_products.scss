@@ -304,17 +304,17 @@
 						}
 					}
 				}
-				.mobile-filter-line{
+				.mobile-filter-line {
 					position: relative;
-					margin-bottom:24px;
-					&::after{
-						content: "";
+					margin-bottom: 24px;
+					&::after {
+						content: '';
 						display: block;
 						position: absolute;
 						bottom: -8px !important;
 						left: -12px;
 						width: calc(100% + 24px);
-						border-bottom: 1px solid #DBDDDE;
+						border-bottom: 1px solid #dbddde;
 					}
 				}
 			}
@@ -342,4 +342,9 @@
 			display: block;
 		}
 	}
+}
+
+.product_news_item_small_title {
+	font-size: 18px !important;
+	font-weight: 500 !important;
 }
