@@ -2,7 +2,6 @@ import React from 'react'
 
 function ProductBigContent({ data }) {
 	let { structure } = data
-	console.log(structure)
 	return (
 		<div id={data.name + data.id} className='tiny-banner p-md-4'>
 			<div className='container px-6 px-md-8 py-12'>
@@ -31,9 +30,11 @@ function ProductBigContent({ data }) {
 							</p>
 						)}
 
-						<p className='fw-normal text-black m-auto'>
-							{structure?.paragraph?.value}
-						</p>
+						<p
+							className='fw-normal text-black m-auto'
+							dangerouslySetInnerHTML={{
+								__html: structure?.paragraph?.value
+							}}></p>
 					</div>
 				</article>
 			</div>

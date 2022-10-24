@@ -60,8 +60,8 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductDetailsBox'
 	},
 	{
-		name: 'ProductFineMeInStore',
-		path: 'components/page/Product/ProductFineMeInStore'
+		name: 'ProductFindMeInStore',
+		path: 'components/page/Product/ProductFindMeInStore'
 	},
 	{
 		name: 'ProductResourceBox',

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProductFineMeInStore({ pim, data }) {
+function ProductFindMeInStore({ pim, data }) {
 	let { structure } = data
 	return (
 		<div id={data.name + data.id} className='p-md-4'>
@@ -23,4 +23,4 @@ function ProductFineMeInStore({ pim, data }) {
 	)
 }
 
-export default ProductFineMeInStore
+export default ProductFindMeInStore

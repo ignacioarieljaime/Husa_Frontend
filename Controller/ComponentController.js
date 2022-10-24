@@ -32,13 +32,15 @@ const GenerateComponentStructure = (_page, _content) => {
 
 	function Index${_page.id}({pim,data}) {
 	    return (
-			<Layout meta={${_page.meta}}>
+			<Layout title={'${_page.title}'} meta={${_page.meta}}>
 	      		<section>
 		  		 ${_content
 							.map(
 								(item, index) =>
 									item &&
-									`{data && data.length > 0 && data[${index}].structure ? <${item.name} ${
+									`{data && data.length > 0 && data[${index}]?.structure ? <${
+										item.name
+									} ${
 										_page.model_type ? `pim={pim}` : ''
 									} data={data[${index}]}/>  : null }`
 							)

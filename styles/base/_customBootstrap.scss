@@ -408,8 +408,7 @@
 	left: 0;
 	top: 0;
 	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 11;
-	display: none;
+	z-index: 99999999999;
 }
 .backdrop.show {
 	display: block;

@@ -10,6 +10,7 @@ function ProductBigScreenTextsBox() {
 							big screen
 							<span class='d-block text-primary'>big entertainment.</span>
 						</h2>
+
 						<div>
 							<p class='fs-5 fw-normal mb-12'>L5G SERIES - 4K SMART LASER TV</p>
 							<p class='fw-normal text-black m-auto'>

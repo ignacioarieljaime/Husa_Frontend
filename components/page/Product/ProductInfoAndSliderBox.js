@@ -1,10 +1,14 @@
-import React from 'react'
-
+import dynamic from 'next/dynamic'
+import React, { useState } from 'react'
 // component
-import ProductInfoSlider from './ProductInfoSlider'
-import ProductSliderLinkButton from './ProductSliderLinkButton'
+const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
+const ProductInfoSlider = dynamic(() => import('./ProductInfoSlider'))
+const ProductSliderLinkButton = dynamic(() =>
+	import('./ProductSliderLinkButton')
+)
 
 function ProductInfoAndSliderBox({ pim, data }) {
+	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	return (
 		<section id={data.name + data.id} className='product single-product'>
 			<div className='container'>
@@ -40,7 +44,10 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						<div className='product-rating'></div>
 						<button
 							className='btn btn-primary rounded-0 px-6 py-3'
-							onclick='toggleWhereToBuyDrawer()'>
+							onClick={() =>
+								data.structure?.whereToBuy?.value &&
+								setChanelAdviserHandler(!chanelAdviserHandler)
+							}>
 							{data.structure?.whereToBuy?.value
 								? 'Where To Buy'
 								: 'coming soon'}
@@ -48,6 +55,12 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					</div>
 				</div>
 			</div>
+			{chanelAdviserHandler && (
+				<ModalChanelAdviser
+					condition={chanelAdviserHandler}
+					handler={setChanelAdviserHandler}
+				/>
+			)}
 		</section>
 	)
 }
