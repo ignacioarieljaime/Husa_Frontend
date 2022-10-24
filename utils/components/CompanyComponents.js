@@ -10,5 +10,9 @@ module.exports.CompanyComponents = [
 	{
 		name: 'CompanyInfo',
 		path: 'components/page/Company/CompanyInfo'
+	},
+	{
+		name: 'CompanySubmenu',
+		path: 'components/page/Company/CompanySubmenu'
 	}
 ]

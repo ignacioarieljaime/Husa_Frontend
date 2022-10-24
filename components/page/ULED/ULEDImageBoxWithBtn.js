@@ -11,8 +11,8 @@ function ULEDImageBoxWithBtn({ data: { structure } }) {
 					<div className='row'>
 						<div className='col-12'>
 							<img
-								src={structure.image.src}
-								alt={structure.image.alt}
+								src={structure?.image?.src}
+								alt={structure?.image?.alt}
 								className='m-auto'
 								width='100%'
 							/>

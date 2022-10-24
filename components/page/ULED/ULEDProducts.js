@@ -1,15 +1,11 @@
 import React from 'react'
 import ULEDProductItem from './ULEDProductItem'
 
-function ULEDProducts({
-	data: {
-		structure: { list }
-	}
-}) {
+function ULEDProducts({ data: { structure } }) {
 	return (
 		<section>
 			<div className='row mx-0'>
-				{list.value.map((item, index) => (
+				{structure?.list?.value.map((item, index) => (
 					<ULEDProductItem key={index} data={item} />
 				))}
 			</div>

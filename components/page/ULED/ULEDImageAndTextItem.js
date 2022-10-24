@@ -10,8 +10,8 @@ function ULEDImageAndTextItem({ image, littleTitle, title, description }) {
 				<p>{description}</p>
 			</article>
 			<img
-				src={image.src}
-				alt={image.alt}
+				src={image?.src}
+				alt={image?.alt}
 				className='p-0 col-12 col-md-6 order-1 order-md-2'
 			/>
 		</div>

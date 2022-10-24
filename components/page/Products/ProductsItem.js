@@ -31,7 +31,7 @@ function ProductsItem({ data }) {
 						{isNew === 1 && <span className='new_product'>New</span>}
 					</div>
 				</div>
-				<img src={media?.url} alt='featured image' height={'265px'} />
+				<img src={media?.url} alt='featured image' />
 				<h3>{series.find(item => item.name === 'h2 Title')?.value}</h3>
 
 				<p>{name}</p>
