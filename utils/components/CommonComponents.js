@@ -4,6 +4,10 @@ module.exports.CommonComponents = [
 		path: 'components/common/ProductsBox'
 	},
 	{
+		name: 'TextEditor',
+		path: 'components/common/TextEditor'
+	},
+	{
 		name: 'ImageBox',
 		path: 'components/common/ImageBox'
 	},
