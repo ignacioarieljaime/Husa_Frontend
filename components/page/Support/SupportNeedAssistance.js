@@ -2,19 +2,23 @@ import React from 'react'
 
 // image
 import ImageBg from 'public/assets/images/support/support-bg.jpg'
+import Link from 'next/link'
 
-function SupportNeedAssistance() {
+function SupportNeedAssistance({ data }) {
+	let { structure } = data
 	return (
 		<section>
 			<div className='heading support-heading'>
 				<img src={ImageBg.src} alt='featured image' width='100%' />
 				<div className='heading-text'>
 					<h4 className='text-white fs-2qx mb-5' style={{ color: '#fff' }}>
-						Need more assistance?
+						{structure?.title?.value}
 					</h4>
-					<a href='#' className='btn btn-light rounded-5 px-4 py-2'>
-						CONTACT US
-					</a>
+					<Link href={structure?.linkUrl?.value}>
+						<a className='btn btn-light rounded-5 px-4 py-2'>
+							{structure?.linkTitle?.value}
+						</a>
+					</Link>
 				</div>
 			</div>
 		</section>

@@ -1,7 +1,7 @@
 module.exports.FaqComponents = [
 	{
-		name: 'FAQHead',
-		path: 'components/page/FAQ/FAQHead'
+		name: 'FAQhead',
+		path: 'components/page/FAQ/FAQhead'
 	},
 	{
 		name: 'FAQContentBox',

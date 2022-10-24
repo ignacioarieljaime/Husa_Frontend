@@ -1,38 +1,27 @@
+import Link from 'next/link'
 import React from 'react'
 
-function ProductSupportNavBar() {
+function ProductSupportNavBar({ pim, data }) {
+	let { structure } = data
+	console.log(structure)
 	return (
-		<div className='catalog-navbar bg-black py-3'>
+		<div id={data.name + data.id} className='catalog-navbar bg-black py-3'>
 			<nav className='container'>
 				<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 					<li className='me-md-auto'>
 						<span className='text-secondary'>HRM145N6AVD</span>
 					</li>
-					<li>
-						<a href='#video'>
-							<span className='underline-on-hover'>VIDEOS</span>
-						</a>
-					</li>
-					<li>
-						<a href='#faqs'>
-							<span className='underline-on-hover'>FAQS</span>
-						</a>
-					</li>
-					<li>
-						<a href='#registeration'>
-							<span className='underline-on-hover'>PRODUCT REGISTRATION</span>
-						</a>
-					</li>
-					<li>
-						<a href='#parts'>
-							<span className='underline-on-hover'>REPLACEMENT PARTS</span>
-						</a>
-					</li>
-					<li>
-						<a href='#contact-support'>
-							<span className='underline-on-hover'>CONTACT SUPPORT</span>
-						</a>
-					</li>
+					{structure?.tags?.value.map((item, index) => (
+						<li>
+							<Link href={item?.target?.value}>
+								<a>
+									<span className='underline-on-hover'>
+										{item?.title?.value}
+									</span>
+								</a>
+							</Link>
+						</li>
+					))}
 				</ul>
 			</nav>
 		</div>

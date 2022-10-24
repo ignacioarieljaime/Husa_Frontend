@@ -12,16 +12,15 @@ import CustomSelectBox from 'components/common/selectBox'
 import CustomInput from 'components/common/Input'
 import RoleModal from '../ContactUs/RoleModal'
 
-function ProductSupportRegister() {
+function ProductSupportRegister({ data }) {
+	let { structure } = data
 	const [acceptRole, setAcceptRole] = useState(false)
 	const [modalCondition, setModalCondition] = useState(false)
 	return (
-		<section className='border-bottom border-dark' id='#registeration'>
+		<section id={data.name + data.id} className='border-bottom border-dark'>
 			<div className='container py-20'>
-				<h3 className='mb-4 fs-2'>Register Laser TV</h3>
-				<p className='fs-8 fw-normal mb-15'>
-					Get started with registering your Hisense product.
-				</p>
+				<h3 className='mb-4 fs-2'>{structure?.title?.value}</h3>
+				<p className='fs-8 fw-normal mb-15'>{structure?.subtitle?.value}</p>
 				<div className='form-container mx-auto'>
 					<form
 						action=''
