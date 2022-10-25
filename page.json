@@ -189,12 +189,12 @@
 					"data": "hello"
 				},
 				{
-					"name": "SupportNewCategoryBox",
+					"name": "ProductsCategoriesWithSearch",
 					"props": {},
 					"data": "hello"
 				},
 				{
-					"name": "SupportOurSupport",
+					"name": "ProductsSupportOptions",
 					"props": {},
 					"data": "hello"
 				},

@@ -12,6 +12,8 @@ import CustomSelectBox from 'components/common/selectBox'
 import CustomInput from 'components/common/Input'
 import RoleModal from '../ContactUs/RoleModal'
 import axios from 'axios'
+import Spinner from 'components/common/Spinner'
+import { toast } from 'react-toastify'
 
 function ProductSupportRegister({ pim, data }) {
 	let { structure } = data
@@ -31,6 +33,7 @@ function ProductSupportRegister({ pim, data }) {
 		receipt_image: null,
 		future_news: acceptRole ? '0' : '1'
 	})
+	const [loading, setLoading] = useState(false)
 	const [file, setFile] = useState(null)
 
 	const dataSchemaHandler = (_title, _value) => {
@@ -39,13 +42,22 @@ function ProductSupportRegister({ pim, data }) {
 
 	const submitData = async e => {
 		e.preventDefault()
+		setLoading(true)
 		try {
 			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
 				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
+			if (response.status === 200) {
+				toast.success('ticket sended')
+			} else {
+				toast.error('ticket didn"t sended')
+			}
+			setLoading(false)
 		} catch (error) {
+			toast.error('ticket didn"t sended')
+			setLoading(false)
 			console.log(error)
 		}
 	}
@@ -172,7 +184,7 @@ function ProductSupportRegister({ pim, data }) {
 								id='contact-file-input'
 								accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
 								multiple='multiple'
-								className='position-absolute top-0 right-0 w-100 h-100'
+								className='position-absolute top-0 right-0 w-100 h-100 opacity-0'
 								style={{ zIndex: 9 }}
 								onChange={e => setFile(e.target.files[0])}
 							/>
@@ -200,8 +212,10 @@ function ProductSupportRegister({ pim, data }) {
 						<div className='col-12 text-center'>
 							<button
 								type='submit'
-								className='btn btn-outline-dark px-5 py-2 rounded-5'>
-								REGISTER
+								disabled={loading}
+								className='btn d-flex mx-auto btn-outline-dark px-5 py-2 rounded-5'>
+								<span className='me-2'>REGISTER</span>
+								{loading && <Spinner size={25} />}
 							</button>
 						</div>
 					</form>

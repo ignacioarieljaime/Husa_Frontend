@@ -16,12 +16,12 @@ module.exports.SupportComponents = [
 		path: 'components/page/Support/SupportNewHead'
 	},
 	{
-		name: 'SupportNewCategoryBox',
-		path: 'components/page/Support/SupportNewCategoryBox'
+		name: 'ProductsCategoriesWithSearch',
+		path: 'components/page/Support/ProductsCategoriesWithSearch'
 	},
 	{
-		name: 'SupportOurSupport',
-		path: 'components/page/Support/SupportOurSupport'
+		name: 'ProductsSupportOptions',
+		path: 'components/page/Support/ProductsSupportOptions'
 	},
 	{
 		name: 'SupportNeedAssistance',
@@ -36,7 +36,7 @@ module.exports.SupportComponents = [
 		path: 'components/page/Support/SupportNewHeadV2'
 	},
 	{
-		name: 'SupportNeedAssistanceV2',
-		path: 'components/page/Support/SupportNeedAssistanceV2'
+		name: 'SupportNeedMoreWithButton',
+		path: 'components/page/Support/SupportNeedMoreWithButton'
 	}
 ]

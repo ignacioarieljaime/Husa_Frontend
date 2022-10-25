@@ -3,13 +3,12 @@ import React from 'react'
 
 function ProductSupportNavBar({ pim, data }) {
 	let { structure } = data
-	console.log(structure)
 	return (
 		<div id={data.name + data.id} className='catalog-navbar bg-black py-3'>
 			<nav className='container'>
 				<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 					<li className='me-md-auto'>
-						<span className='text-secondary'>HRM145N6AVD</span>
+						<span className='text-secondary'>{pim?.model}</span>
 					</li>
 					{structure?.tags?.value.map((item, index) => (
 						<li>
