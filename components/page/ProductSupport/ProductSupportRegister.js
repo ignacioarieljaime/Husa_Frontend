@@ -23,15 +23,15 @@ function ProductSupportRegister({ pim, data }) {
 		email: null,
 		phone_number: null,
 		postal_code: null,
-		product_id: pim?.id,
-		product_name: pim?.name,
-		model_number: pim?.model,
-		serial_number: null,
-		purchase_date: null,
-		retailer: null,
-		image: null,
-		site_name: null
+		product_category: pim?.Category?.name,
+		product_model: pim?.model,
+		product_serial_number: null,
+		purchased_from: null,
+		date_of_purchase: null,
+		receipt_image: null,
+		future_news: acceptRole ? '0' : '1'
 	})
+	const [file, setFile] = useState(null)
 
 	const dataSchemaHandler = (_title, _value) => {
 		setDataSchema({ ...dataSchema, [_title]: _value })
@@ -40,25 +40,34 @@ function ProductSupportRegister({ pim, data }) {
 	const submitData = async e => {
 		e.preventDefault()
 		try {
+			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
 				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
-				{ ...dataSchema }
+				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
-			console.log(response)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	const getBase64 = (file, cb) => {
-		let reader = new FileReader()
-		reader.readAsDataURL(file)
-		reader.onload = function () {
-			cb(reader.result)
-			console.log(reader.result)
-		}
-		reader.onerror = function (error) {
-			console.log('Error: ', error)
+	const uploadFile = async () => {
+		const formData = new FormData()
+		formData.append('attachment', file)
+
+		try {
+			let response = await axios({
+				method: 'post',
+				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				data: formData,
+				headers: { 'Content-Type': 'multipart/form-data' }
+			})
+			if (response.status === 200) {
+				dataSchemaHandler('receipt_image', response.data.view_link)
+				return response.data.view_link
+			}
+			return null
+		} catch (error) {
+			console.log(error)
 		}
 	}
 	return (
@@ -76,22 +85,23 @@ function ProductSupportRegister({ pim, data }) {
 							<CustomInput
 								disabled={true}
 								placeholder={'PLEASE SELECT YOUR PRODUCT'}
-								required={true}
+								defaultValue={dataSchema.product_category}
 							/>
 						</div>
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomInput
 								disabled={true}
 								placeholder={'PLEASE SELECT YOUR MODEL'}
-								required={true}
-								defaultValue={dataSchema.model_number}
+								defaultValue={dataSchema.product_model}
 							/>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'SERIAL NUMBER'}
-								onChange={_value => dataSchemaHandler('serial_number', _value)}
 								required={true}
+								onChange={_value =>
+									dataSchemaHandler('product_serial_number', _value)
+								}
 							/>
 						</div>
 						<div className='col-12 col-md-6 mb-10 d-flex'>
@@ -106,8 +116,8 @@ function ProductSupportRegister({ pim, data }) {
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'FIRST NAME'}
-								required={true}
 								onChange={_value => dataSchemaHandler('first_name', _value)}
+								required={true}
 							/>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
@@ -141,7 +151,7 @@ function ProductSupportRegister({ pim, data }) {
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
-								onChange={_value => dataSchemaHandler('purchase_date', _value)}
+								onChange={_value => dataSchemaHandler('purchased_from', _value)}
 								placeholder={'PURCHASED FROM'}
 								required={true}
 							/>
@@ -149,18 +159,22 @@ function ProductSupportRegister({ pim, data }) {
 						<div className='col-12 mb-10'>
 							<CustomInput
 								type={'date'}
-								onChange={_value => dataSchemaHandler('purchase_date', _value)}
-								placeholder={'PURCHASED FROM'}
+								onChange={_value =>
+									dataSchemaHandler('date_of_purchase', _value)
+								}
 								required={true}
+								placeholder={'PURCHASED FROM'}
 							/>
 						</div>
-						<div className='col-12 mb-10 file-upload'>
+						<div className='col-12 mb-10 file-upload position-relative'>
 							<input
 								type='file'
 								id='contact-file-input'
 								accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
 								multiple='multiple'
-								onChange={e => getBase64(e.target.files[0])}
+								className='position-absolute top-0 right-0 w-100 h-100'
+								style={{ zIndex: 9 }}
+								onChange={e => setFile(e.target.files[0])}
 							/>
 							<div className='file-upload-box' onclick='triggerFileUpload()'>
 								<div>Drag & Drop a File Here</div>
