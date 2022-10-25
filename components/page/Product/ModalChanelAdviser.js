@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
 import React, { useRef } from 'react'
 
-function ModalChanelAdviser({ condition, handler }) {
+function ModalChanelAdviser({ condition, handler, model }) {
 	const modalOverView = useRef()
 	const outside = useOutsideClick(modalOverView)
 	return (
@@ -72,7 +72,7 @@ function ModalChanelAdviser({ condition, handler }) {
 				<iframe
 					width={'100%'}
 					height={'100%'}
-					src='https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=85A7H'
+					src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
 					frameborder='0'></iframe>
 			</div>
 		</div>

@@ -59,6 +59,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 				<ModalChanelAdviser
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
+					model={pim?.model}
 				/>
 			)}
 		</section>

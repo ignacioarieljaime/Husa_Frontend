@@ -8,89 +8,31 @@ import AirIconImage from 'public/assets/images/airIconImage.png'
 import DishWasherIconImage from 'public/assets/images/diswasherIconImage.png'
 import MicrowaveIconImage from 'public/assets/images/microwaveIconImage.png'
 
-function ProductsCategoriesWithSearch() {
+function ProductsCategoriesWithSearch({ data }) {
+	let { structure } = data
 	const [searchInput, setSearchInput] = useState(false)
 	const [searchList, setSearchList] = useState(false)
-
+	console.log(data)
 	return (
 		<section>
 			<div className='product-category support-product-category-new text-center container my-15 mt-10 px-6'>
-				<h2 className='mb-10 fs-4'>
-					Select a product category to get started.
-				</h2>
+				<h2 className='mb-10 fs-4'>{structure?.title?.value}</h2>
 				<div className='products row mb-8'>
-					<div
-						onClick={() => {
-							setSearchList(false)
-							setSearchInput(status => !status)
-						}}
-						id='tv'
-						className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
-						<div className='img_box'>
-							<img src={TvIconImage.src} alt='featured image' />
+					{structure?.list?.value.map((item, index) => (
+						<div
+							key={'category' + index}
+							onClick={() => {
+								setSearchList(false)
+								setSearchInput(status => !status)
+							}}
+							id={item?.title?.value}
+							className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
+							<div className='img_box'>
+								<img width={"100%"} src={item?.image?.src} alt={item?.image?.alt} />
+							</div>
+							<p>{item?.title?.value}</p>
 						</div>
-						<p>TELEVISIONS</p>
-					</div>
-					<div
-						id='refrigerator'
-						onClick={() => {
-							setSearchList(false)
-							setSearchInput(status => !status)
-						}}
-						className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
-						<div className='img_box'>
-							<img src={RefregaroterIconImage.src} alt='featured image' />
-						</div>
-						<p>REFRIGERATORS</p>
-					</div>
-					<div
-						id='air'
-						onClick={() => {
-							setSearchList(false)
-							setSearchInput(status => !status)
-						}}
-						className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
-						<div className='img_box'>
-							<img src={AirIconImage.src} alt='featured image' />
-						</div>
-						<p>AIR PRODUCTS</p>
-					</div>
-					<div
-						id='soundbar'
-						onClick={() => {
-							setSearchList(false)
-							setSearchInput(status => !status)
-						}}
-						className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
-						<div className='img_box'>
-							<img src={SoundBarIconImage.src} alt='featured image' />
-						</div>
-						<p>SOUNDBARS</p>
-					</div>
-					<div
-						id='dishwasher'
-						onClick={() => {
-							setSearchList(false)
-							setSearchInput(status => !status)
-						}}
-						className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
-						<div className='img_box'>
-							<img src={DishWasherIconImage.src} alt='featured image' />
-						</div>
-						<p>DISHWASHERS</p>
-					</div>
-					<div
-						id='microwave'
-						onClick={() => {
-							setSearchList(false)
-							setSearchInput(status => !status)
-						}}
-						className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
-						<div className='img_box'>
-							<img src={MicrowaveIconImage.src} alt='featured image' />
-						</div>
-						<p>OVER THE RANGE MICROWAVES</p>
-					</div>
+					))}
 				</div>
 				{searchInput && (
 					<div
