@@ -1,14 +1,16 @@
 import React from 'react'
 import UHDAbilityItem from './UHDAbilityItem'
 
-function UHDAbilityBox() {
+function UHDAbilityBox({ data }) {
+	let { structure } = data
 	return (
 		<section>
 			<div>
 				<div className='container-fluid py-6'>
 					<div className='row align-items-start'>
-						<UHDAbilityItem />
-						<UHDAbilityItem />
+						{structure?.list?.value.map((item, index) => (
+							<UHDAbilityItem key={'UHDAbilityItem' + index} data={item} />
+						))}
 					</div>
 				</div>
 			</div>
