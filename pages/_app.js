@@ -24,9 +24,9 @@ function MyApp({ Component, pageProps }) {
 	} else {
 		return (
 			<Provider store={store}>
-				<ErrorBoundary>
+				{/* <ErrorBoundary> */}
 					<Component {...pageProps} />
-				</ErrorBoundary>
+				{/* </ErrorBoundary> */}
 			</Provider>
 		)
 	}

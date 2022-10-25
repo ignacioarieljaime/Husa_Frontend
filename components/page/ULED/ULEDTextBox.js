@@ -8,10 +8,10 @@ function ULEDTextBox({ data: { structure } }) {
 					<h3 className='col-12 col-md-6 mb-7 my-md-auto px-0 px-md-8'>
 						{structure?.title?.value}
 					</h3>
+					{console.log(structure)}
 
-					<p
-						className='col-12 col-md-6 m-0'
-						dangerouslySetInnerHTML={{ __html: structure?.description?.value }}>
+					<p className='col-12 col-md-6 m-0'>
+						{structure?.paragraphOne?.value}
 						{structure?.paragraphOne?.value}
 					</p>
 				</article>
