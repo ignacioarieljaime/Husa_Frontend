@@ -6,7 +6,7 @@ function UHDNewsBox({ data: { structure } }) {
 		<section>
 			<div className='container-fluid py-6'>
 				<div className='row align-items-start'>
-					{structure.list.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<UHDNewsItem data={item} key={index} />
 					))}
 				</div>

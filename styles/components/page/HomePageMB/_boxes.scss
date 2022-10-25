@@ -40,6 +40,10 @@
 		&:nth-child(n + 1) {
 			border-left: 1px solid #cbcbcb;
 		}
+
+		img{
+			object-fit: contain;
+		}
 	}
 	> * {
 		color: #221f20;

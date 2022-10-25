@@ -63,6 +63,9 @@
 }
 
 .home-page-mb-slider {
+	img {
+		object-fit: contain;
+	}
 	.swiper-pagination-bullets {
 		.swiper-pagination-bullet {
 			background: transparent;
@@ -76,6 +79,7 @@
 	}
 	.slider-item {
 		position: relative;
+
 		.slider-content {
 			position: absolute;
 			left: 50%;
@@ -85,7 +89,6 @@
 			font-size: 48px;
 			color: #fff;
 			text-align: center;
-			
 		}
 	}
 }
