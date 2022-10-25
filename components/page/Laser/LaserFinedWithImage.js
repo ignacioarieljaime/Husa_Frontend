@@ -2,16 +2,17 @@ import Link from 'next/link'
 import React from 'react'
 
 function LaserFinedWithImage({ data: { structure } }) {
+	console.log(structure);
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
 				<div className='container px-6 px-md-8 pt-20 pb-12'>
 					<article className='article text-center'>
 						<h3 className='text-white mb-7'>
-							{structure.title.value}
+							{structure?.title?.value}
 							<span className='text-primary'>
 								{' '}
-								{structure.coloredTitle.value}
+								{structure?.coloredTitle?.value}
 							</span>
 						</h3>
 						<div>
@@ -19,9 +20,9 @@ function LaserFinedWithImage({ data: { structure } }) {
 								{structure.description.value}
 							</p>
 						</div>
-						<Link href={structure.link.value}>
+						<Link href={structure?.linkUrl?.value}>
 							<a className='btn btn-outline-light rounded-5 mt-12 px-8'>
-								{structure.link.title}
+								{structure?.linkTitle?.title}
 							</a>
 						</Link>
 					</article>
