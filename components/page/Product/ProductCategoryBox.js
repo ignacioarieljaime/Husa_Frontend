@@ -44,7 +44,7 @@ function ProductCategoryBox({ data, pim }) {
 									structure?.whereToBuy?.value &&
 									setChanelAdviserHandler(!chanelAdviserHandler)
 								}>
-								{structure?.whereToBuy ? 'Where To Buy' : 'Coming Soon'}
+								{structure?.whereToBuy?.value ? 'Where To Buy' : 'Coming Soon'}
 							</button>
 						</li>
 					</ul>
