@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
 import React, { useRef } from 'react'
 
-function RoleModal({ modalHandler }) {
+function RoleModal({ modalHandler, data }) {
 	const modal = useRef()
 	const outSide = useOutsideClick(modal)
 	return (
@@ -25,31 +25,7 @@ function RoleModal({ modalHandler }) {
 						aria-label='Close'>
 						<FontAwesomeIcon icon={faXmark} />
 					</button>
-					<div>
-						<h3>we know those suckers can be hard to find</h3>
-						<p>
-							Check this list for the general location of your model number
-							sticker. If youre still stumped, contact us and well sort you out.
-						</p>
-						<ul>
-							<li>television</li>
-							<li>Back of the unit</li>
-							<li>wine cooler</li>
-							<li>Back of the unit</li>
-							<li>compact refrigeration</li>
-							<li>Back of the unit</li>
-							<li>chest freezer</li>
-							<li>Back of the unit</li>
-							<li>full size refrigeration</li>
-							<li>Back of the unit</li>
-							<li>portable AC</li>
-							<li>Left side of the unit</li>
-							<li>beverage chiller</li>
-							<li>Back of the unit</li>
-							<li>dehumidifier</li>
-							<li>Back of the unit</li>
-						</ul>
-					</div>
+					<div dangerouslySetInnerHTML={{ __html: data }}></div>
 				</div>
 			</div>
 		</div>
