@@ -7,7 +7,8 @@ function CustomInput({
 	className,
 	type = 'text',
 	defaultValue,
-	onChange
+	onChange,
+	value
 }) {
 	return (
 		<div>
@@ -18,11 +19,12 @@ function CustomInput({
 				className={`form-container-inner-input ${className}`}
 				placeholder={placeholder}
 				required={required}
-				defaultValue={defaultValue}
+				defaultValue={defaultValue && defaultValue}
+				value={value && value}
 			/>
 			{required && <span className='input-error'>This field is required.</span>}
 		</div>
 	)
 }
 
-export default CustomInput
+export default React.memo(CustomInput)
