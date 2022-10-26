@@ -9,8 +9,9 @@ const ProductsBannerV2 = ({ data }) => {
 				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}
-					width='100%'
-					height='100%'
+					width={"100%"}
+					style={{ height: '422px' }}
+					className={"img-fluid"}
 				/>
 				<div className='heading-text'>
 					<h1 className='fs-md-3qx fw-normal mw-50 mx-auto'>
