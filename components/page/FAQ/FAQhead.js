@@ -5,7 +5,10 @@ function FAQhead({ data }) {
 	return (
 		<section>
 			<div
-				style={{ backgroundColor: structure?.color?.value }}
+				style={{
+					backgroundColor: structure?.color?.value,
+					height: structure?.height?.value
+				}}
 				className='faq-single-color-header'>
 				<div
 					className='heading-text'
