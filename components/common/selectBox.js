@@ -18,25 +18,41 @@ function CustomSelectBox({ required = false, title, options, onChange }) {
 						disabled
 					/>
 					<p className='input-text d-flex align-items-center justify-content-between '>
-						{value}
-						<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
+						{options === 'loading' ? (
+							'loading ...'
+						) : (
+							<>
+								{value}
+								<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
+							</>
+						)}
 					</p>
 				</div>
 			</div>
 			<ul className='select-box-list'>
-				{options &&
-					options.map((item, index) => (
-						<li
-							onClick={() => {
-								onChange(item)
-								setValue(item)
-							}}
-							key={index}>
-							<label className='option' htmlFor='tv' aria-hidden='aria-hidden'>
-								{item}
-							</label>
-						</li>
-					))}
+				{options && Array.isArray(options) ? (
+					<>
+						{options.length === 0 ? (
+							<li>empty</li>
+						) : (
+							options.map((item, index) => (
+								<li
+									onClick={() => {
+										onChange(item)
+										setValue(item?.name)
+									}}
+									key={index}>
+									<label
+										className='option'
+										htmlFor='tv'
+										aria-hidden='aria-hidden'>
+										{item?.name}
+									</label>
+								</li>
+							))
+						)}
+					</>
+				) : null}
 			</ul>
 			{required && <span className='input-error'>This field is required.</span>}
 		</div>
