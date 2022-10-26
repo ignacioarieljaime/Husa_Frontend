@@ -5,6 +5,7 @@ const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
 function ProductCategoryBox({ data, pim }) {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
+
 	let { structure } = data
 	return (
 		<>

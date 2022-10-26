@@ -43,7 +43,11 @@ const ProductFeatureWithParagraph = ({ data }) => {
 								{structure?.coloredTitle?.value}
 							</span>
 						</h3>
-						<p class='col-12 col-md-6 m-0'>{structure?.paragraph?.value}</p>
+						<p
+							class='col-12 col-md-6 m-0'
+							dangerouslySetInnerHTML={{
+								__html: structure?.paragraph?.value
+							}}></p>
 					</article>
 					<div
 						class={`row align-items-start justify-content-evenly flex-wrap jarg-flex mt-15 mb-10 ${
