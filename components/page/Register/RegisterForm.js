@@ -1,40 +1,183 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-	faCircleInfo,
-	faCheck,
-	faXmark
-} from '@fortawesome/free-solid-svg-icons'
+import { faCircleInfo, faCheck } from '@fortawesome/free-solid-svg-icons'
 import CustomSelectBox from 'components/common/selectBox'
 import CustomInput from 'components/common/Input'
 import RoleModal from '../ContactUs/RoleModal'
+import { GetCategoriesApi, GetSeriesModelsApi } from 'services/category'
+import { useRouter } from 'next/router'
+import Spinner from 'components/common/Spinner'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
-function RegisterForm() {
+function RegisterForm({ data }) {
+	let { structure } = data
+	let router = useRouter()
+	const [disabled, setDisabled] = useState(false)
+	const [categories, setCategories] = useState([])
+	const [series, setSeries] = useState([])
+	const [models, setModels] = useState([])
 	const [activeCheckBox, setActiveCheckBox] = useState(false)
 	const [modalCondition, setModalCondition] = useState(false)
+	const [loading, setLoading] = useState(false)
+	const [file, setFile] = useState(null)
+	const [dataSchema, setDataSchema] = useState({
+		first_name: null,
+		last_name: null,
+		product_series: null,
+		email: null,
+		phone_number: null,
+		postal_code: null,
+		product_category: null,
+		product_model: null,
+		product_serial_number: null,
+		purchased_from: null,
+		date_of_purchase: null,
+		receipt_image: null,
+		future_news: '0'
+	})
+
+	useEffect(() => {
+		getCategories()
+	}, [])
+
+	const dataSchemaHandler = (_key, _value) => {
+		setDataSchema({ ...dataSchema, [_key]: _value })
+	}
+
+	const getCategories = async () => {
+		setCategories('loading')
+		try {
+			let response = await GetCategoriesApi(router)
+			if (response.status === 200) {
+				setCategories(response.data.data)
+			}
+		} catch (error) {
+			setCategories([])
+			console.log(error)
+		}
+	}
+
+	const getSeriesModels = async _categoryId => {
+		setSeries('loading')
+		setModels('loading')
+		try {
+			let response = await GetSeriesModelsApi(
+				router,
+				`category_id=${_categoryId}`
+			)
+			if (response.status === 200) {
+				setSeries(response.data.series)
+				setModels(
+					response.data.models.map(item => {
+						return { name: item }
+					})
+				)
+			}
+		} catch (error) {
+			setSeries([])
+			setModels([])
+			console.log(error)
+		}
+	}
+
+	const submitData = async e => {
+		e.preventDefault()
+
+		setLoading(true)
+		try {
+			let fileUploadCondition = await uploadFile()
+			let response = await axios.post(
+				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
+				{ ...dataSchema, receipt_image: fileUploadCondition }
+			)
+			if (response.status === 200) {
+				toast.success('ticket sended')
+				setDisabled(true)
+			} else {
+				toast.error('ticket didn"t sended')
+			}
+			setLoading(false)
+		} catch (error) {
+			toast.error('ticket didn"t sended')
+			setLoading(false)
+			console.log(error)
+		}
+	}
+
+	const uploadFile = async () => {
+		const formData = new FormData()
+		formData.append('attachment', file)
+
+		try {
+			let response = await axios({
+				method: 'post',
+				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				data: formData,
+				headers: { 'Content-Type': 'multipart/form-data' }
+			})
+			if (response.status === 200) {
+				dataSchemaHandler('receipt_image', response.data.view_link)
+				return response.data.view_link
+			}
+			return null
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
-		<section>
+		<section className={disabled && `d-none`}>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
-				<h2 className='text-center mb-17'>REGISTER PRODUCT</h2>
+				<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
 				<form
 					action=''
+					onSubmit={submitData}
 					className='form-container-inner row active'
 					id='form-tab-1'>
 					<div className='col-12 mb-10 custom-select-box'>
 						<CustomSelectBox
 							title={'PLEASE SELECT YOUR PRODUCT'}
 							required={true}
+							options={categories}
+							onChange={_value => {
+								dataSchemaHandler('product_category', _value.name)
+								getSeriesModels(_value.id)
+							}}
 						/>
 					</div>
 					<div className='col-12 mb-10 custom-select-box'>
 						<CustomSelectBox
-							title={'PLEASE SELECT YOUR MODEL'}
+							title={'PLEASE SELECT YOUR SERIES'}
 							required={true}
+							options={series}
+							onChange={_value =>
+								dataSchemaHandler('product_series', _value.name)
+							}
 						/>
 					</div>
+					{dataSchema.product_category && (
+						<div className='col-12 mb-10 custom-select-box'>
+							<CustomSelectBox
+								title={'PLEASE SELECT YOUR MODEL'}
+								required={true}
+								options={models}
+								onChange={_value =>
+									dataSchemaHandler('product_model', _value.name)
+								}
+							/>
+						</div>
+					)}
+
 					<div className='col-12 col-md-6 mb-10'>
-						<CustomInput placeholder={'SERIAL NUMBER'} required={true} />
+						<CustomInput
+							placeholder={'SERIAL NUMBER'}
+							required={true}
+							onChange={_value =>
+								dataSchemaHandler('product_serial_number', _value)
+							}
+						/>
 					</div>
 					<div className='col-12 col-md-6 mb-10 d-flex'>
 						<button
@@ -46,34 +189,71 @@ function RegisterForm() {
 						</button>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<CustomInput placeholder={'FIRST NAME'} required={true} />
+						<CustomInput
+							placeholder={'FIRST NAME'}
+							onChange={_value => dataSchemaHandler('first_name', _value)}
+							required={true}
+							value={dataSchema.first_name}
+						/>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<CustomInput placeholder={'LAST NAME'} required={true} />
+						<CustomInput
+							placeholder={'LAST NAME'}
+							onChange={_value => dataSchemaHandler('last_name', _value)}
+							required={true}
+							value={dataSchema.last_name}
+						/>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<CustomInput placeholder={'EMAIL'} required={true} />
+						<CustomInput
+							placeholder={'EMAIL'}
+							onChange={_value => dataSchemaHandler('email', _value)}
+							required={true}
+							value={dataSchema.email}
+						/>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<CustomInput placeholder={'POSTAL CODE/ZIP'} required={true} />
+						<CustomInput
+							placeholder={'POSTAL CODE/ZIP'}
+							onChange={_value => dataSchemaHandler('postal_code', _value)}
+							required={true}
+							value={dataSchema.postal_code}
+						/>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<CustomInput placeholder={'PHONE NUMBER'} required={true} />
+						<CustomInput
+							placeholder={'PHONE NUMBER'}
+							required={true}
+							onChange={_value => dataSchemaHandler('phone_number', _value)}
+							value={dataSchema.phone_number}
+						/>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
-						<CustomInput placeholder={'PURCHASED FROM'} required={true} />
+						<CustomInput
+							onChange={_value => dataSchemaHandler('purchased_from', _value)}
+							placeholder={'PURCHASED FROM'}
+							required={true}
+							value={dataSchema.purchased_from}
+						/>
 					</div>
 					<div className='col-12 mb-10'>
 						<label htmlFor='date-input'>Date of Purchase</label>
-						<CustomInput type='date' required={true} />
+						<CustomInput
+							type='date'
+							onChange={_value => dataSchemaHandler('date_of_purchase', _value)}
+							required={true}
+							value={dataSchema.date_of_purchase}
+						/>
 					</div>
-					<div className='col-12 mb-10 file-upload'>
+					<div className='col-12 mb-10 file-upload position-relative'>
 						<input
 							type='file'
-							className='d-none'
 							id='contact-file-input'
 							accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
 							multiple='multiple'
+							className='position-absolute top-0 right-0 w-100 h-100 opacity-0'
+							style={{ zIndex: 9 }}
+							onChange={e => setFile(e.target.files[0])}
 						/>
 						<div className='file-upload-box' onclick='triggerFileUpload()'>
 							<div>Drag & Drop a File Here</div>
@@ -83,7 +263,10 @@ function RegisterForm() {
 					<div className='col-12 mb-10 news-check'>
 						<span
 							className='form-checkbox-span'
-							onClick={() => setActiveCheckBox(!activeCheckBox)}>
+							onClick={() => {
+								setActiveCheckBox(!activeCheckBox)
+								dataSchemaHandler('future_news', !activeCheckBox ? '1' : '0')
+							}}>
 							{/* <i className='fa-solid fa-check d-none' id='form-checkbox-check'></i> */}
 							{activeCheckBox && <FontAwesomeIcon icon={faCheck} />}
 						</span>
@@ -98,60 +281,22 @@ function RegisterForm() {
 						</label>
 					</div>
 					<div className='col-12 text-center'>
-						<button type='submit' className='form-submit-btn'>
-							REGISTER
+						<button
+							disabled={loading}
+							type='submit'
+							className='form-submit-btn d-flex align-items-center'>
+							<span className='me-2'> {structure?.subtitle?.value}</span>
+							{loading && <Spinner size={25} />}
 						</button>
 					</div>
 				</form>
-				<div
-					className='modal fade'
-					id='serial-numbers'
-					tabIndex='-1'
-					role='dialog'
-					aria-labelledby='exampleModalLabel'
-					aria-hidden='true'>
-					<div
-						className='modal-dialog modal-dialog-centered modal-lg'
-						role='document'>
-						<div className='modal-content border-0 bg-white p-6 d-block serial-number-modal'>
-							<button
-								className='btn modal-close-btn'
-								type='button'
-								data-dismiss='modal'
-								aria-label='Close'>
-								<FontAwesomeIcon icon={faXmark} />
-							</button>
-							<div>
-								<h3>we know those suckers can be hard to find</h3>
-								<p>
-									Check this list for the general location of your model number
-									sticker. If you re still stumped, contact us and well sort you
-									out.
-								</p>
-								<ul>
-									<li>television</li>
-									<li>Back of the unit</li>
-									<li>wine cooler</li>
-									<li>Back of the unit</li>
-									<li>compact refrigeration</li>
-									<li>Back of the unit</li>
-									<li>chest freezer</li>
-									<li>Back of the unit</li>
-									<li>full size refrigeration</li>
-									<li>Back of the unit</li>
-									<li>portable AC</li>
-									<li>Left side of the unit</li>
-									<li>beverage chiller</li>
-									<li>Back of the unit</li>
-									<li>dehumidifier</li>
-									<li>Back of the unit</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-			{modalCondition && <RoleModal modalHandler={setModalCondition} />}
+			{modalCondition && (
+				<RoleModal
+					data={structure?.modelText?.value}
+					modalHandler={setModalCondition}
+				/>
+			)}
 		</section>
 	)
 }
