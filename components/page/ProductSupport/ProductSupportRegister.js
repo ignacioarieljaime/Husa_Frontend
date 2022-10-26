@@ -28,7 +28,7 @@ function ProductSupportRegister({ pim, data }) {
 		product_category: pim?.Category?.name,
 		product_model: pim?.model,
 		product_series: pim?.custom_fields.find(item => item.title === 'h2 Title')
-			.value,
+			?.value,
 		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
