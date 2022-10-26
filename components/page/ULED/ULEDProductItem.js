@@ -19,12 +19,12 @@ function ULEDProductItem({ data }) {
 					<img src={image?.src} alt={image?.alt} width='100%' height='100%' />
 				</div>
 				<div className='row align-items-center'>
-					<div className='col-12 col-sm-3 col-lg-6 col-xl-4 col-xxl-3 mb-5 mb-sm-0'>
+					<div className='col-12 col-sm-3 col-lg-6 col-xl-4  gap-3 mb-5 mb-sm-0'>
 						<Link href={linkUrl?.value ? linkUrl?.value : ''}>
 							<a className='btn btn-light text-nowrap'>{linkTitle?.value}</a>
 						</Link>
 					</div>
-					<div className='col-12 col-sm-6 col-lg-6 col-xl-8 col-xxl-9'>
+					<div className='col-12 col-sm-6 col-lg-6 col-xl-8  '>
 						<button
 							onClick={() =>
 								whereToBuy.value &&

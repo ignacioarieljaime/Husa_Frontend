@@ -14,9 +14,13 @@ function ProductFeatureWithImageWithBTN({ data }) {
 						<h2> {structure?.title?.value}</h2>
 						<p>{structure?.paragraphOne?.value}</p>
 						<p>{structure?.paragraphTwo?.value}</p>
-						<Link href={structure?.link?.value}>
-							<a className='white_border_link_btn'>{structure?.link?.title}</a>
-						</Link>
+						{structure?.link?.value && (
+							<Link href={structure?.link?.value}>
+								<a className='white_border_link_btn'>
+									{structure?.link?.title}
+								</a>
+							</Link>
+						)}
 					</article>
 					<img
 						src={structure?.image?.src}

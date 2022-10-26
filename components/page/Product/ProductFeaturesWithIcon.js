@@ -53,13 +53,13 @@ const ProductFeatureWithParagraph = ({ data }) => {
 						class={`row align-items-start justify-content-evenly flex-wrap jarg-flex mt-15 mb-10 ${
 							detailCondition ? 'd-none' : ''
 						} `}>
-						{structure.listOff.value.map((item, index) => (
+						{structure?.listOff?.value.map((item, index) => (
 							<div key={`list-off-${index}`} class='p-5'>
 								<div class='p-2 rounded-4 bg-light-2'>
-									<img src={item.image.src} alt={item.image.alt} width='120' />
+									<img src={item?.image?.src} alt={item?.image?.alt} width='120' />
 								</div>
 								<div class='jarg-text-section mt-5'>
-									<span class='jarg-toggle-text'>{item.paragraph.value}</span>
+									<span class='jarg-toggle-text'>{item?.paragraph?.value}</span>
 								</div>
 							</div>
 						))}
@@ -68,13 +68,13 @@ const ProductFeatureWithParagraph = ({ data }) => {
 						class={`row align-items-start justify-content-evenly flex-wrap jarg-flex mt-15 mb-10 ${
 							!detailCondition ? 'd-none' : ''
 						} `}>
-						{structure.listOn.value.map((item, index) => (
+						{structure?.listOn?.value.map((item, index) => (
 							<div key={`list-on-${index}`} class='p-5'>
 								<div class='p-2 rounded-4 bg-light-2'>
-									<img src={item.image.src} alt={item.image.alt} width='120' />
+									<img src={item?.image?.src} alt={item?.image?.alt} width='120' />
 								</div>
 								<div class='jarg-text-section mt-5'>
-									<span class='jarg-toggle-text'>{item.paragraph.value}</span>
+									<span class='jarg-toggle-text'>{item?.paragraph?.value}</span>
 								</div>
 							</div>
 						))}
