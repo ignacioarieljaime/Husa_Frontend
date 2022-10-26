@@ -3,7 +3,7 @@ import React from 'react'
 function ProductNewsItem({ itemCount, data, divider }) {
 	let { image, note, title, smallTitle } = data
 	return (
-		<div className={`col-12 col-md-6 col-lg-${12 / itemCount} mb-18 mb-md-0`}>
+		<div style={{ width: `${100 / itemCount}%` }} className={` mb-18 mb-md-0`}>
 			<article className='article text-start'>
 				<img src={image?.src} alt={image?.alt} width='100%' />
 				<div

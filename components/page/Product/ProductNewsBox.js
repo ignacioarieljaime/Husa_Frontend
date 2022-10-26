@@ -5,7 +5,7 @@ function ProductNewsBox({ data, index }) {
 	let { structure } = data
 	return (
 		<div id={data.name + data.id} className='container-fluid py-6'>
-			<div className='row align-items-start'>
+			<div className='d-flex gap-3 product_news_box'>
 				{structure?.list?.value.map((item, index) => (
 					<ProductNewsItem
 						divider={structure?.divider?.value}
