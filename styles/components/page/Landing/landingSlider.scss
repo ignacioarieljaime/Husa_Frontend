@@ -1,6 +1,7 @@
 .home-header-carousel {
 	width: 100%;
 	overflow: hidden;
+	height: 520px;
 	.swiper-wrapper {
 		display: flex;
 		height: 100%;
@@ -11,6 +12,7 @@
 				position: relative;
 				.main-img {
 					display: block;
+					object-fit: cover;
 				}
 				.responsive-img {
 					display: none;
@@ -85,6 +87,8 @@
 
 @media (max-width: 767px) {
 	.home-header-carousel {
+	height: unset;
+
 		.carousel-item-wrapper {
 			.main-img {
 				display: none;
