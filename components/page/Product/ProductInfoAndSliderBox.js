@@ -45,12 +45,11 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						<button
 							className='btn btn-primary rounded-0 px-6 py-3'
 							onClick={() =>
-								data.structure?.whereToBuy?.value &&
-								setChanelAdviserHandler(!chanelAdviserHandler)
+								pim?.retailers.length !== 0
+									? setChanelAdviserHandler(!chanelAdviserHandler)
+									: {}
 							}>
-							{data.structure?.whereToBuy?.value
-								? 'Where To Buy'
-								: 'coming soon'}
+							{pim?.retailers.length !== 0 ? 'Where To Buy' : 'coming soon'}
 						</button>
 					</div>
 				</div>

@@ -4,7 +4,12 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { GetFiltersApi } from 'services/Filter'
 import ProductFilterAideItem from './ProductFilterAideItem'
 
-function FilterAside({ filterHandler, filter, categoryId: { value } }) {
+function FilterAside({
+	filterHandler,
+	filter,
+	categoryId: { value },
+	resetFilter
+}) {
 	const checkboxWrapper = useRef()
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [filterListCondition, setFilterListCondition] = useState(false)
@@ -13,6 +18,10 @@ function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 	useEffect(() => {
 		value && getFilters()
 	}, [value])
+	useEffect(() => {
+		setCheckBoxCondition(!checkBoxCondition)
+		filterHandler([])
+	}, [resetFilter])
 
 	const getFilters = async () => {
 		let filters = []

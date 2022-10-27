@@ -10,7 +10,7 @@
 		font-size: 16px;
 		line-height: 27px;
 		color: #565656;
-		a {
+		button {
 			font-size: 16px;
 			line-height: 27px;
 			color: #00aaa6;
@@ -31,6 +31,11 @@
 	}
 	.result_box__product_container {
 		width: 100%;
+		button{
+			background-color: transparent;
+			border: none;
+			 color: var();
+		}
 	}
 	.accordion-btn {
 		font-size: 14px;

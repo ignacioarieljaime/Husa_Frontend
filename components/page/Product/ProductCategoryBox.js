@@ -42,10 +42,11 @@ function ProductCategoryBox({ data, pim }) {
 							<button
 								className='btn-primary'
 								onClick={() =>
-									structure?.whereToBuy?.value &&
-									setChanelAdviserHandler(!chanelAdviserHandler)
+									pim?.retailers.length !== 0
+										? setChanelAdviserHandler(!chanelAdviserHandler)
+										: {}
 								}>
-								{structure?.whereToBuy?.value ? 'Where To Buy' : 'Coming Soon'}
+								{pim?.retailers.length !== 0 ? 'Where To Buy' : 'Coming Soon'}
 							</button>
 						</li>
 					</ul>
