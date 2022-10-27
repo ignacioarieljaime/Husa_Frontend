@@ -24,10 +24,10 @@ function LandingSlider({ data }) {
 					<SwiperSlide key={index}>
 						<div className='carousel-item-wrapper'>
 							{console.log(item)}
-							<Link href={item?.url?.value}>
+							<Link href={item?.url?.value ? item?.url?.value : ''}>
 								<a
 									className='w-100 h-100'
-									style={{ background: `url(${item?.desktop?.src})`  }}></a>
+									style={{ background: `url(${item?.desktop?.src})` }}></a>
 							</Link>
 						</div>
 					</SwiperSlide>
