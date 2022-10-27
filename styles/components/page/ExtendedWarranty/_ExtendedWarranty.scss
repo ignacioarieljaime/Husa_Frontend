@@ -1,0 +1,217 @@
+.extended-warrant-banner {
+	position: relative;
+	height: 442px;
+	.heading-text {
+		.support-products-searchbox {
+			background: #221f20;
+			border-color: #221f20;
+			max-width: 420px;
+			input {
+				color: #fff;
+				background-color: transparent;
+				width: 100%;
+				max-width: 320px;
+				&:focus {
+					background-color: transparent !important;
+				}
+			}
+
+			button {
+				svg {
+					color: #fff;
+				}
+			}
+		}
+	}
+	.img-fluid::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+		background: rgba(34, 31, 32, 0.1);
+	}
+}
+
+.extended-warranty-products-slider {
+	.support-products {
+		.slider-item {
+			border: 1px solid #dbddde;
+			border-radius: 25px;
+			padding: 50px;
+			.slider-image {
+				max-width: 100px;
+			}
+		}
+	}
+}
+
+.extended-warranty-text-block {
+	margin: 0;
+	text-align: center;
+	.text-block-image {
+		width: 100%;
+		max-width: 720px;
+	}
+	.text-block-content {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		padding: 30px !important;
+		max-width: 550px;
+		margin: 0 auto;
+		color: #221f20;
+		.title {
+			font-weight: 400;
+			line-height: 120%;
+			text-align: center;
+			letter-spacing: -0.02em;
+			margin-bottom: 30px;
+		}
+		.tiny-title {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			margin-bottom: 30px;
+		}
+		.description {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 120%;
+		}
+	}
+}
+
+.extended-warranty-faq {
+	padding: 50px 12px 250px;
+	* {
+		color: #221f20;
+	}
+	.faq-accordion-container {
+		.faq-accordion-item {
+			border-radius: 50px;
+			overflow: hidden;
+			margin-bottom: 60px;
+			border: 1px solid #dbddde;
+			.faq-accordion-button {
+				background: #dbddde;
+				border: none;
+				padding: 35px 40px;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-weight: 400;
+				font-size: 34px;
+				line-height: 120%;
+				letter-spacing: -0.02em;
+				span {
+					svg {
+						background-color: #fff;
+						border-radius: 50%;
+						path {
+							fill: #00a29c;
+						}
+					}
+				}
+			}
+			.faq-accordion-content {
+				transition: all 0.5s ease-in;
+				background: transparent;
+				.faq-accordion-question-item {
+					padding: 30px;
+					border-top: 1px solid #dbddde;
+					font-size: 16px;
+					background: transparent;
+					.faq-accordion-question {
+						font-size: 16px;
+						line-height: 120%;
+						letter-spacing: -0.02em;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-bottom: 50px;
+						svg path {
+							fill: #00a29c;
+						}
+					}
+					.faq-accordion-answer {
+						font-weight: 300;
+						line-height: 120%;
+						max-width: 700px;
+					}
+					.faq-accordion-extras {
+						font-weight: 400;
+						margin-top: 30px;
+						font-size: 12px;
+						line-height: 17px;
+						max-width: 700px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.extended-warranty-model-selection {
+	.products-v2 {
+		.extended-warranty-products-grid {
+			margin: 0 60px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.extended-warrant-banner {
+		padding-top: 350px;
+		height: 0px;
+		.img-fluid::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+			background: rgba(34, 31, 32, 0.1);
+		}
+	}
+	.extended-warranty-text-block {
+		.text-block-content {
+			padding: 12px !important;
+		}
+	}
+	.extended-warranty-faq {
+		padding: 50px 12px;
+		.faq-accordion-container {
+			.faq-accordion-item {
+				border-radius: 25px;
+				margin-bottom: 20px;
+				.faq-accordion-button {
+					padding: 16px;
+					font-size: 20px;
+				}
+				.faq-accordion-content {
+					.faq-accordion-question-item {
+						padding: 16px;
+						.faq-accordion-answer {
+							font-size: 14px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.extended-warranty-model-selection {
+		.products-v2 {
+			.extended-warranty-products-grid {
+				margin: 0 16px;
+			}
+		}
+	}
+}

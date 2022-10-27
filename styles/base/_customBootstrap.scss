@@ -268,6 +268,8 @@
 .products-container .item img {
 	padding: 0 10px;
 	width: 100%;
+	max-width: 370px;
+	margin: 0 auto;
 	transform: scale(1);
 	transition: all 0.4s ease;
 	max-height: 265px !important;
