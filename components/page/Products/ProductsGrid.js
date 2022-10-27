@@ -13,7 +13,9 @@ function ProductsGrid({
 		structure: { category }
 	}
 }) {
+	const [resetFilter, setResetFilter] = useState(false)
 	const [products, setProducts] = useState([])
+	const [totalCount, setTotalCount] = useState()
 	const [filter, setFilter] = useState([])
 	const router = useRouter()
 	useEffect(() => {
@@ -27,6 +29,7 @@ function ProductsGrid({
 				`https://impim.dev-api.hisenseportal.com/api/cms/getProducts/${category.value}`
 			)
 			setProducts(response.data.data)
+			setTotalCount(response.data.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -38,6 +41,7 @@ function ProductsGrid({
 		try {
 			let response = await GetProductByFilterApi(router, filter)
 			setProducts(response.data.data)
+			setTotalCount(response.data.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -49,10 +53,18 @@ function ProductsGrid({
 				filterHandler={setFilter}
 				categoryId={category}
 				filter={filter}
+				resetFilter={resetFilter}
 			/>
 			<div className='result_box__product_container'>
 				<div className='result-box'>
-					Total Results: 77 <a href='#'>View All</a>
+					Total Results: {totalCount}{' '}
+					<button
+						onClick={() => {
+							getProducts()
+							setResetFilter(!resetFilter)
+						}}>
+						View All
+					</button>
 				</div>
 
 				{!Array.isArray(products) ? (
