@@ -1,9 +1,11 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
 function ProductCategoryBox({ data, pim }) {
+	const router = useRouter()
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 
 	let { structure } = data
@@ -31,7 +33,8 @@ function ProductCategoryBox({ data, pim }) {
 						<li>
 							<Link
 								href={
-									structure?.support?.value ? structure?.support.value : '/'
+									// structure?.support?.value ? structure?.support.value : '/'
+									`/support/${router.pathname.split('/').at(-1)}`
 								}>
 								<a target='_blank'>
 									<span className='underline-on-hover'> Support</span>
