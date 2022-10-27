@@ -23,7 +23,6 @@ function LandingSlider({ data }) {
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
 						<div className='carousel-item-wrapper'>
-							{console.log(item)}
 							<Link href={item?.url?.value ? item?.url?.value : ''}>
 								<a
 									className='w-100 h-100'
