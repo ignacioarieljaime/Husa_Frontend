@@ -1,5 +1,5 @@
 import React from 'react'
-import MoreTVLessTalkItem from './MoreTVLessTalkItem'
+import MoreTVLessTalkItem from './MoreTvLessTalkItem'
 
 function MoreTVLessTalk({ data }) {
 	const { structure } = data

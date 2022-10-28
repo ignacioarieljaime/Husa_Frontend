@@ -1,5 +1,5 @@
 import React from 'react'
-import MoreTVExpertsItem from './MoreTVExpertsItem'
+import MoreTVExpertsItem from './MoreTvExpertsItem'
 
 function MoreTVExperts({ data }) {
 	const { structure } = data

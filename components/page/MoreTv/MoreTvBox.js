@@ -1,5 +1,5 @@
 import React from 'react'
-import MoreTVItem from './MoreTVItem'
+import MoreTVItem from './MoreTvItem'
 
 function MoreTVBox({ data }) {
 	const { structure } = data
