@@ -9,7 +9,12 @@ const MoreTVExpertsItem = ({ quote, image }) => {
 				<span className='double-quote end'>“</span>
 			</div>
 			<div className='text-center'>
-				<img src={image.src} alt={image.alt} />
+				<img
+					src={image.src}
+					style={{ height: '117px' }}
+					height={'117'}
+					alt={image.alt}
+				/>
 			</div>
 		</div>
 	)

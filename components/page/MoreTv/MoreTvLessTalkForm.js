@@ -4,7 +4,8 @@ import React from 'react'
 import TvFlipped from 'public/assets/images/more-tv/tv-flipped.png'
 import CustomInput from 'components/common/Input'
 
-function MoreTVLessTalkForm() {
+function MoreTVLessTalkForm({ data }) {
+	let { structure } = data
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
@@ -13,16 +14,17 @@ function MoreTVLessTalkForm() {
 						<div className='row align-items-center'>
 							<div className='col-12 col-md-6 pe-lg-10'>
 								<h4 className='fs-3qx fw-normal text-white mb-10 mb-md-20'>
-									Less Talk.
-									<span className='d-block opacity-75'>More Winning.</span>
+									{structure?.whiteTitle?.value}
+									<span className='d-block opacity-75'>
+										{structure?.title?.value}
+									</span>
 								</h4>
 								<p className='fs-2 text-white fw-normal mb-7'>
-									Answer the question and enter the draw to win a Hisense U6H 4K
-									ULED TV.
+									{structure?.paragraph?.value}
 								</p>
 								<img
-									src={TvFlipped.src}
-									alt='featured image'
+									src={structure?.image?.src}
+									alt={structure?.image?.alt}
 									width='80%'
 									className='d-none d-md-block'
 								/>
@@ -30,9 +32,7 @@ function MoreTVLessTalkForm() {
 							<div className='col-12 col-md-6 ps-lg-10'>
 								<form action=''>
 									<p className='fw-normal text-white mb-11'>
-										What proportion of the American public believes a brand
-										should invest in their products, not pretentious, artsy
-										advertisements?
+										{structure?.formText?.value}
 									</p>
 									<p className='fw-normal text-white mb-2'>Select answer</p>
 									<div className='d-flex justify-content-start align-items-center flex-wrap mb-8'>
@@ -43,7 +43,9 @@ function MoreTVLessTalkForm() {
 												name='proportion'
 												className='d-none'
 											/>
-											<label htmlFor='8' className='fw-normal text-white mb-0 ms-1'>
+											<label
+												htmlFor='8'
+												className='fw-normal text-white mb-0 ms-1'>
 												8/10
 											</label>
 										</div>
@@ -54,7 +56,9 @@ function MoreTVLessTalkForm() {
 												name='proportion'
 												className='d-none'
 											/>
-											<label htmlFor='6' className='fw-normal text-white mb-0 ms-1'>
+											<label
+												htmlFor='6'
+												className='fw-normal text-white mb-0 ms-1'>
 												6/10
 											</label>
 										</div>
@@ -65,7 +69,9 @@ function MoreTVLessTalkForm() {
 												name='proportion'
 												className='d-none'
 											/>
-											<label htmlFor='1' className='fw-normal text-white mb-0 ms-1'>
+											<label
+												htmlFor='1'
+												className='fw-normal text-white mb-0 ms-1'>
 												1/10
 											</label>
 										</div>
@@ -104,7 +110,7 @@ function MoreTVLessTalkForm() {
 											/>
 											<label
 												htmlFor='checkbox'
-												className='fw-normal text-white mb-0 ms-1'>
+												className='fw-normal text-white mb-0 ms-1 text-nowrap'>
 												I agree to the
 												<a href='#' className='text-white ms-2'>
 													terms & conditions

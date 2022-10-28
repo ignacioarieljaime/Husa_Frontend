@@ -1,7 +1,5 @@
 import React from 'react'
 
-//image
-import Image from 'public/assets/images/more-tv/carousel-item.png'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -12,9 +10,12 @@ import 'swiper/css/effect-coverflow'
 
 // import required modules
 import { Pagination, EffectCoverflow } from 'swiper'
+import Link from 'next/link'
 
 function MoreTVGrabSlider({ data }) {
-	const carouselItems = ['U6HF', 'U6H', 'U7G', 'U8G']
+	let { structure } = data
+
+	const carouselItems = structure?.list?.value.map(item => item?.model?.value)
 
 	const pagination = {
 		clickable: true,
@@ -28,8 +29,6 @@ function MoreTVGrabSlider({ data }) {
 			)
 		}
 	}
-
-	const { structure } = data
 
 	return (
 		<section>
@@ -49,72 +48,29 @@ function MoreTVGrabSlider({ data }) {
 					pagination={pagination}
 					modules={[EffectCoverflow, Pagination]}
 					className='blog-big-coverflow '>
-					<SwiperSlide>
-						{' '}
-						<span>
-							<img
-								src={Image.src}
-								alt='featured image'
-								className='slider-media'
-							/>
-						</span>
-						<div className='text-center'>
-							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
-							<h6 className='fs-2qx mb-4'>Great for entertainment</h6>
-							<p className='text-muted fw-normal mb-5'>
-								With Fire TV Built-in, get all-in-one entertainmnet
-							</p>
-							<a
-								href='#'
-								className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
-								WHERE TO BUY
-							</a>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						{' '}
-						<span>
-							<img
-								src={Image.src}
-								alt='featured image'
-								className='slider-media'
-							/>
-						</span>
-						<div className='text-center'>
-							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
-							<h6 className='fs-2qx mb-4'>Great for entertainment</h6>
-							<p className='text-muted fw-normal mb-5'>
-								With Fire TV Built-in, get all-in-one entertainmnet
-							</p>
-							<a
-								href='#'
-								className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
-								WHERE TO BUY
-							</a>
-						</div>
-					</SwiperSlide>{' '}
-					<SwiperSlide>
-						{' '}
-						<span>
-							<img
-								src={Image.src}
-								alt='featured image'
-								className='slider-media'
-							/>
-						</span>
-						<div className='text-center'>
-							<h5 className='fs-4 fw-normal mb-3'>U6HF</h5>
-							<h6 className='fs-2qx mb-4'>Great for entertainment</h6>
-							<p className='text-muted fw-normal mb-5'>
-								With Fire TV Built-in, get all-in-one entertainmnet
-							</p>
-							<a
-								href='#'
-								className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
-								WHERE TO BUY
-							</a>
-						</div>
-					</SwiperSlide>
+					{structure?.list?.value.map((item, index) => (
+						<SwiperSlide key={'slider' + index}>
+							<span>
+								<img
+									src={item?.image?.src}
+									alt={item?.image?.alt}
+									className='slider-media'
+								/>
+							</span>
+							<div className='text-center'>
+								<h5 className='fs-4 fw-normal mb-3'>{item?.model?.value}</h5>
+								<h6 className='fs-2qx mb-4'>{item?.title?.value}</h6>
+								<p className='text-muted fw-normal mb-5'>
+									{item?.grayTitle?.value}
+								</p>
+								<Link href={item?.link?.value}>
+									<a className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
+										WHERE TO BUY
+									</a>
+								</Link>
+							</div>
+						</SwiperSlide>
+					))}
 				</Swiper>
 			</div>
 		</section>

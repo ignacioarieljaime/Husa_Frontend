@@ -14,17 +14,23 @@ function MoreTVHisensePromise({ data }) {
 					<div className='row align-items-end'>
 						<div className='col-12 col-md-6 mb-20'>
 							<h4 className='fs-3hx fw-normal text-white mb-20'>
-								{structure.title.value}
+								{structure?.title?.value}
 							</h4>
-							<p className='fs-5 text-white fw-normal mb-7'>
-								{structure.paragraph.value}
-							</p>
-							<img src={structure.image.src} alt={structure.image.alt} />
+							<p
+								className='fs-5 text-white fw-normal mb-7'
+								dangerouslySetInnerHTML={{
+									__html: structure?.paragraph?.value
+								}}></p>
+							<img
+								src={structure?.image?.src}
+								height={56}
+								alt={structure?.image?.alt}
+							/>
 						</div>
 						<div className='col-12 col-md-6'>
 							<img
-								src={structure.imagePerson.src}
-								alt={structure.imagePerson.alt}
+								src={structure?.imagePerson?.src}
+								alt={structure?.imagePerson?.alt}
 								width='100%'
 								className='mb-n20'
 							/>

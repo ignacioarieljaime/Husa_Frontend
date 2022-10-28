@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 function MoreTVVideoBox({ data }) {
@@ -11,22 +12,24 @@ function MoreTVVideoBox({ data }) {
 						<iframe
 							width='100%'
 							height='100%'
-							src='https://www.youtube.com/embed/9EjXJfswb0s'
+							src={structure?.video?.value}
 							title='YouTube video player'
 							frameBorder='0'
 							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
 							allowFullScreen></iframe>
 					</div>
 				</div>
-				<h3 className='fs-3hx fw-normal'>{structure.title.value}</h3>
+				<h3
+					className='fs-3hx fw-normal'
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
 				<p className='text-muted fw-normal mw-md-50 mx-auto mb-5'>
-					{structure.paragraph.value}
+					{structure?.paragraph?.value}
 				</p>
-				<a
-					href={structure.link.value}
-					className='text-black text-uppercase fw-normal fs-8'>
-					{structure.link.title}
-				</a>
+				<Link href={structure?.link?.value}>
+					<a className='text-black text-uppercase fw-normal fs-8'>
+						{structure?.link?.title}
+					</a>
+				</Link>
 			</div>
 		</section>
 	)

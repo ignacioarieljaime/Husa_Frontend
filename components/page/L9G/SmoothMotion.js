@@ -25,7 +25,6 @@ const SmoothMotion = () => {
 	}
 
 	const changeSliderPos = () => {
-		console.log(yOffset, window.scrollY)
 		if (yOffset > window.scrollY) {
 			trackPos({
 				x:
@@ -61,7 +60,6 @@ const SmoothMotion = () => {
 				if (entries[0].isIntersecting) {
 					document.addEventListener('wheel', changeSliderPos)
 				} else {
-					console.log('removeEventListener')
 					document.removeEventListener('wheel', changeSliderPos)
 				}
 			},

@@ -2,34 +2,39 @@ import React from 'react'
 
 // image
 import Image from 'public/assets/images/more-tv/header-television.png'
+import Link from 'next/link'
 
 function MoreTVHead({ data }) {
 	const { structure } = data
+	console.log(structure)
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
 				<div className='container-fluid bg-bubble-effect px-md-8 py-20'>
 					<div className='row align-items-center overflow-hidden'>
 						<div className='col-12 col-md-6'>
-							<h4 className='header-texts'>
-								<span className='d-block text-gradient-more-tv'>
-									Less talk.
-								</span>
-								More TV.
-							</h4>
-							<p className='fs-5 text-white fw-normal mb-7'>
-								8 in 10 Americans believe a brand should invest in products, not
-								ads.
-								<span className='fw-bold'>We couldn’t agree more.</span>
-							</p>
-							<a href='#' className='btn btn-glowing rounded-5'>
-								See The Lineup
-							</a>
+							<h4
+								className='header-texts'
+								dangerouslySetInnerHTML={{
+									__html: structure?.title?.value
+								}}></h4>
+							<p
+								className='fs-5 text-white fw-normal mb-7'
+								dangerouslySetInnerHTML={{
+									__html: structure?.description?.value
+								}}></p>
+							{structure?.link?.value && (
+								<Link href={structure?.link?.value}>
+									<a href='#' className='btn btn-glowing rounded-5'>
+										{structure?.link?.title}
+									</a>
+								</Link>
+							)}
 						</div>
 						<div className='col-12 col-md-6'>
 							<img
-								src={structure.image.src}
-								alt={structure.image.alt}
+								src={structure?.image?.src}
+								alt={structure?.image?.alt}
 								width='100%'
 							/>
 						</div>
