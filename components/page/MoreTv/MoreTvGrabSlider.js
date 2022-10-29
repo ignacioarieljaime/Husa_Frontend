@@ -47,7 +47,7 @@ function MoreTVGrabSlider({ data }) {
 					}}
 					pagination={pagination}
 					modules={[EffectCoverflow, Pagination]}
-					className='blog-big-coverflow '>
+					className='blog-big-coverflow'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={'slider' + index}>
 							<span>

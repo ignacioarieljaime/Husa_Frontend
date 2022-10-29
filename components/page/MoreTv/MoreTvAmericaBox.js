@@ -29,6 +29,17 @@ function MoreTVAmericaBox({ data }) {
 										<div className='chart-block'>
 											{item?.chart?.value === 'donut' ? (
 												<Doughnut
+													options={{
+														animations: {
+															tension: {
+																duration: 1000,
+																easing: 'linear',
+																from: 1,
+																to: 0,
+																loop: true
+															}
+														}
+													}}
 													data={{
 														datasets: [
 															{
