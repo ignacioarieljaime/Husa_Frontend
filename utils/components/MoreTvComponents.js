@@ -38,10 +38,10 @@ module.exports.MoreTvComponents = [
 	},
 	{
 		name: 'MoreTVNewItemsBox',
-		path: 'components/page/MoreTv/MoreTVNewItemsBox'
+		path: 'components/page/MoreTv/MoreTvNewItemsBox'
 	},
 	{
 		name: 'MoreTVNewHisensePromise',
-		path: 'components/page/MoreTv/MoreTVNewHisensePromise'
+		path: 'components/page/MoreTv/MoreTvNewHisensePromise'
 	}
 ]
