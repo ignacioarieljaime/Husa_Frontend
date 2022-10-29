@@ -29,7 +29,7 @@ function MoreTVLessTalk({ data }) {
 						/>
 					</div>
 					<div className='col-12 col-md-7 col-xl-6'>
-						{structure.list.value.map((item, index) => (
+						{structure?.list?.value.map((item, index) => (
 							<MoreTVLessTalkItem
 								key={index}
 								image={item.image}

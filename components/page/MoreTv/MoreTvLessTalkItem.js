@@ -2,7 +2,10 @@ import React from 'react'
 
 const MoreTVLessTalkItem = ({ image, title }) => {
 	return (
-		<div className='tech-items-more-tv aos-init' data-aos='slide-right'>
+		<div
+			className='tech-items-more-tv aos-init'
+			data-aos='slide-right'
+			data-aos-duration='1500'>
 			<div>
 				<img
 					src={image.src}
