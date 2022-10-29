@@ -34,7 +34,11 @@ function ProductCategoryBox({ data, pim }) {
 							<Link
 								href={
 									// structure?.support?.value ? structure?.support.value : '/'
-									`/support/${router.pathname.split('/').at(-1)}`
+									`/support/${
+										router.pathname.split('/').at(-1).startsWith('H')
+											? router.pathname.split('/').at(-1).replace('H', 'h')
+											: router.pathname.split('/').at(-1)
+									}`
 								}>
 								<a target='_blank'>
 									<span className='underline-on-hover'> Support</span>
