@@ -22,9 +22,9 @@ function MoreTVVideoBox({ data }) {
 				<h3
 					className='fs-3hx fw-normal'
 					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
-				<p className='text-muted fw-normal mw-md-50 mx-auto mb-5'>
-					{structure?.paragraph?.value}
-				</p>
+				<div
+					dangerouslySetInnerHTML={{ __html: structure?.paragraph?.value }}
+					className='text-muted fw-normal mw-md-50 mx-auto mb-5'></div>
 				<Link href={structure?.link?.value}>
 					<a className='text-black text-uppercase fw-normal fs-8'>
 						{structure?.link?.title}

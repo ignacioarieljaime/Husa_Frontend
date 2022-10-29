@@ -21,7 +21,7 @@ function MoreTVGrabSlider({ data }) {
 		clickable: true,
 		renderBullet: function (index, className) {
 			return (
-				'<span className="' +
+				'<span class="' +
 				className +
 				'">' +
 				carouselItems[index] +
@@ -55,6 +55,7 @@ function MoreTVGrabSlider({ data }) {
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									className='slider-media'
+									width={"860"}
 								/>
 							</span>
 							<div className='text-center'>

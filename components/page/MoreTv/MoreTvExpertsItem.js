@@ -11,7 +11,7 @@ const MoreTVExpertsItem = ({ quote, image }) => {
 			<div className='text-center'>
 				<img
 					src={image.src}
-					style={{ height: '117px' }}
+					className={'double-quote-image'}
 					height={'117'}
 					alt={image.alt}
 				/>

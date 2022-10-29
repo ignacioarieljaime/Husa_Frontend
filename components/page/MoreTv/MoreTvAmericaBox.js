@@ -9,15 +9,16 @@ ChartJS.register(ArcElement, Tooltip, Legend)
 
 function MoreTVAmericaBox({ data }) {
 	const { structure } = data
+	console.log(structure)
 
 	return (
 		<section>
 			<div className='blue-bg-more-tv'>
 				<div className='bg-single-bubble pt-20 text-center text-white'>
 					<h2 className='fw-normal fs-3hx mb-7'>{structure?.title?.value}</h2>
-					<h3 className='fw-normal fs-2'>{structure?.subTitle?.value}</h3>
+					<h3 className='fw-normal fs-2'>{structure?.subtitle?.value}</h3>
 					<div
-						className=' pb-20 px-md-8'
+						className='bg-joel-pointer pb-20 px-md-8'
 						style={{ background: `url(${structure?.image?.src})` }}>
 						<div className='container-fluid'>
 							<div
