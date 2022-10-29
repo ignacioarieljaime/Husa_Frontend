@@ -2,7 +2,6 @@ import React from 'react'
 
 function ProductFeatureWithImage({ data }) {
 	let { structure } = data
-	console.log(structure)
 	return (
 		<section>
 			<div

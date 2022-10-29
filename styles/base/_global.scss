@@ -10,8 +10,14 @@ body {
 	position: relative;
 	margin: 0;
 	padding: 0;
-	padding-top: 80px;
 	box-sizing: border-box;
+	.layout {
+		padding-top: 80px;
+		position: relative;
+	}
+	.day.landing {
+		padding-top: 0 !important;
+	}
 }
 
 .important_item {
@@ -162,7 +168,7 @@ input {
 	}
 }
 
-.tv_and_audio_laster_intro{
+.tv_and_audio_laster_intro {
 	max-height: 300px !important;
 }
 @media (max-width: 320px) {

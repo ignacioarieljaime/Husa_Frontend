@@ -6,7 +6,6 @@ import Link from 'next/link'
 
 function MoreTVHead({ data }) {
 	const { structure } = data
-	console.log(structure)
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>

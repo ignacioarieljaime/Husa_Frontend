@@ -10,7 +10,6 @@ import Link from 'next/link'
 function MoreTVLessTalkForm({ data }) {
 	const [activeCheckbox, setActiveCheckbox] = useState(false)
 	let { structure } = data
-	console.log(structure)
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
