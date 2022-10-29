@@ -25,7 +25,7 @@ function MoreTVHead({ data }) {
 								}}></p>
 							{structure?.link?.value && (
 								<Link href={structure?.link?.value}>
-									<a href='#' className='btn btn-glowing rounded-5'>
+									<a className='btn btn-glowing rounded-5'>
 										{structure?.link?.title}
 									</a>
 								</Link>
