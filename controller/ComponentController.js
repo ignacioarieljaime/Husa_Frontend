@@ -42,7 +42,7 @@ const GenerateAllComponentStructure = () => {
 	  function AllComponents() {
 	    return (
 			<Layout>
-	      <section> ${ComponentList.map(item => `<${item.name} />`).join(' ')}</section>
+	      <section className={"l9g day-100 pdp"}> ${ComponentList.map(item => `<${item.name} />`).join(' ')}</section>
 		</Layout>
 	    )
 	  }
