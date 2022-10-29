@@ -19,11 +19,10 @@
 		background-position: right center;
 
 		.bg-joel-pointer {
-			background: url(../../../../public/assets/images/more-tv/joel-pointer.png);
-			background-repeat: no-repeat;
-			background-size: auto;
-			background-position: right bottom;
-			margin-top: 100px;
+			background-repeat: no-repeat !important;
+			background-size: auto !important;
+			background-position: right bottom !important;
+			margin-top: 100px !important;
 		}
 	}
 
