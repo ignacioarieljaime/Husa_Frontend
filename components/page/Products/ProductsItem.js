@@ -8,7 +8,6 @@ const ModalChanelAdviser = dynamic(() =>
 
 function ProductsItem({ data }) {
 	let { media, name, model, id, isNew, retailers } = data
-	console.log(model, retailers)
 
 	const [url] = useState(RouteHandler(id))
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
