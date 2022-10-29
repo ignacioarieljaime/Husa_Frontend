@@ -23,7 +23,9 @@ function Footer() {
 			let response = await axios.get(
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
-
+			setFooterData(
+				JSON.stringify(response.data.data.find(item => item.title === 'footer'))
+			)
 			localStorage.setItem(
 				'footerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'footer'))

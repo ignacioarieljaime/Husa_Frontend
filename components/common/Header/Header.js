@@ -41,7 +41,9 @@ function Header({ isBlog = false, data: { structure } }) {
 			let response = await axios.get(
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
-
+			setHeaderData(
+				JSON.stringify(response.data.data.find(item => item.title === 'header'))
+			)
 			localStorage.setItem(
 				'headerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'header'))
