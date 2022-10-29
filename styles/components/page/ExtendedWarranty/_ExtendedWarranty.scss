@@ -159,9 +159,149 @@
 }
 
 .extended-warranty-model-selection {
+	.extended-warranty-search-product {
+		position: relative;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		max-width: 1270px;
+		> div {
+			background: #221f20;
+			border-color: #221f20;
+			border-radius: 1000px;
+			padding: 50px 100px;
+			text-align: center;
+			form {
+				display: flex;
+				justify-content: space-between;
+				align-items: end;
+
+				.label {
+					font-weight: 400;
+					font-size: 10px;
+					line-height: 14px;
+					letter-spacing: 0.2em;
+					text-transform: uppercase;
+					color: #ffffff;
+				}
+				.support-products-searchbox {
+					margin: 0;
+					padding: 6px 16px;
+					background: transparent;
+					border: 1px solid #ffffff;
+					border-radius: 1000px;
+					input {
+						background-color: inherit;
+						font-size: 14px;
+
+						&::placeholder {
+							font-size: 14px;
+						}
+					}
+					button {
+						color: #ffffff;
+					}
+				}
+				.dropdown-select-box {
+					min-width: unset;
+					width: 100%;
+					.dropdown-select-box-options {
+						background: #221f20 !important;
+						border: 1px solid #fff;
+						z-index: 2;
+						ul li {
+							color: #ffffff;
+						}
+					}
+					button {
+						border: 1px solid #fff;
+						color: #fff;
+						span {
+							margin: 0 !important;
+						}
+					}
+				}
+				> button {
+					padding: 16px;
+				}
+			}
+			.close {
+				transform: rotate(-90deg);
+			}
+			> button {
+				font-weight: 400;
+				font-size: 10px;
+				line-height: 14px;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+				color: #a6a8ac;
+				background: transparent;
+				border-color: transparent;
+			}
+		}
+	}
 	.products-v2 {
 		.extended-warranty-products-grid {
 			margin: 0 60px;
+		}
+	}
+}
+
+.extended-warranty-dialog {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	.extended-warranty-dialog-backdrop {
+		background: rgba(0, 0, 0, 0.295);
+		width: 100%;
+		height: 100%;
+	}
+	.extended-warranty-dialog-content {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100%;
+		height: 100%;
+		max-width: 300px;
+		max-height: 300px;
+		transform: translate(-50%, -50%);
+		background: #ffffff;
+		border: 1px solid #dbddde;
+		box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+		border-radius: 25px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+
+		.image-container {
+			background: #cbcbcb;
+			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+			border-radius: 25px;
+			margin-bottom: 15px;
+			width: 100%;
+			height: 100%;
+			max-width:125px;
+			max-height: 125px;
+		}
+		.title {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #221f20;
+			margin-bottom: 30px;
+		}
+		.description {
+			font-weight: 400;
+			font-size: 12px;
+			line-height: 17px;
+			color: #221f20;
+			margin: 0;
 		}
 	}
 }
@@ -209,8 +349,37 @@
 	}
 	.extended-warranty-model-selection {
 		.products-v2 {
+			margin-top: 50px;
 			.extended-warranty-products-grid {
 				margin: 0 16px;
+			}
+		}
+		.extended-warranty-search-product {
+			position: relative;
+			top: -40px;
+			bottom: 0;
+			left: 0;
+			transform: translate(0, 0);
+			> div {
+				border-radius: 0px;
+				padding: 25px 15px;
+				form {
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+					overflow-y: hidden;
+					> div > div {
+						margin-bottom: 30px;
+					}
+					.support-products-searchbox {
+						margin: 0 auto;
+					}
+					.dropdown-select-box {
+						max-width: 300px;
+						width: 100%;
+						margin: 0 auto;
+					}
+				}
 			}
 		}
 	}
