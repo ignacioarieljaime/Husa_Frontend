@@ -3,12 +3,20 @@ import React, { useEffect, useState } from 'react'
 function ProductFilterAideItem({
 	checkboxConditionRender,
 	filterController,
-	data
+	data,
+	checkCondition
 }) {
-	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
+	const [checkBoxCondition, setCheckBoxCondition] = useState()
 	useEffect(() => {
 		setCheckBoxCondition(false)
 	}, [checkboxConditionRender])
+	useEffect(() => {
+		setCheckBoxCondition(
+			checkCondition.find(item => item.filter_value === data.filter_value)
+				? true
+				: false
+		)
+	}, [])
 
 	return (
 		<li>

@@ -5,50 +5,41 @@ import { GetFiltersApi } from 'services/Filter'
 import ProductFilterAideItem from './ProductFilterAideItem'
 
 function FilterAside({
-	filterHandler,
-	filter,
-	categoryId: { value },
-	resetFilter
+	filterList,
+	filterRequest,
+	checkBoxCondition,
+	setCheckBoxCondition,
+	filters,
+	setFilters
 }) {
+	let router = useRouter()
 	const checkboxWrapper = useRef()
-	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [filterListCondition, setFilterListCondition] = useState(false)
-	const [filterList, setFilterList] = useState()
-	const router = useRouter()
-	useEffect(() => {
-		value && getFilters()
-	}, [value])
-	useEffect(() => {
-		setCheckBoxCondition(!checkBoxCondition)
-		filterHandler([])
-	}, [resetFilter])
 
-	const getFilters = async () => {
-		let filters = []
-		try {
-			let response = await GetFiltersApi(router, value)
-			response.data.filterTypes.forEach(item => filters.push(...item.filters))
-			setFilterList(filters)
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	useEffect(() => {
+		setFilters(router.query.filter ? JSON.parse(router.query.filter) : [])
+	}, [])
 
 	const filterController = (e, _filter) => {
+		let _filtersBox = filters
 		e.target.checked = true
-		if (filter.find(item => item.filter_name === _filter.title)) {
-			filterHandler(filter.filter(item => item.filter_name !== _filter.title))
+
+		if (_filtersBox.find(item => item.filter_name === _filter.title)) {
+			_filtersBox = filters.filter(item => item.filter_name !== _filter.title)
 		} else {
-			filterHandler(state => [
-				...state,
-				{ filter_name: _filter.title, filter_value: _filter.filter_value }
-			])
+			_filtersBox.push({
+				filter_name: _filter.title,
+				filter_value: _filter.filter_value
+			})
 		}
+		setFilters(_filtersBox)
+		filterRequest(_filtersBox)
 	}
 
 	const checkboxClearHandler = () => {
 		setCheckBoxCondition(!checkBoxCondition)
-		filterHandler([])
+		setFilters([])
+		filterRequest([])
 	}
 
 	return (
@@ -76,6 +67,7 @@ function FilterAside({
 														<ProductFilterAideItem
 															checkboxConditionRender={checkBoxCondition}
 															filterController={filterController}
+															checkCondition={filters}
 															data={item}
 															key={`filter-${item.title}-${index}`}
 														/>
