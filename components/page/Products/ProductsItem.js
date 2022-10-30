@@ -55,14 +55,18 @@ function ProductsItem({ data }) {
 								Where to Buy
 							</button>
 						)}
-
-						<Link href={url}>
-							<a className='view-product-btn'>View Product</a>
-						</Link>
+						{url ? (
+							<Link href={url}>
+								<a className='view-product-btn'>View Product</a>
+							</Link>
+						) : (
+							<button disabled className='view-product-btn'>
+								View Product
+							</button>
+						)}
 					</div>
-					<Link href={url}>
-						<a className='compare-btn'>Add To Compare</a>
-					</Link>
+
+					<button className='compare-btn'>Add To Compare</button>
 				</div>
 			</div>
 			{chanelAdviserHandler && (
