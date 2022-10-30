@@ -20,7 +20,11 @@ function Header({ isBlog = false, data: { structure } }) {
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
-
+	useEffect(() => {
+		localStorage.getItem('headerData')
+			? setHeaderData(JSON.parse(localStorage.getItem('headerData')))
+			: getMenu()
+	}, [])
 	useEffect(() => {
 		if (!searchInputCondition) {
 			setTimeout(() => {
@@ -30,21 +34,14 @@ function Header({ isBlog = false, data: { structure } }) {
 			setTopNavCondition(false)
 		}
 	}, [searchInputCondition])
-	useEffect(() => {
-		sessionStorage.getItem('headerData')
-			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
-			: getMenu()
-	}, [])
 
 	const getMenu = async () => {
 		try {
 			let response = await axios.get(
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
-			setHeaderData(
-				JSON.stringify(response.data.data.find(item => item.title === 'header'))
-			)
-			sessionStorage.setItem(
+			setHeaderData(response.data.data.find(item => item.title === 'header'))
+			localStorage.setItem(
 				'headerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'header'))
 			)
