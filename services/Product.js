@@ -1,7 +1,7 @@
 import useFetch from '../hooks/useFetch'
 
 export async function GetProductByFilterApi(navigate, _filter) {
-	let response = await useFetch(navigate).post(`/getProductsByFilterValue`, {
+	let response = await useFetch(navigate).post(`/getProductsByFilterValueCondition`, {
 		condition: 'or',
 		data: _filter
 	})
