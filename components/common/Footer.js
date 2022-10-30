@@ -13,8 +13,8 @@ function Footer() {
 	// const { footerData } = useSelector(state => state.layoutData)
 
 	useEffect(() => {
-		localStorage.getItem('footerData')
-			? setFooterData(JSON.parse(localStorage.getItem('footerData')))
+		sessionStorage.getItem('footerData')
+			? setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
 			: getFooter()
 	}, [])
 
@@ -26,7 +26,7 @@ function Footer() {
 			setFooterData(
 				JSON.stringify(response.data.data.find(item => item.title === 'footer'))
 			)
-			localStorage.setItem(
+			sessionStorage.setItem(
 				'footerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'footer'))
 			)

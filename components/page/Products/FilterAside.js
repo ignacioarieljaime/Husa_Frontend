@@ -50,6 +50,7 @@ function FilterAside({
 		setCheckBoxCondition(!checkBoxCondition)
 		filterHandler([])
 	}
+
 	return (
 		<div className='category'>
 			<button
@@ -66,7 +67,7 @@ function FilterAside({
 							<>
 								{filterList.map(filter => (
 									<div key={`filter-${filter.name}-${filter.id}`}>
-										<h4>{filter.name}</h4>
+										<h4>{String(filter.name).toUpperCase()}</h4>
 
 										<ul ref={checkboxWrapper} className='filter-list'>
 											{filter.filter_values.map(

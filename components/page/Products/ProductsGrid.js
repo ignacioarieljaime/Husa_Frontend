@@ -18,8 +18,11 @@ function ProductsGrid({
 	const [totalCount, setTotalCount] = useState()
 	const [filter, setFilter] = useState([])
 	const router = useRouter()
+	// useEffect(() => {
+	// setFilter(JSON.parse(router.query.filter))
+	// }, [])
 	useEffect(() => {
-		filter.length === 0 ? getProducts() : getProductByFilter()
+		filter.length === 0 ? getProducts() : getProductByFilter(filter)
 	}, [filter])
 
 	const getProducts = async () => {
@@ -35,11 +38,16 @@ function ProductsGrid({
 		}
 	}
 
-	const getProductByFilter = async () => {
+	const getProductByFilter = async _filter => {
 		setProducts('loading')
+		window.history.replaceState(
+			null,
+			null,
+			`?filter=${JSON.stringify(_filter)}`
+		)
 
 		try {
-			let response = await GetProductByFilterApi(router, filter)
+			let response = await GetProductByFilterApi(router, _filter)
 			setProducts(response.data.data)
 			setTotalCount(response.data.total)
 		} catch (error) {

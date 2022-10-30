@@ -31,8 +31,8 @@ function Header({ isBlog = false, data: { structure } }) {
 		}
 	}, [searchInputCondition])
 	useEffect(() => {
-		localStorage.getItem('headerData')
-			? setHeaderData(JSON.parse(localStorage.getItem('headerData')))
+		sessionStorage.getItem('headerData')
+			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
 			: getMenu()
 	}, [])
 
@@ -44,7 +44,7 @@ function Header({ isBlog = false, data: { structure } }) {
 			setHeaderData(
 				JSON.stringify(response.data.data.find(item => item.title === 'header'))
 			)
-			localStorage.setItem(
+			sessionStorage.setItem(
 				'headerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'header'))
 			)
