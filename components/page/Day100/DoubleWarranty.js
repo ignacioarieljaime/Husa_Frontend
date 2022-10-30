@@ -7,7 +7,7 @@ const DoubleWarranty = ({ data }) => {
 				<div className='container'>
 					<div className='row align-items-center'>
 						<div className='d-none d-md-block col-12 my-5 my-lg-0 col-md-6 order-2 order-md-2 order-lg-1 col-lg-4'>
-							<div className='warranty-adv'>
+							<div className='warranty-adv '>
 								<h2>{structure?.leftTitle?.value}</h2>
 								<p>{structure?.leftText?.value}</p>
 							</div>

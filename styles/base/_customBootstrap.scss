@@ -1075,10 +1075,12 @@ article:hover > .img-box-shadow-hover {
 	background: var(--nav-background-color);
 	transition: all 0.3s ease-in-out;
 }
-.theme-light:hover {
-	--nav-background-color: #000;
-	--nav-text-color: #fff;
-	background: var(--nav-background-color);
+header {
+	.theme-light:hover {
+		--nav-background-color: #000;
+		--nav-text-color: #fff;
+		background: var(--nav-background-color);
+	}
 }
 
 /*///////////////////////////////////// product page //////////////////////////////////////////////////////////////////////////////////////////////////////////*/

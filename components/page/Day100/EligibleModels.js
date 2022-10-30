@@ -23,10 +23,9 @@ const EligibleModels = ({ data }) => {
 				<div>
 					<Swiper
 						grabCursor={true}
-						spaceBetween='30'
-						centeredSlides={true}
-						slidesPerView='auto'
 						roundLengths={true}
+						slidesPerView={3}
+						spaceBetween={30}
 						pagination={{ enabled: false }}
 						navigation={{ enabled: false }}
 						className='eligble-models-carousel'>

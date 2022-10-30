@@ -5,7 +5,7 @@ import GoogleTv from 'public/assets/images/100-day/googletv.png'
 function HeaderBanner({ data }) {
 	let { structure } = data
 	return (
-		<section className='day-100 '>
+		<section className='day-100  position-relative'>
 			<div className='header-secondary'>
 				<img
 					src={structure?.desktop?.src}
@@ -31,11 +31,8 @@ function HeaderBanner({ data }) {
 					/>
 				</div>
 			</div>
-			<div className='bg-eggplant position-relative py-15'>
-				<div className='star'>
-					<img src={star.src} alt='star' width='35' />
-				</div>
-				<div className='container  claim-prize'>
+			<div className='  pt-15 pb-10 header-banner-text position-absolute'>
+				<div className='container  claim-prize  '>
 					<article
 						className='article text-center text-white'
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}>

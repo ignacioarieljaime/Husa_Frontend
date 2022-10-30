@@ -5,22 +5,22 @@ const EligbleModelsItem = ({ data }) => {
 		<div className='item day-100'>
 			<div className='d-flex flex-column justify-content-between align-items-start'>
 				<div>
-					<span className='text-primary fs-4 fw-bold'>
+					<span className='text-primary fs-4 fw-bold d-flex w-100 justify-content-center'>
 						{data?.title?.value}
 					</span>
-					<div className='text-center position-relative'>
+					<div className='text-center position-relative mb-10'>
 						<img src={data?.image?.src} alt={data?.image?.alt} width='90%' />
 						<div className='infill-overlay'>Use current infills</div>
 					</div>
-					<div>
+					<div className='text-center'>
 						<h5 className='item-size'>{data?.grayText?.value} </h5>
 						<h4 className='item-series'>{data?.series?.value}</h4>
 						<div
-							className='item-features'
+							className='item-features text-center'
 							dangerouslySetInnerHTML={{ __html: data?.specs.value }}></div>
 					</div>
 				</div>
-				<div className='text-left mt-8'>
+				<div className='text-left mt-8 d-flex justify-content-center align-items-center w-100'>
 					<Link href={data?.shopNow?.value}>
 						<a className='btn btn-primary rounded-5 px-5 py-2'>
 							{data?.shopNow?.title}
