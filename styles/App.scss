@@ -6,6 +6,8 @@
 
 // bootstrap
 @import './base/fonts';
+@import './base/fontSocicon';
+
 
 // mixin
 @import './base/mixins';
@@ -15,6 +17,9 @@
 
 
 // components
+@import './components/page/CesHomeApplication/homeApplience';
+
+
 //common
 @import './components/common/header.scss';
 @import './components/common/textEditor';
