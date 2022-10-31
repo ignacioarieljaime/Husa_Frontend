@@ -27,14 +27,23 @@
 			&:nth-child(8n) {
 				background: #fafafa;
 			}
+			.product-mini-link {
+				&:hover {
+					border-color: #00aaa6 !important;
+					color: #00aaa6 !important;
+				}
+			}
+			.product-mini-link-active {
+				border-color: #00aaa6 !important;
+			}
 		}
 	}
 	.result_box__product_container {
 		width: 100%;
-		button{
+		button {
 			background-color: transparent;
 			border: none;
-			 color: var();
+			color: var();
 		}
 	}
 	.accordion-btn {

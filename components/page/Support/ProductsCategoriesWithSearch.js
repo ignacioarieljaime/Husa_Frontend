@@ -1,17 +1,30 @@
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
+import Spinner from 'components/common/Spinner'
+import Link from 'next/link'
 import React, { useState } from 'react'
-
-// image
-import TvIconImage from 'public/assets/images/tvIconImage.png'
-import SoundBarIconImage from 'public/assets/images/soundBarIconImage.png'
-import RefregaroterIconImage from 'public/assets/images/refregaroterIconImage.png'
-import AirIconImage from 'public/assets/images/airIconImage.png'
-import DishWasherIconImage from 'public/assets/images/diswasherIconImage.png'
-import MicrowaveIconImage from 'public/assets/images/microwaveIconImage.png'
 
 function ProductsCategoriesWithSearch({ data }) {
 	let { structure } = data
 	const [searchInput, setSearchInput] = useState(false)
 	const [searchList, setSearchList] = useState(false)
+	const [searchProductsList, setSearchProductsList] = useState()
+
+	const searchHandler = async _value => {
+		if (_value.length >= 2) {
+			setSearchProductsList('loading')
+			try {
+				let response = await axios.get(
+					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?string=${_value}`
+				)
+				setSearchProductsList(response.data.data)
+			} catch (error) {
+				setSearchProductsList([])
+				console.log(error)
+			}
+		}
+	}
 	console.log(data)
 	return (
 		<section>
@@ -28,7 +41,11 @@ function ProductsCategoriesWithSearch({ data }) {
 							id={item?.title?.value}
 							className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
 							<div className='img_box'>
-								<img width={"100%"} src={item?.image?.src} alt={item?.image?.alt} />
+								<img
+									width={'100%'}
+									src={item?.image?.src}
+									alt={item?.image?.alt}
+								/>
 							</div>
 							<p>{item?.title?.value}</p>
 						</div>
@@ -42,43 +59,34 @@ function ProductsCategoriesWithSearch({ data }) {
 							<button
 								className='search-products-btn'
 								onClick={() => setSearchList(status => !status)}>
-								<i className='fa-solid fa-lg fa-magnifying-glass me-3'></i>
-								Please Select Your Product
+								<FontAwesomeIcon icon={faMagnifyingGlass} size={'lg'} />
+								<span className='ms-3'>Please Select Your Product</span>
 							</button>
 							{searchList && (
 								<div className='search-products-list '>
-									<input type='text' className='search' />
+									<input
+										type='text'
+										className='search'
+										onChange={e => searchHandler(e.target.value)}
+									/>
 									<ul className='list'>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
+										{searchProductsList === 'loading' ? (
+											<li className='py-5'>
+												<Spinner size={20} />
+											</li>
+										) : Array.isArray(searchProductsList) &&
+										  searchProductsList.length > 0 ? (
+											searchProductsList.map((item, index) => (
+												<li>
+													{console.log(item)}
+													<Link href='/'>
+														<a>{item.name}</a>
+													</Link>
+												</li>
+											))
+										) : (
+											<li>its empty</li>
+										)}
 									</ul>
 								</div>
 							)}

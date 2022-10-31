@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { RouteHandler } from 'utils/routeHandler'
-import ProductsItemLink from './ProductsItemLink'
 const ModalChanelAdviser = dynamic(() =>
 	import('../Product/ModalChanelAdviser')
 )
@@ -39,49 +38,31 @@ function ProductsItem({ data }) {
 						</div>
 					</div>
 					<img src={media?.url} height={280} alt='featured image' />
-
-					<h3>{series.find(item => item.name === 'h2 Title')?.value}</h3>
+					{series.find(item => item.name === 'h2 Title')?.value && (
+						<h3>{series.find(item => item.name === 'h2 Title')?.value}</h3>
+					)}
 
 					<p>{name}</p>
 				</div>
-				{data?.productSeries[0]?.values.length > 0 ? (
-					<ul className='list-unstyled d-flex gap-3'>
-						{console.log(data)}
-						{data?.productSeries[0]?.values.map((item, index) => (
-							<ProductsItemLink
-								currentSize={
-									screenSize.find(item => item.name === 'Size class')?.value
-								}
-								data={item}
-								key={'series-list-item' + index}
-							/>
-						))}
-					</ul>
-				) : null}
-
 				<div className='w-100'>
-					<div className='d-flex flex-column-reverse justify-content-center align-items-center flex-wrap w-100'>
+					<div className='d-flex justify-content-center align-items-center flex-wrap w-100'>
 						{retailers.length === 0 ? (
-							<button className='buy-btn w-100 py-5 me-0' disabled>
+							<button className='buy-btn' disabled>
 								Coming Soon
 							</button>
 						) : (
 							<button
 								onClick={() => setChanelAdviserHandler(true)}
-								className='buy-btn w-100 py-5 me-0'>
+								className='buy-btn'>
 								Where to Buy
 							</button>
 						)}
 						{url ? (
 							<Link href={url}>
-								<a className='view-product-btn ms-0 w-100 py-5 mb-3'>
-									View Product
-								</a>
+								<a className='view-product-btn'>View Product</a>
 							</Link>
 						) : (
-							<button
-								disabled
-								className='view-product-btn ms-0 w-100 mb-3 py-5'>
+							<button disabled className='view-product-btn'>
 								View Product
 							</button>
 						)}
