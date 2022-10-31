@@ -24,7 +24,7 @@ function ProductsItem({ data }) {
 		<>
 			<div className='item bottom-border-sm col-12 col-md-6 col-xl-4 col-xxl-3'>
 				<div>
-					<div className='d-flex justify-content-between align-items-center mb-10 w-100'>
+					<div className='d-flex justify-content-between align-items-center gap-3 flex-wrap mb-10 w-100'>
 						<span>
 							{screenSize.find(item => item.name === 'Size class')?.value && (
 								<span className='class'>
