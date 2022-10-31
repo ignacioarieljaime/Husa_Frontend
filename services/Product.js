@@ -28,14 +28,10 @@ export async function GetProductsListApi(navigate, _categoryId, _filter) {
 	return response
 }
 export async function GetProductsListNewApi(navigate, _categoryId, _filter) {
-	let filter = ''
-	_filter &&
-		_filter.forEach(item => {
-			filter += '&filters[]=' + item.filter_value
-		})
+	let filter = _filter && _filter.length !== 0 ? `&filters=${JSON.stringify(_filter)}` : ''
 
 	let response = await useFetch(navigate).get(
-		`/productsIndex?category_id=${_categoryId}&condition=or${filter}`
+		`/productsIndex?category_id=${_categoryId}${filter}`
 	)
 	return response
 }
