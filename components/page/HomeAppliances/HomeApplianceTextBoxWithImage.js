@@ -13,7 +13,11 @@ const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
 							{structure?.coloredTitle?.value}
 						</span>
 					</h2>
-					<p className='paragraph'>{structure?.paragraph?.value}</p>
+					<p
+						className='paragraph'
+						dangerouslySetInnerHTML={{
+							__html: structure?.paragraph?.value
+						}}></p>
 					{structure?.link && (
 						<Link href={structure?.link?.value}>
 							<a className='n-btn outline-white transparent'>

@@ -20,7 +20,7 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 									__html: structure?.text?.value
 								}}></p>
 							<Link href={structure?.link?.value}>
-								<a className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 my-8'>
+								<a className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 my-8 d-block w-fit mx-auto'>
 									{structure?.link?.title}
 								</a>
 							</Link>
