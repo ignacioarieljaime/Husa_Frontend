@@ -23,7 +23,7 @@ function ProductsItem({ data }) {
 		<>
 			<div className='item bottom-border-sm col-12 col-md-6 col-xl-4 col-xxl-3'>
 				<div>
-					<div className='d-flex justify-content-between align-items-center mb-20 w-100'>
+					<div className='d-flex justify-content-between align-items-center mb-10 w-100'>
 						<span>
 							{screenSize.find(item => item.name === 'Size class')?.value && (
 								<span className='class'>
@@ -37,8 +37,10 @@ function ProductsItem({ data }) {
 							{isNew === 1 && <span className='new_product'>New</span>}
 						</div>
 					</div>
-					<img src={media?.url} alt='featured image' />
-					<h3>{series.find(item => item.name === 'h2 Title')?.value}</h3>
+					<img src={media?.url} height={280} alt='featured image' />
+					{series.find(item => item.name === 'h2 Title')?.value && (
+						<h3>{series.find(item => item.name === 'h2 Title')?.value}</h3>
+					)}
 
 					<p>{name}</p>
 				</div>
