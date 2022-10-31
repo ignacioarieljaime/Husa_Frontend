@@ -4,18 +4,23 @@ function ProductFilterAideItem({
 	checkboxConditionRender,
 	filterController,
 	data,
-	checkCondition
+	checkCondition,
+	filterParentId
 }) {
 	const [checkBoxCondition, setCheckBoxCondition] = useState()
 	useEffect(() => {
 		setCheckBoxCondition(false)
 	}, [checkboxConditionRender])
 	useEffect(() => {
-		setCheckBoxCondition(
-			checkCondition.find(item => item.filter_value === data.filter_value)
-				? true
-				: false
-		)
+		if (checkCondition.length > 0) {
+			checkCondition.forEach(item => {
+				if (item.id === filterParentId) {
+					setCheckBoxCondition(
+						item.values.indexOf(data.title) < 0 ? false : true
+					)
+				}
+			})
+		}
 	}, [])
 
 	return (
@@ -24,7 +29,7 @@ function ProductFilterAideItem({
 				<input
 					onChange={e => {
 						setCheckBoxCondition(!checkBoxCondition)
-						filterController(e, data)
+						filterController(e, { ...data, filterId: filterParentId })
 					}}
 					checked={checkBoxCondition}
 					name='filter'
