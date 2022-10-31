@@ -1,8 +1,17 @@
 .platform-uled {
 	&:first-child {
 		background-color: #dee0ee;
+		.discover-btn {
+			a {
+				background-color: #000 !important;
+				color: #fff !important;
+			}
+		}
 		.where-to-buy-btn {
-			--bs-btn-color: #212529 !important;
+			border-color: #000 !important;
+			padding: 16px 24px !important;
+			border-radius: 50px !important;
+			--bs-btn-color: #000 !important;
 			--bs-btn-border-color: #212529 !important;
 			--bs-btn-hover-color: #fff !important;
 			--bs-btn-hover-bg: #212529 !important;
@@ -16,6 +25,10 @@
 			--bs-btn-disabled-bg: transparent !important;
 			--bs-btn-disabled-border-color: #212529 !important;
 			--bs-gradient: none !important;
+			-webkit-border-radius: 50px !important;
+			-moz-border-radius: 50px !important;
+			-ms-border-radius: 50px !important;
+			-o-border-radius: 50px !important;
 		}
 	}
 	&:nth-child(2) {
@@ -24,8 +37,17 @@
 	&:nth-child(3) {
 		background-color: #0c4955;
 	}
-}
 
+	.where-to-buy-btn {
+		padding: 16px 24px !important;
+		border-radius: 50px !important;
+	}
+}
+.platform-uled-item {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
 .jarg-flex {
 	> div {
 		width: fit-content;

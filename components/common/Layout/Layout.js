@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 
 function Layout({ children, meta, title }) {
 	const router = useRouter()
@@ -21,7 +21,7 @@ function Layout({ children, meta, title }) {
 						)
 					)}
 			</Head>
-			<section>
+			<section className={`layout ${title}`}>
 				<ToastContainer />
 				<> {children}</>
 			</section>

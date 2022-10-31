@@ -182,7 +182,7 @@ header.blog {
 		position: absolute;
 		width: 45%;
 		top: 8px;
-		left: 11%;
+		right: 8%;
 		height: 0px;
 		z-index: 3;
 		clip-path: inset(0 0 0 100%);
@@ -237,6 +237,10 @@ header.blog {
 			animation-delay: 0.3s;
 			opacity: 0;
 			animation-fill-mode: forwards;
+		}
+		img {
+			max-height: 250px;
+			object-fit: contain;
 		}
 		h3 {
 			font-weight: 700;
@@ -313,7 +317,6 @@ header.blog {
 .top-nav .nav-dropdown-list > * {
 	display: none;
 }
-
 
 @media (max-width: 1400px) {
 	.top-nav .search-form,
@@ -537,8 +540,8 @@ header.blog {
 		overflow: auto;
 		max-height: 550px;
 		top: 100%;
-		width: 80%;
-		left: 13%;
+		width: 45%;
+		right: 8%;
 		border-radius: 0px 0px 10px 10px;
 
 		> div {

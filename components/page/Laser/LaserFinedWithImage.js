@@ -2,7 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 
 function LaserFinedWithImage({ data: { structure } }) {
-	console.log(structure);
 	return (
 		<section>
 			<div className='black-banner p-md-4'>

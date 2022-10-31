@@ -4,8 +4,12 @@ module.exports.CesComponents = [
 		path: 'components/page/CES/HomeApplication/CESHomeNavBar'
 	},
 	{
-		name: 'CESHomeIntro',
-		path: 'components/page/CES/HomeApplication/CESHomeIntro'
+		name: 'HomeApplianceImageWithBackground',
+		path: 'components/page/CES/HomeApplication/HomeApplianceImageWithBackground'
+	},
+	{
+		name: 'HomeApplianceTextBox',
+		path: 'components/page/CES/HomeApplication/HomeApplianceTextBox'
 	},
 	{
 		name: 'CESHomeImageAndText',

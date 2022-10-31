@@ -19,11 +19,10 @@
 		background-position: right center;
 
 		.bg-joel-pointer {
-			background: url(../../../../public/assets/images/more-tv/joel-pointer.png);
-			background-repeat: no-repeat;
-			background-size: auto;
-			background-position: right bottom;
-			margin-top: 100px;
+			background-repeat: no-repeat !important;
+			background-size: auto !important;
+			background-position: right bottom !important;
+			margin-top: 100px !important;
 		}
 	}
 
@@ -37,6 +36,7 @@
 .more-tv-video-container {
 	max-width: 960px;
 	margin: 0 auto 95px auto;
+	padding-bottom: 0 !important;
 }
 
 .tech-items-more-tv {
