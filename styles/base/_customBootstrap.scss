@@ -271,7 +271,8 @@
 	transform: scale(1);
 	object-fit: contain;
 	transition: all 0.4s ease;
-	max-height: 265px !important;
+	height: 280px !important;
+	max-height: 280px !important;
 }
 .products-container .item:hover img {
 	transform: scale(1.08);
