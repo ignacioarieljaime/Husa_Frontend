@@ -31,11 +31,12 @@ function ProductSupportNewHead({ pim }) {
 									item =>
 										item.type_id === 3 && (
 											<div className='col-12 col-sm-6 py-3'>
+												{console.log(item)}
 												<a
 													href={item.url}
 													download={true}
 													className='download-able-item'>
-													Documentes Guide
+													{item.caption ? item.caption : 'Documentes Guide'}
 													<DownloadIcon />
 												</a>
 											</div>
