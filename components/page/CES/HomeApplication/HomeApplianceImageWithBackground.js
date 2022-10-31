@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'public/assets/images/ces-2022-home-appliances/header.png'
 import Logo from 'public/assets/images/ces-2022-home-appliances/ces-logo.png'
 
-function CESHomeIntro() {
+function HomeApplianceImageWithBackground() {
 	return (
 		<section>
 			<div className='heading'>
@@ -22,4 +22,4 @@ function CESHomeIntro() {
 	)
 }
 
-export default CESHomeIntro
+export default HomeApplianceImageWithBackground
