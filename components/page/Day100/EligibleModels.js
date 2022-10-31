@@ -4,12 +4,14 @@ import EligbleModelsItem from './EligbleModelsItem'
 
 import 'swiper/css'
 import Link from 'next/link'
+import 'swiper/css/navigation'
+import { Navigation } from 'swiper'
 
 const EligibleModels = ({ data }) => {
 	let { structure } = data
 	return (
-		<section className='day-100'>
-			<div className='bg-grey eligble-models py-20'>
+		<section className='day-100 eligible_models_slider '>
+			<div className='bg-grey px-10 eligble-models py-20'>
 				<div className='container text-center'>
 					<h2 className='text-eggplant fs-2hx fw-bolder-700 mb-6'>
 						{structure?.title?.value}
@@ -25,12 +27,13 @@ const EligibleModels = ({ data }) => {
 						grabCursor={true}
 						roundLengths={true}
 						slidesPerView={3}
-						spaceBetween={30}
+						spaceBetween={50}
 						pagination={{ enabled: false }}
-						navigation={{ enabled: false }}
-						className='eligble-models-carousel'>
+						navigation={true}
+						modules={[Navigation]}
+						className='eligble-models-carousel '>
 						{structure?.list?.value.map((item, index) => (
-							<SwiperSlide key={'slider' + index}>
+							<SwiperSlide style={{ height: '100%' }} key={'slider' + index}>
 								<EligbleModelsItem data={item} />
 							</SwiperSlide>
 						))}

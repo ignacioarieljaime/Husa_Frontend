@@ -78,6 +78,7 @@
 			margin: 0;
 		}
 	}
+
 	.feature-badge {
 		h3 {
 			position: relative;
@@ -102,7 +103,6 @@
 			border-color: #00a6a5 !important;
 		}
 		.item {
-			width: 400px;
 			background-color: #fff;
 			border-radius: 15px;
 			padding: 25px;
@@ -148,6 +148,24 @@
 				background-color: #ffcf6a;
 				color: #ff0101;
 			}
+		}
+	}
+}
+.eligible_models_slider {
+	overflow: hidden;
+
+	.eligble-models-carousel {
+		overflow: unset;
+		margin-bottom: 20px;
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		top: unset;
+		bottom: -123px;
+
+		&:after {
+			font-size: 60px;
 		}
 	}
 }
