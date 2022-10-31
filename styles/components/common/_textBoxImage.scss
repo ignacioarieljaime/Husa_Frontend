@@ -1,0 +1,128 @@
+.home-appliances-text-box-with-image {
+	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: start;
+		max-width: 680px;
+		margin: 0 auto;
+		color: #fff;
+		.title {
+			font-weight: 400;
+			line-height: 48px;
+			margin-bottom: 25px;
+		}
+		.paragraph {
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 30px;
+		}
+	}
+
+	&.dark {
+		background: #000000;
+	}
+}
+
+.cool-features {
+	padding: 100px 0;
+	text-align: center;
+	.title {
+		font-weight: 400;
+		line-height: 48px;
+		color: #292929;
+		margin-bottom: 35px;
+	}
+	.link {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 20px;
+		text-decoration-line: underline;
+		color: #000000;
+		margin-bottom: 75px;
+		text-transform: uppercase;
+		display: block;
+	}
+	.cool-features-container {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		.cool-features-item {
+			padding: 48px;
+			text-align: start;
+			max-width:100%;
+			width: 100%;
+			.image {
+				width: 100%;
+				margin-bottom: 66px;
+			}
+			.title {
+				font-weight: 400;
+				font-size: 33px;
+				line-height: 36px;
+				color: #8b8b8b;
+				margin-bottom: 24px;
+			}
+			.colored-title {
+				font-weight: 400;
+				font-size: 18px;
+				line-height: 30px;
+				color: #00cccc;
+				margin-bottom: 24px;
+			}
+			.paragraph {
+				font-weight: 400;
+				font-size: 18px;
+				line-height: 30px;
+				color: #292929;
+				opacity: 0.54;
+				margin-bottom: 24px;
+			}
+			.note {
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 24px;
+				color: #292929;
+				opacity: 0.54;
+			}
+			&:first-child .divider-border::before {
+				display: none;
+			}
+			.divider-border::before {
+				left: -48px;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.home-appliances-text-box-with-image {
+		.content {
+			align-items: center;
+			text-align: center;
+		}
+	}
+	.cool-features {
+		margin: 0 !important;
+		max-width: unset !important;
+		.cool-features-container {
+			display: block;
+			.cool-features-item {
+				padding: 12px;
+				margin-bottom: 50px;
+				.image {
+					margin-bottom: 40px;
+				}
+				.title {
+					font-size: 24px;
+				}
+				.paragraph {
+					font-size: 14px;
+				}
+				.note {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}

@@ -8,8 +8,8 @@ module.exports.LaserComponents = [
 		path: 'components/page/Laser/LaserImageAndTextBox'
 	},
 	{
-		name: 'LaserTitleAndSubtitleBox',
-		path: 'components/page/Laser/LaserTitleAndSubtitleBox'
+		name: 'LaserTitleAndSubTitleBox',
+		path: 'components/page/Laser/LaserTitleAndSubTitleBox'
 	},
 	{
 		name: 'LaserFinedWithImage',
