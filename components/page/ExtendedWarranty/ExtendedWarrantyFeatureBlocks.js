@@ -14,14 +14,60 @@ const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 						src: ''
 					},
 					link: {
-						value: '',
-						title: ''
+						value: '/',
+						title: 'View Products'
 					},
 					title: {
-						value: ''
+						value: 'Find Your Product'
 					},
 					paragraph: {
-						value: ''
+						value:
+							'Browse from the product catagories and find your Hisense model.'
+					}
+				},
+				{
+					image: {
+						src: ''
+					},
+					link: {
+						value: '/',
+						title: 'View Products'
+					},
+					title: {
+						value: 'Find Your Product'
+					},
+					paragraph: {
+						value:
+							'We need to know some things about the product like serial number, date of purchase, and where it was purchased.'
+					}
+				},
+				{
+					image: {
+						src: ''
+					},
+
+					title: {
+						value: 'Find Your Product'
+					},
+					paragraph: {
+						value:
+							'Browse from the product catagories and find your Hisense model.'
+					}
+				},
+				{
+					image: {
+						src: ''
+					},
+					link: {
+						value: '/',
+						title: 'View Products'
+					},
+					title: {
+						value: 'Find Your Product'
+					},
+					paragraph: {
+						value:
+							'Browse from the product catagories and find your Hisense model.'
 					}
 				}
 			]

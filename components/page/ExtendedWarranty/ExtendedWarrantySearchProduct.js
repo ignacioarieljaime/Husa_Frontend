@@ -47,6 +47,10 @@ const ExtendedWarrantySearchProduct = () => {
 	const options = [
 		[
 			{
+				title: 'All',
+				value: 'all'
+			},
+			{
 				title: 'Televisions',
 				value: 'tv'
 			},
@@ -60,6 +64,10 @@ const ExtendedWarrantySearchProduct = () => {
 			}
 		],
 		[
+			{
+				title: 'All',
+				value: 'all'
+			},
 			{
 				title: 'U8',
 				value: 'u8'
@@ -83,6 +91,12 @@ const ExtendedWarrantySearchProduct = () => {
 		setProductCategory(options[0][0])
 		setModelNumber(options[1][0])
 	}, [])
+
+	const clear = () => {
+		setProductCategory(options[0][0])
+		setModelNumber(options[1][0])
+		setSearchTerm('')
+	}
 
 	return (
 		<section>
@@ -138,7 +152,12 @@ const ExtendedWarrantySearchProduct = () => {
 								/>
 							</div>
 						</div>
-						<button className='n-btn outline-white transparent'>Reset</button>
+						<button
+							className='n-btn outline-white transparent'
+							type='reset'
+							onClick={clear}>
+							Reset
+						</button>
 					</form>
 					<button
 						className='n-btn white-text d-block d-md-none uppercase mx-auto  mt-8 mt-md-0'
