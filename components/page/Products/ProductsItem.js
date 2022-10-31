@@ -45,7 +45,7 @@ function ProductsItem({ data }) {
 					<p>{name}</p>
 				</div>
 				{data?.productSeries[0]?.values.length > 0 ? (
-					<ul className='list-unstyled d-flex gap-3'>
+					<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
 						{console.log(data)}
 						{data?.productSeries[0]?.values.map((item, index) => (
 							<ProductsItemLink
@@ -60,28 +60,28 @@ function ProductsItem({ data }) {
 				) : null}
 
 				<div className='w-100'>
-					<div className='d-flex flex-column-reverse justify-content-center align-items-center flex-wrap w-100'>
+					<div className='d-flex '>
 						{retailers.length === 0 ? (
-							<button className='buy-btn w-100 py-5 me-0' disabled>
+							<button className='buy-btn ' disabled>
 								Coming Soon
 							</button>
 						) : (
 							<button
 								onClick={() => setChanelAdviserHandler(true)}
-								className='buy-btn w-100 py-5 me-0'>
+								className='buy-btn '>
 								Where to Buy
 							</button>
 						)}
 						{url ? (
 							<Link href={url}>
-								<a className='view-product-btn ms-0 w-100 py-5 mb-3'>
+								<a className='view-product-btn '>
 									View Product
 								</a>
 							</Link>
 						) : (
 							<button
 								disabled
-								className='view-product-btn ms-0 w-100 mb-3 py-5'>
+								className='view-product-btn '>
 								View Product
 							</button>
 						)}
