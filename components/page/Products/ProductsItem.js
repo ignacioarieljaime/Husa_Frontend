@@ -38,7 +38,15 @@ function ProductsItem({ data }) {
 							{isNew === 1 && <span className='new_product'>New</span>}
 						</div>
 					</div>
-					<img src={media?.url} height={280} alt='featured image' />
+					{url ? (
+						<Link href={url}>
+							<a>
+								<img src={media?.url} height={280} alt='featured image' />
+							</a>
+						</Link>
+					) : (
+						<img src={media?.url} height={280} alt='featured image' />
+					)}
 
 					<h3>{series.find(item => item.name === 'h2 Title')?.value}</h3>
 
@@ -46,7 +54,6 @@ function ProductsItem({ data }) {
 				</div>
 				{data?.productSeries[0]?.values.length > 0 ? (
 					<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
-						{console.log(data)}
 						{data?.productSeries[0]?.values.map((item, index) => (
 							<ProductsItemLink
 								currentSize={
@@ -74,14 +81,10 @@ function ProductsItem({ data }) {
 						)}
 						{url ? (
 							<Link href={url}>
-								<a className='view-product-btn '>
-									View Product
-								</a>
+								<a className='view-product-btn '>View Product</a>
 							</Link>
 						) : (
-							<button
-								disabled
-								className='view-product-btn '>
+							<button disabled className='view-product-btn '>
 								View Product
 							</button>
 						)}

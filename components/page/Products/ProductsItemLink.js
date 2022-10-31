@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { RouteHandler } from 'utils/routeHandler'
 
 function ProductsItemLink({ data, currentSize }) {
-	console.log(currentSize)
 	const [url] = useState(RouteHandler(data.products[0]))
 	return (
 		<li>
