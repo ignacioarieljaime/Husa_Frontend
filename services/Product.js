@@ -17,12 +17,25 @@ export async function GetProductsApi(navigate, _categoryId) {
 }
 export async function GetProductsListApi(navigate, _categoryId, _filter) {
 	let filter = ''
-	_filter && _filter.forEach(item => {
-		filter += '&filters[]=' + item.filter_value
-	})
+	_filter &&
+		_filter.forEach(item => {
+			filter += '&filters[]=' + item.filter_value
+		})
 
 	let response = await useFetch(navigate).get(
 		`/getProductsList?category_id=${_categoryId}&condition=or${filter}`
+	)
+	return response
+}
+export async function GetProductsListNewApi(navigate, _categoryId, _filter) {
+	let filter = ''
+	_filter &&
+		_filter.forEach(item => {
+			filter += '&filters[]=' + item.filter_value
+		})
+
+	let response = await useFetch(navigate).get(
+		`/productsIndex?category_id=${_categoryId}&condition=or${filter}`
 	)
 	return response
 }
