@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 
 function ProductsCategoriesWithSearch({ data }) {
 	let { structure } = data
+	const [categoryId, setCategoryId] = useState()
 	const [searchInput, setSearchInput] = useState(false)
 	const [searchList, setSearchList] = useState(false)
 	const [searchProductsList, setSearchProductsList] = useState()
@@ -16,7 +17,7 @@ function ProductsCategoriesWithSearch({ data }) {
 			setSearchProductsList('loading')
 			try {
 				let response = await axios.get(
-					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?string=${_value}`
+					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?categoryId=${categoryId}&string=${_value}`
 				)
 				setSearchProductsList(response.data.data)
 			} catch (error) {
@@ -25,7 +26,6 @@ function ProductsCategoriesWithSearch({ data }) {
 			}
 		}
 	}
-	console.log(data)
 	return (
 		<section>
 			<div className='product-category support-product-category-new text-center container my-15 mt-10 px-6'>
@@ -36,6 +36,8 @@ function ProductsCategoriesWithSearch({ data }) {
 							key={'category' + index}
 							onClick={() => {
 								setSearchList(false)
+								setCategoryId(item?.category?.value)
+								setSearchProductsList([])
 								setSearchInput(status => !status)
 							}}
 							id={item?.title?.value}
