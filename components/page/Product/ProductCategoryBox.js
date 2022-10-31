@@ -36,7 +36,7 @@ function ProductCategoryBox({ data, pim }) {
 									// structure?.support?.value ? structure?.support.value : '/'
 									`/support/${router.pathname.split('/').at(-1)}`
 								}>
-								<a target='_blank'>
+								<a>
 									<span className='underline-on-hover'> Support</span>
 								</a>
 							</Link>
