@@ -50,7 +50,7 @@
 		.cool-features-item {
 			padding: 48px;
 			text-align: start;
-			max-width:100%;
+			max-width: 100%;
 			width: 100%;
 			.image {
 				width: 100%;
@@ -91,6 +91,23 @@
 			.divider-border::before {
 				left: -48px;
 			}
+		}
+	}
+}
+
+.home-appliance-image {
+	img {
+		max-height: 600px;
+	}
+	.heading-text {
+		h3{
+			margin-bottom: 55px;
+		}
+		h4 {
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 30px;
+			color: #fff;
 		}
 	}
 }

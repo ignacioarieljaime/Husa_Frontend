@@ -44,6 +44,7 @@ module.exports.ComponentList = [
 	...LaserComponents,
 	...DishwasherComponents,
 	...ProductSupportComponents,
+	...HomeAppliances,
 	...CesComponents,
 	...MoreTvComponents,
 	...BlogListComponents,
@@ -53,7 +54,6 @@ module.exports.ComponentList = [
 	...Day100Components,
 	...L9GComponents,
 	...HomePageMB,
-	...HomeAppliances,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'
