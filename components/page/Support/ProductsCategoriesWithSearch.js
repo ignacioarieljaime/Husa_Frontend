@@ -30,7 +30,7 @@ function ProductsCategoriesWithSearch({ data }) {
 		<section>
 			<div className='product-category support-product-category-new text-center container my-15 mt-10 px-6'>
 				<h2 className='mb-10 fs-4'>{structure?.title?.value}</h2>
-				<div className='products row mb-8'>
+				<div className='products justify-content-center row mb-8'>
 					{structure?.list?.value.map((item, index) => (
 						<div
 							key={'category' + index}
@@ -80,7 +80,6 @@ function ProductsCategoriesWithSearch({ data }) {
 										  searchProductsList.length > 0 ? (
 											searchProductsList.map((item, index) => (
 												<li>
-													{console.log(item)}
 													<Link href='/'>
 														<a>{item.name}</a>
 													</Link>
