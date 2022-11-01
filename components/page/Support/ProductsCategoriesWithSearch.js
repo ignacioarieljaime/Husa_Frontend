@@ -24,6 +24,8 @@ function ProductsCategoriesWithSearch({ data }) {
 				setSearchProductsList([])
 				console.log(error)
 			}
+		} else if (_value.length === 0) {
+			setSearchProductsList([])
 		}
 	}
 	return (
@@ -80,8 +82,8 @@ function ProductsCategoriesWithSearch({ data }) {
 										  searchProductsList.length > 0 ? (
 											searchProductsList.map((item, index) => (
 												<li>
-													<Link href='/'>
-														<a>{item.name}</a>
+													<Link href={item.route}>
+														<a>{item.product.name}</a>
 													</Link>
 												</li>
 											))
