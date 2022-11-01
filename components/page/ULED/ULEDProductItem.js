@@ -24,7 +24,7 @@ function ULEDProductItem({ data }) {
 							<a className='btn btn-light text-nowrap'>{linkTitle?.value}</a>
 						</Link>
 					</div>
-					{whereToBuy.value && (
+					{whereToBuy?.value && (
 						<div className='col-12 col-sm-6 col-lg-6 col-xl-8  '>
 							<button
 								onClick={() =>
