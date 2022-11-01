@@ -2,7 +2,13 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
-const HomePageMBDiscoveryItem = ({ image, title, paragraph, link, width }) => {
+const ExtendedWarrantyFeatureBlocksItem = ({
+	image,
+	title,
+	paragraph,
+	link,
+	width
+}) => {
 	return (
 		<div
 			className={'home-page-mb-discovery-item py-10 px-6 px-md-13 py-md-15'}
@@ -12,18 +18,12 @@ const HomePageMBDiscoveryItem = ({ image, title, paragraph, link, width }) => {
 			<p className='fs-base mb-9'>{paragraph}</p>
 			<a href={link.value} className='n-btn primary-text'>
 				{link.title}
-				{link.value && (
-					<span>
-						<FontAwesomeIcon
-							icon={faChevronRight}
-							size={'sm'}
-							className='ms-2'
-						/>
-					</span>
-				)}
+				<span>
+					<FontAwesomeIcon icon={faChevronRight} size={'sm'} className='ms-2' />
+				</span>
 			</a>
 		</div>
 	)
 }
 
-export default HomePageMBDiscoveryItem
+export default ExtendedWarrantyFeatureBlocksItem

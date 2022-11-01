@@ -31,9 +31,10 @@ const DropDownSelectBox = ({ options, value, title, onChange }) => {
 		<div className={`dropdown-select-box ${show ? 'show' : ''}`}>
 			<button
 				className='dropdown-select-box-button'
+				type='button'
 				onClick={() => setShow(!show)}>
-				{title}
-				{!Array.isArray(value) ? ': ' + value.title : ''}
+				{title && title + ': '}
+				{value?.title}
 				<span className='ms-5'>
 					<FontAwesomeIcon icon={faChevronDown} />
 				</span>

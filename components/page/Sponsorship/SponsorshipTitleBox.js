@@ -5,7 +5,7 @@ function SponsorshipTitleBox() {
 		<section className='sponsor-ship-bg'>
 			<div className='container py-12 py-md-18 border-bottom sponsor-ship-border-light'>
 				<div className='row'>
-					<div className='col-12 col-md-6'>
+					<div className='col-12'>
 						<h2 className='text-white fs-2tx mb-0'>
 							THE WORLD’S BIGGEST GAME ON THE WORLD’S BIGGEST STAGE
 						</h2>

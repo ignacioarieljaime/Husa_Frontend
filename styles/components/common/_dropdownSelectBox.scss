@@ -11,6 +11,9 @@
 		padding: 8px 16px;
 		background-color: inherit;
 		border: inherit;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 		svg {
 			transform: rotate(0deg);
 			transform-origin: center;
@@ -45,9 +48,13 @@
 	&.show {
 		.dropdown-select-box-button {
 			border-radius: 20px 20px 0 0;
+			border-bottom: none !important;
 			svg {
 				transform: rotate(180deg);
 			}
+		}
+		.dropdown-select-box-options {
+			border-top: none !important;
 		}
 	}
 }
