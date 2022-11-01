@@ -26,9 +26,11 @@ const { L9GComponents } = require('./components/L9GComponents')
 const { HomePageMB } = require('./components/HomePageMB')
 const { NewHomePageComponents } = require('./components/NewHomePage')
 const { HomeAppliances } = require('./components/HomeAppliances')
+const { AuthorizedRetailers } = require('./components/AuthorizedRetailers')
 
 module.exports.ComponentList = [
 	...CommonComponents,
+	...AuthorizedRetailers,
 	...LandingComponents,
 	...ProductsComponents,
 	...ProductComponent,
