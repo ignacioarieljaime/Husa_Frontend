@@ -1,9 +1,11 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
 function ProductCategoryBox({ data, pim }) {
+	const router = useRouter()
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 
 	let { structure } = data
@@ -31,9 +33,14 @@ function ProductCategoryBox({ data, pim }) {
 						<li>
 							<Link
 								href={
-									structure?.support?.value ? structure?.support.value : '/'
+									// structure?.support?.value ? structure?.support.value : '/'
+									`/support/${
+										router.pathname.split('/').at(-1).startsWith('H')
+											? router.pathname.split('/').at(-1).replace('H', 'h')
+											: router.pathname.split('/').at(-1)
+									}`
 								}>
-								<a target='_blank'>
+								<a>
 									<span className='underline-on-hover'> Support</span>
 								</a>
 							</Link>
@@ -42,10 +49,11 @@ function ProductCategoryBox({ data, pim }) {
 							<button
 								className='btn-primary'
 								onClick={() =>
-									structure?.whereToBuy?.value &&
-									setChanelAdviserHandler(!chanelAdviserHandler)
+									pim?.retailers.length !== 0
+										? setChanelAdviserHandler(!chanelAdviserHandler)
+										: {}
 								}>
-								{structure?.whereToBuy?.value ? 'Where To Buy' : 'Coming Soon'}
+								{pim?.retailers.length !== 0 ? 'Where To Buy' : 'Coming Soon'}
 							</button>
 						</li>
 					</ul>

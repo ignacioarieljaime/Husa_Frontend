@@ -35,7 +35,7 @@ function ProductSupportNewHead({ pim }) {
 													href={item.url}
 													download={true}
 													className='download-able-item'>
-													Documentes Guide
+													{item.caption ? item.caption : 'Documentes Guide'}
 													<DownloadIcon />
 												</a>
 											</div>

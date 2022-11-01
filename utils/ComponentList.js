@@ -25,6 +25,7 @@ const { Day100Components } = require('./components/Day100Components')
 const { L9GComponents } = require('./components/L9GComponents')
 const { HomePageMB } = require('./components/HomePageMB')
 const { NewHomePageComponents } = require('./components/NewHomePage')
+const { HomeAppliances } = require('./components/HomeAppliances')
 
 module.exports.ComponentList = [
 	...CommonComponents,
@@ -44,6 +45,7 @@ module.exports.ComponentList = [
 	...LaserComponents,
 	...DishwasherComponents,
 	...ProductSupportComponents,
+	...HomeAppliances,
 	...CesComponents,
 	...MoreTvComponents,
 	...BlogListComponents,

@@ -8,8 +8,8 @@ function ProductImageBox({ data }) {
 	return (
 		<div id={data.name + data.id} className='header-secondary'>
 			<img
-				src={structure.image.src}
-				alt={structure.image.alt}
+				src={structure?.image?.src}
+				alt={structure?.image?.alt}
 				width='100%'
 				height='100%'
 			/>

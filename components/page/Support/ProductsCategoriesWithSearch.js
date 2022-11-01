@@ -1,34 +1,53 @@
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
+import Spinner from 'components/common/Spinner'
+import Link from 'next/link'
 import React, { useState } from 'react'
-
-// image
-import TvIconImage from 'public/assets/images/tvIconImage.png'
-import SoundBarIconImage from 'public/assets/images/soundBarIconImage.png'
-import RefregaroterIconImage from 'public/assets/images/refregaroterIconImage.png'
-import AirIconImage from 'public/assets/images/airIconImage.png'
-import DishWasherIconImage from 'public/assets/images/diswasherIconImage.png'
-import MicrowaveIconImage from 'public/assets/images/microwaveIconImage.png'
 
 function ProductsCategoriesWithSearch({ data }) {
 	let { structure } = data
+	const [categoryId, setCategoryId] = useState()
 	const [searchInput, setSearchInput] = useState(false)
 	const [searchList, setSearchList] = useState(false)
-	console.log(data)
+	const [searchProductsList, setSearchProductsList] = useState()
+
+	const searchHandler = async _value => {
+		if (_value.length >= 2) {
+			setSearchProductsList('loading')
+			try {
+				let response = await axios.get(
+					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?categoryId=${categoryId}&string=${_value}`
+				)
+				setSearchProductsList(response.data.data)
+			} catch (error) {
+				setSearchProductsList([])
+				console.log(error)
+			}
+		}
+	}
 	return (
 		<section>
 			<div className='product-category support-product-category-new text-center container my-15 mt-10 px-6'>
 				<h2 className='mb-10 fs-4'>{structure?.title?.value}</h2>
-				<div className='products row mb-8'>
+				<div className='products justify-content-center row mb-8'>
 					{structure?.list?.value.map((item, index) => (
 						<div
 							key={'category' + index}
 							onClick={() => {
 								setSearchList(false)
+								setCategoryId(item?.category?.value)
+								setSearchProductsList([])
 								setSearchInput(status => !status)
 							}}
 							id={item?.title?.value}
 							className='p-type col-12 col-sm-6 col-md-4 col-lg-2 cursor-pointer'>
 							<div className='img_box'>
-								<img width={"100%"} src={item?.image?.src} alt={item?.image?.alt} />
+								<img
+									width={'100%'}
+									src={item?.image?.src}
+									alt={item?.image?.alt}
+								/>
 							</div>
 							<p>{item?.title?.value}</p>
 						</div>
@@ -42,43 +61,33 @@ function ProductsCategoriesWithSearch({ data }) {
 							<button
 								className='search-products-btn'
 								onClick={() => setSearchList(status => !status)}>
-								<i className='fa-solid fa-lg fa-magnifying-glass me-3'></i>
-								Please Select Your Product
+								<FontAwesomeIcon icon={faMagnifyingGlass} size={'lg'} />
+								<span className='ms-3'>Please Select Your Product</span>
 							</button>
 							{searchList && (
 								<div className='search-products-list '>
-									<input type='text' className='search' />
+									<input
+										type='text'
+										className='search'
+										onChange={e => searchHandler(e.target.value)}
+									/>
 									<ul className='list'>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
-										<li>
-											<a href='#'>
-												Hisense Desktop Air Purifier, 376 Sq. Ft. Coverage
-												(KJ120)
-											</a>
-										</li>
+										{searchProductsList === 'loading' ? (
+											<li className='py-5'>
+												<Spinner size={20} />
+											</li>
+										) : Array.isArray(searchProductsList) &&
+										  searchProductsList.length > 0 ? (
+											searchProductsList.map((item, index) => (
+												<li>
+													<Link href='/'>
+														<a>{item.name}</a>
+													</Link>
+												</li>
+											))
+										) : (
+											<li>its empty</li>
+										)}
 									</ul>
 								</div>
 							)}

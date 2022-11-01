@@ -3,12 +3,25 @@ import React, { useEffect, useState } from 'react'
 function ProductFilterAideItem({
 	checkboxConditionRender,
 	filterController,
-	data
+	data,
+	checkCondition,
+	filterParentId
 }) {
-	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
+	const [checkBoxCondition, setCheckBoxCondition] = useState()
 	useEffect(() => {
 		setCheckBoxCondition(false)
 	}, [checkboxConditionRender])
+	useEffect(() => {
+		if (checkCondition.length > 0) {
+			checkCondition.forEach(item => {
+				if (item.id === filterParentId) {
+					setCheckBoxCondition(
+						item.values.indexOf(data.title) < 0 ? false : true
+					)
+				}
+			})
+		}
+	}, [])
 
 	return (
 		<li>
@@ -16,7 +29,7 @@ function ProductFilterAideItem({
 				<input
 					onChange={e => {
 						setCheckBoxCondition(!checkBoxCondition)
-						filterController(e, data)
+						filterController(e, { ...data, filterId: filterParentId })
 					}}
 					checked={checkBoxCondition}
 					name='filter'

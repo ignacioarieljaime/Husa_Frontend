@@ -3,59 +3,50 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import EligbleModelsItem from './EligbleModelsItem'
 
 import 'swiper/css'
+import Link from 'next/link'
+import 'swiper/css/navigation'
+import { Navigation } from 'swiper'
 
-const EligibleModels = () => {
+const EligibleModels = ({ data }) => {
+	let { structure } = data
 	return (
-		<section className='day-100'>
-			<div className='bg-grey eligble-models py-20'>
+		<section className='day-100 eligible_models_slider '>
+			<div className='bg-grey px-10 eligble-models py-20'>
 				<div className='container text-center'>
 					<h2 className='text-eggplant fs-2hx fw-bolder-700 mb-6'>
-						ELIGIBLE MODELS
+						{structure?.title?.value}
 					</h2>
-					<h3 className='text-purple fs-2 mb-12'>
-						Hisense's Award-Winning 2022 Google TV Lineup
+					<h3 className='mb-12'>
+						<Link href={structure?.linkUrl?.value}>
+							<a className='text-purple fs-2 '>{structure?.linkTitle?.value}</a>
+						</Link>
 					</h3>
 				</div>
 				<div>
 					<Swiper
 						grabCursor={true}
-						spaceBetween='30'
-						centeredSlides={true}
-						slidesPerView='auto'
 						roundLengths={true}
+						slidesPerView={3}
+						spaceBetween={50}
 						pagination={{ enabled: false }}
-						navigation={{ enabled: false }}
-						className='eligble-models-carousel'>
-						<SwiperSlide>
-							<EligbleModelsItem />
-						</SwiperSlide>
-						<SwiperSlide>
-							<EligbleModelsItem />
-						</SwiperSlide>
-						<SwiperSlide>
-							<EligbleModelsItem />
-						</SwiperSlide>
-						<SwiperSlide>
-							<EligbleModelsItem />
-						</SwiperSlide>
-						<SwiperSlide>
-							<EligbleModelsItem />
-						</SwiperSlide>
+						navigation={true}
+						modules={[Navigation]}
+						className='eligble-models-carousel '>
+						{structure?.list?.value.map((item, index) => (
+							<SwiperSlide style={{ height: '100%' }} key={'slider' + index}>
+								<EligbleModelsItem data={item} />
+							</SwiperSlide>
+						))}
 					</Swiper>
 				</div>
 				<div className='container text-center'>
-					<button className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
-						Shop All Eligible Models
-					</button>
-					<p className='text-eggplant fs-5'>
-						Offer valid from September 1st - October 31st.
-					</p>
-					<p className='text-eggplant fs-5'>
-						For full program details, visit:{' '}
-						<a href='#' className='text-purple'>
-							http://hisense-promos.com/noregrets
+					<Link href={structure?.link?.value}>
+						<a className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
+							{structure?.link?.title}
 						</a>
-					</p>
+					</Link>
+					<div
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 			</div>
 		</section>

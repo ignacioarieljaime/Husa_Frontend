@@ -9,10 +9,14 @@ function ULEDTextBox({ data: { structure } }) {
 						{structure?.title?.value}
 					</h3>
 
-					<p className='col-12 col-md-6 m-0'>
-						{structure?.paragraphOne?.value}
-						{structure?.paragraphOne?.value}
-					</p>
+					<div className='col-12 col-md-6 '>
+						{structure?.paragraphOne?.value && (
+							<p className=' m-0'>{structure?.paragraphOne?.value}</p>
+						)}
+						{structure?.paragraphTwo?.value && (
+							<p className=' m-0'>{structure?.paragraphTwo?.value}</p>
+						)}
+					</div>
 				</article>
 			</div>
 		</section>

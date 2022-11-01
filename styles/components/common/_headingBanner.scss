@@ -26,9 +26,43 @@
 
 .all-tvs-heading {
 	background-color: #000;
+	justify-content: space-between;
 	display: flex;
-	justify-content: flex-end;
 	padding: 180px 24px 48px;
+	color: #fff;
+	@include mq(1000) {
+		padding: 48px 24px ;
+	}
+	@include mq(1000) {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	img {
+		max-width: 615px;
+		width: 100%;
+		object-fit: contain;
+	}
+
+	.text_box {
+		padding-left: 100px;
+		@include mq(1140) {
+			padding-left: 0;
+		}
+		@include mq(1000) {
+			margin-bottom: 30px;
+		}
+		h2 {
+			font-size: 42px !important;
+			line-height: 48px !important;
+			margin: 34px 0;
+		}
+
+		h6 {
+			font-size: 30px !important;
+		}
+	}
 }
 
 .contact .heading img {

@@ -1,0 +1,41 @@
+.home_appliance_text_box_with_image {
+	.text_box {
+		padding: 0 94px;
+		h3 {
+			font-weight: 400;
+			font-size: 54px;
+		}
+		p {
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 30px;
+		}
+	}
+}
+
+.home_appliance_features {
+	padding-top: 110px;
+	.box_text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		h3 {
+			font-weight: 500;
+			font-size: 42px;
+			margin-bottom: 43px;
+		}
+		a {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 20px;
+			color: #000000;
+		}
+	}
+
+	.items {
+		margin-top: 150px;
+        .home_appliance_features_item{
+            
+        }
+	}
+}

@@ -4,42 +4,83 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { GetFiltersApi } from 'services/Filter'
 import ProductFilterAideItem from './ProductFilterAideItem'
 
-function FilterAside({ filterHandler, filter, categoryId: { value } }) {
+function FilterAside({
+	filterList,
+	filterRequest,
+	checkBoxCondition,
+	setCheckBoxCondition,
+	filters,
+	setFilters
+}) {
+	let router = useRouter()
 	const checkboxWrapper = useRef()
-	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [filterListCondition, setFilterListCondition] = useState(false)
-	const [filterList, setFilterList] = useState()
-	const router = useRouter()
-	useEffect(() => {
-		value && getFilters()
-	}, [value])
 
-	const getFilters = async () => {
-		let filters = []
-		try {
-			let response = await GetFiltersApi(router, value)
-			response.data.filterTypes.forEach(item => filters.push(...item.filters))
-			setFilterList(filters)
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	useEffect(() => {
+		setFilters(router.query.filter ? JSON.parse(decodeURIComponent(router.query.filter)) : [])
+	}, [])
 
 	const filterController = (e, _filter) => {
+		let _filtersBox = filters
+		let filterWrapperExisted = _filtersBox.find(
+			item => item.id === _filter.filterId
+		)
 		e.target.checked = true
-		if (filter.find(item => item.filter_name === _filter.title)) {
-			filterHandler(filter.filter(item => item.filter_name !== _filter.title))
+
+		if (filterWrapperExisted) {
+			if (filterWrapperExisted.values.indexOf(_filter.title) < 0) {
+				let removeExitItemOfFilters = (_filtersBox = filters.filter(
+					item => item.id !== _filter.filterId
+				))
+				_filtersBox = [
+					...removeExitItemOfFilters,
+					{
+						id: filterWrapperExisted.id,
+						values: [...filterWrapperExisted.values, _filter.title]
+					}
+				]
+			} else {
+				let removeExitItem = filterWrapperExisted.values.filter(
+					item => item !== _filter.title
+				)
+				let removeExitItemOfFilters = (_filtersBox = filters.filter(
+					item => item.id !== _filter.filterId
+				))
+				if (removeExitItem.length === 0) {
+					_filtersBox = [...removeExitItemOfFilters]
+				} else {
+					_filtersBox = [
+						...removeExitItemOfFilters,
+						{
+							id: filterWrapperExisted.id,
+							values: removeExitItem
+						}
+					]
+				}
+			}
 		} else {
-			filterHandler(state => [
-				...state,
-				{ filter_name: _filter.title, filter_value: _filter.filter_value }
-			])
+			_filtersBox.push({
+				id: _filter.filterId,
+				values: [_filter.title]
+			})
 		}
+		setFilters(_filtersBox)
+		filterRequest(_filtersBox)
+
+		// if (_filtersBox.find(item => item.filter_name === _filter.title)) {
+		// _filtersBox = filters.filter(item => item.filter_name !== _filter.title)
+		// } else {
+		// 	_filtersBox.push({
+		// 		filter_name: _filter.title,
+		// 		filter_value: _filter.filter_value
+		// 	})
+		// }
 	}
 
 	const checkboxClearHandler = () => {
 		setCheckBoxCondition(!checkBoxCondition)
-		filterHandler([])
+		setFilters([])
+		filterRequest([])
 	}
 	return (
 		<div className='category'>
@@ -57,7 +98,7 @@ function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 							<>
 								{filterList.map(filter => (
 									<div key={`filter-${filter.name}-${filter.id}`}>
-										<h4>{filter.name}</h4>
+										<h4>{String(filter.name).toUpperCase()}</h4>
 
 										<ul ref={checkboxWrapper} className='filter-list'>
 											{filter.filter_values.map(
@@ -66,6 +107,8 @@ function FilterAside({ filterHandler, filter, categoryId: { value } }) {
 														<ProductFilterAideItem
 															checkboxConditionRender={checkBoxCondition}
 															filterController={filterController}
+															filterParentId={filter.content_record_id}
+															checkCondition={filters}
 															data={item}
 															key={`filter-${item.title}-${index}`}
 														/>

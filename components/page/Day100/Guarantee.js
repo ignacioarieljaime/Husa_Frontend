@@ -1,7 +1,5 @@
-import GauranteeBadge from 'public/assets/images/100-day/guarantee.png'
-import Day100Tv from 'public/assets/images/100-day/day-100-tv.png'
-
-const Gaurantee = () => {
+const Gaurantee = ({ data }) => {
+	let { structure } = data
 	return (
 		<section className='day-100'>
 			<div className='bg-purple py-15'>
@@ -9,41 +7,30 @@ const Gaurantee = () => {
 					<div className='row align-items-center mb-15'>
 						<div className='col-12 my-5 my-lg-0 col-md-6 order-2 order-md-2 order-lg-1 col-lg-4'>
 							<div className='warranty-adv'>
-								<h2>Shop all eligible models</h2>
-								<p>Find the TV that’s right for you.</p>
+								<h2>{structure?.leftTitle?.value}</h2>
+								<p>{structure?.leftText?.value}</p>
 							</div>
 						</div>
 						<div className='col-12 my-5 my-lg-0 col-md-6 order-1 order-md-1 order-lg-2 offset-md-3 offset-lg-0 col-lg-4'>
 							<div className='text-center'>
 								<img
-									src={Day100Tv.src}
-									alt='2 year badge'
-									className='mb-6 d-block d-md-none mx-auto'
+									src={structure?.image?.src}
+									alt={structure?.image?.alt}
+									className='mb-6  mx-auto'
 									width='80%'
-								/>
-								<img
-									src={GauranteeBadge.src}
-									alt='2 year badge'
-									className='mb-6 d-none d-md-block mx-auto'
-									width='50%'
 								/>
 							</div>
 						</div>
 						<div className='col-12 my-5 my-lg-0 col-md-6 order-3  col-lg-4'>
 							<div className='warranty-adv'>
-								<h2>Register your purchase</h2>
-								<p>Register your TV within 14 days.</p>
+								<h2>{structure?.rightTitle?.value}</h2>
+								<p>{structure?.rightText?.value}</p>
 							</div>
 						</div>
 					</div>
-					<div className='guarantee-details'>
-						<p>
-							For full program details, visit:{' '}
-							<a href='#' className='text-pink'>
-								http://hisense-promos.com/noregrets
-							</a>
-						</p>
-					</div>
+					<div
+						className='guarantee-details'
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 			</div>
 		</section>
