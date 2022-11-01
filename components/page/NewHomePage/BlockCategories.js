@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import Link from 'next/link'
 
-const NewHomePageAppliancesSlider = ({ data }) => {
+const BlockCategories = ({ data }) => {
 	const structure = {
 		title: {
 			value: 'We make fantastic appliances, too.'
@@ -102,4 +102,4 @@ const NewHomePageAppliancesSlider = ({ data }) => {
 	)
 }
 
-export default NewHomePageAppliancesSlider
+export default BlockCategories

@@ -1,30 +1,30 @@
 module.exports.NewHomePageComponents = [
 	{
-		name: 'NewHomePageAppliancesSlider',
-		path: 'components/page/NewHomePage/NewHomePageAppliancesSlider'
+		name: 'BlockCategories',
+		path: 'components/page/NewHomePage/BlockCategories'
 	},
 	{
-		name: 'NewHomePageBlackParallaxBox',
-		path: 'components/page/NewHomePage/NewHomePageBlackParallaxBox'
+		name: 'BlockTVHero',
+		path: 'components/page/NewHomePage/BlockTVHero'
 	},
 	{
-		name: 'NewHomePageIntroSection',
-		path: 'components/page/NewHomePage/NewHomePageIntroSection'
+		name: 'BlockKitchenHero',
+		path: 'components/page/NewHomePage/BlockKitchenHero'
 	},
 	{
-		name: 'NewHomePageNewsSlider',
-		path: 'components/page/NewHomePage/NewHomePageNewsSlider'
+		name: 'BlockFeatured',
+		path: 'components/page/NewHomePage/BlockFeatured'
 	},
 	{
-		name: 'NewHomePageParallaxBanner',
-		path: 'components/page/NewHomePage/NewHomePageParallaxBanner'
+		name: 'BlockHero',
+		path: 'components/page/NewHomePage/BlockHero'
 	},
 	{
-		name: 'NewHomePageSpotlightReleases',
-		path: 'components/page/NewHomePage/NewHomePageSpotlightReleases'
+		name: 'BlockSpotlight',
+		path: 'components/page/NewHomePage/BlockSpotlight'
 	},
 	{
-		name: 'NewHomePageTextedBoxes',
-		path: 'components/page/NewHomePage/NewHomePageTextedBoxes'
+		name: 'BlockCards',
+		path: 'components/page/NewHomePage/BlockCards'
 	}
 ]

@@ -1,13 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const NewHomePageSpotlightReleasesItem = ({
-	title,
-	image,
-	description,
-	link,
-	models
-}) => {
+const BlockSpotlightItem = ({ title, image, description, link, models }) => {
 	return (
 		<div className='spotlight-releases-item'>
 			<img src={image?.src} alt={image?.alt} width='100%' className='image' />
@@ -25,4 +19,4 @@ const NewHomePageSpotlightReleasesItem = ({
 	)
 }
 
-export default NewHomePageSpotlightReleasesItem
+export default BlockSpotlightItem

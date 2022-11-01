@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import React from 'react'
-import NewHomePageTextedBoxesItem from './NewHomePageTextedBoxesItem'
+import BlockCardsItem from './BlockCardsItem'
 
-const NewHomePageTextedBoxes = ({ data }) => {
+const BlockCards = ({ data }) => {
 	// let { structure } = data
 
 	const structure = {
@@ -207,7 +207,7 @@ const NewHomePageTextedBoxes = ({ data }) => {
 				<div className='new-home-page-boxes mb-13'>
 					<h2 className='fs-3qx mb-10 header'>{structure?.title?.value}</h2>
 					{structure?.list?.value.map((item, index) => (
-						<NewHomePageTextedBoxesItem
+						<BlockCardsItem
 							key={index}
 							background={item?.backgroundImage}
 							image={item?.image}
@@ -230,4 +230,4 @@ const NewHomePageTextedBoxes = ({ data }) => {
 	)
 }
 
-export default NewHomePageTextedBoxes
+export default BlockCards

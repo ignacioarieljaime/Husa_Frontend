@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import NewHomePageSpotlightReleasesItem from './NewHomePageSpotlightReleasesItem'
+import BlockSpotlightItem from './BlockSpotlightItem'
 
-const NewHomePageSpotlightReleases = ({ data }) => {
+const BlockSpotlight = ({ data }) => {
 	const [activeProduct, setActiveProduct] = useState()
 
 	const structure = {
@@ -187,7 +187,7 @@ const NewHomePageSpotlightReleases = ({ data }) => {
 				</div>
 				<div className='product-list'>
 					{structure?.list?.value.map((item, index) => (
-						<NewHomePageSpotlightReleasesItem
+						<BlockSpotlightItem
 							key={index}
 							title={item?.title?.value}
 							description={item?.description?.value}
@@ -202,4 +202,4 @@ const NewHomePageSpotlightReleases = ({ data }) => {
 	)
 }
 
-export default NewHomePageSpotlightReleases
+export default BlockSpotlight

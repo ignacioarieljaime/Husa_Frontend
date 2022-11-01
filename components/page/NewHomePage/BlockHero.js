@@ -9,7 +9,7 @@ import 'aos/dist/aos.css'
 
 import ParallaxBanner from '../../../public/assets/images/parallxBanner.png'
 
-const NewHomePageParallaxBanner = ({ data }) => {
+const BlockHero = ({ data }) => {
 	const structure = {
 		image: {
 			src: ParallaxBanner.src
@@ -77,4 +77,4 @@ const NewHomePageParallaxBanner = ({ data }) => {
 	)
 }
 
-export default NewHomePageParallaxBanner
+export default BlockHero

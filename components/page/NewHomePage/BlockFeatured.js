@@ -10,7 +10,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const NewHomePageNewsSlider = ({ data }) => {
+const BlockFeatured = ({ data }) => {
 	const structure = {
 		sliderList: {
 			value: [
@@ -129,4 +129,4 @@ const NewHomePageNewsSlider = ({ data }) => {
 	)
 }
 
-export default NewHomePageNewsSlider
+export default BlockFeatured
