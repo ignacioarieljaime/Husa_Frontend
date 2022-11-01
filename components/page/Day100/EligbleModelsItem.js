@@ -3,14 +3,14 @@ import Tv from 'public/assets/images/100-day/tv.png'
 const EligbleModelsItem = ({ data }) => {
 	return (
 		<div className='item day-100'>
-			<div className='d-flex flex-column justify-content-between align-items-start'>
+			<div className='d-flex flex-column h-100 justify-content-between align-items-start'>
 				<div>
 					<span className='text-primary fs-4 fw-bold d-flex w-100 justify-content-center'>
 						{data?.title?.value}
 					</span>
 					<div className='text-center position-relative mb-10'>
 						<img src={data?.image?.src} alt={data?.image?.alt} width='90%' />
-						<div className='infill-overlay'>Use current infills</div>
+						{/* <div className='infill-overlay'>Use current infills</div> */}
 					</div>
 					<div className='text-center'>
 						<h5 className='item-size'>{data?.grayText?.value} </h5>
