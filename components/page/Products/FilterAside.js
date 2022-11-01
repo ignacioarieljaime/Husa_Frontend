@@ -17,23 +17,64 @@ function FilterAside({
 	const [filterListCondition, setFilterListCondition] = useState(false)
 
 	useEffect(() => {
-		setFilters(router.query.filter ? JSON.parse(router.query.filter) : [])
+		setFilters(router.query.filter ? JSON.parse(decodeURIComponent(router.query.filter)) : [])
 	}, [])
 
 	const filterController = (e, _filter) => {
 		let _filtersBox = filters
+		let filterWrapperExisted = _filtersBox.find(
+			item => item.id === _filter.filterId
+		)
 		e.target.checked = true
 
-		if (_filtersBox.find(item => item.filter_name === _filter.title)) {
-			_filtersBox = filters.filter(item => item.filter_name !== _filter.title)
+		if (filterWrapperExisted) {
+			if (filterWrapperExisted.values.indexOf(_filter.title) < 0) {
+				let removeExitItemOfFilters = (_filtersBox = filters.filter(
+					item => item.id !== _filter.filterId
+				))
+				_filtersBox = [
+					...removeExitItemOfFilters,
+					{
+						id: filterWrapperExisted.id,
+						values: [...filterWrapperExisted.values, _filter.title]
+					}
+				]
+			} else {
+				let removeExitItem = filterWrapperExisted.values.filter(
+					item => item !== _filter.title
+				)
+				let removeExitItemOfFilters = (_filtersBox = filters.filter(
+					item => item.id !== _filter.filterId
+				))
+				if (removeExitItem.length === 0) {
+					_filtersBox = [...removeExitItemOfFilters]
+				} else {
+					_filtersBox = [
+						...removeExitItemOfFilters,
+						{
+							id: filterWrapperExisted.id,
+							values: removeExitItem
+						}
+					]
+				}
+			}
 		} else {
 			_filtersBox.push({
-				filter_name: _filter.title,
-				filter_value: _filter.filter_value
+				id: _filter.filterId,
+				values: [_filter.title]
 			})
 		}
 		setFilters(_filtersBox)
 		filterRequest(_filtersBox)
+
+		// if (_filtersBox.find(item => item.filter_name === _filter.title)) {
+		// _filtersBox = filters.filter(item => item.filter_name !== _filter.title)
+		// } else {
+		// 	_filtersBox.push({
+		// 		filter_name: _filter.title,
+		// 		filter_value: _filter.filter_value
+		// 	})
+		// }
 	}
 
 	const checkboxClearHandler = () => {
@@ -41,7 +82,6 @@ function FilterAside({
 		setFilters([])
 		filterRequest([])
 	}
-
 	return (
 		<div className='category'>
 			<button
@@ -67,6 +107,7 @@ function FilterAside({
 														<ProductFilterAideItem
 															checkboxConditionRender={checkBoxCondition}
 															filterController={filterController}
+															filterParentId={filter.content_record_id}
 															checkCondition={filters}
 															data={item}
 															key={`filter-${item.title}-${index}`}
