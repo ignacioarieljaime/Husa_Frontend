@@ -17,7 +17,7 @@ function FilterAside({
 	const [filterListCondition, setFilterListCondition] = useState(false)
 
 	useEffect(() => {
-		setFilters(router.query.filter ? JSON.parse(router.query.filter) : [])
+		setFilters(router.query.filter ? JSON.parse(decodeURIComponent(router.query.filter)) : [])
 	}, [])
 
 	const filterController = (e, _filter) => {

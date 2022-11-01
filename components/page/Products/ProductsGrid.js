@@ -2,7 +2,11 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { GetProductByFilterApi, GetProductsListApi, GetProductsListNewApi } from 'services/Product'
+import {
+	GetProductByFilterApi,
+	GetProductsListApi,
+	GetProductsListNewApi
+} from 'services/Product'
 
 // components
 import FilterAside from './FilterAside'
@@ -22,7 +26,8 @@ function ProductsGrid({
 
 	useEffect(() => {
 		if (router.query.filter) {
-			getProducts(JSON.parse(router.query.filter))
+		
+		 getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
 		} else {
 			getProducts([])
 		}
@@ -34,12 +39,16 @@ function ProductsGrid({
 			window.history.replaceState(
 				null,
 				null,
-				`?filter=${JSON.stringify(_filter)}`
+				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
 			)
 		}
 
 		try {
-			let response = await GetProductsListNewApi(router, category.value, _filter)
+			let response = await GetProductsListNewApi(
+				router,
+				category.value,
+				_filter
+			)
 			setProducts(response.data.data)
 			setTotalCount(response.data.total)
 			getFilters(response.data.filterTypes)
