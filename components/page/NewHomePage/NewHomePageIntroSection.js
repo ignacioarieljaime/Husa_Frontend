@@ -1,8 +1,16 @@
 import Link from 'next/link'
 import React from 'react'
-import { useParallax } from 'react-scroll-parallax'
+import { useParallax, ParallaxProvider } from 'react-scroll-parallax'
 
 const NewHomePageIntroSection = ({ data }) => {
+	return (
+		<ParallaxProvider>
+			<NewHomePageParallaxContainer data={data} />
+		</ParallaxProvider>
+	)
+}
+
+const NewHomePageParallaxContainer = ({ data }) => {
 	const structure = {
 		title: {
 			value: 'Kitchen-Suite Bring home a suite fit for the family.'

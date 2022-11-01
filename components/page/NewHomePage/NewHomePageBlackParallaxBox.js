@@ -1,8 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
-import { useParallax, useParallaxController } from 'react-scroll-parallax'
+import {
+	useParallax,
+	useParallaxController,
+	ParallaxProvider
+} from 'react-scroll-parallax'
 
 const NewHomePageBlackParallaxBox = ({ data }) => {
+	return (
+		<ParallaxProvider>
+			<NewHomePageParallaxContainer data={data} />
+		</ParallaxProvider>
+	)
+}
+
+const NewHomePageParallaxContainer = ({ data }) => {
 	const structure = {
 		title: {
 			value: 'We make award winning TVs.'
