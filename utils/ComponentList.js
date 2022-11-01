@@ -24,6 +24,7 @@ const { MoreTvComponents } = require('./components/MoreTvComponents')
 const { Day100Components } = require('./components/Day100Components')
 const { L9GComponents } = require('./components/L9GComponents')
 const { HomePageMB } = require('./components/HomePageMB')
+const { NewHomePageComponents } = require('./components/NewHomePage')
 
 module.exports.ComponentList = [
 	...CommonComponents,
@@ -52,6 +53,7 @@ module.exports.ComponentList = [
 	...Day100Components,
 	...L9GComponents,
 	...HomePageMB,
+	...NewHomePageComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'
