@@ -26,8 +26,7 @@ function ProductsGrid({
 
 	useEffect(() => {
 		if (router.query.filter) {
-		
-		 getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
+			getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
 		} else {
 			getProducts([])
 		}
