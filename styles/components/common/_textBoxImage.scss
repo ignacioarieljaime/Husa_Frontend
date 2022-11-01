@@ -50,7 +50,7 @@
 		.cool-features-item {
 			padding: 48px;
 			text-align: start;
-			max-width:100%;
+			max-width: 100%;
 			width: 100%;
 			.image {
 				width: 100%;
@@ -92,6 +92,46 @@
 				left: -48px;
 			}
 		}
+	}
+}
+
+.home-appliance-image {
+	img {
+		max-height: 600px;
+	}
+	.heading-text {
+		h3 {
+			margin-bottom: 55px;
+		}
+		h4 {
+			font-weight: 400;
+			font-size: 18px;
+			line-height: 30px;
+			color: #fff;
+		}
+	}
+}
+
+.home-appliance-text-box {
+	h2 {
+		color: #fff;
+		font-weight: 400;
+		line-height: 48px;
+		color: #ffffff;
+	}
+	h4 {
+		font-weight: 400;
+		line-height: 43px;
+	}
+	h6 {
+		color: #fff;
+		font-weight: 400;
+		line-height: 30px;
+	}
+	p {
+		font-weight: 300;
+		color: #fff;
+		line-height: 30px;
 	}
 }
 
