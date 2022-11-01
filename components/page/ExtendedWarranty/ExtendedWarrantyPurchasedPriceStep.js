@@ -1,19 +1,17 @@
 import React from 'react'
 import Dollar from 'components/icons/Dollar'
 
-const ExtendedWarrantyPurchasedPriceStep = () => {
+const ExtendedWarrantyPurchasedPriceStep = ({ product, price, onChange }) => {
 	return (
 		<section>
 			<div className='purchased-price-step'>
 				<div className='content-container'>
 					<div className='product'>
-						<h6 className='model'>HUI6220XCUS</h6>
-						<h5 className='title'>
-							47-Decibel Top Control 24" Built-In Dishwasher
-						</h5>
+						<h6 className='model'>{product?.model?.value}</h6>
+						<h5 className='title'>{product?.title?.value}</h5>
 						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/278/e7a660ef50/Artboard-1__ScaleMaxWidthWzY0MF0.png'
-							alt='featured image'
+							src={product?.image?.src}
+							alt={product?.image?.alt}
 							className='image'
 						/>
 					</div>
@@ -24,7 +22,12 @@ const ExtendedWarrantyPurchasedPriceStep = () => {
 							with applicable sales tax.
 						</p>
 						<div className='extended-warranty-input'>
-							<input placeholder='Enter price' />
+							<input
+								placeholder='Enter price'
+								type='text'
+								value={price}
+								onChange={e => onChange(e.target.value)}
+							/>
 							<Dollar />
 						</div>
 						<button className='n-btn black-outline transparent'>Enter</button>
