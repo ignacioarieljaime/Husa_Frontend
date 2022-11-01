@@ -1271,6 +1271,50 @@
 					"data": "hello"
 				}
 			]
+		},
+		{
+			"name": "NewHomePage",
+			"isHome": false,
+			"className": "new-home-page",
+			"dynamicRote": null,
+			"pageRoute": "./pages/NewHomePage",
+			"components": [
+				{
+					"name": "NewHomePageParallaxBanner",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NewHomePageNewsSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NewHomePageSpotlightReleases",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NewHomePageBlackParallaxBox",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NewHomePageAppliancesSlider",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NewHomePageIntroSection",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "NewHomePageTextedBoxes",
+					"props": {},
+					"data": "hello"
+				}
+			]
 		}
 	]
 }
