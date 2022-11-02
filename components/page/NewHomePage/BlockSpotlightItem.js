@@ -9,7 +9,7 @@ const BlockSpotlightItem = ({ title, image, description, link, models }) => {
 			<h5 className='description'>{description}</h5>
 			<h3 className='title'>{title}</h3>
 			<div className='models'>{models}</div>
-			<Link href={link?.value}>
+			<Link href={link?.value ? link?.value : '/'}>
 				<a className='n-btn outline-black transparent'>{link?.title}</a>
 			</Link>
 		</div>

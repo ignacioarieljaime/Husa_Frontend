@@ -51,7 +51,8 @@ const BlockTVContainer = ({ structure }) => {
 								dangerouslySetInnerHTML={{
 									__html: structure?.text?.value
 								}}></div>
-							<Link href={structure?.link?.value}>
+							<Link
+								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a className='n-btn outline-white transparent'>
 									{structure?.link?.title}
 								</a>
