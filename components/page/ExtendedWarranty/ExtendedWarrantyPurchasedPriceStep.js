@@ -1,7 +1,12 @@
 import React from 'react'
 import Dollar from 'components/icons/Dollar'
 
-const ExtendedWarrantyPurchasedPriceStep = ({ product, price, onChange }) => {
+const ExtendedWarrantyPurchasedPriceStep = ({
+	product,
+	price,
+	onChange,
+	stepHandler
+}) => {
 	return (
 		<section>
 			<div className='purchased-price-step'>
@@ -30,7 +35,11 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, price, onChange }) => {
 							/>
 							<Dollar />
 						</div>
-						<button className='n-btn black-outline transparent'>Enter</button>
+						<button
+							className='n-btn black-outline transparent'
+							onClick={() => stepHandler({ title: 'Purchased Price', id: 1 })}>
+							Enter
+						</button>
 					</div>
 				</div>
 			</div>

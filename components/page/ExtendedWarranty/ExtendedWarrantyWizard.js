@@ -8,7 +8,7 @@ import ExtendedWarrantyWizardStepper from './ExtendedWarrantyWizardStepper'
 const ExtendedWarrantyWizard = ({ data }) => {
 	const [step, setStep] = useState({
 		title: 'Products',
-		id: 2
+		id: 0
 	})
 	const [price, setPrice] = useState()
 	const [plan, setPlan] = useState({
@@ -51,11 +51,13 @@ const ExtendedWarrantyWizard = ({ data }) => {
 			product={structure?.product}
 			price={price}
 			onChange={setPrice}
+			stepHandler={setStep}
 		/>,
 		<ExtendedWarrantySevicePlansStep
 			product={structure?.product}
 			plans={structure?.plans}
 			onChange={setPlan}
+			stepHandler={setStep}
 		/>,
 		<ExtendedWarrantyFormStep product={structure?.product} plan={plan} />
 	]

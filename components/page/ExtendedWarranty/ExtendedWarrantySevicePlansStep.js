@@ -27,7 +27,10 @@ const ExtendedWarrantySevicePlansStep = ({ product, plans, onChange }) => {
 										<span>{item?.price}</span>
 									</div>
 									<button
-										onClick={() => onChange(item?.id)}
+										onClick={() => {
+											onChange(item?.id)
+											stepHandler({ title: 'Service Plans', id: 2 })
+										}}
 										className='n-btn outline-black transparent'>
 										Select
 									</button>
