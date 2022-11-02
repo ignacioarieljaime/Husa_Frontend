@@ -20,8 +20,9 @@ const GenerateComponentStructure = (_page, _content) => {
 	return `
 	import Layout from "components/common/Layout/Layout";
 	import axios from "axios";
-	import { useState } from "react";
+	import { useState, useEffect } from "react";
 	import dynamic from "next/dynamic";
+	import { useRouter } from 'next/router'
 
 	  ${uniqueImport
 			.map(
@@ -30,7 +31,18 @@ const GenerateComponentStructure = (_page, _content) => {
 			)
 			.join(';')}
 
+		
+
 	function Index${_page.id}({pim,data}) {
+		const router = useRouter()
+
+		${
+			_page.redirect &&
+			`useEffect(() => {
+			router.push('${_page.redirect}')
+		}, [])`
+		}
+	
 	    return (
 			<Layout title={'${_page.title}'} meta={${_page.meta}}>
 	      		<section>

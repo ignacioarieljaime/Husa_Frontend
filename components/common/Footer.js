@@ -1,9 +1,5 @@
 import axios from 'axios'
-import FaceBookIcon from 'components/icons/FacebookIcon'
-import InstagramIcon from 'components/icons/InstagramIcon'
 import Logo from 'components/icons/Logo'
-import TwitterIcon from 'components/icons/TwitterIcon'
-import YouTubeIcon from 'components/icons/YouTubeIcon'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 // import { setFooterData } from 'redux/slices/layout'
@@ -23,7 +19,7 @@ function Footer() {
 			let response = await axios.get(
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
-
+			setFooterData(response.data.data.find(item => item.title === 'footer'))
 			localStorage.setItem(
 				'footerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'footer'))
@@ -68,19 +64,10 @@ function Footer() {
 								<label className='mb-4'>Follow Us</label>
 								<div className='row justify-content-start align-items-center'>
 									{footerData?.widgets?.socials.map(item => (
-										<Link href={item.url ? item.url : ''}>
-											<a>
-												{item.name === 'facebook' ? (
-													<FaceBookIcon />
-												) : item.name === 'twitter' ? (
-													<TwitterIcon />
-												) : item.name === 'youtube' ? (
-													<YouTubeIcon />
-												) : item.name === 'instagram' ? (
-													<InstagramIcon />
-												) : null}
-											</a>
-										</Link>
+										<a
+											href={item.url ? item.url : ''}
+											className={`socicon socicon-${item.name}`}
+											style={{ fontSize: '20px', color: '#fff' }}></a>
 									))}
 								</div>
 							</div>

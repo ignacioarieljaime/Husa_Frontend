@@ -12,6 +12,10 @@ module.exports.CommonComponents = [
 		path: 'components/common/ImageBox'
 	},
 	{
+		name: 'LetsGetRealTextBox',
+		path: 'components/common/LetsGetRealTextBox'
+	},
+	{
 		name: 'Header',
 		path: 'components/common/Header/Header'
 	},

@@ -1,47 +1,47 @@
 module.exports.MoreTvComponents = [
 	{
-		name: 'MoreTVHead',
-		path: 'components/page/MoreTv/MoreTVHead'
+		name: 'MoreTvHead',
+		path: 'components/page/MoreTv/MoreTvHead'
 	},
 	{
-		name: 'MoreTVBox',
-		path: 'components/page/MoreTv/MoreTVBox'
+		name: 'MoreTvBox',
+		path: 'components/page/MoreTv/MoreTvBox'
 	},
 	{
-		name: 'MoreTVVideoBox',
-		path: 'components/page/MoreTv/MoreTVVideoBox'
+		name: 'MoreTvVideoBox',
+		path: 'components/page/MoreTv/MoreTvVideoBox'
 	},
 	{
-		name: 'MoreTVAmericaBox',
-		path: 'components/page/MoreTv/MoreTVAmericaBox'
+		name: 'MoreTvAmericaBox',
+		path: 'components/page/MoreTv/MoreTvAmericaBox'
 	},
 
 	{
-		name: 'MoreTVLessTalk',
-		path: 'components/page/MoreTv/MoreTVLessTalk'
+		name: 'MoreTvLessTalk',
+		path: 'components/page/MoreTv/MoreTvLessTalk'
 	},
 	{
-		name: 'MoreTVHisensePromise',
-		path: 'components/page/MoreTv/MoreTVHisensePromise'
+		name: 'MoreTvHisensePromise',
+		path: 'components/page/MoreTv/MoreTvHisensePromise'
 	},
 	{
-		name: 'MoreTVGrabSlider',
-		path: 'components/page/MoreTv/MoreTVGrabSlider'
+		name: 'MoreTvGrabSlider',
+		path: 'components/page/MoreTv/MoreTvGrabSlider'
 	},
 	{
-		name: 'MoreTVLessTalkForm',
-		path: 'components/page/MoreTv/MoreTVLessTalkForm'
+		name: 'MoreTvLessTalkForm',
+		path: 'components/page/MoreTv/MoreTvLessTalkForm'
 	},
 	{
-		name: 'MoreTVExperts',
-		path: 'components/page/MoreTv/MoreTVExperts'
+		name: 'MoreTvExperts',
+		path: 'components/page/MoreTv/MoreTvExperts'
 	},
 	{
 		name: 'MoreTVNewItemsBox',
-		path: 'components/page/MoreTv/MoreTVNewItemsBox'
+		path: 'components/page/MoreTv/MoreTvNewItemsBox'
 	},
 	{
 		name: 'MoreTVNewHisensePromise',
-		path: 'components/page/MoreTv/MoreTVNewHisensePromise'
+		path: 'components/page/MoreTv/MoreTvNewHisensePromise'
 	}
 ]

@@ -6,8 +6,9 @@ import ServiceSupportForm from './ServiceSupportForm'
 
 function ContactUsForm() {
 	const [formCondition, setFormCondition] = useState(false)
+	const [formDisplay, setFormDisplay] = useState()
 	return (
-		<section>
+		<section className={formDisplay && 'd-none'}>
 			<div className='container form-container px-8 px-md-20 mt-12'>
 				<div className='d-flex justify-content-center align-items-center flex-nowrap mb-15'>
 					<div className='me-6'>
@@ -27,7 +28,11 @@ function ContactUsForm() {
 						</button>
 					</div>
 				</div>
-				{formCondition ? <GeneralInquiriesForm /> : <ServiceSupportForm />}
+				{formCondition ? (
+					<GeneralInquiriesForm formHandler={setFormDisplay} />
+				) : (
+					<ServiceSupportForm formHandler={setFormDisplay} />
+				)}
 			</div>
 		</section>
 	)

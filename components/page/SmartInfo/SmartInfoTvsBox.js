@@ -3,7 +3,6 @@ import SmartInfoTvsDifferentItem from './SmartInfoTvsDifferentItem'
 
 function SmartInfoTvsBox({ data }) {
 	let { structure } = data
-	console.log(data)
 	return (
 		<section>
 			<div className='row mx-0'>

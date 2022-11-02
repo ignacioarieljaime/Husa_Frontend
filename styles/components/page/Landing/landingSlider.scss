@@ -1,7 +1,6 @@
 .home-header-carousel {
-	width: 100%;
 	overflow: hidden;
-	height: 520px;
+	height: calc(100vh - 80px) !important;
 	.swiper-wrapper {
 		display: flex;
 		height: 100%;
@@ -10,9 +9,15 @@
 				display: flex;
 				height: 100%;
 				position: relative;
+				a {
+					background-position: center !important;
+					background-size: cover !important;
+					background-repeat: no-repeat !important;
+				}
 				.main-img {
 					display: block;
-					object-fit: cover;
+					object-fit: contain;
+					width: 100%;
 				}
 				.responsive-img {
 					display: none;
@@ -87,7 +92,7 @@
 
 @media (max-width: 767px) {
 	.home-header-carousel {
-	height: unset;
+		height: unset;
 
 		.carousel-item-wrapper {
 			.main-img {

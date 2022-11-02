@@ -6,7 +6,11 @@ function ULEDProducts({ data: { structure } }) {
 		<section>
 			<div className='row mx-0'>
 				{structure?.list?.value.map((item, index) => (
-					<ULEDProductItem key={index} data={item} />
+					<ULEDProductItem
+						itemLength={structure?.list?.value.length}
+						key={index}
+						data={item}
+					/>
 				))}
 			</div>
 		</section>

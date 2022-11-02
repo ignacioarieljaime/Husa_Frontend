@@ -20,7 +20,6 @@
 }
 .custom-checkbox [type='checkbox']:checked + label:after,
 .custom-checkbox [type='checkbox']:not(:checked) + label:after {
-	content: url(../../../public/assets/svgs/check-icon.svg);
 	width: 16px;
 	height: 16px;
 	position: absolute;

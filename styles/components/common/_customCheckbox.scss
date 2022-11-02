@@ -5,10 +5,25 @@
 	height: 13px;
 	border: 1px solid #000;
 	background-color: #fff;
+	display: flex;
+	align-items: center;
 	&.checked {
 		border: none;
 	}
+	.custom-border {
+		width: 28px;
+		height: 28px;
+		border: 1px solid #ddd;
+		background: transparent;
+		display: flex;
+		flex-shrink: 0;
+		align-items: center;
+		justify-content: center;
+		margin-right: 5px;
+	}
 }
+
+
 
 .radio-checkbox {
 	font-weight: 400;
@@ -46,5 +61,5 @@
 				display: block;
 			}
 		}
-	}
+	
 }

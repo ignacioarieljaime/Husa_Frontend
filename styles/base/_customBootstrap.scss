@@ -271,8 +271,10 @@
 	max-width: 370px;
 	margin: 0 auto;
 	transform: scale(1);
+	object-fit: contain;
 	transition: all 0.4s ease;
-	max-height: 265px !important;
+	height: 280px !important;
+	max-height: 280px !important;
 }
 .products-container .item:hover img {
 	transform: scale(1.08);
@@ -1076,10 +1078,12 @@ article:hover > .img-box-shadow-hover {
 	background: var(--nav-background-color);
 	transition: all 0.3s ease-in-out;
 }
-.theme-light:hover {
-	--nav-background-color: #000;
-	--nav-text-color: #fff;
-	background: var(--nav-background-color);
+header {
+	.theme-light:hover {
+		--nav-background-color: #000;
+		--nav-text-color: #fff;
+		background: var(--nav-background-color);
+	}
 }
 
 /*///////////////////////////////////// product page //////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -1324,6 +1328,11 @@ article:hover > .img-box-shadow-hover {
 	top: 75px;
 	left: 0;
 }
+.double-quote-image {
+	max-width: 204px;
+	max-height: 74px;
+	object-fit: contain;
+}
 .double-quote.end {
 	transform: rotate(-180deg);
 	margin: 0 0 0 -25px;
@@ -1483,6 +1492,11 @@ article:hover > .img-box-shadow-hover {
 			padding: 30px 20px;
 			height: 100%;
 			margin: 0 20px;
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+			-o-transition: all 0.3s;
 			position: relative;
 			div {
 				background-color: #00a6a5;
@@ -1508,6 +1522,11 @@ article:hover > .img-box-shadow-hover {
 				font-weight: normal;
 				text-decoration: none;
 			}
+
+			&:hover {
+				background: #fff;
+			}
+
 			&::after {
 				content: '';
 				display: block;
@@ -1523,10 +1542,12 @@ article:hover > .img-box-shadow-hover {
 				border-bottom: 15px solid transparent;
 			}
 		}
-		&:last-of-type .claim-prize-level {
-			background: #fff;
-			&::after {
-				display: none;
+
+		&:last-child {
+			> div {
+				&::after {
+					display: none;
+				}
 			}
 		}
 	}

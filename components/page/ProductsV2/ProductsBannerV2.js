@@ -14,7 +14,7 @@ const ProductsBannerV2 = ({ data }) => {
 					className={"img-fluid"}
 				/>
 				<div className='heading-text'>
-					<h1 className='fs-md-3qx fw-normal mw-50 mx-auto'>
+					<h1 className='fs-md-3qx fw-normal text-white mw-50 mx-auto'>
 						{structure?.title?.value}
 					</h1>
 				</div>

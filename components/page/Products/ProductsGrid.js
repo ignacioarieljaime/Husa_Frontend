@@ -2,7 +2,11 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { GetProductByFilterApi } from 'services/Product'
+import {
+	GetProductByFilterApi,
+	GetProductsListApi,
+	GetProductsListNewApi
+} from 'services/Product'
 
 // components
 import FilterAside from './FilterAside'
@@ -13,31 +17,50 @@ function ProductsGrid({
 		structure: { category }
 	}
 }) {
+	const [filters, setFilters] = useState([])
 	const [products, setProducts] = useState([])
-	const [filter, setFilter] = useState([])
+	const [totalCount, setTotalCount] = useState()
+	const [filterList, setFilterList] = useState()
+	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const router = useRouter()
-	useEffect(() => {
-		filter.length === 0 ? getProducts() : getProductByFilter()
-	}, [filter])
 
-	const getProducts = async () => {
+	useEffect(() => {
+		if (router.query.filter) {
+			getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
+		} else {
+			getProducts([])
+		}
+	}, [])
+
+	const getProducts = async _filter => {
 		setProducts('loading')
+		if (_filter) {
+			window.history.replaceState(
+				null,
+				null,
+				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
+			)
+		}
+
 		try {
-			let response = await axios.get(
-				`https://impim.dev-api.hisenseportal.com/api/cms/getProducts/${category.value}`
+			let response = await GetProductsListNewApi(
+				router,
+				category.value,
+				_filter
 			)
 			setProducts(response.data.data)
+			setTotalCount(response.data.total)
+			getFilters(response.data.filterTypes)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	const getProductByFilter = async () => {
-		setProducts('loading')
-
+	const getFilters = async _filterList => {
+		let filters = []
 		try {
-			let response = await GetProductByFilterApi(router, filter)
-			setProducts(response.data.data)
+			_filterList.forEach(item => filters.push(...item.filters))
+			setFilterList(filters)
 		} catch (error) {
 			console.log(error)
 		}
@@ -46,13 +69,24 @@ function ProductsGrid({
 	return (
 		<div className='category-products'>
 			<FilterAside
-				filterHandler={setFilter}
-				categoryId={category}
-				filter={filter}
+				filterRequest={getProducts}
+				filterList={filterList}
+				checkBoxCondition={checkBoxCondition}
+				setCheckBoxCondition={setCheckBoxCondition}
+				filters={filters}
+				setFilters={setFilters}
 			/>
 			<div className='result_box__product_container'>
 				<div className='result-box'>
-					Total Results: 77 <a href='#'>View All</a>
+					Total Results: {totalCount}{' '}
+					<button
+						onClick={() => {
+							getProducts([])
+							setFilters([])
+							setCheckBoxCondition(!checkBoxCondition)
+						}}>
+						View All
+					</button>
 				</div>
 
 				{!Array.isArray(products) ? (

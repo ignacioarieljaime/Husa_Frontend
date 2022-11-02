@@ -16,16 +16,18 @@ function TVAndAudioSmartChoice({ data: { structure } }) {
 							</span>
 						</h2>
 						<div>
-							<p className='fw-normal m-auto mb-4'>
-								{structure?.paragraph?.value}
-							</p>
+							<p
+								className='fw-normal m-auto mb-4'
+								dangerouslySetInnerHTML={{
+									__html: structure?.paragraph?.value
+								}}></p>
 							<img
 								className='tv_and_audio_Laser_intro'
 								src={structure?.image?.src}
 								alt={structure?.image?.alt}
 							/>
 						</div>
-						<Link href={structure?.paragraph?.value}>
+						<Link href={structure?.link?.value}>
 							<a className='text-decoration-underline d-block text-muted fs-5 text-uppercase mt-8'>
 								{structure?.link?.title}
 							</a>

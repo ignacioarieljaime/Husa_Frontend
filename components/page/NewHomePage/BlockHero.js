@@ -9,34 +9,18 @@ import 'aos/dist/aos.css'
 
 import ParallaxBanner from '../../../public/assets/images/parallxBanner.png'
 
-const NewHomePageParallaxBanner = ({ data }) => {
-	const structure = {
-		image: {
-			src: ParallaxBanner.src
-		},
-		title: {
-			value: 'It all starts with X'
-		},
-		description: {
-			value: 'Pre-order the limited edition ULED X today.'
-		},
-		link: {
-			value: '/',
-			title: 'Sign Up Now'
-		}
-	}
-
+const BlockHero = ({ data: { structure } }) => {
 	useEffect(() => {
 		AOS.init()
-	})
+	}, [])
 
 	return (
 		<section>
 			<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
 				<div className='parallax-banner'>
 					<img
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
+						src={ParallaxBanner.src}
+						alt='parallax background'
 						className={'img-fluid'}
 					/>
 					<div className='banner-content'>
@@ -57,9 +41,10 @@ const NewHomePageParallaxBanner = ({ data }) => {
 									data-aos='fade'
 									data-aos-duration='700'
 									data-aos-delay='1500'>
-									{structure?.description?.value}
+									{structure?.subtitle?.value}
 								</p>
-								<Link href={structure?.link?.value}>
+								<Link
+									href={structure?.link?.value ? structure?.link?.value : '/'}>
 									<a
 										className='n-btn white'
 										data-aos='fade'
@@ -77,4 +62,4 @@ const NewHomePageParallaxBanner = ({ data }) => {
 	)
 }
 
-export default NewHomePageParallaxBanner
+export default BlockHero

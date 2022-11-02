@@ -1,13 +1,13 @@
 import React from 'react'
-import MoreTVItem from './MoreTVItem'
+import MoreTVItem from './MoreTvItem'
 
 function MoreTVBox({ data }) {
-	const { value } = data.structure.list
+	const { structure } = data
 	return (
 		<section>
 			<div className='container-fluid py-6'>
 				<div className='row'>
-					{value?.map((item, index) => {
+					{structure?.list?.value?.map((item, index) => {
 						return (
 							<MoreTVItem
 								key={index}
