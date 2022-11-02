@@ -1,10 +1,6 @@
 import React from 'react'
-
-// image
-import Banner from 'public/assets/images/sponsership/fnatic-banner.png'
 function SponsorImageAndText({ data }) {
 	let { structure } = data
-	console.log(structure)
 	return (
 		<section className='sponsor-ship-bg'>
 			<div className='container pt-20'>

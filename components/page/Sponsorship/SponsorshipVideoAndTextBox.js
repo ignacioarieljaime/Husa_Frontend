@@ -17,8 +17,7 @@ function SponsorshipVideoAndTextBox({ data }) {
 		<section className='sponsor-ship-bg'>
 			<div className='container pt-20'>
 				<div className='video-container rounded-0'>
-					<video ref={video} id='blog-video' width='100%' height='100%'>
-						<source src={structure?.video?.value} type='video/mp4' />
+					<video ref={video} src={structure?.video?.value} id='blog-video' width='100%' height='100%'>
 						Your browser does not support the video tag.
 					</video>
 
@@ -27,7 +26,7 @@ function SponsorshipVideoAndTextBox({ data }) {
 							onClick={() => videoHandler(true)}
 							id='video-play-btn'
 							className='play-btn'>
-							<FontAwesomeIcon icon={faPlay} size={'2xl'} color={'#fff'} />
+							<FontAwesomeIcon icon={faPlay} size={'2xl'} color={'#000'} />
 						</button>
 					)}
 				</div>

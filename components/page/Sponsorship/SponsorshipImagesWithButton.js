@@ -12,7 +12,7 @@ function SponsorshipImagesWithButton({ data }) {
 
 				<div>
 					<Link href={structure?.link?.value}>
-						<a className='btn btn-secondary rounded-5 text-uppercase px-10 py-3'>
+						<a className='btn btn-secondary text-white rounded-5  px-10 py-3'>
 							{structure?.link?.title}
 						</a>
 					</Link>
