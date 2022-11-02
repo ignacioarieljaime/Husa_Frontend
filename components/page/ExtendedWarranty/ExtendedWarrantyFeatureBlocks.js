@@ -1,5 +1,9 @@
 import React from 'react'
 import ExtendedWarrantyFeatureBlocksItem from './ExtendedWarrantyFeatureBlocksItem'
+import img from 'public/assets/images/Subtract22.png'
+import img1 from 'public/assets/images/Union1.png'
+import img2 from 'public/assets/images/Vector.png'
+import img3 from 'public/assets/images/Subtract1.png'
 
 const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 	const structure = {
@@ -11,7 +15,7 @@ const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 			value: [
 				{
 					image: {
-						src: ''
+						src: img.src
 					},
 					link: {
 						value: '/',
@@ -27,7 +31,7 @@ const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 				},
 				{
 					image: {
-						src: ''
+						src: img1.src
 					},
 					link: {
 						value: '/',
@@ -43,7 +47,7 @@ const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 				},
 				{
 					image: {
-						src: ''
+						src: img2.src
 					},
 
 					title: {
@@ -56,7 +60,7 @@ const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 				},
 				{
 					image: {
-						src: ''
+						src: img3.src
 					},
 					link: {
 						value: '/',

@@ -34,5 +34,9 @@ module.exports.ExtendedWarrantyComponents = [
 	{
 		name: 'ExtendedWarrantyModelSelection',
 		path: 'components/page/ExtendedWarranty/ExtendedWarrantyModelSelection'
+	},
+	{
+		name: 'ExtendedWarrantySearchProduct',
+		path: 'components/page/ExtendedWarranty/ExtendedWarrantySearchProduct'
 	}
 ]

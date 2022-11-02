@@ -7,6 +7,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
 
+import img from 'public/assets/images/iconSoundbar.png'
+import img1 from 'public/assets/images/iconRefrigerators.png'
+import img2 from 'public/assets/images/iconAirProduct.png'
+
 const ExtendedWarrantyProductsSlider = ({ data }) => {
 	const [searchTerm, setSearchTerm] = useState('')
 
@@ -18,80 +22,35 @@ const ExtendedWarrantyProductsSlider = ({ data }) => {
 						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
 					},
 					link: {
-						value: '/',
+						value: '/ewp-model-selection-page',
 						title: 'Televisions'
 					}
 				},
 				{
 					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
+						src: img.src
 					},
 					link: {
-						value: '/',
-						title: 'Televisions'
+						value: '/ewp-model-selection-page',
+						title: 'Soundbar'
 					}
 				},
 				{
 					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
+						src: img1.src
 					},
 					link: {
-						value: '/',
-						title: 'Televisions'
+						value: '/ewp-model-selection-page',
+						title: 'Refrigirator'
 					}
 				},
 				{
 					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
+						src: img2.src
 					},
 					link: {
-						value: '/',
-						title: 'Televisions'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
-					},
-					link: {
-						value: '/',
-						title: 'Televisions'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
-					},
-					link: {
-						value: '/',
-						title: 'Televisions'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
-					},
-					link: {
-						value: '/',
-						title: 'Televisions'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
-					},
-					link: {
-						value: '/',
-						title: 'Televisions'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ProductCategorySupportSVGs/8d966a77dd/televisions.svg'
-					},
-					link: {
-						value: '/',
-						title: 'Televisions'
+						value: '/ewp-model-selection-page',
+						title: 'Air Products'
 					}
 				}
 			]
