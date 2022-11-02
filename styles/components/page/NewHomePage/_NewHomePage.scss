@@ -232,15 +232,12 @@
 	position: relative;
 	margin-bottom: 140px;
 	.title {
-		font-weight: 400;
-		line-height: 120%;
 		text-align: right;
-		letter-spacing: -0.02em;
 		color: #ffffff;
 		max-width: 850px;
 		margin: 0 0 100px auto;
 	}
-	.gradient-text {
+	.gradient-text a{
 		background-image: linear-gradient(135deg, #4145c5 0, #fac4aa 70%);
 		background-clip: text;
 		color: transparent;

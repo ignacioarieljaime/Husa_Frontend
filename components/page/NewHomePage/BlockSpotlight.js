@@ -25,7 +25,7 @@ const BlockSpotlight = ({ data: { structure } }) => {
 				<div className='product-list'>
 					{structure?.tabs?.value
 						.filter(item => activeProduct === item?.title?.value)[0]
-						.products.value.map((item, index) => (
+						?.products.value.map((item, index) => (
 							<BlockSpotlightItem
 								key={index}
 								title={item?.title?.value}

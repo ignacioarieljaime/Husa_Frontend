@@ -42,7 +42,7 @@ const BlockFeatured = ({ data: { structure } }) => {
 								/>
 							) : (
 								<div className='slider-video'>
-									<video autoPlay={item?.video?.autoPlay}>
+									<video autoPlay={true} muted={true} loop={true}>
 										<source src={item?.video?.src} />
 										{item?.image?.alt}
 									</video>
