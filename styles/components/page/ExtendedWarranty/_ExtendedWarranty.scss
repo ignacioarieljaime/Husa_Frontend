@@ -523,13 +523,84 @@
 	}
 }
 
-.extended-warranty-payment-status{
-	max-width:1000px;
+.extended-warranty-payment-status {
+	max-width: 1000px;
 	margin: 0 auto;
 	padding: 90px 0;
-	.status-container{
+	.status-container {
 		padding: 30px;
-		
+		text-align: center;
+		.status-image {
+			width: 105px;
+			margin-bottom: 50px;
+		}
+		.status-title {
+			font-weight: 400;
+			font-size: 48px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			margin-bottom: 30px;
+		}
+		.status-text {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 120%;
+			margin-bottom: 30px;
+		}
+		.custom-card {
+			background: #fbfbfb;
+			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+			border-radius: 50px;
+			margin-bottom: 55px;
+			.product {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				padding: 35px 12px;
+				.image {
+					width: 100%;
+					max-width: 350px;
+				}
+				.title {
+					font-weight: 400;
+					font-size: 20px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+				}
+				.model {
+					font-weight: 400;
+					font-size: 12px;
+					line-height: 17px;
+					margin-bottom: 15px;
+				}
+			}
+			.details {
+				border-left: 1px solid #dbddde;
+				padding: 0;
+				* {
+					text-align: start;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					> span {
+						font-weight: 700;
+						padding-left: 10px;
+					}
+				}
+				> div {
+					height: 33.333%;
+					padding: 0 16px;
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					border-bottom: 1px solid #dbddde;
+					&:last-child {
+						border-bottom: 0;
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -810,6 +881,54 @@
 				}
 				.extended-warranty-file-input {
 					margin-top: 30px;
+				}
+			}
+		}
+	}
+	.extended-warranty-payment-status {
+		padding: 40px 0 70px;
+		.status-container {
+			padding: 0 16px;
+			.status-image {
+				width: 80px;
+			}
+			.status-title {
+				font-size: 24px;
+			}
+			.status-text {
+				font-size: 14px;
+			}
+			.custom-card {
+				border-radius: 25px;
+				.product {
+					flex-direction: column-reverse;
+					justify-content: center;
+					align-items: center;
+					padding: 15px 20px;
+					.image {
+						margin-bottom: 35px;
+					}
+					.title {
+						margin-bottom: 15px;
+					}
+					.model {
+						margin-bottom: 15px;
+					}
+				}
+				.details {
+					border-left: 0;
+					padding: 0;
+					* {
+						> span {
+							font-weight: 700;
+							padding-left: 10px;
+						}
+					}
+					> div {
+						padding: 30px 16px;
+						border-top: 1px solid #dbddde;
+						border-bottom: 0;
+					}
 				}
 			}
 		}
