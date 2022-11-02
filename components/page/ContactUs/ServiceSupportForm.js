@@ -236,7 +236,8 @@ function ServiceSupportForm({ formHandler }) {
 					<div className='file-upload-box position-relative'>
 						<input
 							type='file'
-							className=' position-absolute'
+							className=' position-absolute opacity-0 w-100 h-100'
+							style={{ zIndex: 1 }}
 							id='contact-file-input'
 							accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
 							multiple='multiple'

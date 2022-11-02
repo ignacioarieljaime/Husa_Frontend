@@ -33,7 +33,7 @@ const EligibleModels = ({ data }) => {
 						modules={[Navigation]}
 						className='eligble-models-carousel '>
 						{structure?.list?.value.map((item, index) => (
-							<SwiperSlide style={{ height: '100%' }} key={'slider' + index}>
+							<SwiperSlide style={{ height: 'unset' }} key={'slider' + index}>
 								<EligbleModelsItem data={item} />
 							</SwiperSlide>
 						))}
@@ -45,6 +45,7 @@ const EligibleModels = ({ data }) => {
 							{structure?.link?.title}
 						</a>
 					</Link>
+					{}
 					<div
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
