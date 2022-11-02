@@ -2,7 +2,7 @@ import React from 'react'
 import ExtendedWarrantyFormStepForm from './ExtendedWarrantyFormStepForm'
 import ExtendedWarrantyFormStepSelectionCard from './ExtendedWarrantyFormStepSelectionCard'
 
-const ExtendedWarrantyFormStep = ({ product, plan }) => {
+const ExtendedWarrantyFormStep = ({ product, plan, stepHandler }) => {
 	return (
 		<section className='extended-warranty-form-step'>
 			<ExtendedWarrantyFormStepSelectionCard
@@ -13,7 +13,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 			/>
 			<section>
 				<div className='container'>
-					<ExtendedWarrantyFormStepForm />
+					<ExtendedWarrantyFormStepForm stepHandler={stepHandler} />
 				</div>
 			</section>
 		</section>

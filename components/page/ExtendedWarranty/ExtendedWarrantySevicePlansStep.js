@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 
-const ExtendedWarrantySevicePlansStep = ({ product, plans, onChange }) => {
+const ExtendedWarrantySevicePlansStep = ({
+	product,
+	plans,
+	onChange,
+	stepHandler
+}) => {
 	return (
 		<section>
 			<div className='service-plans'>

@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import RadioCheckBox from 'components/common/RadioCheckBox'
 import ExtendedWarrantyFileInput from './ExtendedWarrantyFileInput'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
+import Link from 'next/link'
 
-const ExtendedWarrantyFormStepForm = () => {
+const ExtendedWarrantyFormStepForm = ({ stepHandler }) => {
 	const [acceptTerms, setAcceptTerms] = useState(false)
 	const [showModal, setShowModal] = useState(false)
 
@@ -64,7 +65,9 @@ const ExtendedWarrantyFormStepForm = () => {
 				checked={acceptTerms}
 			/>
 			<div className=' mt-15 text-center'>
-				<button className='n-btn outline-black py-4'>Proceed to Payment</button>
+				<Link href={'/ewp-confirmation-page'}>
+					<a className='n-btn outline-black py-4'>Proceed to Payment</a>
+				</Link>
 			</div>
 			{showModal && (
 				<ExtendedWarrantyModelNumberDialog
