@@ -5,75 +5,13 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import Link from 'next/link'
 
-const BlockCategories = ({ data }) => {
-	const structure = {
-		title: {
-			value: 'We make fantastic appliances, too.'
-		},
-		list: {
-			value: [
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/GalleryImages/Product/489/98ea03c6d7/main-img__ScaleMaxWidthWzY0MF0.png'
-					},
-					link: {
-						title: 'Television',
-						value: '/'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/GalleryImages/Product/488/8e357f4b93/roku__ScaleMaxWidthWzY0MF0.png'
-					},
-					link: {
-						title: 'Television',
-						value: '/'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/GalleryImages/Product/488/8e357f4b93/roku__ScaleMaxWidthWzY0MF0.png'
-					},
-					link: {
-						title: 'Television',
-						value: '/'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/GalleryImages/Product/488/8e357f4b93/roku__ScaleMaxWidthWzY0MF0.png'
-					},
-					link: {
-						title: 'Television',
-						value: '/'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/GalleryImages/Product/488/8e357f4b93/roku__ScaleMaxWidthWzY0MF0.png'
-					},
-					link: {
-						title: 'Television',
-						value: '/'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/GalleryImages/Product/488/8e357f4b93/roku__ScaleMaxWidthWzY0MF0.png'
-					},
-					link: {
-						title: 'Television',
-						value: '/'
-					}
-				}
-			]
-		}
-	}
-
+const BlockCategories = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='new-home-page-appliances mb-20'>
-				<h2 className='title fs-3x mb-15'>{structure?.title?.value}</h2>
+				<h2
+					className='title fs-3x mb-15'
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
 				<Swiper
 					navigation={false}
 					pagination={false}

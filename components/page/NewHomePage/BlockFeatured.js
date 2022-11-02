@@ -10,60 +10,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const BlockFeatured = ({ data }) => {
-	const structure = {
-		sliderList: {
-			value: [
-				{
-					video: {
-						src: 'http://techslides.com/demos/sample-videos/small.mp4',
-						autoPlay: true
-					},
-					title: {
-						value: 'Introducing our CMO, Mr. McHale.'
-					},
-					description: {
-						value: ''
-					},
-					url: {
-						value: '/',
-						title: 'Learn More'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/8195a563af/pdp-3_6-u7-50-50-feat-1__ScaleMaxWidthWzMwNDhd.jpg-gxkl4e.jpg'
-					},
-					title: {
-						value: 'TVs big on specs, low on B.S.'
-					},
-					description: {
-						value: ''
-					},
-					url: {
-						value: '/',
-						title: 'Learn More'
-					}
-				},
-				{
-					image: {
-						src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/8195a563af/pdp-3_6-u7-50-50-feat-1__ScaleMaxWidthWzMwNDhd.jpg-gxkl4e.jpg'
-					},
-					title: {
-						value: 'Kitchen-Suite that’s simply sweet.'
-					},
-					description: {
-						value: 'Kitchen'
-					},
-					url: {
-						value: '/',
-						title: 'Learn More'
-					}
-				}
-			]
-		}
-	}
-
+const BlockFeatured = ({ data: { structure } }) => {
 	return (
 		<section>
 			<Swiper
@@ -81,11 +28,11 @@ const BlockFeatured = ({ data }) => {
 					}
 				}}
 				className='news-slider'>
-				{structure?.sliderList?.value.map((item, index) => (
+				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index} className='slider-item'>
 						<h3 className='slider-title fs-2'>{item?.title?.value}</h3>
 						<div className='slider-body'>
-							{item?.image && (
+							{item?.image ? (
 								<img
 									src={item?.image?.src}
 									alt={item?.image?.alt}
@@ -93,8 +40,7 @@ const BlockFeatured = ({ data }) => {
 									width='100%'
 									height='100%'
 								/>
-							)}
-							{item?.video && (
+							) : (
 								<div className='slider-video'>
 									<video autoPlay={item?.video?.autoPlay}>
 										<source src={item?.video?.src} />
@@ -103,12 +49,12 @@ const BlockFeatured = ({ data }) => {
 								</div>
 							)}
 							<div className='slider-content'>
-								<h5 className='description d-none d-md-block'>
+								{/* <h5 className='description d-none d-md-block'>
 									{item?.description?.value}
-								</h5>
-								<Link href={item?.url?.value}>
+								</h5> */}
+								<Link href={item?.link?.value}>
 									<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
-										{item?.url?.title}
+										{item?.link?.title}
 									</a>
 								</Link>
 								{item?.video && (
