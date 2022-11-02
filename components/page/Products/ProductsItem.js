@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addNewCompare } from 'redux/slices/compare'
 import { RouteHandler } from 'utils/routeHandler'
 import ProductsItemLink from './ProductsItemLink'
 const ModalChanelAdviser = dynamic(() =>
@@ -9,7 +11,7 @@ const ModalChanelAdviser = dynamic(() =>
 
 function ProductsItem({ data }) {
 	let { media, name, model, id, isNew, retailers } = data
-
+	const dispatch = useDispatch()
 	const [url] = useState(RouteHandler(id))
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [series] = useState(
@@ -90,7 +92,11 @@ function ProductsItem({ data }) {
 						)}
 					</div>
 
-					<button className='compare-btn'>Add To Compare</button>
+					<button
+						onClick={() => dispatch(addNewCompare(data))}
+						className='compare-btn'>
+						Add To Compare
+					</button>
 				</div>
 			</div>
 			{chanelAdviserHandler && (
