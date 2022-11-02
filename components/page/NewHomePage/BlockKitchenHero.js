@@ -36,7 +36,8 @@ const BlockKitchenContainer = ({ structure }) => {
 								dangerouslySetInnerHTML={{ __html: structure?.text?.value }}>
 								{/* {structure?.title?.value} */}
 							</h3>
-							<Link href={structure?.link?.value}>
+							<Link
+								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a className='n-btn outline-white transparent'>
 									{structure?.link?.title}
 								</a>

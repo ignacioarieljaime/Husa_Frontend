@@ -11,14 +11,14 @@ const EligibleModels = ({ data }) => {
 	let { structure } = data
 	return (
 		<section className='day-100 eligible_models_slider '>
-			<div className='bg-grey px-10 eligble-models py-20'>
+			<div className='bg-grey px-13 eligble-models py-20'>
 				<div className='container text-center'>
 					<h2 className='text-eggplant fs-2hx fw-bolder-700 mb-6'>
 						{structure?.title?.value}
 					</h2>
 					<h3 className='mb-12'>
 						<Link href={structure?.linkUrl?.value}>
-							<a className='text-purple fs-2 '>{structure?.linkTitle?.value}</a>
+							<a className='text-purple fs-2'>{structure?.linkTitle?.value}</a>
 						</Link>
 					</h3>
 				</div>
@@ -27,7 +27,7 @@ const EligibleModels = ({ data }) => {
 						grabCursor={true}
 						roundLengths={true}
 						slidesPerView={3}
-						spaceBetween={50}
+						spaceBetween={30}
 						pagination={{ enabled: false }}
 						navigation={true}
 						modules={[Navigation]}

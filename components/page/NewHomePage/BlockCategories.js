@@ -27,7 +27,7 @@ const BlockCategories = ({ data: { structure } }) => {
 								alt={item?.image?.alt}
 								className='slider-image my-auto'
 							/>
-							<Link href={item?.link.value}>
+							<Link href={item?.link.value ? item?.link.value : '/'}>
 								<a className='slider-title text-nowrap n-btn outline-black transparent'>
 									{item?.link.title}
 								</a>

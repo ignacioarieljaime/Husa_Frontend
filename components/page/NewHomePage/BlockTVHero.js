@@ -59,7 +59,8 @@ const BlockTVContainer = ({ structure }) => {
 								just for you. */}
 							</h3>
 							<p className='description fs-4'>{structure?.paragraph?.value}</p>
-							<Link href={structure?.link?.value}>
+							<Link
+								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a className='n-btn outline-white transparent'>
 									{structure?.link?.title}
 								</a>

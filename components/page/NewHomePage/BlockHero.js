@@ -43,7 +43,8 @@ const BlockHero = ({ data: { structure } }) => {
 									data-aos-delay='1500'>
 									{structure?.subtitle?.value}
 								</p>
-								<Link href={structure?.link?.value}>
+								<Link
+									href={structure?.link?.value ? structure?.link?.value : '/'}>
 									<a
 										className='n-btn white'
 										data-aos='fade'

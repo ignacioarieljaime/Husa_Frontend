@@ -52,7 +52,7 @@ const BlockFeatured = ({ data: { structure } }) => {
 								{/* <h5 className='description d-none d-md-block'>
 									{item?.description?.value}
 								</h5> */}
-								<Link href={item?.link?.value}>
+								<Link href={item?.link?.value ? item?.link?.value : '/'}>
 									<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
 										{item?.link?.title}
 									</a>

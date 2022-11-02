@@ -1,30 +1,21 @@
 import React from 'react'
+import Link from 'next/link'
 
-// image
-import HisenseFiFa from 'public/assets/images/sponsership/hisense-fifa.png'
-import Sweepstakes from 'public/assets/images/sponsership/sweepstakes.png'
-import Trip from 'public/assets/images/sponsership/win-a-trip.png'
-
-function SponsorshipImagesWithButton() {
+function SponsorshipImagesWithButton({ data }) {
+	let { structure } = data
 	return (
 		<section className='sponsor-ship-bg'>
-
 			<div className='container py-20 text-center gradient-texts'>
 				<div>
-					<img src={HisenseFiFa.src} alt='featured image' className='mb-12' />
+					<img src={structure?.image?.src} alt={structure?.image?.alt} className='mb-12' />
 				</div>
+
 				<div>
-					<img src={Sweepstakes.src} alt='featured image' className='mb-16' />
-				</div>
-				<div>
-					<img src={Trip.src} alt='featured image' className='mb-9' />
-				</div>
-				<div>
-					<a
-						href='#'
-						className='btn btn-secondary rounded-5 text-uppercase px-10 py-3'>
-						learn more
-					</a>
+					<Link href={structure?.link?.value}>
+						<a className='btn btn-secondary rounded-5 text-uppercase px-10 py-3'>
+							{structure?.link?.title}
+						</a>
+					</Link>
 				</div>
 			</div>
 		</section>
