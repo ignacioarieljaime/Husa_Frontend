@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import ExtendedWarrantyFinalStatusStep from './ExtendedWarrantyFinalStatusStep'
 import ExtendedWarrantyFormStep from './ExtendedWarrantyFormStep'
 import ExtendedWarrantyPurchasedPriceStep from './ExtendedWarrantyPurchasedPriceStep'
 import ExtendedWarrantySevicePlansStep from './ExtendedWarrantySevicePlansStep'
@@ -58,8 +57,7 @@ const ExtendedWarrantyWizard = ({ data }) => {
 			plans={structure?.plans}
 			onChange={setPlan}
 		/>,
-		<ExtendedWarrantyFormStep product={structure?.product} plan={plan} />,
-		<ExtendedWarrantyFinalStatusStep product={structure?.product} />
+		<ExtendedWarrantyFormStep product={structure?.product} plan={plan} />
 	]
 
 	return (
