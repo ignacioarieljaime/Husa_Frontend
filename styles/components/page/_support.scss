@@ -183,13 +183,22 @@
 		.slider-item {
 			cursor: pointer;
 			border: 1px solid #dbddde;
-			max-width: 225px;
+			max-width: 255px;
 			padding: 30px 50px;
 			text-align: center;
+			height: 255px;
+			position: relative;
 			.slider-image {
 				margin-bottom: 35px;
 				max-height: 93px;
 				object-fit: contain;
+			}
+			a{
+				white-space: nowrap;
+				position: absolute;
+				bottom: 50px;
+				left: 50%;
+				transform: translateX(-50%);
 			}
 		}
 	}

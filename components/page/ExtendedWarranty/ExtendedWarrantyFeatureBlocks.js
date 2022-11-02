@@ -1,5 +1,9 @@
 import React from 'react'
 import ExtendedWarrantyFeatureBlocksItem from './ExtendedWarrantyFeatureBlocksItem'
+import img from 'public/assets/images/Subtract22.png'
+import img1 from 'public/assets/images/Union1.png'
+import img2 from 'public/assets/images/Vector.png'
+import img3 from 'public/assets/images/Subtract1.png'
 
 const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 	const structure = {
@@ -11,17 +15,63 @@ const ExtendedWarrantyFeatureBlocks = ({ data }) => {
 			value: [
 				{
 					image: {
-						src: ''
+						src: img.src
 					},
 					link: {
-						value: '',
-						title: ''
+						value: '/',
+						title: 'View Products'
 					},
 					title: {
-						value: ''
+						value: 'Find Your Product'
 					},
 					paragraph: {
-						value: ''
+						value:
+							'Browse from the product catagories and find your Hisense model.'
+					}
+				},
+				{
+					image: {
+						src: img1.src
+					},
+					link: {
+						value: '/',
+						title: 'View Products'
+					},
+					title: {
+						value: 'Find Your Product'
+					},
+					paragraph: {
+						value:
+							'We need to know some things about the product like serial number, date of purchase, and where it was purchased.'
+					}
+				},
+				{
+					image: {
+						src: img2.src
+					},
+
+					title: {
+						value: 'Find Your Product'
+					},
+					paragraph: {
+						value:
+							'Browse from the product catagories and find your Hisense model.'
+					}
+				},
+				{
+					image: {
+						src: img3.src
+					},
+					link: {
+						value: '/',
+						title: 'View Products'
+					},
+					title: {
+						value: 'Find Your Product'
+					},
+					paragraph: {
+						value:
+							'Browse from the product catagories and find your Hisense model.'
 					}
 				}
 			]

@@ -13,7 +13,8 @@ const ExtendedWarrantyProduct = ({
 					</div>
 					<div className='product-item-v2-content'>
 						<div className='text-primary mb-4'>
-							{series[0].name.split(' ')[0]}
+							{/* {series[0].name.split(' ')[0]} */}
+							{series}
 						</div>
 						<p className='mb-4'>{name}</p>
 						<div className='text-primary'>Model: {model}</div>

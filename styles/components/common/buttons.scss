@@ -44,6 +44,16 @@
 			transform: scale(1.05);
 		}
 	}
+	&.primary {
+		border-color: #00a29c;
+		color: #fff !important;
+		background-color: #00a29c !important;
+		transform: scale(1);
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}
 	&.primary-text {
 		color: #00a29c !important;
 		background-color: transparent !important;

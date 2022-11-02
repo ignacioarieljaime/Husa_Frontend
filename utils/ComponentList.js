@@ -27,6 +27,9 @@ const { HomePageMB } = require('./components/HomePageMB')
 const { NewHomePageComponents } = require('./components/NewHomePage')
 const { HomeAppliances } = require('./components/HomeAppliances')
 const { AuthorizedRetailers } = require('./components/AuthorizedRetailers')
+const {
+	ExtendedWarrantyComponents
+} = require('./components/ExtendedWarrantyComponents')
 
 module.exports.ComponentList = [
 	...CommonComponents,
@@ -58,6 +61,7 @@ module.exports.ComponentList = [
 	...L9GComponents,
 	...HomePageMB,
 	...NewHomePageComponents,
+	...ExtendedWarrantyComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'

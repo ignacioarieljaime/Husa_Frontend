@@ -13,7 +13,7 @@ const ExtendedWarrantyFAQ = ({ data }) => {
 						value: [
 							{
 								question: {
-									value: '1.	What is a Hisense Extended Service Plan?'
+									value: 'What is a Hisense Extended Service Plan?'
 								},
 								answer: {
 									value:
@@ -26,7 +26,7 @@ const ExtendedWarrantyFAQ = ({ data }) => {
 							},
 							{
 								question: {
-									value: '1.	What is a Hisense Extended Service Plan?'
+									value: 'What is a Hisense Extended Service Plan?'
 								},
 								answer: {
 									value:
@@ -48,7 +48,7 @@ const ExtendedWarrantyFAQ = ({ data }) => {
 						value: [
 							{
 								question: {
-									value: '1.	What is a Hisense Extended Service Plan?'
+									value: 'What is a Hisense Extended Service Plan?'
 								},
 								answer: {
 									value:
@@ -61,7 +61,7 @@ const ExtendedWarrantyFAQ = ({ data }) => {
 							},
 							{
 								question: {
-									value: '1.	What is a Hisense Extended Service Plan?'
+									value: 'What is a Hisense Extended Service Plan?'
 								},
 								answer: {
 									value:

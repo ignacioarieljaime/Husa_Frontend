@@ -23,7 +23,7 @@
 			}
 		}
 	}
-	.img-fluid::before {
+	&::before {
 		content: '';
 		position: absolute;
 		left: 0;
@@ -194,9 +194,13 @@
 					input {
 						background-color: inherit;
 						font-size: 14px;
-
+						color: #ffffff;
 						&::placeholder {
 							font-size: 14px;
+						}
+
+						&:focus {
+							background-color: transparent !important;
 						}
 					}
 					button {
@@ -285,7 +289,7 @@
 			margin-bottom: 15px;
 			width: 100%;
 			height: 100%;
-			max-width:125px;
+			max-width: 125px;
 			max-height: 125px;
 		}
 		.title {
@@ -302,6 +306,392 @@
 			line-height: 17px;
 			color: #221f20;
 			margin: 0;
+		}
+	}
+}
+
+.wizard {
+	.stepper {
+		height: 60px;
+		width: 100%;
+		background: #221f20;
+		.text {
+			height: 50px;
+			padding: 0 50px;
+			display: flex;
+			align-items: center;
+			font-weight: 400;
+			font-size: 12px;
+			line-height: 17px;
+			color: #ffffff;
+			span {
+				cursor: pointer;
+			}
+		}
+		.indicator {
+			background: #00a29c;
+			height: 10px;
+		}
+	}
+	.purchased-price-step,
+	.service-plans {
+		background: #fbfbfb;
+		padding: 180px 16px;
+		.content-container {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			margin: 0 auto;
+			max-width: 1100px;
+			.product {
+				text-align: center;
+				padding: 15px 35px;
+				.model {
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					color: #00a29c;
+					margin-bottom: 15px;
+				}
+				.title {
+					font-weight: 400;
+					font-size: 24px;
+					line-height: 120%;
+					text-align: center;
+					letter-spacing: -0.02em;
+					color: #221f20;
+					margin-bottom: 15px;
+				}
+				.image {
+					width: 100%;
+				}
+				.price-label {
+					margin: 25px 0 15px;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					color: #221f20;
+				}
+			}
+			.box {
+				background: #ffffff;
+				border: 1px solid #dbddde;
+				box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+				border-radius: 50px;
+				padding: 100px 170px;
+				text-align: center;
+				.title {
+					font-weight: 400;
+					font-size: 24px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					color: #221f20;
+					margin-bottom: 30px;
+				}
+				.description {
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 120%;
+					color: #221f20;
+					margin-bottom: 30px;
+				}
+			}
+		}
+	}
+	.service-plans {
+		.content-container {
+			.box {
+				padding: 0;
+				width: 100%;
+
+				.title {
+					padding: 50px 0 25px;
+				}
+				.plans {
+					padding: 0;
+					margin: 0;
+					list-style: none;
+					.plan {
+						display: flex;
+						justify-content: space-evenly;
+						align-items: center;
+						padding: 36px 0;
+						border-top: 1px solid #dbddde;
+						font-weight: 400;
+						font-size: 24px;
+						line-height: 120%;
+						letter-spacing: -0.02em;
+						color: #221f20;
+						.text-primary {
+							color: #00a29c !important;
+						}
+						div {
+							display: flex;
+							justify-content: space-between;
+							align-items: flex-end;
+							span {
+								display: block;
+								padding: 0 4px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.extended-warranty-form-step {
+		.selection-card {
+			padding: 30px 0;
+			max-width: 1200px;
+			margin: 0 auto;
+			.label {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 120%;
+				text-align: center;
+				letter-spacing: -0.02em;
+				color: #221f20;
+				margin-bottom: 15px;
+			}
+			.custom-card {
+				background: #fbfbfb;
+				box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+				border-radius: 25px;
+				padding: 15px 0;
+				.product {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					padding: 0;
+					.image {
+						width: 100%;
+						height: 100%;
+						max-width: 120px;
+						order: 1;
+					}
+					.text {
+						text-align: start;
+						order: 2;
+						.model {
+							font-weight: 400;
+							font-size: 12px;
+							line-height: 17px;
+							color: #221f20;
+							margin-bottom: 10px;
+						}
+						.title {
+							font-weight: 400;
+							font-size: 16px;
+							line-height: 120%;
+							letter-spacing: -0.02em;
+							color: #221f20;
+						}
+					}
+				}
+				.plan span {
+					font-weight: 400;
+					font-size: 24px;
+					line-height: 120%;
+					text-align: center;
+					letter-spacing: -0.02em;
+					color: #221f20;
+					padding: 0 4px;
+				}
+			}
+		}
+		.form {
+			padding: 100px 0;
+			max-width: 1000px;
+			margin: 0 auto;
+			.title {
+				font-weight: 400;
+				font-size: 24px;
+				line-height: 120%;
+				text-align: center;
+				letter-spacing: -0.02em;
+			}
+			.extended-warranty-input {
+				padding-top: 60px;
+				margin: 0;
+			}
+			.extended-warranty-file-input {
+				margin-top: 40px;
+			}
+		}
+	}
+}
+
+.extended-warranty-payment-status {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 90px 0;
+	.status-container {
+		padding: 30px;
+		text-align: center;
+		.status-image {
+			width: 105px;
+			margin-bottom: 50px;
+		}
+		.status-title {
+			font-weight: 400;
+			font-size: 48px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			margin-bottom: 30px;
+		}
+		.status-text {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 120%;
+			margin-bottom: 30px;
+		}
+		.custom-card {
+			background: #fbfbfb;
+			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+			border-radius: 50px;
+			margin-bottom: 55px;
+			.product {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				padding: 35px 12px;
+				.image {
+					width: 100%;
+					max-width: 350px;
+				}
+				.title {
+					font-weight: 400;
+					font-size: 20px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+				}
+				.model {
+					font-weight: 400;
+					font-size: 12px;
+					line-height: 17px;
+					margin-bottom: 15px;
+				}
+			}
+			.details {
+				border-left: 1px solid #dbddde;
+				padding: 0;
+				* {
+					text-align: start;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					> span {
+						font-weight: 700;
+						padding-left: 10px;
+					}
+				}
+				> div {
+					height: 33.333%;
+					padding: 0 16px;
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					border-bottom: 1px solid #dbddde;
+					&:last-child {
+						border-bottom: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.extended-warranty-file-input {
+	label {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 120%;
+		letter-spacing: -0.02em;
+		color: #000000;
+	}
+	.modal-btn {
+		font-weight: 400;
+		font-size: 10px;
+		line-height: 14px;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		color: #a6a8ac;
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		text-align: start;
+	}
+	.input {
+		border: 1px dashed #cbcbcb;
+		width: 100%;
+		height: 100%;
+		min-height: 200px;
+		position: relative;
+		padding: 20px;
+		cursor: pointer;
+		.content {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #cbcbcb;
+			width: 100%;
+			text-align: center;
+		}
+		input {
+			display: none;
+		}
+	}
+}
+
+.extended-warranty-input {
+	border-bottom: 1px solid #000000;
+	width: 100%;
+	margin-bottom: 25px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	input {
+		width: 100%;
+		border: none;
+		background: transparent;
+		font-size: 14px;
+		line-height: 120%;
+		letter-spacing: -0.02em;
+		color: #221f20;
+		padding: 8px 16px;
+
+		&:focus {
+			border: none !important;
+			background: transparent !important;
+			box-shadow: none !important;
+		}
+
+		&::placeholder {
+			font-size: 14px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #221f20;
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.wizard {
+		.purchased-price-step {
+			.content-container {
+				.box {
+					padding: 100px;
+				}
+			}
 		}
 	}
 }
@@ -378,6 +768,166 @@
 						max-width: 300px;
 						width: 100%;
 						margin: 0 auto;
+					}
+				}
+			}
+		}
+	}
+	.wizard {
+		.stepper {
+			height: 60px;
+			width: 100%;
+			background: #221f20;
+
+			.text {
+				height: 50px;
+				padding: 0 50px;
+				display: flex;
+				align-items: center;
+				font-weight: 400;
+				font-size: 12px;
+				line-height: 17px;
+				color: #ffffff;
+
+				span {
+					cursor: pointer;
+				}
+			}
+
+			.indicator {
+				background: #00a29c;
+				height: 10px;
+			}
+		}
+		.service-plans,
+		.purchased-price-step {
+			background: #fbfbfb;
+			padding: 16px 16px 100px;
+			.content-container {
+				flex-wrap: wrap;
+				.product {
+					margin: 0 auto 16px;
+					max-width: 500px;
+					.title {
+						font-size: 20px;
+					}
+				}
+				.box {
+					border-radius: 25px;
+					padding: 67px 27px;
+					.title {
+						font-size: 20px;
+					}
+					.description {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+		.service-plans {
+			.content-container {
+				.box {
+					padding: 0;
+					.plans {
+						.plan {
+							div {
+								text-align: start;
+								display: block;
+							}
+						}
+					}
+				}
+			}
+		}
+		.extended-warranty-form-step {
+			.selection-card {
+				padding: 24px 18px;
+				.custom-card {
+					padding: 30px 20px;
+					.product {
+						justify-content: center;
+						flex-direction: column;
+						margin-bottom: 40px;
+						.image {
+							width: 100%;
+							height: 100%;
+							max-width: 120px;
+							order: 2;
+						}
+						.text {
+							order: 1;
+							text-align: center;
+							.model {
+								margin-bottom: 30px;
+							}
+							.title {
+								font-size: 14px;
+								margin-bottom: 16px;
+							}
+						}
+					}
+					.plan span {
+						font-size: 20px;
+					}
+				}
+			}
+			.form {
+				padding: 60px 0;
+				.title {
+					font-size: 20px;
+				}
+				.extended-warranty-input {
+					padding-top: 30px;
+				}
+				.extended-warranty-file-input {
+					margin-top: 30px;
+				}
+			}
+		}
+	}
+	.extended-warranty-payment-status {
+		padding: 40px 0 70px;
+		.status-container {
+			padding: 0 16px;
+			.status-image {
+				width: 80px;
+			}
+			.status-title {
+				font-size: 24px;
+			}
+			.status-text {
+				font-size: 14px;
+			}
+			.custom-card {
+				border-radius: 25px;
+				.product {
+					flex-direction: column-reverse;
+					justify-content: center;
+					align-items: center;
+					padding: 15px 20px;
+					.image {
+						margin-bottom: 35px;
+					}
+					.title {
+						margin-bottom: 15px;
+					}
+					.model {
+						margin-bottom: 15px;
+					}
+				}
+				.details {
+					border-left: 0;
+					padding: 0;
+					* {
+						> span {
+							font-weight: 700;
+							padding-left: 10px;
+						}
+					}
+					> div {
+						padding: 30px 16px;
+						border-top: 1px solid #dbddde;
+						border-bottom: 0;
 					}
 				}
 			}

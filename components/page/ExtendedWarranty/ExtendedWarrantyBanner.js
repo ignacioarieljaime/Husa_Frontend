@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import ewpBanner from 'public/assets/images/ewp-banner.png'
+
 const ExtendedWarrantyBanner = ({ data }) => {
 	const [searchTerm, setSearchTerm] = useState('')
 
 	const structure = {
 		image: {
-			src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/2b3d1d5b30/Television-Hero__ScaleMaxWidthWzMwNDhd.jpg-kqo0zn.jpg'
+			src: ewpBanner.src
 		},
 		title: {
 			value: 'Hisense Extended Service Plan'

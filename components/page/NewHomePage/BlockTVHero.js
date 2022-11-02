@@ -31,12 +31,9 @@ const BlockTVContainer = ({ structure }) => {
 	return (
 		<section>
 			<div className='black-parallax-box'>
-				<h2
+				<div
 					className='title gradient-text fs-5qx fs-xxl-4tx px-4 px-md-0'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}>
-					{/* We make <span className='gradient-text'>award </span>
-					<span className='gradient-text'>winning</span> TVs. */}
-				</h2>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 				<div className='row mx-0'>
 					<div className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
 						<img
@@ -49,16 +46,11 @@ const BlockTVContainer = ({ structure }) => {
 					</div>
 					<div className='col-12 col-md-6 col-lg-5 col-xxl-4 content mt-8 mt-md-0'>
 						<div className='p-1 p-md-7'>
-							<h5 className='tiny-title'>
-								{/* {structure?.tinyTitle?.value} */}
-							</h5>
-							<h3
+							<div
 								className='subtitle gradient-text'
-								dangerouslySetInnerHTML={{ __html: structure?.text?.value }}>
-								{/* Find one (<span className='gradient-text'>or two</span>) made
-								just for you. */}
-							</h3>
-							<p className='description fs-4'>{structure?.paragraph?.value}</p>
+								dangerouslySetInnerHTML={{
+									__html: structure?.text?.value
+								}}></div>
 							<Link
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a className='n-btn outline-white transparent'>
