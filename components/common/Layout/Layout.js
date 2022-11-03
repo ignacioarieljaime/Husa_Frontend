@@ -1,3 +1,4 @@
+import CompareModal from 'components/page/Product/CompareModal'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import React from 'react'
@@ -25,6 +26,9 @@ function Layout({ children, meta, title }) {
 				<ToastContainer />
 				<> {children}</>
 			</section>
+
+
+			<CompareModal  />
 		</>
 	)
 }
