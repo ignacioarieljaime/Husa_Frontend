@@ -8,7 +8,7 @@ const ExtendedWarrantyProduct = ({
 		<Link href={`/ewp-wizard-plan-selector/${id}`}>
 			<a className='text-decoration-none'>
 				<div className='product-item-v2 h-100 px-5 py-8'>
-					<div className='text-center mb-10'>
+					<div className='image'>
 						<img src={media?.url} alt={name} width='80%' />
 					</div>
 					<div className='product-item-v2-content'>
