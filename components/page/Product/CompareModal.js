@@ -42,7 +42,7 @@ function CompareModal() {
 								<button onClick={() => dispatch(removeCompare(item.id))}>
 									<FontAwesomeIcon icon={faXmark} color={'#818181'} />
 								</button>
-								<img src={item.image} />
+								<img src={item.media.url} />
 								<h6>Model: {item.model}</h6>
 								<h5>{item.name}</h5>
 							</div>

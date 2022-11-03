@@ -1,76 +1,89 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewCompare } from 'redux/slices/compare'
 import { RouteHandler } from 'utils/routeHandler'
-import ProductsItemLink from './ProductsItemLink'
 const ModalChanelAdviser = dynamic(() =>
 	import('../Product/ModalChanelAdviser')
 )
 
 function ProductsItem({ data }) {
-	let { media, name, model, id, isNew, retailers } = data
+	const [currentItem, setCurrentItem] = useState(data.products[0].product)
 	const dispatch = useDispatch()
-	const [url] = useState(RouteHandler(id))
+	const [url, setUrl] = useState()
+
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
-	const [series] = useState(
-		data.features.find(item => item.custom_field_type_name === 'Top Titles')
-			.custom_fields
-	)
-	const [screenSize] = useState(
-		data.features.find(item => item.custom_field_type_name === 'TV filters')
-			.custom_fields
-	)
+	const [screenSize, setScreenSize] = useState()
+	useEffect(() => {
+		setUrl(RouteHandler(currentItem.id))
+		setScreenSize(
+			currentItem.customFields.find(item => item.type_name === 'TV filters')
+				.custom_fields
+		)
+	}, [currentItem])
+
 	return (
 		<>
 			<div className='item bottom-border-sm col-12 col-md-6 col-xl-4 col-xxl-3'>
 				<div>
 					<div className='d-flex justify-content-between align-items-center gap-3 flex-wrap mb-10 w-100'>
 						<span>
-							{screenSize.find(item => item.name === 'Size class')?.value && (
+							{screenSize?.find(item => item.name === 'Size class')?.value && (
 								<span className='class'>
-									{screenSize.find(item => item.name === 'Size class')?.value}{' '}
+									{screenSize?.find(item => item.name === 'Size class')?.value}{' '}
 									Class
 								</span>
 							)}
 						</span>
 						<div className='d-flex flex-column align-items-end'>
-							<span className='code'>{model}</span>
-							{isNew === 1 && <span className='new_product'>New</span>}
+							<span className='code'>{currentItem.model}</span>
+							{currentItem.isNew === 1 && (
+								<span className='new_product'>New</span>
+							)}
 						</div>
 					</div>
 					{url ? (
 						<Link href={url}>
 							<a>
-								<img src={media?.url} height={280} alt='featured image' />
+								<img
+									src={currentItem.media?.url}
+									height={280}
+									alt='featured image'
+								/>
 							</a>
 						</Link>
 					) : (
-						<img src={media?.url} height={280} alt='featured image' />
+						<img
+							src={currentItem.media?.url}
+							height={280}
+							alt='featured image'
+						/>
 					)}
 
-					<h3>{series.find(item => item.name === 'h2 Title')?.value}</h3>
+					<h3>{data.name.split('-')[0]} Series</h3>
 
-					<p>{name}</p>
+					<p>{currentItem.name}</p>
 				</div>
-				{data?.productSeries[0]?.values.length > 0 ? (
-					<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
-						{data?.productSeries[0]?.values.map((item, index) => (
-							<ProductsItemLink
-								currentSize={
-									screenSize.find(item => item.name === 'Size class')?.value
-								}
-								data={item}
-								key={'series-list-item' + index}
-							/>
-						))}
-					</ul>
-				) : null}
+				<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
+					{data?.products?.map((item, index) => (
+						<li>
+							<button
+								onClick={() => setCurrentItem(item.product)}
+								className={`px-3 w-100 py-1 border-1 border product-mini-link border-dark mb-0 d-flex btn-outline-dark text-dark  ${
+									item.product.id === currentItem.id
+										? ' product-mini-link-active'
+										: ''
+								}`}>
+								{item.value}
+							</button>
+						</li>
+					))}
+				</ul>
 
 				<div className='w-100'>
 					<div className='d-flex '>
-						{retailers.length === 0 ? (
+						{!currentItem.retailer ? (
 							<button className='buy-btn ' disabled>
 								Coming Soon
 							</button>
@@ -93,7 +106,7 @@ function ProductsItem({ data }) {
 					</div>
 
 					<button
-						onClick={() => dispatch(addNewCompare(data))}
+						onClick={() => dispatch(addNewCompare(currentItem))}
 						className='compare-btn'>
 						Add To Compare
 					</button>
@@ -103,7 +116,7 @@ function ProductsItem({ data }) {
 				<ModalChanelAdviser
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
-					model={model}
+					model={currentItem.model}
 				/>
 			)}
 		</>
