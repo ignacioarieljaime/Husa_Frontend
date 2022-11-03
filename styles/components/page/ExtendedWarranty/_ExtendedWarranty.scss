@@ -1,7 +1,13 @@
 .extended-warrant-banner {
 	position: relative;
 	height: 442px;
+
 	.heading-text {
+		.ql-size-large {
+			font-weight: 400;
+			font-size: 60px;
+			line-height: 120%;
+		}
 		.support-products-searchbox {
 			background: #221f20;
 			border-color: #221f20;
@@ -40,9 +46,26 @@
 		.slider-item {
 			border: 1px solid #dbddde;
 			border-radius: 25px;
-			padding: 50px;
-			.slider-image {
-				max-width: 100px;
+			padding: 50px 30px;
+			max-width: 230px;
+			height: 255px;
+			position: relative;
+			div {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: center;
+				height: 100%;
+				.slider-image {
+					max-width: 90px;
+					width: 100%;
+					max-height: 80px;
+					justify-self: center;
+					margin: auto 0;
+				}
+				a {
+					white-space: nowrap;
+				}
 			}
 		}
 	}
@@ -246,8 +269,18 @@
 		}
 	}
 	.products-v2 {
+		h2 {
+			font-size: 48px;
+			line-height: 120%;
+		}
 		.extended-warranty-products-grid {
-			margin: 0 60px;
+			margin: 0 60px 50px 60px;
+			.product-item-v2{
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: start;
+			}
 		}
 	}
 }
@@ -534,18 +567,23 @@
 			width: 105px;
 			margin-bottom: 50px;
 		}
-		.status-title {
+		h2 .ql-size-large {
 			font-weight: 400;
 			font-size: 48px;
 			line-height: 120%;
 			letter-spacing: -0.02em;
 			margin-bottom: 30px;
 		}
-		.status-text {
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 120%;
-			margin-bottom: 30px;
+		p {
+			margin: 0;
+			.ql-size-small {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 80%;
+			}
+			&:last-child {
+				margin-bottom: 30px;
+			}
 		}
 		.custom-card {
 			background: #fbfbfb;
@@ -700,6 +738,11 @@
 	.extended-warrant-banner {
 		padding-top: 350px;
 		height: 0px;
+		.heading-text {
+			.ql-size-large {
+				font-size: 24px;
+			}
+		}
 		.img-fluid::before {
 			content: '';
 			position: absolute;
@@ -739,7 +782,11 @@
 	}
 	.extended-warranty-model-selection {
 		.products-v2 {
-			margin-top: 50px;
+			margin: 20px 0;
+			h2 {
+				font-size: 28px;
+				line-height: 120%;
+			}
 			.extended-warranty-products-grid {
 				margin: 0 16px;
 			}
@@ -892,10 +939,10 @@
 			.status-image {
 				width: 80px;
 			}
-			.status-title {
+			h2 .ql-size-large {
 				font-size: 24px;
 			}
-			.status-text {
+			p .ql-size-small {
 				font-size: 14px;
 			}
 			.custom-card {

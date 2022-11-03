@@ -2,13 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
-const ExtendedWarrantyFeatureBlocksItem = ({
-	image,
-	title,
-	paragraph,
-	link,
-	width
-}) => {
+const ExtendedWarrantyFeatureBlocksItem = ({ image, text, link, width }) => {
 	return (
 		<div
 			className={'home-page-mb-discovery-item py-10 px-6 px-md-13 py-md-15'}
@@ -19,11 +13,12 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 				alt={image?.alt}
 				className='mb-7'
 			/>
-			<h3 className='fs-base mb-7'>{title}</h3>
-			<p className='fs-base mb-9'>{paragraph}</p>
+			<div
+				dangerouslySetInnerHTML={{ __html: text }}
+				className='fs-base mb-9'></div>
 			<a href={link?.value} className='n-btn primary-text'>
 				{link?.title}
-				{link?.value && (
+				{link?.title && (
 					<span>
 						<FontAwesomeIcon
 							icon={faChevronRight}

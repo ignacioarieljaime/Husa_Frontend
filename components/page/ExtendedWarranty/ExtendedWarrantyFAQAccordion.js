@@ -36,10 +36,10 @@ const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 				</span>
 			</button>
 			<div className='faq-accordion-content' ref={accordionContent}>
-				{questions.map((question, index) => (
+				{questions.map((item, index) => (
 					<div key={index} className='faq-accordion-question-item'>
 						<h4 className='faq-accordion-question'>
-							{question?.question?.value}
+							{item?.question?.value}
 							<span>
 								<FontAwesomeIcon
 									icon={faCircleXmark}
@@ -48,8 +48,9 @@ const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 								/>
 							</span>
 						</h4>
-						<p className='faq-accordion-answer'>{question?.answer?.value}</p>
-						<div className='faq-accordion-extras'>{question?.extra?.value}</div>
+						<div
+							className='faq-accordion-answer'
+							dangerouslySetInnerHTML={{ __html: item?.answer?.value }}></div>
 					</div>
 				))}
 			</div>

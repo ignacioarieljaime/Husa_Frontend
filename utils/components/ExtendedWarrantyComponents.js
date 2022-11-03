@@ -24,19 +24,11 @@ module.exports.ExtendedWarrantyComponents = [
 		path: 'components/page/ExtendedWarranty/ExtendedWarrantyProductsSlider'
 	},
 	{
-		name: 'ExtendedWarrantyProductsGrid',
-		path: 'components/page/ExtendedWarranty/ExtendedWarrantyProductsGrid'
+		name: 'ExtendedWarrantyProductGrid',
+		path: 'components/page/ExtendedWarranty/ExtendedWarrantyProductGrid'
 	},
 	{
 		name: 'ExtendedWarrantyPaymentStatus',
 		path: 'components/page/ExtendedWarranty/ExtendedWarrantyPaymentStatus'
-	},
-	{
-		name: 'ExtendedWarrantyModelSelection',
-		path: 'components/page/ExtendedWarranty/ExtendedWarrantyModelSelection'
-	},
-	{
-		name: 'ExtendedWarrantySearchProduct',
-		path: 'components/page/ExtendedWarranty/ExtendedWarrantySearchProduct'
 	}
 ]

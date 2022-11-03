@@ -6,7 +6,8 @@ const ExtendedWarrantyFileInput = ({
 	label,
 	boxContent,
 	onChange,
-	modalOnClick
+	modalOnClick,
+	id
 }) => {
 	const inputRef = useRef(null)
 
@@ -29,7 +30,14 @@ const ExtendedWarrantyFileInput = ({
 				<input
 					type='file'
 					ref={inputRef}
-					onChange={e => onChange(e.target.value)}
+					onChange={e => {
+						const file = e.target.files && e.target.files[0]
+						file.type.startsWith('image') &&
+							onChange({
+								id: id,
+								asset: e.target.files && e.target.files[0]
+							})
+					}}
 				/>
 			</div>
 		</div>

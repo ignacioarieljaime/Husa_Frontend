@@ -38,3 +38,7 @@ export async function GetProductsListNewApi(navigate, _categoryId, _filter) {
 	)
 	return response
 }
+export async function GetSingleProduct(navigate, _productId) {
+	let response = await useFetch(navigate).get(`/getProduct/${_productId}`)
+	return response
+}
