@@ -25,7 +25,7 @@ module.exports.ExtendedWarrantyComponents = [
 	},
 	{
 		name: 'ExtendedWarrantyProductGrid',
-		path: 'components/page/ExtendedWarranty/ExtendedWarrantyProductsGrid'
+		path: 'components/page/ExtendedWarranty/ExtendedWarrantyProductGrid'
 	},
 	{
 		name: 'ExtendedWarrantyPaymentStatus',
