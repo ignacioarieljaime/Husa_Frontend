@@ -1,15 +1,27 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const ExtendedWarrantyWizardStepper = ({ step: { title, id } }) => {
+const ExtendedWarrantyWizardStepper = ({
+	step: { title, id },
+	stepHandler
+}) => {
 	const router = useRouter()
+
+	const previousStepHandler = () => {
+		if (id === 0) router.back()
+		else
+			stepHandler(step => ({
+				id: id - 1,
+				title: ''
+			}))
+	}
+
 	return (
 		<div className='stepper'>
 			<div className='text'>
-				<span onClick={() => router.back()}>
+				<span onClick={previousStepHandler}>
 					<FontAwesomeIcon icon={faArrowLeft} className='me-2' />
 					Back to {title}
 				</span>

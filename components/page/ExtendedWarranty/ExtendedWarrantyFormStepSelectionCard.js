@@ -12,7 +12,7 @@ const ExtendedWarrantyFormStepSelectionCard = ({
 			<div className='custom-card'>
 				<div className='row justify-content-evenly align-items-center flex-column flex-md-row mx-0'>
 					<div className='product'>
-						<img src={image?.src} alt={image?.alt} className='image' />
+						<img src={image} alt={image?.alt} className='image' />
 						<div className='text'>
 							<h3 className='model'>{model}</h3>
 							<h2 className='title'>{title}</h2>
@@ -20,9 +20,9 @@ const ExtendedWarrantyFormStepSelectionCard = ({
 					</div>
 					<div className='plan'>
 						<div className='d-flex justify-content-center align-items-center'>
-							<span>{plan?.duration}</span>
+							<span>{plan?.duration} Years</span>
 							<span className='text-primary'> | </span>
-							<span>{plan?.price}</span>
+							<span>${plan?.price} USD</span>
 						</div>
 					</div>
 				</div>

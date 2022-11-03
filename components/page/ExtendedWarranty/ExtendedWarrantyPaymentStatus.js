@@ -5,39 +5,7 @@ import AdobeAcrobat from 'components/icons/AdobeAcrobat'
 import Download from 'components/icons/Download'
 import Link from 'next/link'
 
-const ExtendedWarrantyPaymentStatus = ({ data }) => {
-	const structure = {
-		image: {
-			src: '',
-			alt: ''
-		},
-		totalStatus: {
-			value: 'Congratulations'
-		},
-		text: {
-			value:
-				'You have successfully bought an extended warranty for your Hisense product! A copy has been sent to the provided email.'
-		},
-		link: {
-			title: 'Return to Home',
-			value: '/'
-		},
-		title: { value: '47-Decibel Top Control 24" Built-In Dishwasher' },
-		model: { value: 'HUI6220XCUS' },
-		productImage: {
-			src: 'https://assets.hisense-usa.com/assets/GalleryImages/Product/278/e7a660ef50/Artboard-1__ScaleMaxWidthWzY0MF0.png'
-		},
-		plan: {
-			duration: '2 Years'
-		},
-		serialNumber: {
-			value: '45225412254516'
-		},
-		paymentCode: {
-			value: '452254122'
-		}
-	}
-
+const ExtendedWarrantyPaymentStatus = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='extended-warranty-payment-status'>
@@ -47,10 +15,10 @@ const ExtendedWarrantyPaymentStatus = ({ data }) => {
 						src={structure?.image?.src}
 						alt={structure?.image?.alt}
 					/>
-					<h2 className='status-title'>{structure?.totalStatus?.value}</h2>
-					<p
-						className='status-text'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></p>
+					<div
+						dangerouslySetInnerHTML={{
+							__html: structure?.text?.value
+						}}></div>
 					<div className='custom-card'>
 						<div className='row align-items-stretch mx-0'>
 							<div className='col-12 col-md-6 product'>

@@ -4,8 +4,13 @@ import ExtendedWarrantyFileInput from './ExtendedWarrantyFileInput'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
 import Link from 'next/link'
 
-const ExtendedWarrantyFormStepForm = ({ stepHandler }) => {
-	const [acceptTerms, setAcceptTerms] = useState(false)
+const ExtendedWarrantyFormStepForm = ({
+	onChange,
+	onUpload,
+	acceptTerms,
+	setAcceptTerms,
+	onSubmit
+}) => {
 	const [showModal, setShowModal] = useState(false)
 
 	return (
@@ -14,32 +19,80 @@ const ExtendedWarrantyFormStepForm = ({ stepHandler }) => {
 			<div className='row mx-0 mb-8'>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						<input placeholder='Full Name' type='text' />
+						<input
+							onChange={e =>
+								onChange(prevState => ({ ...prevState, name: e.target.value }))
+							}
+							placeholder='Full Name'
+							type='text'
+						/>
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						<input placeholder='Email' type='email' />
+						<input
+							onChange={e =>
+								onChange(prevState => ({ ...prevState, email: e.target.value }))
+							}
+							placeholder='Email'
+							type='email'
+						/>
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						<input placeholder='Phone Number' type='tel' />
+						<input
+							onChange={e =>
+								onChange(prevState => ({ ...prevState, phone: e.target.value }))
+							}
+							placeholder='Phone Number'
+							type='tel'
+						/>
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						<input placeholder='Address' type='text' />
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState,
+									address: e.target.value
+								}))
+							}
+							placeholder='Address'
+							type='text'
+						/>
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						<input placeholder='Purchase Date' type='data' />
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState,
+									purchase_data: e.target.value
+								}))
+							}
+							placeholder='Purchase Date'
+							type='data'
+						/>
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						<input placeholder='Serial Number' type='text' />
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState,
+									product: {
+										...prevState.product,
+										serial_number: e.target.value
+									}
+								}))
+							}
+							placeholder='Serial Number'
+							type='text'
+						/>
 					</div>
 				</div>
 			</div>
@@ -48,13 +101,16 @@ const ExtendedWarrantyFormStepForm = ({ stepHandler }) => {
 					<ExtendedWarrantyFileInput
 						label='Model Plate Sticker'
 						boxContent='Upload Your Products Serial Number Photo'
-						modalButton=''
+						id={0}
+						onChange={onUpload}
 						modalOnClick={() => setShowModal(showModal => !showModal)}
 					/>
 				</div>
 				<div className='col-12 col-md-6'>
 					<ExtendedWarrantyFileInput
 						label='Receipt Photo'
+						id={1}
+						onChange={onUpload}
 						boxContent='Upload Your Receipt Photo'
 					/>
 				</div>
@@ -65,9 +121,15 @@ const ExtendedWarrantyFormStepForm = ({ stepHandler }) => {
 				checked={acceptTerms}
 			/>
 			<div className=' mt-15 text-center'>
-				<Link href={'/ewp-confirmation-page'}>
+				<button
+					className='n-btn outline-black py-4'
+					type='button'
+					onClick={onSubmit}>
+					Proceed to Payment
+				</button>
+				{/* <Link href={'/ewp-confirmation-page'}>
 					<a className='n-btn outline-black py-4'>Proceed to Payment</a>
-				</Link>
+				</Link> */}
 			</div>
 			{showModal && (
 				<ExtendedWarrantyModelNumberDialog
