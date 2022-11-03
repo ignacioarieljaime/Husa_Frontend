@@ -9,7 +9,9 @@ const ModalChanelAdviser = dynamic(() =>
 )
 
 function ProductsItem({ data }) {
-	const [currentItem, setCurrentItem] = useState(data.products[0].product)
+	const [currentItem, setCurrentItem] = useState(
+		data.id === 0 ? data.products.product : data.products[0].product
+	)
 	const dispatch = useDispatch()
 	const [url, setUrl] = useState()
 
@@ -19,7 +21,7 @@ function ProductsItem({ data }) {
 		setUrl(RouteHandler(currentItem.id))
 		setScreenSize(
 			currentItem.customFields.find(item => item.type_name === 'TV filters')
-				.custom_fields
+				?.custom_fields
 		)
 	}, [currentItem])
 
@@ -65,21 +67,23 @@ function ProductsItem({ data }) {
 
 					<p>{currentItem.name}</p>
 				</div>
-				<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
-					{data?.products?.map((item, index) => (
-						<li>
-							<button
-								onClick={() => setCurrentItem(item.product)}
-								className={`px-3 w-100 py-1 border-1 border product-mini-link border-dark mb-0 d-flex btn-outline-dark text-dark  ${
-									item.product.id === currentItem.id
-										? ' product-mini-link-active'
-										: ''
-								}`}>
-								{item.value}
-							</button>
-						</li>
-					))}
-				</ul>
+				{Array.isArray(data?.products) && (
+					<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
+						{data?.products?.map((item, index) => (
+							<li>
+								<button
+									onClick={() => setCurrentItem(item.product)}
+									className={`px-3 w-100 py-1 border-1 border product-mini-link border-dark mb-0 d-flex btn-outline-dark text-dark  ${
+										item.product.id === currentItem.id
+											? ' product-mini-link-active'
+											: ''
+									}`}>
+									{item.value}
+								</button>
+							</li>
+						))}
+					</ul>
+				)}
 
 				<div className='w-100'>
 					<div className='d-flex '>
