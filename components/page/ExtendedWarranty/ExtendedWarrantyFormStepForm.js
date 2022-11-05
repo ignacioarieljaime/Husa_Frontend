@@ -21,7 +21,11 @@ const ExtendedWarrantyFormStepForm = ({
 					<div className='extended-warranty-input'>
 						<input
 							onChange={e =>
-								onChange(prevState => ({ ...prevState, name: e.target.value }))
+								onChange(prevState => ({
+									...prevState,
+									first_name: e.target.value.split(' ')[0],
+									last_name: e.target.value.split(' ')[1]
+								}))
 							}
 							placeholder='Full Name'
 							type='text'
@@ -102,6 +106,7 @@ const ExtendedWarrantyFormStepForm = ({
 						label='Model Plate Sticker'
 						boxContent='Upload Your Products Serial Number Photo'
 						id={0}
+						name='model_plate_sticker'
 						onChange={onUpload}
 						modalOnClick={() => setShowModal(showModal => !showModal)}
 					/>
@@ -110,6 +115,7 @@ const ExtendedWarrantyFormStepForm = ({
 					<ExtendedWarrantyFileInput
 						label='Receipt Photo'
 						id={1}
+						name='receipt_photo'
 						onChange={onUpload}
 						boxContent='Upload Your Receipt Photo'
 					/>

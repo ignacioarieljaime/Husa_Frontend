@@ -32,3 +32,10 @@ export async function submitForm(_data) {
 	)
 	return response
 }
+
+export async function GetPaymentUrl(_token) {
+	let response = await axios.post(
+		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/invoice/pay/${_token}`
+	)
+	return response
+}
