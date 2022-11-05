@@ -27,14 +27,19 @@ export async function GetProductsListApi(navigate, _categoryId, _filter) {
 	)
 	return response
 }
-export async function GetProductsListNewApi(navigate, _categoryId, _filter) {
+export async function GetProductsListNewApi(
+	navigate,
+	_categoryId,
+	_filter,
+	_sort
+) {
 	let filter =
 		_filter && _filter.length !== 0
 			? `&filters=${encodeURIComponent(JSON.stringify(_filter))}`
 			: ''
 
 	let response = await useFetch(navigate).get(
-		`/productsIndex?category_id=${_categoryId}${filter}`
+		`/productsIndex?category_id=${_categoryId}${filter}${_sort ? _sort : ''}`
 	)
 	return response
 }

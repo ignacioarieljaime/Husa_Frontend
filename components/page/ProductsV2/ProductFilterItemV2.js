@@ -4,22 +4,36 @@ import CustomCheckBox from 'components/common/CustomCheckBox'
 function ProductFilterItemV2({
 	checkboxConditionRender,
 	filterController,
-	data
+	data,
+	filterParentId,
+	passedFilter
 }) {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	useEffect(() => {
 		setCheckBoxCondition(false)
 	}, [checkboxConditionRender])
 
+	useEffect(() => {
+		if (passedFilter.length > 0) {
+			passedFilter.forEach(item => {
+				if (item.id === filterParentId) {
+					setCheckBoxCondition(
+						item.values.indexOf(data.title) < 0 ? false : true
+					)
+				}
+			})
+		}
+	}, [])
+
 	return (
 		<li>
-			<div>
+			<div className='d-flex'>
 				<CustomCheckBox
 					checked={checkBoxCondition}
 					className='me-3'
 					onClick={e => {
 						setCheckBoxCondition(!checkBoxCondition)
-						filterController(e, data)
+						filterController(e, { ...data, filterId: filterParentId })
 					}}
 				/>
 				<label htmlFor='filter' className='filter-label'>
