@@ -46,8 +46,8 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 	}
 
 	const redirectToPayment = async token => {
-		let route = await GetPaymentUrl(token)
-		router.push(route)
+		let link = await GetPaymentUrl(token)
+		router.push(link.data.url)
 	}
 
 	const submitFormHandler = async () => {
