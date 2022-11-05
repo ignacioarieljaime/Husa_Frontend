@@ -8,6 +8,7 @@ import {
 	GetPaymentUrl
 } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 const ExtendedWarrantyFormStep = ({ product, plan }) => {
 	const [formBody, setFormBody] = useState({
@@ -18,7 +19,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 	})
 	const [assets, setAssets] = useState([])
 	const [acceptTerms, setAcceptTerms] = useState(false)
-	const [token, setToken] = useState()
+	const [uploadStatus, setUploadStatus] = useState([])
 	const router = useRouter()
 
 	const assetsUploadHandler = _asset => {
@@ -41,7 +42,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 
 	const submitFormData = async () => {
 		let response = await submitForm(formBody)
-		setToken(response?.data?.invoice?.token)
+		redirectToPayment(response?.data?.invoice?.token)
 	}
 
 	const redirectToPayment = async token => {
@@ -61,12 +62,14 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 							[item.name]: link
 						}
 					}))
+					toast.success(item.name.replace(/_+/g, ' ') + ' uploaded successfuly')
 				} catch (error) {
+					toast.error(item.name.replace(/_+/g, ' ') + ' upload failed')
 					console.log(error)
 				}
 			})
+
 			await submitFormData()
-			if (token) redirectToPayment(token)
 		}
 	}
 

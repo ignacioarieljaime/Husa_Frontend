@@ -1,8 +1,15 @@
 import axios from 'axios'
 
-export async function GetProducts() {
+export async function GetProducts(_categoryId, _model, _search) {
 	let response = await axios.get(
-		'https://imecom.dev-api.hisenseportal.com/api/v1/customer/products'
+		'https://imecom.dev-api.hisenseportal.com/api/v1/customer/products',
+		{
+			params: {
+				category_id: _categoryId,
+				model: _model,
+				search: _search
+			}
+		}
 	)
 	return response
 }

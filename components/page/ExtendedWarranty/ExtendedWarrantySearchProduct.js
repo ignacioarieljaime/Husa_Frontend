@@ -9,24 +9,20 @@ import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import { useWindowSize } from '../../../hooks/useWindowSize'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
 
-const ExtendedWarrantySearchProduct = () => {
-	const [searchTerm, setSearchTerm] = useState('')
+const ExtendedWarrantySearchProduct = ({
+	onSearchChange,
+	searchTerm,
+	category,
+	onCategoryChange,
+	modelNumber,
+	onModelNumber,
+	models,
+	productCategories
+}) => {
 	const [showMore, setShowMore] = useState(false)
 	const [dialogOpen, setDialogOpen] = useState(false)
-	const [productCategory, setProductCategory] = useState()
-	const [ModelNumber, setModelNumber] = useState()
-
 	const filterAccordion = useRef()
 	const windowSize = useWindowSize()
-
-	const structure = {
-		image: {
-			src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/2b3d1d5b30/Television-Hero__ScaleMaxWidthWzMwNDhd.jpg-kqo0zn.jpg'
-		},
-		title: {
-			value: 'Hisense Extended Service Plan'
-		}
-	}
 
 	useEffect(() => {
 		if (windowSize[0] < 768) {
@@ -44,59 +40,18 @@ const ExtendedWarrantySearchProduct = () => {
 		}
 	}, [showMore, windowSize])
 
-	const options = [
-		[
-			{
-				title: 'All',
-				value: 'all'
-			},
-			{
-				title: 'Televisions',
-				value: 'tv'
-			},
-			{
-				title: 'Dishwasher',
-				value: 'dishwasher'
-			},
-			{
-				title: 'Refrigirator',
-				value: 'refrigirator'
-			}
-		],
-		[
-			{
-				title: 'All',
-				value: 'all'
-			},
-			{
-				title: 'U8',
-				value: 'u8'
-			},
-			{
-				title: 'U6',
-				value: 'u6'
-			},
-			{
-				title: 'laser',
-				value: 'laser'
-			},
-			{
-				title: 'L9G',
-				value: 'L9G'
-			}
-		]
-	]
+	const clear = () => {
+		onSearchChange('')
+		onModelNumber('Select')
+		onCategoryChange({
+			id: null,
+			name: 'All'
+		})
+	}
 
 	useEffect(() => {
-		setProductCategory(options[0][0])
-		setModelNumber(options[1][0])
-	}, [])
-
-	const clear = () => {
-		setProductCategory(options[0][0])
-		setModelNumber(options[1][0])
-		setSearchTerm('')
-	}
+		onModelNumber('Select')
+	}, [category])
 
 	return (
 		<section>
@@ -111,7 +66,7 @@ const ExtendedWarrantySearchProduct = () => {
 										type='text'
 										placeholder='start typing your model number'
 										value={searchTerm}
-										onChange={e => setSearchTerm(e.target.value)}
+										onChange={e => onSearchChange(e.target.value)}
 									/>
 									<button>
 										<FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -121,17 +76,17 @@ const ExtendedWarrantySearchProduct = () => {
 							<div className='col-12 col-md-4 text-center'>
 								<label className='label'>Product category</label>
 								<DropDownSelectBox
-									options={options[0]}
-									value={productCategory}
-									onChange={setProductCategory}
+									options={productCategories}
+									value={category}
+									onChange={onCategoryChange}
 								/>
 							</div>
 							<div className='col-12 col-md-4 text-center'>
 								<label className='label'>Model number</label>
 								<DropDownSelectBox
-									options={options[1]}
-									value={ModelNumber}
-									onChange={setModelNumber}
+									options={models}
+									value={modelNumber}
+									onChange={onModelNumber}
 								/>
 							</div>
 						</div>

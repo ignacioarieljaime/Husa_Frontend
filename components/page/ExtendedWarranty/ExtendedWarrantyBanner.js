@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
 
 const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 	const [searchTerm, setSearchTerm] = useState('')
@@ -28,9 +29,11 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 									value={searchTerm}
 									onChange={e => setSearchTerm(e.target.value)}
 								/>
-								<button>
-									<FontAwesomeIcon icon={faMagnifyingGlass} />
-								</button>
+								<Link href={'/ewp-model-selection-page?search=' + searchTerm}>
+									<a className='text-white'>
+										<FontAwesomeIcon icon={faMagnifyingGlass} />
+									</a>
+								</Link>
 							</div>
 						</form>
 					)}

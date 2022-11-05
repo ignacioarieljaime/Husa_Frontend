@@ -4,35 +4,42 @@ import Spinner from 'components/common/Spinner'
 import ExtendedWarrantySearchProduct from './ExtendedWarrantySearchProduct'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import { GetProductByFilterApi } from 'services/Product'
 import { GetProducts } from 'services/ExtendedWarranty'
 
 const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
+	const [searchTerm, setSearchTerm] = useState([])
 	const [products, setProducts] = useState([])
-	const [filter, setFilter] = useState([])
+	const [productCategories, setProductCategories] = useState()
+	const [models, setModels] = useState()
+	const [category, setCategory] = useState({
+		id: null,
+		name: 'All'
+	})
+	const [modelNumber, setModelNumber] = useState('Select')
 	const router = useRouter()
 
 	useEffect(() => {
-		filter.length === 0 ? getProducts() : getProductByFilter()
-	}, [filter])
-
-	const getProducts = async () => {
-		setProducts('loading')
-		try {
-			let response = await GetProducts()
-			console.log(response?.data?.products)
-			setProducts(response.data.products)
-		} catch (error) {
-			console.log(error)
+		if (router.query.search) {
+			setSearchTerm(router.query.search)
 		}
-	}
+		getProducts(null, null, router.query.search)
+	}, [])
 
-	const getProductByFilter = async () => {
+	useEffect(() => {
+		getProducts(
+			category.id,
+			modelNumber === 'Select' ? null : modelNumber,
+			searchTerm === '' ? null : searchTerm
+		)
+	}, [category, modelNumber, searchTerm])
+
+	const getProducts = async (category, modelNumber, searchTerm) => {
 		setProducts('loading')
-
 		try {
-			let response = await GetProductByFilterApi(router, filter)
-			setProducts(response.data.products)
+			let response = await GetProducts(category, modelNumber, searchTerm)
+			setProducts(response?.data?.products)
+			setProductCategories(response?.data?.categories)
+			setModels(response?.data?.models)
 		} catch (error) {
 			console.log(error)
 		}
@@ -40,7 +47,16 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 
 	return (
 		<div className='extended-warranty-model-selection'>
-			<ExtendedWarrantySearchProduct />
+			<ExtendedWarrantySearchProduct
+				onSearchChange={setSearchTerm}
+				searchTerm={searchTerm}
+				category={category}
+				onCategoryChange={setCategory}
+				modelNumber={modelNumber}
+				onModelNumber={setModelNumber}
+				models={models}
+				productCategories={productCategories}
+			/>
 			<section className='products-v2'>
 				<div
 					className='container mb-8 mb-md-20'
@@ -49,6 +65,10 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 					{!Array.isArray(products) ? (
 						<div className='w-100 d-flex justify-content-center'>
 							<Spinner className={'mt-5'} size={80} />
+						</div>
+					) : products.length === 0 ? (
+						<div className='w-100 d-flex justify-content-center'>
+							<h6>Item not found</h6>
 						</div>
 					) : (
 						<div className='products'>
