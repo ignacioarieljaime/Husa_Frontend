@@ -19,10 +19,11 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 	const router = useRouter()
 
 	useEffect(() => {
+		setCategory(productCategories[0])
 		if (router.query.search) {
 			setSearchTerm(router.query.search)
 		}
-		getProducts(null, null, router.query.search)
+		getProducts(category.id, null, router.query.search)
 	}, [])
 
 	useEffect(() => {
@@ -58,9 +59,15 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 				productCategories={productCategories}
 			/>
 			<section className='products-v2'>
-				<div
-					className='container mb-8 mb-md-20'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+				<div className='container mb-8 mb-md-20'>
+					<h2 className='title fs-2hx'>
+						Protect Your <span className='text-primary'>{category.name}</span>
+					</h2>
+					<p className='description'>
+						Find your <span className='text-lowercase'>{category.name}</span>{' '}
+						model to continue.
+					</p>
+				</div>
 				<div className='extended-warranty-products-grid products-grid'>
 					{!Array.isArray(products) ? (
 						<div className='w-100 d-flex justify-content-center'>
