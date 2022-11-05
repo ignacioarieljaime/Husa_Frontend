@@ -6,65 +6,70 @@ import ProductsFilter from './ProductsFilter'
 import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { useRouter } from 'next/router'
-import { GetProductByFilterApi } from 'services/Product'
+import { GetProductByFilterApi, GetProductsListNewApi } from 'services/Product'
 
 const ProductsGridV2 = ({
 	data: {
 		structure: { category }
 	}
 }) => {
-	const [sortingMethod, setSortingMethod] = useState([
-		{
-			title: 'Newest',
-			value: 'new'
-		}
-	])
+	const [sortingMethod, setSortingMethod] = useState()
 	const [filters, setFilters] = useState([])
 	const [products, setProducts] = useState([])
-	const [filter, setFilter] = useState([])
+	const [totalCount, setTotalCount] = useState()
+	const [filterList, setFilterList] = useState()
+	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const router = useRouter()
 
 	const options = [
 		{
 			title: 'Newest',
-			value: 'new'
+			value: 'newest'
 		},
 		{
 			title: 'Oldest',
-			value: 'old'
-		},
-		{
-			title: 'Popular',
-			value: 'popular'
-		},
-		{
-			title: 'Most Selling',
-			value: 'most-selling'
+			value: 'oldest'
 		}
 	]
 
 	useEffect(() => {
-		filter.length === 0 ? getProducts() : getProductByFilter()
-	}, [filter])
+		if (router.query.filter) {
+			getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
+		} else {
+			getProducts([])
+		}
+	}, [sortingMethod])
 
-	const getProducts = async () => {
+	const getProducts = async _filter => {
 		setProducts('loading')
+		if (_filter) {
+			window.history.replaceState(
+				null,
+				null,
+				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
+			)
+		}
+
 		try {
-			let response = await axios.get(
-				`https://impim.dev-api.hisenseportal.com/api/cms/getProducts/${category.value}`
+			let response = await GetProductsListNewApi(
+				router,
+				category.value,
+				_filter,
+				sortingMethod ? `&sort=${sortingMethod.value}` : null
 			)
 			setProducts(response.data.data)
+			setTotalCount(response.data.total)
+			getFilters(response.data.filterTypes)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	const getProductByFilter = async () => {
-		setProducts('loading')
-
+	const getFilters = async _filterList => {
+		let filters = []
 		try {
-			let response = await GetProductByFilterApi(router, filter)
-			setProducts(response.data.data)
+			_filterList.forEach(item => filters.push(...item.filters))
+			setFilterList(filters)
 		} catch (error) {
 			console.log(error)
 		}
@@ -98,9 +103,12 @@ const ProductsGridV2 = ({
 				<div className='products-grid mt-4 mt-md-0'>
 					<div className='products-filtering me-md-12'>
 						<ProductsFilter
-							filterHandler={setFilter}
-							categoryId={category}
-							filter={filter}
+							filterRequest={getProducts}
+							filterList={filterList}
+							checkBoxCondition={checkBoxCondition}
+							setCheckBoxCondition={setCheckBoxCondition}
+							filters={filters}
+							setFilters={setFilters}
 						/>
 					</div>
 
