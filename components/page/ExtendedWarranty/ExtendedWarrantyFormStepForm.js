@@ -74,11 +74,11 @@ const ExtendedWarrantyFormStepForm = ({
 							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									purchase_data: e.target.value
+									purchase_date: e.target.value
 								}))
 							}
 							placeholder='Purchase Date'
-							type='data'
+							type='date'
 						/>
 					</div>
 				</div>

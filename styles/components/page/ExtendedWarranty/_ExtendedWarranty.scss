@@ -111,7 +111,7 @@
 }
 
 .extended-warranty-faq {
-	padding: 50px 12px 250px;
+	padding: 50px 12px 120px;
 	* {
 		color: #221f20;
 	}
@@ -461,9 +461,9 @@
 					list-style: none;
 					.plan {
 						display: flex;
-						justify-content: space-evenly;
+						justify-content: space-between;
 						align-items: center;
-						padding: 36px 0;
+						padding: 36px 10%;
 						border-top: 1px solid #dbddde;
 						font-weight: 400;
 						font-size: 24px;
@@ -633,7 +633,9 @@
 					font-weight: 400;
 					font-size: 16px;
 					line-height: 120%;
+					text-decoration: none;
 					letter-spacing: -0.02em;
+					color: #221f20;
 					> span {
 						font-weight: 700;
 						padding-left: 10px;

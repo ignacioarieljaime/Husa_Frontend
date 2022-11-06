@@ -7,6 +7,7 @@ import ExtendedWarrantyWizardStepper from './ExtendedWarrantyWizardStepper'
 import { GetSingleProduct } from 'services/Product'
 import { GetProductPlans } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 	const [step, setStep] = useState({
@@ -44,6 +45,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 			})
 		} catch (error) {
 			console.log(error)
+			toast.error('Entered price is not valid')
 		}
 	}
 

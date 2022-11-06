@@ -1,7 +1,7 @@
 import React from 'react'
 import ExtendedWarrantyFAQAccordion from './ExtendedWarrantyFAQAccordion'
 
-const ExtendedWarrantyFAQ = ({ data: structure }) => {
+const ExtendedWarrantyFAQ = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='extended-warranty-faq container'>

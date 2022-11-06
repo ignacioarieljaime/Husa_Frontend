@@ -30,8 +30,16 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 	}, [])
 
 	useEffect(() => {
-		if (productCategories && category.name === 'Select' && !router.query.search)
-			setCategory(productCategories[0])
+		if (productCategories && category.name === 'Select') {
+			console.log(router.query.category_id)
+			if (router.query.category_id) {
+				setCategory(
+					productCategories.find(
+						item => item.id === parseInt(router.query.category_id)
+					)
+				)
+			} else if (!router.query.search) setCategory(productCategories[0])
+		}
 	}, [productCategories])
 
 	useEffect(() => {

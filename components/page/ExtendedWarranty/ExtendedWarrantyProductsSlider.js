@@ -5,6 +5,8 @@ import Link from 'next/link'
 import 'swiper/css'
 
 const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
+	const categories = structure?.list?.value[0]?.category?.items
+
 	return (
 		<section>
 			<div className='extended-warranty-products-slider'>
@@ -28,7 +30,12 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 										alt={item?.image?.alt}
 										className='slider-image'
 									/>
-									<Link href={item?.link?.value}>
+									<Link
+										href={`/ewp-model-selection-page?category_id=${
+											categories.find(
+												category => category?.name === item?.link?.title
+											)?.id
+										}`}>
 										<a className='slider-title n-btn outline-black'>
 											{item?.link?.title}
 										</a>
