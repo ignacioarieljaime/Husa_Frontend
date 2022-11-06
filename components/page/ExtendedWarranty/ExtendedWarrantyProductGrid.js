@@ -7,7 +7,6 @@ import axios from 'axios'
 import { GetProducts } from 'services/ExtendedWarranty'
 
 const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
-	const [searchTerm, setSearchTerm] = useState([])
 	const [products, setProducts] = useState([])
 	const [productCategories, setProductCategories] = useState()
 	const [models, setModels] = useState()
@@ -17,21 +16,14 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 	})
 	const [modelNumber, setModelNumber] = useState('Select')
 	const router = useRouter()
+	const [searchTerm, setSearchTerm] = useState(router?.query?.search)
 
 	useEffect(() => {
 		setModelNumber('Select')
 	}, [category])
 
 	useEffect(() => {
-		if (router.query.search) {
-			setSearchTerm(router.query.search)
-		}
-		getProducts(category.id, null, router.query.search)
-	}, [])
-
-	useEffect(() => {
 		if (productCategories && category.name === 'Select') {
-			console.log(router.query.category_id)
 			if (router.query.category_id) {
 				setCategory(
 					productCategories.find(
