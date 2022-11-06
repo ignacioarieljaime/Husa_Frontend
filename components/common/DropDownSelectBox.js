@@ -42,7 +42,7 @@ const DropDownSelectBox = ({ options, value, title, onChange }) => {
 			{show && (
 				<div className='dropdown-select-box-options'>
 					<ul>
-						{options.map((option, index) => {
+						{options?.map((option, index) => {
 							return (
 								<li key={index} onClick={() => newValueHandler(option)}>
 									{Array.isArray(value) ? (

@@ -101,6 +101,11 @@
 	&.transparent {
 		background-color: transparent !important;
 	}
+	&.simple {
+		&:hover{
+			transform: scale(1) !important;
+		}
+	}
 }
 
 @media (max-width: 768px) {

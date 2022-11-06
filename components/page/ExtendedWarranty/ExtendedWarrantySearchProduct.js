@@ -45,13 +45,9 @@ const ExtendedWarrantySearchProduct = ({
 		onModelNumber('Select')
 		onCategoryChange({
 			id: null,
-			name: 'All'
+			name: 'Select'
 		})
 	}
-
-	useEffect(() => {
-		onModelNumber('Select')
-	}, [category])
 
 	return (
 		<section>

@@ -46,3 +46,10 @@ export async function GetPaymentUrl(_token) {
 	)
 	return response
 }
+
+export async function GetPaymenStatus(_invoice) {
+	let response = await axios.post(
+		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/invoice/show/${_invoice}`
+	)
+	return response
+}
