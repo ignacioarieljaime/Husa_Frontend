@@ -33,7 +33,7 @@ const ExtendedWarrantyFileInput = ({
 					ref={inputRef}
 					onChange={e => {
 						const file = e.target.files && e.target.files[0]
-						file.type.startsWith('image') &&
+						file?.type.startsWith('image') &&
 							onChange({
 								id: id,
 								asset: e.target.files && e.target.files[0],

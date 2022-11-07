@@ -1,9 +1,5 @@
 import React from 'react'
 import ExtendedWarrantyFeatureBlocksItem from './ExtendedWarrantyFeatureBlocksItem'
-import img from 'public/assets/images/Subtract22.png'
-import img1 from 'public/assets/images/Union1.png'
-import img2 from 'public/assets/images/Vector.png'
-import img3 from 'public/assets/images/Subtract1.png'
 
 const ExtendedWarrantyFeatureBlocks = ({ data: { structure } }) => {
 	return (

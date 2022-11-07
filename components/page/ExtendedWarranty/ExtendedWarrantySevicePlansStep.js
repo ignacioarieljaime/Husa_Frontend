@@ -15,7 +15,9 @@ const ExtendedWarrantySevicePlansStep = ({
 						<h5 className='title'>{product?.name}</h5>
 						<img src={product?.image} alt={product?.name} className='image' />
 						<div className='price-label'>Purchased Price:</div>
-						<div className='n-btn primary w-fit mx-auto'>${price} USD</div>
+						<div className='n-btn primary simple w-fit mx-auto'>
+							${price} USD
+						</div>
 					</div>
 					<div className='box'>
 						<div className='title'>Select Your Service Plan</div>

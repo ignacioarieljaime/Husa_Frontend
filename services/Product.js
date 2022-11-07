@@ -47,3 +47,7 @@ export async function GetSingleProduct(navigate, _productId) {
 	let response = await useFetch(navigate).get(`/getProduct/${_productId}`)
 	return response
 }
+export async function GetSearchResult(navigate, _searchTerm) {
+	let response = await useFetch(navigate).get(`/searchResult/${_searchTerm}`)
+	return response
+}

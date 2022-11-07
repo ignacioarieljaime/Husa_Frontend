@@ -4,35 +4,51 @@ import Spinner from 'components/common/Spinner'
 import ExtendedWarrantySearchProduct from './ExtendedWarrantySearchProduct'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import { GetProductByFilterApi } from 'services/Product'
 import { GetProducts } from 'services/ExtendedWarranty'
 
 const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 	const [products, setProducts] = useState([])
-	const [filter, setFilter] = useState([])
+	const [productCategories, setProductCategories] = useState()
+	const [models, setModels] = useState()
+	const [category, setCategory] = useState({
+		id: null,
+		name: 'Select'
+	})
+	const [modelNumber, setModelNumber] = useState('Select')
 	const router = useRouter()
+	const [searchTerm, setSearchTerm] = useState(router?.query?.search)
 
 	useEffect(() => {
-		filter.length === 0 ? getProducts() : getProductByFilter()
-	}, [filter])
+		setModelNumber('Select')
+	}, [category])
 
-	const getProducts = async () => {
-		setProducts('loading')
-		try {
-			let response = await GetProducts()
-			console.log(response?.data?.products)
-			setProducts(response.data.products)
-		} catch (error) {
-			console.log(error)
+	useEffect(() => {
+		if (productCategories && category.name === 'Select') {
+			if (router.query.category_id) {
+				setCategory(
+					productCategories.find(
+						item => item.id === parseInt(router.query.category_id)
+					)
+				)
+			} else if (!router.query.search) setCategory(productCategories[0])
 		}
-	}
+	}, [productCategories])
 
-	const getProductByFilter = async () => {
+	useEffect(() => {
+		getProducts(
+			category.id,
+			modelNumber === 'Select' ? null : modelNumber,
+			searchTerm === '' ? null : searchTerm
+		)
+	}, [category, modelNumber, searchTerm])
+
+	const getProducts = async (category, modelNumber, searchTerm) => {
 		setProducts('loading')
-
 		try {
-			let response = await GetProductByFilterApi(router, filter)
-			setProducts(response.data.products)
+			let response = await GetProducts(category, modelNumber, searchTerm)
+			setProducts(response?.data?.products)
+			setProductCategories(response?.data?.categories)
+			setModels(response?.data?.models)
 		} catch (error) {
 			console.log(error)
 		}
@@ -40,24 +56,51 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 
 	return (
 		<div className='extended-warranty-model-selection'>
-			<ExtendedWarrantySearchProduct />
+			<ExtendedWarrantySearchProduct
+				onSearchChange={setSearchTerm}
+				searchTerm={searchTerm}
+				category={category}
+				onCategoryChange={setCategory}
+				modelNumber={modelNumber}
+				onModelNumber={setModelNumber}
+				models={models}
+				productCategories={productCategories}
+			/>
 			<section className='products-v2'>
-				<div
-					className='container mb-8 mb-md-20'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
-				<div className='extended-warranty-products-grid products-grid'>
-					{!Array.isArray(products) ? (
-						<div className='w-100 d-flex justify-content-center'>
-							<Spinner className={'mt-5'} size={80} />
+				{!Array.isArray(products) ? (
+					<div className='w-100 d-flex justify-content-center'>
+						<Spinner className={'mt-5'} size={80} />
+					</div>
+				) : products.length === 0 ? (
+					<div className='w-100 d-flex justify-content-center'>
+						<h6>Item not found</h6>
+					</div>
+				) : (
+					<>
+						<div className='container mb-8 mb-md-20'>
+							<h2 className='title fs-2hx'>
+								Protect Your{' '}
+								<span className='text-primary'>
+									{category?.name === 'Select' ? 'Products' : category?.name}
+								</span>
+							</h2>
+							<p className='description'>
+								Find your{' '}
+								<span className='text-lowercase'>
+									{category?.name === 'Select' ? 'product' : category?.name}
+								</span>{' '}
+								model to continue.
+							</p>
 						</div>
-					) : (
-						<div className='products'>
-							{products.map((item, index) => (
-								<ExtendedWarrantyProduct key={index} data={item} />
-							))}
+						<div className='extended-warranty-products-grid products-grid'>
+							<div className='products'>
+								{products.map((item, index) => (
+									<ExtendedWarrantyProduct key={index} data={item} />
+								))}
+							</div>
 						</div>
-					)}
-				</div>
+					</>
+				)}
 			</section>
 		</div>
 	)

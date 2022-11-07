@@ -34,7 +34,7 @@ const DropDownSelectBox = ({ options, value, title, onChange }) => {
 				type='button'
 				onClick={() => setShow(!show)}>
 				{title && title + ': '}
-				{value?.title}
+				{typeof value === 'string' ? value : value.name ? value.name : 'Select'}
 				<span className='ms-5'>
 					<FontAwesomeIcon icon={faChevronDown} />
 				</span>
@@ -42,18 +42,18 @@ const DropDownSelectBox = ({ options, value, title, onChange }) => {
 			{show && (
 				<div className='dropdown-select-box-options'>
 					<ul>
-						{options.map(option => {
+						{options?.map((option, index) => {
 							return (
-								<li key={option.value} onClick={() => newValueHandler(option)}>
+								<li key={index} onClick={() => newValueHandler(option)}>
 									{Array.isArray(value) ? (
 										<CustomCheckBox
-											checked={value.some(item => item.value === option.value)}
+											checked={value.some(item => item.id === option.id)}
 											className='me-3'
 										/>
 									) : (
 										''
 									)}
-									{option.title}
+									{typeof option === 'string' ? option : option.name}
 								</li>
 							)
 						})}

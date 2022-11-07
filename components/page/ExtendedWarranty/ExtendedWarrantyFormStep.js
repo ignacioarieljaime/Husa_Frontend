@@ -8,18 +8,64 @@ import {
 	GetPaymentUrl
 } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
+import Joi from 'joi'
 
 const ExtendedWarrantyFormStep = ({ product, plan }) => {
 	const [formBody, setFormBody] = useState({
 		product: {
-			id: product.id
+			id: product.id,
+			model_plate_sticker: '',
+			receipt_photo: '',
+			serial_number: ''
 		},
-		plan_id: plan.id
+		plan_id: plan.id,
+		first_name: '',
+		last_name: '',
+		phone: '',
+		email: '',
+		address: '',
+		purchase_date: ''
 	})
 	const [assets, setAssets] = useState([])
 	const [acceptTerms, setAcceptTerms] = useState(false)
-	const [token, setToken] = useState()
 	const router = useRouter()
+
+	const schema = Joi.object({
+		first_name: Joi.string()
+			.messages({ 'string.empty': 'Name field is empty' })
+			.required(),
+		last_name: Joi.string()
+			.messages({ 'string.empty': 'Last name is not entered' })
+			.required(),
+		email: Joi.string()
+			.email({ tlds: { allow: false } })
+			.messages({ 'string.empty': 'Email field is empty' })
+			.required(),
+		phone: Joi.number()
+			.integer()
+			.messages({ 'number.empty': 'Phone number field is empty' })
+			.required(),
+		address: Joi.string()
+			.messages({ 'string.empty': 'Address field is empty' })
+			.required(),
+		purchase_date: Joi.date()
+			.messages({ 'date.empty': 'Purchase date field is empty' })
+			.required(),
+		plan_id: Joi.number(),
+		product: Joi.object({
+			serial_number: Joi.string()
+				.messages({ 'string.empty': 'Serial number field is empty' })
+				.required(),
+			model_plate_sticker: Joi.string()
+				.messages({ 'string.empty': 'Please upload model plate sticker' })
+				.required(),
+			receipt_photo: Joi.string()
+				.messages({ 'string.empty': 'Please upload receipt photo' })
+				.required(),
+			id: Joi.number()
+		})
+	})
 
 	const assetsUploadHandler = _asset => {
 		let temp = assets
@@ -30,45 +76,59 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 			)
 		temp.push(_asset)
 		setAssets(temp)
+		submitFormAssets(_asset)
 	}
 
 	const submitAssets = async asset => {
 		const formData = new FormData()
 		formData.append('attachment', asset)
-		let response = await postFormAssets(formData)
-		return response?.data?.view_link
+		try {
+			let response = await postFormAssets(formData)
+			return response?.data?.view_link
+		} catch (err) {}
 	}
 
 	const submitFormData = async () => {
-		let response = await submitForm(formBody)
-		setToken(response?.data?.invoice?.token)
+		if (acceptTerms) {
+			try {
+				if (schema.validate(formBody)?.error) {
+					toast.error(schema.validate(formBody)?.error?.details[0]?.message)
+				} else {
+					let response = await submitForm(formBody)
+					redirectToPayment(response?.data?.invoice?.token)
+				}
+			} catch (error) {
+				console.log(error)
+			}
+		}
 	}
 
 	const redirectToPayment = async token => {
-		let route = await GetPaymentUrl(token)
-		router.push(route)
+		let link = await GetPaymentUrl(token)
+		router.push(link.data.url)
 	}
 
-	const submitFormHandler = async () => {
-		if (acceptTerms) {
-			assets.forEach(async item => {
-				try {
-					let link = await submitAssets(item.asset)
-					setFormBody(prevState => ({
-						...prevState,
-						product: {
-							...prevState.product,
-							[item.name]: link
-						}
-					}))
-				} catch (error) {
-					console.log(error)
+	const submitFormAssets = async _asset => {
+		try {
+			let link = await submitAssets(_asset.asset)
+			setFormBody(prevState => ({
+				...prevState,
+				product: {
+					...prevState.product,
+					[_asset.name]: link
 				}
-			})
-			await submitFormData()
-			if (token) redirectToPayment(token)
+			}))
+			toast.success(_asset.name.replace(/_+/g, ' ') + ' uploaded successfuly')
+		} catch (error) {
+			toast.error(_asset.name.replace(/_+/g, ' ') + ' upload failed')
+			console.log(error)
 		}
 	}
+
+	// useEffect(() => {
+	// 	alert('useEffect')
+	// 	submitFormAssets()
+	// }, [assets])
 
 	return (
 		<section className='extended-warranty-form-step'>
@@ -85,7 +145,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 						onUpload={assetsUploadHandler}
 						acceptTerms={acceptTerms}
 						setAcceptTerms={setAcceptTerms}
-						onSubmit={submitFormHandler}
+						onSubmit={submitFormData}
 					/>
 				</div>
 			</section>
