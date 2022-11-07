@@ -44,6 +44,9 @@ function CompareProduct() {
 						{products?.customFields.map((item, index) => (
 							<CompareProductItem data={item} key={'compare-item-' + index} />
 						))}
+						{products?.properties.map((item, index) => (
+							<CompareProductItem data={item} key={'compare-item-' + index} />
+						))}
 					</>
 				) : (
 					<div className='py-10'>
