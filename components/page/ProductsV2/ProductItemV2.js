@@ -13,6 +13,9 @@ const ProductItemV2 = ({ data }) => {
 	const [currentItem, setCurrentItem] = useState(
 		data.id === 0 ? data.products.product : data.products[0].product
 	)
+	let seriesTitle = data?.products[0]?.product?.customFields
+		?.find(item => item.type_name === 'Top Titles')
+		?.custom_fields.find(item => item.name === 'h2 Title')
 	const dispatch = useDispatch()
 	const [url, setUrl] = useState()
 
@@ -39,21 +42,25 @@ const ProductItemV2 = ({ data }) => {
 				</div>
 				<div className='product-item-v2-content'>
 					<div className='mb-3'>{currentItem?.model}</div>
-					<p className='mb-7'>{data.name.split('-')[0]} Series</p>
+					{seriesTitle && <p className='mb-7'>{seriesTitle?.value}</p>}
 
 					{Array.isArray(data?.products) && (
 						<div className='d-flex justify-content-center flex-wrap gap-3 align-items-center mb-8'>
-							{data?.products?.map((item, index) => (
-								<button
-									onClick={() => setCurrentItem(item.product)}
-									className={`n-btn outline-black ${
-										item.product.id === currentItem.id
-											? ' product-mini-link-active'
-											: ''
-									}`}>
-									{item.value}
-								</button>
-							))}
+							{data?.products?.map(
+								(item, index) =>
+									item.value && (
+										<button
+											key={'type-item-' + index}
+											onClick={() => setCurrentItem(item.product)}
+											className={`n-btn outline-black ${
+												item.product.id === currentItem.id
+													? ' product-mini-link-active'
+													: ''
+											}`}>
+											{item.value}
+										</button>
+									)
+							)}
 						</div>
 					)}
 

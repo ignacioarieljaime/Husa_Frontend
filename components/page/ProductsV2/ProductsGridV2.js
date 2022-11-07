@@ -23,11 +23,11 @@ const ProductsGridV2 = ({
 
 	const options = [
 		{
-			title: 'Newest',
+			name: 'Newest',
 			value: 'newest'
 		},
 		{
-			title: 'Oldest',
+			name: 'Oldest',
 			value: 'oldest'
 		}
 	]

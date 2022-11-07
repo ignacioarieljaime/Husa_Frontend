@@ -9,6 +9,9 @@ const ModalChanelAdviser = dynamic(() =>
 )
 
 function ProductsItem({ data }) {
+	let seriesTitle = data?.products[0]?.product?.customFields
+		?.find(item => item.type_name === 'Top Titles')
+		?.custom_fields.find(item => item.name === 'h2 Title')
 	const [currentItem, setCurrentItem] = useState(
 		data.id === 0 ? data.products.product : data.products[0].product
 	)
@@ -62,26 +65,28 @@ function ProductsItem({ data }) {
 							alt='featured image'
 						/>
 					)}
-
-					<h3>{data.name.split('-')[0]} Series</h3>
+					{seriesTitle && <h3>{seriesTitle?.value}</h3>}
 
 					<p>{currentItem.name}</p>
 				</div>
 				{Array.isArray(data?.products) && (
 					<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
-						{data?.products?.map((item, index) => (
-							<li>
-								<button
-									onClick={() => setCurrentItem(item.product)}
-									className={`px-3 w-100 py-1 border-1 border product-mini-link border-dark mb-0 d-flex btn-outline-dark text-dark  ${
-										item.product.id === currentItem.id
-											? ' product-mini-link-active'
-											: ''
-									}`}>
-									{item.value}
-								</button>
-							</li>
-						))}
+						{data?.products?.map(
+							(item, index) =>
+								item.value && (
+									<li key={'type-item-' + index}>
+										<button
+											onClick={() => setCurrentItem(item.product)}
+											className={`px-3 w-100 py-1 border-1 border product-mini-link border-dark mb-0 d-flex btn-outline-dark text-dark  ${
+												item.product.id === currentItem.id
+													? ' product-mini-link-active'
+													: ''
+											}`}>
+											{item.value}
+										</button>
+									</li>
+								)
+						)}
 					</ul>
 				)}
 

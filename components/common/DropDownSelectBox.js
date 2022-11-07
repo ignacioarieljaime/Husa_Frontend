@@ -34,7 +34,11 @@ const DropDownSelectBox = ({ options, value, title, onChange }) => {
 				type='button'
 				onClick={() => setShow(!show)}>
 				{title && title + ': '}
-				{typeof value === 'string' ? value : value.name ? value.name : 'Select'}
+				{typeof value === 'string'
+					? value
+					: value?.name
+					? value.name
+					: 'Select'}
 				<span className='ms-5'>
 					<FontAwesomeIcon icon={faChevronDown} />
 				</span>
