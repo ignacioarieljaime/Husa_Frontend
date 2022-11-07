@@ -1,12 +1,27 @@
 import CompareModal from 'components/page/Product/CompareModal'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { getSettingApi } from 'services/cxm'
 
 function Layout({ children, meta, title }) {
 	const router = useRouter()
+
+	useEffect(() => {
+		getSetting()
+	}, [])
+
+	const getSetting = async () => {
+		try {
+			let response = await getSettingApi()
+
+			console.log(response.data.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 	return (
 		<>
 			<Head>
@@ -27,8 +42,7 @@ function Layout({ children, meta, title }) {
 				<> {children}</>
 			</section>
 
-
-			<CompareModal  />
+			<CompareModal />
 		</>
 	)
 }

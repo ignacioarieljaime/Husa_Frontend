@@ -8,16 +8,17 @@ import CompareProductItem from './CompareProductItem'
 function CompareProduct() {
 	const router = useRouter()
 	let { compareList } = useSelector(state => state.compareData)
-	const [products, setProducts] = useState()
+	const [products, setProducts] = useState("loading")
 	useEffect(() => {
-		if (compareList.length === 0) {
-			router.back()
-			return
+		try {
+			compareProducts(JSON.parse(router.asPath.split('=')[1]))
+		} catch (error) {
+			setProducts('error')
 		}
-		compareProducts(compareList.map(item => item.id))
 	}, [])
 
 	let compareProducts = async _productsId => {
+		setProducts('loading')
 		try {
 			let response = await CompareProductsApi(router, _productsId)
 			setProducts(response.data)
@@ -28,7 +29,13 @@ function CompareProduct() {
 	return (
 		<table className='compare_product_table'>
 			<tbody>
-				{products ? (
+				{products === 'loading' ? (
+					<div className='py-10'>
+						<Spinner size={60} />
+					</div>
+				) : products === 'error' ? (
+					'problem in url'
+				) : (
 					<>
 						<tr>
 							<td>Model</td>
@@ -48,10 +55,6 @@ function CompareProduct() {
 							<CompareProductItem data={item} key={'compare-item-' + index} />
 						))}
 					</>
-				) : (
-					<div className='py-10'>
-						<Spinner size={60} />
-					</div>
 				)}
 			</tbody>
 		</table>

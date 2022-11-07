@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CompareIcon from 'components/icons/CompareIcon'
 import useOutsideClick from 'hooks/useOutsideClick'
 import Link from 'next/link'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
 	changeCompareCondition,
@@ -15,9 +15,18 @@ function CompareModal() {
 	const dispatch = useDispatch()
 	const compareErrorModal = useRef()
 	const compareErrorModalOutside = useOutsideClick(compareErrorModal)
+	const [productsId, setProductsId] = useState([])
 	const { compareCondition, compareList, compareErrorCondition } = useSelector(
 		state => state.compareData
 	)
+
+	useEffect(() => {
+		let _productsId = []
+		compareList.forEach(item => {
+			_productsId.push(item.id)
+		})
+		setProductsId(_productsId)
+	}, [compareList])
 
 	return (
 		<>
@@ -55,7 +64,12 @@ function CompareModal() {
 							onClick={() => dispatch(removeCompare('all'))}>
 							Clear All
 						</button>
-						<Link href={'/test'}>
+						<Link
+							href={`/test${
+								productsId.length !== 0
+									? `?productsId=${JSON.stringify(productsId)}`
+									: ''
+							}`}>
 							<a className='compare_btn'>COMPARE</a>
 						</Link>
 					</div>
