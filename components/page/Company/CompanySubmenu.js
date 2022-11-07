@@ -6,9 +6,9 @@ function CompanySubmenu({ data }) {
 	return (
 		<div id={data.name + data.id} class='catalog-navbar px-5 bg-black'>
 			<nav>
-				<ul class='row justify-content-center justify-content-md-end align-items-center p-0 m-0'>
+				<ul class='row justify-content-center justify-content-md-end text-center align-items-center p-0 m-0'>
 					{structure?.tags?.value.map(item => (
-						<li>
+						<li class='py-3 px-5'>
 							<Link href={item?.target?.value}>
 								<a>
 									<span class='underline-on-hover'>{item?.title?.value}</span>

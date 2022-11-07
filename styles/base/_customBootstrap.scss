@@ -47,7 +47,7 @@
 	transition: all 0.3s ease-in-out;
 }
 .btn-primary-dark {
-	background-color: rgba(35, 157, 152, 1) !important;
+	background-color: hwb(178 14% 38%) !important;
 	border-color: rgba(35, 157, 152, 1) !important;
 }
 .btn-primary-dark:hover {
@@ -63,6 +63,10 @@
 }
 .border-primary {
 	border-color: var(--primary-color) !important;
+}
+.text-logo {
+	color: #009e91 !important;
+	transition: all 0.2s ease-in;
 }
 
 .mw-50 {
@@ -857,6 +861,12 @@ article:hover > .img-box-shadow-hover {
 /* ///////////////////// multi color platform //////////////////////  */
 .platform {
 	padding: 40px 30px;
+	&.smart-platform {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: space-between;
+	}
 }
 
 .platform p {
@@ -869,6 +879,7 @@ article:hover > .img-box-shadow-hover {
 	border-radius: 48px;
 	padding: 16px 24px;
 	transition: all 0.4s ease;
+	width: fit-content;
 }
 .platform a:hover {
 	opacity: 0.7;

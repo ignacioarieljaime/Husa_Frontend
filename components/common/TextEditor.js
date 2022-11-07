@@ -5,7 +5,7 @@ function TextEditor({ data }) {
 	return (
 		<article
 			style={{ maxWidth: `${structure?.width?.value}px` }}
-			className={'mx-auto py-10'}
+			className={'article text-editor mx-auto pt-5 px-6 pb-6'}
 			dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></article>
 	)
 }

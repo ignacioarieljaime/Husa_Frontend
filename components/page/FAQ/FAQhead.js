@@ -7,7 +7,7 @@ function FAQhead({ data }) {
 			<div
 				style={{
 					backgroundColor: structure?.color?.value,
-					height: structure?.height?.value
+					height: structure?.height?.value + 'px'
 				}}
 				className='faq-single-color-header'>
 				<div
