@@ -1,58 +1,55 @@
-import React from 'react'
+import Spinner from 'components/common/Spinner'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { CompareProductsApi } from 'services/compare'
+import CompareProductItem from './CompareProductItem'
 
 function CompareProduct() {
+	const router = useRouter()
+	let { compareList } = useSelector(state => state.compareData)
+	const [products, setProducts] = useState()
+	useEffect(() => {
+		if (compareList.length === 0) {
+			router.back()
+			return
+		}
+		compareProducts(compareList.map(item => item.id))
+	}, [])
+
+	let compareProducts = async _productsId => {
+		try {
+			let response = await CompareProductsApi(router, _productsId)
+			setProducts(response.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 	return (
 		<table className='compare_product_table'>
 			<tbody>
-				<tr>
-					<td>Model</td>
-					<td>
-						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/474/cbf5a253da/a4gv___ScaleMaxHeightWzI1Nl0.png'
-							alt=''
-						/>
-						<h6>Model: 55A6GV</h6>
-						<h5>55" Hisense A6 Series 4K UHD Vidaa TV</h5>
-					</td>
-					<td>
-						<img
-							src='https://assets.hisense-usa.com/assets/GalleryImages/Product/474/cbf5a253da/a4gv___ScaleMaxHeightWzI1Nl0.png'
-							alt=''
-						/>
-						<h6>Model: 55A6GV</h6>
-						<h5>55" Hisense A6 Series 4K UHD Vidaa TV</h5>
-					</td>
-				</tr>
-				<tr>
-					<td>Actual Screen Size (measured diagonally) " </td>
-					<td>54.6 inches</td>
-					<td>54.6 inches</td>
-				</tr>
-				<tr>
-					<td>Actual Screen Size (measured diagonally) " </td>
-					<td>54.6 inches</td>
-					<td>54.6 inches</td>
-				</tr>{' '}
-				<tr>
-					<td>Actual Screen Size (measured diagonally) " </td>
-					<td>54.6 inches</td>
-					<td>54.6 inches</td>
-				</tr>{' '}
-				<tr>
-					<td>Actual Screen Size (measured diagonally) " </td>
-					<td>54.6 inches</td>
-					<td>54.6 inches</td>
-				</tr>{' '}
-				<tr>
-					<td>Actual Screen Size (measured diagonally) " </td>
-					<td>54.6 inches</td>
-					<td>54.6 inches</td>
-				</tr>{' '}
-				<tr>
-					<td>Actual Screen Size (measured diagonally) " </td>
-					<td>54.6 inches</td>
-					<td>54.6 inches</td>
-				</tr>
+				{products ? (
+					<>
+						<tr>
+							<td>Model</td>
+							{products &&
+								products.products.map((item, index) => (
+									<td>
+										<img src={item?.media?.url} alt={item?.media?.caption} />
+										<h6>Model: {item?.model}</h6>
+										<h5>{item?.name}</h5>
+									</td>
+								))}
+						</tr>
+						{products?.customFields.map((item, index) => (
+							<CompareProductItem data={item} key={'compare-item-' + index} />
+						))}
+					</>
+				) : (
+					<div className='py-10'>
+						<Spinner size={60} />
+					</div>
+				)}
 			</tbody>
 		</table>
 	)

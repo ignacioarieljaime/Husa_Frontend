@@ -2,6 +2,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CompareIcon from 'components/icons/CompareIcon'
 import useOutsideClick from 'hooks/useOutsideClick'
+import Link from 'next/link'
 import React, { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -54,7 +55,9 @@ function CompareModal() {
 							onClick={() => dispatch(removeCompare('all'))}>
 							Clear All
 						</button>
-						<button className='compare_btn'>COMPARE</button>
+						<Link href={'/test'}>
+							<a className='compare_btn'>COMPARE</a>
+						</Link>
 					</div>
 				</div>
 			</div>

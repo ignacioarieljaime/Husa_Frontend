@@ -16,13 +16,14 @@ const CompareSlice = createSlice({
 		addNewCompare: (state, action) => {
 			state.compareCondition = true
 			if (
-				state.compareList.length < 3 &&
+				state.compareList.length <= 2 &&
 				!state.compareList.find(item => item.id === action.payload.id)
 			) {
 				state.compareList = [...state.compareList, action.payload]
-			} else {
+			} else if (state.compareList.length === 3) {
 				state.compareErrorCondition = true
 			}
+
 		},
 		removeCompare: (state, action) => {
 			if (action.payload === 'all') {
