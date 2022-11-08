@@ -11,7 +11,7 @@ import {
 	removeCompare
 } from 'redux/slices/compare'
 
-function CompareModal() {
+function CompareModal({ route }) {
 	const dispatch = useDispatch()
 	const compareErrorModal = useRef()
 	const compareErrorModalOutside = useOutsideClick(compareErrorModal)
@@ -65,7 +65,7 @@ function CompareModal() {
 							Clear All
 						</button>
 						<Link
-							href={`/test${
+							href={`${route ? route?.value : ''}${
 								productsId.length !== 0
 									? `?productsId=${JSON.stringify(productsId)}`
 									: ''
