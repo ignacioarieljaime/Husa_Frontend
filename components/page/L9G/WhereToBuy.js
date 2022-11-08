@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
-const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
+import dynamic from 'next/dynamic'
+const ModalChanelAdviser = dynamic(() =>
+	import('../Product/ModalChanelAdviser')
+)
 
 const WhereToBuy = ({ pim, data }) => {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 
 	return (
-		<div className='vertical-where-to-buy'>
+		<div className='vertical-where-to-buy d-none d-md-block'>
 			<button
-				className='btn btn-primary rounded-0 px-6 py-3'
+				className='btn'
 				onClick={() =>
 					pim?.retailers.length !== 0
 						? setChanelAdviserHandler(!chanelAdviserHandler)

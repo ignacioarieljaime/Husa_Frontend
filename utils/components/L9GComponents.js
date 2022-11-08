@@ -70,5 +70,13 @@ module.exports.L9GComponents = [
 	{
 		name: 'Resources',
 		path: 'components/page/L9G/Resources'
+	},
+	{
+		name: 'Retailers',
+		path: 'components/page/L9G/Retailers'
+	},
+	{
+		name: 'WhereToBuy',
+		path: 'components/page/L9G/WhereToBuy'
 	}
 ]

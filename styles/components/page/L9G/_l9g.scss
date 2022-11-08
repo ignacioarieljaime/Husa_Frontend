@@ -188,17 +188,29 @@
 	}
 }
 
-.vertical-where-to-buy{
-	position: fixed;
-	top: 0;
-	right: 0;
-	height: 100vh;
-	width: 100%;
-	button{
-		position: absolute;
+.vertical-where-to-buy {
+	.btn {
+		position: fixed;
+		z-index: 12;
+		background-color: #00aaa6;
+		writing-mode: vertical-lr;
+		font-size: 18px;
+		display: block;
+		line-height: 48px;
+		padding: 0 8px;
+		color: #fff;
 		top: 50%;
-		right: 0;
+		right: -20.5px;
+		opacity: 1;
+		transition: all 0.3s ease-in-out;
 		transform: rotate(90deg) translateY(-50%);
+		transform-origin: center center;
+		border-radius: 0;
+
+		&:hover {
+			opacity: 0.6;
+			border-color: #00aaa6;
+		}
 	}
 }
 
