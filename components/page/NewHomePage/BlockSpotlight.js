@@ -1,12 +1,29 @@
+import Spinner from 'components/common/Spinner'
 import React, { useState, useEffect } from 'react'
+import { getProductsWithCategoryApi } from 'services/cxm'
 import BlockSpotlightItem from './BlockSpotlightItem'
 
-const BlockSpotlight = ({ data: { structure } }) => {
+const BlockSpotlight = ({ data }) => {
+	let { structure } = data
+	const [products, setProducts] = useState('loading')
 	const [activeProduct, setActiveProduct] = useState()
+	const [showCount, setShowCount] = useState()
 
 	useEffect(() => {
-		setActiveProduct(structure.tabs.value[0].title.value)
+		getProductWithCategory(structure?.tabs?.value[0])
 	}, [])
+
+	const getProductWithCategory = async _data => {
+		setProducts('loading')
+		setActiveProduct(_data?.category?.value)
+		setShowCount(_data?.count?.value)
+		try {
+			let response = await getProductsWithCategoryApi(_data?.category?.value)
+			setProducts(response.data.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<section>
@@ -16,25 +33,22 @@ const BlockSpotlight = ({ data: { structure } }) => {
 					{structure?.tabs?.value.map((item, index) => (
 						<button
 							key={index}
-							onClick={() => setActiveProduct(item?.title?.value)}
-							className={activeProduct === item?.title?.value ? 'active' : ''}>
+							onClick={() => getProductWithCategory(item)}
+							className={
+								activeProduct === item?.category?.value ? 'active' : ''
+							}>
 							{item?.title?.value}
 						</button>
 					))}
 				</div>
 				<div className='product-list'>
-					{structure?.tabs?.value
-						.filter(item => activeProduct === item?.title?.value)[0]
-						?.products.value.map((item, index) => (
-							<BlockSpotlightItem
-								key={index}
-								title={item?.title?.value}
-								description={item?.description?.value}
-								models={item?.model?.value}
-								link={item?.link}
-								image={item?.image}
-							/>
-						))}
+					{/* {products === 'loading' ? (
+						<Spinner size={50} />
+					) : (
+						products.map(
+							(item, index) => index <= Number(showCount) && <>sss</>
+						)
+					)} */}
 				</div>
 			</div>
 		</section>
