@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Import Swiper React components
@@ -17,15 +17,17 @@ const SupportNewProducts = ({ data }) => {
 
 	let { structure } = data
 
+	useEffect(() => {
+		setCategoryId(data.structure.list.value[0].category.value)
+	}, [])
+
 	const searchHandler = async _value => {
 		setSearchBoxCondition(true)
 		if (_value.length >= 2) {
 			setSearchProductsList('loading')
 			try {
 				let response = await axios.get(
-					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?type=support${
-						categoryId ? `&categoryId=${categoryId}&` : ''
-					}string=${_value}`
+					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?categoryId=${categoryId}&string=${_value}&type=support`
 				)
 				setSearchProductsList(response.data.data)
 			} catch (error) {
