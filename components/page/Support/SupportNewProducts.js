@@ -23,8 +23,8 @@ const SupportNewProducts = ({ data }) => {
 			setSearchProductsList('loading')
 			try {
 				let response = await axios.get(
-					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?${
-						categoryId ? `categoryId=${categoryId}&` : ''
+					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?type=support${
+						categoryId ? `&categoryId=${categoryId}&` : ''
 					}string=${_value}`
 				)
 				setSearchProductsList(response.data.data)
@@ -51,13 +51,7 @@ const SupportNewProducts = ({ data }) => {
 					grabCursor={true}
 					className='support-products-slider'>
 					{structure?.list?.value.map((item, index) => (
-						<SwiperSlide
-							key={index}
-							className='slider-item pointer-event'
-							onClick={() => {
-								setCategoryId(item?.category?.value)
-								setSearchProductsList([])
-							}}>
+						<SwiperSlide key={index} className='slider-item '>
 							<div className='d-flex flex-column '>
 								<img
 									src={item?.image?.src}
@@ -65,11 +59,14 @@ const SupportNewProducts = ({ data }) => {
 									title={item?.image?.title}
 									className='slider-image'
 								/>
-								<a
-									href={item?.link?.value}
+								<button
+									onClick={() => {
+										setCategoryId(item?.category?.value)
+										setSearchProductsList([])
+									}}
 									className='slider-title n-btn outline-black'>
 									{item?.link?.title}
-								</a>
+								</button>
 							</div>
 						</SwiperSlide>
 					))}
