@@ -8,6 +8,7 @@ import { GetPaymenStatus, GetPaymentUrl } from 'services/ExtendedWarranty'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Spinner from 'components/common/Spinner'
+import { toast } from 'react-toastify'
 
 const ExtendedWarrantyPaymentStatus = ({
 	data: {
@@ -17,6 +18,7 @@ const ExtendedWarrantyPaymentStatus = ({
 	const [invoice, setInvoice] = useState()
 	const [statusData, setStatusData] = useState()
 	const [content, setContent] = useState()
+	const [isLoading, setIsLoading] = useState(true)
 	const router = useRouter()
 
 	useEffect(() => {
@@ -35,8 +37,20 @@ const ExtendedWarrantyPaymentStatus = ({
 	}, [invoice])
 
 	const getStatus = async _invoice => {
-		let response = await GetPaymenStatus(_invoice)
-		setStatusData(response?.data)
+		try {
+			let response = await GetPaymenStatus(_invoice)
+			setStatusData(response?.data)
+		} catch (error) {
+			if (error.response.status === 404) {
+				toast.error('Token is invalid', {
+					autoClose: false
+				})
+			} else {
+				toast.error('Something went wrong')
+			}
+			console.log(error)
+		}
+		setIsLoading(false)
 	}
 
 	const retryPayment = async _invoice => {
@@ -47,7 +61,7 @@ const ExtendedWarrantyPaymentStatus = ({
 	return (
 		<section>
 			<div className='extended-warranty-payment-status'>
-				{statusData?.invoice?.transaction ? (
+				{!isLoading ? (
 					<div className='status-container'>
 						<img
 							className='status-image'
@@ -137,7 +151,7 @@ const ExtendedWarrantyPaymentStatus = ({
 						) : null}
 					</div>
 				) : (
-					<div className='w-100 d-flex justify-content-center'>
+					<div className='w-100 d-flex justify-content-center py-20'>
 						<Spinner className={'mt-5'} size={80} />
 					</div>
 				)}

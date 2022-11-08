@@ -16,7 +16,7 @@ function ProductFeatureWithImageWithBTN({ data }) {
 						<p>{structure?.paragraphTwo?.value}</p>
 						{structure?.link?.value && (
 							<Link href={structure?.link?.value}>
-								<a className='white_border_link_btn'>
+								<a className='text-logo px-4 text-decoration-none'>
 									{structure?.link?.title}
 								</a>
 							</Link>

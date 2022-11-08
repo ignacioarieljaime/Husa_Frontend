@@ -1,3 +1,38 @@
-.ql-align-center{
-    text-align: center !important;
+.ql-align-center {
+	text-align: center !important;
+}
+.article {
+	p {
+		margin-bottom: 24px;
+		font-size: 18px;
+	}
+	a {
+		word-wrap: break-word;
+	}
+	h1,
+	h2,
+	h3 {
+		font-size: 42px ;
+		margin: 32px 0;
+	}
+	&.all-m-0{
+		p{
+			margin: 0;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 32px ;
+		}
+				&.all-m-0 {
+					p {
+						margin-bottom: 8px;
+					}
+				}
+	}
 }

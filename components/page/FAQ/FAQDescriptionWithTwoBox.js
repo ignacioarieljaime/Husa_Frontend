@@ -3,18 +3,20 @@ import React from 'react'
 function FAQDescriptionWithTwoBox({ data }) {
 	let { structure } = data
 	return (
-		<article>
+		<article className='article'>
 			<div
 				className='mx-auto'
-				style={{ width: structure?.width?.value + 'px' }}>
+				style={{ maxWidth: structure?.width?.value + 'px' }}>
 				<div
 					dangerouslySetInnerHTML={{ __html: structure?.title1?.value }}></div>
-				<div className='row justify-content-center'>
-					<div className='col-12 col-lg-4'
+				<div className='row justify-content-center mx-0'>
+					<div
+						className='col-12 col-sm-5'
 						dangerouslySetInnerHTML={{
 							__html: structure?.leftTitle?.value
 						}}></div>
-					<div className='col-12 col-lg-4'
+					<div
+						className='col-12 col-sm-5'
 						dangerouslySetInnerHTML={{
 							__html: structure?.rightTitle?.value
 						}}></div>
