@@ -20,7 +20,7 @@ const BlockCategories = ({ data: { structure } }) => {
 					centeredSlides={true}
 					grabCursor={true}
 					className='appliances-slider'>
-					{structure.list.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item'>
 							<img
 								src={item?.image?.src}
