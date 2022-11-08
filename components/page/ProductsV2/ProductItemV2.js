@@ -37,7 +37,6 @@ const ProductItemV2 = ({ data }) => {
 						src={currentItem?.media?.url}
 						style={{ maxHeight: '182px' }}
 						alt={name}
-						width='80%'
 					/>
 				</div>
 				<div className='product-item-v2-content'>
