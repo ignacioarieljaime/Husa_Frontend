@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 
-const SmoothMotion = () => {
+const SmoothMotion = ({ data: { structure } }) => {
 	const [position, setPosition] = useState({ x: 330, y: 0 })
 	let boundaries = {
 		left: 0,
@@ -77,15 +77,14 @@ const SmoothMotion = () => {
 					<h3
 						className='fs-5 fs-md-2hx text-white text-start mb-0 aos-init aos-animate'
 						data-aos='fade'
-						data-aos-duration='1000'>
-						Have a healthy heap of buttery - smooth motion.
-					</h3>
+						data-aos-duration='1000'
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
 				</div>
 				<div className='blured-image-container' ref={box}>
 					<div className='screen'>
 						<img
-							src='https://assets.hisense-usa.com/resources/themes/default/images/products/lg9/section-5-motion2.jpg'
-							alt='man skiing blurred'
+							src={structure?.fadedImage?.src}
+							alt={structure?.fadedImage?.alt}
 						/>
 					</div>
 					<Draggable
@@ -99,19 +98,13 @@ const SmoothMotion = () => {
 						<div className='screen-slider' ref={slider}></div>
 					</Draggable>
 					<div className='screen overlay' style={{ width: position.x }}>
-						<img
-							src='https://assets.hisense-usa.com/resources/themes/default/images/products/lg9/section-5-motion1.jpg'
-							alt='man skiing'
-						/>
+						<img src={structure?.image?.src} alt={structure?.image?.alt} />
 					</div>
 				</div>
 				<div className='px-4 px-md-20 py-4 py-md-20'>
-					<div className='caption mw-md-50 fs-9 fs-md-2 fw-light'>
-						With microsecond level-processor response and MEMC technology the
-						L9G ensures you never miss a moment of the action. Images are
-						buttery-smooth and crystal clear - so whether its sports, games, or
-						action films, the L9G is gonna give you the picture you deserve.
-					</div>
+					<div
+						className='caption mw-md-50 fs-9 fs-md-2 fw-light'
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 			</div>
 		</section>
