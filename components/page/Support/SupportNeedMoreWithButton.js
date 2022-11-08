@@ -17,11 +17,13 @@ function SupportNeedMoreWithButton({ data }) {
 						style={{ color: '#fff' }}>
 						{structure?.title?.value}
 					</h4>
-					<Link href={structure.link.value}>
-						<a className='n-btn outline-white transparent'>
-							{structure?.link?.title}
-						</a>
-					</Link>
+					{structure?.link?.value && (
+						<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
+							<a className='n-btn outline-white transparent'>
+								{structure?.link?.title}
+							</a>
+						</Link>
+					)}
 				</div>
 			</div>
 		</section>
