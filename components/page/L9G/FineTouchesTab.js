@@ -22,9 +22,9 @@ const FineTouchesTab = ({ videoSrc, description }) => {
 				</video>
 			</div>
 			<div className='mw-md-50 mx-auto'>
-				<p className='fs-9 fs-md-3 fw-light text-center text-white '>
-					{description}
-				</p>
+				<p
+					className='fs-9 fs-md-3 fw-light text-center text-white '
+					dangerouslySetInnerHTML={{ __html: description }}></p>
 			</div>
 		</>
 	)

@@ -24,19 +24,17 @@
 		}
 	}
 	.text-heading {
-		opacity: 0;
+		margin-top: 60vh;
 		z-index: 5500;
-		.line2,
-		.line1 {
+		.line {
+			position: absolute;
+			top: 50%;
+			width: 100%;
 			color: #fff;
-			width: 630px;
 			font-size: 24px;
 			line-height: 32px;
 			text-align: center;
 			margin: 16px auto;
-		}
-		.line1 {
-			padding-top: 45vh;
 		}
 	}
 	.gradient-container {
@@ -63,14 +61,10 @@
 @media (max-width: 767px) {
 	.scorllable-video {
 		.text-heading {
-			.line2,
-			.line1 {
+			.line {
 				text-align: center;
 				width: 75%;
 				margin: 16px auto;
-			}
-			.line1 {
-				padding-top: 15vh;
 			}
 		}
 	}

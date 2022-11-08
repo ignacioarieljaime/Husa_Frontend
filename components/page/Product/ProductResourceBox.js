@@ -19,19 +19,13 @@ function ProductResourceBox({ pim, data }) {
 							</li>
 						)
 				)}
-				{/* {structure?.supportUrl?.value && ( */}
 				<li>
-					<Link
-						href={
-							// structure?.supportUrl?.value
-							`/support/${router.pathname.split('/').at(-1)}`
-						}>
+					<Link href={`/support/${router.pathname.split('/').at(-1)}`}>
 						<a>
 							<span className='underline-on-hover'>PRODUCT SUPPORT</span>
 						</a>
 					</Link>
 				</li>
-				{/* )} */}
 				{structure?.installationUrl?.value && (
 					<li>
 						<Link href={structure?.installationUrl?.value}>

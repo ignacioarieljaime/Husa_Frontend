@@ -1,17 +1,13 @@
 import React from 'react'
 
-const ColorFeature = () => {
+const ColorFeature = ({ data: { structure } }) => {
 	return (
 		<section className='l9g'>
 			<div className='color-feature'>
 				<div className='px-md-20 px-4'>
-					<p className='fs-7 fs-md-3 fw-light mw-md-75 mb-0 py-10 py-md-20'>
-						Experience color like never before. The L9G uses pure red, green,
-						and blue lasers to achieve new levels of color performance, reaching{' '}
-						<span className='text-primary'>
-							107% of the BT.2020 color space.
-						</span>
-					</p>
+					<p
+						className='fs-7 fs-md-3 fw-light mb-0 py-10 py-md-20'
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></p>
 				</div>
 				<div className='row mx-0 justify-content-between'>
 					<div className='col-12 col-md-6 px-4 pr-md-3 ps-md-0 mb-4 mb-md-0 block-video'>
@@ -22,16 +18,18 @@ const ColorFeature = () => {
 							autoPlay={true}
 							loop={true}
 							playsInline={true}>
-							<source src='https://player.vimeo.com/external/585409801.hd.mp4?s=36b793ad850bc1bcdc5563fadff9d9218f620ec9&amp;profile_id=175' />
+							<source src={structure?.leftVideo?.value} />
 						</video>
 						<div className='video-content'>
 							<div
 								className=' aos-init aos-animate'
 								data-aos='fade-zoom-in'
 								data-aos-duration='1000'>
-								<span className='text-white fs-7 fs-md-3  fw-bold'>
-									107% <span className='fw-light'>BT.2020 Color Space</span>
-								</span>
+								<div
+									className='text-white fs-7 fs-md-3  fw-bold'
+									dangerouslySetInnerHTML={{
+										__html: structure?.leftTitle?.value
+									}}></div>
 							</div>
 						</div>
 					</div>
@@ -43,16 +41,18 @@ const ColorFeature = () => {
 							autoPlay={true}
 							loop={true}
 							playsInline={true}>
-							<source src='https://player.vimeo.com/external/585409581.hd.mp4?s=302e82593e6e3329de848c6c31e971a1255c9db6&amp;profile_id=175' />
+							<source src={structure?.rightVideo?.value} />
 						</video>
 						<div className='video-content'>
 							<div
 								className=' aos-init aos-animate'
 								data-aos='fade-zoom-in'
 								data-aos-duration='1000'>
-								<span className='text-white fs-7 fs-md-3  fw-bold'>
-									1+ Billion colors
-								</span>
+								<div
+									className='text-white fs-7 fs-md-3  fw-bold'
+									dangerouslySetInnerHTML={{
+										__html: structure?.rightTitle?.value
+									}}></div>
 							</div>
 						</div>
 					</div>
