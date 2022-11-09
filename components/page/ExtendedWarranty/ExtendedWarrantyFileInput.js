@@ -8,7 +8,8 @@ const ExtendedWarrantyFileInput = ({
 	onChange,
 	modalOnClick,
 	id,
-	name
+	name,
+	value
 }) => {
 	const inputRef = useRef(null)
 
@@ -27,7 +28,9 @@ const ExtendedWarrantyFileInput = ({
 				)}
 			</div>
 			<div className='input' onClick={() => inputRef.current.click()}>
-				<div className='content'>{boxContent}</div>
+				<div className='content'>
+					{value === '' ? boxContent : 'Image Uploaded'}
+				</div>
 				<input
 					type='file'
 					ref={inputRef}

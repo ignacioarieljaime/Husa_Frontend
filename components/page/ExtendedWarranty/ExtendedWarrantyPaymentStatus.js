@@ -22,7 +22,11 @@ const ExtendedWarrantyPaymentStatus = ({
 	const router = useRouter()
 
 	useEffect(() => {
-		setInvoice(router.query.invoice)
+		if (router?.query?.invoice) setInvoice(router?.query?.invoice)
+		else {
+			setIsLoading(false)
+			toast.error('Token not found')
+		}
 	}, [])
 
 	useEffect(() => {
@@ -33,7 +37,11 @@ const ExtendedWarrantyPaymentStatus = ({
 	}, [list, statusData])
 
 	useEffect(() => {
-		if (invoice) getStatus(invoice)
+		if (invoice) {
+			setTimeout(async () => {
+				await getStatus(invoice)
+			}, 10000)
+		}
 	}, [invoice])
 
 	const getStatus = async _invoice => {

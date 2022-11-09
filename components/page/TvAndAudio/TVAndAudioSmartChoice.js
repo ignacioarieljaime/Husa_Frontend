@@ -9,9 +9,9 @@ function TVAndAudioSmartChoice({ data: { structure } }) {
 			<div className='tiny-banner p-md-4'>
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
-						<h2 className='fs-3x mb-12'>
-							{structure?.title?.value}
-							<span className='text-primary ms-2'>
+						<h2 className='mb-12'>
+							{structure?.title?.value}{' '}
+							<span className='text-primary'>
 								{structure?.coloredTitle?.value}
 							</span>
 						</h2>
@@ -25,6 +25,7 @@ function TVAndAudioSmartChoice({ data: { structure } }) {
 								className='tv_and_audio_Laser_intro'
 								src={structure?.image?.src}
 								alt={structure?.image?.alt}
+								width='100%'
 							/>
 						</div>
 						<Link href={structure?.link?.value}>

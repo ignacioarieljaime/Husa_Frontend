@@ -9,7 +9,8 @@ const ExtendedWarrantyFormStepForm = ({
 	onUpload,
 	acceptTerms,
 	setAcceptTerms,
-	onSubmit
+	onSubmit,
+	formBody
 }) => {
 	const [showModal, setShowModal] = useState(false)
 
@@ -106,6 +107,7 @@ const ExtendedWarrantyFormStepForm = ({
 						label='Model Plate Sticker'
 						boxContent='Upload Your Products Serial Number Photo'
 						id={0}
+						value={formBody.product.model_plate_sticker}
 						name='model_plate_sticker'
 						onChange={onUpload}
 						modalOnClick={() => setShowModal(showModal => !showModal)}
@@ -115,6 +117,7 @@ const ExtendedWarrantyFormStepForm = ({
 					<ExtendedWarrantyFileInput
 						label='Receipt Photo'
 						id={1}
+						value={formBody.product.receipt_photo}
 						name='receipt_photo'
 						onChange={onUpload}
 						boxContent='Upload Your Receipt Photo'

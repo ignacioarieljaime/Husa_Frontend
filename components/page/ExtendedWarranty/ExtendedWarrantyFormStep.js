@@ -104,8 +104,20 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 	}
 
 	const redirectToPayment = async token => {
-		let link = await GetPaymentUrl(token)
-		router.push(link.data.url)
+		try {
+			let link = await GetPaymentUrl(token)
+			router.push(link.data.url)
+		} catch (error) {
+			console.log(error)
+			if (error.response.status === 401)
+				toast.error('Submission failed', {
+					autoClose: true
+				})
+			else
+				toast.error('Something went wrong', {
+					autoClose: true
+				})
+		}
 	}
 
 	const submitFormAssets = async _asset => {
@@ -125,11 +137,6 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 		}
 	}
 
-	// useEffect(() => {
-	// 	alert('useEffect')
-	// 	submitFormAssets()
-	// }, [assets])
-
 	return (
 		<section className='extended-warranty-form-step'>
 			<ExtendedWarrantyFormStepSelectionCard
@@ -146,6 +153,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 						acceptTerms={acceptTerms}
 						setAcceptTerms={setAcceptTerms}
 						onSubmit={submitFormData}
+						formBody={formBody}
 					/>
 				</div>
 			</section>
