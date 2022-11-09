@@ -5,14 +5,15 @@ const {
 	GenerateComponentStructure
 } = require('../Controller/ComponentController')
 const UrlController = require('../Controller/UrlController')
+const { GenerateRedirectPage } = require('../Controller/RedirectPageController')
 
 const requestHandler = (async () => {
-	console.log('send request')
+	console.log('send pages request')
 	try {
 		let response = await Axios.get(
 			'https://imcxm.dev-api.hisenseportal.com/api/husa/getPages'
 		)
-		console.log('get data')
+		console.log('get pages')
 		UrlController(response.data.data)
 		response.data.data.forEach(page => {
 			let pageComponents = FindComponent(page.widgets)
@@ -22,7 +23,27 @@ const requestHandler = (async () => {
 		console.log(error)
 	}
 })()
-
+const redirectRequestHandler = (async () => {
+	console.log('send redirects request')
+	try {
+		let response = await Axios.get(
+			'https://imcxm.dev-api.hisenseportal.com/api/husa/getRedirects'
+		)
+		console.log('get redirects')
+		response.data.data.forEach(redirect => {
+			if (redirect.redirect_type === 'From') {
+				let newRoute = {
+					...redirect,
+					route: redirect.redirect_url,
+					id: redirect.id
+				}
+				PageController(newRoute, GenerateRedirectPage(newRoute))
+			}
+		})
+	} catch (error) {
+		console.log(error)
+	}
+})()
 // data.response.forEach(page => {
 // 	let pageComponents = FindComponent(page.components)
 // 	PageController(page, GenerateComponentStructure(page, pageComponents))
