@@ -5,7 +5,12 @@ function TVAndAudioTvShopItem({ data: { image, title, link, description } }) {
 	return (
 		<div className='d-flex flex-column col-12 col-md-6 col-lg-3 px-6 mb-10 mb-lg-0'>
 			<figure>
-				<img src={image?.src} alt={image?.alt} className='mb-3' width='80%' />
+				<img
+					style={{ maxHeight: '130px' }}
+					src={image?.src}
+					alt={image?.alt}
+					className='mb-3'
+				/>
 				<figcaption>
 					<p className='text-white fw-normal'>{title?.value}</p>
 					<p className='text-white fw-normal'>{description?.value}</p>
