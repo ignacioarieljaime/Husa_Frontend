@@ -14,13 +14,16 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 								<TVAndAudioTvShopItem data={item} key={index} />
 							))}
 						</div>
-						<div>
-							<Link href={structure?.link?.value}>
-								<a className='tv-and-audio-tv-shop-button text-decoration-none text-uppercase px-8 text-white border-0 rounded-5'>
-									{structure?.link?.title}
-								</a>
-							</Link>
-						</div>
+						{structure?.link?.title && structure?.link?.value ? (
+							<div>
+								<Link
+									href={structure?.link?.value ? structure?.link?.value : ''}>
+									<a className='tv-and-audio-tv-shop-button text-decoration-none text-uppercase px-8 text-white border-0 rounded-5'>
+										{structure?.link?.title}
+									</a>
+								</Link>
+							</div>
+						) : null}
 					</article>
 				</div>
 			</div>

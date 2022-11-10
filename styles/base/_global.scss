@@ -12,7 +12,7 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	.layout {
-		padding-top: 80px;
+		padding-top: 72px;
 		position: relative;
 	}
 	.Day {
@@ -85,6 +85,25 @@ input {
 	}
 }
 
+@media (min-width: 1920px) {
+	.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 52.5px !important;
+		}
+
+		p,
+		li {
+			font-size: 22.5px !important;
+		}
+		h2 ~ h3,
+		h1 ~ h3 {
+			font-size: 41.25px !important;
+		}
+	}
+}
+
 @media (max-width: 768px) {
 	.article {
 		h2,
@@ -94,6 +113,10 @@ input {
 		p,
 		li {
 			font-size: 14px !important;
+		}
+		h2 ~ h3,
+		h1 ~ h3 {
+			font-size: 24px !important;
 		}
 	}
 }

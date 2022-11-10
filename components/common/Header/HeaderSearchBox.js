@@ -36,7 +36,7 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 	return (
 		<div className='container-fluid header_search_box'>
 			<form
-				className={`search-form col-12 col-sm-7 ${
+				className={`search-form col-12 col-sm-9 ${
 					searchInputCondition && 'visible'
 				}`}>
 				<button className='btn py-0' type='button' aria-label='search item'>

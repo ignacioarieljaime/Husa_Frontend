@@ -39,3 +39,19 @@
 		}
 	}
 }
+
+@media (min-width: 1400px) {
+	.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 52.5px;
+		}
+
+		&.all-m-0 {
+			p {
+				margin-bottom: 8px;
+			}
+		}
+	}
+}

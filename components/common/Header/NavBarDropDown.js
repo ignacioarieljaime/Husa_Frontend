@@ -42,13 +42,14 @@ function NavBarDropDown({ data }) {
 							</div>
 							{data.products.length !== 0 && (
 								<div className='col-7'>
-									<div className='row'>
+									<div className='row align-items-stretch '>
 										{data.products.map((product, index) => (
 											<Link href={product.url ? product.url : ''}>
 												<a className={`col-${12 / data.products.length}`}>
 													<img
 														src={product.image}
 														width='100%'
+														height='100%'
 														alt='featured image'
 													/>
 												</a>
