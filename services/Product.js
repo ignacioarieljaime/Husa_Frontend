@@ -51,3 +51,11 @@ export async function GetSearchResult(navigate, _searchTerm) {
 	let response = await useFetch(navigate).get(`/searchResult/${_searchTerm}`)
 	return response
 }
+
+export async function GetProductWithSeriesAndProductIdApi(
+	navigate,
+	_searchValue
+) {
+	let response = await useFetch(navigate).get(`/productsIndex?${_searchValue}`)
+	return response
+}
