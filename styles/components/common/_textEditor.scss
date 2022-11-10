@@ -12,14 +12,17 @@
 	h1,
 	h2,
 	h3 {
-		font-size: 42px ;
+		font-size: 42px;
 		margin: 32px 0;
 	}
-	&.all-m-0{
-		p{
+	&.all-m-0 {
+		p {
 			margin: 0;
 		}
 	}
+}
+.space-125 {
+	letter-spacing: 0.125em;
 }
 
 @media (max-width: 768px) {
@@ -27,12 +30,28 @@
 		h1,
 		h2,
 		h3 {
-			font-size: 32px ;
+			font-size: 32px;
 		}
-				&.all-m-0 {
-					p {
-						margin-bottom: 8px;
-					}
-				}
+		&.all-m-0 {
+			p {
+				margin-bottom: 8px;
+			}
+		}
+	}
+}
+
+@media (min-width: 1400px) {
+	.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 52.5px;
+		}
+
+		&.all-m-0 {
+			p {
+				margin-bottom: 8px;
+			}
+		}
 	}
 }

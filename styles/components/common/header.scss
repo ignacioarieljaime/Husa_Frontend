@@ -180,18 +180,17 @@ header.blog {
 		display: flex;
 		align-items: center;
 		position: absolute;
-		width: 45%;
+		width: calc(100% - 370px);
 		top: 8px;
-		right: 8%;
-		height: 0px;
+		right: 150px;
+		height: 35px;
 		z-index: 3;
+		margin-top: 15px;
 		clip-path: inset(0 0 0 100%);
 		transition: all 0.3s 300ms ease-in-out;
 
 		&.visible {
 			clip-path: inset(0 0 0 0);
-			height: 35px;
-			margin-top: 15px;
 		}
 	}
 	.search-box {
@@ -217,17 +216,18 @@ header.blog {
 	.nav-dropdown-list {
 		position: absolute;
 		z-index: 2;
-		top: 54px;
+		top: 50px;
 		left: 0;
 		height: 0;
 		width: 100%;
 		background-color: #000;
-		transition: all 0.5s ease;
-		-webkit-transition: all 0.5s ease;
-		-moz-transition: all 0.5s ease;
-		-ms-transition: all 0.5s ease;
+		transition: all 0.5s ease-in-out;
+		opacity:0;
+		-webkit-transition: all 0.5s ease-in-out;
+		-moz-transition: all 0.5s ease-in-out;
+		-ms-transition: all 0.5s ease-in-out;
+		-o-transition: all 0.5s ease-in-out;
 		overflow: hidden;
-		-o-transition: all 0.5s ease;
 		h3,
 		h4,
 		ul,
@@ -292,15 +292,18 @@ header.blog {
 	@keyframes HeaderAnimation {
 		0% {
 			opacity: 0;
+			transform: translateY(20px)
 		}
 		100% {
 			opacity: 1;
+			transform: translateY(0)
 		}
 	}
 
 	.dropdown-list-toggle {
 		&:hover {
 			.nav-dropdown-list {
+				opacity: 1;
 				height: 410px;
 				padding: 80px 40px 40px 40px;
 
@@ -316,15 +319,6 @@ header.blog {
 .top-nav.search-mode .dropdown-list-toggle:hover .nav-dropdown-list > *,
 .top-nav .nav-dropdown-list > * {
 	display: none;
-}
-
-@media (max-width: 1400px) {
-	.top-nav .search-form,
-	.search_result_box {
-		width: 55% !important;
-		left: unset !important;
-		right: 8% !important;
-	}
 }
 
 @media (max-width: 1200px) {
@@ -350,6 +344,22 @@ header.blog {
 	.top-nav.search-mode + .home-top-advertisement {
 		top: 130px;
 	}
+	.top-nav .search-form,
+	.search_result_box {
+		width: 100% !important;
+		right: 0 !important;
+	}
+	.top-nav {
+		.search-form {
+			height: 0px;
+			margin-top: 0px;
+			transition: clip-path 0.3s 600ms ease-in-out;
+			&.visible {
+				height: 35px;
+				margin-top: 15px;
+			}
+		}
+	}
 }
 
 @media (max-width: 315px) {
@@ -364,8 +374,9 @@ header.blog {
 	flex-direction: column;
 	align-items: flex-start;
 	flex-wrap: nowrap;
+	justify-content: space-between;
 	width: 100%;
-	top: 76px;
+	top: 72px;
 	z-index: 1002;
 	height: calc(100% - 76px);
 	overflow-y: auto;
@@ -379,10 +390,11 @@ header.blog {
 			color: #fff;
 			font-style: normal;
 			font-weight: 700;
-			font-size: 14px;
+			font-size: 13px;
 			line-height: 1;
 			text-transform: uppercase;
 			margin-right: 24px;
+			background-color: transparent;
 		}
 
 		&:last-child {
@@ -408,6 +420,16 @@ header.blog {
 				color: #ffffffb3;
 				&:hover {
 					color: #ffffff;
+					.underline-on-hover {
+						&::after {
+							width: 100%;
+						}
+					}
+				}
+				.underline-on-hover {
+					&::after {
+						bottom: 12px;
+					}
 				}
 			}
 
@@ -432,6 +454,11 @@ header.blog {
 
 		&:hover {
 			background: #000;
+			.underline-on-hover {
+				&::after {
+					width: 100%;
+				}
+			}
 		}
 	}
 	span {
@@ -455,11 +482,6 @@ header.blog {
 		}
 		&.show i {
 			transform: rotate(180deg);
-		}
-	}
-	.underline-on-hover {
-		&::after {
-			bottom: 12px;
 		}
 	}
 }
@@ -506,16 +528,18 @@ header.blog {
 		display: none;
 	}
 	.side-nav {
+		display: flex;
 		.nav-item {
-			border-bottom: 1px solid #ffffff1a;
 			display: list-item;
-		}
-		.underline-on-hover {
-			&::after {
-				bottom: 0;
+			.dropdown-toggle:hover {
+				.underline-on-hover {
+					&::after {
+						width: 100%;
+						bottom: 0;
+					}
+				}
 			}
 		}
-
 		.side-nav {
 			ul {
 				width: 100%;
@@ -524,11 +548,18 @@ header.blog {
 		.navbar-nav {
 			&:last-child {
 				li {
-					a {
-						font-size: 12px;
+					a,
+					button {
+						font-size: 26px;
+						margin: 6px 0;
+						padding: 0 12px 12px;
 					}
 				}
 			}
+		}
+		&.hidden {
+			display: none;
+			width: 100%;
 		}
 	}
 }
@@ -540,7 +571,7 @@ header.blog {
 		overflow: auto;
 		max-height: 550px;
 		top: 100%;
-		width: 45%;
+		width: 70%;
 		right: 8%;
 		border-radius: 0px 0px 10px 10px;
 

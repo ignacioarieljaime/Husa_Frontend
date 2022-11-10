@@ -7,27 +7,27 @@ function TVAndAudioFindProduct({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
-				<div className='container px-6 px-md-8 py-20'>
+				<div className='px-4 py-20'>
 					<article className='article text-center'>
-						<h2 className='text-white fs-3x mb-12'>
-								{structure?.title.value}
-							<span className='text-primary ms-2'>
+						<h2 className='text-white fs-2tx mb-12'>
+							{structure?.title.value}{' '}
+							<span className='text-primary'>
 								{structure?.coloredTitle.value}
 							</span>
 						</h2>
 						<div>
-							<p className='text-white fw-normal m-auto mb-4'>
+							<p className='text-white fw-normal m-auto mb-4 fs-5'>
 								{structure?.tinyTitle.value}
 							</p>
 							<Link href={structure?.link.value}>
-								<a className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 mt-8'>
+								<a className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 mt-8 mb-6'>
 									{structure?.link.title}
 								</a>
 							</Link>
 							<img
 								src={structure?.image.src}
 								alt={structure?.image.alt}
-								width='90%'
+								width='100%'
 							/>
 						</div>
 					</article>

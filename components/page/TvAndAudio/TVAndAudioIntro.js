@@ -7,15 +7,18 @@ function TVAndAudioIntro({ data: { structure } }) {
 			<div className='tiny-banner p-md-4'>
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
-						<h2 className='fs-3x mb-12'>
+						<h2 className='fs-2tx mb-12'>
 							{structure?.largeTitle?.value}
 							<span className='text-primary d-block'>
-								{' '}
 								{structure?.coloredTitle?.value}
 							</span>
 						</h2>
 						<div>
-							<p className='fw-normal m-auto'>{structure?.paragraph?.value}</p>
+							<p
+								className='fw-normal m-auto'
+								dangerouslySetInnerHTML={{
+									__html: structure?.paragraph?.value
+								}}></p>
 						</div>
 						{structure?.link?.value && (
 							<Link href={structure?.link?.value}>

@@ -9,9 +9,11 @@ const ExtendedWarrantyFormStepForm = ({
 	onUpload,
 	acceptTerms,
 	setAcceptTerms,
-	onSubmit
+	onSubmit,
+	formBody
 }) => {
 	const [showModal, setShowModal] = useState(false)
+	const [label, setlabel] = useState(true)
 
 	return (
 		<form className='form'>
@@ -70,6 +72,7 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
+						{label && <label className='custom-label'>Purchase Date</label>}
 						<input
 							onChange={e =>
 								onChange(prevState => ({
@@ -77,6 +80,8 @@ const ExtendedWarrantyFormStepForm = ({
 									purchase_date: e.target.value
 								}))
 							}
+							onFocus={() => setlabel(false)}
+							onBlur={() => setlabel(true)}
 							placeholder='Purchase Date'
 							type='date'
 						/>
@@ -106,6 +111,7 @@ const ExtendedWarrantyFormStepForm = ({
 						label='Model Plate Sticker'
 						boxContent='Upload Your Products Serial Number Photo'
 						id={0}
+						value={formBody.product.model_plate_sticker}
 						name='model_plate_sticker'
 						onChange={onUpload}
 						modalOnClick={() => setShowModal(showModal => !showModal)}
@@ -115,6 +121,7 @@ const ExtendedWarrantyFormStepForm = ({
 					<ExtendedWarrantyFileInput
 						label='Receipt Photo'
 						id={1}
+						value={formBody.product.receipt_photo}
 						name='receipt_photo'
 						onChange={onUpload}
 						boxContent='Upload Your Receipt Photo'

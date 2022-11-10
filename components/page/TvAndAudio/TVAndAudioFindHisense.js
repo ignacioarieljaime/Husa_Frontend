@@ -1,11 +1,10 @@
 import React from 'react'
 import TVAndAudioFindHisenseItem from './TVAndAudioFineHisenseItem'
 
-
 function TVAndAudioFindHisense({ data: { structure } }) {
 	return (
 		<section>
-			<div className='p-md-4'>
+			<div className='p-md-4 tv-and-audio-find-hisense'>
 				<div className='container-fluid pt-20 pb-8'>
 					<div className='row align-items-start'>
 						{structure.list.value.map((item, index) => (

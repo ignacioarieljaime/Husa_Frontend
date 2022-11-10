@@ -701,6 +701,9 @@
 		input {
 			display: none;
 		}
+		&.activated {
+			background-color: #eeeeee;
+		}
 	}
 }
 
@@ -711,8 +714,19 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	input {
+	position: relative;
+	.custom-label {
+		display: block;
+		position: absolute;
+		bottom: 8px;
+		left: 16px;
+		background-color: #fff;
+		font-size: 14px;
+		line-height: 120%;
+		letter-spacing: -0.02em;
+		color: #221f20;
+	}
+	 input {
 		width: 100%;
 		border: none;
 		background: transparent;

@@ -102,9 +102,20 @@
 		background-color: transparent !important;
 	}
 	&.simple {
-		&:hover{
+		&:hover {
 			transform: scale(1) !important;
 		}
+	}
+}
+
+.tv-and-audio-tv-shop-button {
+	background: #00cccc;
+	border: none;
+	color: #fff;
+	opacity: 0.87;
+	transition: opacity 0.3s ease-out;
+	&:hover {
+		opacity: 1;
 	}
 }
 

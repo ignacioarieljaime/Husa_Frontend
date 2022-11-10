@@ -56,7 +56,7 @@ function Header({ isBlog = false, data: { structure } }) {
 				style={{ transitionDelay: '2s' }}
 				className={`navbar navbar-expand justify-content-center  
 					theme-${structure.theme.value}
-				 top-nav py-4 px-sm-4 fixed-top flex-wrap ${
+				 top-nav py-3 px-sm-4 fixed-top flex-wrap ${
 						!topNavCondition && 'search-mode'
 					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
 				<div className='container-fluid'>

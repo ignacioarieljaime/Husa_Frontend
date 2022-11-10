@@ -50,5 +50,9 @@ module.exports.PdpComponents = [
 	{
 		name: 'PDPChooseULEDTvBox',
 		path: 'components/page/PDP/PDPChooseULEDTvBox'
+	},
+	{
+		name: 'ListVideoPlayer',
+		path: 'components/page/PDP/ListVideoPlayer'
 	}
 ]
