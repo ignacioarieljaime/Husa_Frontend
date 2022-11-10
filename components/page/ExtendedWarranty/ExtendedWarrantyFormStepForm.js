@@ -13,6 +13,7 @@ const ExtendedWarrantyFormStepForm = ({
 	formBody
 }) => {
 	const [showModal, setShowModal] = useState(false)
+	const [label, setlabel] = useState(true)
 
 	return (
 		<form className='form'>
@@ -71,6 +72,7 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
+						{label && <label className='custom-label'>Purchase Date</label>}
 						<input
 							onChange={e =>
 								onChange(prevState => ({
@@ -78,6 +80,8 @@ const ExtendedWarrantyFormStepForm = ({
 									purchase_date: e.target.value
 								}))
 							}
+							onFocus={() => setlabel(false)}
+							onBlur={() => setlabel(true)}
 							placeholder='Purchase Date'
 							type='date'
 						/>

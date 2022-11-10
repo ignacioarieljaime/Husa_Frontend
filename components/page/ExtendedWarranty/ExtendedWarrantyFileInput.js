@@ -27,7 +27,9 @@ const ExtendedWarrantyFileInput = ({
 					</button>
 				)}
 			</div>
-			<div className='input' onClick={() => inputRef.current.click()}>
+			<div
+				className={`input ${value === '' ? '' : 'activated'}`}
+				onClick={() => inputRef.current.click()}>
 				<div className='content'>
 					{value === '' ? boxContent : 'Image Uploaded'}
 				</div>
