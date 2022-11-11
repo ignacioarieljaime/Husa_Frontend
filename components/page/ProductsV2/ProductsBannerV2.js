@@ -9,14 +9,14 @@ const ProductsBannerV2 = ({ data }) => {
 				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}
-					width={"100%"}
+					width={'100%'}
 					style={{ height: '422px' }}
-					className={"img-fluid"}
+					className={'img-fluid'}
 				/>
 				<div className='heading-text'>
-					<h1 className='fs-md-3qx fw-normal text-white mw-50 mx-auto'>
-						{structure?.title?.value}
-					</h1>
+					<div
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
+						className='fs-md-3qx fw-normal text-white mw-50 mx-auto'></div>
 				</div>
 			</div>
 		</section>

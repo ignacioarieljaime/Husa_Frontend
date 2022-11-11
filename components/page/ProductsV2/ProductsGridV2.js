@@ -8,11 +8,8 @@ import Spinner from 'components/common/Spinner'
 import { useRouter } from 'next/router'
 import { GetProductByFilterApi, GetProductsListNewApi } from 'services/Product'
 
-const ProductsGridV2 = ({
-	data: {
-		structure: { category }
-	}
-}) => {
+const ProductsGridV2 = ({ data }) => {
+	let { structure } = data
 	const [sortingMethod, setSortingMethod] = useState()
 	const [filters, setFilters] = useState([])
 	const [products, setProducts] = useState([])
@@ -53,7 +50,7 @@ const ProductsGridV2 = ({
 		try {
 			let response = await GetProductsListNewApi(
 				router,
-				category.value,
+				structure?.category.value,
 				_filter,
 				sortingMethod ? `&sort=${sortingMethod.value}` : null
 			)
@@ -81,15 +78,8 @@ const ProductsGridV2 = ({
 				<div className='row justify-content-start align-items-center px-3 mb-15'>
 					<BreadCrumb />
 				</div>
-				<div>
-					<h2 className='fw-normal fs-2hx mb-4'>
-						All
-						<span className='primary-text'>Televisions</span>
-					</h2>
-					<h3 className='fw-normal fs-base black-text'>
-						Find your next television.
-					</h3>
-				</div>
+				<div
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 			</div>
 			<div className='products-v2 mx-3 mx-md-13'>
 				<div className='products-sorting d-none d-md-block'>
