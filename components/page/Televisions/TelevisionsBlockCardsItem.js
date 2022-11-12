@@ -3,17 +3,38 @@ import React from 'react'
 
 const TelevisionsBlockCardsItem = ({ data }) => {
 	return (
-		<div className='card-item'>
-			{data?.image?.src ? (
-				<div>
-					<img src={data?.image?.src} alt={data?.image?.alt} className='100%' />
+		<div className='col-12 col-lg-6 py-3'>
+			<div className='card-item'>
+				{data?.backgroundImage?.src ? (
+					<img
+						src={data?.backgroundImage?.src}
+						alt={data?.backgroundImage?.alt}
+						className='background-image'
+					/>
+				) : null}
+				<div className='content'>
+					<div
+						className='title'
+						dangerouslySetInnerHTML={{ __html: data?.title?.value }}></div>
+					{data?.image?.src ? (
+						<img
+							src={data?.image?.src}
+							alt={data?.image?.alt}
+							className='image'
+						/>
+					) : null}
+					<div>
+						<div
+							className='subtitle'
+							dangerouslySetInnerHTML={{ __html: data?.subtitle?.value }}></div>
+						<Link href={data?.link?.value}>
+							<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
+								{data?.link?.title}
+							</a>
+						</Link>
+					</div>
 				</div>
-			) : null}
-			<div dangerouslySetInnerHTML={{ __html: data?.title?.value }}></div>
-			<div dangerouslySetInnerHTML={{ __html: data?.subtitle?.value }}></div>
-			<Link href={data?.link?.value}>
-				<a className='n-btn outline-white transparent'>{data?.title?.value}</a>
-			</Link>
+			</div>
 		</div>
 	)
 }
