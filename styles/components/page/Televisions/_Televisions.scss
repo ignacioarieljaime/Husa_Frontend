@@ -1,0 +1,167 @@
+.televisions-hero,
+.televisions-banner {
+	position: relative;
+	padding-top: 41%;
+	width: 100%;
+	background: #232323;
+	max-height: 500px;
+	.image {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.content {
+		position: absolute;
+		left: 50%;
+		bottom: 18%;
+		transform: translate(-50%, -40%);
+		width: 100%;
+		div * {
+			font-weight: 400;
+			font-size: 60px;
+			line-height: 120%;
+			text-align: center;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0;
+		}
+	}
+}
+.televisions-banner {
+	padding-top: 46%;
+	.content {
+		text-align: start;
+		position: absolute;
+		left: 25%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: fit-content;
+		.title * {
+			font-weight: 400;
+			font-size: 48px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0;
+			text-align: start;
+		}
+		.subtitle * {
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0;
+			text-align: start;
+		}
+	}
+}
+.televisions-spotlight {
+	background: #232323;
+	padding: 60px 0 45px;
+	.text-content {
+		color: #ffffff;
+		text-align: center;
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: 400;
+			font-size: 34px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+		}
+		p {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 120%;
+		}
+	}
+	.items {
+		.televisions-spotlight-item {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+			padding: 25px 25px 30px;
+			.image {
+				width: 100%;
+				margin-bottom: 16px;
+			}
+			.content {
+				h4 {
+					font-weight: 400;
+					font-size: 24px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					color: #ffffff;
+					margin-bottom: 16px;
+				}
+			}
+		}
+	}
+}
+.televisions-cards {
+	background: #f0f2f2;
+	padding: 100px 0 145px;
+	text-align: center;
+	.title *{
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 120%;
+		letter-spacing: -0.02em;
+		color: #383838;
+		margin-bottom: 30px;
+	}
+	.subtitle *{
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 120%;
+		color: #383838;
+		margin-bottom: 90px;
+	}
+}
+
+@media (max-width: 991px) {
+	.televisions-banner {
+		.content {
+			transform: translate(-30%, -50%);
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.televisions-hero,
+	.televisions-banner {
+		padding-top: 60%;
+		.content {
+			bottom: 15%;
+			div * {
+				font-size: 28px;
+			}
+		}
+	}
+	.televisions-banner {
+		padding-top: 70%;
+		.content {
+			left: calc(12px + 25%);
+			top: 40%;
+			transform: translate(-30%, -50%);
+			.title * {
+				font-size: 24px;
+			}
+
+			.subtitle * {
+				font-size: 16px;
+			}
+			a {
+				font-size: 14px;
+			}
+		}
+	}
+}
