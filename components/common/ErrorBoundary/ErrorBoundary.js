@@ -3,27 +3,38 @@ import { Component } from 'react'
 class ErrorBoundary extends Component {
 	constructor(props) {
 		super(props)
-		this.state = { error: null, errorInfo: null, hasError: false }
+
+		// Define a state variable to track whether is an error or not
+		this.state = { hasError: false }
 	}
 	static getDerivedStateFromError(error) {
-		return { hasError: true, error }
+		// Update state so the next render will show the fallback UI
+
+		return { hasError: true }
 	}
 	componentDidCatch(error, errorInfo) {
-		console.log('error: ', error)
-		console.log('error info: ', errorInfo)
-		this.setState({ ...this.state, errorInfo })
+		// You can use your own error logging service here
+		console.log({ error, errorInfo })
 	}
 	render() {
-		const { hasError } = this.state
-		const { children } = this.props
-		if (hasError) {
+		// Check if the error is thrown
+		if (this.state.hasError) {
+			// You can render any custom fallback UI
 			return (
-				<section className='ErrorBoundary'>
-					<h2>Something went wrong.</h2>
-				</section>
+				<div>
+					<h2>Oops, there is an error!</h2>
+					<button
+						type='button'
+						onClick={() => this.setState({ hasError: false })}>
+						Try again?
+					</button>
+				</div>
 			)
 		}
-		return children
+
+		// Return children components in case of no error
+
+		return this.props.children
 	}
 }
 
