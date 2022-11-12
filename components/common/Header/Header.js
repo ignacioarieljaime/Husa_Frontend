@@ -21,8 +21,8 @@ function Header({ isBlog = false, data: { structure } }) {
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
 	useEffect(() => {
-		localStorage.getItem('headerData')
-			? setHeaderData(JSON.parse(localStorage.getItem('headerData')))
+		sessionStorage.getItem('headerData')
+			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
 			: getMenu()
 	}, [])
 	useEffect(() => {
@@ -41,7 +41,7 @@ function Header({ isBlog = false, data: { structure } }) {
 				'https://imcxm.dev-api.hisenseportal.com/api/husa/getMenus'
 			)
 			setHeaderData(response.data.data.find(item => item.title === 'header'))
-			localStorage.setItem(
+			sessionStorage.setItem(
 				'headerData',
 				JSON.stringify(response.data.data.find(item => item.title === 'header'))
 			)
