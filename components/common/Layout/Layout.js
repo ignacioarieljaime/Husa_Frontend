@@ -1,3 +1,5 @@
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CompareModal from 'components/page/Product/CompareModal'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
@@ -8,11 +10,24 @@ import { getSettingApi } from 'services/cxm'
 
 function Layout({ children, meta, title }) {
 	const [compareRoute, setCompareRoute] = useState()
+	const [showGoTop, setShowGoTop] = useState(false)
 	const router = useRouter()
 
 	useEffect(() => {
 		getSetting()
+		window.addEventListener('scroll', () => listenToScroll(window.innerHeight))
+		return () => window.removeEventListener('scroll', () => listenToScroll(0))
 	}, [])
+
+	const listenToScroll = _screenHeight => {
+		const winScroll =
+			document.body.scrollTop || document.documentElement.scrollTop
+		if (_screenHeight <= winScroll) {
+			setShowGoTop(true)
+		} else {
+			setShowGoTop(false)
+		}
+	}
 
 	const getSetting = async () => {
 		try {
@@ -24,6 +39,10 @@ function Layout({ children, meta, title }) {
 		} catch (error) {
 			console.log(error)
 		}
+	}
+
+	const goUpHandler = () => {
+		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 	}
 	return (
 		<>
@@ -44,6 +63,14 @@ function Layout({ children, meta, title }) {
 				<ToastContainer />
 				<> {children}</>
 			</section>
+			{showGoTop && (
+				<button
+					id='back-to-top-button'
+					onClick={goUpHandler}
+					style={{ opacity: 1, zIndex: 100 }}>
+					<FontAwesomeIcon icon={faChevronUp} />
+				</button>
+			)}
 
 			<CompareModal route={compareRoute} />
 		</>
