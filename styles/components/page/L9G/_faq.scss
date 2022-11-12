@@ -13,16 +13,13 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
-			&::after {
-				content: '\f078';
-				font-weight: 900;
-				font-family: 'Font Awesome 6 Free';
-				display: inline-block;
-				position: relative;
-				font-size: 15px;
-				transition: all 0.3s ease-in-out;
+			svg {
+				transform: rotate(0deg);
+				transition: transform 0.3s 300ms ease-in-out;
 			}
 		}
+	
+		
 		.answer {
 			background-color: #e6e6e6;
 			max-height: 0px;
@@ -37,7 +34,7 @@
 			}
 		}
 		&.open {
-			.question::after {
+			.question svg{
 				transform: rotate(180deg);
 			}
 			.answer {
