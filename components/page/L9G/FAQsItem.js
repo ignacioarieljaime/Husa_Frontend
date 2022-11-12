@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 const FAQsItem = ({ question, answer }) => {
 	const [collapsed, setCollapsed] = useState(false)
@@ -9,6 +11,7 @@ const FAQsItem = ({ question, answer }) => {
 				className='question'
 				onClick={() => setCollapsed(collapsed => !collapsed)}>
 				{question}
+				<FontAwesomeIcon icon={faChevronDown} size='sm' />
 			</div>
 			<div className='answer'>
 				<span className='p-6 d-block'>{answer}</span>
