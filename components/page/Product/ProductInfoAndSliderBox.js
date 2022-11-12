@@ -13,7 +13,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 		<section id={data.name + data.id} className='product single-product'>
 			<div className='container'>
 				<div className='row'>
-					<ProductInfoSlider pim={pim?.assets} />
+					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
 					<div className='col-12 col-md-6 product-info my-auto'>
 						<h2 className='text-primary fs-2x mb-5'>
 							{
