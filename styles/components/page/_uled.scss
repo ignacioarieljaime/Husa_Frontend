@@ -36,6 +36,16 @@
 	}
 	&:nth-child(3) {
 		background-color: #0c4955;
+		p {
+			color: #009e96 !important;
+		}
+	}
+	&:nth-child(4) {
+		background-color: #252525;
+
+		p {
+			color: #ffb583 !important;
+		}
 	}
 
 	.where-to-buy-btn {
