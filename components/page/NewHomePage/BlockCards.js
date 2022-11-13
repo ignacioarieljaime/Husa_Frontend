@@ -7,18 +7,19 @@ const BlockCards = ({ data: { structure } }) => {
 		<section>
 			<div className='px-3 px-md-9 my-20'>
 				<div className='new-home-page-boxes mb-13'>
-					<h2 className='fs-3qx mb-10 header'>{structure?.title?.value}</h2>
-					{structure?.list?.value.map((item, index) => (
-						<BlockCardsItem
-							key={index}
-							background={item?.backgroundImage}
-							image={item?.image}
-							littleTitle={item?.littleTitle?.value}
-							title={item?.title?.value}
-							link={item?.link}
-							fullSize={item?.fullSize?.value}
-						/>
-					))}
+					<div
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
+						className='fs-3qx mb-10 header'></div>
+					<div className='boxes'>
+						{structure?.list?.value.map((item, index) => (
+							<BlockCardsItem
+								itemCount={structure?.list?.value.length}
+								key={index}
+								data={item}
+								index={index}
+							/>
+						))}
+					</div>
 				</div>
 				{structure?.link?.value && (
 					<div className='text-center'>
