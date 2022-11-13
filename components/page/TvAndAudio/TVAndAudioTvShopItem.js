@@ -3,12 +3,13 @@ import React from 'react'
 
 function TVAndAudioTvShopItem({ data: { image, title, link, description } }) {
 	return (
-		<div className='d-flex flex-column col-12 col-md-6 col-lg-3 px-6 mb-10 mb-lg-0'>
+		<div className='col-12 col-md-3 px-6 mb-10 mb-lg-0 tv-shop-box-item'>
 			<figure>
 				<img
-					style={{ maxHeight: '130px' }}
+					// style={{ maxHeight: '130px' }}
 					src={image?.src}
 					alt={image?.alt}
+					width={'75%'}
 					className='mb-3'
 				/>
 				<figcaption>

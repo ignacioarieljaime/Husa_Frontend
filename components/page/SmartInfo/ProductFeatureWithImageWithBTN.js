@@ -10,7 +10,7 @@ function ProductFeatureWithImageWithBTN({ data }) {
 					class={`row description-blocks bg-black align-items-center ${
 						structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''
 					}`}>
-					<article class='introduction text-white col-12 col-md-6 order-2 order-md-1'>
+					<article class='introduction article text-white col-12 col-md-6 order-2 order-md-1'>
 						<h2> {structure?.title?.value}</h2>
 						<p>{structure?.paragraphOne?.value}</p>
 						<p>{structure?.paragraphTwo?.value}</p>
