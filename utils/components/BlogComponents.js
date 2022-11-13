@@ -1,9 +1,5 @@
 module.exports.BlogComponents = [
 	{
-		name: 'BloHeadBanner',
-		path: 'components/page/Blog/BloHeadBanner'
-	},
-	{
 		name: 'BlogDescriptionBox',
 		path: 'components/page/Blog/BlogDescriptionBox'
 	},
