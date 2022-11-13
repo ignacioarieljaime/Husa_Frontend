@@ -328,63 +328,68 @@
 }
 
 .new-home-page-boxes {
-	display: grid;
-	grid-template-columns: repeat(2, minmax(10%, 650px));
-	grid-template-rows: auto;
 	gap: 24px;
-	justify-content: center;
-	.box {
-		position: relative;
-		padding-top: 100%;
-		border-radius: 50px;
-		overflow: hidden;
-		.box-background {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
+	.boxes {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		justify-content: center;
+		.box {
+			width: calc(50% - 48px);
+			position: relative;
+			height: 665px;
+			border-radius: 50px;
+			overflow: hidden;
+			.box-background {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				max-height: 665px;
 
-			img {
-				object-fit: cover;
+				img {
+					object-fit: cover;
+					height: 100%;
+				}
+			}
+
+			.box-content {
+				position: absolute;
+				max-height: 665px;
+				top: 0;
+				left: 0;
+				padding: 40px 50px;
+				width: 100%;
+				height: 100%;
+				text-align: start;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: flex-start;
+
+				> * {
+					color: #fff;
+					font-weight: 400;
+				}
+
+				img {
+					max-width: 300px;
+				}
+			}
+
+			.box-background-shade {
+				background: rgba(34, 31, 32, 0.3);
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
 				height: 100%;
 			}
-		}
-
-		.box-content {
-			position: absolute;
-			top: 0;
-			left: 0;
-			padding: 40px 50px;
-			width: 100%;
-			height: 100%;
-			text-align: start;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			align-items: flex-start;
-
-			> * {
-				color: #fff;
-				font-weight: 400;
+			&.full-size {
+				grid-column: 1 / 3;
+				padding-top: 50%;
 			}
-
-			img {
-				max-width: 300px;
-			}
-		}
-
-		.box-background-shade {
-			background: rgba(34, 31, 32, 0.3);
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-		}
-		&.full-size {
-			grid-column: 1 / 3;
-			padding-top: 50%;
 		}
 	}
 	.header {
@@ -520,10 +525,12 @@
 		}
 	}
 	.new-home-page-boxes {
-		grid-template-columns: repeat(1, minmax(10%, 650px));
 		gap: 16px;
-		.box {
-			border-radius: 25px;
+		.boxes {
+			.box {
+				width: 100%;
+				border-radius: 25px;
+			}
 		}
 		.header,
 		.full-size {
