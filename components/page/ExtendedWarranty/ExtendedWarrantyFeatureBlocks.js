@@ -7,7 +7,9 @@ const ExtendedWarrantyFeatureBlocks = ({ data: { structure } }) => {
 			<div
 				className='home-page-mb-discovery py-20'
 				style={{ backgroundColor: structure?.backgroundColor?.value }}>
-				<h2 className='fs-2hx mb-17'>{structure?.title?.value}</h2>
+				{structure?.backgroundColor?.value ? (
+					<h2 className='fs-2hx mb-17'>{structure?.title?.value}</h2>
+				) : null}
 				<div className='row justify-content-evenly align-items-center mx-0'>
 					{structure?.list?.value.map((item, index) => (
 						<ExtendedWarrantyFeatureBlocksItem

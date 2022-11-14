@@ -27,11 +27,13 @@ const TelevisionsBlockCardsItem = ({ data }) => {
 						<div
 							className='subtitle'
 							dangerouslySetInnerHTML={{ __html: data?.subtitle?.value }}></div>
-						<Link href={data?.link?.value}>
-							<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
-								{data?.link?.title}
-							</a>
-						</Link>
+						{data?.link?.value ? (
+							<Link href={data?.link?.value}>
+								<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
+									{data?.link?.title}
+								</a>
+							</Link>
+						) : null}
 					</div>
 				</div>
 			</div>

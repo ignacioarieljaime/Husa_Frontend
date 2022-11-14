@@ -21,21 +21,21 @@ const TelevisionsBlockCards = ({ data: { structure } }) => {
 						{structure?.list?.value.map((item, index) => (
 							<TelevisionsBlockCardsItem data={item} key={index} />
 						))}
-						<div className='col-12'>
+						<div className='col-12 py-3'>
 							<div
 								className='hisense-support-card card-item'
 								style={{
-									backgroundImage: `url(${structure?.supportBox?.image?.src})`
+									backgroundImage: `url(${structure?.supportBox?.value?.image?.src})`
 								}}>
 								<div className='box'>
 									<div
 										dangerouslySetInnerHTML={{
-											__html: structure?.supportBox?.title?.value
+											__html: structure?.supportBox?.value?.title?.value
 										}}></div>
-									{structure?.supportBox?.link?.value ? (
-										<Link href={structure?.supportBox?.link?.value}>
+									{structure?.supportBox?.value?.link?.value ? (
+										<Link href={structure?.supportBox?.value?.link?.value}>
 											<a className='n-btn outline-white transparent d-block w-fit'>
-												{structure?.supportBox?.link?.title}
+												{structure?.supportBox?.value?.link?.title}
 											</a>
 										</Link>
 									) : null}

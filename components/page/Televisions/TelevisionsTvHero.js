@@ -9,7 +9,7 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 				<div className='container'>
 					<div className='content'>
 						<div
-							className='title gradient-text mb-3 mb-md-7'
+							className='title gradient-text mb-8'
 							dangerouslySetInnerHTML={{
 								__html: structure?.title?.value
 							}}></div>
@@ -24,28 +24,32 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 							<div
 								className='tv-item full-size'
 								style={{
-									backgroundImage: `url(${structure?.fullSizeCard?.backgroundImage?.src})`
+									backgroundImage: `url(${structure?.fullSizeCard?.value?.backgroundImage?.src})`
 								}}>
 								<img
-									src={structure?.fullSizeCard?.badge?.src}
-									alt={structure?.fullSizeCard?.badge?.alt}
+									src={structure?.fullSizeCard?.value?.badge?.src}
+									alt={structure?.fullSizeCard?.value?.badge?.alt}
 									className='badge'
 								/>
 								<div className='content'>
 									<img
-										src={structure?.fullSizeCard?.titleImage?.src}
-										alt={structure?.fullSizeCard?.titleImage?.alt}
+										src={structure?.fullSizeCard?.value?.titleImage?.src}
+										alt={structure?.fullSizeCard?.value?.titleImage?.alt}
 										className='image'
 									/>
 									<div
-										className='title'
+										className={`title ${
+											structure?.fullSizeCard?.value?.theme?.value === 'light'
+												? 'text-white'
+												: ''
+										}`}
 										dangerouslySetInnerHTML={{
-											__html: structure?.fullSizeCard?.title?.value
+											__html: structure?.fullSizeCard?.value?.title?.value
 										}}></div>
-									{structure?.fullSizeCard?.link?.value ? (
-										<Link href={structure?.fullSizeCard?.link?.value}>
+									{structure?.fullSizeCard?.value?.link?.value ? (
+										<Link href={structure?.fullSizeCard?.value?.link?.value}>
 											<a className='n-btn outline-black transparent d-block w-fit'>
-												{structure?.fullSizeCard?.link?.title}
+												{structure?.fullSizeCard?.value?.link?.title}
 											</a>
 										</Link>
 									) : null}
@@ -53,7 +57,7 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 							</div>
 						</div>
 						{structure?.coloredCardsList?.value.map((item, index) => (
-							<div className='col-12 col-lg-6 py-3'>
+							<div className='col-12 col-lg-6 py-3' key={index}>
 								<div
 									className='tv-item colored-bg'
 									style={{
@@ -68,7 +72,7 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 										<div>
 											<div
 												className={`title ${
-													item?.theme?.value === 'dark' ? 'text-white' : ''
+													item?.theme?.value === 'light' ? 'text-white' : ''
 												}`}
 												dangerouslySetInnerHTML={{
 													__html: item?.title?.value
@@ -77,7 +81,7 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 												<Link href={item?.link?.value}>
 													<a
 														className={`n-btn transparent d-block w-fit ${
-															item?.theme?.value === 'dark'
+															item?.theme?.value === 'light'
 																? 'outline-white'
 																: 'outline-black'
 														}`}>
@@ -93,24 +97,24 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 						<div className='col-12 col-lg-6 py-3'>
 							<div className='tv-item no-bg'>
 								<img
-									src={structure?.noBgCard?.logo?.src}
-									alt={structure?.noBgCard?.logo?.alt}
+									src={structure?.noBgCard?.value?.logoImage?.src}
+									alt={structure?.noBgCard?.value?.logoImage?.alt}
 									className='logo'
 								/>
 								<img
-									src={structure?.noBgCard?.titleImage?.src}
-									alt={structure?.noBgCard?.titleImage?.alt}
+									src={structure?.noBgCard?.value?.titleImage?.src}
+									alt={structure?.noBgCard?.value?.titleImage?.alt}
 									className='image'
 								/>
 								<div
 									className='title'
 									dangerouslySetInnerHTML={{
-										__html: structure?.noBgCard?.title?.value
+										__html: structure?.noBgCard?.value?.title?.value
 									}}></div>
-								{structure?.noBgCard?.link?.value ? (
-									<Link href={structure?.noBgCard?.link?.value}>
+								{structure?.noBgCard?.value?.link?.value ? (
+									<Link href={structure?.noBgCard?.value?.link?.value}>
 										<a className='n-btn outline-white transparent d-block w-fit'>
-											{structure?.noBgCard?.link?.title}
+											{structure?.noBgCard?.value?.link?.title}
 										</a>
 									</Link>
 								) : null}
@@ -120,7 +124,7 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 							<div
 								className='tv-item simple'
 								style={{
-									backgroundImage: `url(${structure?.simpleCard?.image?.src})`
+									backgroundImage: `url(${structure?.simpleCard?.value?.image?.src})`
 								}}></div>
 						</div>
 					</div>
