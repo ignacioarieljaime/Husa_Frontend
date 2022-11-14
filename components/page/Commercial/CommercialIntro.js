@@ -13,9 +13,7 @@ function CommercialIntro({ data: { structure } }) {
 							</span>
 						</h2>
 						<div>
-							<p className='text-white lh-base m-auto'>
-								{structure?.paragraph?.value}
-							</p>
+							<p className='text-white m-auto'>{structure?.paragraph?.value}</p>
 						</div>
 					</article>
 				</div>

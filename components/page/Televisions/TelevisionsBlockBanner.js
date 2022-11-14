@@ -2,22 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 
 const TelevisionsBlockBanner = ({ data: { structure } }) => {
-	structure = {
-		image: {
-			src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/458eb01487/Soundbar-Main__ScaleMaxWidthWzMwNDhd.jpg-wlpjvr.jpg',
-			alt: 'Hero'
-		},
-		title: {
-			value: '<h2>2023 Lineup is here.</h2>'
-		},
-		subtitle: {
-			value: '<h4>MINI-LED.  Bigger sizes.  More platforms.</h4>'
-		},
-		link: {
-			value: '/',
-			title: 'Shop the lineup'
-		}
-	}
 	return (
 		<section>
 			<div className='televisions-banner'>

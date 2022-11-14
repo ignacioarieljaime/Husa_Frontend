@@ -12,12 +12,12 @@ function FAQDescriptionWithTwoBox({ data }) {
 					dangerouslySetInnerHTML={{ __html: structure?.title1?.value }}></div>
 				<div className='row justify-content-evenly justify-content-lg-between mx-0 mb-7'>
 					<div
-						className='col-12 col-sm-5 lh-base'
+						className='col-12 col-sm-5'
 						dangerouslySetInnerHTML={{
 							__html: structure?.leftTitle?.value
 						}}></div>
 					<div
-						className='col-12 col-sm-5 lh-base'
+						className='col-12 col-sm-5'
 						dangerouslySetInnerHTML={{
 							__html: structure?.rightTitle?.value
 						}}></div>
