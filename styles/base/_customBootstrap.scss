@@ -1685,27 +1685,46 @@ header {
 .privacy-policy {
 	background: #f6f7fd;
 	padding: 0 24px;
-	margin: 25px;
-	p {
-		color: #292929;
+	p,
+	a {
+		color: #292929 !important;
+		text-decoration: none !important;
+		line-height: 37px;
 	}
 }
 
+@media (max-width: 1920px) {
+	.privacy-policy {
+		p,
+		a {
+			line-height: 30px;
+		}
+	}
+}
 
-.unathorized-list{
+@media (max-width: 768px) {
+	.privacy-policy {
+		p,
+		a {
+			line-height: 24px;
+		}
+	}
+}
+
+.unathorized-list {
 	background: #f6f7fd;
-	.list{
+	.list {
 		border-bottom: 1px solid #ccc;
 		margin: 36px;
-		height:calc(100% - 72px)
+		height: calc(100% - 72px);
 	}
 }
 
-@media (max-width:575px) {
+@media (max-width: 575px) {
 	.unathorized-list {
-			.list {
-				margin: 12px;
-				height: calc(100% - 24px)
-			}
+		.list {
+			margin: 12px;
+			height: calc(100% - 24px);
 		}
+	}
 }

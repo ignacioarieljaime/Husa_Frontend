@@ -91,15 +91,18 @@ input {
 		h2,
 		h3 {
 			font-size: 52.5px !important;
+			line-height: 60px;
 		}
 		a,
 		p,
 		li {
 			font-size: 22.5px !important;
+			line-height: 37.5px;
 		}
 		h2 ~ h3,
 		h1 ~ h3 {
 			font-size: 41.25px !important;
+			line-height: 52px;
 		}
 	}
 }
@@ -109,15 +112,19 @@ input {
 		h2,
 		h3 {
 			font-size: 32px !important;
+				line-height: 36px;
 		}
 		a,
 		p,
 		li {
 			font-size: 14px !important;
+			line-height: 24px;
+			
 		}
 		h2 ~ h3,
 		h1 ~ h3 {
 			font-size: 24px !important;
+			line-height: 42px;
 		}
 	}
 }
@@ -546,5 +553,14 @@ input {
 			background-color: #adf;
 			pointer-events: none;
 		}
+	}
+}
+
+.unauthorized_list {
+	padding: 0 12px;
+	background: #f6f7fd;
+	display: flex;
+	> div {
+		margin: 36px;
 	}
 }
