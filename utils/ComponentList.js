@@ -30,7 +30,7 @@ const { AuthorizedRetailers } = require('./components/AuthorizedRetailers')
 const {
 	ExtendedWarrantyComponents
 } = require('./components/ExtendedWarrantyComponents')
-const { TelevisionsComponents } = require('./components/Televisions')
+const { TelevisionsComponents } = require('./components/TelevisionsComponents')
 const { PrivacyPolicyComponents } = require('./components/PrivacyPolicy')
 
 module.exports.ComponentList = [
