@@ -1,13 +1,12 @@
 import React from 'react'
 
-import Image from 'public/assets/images/tv-and-audio/three-tv-banner.png'
 import Link from 'next/link'
 
 function TVAndAudioFindProduct({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
-				<div className='px-4 py-20'>
+				<div className='tv-and-audio-intro px-4 py-20'>
 					<article className='article text-center'>
 						<h2 className='text-white fs-2tx mb-12'>
 							{structure?.title.value}{' '}
@@ -16,7 +15,7 @@ function TVAndAudioFindProduct({ data: { structure } }) {
 							</span>
 						</h2>
 						<div>
-							<p className='text-white fw-normal m-auto mb-4 fs-5'>
+							<p className='text-white fw-normal fs-5 m-auto mb-4 fs-5'>
 								{structure?.tinyTitle.value}
 							</p>
 							<Link href={structure?.link.value}>

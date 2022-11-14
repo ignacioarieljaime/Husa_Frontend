@@ -868,21 +868,41 @@ article:hover > .img-box-shadow-hover {
 		align-items: space-between;
 	}
 }
-
+.platform h2 {
+	font-size: 64px;
+	line-height: 72px;
+	font-weight: 400;
+	color: white;
+	margin-bottom: 12px;
+}
 .platform p {
 	min-height: 55px;
 	margin-bottom: 28px;
-	font-size: 18px;
+	font-size: 20px;
 	color: white;
 }
+
 .platform a {
 	border-radius: 48px;
 	padding: 16px 24px;
 	transition: all 0.4s ease;
 	width: fit-content;
+	font-size: 22.5px;
 }
 .platform a:hover {
 	opacity: 0.7;
+}
+@media (max-width: 768px) {
+	.platform {
+		h2 {
+			font-size: 42px;
+			line-height: 60px;
+		}
+		a {
+			padding: 12px 16px;
+			font-size: 14px;
+		}
+	}
 }
 /* jarg section */
 
@@ -985,21 +1005,32 @@ article:hover > .img-box-shadow-hover {
 }
 .advertise img {
 	object-fit: cover;
+	margin: 36px 0;
 }
 .advertise h2 {
-	font-weight: 700;
+	font-weight: 500;
 	font-size: 40px;
 	margin-bottom: 55px;
 }
 .advertise > a {
 	margin-top: 30px;
-	margin-bottom: 220px;
+	margin-bottom: 50px;
 	border-radius: 48px;
+	font-size: 22.5px !important;
 	padding: 16px 24px;
 	background-color: #000000;
 }
 .advertise > a:hover {
 	background-color: #1a1a1a;
+}
+@media (max-width: 1920px) {
+	.advertise h2 {
+		font-size: 42px !important ;
+	}
+	.advertise > a {
+		font-size: 16px !important;
+		margin-bottom: 40px;
+	}
 }
 @media (max-width: 768px) {
 	.advertise h2 {
@@ -1007,9 +1038,10 @@ article:hover > .img-box-shadow-hover {
 	}
 	.advertise img {
 		width: 100%;
+		margin: 12px 0;
 	}
 	.advertise > a {
-		margin-bottom: 80px;
+		font-size: 14px;
 	}
 	.shade {
 		height: 60%;
@@ -1225,7 +1257,6 @@ header {
 	max-width: 900px;
 	margin: 0 auto;
 	background: #dbddde;
-	padding: 70px 15%;
 	border-radius: 30px;
 	position: relative;
 }
@@ -1578,4 +1609,103 @@ header {
 			}
 		}
 	}
+}
+
+.tv-shop-box-item {
+	display: flex;
+	flex-direction: column;
+	max-width: 20%;
+}
+
+@media (max-width: 768px) {
+	.tv-shop-box-item {
+		max-width: unset;
+	}
+}
+
+.tv-and-audio-intro .article {
+	h1,
+	h2,
+	h3 {
+		font-size: 67.5px !important;
+	}
+}
+
+@media (max-width: 1920px) {
+	.tv-and-audio-intro .article {
+		h1,
+		h2,
+		h3 {
+			font-size: 54px !important;
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.tv-and-audio-intro .article {
+		h1,
+		h2,
+		h3 {
+			font-size: 42px !important;
+		}
+	}
+}
+
+.tv-and-audio-image-box-item.article {
+	h1,
+	h2,
+	h3 {
+		font-size: 41.25px !important;
+	}
+}
+
+@media (max-width: 1920px) {
+	.tv-and-audio-image-box-item.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 33px !important;
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.tv-and-audio-image-box-item.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 24px !important;
+		}
+		p {
+			font-size: 14px !important;
+		}
+	}
+}
+
+.privacy-policy {
+	background: #f6f7fd;
+	padding: 0 24px;
+	margin: 25px;
+	p {
+		color: #292929;
+	}
+}
+
+
+.unathorized-list{
+	background: #f6f7fd;
+	.list{
+		border-bottom: 1px solid #ccc;
+		margin: 36px;
+		height:calc(100% - 72px)
+	}
+}
+
+@media (max-width:575px) {
+	.unathorized-list {
+			.list {
+				margin: 12px;
+				height: calc(100% - 24px)
+			}
+		}
 }

@@ -7,15 +7,15 @@ const ModalChanelAdviser = dynamic(() =>
 )
 
 function ULEDProductItem({ data, itemLength }) {
-	let { title, description, image, whereToBuy, linkUrl, linkTitle, model } =
-		data
+	let { title, description, image, list } = data
 	const [channelAdviserHandler, setChannelAdviserHandler] = useState(false)
+	const [chanelAdModelId, setChanelAdModelId] = useState()
 	return (
 		<>
 			<div
 				style={{ width: `${100 / itemLength}%` }}
 				className='platform platform-uled platform-uled-item'>
-				<h2>{title?.value}</h2>
+				<h2 className='text-light'>{title?.value}</h2>
 				<p className='text-black fs-2 fw-normal'>{description?.value}</p>
 				<div className='py-9 text-center'>
 					<img
@@ -25,31 +25,39 @@ function ULEDProductItem({ data, itemLength }) {
 						style={{ maxHeight: '300px' }}
 					/>
 				</div>
-				<div className='row align-items-center'>
-					<div className='col-12 col-sm-3 discover-btn col-lg-6 col-xl-4  gap-3 mb-5 mb-sm-0'>
-						<Link href={linkUrl?.value ? linkUrl?.value : ''}>
-							<a className='btn btn-light text-nowrap'>{linkTitle?.value}</a>
-						</Link>
-					</div>
-					{whereToBuy?.value && (
-						<div className='col-12 col-sm-6 col-lg-6 col-xl-8  '>
-							<button
-								onClick={() =>
-									whereToBuy.value &&
-									setChannelAdviserHandler(!channelAdviserHandler)
-								}
-								className='btn where-to-buy-btn btn-outline-light'>
-								{whereToBuy?.title}
-							</button>
+				<div className=' align-items-center d-flex flex-wrap gap-2'>
+					{list?.value.map((item, index) => (
+						<div className={'discover-btn  '}>
+							{item?.link?.value.includes('openChannelAdvisor') ? (
+								<button
+									onClick={() => {
+										setChanelAdModelId(item?.link?.value.split(':')[1])
+										setChannelAdviserHandler(!channelAdviserHandler)
+									}}
+									className='btn where-to-buy-btn text-nowrap btn-outline-light'>
+									{item?.link?.title}
+								</button>
+							) : (
+								<Link href={item?.link?.value ? item?.link?.value : '/'}>
+									<a
+										className={`btn ${
+											index === 0
+												? 'btn-light'
+												: 'where-to-buy-btn btn-outline-light'
+										} text-nowrap`}>
+										{item?.link?.title}
+									</a>
+								</Link>
+							)}
 						</div>
-					)}
+					))}
 				</div>
 			</div>
 			{channelAdviserHandler && (
 				<ModalChanelAdviser
 					condition={channelAdviserHandler}
 					handler={setChannelAdviserHandler}
-					model={model?.value}
+					model={chanelAdModelId}
 				/>
 			)}
 		</>

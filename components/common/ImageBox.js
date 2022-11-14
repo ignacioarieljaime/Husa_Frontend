@@ -1,9 +1,15 @@
 import React from 'react'
 
 function ImageBox({ data: { structure } }) {
+	structure = {
+		...structure,
+		height: {
+			value: 40
+		}
+	}
 	return (
 		<section>
-			<div className='header-secondary'>
+			<div className='header-secondary2'>
 				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}

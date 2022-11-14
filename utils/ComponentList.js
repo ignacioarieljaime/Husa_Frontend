@@ -31,6 +31,7 @@ const {
 	ExtendedWarrantyComponents
 } = require('./components/ExtendedWarrantyComponents')
 const { TelevisionsComponents } = require('./components/Televisions')
+const { PrivacyPolicyComponents } = require('./components/PrivacyPolicy')
 
 module.exports.ComponentList = [
 	...CommonComponents,
@@ -64,6 +65,7 @@ module.exports.ComponentList = [
 	...NewHomePageComponents,
 	...ExtendedWarrantyComponents,
 	...TelevisionsComponents,
+	...PrivacyPolicyComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'

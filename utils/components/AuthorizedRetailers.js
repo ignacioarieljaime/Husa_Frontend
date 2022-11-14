@@ -14,5 +14,9 @@ module.exports.AuthorizedRetailers = [
 	{
 		name: 'AuthorizedRetailersLogos',
 		path: 'components/page/AuthorizedRetailers/AuthorizedRetailersLogos'
+	},
+	{
+		name: 'UnathorizedRetailersList',
+		path: 'components/page/AuthorizedRetailers/UnathorizedRetailersList'
 	}
 ]

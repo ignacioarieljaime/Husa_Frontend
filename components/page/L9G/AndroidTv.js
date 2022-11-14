@@ -26,7 +26,7 @@ const AndroidTv = ({ data: { structure } }) => {
 								<div>
 									<h3 className='fs-5 fs-md-2qx mb-3'>{item?.title?.value}</h3>
 									<div
-										className='fs-9 fs-md-2 lh-1 fw-light m-auto mb-4'
+										className='fs-9 fs-md-2 lh-base fw-light m-auto mb-4'
 										dangerouslySetInnerHTML={{
 											__html: item?.text?.value
 										}}></div>

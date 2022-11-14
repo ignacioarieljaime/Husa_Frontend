@@ -13,7 +13,7 @@ function SmartInfoTvsDifferentItem({
 			} ${
 				listCount === 4 && 'col-lg-' + 12 / listCount
 			}  platform smart-platform`}>
-			<h2 className='text-white fs-3qx'>{title.value}</h2>
+			<h2 className='text-white'>{title.value}</h2>
 			<div className='py-9'>
 				<img src={image.src} alt={image.alt} width='100%' height='100%' />
 			</div>

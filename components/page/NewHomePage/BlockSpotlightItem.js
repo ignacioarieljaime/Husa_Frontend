@@ -1,17 +1,29 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { RouteHandler } from 'utils/routeHandler'
 
 const BlockSpotlightItem = ({ data }) => {
-	let { product } = data.products
+	const [productLink, setProductLink] = useState()
+	const [product, setProduct] = useState()
 	let seriesTitle = product?.customFields?.find(
 		item => item.type_name === 'Top Titles'
 	)
+
+	useEffect(() => {
+		if (Array.isArray(data.products)) {
+			setProduct(data?.products[0]?.product)
+			setProductLink(RouteHandler(data?.products[0]?.product?.id))
+		} else {
+			setProduct(data?.products?.product)
+			setProductLink(RouteHandler(data?.products?.product?.id))
+		}
+	}, [])
 
 	return (
 		<div className='spotlight-releases-item'>
 			<img
 				src={product?.media?.url}
-				style={{ maxHeight: '176px' }}
+				style={{ height: '176px' }}
 				className='image'
 			/>
 			<h5 className='description'>{seriesTitle && product?.model}</h5>
@@ -26,7 +38,7 @@ const BlockSpotlightItem = ({ data }) => {
 					data.products.map(item => item.value && <li>{item.value}</li>)}
 			</ul>
 			{/* <div className='models'></div> */}
-			<Link href={'/'}>
+			<Link href={productLink ? productLink : '/'}>
 				<a className='n-btn outline-black transparent'>
 					Explore the{' '}
 					{seriesTitle

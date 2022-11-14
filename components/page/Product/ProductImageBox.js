@@ -6,7 +6,7 @@ import Image from 'public/assets/images/tv-page/laser-tv.jpg'
 function ProductImageBox({ data }) {
 	let { structure } = data
 	return (
-		<div id={data.name + data.id} className='header-secondary'>
+		<div id={data.name + data.id} className='header-secondary2'>
 			<img
 				src={structure?.image?.src}
 				alt={structure?.image?.alt}

@@ -16,6 +16,10 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/CompareProduct'
 	},
 	{
+		name: 'ListImageBox',
+		path: 'components/page/Product/ListImageBox'
+	},
+	{
 		name: 'ProductBigScreenTextsBox',
 		path: 'components/page/Product/ProductBigScreenTextsBox'
 	},

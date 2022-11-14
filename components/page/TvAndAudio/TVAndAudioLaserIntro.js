@@ -19,12 +19,12 @@ function TVAndAudioLaserIntro({ data: { structure } }) {
 							<p className='text-primary fw-normal mx-auto mb-2 space-125'>
 								{structure?.primarylittleTitle?.value}
 							</p>
-							<p className='fs-base text-white fw-normal mx-auto mb-8 space-125'>
+							<p className='fs-base text-white fw-bolder-700 mx-auto mb-8 space-125'>
 								{structure?.littleTitle?.value}
 							</p>
 						</div>
 						<div>
-							<p className='fw-normal fs-base text-white m-auto'>
+							<p className='fw-normal lh-lg fs-base text-white m-auto'>
 								{structure?.paragraph?.value}
 							</p>
 						</div>
