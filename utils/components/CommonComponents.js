@@ -26,5 +26,9 @@ module.exports.CommonComponents = [
 	{
 		name: 'BreadCrumb',
 		path: 'components/common/BreadCrumb'
+	},
+	{
+		name: 'UnauthorizedList',
+		path: 'components/common/UnauthorizedList'
 	}
 ]

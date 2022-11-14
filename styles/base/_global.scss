@@ -548,3 +548,12 @@ input {
 		}
 	}
 }
+
+.unauthorized_list {
+	padding: 0 12px;
+	background: #f6f7fd;
+	display: flex;
+	> div {
+		margin: 36px;
+	}
+}
