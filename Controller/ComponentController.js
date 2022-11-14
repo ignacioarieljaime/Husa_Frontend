@@ -68,7 +68,7 @@ const GenerateComponentStructure = (_page, _content) => {
 			console.log('send cxm request')
 			let data = await axios
 				.get(
-					'https://imcxm.stage-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
+					'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
 				)
 				.then(response => {
 					console.log('get cxm data')
@@ -98,7 +98,7 @@ const GenerateComponentStructure = (_page, _content) => {
 			console.log('send ssr request')
 			let data = await axios
 				.get(
-					'https://imcxm.stage-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
+					'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
 				)
 				.then(response => {
 					console.log('get ssr data')

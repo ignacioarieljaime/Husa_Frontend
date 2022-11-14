@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
 		!_page.model_id && _page.model_id === 0
 			? `	let data = await axios
 		.get(
-			'https://imcxm.stage-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
+			'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
 		)
 		.then(response => {
 			console.log('get ssr data')
@@ -53,7 +53,7 @@ export async function getServerSideProps(context) {
 			: `
 			let productId = context?.query?.param[0]
 			let data = await axios.get(
-			'https://imcxm.stage-api.hisenseportal.com/api/husa/getDynamicPages/' + productId
+			'https://imcxm.dev-api.hisenseportal.com/api/husa/getDynamicPages/' + productId
 		)
 		.then(response => {
 			console.log('get ssr data')

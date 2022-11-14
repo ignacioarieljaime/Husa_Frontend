@@ -17,7 +17,7 @@ function ProductsCategoriesWithSearch({ data }) {
 			setSearchProductsList('loading')
 			try {
 				let response = await axios.get(
-					`https://imcxm.stage-api.hisenseportal.com/api/husa/searchProduct?type=support&category_id=${categoryId}&string=${_value}`
+					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchProduct?type=support&category_id=${categoryId}&string=${_value}`
 				)
 				setSearchProductsList(response.data.data)
 			} catch (error) {
