@@ -1652,7 +1652,7 @@ header {
 	}
 }
 
-.tv-and-audio-image-box-item.article{
+.tv-and-audio-image-box-item.article {
 	h1,
 	h2,
 	h3 {
@@ -1677,8 +1677,17 @@ header {
 		h3 {
 			font-size: 24px !important;
 		}
-		p{
+		p {
 			font-size: 14px !important;
 		}
+	}
+}
+
+.privacy-policy {
+	background: #f6f7fd;
+	padding: 0 24px;
+	margin: 25px;
+	p {
+		color: #292929;
 	}
 }

@@ -9,9 +9,7 @@ function ImageBox({ data: { structure } }) {
 	}
 	return (
 		<section>
-			<div
-				className='header-secondary2'
-				style={{ paddingTop: structure?.height?.value + '%' }}>
+			<div className='header-secondary2'>
 				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}

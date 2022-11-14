@@ -5,7 +5,7 @@ function ProductFeatureWithImageWithBTN({ data }) {
 	let { structure } = data
 	return (
 		<section>
-			<div class='p-0 mx-9 '>
+			<div class='p-0 mx-md-9 mx-4 '>
 				<div
 					class={`row description-blocks bg-black align-items-center ${
 						structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''

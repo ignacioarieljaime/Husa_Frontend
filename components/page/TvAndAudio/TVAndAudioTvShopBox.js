@@ -6,7 +6,7 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
-				<div className='px-6 px-md-8 py-20'>
+				<div className='px-6 px-md-8 py-15 py-md-20'>
 					<article className='article text-center'>
 						<h2 className='text-white mb-10'>{structure?.title?.value}</h2>
 						<div className='row justify-content-center align-items-stretch mb-14'>
