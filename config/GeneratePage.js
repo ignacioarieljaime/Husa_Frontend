@@ -11,7 +11,7 @@ const requestHandler = (async () => {
 	console.log('send pages request')
 	try {
 		let response = await Axios.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getPages'
+			'https://imcxm.stage-api.hisenseportal.com/api/husa/getPages'
 		)
 		console.log('get pages')
 		UrlController(response.data.data)
@@ -27,7 +27,7 @@ const redirectRequestHandler = (async () => {
 	console.log('send redirects request')
 	try {
 		let response = await Axios.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getRedirects'
+			'https://imcxm.stage-api.hisenseportal.com/api/husa/getRedirects'
 		)
 		console.log('get redirects')
 		response.data.data.forEach(redirect => {
