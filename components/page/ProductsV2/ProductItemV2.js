@@ -44,7 +44,7 @@ const ProductItemV2 = ({ data }) => {
 					{seriesTitle && <p className='mb-7'>{seriesTitle?.value}</p>}
 
 					{Array.isArray(data?.products) && (
-						<div className='d-flex justify-content-center flex-wrap gap-3 align-items-center mb-8'>
+						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center mb-8'>
 							{data?.products?.map(
 								(item, index) =>
 									item.value && (

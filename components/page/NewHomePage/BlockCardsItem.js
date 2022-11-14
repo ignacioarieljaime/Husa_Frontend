@@ -6,7 +6,7 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 	return (
 		<div
 			className={`box flex-column justify-content-between d-flex  ${
-				itemCount % 2 !== 0 && index + 1 === itemCount ? 'w-100' : ''
+				itemCount % 2 !== 0 && index + 1 === itemCount ? 'full-size' : ''
 			}`}>
 			<div className='box-background'>
 				<img

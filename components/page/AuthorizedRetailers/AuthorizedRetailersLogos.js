@@ -5,9 +5,11 @@ function AuthorizedRetailersLogos({ data }) {
 	return (
 		<section>
 			<div class='container mb-5'>
-				<div class='grid-container bg-transparent'>
+				<div class='grid-container'>
 					{structure?.list?.value.map((item, index) => (
-						<div key={'retailer-' + index} className='grid-item d-flex align-items-center justify-content-center'>
+						<div
+							key={'retailer-' + index}
+							className='grid-item d-flex align-items-center justify-content-center'>
 							<img
 								src={item?.image?.src}
 								alt={item?.image?.alt}

@@ -1,15 +1,14 @@
 import React from 'react'
 
-
 // image
-import InfoIcon from "public/assets/images/info.png"
+import InfoIcon from 'public/assets/images/info.png'
 
 function AuthorizedRetailersNote({ data }) {
 	let { structure } = data
 	return (
 		<section>
 			<div>
-				<div class='info-box mb-5 mt-18'>
+				<div class='info-box px-8 py-18 p-md-18 mb-5 mt-18'>
 					<div class='grid-item'>
 						<img
 							src={InfoIcon.src}
