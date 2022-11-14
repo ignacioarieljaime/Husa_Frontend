@@ -1027,11 +1027,10 @@ article:hover > .img-box-shadow-hover {
 	.advertise h2 {
 		font-size: 42px !important ;
 	}
-	.advertise> a {
+	.advertise > a {
 		font-size: 16px !important;
 		margin-bottom: 40px;
 	}
-
 }
 @media (max-width: 768px) {
 	.advertise h2 {
@@ -1610,5 +1609,85 @@ header {
 				display: none;
 			}
 		}
+	}
+}
+
+.tv-shop-box-item {
+	display: flex;
+	flex-direction: column;
+	max-width: 20%;
+}
+
+@media (max-width: 768px) {
+	.tv-shop-box-item {
+		max-width: unset;
+	}
+}
+
+.tv-and-audio-intro .article {
+	h1,
+	h2,
+	h3 {
+		font-size: 67.5px !important;
+	}
+}
+
+@media (max-width: 1920px) {
+	.tv-and-audio-intro .article {
+		h1,
+		h2,
+		h3 {
+			font-size: 54px !important;
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.tv-and-audio-intro .article {
+		h1,
+		h2,
+		h3 {
+			font-size: 42px !important;
+		}
+	}
+}
+
+.tv-and-audio-image-box-item.article {
+	h1,
+	h2,
+	h3 {
+		font-size: 41.25px !important;
+	}
+}
+
+@media (max-width: 1920px) {
+	.tv-and-audio-image-box-item.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 33px !important;
+		}
+	}
+}
+
+@media (max-width: 1280px) {
+	.tv-and-audio-image-box-item.article {
+		h1,
+		h2,
+		h3 {
+			font-size: 24px !important;
+		}
+		p {
+			font-size: 14px !important;
+		}
+	}
+}
+
+.privacy-policy {
+	background: #f6f7fd;
+	padding: 0 24px;
+	margin: 25px;
+	p {
+		color: #292929;
 	}
 }

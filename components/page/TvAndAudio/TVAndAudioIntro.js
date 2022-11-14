@@ -4,10 +4,10 @@ import React from 'react'
 function TVAndAudioIntro({ data: { structure } }) {
 	return (
 		<section>
-			<div className='tiny-banner p-md-4'>
+			<div className='tiny-banner tv-and-audio-intro p-md-4'>
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
-						<h2 className='fs-2tx mb-12'>
+						<h2 className='fs-2hx mb-12'>
 							{structure?.largeTitle?.value}
 							<span className='text-primary d-block'>
 								{structure?.coloredTitle?.value}

@@ -3,7 +3,7 @@ import React from 'react'
 function TVAndAudioHead({ data: { structure } }) {
 	return (
 		<section>
-			<div className='header-secondary'>
+			<div className='header-secondary2'>
 				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}

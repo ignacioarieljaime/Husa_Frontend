@@ -33,14 +33,16 @@ function Footer() {
 		<footer className='footer px-6 py-10 pt-md-16 px-md-6 pb-md-6'>
 			<div className='container-fluid'>
 				<div className='row'>
-					<div className='col-12 col-lg-7 col-xl-6 full-width-border-sm'>
-						<div className='row justify-content-between align-items-start'>
-							<a href='/pages/landing/index.html' className='p-0 mb-1 mb-md-11'>
+					<div className='col-12 col-xxl-6 full-width-border-sm'>
+						<div className='row align-items-start'>
+							<a
+								href='/pages/landing/index.html'
+								className='footer-logo px-0 mb-1 mb-md-11'>
 								<Logo color={'#009E91'} height={'14'} width={'86'} />
 							</a>
 
 							{footerData?.widgets?.columns.map(columns => (
-								<div className='px-0 footer-nav'>
+								<div className='footer-nav px-0 px-md-3'>
 									<ul>
 										{columns.map(colum => (
 											<li className='pb-5 pt-2'>
@@ -58,8 +60,8 @@ function Footer() {
 							))}
 						</div>
 					</div>
-					<div className='col-12 col-lg-5 col-xl-6 full-width-border-sm'>
-						<div className='row justify-content-start justify-content-md-end align-items-start'>
+					<div className='col-12 col-xxl-6 full-width-border-sm'>
+						<div className='row justify-content-start justify-content-md-end align-items-start me-20 me-xxl-0'>
 							<div className='social-media me-12 px-0 px-md-3'>
 								<label className='mb-4'>Follow Us</label>
 								<div className='row justify-content-start align-items-center'>

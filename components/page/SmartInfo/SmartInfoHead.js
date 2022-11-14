@@ -6,7 +6,7 @@ function SmartInfoHead({ data }) {
 	let { structure } = data
 	return (
 		<section>
-			<div className='heading'>
+			<div className='heading smart-tv-header'>
 				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}

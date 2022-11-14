@@ -6,10 +6,10 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
-				<div className='container px-6 px-md-8 py-20'>
+				<div className='px-6 px-md-8 py-15 py-md-20'>
 					<article className='article text-center'>
 						<h2 className='text-white mb-10'>{structure?.title?.value}</h2>
-						<div className='row justify-content-evenly align-items-stretch mb-14'>
+						<div className='row justify-content-center align-items-stretch mb-14'>
 							{structure?.list?.value.map((item, index) => (
 								<TVAndAudioTvShopItem data={item} key={index} />
 							))}
@@ -17,7 +17,7 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 						{structure?.link?.title && (
 							<div>
 								<Link href={structure?.link?.value}>
-									<a className='btn-primary text-decoration-none text-uppercase px-8 py-2 text-white border-0 rounded-5'>
+									<a className='btn-primary text-decoration-none text-uppercase px-8 text-white border-0 rounded-5'>
 										{structure?.link?.title}
 									</a>
 								</Link>
