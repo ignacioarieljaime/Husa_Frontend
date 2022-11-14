@@ -54,36 +54,38 @@ function Subscribe() {
 	}
 
 	return (
-		<div className='container-fluid email-form px-8 py-14 px-md-12 p-md-20'>
-			<article className='row p-lg-8'>
-				<h2 className='col-12 col-md-6 mb-8 my-md-auto'>
-					Stay up to date with emails
-					<br />
-					about new products & other news
-				</h2>
-				<div className='col-12 col-md-6 mx-0 my-0 my-md-auto'>
-					<form onSubmit={sendEmail}>
-						<input
-							className='form-control  '
-							onChange={e => setEmailName(e.target.value)}
-							type='email'
-							placeholder='Enter your email here'
-						/>
-						<button type='submit' className='d-flex align-items-center'>
-							<span className='me-2'>Subscribe</span>
-							{loading && <Spinner size={25} />}
-						</button>
-					</form>
-					{emailCondition.active && (
-						<span
-							className={
-								emailCondition.error ? ' text-danger' : 'text-success'
-							}>
-							{emailCondition.message}
-						</span>
-					)}
+		<div className='email-form px-6 py-10 py-md-20 px-xl-12'>
+			<div className='container'>
+				<div className='row py-lg-8'>
+					<h2 className='col-12 col-md-6 mb-13 my-md-auto px-0'>
+						Stay up to date with emails
+						<br />
+						about new products & other news
+					</h2>
+					<div className='col-12 col-md-6 mx-0 my-0 my-md-auto px-0'>
+						<form onSubmit={sendEmail}>
+							<input
+								className='form-control  '
+								onChange={e => setEmailName(e.target.value)}
+								type='email'
+								placeholder='Enter your email here'
+							/>
+							<button type='submit' className='d-flex align-items-center'>
+								<span className='me-2'>Subscribe</span>
+								{loading && <Spinner size={25} />}
+							</button>
+						</form>
+						{emailCondition.active && (
+							<span
+								className={
+									emailCondition.error ? ' text-danger' : 'text-success'
+								}>
+								{emailCondition.message}
+							</span>
+						)}
+					</div>
 				</div>
-			</article>
+			</div>
 		</div>
 	)
 }

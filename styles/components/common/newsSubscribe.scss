@@ -1,41 +1,45 @@
 .email-form {
 	background: #1e1e1e;
 	color: #fff;
-
-	h5 {
-		font-weight: 500;
-		font-size: 26px;
-	}
-	form {
-		display: flex;
-		align-items: flex-end;
-		padding-bottom: 8px;
-		border-bottom: 1px solid #ffffff26;
-		button {
-			color: #fff;
-			background: transparent;
-			border: none;
+	.container {
+		max-width: 1250px;
+		margin: 0 auto;
+		h2 {
 			font-weight: 500;
-			font-size: 20px;
-			padding-left: 8px;
+			line-height: 48px;
+			font-size: 26px;
 		}
-		input {
-			background: transparent;
-			padding: 0;
-			border: none;
-			font-weight: 500;
-			font-size: 20px;
-			color: #ffffff;
-
-			&:focus {
-				box-shadow: none;
-				color: #ffffff;
-				background: transparent !important;
-			}
-			&::placeholder {
-				font-weight: 500;
+		form {
+			display: flex;
+			align-items: flex-end;
+			padding-bottom: 8px;
+			border-bottom: 1px solid #ffffff26;
+			button {
+				color: #fff;
+				background: transparent;
+				border: none;
+				font-weight: 600;
 				font-size: 20px;
-				color: #ffffff40;
+				padding-left: 8px;
+			}
+			input {
+				background: transparent;
+				padding: 0;
+				border: none;
+				font-weight: 600;
+				font-size: 20px;
+				color: #ffffff;
+
+				&:focus {
+					box-shadow: none;
+					color: #ffffff;
+					background: transparent !important;
+				}
+				&::placeholder {
+					font-weight: 600;
+					font-size: 20px;
+					color: #ffffff40;
+				}
 			}
 		}
 	}
@@ -43,17 +47,20 @@
 
 @media (max-width: 768px) {
 	.email-form {
-		h2 {
-			font-size: 17px;
-		}
-		form {
-			button {
-				font-size: 16px;
+		.container {
+			h2 {
+				font-size: 18px;
+				line-height: 24px;
 			}
-			input {
-				&::placeholder {
+			form {
+				button {
 					font-size: 16px;
-					font-weight: 400;
+				}
+				input {
+					&::placeholder {
+						font-size: 16px;
+						font-weight: 400;
+					}
 				}
 			}
 		}
