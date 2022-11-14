@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import BlockCardsItem from './BlockCardsItem'
 
-const BlockCards = ({ data: { structure } }) => 
+const BlockCards = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='px-3 px-md-9 my-20'>
