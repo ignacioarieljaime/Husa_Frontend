@@ -7,10 +7,13 @@ const ProductFiltersGroup = ({
 	filter,
 	passedFilter,
 	filterController,
-	checkBoxCondition
+	checkBoxCondition,
+	index
 }) => {
 	const checkboxWrapper = useRef()
-	const [filterCollapse, setFilterCollapse] = useState(false)
+	const [filterCollapse, setFilterCollapse] = useState(
+		index <= 2 ? true : false
+	)
 	useEffect(() => {
 		if (
 			passedFilter.length > 0 &&
