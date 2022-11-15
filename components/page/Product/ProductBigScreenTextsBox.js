@@ -4,8 +4,8 @@ function ProductBigScreenTextsBox({ data }) {
 	let { structure } = data
 	return (
 		<section>
-			<div class='tiny-banner p-md-4'>
-				<div class='container px-6 px-md-8 py-12'>
+			<div class='tiny-banner product-big-screen'>
+				<div class='container px-6 px-lg-0 py-12'>
 					<article class='article text-center'>
 						<h2 class='text-black mb-12'>
 							{structure?.blackTitle?.value}
@@ -14,11 +14,11 @@ function ProductBigScreenTextsBox({ data }) {
 								{structure?.coloredTitle?.value}
 							</span>
 						</h2>
-
 						<div
 							class='fw-normal text-black m-auto'
-							dangerouslySetInnerHTML={{ __html: structure?.paragraph?.value }}>
-						</div>
+							dangerouslySetInnerHTML={{
+								__html: structure?.paragraph?.value
+							}}></div>
 					</article>
 				</div>
 			</div>
