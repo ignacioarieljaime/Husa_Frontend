@@ -213,7 +213,7 @@
 .televisions-tv-hero {
 	background: #232323;
 	padding: 105px 0 80px;
-	.content {
+	.header-content {
 		text-align: center;
 		.title {
 			* {
@@ -271,13 +271,16 @@
 					max-width: 280px;
 					margin-bottom: 16px;
 				}
-				.title * {
+				.title {
 					font-weight: 400;
 					font-size: 34px;
 					line-height: 120%;
 					letter-spacing: -0.02em;
 					color: #232323;
 					margin-bottom: 16px;
+					*{
+						margin: 0;
+					}
 				}
 			}
 		}
@@ -502,7 +505,7 @@
 		background: #232323;
 		padding: 105px 0 80px;
 
-		.content {
+		.header-content {
 			text-align: center;
 			.title {
 				* {

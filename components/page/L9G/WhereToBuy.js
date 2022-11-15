@@ -18,13 +18,11 @@ const WhereToBuy = ({ pim, data }) => {
 				}>
 				{pim?.retailers.length !== 0 ? 'Where To Buy' : 'coming soon'}
 			</button>
-			{chanelAdviserHandler && (
-				<ModalChanelAdviser
-					condition={chanelAdviserHandler}
-					handler={setChanelAdviserHandler}
-					model={pim?.model}
-				/>
-			)}
+			<ModalChanelAdviser
+				condition={chanelAdviserHandler}
+				handler={setChanelAdviserHandler}
+				model={pim?.model}
+			/>
 		</div>
 	)
 }

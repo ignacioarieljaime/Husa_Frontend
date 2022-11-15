@@ -121,13 +121,11 @@ function ProductsItem({ data }) {
 					</button>
 				</div>
 			</div>
-			{chanelAdviserHandler && (
-				<ModalChanelAdviser
-					condition={chanelAdviserHandler}
-					handler={setChanelAdviserHandler}
-					model={currentItem.model}
-				/>
-			)}
+			<ModalChanelAdviser
+				condition={chanelAdviserHandler}
+				handler={setChanelAdviserHandler}
+				model={currentItem.model}
+			/>
 		</>
 	)
 }

@@ -7,15 +7,16 @@ function ModalChanelAdviser({ condition, handler, model }) {
 	const modalOverView = useRef()
 	const outside = useOutsideClick(modalOverView)
 	return (
-		<div
-			onClick={() => outside && handler(false)}
-			id='where-to-buy-drawer-backdrop'
-			class='backdrop'>
+		<div className={`channerl-advisor-drawer ${condition ? 'open' : ''}`}>
+			<div
+				onClick={() => outside && handler(false)}
+				id='where-to-buy-drawer-backdrop'
+				className={`backdrop`}></div>
 			<div
 				ref={modalOverView}
 				id='where-to-buy-drawer'
-				class={`where-to-buy-drawer fixed-top ${condition ? 'open' : ''}`}>
-				<button class='btn close-btn' onClick={() => handler(false)}>
+				className={`where-to-buy-drawer fixed-top`}>
+				<button className='btn close-btn' onClick={() => handler(false)}>
 					<FontAwesomeIcon size='xl' icon={faXmark} />
 				</button>
 				{/* <div>

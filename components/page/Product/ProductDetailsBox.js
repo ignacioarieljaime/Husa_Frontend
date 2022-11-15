@@ -17,10 +17,10 @@ function ProductDetailsBox({ pim, data }) {
 	return (
 		<div
 			id={data?.name + data?.id}
-			className={`specs  black-banner ${!showMore && 'close'}`}>
-			<h2 className='fs-2tx text-white pt-20 pb-6 text-center'>
+			className={`specs-detail  black-banner ${!showMore && 'close'}`}>
+			{/* <h2 className='fs-2tx text-white pt-20 pb-6 text-center'>
 				{data?.structure?.title?.value}
-			</h2>
+			</h2> */}
 			<div ref={spaceContainer} className='specs-container'>
 				{pim?.properties.map((item, index) => (
 					<div key={`specs-${index}`} className='discription-list mb-10'>
@@ -37,7 +37,7 @@ function ProductDetailsBox({ pim, data }) {
 					</div>
 				))}
 			</div>
-			<div className='text-center py-10'>
+			<div className='text-center '>
 				<button
 					className='btn btn-outline-light rounded-5 specs-btn'
 					onClick={() => setShowMore(!showMore)}>

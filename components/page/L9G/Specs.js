@@ -4,25 +4,22 @@ import ProductDetailLstItem from '../Product/ProductDetailLstItem'
 
 const Specs = ({ pim, data }) => {
 	let { structure } = data
-	const [showMore, setShowMore] = useState(false)
-	const spaceContainer = useRef()
-	const widthSize = useWindowSize()[0]
+	// const [showMore, setShowMore] = useState(false)
+	// const spaceContainer = useRef()
+	// const widthSize = useWindowSize()[0]
 
-	useEffect(() => {
-		if (showMore) {
-			spaceContainer.current.style.maxHeight =
-				spaceContainer.current.scrollHeight + 'px'
-		} else {
-			spaceContainer.current.style.maxHeight = '0px'
-		}
-	}, [showMore, widthSize])
+	// useEffect(() => {
+	// 	if (showMore) {
+	// 		spaceContainer.current.style.maxHeight =
+	// 			spaceContainer.current.scrollHeight + 'px'
+	// 	} else {
+	// 		spaceContainer.current.style.maxHeight = '0px'
+	// 	}
+	// }, [showMore, widthSize])
 
 	return (
 		<section className='l9g'>
-			<div
-				className={`specs specs-l-nine-g px-4 px-md-20 black-banner ${
-					!showMore && 'close'
-				}`}>
+			<div className={`specs specs-l-nine-g px-4 px-md-20 black-banner `}>
 				<h2 className='fs-md-2tx text-white text-center'>
 					{structure?.title?.value}
 					<span class=' text-primary ms-2'>
@@ -32,7 +29,7 @@ const Specs = ({ pim, data }) => {
 				<p className='text-center specs_title_paragraph '>
 					{structure?.greyText?.value}
 				</p>
-				<div ref={spaceContainer} className='specs-container'>
+				{/* <div ref={spaceContainer} className='specs-container'>
 					{pim?.properties.map((item, index) => (
 						<div key={`specs-${index}`} className='discription-list mb-10'>
 							<h3 className='text-white'>{item.title}</h3>
@@ -60,7 +57,7 @@ const Specs = ({ pim, data }) => {
 								}`}></i>
 						</span>
 					</button>
-				</div>
+				</div> */}
 			</div>
 		</section>
 	)
