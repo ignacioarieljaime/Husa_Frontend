@@ -7,7 +7,7 @@
 		"generatePages": "node ./config/GeneratePage.js",
 		"removePages": "node ./config/RemovePages.js",
 		"dev": "npm run removePages && npm run generatePages &&  node ./server.js",
-		"build": "npm run removePages && npm run prebuild && npm run generatePages && next build && npm run sitemap",
+		"build": "npm run removePages && npm run generatePages && next build && npm run sitemap",
 		"sitemap": "next-sitemap",
 		"export": "next export",
 		"start": "cross-env NODE_ENV=production node ./server.js",
