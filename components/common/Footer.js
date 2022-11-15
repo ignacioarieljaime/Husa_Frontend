@@ -17,7 +17,7 @@ function Footer() {
 	const getFooter = async () => {
 		try {
 			let response = await axios.get(
-				'https://imcxm.stage-api.hisenseportal.com/api/husa/getMenus'
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
 			)
 			setFooterData(response.data.data.find(item => item.title === 'footer'))
 			sessionStorage.setItem(
