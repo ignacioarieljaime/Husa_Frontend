@@ -96,12 +96,12 @@ const ProductItemV2 = ({ data }) => {
 						</button>
 					</div>
 				</div>
+				<ModalChanelAdviser
+					condition={chanelAdviserHandler}
+					handler={setChanelAdviserHandler}
+					model={currentItem.model}
+				/>
 			</div>
-			<ModalChanelAdviser
-				condition={chanelAdviserHandler}
-				handler={setChanelAdviserHandler}
-				model={currentItem.model}
-			/>
 		</>
 	)
 }

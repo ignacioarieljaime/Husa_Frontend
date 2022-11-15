@@ -26,7 +26,7 @@ function ProductSupportNewHead({ pim }) {
 							<h2 className='fs-2 fw-bold mb-8'>{pim?.name}</h2>
 							<p className='text-primary mb-10'>Model: {pim?.model}</p>
 							<p className='fs-7 fw-normal mb-0'>Document Downloads</p>
-							<div className='row align-items-center'>
+							<div className='row align-items-stretch w-100'>
 								{pim?.assets.map(
 									item =>
 										item.type_id === 3 && (
