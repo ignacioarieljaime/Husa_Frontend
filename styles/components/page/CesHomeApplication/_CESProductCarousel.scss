@@ -1,0 +1,16 @@
+.ces-product-carousel {
+	.swiper-pagination {
+		display: flex;
+		padding-left: 88px;
+	}
+	.swiper-pagination-bullet {
+		width: 20px;
+		height: 20px;
+		border: 2px solid #fff;
+		opacity: 1;
+		background: transparent;
+	}
+	.swiper-pagination-bullet-active {
+		background: #fff;
+	}
+}

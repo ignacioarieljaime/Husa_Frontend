@@ -1,0 +1,37 @@
+import Link from 'next/link'
+import React from 'react'
+import HamburgerMenuDropdowns from './HamburgerMenuDropdowns'
+
+function HamburgerMenu({ data: { widgets }, asideMenu }) {
+	let menus = [...widgets.centerOption, ...widgets.rightOption]
+	return (
+		<nav
+			className={`navbar navbar-expand-xxxl navbar-bg side-nav fixed-top ${
+				!asideMenu && 'hidden'
+			}`}>
+			<ul className='navbar-nav d-flex d-lg-none'>
+				{menus.map((columns, index) => (
+					<HamburgerMenuDropdowns
+						key={`hamburger-menu-${index}`}
+						columns={columns}
+					/>
+				))}
+			</ul>
+			<ul
+				style={{ paddingRight: '30%' }}
+				className='navbar-nav col-lg-6 offset-lg-6 position-relative my-lg-auto mb-20 mb-md-0'>
+				{widgets.hamburger.map((menu, index) => (
+					<li key={`menu-${index}`} className='nav-item my-md-1'>
+						<Link href={menu.url ? menu.url : ''}>
+							<a className='nav-link mx-md-2 my-md-1  fw-bolder-700'>
+								<span className='underline-on-hover'>{menu.name}</span>
+							</a>
+						</Link>
+					</li>
+				))}
+			</ul>
+		</nav>
+	)
+}
+
+export default HamburgerMenu

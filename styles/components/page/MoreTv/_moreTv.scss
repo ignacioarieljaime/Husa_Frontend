@@ -1,0 +1,110 @@
+.blue-bg-more-tv {
+	background: url(../../../../public/assets/images/more-tv/blue-bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	.bg-bubble-effect {
+		background: url(../../../../public/assets/images/more-tv/bg-effect.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.bg-bubble-dim-effect {
+		background: url(../../../../public/assets/images/more-tv/bg-dim-effect.png);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+	.bg-single-bubble {
+		background: url(../../../../public/assets/images/more-tv/bubble.png);
+		background-repeat: no-repeat;
+		background-size: auto;
+		background-position: right center;
+
+		.bg-joel-pointer {
+			background-repeat: no-repeat !important;
+			background-size: auto !important;
+			background-position: right bottom !important;
+			margin-top: 100px !important;
+		}
+	}
+
+	.header-texts {
+		font-size: 116px;
+		font-weight: 400;
+		color: #fff;
+		line-height: 1;
+	}
+}
+.more-tv-video-container {
+	max-width: 960px;
+	margin: 0 auto 95px auto;
+	padding-bottom: 0 !important;
+}
+
+.tech-items-more-tv {
+	margin-bottom: 75px;
+
+	div {
+		border-bottom: 1px solid #101010;
+	}
+	h6 {
+		font-weight: 400 !important;
+		font-size: 16px !important;
+		color: #737373;
+		margin-top: 12px;
+	}
+}
+.big-tv-more-tv {
+	width: max-content;
+	position: absolute;
+	transform: scale(1.25);
+}
+
+.people-heat-map-more-tv {
+	max-width: 280px;
+	max-height: 200px;
+	margin: 0 auto 30px auto;
+	width: 100%;
+}
+.text-gradient-more-tv {
+	background: linear-gradient(268.55deg, #89cff5 33.92%, #ffffff 110.18%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+.charts-align-more-tv {
+	.chart-block {
+		max-width: 350px;
+		margin: 0 auto 160px auto;
+	}
+}
+.charts {
+	max-width: 200px;
+	max-height: 200px;
+	margin: 0 auto 30px auto;
+}
+
+@media (max-width: 991px) {
+	.charts-align-more-tv :last-child {
+		margin-bottom: 70%;
+	}
+	.blue-bg-more-tv .bg-single-bubble .bg-joel-pointer {
+		background-size: 80%;
+		background-position: right bottom;
+	}
+}
+@media (max-width: 768px) {
+	.charts-align-more-tv {
+		max-width: 300px;
+		margin: 0 auto;
+	}
+	.charts-align-more-tv :last-child {
+		margin-bottom: 70%;
+	}
+	.charts-align-more-tv > div {
+		max-width: 300px;
+	}
+	.blue-bg-more-tv .bg-single-bubble .bg-joel-pointer {
+		background-size: contain;
+		background-position: right bottom;
+	}
+}

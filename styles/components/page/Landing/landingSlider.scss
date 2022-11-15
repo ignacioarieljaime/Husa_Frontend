@@ -1,0 +1,120 @@
+.home-header-carousel {
+	overflow: hidden;
+	height: calc(100vh - 80px) !important;
+	.swiper-wrapper {
+		display: flex;
+		height: 100%;
+		.swiper-slide {
+			.carousel-item-wrapper {
+				display: flex;
+				height: 100%;
+				position: relative;
+				a {
+					background-position: center !important;
+					background-size: cover !important;
+					background-repeat: no-repeat !important;
+				}
+				.main-img {
+					display: block;
+					object-fit: contain;
+					width: 100%;
+				}
+				.responsive-img {
+					display: none;
+				}
+				.text-box {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					padding: 48px 72px;
+					> div {
+						position: relative;
+						top: 50%;
+						transform: translateY(-50%);
+						width: 50%;
+						> * {
+							color: #fff;
+							display: block;
+						}
+					}
+
+					.headline {
+						font-size: 60px;
+						font-weight: 700;
+						line-height: 1.125;
+					}
+					.seconde-line {
+						font-size: 32px;
+						font-weight: 700;
+						line-height: 1.125;
+					}
+					.btn {
+						width: fit-content;
+						border-radius: 37px;
+						margin-top: 24px;
+
+						&:hover {
+							background-color: var(--primary-color);
+							border-color: var(--primary-color);
+						}
+					}
+				}
+			}
+		}
+	}
+	.swiper-button-prev,
+	.swiper-button-next {
+		color: white;
+
+		&::after {
+			font-size: 23px;
+			font-weight: 900;
+		}
+	}
+	.swiper-pagination-bullet {
+		background: #ffffff;
+		opacity: 0.5;
+		width: 24px;
+		height: 3px;
+		border-radius: 0;
+		transition: all 0.3s ease;
+	}
+	.swiper-pagination-bullet-active {
+		opacity: 1;
+		width: 96px;
+	}
+	// .cursor-pointer {
+	// 	cursor: pointer;
+	// }
+}
+
+@media (max-width: 767px) {
+	.home-header-carousel {
+		height: unset;
+
+		.carousel-item-wrapper {
+			.main-img {
+				display: none;
+			}
+			.responsive-img {
+				display: block;
+			}
+			.text-box {
+				padding: 40px 24px 24px;
+				.text-box > div {
+					top: 0;
+					transform: translateY(0);
+					width: 100%;
+				}
+				.headline {
+					font-size: 32px;
+				}
+				.seconde-line {
+					font-size: 18px;
+				}
+			}
+		}
+	}
+}

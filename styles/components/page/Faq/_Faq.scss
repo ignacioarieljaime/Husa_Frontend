@@ -1,0 +1,99 @@
+.faq-single-color-header {
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+	position: relative;
+	.heading-text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+	}
+	h1 {
+		font-size: 54px;
+		line-height: 60px;
+	}
+}
+
+.video-tutorials {
+	b {
+		font-size: 18px;
+	}
+	.videos-container {
+		max-width: 850px;
+	}
+}
+.faq-article {
+	max-width: 850px;
+	article {
+		h2 {
+			color: #292929;
+			font-size: 33px;
+		}
+		p {
+			font-weight: 400;
+		}
+		b {
+			font-size: 18px;
+		}
+	}
+}
+
+.faq-descriptions {
+	.col-12 {
+		margin-bottom: 12px;
+		p {
+			margin-bottom: 4px;
+			a {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+@media (min-width: 1920px) {
+	.faq-descriptions {
+		.col-12 {
+			p {
+				a {
+					font-size: 22.5px !important;
+					font-weight: 400 !important;
+				}
+			}
+		}
+	}
+	.faq-single-color-header {
+		h1 {
+			font-size: 67.5px;
+			line-height: 75px;
+		}
+	}
+}
+
+@media (max-width: 767px) {
+	.faq-article {
+		article {
+			h2 {
+				font-size: 24px !important;
+			}
+			a,
+			b {
+				font-size: 14px;
+			}
+		}
+	}
+	.faq-descriptions {
+		.col-12 {
+			h4 {
+				font-size: 16px;
+			}
+		}
+	}
+	.faq-single-color-header {
+		h1 {
+			font-size: 42px;
+			line-height: 48px;
+		}
+	}
+}

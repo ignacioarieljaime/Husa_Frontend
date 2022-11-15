@@ -1,0 +1,563 @@
+.televisions-hero,
+.televisions-banner {
+	position: relative;
+	padding-top: 41%;
+	width: 100%;
+	background: #232323;
+	max-height: 500px;
+	.image {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.content {
+		position: absolute;
+		left: 50%;
+		bottom: 18%;
+		transform: translate(-50%, -40%);
+		width: 100%;
+		div * {
+			font-weight: 400;
+			font-size: 60px;
+			line-height: 120%;
+			text-align: center;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0;
+		}
+	}
+}
+.televisions-banner {
+	padding-top: 46%;
+	.content {
+		text-align: start;
+		position: absolute;
+		left: 25%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: fit-content;
+		.title * {
+			font-weight: 400;
+			font-size: 48px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0;
+			text-align: start;
+		}
+		.subtitle * {
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0;
+			text-align: start;
+		}
+	}
+}
+.televisions-spotlight {
+	background: #000;
+	padding: 60px 0 45px;
+	.text-content {
+		color: #ffffff;
+		text-align: center;
+		margin-bottom: 30px;
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: 400;
+			font-size: 34px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+		}
+		p {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 140%;
+			margin-bottom: 0;
+		}
+	}
+	.items {
+		.televisions-spotlight-item {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+			padding: 25px 25px 30px;
+			.image {
+				width: 100%;
+				margin-bottom: 16px;
+			}
+			.content {
+				h4 {
+					font-weight: 400;
+					font-size: 24px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					color: #ffffff !important;
+					margin-bottom: 16px;
+				}
+				p {
+					color: #ffffff !important;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 120%;
+					margin-bottom: 16px;
+				}
+			}
+		}
+	}
+}
+.televisions-cards {
+	background: #f0f2f2;
+	padding: 100px 0 145px;
+	text-align: center;
+	.title * {
+		font-weight: 400;
+		font-size: 60px;
+		line-height: 120%;
+		letter-spacing: -0.02em;
+		color: #383838;
+		margin-bottom: 30px;
+	}
+	.subtitle * {
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 120%;
+		color: #383838;
+		margin-bottom: 90px;
+	}
+	.card-item {
+		background: linear-gradient(121.77deg, #4145c5 0%, #fac4aa 84.38%);
+		border-radius: 50px;
+		padding-top: 100%;
+		position: relative;
+		overflow: hidden;
+		box-shadow: none;
+		transition: box-shadow 0.3s ease-in-out;
+		&:hover {
+			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+		}
+		.background-image {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+		}
+		.content {
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 1;
+			width: 100%;
+			padding: 35px 12px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+			flex-direction: column;
+			height: 100%;
+			.image {
+				width: 70%;
+				margin-bottom: 16px;
+			}
+			.title * {
+				font-weight: 400;
+				font-size: 34px;
+				line-height: 120%;
+				text-align: center;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+				margin-bottom: 35px;
+			}
+			.subtitle * {
+				font-weight: 400;
+				font-size: 24px;
+				line-height: 120%;
+				text-align: center;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+				margin-bottom: 16px;
+			}
+		}
+	}
+	.hisense-support-card {
+		background-repeat: no-repeat;
+		background-position: right center;
+		padding-top: 0;
+		.box {
+			padding: 66px 0px 66px 60px;
+			width: 40%;
+			background: #00aaa6;
+			div * {
+				font-weight: 400;
+				font-size: 34px;
+				line-height: 120%;
+				letter-spacing: -0.02em;
+				text-align: start;
+				color: #ffffff;
+				margin-bottom: 16px;
+			}
+		}
+	}
+}
+.televisions-tv-hero {
+	background: #232323;
+	padding: 105px 0 80px;
+	.header-content {
+		text-align: center;
+		.title {
+			* {
+				font-weight: 400;
+				font-size: 96px;
+				line-height: 120%;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+				margin-bottom: 0px !important;
+			}
+			&.gradient-text u {
+				background-image: linear-gradient(135deg, #4145c5 0, #fac4aa 70%);
+				background-clip: text;
+				color: transparent;
+				margin-bottom: 30px;
+			}
+		}
+		.subtitle * {
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+		}
+	}
+	.tv-item {
+		box-shadow: none;
+		transition: all 0.3s ease-in-out;
+		border-radius: 50px;
+		&:hover {
+			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+		}
+		&.full-size {
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+			padding-top: 40%;
+			width: 100%;
+			position: relative;
+			.badge {
+				display: block;
+				position: absolute;
+				top: 7%;
+				right: 3%;
+				width: 100%;
+				max-width: 95px;
+			}
+			.content {
+				position: absolute;
+				text-align: start;
+				left: 6%;
+				top: 12%;
+				.image {
+					width: 40%;
+					max-width: 280px;
+					margin-bottom: 16px;
+				}
+				.title {
+					font-weight: 400;
+					font-size: 34px;
+					line-height: 120%;
+					letter-spacing: -0.02em;
+					color: #232323;
+					margin-bottom: 16px;
+					*{
+						margin: 0;
+					}
+				}
+			}
+		}
+		&.colored-bg {
+			padding-top: 100%;
+			width: 100%;
+			position: relative;
+			.content {
+				text-align: start;
+				width: 100%;
+				height: 100%;
+				padding: 35px 25px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				align-items: start;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%, -50%);
+				.image {
+					width: 100%;
+					margin: 0 auto 26px;
+					max-width: 400px;
+					max-height: calc(100% - 150px);
+				}
+				.title {
+					margin-bottom: 26px;
+					* {
+						font-weight: 400;
+						font-size: 34px;
+						line-height: 120%;
+						letter-spacing: -0.02em;
+						color: #232323;
+					}
+					&.text-white * {
+						color: #ffffff;
+					}
+				}
+			}
+		}
+		&.simple {
+			border-radius: 50px;
+			width: 100%;
+			padding-top: 100%;
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-position: center center;
+		}
+		&.no-bg {
+			.logo {
+				margin-bottom: 30px;
+				width: 100%;
+				max-width: 190px;
+				display: block;
+			}
+			.image {
+				display: block;
+				margin-bottom: 30px;
+				width: 100%;
+				max-width: 320px;
+			}
+			.title * {
+				font-weight: 400;
+				font-size: 34px;
+				line-height: 120%;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.televisions-tv-hero {
+		.tv-item {
+			&.colored-bg,
+			&.full-size {
+				.content {
+					.title {
+						* {
+							font-size: 28px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.televisions-cards {
+		.card-item {
+			.content {
+				.image {
+					width: 50%;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.televisions-banner {
+		.content {
+			transform: translate(-30%, -50%);
+		}
+	}
+	.televisions-cards {
+		.card-item {
+			.content {
+				.image {
+					width: 100%;
+					max-width: 500px;
+				}
+			}
+		}
+	}
+	.televisions-tv-hero {
+		.tv-item {
+			&.full-size {
+				padding-top: 60%;
+			}
+			&.colored-bg {
+				width: 100%;
+				padding-top: 0;
+
+				.content {
+					padding: 45px 25px;
+					position: relative;
+					left: 0;
+					top: 0;
+					transform: translate(0, 0);
+
+					.title {
+						* {
+							font-size: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.televisions-hero,
+	.televisions-banner {
+		padding-top: 60%;
+		.content {
+			bottom: 15%;
+			div * {
+				font-size: 28px;
+			}
+		}
+	}
+	.televisions-banner {
+		padding-top: 70%;
+		.content {
+			left: calc(12px + 25%);
+			top: 40%;
+			transform: translate(-30%, -50%);
+			.title * {
+				font-size: 24px;
+			}
+
+			.subtitle * {
+				font-size: 16px;
+			}
+			a {
+				font-size: 14px;
+			}
+		}
+	}
+	.televisions-cards {
+		padding: 50px 0 70px;
+		.title * {
+			font-size: 32px;
+		}
+		.subtitle * {
+			font-size: 16px;
+		}
+		.card-item {
+			border-radius: 25px;
+			padding-top: 0;
+			height: 100%;
+			min-height: 300px;
+			.content {
+				padding: 12px;
+				position: relative;
+				.image {
+					width: 80%;
+					height: 100%;
+					max-height: 350px;
+					margin-bottom: 16px;
+				}
+				.title * {
+					font-size: 24px;
+					margin-bottom: 16px;
+				}
+				.subtitle * {
+					font-size: 18px;
+					margin-bottom: 8px;
+				}
+			}
+		}
+		.hisense-support-card {
+			background-size: contain;
+			background-position: center top;
+			min-height: unset;
+			.box {
+				padding: 32px 0px 32px 24px;
+				margin-top: 30%;
+				width: 100%;
+				background: #00aaa6;
+				div * {
+					font-size: 24px;
+					margin-bottom: 12px;
+				}
+			}
+		}
+	}
+	.televisions-tv-hero {
+		background: #232323;
+		padding: 105px 0 80px;
+
+		.header-content {
+			text-align: center;
+			.title {
+				* {
+					font-size: 40px;
+				}
+			}
+			.subtitle * {
+				font-size: 16px;
+			}
+		}
+		.tv-item {
+			border-radius: 25px;
+			&.full-size {
+				padding-top: 0;
+				height: 100%;
+				.badge {
+					top: 60%;
+					right: 10%;
+				}
+				.content {
+					position: relative;
+					text-align: start;
+					padding: 12px;
+					min-height: 300px;
+					left: 0;
+					top: 0;
+					.image {
+						max-width: 220px;
+						margin-bottom: 12px;
+					}
+					.title * {
+						font-size: 20px;
+					}
+				}
+			}
+			&.simple {
+				width: 100%;
+				padding-top: 100%;
+			}
+			&.no-bg {
+				padding: 20px;
+				.logo {
+					margin-bottom: 16px;
+				}
+				.image {
+					margin-bottom: 16px;
+				}
+				.title * {
+					font-size: 20px;
+					margin-bottom: 16px;
+				}
+			}
+		}
+	}
+}
