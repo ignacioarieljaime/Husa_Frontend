@@ -11,8 +11,162 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 import RoleModal from 'components/page/ContactUs/RoleModal'
 
-function H8FPromoForm({ data }) {
-	// let { structure } = data
+let selectBox = [
+	{
+		name: 'Alabama'
+	},
+	{
+		name: 'Alaska'
+	},
+	{
+		name: 'Arizona'
+	},
+	{
+		name: 'Arkansas'
+	},
+	{
+		name: 'California'
+	},
+	{
+		name: 'Colorado'
+	},
+	{
+		name: 'Connecticut'
+	},
+	{
+		name: 'Delaware'
+	},
+	{
+		name: 'Florida'
+	},
+	{
+		name: 'Georgia'
+	},
+	{
+		name: 'Hawaii'
+	},
+	{
+		name: 'Idaho'
+	},
+	{
+		name: 'Illinois'
+	},
+	{
+		name: 'Indiana'
+	},
+	{
+		name: 'Iowa'
+	},
+	{
+		name: 'Kansas'
+	},
+	{
+		name: 'Kentucky'
+	},
+	{
+		name: 'Louisiana'
+	},
+	{
+		name: 'Maine'
+	},
+	{
+		name: 'Maryland'
+	},
+	{
+		name: 'Massachusetts'
+	},
+	{
+		name: 'Michigan'
+	},
+	{
+		name: 'Minnesota'
+	},
+	{
+		name: 'Mississippi'
+	},
+	{
+		name: 'Missouri'
+	},
+	{
+		name: 'Montana'
+	},
+	{
+		name: 'Nebraska'
+	},
+	{
+		name: 'Nevada'
+	},
+	{
+		name: 'New Hampshire'
+	},
+	{
+		name: 'New Jersey'
+	},
+	{
+		name: 'New Mexico'
+	},
+	{
+		name: 'New York'
+	},
+	{
+		name: 'North Carolina'
+	},
+	{
+		name: 'North Dakota'
+	},
+	{
+		name: 'Ohio'
+	},
+	{
+		name: 'Oklahoma'
+	},
+	{
+		name: 'Oregon'
+	},
+	{
+		name: 'Pennsylvania'
+	},
+	{
+		name: 'Rhode Island'
+	},
+	{
+		name: 'South Carolina'
+	},
+	{
+		name: 'South Dakota'
+	},
+	{
+		name: 'Tennessee'
+	},
+	{
+		name: 'Texas'
+	},
+	{
+		name: 'Utah'
+	},
+	{
+		name: 'Vermont'
+	},
+	{
+		name: 'Virginia'
+	},
+	{
+		name: 'Washington'
+	},
+	{
+		name: 'West Virginia'
+	},
+	{
+		name: 'Wisconsin'
+	},
+	{
+		name: 'Wyoming'
+	}
+]
+
+function OfferClaimForm({ data }) {
+	let { structure } = data
+	console.log(structure);
 	let router = useRouter()
 	const [disabled, setDisabled] = useState(false)
 	const [categories, setCategories] = useState([])
@@ -88,7 +242,7 @@ function H8FPromoForm({ data }) {
 	return (
 		<section className={disabled && `d-none`}>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
-				{/* <h2 className='text-center mb-17'>{structure?.title?.value}</h2> */}
+				<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
 				<form
 					action=''
 					onSubmit={submitData}
@@ -120,10 +274,11 @@ function H8FPromoForm({ data }) {
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
+								type='date'
 								placeholder={'Date of Purchase'}
 								required={true}
 								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
+									dataSchemaHandler('date_of_purchase', _value)
 								}
 							/>
 						</div>
@@ -144,6 +299,7 @@ function H8FPromoForm({ data }) {
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'EMAIL'}
+								type={'email'}
 								required={true}
 								onChange={_value => dataSchemaHandler('email', _value)}
 							/>
@@ -167,10 +323,9 @@ function H8FPromoForm({ data }) {
 							<CustomSelectBox
 								title={'PLEASE SELECT YOUR STATE'}
 								required={true}
-								options={categories}
+								options={selectBox}
 								onChange={_value => {
 									dataSchemaHandler('state', _value.name)
-									getSeriesModels(_value.id)
 								}}
 							/>
 						</div>
@@ -238,7 +393,7 @@ function H8FPromoForm({ data }) {
 			</div>
 			{modalCondition && (
 				<RoleModal
-					// data={structure?.modelText?.value}
+					data={structure?.modelContent?.value}
 					modalHandler={setModalCondition}
 				/>
 			)}
@@ -246,4 +401,4 @@ function H8FPromoForm({ data }) {
 	)
 }
 
-export default H8FPromoForm
+export default OfferClaimForm
