@@ -2,14 +2,15 @@ import axios from 'axios'
 
 export async function getProductsWithCategoryApi(_categoryId) {
 	let response = await axios.get(
-		`https://imcxm.stage-api.hisenseportal.com/api/husa/searchProduct?categoryId=${_categoryId}`
+		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?categoryId=${_categoryId}`
 	)
 	return response
 }
 
 export async function getSettingApi() {
+
 	let response = await axios.get(
-		`https://imcxm.stage-api.hisenseportal.com/api/husa/getSettings`
+		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getSettings`
 	)
 	return response
 }
