@@ -9,7 +9,7 @@ function ProductBigScreenTextsBox({ data }) {
 					<article class='article text-center'>
 						<h2 class='text-black mb-12'>
 							{structure?.blackTitle?.value}
-							<span class='d-block text-primary'>
+							<span class='text-primary'>
 								{' '}
 								{structure?.coloredTitle?.value}
 							</span>
