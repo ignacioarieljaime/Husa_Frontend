@@ -14,11 +14,7 @@ function ProductBigScreenTextsBox({ data }) {
 								{structure?.coloredTitle?.value}
 							</span>
 						</h2>
-						<div
-							class='fw-normal text-black m-auto'
-							dangerouslySetInnerHTML={{
-								__html: structure?.paragraph?.value
-							}}></div>
+						<p>{structure?.paragraph?.value}</p>
 					</article>
 				</div>
 			</div>

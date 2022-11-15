@@ -22,7 +22,7 @@ function ULEDProductItem({ data, itemLength }) {
 						src={image?.src}
 						className={'w-100'}
 						alt={image?.alt}
-						style={{ maxHeight: '300px' }}
+						// style={{ maxHeight: '300px' }}
 					/>
 				</div>
 				<div className=' align-items-center d-flex flex-wrap gap-2'>
