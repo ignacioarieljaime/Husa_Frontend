@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { ComponentList } = require('../utils/ComponentList')
 
 const PageGeneratorController = _page => {
@@ -38,7 +39,7 @@ export async function getServerSideProps(context) {
 		!_page.model_id && _page.model_id === 0
 			? `	let data = await axios
 		.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getPageInfo/${_page.id}'
+			'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
 		)
 		.then(response => {
 			console.log('get ssr data')
@@ -53,7 +54,7 @@ export async function getServerSideProps(context) {
 			: `
 			let productId = context?.query?.param[0]
 			let data = await axios.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getDynamicPages/' + productId
+			'${process.env.CXM_API_ROUTE}/getDynamicPages/' + productId
 		)
 		.then(response => {
 			console.log('get ssr data')

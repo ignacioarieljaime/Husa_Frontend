@@ -23,7 +23,7 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 			setResult('loading')
 			try {
 				let response = await axios.get(
-					`https://imcxm.dev-api.hisenseportal.com/api/husa/searchPage/${_value}`
+					`https://imcxm.stage-api.hisenseportal.com/api/husa/searchPage/${_value}`
 				)
 				setResult(response.data)
 			} catch (error) {

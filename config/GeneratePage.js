@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Axios = require('axios').default
 const PageController = require('../Controller/PageController')
 const {
@@ -10,9 +11,7 @@ const { GenerateRedirectPage } = require('../Controller/RedirectPageController')
 const requestHandler = (async () => {
 	console.log('send pages request')
 	try {
-		let response = await Axios.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getPages'
-		)
+		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`)
 		console.log('get pages')
 		UrlController(response.data.data)
 		response.data.data.forEach(page => {
@@ -26,9 +25,7 @@ const requestHandler = (async () => {
 const redirectRequestHandler = (async () => {
 	console.log('send redirects request')
 	try {
-		let response = await Axios.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getRedirects'
-		)
+		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getRedirects`)
 		console.log('get redirects')
 		response.data.data.forEach(redirect => {
 			if (redirect.redirect_type === 'From') {
