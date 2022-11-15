@@ -5,7 +5,7 @@ function ProductStaticContent({ data }) {
 	return (
 		<div id={data.name + data.id} className='product_static_content'>
 			<h4>{structure.title.value}</h4>
-			<p>{structure.paragraph.value}</p>
+			<div dangerouslySetInnerHTML={{ __html:structure.paragraph.value }}></div>
 		</div>
 	)
 }

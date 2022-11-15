@@ -22,7 +22,7 @@ function ProductCategoryBox({ data, pim }) {
 							<li key={`category-item-${index}`}>
 								<Link href={item.target.value ? item.target.value : '/'}>
 									<a>
-										<span className='underline-on-hover'>
+										<span className='underline-on-hover text-uppercase'>
 											{item.title.value}
 										</span>
 									</a>
@@ -41,7 +41,7 @@ function ProductCategoryBox({ data, pim }) {
 									}`
 								}>
 								<a>
-									<span className='underline-on-hover'> Support</span>
+									<span className='underline-on-hover text-uppercase'> Support</span>
 								</a>
 							</Link>
 						</li>
