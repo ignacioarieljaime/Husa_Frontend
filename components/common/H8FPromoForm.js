@@ -12,12 +12,10 @@ import axios from 'axios'
 import RoleModal from 'components/page/ContactUs/RoleModal'
 
 function H8FPromoForm({ data }) {
-	let { structure } = data
+	// let { structure } = data
 	let router = useRouter()
 	const [disabled, setDisabled] = useState(false)
 	const [categories, setCategories] = useState([])
-	const [series, setSeries] = useState([])
-	const [models, setModels] = useState([])
 	const [activeCheckBox, setActiveCheckBox] = useState(false)
 	const [modalCondition, setModalCondition] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -25,61 +23,21 @@ function H8FPromoForm({ data }) {
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
-		product_series: null,
 		email: null,
-		phone_number: null,
 		postal_code: null,
-		product_category: null,
-		product_model: null,
-		product_serial_number: null,
-		purchased_from: null,
+		phone_number: null,
+		model_number: null,
+		order_id: 0,
 		date_of_purchase: null,
+		future_news: 0,
 		receipt_image: null,
-		future_news: '0'
+		address: null,
+		city: null,
+		state: null
 	})
-
-	useEffect(() => {
-		getCategories()
-	}, [])
 
 	const dataSchemaHandler = (_key, _value) => {
 		setDataSchema({ ...dataSchema, [_key]: _value })
-	}
-
-	const getCategories = async () => {
-		setCategories('loading')
-		try {
-			let response = await GetCategoriesApi(router)
-			if (response.status === 200) {
-				setCategories(response.data.data)
-			}
-		} catch (error) {
-			setCategories([])
-			console.log(error)
-		}
-	}
-
-	const getSeriesModels = async _categoryId => {
-		setSeries('loading')
-		setModels('loading')
-		try {
-			let response = await GetSeriesModelsApi(
-				router,
-				`category_id=${_categoryId}`
-			)
-			if (response.status === 200) {
-				setSeries(response.data.series)
-				setModels(
-					response.data.models.map(item => {
-						return { name: item }
-					})
-				)
-			}
-		} catch (error) {
-			setSeries([])
-			setModels([])
-			console.log(error)
-		}
 	}
 
 	const submitData = async e => {
@@ -89,7 +47,7 @@ function H8FPromoForm({ data }) {
 		try {
 			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
+				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/offer-claim',
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
 			if (response.status === 200) {
@@ -130,7 +88,7 @@ function H8FPromoForm({ data }) {
 	return (
 		<section className={disabled && `d-none`}>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
-				<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
+				{/* <h2 className='text-center mb-17'>{structure?.title?.value}</h2> */}
 				<form
 					action=''
 					onSubmit={submitData}
@@ -141,9 +99,7 @@ function H8FPromoForm({ data }) {
 							<CustomInput
 								placeholder={'MODAL NUMBER'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('model_number', _value)}
 							/>
 						</div>
 						<div className='col-6  mb-10 d-flex'>
@@ -159,9 +115,7 @@ function H8FPromoForm({ data }) {
 							<CustomInput
 								placeholder={'Order Id/Confirmation Number'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('order_id', _value)}
 							/>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
@@ -177,45 +131,35 @@ function H8FPromoForm({ data }) {
 							<CustomInput
 								placeholder={'FIRST NAME'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('first_name', _value)}
 							/>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'LAST NAME'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('last_name', _value)}
 							/>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'EMAIL'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('email', _value)}
 							/>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'ADDRESS'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('address', _value)}
 							/>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'CITY'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('city', _value)}
 							/>
 						</div>
 
@@ -225,7 +169,7 @@ function H8FPromoForm({ data }) {
 								required={true}
 								options={categories}
 								onChange={_value => {
-									dataSchemaHandler('product_category', _value.name)
+									dataSchemaHandler('state', _value.name)
 									getSeriesModels(_value.id)
 								}}
 							/>
@@ -234,18 +178,14 @@ function H8FPromoForm({ data }) {
 							<CustomInput
 								placeholder={'ZIP'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('postal_code', _value)}
 							/>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'PHONE NUMBER'}
 								required={true}
-								onChange={_value =>
-									dataSchemaHandler('product_serial_number', _value)
-								}
+								onChange={_value => dataSchemaHandler('phone_number', _value)}
 							/>
 						</div>
 					</div>
@@ -298,7 +238,7 @@ function H8FPromoForm({ data }) {
 			</div>
 			{modalCondition && (
 				<RoleModal
-					data={structure?.modelText?.value}
+					// data={structure?.modelText?.value}
 					modalHandler={setModalCondition}
 				/>
 			)}

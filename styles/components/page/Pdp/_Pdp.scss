@@ -20,6 +20,10 @@
 	opacity: 1 !important;
 }
 
+.product-big-screen {
+	max-width: 768px;
+}
+
 .pdp-top-feature-block {
 	display: flex;
 	justify-content: start;
@@ -96,6 +100,9 @@
 	}
 	.pdp .suggested-products::after {
 		height: 30%;
+	}
+	.product-big-screen {
+		max-width: unset;
 	}
 }
 @media (max-width: 767px) {

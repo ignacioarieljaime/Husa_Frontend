@@ -90,7 +90,7 @@ const ProductsGridV2 = ({ data }) => {
 						onChange={setSortingMethod}
 					/>
 				</div>
-				<div className='products-grid mt-4 mt-md-0'>
+				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					<div className='products-filtering me-md-12'>
 						<ProductsFilter
 							filterRequest={getProducts}

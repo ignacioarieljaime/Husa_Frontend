@@ -118,6 +118,7 @@ const ProductsFilter = ({
 							(filterItem, index) =>
 								index + 1 <= sowMoreLimitation && (
 									<ProductFiltersGroup
+										index={index}
 										key={`filter-${filterItem.name}-${filterItem.id} `}
 										filter={filterItem}
 										passedFilter={filters}

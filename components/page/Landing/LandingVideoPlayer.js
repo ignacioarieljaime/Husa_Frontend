@@ -2,9 +2,8 @@ import React from 'react'
 
 function LandingVideoPlayer({ data }) {
 	let { structure } = data
-	console.log(structure)
 	return (
-		<div om className='video-container landing'>
+		<div id={data?.name + data?.id} om className='video-container landing'>
 			<iframe
 				src={structure?.video?.value}
 				alt={structure?.video?.alt}
