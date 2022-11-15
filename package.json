@@ -7,7 +7,9 @@
 		"generatePages": "node ./config/GeneratePage.js",
 		"removePages": "node ./config/RemovePages.js",
 		"dev": "npm run removePages && npm run generatePages &&  node ./server.js",
-		"build": "npm run removePages && npm run prebuild && npm run generatePages && next build",
+		"build": "npm run removePages && npm run generatePages && next build && npm run sitemap",
+		"sitemap": "next-sitemap",
+		"export": "next export",
 		"start": "cross-env NODE_ENV=production node ./server.js",
 		"lint": "next lint"
 	},
@@ -28,6 +30,7 @@
 		"file-saver": "^2.0.5",
 		"joi": "^17.7.0",
 		"next": "12.3.0",
+		"next-sitemap": "^3.1.31",
 		"node-notifier": "^10.0.1",
 		"nodemon": "^2.0.20",
 		"open": "^8.4.0",

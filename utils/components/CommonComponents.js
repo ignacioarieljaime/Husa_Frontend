@@ -30,5 +30,9 @@ module.exports.CommonComponents = [
 	{
 		name: 'UnauthorizedList',
 		path: 'components/common/UnauthorizedList'
+	},
+	{
+		name: 'OfferClaimForm',
+		path: 'components/common/OfferClaimForm'
 	}
 ]
