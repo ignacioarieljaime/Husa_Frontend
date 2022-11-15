@@ -52,12 +52,12 @@ function ULEDProductItem({ data, itemLength }) {
 						</div>
 					))}
 				</div>
+				<ModalChanelAdviser
+					condition={channelAdviserHandler}
+					handler={setChannelAdviserHandler}
+					model={chanelAdModelId}
+				/>
 			</div>
-			<ModalChanelAdviser
-				condition={channelAdviserHandler}
-				handler={setChannelAdviserHandler}
-				model={chanelAdModelId}
-			/>
 		</>
 	)
 }

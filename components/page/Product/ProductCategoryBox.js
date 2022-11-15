@@ -41,7 +41,10 @@ function ProductCategoryBox({ data, pim }) {
 									}`
 								}>
 								<a>
-									<span className='underline-on-hover text-uppercase'> Support</span>
+									<span className='underline-on-hover text-uppercase'>
+										{' '}
+										Support
+									</span>
 								</a>
 							</Link>
 						</li>
@@ -58,12 +61,12 @@ function ProductCategoryBox({ data, pim }) {
 						</li>
 					</ul>
 				</nav>
+				<ModalChanelAdviser
+					condition={chanelAdviserHandler}
+					handler={setChanelAdviserHandler}
+					model={pim?.model}
+				/>
 			</div>
-			<ModalChanelAdviser
-				condition={chanelAdviserHandler}
-				handler={setChanelAdviserHandler}
-				model={pim?.model}
-			/>
 		</>
 	)
 }

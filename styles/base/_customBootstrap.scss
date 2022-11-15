@@ -170,7 +170,7 @@
 	margin: 0;
 }
 .description-blocks .introduction {
-	padding: 35px;
+	padding: 72px 128px;
 	margin: auto;
 }
 .description-blocks .introduction h4 {
@@ -183,11 +183,12 @@
 	margin-bottom: 40px;
 	font-size: 42px;
 	font-weight: 700;
-	line-height: 40px;
+	line-height: 48px;
 }
 .description-blocks .introduction p {
 	margin-bottom: 40px;
 	font-size: 18px;
+	line-height: 30px;
 	font-weight: 300;
 }
 .description-blocks .introduction a {
@@ -198,9 +199,29 @@
 @media (max-width: 768px) {
 	.description-blocks .introduction h2 {
 		font-size: 32px;
+		line-height: 36px;
 	}
 	.description-blocks .introduction p {
 		font-size: 14px;
+		line-height: 24px;
+	}
+}
+
+@media (max-width: 1400px) {
+	.description-blocks .introduction {
+		padding: 24px 48px 48px 48px;
+	}
+}
+
+@media (min-width: 1920px) {
+	.description-blocks .introduction h2 {
+		font-size: 52.5px;
+		line-height: 60px;
+	}
+
+	.description-blocks .introduction p {
+		font-size: 22.5px;
+		line-height: 37.5px;
 	}
 }
 
