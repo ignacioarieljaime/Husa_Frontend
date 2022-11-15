@@ -1,6 +1,6 @@
 /* specs */
-.specs {
-	padding: 45px 30px;
+.specs-detail {
+	padding: 50px 30px 96px;
 	.specs-btn {
 		padding: 0 24px;
 		width: 180px;
@@ -61,10 +61,10 @@
 
 			&::before {
 				content: attr(data-label);
-				font-weight: 700;
+				font-weight: 600;
 				font-size: 15px;
 				line-height: 30px;
-				color: #000000;
+				color: #b3b3b3;
 				display: block;
 			}
 		}

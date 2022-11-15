@@ -71,13 +71,11 @@ function ProductsItem({ data }) {
 					<button className='compare-btn'>Add To Compare</button>
 				</div>
 			</div>
-			{chanelAdviserHandler && (
-				<ModalChanelAdviser
-					condition={chanelAdviserHandler}
-					handler={setChanelAdviserHandler}
-					model={model}
-				/>
-			)}
+			<ModalChanelAdviser
+				condition={chanelAdviserHandler}
+				handler={setChanelAdviserHandler}
+				model={model}
+			/>
 		</>
 	)
 }

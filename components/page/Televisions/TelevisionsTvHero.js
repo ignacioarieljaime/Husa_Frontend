@@ -7,7 +7,7 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 		<section>
 			<div className='televisions-tv-hero'>
 				<div className='container'>
-					<div className='content'>
+					<div className='header-content'>
 						<div
 							className='title gradient-text mb-8'
 							dangerouslySetInnerHTML={{
@@ -48,7 +48,13 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 										}}></div>
 									{structure?.fullSizeCard?.value?.link?.value ? (
 										<Link href={structure?.fullSizeCard?.value?.link?.value}>
-											<a className='n-btn outline-black transparent d-block w-fit'>
+											<a
+												className={`n-btn transparent d-block w-fit ${
+													structure?.fullSizeCard?.value?.theme?.value ===
+													'light'
+														? 'outline-white'
+														: 'outline-black'
+												}`}>
 												{structure?.fullSizeCard?.value?.link?.title}
 											</a>
 										</Link>

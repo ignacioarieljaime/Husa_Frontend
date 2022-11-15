@@ -23,7 +23,7 @@ function HamburgerMenu({ data: { widgets }, asideMenu }) {
 				{widgets.hamburger.map((menu, index) => (
 					<li key={`menu-${index}`} className='nav-item my-md-1'>
 						<Link href={menu.url ? menu.url : ''}>
-							<a className='nav-link mx-md-2 my-md-1 my-lg-5 fw-bolder-700 p-md-3'>
+							<a className='nav-link mx-md-2 my-md-1  fw-bolder-700'>
 								<span className='underline-on-hover'>{menu.name}</span>
 							</a>
 						</Link>

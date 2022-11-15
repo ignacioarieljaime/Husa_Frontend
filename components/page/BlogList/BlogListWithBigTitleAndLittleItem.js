@@ -19,11 +19,10 @@ function BlogListWithBigTitleAndLittleItem() {
 					</a>
 				</div>
 				<BlogListLittleReadArticleBox />
-
 				<div className='container text-center mb-20 pb-0 pb-md-20'>
 					<button className='btn btn-outline-dark green-hover btn-primary-dark-hover px-6 py-3 rounded-5 text-uppercase'>
 						<span className='me-3'>load more </span>
-						<FontAwesomeIcon icon={faChevronDown} size={"sm"}  />
+						<FontAwesomeIcon icon={faChevronDown} size={'sm'} />
 					</button>
 				</div>
 			</div>

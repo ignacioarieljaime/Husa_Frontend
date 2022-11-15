@@ -408,86 +408,93 @@
 	}
 }
 
+.channerl-advisor-drawer {
+	.backdrop {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		left: 0;
+		top: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 9990;
+		display: none;
+	}
+	.where-to-buy-drawer {
+		background-color: #fff;
+		height: 100%;
+		width: 550px;
+		right: -100%;
+		left: unset;
+		z-index: 10000;
+		overflow-y: auto;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		transition: all 0.3s ease;
+		padding: 35px 35px 0px 35px;
+		text-align: center;
+		.close-btn {
+			border: none;
+			position: absolute;
+			right: 10px;
+			top: 10px;
+			color: #818181;
+		}
+		.model {
+			font-size: 16px;
+			color: #292929;
+			display: block;
+			margin-top: 15px;
+		}
+		.name {
+			font-size: 24px;
+			font-weight: 700;
+			color: #292929;
+		}
+		.authorized-dealer span {
+			color: #202020;
+			font-size: 18px;
+		}
+		.authorized-dealer button {
+			line-height: 22px;
+			font-size: 14px;
+			color: #009e91;
+			border: none;
+		}
+		.dealer-link {
+			color: black;
+			line-height: 30px;
+			min-height: 36px;
+			text-transform: uppercase;
+			text-align: center;
+			width: 33%;
+			min-width: 95px;
+			max-width: 140px;
+			border-radius: 40px;
+			padding: 10px 15px;
+			font-size: 0.75rem;
+			border: none;
+			white-space: nowrap;
+			background-color: #239d98;
+		}
+		.dealer-link:hover {
+			border: none;
+			color: white;
+		}
+	}
+	&.open {
+		.backdrop {
+			display: block;
+		}
+		.where-to-buy-drawer {
+			right: 0;
+		}
+	}
+}
+
 /* backdrop */
-.backdrop {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 99999999999;
-}
-.backdrop.show {
-	display: block;
-}
+
 /* where-to-buy-drawer */
 
-.where-to-buy-drawer {
-	background-color: #fff;
-	height: 100%;
-	width: 550px;
-	right: -100%;
-	left: unset;
-	z-index: 1000;
-	overflow-y: auto;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-	transition: all 0.3s ease;
-	padding: 35px 35px 0px 35px;
-	text-align: center;
-}
-.where-to-buy-drawer.open {
-	right: 0;
-}
-.where-to-buy-drawer .close-btn {
-	border: none;
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	color: #818181;
-}
-.where-to-buy-drawer .model {
-	font-size: 16px;
-	color: #292929;
-	display: block;
-	margin-top: 15px;
-}
-.where-to-buy-drawer .name {
-	font-size: 24px;
-	font-weight: 700;
-	color: #292929;
-}
-.where-to-buy-drawer .authorized-dealer span {
-	color: #202020;
-	font-size: 18px;
-}
-.where-to-buy-drawer .authorized-dealer button {
-	line-height: 22px;
-	font-size: 14px;
-	color: #009e91;
-	border: none;
-}
-.where-to-buy-drawer .dealer-link {
-	color: black;
-	line-height: 30px;
-	min-height: 36px;
-	text-transform: uppercase;
-	text-align: center;
-	width: 33%;
-	min-width: 95px;
-	max-width: 140px;
-	border-radius: 40px;
-	padding: 10px 15px;
-	font-size: 0.75rem;
-	border: none;
-	white-space: nowrap;
-	background-color: #239d98;
-}
-.where-to-buy-drawer .dealer-link:hover {
-	border: none;
-	color: white;
-}
 @media (max-width: 575px) {
 	.where-to-buy-drawer {
 		width: 100%;

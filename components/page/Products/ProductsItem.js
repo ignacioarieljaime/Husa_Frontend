@@ -120,14 +120,12 @@ function ProductsItem({ data }) {
 						Add To Compare
 					</button>
 				</div>
-			</div>
-			{chanelAdviserHandler && (
 				<ModalChanelAdviser
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}
 				/>
-			)}
+			</div>
 		</>
 	)
 }
