@@ -13,15 +13,31 @@ const requestHandler = (async () => {
 	try {
 		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`)
 		console.log('get pages')
-		UrlController(response.data.data)
-		response.data.data.forEach(page => {
-			let pageComponents = FindComponent(page.widgets)
-			PageController(page, GenerateComponentStructure(page, pageComponents))
-		})
+		controlPagesAndGenerate(response.data.data)
 	} catch (error) {
 		console.log(error)
 	}
 })()
+
+const BlogRequestHandler = (async () => {
+	console.log('send blog request')
+	try {
+		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPosts`)
+		controlPagesAndGenerate(response.data.data)
+		console.log('get blog')
+	} catch (error) {
+		console.log(error)
+	}
+})()
+
+const controlPagesAndGenerate = _pages => {
+	UrlController(_pages)
+	_pages.forEach(page => {
+		let pageComponents = FindComponent(page.widgets)
+		PageController(page, GenerateComponentStructure(page, pageComponents))
+	})
+}
+
 // const redirectRequestHandler = (async () => {
 // 	console.log('send redirects request')
 // 	try {

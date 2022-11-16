@@ -10,10 +10,19 @@ module.exports = UrlController = async _pages => {
 		}
 	})
 	if (!fs.existsSync(`./utils/urlData.json`)) {
-		fs.writeFile(`./utils/urlData.json`, JSON.stringify(pagesUrl), err => {
-			if (err) {
-				console.error(err)
-			}
+		generateFile(pagesUrl)
+	} else {
+		fs.readFile('./utils/urlData.json', 'utf-8', function (err, data) {
+			if (err) throw err
+			generateFile([...JSON.parse(data), ...pagesUrl])
 		})
 	}
+}
+
+const generateFile = _urls => {
+	fs.writeFile(`./utils/urlData.json`, JSON.stringify(_urls), err => {
+		if (err) {
+			console.error(err)
+		}
+	})
 }
