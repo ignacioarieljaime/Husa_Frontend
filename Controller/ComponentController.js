@@ -46,7 +46,7 @@ const GenerateComponentStructure = (_page, _content) => {
 		}
 	
 	    return (
-			<Layout title={'${_page.title}'} meta={${_page.meta}}>
+			<Layout title={'${_page.title}'} meta={${_page.meta ? _page.meta : []}}>
 	      		<section>
 		  		 ${_content
 							.map(
