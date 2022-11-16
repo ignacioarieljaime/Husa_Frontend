@@ -42,6 +42,7 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 								href={item?.link?.value}
 								key={index}
 								className='text-primary-dark'>
+									{console.log(item)}
 								<FontAwesomeIcon icon={faLinkedinIn} size={'xl'} />
 							</a>
 						))}
