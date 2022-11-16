@@ -1741,18 +1741,43 @@ header {
 
 .unathorized-list {
 	background: #f6f7fd;
-	.list {
-		border-bottom: 1px solid #ccc;
-		margin: 36px;
-		height: calc(100% - 72px);
+	.list-container {
+		.list {
+			border-bottom: 1px solid #ccc;
+			margin: 36px;
+			height: calc(100% - 72px);
+		}
 	}
 }
 
 @media (max-width: 575px) {
 	.unathorized-list {
-		.list {
-			margin: 12px;
-			height: calc(100% - 24px);
+		.list-container {
+			.list {
+				margin: 12px;
+				height: calc(100% - 24px);
+			}
+		}
+	}
+}
+
+@media (max-width: 991px) {
+	.unathorized-list {
+		.row {
+			justify-content: flex-start !important;
+			.list-container {
+				width: 50% !important;
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.unathorized-list {
+		.row {
+			.list-container {
+				width: 100% !important;
+			}
 		}
 	}
 }

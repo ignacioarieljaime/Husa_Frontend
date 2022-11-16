@@ -7,12 +7,14 @@ import {
 import React from 'react'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 
-function BlogDescriptionWithShare() {
+function BlogDescriptionWithShare({ data: { structure } }) {
 	return (
 		<section>
 			<div className='tiny-banner container py-md-20 my-20'>
 				<article className='article'>
-					<h4 className='mb-10 fs-3'>
+					<div
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+					{/* <h4 className='mb-10 fs-3'>
 						Lastly, if we don't want to create a TV shrine, how do we decorate
 						around the TV?
 					</h4>
@@ -32,25 +34,26 @@ function BlogDescriptionWithShare() {
 							corner." Cliff, with all due respect, we won't be putting our baby
 							In the corner, but we do get what you're saying.
 						</p>
-					</div>
-					<span>Share article</span>
+					</div> */}
+					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
-						<a href='#' className='text-primary-dark'>
-							{/* <i className='fa-brands fa-xl fa-linkedin-in'></i> */}
-							<FontAwesomeIcon icon={faLinkedinIn} size={'xl'} />
-						</a>
-						<a href='#' className='text-primary-dark'>
-							{/* <i className='fa-brands fa-xl fa-twitter'></i> */}
+						{structure?.list?.value.map((item, index) => (
+							<a
+								href={item?.link?.value}
+								key={index}
+								className='text-primary-dark'>
+								<FontAwesomeIcon icon={faLinkedinIn} size={'xl'} />
+							</a>
+						))}
+						{/* <a href='#' className='text-primary-dark'>
 							<FontAwesomeIcon icon={faTwitter} size={'xl'} />
 						</a>
 						<a href='#' className='text-primary-dark'>
-							{/* <i className='fa-brands fa-xl fa-facebook'></i> */}
 							<FontAwesomeIcon icon={faFacebook} size={'xl'} />
 						</a>
 						<a href='#' className='text-primary-dark'>
-							{/* <i className='fa-solid fa-xl fa-link'></i> */}
 							<FontAwesomeIcon icon={faLink} size={'xl'} />
-						</a>
+						</a> */}
 					</div>
 				</article>
 			</div>

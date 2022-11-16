@@ -1,24 +1,23 @@
 import React from 'react'
 
-// image
-import Image from 'public/assets/images/blog/desserts.png'
-
-function BlogBigImageAndTextBox() {
+function BlogBigImageAndTextBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='row mx-0'>
 				<div className='col-12 col-md-6 px-0 header-secondary'>
 					<img
-						src={Image.src}
-						alt='featured image'
+						src={structure?.image?.src}
+						alt={structure?.image?.alt}
 						width='100%'
 						height='100%'
 					/>
 				</div>
 				<div className='col-12 col-md-6 bg-light-orange-gradient px-0'>
 					<article className='article row justify-content-center align-items-center h-100 mx-0 p-10 p-sm-20 p-md-5 p-lg-20'>
-						<div className='px-xl-20'>
-							<h4 className='mb-10 fs-4'>
+						<div
+							className='px-xl-20'
+							dangerouslySetInnerHTML={{ __html: structure?.text?.value }}>
+							{/* <h4 className='mb-10 fs-4'>
 								How to avoid TV glare In really bright rooms?
 							</h4>
 							<div>
@@ -30,7 +29,7 @@ function BlogBigImageAndTextBox() {
 									help keep nosy neighbours from peeking In to see what you're
 									watching. No one wants that sort of judgment!
 								</p>
-							</div>
+							</div> */}
 						</div>
 					</article>
 				</div>

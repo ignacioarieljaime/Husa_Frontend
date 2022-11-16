@@ -281,6 +281,9 @@
 					*{
 						margin: 0;
 					}
+					&.text-white * {
+						color: #fff !important;
+					}
 				}
 			}
 		}
