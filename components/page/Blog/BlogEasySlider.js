@@ -11,7 +11,7 @@ import 'swiper/css/navigation'
 // import required modules
 import { Navigation } from 'swiper'
 
-function BlogEasySlider() {
+function BlogEasySlider({ data: { structure } }) {
 	return (
 		<section>
 			<div className=' mb-20'>
@@ -22,21 +22,11 @@ function BlogEasySlider() {
 						centeredSlides={true}
 						spaceBetween={10}
 						className='blog-big-centered'>
-						<SwiperSlide>
-							<img src={Image.src} alt='featured image' />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={Image.src} alt='featured image' />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={Image.src} alt='featured image' />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={Image.src} alt='featured image' />
-						</SwiperSlide>
-						<SwiperSlide>
-							<img src={Image.src} alt='featured image' />
-						</SwiperSlide>
+						{structure?.list?.value.map((item, index) => (
+							<SwiperSlide key={index}>
+								<img src={item?.image?.src} alt={item?.image?.alt} />
+							</SwiperSlide>
+						))}
 					</Swiper>
 				</div>
 			</div>

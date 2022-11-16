@@ -1,11 +1,13 @@
 import React from 'react'
 
-function BlogDescriptionBox() {
+function BlogDescriptionBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='tiny-banner container pb-20 py-md-20'>
 				<article className='article'>
-					<h2 className='mb-6 fs-3'>
+					<div
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+					{/* <h2 className='mb-6 fs-3'>
 						Finding the perfect TV Is more than just plugging It Into the wall
 						to watch your favorite team play on Sunday or playing any old video
 						game. It's about the quality and overall experience, which means
@@ -18,7 +20,7 @@ function BlogDescriptionBox() {
 							Instagram, recently spoke to Hisense about all things feng shui
 							and how to create the perfect viewing experience.
 						</p>
-					</div>
+					</div> */}
 				</article>
 			</div>
 		</section>

@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 
-function BlogVideoBox() {
+function BlogVideoBox({ data: { structure } }) {
 	const video = useRef()
 	const [playVideo, setPlayVideo] = useState(false)
 
@@ -17,10 +17,7 @@ function BlogVideoBox() {
 			<div className='container'>
 				<div className='video-container blog-video-container'>
 					<video ref={video} id='blog-video' width='100%' height='100%'>
-						<source
-							src='http://techslides.com/demos/sample-videos/small.mp4'
-							type='video/mp4'
-						/>
+						<source src={structure?.video?.value} type='video/mp4' />
 						Your browser does not support the video tag.
 					</video>
 					{!playVideo && (

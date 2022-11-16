@@ -1,10 +1,6 @@
 import React from 'react'
 
-// image
-import DessertsImage from 'public/assets/images/blog/desserts.png'
-import CakeImage from 'public/assets/images/blog/cake.png'
-
-function BlogListLittleReadArticleBox() {
+function BlogListLittleReadArticleBox({ data: { largePost, smallPost } }) {
 	return (
 		<section>
 			<div className='container'>
@@ -14,8 +10,8 @@ function BlogListLittleReadArticleBox() {
 							<div className='image-box'>
 								<a href='#'>
 									<img
-										src={DessertsImage.src}
-										alt='featured image'
+										src={smallPost?.image?.src}
+										alt={smallPost?.image?.alt}
 										width='100%'
 										height='100%'
 									/>
@@ -24,21 +20,20 @@ function BlogListLittleReadArticleBox() {
 							<figcaption>
 								<div className='row justify-content-between align-items-center mt-5'>
 									<div className='col-12 text-start mb-3'>
-										<a href='#' className='text-primary-dark'>
-											{' '}
-											Soundbars{' '}
+										<a
+											href={smallPost?.tagLink?.value}
+											className='text-primary-dark'>
+											{smallPost?.tagLink?.title}
 										</a>
 									</div>
 									<div className='col-12 mb-8'>
-										<h3 className='fs-3 mb-0'>
-											TV Room Feng Shui Tips with Cliff Tan
-										</h3>
+										<h3 className='fs-3 mb-0'>{smallPost?.title?.value}</h3>
 									</div>
 									<div className='col-12 order-3 text-start'>
 										<a
-											href='#'
+											href={smallPost?.link?.value}
 											className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
-											Read article
+											{smallPost?.link?.title}
 										</a>
 									</div>
 								</div>
@@ -50,8 +45,8 @@ function BlogListLittleReadArticleBox() {
 							<div className='image-box'>
 								<a href='#'>
 									<img
-										src={CakeImage.src}
-										alt='featured image'
+										src={largePost?.image?.src}
+										alt={largePost?.image?.alt}
 										width='100%'
 										height='100%'
 									/>
@@ -60,21 +55,20 @@ function BlogListLittleReadArticleBox() {
 							<figcaption>
 								<div className='row justify-content-between align-items-center mt-5'>
 									<div className='col-12 text-start mb-3'>
-										<a href='#' className='text-primary-dark'>
-											{' '}
-											Soundbars{' '}
+										<a
+											href={largePost?.tagLink?.value}
+											className='text-primary-dark'>
+											{largePost?.tagLink?.title}
 										</a>
 									</div>
 									<div className='col-12 mb-8'>
-										<h3 className='fs-3 mb-0'>
-											TV Room Feng Shui Tips with Cliff Tan
-										</h3>
+										<h3 className='fs-3 mb-0'>{largePost?.title?.value}</h3>
 									</div>
 									<div className='col-12 order-3 text-start'>
 										<a
-											href='#'
+											href={largePost?.link?.value}
 											className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
-											Read article
+											{largePost?.link?.title}
 										</a>
 									</div>
 								</div>
