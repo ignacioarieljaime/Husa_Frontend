@@ -16,7 +16,7 @@ const FindComponent = _componentData => {
 	return components
 }
 
-const GenerateComponentStructure = (_page, _content) => {
+const GenerateComponentStructure = (_page, _content, _condition) => {
 	let uniqueImport = [...new Set(_content)]
 	return `
 	import Layout from "components/common/Layout/Layout";
@@ -46,7 +46,9 @@ const GenerateComponentStructure = (_page, _content) => {
 		}
 	
 	    return (
-			<Layout title={'${_page.title}'} meta={${_page.meta ? _page.meta : []}}>
+			<Layout title={'${_page.title}'} meta={${
+		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
+	}}>
 	      		<section>
 		  		 ${_content
 							.map(
@@ -65,8 +67,9 @@ const GenerateComponentStructure = (_page, _content) => {
 	  }
 
 	${
-		_page.model_type
-			? `  export async function getServerSideProps(context) {
+		_condition === 'pages'
+			? _page.model_type
+				? `  export async function getServerSideProps(context) {
 			console.log('send cxm request')
 			let data = await axios
 				.get(
@@ -96,7 +99,7 @@ const GenerateComponentStructure = (_page, _content) => {
 	
 		
 			return { props: { data , pim }} }`
-			: `  export async function getServerSideProps(context) {
+				: `  export async function getServerSideProps(context) {
 			console.log('send ssr request')
 			let data = await axios
 				.get(
@@ -112,6 +115,23 @@ const GenerateComponentStructure = (_page, _content) => {
 				})			
 
 			return { props: { data }} }`
+			: `  export async function getServerSideProps(context) {
+				console.log('send cxm request')
+				let data = await axios
+					.get(
+						'${process.env.CXM_API_ROUTE}/post/${_page.id}'
+					)
+					.then(response => {
+						console.log('get cxm blog data')
+						return response.data.widgets
+					})
+					.catch(error => {
+						console.error('Error:', error)
+						return null
+					})			
+					
+			
+				return { props: { data }} }`
 	}
 	
 
