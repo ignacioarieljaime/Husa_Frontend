@@ -392,6 +392,19 @@
 	background-repeat: no-repeat;
 	background-size: 16px;
 	background-position: left;
+}
+.products-container .item .compare-btn {
+	text-align: center;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+.compare-btn:hover {
+	background: url(../../public/assets/svgs/compare-items.svg);
+	background-repeat: no-repeat;
+	background-size: 16px;
+	background-position: left;
+}
+.products-container .item .compare-btn {
 	text-align: center;
 	text-decoration: none;
 	transition: all 0.2s ease;
