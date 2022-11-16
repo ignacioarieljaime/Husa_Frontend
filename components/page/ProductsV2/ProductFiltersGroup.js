@@ -14,12 +14,24 @@ const ProductFiltersGroup = ({
 	const [filterCollapse, setFilterCollapse] = useState(
 		index <= 2 ? true : false
 	)
+	const [filterList, setFilterList] = useState([])
 	useEffect(() => {
 		if (
 			passedFilter.length > 0 &&
 			passedFilter.find(item => item.id === filter.content_record_id)
 		) {
 			setFilterCollapse(true)
+		}
+
+		if (!Number.isNaN(Number(filter.filter_values[1].title.split('"')[0]))) {
+			let changeToNumber = filter.filter_values.map(item => {
+				item.number = item?.title ? Number(item?.title?.split('"')[0]) : null
+				return item
+			})
+
+			setFilterList(changeToNumber.sort((a, b) => b.number - a.number))
+		} else {
+			setFilterList(filter.filter_values)
 		}
 	}, [])
 
@@ -34,7 +46,7 @@ const ProductFiltersGroup = ({
 				</span>
 			</button>
 			<ul ref={checkboxWrapper} className='filter-list'>
-				{filter.filter_values.map(
+				{filterList.map(
 					(item, index) =>
 						item.title && (
 							<ProductFilterItemV2
