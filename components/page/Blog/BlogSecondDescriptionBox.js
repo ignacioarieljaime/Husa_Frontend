@@ -5,7 +5,9 @@ function BlogSecondDescriptionBox({ data: { structure } }) {
 		<section>
 			<div className='bg-light-orange-gradient py-20'>
 				<div className='container my-10'>
-					<h3 className='fs-2tx'>{structure?.title?.value}</h3>
+					<div
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
+						className='fs-2tx'></div>
 				</div>
 			</div>
 		</section>

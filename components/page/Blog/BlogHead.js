@@ -16,6 +16,7 @@ function BlogHead({ data: { structure } }) {
 						Home Appliances
 					</h2>
 					<div
+						className='header-text mb-12'
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 					{/* <h1 className='header-text mb-12'>
 						TV Room Feng Shui Tips with

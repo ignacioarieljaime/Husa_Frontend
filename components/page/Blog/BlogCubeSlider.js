@@ -12,12 +12,14 @@ import { EffectCoverflow, Pagination } from 'swiper'
 import BlogCubeSliderItem from './BlogCubeSliderItem'
 
 function BlogCubeSlider({ data: { structure } }) {
-	const [carouselItems, setCarouselItems] = useState()
+	const [carouselItems] = useState(
+		structure?.list?.value.map(item => item?.model?.value)
+	)
 	const pagination = {
 		clickable: true,
 		renderBullet: function (index, className) {
 			return (
-				'<span className="' +
+				'<span class="' +
 				className +
 				'">' +
 				carouselItems[index] +
@@ -25,10 +27,6 @@ function BlogCubeSlider({ data: { structure } }) {
 			)
 		}
 	}
-
-	useEffect(() => {
-		setCarouselItems(structure?.list?.value.map(item => item?.model?.value))
-	}, [structure])
 
 	return (
 		<section>

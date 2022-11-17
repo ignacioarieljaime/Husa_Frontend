@@ -12,9 +12,9 @@ const BlogCubeSliderItem = ({ data }) => {
 					<h6 className='fs-3qx fw-normal mb-4 text-break'>
 						{data?.title?.value}
 					</h6>
-					<p className='text-muted fw-normal mb-5'>
-						{data?.description?.value}
-					</p>
+					<div
+						dangerouslySetInnerHTML={{ __html: data?.description?.value }}
+						className='text-muted fw-normal mb-5'></div>
 					<button
 						onClick={() => {}}
 						className='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>

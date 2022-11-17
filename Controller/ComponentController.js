@@ -119,8 +119,12 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 				console.log('send cxm request')
 				let data = await axios
 					.get(
-						'${process.env.CXM_API_ROUTE}/post/${_page.id}'
-					)
+						'https://imcxm.dev-api.hisenseportal.com/api/post/${_page.id}' ,{
+							headers: {
+								Authorization:
+									'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOGUzZTI5YTI2MzU5MWY2YzBlZDkwOTA5YmQ1MWJjODM5YjM1ZjlhY2EwZmI1MjBlZGM1NzExZmFhMjFiMmYwYWYwMDlkYmJkODQwNzQ1MzEiLCJpYXQiOjE2Njg2MDYwNDMuMjQxMDg3LCJuYmYiOjE2Njg2MDYwNDMuMjQxMDg5LCJleHAiOjE3MDAxNDIwNDMuMjMxNjUsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ToSRkg1Mtr6pubXb5BKyKQChU2OPH1PUL_B2hmfwXuEV7m93s-PlMEdUG1Yeb6bd_8yMigOoXYzijpZv4Vu5cV8rhHB71_34Q984l8G-Kiesp8EQOECH533YY2_4WqeHKnAl7OXDg_hTzE9zFm2gI1RwhZAOhXfTGa7DydF6RUKYGyQEMDu0sPUWYS2-ZZRtLuXAyJIN7MxH5qeaDFuVp74IWBSOpZ1dSarNhiaN6m_rlTZLvjTtvSwLR2Xe27YIvrWXMqgaKeLE89I23O_kMSszLbntLCsJVXWOmW1U0rGBRc4njqbCu49Y6ossumNcssRMU9TQUC8PGTy4oH85Qe5xhP_wZQFtraMucc682Dtq0xPBj1aubixk2wKB7nFXdjZiuQ8HC7KxgRAXWsCWxz8a33XS9xPnH4gxgLqx2L6SJeQCGyoPs_zoRUvR6l2PlYIL7NwchZoE85JKzUllOcAa1yKyrjnZhPGIp00-QOnql049gnPRzcsqCtumCDeWxmrw9DqNJ1Qdc2S_p1wbeM0NgBAjrlVjebUexL4TAzQV6aKi8ZROi4IamjHSQ2Bj8_13hzwkEASBN1EV4un6gt-z2qqufgB8a50PiIlSBTciqXre1bEQTTnkCTXGBZc_0KSYfIZQnjrAnHJV-68lf9zT0aXZB4Dimn4oUdgGlvo'
+							}
+						})
 					.then(response => {
 						console.log('get cxm blog data')
 						return response.data.widgets
