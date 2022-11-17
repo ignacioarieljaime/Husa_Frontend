@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
-import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 
-const BlogCubeSliderItem = ({ data }) => {
-	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
-
+const BlogCubeSliderItem = ({ data, modalHandler }) => {
 	return (
 		<>
 			<div className='row align-items-center px-10'>
@@ -16,7 +13,9 @@ const BlogCubeSliderItem = ({ data }) => {
 						dangerouslySetInnerHTML={{ __html: data?.description?.value }}
 						className='text-muted fw-normal mb-5'></div>
 					<button
-						onClick={() => {}}
+						onClick={() => {
+							modalHandler(true)
+						}}
 						className='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
 						WHERE TO BUY
 					</button>
@@ -29,11 +28,6 @@ const BlogCubeSliderItem = ({ data }) => {
 					/>
 				</div>
 			</div>
-			<ModalChanelAdviser
-				condition={chanelAdviserHandler}
-				handler={setChanelAdviserHandler}
-				// model={currentdata.model}
-			/>
 		</>
 	)
 }

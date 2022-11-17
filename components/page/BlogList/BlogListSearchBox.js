@@ -2,20 +2,19 @@ import React, { useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    faAngleDown,
+	faAngleDown,
 	faMagnifyingGlass
 } from '@fortawesome/free-solid-svg-icons'
 
-function BlogListSearchBox() {
+function BlogListSearchBox({ data: { structure } }) {
 	const [dropDownCondition, setDropDownCondition] = useState(false)
 	return (
 		<section>
 			<div className='container'>
 				<div className='row mb-9 pt-9 mx-0 border-top'>
-					<div className='col-12 col-md-7 py-3 px-0 fs-5'>
-						Scroll for Stories & Inspiration from
-						<span className='text-primary-dark ms-2'>Hisense</span>
-					</div>
+					<div
+						className='col-12 col-md-7 py-3 px-0 fs-5'
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 					<div className='col-12 col-md-5 py-3 px-0'>
 						<div className='row justify-content-start justify-content-md-end align-items-center'>
 							<div className='col-xl-4 dropdown'>

@@ -9,6 +9,11 @@
 		max-width: 475px;
 		max-height: 475px;
 	}
+	.tv-floating-img {
+		width: 100%;
+		max-width: 155px;
+		max-height: 155px;
+	}
 	.sea-floating-img,
 	.tv-floating-img {
 		border-radius: 10px;
@@ -18,35 +23,35 @@
 		position: relative;
 	}
 	.header-text {
-		font-weight: 400;
-		font-size: 7.15vw;
-		line-height: 10vw;
-		color: #101010;
-
-		.header-gradient-text {
+		* {
+			// line-height: 10vw;
+			// font-size: 7.15vw;
+			font-size: 170px;
+			line-height: 180px;
+			color: #101010;
+			font-weight: 400;
+		}
+		&.header-gradient-text u {
 			font-weight: 300;
 			background: #95a128;
-			background: -webkit-linear-gradient(
-				to right,
-				#95a128 0%,
-				#43898a 13%,
-				#43898a 25%,
-				#ff9900 100%
-			);
-			background: -moz-linear-gradient(
-				to right,
-				#95a128 0%,
-				#43898a 13%,
-				#43898a 25%,
-				#ff9900 100%
-			);
-			background: linear-gradient(
-				to right,
-				#95a128 0%,
-				#43898a 13%,
-				#43898a 25%,
-				#ff9900 100%
-			);
+			background: -webkit-linear-gradient(to right, #a0993a 0%, #ff9900 20%);
+			background: -moz-linear-gradient(to right, #a0993a 0%, #ff9900 20%);
+			background: linear-gradient(to right, #a0993a 0%, #ff9900 20%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+		&.header-gradient-radial-text u {
+			font-weight: 300;
+			background: #95a128;
+			background: -webkit-radial-gradient(circle farthest-side at left center,
+				#FF9900 0%,
+				#43898A 31%,
+				#FF9900 100%);
+			background: -moz-radial-gradient(circle farthest-side at left center,
+				#FF9900 0%,
+				#43898A 31%,
+				#FF9900 100%);
+			background: radial-gradient(circle farthest-side at left center, #FF9900 0%, #43898A 31%, #FF9900 100%);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
@@ -61,7 +66,7 @@
 
 @media (max-width: 1200px) {
 	.blog-header {
-		.header-text {
+		.header-text *{
 			font-size: 120px;
 			line-height: 125px;
 		}
@@ -74,7 +79,7 @@
 }
 @media (max-width: 768px) {
 	.blog-header {
-		.header-text {
+		.header-text *{
 			font-size: 14vw;
 			line-height: 15vw;
 		}

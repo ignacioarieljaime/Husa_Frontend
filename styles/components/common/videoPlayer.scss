@@ -1,5 +1,13 @@
-.blog-video-container video:hover {
-	transform: rotate(1.12deg) scale(1.035);
+.blog-video-container {
+		border-radius: 10px;
+	video:hover {
+		transform: rotate(1.12deg) scale(1.035);
+	}
+	&.playing {
+		video:hover {
+			transform: rotate(0) scale(1);
+		}
+	}
 }
 .video-container {
 	width: 100%;
@@ -21,14 +29,17 @@
 		padding: 50px 53px;
 		opacity: 1;
 		transition: all 0.3s ease-in;
+		svg{
+			color: #43898a;
+		}
 		&:hover {
 			padding: 60px 63px;
 			opacity: 1;
 			z-index: 1;
 		}
 	}
-	.playing {
-		+ .play-btn {
+	&.playing {
+		.play-btn {
 			opacity: 0;
 			z-index: 0;
 			&:hover {

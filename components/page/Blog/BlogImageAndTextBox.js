@@ -28,27 +28,11 @@ function BlogImageAndTextBox({ data: { structure } }) {
 						</div>
 					</div>
 					<div className='col-12 col-lg-4'>
-						<article className='article'>
+						<article className='blog-article'>
 							<div
 								dangerouslySetInnerHTML={{
 									__html: structure?.text?.value
 								}}></div>
-							{/* <h4 className='mb-10 fs-3'>What does feng shui even mean?</h4>
-							<div>
-								<p className='fs-base fw-normal text-muted'>
-									"Feng shui Is the ancient Chinese art of creating an optimum
-									environment for Its users," says Cliff. It's about harnessing
-									and reacting to Qi, a vital energy force, of our surroundings,
-									traditionally thought to Improve wealth, longevity and
-									happiness.
-								</p>
-								<p className='fs-base fw-normal text-muted'>
-									"As our home Is our refuge," Cliff adds, "we need to feel as
-									comfortable and happy as we can." There's no point in creating
-									a space that you don't want to live In and enjoy watching your
-									team kill It week to week.
-								</p>
-							</div> */}
 						</article>
 					</div>
 				</div>

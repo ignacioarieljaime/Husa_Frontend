@@ -1,7 +1,6 @@
 import React from 'react'
 
-// image
-import Image from 'public/assets/images/blog/woman.png'
+import Link from 'next/link'
 
 function BlogListSoundBardItem({ data }) {
 	return (
@@ -10,20 +9,24 @@ function BlogListSoundBardItem({ data }) {
 				<div className='row justify-content-between align-items-center'>
 					<div className='col-12 col-md-4 col-lg-3 mb-5 mb-md-0'>
 						<div className='image-box'>
-							<a href={data?.link?.value}>
-								<img
-									src={data?.image?.src}
-									alt={data?.image?.alt}
-									width='100%'
-								/>
-							</a>
+							<Link href={data?.link?.value}>
+								<a>
+									<img
+										src={data?.image?.src}
+										alt={data?.image?.alt}
+										width='100%'
+									/>
+								</a>
+							</Link>
 						</div>
 					</div>
 					<figcaption className='col-12 col-md-8'>
 						<div className='text-start mb-3'>
-							<a href={data?.tagLink?.value} className='text-primary-dark'>
-								{data?.tagLink?.title}
-							</a>
+							<Link href={data?.tagLink?.value}>
+								<a className='text-primary-dark text-decoration-none'>
+									{data?.tagLink?.title}
+								</a>
+							</Link>
 						</div>
 						<div className='mb-8 mb-md-0'>
 							<h3 className='fs-3 mb-0'>{data?.title?.value}</h3>
@@ -33,11 +36,11 @@ function BlogListSoundBardItem({ data }) {
 			</figure>
 			<div className='col-12 col-md-3 px-0'>
 				<div className='text-start text-md-end'>
-					<a
-						href={data?.link?.value}
-						className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
-						{data?.link?.title}
-					</a>
+					<Link href={data?.link?.value}>
+						<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+							{data?.link?.title}
+						</a>
+					</Link>
 				</div>
 			</div>
 		</div>

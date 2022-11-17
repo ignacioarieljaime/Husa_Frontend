@@ -21,3 +21,55 @@
 		text-decoration: none;
 	}
 }
+
+article.blog-article {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-weight: 400;
+		font-size: 32px;
+		line-height: 42px;
+		color: #101010;
+	}
+	p,
+	a {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 26px;
+		color: #818181;
+	}
+}
+@media (max-width: 1920px) {
+	article.blog-article {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-size: 28px;
+			line-height: 38px;
+		}
+		p,
+		a {
+			font-size: 16px;
+			line-height: 22px;
+		}
+	}
+}
+@media (max-width: 768px) {
+	article.blog-article {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-size: 24px;
+			line-height: 32px;
+		}
+	}
+}

@@ -3,7 +3,7 @@ import React from 'react'
 function BlogListHead({ data: { structure } }) {
 	return (
 		<section>
-			<div className='blog-header blog-header-list mt-10'>
+			<div className='blog-header blog-header-list mt-10 mb-20'>
 				<div className='container-fluid container-xxl ps-6 mb-13'>
 					<div className='row mb-14 mb-md-0'>
 						<div className='col-4 col-sm-6 align-self-center align-self-md-start ms-xxl-n5'>
@@ -22,11 +22,8 @@ function BlogListHead({ data: { structure } }) {
 						</div>
 					</div>
 					<div
+						className='header-text header-gradient-radial-text floating-text'
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
-					{/* <h6 className='header-text floating-text'>
-						Stories &
-						<span className='header-gradient-text d-block'>Inspiration</span>
-					</h6> */}
 				</div>
 			</div>
 		</section>

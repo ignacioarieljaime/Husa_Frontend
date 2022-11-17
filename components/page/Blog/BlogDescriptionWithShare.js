@@ -11,30 +11,9 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 	return (
 		<section>
 			<div className='tiny-banner container py-md-20 my-20'>
-				<article className='article'>
+				<article className='blog-article'>
 					<div
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
-					{/* <h4 className='mb-10 fs-3'>
-						Lastly, if we don't want to create a TV shrine, how do we decorate
-						around the TV?
-					</h4>
-					<div className='mb-15'>
-						<p className='m-auto mb-3 fs-base fw-normal text-muted'>
-							We may all think that good feng shui would mean absolute symmetry,
-							but Cliff tells us to stay away from that. "The key to décorating
-							around a TV Is not to create too much symmetry with cabinets
-							flanking at either side or two table lamps. Instead treat It like
-							a picture on the wall and décorate the space as If It were of
-							equal Importance to the rest of the room."
-						</p>
-						<p className='m-auto mb-3 fs-base fw-normal text-muted'>
-							He also notes that the size of the TV also affect placement. "The
-							bigger the TV, the more centrally It should be placed, while a
-							small TV can be placed almost like a secondary fixture to one
-							corner." Cliff, with all due respect, we won't be putting our baby
-							In the corner, but we do get what you're saying.
-						</p>
-					</div> */}
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
 						{structure?.list?.value.map((item, index) => (
@@ -42,19 +21,10 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 								href={item?.link?.value}
 								key={index}
 								className='text-primary-dark'>
-									{console.log(item)}
+								{console.log(item)}
 								<FontAwesomeIcon icon={faLinkedinIn} size={'xl'} />
 							</a>
 						))}
-						{/* <a href='#' className='text-primary-dark'>
-							<FontAwesomeIcon icon={faTwitter} size={'xl'} />
-						</a>
-						<a href='#' className='text-primary-dark'>
-							<FontAwesomeIcon icon={faFacebook} size={'xl'} />
-						</a>
-						<a href='#' className='text-primary-dark'>
-							<FontAwesomeIcon icon={faLink} size={'xl'} />
-						</a> */}
 					</div>
 				</article>
 			</div>

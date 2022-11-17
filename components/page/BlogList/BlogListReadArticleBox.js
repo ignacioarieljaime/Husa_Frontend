@@ -2,6 +2,7 @@ import React from 'react'
 
 // image
 import HouseImage from 'public/assets/images/blog/house.png'
+import Link from 'next/link'
 
 function BlogListReadArticleBox({ data: { structure } }) {
 	return (
@@ -11,14 +12,16 @@ function BlogListReadArticleBox({ data: { structure } }) {
 					<div className='col-12'>
 						<figure className='blog-article-box'>
 							<div className='header-secondary image-box'>
-								<a href='#'>
-									<img
-										src={structure?.image?.src}
-										alt={structure?.image?.alt}
-										width='100%'
-										height='100%'
-									/>
-								</a>
+								<Link href={structure?.link?.value}>
+									<a>
+										<img
+											src={structure?.image?.src}
+											alt={structure?.image?.alt}
+											width='100%'
+											height='100%'
+										/>
+									</a>
+								</Link>
 							</div>
 							<figcaption>
 								<div className='row justify-content-between align-items-center mt-5'>
@@ -26,18 +29,18 @@ function BlogListReadArticleBox({ data: { structure } }) {
 										<h3 className='fs-3 mb-0'>{structure?.title?.value}</h3>
 									</div>
 									<div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
-										<a
-											href={structure?.tagLink?.value}
-											className='text-primary-dark'>
-											{structure?.tagLink?.title}
-										</a>
+										<Link href={structure?.tagLink?.value}>
+											<a className='text-primary-dark text-decoration-none'>
+												{structure?.tagLink?.title}
+											</a>
+										</Link>
 									</div>
 									<div className='col-12 order-3 text-start'>
-										<a
-											href={structure?.link?.value}
-											className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
-											{structure?.link?.title}
-										</a>
+										<Link href={structure?.link?.value}>
+											<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+												{structure?.link?.title}
+											</a>
+										</Link>
 									</div>
 								</div>
 							</figcaption>

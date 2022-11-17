@@ -10,8 +10,10 @@ import 'swiper/css/pagination'
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper'
 import BlogCubeSliderItem from './BlogCubeSliderItem'
+import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 
 function BlogCubeSlider({ data: { structure } }) {
+	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [carouselItems] = useState(
 		structure?.list?.value.map(item => item?.model?.value)
 	)
@@ -19,11 +21,7 @@ function BlogCubeSlider({ data: { structure } }) {
 		clickable: true,
 		renderBullet: function (index, className) {
 			return (
-				'<span class="' +
-				className +
-				'">' +
-				carouselItems[index] +
-				'</span>'
+				'<span class="' + className + '">' + carouselItems[index] + '</span>'
 			)
 		}
 	}
@@ -46,15 +44,23 @@ function BlogCubeSlider({ data: { structure } }) {
 						}}
 						pagination={pagination}
 						modules={[EffectCoverflow, Pagination]}
-						className='blog-big-coverflow my-20'>
+						className='blog-big-coverflow mb-20 mt-15'>
 						{structure?.list?.value.map((item, index) => (
 							<SwiperSlide key={index}>
-								<BlogCubeSliderItem data={item} />
+								<BlogCubeSliderItem
+									data={item}
+									modalHandler={setChanelAdviserHandler}
+								/>
 							</SwiperSlide>
 						))}
 					</Swiper>
 				</div>
 			</div>
+			{/* <ModalChanelAdviser
+				condition={chanelAdviserHandler}
+				handler={setChanelAdviserHandler}
+				// model={currentdata.model}
+			/> */}
 		</section>
 	)
 }
