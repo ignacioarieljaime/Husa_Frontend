@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
 		AOS.refresh()
 		setShowChild(true)
 	}, [])
+	
 
 	if (!showChild) {
 		return null
