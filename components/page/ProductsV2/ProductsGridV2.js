@@ -13,7 +13,6 @@ const ProductsGridV2 = ({ data }) => {
 	const [sortingMethod, setSortingMethod] = useState()
 	const [filters, setFilters] = useState([])
 	const [products, setProducts] = useState([])
-	const [totalCount, setTotalCount] = useState()
 	const [filterList, setFilterList] = useState()
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const router = useRouter()
@@ -55,7 +54,6 @@ const ProductsGridV2 = ({ data }) => {
 				sortingMethod ? `&sort=${sortingMethod.value}` : null
 			)
 			setProducts(response.data.data)
-			setTotalCount(response.data.total)
 			getFilters(response.data.filterTypes)
 		} catch (error) {
 			console.log(error)

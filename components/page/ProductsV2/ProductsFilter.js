@@ -92,6 +92,7 @@ const ProductsFilter = ({
 	}
 
 	const checkboxClearHandler = () => {
+		setFilterCounter()
 		setCheckBoxCondition(!checkBoxCondition)
 		setFilters([])
 		filterRequest([])
@@ -106,7 +107,9 @@ const ProductsFilter = ({
 						onClick={checkboxClearHandler}>
 						Clear Filters
 						{filterCounter > 0 ? (
-							<span className='ms-2'>({filterCounter})</span>
+							<>
+								<span className='ms-2'>({filterCounter})</span>
+							</>
 						) : (
 							''
 						)}
