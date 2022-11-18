@@ -27,7 +27,13 @@ const sentryWebpackPluginOptions = {
 }
 const nextConfig = {
 	reactStrictMode: true,
-	swcMinify: true
+	swcMinify: true,
+	env: {
+		NEXT_PUBLIC_CXM_API_ROUTE:
+			process.env.CXM_API_ROUTE ||
+			'https://imcxm.stage-api.hisenseportal.com/api/husa'
+	},
+	sentry: withSentryConfig(moduleExports, sentryWebpackPluginOptions)
 }
 
 // Make sure adding Sentry options is the last code to run before exporting, to
@@ -43,12 +49,4 @@ const nextConfig = {
 // 	}
 // )
 
-module.exports = {
-	sentry: withSentryConfig(moduleExports, sentryWebpackPluginOptions),
-	nextConfig,
-	env: {
-		NEXT_PUBLIC_CXM_API_ROUTE:
-			process.env.CXM_API_ROUTE ||
-			'https://imcxm.stage-api.hisenseportal.com/api/husa'
-	}
-}
+module.exports = nextConfig

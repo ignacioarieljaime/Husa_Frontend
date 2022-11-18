@@ -21,12 +21,15 @@ const redirectRequestHandler = (async () => {
 app.prepare().then(() => {
 	const port = process.env.APP_PORT
 	const server = express()
-	redirectsRoute.map(item =>
-		server.all(item.source_url, (req, res) => {
-			res.redirect(item.redirect_url)
-			return
-		})
+	redirectsRoute.map(
+		item =>
+			item.source_url &&
+			server.all(item.source_url, (req, res) => {
+				res.redirect(item.redirect_url)
+				return
+			})
 	)
+
 	server.all('*', (req, res) => {
 		return handle(req, res)
 	})
