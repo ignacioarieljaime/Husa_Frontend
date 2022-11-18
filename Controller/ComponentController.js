@@ -38,9 +38,9 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 		const router = useRouter()
 
 		${
-			_page?.redirects?.redirect_to
+			_page?.redirect
 				? `useEffect(() => {
-			router.push('${_page.redirects.redirect_to}')
+			router.push('${_page.redirect}')
 		}, [])`
 				: ''
 		}
