@@ -14,7 +14,10 @@ function ProductBigScreenTextsBox({ data }) {
 								{structure?.coloredTitle?.value}
 							</span>
 						</h2>
-						<p>{structure?.paragraph?.value}</p>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: structure?.paragraph?.value
+							}}></div>
 					</article>
 				</div>
 			</div>
