@@ -1,3 +1,4 @@
+import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useRef, useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 import { useParallax, ParallaxProvider } from 'react-scroll-parallax'
@@ -11,8 +12,10 @@ const SmoothMotion = ({ data: { structure } }) => {
 }
 
 const SmoothMotionContainer = ({ structure }) => {
+	const windowSize = useWindowSize()
 	const [position, setPosition] = useState({ x: window.innerWidth / 10, y: 0 })
-	const box = useRef()
+	// let position = { x: window.innerWidth / 10, y: 0 }
+	const bluredImage = useRef()
 	let boundaries = {
 		left: window.innerWidth / 10,
 		right: (window.innerWidth * 9) / 10,
@@ -20,19 +23,39 @@ const SmoothMotionContainer = ({ structure }) => {
 		bottom: 0
 	}
 
-	const slider = useParallax({
+	let slider = useParallax({
 		speed: 10,
 		translateX: [
-			window.innerWidth / 10 + 'px',
-			(window.innerWidth * 9) / 10 + 'px'
+			(windowSize[0] ? windowSize[0] : window.innerWidth) / 10 + 'px',
+			(windowSize[0] ? windowSize[0] : window.innerWidth) * 0.9 + 'px'
 		],
-		translateY: [0, 0]
+		translateY: [0, 0],
+		onChange: el => {
+			bluredImage.current.style.width =
+				el.progress *
+					(windowSize[0] ? windowSize[0] : window.innerWidth) *
+					0.8 +
+				(windowSize[0] ? windowSize[0] : window.innerWidth) / 10 +
+				'px'
+		}
 	})
 
-	useEffect(() => {
-		if (slider.element?.progress)
-			slider.element.progress = position.x / ((window.innerWidth * 8) / 100)
-	}, [position])
+	// useEffect(() => {
+	// 	console.log(slider)
+	// 	console.log(windowSize[0])
+	// 	// let slider = useParallax({
+	// 	// 	speed: 10,
+	// 	// 	translateX: [
+	// 	// 		window.innerWidth / 10 + 'px',
+	// 	// 		(window.innerWidth * 9) / 10 + 'px'
+	// 	// 	],
+	// 	// 	translateY: [0, 0],
+	// 	// 	onChange: el => {
+	// 	// 		bluredImage.current.style.width =
+	// 	// 			el.progress * window.innerWidth * 0.9 + 'px'
+	// 	// 	}
+	// 	// })
+	// }, [windowSize])
 
 	return (
 		<section className='l9g'>
@@ -44,7 +67,7 @@ const SmoothMotionContainer = ({ structure }) => {
 						data-aos-duration='1000'
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 				</div>
-				<div className='blured-image-container' ref={box}>
+				<div className='blured-image-container'>
 					<div className='screen'>
 						<img
 							src={structure?.fadedImage?.src}
@@ -53,16 +76,13 @@ const SmoothMotionContainer = ({ structure }) => {
 					</div>
 					<Draggable
 						axis='x'
-						position={{ x: window.innerWidth / 10, y: 0 }}
+						position={position}
 						bounds={boundaries}
-						onDrag={(e, data) => setPosition({ x: data.x, y: data.y })}>
-						<div className='screen-slider' ref={slider.ref}></div>
+						// onDrag={(e, data) => setPosition({ x: data.x, y: data.y })}
+					>
+						<div className='screen-slider' ref={slider?.ref}></div>
 					</Draggable>
-					<div
-						className='screen overlay'
-						style={{
-							width: ((window.innerWidth * 8) / 10) * slider.element?.progress
-						}}>
+					<div className='screen overlay' ref={bluredImage}>
 						<img src={structure?.image?.src} alt={structure?.image?.alt} />
 					</div>
 				</div>
