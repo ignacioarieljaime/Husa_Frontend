@@ -24,7 +24,13 @@ const AndroidTv = ({ data: { structure } }) => {
 									className='my-4 my-md-19'
 								/>
 								<div>
-									<h3 className='fs-5 fs-md-2qx mb-3'>{item?.title?.value}</h3>
+									<h3
+										className='fs-5 fs-md-2qx mb-3'
+										data-aos='fade-zoom-in'
+										data-aos-duration='1000'
+										data-aos-delay='450'>
+										{item?.title?.value}
+									</h3>
 									<div
 										className='fs-9 fs-md-2 lh-base fw-light m-auto mb-4'
 										dangerouslySetInnerHTML={{

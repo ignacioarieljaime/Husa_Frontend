@@ -41,11 +41,11 @@ function Footer() {
 								<Logo color={'#009E91'} height={'14'} width={'86'} />
 							</a>
 
-							{footerData?.widgets?.columns.map(columns => (
-								<div className='footer-nav px-0 px-md-3'>
+							{footerData?.widgets?.columns.map((columns, index) => (
+								<div className='footer-nav px-0 px-md-3' key={index}>
 									<ul>
-										{columns.map(colum => (
-											<li className='pb-5 pt-2'>
+										{columns.map((colum, index) => (
+											<li className='pb-5 pt-2' key={index}>
 												<Link href={colum.url ? colum.url : ''}>
 													<a>
 														<span className='lh-base underline-on-hover'>
@@ -65,8 +65,9 @@ function Footer() {
 							<div className='social-media me-12 px-0 px-md-3'>
 								<label className='mb-4'>Follow Us</label>
 								<div className='row justify-content-start align-items-center'>
-									{footerData?.widgets?.socials.map(item => (
+									{footerData?.widgets?.socials.map((item, index) => (
 										<a
+											key={index}
 											href={item.url ? item.url : ''}
 											className={`socicon socicon-${item.name}`}
 											style={{ fontSize: '22px', color: '#fff' }}></a>
@@ -82,8 +83,8 @@ function Footer() {
 					</div>
 				</div>
 				<div className='row website-info mt-md-16 mt-6 mb-md-4'>
-					{footerData?.widgets?.links.map(link => (
-						<Link href={link.url ? link.url : ''}>
+					{footerData?.widgets?.links.map((link, index) => (
+						<Link key={index} href={link.url ? link.url : ''}>
 							<a>
 								<span className='lh-base underline-on-hover'>{link.name}</span>
 							</a>
