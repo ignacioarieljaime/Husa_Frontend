@@ -18,9 +18,6 @@
 /public/*.xml
 
 
-
-/pages/*
-
 # misc
 .DS_Store
 *.pem
