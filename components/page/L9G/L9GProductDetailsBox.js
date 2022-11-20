@@ -1,9 +1,10 @@
+import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useEffect, useRef, useState } from 'react'
-import ProductDetailLstItem from '../Product/ProductDetailLstItem'
 
-function ProductDetailsBox({ pim, data }) {
+function L9GProductDetailsBox({ pim, data }) {
 	const [showMore, setShowMore] = useState(false)
 	const spaceContainer = useRef()
+	const windowSize = useWindowSize()
 
 	useEffect(() => {
 		if (showMore) {
@@ -12,7 +13,7 @@ function ProductDetailsBox({ pim, data }) {
 		} else {
 			spaceContainer.current.style.maxHeight = '0px'
 		}
-	}, [showMore])
+	}, [showMore, windowSize])
 
 	useEffect(() => {
 		if (window.location.hash === `#${data?.name + data?.id}`) {
@@ -23,23 +24,8 @@ function ProductDetailsBox({ pim, data }) {
 	return (
 		<div
 			id={data?.name + data?.id}
-			className={`specs-table  black-banner ${!showMore && 'close'}`}>
-			<div ref={spaceContainer} className='specs-container'>
-				{pim?.properties.map((item, index) => (
-					<div key={`specs-${index}`} className='discription-list mb-10'>
-						<h3 className='text-white'>{item.title}</h3>
-						<dl className='row m-0'>
-							{item.items.map((item, childIndex) => (
-								<ProductDetailLstItem
-									key={`space-${index}-${childIndex}`}
-									title={item.title}
-									value={item.value}
-								/>
-							))}
-						</dl>
-					</div>
-				))}
-			</div>
+			className={`l9g-specs-table black-banner ${!showMore && 'close'}`}>
+			<h2 className='main-title mb-5'>{data?.structure?.title?.value}</h2>
 			<div className='text-center '>
 				<button
 					className='btn btn-outline-light rounded-5 specs-btn'
@@ -53,8 +39,33 @@ function ProductDetailsBox({ pim, data }) {
 					</span>
 				</button>
 			</div>
+			<div ref={spaceContainer} className='specs-container'>
+				<h3 className='title'>
+					{pim?.name}
+					{pim?.model ? ' | ' + pim?.model : ''}
+				</h3>
+				<div className='specs-table'>
+					{pim?.properties.map((item, index) => (
+						<div className='spec-block' key={index}>
+							<h5 className='block-title'>{item.title}</h5>
+							{item.items.map((item, childIndex) => (
+								<div key={childIndex} className='block-content'>
+									<dl>
+										<dt>
+											<span>{item.title}</span>
+										</dt>
+										<dd>
+											<span>{item.value}</span>
+										</dd>
+									</dl>
+								</div>
+							))}
+						</div>
+					))}
+				</div>
+			</div>
 		</div>
 	)
 }
 
-export default ProductDetailsBox
+export default L9GProductDetailsBox

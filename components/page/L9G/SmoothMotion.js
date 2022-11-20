@@ -40,22 +40,14 @@ const SmoothMotionContainer = ({ structure }) => {
 		}
 	})
 
-	// useEffect(() => {
-	// 	console.log(slider)
-	// 	console.log(windowSize[0])
-	// 	// let slider = useParallax({
-	// 	// 	speed: 10,
-	// 	// 	translateX: [
-	// 	// 		window.innerWidth / 10 + 'px',
-	// 	// 		(window.innerWidth * 9) / 10 + 'px'
-	// 	// 	],
-	// 	// 	translateY: [0, 0],
-	// 	// 	onChange: el => {
-	// 	// 		bluredImage.current.style.width =
-	// 	// 			el.progress * window.innerWidth * 0.9 + 'px'
-	// 	// 	}
-	// 	// })
-	// }, [windowSize])
+	useEffect(() => {
+		if (windowSize[0]) {
+			bluredImage.current.style.width =
+				slider?.element?.progress * windowSize[0] * 0.8 +
+				windowSize[0] / 10 +
+				'px'
+		}
+	}, [windowSize])
 
 	return (
 		<section className='l9g'>
