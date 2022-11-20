@@ -112,11 +112,14 @@ function Header({ isBlog = false, data: { structure } }) {
 				{/* <SubMenuHeader /> */}
 			</nav>
 
-			{/* <div className='container-fluid home-top-advertisement'>
-				<a href='https://www.hisense-usa.com/product-safety-recall'>
-					Recall Information: French Door Refrigerator
-				</a>
-			</div> */}
+			{structure?.notification?.value?.title?.value && (
+				<div className='container-fluid home-top-advertisement'>
+					<Link href={structure?.notification?.value?.link?.value}>
+						<a>{structure?.notification?.value?.title?.value}</a>
+					</Link>
+				</div>
+			)}
+
 			{headerData && <HamburgerMenu data={headerData} asideMenu={asideMenu} />}
 		</header>
 	)
