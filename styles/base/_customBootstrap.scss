@@ -1794,3 +1794,9 @@ header {
 		}
 	}
 }
+
+.spec-after-style{
+	&::before{
+		color: #000 !important;
+	}
+}

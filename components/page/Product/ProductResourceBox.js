@@ -14,7 +14,9 @@ function ProductResourceBox({ pim, data }) {
 						item.type_id === 3 && (
 							<li key={index}>
 								<a href={item.url ? item.url : ''} download>
-									<span className='underline-on-hover text-uppercase'>{item.caption}</span>
+									<span className='underline-on-hover text-uppercase'>
+										{item.caption}
+									</span>
 								</a>
 							</li>
 						)
@@ -22,19 +24,24 @@ function ProductResourceBox({ pim, data }) {
 				<li>
 					<Link href={`/support/${router.pathname.split('/').at(-1)}`}>
 						<a>
-							<span className='underline-on-hover text-uppercase'>PRODUCT SUPPORT</span>
+							<span className='underline-on-hover text-uppercase'>
+								PRODUCT SUPPORT
+							</span>
 						</a>
 					</Link>
 				</li>
-				{structure?.installationUrl?.value && (
+				{structure?.installationUrl?.value &&
+				!structure?.installationUrl?.value === 'null' ? (
 					<li>
 						<Link href={structure?.installationUrl?.value}>
 							<a>
-								<span className='underline-on-hover text-uppercase'>INSTALLATION REQUEST</span>
+								<span className='underline-on-hover text-uppercase'>
+									INSTALLATION REQUEST
+								</span>
 							</a>
 						</Link>
 					</li>
-				)}
+				) : null}
 			</ul>
 		</div>
 	)

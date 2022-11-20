@@ -1,7 +1,10 @@
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef, useState } from 'react'
 import ProductDetailLstItem from './ProductDetailLstItem'
 
 function ProductDetailsBox({ pim, data }) {
+	let { structure } = data
 	const [showMore, setShowMore] = useState(false)
 	const spaceContainer = useRef()
 
@@ -15,29 +18,35 @@ function ProductDetailsBox({ pim, data }) {
 	}, [showMore])
 
 	useEffect(() => {
-		if (
-
-			window.location.hash === `#${data?.name + data?.id}`
-		) {
+		if (window.location.hash === `#${data?.name + data?.id}`) {
 			setShowMore(true)
 		}
-		
 	}, [window.location.hash])
 
 	return (
 		<div
 			id={data?.name + data?.id}
-			className={`specs-detail  black-banner ${!showMore && 'close'}`}>
+			className={`specs-detail ${
+				structure?.theme?.value !== 'light' && 'black-banner'
+			}  ${!showMore && 'close'}`}>
 			{/* <h2 className='fs-2tx text-white pt-20 pb-6 text-center'>
 				{data?.structure?.title?.value}
 			</h2> */}
 			<div ref={spaceContainer} className='specs-container'>
 				{pim?.properties.map((item, index) => (
 					<div key={`specs-${index}`} className='discription-list mb-10'>
-						<h3 className='text-white'>{item.title}</h3>
+						<h3
+							className={
+								structure?.theme?.value === 'light'
+									? 'text-black'
+									: 'text-white'
+							}>
+							{item.title}
+						</h3>
 						<dl className='row m-0'>
 							{item.items.map((item, childIndex) => (
 								<ProductDetailLstItem
+									theme={structure?.theme?.value}
 									key={`space-${index}-${childIndex}`}
 									title={item.title}
 									value={item.value}
@@ -49,14 +58,20 @@ function ProductDetailsBox({ pim, data }) {
 			</div>
 			<div className='text-center '>
 				<button
-					className='btn btn-outline-light rounded-5 specs-btn'
+					className={`btn ${
+						structure?.theme?.value === 'light'
+							? 'btn-outline-dark bg-black text-white'
+							: 'btn-outline-light'
+					}  rounded-5 specs-btn`}
 					onClick={() => setShowMore(!showMore)}>
-					<span className='d-block '>
-						{showMore ? '	Hide Specs' : '		Full  Specs'}
-						<i
-							className={`fa-solid fa-2xs ${
-								showMore ? 'fa-chevron-up' : 'fa-chevron-down'
-							}`}></i>
+					<span className=' '>
+						<span className='ms-2'>
+							{showMore ? '	Hide Specs' : 'Full  Specs'}
+						</span>
+						<FontAwesomeIcon
+							icon={showMore ? faChevronUp : faChevronDown}
+							size={`fa-2xs `}
+						/>
 					</span>
 				</button>
 			</div>
