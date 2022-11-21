@@ -8,9 +8,10 @@ const FeatureBlocks = ({ data: { structure } }) => {
 				{structure?.list?.value.map((item, index) => (
 					<FeatureBlocksItem
 						key={index}
+						direction={item?.direction?.value}
 						title={item?.title?.value}
-						description={item?.description?.value}
-						videoSrc={item?.video?.src}
+						text={item?.text?.value}
+						videoSrc={item?.video?.value}
 					/>
 				))}
 			</div>
