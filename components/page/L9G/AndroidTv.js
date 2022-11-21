@@ -16,7 +16,7 @@ const AndroidTv = ({ data: { structure } }) => {
 				<div className='row align-items-start px-1 px-md-17'>
 					{structure?.list?.value.map((item, index) => (
 						<div className='col-12 col-md-6' key={index}>
-							<article className='article text-start'>
+							<article className=' text-start'>
 								<img
 									src={item?.image?.src}
 									alt={item?.image?.alt}
@@ -25,7 +25,7 @@ const AndroidTv = ({ data: { structure } }) => {
 								/>
 								<div>
 									<h3
-										className='fs-5 fs-md-2qx mb-3'
+										className='fs-5 fs-md-1 mb-3'
 										data-aos='fade-zoom-in'
 										data-aos-duration='1000'
 										data-aos-delay='450'>
