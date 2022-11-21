@@ -34,5 +34,13 @@ module.exports.CommonComponents = [
 	{
 		name: 'OfferClaimForm',
 		path: 'components/common/OfferClaimForm'
+	},
+	{
+		name: 'SimpleImagesList',
+		path: 'components/common/SimpleImagesList'
+	},
+	{
+		name: 'PromoBanner',
+		path: 'components/common/PromoBanner'
 	}
 ]
