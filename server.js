@@ -26,7 +26,7 @@ app.prepare().then(() => {
 	const server = express()
 	redirectsRoute.map(
 		item => item.source_url && server.all(item.source_url, (req, res) => {
-			return res.redirect(item.redirect_url)
+			return res.redirect(307, item.redirect_url)
 		})
 	)
 
