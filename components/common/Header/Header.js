@@ -25,8 +25,6 @@ function Header({ data: { structure } }) {
 		sessionStorage.getItem('headerData')
 			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
 			: getMenu()
-		throw new Error('sorry')
-
 	}, [])
 	useEffect(() => {
 		if (!searchInputCondition) {
