@@ -8,9 +8,9 @@ const FAQsItem = ({ question, answer }) => {
 	return (
 		<div className={`question-wrapper ${collapsed ? 'open' : ''}`}>
 			<div
-				className='question'
+				className='question p-3 px-xxl-6 py-6'
 				onClick={() => setCollapsed(collapsed => !collapsed)}>
-				{question}
+				<span>{question}</span>
 				<FontAwesomeIcon icon={faChevronDown} size='sm' />
 			</div>
 			<div className='answer'>

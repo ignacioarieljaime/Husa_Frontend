@@ -78,5 +78,9 @@ module.exports.L9GComponents = [
 	{
 		name: 'WhereToBuy',
 		path: 'components/page/L9G/WhereToBuy'
+	},
+	{
+		name: 'L9GProductDetailsBox',
+		path: 'components/page/L9G/L9GProductDetailsBox'
 	}
 ]
