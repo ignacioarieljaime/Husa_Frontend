@@ -11,6 +11,7 @@
 # next.js
 /.next/
 /out/
+/.idea
 
 # webstorm
 /.idea
@@ -20,9 +21,6 @@
 /pages/*
 /public/*.xml
 
-
-
-/pages/*
 
 # misc
 .DS_Store

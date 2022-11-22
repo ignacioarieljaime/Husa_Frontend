@@ -38,12 +38,6 @@ const ScrollableVideoContainer = ({ structure }) => {
 						ref={textRef.ref}
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
-				<div
-					className='gradient-container ttanimates'
-					data-gsaptarget='.section1'>
-					<div className='gradient-blank'></div>
-					<div className='gradient'></div>
-				</div>
 			</div>
 		</section>
 	)

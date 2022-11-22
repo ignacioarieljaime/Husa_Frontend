@@ -255,7 +255,7 @@ function RegisterForm({ data }) {
 							style={{ zIndex: 9 }}
 							onChange={e => setFile(e.target.files[0])}
 						/>
-						<div className='file-upload-box' onclick='triggerFileUpload()'>
+						<div className='file-upload-box'>
 							<div>Drag & Drop a File Here</div>
 							<p>Upload Images</p>
 						</div>
@@ -284,7 +284,7 @@ function RegisterForm({ data }) {
 						<button
 							disabled={loading}
 							type='submit'
-							className='form-submit-btn d-flex align-items-center'>
+							className='form-submit-btn d-flex mx-auto align-items-center'>
 							<span className='me-2'> {structure?.subtitle?.value}</span>
 							{loading && <Spinner size={25} />}
 						</button>

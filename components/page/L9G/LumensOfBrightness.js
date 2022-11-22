@@ -28,7 +28,11 @@ const LumensOfBrightness = ({ data: { structure } }) => {
 				<div className='row justify-content-between align-items-center mw-md-50 flex-md-nowrap mx-0 px-0 px-md-20 pb-20'>
 					{structure?.list?.value.map((item, index) => (
 						<div key={index} className='feature mb-5 mb-md-0 px-4'>
-							<div className='color-bar active'></div>
+							<div
+								className='color-bar active'
+								data-aos='size-animation2'
+								data-aos-duration='1000'
+								data-aos-delay='450'></div>
 							<div
 								className='fs-sm-2 fs-md-2hx fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
 								data-aos='fade-zoom-in'

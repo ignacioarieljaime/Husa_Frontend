@@ -5,6 +5,10 @@
 .dolby-atmos,
 .lumens-of-brightness {
 	background: #1f1f1f;
+	.title-card * {
+		font-size: 48px;
+		line-height: 60px;
+	}
 	video {
 		object-fit: cover;
 		vertical-align: middle;
@@ -17,6 +21,14 @@
 		height: 100%;
 		object-fit: contain;
 		object-position: top center;
+	}
+	[data-aos='size-animation2'],
+	[data-aos='size-animation'] {
+		width: 0 !important;
+		transition: all 0.4s ease-in-out !important;
+		&.aos-animate {
+			width: 100% !important;
+		}
 	}
 	.tab-image {
 		&:last-child {
@@ -44,7 +56,7 @@
 	}
 	.caption,
 	.caption * {
-		color: #bbbbbb !important;
+		color: #bbbbbb;
 	}
 	.feature {
 		flex-grow: 1;
@@ -64,7 +76,6 @@
 	}
 	.blured-image-container {
 		position: relative;
-		overflow-x: hidden;
 		.screen-slider {
 			position: absolute;
 			z-index: 4;
@@ -86,16 +97,14 @@
 			}
 		}
 		.screen {
-			width: auto;
-			height: auto;
 			overflow: hidden;
+			position: relative;
 			img {
 				height: 65vh;
-				max-height: 600px;
 				object-fit: cover;
-				display: block;
 				vertical-align: middle;
 				width: 100vw;
+				border-style: none;
 			}
 			&.overlay {
 				position: absolute;
@@ -248,6 +257,24 @@
 			.gradient {
 				font-size: 12px;
 				line-height: 16px;
+			}
+		}
+		.smooth-motion,
+		.screen-size,
+		.light-rejection,
+		.dolby-vision,
+		.dolby-atmos,
+		.lumens-of-brightness {
+			.title-card * {
+				font-size: 18px;
+				line-height: 24px;
+			}
+			.blured-image-container {
+				.screen {
+					img {
+						height: 30vh;
+					}
+				}
 			}
 		}
 

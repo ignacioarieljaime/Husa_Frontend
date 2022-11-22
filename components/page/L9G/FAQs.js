@@ -4,7 +4,7 @@ import FAQsItem from './FAQsItem'
 const FAQs = ({ data: { structure } }) => {
 	return (
 		<section className='l9g'>
-			<div className='container-fluid faqs l-nine-g-faqs px-4 px-md-20 py-20'>
+			<div className='container-fluid faqs l-nine-g-faqs px-4 px-xxl-14 py-20'>
 				<div
 					className='text-start pt-10 pb-20 aos-init aos-animate'
 					data-aos='fade'

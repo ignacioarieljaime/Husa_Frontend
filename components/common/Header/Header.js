@@ -7,19 +7,20 @@ import HamburgerMenu from './HamburgerMenu'
 import HamburgerMenuIcon from 'components/icons/HamburgerMenuIcon'
 import Logo from 'components/icons/Logo'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
-import SubMenuHeader from './SubMenuHeader'
 import axios from 'axios'
 // import { setHeaderData } from 'redux/slices/layout'
 import NavBarDropDown from './NavBarDropDown'
 import Link from 'next/link'
 import HeaderSearchBox from './HeaderSearchBox'
+import DismissIcon from '../../icons/DismissIcon'
 
-function Header({ isBlog = false, data: { structure } }) {
+function Header({ data: { structure } }) {
 	// const { headerData } = useSelector(state => state.layoutData)
 	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
+	const [notificationDismiss, serNotificationDismiss] = useState(true)
 	useEffect(() => {
 		sessionStorage.getItem('headerData')
 			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
@@ -57,8 +58,8 @@ function Header({ isBlog = false, data: { structure } }) {
 				className={`navbar navbar-expand justify-content-center  
 					theme-${structure.theme.value}
 				 top-nav py-3 px-sm-4 fixed-top flex-wrap ${
-						!topNavCondition && 'search-mode'
-					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
+					!topNavCondition && 'search-mode'
+				} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<Link href='/'>
@@ -108,6 +109,22 @@ function Header({ isBlog = false, data: { structure } }) {
 					theme={structure.theme.value}
 					searchInputCondition={searchInputCondition}
 				/>
+				{
+					structure?.notification?.value?.link?.value && <>{notificationDismiss &&
+						<div className='container-fluid home-top-advertisement'>
+							<button onClick={() => serNotificationDismiss(false)}>
+					<span className={'me-3'}>
+					Dismiss
+					</span>
+								<DismissIcon />
+							</button>
+							<Link href={structure?.notification?.value?.link?.value}>
+								<a>
+									{structure?.notification?.value?.title?.value}
+								</a>
+							</Link>
+						</div>}</>
+				}
 
 				{/* <SubMenuHeader /> */}
 			</nav>
