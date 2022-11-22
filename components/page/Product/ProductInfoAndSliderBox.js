@@ -15,10 +15,12 @@ function ProductInfoAndSliderBox({ pim, data }) {
 				<div className='row'>
 					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
 					<div className='col-12 col-md-6 product-info my-auto'>
-						<h2 className='text-primary fs-2x mb-5'>
+						<h2
+							className={`${pim?.custom_fields.find(item => item.title === 'h2 Title')?.value ? 'text-primary fs-2x mb-5' : 'text-black fs-2hx mb-1'} `}>
 							{
 								pim?.custom_fields.find(item => item.title === 'h2 Title')
-									?.value
+									?.value ? pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+									?.value : pim?.custom_fields?.find(item => item.title === 'Product Type')?.value
 							}
 						</h2>
 						<h1 className='fs-2hx mb-8'>
