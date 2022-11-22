@@ -12,6 +12,7 @@ import axios from 'axios'
 import NavBarDropDown from './NavBarDropDown'
 import Link from 'next/link'
 import HeaderSearchBox from './HeaderSearchBox'
+import DismissIcon from '../../icons/DismissIcon'
 
 function Header({ data: { structure } }) {
 	// const { headerData } = useSelector(state => state.layoutData)
@@ -19,7 +20,7 @@ function Header({ data: { structure } }) {
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
-	console.log(structure?.notification)
+	const [notificationDismiss, serNotificationDismiss] = useState(true)
 	useEffect(() => {
 		sessionStorage.getItem('headerData')
 			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
@@ -108,18 +109,25 @@ function Header({ data: { structure } }) {
 					theme={structure.theme.value}
 					searchInputCondition={searchInputCondition}
 				/>
+				{
+					structure?.notification?.value?.link?.value && <>{notificationDismiss &&
+						<div className='container-fluid home-top-advertisement'>
+							<button onClick={() => serNotificationDismiss(false)}>
+					<span className={'me-3'}>
+					Dismiss
+					</span>
+								<DismissIcon />
+							</button>
+							<Link href={structure?.notification?.value?.link?.value}>
+								<a>
+									{structure?.notification?.value?.title?.value}
+								</a>
+							</Link>
+						</div>}</>
+				}
 
 				{/* <SubMenuHeader /> */}
 			</nav>
-			{
-				structure?.notification?.value?.link?.value && <div className='container-fluid home-top-advertisement'>
-					<Link href={structure?.notification?.value?.link?.value}>
-						<a>
-							{structure?.notification?.value?.title?.value}
-						</a>
-					</Link>
-				</div>
-			}
 
 
 			{headerData && <HamburgerMenu data={headerData} asideMenu={asideMenu} />}
