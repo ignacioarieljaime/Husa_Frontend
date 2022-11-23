@@ -21,6 +21,7 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 	return `
 	import { useEffect,useState } from 'react';
   import dynamic from 'next/dynamic';
+	import axios from 'axios'
 	import Layout from "components/common/Layout/Layout";
 	import { useRouter } from 'next/router'
 
