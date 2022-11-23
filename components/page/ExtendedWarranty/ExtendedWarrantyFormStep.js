@@ -7,7 +7,6 @@ import {
 } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
-
 const ExtendedWarrantyFormStep = ({ product, plan }) => {
 	const [formBody, setFormBody] = useState({
 		product: {
@@ -56,7 +55,9 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 				setLoading(null)
 			} catch (error) {
 				setLoading(null)
-
+				if (error?.response?.data?.errors?.last_name) {
+					toast.error('Please enter your full name')
+				}
 				console.log(error)
 			}
 		}
