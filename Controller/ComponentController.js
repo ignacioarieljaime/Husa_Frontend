@@ -37,8 +37,7 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 		}, [])`
 			: ''
 	}
-	n
-	    return (
+    return (
 			<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
