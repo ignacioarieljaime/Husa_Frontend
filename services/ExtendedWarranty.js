@@ -26,7 +26,7 @@ export async function GetProductPlans(_price) {
 
 export async function postFormAssets(_data) {
 	let response = await axios.post(
-		`https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f`,
+		`https://assets.hisenseportal.com/api/v1/upload/d6357c2807362f`,
 		_data
 	)
 	return response

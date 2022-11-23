@@ -1,53 +1,50 @@
 /* font configuration */
 /* gotham */
 @font-face {
-	font-family: 'gotham';
-	font-style: normal;
-	font-weight: normal;
-	src: url('./../../public/assets/fonts/gotham/GothamMedium.ttf');
+  font-family: 'gotham';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./../../public/assets/fonts/gotham/GothamMedium.ttf');
 }
+
 @font-face {
-	font-family: 'gotham';
-	font-style: normal;
-	font-weight: bold;
-	src: url('./../../public/assets/fonts/gotham/GothamBold.ttf') format('TrueType'),
-		url('./../../public/assets/fonts/gotham/Gotham-Bold.otf') format('OpenType');
+  font-family: 'gotham';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./../../public/assets/fonts/gotham/GothamBold.ttf') format('TrueType'),
+  url('./../../public/assets/fonts/gotham/Gotham-Bold.otf') format('OpenType');
 }
+
 @font-face {
-	font-family: 'gotham';
-	font-style: normal;
-	font-weight: light;
-	src: url('./../../public/assets/fonts/gotham/Gotham-Thin.otf');
+  font-family: 'gotham';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./../../public/assets/fonts/gotham/Gotham-Thin.otf');
 }
+
+
 /* hisense */
 @font-face {
-	font-family: 'hisense';
-	font-style: normal;
-	font-weight: 500;
-	src: url('./../../public/assets/fonts/hisense/HisenseSansAlfabetMedium.otf')
-			format('opentype'),
-		url('./../../public/assets/fonts/hisense/HisenseAlfabet-Medium.woff2') format('woff2');
+  font-family: 'hisense';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Regular.otf') format('opentype')
 }
 @font-face {
-	font-family: 'hisense';
-	font-style: normal;
-	font-weight: 700;
-	src: url('./../../public/assets/fonts/hisense/HisenseSansAlfabetBold.otf')
-			format('opentype'),
-		url('./../../public/assets/fonts/hisense/HisenseAlfabet-Bold.woff2') format('woff2');
+  font-family: 'hisense';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Medium.otf') format('opentype')
 }
 @font-face {
-	font-family: 'hisense';
-	font-style: normal;
-	font-weight: 300;
-	src: url('./../../public/assets/fonts/hisense/HisenseSansAlfabetLight.otf')
-			format('opentype'),
-		url('./../../public/assets/fonts/hisense/HisenseAlfabet-Light.woff2') format('woff2');
+  font-family: 'hisense';
+  font-style: normal;
+  font-weight: 300;
+  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Light.otf') format('opentype')
 }
 @font-face {
-	font-family: 'hisense';
-	font-style: normal;
-	font-weight: 400;
-	src: url('./../../public/assets/fonts/hisense/HisenseSansAlfabet.otf') format('opentype'),
-		url('./../../public/assets/fonts/hisense/HisenseAlfabet-Regular.woff2') format('woff2');
+  font-family: 'hisense';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Bold.otf') format('opentype')
 }

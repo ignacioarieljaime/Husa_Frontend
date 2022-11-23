@@ -10,9 +10,12 @@ const handle = app.getRequestHandler()
 let redirectsRoute = []
 
 const redirectRequestHandler = (async () => {
+	console.log('send redirect request')
 	try {
 		let response = await axios.get(`${process.env.CXM_API_ROUTE}/getRedirects`)
 		redirectsRoute = response.data.data
+		console.log('get redirect request')
+
 	} catch (error) {
 		console.log(error)
 	}
@@ -22,12 +25,9 @@ app.prepare().then(() => {
 	const port = process.env.APP_PORT
 	const server = express()
 	redirectsRoute.map(
-		item =>
-			item.source_url &&
-			server.all(item.source_url, (req, res) => {
-				res.redirect(item.redirect_url)
-				return
-			})
+		item => item.source_url && server.all(item.source_url, (req, res) => {
+			return res.redirect(307, item.redirect_url)
+		})
 	)
 
 	server.all('*', (req, res) => {
@@ -49,7 +49,7 @@ app.prepare().then(() => {
 					sound: true,
 					wait: true
 				},
-				function (err, response, metadata) {
+				function(err, response, metadata) {
 					// open(`http://localhost:${port}`);
 				}
 			)
