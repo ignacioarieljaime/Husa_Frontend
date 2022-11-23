@@ -5,7 +5,7 @@ import ExtendedWarrantySearchProduct from './ExtendedWarrantySearchProduct'
 import { useRouter } from 'next/router'
 import { GetProducts } from 'services/ExtendedWarranty'
 
-const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
+const ExtendedWarrantyProductGrid = () => {
 	const [products, setProducts] = useState([])
 	const [productCategories, setProductCategories] = useState()
 	const [models, setModels] = useState()
@@ -32,7 +32,7 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 				)
 			} else if (!router.query.search) setCategory(productCategories[0])
 		}
-	}, [])
+	}, [productCategories])
 
 	useEffect(() => {
 		getProducts(
@@ -47,7 +47,7 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 		try {
 			let response = await GetProducts(category, modelNumber, searchTerm)
 			setProducts(response?.data?.products)
-			setProductCategories(response?.data?.categories)
+			!productCategories && setProductCategories(response?.data?.categories)
 			setModels(response?.data?.models)
 		} catch (error) {
 			console.log(error)
@@ -109,4 +109,4 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 	)
 }
 
-export default ExtendedWarrantyProductGrid
+export default React.memo(ExtendedWarrantyProductGrid)
