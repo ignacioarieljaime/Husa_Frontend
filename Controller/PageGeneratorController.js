@@ -3,10 +3,11 @@ const { ComponentList } = require('../utils/ComponentList')
 
 const PageGeneratorController = _page => {
 	return `
+import { useEffect,useState } from 'react'
+import dynamic from 'next/dynamic'
 const axios = require('axios')
 import Layout from 'components/common/Layout/Layout';
-import {  useEffect,useState } from 'react'
-import dynamic from 'next/dynamic'
+
 
 ${ComponentList.map(
 		item => `const ${item.name} = dynamic(() => import('${item.path}'))`

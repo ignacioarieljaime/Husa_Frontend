@@ -19,17 +19,12 @@ const FindComponent = _componentData => {
 const GenerateComponentStructure = (_page, _content, _condition) => {
 	let uniqueImport = [...new Set(_content)]
 	return `
+	import { useEffect,useState } from 'react';
+  import dynamic from 'next/dynamic';
 	import Layout from "components/common/Layout/Layout";
 	import { useRouter } from 'next/router'
 
-	  ${uniqueImport
-		.map(
-			item =>
-				item && `const ${item.name} = dynamic(() => import('${item.path}'))`
-		)
-		.join(';')}
-
-		
+	${uniqueImport.map(item => item && `const ${item.name} = dynamic(() => import('${item.path}'))`).join(';')}
 
 	function Index${_page.id}({pim,data}) {
 		const router = useRouter()
@@ -41,7 +36,7 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 		}, [])`
 			: ''
 	}
-	
+	n
 	    return (
 			<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
