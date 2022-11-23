@@ -26,6 +26,7 @@ function Header({ data: { structure } }) {
 			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
 			: getMenu()
 	}, [])
+
 	useEffect(() => {
 		if (!searchInputCondition) {
 			setTimeout(() => {

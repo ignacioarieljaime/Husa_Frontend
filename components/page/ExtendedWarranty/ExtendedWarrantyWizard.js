@@ -9,13 +9,14 @@ import { GetProductPlans } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 
-const ExtendedWarrantyWizard = ({ data: { structure } }) => {
+const ExtendedWarrantyWizard = () => {
 	const [step, setStep] = useState({
 		title: 'Products',
 		id: 0
 	})
 	const [product, setProduct] = useState()
 	const [plans, setPlans] = useState()
+	const [loading, setLoading] = useState(false)
 	const [price, setPrice] = useState()
 	const [plan, setPlan] = useState({
 		id: 0,
@@ -35,6 +36,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 	}
 
 	const getPlans = async _price => {
+		setLoading(true)
 		try {
 			let response = await GetProductPlans(_price)
 			setPrice(_price)
@@ -43,7 +45,9 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 				id: 1,
 				title: 'Purchased Price'
 			})
+			setLoading(false)
 		} catch (error) {
+			setLoading(false)
 			console.log(error)
 			toast.error('Entered price is not valid')
 		}
@@ -62,6 +66,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 		<ExtendedWarrantyPurchasedPriceStep
 			product={product}
 			getPlans={getPlans}
+			loading={loading}
 		/>,
 		<ExtendedWarrantySevicePlansStep
 			product={product}

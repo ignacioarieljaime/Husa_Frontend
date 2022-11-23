@@ -3,14 +3,15 @@ const { ComponentList } = require('../utils/ComponentList')
 
 const PageGeneratorController = _page => {
 	return `
+import { useEffect,useState } from 'react'
+import dynamic from 'next/dynamic'
 const axios = require('axios')
 import Layout from 'components/common/Layout/Layout';
-import {  useEffect,useState } from 'react'
-import dynamic from 'next/dynamic'
+
 
 ${ComponentList.map(
-	item => `const ${item.name} = dynamic(() => import('${item.path}'))`
-).join(';')}
+		item => `const ${item.name} = dynamic(() => import('${item.path}'))`
+	).join(';')}
 
 
 function Index({data,pim}) {
@@ -20,14 +21,13 @@ function Index({data,pim}) {
 		setComponents(componentName)
 	}, [])
 
-
 	return (
 
 		<Layout>
 		<section> ${ComponentList.map(
-			componentItem =>
-				`{components.includes('${componentItem.name}') && <${componentItem.name} pim={pim} data={data.widgets.find(item => item.name === '${componentItem.name}')}/>}`
-		).join('')}</section>
+		componentItem =>
+			`{components.includes('${componentItem.name}') && <${componentItem.name} pim={pim} data={data.widgets.find(item => item.name === '${componentItem.name}')}/>}`
+	).join('')}</section>
 		</Layout>
 			
 	)

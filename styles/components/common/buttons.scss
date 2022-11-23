@@ -1,129 +1,157 @@
 .n-btn {
-	text-decoration: none;
-	border-radius: 1000px;
-	border: 1px solid #000;
-	transition: all 0.3s ease-in;
-	padding: 8px 16px;
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
-	&.outline-black {
-		border-color: #000;
-		color: #000;
-		background-color: #fff;
-		&:hover {
-			color: #fff !important;
-			background-color: #000 !important;
-		}
-	}
-	&.outline-white {
-		border-color: #fff;
-		color: #fff;
-		background-color: #000;
-		&:hover {
-			color: #000 !important;
-			background-color: #fff !important;
-		}
-	}
-	&.outline-primary {
-		border-color: #00a29c;
-		color: #00a29c;
-		background-color: #fff;
+  text-decoration: none;
+  border-radius: 1000px;
+  border: 1px solid #000;
+  transition: all 0.3s ease-in;
+  padding: 8px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 
-		&:hover {
-			color: #fff !important;
-			background-color: #00a29c !important;
-		}
-	}
-	&.white {
-		border-color: #fff;
-		color: #000 !important;
-		background-color: #fff !important;
-		transform: scale(1);
-		&:hover {
-			transform: scale(1.05);
-		}
-	}
-	&.primary {
-		border-color: #00a29c;
-		color: #fff !important;
-		background-color: #00a29c !important;
-		transform: scale(1);
+  &.outline-black {
+    border-color: #000;
+    color: #000;
+    background-color: #fff;
 
-		&:hover {
-			transform: scale(1.05);
-		}
-	}
-	&.primary-text {
-		color: #00a29c !important;
-		background-color: transparent !important;
-		font-weight: 400;
-		font-size: 16px;
-		border: none !important;
-		padding: 5px !important;
+    &:hover {
+      color: #fff !important;
+      background-color: #000 !important;
+    }
+  }
 
-		&:hover {
-			color: #221f20 !important;
-		}
-	}
-	&.black-text {
-		color: #221f20 !important;
-		background-color: transparent !important;
-		font-weight: 400;
-		font-size: 16px;
-		border: none !important;
-		padding: 5px !important;
-	}
-	&.white-text {
-		color: #fff !important;
-		background-color: transparent !important;
-		font-weight: 400;
-		font-size: 16px;
-		border: none !important;
-		padding: 5px !important;
-	}
-	&.grey-text {
-		color: #a6a8ac !important;
-		background-color: transparent !important;
-		font-weight: 400;
-		font-size: 16px;
-		border: none !important;
-		padding: 5px;
-		&:hover {
-			color: #221f20 !important;
-		}
-	}
-	&.rounded {
-		border-radius: 50% !important;
-		width: 80px;
-		height: 80px;
-	}
-	&.transparent {
-		background-color: transparent !important;
-	}
-	&.simple {
-		&:hover {
-			transform: scale(1) !important;
-		}
-	}
+  &.outline-white {
+    border-color: #fff;
+    color: #fff;
+    background-color: #000;
+
+    &:hover {
+      color: #000 !important;
+      background-color: #fff !important;
+    }
+  }
+
+  &.outline-primary {
+    border-color: #00a29c;
+    color: #00a29c;
+    background-color: #fff;
+
+    &:hover {
+      color: #fff !important;
+      background-color: #00a29c !important;
+    }
+  }
+
+  &.white {
+    border-color: #fff;
+    color: #000 !important;
+    background-color: #fff !important;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &.primary {
+    border-color: #00a29c;
+    color: #fff !important;
+    background-color: #00a29c !important;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &.primary-text {
+    color: #00a29c !important;
+    background-color: transparent !important;
+    font-weight: 400;
+    font-size: 16px;
+    border: none !important;
+    padding: 5px !important;
+
+    &:hover {
+      color: #221f20 !important;
+    }
+  }
+
+  &.black-text {
+    color: #221f20 !important;
+    background-color: transparent !important;
+    font-weight: 400;
+    font-size: 16px;
+    border: none !important;
+    padding: 5px !important;
+  }
+
+  &.white-text {
+    color: #fff !important;
+    background-color: transparent !important;
+    font-weight: 400;
+    font-size: 16px;
+    border: none !important;
+    padding: 5px !important;
+  }
+
+  &.grey-text {
+    color: #a6a8ac !important;
+    background-color: transparent !important;
+    font-weight: 400;
+    font-size: 16px;
+    border: none !important;
+    padding: 5px;
+
+    &:hover {
+      color: #221f20 !important;
+    }
+  }
+
+  &.rounded {
+    border-radius: 50% !important;
+    width: 80px;
+    height: 80px;
+  }
+
+  &.transparent {
+    background-color: transparent !important;
+  }
+
+  &.simple {
+    &:hover {
+      transform: scale(1) !important;
+    }
+  }
 }
 
+
 .tv-and-audio-tv-shop-button {
-	background: #00cccc;
-	border: none;
-	color: #fff;
-	opacity: 0.87;
-	transition: opacity 0.3s ease-out;
-	&:hover {
-		opacity: 1;
-	}
+  background: #00cccc;
+  border: none;
+  color: #fff;
+  opacity: 0.87;
+  transition: opacity 0.3s ease-out;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
-	.n-btn {
-		&.rounded {
-			width: 50px;
-			height: 50px;
-		}
-	}
+  .n-btn {
+    &.rounded {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+button[disabled] {
+  border: 1px solid transparent !important;
+  background: #ebecf0 !important;
+
+  &:hover {
+    background: #ebecf0 !important;
+    color: #b3bac5 !important;
+  }
 }

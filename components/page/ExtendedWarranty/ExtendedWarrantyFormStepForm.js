@@ -2,21 +2,21 @@ import React, { useState } from 'react'
 import RadioCheckBox from 'components/common/RadioCheckBox'
 import ExtendedWarrantyFileInput from './ExtendedWarrantyFileInput'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
-import Link from 'next/link'
+import Spinner from '../../common/Spinner'
 
 const ExtendedWarrantyFormStepForm = ({
-	onChange,
-	onUpload,
-	acceptTerms,
-	setAcceptTerms,
-	onSubmit,
-	formBody
-}) => {
+																				onChange,
+																				onUpload,
+																				acceptTerms,
+																				setAcceptTerms,
+																				onSubmit,
+																				formBody, loading
+																			}) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
 
 	return (
-		<form className='form'>
+		<form onSubmit={onSubmit} className='form'>
 			<h3 className='title'>Fill out the form below to complete your order.</h3>
 			<div className='row mx-0 mb-8'>
 				<div className='col-12 col-md-6'>
@@ -29,6 +29,7 @@ const ExtendedWarrantyFormStepForm = ({
 									last_name: e.target.value.split(' ')[1]
 								}))
 							}
+							required
 							placeholder='Full Name'
 							type='text'
 						/>
@@ -40,6 +41,7 @@ const ExtendedWarrantyFormStepForm = ({
 							onChange={e =>
 								onChange(prevState => ({ ...prevState, email: e.target.value }))
 							}
+							required
 							placeholder='Email'
 							type='email'
 						/>
@@ -51,6 +53,7 @@ const ExtendedWarrantyFormStepForm = ({
 							onChange={e =>
 								onChange(prevState => ({ ...prevState, phone: e.target.value }))
 							}
+							required
 							placeholder='Phone Number'
 							type='tel'
 						/>
@@ -65,6 +68,7 @@ const ExtendedWarrantyFormStepForm = ({
 									address: e.target.value
 								}))
 							}
+							required
 							placeholder='Address'
 							type='text'
 						/>
@@ -80,6 +84,7 @@ const ExtendedWarrantyFormStepForm = ({
 									purchase_date: e.target.value
 								}))
 							}
+							required
 							onFocus={() => setlabel(false)}
 							onBlur={() => setlabel(true)}
 							placeholder='Purchase Date'
@@ -99,6 +104,7 @@ const ExtendedWarrantyFormStepForm = ({
 									}
 								}))
 							}
+							required
 							placeholder='Serial Number'
 							type='text'
 						/>
@@ -114,6 +120,7 @@ const ExtendedWarrantyFormStepForm = ({
 						value={formBody.product.model_plate_sticker}
 						name='model_plate_sticker'
 						onChange={onUpload}
+						loading={loading}
 						modalOnClick={() => setShowModal(showModal => !showModal)}
 					/>
 				</div>
@@ -124,6 +131,7 @@ const ExtendedWarrantyFormStepForm = ({
 						value={formBody.product.receipt_photo}
 						name='receipt_photo'
 						onChange={onUpload}
+						loading={loading}
 						boxContent='Upload Your Receipt Photo'
 					/>
 				</div>
@@ -135,10 +143,15 @@ const ExtendedWarrantyFormStepForm = ({
 			/>
 			<div className=' mt-15 text-center'>
 				<button
-					className='n-btn outline-black py-4'
-					type='button'
-					onClick={onSubmit}>
+					className='n-btn outline-black py-4 d-flex align-items-center mx-auto '
+					type='submit'
+					disabled={!acceptTerms || loading === 'button' ? true : false}
+				>
 					Proceed to Payment
+					{
+						loading === 'button' && <Spinner className={'ms-3'} size={20} />
+					}
+
 				</button>
 				{/* <Link href={'/ewp-confirmation-page'}>
 					<a className='n-btn outline-black py-4'>Proceed to Payment</a>
