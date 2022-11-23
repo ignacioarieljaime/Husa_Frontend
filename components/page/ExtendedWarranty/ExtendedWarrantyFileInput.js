@@ -1,16 +1,17 @@
 import React, { useRef } from 'react'
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Spinner from '../../common/Spinner'
 
 const ExtendedWarrantyFileInput = ({
-	label,
-	boxContent,
-	onChange,
-	modalOnClick,
-	id,
-	name,
-	value
-}) => {
+																		 label,
+																		 boxContent,
+																		 onChange,
+																		 modalOnClick,
+																		 id,
+																		 name,
+																		 value, loading
+																	 }) => {
 	const inputRef = useRef(null)
 
 	return (
@@ -30,6 +31,12 @@ const ExtendedWarrantyFileInput = ({
 			<div
 				className={`input ${value === '' ? '' : 'activated'}`}
 				onClick={() => inputRef.current.click()}>
+				{
+					loading === name && <div className={'position-absolute top-50 '}
+																	 style={{ left: '50%', transform: 'translate(-50%,-50%)', zIndex: '2' }}>
+						<Spinner size={30} />
+					</div>
+				}
 				<div className='content'>
 					{value === '' ? boxContent : 'Image Uploaded'}
 				</div>
@@ -39,11 +46,11 @@ const ExtendedWarrantyFileInput = ({
 					onChange={e => {
 						const file = e.target.files && e.target.files[0]
 						file?.type.startsWith('image') &&
-							onChange({
-								id: id,
-								asset: e.target.files && e.target.files[0],
-								name: name
-							})
+						onChange(name, {
+							id: id,
+							asset: e.target.files && e.target.files[0],
+							name: name
+						})
 					}}
 				/>
 			</div>
