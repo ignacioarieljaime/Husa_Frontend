@@ -11,6 +11,9 @@ const moduleExports = {
 	sentry: {
 		hideSourceMaps: true,
 		transpileClientSDK: true
+	},
+	images: {
+		domains: ['assets.hisenseportal.com']
 	}
 }
 
