@@ -397,7 +397,6 @@
   text-decoration: none;
   margin-right: 6px;
   width: unset;
-  padding: 0 10px;
 }
 
 .products-container .item .product-types:hover {
@@ -529,7 +528,7 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
     transition: all 0.3s ease;
-    padding: 35px 35px 0px 35px;
+    padding: 35px 35px 0 35px;
     text-align: center;
 
     .close-btn {
@@ -1718,7 +1717,6 @@ header {
   border-radius: 10px;
   position: relative;
   height: 100%;
-  border-radius: 10px;
   text-align: center;
 }
 

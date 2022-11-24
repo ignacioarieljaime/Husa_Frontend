@@ -4,12 +4,12 @@ function ProductBigScreenTextsBox({ data }) {
 	let { structure } = data
 	return (
 		<section>
-			<div class='tiny-banner product-big-screen'>
-				<div class='container px-6 px-lg-0 py-12'>
-					<article class='article text-center'>
-						<h2 class='text-black mb-12'>
+			<div className='tiny-banner product-big-screen'>
+				<div className='container px-6 px-lg-0 py-12'>
+					<article className='article text-center'>
+						<h2 className='text-black mb-12 text-primary d-flex flex-column'>
 							{structure?.blackTitle?.value}
-							<span class='text-primary'>
+							<span className='text-primary'>
 								{' '}
 								{structure?.coloredTitle?.value}
 							</span>
