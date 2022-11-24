@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ProductDetailLstItem from './ProductDetailLstItem'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
 function ProductDetailsBox({ pim, data }) {
 	const [showMore, setShowMore] = useState(false)
@@ -21,7 +23,7 @@ function ProductDetailsBox({ pim, data }) {
 		) {
 			setShowMore(true)
 		}
-		
+
 	}, [window.location.hash])
 
 	return (
@@ -51,12 +53,12 @@ function ProductDetailsBox({ pim, data }) {
 				<button
 					className='btn btn-outline-light rounded-5 specs-btn'
 					onClick={() => setShowMore(!showMore)}>
-					<span className='d-block '>
+					<span className='d-block  text-uppercase'>
 						{showMore ? '	Hide Specs' : '		Full  Specs'}
-						<i
-							className={`fa-solid fa-2xs ${
-								showMore ? 'fa-chevron-up' : 'fa-chevron-down'
-							}`}></i>
+						{
+							showMore ? <FontAwesomeIcon icon={faChevronUp} size={'2xs'} className={"ms-3"} /> :
+								<FontAwesomeIcon icon={faChevronDown} size={'2xs'} className={"ms-3"} />
+						}
 					</span>
 				</button>
 			</div>

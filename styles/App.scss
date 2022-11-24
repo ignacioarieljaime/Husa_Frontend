@@ -1,3 +1,6 @@
+// mixin
+@import './base/mixins';
+
 // bootstrap
 @import './base/bootstrapStyle';
 
@@ -8,17 +11,11 @@
 @import './base/fonts';
 @import './base/fontSocicon';
 
-
-// mixin
-@import './base/mixins';
-
 // base
 @import './base/global';
 
-
 // components
 @import './components/page/CesHomeApplication/homeApplience';
-
 
 //common
 @import './components/common/header.scss';
@@ -37,15 +34,12 @@
 @import './components/common/customCheckbox';
 @import './components/common/textBoxImage';
 
-
 // L9J
 @import './components/page/L9G/colorFeature';
 @import './components/page/L9G/heroBanner';
 // @import './components/page/L9G/l9g';
 @import './components/page/L9G/pureColor';
 @import './components/page/L9G/scorllableVideo';
-
-
 
 // sponsor ship
 @import './components/page/sponsorShip';

@@ -146,6 +146,18 @@
   }
 }
 
+.pdp_where_to_buy_btn {
+  border: none;
+  background: #00CCCC;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all ease 0.3s;
+
+  &:hover {
+    background: #239d98 !important;
+  }
+}
+
 button[disabled] {
   border: 1px solid transparent !important;
   background: #ebecf0 !important;
@@ -155,3 +167,4 @@ button[disabled] {
     color: #b3bac5 !important;
   }
 }
+
