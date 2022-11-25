@@ -4,7 +4,7 @@ const ColorFeature = ({ data: { structure } }) => {
 	return (
 		<section className='l9g'>
 			<div className='color-feature'>
-				<div className='px-md-20 px-4'>
+				<div className='px-md-20 px-4 top_text'>
 					<p
 						className='fs-7 fs-md-3 fw-light mb-0 py-10 py-md-20'
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></p>

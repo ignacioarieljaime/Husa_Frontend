@@ -10,7 +10,7 @@ const AndroidTv = ({ data: { structure } }) => {
 					data-aos-delay='0'
 					data-aos-duration='1000'>
 					<h2
-						className='fs-5 fs-md-2hx fw-bold mb-5'
+						className='fs-5 l9g_big_title fs-md-2hx fw-bold mb-5'
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
 				</div>
 				<div className='row align-items-start px-1 px-md-17'>

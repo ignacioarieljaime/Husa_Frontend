@@ -8,7 +8,7 @@ const PureColor = () => {
 					className='aos-init aos-animate'
 					data-aos='fade'
 					data-aos-duration='1000'
-					data-aos-delay='0'>
+					data-aos-delay='200'>
 					<h2 className='fs-5 fs-md-2hx text-white text-start py-5 px-5 px-md-20'>
 						3 Pure-Color Lasers.
 					</h2>

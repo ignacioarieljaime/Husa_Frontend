@@ -3,6 +3,7 @@ import React from 'react'
 import { useParallax, ParallaxProvider } from 'react-scroll-parallax'
 
 const ScrollableVideo = ({ data: { structure } }) => {
+
 	return (
 		<ParallaxProvider>
 			<ScrollableVideoContainer structure={structure} />
