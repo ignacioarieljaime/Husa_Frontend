@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { RouteHandler } from 'utils/routeHandler'
+import CustomImage from '../../common/CustomImage'
 
 const BlockSpotlightItem = ({ data }) => {
 	const [productLink, setProductLink] = useState()
@@ -21,10 +22,10 @@ const BlockSpotlightItem = ({ data }) => {
 
 	return (
 		<div className='spotlight-releases-item'>
-			<img
+			<CustomImage
 				src={product?.media?.url}
-				style={{ height: '176px' }}
 				className='image'
+				wrapperHeight={'176px'}
 			/>
 			<h5 className='description'>{seriesTitle && product?.model}</h5>
 			<h3 className='title'>
