@@ -11,7 +11,7 @@ const ExtendedWarrantyFormStepForm = ({
 																				acceptTerms,
 																				setAcceptTerms,
 																				onSubmit,
-																				formBody, loading
+																				formBody, loading, retailers
 																			}) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
@@ -139,7 +139,10 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 '>
 					<div className='extended-warranty-input'>
-						<CustomSelectBox options={[{ name: 'ali', value: 'ali' }]} onChange={(_value)=>console.log(_value)} title={'Retailer'}
+						<CustomSelectBox  options={retailers} onChange={(_value) => onChange(prevState => ({
+							...prevState, retailer_id: _value.id
+						}))}
+														 title={'Retailer'}
 														 className={'w-100 d-flex justify-content-between'} />
 					</div>
 				</div>
