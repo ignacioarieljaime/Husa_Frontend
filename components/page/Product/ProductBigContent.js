@@ -18,7 +18,7 @@ function ProductBigContent({ data }) {
 									? 'flex-row-reverse'
 									: ''
 						}`}>
-						{structure?.blackTitle?.value}
+						<span className={"text-nowrap"}>{structure?.blackTitle?.value}</span>
 						<span className='d-block text-primary'>
 							{structure?.coloredTitle?.value}
 						</span>

@@ -2181,6 +2181,12 @@ header {
       font-size: 54px !important;
     }
   }
+  @include mq(1200) {
+    h2 {
+      display: flex;
+      flex-direction: column !important;
+    }
+  }
 
   p {
     color: #292929 !important;
@@ -2231,9 +2237,9 @@ header {
   }
 }
 
-@include  mqm(1200){
-  .specs_box_data{
-    h2{
+@include mqm(1200) {
+  .specs_box_data {
+    h2 {
       font-size: 48px !important;
     }
   }
