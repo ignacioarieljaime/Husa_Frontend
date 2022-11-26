@@ -7,11 +7,12 @@ import {
 } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
+
 const ExtendedWarrantyFormStep = ({ product, plan }) => {
 	const [formBody, setFormBody] = useState({
 		product: {
 			id: product.id, model_plate_sticker: null, receipt_photo: null, serial_number: null
-		}, plan_id: plan.id, first_name: null, last_name: '', phone: null, email: null, address: null, purchase_date: null
+		}, plan_id: plan.id, first_name: null, last_name: '', phone: null, email: null, address: null, purchase_date: null, postal_code: null
 	})
 	const [assets, setAssets] = useState([])
 	const [acceptTerms, setAcceptTerms] = useState(false)
