@@ -39,7 +39,7 @@ export async function GetProductsListNewApi(
 			: ''
 
 	let response = await useFetch(navigate).get(
-		`/productsIndex?category_id=${_categoryId}${filter}${_sort ? _sort : ''}&status=1&brand_id=1`
+		`/productsIndex?category_id=${_categoryId}${filter}${_sort ? _sort : ''}&brand_id=1`
 	)
 	return response
 }
