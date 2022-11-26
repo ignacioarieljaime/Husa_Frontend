@@ -78,5 +78,9 @@ module.exports.ProductComponent = [
 	{
 		name: 'ProductResourceBox',
 		path: 'components/page/Product/ProductResourceBox'
+	},
+	{
+		name: 'ProductPackageHeader',
+		path: 'components/page/Product/ProductPackageHeader'
 	}
 ]
