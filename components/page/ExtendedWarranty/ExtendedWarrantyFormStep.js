@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ExtendedWarrantyFormStepForm from './ExtendedWarrantyFormStepForm'
 import ExtendedWarrantyFormStepSelectionCard from './ExtendedWarrantyFormStepSelectionCard'
 
@@ -7,16 +7,33 @@ import {
 } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
+import { GetProductRetailersApi } from '../../../services/Product'
+
 const ExtendedWarrantyFormStep = ({ product, plan }) => {
-	const [formBody, setFormBody] = useState({
-		product: {
-			id: product.id, model_plate_sticker: null, receipt_photo: null, serial_number: null
-		}, plan_id: plan.id, first_name: null, last_name: '', phone: null, email: null, address: null, purchase_date: null
-	})
+	const router = useRouter()
+	const [retailers, setRetailers] = useState([])
 	const [assets, setAssets] = useState([])
 	const [acceptTerms, setAcceptTerms] = useState(false)
 	const [loading, setLoading] = useState(null)
-	const router = useRouter()
+	const [formBody, setFormBody] = useState({
+		product: {
+			id: product.id, model_plate_sticker: null, receipt_photo: null, serial_number: null
+		},
+		plan_id: plan.id,
+		first_name: null,
+		last_name: '',
+		phone: null,
+		email: null,
+		address: null,
+		purchase_date: null,
+		postal_code: null,
+		retailer_id: null
+	})
+
+
+	useEffect(() => {
+		getRetailers(product.id)
+	}, [])
 
 
 	const assetsUploadHandler = (name, _asset) => {
@@ -47,7 +64,9 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 			toast.error('please upload model plate sticker', { toastId: 'model_plate_sticker' })
 		} else if (!formBody.product.receipt_photo) {
 			toast.error('please upload receipt photo', { toastId: 'receipt_photo' })
-		} else {
+		}  else if (!formBody.retailer_id) {
+			toast.error('please select retailer', { toastId: 'retailer_id' })
+		}else {
 			setLoading('button')
 			try {
 				let response = await submitForm(formBody)
@@ -99,6 +118,16 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 		}
 	}
 
+	const getRetailers = async (_productId) => {
+		try {
+			let response = await GetProductRetailersApi(router, _productId)
+			setRetailers(response.data)
+		} catch (e) {
+			console.log(e)
+		}
+	}
+
+
 	return (<section className='extended-warranty-form-step'>
 		<ExtendedWarrantyFormStepSelectionCard
 			image={product?.image}
@@ -116,6 +145,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 					onSubmit={submitFormData}
 					formBody={formBody}
 					loading={loading}
+					retailers={retailers}
 				/>
 			</div>
 		</section>

@@ -13,7 +13,7 @@ const moduleExports = {
 		transpileClientSDK: true
 	},
 	images: {
-		domains: ['assets.hisenseportal.com']
+		domains: ['assets.hisenseportal.com', 'assets.hisense-usa.com']
 	}
 }
 

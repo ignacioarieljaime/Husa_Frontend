@@ -29,7 +29,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 									?.value
 							}
 						</h1>
-						<span className='fs-2hx mb-5'>{pim?.name}</span>
+						<span className='fs-2hx mb-5 text-uppercase'>{pim?.name}</span>
 						<p className='text-primary'>Model: {pim?.model}</p>
 						<div className='model-toggle '>
 							{pim?.series[0]?.values.map(
@@ -45,7 +45,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						</div>
 						<div className='product-rating'></div>
 						<button
-							className='btn btn-primary rounded-0 px-6 py-3'
+							className=' pdp_where_to_buy_btn rounded-0 px-6 py-3'
 							onClick={() =>
 								pim?.retailers.length !== 0
 									? setChanelAdviserHandler(!chanelAdviserHandler)

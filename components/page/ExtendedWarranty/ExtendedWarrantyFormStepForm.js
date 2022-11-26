@@ -3,6 +3,7 @@ import RadioCheckBox from 'components/common/RadioCheckBox'
 import ExtendedWarrantyFileInput from './ExtendedWarrantyFileInput'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
 import Spinner from '../../common/Spinner'
+import CustomSelectBox from '../../common/selectBox'
 
 const ExtendedWarrantyFormStepForm = ({
 																				onChange,
@@ -10,7 +11,7 @@ const ExtendedWarrantyFormStepForm = ({
 																				acceptTerms,
 																				setAcceptTerms,
 																				onSubmit,
-																				formBody, loading
+																				formBody, loading, retailers
 																			}) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
@@ -24,13 +25,25 @@ const ExtendedWarrantyFormStepForm = ({
 						<input
 							onChange={e =>
 								onChange(prevState => ({
-									...prevState,
-									first_name: e.target.value.split(' ')[0],
-									last_name: e.target.value.split(' ')[1]
+									...prevState, first_name: e.target.value
 								}))
 							}
 							required
-							placeholder='Full Name'
+							placeholder='First Name'
+							type='text'
+						/>
+					</div>
+				</div>
+				<div className='col-12 col-md-6'>
+					<div className='extended-warranty-input'>
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState, last_name: e.target.value
+								}))
+							}
+							required
+							placeholder='Last Name'
 							type='text'
 						/>
 					</div>
@@ -110,6 +123,30 @@ const ExtendedWarrantyFormStepForm = ({
 						/>
 					</div>
 				</div>
+				<div className='col-12 col-md-6'>
+					<div className='extended-warranty-input'>
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState, postal_code: e.target.value
+								}))
+							}
+							required
+							placeholder='Postal code'
+							type='text'
+						/>
+					</div>
+				</div>
+				<div className='col-12 '>
+					<div className='extended-warranty-input'>
+						<CustomSelectBox  options={retailers} onChange={(_value) => onChange(prevState => ({
+							...prevState, retailer_id: _value.id
+						}))}
+														 title={'Retailer'}
+														 className={'w-100 d-flex justify-content-between'} />
+					</div>
+				</div>
+
 			</div>
 			<div className='row align-items-end'>
 				<div className='col-12 col-md-6'>

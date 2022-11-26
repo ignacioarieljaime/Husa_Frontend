@@ -3,7 +3,7 @@ import React from 'react'
 function ProductBigContent({ data }) {
 	let { structure } = data
 	return (
-		<div id={data.name + data.id} className='tiny-banner p-md-4'>
+		<div id={data.name + data.id} className='tiny-banner big_content_box p-md-4'>
 			<div className='container px-6 px-md-8 py-12'>
 				<article className='article text-center'>
 					<h2
@@ -18,7 +18,7 @@ function ProductBigContent({ data }) {
 									? 'flex-row-reverse'
 									: ''
 						}`}>
-						{structure?.blackTitle?.value}
+						<span className={"text-nowrap"}>{structure?.blackTitle?.value}</span>
 						<span className='d-block text-primary'>
 							{structure?.coloredTitle?.value}
 						</span>

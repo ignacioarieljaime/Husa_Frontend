@@ -1,9 +1,10 @@
 import React from 'react'
 import FeatureBlocksItem from './FeatureBlocksItem'
 
-const FeatureBlocks = ({ data: { structure } }) => {
+const FeatureBlock = ({ data: { structure } }) => {
 	return (
 		<section className='l9g'>
+			hhhhhhhhhhhhhhhhhh
 			<div className='feature-blocks'>
 				{structure?.list?.value.map((item, index) => (
 					<FeatureBlocksItem
@@ -19,4 +20,4 @@ const FeatureBlocks = ({ data: { structure } }) => {
 	)
 }
 
-export default FeatureBlocks
+export default FeatureBlock

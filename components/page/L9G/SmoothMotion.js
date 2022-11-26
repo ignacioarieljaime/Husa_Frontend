@@ -77,10 +77,10 @@ const SmoothMotionContainer = ({ structure }) => {
 					<div className='screen overlay' ref={bluredImage}>
 						<img src={structure?.image?.src} alt={structure?.image?.alt} />
 					</div>
-				</div>
+				</div>`
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
-						className='caption mw-md-50 fs-9 fs-md-2 fw-light'
+						className='caption fs-9 fs-md-2 fw-light'
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 			</div>
