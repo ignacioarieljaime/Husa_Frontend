@@ -6,8 +6,7 @@ const FindComponent = _componentData => {
 		? _componentData.map(item => {
 			let pageComponents = ComponentList.find(pageComponent => {
 				if (pageComponent.name === item.name) {
-					pageComponent.id = item?.id;
-					pageComponent.structure = item?.structure;
+					pageComponent.structure = item?.structure
 					return pageComponent
 				}
 			})
@@ -47,11 +46,11 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 		.map(
 			(item, index) =>
 				item &&
-				`{data && data.length > 0 && data.find(componentItem => componentItem.id === ${item.id} && componentItem.name === '${item.name}') ? <${
+				`{data && data.length > 0 && data[${index}]?.structure ? <${
 					item.name
 				} ${
 					_page.model_type ? `pim={pim}` : ''
-				} data={data.find(componentItem => componentItem.id === ${item.id} && componentItem.name === '${item.name}')}/>  : null }`
+				} data={data[${index}]}/>  : null }`
 		)
 		.join(' ')}
 				</section>
