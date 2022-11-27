@@ -19,7 +19,7 @@ function ProductBigContent({ data }) {
 									: ''
 						}`}>
 						<span className={"text-nowrap"}>{structure?.blackTitle?.value}</span>
-						<span className='d-block text-primary'>
+						<span className='d-block text-primary text-nowrap'>
 							{structure?.coloredTitle?.value}
 						</span>
 					</h2>
