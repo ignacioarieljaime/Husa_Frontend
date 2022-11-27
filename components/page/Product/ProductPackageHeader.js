@@ -18,6 +18,7 @@ const ProductPackageHeader = ({ pim, data }) => {
 			'Top-Control Dishwasher (HUI6220XCUS)'
 		]
 	}
+
 	return (
 		<section
 			id={data.name + data.id}
@@ -55,11 +56,11 @@ const ProductPackageHeader = ({ pim, data }) => {
 					</div>
 				</div>
 			</div>
-			{/* <ModalChanelAdviser
+			<ModalChanelAdviser
 				condition={chanelAdviserHandler}
 				handler={setChanelAdviserHandler}
 				model={pim?.model}
-			/> */}
+			/>
 		</section>
 	)
 }

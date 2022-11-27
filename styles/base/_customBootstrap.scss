@@ -530,9 +530,11 @@
 /* where-to-buy-drawer */
 
 @media (max-width: 575px) {
-	.where-to-buy-drawer {
-		width: 100%;
-		padding: 35px 0 0 0;
+	.channerl-advisor-drawer {
+		.where-to-buy-drawer {
+			width: 100%;
+			padding: 35px 0 0 0;
+		}
 	}
 }
 
@@ -1876,19 +1878,20 @@ header {
 			margin-bottom: 42px;
 		}
 		.description {
-			max-width:720px;
+			max-width: 720px;
 			p {
-			font-weight: 400;
-			flex-basis: auto;
-			flex-grow: 0;
-			flex-shrink: 0;
-			width: 100%;
-			text-align: center;
-			font-size: 18px;
-			line-height: 30px;
-			color: #fff;
-			margin-bottom:0;
-		}}
+				font-weight: 400;
+				flex-basis: auto;
+				flex-grow: 0;
+				flex-shrink: 0;
+				width: 100%;
+				text-align: center;
+				font-size: 18px;
+				line-height: 30px;
+				color: #fff;
+				margin-bottom: 0;
+			}
+		}
 	}
 }
 
@@ -1927,5 +1930,44 @@ header {
 		width: 100%;
 		height: 450px;
 		padding-top: 0;
+	}
+}
+.product_news_box {
+	.product_news_box_item {
+		.article {
+			h4,
+			h6 {
+				line-height: 30px;
+				font-size: 18px;
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.product_news_box {
+		flex-wrap: wrap;
+		.product_news_box_item {
+			width: 100% !important;
+			.article {
+				h4,
+				h6 {
+					line-height: 24px;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 1920px) {
+	.product_news_box {
+		.product_news_box_item {
+			.article {
+				h4,
+				h6 {
+					font-size: 22.5px;
+					line-height: 37.5px;
+				}
+			}
+		}
 	}
 }

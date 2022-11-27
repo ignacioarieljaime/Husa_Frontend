@@ -189,3 +189,27 @@
 		}
 	}
 }
+
+@media (max-width: 500px) {
+	.product-gallery {
+		.swiper-slide {
+			.media-slider-wrapper {
+				img {
+					margin: auto;
+					height: 200px;
+				}
+			}
+		}
+		.gallery-top {
+			height: auto;
+		}
+		.gallery-thumbs {
+			.swiper-wrapper {
+				height: auto !important;
+				.swiper-slide {
+					width: 42% !important;
+				}
+			}
+		}
+	}
+}
