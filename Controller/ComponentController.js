@@ -29,7 +29,6 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 
 	function Index${_page.id}({pim,data}) {
 		const router = useRouter()
-		console.log(pim,data)
 
 		${
 		_page?.redirect
