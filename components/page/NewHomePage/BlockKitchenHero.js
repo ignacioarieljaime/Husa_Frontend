@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { useParallax, ParallaxProvider } from 'react-scroll-parallax'
+import CustomImage from '../../common/CustomImage'
 
 const BlockKitchenHero = ({ data: { structure } }) => {
 	return (
@@ -22,10 +23,12 @@ const BlockKitchenContainer = ({ structure }) => {
 			<div className='intro-section black-parallax-box'>
 				<div className='row align-items-center mx-0'>
 					<div className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
-						<img
+						<CustomImage
 							src={structure?.image?.src}
 							alt={structure?.image?.alt}
-							width='100%'
+							wrapperWidth={'100%'}
+							style={{ position: 'relative', top: '60px' }}
+							wrapperHeight={'460px'}
 						/>
 					</div>
 					<div className='col-12 col-md-6 col-lg-5 col-xxl-4 content'>

@@ -18,7 +18,7 @@ const BlockHero = ({ data: { structure } }) => {
 		<section>
 			<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
 				<div className='parallax-banner'>
-					<CustomImage src={ParallaxBanner.src} alt={'parallax background'} className={'img-fluid'} />
+					<CustomImage src={ParallaxBanner.src} alt={'parallax background'} className={'img-fluid'} wrapperHeight={"100%"} wrapperWidth={"100%"} />
 					<div className='banner-content'>
 						<MouseParallaxChild
 							factorX={0.03}
