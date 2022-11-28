@@ -3,6 +3,7 @@ const fs = require('fs')
 module.exports = UrlController = async _pages => {
 	let pagesUrl = _pages.map(item => {
 		return {
+			...item,
 			route: item.route,
 			id: item.id,
 			modelType: item.model_type,
