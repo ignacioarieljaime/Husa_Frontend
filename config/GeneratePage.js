@@ -1,12 +1,12 @@
 require('dotenv').config()
 const Axios = require('axios').default
-const PageController = require('../Controller/PageController')
+const PageController = require('../controller/PageController')
 const {
 	FindComponent,
 	GenerateComponentStructure
-} = require('../Controller/ComponentController')
-const UrlController = require('../Controller/UrlController')
-const { GenerateRedirectPage } = require('../Controller/RedirectPageController')
+} = require('../controller/ComponentController')
+const UrlController = require('../controller/UrlController')
+const { GenerateRedirectPage } = require('../controller/RedirectPageController')
 
 const requestHandler = (async () => {
 	console.log('send pages request')
