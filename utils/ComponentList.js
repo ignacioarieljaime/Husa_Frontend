@@ -33,6 +33,7 @@ const {
 const { TelevisionsComponents } = require('./components/TelevisionsComponents')
 const { PrivacyPolicyComponents } = require('./components/PrivacyPolicy')
 const { UpgradeComponents } = require('./components/UpgradeComponents')
+const { BeyondLaserComponents } = require('./components/BeyondLaserComponents')
 
 module.exports.ComponentList = [
 	...CommonComponents,
@@ -68,6 +69,7 @@ module.exports.ComponentList = [
 	...TelevisionsComponents,
 	...PrivacyPolicyComponents,
 	...UpgradeComponents,
+	...BeyondLaserComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'

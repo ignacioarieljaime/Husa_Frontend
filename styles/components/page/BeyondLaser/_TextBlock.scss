@@ -1,0 +1,41 @@
+.beyond_laser_text_block {
+	position: relative;
+	z-index: 101;
+	display: inline-block;
+	height: auto;
+	padding: 20vh 15% 0vh;
+	align-items: center;
+	background-color: #020202;
+	color: transparent;
+	text-align: center;
+	.content {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-size: 4.4vw;
+			line-height: 5vw;
+			font-weight: 300;
+			text-align: center;
+			font-family: Gilroy, sans-serif;
+			color: #f0f0f0;
+		}
+		p {
+            font-family: Gilroy, sans-serif;
+			display: inline-block;
+			width: auto;
+			max-width: 88%;
+			margin-top: 50px;
+			margin-bottom: 85px;
+			padding-right: 3%;
+			padding-left: 3%;
+			color: #c9c9c9;
+			font-size: 1.2vw;
+			line-height: 2.8vh;
+			font-weight: 300;
+			text-align: center;
+		}
+	}
+}

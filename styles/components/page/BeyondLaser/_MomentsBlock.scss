@@ -1,0 +1,78 @@
+.beyond_laser_moments_block {
+	position: relative;
+	z-index: 101;
+	display: inline-block;
+	height: auto;
+	padding: 20vh 15%;
+	align-items: center;
+	background-color: #020202;
+	color: transparent;
+	text-align: center;
+	background-attachment: scroll !important;
+	.text {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-size: 4.4vw;
+			line-height: 5vw;
+			font-weight: 300;
+			text-align: center;
+			font-family: Gilroy, sans-serif;
+			color: #f0f0f0;
+		}
+		p {
+			display: inline-block;
+			width: auto;
+			max-width: 88%;
+			margin-top: 50px;
+			margin-bottom: 85px;
+			padding-right: 3%;
+			padding-left: 3%;
+			color: #c9c9c9;
+			font-size: 1.2vw;
+			line-height: 2.8vh;
+			font-weight: 300;
+			text-align: center;
+		}
+	}
+	.moments {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.moment {
+			margin-right: 50px;
+			max-width: 100%;
+			display: inline-block;
+			a {
+				text-decoration: none;
+			}
+			img {
+				max-width: 250px;
+				vertical-align: middle;
+				display: inline-block;
+				width: 100%;
+			}
+			figcaption {
+				margin-top: 20px;
+				font-size: 0.8em;
+				letter-spacing: 0.25em;
+				font-family: 'HISENSE AEON', sans-serif;
+				color: #f0f0f0;
+				text-transform: uppercase;
+			}
+		}
+	}
+	.laser_tv {
+		margin: 80px auto 0;
+		max-width: 940px;
+		img {
+			max-width: 100%;
+			vertical-align: middle;
+			display: inline-block;
+			width: 250px;
+		}
+	}
+}
