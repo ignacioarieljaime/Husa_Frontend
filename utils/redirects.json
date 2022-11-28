@@ -38,5 +38,65 @@
 		"redirect_url": "https://www.hisense-usa.com/",
 		"redirect_code": 301,
 		"regex": null
+	},
+	{
+		"id": 41,
+		"page_id": 0,
+		"source_url": "/home-page-v3/",
+		"page_route": null,
+		"redirect_type": "To",
+		"redirect_url": "/home-appliance/refrigerators/all-refrigerators",
+		"redirect_code": 301,
+		"regex": null
+	},
+	{
+		"id": 42,
+		"page_id": 0,
+		"source_url": "/ces-2022/home-appliances",
+		"page_route": null,
+		"redirect_type": "To",
+		"redirect_url": "/home-appliance",
+		"redirect_code": 301,
+		"regex": null
+	},
+	{
+		"id": 43,
+		"page_id": 0,
+		"source_url": "/products",
+		"page_route": null,
+		"redirect_type": "To",
+		"redirect_url": "https://hisense-usa.com/",
+		"redirect_code": 301,
+		"regex": null
+	},
+	{
+		"id": 44,
+		"page_id": 0,
+		"source_url": "/televisions",
+		"page_route": null,
+		"redirect_type": "To",
+		"redirect_url": "https://www.hisense-usa.com/",
+		"redirect_code": 301,
+		"regex": null
+	},
+	{
+		"id": 45,
+		"page_id": 0,
+		"source_url": "/air-products",
+		"page_route": null,
+		"redirect_type": "To",
+		"redirect_url": "/home-appliance/dishwashers",
+		"redirect_code": 301,
+		"regex": null
+	},
+	{
+		"id": 46,
+		"page_id": 0,
+		"source_url": "/testredirect",
+		"page_route": null,
+		"redirect_type": "To",
+		"redirect_url": "/more-tv",
+		"redirect_code": 301,
+		"regex": null
 	}
 ]

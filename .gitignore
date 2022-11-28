@@ -36,6 +36,8 @@ yarn-error.log*
 .env
 
 /utils/urlData.json
+/utils/redirects.json
+
 
 # vercel
 .vercel
