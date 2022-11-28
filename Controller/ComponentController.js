@@ -21,10 +21,11 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 	let uniqueImport = [...new Set(_content)]
 	return `
 	import { useEffect,useState } from 'react';
-  import dynamic from 'next/dynamic';
+  	import dynamic from 'next/dynamic';
 	import axios from 'axios'
 	import Layout from "components/common/Layout/Layout";
 	import { useRouter } from 'next/router'
+	import MainData from "utils/urlData.json"
 
 	${uniqueImport
 		.map(
@@ -33,7 +34,8 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 		)
 		.join(';')}
 
-	function Index${_page.id}({pim,data}) {
+	function Index${_page.id}({pim}) {
+		const data = MainData.find(item => item.id === ${_page.id})
 		const router = useRouter()
 
 		${
@@ -52,11 +54,11 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 							.map(
 								(item, index) =>
 									item &&
-									`{data && data.length > 0 && data[${index}].structure ? <${
+									`{data && data.widgets.length > 0 && data.widgets[${index}].structure ? <${
 										item.name
 									} ${
 										_page.model_type ? `pim={pim}` : ''
-									} data={data[${index}]}/>  : null }`
+									} data={data.widgets[${index}]}/>  : null }`
 							)
 							.join(' ')}
 				</section>
@@ -65,22 +67,8 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 	  }
 
 	${
-		_condition === 'pages'
-			? _page.model_type
-				? `  export async function getServerSideProps(context) {
-			console.log('send cxm request')
-			let data = await axios
-				.get(
-					'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
-				)
-				.then(response => {
-					console.log('get cxm data')
-					return response.data.widgets
-				})
-				.catch(error => {
-					console.error('Error:', error)
-					return null
-				})			
+		_condition === 'pages' && _page.model_type
+			? `  export async function getServerSideProps(context) {			
 				console.log('send pim request')
 				 let pim = await axios
 						.get(
@@ -94,40 +82,8 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 							console.error('Error:', error)
 							return null
 						})
-	
-		
-			return { props: { data , pim }} }`
-				: `  export async function getServerSideProps(context) {
-			console.log('send ssr request')
-			let data = await axios
-				.get(
-					'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
-				)
-				.then(response => {
-					console.log('get ssr data')
-					return response.data.widgets
-				})
-				.catch(error => {
-					console.error('Error:', error)
-					return null
-				})			
-
-			return { props: { data }} }`
-			: `  export async function getServerSideProps(context) {
-				console.log('send cxm request')
-				let data = await axios
-					.get('${process.env.CXM_API_ROUTE}/getPostInfo/${_page.id}')
-					.then(response => {
-						console.log('get cxm blog data')
-						return response.data.widgets
-					})
-					.catch(error => {
-						console.error('Error:', error)
-						return null
-					})			
-					
-			
-				return { props: { data }} }`
+			return { props: { pim }} }`
+			: ''
 	}
 	
 
