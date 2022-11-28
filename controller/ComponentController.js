@@ -59,7 +59,7 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 									item &&
 									`{data && data.widgets.length > 0 && data.widgets[${index}].structure ? <${
 										item.name
-									} ${
+									} ${_page.widgets[index].name === "Header" ? `notification={data.notifications}` :""} ${
 										_page.model_type ? `pim={pim}` : ''
 									} data={data.widgets[${index}]}/>  : null }`
 							)

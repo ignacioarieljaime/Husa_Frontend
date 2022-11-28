@@ -12,15 +12,14 @@ import axios from 'axios'
 import NavBarDropDown from './NavBarDropDown'
 import Link from 'next/link'
 import HeaderSearchBox from './HeaderSearchBox'
-import DismissIcon from '../../icons/DismissIcon'
+import HeaderNotification from './HeaderNotification'
 
-function Header({ data: { structure } }) {
+function Header({ data: { structure }, notification }) {
 	// const { headerData } = useSelector(state => state.layoutData)
 	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
-	const [notificationDismiss, serNotificationDismiss] = useState(true)
 	useEffect(() => {
 		sessionStorage.getItem('headerData')
 			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
@@ -110,26 +109,6 @@ function Header({ data: { structure } }) {
 					theme={structure.theme.value}
 					searchInputCondition={searchInputCondition}
 				/>
-				{structure?.notification?.value?.link?.value && (
-					<>
-						{notificationDismiss && (
-							<div className='container-fluid home-top-advertisement'>
-								<button onClick={() => serNotificationDismiss(false)}>
-									<span className={'me-3'}>Dismiss</span>
-									<DismissIcon />
-								</button>
-								<Link
-									href={
-										structure?.notification?.value?.link?.value
-											? structure?.notification?.value?.link?.value
-											: '/'
-									}>
-									<a>{structure?.notification?.value?.title?.value}</a>
-								</Link>
-							</div>
-						)}
-					</>
-				)}
 
 				{/* <SubMenuHeader /> */}
 			</nav>
@@ -144,6 +123,13 @@ function Header({ data: { structure } }) {
 						}>
 						<a>{structure?.notification?.value?.title?.value}</a>
 					</Link>
+				</div>
+			)}
+			{notification && (
+				<div className={'position-fixed w-100'}>
+					{notification.map(item => (
+						<HeaderNotification data={item} />
+					))}
 				</div>
 			)}
 
