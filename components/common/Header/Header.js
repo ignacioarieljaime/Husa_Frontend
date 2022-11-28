@@ -59,8 +59,8 @@ function Header({ data: { structure } }) {
 				className={`navbar navbar-expand justify-content-center  
 					theme-${structure.theme.value}
 				 top-nav py-3 px-sm-4 fixed-top flex-wrap ${
-					!topNavCondition && 'search-mode'
-				} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
+						!topNavCondition && 'search-mode'
+					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<Link href='/'>
@@ -110,29 +110,38 @@ function Header({ data: { structure } }) {
 					theme={structure.theme.value}
 					searchInputCondition={searchInputCondition}
 				/>
-				{
-					structure?.notification?.value?.link?.value && <>{notificationDismiss &&
-						<div className='container-fluid home-top-advertisement'>
-							<button onClick={() => serNotificationDismiss(false)}>
-					<span className={'me-3'}>
-					Dismiss
-					</span>
-								<DismissIcon />
-							</button>
-							<Link href={structure?.notification?.value?.link?.value}>
-								<a>
-									{structure?.notification?.value?.title?.value}
-								</a>
-							</Link>
-						</div>}</>
-				}
+				{structure?.notification?.value?.link?.value && (
+					<>
+						{notificationDismiss && (
+							<div className='container-fluid home-top-advertisement'>
+								<button onClick={() => serNotificationDismiss(false)}>
+									<span className={'me-3'}>Dismiss</span>
+									<DismissIcon />
+								</button>
+								<Link
+									href={
+										structure?.notification?.value?.link?.value
+											? structure?.notification?.value?.link?.value
+											: '/'
+									}>
+									<a>{structure?.notification?.value?.title?.value}</a>
+								</Link>
+							</div>
+						)}
+					</>
+				)}
 
 				{/* <SubMenuHeader /> */}
 			</nav>
 
 			{structure?.notification?.value?.title?.value && (
 				<div className='container-fluid home-top-advertisement'>
-					<Link href={structure?.notification?.value?.link?.value}>
+					<Link
+						href={
+							structure?.notification?.value?.link?.value
+								? structure?.notification?.value?.link?.value
+								: '/'
+						}>
 						<a>{structure?.notification?.value?.title?.value}</a>
 					</Link>
 				</div>
