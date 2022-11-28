@@ -126,7 +126,7 @@ function Header({ data: { structure }, notification }) {
 				</div>
 			)}
 			{notification && (
-				<div className={'position-fixed w-100'}>
+				<div className={'position-fixed w-100'} style={{ zIndex: 999999999 }}>
 					{notification.map(item => (
 						<HeaderNotification data={item} />
 					))}
