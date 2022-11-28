@@ -32,4 +32,13 @@ fs.readdir(path.resolve(__dirname, '../utils'), (err, files) => {
 			}
 		}
 	)
+	fs.rm(
+		path.resolve(__dirname, '../utils/redirects.json'),
+		{ recursive: true, force: true },
+		err => {
+			if (err) {
+				return console.log('url files removed', err)
+			}
+		}
+	)
 })
