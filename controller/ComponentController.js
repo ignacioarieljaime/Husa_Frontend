@@ -26,6 +26,8 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 	import Layout from "components/common/Layout/Layout";
 	import { useRouter } from 'next/router'
 	import MainData from "utils/urlData.json"
+	import RedirectsData from 'utils/redirects.json'
+
 
 	${uniqueImport
 		.map(
@@ -38,13 +40,14 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 		const data = MainData.find(item => item.id === ${_page.id})
 		const router = useRouter()
 
-		${
-			_page?.redirect
-				? `useEffect(() => {
-			router.push('${_page.redirect}')
-		}, [])`
-				: ''
-		}
+		useEffect(() => {
+			let redirect = RedirectsData.find(item => item.source_url === data.route)
+			if (redirect?.source_url && redirect?.redirect_url) {
+				router.push(redirect.redirect_url)
+			}
+		}, [])
+
+
     return (
 			<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
