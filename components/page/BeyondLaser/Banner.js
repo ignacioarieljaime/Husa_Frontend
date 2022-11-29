@@ -4,20 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 
 const Banner = ({ data: { structure } }) => {
-	structure = {
-		video: {
-			value:
-				'https://www.hisense-usa.com/beyondlaser/videos/laserbgv-transcode.mp4'
-		},
-		tinyTitle: {
-			value: 'HISENSE L5F LASER TV'
-		},
-		title: {
-			value: 'Beyond Laser'
-		},
-		link: { value: '/' }
-	}
-
 	return (
 		<section>
 			<div className='beyond_laser_banner'>

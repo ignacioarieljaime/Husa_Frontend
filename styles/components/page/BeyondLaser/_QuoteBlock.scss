@@ -39,44 +39,91 @@
 				z-index: -100;
 			}
 		}
-	}
-	.content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: start;
-		height: 700px;
-		padding: 0% 7%;
-		.text * {
-			font-family: Gilroy, sans-serif;
-			border-style: none;
-			border-width: 1px 1px 2px;
-			border-color: #edeff2;
-			font-size: 2vw;
-			line-height: 3vw;
-			text-align: left;
-			color: #f0f0f0;
-			font-style: normal;
-			font-weight: 300;
-		}
-		.quote {
-			div:first-child {
-				margin-top: 50px;
-				font-size: 1em;
+		.content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: start;
+			height: 700px;
+			padding: 0% 7%;
+			.text * {
+				font-family: Gilroy, sans-serif;
+				border-style: none;
+				border-width: 1px 1px 2px;
+				border-color: #edeff2;
+				font-size: 2vw;
+				line-height: 3vw;
 				text-align: left;
-				letter-spacing: 0.25em;
-				text-decoration: none;
-				font-family: 'HISENSE AEON', sans-serif;
+				color: #f0f0f0;
+				font-style: normal;
+				font-weight: 300;
 			}
-			div:last-child {
-				margin-top: 5px;
-				margin-bottom: 0px;
-				color: #edeff2;
-				font-size: 0.8em;
-				text-align: left;
-				letter-spacing: 0.25em;
-				text-decoration: none;
-				font-family: 'HISENSE AEON', sans-serif;
+			.quote {
+				p:first-child {
+					margin-top: 50px;
+					font-size: 1em;
+					text-align: left;
+					letter-spacing: 0.25em;
+					text-decoration: none;
+					font-family: 'HISENSE AEON', sans-serif;
+				}
+				p:last-child {
+					margin-top: 5px;
+					margin-bottom: 0px;
+					color: #edeff2;
+					font-size: 0.8em;
+					text-align: left;
+					letter-spacing: 0.25em;
+					text-decoration: none;
+					font-family: 'HISENSE AEON', sans-serif;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.beyond_laser_quote_block {
+		.box {
+			.content {
+				.text * {
+					font-size: 2vh;
+					line-height: 1.4em;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.beyond_laser_quote_block {
+		.box {
+			.content {
+				padding-right: 12%;
+				padding-left: 12%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 479px) {
+	.beyond_laser_quote_block {
+		.box {
+			.video_container {
+				width: 100%;
+			}
+			.content {
+				.text * {
+					font-size: 3.5vh;
+				}
+				.quote {
+					p:first-child {
+						font-size: 4vw;
+					}
+					p:last-child {
+						font-size: 4vw;
+					}
+				}
 			}
 		}
 	}

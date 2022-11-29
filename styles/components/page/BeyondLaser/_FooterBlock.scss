@@ -1,0 +1,79 @@
+.beyond_laser_footer_block {
+	display: flex;
+	padding: 85px 112px 60px;
+	justify-content: center;
+	align-items: center;
+	background-color: #020202;
+	background-image: none;
+	background-position: 0px 0px;
+	background-size: auto;
+	color: #404047;
+	text-align: center;
+	flex-direction: column;
+	img {
+		max-width: 100%;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.title {
+		margin-top: 18px;
+		margin-bottom: 10px;
+		* {
+			letter-spacing: 2px;
+			line-height: 44px;
+			font-weight: 700;
+			color: #fff;
+			font-size: 24px;
+		}
+	}
+	.social_media {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		li {
+			margin-top: 0px;
+			padding: 10px;
+			max-width: 100%;
+			a {
+				display: block;
+				transform: scale(1);
+				transition: all 0.5s ease;
+				img {
+					width: 39px;
+				}
+				&:hover {
+					transform: scale(1.08);
+				}
+			}
+		}
+	}
+	.copy_right {
+		margin-top: 30px;
+		* {
+			color: #fff;
+			text-transform: none;
+			font-family: Gilroy, sans-serif;
+			font-size: 12px;
+			font-weight: 300;
+			margin: 0;
+		}
+	}
+}
+
+@media screen and (max-width: 479px) {
+	.beyond_laser_footer_block {
+		padding-right: 20px;
+		padding-left: 20px;
+		.title {
+			margin-top: 34px;
+			margin-bottom: 24px;
+			* {
+				font-size: 4.5vw;
+				line-height: 5.4px;
+			}
+		}
+	}
+}

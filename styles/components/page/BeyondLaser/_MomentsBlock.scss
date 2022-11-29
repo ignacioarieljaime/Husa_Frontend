@@ -42,6 +42,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-wrap: wrap;
 		.moment {
 			margin-right: 50px;
 			max-width: 100%;
@@ -73,6 +74,84 @@
 			vertical-align: middle;
 			display: inline-block;
 			width: 250px;
+		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.beyond_laser_moments_block {
+		padding-bottom: 10vh;
+		.text {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-size: 7vw;
+				line-height: 8vw;
+			}
+			p {
+				font-size: 2.8vw;
+			}
+		}
+		.moments {
+			.moment {
+				margin-right: 10px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.beyond_laser_moments_block {
+		padding-top: 8vh;
+		padding-right: 5%;
+		padding-left: 5%;
+		.text {
+			p {
+				padding-right: 0%;
+				padding-left: 0%;
+			}
+		}
+		.moments {
+			.moment {
+				margin-right: 5px;
+			}
+		}
+		.laser_tv {
+			margin: 80px auto 0;
+			max-width: 728px;
+		}
+	}
+}
+
+@media screen and (max-width: 479px) {
+	.beyond_laser_moments_block {
+		padding-right: 1%;
+		padding-left: 1%;
+		.text {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				font-size: 9vw;
+				line-height: 10vw;
+			}
+			p {
+				margin-top: 35px;
+				margin-bottom: 65px;
+				font-size: 4.6vw;
+				line-height: 3.5vh;
+			}
+		}
+		.moments {
+			.moment {
+				margin-right: 0px;
+				margin-top: 45px;
+			}
 		}
 	}
 }

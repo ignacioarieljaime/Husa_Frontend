@@ -2,25 +2,6 @@ import Link from 'next/link'
 import React from 'react'
 
 const Header = ({ data: { structure } }) => {
-	structure = {
-		leftLogo: {
-			src: 'https://www.hisense-usa.com/beyondlaser/images/Hisense_White.svg',
-			alt: ''
-		},
-		middleLogo: {
-			src: '	https://www.hisense-usa.com/beyondlaser/images/LaserTV_White.svg',
-			alt: ''
-		},
-		leftLogoLink: {
-			value: '/',
-			title: ''
-		},
-		link: {
-			value: '/',
-			title: 'learn more'
-		}
-	}
-
 	return (
 		<section>
 			<div className='beyond_laser_header'>

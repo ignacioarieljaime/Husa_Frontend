@@ -62,3 +62,45 @@
 		}
 	}
 }
+	
+@media screen and (max-width: 768px) {
+	.beyond_laser_header {
+		height: 4vh;
+		padding-right: 2%;
+		padding-left: 2%;
+		.content {
+			.header_item {
+				&:nth-child(2){
+					display: none;
+				}
+				width: 50%;
+				left: auto;
+				right: auto;
+				.header_link {
+					display: none;
+					padding-right: 4vw;
+					padding-left: 4vw;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 479px) {
+	.beyond_laser_header {
+		height: 16vw;
+		.content {
+			margin-left: 0;
+			margin-right: 0;
+			.header_item {
+				.header_link {
+					display: block;
+					padding-top: 2.5vw;
+					padding-bottom: 2.2vw;
+					padding-left: 5vw;
+					font-size: 3.5vw;
+				}
+			}
+		}
+	}
+}

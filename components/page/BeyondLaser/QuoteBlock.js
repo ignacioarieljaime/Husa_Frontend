@@ -4,7 +4,7 @@ const QuoteBlock = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_quote_block'>
-				<div className='row box'>
+				<div className='row box mx-0'>
 					<div className='video_container col-12 col-md-6'>
 						<video muted={true} playsInline={true} autoPlay={true} loop={true}>
 							<source src={structure?.video?.value} />

@@ -22,5 +22,17 @@ module.exports.BeyondLaserComponents = [
 	{
 		name: 'QuoteBlock',
 		path: 'components/page/BeyondLaser/QuoteBlock'
+	},
+	{
+		name: 'IframeBlock',
+		path: 'components/page/BeyondLaser/IframeBlock'
+	},
+	{
+		name: 'FooterBlock',
+		path: 'components/page/BeyondLaser/FooterBlock'
+	},
+	{
+		name: 'FlipDevice',
+		path: 'components/page/BeyondLaser/FlipDevice'
 	}
 ]

@@ -17,3 +17,17 @@
 		}
 	}
 }
+
+@media screen and (max-width: 991px) {
+	.beyond_laser_image_block {
+		height: 40vh;
+		background-size: cover, cover;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.beyond_laser_image_block {
+		height: 20vh;
+		padding-bottom: 10vh;
+	}
+}
