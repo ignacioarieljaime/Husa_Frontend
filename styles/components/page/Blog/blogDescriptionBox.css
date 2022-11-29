@@ -1,0 +1,13 @@
+.big-title * {
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 62px;
+  color: #101010;
+}
+
+@media (max-width: 768px) {
+  .big-title * {
+    font-size: 28px;
+    line-height: 38px;
+  }
+}/*# sourceMappingURL=blogDescriptionBox.css.map */

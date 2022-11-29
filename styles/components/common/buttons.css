@@ -1,0 +1,141 @@
+.n-btn {
+  text-decoration: none;
+  border-radius: 1000px;
+  border: 1px solid #000;
+  transition: all 0.3s ease-in;
+  padding: 8px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+.n-btn.outline-black {
+  border-color: #000;
+  color: #000;
+  background-color: #fff;
+}
+.n-btn.outline-black:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+}
+.n-btn.outline-white {
+  border-color: #fff;
+  color: #fff;
+  background-color: #000;
+}
+.n-btn.outline-white:hover {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+.n-btn.outline-primary {
+  border-color: #00a29c;
+  color: #00a29c;
+  background-color: #fff;
+}
+.n-btn.outline-primary:hover {
+  color: #fff !important;
+  background-color: #00a29c !important;
+}
+.n-btn.white {
+  border-color: #fff;
+  color: #000 !important;
+  background-color: #fff !important;
+  transform: scale(1);
+}
+.n-btn.white:hover {
+  transform: scale(1.05);
+}
+.n-btn.primary {
+  border-color: #00a29c;
+  color: #fff !important;
+  background-color: #00a29c !important;
+  transform: scale(1);
+}
+.n-btn.primary:hover {
+  transform: scale(1.05);
+}
+.n-btn.primary-text {
+  color: #00a29c !important;
+  background-color: transparent !important;
+  font-weight: 400;
+  font-size: 16px;
+  border: none !important;
+  padding: 5px !important;
+}
+.n-btn.primary-text:hover {
+  color: #221f20 !important;
+}
+.n-btn.black-text {
+  color: #221f20 !important;
+  background-color: transparent !important;
+  font-weight: 400;
+  font-size: 16px;
+  border: none !important;
+  padding: 5px !important;
+}
+.n-btn.white-text {
+  color: #fff !important;
+  background-color: transparent !important;
+  font-weight: 400;
+  font-size: 16px;
+  border: none !important;
+  padding: 5px !important;
+}
+.n-btn.grey-text {
+  color: #a6a8ac !important;
+  background-color: transparent !important;
+  font-weight: 400;
+  font-size: 16px;
+  border: none !important;
+  padding: 5px;
+}
+.n-btn.grey-text:hover {
+  color: #221f20 !important;
+}
+.n-btn.rounded {
+  border-radius: 50% !important;
+  width: 80px;
+  height: 80px;
+}
+.n-btn.transparent {
+  background-color: transparent !important;
+}
+.n-btn.simple:hover {
+  transform: scale(1) !important;
+}
+
+.tv-and-audio-tv-shop-button {
+  background: #00cccc;
+  border: none;
+  color: #fff;
+  opacity: 0.87;
+  transition: opacity 0.3s ease-out;
+}
+.tv-and-audio-tv-shop-button:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .n-btn.rounded {
+    width: 50px;
+    height: 50px;
+  }
+}
+.pdp_where_to_buy_btn {
+  border: none;
+  background: #00AAA6;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all ease 0.3s;
+}
+.pdp_where_to_buy_btn:hover {
+  background: #239d98 !important;
+}
+
+button[disabled] {
+  border: 1px solid transparent !important;
+  background: #ebecf0 !important;
+}
+button[disabled]:hover {
+  background: #ebecf0 !important;
+  color: #b3bac5 !important;
+}/*# sourceMappingURL=buttons.css.map */

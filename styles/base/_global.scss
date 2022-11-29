@@ -112,14 +112,14 @@ input {
 		h1,
 		h2,
 		h3 {
-			font-size: 67.5px;
-			line-height: 75px;
+			font-size: 67.5px !important;
+			line-height: 75px !important;
 		}
 		a,
 		p,
 		li {
 			font-size: 22.5px !important;
-			line-height: 37.5px;
+			line-height: 37.5px  !important;
 		}
 	}
 	.article {
@@ -127,20 +127,20 @@ input {
 		h2,
 		h3 {
 			font-size: 52.5px !important;
-			line-height: 60px;
+			line-height: 60px !important;
 		}
 
 		a,
 		p,
 		li {
 			font-size: 22.5px !important;
-			line-height: 37.5px;
+			line-height: 37.5px !important;
 		}
 
 		h2 ~ h3,
 		h1 ~ h3 {
 			font-size: 41.25px !important;
-			line-height: 52px;
+			line-height: 52px !important;
 		}
 	}
 }

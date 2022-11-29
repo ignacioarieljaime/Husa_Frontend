@@ -1,0 +1,51 @@
+.blog-big-coverflow.swiper {
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  position: relative;
+  margin: 0 auto;
+  overflow: initial !important;
+}
+.blog-big-coverflow.swiper img {
+  width: 100%;
+  height: 100%;
+}
+.blog-big-coverflow.swiper .swiper-slide {
+  text-align: center;
+}
+.blog-big-coverflow > .swiper-wrapper {
+  padding-top: 60px;
+  cursor: url(./../../../../public/assets/images/blog/cursor-drag-dark.png) 64 43, -webkit-grab !important;
+  cursor: url(./../../../../public/assets/images/blog/cursor-drag-dark.png) 64 43, grab !important;
+}
+.blog-big-coverflow > .swiper-pagination-bullets {
+  top: 0;
+  right: 0;
+  text-align: end;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.blog-big-coverflow > .swiper-pagination-bullets .swiper-pagination-bullet {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-weight: 400;
+  font-size: 22px;
+  color: #818181;
+  background: transparent;
+  margin: 0 10px !important;
+}
+.blog-big-coverflow > .swiper-pagination-bullets .swiper-pagination-bullet-active {
+  color: #101010;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .blog-big-coverflow .swiper-pagination-bullets {
+    text-align: center;
+  }
+}/*# sourceMappingURL=blogCubeSlider.css.map */

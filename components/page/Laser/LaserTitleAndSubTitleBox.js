@@ -8,7 +8,7 @@ function LaserTitleAndSubtitleBox({ data: { structure } }) {
 					structure?.theme?.value === 'dark' ? 'black-banner' : ''
 				}`}>
 				<div className={`tiny-banner p-md-4`}>
-					<div className='container px-6 px-md-8 py-17'>
+					<div className='container px-6 px-md-8 py-20'>
 						<article className='article text-center'>
 							<h4
 								className={`${

@@ -87,9 +87,11 @@ function ProductSupportRegister({ pim, data }) {
 	return (
 		<section id={data.name + data.id} className='border-bottom border-dark'>
 			<div className='container py-20'>
-				<h3 className='mb-4 fs-2'>{structure?.title?.value}</h3>
-				<p className='fs-8 fw-normal mb-15'>{structure?.subtitle?.value}</p>
 				<div className='form-container mx-auto'>
+					<h3 className='text-center title mb-4'>{structure?.title?.value}</h3>
+					<p className='text-center fs-5 fw-normal mb-15'>
+						{structure?.subtitle?.value}
+					</p>
 					<form
 						onSubmit={submitData}
 						action=''
@@ -215,7 +217,7 @@ function ProductSupportRegister({ pim, data }) {
 							<button
 								type='submit'
 								disabled={loading}
-								className='btn d-flex mx-auto btn-outline-dark px-5 py-2 rounded-5'>
+								className='n-btn outline-black transparent py-4 px-9'>
 								<span className='me-2'>REGISTER</span>
 								{loading && <Spinner size={25} />}
 							</button>

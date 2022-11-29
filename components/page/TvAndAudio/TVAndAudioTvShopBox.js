@@ -17,7 +17,7 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 						{structure?.link?.title && (
 							<div>
 								<Link href={structure?.link?.value}>
-									<a className='btn-primary text-decoration-none text-uppercase px-8 text-white border-0 rounded-5'>
+									<a className='n-btn outline-white transparent text-uppercase py-4 px-9'>
 										{structure?.link?.title}
 									</a>
 								</Link>

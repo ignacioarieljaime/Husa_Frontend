@@ -741,6 +741,11 @@
 .form-container {
 	position: relative;
 	max-width: 900px;
+	.title {
+		font-size: 48px;
+		line-height: 120%;
+		letter-spacing: -0.02em;
+	}
 }
 
 .form-container .tab-btn {
@@ -959,6 +964,14 @@
 	.form-container .tab-btn {
 		font-size: 14px;
 		white-space: normal;
+	}
+}
+
+@media (max-width: 768px) {
+	.form-container {
+		.title {
+			font-size: 34px;
+		}
 	}
 }
 
@@ -2246,4 +2259,11 @@ header {
 			font-size: 48px !important;
 		}
 	}
+}
+
+.commercial_intro_title {
+	font-weight: 400;
+	font-size: 34px !important;
+	line-height: 120% !important;
+	letter-spacing: -0.02em;
 }
