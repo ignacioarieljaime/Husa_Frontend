@@ -5,7 +5,9 @@ const next = require('next')
 const notifier = require('node-notifier')
 const path = require('path')
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const hostname = 'https'
+const port = 3000
+const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
