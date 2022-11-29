@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const FooterBlock = ({ data: { structure } }) => {
+const BeyondLaserFooterBlock = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_footer_block'>
@@ -40,4 +40,4 @@ const FooterBlock = ({ data: { structure } }) => {
 	)
 }
 
-export default FooterBlock
+export default BeyondLaserFooterBlock

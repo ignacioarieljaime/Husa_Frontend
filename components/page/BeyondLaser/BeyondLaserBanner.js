@@ -3,7 +3,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 
-const Banner = ({ data: { structure } }) => {
+const BeyondLaserBanner = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_banner'>
@@ -34,4 +34,4 @@ const Banner = ({ data: { structure } }) => {
 	)
 }
 
-export default Banner
+export default BeyondLaserBanner

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const MomentsBlock = ({ data: { structure } }) => {
+const BeyondLaserMomentsBlock = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_moments_block'>
@@ -28,4 +28,4 @@ const MomentsBlock = ({ data: { structure } }) => {
 	)
 }
 
-export default MomentsBlock
+export default BeyondLaserMomentsBlock

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TextBlock = ({ data: { structure } }) => {
+const BeyondLaserTextBlock = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_text_block'>
@@ -12,4 +12,4 @@ const TextBlock = ({ data: { structure } }) => {
 	)
 }
 
-export default TextBlock
+export default BeyondLaserTextBlock

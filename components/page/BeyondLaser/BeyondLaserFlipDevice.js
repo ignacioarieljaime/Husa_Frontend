@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 
-const FlipDevice = ({ data: { structure } }) => {
+const BeyondLaserFlipDevice = ({ data: { structure } }) => {
 	return (
 		<div className='beyond_laser_flip_device'>
 			<div className='flip_device_container'>
@@ -22,4 +22,4 @@ const FlipDevice = ({ data: { structure } }) => {
 	)
 }
 
-export default FlipDevice
+export default BeyondLaserFlipDevice

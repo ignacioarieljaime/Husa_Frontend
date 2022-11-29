@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ImageBlock = ({ data: { structure } }) => {
+const BeyondLaserImageBlock = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div
@@ -14,4 +14,4 @@ const ImageBlock = ({ data: { structure } }) => {
 	)
 }
 
-export default ImageBlock
+export default BeyondLaserImageBlock

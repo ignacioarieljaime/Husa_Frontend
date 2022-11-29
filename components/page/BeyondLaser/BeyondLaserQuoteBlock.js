@@ -1,6 +1,6 @@
 import React from 'react'
 
-const QuoteBlock = ({ data: { structure } }) => {
+const BeyondLaserQuoteBlock = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_quote_block'>
@@ -28,4 +28,4 @@ const QuoteBlock = ({ data: { structure } }) => {
 	)
 }
 
-export default QuoteBlock
+export default BeyondLaserQuoteBlock

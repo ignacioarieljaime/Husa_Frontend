@@ -1,6 +1,6 @@
 import React from 'react'
 
-const IframeBlock = ({ data: { structure } }) => {
+const BeyondLaserIframeBlock = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_iframe_block'>
@@ -17,4 +17,4 @@ const IframeBlock = ({ data: { structure } }) => {
 	)
 }
 
-export default IframeBlock
+export default BeyondLaserIframeBlock

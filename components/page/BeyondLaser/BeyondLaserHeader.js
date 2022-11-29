@@ -1,18 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
 
-const Header = ({ data: { structure } }) => {
+const BeyondLaserHeader = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='beyond_laser_header'>
 				<div className='content'>
 					<div className='header_item justify-content-start'>
-						<Link href={structure?.leftLogoLink?.value}>
+						<Link href={structure?.leftImageLink?.value}>
 							<a>
 								<img
 									className='left_logo'
-									src={structure?.leftLogo?.src}
-									alt={structure?.leftLogo?.alt}
+									src={structure?.leftImage?.src}
+									alt={structure?.leftImage?.alt}
 									style={{ maxWidth: '150px' }}
 								/>
 							</a>
@@ -21,8 +21,8 @@ const Header = ({ data: { structure } }) => {
 					<div className='header_item'>
 						<img
 							className='middle_logo'
-							src={structure?.middleLogo?.src}
-							alt={structure?.middleLogo?.alt}
+							src={structure?.middleImage?.src}
+							alt={structure?.middleImage?.alt}
 							style={{ maxWidth: '175px' }}
 						/>
 					</div>
@@ -39,4 +39,4 @@ const Header = ({ data: { structure } }) => {
 	)
 }
 
-export default Header
+export default BeyondLaserHeader
