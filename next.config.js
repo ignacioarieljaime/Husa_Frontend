@@ -9,8 +9,7 @@ const moduleExports = {
 			'https://imcxm.stage-api.hisenseportal.com/api/husa'
 	},
 	sentry: {
-		hideSourceMaps: true,
-		transpileClientSDK: true
+		hideSourceMaps: true
 	},
 	images: {
 		domains: ['assets.hisenseportal.com', 'assets.hisense-usa.com']
