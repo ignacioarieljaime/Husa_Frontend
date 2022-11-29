@@ -19,16 +19,16 @@ const requestHandler = (async () => {
 	}
 })()
 
-const BlogRequestHandler = (async () => {
-	console.log('send blog request')
-	try {
-		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPosts`)
-		controlPagesAndGenerate(response.data.data, 'blog')
-		console.log('get blog')
-	} catch (error) {
-		console.log(error)
-	}
-})()
+// const BlogRequestHandler = (async () => {
+// 	console.log('send blog request')
+// 	try {
+// 		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPosts`)
+// 		controlPagesAndGenerate(response.data.data, 'blog')
+// 		console.log('get blog')
+// 	} catch (error) {
+// 		console.log(error)
+// 	}
+// })()
 
 const controlPagesAndGenerate = (_pages, _condition) => {
 	UrlController(_pages)
