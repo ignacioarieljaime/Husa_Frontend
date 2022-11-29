@@ -42,3 +42,16 @@ fs.readdir(path.resolve(__dirname, '../utils'), (err, files) => {
 		}
 	)
 })
+
+fs.readdir(path.resolve(__dirname, '../'), (err, files) => {
+	if (err) throw err
+	fs.rm(
+		path.resolve(__dirname, '../middleware.js'),
+		{ recursive: true, force: true },
+		err => {
+			if (err) {
+				return console.log('middleware removed', err)
+			}
+		}
+	)
+})

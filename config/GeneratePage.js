@@ -1,7 +1,6 @@
 require('dotenv').config()
 const Axios = require('axios').default
 const PageController = require('../controller/PageController')
-const RedirectsController = require('../controller/RedirectController.js')
 const {
 	FindComponent,
 	GenerateComponentStructure
@@ -16,16 +15,6 @@ const requestHandler = (async () => {
 		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`)
 		console.log('get pages')
 		controlPagesAndGenerate(response.data.data, 'pages')
-	} catch (error) {
-		console.log(error)
-	}
-})()
-
-const getRedirects = (async () => {
-	console.log('send redirect request')
-	try {
-		let response = await axios.get(`${process.env.CXM_API_ROUTE}/getRedirects`)
-		RedirectsController(response.data.data)
 	} catch (error) {
 		console.log(error)
 	}
