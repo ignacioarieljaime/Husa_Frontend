@@ -1,4 +1,5 @@
 require('dotenv').config()
+const fs = require('fs')
 const Axios = require('axios').default
 const PageController = require('../controller/PageController')
 const RedirectsController = require('../controller/RedirectController.js')
@@ -7,7 +8,6 @@ const {
 	GenerateComponentStructure
 } = require('../controller/ComponentController')
 const UrlController = require('../controller/UrlController')
-const { GenerateRedirectPage } = require('../controller/RedirectPageController')
 const { default: axios } = require('axios')
 
 const requestHandler = (async () => {
@@ -26,6 +26,7 @@ const getRedirects = (async () => {
 	try {
 		let response = await axios.get(`${process.env.CXM_API_ROUTE}/getRedirects`)
 		RedirectsController(response.data.data)
+		response.data.data.forEach(item => generateRedirectPage(item))
 	} catch (error) {
 		console.log(error)
 	}
@@ -76,3 +77,39 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 // 	let pageComponents = FindComponent(page.components)
 // 	PageController(page, GenerateComponentStructure(page, pageComponents))
 // })
+
+const generateRedirectPage = async _data => {
+	let route = _data.source_url
+	if (!fs.existsSync(route)) {
+		await fs.mkdirSync(`./pages/${route}`, { recursive: true })
+		fs.writeFile(
+			`./pages/${route}/index.js`,
+			GenerateRedirect(_data, _data.redirect_url),
+			err => {
+				if (err) {
+					console.error(err)
+				}
+			}
+		)
+	}
+}
+
+const GenerateRedirect = (_page, url) => {
+	return `
+	import { useEffect } from 'react';
+	import { useRouter } from 'next/router'
+
+
+	function Index${_page.id}({pim}) {
+		const router = useRouter()
+
+		useEffect(() => {
+			router.push("${url}")
+		}, [])
+
+
+    	return (<section></section>)
+	}
+
+	export default Index${_page.id}`
+}

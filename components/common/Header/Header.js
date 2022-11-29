@@ -112,19 +112,6 @@ function Header({ data: { structure }, notification }) {
 
 				{/* <SubMenuHeader /> */}
 			</nav>
-
-			{structure?.notification?.value?.title?.value && (
-				<div className='container-fluid home-top-advertisement'>
-					<Link
-						href={
-							structure?.notification?.value?.link?.value
-								? structure?.notification?.value?.link?.value
-								: '/'
-						}>
-						<a>{structure?.notification?.value?.title?.value}</a>
-					</Link>
-				</div>
-			)}
 			{notification && (
 				<div className={'position-fixed w-100'} style={{ zIndex: 999999999 }}>
 					{notification.map(item => (
