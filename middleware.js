@@ -16,6 +16,6 @@ export function middleware(request) {
 	}
 }
 
-export const config = {
-	matcher: redirectedUrl
-}
+// export const config = {
+// 	matcher: redirectedUrl
+// }
