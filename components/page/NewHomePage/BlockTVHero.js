@@ -35,7 +35,7 @@ const BlockTVContainer = ({ structure }) => {
 					className='title gradient-text fs-5qx fs-xxl-4tx px-4 px-md-0'
 					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 				<div className='row mx-0'>
-					<div className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
+					<div className='col-12 col-md-7 ps-0 pl-4 pl-md-0 image'>
 						<img
 							src={structure?.image?.src}
 							alt={structure?.image?.alt}
@@ -44,8 +44,8 @@ const BlockTVContainer = ({ structure }) => {
 							onLoad={() => parallaxController.update()}
 						/>
 					</div>
-					<div className='col-12 col-md-6 col-lg-5 col-xxl-4 content mt-8 mt-md-0'>
-						<div className='p-1 p-md-7'>
+					<div className='col-12 col-md-5 content mt-8 mt-md-0'>
+						<div className='p-1 p-lg-7'>
 							<div
 								className='subtitle gradient-text'
 								dangerouslySetInnerHTML={{

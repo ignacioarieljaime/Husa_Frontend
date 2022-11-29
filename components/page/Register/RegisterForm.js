@@ -130,7 +130,9 @@ function RegisterForm({ data }) {
 	return (
 		<section className={disabled && `d-none`}>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
-				<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
+				<article className='article'>
+					<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
+				</article>
 				<form
 					action=''
 					onSubmit={submitData}
@@ -285,7 +287,10 @@ function RegisterForm({ data }) {
 							disabled={loading}
 							type='submit'
 							className='form-submit-btn d-flex mx-auto align-items-center'>
-							<span className='me-2'> {structure?.subtitle?.value}</span>
+							<span className='me-2 underline-on-hover'>
+								{' '}
+								{structure?.subtitle?.value}
+							</span>
 							{loading && <Spinner size={25} />}
 						</button>
 					</div>

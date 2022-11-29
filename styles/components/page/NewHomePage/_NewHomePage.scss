@@ -27,6 +27,14 @@
 			letter-spacing: -0.02em;
 			margin-bottom: 40px;
 		}
+		.n-btn {
+			font-weight: 400;
+			font-size: 14px;
+			line-height: 20px;
+			text-align: center;
+			color: #383838 !important;
+			padding: 16px !important;
+		}
 	}
 }
 
@@ -87,6 +95,10 @@
 						letter-spacing: -0.02em;
 						color: #ffffff;
 						margin-bottom: 16px;
+					}
+					.n-btn {
+						position: relative;
+						bottom: 10px;
 					}
 					.play {
 						position: absolute;
@@ -228,7 +240,7 @@
 
 .black-parallax-box {
 	background: #221f20;
-	padding: 150px 150px 55px 0;
+	padding: 150px 10% 55px 0;
 	position: relative;
 	margin-bottom: 140px;
 	.title {
@@ -247,7 +259,6 @@
 		color: transparent;
 	}
 	.image {
-		max-width: 850px;
 		img {
 			border-radius: 0px 50px 50px 0px;
 		}
@@ -291,7 +302,7 @@
 		position: absolute;
 		bottom: -70px;
 		right: 25%;
-		background: #00a29c;
+		background: #00aaa6;
 		width: 5px;
 		height: 250px;
 	}
@@ -300,12 +311,13 @@
 .new-home-page-appliances {
 	.title {
 		font-weight: 400;
+		padding-left: 160px;
 		line-height: 120%;
 		letter-spacing: -0.02em;
 		color: #221f20;
-		padding-left: 160px;
 	}
 	.appliances-slider {
+		padding: 0 160px;
 		.swiper-wrapper {
 			align-items: stretch;
 		}
@@ -362,7 +374,7 @@
 				// max-height: 665px;
 				top: 0;
 				left: 0;
-				padding: 40px;
+				padding: 60px;
 				width: 100%;
 				height: 100%;
 				text-align: start;
@@ -395,6 +407,8 @@
 		}
 	}
 	.header {
+		max-width: 1440px;
+		margin: 0 auto;
 		font-weight: 400;
 		font-size: 60px;
 		line-height: 120%;
@@ -405,9 +419,8 @@
 }
 
 .intro-section {
-	padding: 0 150px 0 0;
+	padding: 0 0 50px !important;
 	.image {
-		max-width: 750px;
 		img {
 			position: relative;
 			top: 60px;
@@ -426,12 +439,22 @@
 		}
 	}
 	.black-parallax-box {
+		padding: 150px 12% 55px 0;
 		margin-bottom: 210px;
 		.title > * {
 			font-size: calc(1.6rem + 4.2vw) !important;
 		}
 		.line {
 			bottom: -150px;
+		}
+	}
+	.new-home-page-boxes {
+		.boxes {
+			.box {
+				.box-content {
+					padding: 30px;
+				}
+			}
 		}
 	}
 }
@@ -515,6 +538,7 @@
 			padding-left: 0;
 		}
 		.appliances-slider {
+			padding: 0;
 			.slider-item {
 				border-radius: 25px;
 				padding: 40px 16px;
@@ -542,6 +566,9 @@
 				}
 				.box-content {
 					padding: 40px 20px;
+					img {
+						max-width: 150px;
+					}
 				}
 			}
 		}
