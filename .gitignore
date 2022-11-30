@@ -38,6 +38,12 @@ yarn-error.log*
 /utils/urlData.json
 /utils/redirects.json
 
+# robots.txt
+/public/robots.txt
+/public/assets/robots.txt
+
+# middleware
+middleware.js
 
 # vercel
 .vercel
