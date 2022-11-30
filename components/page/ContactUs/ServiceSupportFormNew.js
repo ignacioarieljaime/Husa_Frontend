@@ -1,7 +1,6 @@
 import React from 'react'
 
 function ServiceSupportFormNew({ data }) {
-	console.log(data)
 	return (
 		<>
 			<div className='container'>
