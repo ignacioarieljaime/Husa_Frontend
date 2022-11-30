@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import GeneralInquiriesForm from './GeneralInquiriesForm1'
 import ServiceSupportFormNew from './ServiceSupportFormNew'
 
-function ContactUsNewForm() {
+function ContactUsNewForm({ data }) {
+	let { structure } = data
 	const [generalInquiriesForm, setGeneralInquiriesForm] = useState(true)
 	return (
 		<section className='border-bottom border-dark'>
@@ -15,7 +16,7 @@ function ContactUsNewForm() {
 									generalInquiriesForm && 'active'
 								}`}
 								onClick={() => setGeneralInquiriesForm(true)}>
-								General Inquiries
+							{structure?.form?.value?.title?.value}
 							</button>
 						</div>
 						<div className='ps-5 ps-sm-15 pb-5 border-bottom border-dark'>
@@ -24,7 +25,7 @@ function ContactUsNewForm() {
 									!generalInquiriesForm && 'active'
 								}`}
 								onClick={() => setGeneralInquiriesForm(false)}>
-								Parts & Service Support
+								{structure?.connection?.value?.title?.value}
 							</button>
 						</div>
 					</div>
@@ -32,8 +33,12 @@ function ContactUsNewForm() {
 
 				{generalInquiriesForm ? (
 					<div className='container form-container'>
-						<h2 className='fs-1 mb-18 text-center'>General Inquiries</h2>
-						<GeneralInquiriesForm btnClass={"btn btn-outline-dark fw-bold rounded-5 mb-20 py-3 px-4"} />
+						<h2 className='fs-1 mb-18 text-center'>{structure?.form?.value?.title?.value}</h2>
+						<GeneralInquiriesForm
+							btnClass={
+								'btn btn-outline-dark fw-bold rounded-5 mb-20 py-3 px-4'
+							}
+						/>
 						{/* <form
 						action=''
 						className='form-container-inner-group justify-content-center row active'
@@ -173,7 +178,7 @@ function ContactUsNewForm() {
 					</form> */}
 					</div>
 				) : (
-					<ServiceSupportFormNew />
+					<ServiceSupportFormNew data={structure?.connection?.value}/>
 				)}
 			</div>
 		</section>
