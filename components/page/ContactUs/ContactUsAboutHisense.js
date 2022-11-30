@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'public/assets/images/4k-uled/heading.jpg'
 
 function ContactUsAboutHisense({ data }) {
+	let { structure } = data
 	return (
 		<section>
 			<div class='row mx-0'>
