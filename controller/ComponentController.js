@@ -40,12 +40,12 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 		const data = MainData.find(item => item.id === ${_page.id})
 		const router = useRouter()
 
-		// useEffect(() => {
-		// 	let redirect = RedirectsData.find(item => item.source_url === data.route)
-		// 	if (redirect?.source_url && redirect?.redirect_url) {
-		// 		router.push(redirect.redirect_url)
-		// 	}
-		// }, [])
+		useEffect(() => {
+			let redirect = RedirectsData.find(item => item.source_url === data.route)
+			if (redirect?.source_url && redirect?.redirect_url) {
+				router.push(redirect.redirect_url)
+			}
+		}, [])
 
 
     return (
