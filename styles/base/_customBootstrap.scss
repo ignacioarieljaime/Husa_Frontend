@@ -607,9 +607,11 @@
 /* where-to-buy-drawer */
 
 @media (max-width: 575px) {
-	.where-to-buy-drawer {
-		width: 100%;
-		padding: 35px 0 0 0;
+	.channerl-advisor-drawer {
+		.where-to-buy-drawer {
+			width: 100%;
+			padding: 35px 0 0 0;
+		}
 	}
 }
 
@@ -2062,8 +2064,10 @@ header {
 }
 
 @media (max-width: 991px) {
-	.item {
-		width: 33.333333% !important;
+	.simple_images_list {
+		.item {
+			width: 33.333333% !important;
+		}
 	}
 }
 

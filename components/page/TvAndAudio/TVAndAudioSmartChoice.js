@@ -25,11 +25,11 @@ function TVAndAudioSmartChoice({ data: { structure } }) {
 								className='tv_and_audio_Laser_intro'
 								src={structure?.image?.src}
 								alt={structure?.image?.alt}
-								width='100%'
+								width='80%'
 							/>
 						</div>
 						<Link href={structure?.link?.value}>
-							<a className='text-decoration-underline d-block text-muted fs-5 text-uppercase mt-8'>
+							<a className='text-decoration-none text-primary-new d-block fs-8 text-uppercase mt-8'>
 								{structure?.link?.title}
 							</a>
 						</Link>
