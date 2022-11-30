@@ -4,7 +4,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: flex-start;
-		max-width: 740px;
+		max-width: 840px;
 		margin: 0 auto;
 		color: #fff;
 		.title {
@@ -100,9 +100,14 @@
 	}
 	.heading-text {
 		h3 {
-			margin-bottom: 55px;
+			font-weight: 400;
+			font-size: 96px;
+			line-height: 120%;
+			letter-spacing: -0.02em;
+			margin: 0;
 		}
 		h4 {
+			margin-top: 55px;
 			font-weight: 400;
 			font-size: 18px;
 			line-height: 30px;
@@ -168,4 +173,15 @@
 			}
 		}
 	}
+.home-appliance-image {
+	img {
+		max-height: 600px;
+	}
+
+	.heading-text {
+		h3 {
+			font-size: 42px;
+		}
+	}
+}
 }

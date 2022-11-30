@@ -180,14 +180,23 @@
 		margin-bottom: 60px;
 	}
 	.support-products-slider {
+		height: 250px;
 		.slider-item {
+			height: 100%;
 			border: 1px solid #dbddde;
 			max-width: 255px;
 			padding: 30px 50px;
+			border-radius: 25px;
 			text-align: center;
 			.slider-image {
+				position: relative;
+				top: 35%;
+				transform: translateY(-50%);
 				margin-bottom: 35px;
 				max-height: 93px;
+				width: 100%;
+				max-width: 100px;
+				margin: 0 auto;
 				object-fit: contain;
 			}
 		}

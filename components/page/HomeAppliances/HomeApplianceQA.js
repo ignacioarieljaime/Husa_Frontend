@@ -9,7 +9,7 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 					<article className='article text-center'>
 						<h2 className='text-white fs-3x mb-12'>
 							{structure?.title?.value}
-							<span className='text-primary ms-2'>
+							<span className='text-primary-new ms-2'>
 								{structure?.coloredTitle?.value}
 							</span>
 						</h2>
@@ -20,7 +20,7 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 									__html: structure?.text?.value
 								}}></p>
 							<Link href={structure?.link?.value}>
-								<a className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 my-8 d-block w-fit mx-auto'>
+								<a className='text-decoration-none text-primary-new fs-8 text-uppercase d-block w-fit mx-auto mb-8'>
 									{structure?.link?.title}
 								</a>
 							</Link>

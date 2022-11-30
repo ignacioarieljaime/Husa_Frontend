@@ -45,7 +45,7 @@
     padding: 60px 50px;
     text-align: center;
 
-    &:nth-child(n + 1) {
+    &:nth-child(n+2) {
       border-left: 1px solid #cbcbcb;
     }
 
@@ -80,7 +80,7 @@
     .home-page-mb-discovery-item {
       width: 50% !important;
 
-      &:nth-child(n + 1) {
+      &:nth-child(n + 2) {
         border-left: none;
       }
 
@@ -96,7 +96,7 @@
   .home-page-mb-discovery {
     .home-page-mb-discovery-item {
       width: 100% !important;
-      border-left: none;
+      border-left: none !important;
     }
   }
 }

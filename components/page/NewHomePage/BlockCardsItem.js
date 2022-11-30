@@ -42,7 +42,9 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 					<h3 className='mb-6 fs-2'>{title?.value}</h3>
 					{link?.title && link?.value ? (
 						<Link href={link?.value ? link?.value : '/'}>
-							<a className='n-btn outline-white transparent'>{link?.title}</a>
+							<a className='n-btn outline-white transparent d-block w-fit'>
+								{link?.title}
+							</a>
 						</Link>
 					) : null}
 				</div>

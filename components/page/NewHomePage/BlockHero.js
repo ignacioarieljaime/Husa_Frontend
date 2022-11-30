@@ -37,7 +37,7 @@ const BlockHero = ({ data: { structure } }) => {
 									{structure?.title?.value}
 								</h1>
 								<p
-									className='description fs-5 fs-md-4'
+									className='description fs-4'
 									data-aos='fade'
 									data-aos-duration='700'
 									data-aos-delay='1500'>

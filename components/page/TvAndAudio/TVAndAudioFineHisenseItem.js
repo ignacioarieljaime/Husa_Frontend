@@ -10,7 +10,7 @@ function TVAndAudioFindHisenseItem({ data: { image, title, description } }) {
 					width='100%'
 					className='img-box-shadow-hover'
 				/>
-				<div className='px-4'>
+				<div className='px-10'>
 					<h2 className=' mb-3 mt-13'>{title.value}</h2>
 					<p className='fw-normal m-auto mb-4'>{description.value}</p>
 				</div>
