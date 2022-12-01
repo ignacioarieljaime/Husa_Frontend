@@ -16,9 +16,7 @@
 	}
 	> .swiper-wrapper {
 		padding-top: 60px;
-		cursor: url(./../../../../public/assets/images/blog/cursor-drag-dark.png) 64
-				43,
-			grab !important;
+		cursor: url(../../../../public/assets/images/custom-cursor.png) 0 0 , grab !important;
 	}
 	> .swiper-pagination-bullets {
 		top: 0;

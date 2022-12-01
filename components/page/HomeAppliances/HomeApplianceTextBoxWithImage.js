@@ -19,14 +19,14 @@ const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
 							dangerouslySetInnerHTML={{
 								__html: structure?.paragraph?.value
 							}}></p>
-						{structure?.link && (
-							<Link href={structure?.link?.value}>
-								<a className='n-btn outline-white transparent'>
-									{structure?.link?.title}
-								</a>
-							</Link>
-						)}
 					</article>
+					{structure?.link && (
+						<Link href={structure?.link?.value}>
+							<a className='n-btn outline-white transparent'>
+								{structure?.link?.title}
+							</a>
+						</Link>
+					)}
 				</div>
 				<div className='col-12 col-md-4 p-0 '>
 					<img

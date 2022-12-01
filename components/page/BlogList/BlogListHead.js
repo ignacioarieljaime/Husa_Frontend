@@ -1,6 +1,28 @@
 import React from 'react'
+import {
+	useParallax,
+	useParallaxController,
+	ParallaxProvider
+} from 'react-scroll-parallax'
 
-function BlogListHead({ data: { structure } }) {
+const BlogListHead = ({ data: { structure } }) => {
+	return (
+		<ParallaxProvider>
+			<BlogListHeadContainer structure={structure} />
+		</ParallaxProvider>
+	)
+}
+function BlogListHeadContainer({ structure }) {
+	const parallaxController = useParallaxController()
+
+	const image1Ref = useParallax({
+		speed: 10,
+		translateY: ['150px', '0px']
+	})
+	const image2Ref = useParallax({
+		speed: 10,
+		translateY: ['0px', '30px']
+	})
 	return (
 		<section>
 			<div className='blog-header blog-header-list mt-10 mb-20'>
@@ -11,6 +33,8 @@ function BlogListHead({ data: { structure } }) {
 								src={structure?.image1?.src}
 								alt={structure?.image1?.alt}
 								className='tv-floating-img'
+								ref={image1Ref.ref}
+								onLoad={() => parallaxController.update()}
 							/>
 						</div>
 						<div className='col-8 col-sm-6 text-end'>
@@ -18,6 +42,8 @@ function BlogListHead({ data: { structure } }) {
 								src={structure?.image2?.src}
 								alt={structure?.image2?.alt}
 								className='sea-floating-img'
+								ref={image2Ref.ref}
+								onLoad={() => parallaxController.update()}
 							/>
 						</div>
 					</div>

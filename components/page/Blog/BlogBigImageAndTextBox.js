@@ -1,15 +1,36 @@
 import React from 'react'
+import {
+	useParallax,
+	useParallaxController,
+	ParallaxProvider
+} from 'react-scroll-parallax'
 
-function BlogBigImageAndTextBox({ data: { structure } }) {
+const BlogBigImageAndTextBox = ({ data: { structure } }) => {
+	return (
+		<ParallaxProvider>
+			<BlogBigImageAndTextBoxContainer structure={structure} />
+		</ParallaxProvider>
+	)
+}
+
+function BlogBigImageAndTextBoxContainer({ structure }) {
+	const parallaxController = useParallaxController()
+
+	const imageRef = useParallax({
+		speed: 10,
+		translateY: ['90px', '-100px']
+	})
 	return (
 		<section>
 			<div className='row mx-0'>
-				<div className='col-12 col-md-6 px-0 header-secondary'>
+				<div className='col-12 col-md-6 px-0 header-secondary overflow-hidden'>
 					<img
 						src={structure?.image?.src}
 						alt={structure?.image?.alt}
 						width='100%'
-						height='100%'
+						height='120%'
+						ref={imageRef.ref}
+						onLoad={() => parallaxController.update()}
 					/>
 				</div>
 				<div className='col-12 col-md-6 bg-light-orange-gradient px-0'>
