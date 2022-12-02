@@ -2271,3 +2271,36 @@ header {
 	line-height: 120% !important;
 	letter-spacing: -0.02em;
 }
+
+.blog_search_box {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 90%;
+	background: #fff;
+	border-radius: 0 0 10px 10px;
+	-webkit-border-radius: 0 0 10px 10px;
+	-moz-border-radius: 0 0 10px 10px;
+	-ms-border-radius: 0 0 10px 10px;
+	-o-border-radius: 0 0 10px 10px;
+	box-shadow: 0 10px 30px rgba($color: #000000, $alpha: 0.1);
+
+	button {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		border: none;
+		background: none;
+	}
+	ul {
+		list-style: none;
+		padding: 15px;
+		margin: 0;
+		li {
+			a {
+				text-decoration: none;
+				color: var(--primary-color);
+			}
+		}
+	}
+}
