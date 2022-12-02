@@ -3,28 +3,21 @@ module.exports.CesComponents = [
 		name: 'CESHomeNavBar',
 		path: 'components/page/CES/HomeApplication/CESHomeNavBar'
 	},
-	{
-		name: 'HomeApplianceImageWithBackground',
-		path: 'components/page/CES/HomeApplication/HomeApplianceImageWithBackground'
-	},
-	{
-		name: 'HomeApplianceTextBox',
-		path: 'components/page/CES/HomeApplication/HomeApplianceTextBox'
-	},
+
 	{
 		name: 'CESHomeImageAndText',
 		path: 'components/page/CES/HomeApplication/CESHomeImageAndText'
 	},
 	{
 		name: 'CESLaserLearnMore',
-		path: 'components/page/CES/Laser/CESLaserLearnMore'
+		path: 'components/page/CES/Laster/CESLaserLearnMore'
 	},
 	{
 		name: 'ImageBoxWithPaddingAndBgBlack',
-		path: 'components/page/CES/Laser/ImageBoxWithPaddingAndBgBlack'
+		path: 'components/page/CES/Laster/ImageBoxWithPaddingAndBgBlack'
 	},
 	{
 		name: 'CEOLaserLikeBox',
-		path: 'components/page/CES/Laser/CEOLaserLikeBox'
+		path: 'components/page/CES/Laster/CEOLasterLikeBox'
 	}
 ]

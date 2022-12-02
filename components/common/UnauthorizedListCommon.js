@@ -1,6 +1,6 @@
 import React from 'react'
 
-function UnauthorizedList({ data }) {
+function UnauthorizedListCommon({ data }) {
 	let { structure } = data
 	return (
 		<section>
@@ -24,4 +24,4 @@ function UnauthorizedList({ data }) {
 	)
 }
 
-export default UnauthorizedList
+export default UnauthorizedListCommon

@@ -55,3 +55,15 @@ fs.readdir(path.resolve(__dirname, '../'), (err, files) => {
 		}
 	)
 })
+fs.readdir(path.resolve(__dirname, '../hooks'), (err, files) => {
+	if (err) throw err
+	fs.rm(
+		path.resolve(__dirname, '../hooks/componentGenerator.js'),
+		{ recursive: true, force: true },
+		err => {
+			if (err) {
+				return console.log('componentGenerator removed', err)
+			}
+		}
+	)
+})
