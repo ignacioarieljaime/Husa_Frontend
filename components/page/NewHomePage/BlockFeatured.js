@@ -16,9 +16,9 @@ const BlockFeatured = ({ data: { structure } }) => {
 			<Swiper
 				navigation={true}
 				pagination={true}
+				centeredSlides={true}
 				spaceBetween={8}
 				slidesPerView={'auto'}
-				centeredSlides={true}
 				grabCursor={true}
 				loop={true}
 				modules={[Pagination, Navigation]}

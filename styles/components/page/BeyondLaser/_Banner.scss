@@ -1,0 +1,136 @@
+.beyond_laser_banner {
+	background-attachment: scroll !important;
+	* {
+		background-attachment: scroll !important;
+	}
+	position: relative;
+	z-index: 4;
+	height: 100vh;
+	background-color: #000;
+	background-image: none;
+	background-size: auto;
+	opacity: 1;
+	color: #3a3a3a;
+	object-fit: fill;
+	.video_container {
+		position: absolute;
+		left: 0%;
+		top: 0%;
+		right: 0%;
+		bottom: 0%;
+		z-index: 1;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.93);
+		opacity: 0.56;
+		color: transparent;
+		overflow: hidden;
+		& > video {
+			background-size: cover;
+			background-position: 50% 50%;
+			position: absolute;
+			margin: auto;
+			width: 100%;
+			height: 100%;
+			right: -100%;
+			bottom: -100%;
+			top: -100%;
+			left: -100%;
+			object-fit: cover;
+			z-index: -100;
+			background-image: url(https://www.hisense-usa.com/beyondlaser/videos/laserbgv-poster-00001.jpg);
+		}
+	}
+	.content {
+		position: sticky;
+		z-index: 6;
+		display: flex;
+		overflow: visible;
+		height: 85%;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		opacity: 1;
+		object-fit: fill;
+		.text {
+			display: flex;
+			width: 100%;
+			height: auto;
+			min-width: 100%;
+			margin-top: 50px;
+			text-align: center;
+			flex-direction: column;
+			justify-content: center;
+			flex-wrap: nowrap;
+			order: -1;
+			h1 {
+				color: #f0f0f0;
+				font-size: 1.25em;
+				letter-spacing: 0.5em;
+				text-transform: none;
+				margin-bottom: 50px;
+				font-family: 'HISENSE AEON', sans-serif;
+			}
+			h2 {
+				font-family: Gilroy, sans-serif;
+				color: #f0f0f0;
+				font-size: 6.5vw;
+				line-height: 10vh;
+				font-weight: 700;
+				text-transform: none;
+			}
+		}
+	}
+	.chevron_link {
+		text-align: center;
+		position: sticky;
+		z-index: 9;
+		display: flex;
+		justify-content: center;
+		width: fit-content;
+		margin: 0 auto;
+		svg {
+			font-size: 3em;
+			color: #fff;
+			transform: scale(1);
+			transition: transform 0.5s ease;
+			&:hover {
+				transform: scale(1.17);
+			}
+		}
+	}
+}
+@media screen and (max-width: 991px) {
+	.beyond_laser_banner {
+		.content {
+			.text {
+				h2 {
+					font-size: 10.5vw;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.beyond_laser_banner {
+		.content {
+			.text {
+				h2 {
+					font-size: 13vw;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 479px) {
+	.beyond_laser_banner {
+		.content {
+			.text {
+				h1 {
+					font-size: 4vw;
+				}
+			}
+		}
+	}
+}
