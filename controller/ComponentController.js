@@ -28,7 +28,7 @@ return (
 	<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
-      	<section>{data.widgets.map(block => componentGenerator(block, pim))}</section>
+      	<section>{data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null ))}</section>
 	</Layout>
     )
   }
