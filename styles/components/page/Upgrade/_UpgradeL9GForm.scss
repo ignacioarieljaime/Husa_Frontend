@@ -20,6 +20,18 @@
 			height: 100%;
 			flex-direction: row;
 			flex-wrap: wrap;
+			.spinner_bg {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				right: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 1;
+				background: rgba($color: #000000, $alpha: 0.5);
+			}
 			.form-field {
 				border: none;
 				border-radius: 8px;
@@ -189,12 +201,11 @@
 				background-color: red;
 				padding: 0 64px;
 				font-size: 18px;
-				line-height: 38px;
+				line-height: 30px;
 				height: 38px;
 				color: white;
 				border-radius: 4px !important;
 				border: none;
-				display: block !important;
 				max-width: fit-content;
 				margin: 0 auto;
 			}
@@ -230,8 +241,8 @@
 				.file-input-box {
 					.input {
 						.content {
-                        background-image: url(https://assets.hisense-usa.com/resources/themes/default/images/contest/camera.png);
-                        	height: 100%;
+							background-image: url(https://assets.hisense-usa.com/resources/themes/default/images/contest/camera.png);
+							height: 100%;
 						}
 					}
 				}

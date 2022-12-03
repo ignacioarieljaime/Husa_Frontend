@@ -9,13 +9,13 @@ const Retailers = ({ pim, data: { structure } }) => {
 					<p className='mb-9 fs-4'>{structure?.subtitle?.value}</p>
 				</div>
 				<div className='grid-container'>
-					{structure?.list?.value.map((item, index) => (
+					{pim?.retailers.map((item, index) => (
 						<div
 							key={'retailer-' + index}
 							className='grid-item d-flex align-items-center justify-content-center'>
 							<img
-								src={item?.image?.src}
-								alt={item?.image?.alt}
+								src={item?.media?.external_url}
+								alt={item?.media?.caption}
 								width='100%'
 								style={{ maxWidth: '250px' }}
 							/>

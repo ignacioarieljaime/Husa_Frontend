@@ -4,8 +4,11 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useWindowSize } from 'hooks/useWindowSize'
 import axios from 'axios'
+import Spinner from 'components/common/Spinner'
+import { toast } from 'react-toastify'
 
 const UpgradeL9GForm = ({ data: { structure } }) => {
+	console.log(structure)
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -14,8 +17,8 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 		description: null,
 		proof_of_purchase: null
 	})
+	const [loading, setLoading] = useState(null)
 	const inputRef = useRef(null)
-	const [file, setFile] = useState(null)
 	const [acceptTerms, setAcceptTerms] = useState(false)
 	const windowSize = useWindowSize()
 
@@ -36,19 +39,20 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 
 	const submitData = async e => {
 		e.preventDefault()
+		if (!dataSchema.proof_of_purchase) {
+			toast.error('please upload image')
+			return
+		}
 
-		setLoading(true)
+		setLoading('button')
 		try {
-			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
-				{ ...dataSchema, receipt_image: fileUploadCondition }
+				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/l9g-trichroma',
+				{ ...dataSchema}
 			)
 			if (response.status === 200) {
 				toast.success('ticket sended')
 				setDisabled(true)
-			} else {
-				toast.error('ticket didn"t sended')
 			}
 			setLoading(false)
 		} catch (error) {
@@ -58,23 +62,24 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 		}
 	}
 
-	const uploadFile = async () => {
+	const uploadFile = async _file => {
 		const formData = new FormData()
-		formData.append('attachment', file)
-
+		formData.append('attachment', _file)
+		setLoading('file')
 		try {
 			let response = await axios({
 				method: 'post',
-				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
 				data: formData,
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
 			if (response.status === 200) {
-				dataSchemaHandler('receipt_image', response.data.view_link)
-				return response.data.view_link
+				dataSchemaHandler('proof_of_purchase', response.data.view_link)
 			}
-			return null
+			setLoading(null)
 		} catch (error) {
+			setLoading(null)
+			toast.error("file didn't upload please try again")
 			console.log(error)
 		}
 	}
@@ -100,7 +105,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 									type='text'
 								/>
 							</div>
-							<p className='feed'>s</p>
+							<p className='feed'></p>
 						</div>
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
 							<div className='form-field'>
@@ -111,7 +116,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 									type='text'
 								/>
 							</div>
-							<p className='feed'>s</p>
+							<p className='feed'></p>
 						</div>
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
 							<div className='form-field'>
@@ -156,14 +161,19 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 								<label>Proof of purchase</label>
 								<div
 									className={`input ${
-										!file ? '' : 'activated'
+										!dataSchema.proof_of_purchase ? '' : 'activated'
 									}`}
 									onClick={() => inputRef.current.click()}>
+									{loading === 'file' && (
+										<div className='spinner_bg'>
+											<Spinner size={40} />
+										</div>
+									)}
 									<div className='content'>
 										{windowSize[0] > 600 ? (
 											<>
 												<p>
-													{!file
+													{!dataSchema.proof_of_purchase
 														? 'Drag & Drop a File Here'
 														: 'Upload Complete'}
 												</p>
@@ -177,7 +187,9 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 									<input
 										type='file'
 										ref={inputRef}
-										onChange={e => setFile(e.target.files[0])}
+										onChange={e =>
+											e.target.files.length > 0 && uploadFile(e.target.files[0])
+										}
 									/>
 								</div>
 							</div>
@@ -207,8 +219,11 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 							<button
 								disabled={!acceptTerms}
 								type='submit'
-								className={`submit`}>
-								SUBMIT
+								className={`submit d-flex align-items-center`}>
+								<span className='mt-1'>SUBMIT</span>
+								{loading === 'button' && (
+									<Spinner size={25} className={'ms-2'} />
+								)}
 							</button>
 							<div className='terms'>
 								<Link href='upgrade-with-wade/l9g-trichroma-laser-tv/terms-and-conditions'>
