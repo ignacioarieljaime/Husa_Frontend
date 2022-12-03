@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 const LightRejection = ({ data: { structure } }) => {
 	const [activeTab, setActiveTab] = useState(0)
-	console.log(structure)
 
 	return (
 		<section className='l9g'>
@@ -67,7 +66,7 @@ const LightRejection = ({ data: { structure } }) => {
 								<div
 									className='caption fs-9 fs-md-2 fw-light mb-8'
 									dangerouslySetInnerHTML={{
-										__html: structure?.text?.value
+										__html: spec?.text?.value
 									}}></div>
 							</div>
 							<div className='row justify-content-between align-items-start flex-md-nowrap mx-0 px-0 px-md-20 '>
