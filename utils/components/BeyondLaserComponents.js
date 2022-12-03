@@ -1,38 +1,38 @@
 module.exports.BeyondLaserComponents = [
 	{
-		name: 'Banner',
-		path: 'components/page/BeyondLaser/Banner'
+		name: 'BeyondLaserBanner',
+		path: 'components/page/BeyondLaser/BeyondLaserBanner'
 	},
 	{
-		name: 'Header',
-		path: 'components/page/BeyondLaser/Header'
+		name: 'BeyondLaserHeader',
+		path: 'components/page/BeyondLaser/BeyondLaserHeader'
 	},
 	{
-		name: 'MomentsBlock',
-		path: 'components/page/BeyondLaser/MomentsBlock'
+		name: 'BeyondLaserMomentsBlock',
+		path: 'components/page/BeyondLaser/BeyondLaserMomentsBlock'
 	},
 	{
-		name: 'ImageBlock',
-		path: 'components/page/BeyondLaser/ImageBlock'
+		name: 'BeyondLaserImageBlock',
+		path: 'components/page/BeyondLaser/BeyondLaserImageBlock'
 	},
 	{
-		name: 'TextBlock',
-		path: 'components/page/BeyondLaser/TextBlock'
+		name: 'BeyondLaserTextBlock',
+		path: 'components/page/BeyondLaser/BeyondLaserTextBlock'
 	},
 	{
-		name: 'QuoteBlock',
-		path: 'components/page/BeyondLaser/QuoteBlock'
+		name: 'BeyondLaserQuoteBlock',
+		path: 'components/page/BeyondLaser/BeyondLaserQuoteBlock'
 	},
 	{
-		name: 'IframeBlock',
-		path: 'components/page/BeyondLaser/IframeBlock'
+		name: 'BeyondLaserIframeBlock',
+		path: 'components/page/BeyondLaser/BeyondLaserIframeBlock'
 	},
 	{
-		name: 'FooterBlock',
-		path: 'components/page/BeyondLaser/FooterBlock'
+		name: 'BeyondLaserFooterBlock',
+		path: 'components/page/BeyondLaser/BeyondLaserFooterBlock'
 	},
 	{
-		name: 'FlipDevice',
-		path: 'components/page/BeyondLaser/FlipDevice'
+		name: 'BeyondLaserFlipDevice',
+		path: 'components/page/BeyondLaser/BeyondLaserFlipDevice'
 	}
 ]

@@ -7,7 +7,7 @@ export async function GetProducts(_categoryId, _model, _search) {
 			params: {
 				category_id: _categoryId,
 				model: _model,
-				search: _search
+				search: _search,
 			}
 		}
 	)

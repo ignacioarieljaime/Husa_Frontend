@@ -7,7 +7,12 @@ const BeyondLaserHeader = ({ data: { structure } }) => {
 			<div className='beyond_laser_header'>
 				<div className='content'>
 					<div className='header_item justify-content-start'>
-						<Link href={structure?.leftImageLink?.value}>
+						<Link
+							href={
+								structure?.leftImageLink?.value
+									? structure?.leftImageLink?.value
+									: '/'
+							}>
 							<a>
 								<img
 									className='left_logo'
@@ -28,7 +33,8 @@ const BeyondLaserHeader = ({ data: { structure } }) => {
 					</div>
 					<div className='header_item justify-content-end'>
 						{structure?.link?.value && (
-							<Link href={structure?.link?.value}>
+							<Link
+								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a className='header_link'>{structure?.link?.title}</a>
 							</Link>
 						)}

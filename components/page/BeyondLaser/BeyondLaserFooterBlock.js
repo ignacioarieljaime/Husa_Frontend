@@ -22,7 +22,7 @@ const BeyondLaserFooterBlock = ({ data: { structure } }) => {
 				<ul className='social_media'>
 					{structure?.list?.value.map((item, index) => (
 						<li key={index}>
-							<Link href={item?.link?.value}>
+							<Link href={item?.link?.value ? item?.link?.value : '/'}>
 								<a>
 									<img src={item?.image?.src} alt={item?.image?.alt} />
 								</a>

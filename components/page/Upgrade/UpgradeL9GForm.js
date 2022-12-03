@@ -3,22 +3,19 @@ import React, { useReducer, useState, useRef } from 'react'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useWindowSize } from 'hooks/useWindowSize'
+import axios from 'axios'
 
 const UpgradeL9GForm = ({ data: { structure } }) => {
-	const [dataState, dispatch] = useReducer(
-		(prevState, update) => ({
-			...prevState,
-			...update
-		}),
-		{
-			name: '',
-			email: '',
-			phone: '',
-			description: '',
-			image: ''
-		}
-	)
+	const [dataSchema, setDataSchema] = useState({
+		first_name: null,
+		last_name: null,
+		email: null,
+		phone_number: null,
+		description: null,
+		proof_of_purchase: null
+	})
 	const inputRef = useRef(null)
+	const [file, setFile] = useState(null)
 	const [acceptTerms, setAcceptTerms] = useState(false)
 	const windowSize = useWindowSize()
 
@@ -33,6 +30,55 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 		}
 	}
 
+	const dataSchemaHandler = (_key, _value) => {
+		setDataSchema({ ...dataSchema, [_key]: _value })
+	}
+
+	const submitData = async e => {
+		e.preventDefault()
+
+		setLoading(true)
+		try {
+			let fileUploadCondition = await uploadFile()
+			let response = await axios.post(
+				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
+				{ ...dataSchema, receipt_image: fileUploadCondition }
+			)
+			if (response.status === 200) {
+				toast.success('ticket sended')
+				setDisabled(true)
+			} else {
+				toast.error('ticket didn"t sended')
+			}
+			setLoading(false)
+		} catch (error) {
+			toast.error('ticket didn"t sended')
+			setLoading(false)
+			console.log(error)
+		}
+	}
+
+	const uploadFile = async () => {
+		const formData = new FormData()
+		formData.append('attachment', file)
+
+		try {
+			let response = await axios({
+				method: 'post',
+				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				data: formData,
+				headers: { 'Content-Type': 'multipart/form-data' }
+			})
+			if (response.status === 200) {
+				dataSchemaHandler('receipt_image', response.data.view_link)
+				return response.data.view_link
+			}
+			return null
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
 		<section>
 			<div className='upgrade_l9g_form'>
@@ -43,12 +89,14 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 							__html: structure?.text?.value
 						}}></article>
 					<form className='row form mx-0'>
-						<div className='position-relative px-0 px-md-3 col-12'>
+						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
 							<div className='form-field'>
 								<input
-									onChange={e => dispatch(dataState, { name: e.target.value })}
+									onChange={e =>
+										dataSchemaHandler('first_name', e.target.value)
+									}
 									required
-									placeholder='Full Name'
+									placeholder='First Name'
 									type='text'
 								/>
 							</div>
@@ -57,7 +105,18 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
 							<div className='form-field'>
 								<input
-									onChange={e => dispatch(dataState, { email: e.target.value })}
+									onChange={e => dataSchemaHandler('last_name', e.target.value)}
+									required
+									placeholder='Last Name'
+									type='text'
+								/>
+							</div>
+							<p className='feed'>s</p>
+						</div>
+						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
+							<div className='form-field'>
+								<input
+									onChange={e => dataSchemaHandler('email', e.target.value)}
 									required
 									placeholder='Email'
 									type='email'
@@ -68,7 +127,9 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
 							<div className='form-field'>
 								<input
-									onChange={e => dispatch(dataState, { phone: e.target.value })}
+									onChange={e =>
+										dataSchemaHandler('phone_number', e.target.value)
+									}
 									required
 									placeholder='Phone'
 									type='tel'
@@ -80,7 +141,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 							<div className='form-field textarea'>
 								<textarea
 									onChange={e =>
-										dispatch(dataState, { description: e.target.value })
+										dataSchemaHandler('description', e.target.value)
 									}
 									cols='20'
 									row='5'
@@ -95,14 +156,14 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 								<label>Proof of purchase</label>
 								<div
 									className={`input ${
-										dataState.image === '' ? '' : 'activated'
+										!file ? '' : 'activated'
 									}`}
 									onClick={() => inputRef.current.click()}>
 									<div className='content'>
 										{windowSize[0] > 600 ? (
 											<>
 												<p>
-													{dataState.image === ''
+													{!file
 														? 'Drag & Drop a File Here'
 														: 'Upload Complete'}
 												</p>
@@ -116,13 +177,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 									<input
 										type='file'
 										ref={inputRef}
-										onChange={e => {
-											const file = e.target.files && e.target.files[0]
-											file?.type.startsWith('image') &&
-												dispatch(dataState, {
-													image: e.target.files && e.target.files[0]
-												})
-										}}
+										onChange={e => setFile(e.target.files[0])}
 									/>
 								</div>
 							</div>
@@ -149,7 +204,10 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 							</div>
 						</div>
 						<div className='col-12 py-7'>
-							<button type='submit' className={`submit`}>
+							<button
+								disabled={!acceptTerms}
+								type='submit'
+								className={`submit`}>
 								SUBMIT
 							</button>
 							<div className='terms'>

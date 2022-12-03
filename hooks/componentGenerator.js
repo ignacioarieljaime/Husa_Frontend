@@ -44,6 +44,8 @@ import ProductBottomImageBox from 'components/page/Product/ProductBottomImageBox
 import ProductDetailsBox from 'components/page/Product/ProductDetailsBox';
 import ProductFineMeInStore from 'components/page/Product/ProductFindMeInStore';
 import ProductResourceBox from 'components/page/Product/ProductResourceBox';
+import ProductPackageHeader from 'components/page/Product/ProductPackageHeader';
+import ProductPackagesSlider from 'components/page/Product/ProductPackagesSlider';
 import SmartInfoHead from 'components/page/SmartInfo/SmartInfoHead';
 import ProductFeatureWithImageWithBTN from 'components/page/SmartInfo/ProductFeatureWithImageWithBTN';
 import SmartInfoTvsBox from 'components/page/SmartInfo/SmartInfoTvsBox';
@@ -231,6 +233,16 @@ import TelevisionsBlockHero from 'components/page/Televisions/TelevisionsBlockHe
 import TelevisionsBlockSpotlight from 'components/page/Televisions/TelevisionsBlockSpotlight';
 import TelevisionsTvHero from 'components/page/Televisions/TelevisionsTvHero';
 import PrivacyPolicyTextEditor from 'components/page/PrivacyPolicy/PrivacyPolicyTextEditor';
+import UpgradeL9GForm from 'components/page/Upgrade/UpgradeL9GForm';
+import BeyondLaserBanner from 'components/page/BeyondLaser/BeyondLaserBanner';
+import BeyondLaserHeader from 'components/page/BeyondLaser/BeyondLaserHeader';
+import BeyondLaserMomentsBlock from 'components/page/BeyondLaser/BeyondLaserMomentsBlock';
+import BeyondLaserImageBlock from 'components/page/BeyondLaser/BeyondLaserImageBlock';
+import BeyondLaserTextBlock from 'components/page/BeyondLaser/BeyondLaserTextBlock';
+import BeyondLaserQuoteBlock from 'components/page/BeyondLaser/BeyondLaserQuoteBlock';
+import BeyondLaserIframeBlock from 'components/page/BeyondLaser/BeyondLaserIframeBlock';
+import BeyondLaserFooterBlock from 'components/page/BeyondLaser/BeyondLaserFooterBlock';
+import BeyondLaserFlipDevice from 'components/page/BeyondLaser/BeyondLaserFlipDevice';
 import Subscribe from 'components/common/Subscribe';
 import Footer from 'components/common/Footer'
 
@@ -279,6 +291,8 @@ ProductBottomImageBox:ProductBottomImageBox,
 ProductDetailsBox:ProductDetailsBox,
 ProductFineMeInStore:ProductFineMeInStore,
 ProductResourceBox:ProductResourceBox,
+ProductPackageHeader:ProductPackageHeader,
+ProductPackagesSlider:ProductPackagesSlider,
 SmartInfoHead:SmartInfoHead,
 ProductFeatureWithImageWithBTN:ProductFeatureWithImageWithBTN,
 SmartInfoTvsBox:SmartInfoTvsBox,
@@ -466,6 +480,16 @@ TelevisionsBlockHero:TelevisionsBlockHero,
 TelevisionsBlockSpotlight:TelevisionsBlockSpotlight,
 TelevisionsTvHero:TelevisionsTvHero,
 PrivacyPolicyTextEditor:PrivacyPolicyTextEditor,
+UpgradeL9GForm:UpgradeL9GForm,
+BeyondLaserBanner:BeyondLaserBanner,
+BeyondLaserHeader:BeyondLaserHeader,
+BeyondLaserMomentsBlock:BeyondLaserMomentsBlock,
+BeyondLaserImageBlock:BeyondLaserImageBlock,
+BeyondLaserTextBlock:BeyondLaserTextBlock,
+BeyondLaserQuoteBlock:BeyondLaserQuoteBlock,
+BeyondLaserIframeBlock:BeyondLaserIframeBlock,
+BeyondLaserFooterBlock:BeyondLaserFooterBlock,
+BeyondLaserFlipDevice:BeyondLaserFlipDevice,
 Subscribe:Subscribe,
 Footer:Footer
 }

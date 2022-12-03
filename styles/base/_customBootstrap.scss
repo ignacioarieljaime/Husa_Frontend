@@ -588,6 +588,10 @@
 .select-box-item {
 	display: flex;
 	padding: 0 6px;
+
+	&:focus-visible{
+		outline: none !important;
+	}
 }
 .custom-select-box .select-box-item .input {
 	display: none;
@@ -604,6 +608,7 @@
 	background-color: #fff;
 }
 .select-box-list {
+	margin-top: 5px;
 	position: absolute;
 	width: calc(100% - 24px);
 	padding: 0;

@@ -35,46 +35,48 @@ function CompareModal({ route }) {
 				className={`compare_modal_wrapper ${
 					compareCondition ? '' : 'd-none'
 				}`}></section>
-			<div
-				className={`compare_modal ${
-					compareCondition ? 'compare_modal_active' : ''
-				}`}>
-				<button
-					className='close_button'
-					onClick={() => dispatch(changeCompareCondition(false))}>
-					<FontAwesomeIcon icon={faXmark} color={'#818181'} />
-				</button>
-				<h6>COMPARE 3 PRODUCTS</h6>
-				<div className='list__btns'>
-					<div className='list'>
-						{compareList.map((item, index) => (
-							<div key={'compare-item-' + index} className='item'>
-								<button onClick={() => dispatch(removeCompare(item.id))}>
-									<FontAwesomeIcon icon={faXmark} color={'#818181'} />
-								</button>
-								<img src={item.media.url} />
-								<h6>Model: {item.model}</h6>
-								<h5>{item.name}</h5>
-							</div>
-						))}
-					</div>
-					<div className='btns'>
-						<button
-							className='clear_btn'
-							onClick={() => dispatch(removeCompare('all'))}>
-							Clear All
-						</button>
-						<Link
-							href={`${route ? route?.value : ''}${
-								productsId.length !== 0
-									? `?productsId=${JSON.stringify(productsId)}`
-									: ''
-							}`}>
-							<a className='compare_btn'>COMPARE</a>
-						</Link>
+			{compareList.length !== 0 && (
+				<div
+					className={`compare_modal ${
+						compareCondition ? 'compare_modal_active' : ''
+					}`}>
+					<button
+						className='close_button'
+						onClick={() => dispatch(changeCompareCondition(false))}>
+						<FontAwesomeIcon icon={faXmark} color={'#818181'} />
+					</button>
+					<h6>COMPARE 3 PRODUCTS</h6>
+					<div className='list__btns'>
+						<div className='list'>
+							{compareList.map((item, index) => (
+								<div key={'compare-item-' + index} className='item'>
+									<button onClick={() => dispatch(removeCompare(item.id))}>
+										<FontAwesomeIcon icon={faXmark} color={'#818181'} />
+									</button>
+									<img src={item.media.url} />
+									<h6>Model: {item.model}</h6>
+									<h5>{item.name}</h5>
+								</div>
+							))}
+						</div>
+						<div className='btns'>
+							<button
+								className='clear_btn'
+								onClick={() => dispatch(removeCompare('all'))}>
+								Clear All
+							</button>
+							<Link
+								href={`${route ? route?.value : ''}${
+									productsId.length !== 0
+										? `?productsId=${JSON.stringify(productsId)}`
+										: ''
+								}`}>
+								<a className='compare_btn'>COMPARE</a>
+							</Link>
+						</div>
 					</div>
 				</div>
-			</div>
+			)}
 
 			<section
 				onClick={() =>

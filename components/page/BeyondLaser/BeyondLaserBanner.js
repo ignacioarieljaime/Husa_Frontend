@@ -23,7 +23,7 @@ const BeyondLaserBanner = ({ data: { structure } }) => {
 					</div>
 				</div>
 				{structure?.link?.value && (
-					<Link href={structure?.link?.value}>
+					<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
 						<a className='chevron_link'>
 							<FontAwesomeIcon icon={faChevronDown} size='2xl' />
 						</a>
