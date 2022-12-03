@@ -40,8 +40,8 @@ const BlockTVContainer = ({ structure }) => {
 							src={structure?.image?.src}
 							alt={structure?.image?.alt}
 							ref={imageRef.ref}
-							width='100%'
 							onLoad={() => parallaxController.update()}
+							width='100%'
 						/>
 					</div>
 					<div className='col-12 col-md-5 content mt-8 mt-md-0'>
