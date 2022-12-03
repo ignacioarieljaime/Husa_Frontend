@@ -8,7 +8,6 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 
 const UpgradeL9GForm = ({ data: { structure } }) => {
-	console.log(structure)
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -48,11 +47,11 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 		try {
 			let response = await axios.post(
 				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/l9g-trichroma',
-				{ ...dataSchema}
+				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended')
-				setDisabled(true)
+				toast.success('ticket sended', { toastId: 'success' })
+				e.target.reset()
 			}
 			setLoading(false)
 		} catch (error) {
@@ -246,4 +245,4 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 	)
 }
 
-export default UpgradeL9GForm
+export default React.memo(UpgradeL9GForm)
