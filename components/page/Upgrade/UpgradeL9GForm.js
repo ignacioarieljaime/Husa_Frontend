@@ -88,7 +88,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 						dangerouslySetInnerHTML={{
 							__html: structure?.text?.value
 						}}></article>
-					<form className='row form mx-0'>
+					<form onSubmit={submitData} className='row form mx-0'>
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
 							<div className='form-field'>
 								<input
