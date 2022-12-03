@@ -16,12 +16,18 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
 					<div className='col-12 col-md-6 product-info my-auto'>
 						<h2
-							className={`${pim?.custom_fields.find(item => item.title === 'h2 Title')?.value ? 'text-primary fs-2x mb-5' : 'text-black fs-2hx mb-1'} `}>
-							{
+							className={`${
 								pim?.custom_fields.find(item => item.title === 'h2 Title')
-									?.value ? pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-									?.value : pim?.custom_fields?.find(item => item.title === 'Product Type')?.value
-							}
+									?.value
+									? 'text-primary fs-2x mb-5'
+									: 'text-black fs-2hx mb-1'
+							} `}>
+							{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+								? pim?.custom_fields.find(item => item.title === 'h2 Title')
+										?.value?.value
+								: pim?.custom_fields?.find(
+										item => item.title === 'Product Type'
+								  )?.value}
 						</h2>
 						<h1 className='fs-2hx mb-8'>
 							{
@@ -30,7 +36,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 							}
 						</h1>
 						<span className='fs-2hx mb-5 text-uppercase'>{pim?.name}</span>
-						<p className='text-primary'>Model: {pim?.model}</p>
+						<p className='text-primary-new'>Model: {pim?.model}</p>
 						<div className='model-toggle '>
 							{pim?.series[0]?.values.map(
 								(item, index) =>

@@ -17,7 +17,7 @@ const BlockCategories = ({ data: { structure } }) => {
 					pagination={false}
 					spaceBetween={16}
 					slidesPerView={'auto'}
-					centeredSlides={true}
+					centeredSlides={false}
 					grabCursor={true}
 					className='appliances-slider'>
 					{structure?.list?.value.map((item, index) => (

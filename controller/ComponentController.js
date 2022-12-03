@@ -18,60 +18,36 @@ const FindComponent = _componentData => {
 }
 
 const GenerateComponentStructure = (_page, _content, _condition) => {
-	let uniqueImport = [...new Set(_content)]
 	return `
-	import { useEffect,useState } from 'react';
-  	import dynamic from 'next/dynamic';
-	import axios from 'axios'
-	import Layout from "components/common/Layout/Layout";
-	import { useRouter } from 'next/router'
-	import MainData from "utils/urlData.json"
-	import RedirectsData from 'utils/redirects.json'
+import axios from 'axios'
+import Layout from "components/common/Layout/Layout";
+import componentGenerator from 'hooks/componentGenerator';
 
-
-	${uniqueImport
-		.map(
-			item =>
-				item && `const ${item.name} = dynamic(() => import('${item.path}'))`
-		)
-		.join(';')}
-
-	function Index${_page.id}({pim}) {
-		const data = MainData.find(item => item.id === ${_page.id})
-		const router = useRouter()
-
-		useEffect(() => {
-			let redirect = RedirectsData.find(item => item.source_url === data.route)
-			if (redirect?.source_url && redirect?.redirect_url) {
-				router.push(redirect.redirect_url)
-			}
-		}, [])
-
-
-    return (
-			<Layout title={'${_page.title}'} meta={${
+function Index${_page.id}({pim,data}) {
+return (
+	<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
-	      		<section>
-		  		 ${_content
-							.map(
-								(item, index) =>
-									item &&
-									`{data && data.widgets.length > 0 && data.widgets[${index}].structure ? <${
-										item.name
-									} ${_page.widgets[index].name === "Header" ? `notification={data.notifications}` :""} ${
-										_page.model_type ? `pim={pim}` : ''
-									} data={data.widgets[${index}]}/>  : null }`
-							)
-							.join(' ')}
-				</section>
-			</Layout>
-	    )
-	  }
-
-	${
-		_condition === 'pages' && _page.model_type
-			? `  export async function getServerSideProps(context) {			
+      	<section>{data.widgets.map(block => componentGenerator(block, pim))}</section>
+	</Layout>
+    )
+  }
+${
+	_page.model_id !== 0
+		? `  export async function getServerSideProps(context) {		
+			console.log('send cxm request')
+				let data = await axios
+				   .get(
+					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+				   )
+				   .then(response => {
+					   console.log('get cxm data')
+					   return response.data
+				   })
+				   .catch(error => {
+					   console.error('Error:', error)
+					   return null
+				   })	
 				console.log('send pim request')
 				 let pim = await axios
 						.get(
@@ -85,12 +61,24 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 							console.error('Error:', error)
 							return null
 						})
-			return { props: { pim }} }`
-			: ''
-	}
-	
-
-	  export default Index${_page.id}`
+	return { props: { pim,data }} }`
+		: `export async function getServerSideProps(context) {		
+			console.log('send cxm request')
+				let data = await axios
+				   .get(
+					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+				   )
+				   .then(response => {
+					   console.log('get cxm data')
+					   return response.data
+				   })
+				   .catch(error => {
+					   console.error('Error:', error)
+					   return null
+				   })	
+	return { props: { data }} }`
+}
+export default Index${_page.id}`
 }
 
 const GenerateAllComponentStructure = () => {

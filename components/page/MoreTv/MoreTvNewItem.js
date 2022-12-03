@@ -1,7 +1,5 @@
 import React from 'react'
 
-// image
-import TVImage from 'public/assets/images/more-tv/U6H.png'
 function MoreTVNewItem({ title, model, link, image, description, Btn }) {
 	return (
 		<div className='col-12 col-sm-6 col-lg-3 py-3'>

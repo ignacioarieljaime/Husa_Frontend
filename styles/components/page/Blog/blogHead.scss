@@ -1,5 +1,5 @@
 .blog-header {
-	overflow: hidden;
+	overflow-x: hidden;
 
 	.sea-floating-img {
 		position: relative;
@@ -24,10 +24,8 @@
 	}
 	.header-text {
 		* {
-			// line-height: 10vw;
-			// font-size: 7.15vw;
-			font-size: 170px;
-			line-height: 180px;
+			line-height: 6.5vw;
+			font-size: 6vw;
 			color: #101010;
 			font-weight: 400;
 		}
@@ -63,16 +61,23 @@
 		transform: translate(-60%, -40%);
 	}
 }
-
+@media (max-width: 1920px) {
+	.blog-header {
+		.header-text * {
+			line-height: 8vw;
+			font-size: 7.5vw;
+		}
+	}
+}
 @media (max-width: 1200px) {
 	.blog-header {
 		.header-text *{
-			font-size: 120px;
-			line-height: 125px;
+			line-height: 8.5vw;
+			font-size: 9vw;
 		}
 		.floating-text {
 			top: 50%;
-			left: 50%;
+			left: 45%;
 			transform: translate(-50%, -40%);
 		}
 	}

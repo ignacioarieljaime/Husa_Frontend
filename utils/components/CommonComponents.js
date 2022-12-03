@@ -28,8 +28,8 @@ module.exports.CommonComponents = [
 		path: 'components/common/BreadCrumb'
 	},
 	{
-		name: 'UnauthorizedList',
-		path: 'components/common/UnauthorizedList'
+		name: 'UnauthorizedListCommon',
+		path: 'components/common/UnauthorizedListCommon'
 	},
 	{
 		name: 'OfferClaimForm',

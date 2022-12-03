@@ -16,9 +16,9 @@ const BlockFeatured = ({ data: { structure } }) => {
 			<Swiper
 				navigation={true}
 				pagination={true}
+				centeredSlides={true}
 				spaceBetween={8}
 				slidesPerView={'auto'}
-				centeredSlides={true}
 				grabCursor={true}
 				loop={true}
 				modules={[Pagination, Navigation]}
@@ -49,9 +49,9 @@ const BlockFeatured = ({ data: { structure } }) => {
 								</div>
 							)}
 							<div className='slider-content'>
-								{/* <h5 className='description d-none d-md-block'>
+								<h5 className='description d-none d-md-block'>
 									{item?.description?.value}
-								</h5> */}
+								</h5>
 								<Link href={item?.link?.value ? item?.link?.value : '/'}>
 									<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
 										{item?.link?.title}

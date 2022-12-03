@@ -52,15 +52,41 @@
 		align-items: center;
 		text-align: center;
 	}
-
-	img {
-		max-width: 615px;
-		width: 100%;
-		object-fit: contain;
+	.image_container {
+		display: flex;
+		flex-grow: 1;
+		flex-shrink: 1;
+		flex-basis: 100%;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: center;
+		max-width: 100%;
+		overflow: hidden;
+		color: #fff;
+		flex-basis: 50%;
+		margin: 0;
+		padding: 0 36px;
+		.image_wrapper {
+			display: flex;
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: auto;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			margin: 0 auto;
+			max-width: 100%;
+			img {
+				display: block;
+				flex-grow: 0;
+				flex-shrink: 0;
+				flex-basis: auto;
+				width: 100%;
+				// object-fit: contain;
+			}
+		}
 	}
 
 	.text_box {
-		padding-left: 100px;
 		@include mq(1140) {
 			padding-left: 0;
 		}

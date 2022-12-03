@@ -1,0 +1,33 @@
+.beyond_laser_image_block {
+	height: 100vh;
+	padding: 18vh 15% 20vh;
+	background-color: #111;
+	background-position: 50% 50%;
+	background-size: cover;
+	color: transparent;
+	.content {
+		* {
+			font-family: Gilroy, sans-serif;
+			color: #f0f0f0;
+			font-size: 4.2vw;
+			line-height: 4.6vw;
+			font-style: normal;
+			font-weight: 300;
+			text-align: left;
+		}
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.beyond_laser_image_block {
+		height: 40vh;
+		background-size: cover, cover;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.beyond_laser_image_block {
+		height: 20vh;
+		padding-bottom: 10vh;
+	}
+}

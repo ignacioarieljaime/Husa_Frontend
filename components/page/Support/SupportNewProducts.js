@@ -69,13 +69,12 @@ const SupportNewProducts = ({ data }) => {
 					className='support-products-slider'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item '>
-							<div className='d-flex flex-column '>
+							<div className='d-flex flex-column h-100 align-center justify-content-between'>
 								<img
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									title={item?.image?.title}
 									className='slider-image'
-									style={{ height: '92px' }}
 								/>
 								<button
 									onClick={() => {

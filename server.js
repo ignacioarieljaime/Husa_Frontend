@@ -5,21 +5,14 @@ const next = require('next')
 const notifier = require('node-notifier')
 const path = require('path')
 const dev = process.env.NODE_ENV !== 'production'
-const hostname = 'https'
-const port = 3000
+const hostname = 'localhost'
+const port = process.env.APP_PORT
 const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
 	const port = process.env.APP_PORT
 	const server = express()
-	require('./utils/redirects.json').map(
-		item =>
-			item.source_url &&
-			server.all(item.source_url, (req, res) => {
-				return res.redirect(item.redirect_url)
-			})
-	)
 
 	server.all('*', (req, res) => {
 		return handle(req, res)

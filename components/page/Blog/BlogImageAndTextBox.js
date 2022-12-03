@@ -1,10 +1,30 @@
 import React from 'react'
+import {
+	useParallax,
+	useParallaxController,
+	ParallaxProvider
+} from 'react-scroll-parallax'
 
-// image
-import Dessert from 'public/assets/images/blog/desserts.png'
-import Cake from 'public/assets/images/blog/cake.png'
+const BlogImageAndTextBox = ({ data: { structure } }) => {
+	return (
+		<ParallaxProvider>
+			<BlogImageAndTextBoxContainer structure={structure} />
+		</ParallaxProvider>
+	)
+}
 
-function BlogImageAndTextBox({ data: { structure } }) {
+function BlogImageAndTextBoxContainer({ structure }) {
+	const parallaxController = useParallaxController()
+
+	const image1Ref = useParallax({
+		speed: 10,
+		translateY: ['90px', '-170px']
+	})
+
+	const image2Ref = useParallax({
+		speed: 7,
+		translateY: ['50px', '-70px']
+	})
 	return (
 		<section>
 			<div className='container my-20 py-5 py-lg-20'>
@@ -16,6 +36,8 @@ function BlogImageAndTextBox({ data: { structure } }) {
 									src={structure?.image1?.src}
 									alt={structure?.image1?.alt}
 									className='w-100 rounded-10px'
+									ref={image1Ref.ref}
+									onLoad={() => parallaxController.update()}
 								/>
 							</div>
 							<div className='col-5 align-self-start mt-n10'>
@@ -23,6 +45,8 @@ function BlogImageAndTextBox({ data: { structure } }) {
 									src={structure?.image2?.src}
 									alt={structure?.image2?.alt}
 									className='w-100 rounded-10px'
+									ref={image2Ref.ref}
+									onLoad={() => parallaxController.update()}
 								/>
 							</div>
 						</div>

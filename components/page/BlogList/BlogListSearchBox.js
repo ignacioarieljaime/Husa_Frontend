@@ -3,11 +3,34 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faAngleDown,
-	faMagnifyingGlass
+	faMagnifyingGlass,
+	faXmark
 } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
+import Spinner from 'components/common/Spinner'
+import Link from 'next/link'
 
 function BlogListSearchBox({ data: { structure } }) {
 	const [dropDownCondition, setDropDownCondition] = useState(false)
+	const [blogList, setBlogList] = useState(null)
+	const [blogListCondition, setBlogListCondition] = useState(false)
+	const [inputValue, setInputValue] = useState(null)
+
+	const searchBlog = async _searchValue => {
+		setInputValue(_searchValue)
+		setBlogListCondition(true)
+		setBlogList('loading')
+		try {
+			let response = await axios.get(
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchPost?string=${_searchValue}`
+			)
+			setBlogList(response.data.data)
+		} catch (error) {
+			setBlogList(null)
+			console.log(error)
+		}
+	}
+
 	return (
 		<section>
 			<div className='container'>
@@ -16,7 +39,7 @@ function BlogListSearchBox({ data: { structure } }) {
 						className='col-12 col-md-7 py-3 px-0 fs-5'
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 					<div className='col-12 col-md-5 py-3 px-0'>
-						<div className='row justify-content-start justify-content-md-end align-items-center'>
+						<div className='row justify-content-start justify-content-md-end align-items-center position-relative'>
 							<div className='col-xl-4 dropdown'>
 								<button
 									className='bg-transparent border-0'
@@ -47,18 +70,52 @@ function BlogListSearchBox({ data: { structure } }) {
 									</ul>
 								)}
 							</div>
-							<div className='col-xl-4 d-flex justify-content-between align-items-center'>
-								<input
-									type='text'
-									placeholder='Search'
-									className='search-articles'
-								/>
-								<button className='search-articles-btn'>
-									<FontAwesomeIcon
-										icon={faMagnifyingGlass}
-										color={' text-primary-dark'}
-									/>
-								</button>
+							<div className='col-xl-4 '>
+								<div className='d-flex justify-content-between align-items-center '>
+									<div>
+										<input
+											type='text'
+											placeholder='Search'
+											className='search-articles'
+											value={inputValue}
+											onChange={e => searchBlog(e.target.value)}
+										/>
+										<button className='search-articles-btn'>
+											<FontAwesomeIcon
+												icon={faMagnifyingGlass}
+												color={' text-primary-dark'}
+											/>
+										</button>
+									</div>
+									{blogListCondition && (
+										<div className='blog_search_box'>
+											<button
+												onClick={() => {
+													setBlogListCondition(false)
+													setInputValue('')
+												}}>
+												<FontAwesomeIcon icon={faXmark} />
+											</button>
+											<ul>
+												{blogList === 'loading' ? (
+													<li>
+														<Spinner size={35} />
+													</li>
+												) : blogList.length === 0 ? (
+													<li className='text-align-center'>empty</li>
+												) : (
+													blogList.map(item => (
+														<li>
+															<Link href={item?.route ? item?.route : '/'}>
+																<a>{item.title}</a>
+															</Link>
+														</li>
+													))
+												)}
+											</ul>
+										</div>
+									)}
+								</div>
 							</div>
 						</div>
 					</div>

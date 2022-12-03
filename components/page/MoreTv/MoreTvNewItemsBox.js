@@ -1,7 +1,7 @@
 import React from 'react'
 
 // component
-import MoreTVNewItem from './MoreTVNewItem'
+import MoreTVNewItem from './MoreTvNewItem'
 
 function MoreTVNewItemsBox({ data }) {
 	const { structure } = data
