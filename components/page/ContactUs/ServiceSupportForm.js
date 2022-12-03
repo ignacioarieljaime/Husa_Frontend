@@ -111,7 +111,7 @@ function ServiceSupportForm({ formHandler }) {
 		try {
 			let response = await axios({
 				method: 'post',
-				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
 				data: formData,
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
