@@ -21,6 +21,8 @@
 /pages/*
 /public/*.xml
 
+/hooks/componentGenerator.js
+
 
 # misc
 .DS_Store
@@ -37,6 +39,7 @@ yarn-error.log*
 
 /utils/urlData.json
 /utils/redirects.json
+
 
 # robots.txt
 /public/robots.txt
