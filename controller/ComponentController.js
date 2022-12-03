@@ -19,7 +19,6 @@ const FindComponent = _componentData => {
 
 const GenerateComponentStructure = (_page, _content, _condition) => {
 	return `
-import dynamic from 'next/dynamic';
 import axios from 'axios'
 import Layout from "components/common/Layout/Layout";
 import componentGenerator from 'hooks/componentGenerator';
