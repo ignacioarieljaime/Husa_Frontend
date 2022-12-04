@@ -1,0 +1,25 @@
+.google-tv-text-box {
+	&.dark {
+		.article {
+			background-color: #000000;
+
+			* {
+				color: #dbdbdb;
+			}
+		}
+	}
+
+	&.light {
+		.article {
+			background-color: #ececec;
+			* {
+				color: #606060;
+			}
+		}
+	}
+	padding: 50px;
+	max-width: 850px;
+	margin: 0 auto;
+
+	font-weight: 400;
+}
