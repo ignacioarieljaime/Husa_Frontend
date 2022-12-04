@@ -7,6 +7,7 @@ import LetsGetRealTextBox from 'components/common/LetsGetRealTextBox';
 import Header from 'components/common/Header/Header';
 import NeedHelpBox from 'components/common/NeedHelpBox';
 import BreadCrumb from 'components/common/BreadCrumb';
+import IFrame from 'components/common/IFrame';
 import UnauthorizedListCommon from 'components/common/UnauthorizedListCommon';
 import OfferClaimForm from 'components/common/OfferClaimForm';
 import SimpleImagesList from 'components/common/SimpleImagesList';
@@ -254,6 +255,7 @@ LetsGetRealTextBox:LetsGetRealTextBox,
 Header:Header,
 NeedHelpBox:NeedHelpBox,
 BreadCrumb:BreadCrumb,
+IFrame:IFrame,
 UnauthorizedListCommon:UnauthorizedListCommon,
 OfferClaimForm:OfferClaimForm,
 SimpleImagesList:SimpleImagesList,

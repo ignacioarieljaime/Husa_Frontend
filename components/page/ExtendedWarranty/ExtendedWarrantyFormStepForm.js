@@ -6,13 +6,15 @@ import Spinner from '../../common/Spinner'
 import CustomSelectBox from '../../common/selectBox'
 
 const ExtendedWarrantyFormStepForm = ({
-																				onChange,
-																				onUpload,
-																				acceptTerms,
-																				setAcceptTerms,
-																				onSubmit,
-																				formBody, loading, retailers
-																			}) => {
+	onChange,
+	onUpload,
+	acceptTerms,
+	setAcceptTerms,
+	onSubmit,
+	formBody,
+	loading,
+	retailers
+}) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
 
@@ -25,7 +27,8 @@ const ExtendedWarrantyFormStepForm = ({
 						<input
 							onChange={e =>
 								onChange(prevState => ({
-									...prevState, first_name: e.target.value
+									...prevState,
+									first_name: e.target.value
 								}))
 							}
 							required
@@ -39,7 +42,8 @@ const ExtendedWarrantyFormStepForm = ({
 						<input
 							onChange={e =>
 								onChange(prevState => ({
-									...prevState, last_name: e.target.value
+									...prevState,
+									last_name: e.target.value
 								}))
 							}
 							required
@@ -128,7 +132,8 @@ const ExtendedWarrantyFormStepForm = ({
 						<input
 							onChange={e =>
 								onChange(prevState => ({
-									...prevState, postal_code: e.target.value
+									...prevState,
+									postal_code: e.target.value
 								}))
 							}
 							required
@@ -139,14 +144,19 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 '>
 					<div className='extended-warranty-input'>
-						<CustomSelectBox  options={retailers} onChange={(_value) => onChange(prevState => ({
-							...prevState, retailer_id: _value.id
-						}))}
-														 title={'Retailer'}
-														 className={'w-100 d-flex justify-content-between'} />
+						<CustomSelectBox
+							options={retailers}
+							onChange={_value =>
+								onChange(prevState => ({
+									...prevState,
+									retailer_id: _value.id
+								}))
+							}
+							title={'Retailer'}
+							className={'w-100 d-flex justify-content-between'}
+						/>
 					</div>
 				</div>
-
 			</div>
 			<div className='row align-items-end'>
 				<div className='col-12 col-md-6'>
@@ -182,13 +192,9 @@ const ExtendedWarrantyFormStepForm = ({
 				<button
 					className='n-btn outline-black py-4 d-flex align-items-center mx-auto '
 					type='submit'
-					disabled={!acceptTerms || loading === 'button' ? true : false}
-				>
+					disabled={!acceptTerms || loading === 'button' ? true : false}>
 					Proceed to Payment
-					{
-						loading === 'button' && <Spinner className={'ms-3'} size={20} />
-					}
-
+					{loading === 'button' && <Spinner className={'ms-3'} size={20} />}
 				</button>
 				{/* <Link href={'/ewp-confirmation-page'}>
 					<a className='n-btn outline-black py-4'>Proceed to Payment</a>

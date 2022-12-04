@@ -1,18 +1,33 @@
-import React, { useRef } from 'react'
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import React, { useRef, useState } from 'react'
+import { faCircleInfo, faXmarkCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Spinner from '../../common/Spinner'
 
 const ExtendedWarrantyFileInput = ({
-																		 label,
-																		 boxContent,
-																		 onChange,
-																		 modalOnClick,
-																		 id,
-																		 name,
-																		 value, loading
-																	 }) => {
+	label,
+	boxContent,
+	onChange,
+	modalOnClick,
+	id,
+	name,
+	value,
+	loading
+}) => {
 	const inputRef = useRef(null)
+	const [file, setFile] = useState()
+
+	const clearField = () => {
+		onChange(
+			name,
+			{
+				id: id,
+				asset: '',
+				name: name
+			},
+			true
+		)
+		setFile('')
+	}
 
 	return (
 		<div className='extended-warranty-file-input'>
@@ -29,28 +44,46 @@ const ExtendedWarrantyFileInput = ({
 				)}
 			</div>
 			<div
-				className={`input ${value === '' ? '' : 'activated'}`}
+				className={`input ${!value || value === '' ? '' : 'activated'}`}
 				onClick={() => inputRef.current.click()}>
-				{
-					loading === name && <div className={'position-absolute top-50 '}
-																	 style={{ left: '50%', transform: 'translate(-50%,-50%)', zIndex: '2' }}>
+				{loading === name && (
+					<div
+						className={'position-absolute top-50 '}
+						style={{
+							left: '50%',
+							transform: 'translate(-50%,-50%)',
+							zIndex: '2'
+						}}>
 						<Spinner size={30} />
 					</div>
-				}
+				)}
 				<div className='content'>
-					{value === '' ? boxContent : 'Image Uploaded'}
+					<div>{!value || value === '' ? boxContent : 'Image Uploaded'}</div>
+					{file?.name && loading !== name && (
+						<div
+							className='file-delete'
+							onClick={e => {
+								e.stopPropagation()
+								clearField()
+							}}>
+							<FontAwesomeIcon icon={faXmarkCircle} className='me-2' />
+							{file?.name}
+						</div>
+					)}
 				</div>
 				<input
 					type='file'
 					ref={inputRef}
 					onChange={e => {
 						const file = e.target.files && e.target.files[0]
-						file?.type.startsWith('image') &&
-						onChange(name, {
-							id: id,
-							asset: e.target.files && e.target.files[0],
-							name: name
-						})
+						if (file?.type.startsWith('image')) {
+							onChange(name, {
+								id: id,
+								asset: e.target.files && e.target.files[0],
+								name: name
+							})
+							setFile(e.target.files && e.target.files[0])
+						}
 					}}
 				/>
 			</div>
