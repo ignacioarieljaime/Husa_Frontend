@@ -215,6 +215,10 @@
         box-shadow: none;
         transition: all 0.3s ease-in;
 
+        img{
+          object-fit: contain !important;
+        }
+
         &:hover {
           box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
         }

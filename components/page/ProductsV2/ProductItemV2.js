@@ -7,6 +7,7 @@ import { RouteHandler } from 'utils/routeHandler'
 import { useDispatch } from 'react-redux'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 import { addNewCompare } from 'redux/slices/compare'
+import CustomImage from 'components/common/CustomImage'
 
 const ProductItemV2 = ({ data }) => {
 	let { media, name, model, id } = data
@@ -32,10 +33,12 @@ const ProductItemV2 = ({ data }) => {
 		<>
 			{' '}
 			<div className='product-item-v2 px-5 py-8'>
-				<div className='text-center mb-10'>
-					<img
-						src={currentItem?.media?.url}
+				<div className='text-center mb-10 w-100'>
+					<CustomImage
+						wrapperWidth={'100%'}
+						wrapperHeight={'182px'}
 						style={{ maxHeight: '182px' }}
+						src={currentItem?.media?.url}
 						alt={name}
 					/>
 				</div>
@@ -83,12 +86,12 @@ const ProductItemV2 = ({ data }) => {
 								}`}>
 								Where to Buy
 								<span>
-								<FontAwesomeIcon
-									icon={faChevronRight}
-									size={'sm'}
-									className='ms-2'
-								/>
-							</span>
+									<FontAwesomeIcon
+										icon={faChevronRight}
+										size={'sm'}
+										className='ms-2'
+									/>
+								</span>
 							</button>
 						</div>
 						<div className='text-center'>
