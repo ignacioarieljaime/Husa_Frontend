@@ -50,6 +50,10 @@ function Layout({ children, meta, title }) {
 				<title>{title}</title>
 				<meta name='viewport' />
 				<meta name='og:url' content={router.route} />
+				<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+				<meta name='apple-touch-fullscreen' content='yes' />
+				<meta name='apple-mobile-web-app-capable' content='yes' />
 				{meta &&
 					meta.map(item =>
 						item.rel === 'blank' ? (
