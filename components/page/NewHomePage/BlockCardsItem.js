@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import CustomImage from '../../common/CustomImage'
 
 const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 	let { backgroundImage, bottomImage, title, topImage, link } = data
@@ -9,11 +10,11 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 				itemCount % 2 !== 0 && index + 1 === itemCount ? 'full-size' : ''
 			}`}>
 			<div className='box-background'>
-				<img
+				<CustomImage
 					src={backgroundImage?.src}
 					alt={backgroundImage?.alt}
-					width='100%'
-					height='100%'
+					wrapperHeight='100%'
+					wrapperWidth='100%'
 				/>
 				<div className='box-background-shade'></div>
 			</div>

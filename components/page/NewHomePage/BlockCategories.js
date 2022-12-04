@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
 import Link from 'next/link'
+import CustomImage from '../../common/CustomImage'
 
 const BlockCategories = ({ data: { structure } }) => {
 	return (
@@ -22,10 +23,12 @@ const BlockCategories = ({ data: { structure } }) => {
 					className='appliances-slider'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item'>
-							<img
+							<CustomImage
 								src={item?.image?.src}
 								alt={item?.image?.alt}
-								className='slider-image my-auto'
+								className={'slider-image my-auto'}
+								wrapperHeight={'236px'}
+								wrapperWidth={"100%"}
 							/>
 							<Link href={item?.link?.value ? item?.link?.value : '/'}>
 								<a className='slider-title text-nowrap n-btn outline-black transparent'>

@@ -12,6 +12,7 @@ import 'swiper/css'
 import Link from 'next/link'
 import axios from 'axios'
 import Spinner from 'components/common/Spinner'
+import CustomImage from '../../common/CustomImage'
 
 const SupportNewProducts = ({ data }) => {
 	const [categoryId, setCategoryId] = useState()
@@ -69,12 +70,13 @@ const SupportNewProducts = ({ data }) => {
 					className='support-products-slider'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item '>
-							<div className='d-flex flex-column h-100 align-center justify-content-between'>
-								<img
+							<div className='d-flex flex-column '>
+								<CustomImage
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									title={item?.image?.title}
 									className='slider-image'
+									wrapperHeight={'92px'}
 								/>
 								<button
 									onClick={() => {
@@ -120,7 +122,7 @@ const SupportNewProducts = ({ data }) => {
 												<Spinner size={20} />
 											</li>
 										) : Array.isArray(searchProductsList) &&
-										  searchProductsList.length > 0 ? (
+										searchProductsList.length > 0 ? (
 											searchProductsList.map((item, index) => (
 												<li key={'search-list-' + index}>
 													<Link href={item.route}>

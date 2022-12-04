@@ -1,15 +1,17 @@
 import React from 'react'
 import Link from 'next/link'
+import CustomImage from '../../common/CustomImage'
 
 function SupportNeedMoreWithButton({ data }) {
 	let { structure } = data
 	return (
 		<section>
 			<div className='heading support-heading support-new-heading'>
-				<img
+				<CustomImage
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}
-					width='100%'
+					wrapperWidth='100%'
+					wrapperHeight={'375px'}
 				/>
 				<div className='heading-text'>
 					<h4
