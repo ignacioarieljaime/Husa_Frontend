@@ -11,7 +11,7 @@ const ProductWhereToBuy = ({ pim, data }) => {
 				<h2>{structure?.littleTitle?.value}</h2>
 				<button
 					onClick={() => setChanelAdviserHandler(true)}
-					disabled={structure?.whereToBuy?.value}
+					disabled={pim?.retailers.length > 0 ? false : true}
 					class='btn btn-turquoise'>
 					{structure?.whereToBuy?.title}
 				</button>
