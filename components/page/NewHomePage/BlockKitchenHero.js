@@ -42,10 +42,9 @@ const BlockKitchenContainer = ({ structure }) => {
 							wrapperHeight={'460px'}
 						/> */}
 						<img
-							ref={imageRef}
+							ref={imageRef.ref}
 							src={structure?.image?.src}
 							alt={structure?.image?.alt}
-							onLoad={() => parallaxController.update()}
 						/>
 					</div>
 					<div className='col-12 col-md-5 content'>
