@@ -5,7 +5,7 @@ import Image from 'public/assets/images/4k-uled/heading.jpg'
 function ContactUsAboutHisense({ data }) {
 	let { structure } = data
 	return (
-		<section>
+		<section className=''>
 			<div class='row mx-0'>
 				<div class='col-12 col-md-6 px-0 bg-black'>
 					<article class='article row justify-content-center align-items-center h-100 mx-0 p-10 p-sm-20 p-md-5 p-lg-20'>

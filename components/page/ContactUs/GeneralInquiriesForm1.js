@@ -107,8 +107,8 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					className={`d-flex mx-auto align-items-center ${
 						btnClass ? btnClass : 'form-submit-btn '
 					}`}>
-					<span className='me-2'> SUBMIT</span>
-					{loading && <Spinner size={25} />}
+					<span > SUBMIT</span>
+					{loading && <Spinner className={"ms-2"} size={25} />}
 				</button>
 			</div>
 		</form>

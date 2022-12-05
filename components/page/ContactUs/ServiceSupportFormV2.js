@@ -16,7 +16,7 @@ let warrantyOption = [
 ]
 let serviceTypeOption = [{ name: 'Technical Support', value: 'technical' }]
 
-function ServiceSupportForm({ formHandler }) {
+function ServiceSupportFormV2({ data, formHandler }) {
 	const router = useRouter()
 	const [modalCondition, setModalCondition] = useState(false)
 	const [disabled, setDisabled] = useState(false)
@@ -215,7 +215,11 @@ function ServiceSupportForm({ formHandler }) {
 						title={'TYPE OF SERVICE REQUEST'}
 					/>
 				</div>
-				<div className='col-12 mb-10'>
+				<div className='col-12 mb-10 description_of_support_input'>
+					<label>Description Of Support</label>
+					<span className='info'>
+						If television related, please include firmware version
+					</span>
 					<textarea
 						name=''
 						cols='30'
@@ -224,16 +228,14 @@ function ServiceSupportForm({ formHandler }) {
 						required
 						placeholder='DESCRIPTION OF SUPPORT'
 						className='form-container-inner-input'></textarea>
-					<span className='fs-9'>
-						If television related, please include firmware version
-					</span>
+
 					<span className='input-error'>This field is required.</span>
 				</div>
-				<div className='col-12 mb-10 file-upload'>
-					<label htmlFor='file-upload'>
+				<div className='col-12 mb-10 file-upload description_of_support_input'>
+					<label htmlFor='file-upload '>
 						SUPPORTING PHOTOS OR IMAGES OF THE PROBLEM
 					</label>
-					<span>Max 3 Images (Optional)</span>
+					<span className='info'>Max 3 Images (Optional)</span>
 
 					<div className='file-upload-box position-relative'>
 						{imageLoading && (
@@ -267,17 +269,17 @@ function ServiceSupportForm({ formHandler }) {
 				</div>
 				<div className='col-12 text-center'>
 					<button
-						disabled={loading}
 						type='submit'
-						className='form-submit-btn align-items-center mx-auto d-flex'>
-						<span className='me-2'>SUBMIT</span>
-						{loading && <Spinner size={25} />}
+						disabled={loading}
+						className={`d-flex mx-auto align-items-center btn btn-outline-dark fw-bold rounded-5 mb-20 py-3 px-4`}>
+						<span> SUBMIT</span>
+						{loading && <Spinner className={'ms-2'} size={25} />}
 					</button>
 				</div>
 			</form>
-			{modalCondition && <RoleModal modalHandler={setModalCondition} />}
+			{modalCondition && <RoleModal data={data?.text?.value} modalHandler={setModalCondition} />}
 		</>
 	)
 }
 
-export default ServiceSupportForm
+export default ServiceSupportFormV2
