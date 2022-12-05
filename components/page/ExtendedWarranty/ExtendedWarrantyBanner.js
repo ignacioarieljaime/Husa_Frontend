@@ -1,10 +1,27 @@
 import React, { useState } from 'react'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
+import { GetProducts } from 'services/ExtendedWarranty'
+import Spinner from 'components/common/Spinner'
 
 const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 	const [searchTerm, setSearchTerm] = useState('')
+	const [productsList, setProductsList] = useState()
+	const [showProductsList, setShowProductsList] = useState(false)
+
+	const searchProduct = async _searchValue => {
+		setProductsList('loading')
+		setShowProductsList(true)
+		setSearchTerm(_searchValue)
+		try {
+			let response = await GetProducts(null, null, _searchValue)
+			setProductsList(response.data.products)
+		} catch (error) {
+			setProductsList(null)
+			console.log(error)
+		}
+	}
 
 	return (
 		<section>
@@ -21,21 +38,50 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 						className='text-white mb-4 mb-md-10'
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 					{structure?.showSearch?.value && (
-						<form>
-							<div className='support-products-searchbox'>
-								<input
-									type='text'
-									placeholder='start typing your model number'
-									value={searchTerm}
-									onChange={e => setSearchTerm(e.target.value)}
-								/>
-								<Link href={'/ewp-model-selection-page?search=' + searchTerm}>
-									<a className='text-white'>
-										<FontAwesomeIcon icon={faMagnifyingGlass} />
-									</a>
-								</Link>
-							</div>
-						</form>
+						<div className='support-products-searchbox'>
+							<input
+								type='text'
+								placeholder='start typing your model number'
+								value={searchTerm}
+								onChange={e => searchProduct(e.target.value)}
+							/>
+							{Array.isArray(productsList) ? (
+								<button
+									onClick={() => {
+										setShowProductsList(false)
+										setSearchTerm('')
+									}}
+									className='text-white'>
+									<FontAwesomeIcon icon={faXmark} />
+								</button>
+							) : (
+								<span className='text-white'>
+									<FontAwesomeIcon icon={faMagnifyingGlass} />
+								</span>
+							)}
+
+							{showProductsList && (
+								<div>
+									<ul>
+										{productsList === 'loading' ? (
+											<Spinner size={35} />
+										) : Array.isArray(productsList) ? (
+											<>
+												{productsList.map(item => (
+													<li>
+														<Link href={`/ewp-wizard-plan-selector/${item.id}`}>
+															<a>{item.name}</a>
+														</Link>
+													</li>
+												))}
+											</>
+										) : (
+											'empty'
+										)}
+									</ul>
+								</div>
+							)}
+						</div>
 					)}
 				</div>
 			</div>

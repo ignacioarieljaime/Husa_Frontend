@@ -12,6 +12,7 @@
 		.support-products-searchbox {
 			background: #221f20;
 			border-color: #221f20;
+			position: relative;
 			max-width: 420px;
 
 			input {
@@ -28,6 +29,51 @@
 			button {
 				svg {
 					color: #fff;
+				}
+			}
+			div {
+				left: 0;
+				width: 100%;
+				background: #221f20;
+				position: absolute;
+				top: 65%;
+				padding: 25px 0 10px 0;
+				border-radius: 0 0 10px 10px;
+				-webkit-border-radius: 0 0 10px 10px;
+				-moz-border-radius: 0 0 10px 10px;
+				-ms-border-radius: 0 0 10px 10px;
+				-o-border-radius: 0 0 10px 10px;
+				z-index: 10;
+
+				ul {
+					list-style: none;
+					padding: 0 20px;
+					max-height: 190px;
+					display: flex;
+					overflow: auto;
+					flex-direction: column;
+					gap: 5px;
+					li {
+						text-align: left;
+						a {
+							width: 100%;
+							text-decoration: none;
+							text-align: left;
+							color: #fff;
+							transition: all 0.3s;
+							display: inline-block;
+							white-space: nowrap;
+							overflow: hidden !important;
+							text-overflow: ellipsis;
+							-webkit-transition: all 0.3s;
+							-moz-transition: all 0.3s;
+							-ms-transition: all 0.3s;
+							-o-transition: all 0.3s;
+							&:hover {
+								color: #00a29c;
+							}
+						}
+					}
 				}
 			}
 		}
