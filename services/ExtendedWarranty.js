@@ -8,6 +8,7 @@ export async function GetProducts(_categoryId, _model, _search) {
 				category_id: _categoryId,
 				model: _model,
 				search: _search,
+				brand_id: 1
 			}
 		}
 	)

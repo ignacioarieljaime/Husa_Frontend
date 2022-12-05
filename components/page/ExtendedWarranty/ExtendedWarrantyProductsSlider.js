@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
 
@@ -6,6 +6,16 @@ import 'swiper/css'
 
 const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 	const categories = structure?.list?.value[0]?.category?.items
+	const [centeredNumber, setCenteredNumber] = useState(1)
+
+	useEffect(() => {
+		let centerNumber = structure?.list?.value.length / 2
+		if (centerNumber % 1 != 0) {
+			setCenteredNumber(Math.floor(centerNumber))
+		} else {
+			setCenteredNumber(centerNumber)
+		}
+	}, [])
 
 	return (
 		<section>
@@ -15,13 +25,13 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 						Select a product catagory or scroll down to learn more
 					</h3>
 					<Swiper
-						navigation={false}
-						pagination={false}
+						initialSlide={centeredNumber}
 						spaceBetween={35}
+						freeMode={true}
 						slidesPerView={'auto'}
 						centeredSlides={true}
 						grabCursor={true}
-						className='support-products-slider'>
+						className='support-products-slider '>
 						{structure?.list?.value.map((item, index) => (
 							<SwiperSlide key={index} className='slider-item'>
 								<div>
