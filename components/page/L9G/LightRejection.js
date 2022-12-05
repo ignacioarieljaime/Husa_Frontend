@@ -52,10 +52,10 @@ const LightRejection = ({ data: { structure } }) => {
 						</div>
 					))}
 				</div>
-				<div className='d-flex justify-content-between align-items-start flex-wrap flex-sm-nowrap'>
+				<div className='d-flex justify-content-between  flex-wrap flex-sm-nowrap'>
 					{structure?.specs?.value.map((spec, index) => (
-						<div>
-							<div className='px-4 px-md-20 py-4 py-md-15'>
+						<div className='d-flex flex-column '>
+							<div className='px-4 px-md-20 py-4 py-md-15 flex-grow-1 d-flex flex-column'>
 								<div
 									className='fs-sm-2 fs-md-2x fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
 									data-aos='fade-zoom-in'
