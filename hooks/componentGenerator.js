@@ -7,6 +7,7 @@ import LetsGetRealTextBox from 'components/common/LetsGetRealTextBox';
 import Header from 'components/common/Header/Header';
 import NeedHelpBox from 'components/common/NeedHelpBox';
 import BreadCrumb from 'components/common/BreadCrumb';
+import IFrame from 'components/common/IFrame';
 import UnauthorizedListCommon from 'components/common/UnauthorizedListCommon';
 import OfferClaimForm from 'components/common/OfferClaimForm';
 import SimpleImagesList from 'components/common/SimpleImagesList';
@@ -243,6 +244,12 @@ import BeyondLaserQuoteBlock from 'components/page/BeyondLaser/BeyondLaserQuoteB
 import BeyondLaserIframeBlock from 'components/page/BeyondLaser/BeyondLaserIframeBlock';
 import BeyondLaserFooterBlock from 'components/page/BeyondLaser/BeyondLaserFooterBlock';
 import BeyondLaserFlipDevice from 'components/page/BeyondLaser/BeyondLaserFlipDevice';
+import GoogleTvBanner from 'components/page/GoogleTv/GoogleTvBanner';
+import GoogleTvHero from 'components/page/GoogleTv/GoogleTvHero';
+import GoogleTvProducts from 'components/page/GoogleTv/GoogleTvProducts';
+import GoogleTvTops from 'components/page/GoogleTv/GoogleTvTops';
+import GoogleTvTextBox from 'components/page/GoogleTv/GoogleTvTextBox';
+import GoogleTvFeatureBlocks from 'components/page/GoogleTv/GoogleTvFeatureBlocks';
 import Subscribe from 'components/common/Subscribe';
 import Footer from 'components/common/Footer'
 
@@ -254,6 +261,7 @@ LetsGetRealTextBox:LetsGetRealTextBox,
 Header:Header,
 NeedHelpBox:NeedHelpBox,
 BreadCrumb:BreadCrumb,
+IFrame:IFrame,
 UnauthorizedListCommon:UnauthorizedListCommon,
 OfferClaimForm:OfferClaimForm,
 SimpleImagesList:SimpleImagesList,
@@ -490,6 +498,12 @@ BeyondLaserQuoteBlock:BeyondLaserQuoteBlock,
 BeyondLaserIframeBlock:BeyondLaserIframeBlock,
 BeyondLaserFooterBlock:BeyondLaserFooterBlock,
 BeyondLaserFlipDevice:BeyondLaserFlipDevice,
+GoogleTvBanner:GoogleTvBanner,
+GoogleTvHero:GoogleTvHero,
+GoogleTvProducts:GoogleTvProducts,
+GoogleTvTops:GoogleTvTops,
+GoogleTvTextBox:GoogleTvTextBox,
+GoogleTvFeatureBlocks:GoogleTvFeatureBlocks,
 Subscribe:Subscribe,
 Footer:Footer
 }
