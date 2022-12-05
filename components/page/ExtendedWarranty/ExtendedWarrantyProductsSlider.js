@@ -35,11 +35,10 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 						{structure?.list?.value.map((item, index) => (
 							<SwiperSlide key={index} className='slider-item'>
 								<div>
-									<img
-										src={item?.image?.src}
-										alt={item?.image?.alt}
-										className='slider-image'
-									/>
+									<div className='slider-image'>
+										<img src={item?.image?.src} alt={item?.image?.alt} />
+									</div>
+
 									<Link
 										href={`/ewp-model-selection-page?category_id=${
 											categories.find(
