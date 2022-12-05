@@ -3,6 +3,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
+	faChampagneGlasses,
 	faChevronCircleDown,
 	faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
@@ -11,11 +12,12 @@ const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 	const [collapsed, setCollapsed] = useState(true)
 	const windowSize = useWindowSize()
 	const accordionContent = useRef()
+	const accordionContentHeight = useRef()
 
 	useEffect(() => {
 		if (!collapsed) {
 			accordionContent.current.style.maxHeight =
-				accordionContent.current.scrollHeight + 'px'
+				accordionContentHeight.current.offsetHeight + 'px'
 		} else {
 			accordionContent.current.style.maxHeight = '0px'
 		}
@@ -37,16 +39,19 @@ const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 			</button>
 			<div className='faq-accordion-content' ref={accordionContent}>
 				{questions.map((item, index) => (
-					<div key={index} className='faq-accordion-question-item'>
+					<div
+						key={index}
+						ref={accordionContentHeight}
+						className='faq-accordion-question-item'>
 						<h4 className='faq-accordion-question'>
 							{item?.question?.value}
-							<span>
+							<button onClick={() => setCollapsed(collapsed => !collapsed)}>
 								<FontAwesomeIcon
 									icon={faCircleXmark}
 									size={'xl'}
 									className='ms-2'
 								/>
-							</span>
+							</button>
 						</h4>
 						<div
 							className='faq-accordion-answer'
