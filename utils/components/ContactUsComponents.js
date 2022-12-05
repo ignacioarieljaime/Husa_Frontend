@@ -4,6 +4,10 @@ module.exports.ContactUsComponents = [
 		path: 'components/page/ContactUs/ContactUsHead'
 	},
 	{
+		name: 'ContactUsChat',
+		path: 'components/page/ContactUs/ContactUsChat'
+	},
+	{
 		name: 'ContactUsForm',
 		path: 'components/page/ContactUs/ContactUsForm'
 	},

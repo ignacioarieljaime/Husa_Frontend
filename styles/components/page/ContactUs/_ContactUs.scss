@@ -97,21 +97,25 @@
 	}
 }
 
-.contact_us_chat{
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+section.contact_us_chat {
+	border-bottom: 1px solid #000 !important;
+	padding: 50px 0;
 
+	.contact_us_chat_content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-	div{
-		h5{
-
+		div {
+			h5 {
+				font-size: 1.75rem;
+				margin-bottom: 20px !important;
+			}
+			h6 {
+				font-weight: 300 !important;
+				font-size: 20px;
+				margin-bottom: 0;
+			}
 		}
-		h6{
-
-		}
-	}
-	button{
-		
 	}
 }
