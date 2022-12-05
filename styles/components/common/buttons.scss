@@ -41,6 +41,16 @@
     }
   }
 
+  &.black {
+    border-color: #000;
+    color: #fff !important;
+    background-color: #000 !important;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
   &.white {
     border-color: #fff;
     color: #000 !important;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GoogleTvTextBox = ({ structure }) => {
+const GoogleTvTextBox = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div

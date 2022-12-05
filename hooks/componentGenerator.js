@@ -245,7 +245,6 @@ import BeyondLaserIframeBlock from 'components/page/BeyondLaser/BeyondLaserIfram
 import BeyondLaserFooterBlock from 'components/page/BeyondLaser/BeyondLaserFooterBlock';
 import BeyondLaserFlipDevice from 'components/page/BeyondLaser/BeyondLaserFlipDevice';
 import GoogleTvBanner from 'components/page/GoogleTv/GoogleTvBanner';
-import GoogleTvBoxTv from 'components/page/GoogleTv/GoogleTvBoxTv';
 import GoogleTvHero from 'components/page/GoogleTv/GoogleTvHero';
 import GoogleTvProducts from 'components/page/GoogleTv/GoogleTvProducts';
 import GoogleTvTops from 'components/page/GoogleTv/GoogleTvTops';
@@ -500,7 +499,6 @@ BeyondLaserIframeBlock:BeyondLaserIframeBlock,
 BeyondLaserFooterBlock:BeyondLaserFooterBlock,
 BeyondLaserFlipDevice:BeyondLaserFlipDevice,
 GoogleTvBanner:GoogleTvBanner,
-GoogleTvBoxTv:GoogleTvBoxTv,
 GoogleTvHero:GoogleTvHero,
 GoogleTvProducts:GoogleTvProducts,
 GoogleTvTops:GoogleTvTops,
