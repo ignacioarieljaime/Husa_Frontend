@@ -5,9 +5,10 @@ function ProductFeatureWithImage({ data }) {
 	return (
 		<section>
 			<div
-				class={`row description-blocks theme-${
-					structure?.theme?.value
-				} ${structure?.theme?.value === "dark" ? "text-white":""} align-items-center ${
+				style={{ background: structure?.backgroundColor?.value }}
+				class={`row description-blocks theme-${structure?.theme?.value} ${
+					structure?.theme?.value === 'dark' ? 'text-white' : ''
+				} align-items-center ${
 					structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''
 				}`}>
 				<article class='introduction col-12 col-md-6 order-2'>
