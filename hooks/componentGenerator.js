@@ -71,6 +71,7 @@ import FAQhead from 'components/page/FAQ/FAQhead';
 import FAQContentBox from 'components/page/FAQ/FAQContentBox';
 import FAQDescriptionWithTwoBox from 'components/page/FAQ/FAQDescriptionWithTwoBox';
 import ContactUsHead from 'components/page/ContactUs/ContactUsHead';
+import ContactUsChat from 'components/page/ContactUs/ContactUsChat';
 import ContactUsForm from 'components/page/ContactUs/ContactUsForm';
 import ContactUsNewHead from 'components/page/ContactUs/ContactUsNewHead';
 import ContactUsNewForm from 'components/page/ContactUs/ContactUsNewForm';
@@ -325,6 +326,7 @@ FAQhead:FAQhead,
 FAQContentBox:FAQContentBox,
 FAQDescriptionWithTwoBox:FAQDescriptionWithTwoBox,
 ContactUsHead:ContactUsHead,
+ContactUsChat:ContactUsChat,
 ContactUsForm:ContactUsForm,
 ContactUsNewHead:ContactUsNewHead,
 ContactUsNewForm:ContactUsNewForm,
@@ -508,12 +510,13 @@ Subscribe:Subscribe,
 Footer:Footer
 }
 
-export default (block, pim) => {
+export default (block, pim , notification) => {
     if (typeof Components[block.name] !== 'undefined') {
         return React.createElement(Components[block.name], {
             key: block.id,
             data: block,
-            pim: pim
+            pim: pim,
+            notification: notification
         })
     }
     // return React.createElement(
