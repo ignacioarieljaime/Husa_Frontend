@@ -4,7 +4,10 @@ const fs = require('fs')
 const generateContent = () => {
 	return `
 import React from 'react'
-${ComponentList.map(item => `import ${item.name} from '${item.path}'`).join(
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+
+${ComponentList.map(item => `const ${item.name} = dynamic(() => import('${item.path}'), {suspense: true,})`).join(
 	`;
 `
 )}
