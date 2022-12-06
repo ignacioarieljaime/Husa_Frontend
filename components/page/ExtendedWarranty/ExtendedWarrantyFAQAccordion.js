@@ -3,7 +3,6 @@ import { useWindowSize } from 'hooks/useWindowSize'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-	faChampagneGlasses,
 	faChevronCircleDown,
 	faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
