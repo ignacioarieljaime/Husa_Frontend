@@ -1,19 +1,6 @@
 import React from 'react'
 
-// image
-import Image from 'public/assets/images/support/support-bg.jpg'
-
 function SupportNewHeadV2({ data }) {
-	let structure = {
-		image: {
-			src: '',
-			alt: ''
-		},
-		title: {
-			value: ''
-		}
-	}
-
 	return (
 		<section>
 			<div className='heading support-heading support-new-heading'>

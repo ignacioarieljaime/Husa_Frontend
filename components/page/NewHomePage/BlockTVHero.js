@@ -39,13 +39,15 @@ const BlockTVContainer = ({ structure }) => {
 					<div
 						ref={imageRef.ref}
 						className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
-						<CustomImage
-							src={structure?.image?.src}
-							alt={structure?.image?.alt}
-							wrapperWidth={'100%'}
-							onLoad={() => parallaxController.update()}
-							wrapperHeight={'558px'}
-						/>
+						{structure?.image?.src && (
+							<CustomImage
+								src={structure?.image?.src}
+								alt={structure?.image?.alt}
+								onLoad={() => parallaxController.update()}
+								wrapperWidth={'100%'}
+								wrapperHeight={'558px'}
+							/>
+						)}{' '}
 					</div>
 					<div className='col-12 col-md-5 content mt-8 mt-md-0'>
 						<div className='p-1 p-lg-7'>
