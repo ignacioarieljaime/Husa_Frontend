@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
 function ProductFindMeInStore({ pim, data }) {
@@ -13,7 +14,11 @@ function ProductFindMeInStore({ pim, data }) {
 					<div className='row justify-content-evenly align-items-center'>
 						{pim?.retailers.map((item, index) => (
 							<div key={index}>
-								<img src={item.Media?.url} alt='featured-image' width='150' />
+								<CustomImage
+									src={item.Media?.url}
+									alt='featured-image'
+									wrapperHeight={'150'}
+								/>
 							</div>
 						))}
 					</div>

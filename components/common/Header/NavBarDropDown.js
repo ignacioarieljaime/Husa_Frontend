@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import CustomImage from '../CustomImage'
 
 function NavBarDropDown({ data }) {
 	return (
@@ -46,10 +47,8 @@ function NavBarDropDown({ data }) {
 										{data.products.map((product, index) => (
 											<Link href={product.url ? product.url : ''}>
 												<a className={`col-${12 / data.products.length}`}>
-													<img
+													<CustomImage
 														src={product.image}
-														width='100%'
-														height='100%'
 														alt='featured image'
 													/>
 												</a>
