@@ -34,13 +34,11 @@ const BlockFeatured = ({ data: { structure } }) => {
 						<h3 className='slider-title fs-2'>{item?.title?.value}</h3>
 						<div className='slider-body'>
 							{item?.image ? (
-
 								<CustomImage
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									className='slider-image'
 									wrapperWidth={'100%'}
-									wrapperHeight={'440px'}
 								/>
 							) : (
 								<div className='slider-video'>
