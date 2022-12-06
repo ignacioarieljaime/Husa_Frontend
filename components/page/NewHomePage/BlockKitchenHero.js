@@ -34,12 +34,17 @@ const BlockKitchenContainer = ({ structure }) => {
 			<div className='intro-section black-parallax-box'>
 				<div className='row align-items-center mx-0'>
 					<div className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
-						<CustomImage
+						{/* <CustomImage
 							src={structure?.image?.src}
 							alt={structure?.image?.alt}
 							wrapperWidth={'100%'}
 							style={{ position: 'relative', top: '60px' }}
 							wrapperHeight={'460px'}
+						/> */}
+						<img
+							ref={imageRef.ref}
+							src={structure?.image?.src}
+							alt={structure?.image?.alt}
 						/>
 					</div>
 					<div className='col-12 col-md-5 content'>

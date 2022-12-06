@@ -36,15 +36,19 @@ const BlockTVContainer = ({ structure }) => {
 					className='title gradient-text fs-5qx fs-xxl-4tx px-4 px-md-0'
 					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 				<div className='row mx-0'>
-					<div
-						ref={imageRef.ref}
-						className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
-						<CustomImage
+					<div className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
+						{/* <CustomImage
 							src={structure?.image?.src}
 							alt={structure?.image?.alt}
 							wrapperWidth={'100%'}
 							onLoad={() => parallaxController.update()}
 							wrapperHeight={'558px'}
+						/> */}
+						<img
+							src={structure?.image?.src}
+							alt={structure?.image?.alt}
+							ref={imageRef.ref}
+							onLoad={() => parallaxController.update()}
 						/>
 					</div>
 					<div className='col-12 col-md-5 content mt-8 mt-md-0'>
