@@ -45,7 +45,6 @@ const BlockTVContainer = ({ structure }) => {
 								alt={structure?.image?.alt}
 								onLoad={() => parallaxController.update()}
 								wrapperWidth={'100%'}
-								wrapperHeight={'558px'}
 							/>
 						)}{' '}
 					</div>

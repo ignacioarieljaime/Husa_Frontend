@@ -43,7 +43,6 @@ const BlockKitchenContainer = ({ structure }) => {
 								wrapperWidth={'100%'}
 								style={{ position: 'relative' }}
 								onLoad={() => parallaxController.update()}
-								wrapperHeight={'460px'}
 							/>
 						)}
 					</div>
