@@ -71,6 +71,9 @@
 
 	.single-product-gallery-thumbs {
 		height: unset !important;
+		img{
+			object-fit: contain !important;
+		}
 	}
 }
 

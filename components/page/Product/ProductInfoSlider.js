@@ -29,6 +29,7 @@ function ProductInfoSlider({ pim, firstImage }) {
 								src={firstImage}
 								alt='Front U8G Hisense s'
 								className='slider-media'
+								wrapperHeight={'100%'}
 							/>
 						</span>
 					</SwiperSlide>
@@ -42,6 +43,7 @@ function ProductInfoSlider({ pim, firstImage }) {
 										src={item.url}
 										alt='Front U8G Hisense s'
 										className='slider-media'
+										wrapperHeight={'100%'}
 									/>
 								</span>
 								<figcaption className='figure-caption'>{item.title}</figcaption>
@@ -67,6 +69,7 @@ function ProductInfoSlider({ pim, firstImage }) {
 							alt='Front U8G Hisense s'
 							aria-hidden='true'
 							tabIndex='-1'
+							wrapperHeight={'91px'}
 						/>
 					</SwiperSlide>
 				)}
@@ -77,11 +80,12 @@ function ProductInfoSlider({ pim, firstImage }) {
 								aria-hidden='true'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}>
-								<img
+								<CustomImage
 									src={item.url}
 									alt='Front U8G Hisense s'
 									aria-hidden='true'
 									tabIndex='-1'
+									wrapperHeight={'91px'}
 								/>
 							</SwiperSlide>
 						) : null

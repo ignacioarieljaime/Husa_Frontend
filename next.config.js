@@ -17,6 +17,20 @@ const moduleExports = {
 	images: {
 		domains: ['assets.hisenseportal.com', 'assets.hisense-usa.com', '*'],
 		deviceSizes: [360, 640, 750, 828, 1080, 1200, 1920, 2048, 3840]
+	},
+	async headers() {
+		return [
+			{
+				source: '/:all*(svg|jpg|png)',
+				locale: false,
+				headers: [
+					{
+						key: 'Cache-Control',
+						value: 'public, max-age=9999999999, must-revalidate'
+					}
+				]
+			}
+		]
 	}
 }
 

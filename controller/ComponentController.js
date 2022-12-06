@@ -34,7 +34,11 @@ return (
   }
 ${
 	_page.model_id !== 0
-		? `  export async function getServerSideProps(context) {		
+		? `  export async function getServerSideProps({req,res}) {		
+			res.setHeader(
+				'Cache-Control',
+				'public, s-maxage=10, stale-while-revalidate=59'
+			)
 			console.log('send cxm request')
 				let data = await axios
 				   .get(
@@ -62,7 +66,11 @@ ${
 							return null
 						})
 	return { props: { pim,data }} }`
-		: `export async function getServerSideProps(context) {		
+		: `export async function getServerSideProps({req,res}) {		
+			res.setHeader(
+				'Cache-Control',
+				'public, s-maxage=10, stale-while-revalidate=59'
+			)
 			console.log('send cxm request')
 				let data = await axios
 				   .get(
