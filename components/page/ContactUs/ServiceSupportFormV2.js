@@ -11,8 +11,9 @@ import { GetCategoriesApi, GetSeriesModelsApi } from 'services/category'
 import RoleModal from './RoleModal'
 
 let warrantyOption = [
-	{ name: 'YES', value: 'known' },
-	{ name: 'NO', value: 'unknown' }
+	{ name: 'UNKNOWN', value: 'unknown' },
+	{ name: 'YES', value: 'yes' },
+	{ name: 'NO', value: 'no' }
 ]
 let serviceTypeOption = [{ name: 'Technical Support', value: 'technical' }]
 
@@ -277,7 +278,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 					</button>
 				</div>
 			</form>
-			{modalCondition && <RoleModal data={data?.text?.value} modalHandler={setModalCondition} />}
+			{modalCondition && (
+				<RoleModal data={data?.text?.value} modalHandler={setModalCondition} />
+			)}
 		</>
 	)
 }
