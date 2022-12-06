@@ -36,6 +36,8 @@
 		"node-notifier": "^10.0.1",
 		"nodemon": "^2.0.20",
 		"open": "^8.4.0",
+		"postcss-flexbugs-fixes": "^5.0.2",
+		"postcss-preset-env": "^7.8.3",
 		"react": "18.2.0",
 		"react-animated-text-content": "^1.0.1",
 		"react-bootstrap": "^2.5.0",
