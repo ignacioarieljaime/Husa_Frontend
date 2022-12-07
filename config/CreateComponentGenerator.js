@@ -7,7 +7,7 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
-${ComponentList.map(item => `const ${item.name} = dynamic(() => import('${item.path}'), {suspense: true,})`).join(
+${ComponentList.map(item => `const ${item.name} = dynamic(() => import('${item.path}'), {suspense: true})`).join(
 	`;
 `
 )}

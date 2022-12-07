@@ -22,13 +22,19 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 import axios from 'axios'
 import Layout from "components/common/Layout/Layout";
 import componentGenerator from 'hooks/componentGenerator';
+import { Suspense } from 'react'
+import Spinner from 'components/common/Spinner';
 
 function Index${_page.id}({pim,data}) {
 return (
 	<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
-      	<section>{data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null ))}</section>
+      	<section>
+		  	<Suspense fallback={<><Spinner size={50} /></>}>
+				{data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null ))}
+			</Suspense>
+		</section>
 	</Layout>
     )
   }
