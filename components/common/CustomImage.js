@@ -14,9 +14,8 @@ function CustomImage({
 	onLoad = () => {}
 }) {
 	const image = useRef()
-
-	if (src) {
-		useEffect(() => {
+	useEffect(() => {
+		if (src) {
 			image.current.childNodes[0].childNodes[0].setAttribute(
 				'style',
 				'position: relative !important;width:100%;    height: 100%;'
@@ -25,7 +24,10 @@ function CustomImage({
 				'style',
 				'position: relative !important;height: fit-content;width: 100%;display: block;    height: 100%;'
 			)
-		}, [])
+		}
+	}, [])
+
+	if (src) {
 		return (
 			<div
 				className={`${className} ${wrapperClass}`}
