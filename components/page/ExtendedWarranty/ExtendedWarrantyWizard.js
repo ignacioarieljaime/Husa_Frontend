@@ -77,7 +77,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 		<ExtendedWarrantyFormStep
 			product={product}
 			plan={plan}
-			terms={structure?.terms.value}
+			terms={structure?.terms?.value}
 		/>
 	]
 
