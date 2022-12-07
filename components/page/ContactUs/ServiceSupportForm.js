@@ -87,7 +87,7 @@ function ServiceSupportForm({ formHandler }) {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/support',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/support`,
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {

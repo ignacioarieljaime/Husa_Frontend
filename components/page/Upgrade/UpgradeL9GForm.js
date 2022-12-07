@@ -35,7 +35,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 		setLoading('button')
 		try {
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/l9g-trichroma',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/l9g-trichroma`,
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {

@@ -57,7 +57,7 @@ ${
 				console.log('send pim request')
 				 let pim = await axios
 						.get(
-							'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/${_page.model_id}'
+							'${process.env.PIM_API_ROUTE}/getProduct/${_page.model_id}'
 						)
 						.then(response => {
 							console.log('get pim data')

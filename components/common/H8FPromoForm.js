@@ -47,7 +47,7 @@ function H8FPromoForm({ data }) {
 		try {
 			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/offer-claim',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/offer-claim`,
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
 			if (response.status === 200) {

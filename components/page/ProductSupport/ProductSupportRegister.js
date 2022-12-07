@@ -48,7 +48,7 @@ function ProductSupportRegister({ pim, data }) {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/register-product`,
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {

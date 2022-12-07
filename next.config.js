@@ -8,8 +8,17 @@ const moduleExports = {
 			process.env.CXM_API_ROUTE ||
 			'https://imcxm.stage-api.hisenseportal.com/api/husa',
 		NEXT_PUBLIC_ASSETS_API_ROUTE:
-			process.env.NEXT_PUBLIC_ASSETS_API_ROUTE ||
-			'https://assets.hisenseportal.com/api/v1/upload/d6357c2807362f'
+			process.env.ASSETS_API_ROUTE ||
+			'https://assets.hisenseportal.com/api/v1/upload/d6357c2807362f',
+		NEXT_PUBLIC_ECOM_API_ROUTE:
+			process.env.ECOM_API_ROUTE ||
+			'https://imecom.dev-api.hisenseportal.com/api/v1',
+		NEXT_PUBLIC_CRM_API_ROUTE:
+			process.env.CRM_API_ROUTE ||
+			'https://imcrm.dev-api.hisenseportal.com/api/hisense',
+		NEXT_PUBLIC_PIM_API_ROUTE:
+			process.env.PIM_API_ROUTE ||
+			'https://impim.dev-api.hisenseportal.com/api/cms'
 	},
 	sentry: {
 		hideSourceMaps: true

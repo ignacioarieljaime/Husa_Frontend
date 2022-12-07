@@ -31,7 +31,7 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/inquery',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/inquery`,
 				dataSchema
 			)
 
