@@ -407,6 +407,7 @@
 	left: 0;
 	width: 100vw;
 	height: 100vh;
+	z-index: 110;
 
 	.extended-warranty-dialog-backdrop {
 		background: rgba(0, 0, 0, 0.295);
@@ -465,6 +466,21 @@
 			line-height: 17px;
 			color: #221f20;
 			margin: 0;
+		}
+		.article {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin-top: 0;
+			}
+			p,a{
+				margin-bottom: 0;
+				text-align: left;
+				text-justify:newspaper;
+			}
 		}
 	}
 }
@@ -1258,6 +1274,20 @@
 						border-bottom: 0;
 					}
 				}
+			}
+		}
+	}
+	.extended-warranty-dialog {
+		.extended-warranty-dialog-content {
+			top: calc(50% + 72px);
+			min-width: 250px;
+			min-height: 100px;
+			max-height: 80vh;
+			max-width: 90vw;
+			width: 80%;
+			transform: translate(-50%, -60%);
+			.article {
+				overflow: scroll;
 			}
 		}
 	}

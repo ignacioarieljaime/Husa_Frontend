@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { GetProductRetailersApi } from '../../../services/Product'
 
-const ExtendedWarrantyFormStep = ({ product, plan }) => {
+const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 	const router = useRouter()
 	const [retailers, setRetailers] = useState([])
 	const [assets, setAssets] = useState([])
@@ -162,6 +162,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 						formBody={formBody}
 						loading={loading}
 						retailers={retailers}
+						terms={terms}
 					/>
 				</div>
 			</section>

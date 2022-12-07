@@ -13,7 +13,8 @@ const ExtendedWarrantyFormStepForm = ({
 	onSubmit,
 	formBody,
 	loading,
-	retailers
+	retailers,
+	terms
 }) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
@@ -183,7 +184,9 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 			</div>
 			<RadioCheckBox
-				label='I acknowledge and agree to the Terms & Conditions.'
+				label='I acknowledge and agree to the '
+				button='Terms & Conditions.'
+				text={terms}
 				onChange={setAcceptTerms}
 				checked={acceptTerms}
 			/>

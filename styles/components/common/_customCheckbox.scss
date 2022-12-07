@@ -36,6 +36,8 @@
 		border: 1px solid #00a29c;
 		width: 15px;
 		height: 15px;
+		min-width: 15px;
+		min-height: 15px;
 		border-radius: 50%;
 		cursor: pointer;
 		position: relative;
@@ -59,5 +61,10 @@
 				display: block;
 			}
 		}
+	}
+	button {
+		border: none;
+		background: transparent;
+		text-decoration: underline;
 	}
 }
