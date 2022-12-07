@@ -22,8 +22,6 @@ const GenerateComponentStructure = (_page, _content, _condition) => {
 import axios from 'axios'
 import Layout from "components/common/Layout/Layout";
 import componentGenerator from 'hooks/componentGenerator';
-import { Suspense } from 'react'
-import Spinner from 'components/common/Spinner';
 
 function Index${_page.id}({pim,data}) {
 return (
@@ -31,9 +29,7 @@ return (
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
       	<section>
-		  	<Suspense fallback={<><Spinner size={50} /></>}>
-				{data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null ))}
-			</Suspense>
+				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : <>this page don't have any components</>}
 		</section>
 	</Layout>
     )

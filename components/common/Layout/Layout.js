@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CompareModal from 'components/page/Product/CompareModal'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { getSettingApi } from 'services/cxm'
+import Spinner from '../Spinner'
 
 function Layout({ children, meta, title }) {
 	const [compareRoute, setCompareRoute] = useState()
@@ -65,7 +66,14 @@ function Layout({ children, meta, title }) {
 			</Head>
 			<section className={`layout ${title}`}>
 				<ToastContainer />
-				<> {children}</>
+				<Suspense
+					fallback={
+						<>
+							<Spinner size={50} />
+						</>
+					}>
+					<> {children}</>
+				</Suspense>
 			</section>
 			{showGoTop && (
 				<button
