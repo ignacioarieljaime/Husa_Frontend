@@ -90,6 +90,7 @@ const GoogleTvFeatureBlocks = ({ data: { structure } }) => {
 									<div className='images'>
 										{structure?.block3?.list?.value.map((item, index) => (
 											<img
+												key={index}
 												src={item.image?.src}
 												alt={item.image?.alt}
 												width={
