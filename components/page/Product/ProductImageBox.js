@@ -10,6 +10,7 @@ function ProductImageBox({ data }) {
 				src={structure?.image?.src}
 				wrapperClass={"position-absolute top-0"}
 				wrapperHeight={'100%'}
+				wrapperWidth="100%"
 				alt={structure?.image?.alt}
 			/>
 		</div>
