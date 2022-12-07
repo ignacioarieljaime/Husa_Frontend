@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import DownloadIcon from 'components/icons/DownloadIcon'
 import React from 'react'
 
@@ -9,13 +10,13 @@ function ProductSupportNewHead({ pim }) {
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container'>
 							{pim?.assets.find(item => item.order === 1) ? (
-								<img
+								<CustomImage
 									src={pim?.assets.find(item => item.order === 1).url}
 									alt='featured image'
 									// width='80%'
 								/>
 							) : (
-								<img
+								<CustomImage
 									src={pim?.assets.find(item => item.type_id === 1).url}
 									alt='featured image'
 									// width='80%'

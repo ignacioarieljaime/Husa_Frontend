@@ -3,13 +3,14 @@ import React from 'react'
 // image
 import ImageBg from 'public/assets/images/support/support-bg.jpg'
 import Link from 'next/link'
+import CustomImage from 'components/common/CustomImage'
 
 function SupportNeedAssistance({ data }) {
 	let { structure } = data
 	return (
 		<section>
 			<div className='heading support-heading'>
-				<img src={ImageBg.src} alt='featured image' width='100%' />
+				<CustomImage src={ImageBg.src} alt='featured image' wrapperWidth='100%' />
 				<div className='heading-text'>
 					<h4 className='text-white fs-2qx mb-5' style={{ color: '#fff' }}>
 						{structure?.title?.value}
