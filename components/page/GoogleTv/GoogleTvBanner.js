@@ -21,7 +21,7 @@ const GoogleTvBanner = ({ data: { structure } }) => {
 						className='title'
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 					{structure?.link?.value && (
-						<Link href={structure?.link?.value}>
+						<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
 							<a className='n-btn white text-center d-block w-fit mx-auto'>
 								{structure?.link?.title}
 							</a>
