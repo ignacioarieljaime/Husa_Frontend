@@ -2,7 +2,6 @@ import React from 'react'
 
 const GoogleTvFeatureBlocks = ({ data }) => {
 	let { structure } = data
-	console.log(structure)
 	return (
 		<section>
 			<div className='google_tv_feature_blocks'>
