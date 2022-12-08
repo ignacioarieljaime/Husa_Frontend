@@ -10,6 +10,7 @@ import { store } from 'redux/store'
 
 // style
 import 'styles/App.scss'
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }) {
 	const [showChild, setShowChild] = useState(false)
