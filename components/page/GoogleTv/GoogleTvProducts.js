@@ -30,13 +30,13 @@ const GoogleTvProducts = ({ data: { structure } }) => {
 								))}
 							</ul>
 							<h6 className='description'>{item?.description?.value}</h6>
-							<Link href={item?.link?.value}>
+							<Link href={item?.link?.value ? item?.link?.value : '/'}>
 								<a className='n-btn link'>{item?.link?.title}</a>
 							</Link>
 						</div>
 					))}
 				</div>
-				<Link href={structure?.link?.value}>
+				<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
 					<a className='n-btn black d-block w-fit mx-auto py-4 px-8 mt-15'>
 						{structure?.link?.title}
 					</a>
