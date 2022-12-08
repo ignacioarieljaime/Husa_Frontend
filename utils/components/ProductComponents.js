@@ -6,6 +6,9 @@ module.exports.ProductComponent = [
 	{
 		name: 'ProductTextWithImageBox',
 		path: 'components/page/Product/ProductTextWithImageBox'
+	},{
+		name: 'RelatedProducts',
+		path: 'components/page/Product/RelatedProducts'
 	},
 	{
 		name: 'ProductFeatureWithImage',
