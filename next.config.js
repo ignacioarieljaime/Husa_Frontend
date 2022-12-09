@@ -12,13 +12,13 @@ const moduleExports = {
 			'https://assets.hisenseportal.com/api/v1/upload/d6357c2807362f',
 		NEXT_PUBLIC_ECOM_API_ROUTE:
 			process.env.ECOM_API_ROUTE ||
-			'https://imecom.dev-api.hisenseportal.com/api/v1',
+			'https://imecom.stage-api.hisenseportal.com/api/v1',
 		NEXT_PUBLIC_CRM_API_ROUTE:
 			process.env.CRM_API_ROUTE ||
-			'https://imcrm.dev-api.hisenseportal.com/api/hisense',
+			'https://imcrm.stage-api.hisenseportal.com/api/hisense',
 		NEXT_PUBLIC_PIM_API_ROUTE:
 			process.env.PIM_API_ROUTE ||
-			'https://impim.dev-api.hisenseportal.com/api/cms'
+			'https://impim.stage-api.hisenseportal.com/api/cms'
 	},
 	sentry: {
 		hideSourceMaps: true
