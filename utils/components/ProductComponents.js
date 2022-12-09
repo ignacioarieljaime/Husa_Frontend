@@ -4,6 +4,10 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductInfoAndSliderBox'
 	},
 	{
+		name: 'ProductInfoAndSliderBoxV2',
+		path: 'components/page/Product/ProductInfoAndSliderBoxV2'
+	},
+	{
 		name: 'ProductTextWithImageBox',
 		path: 'components/page/Product/ProductTextWithImageBox'
 	},
@@ -42,6 +46,10 @@ module.exports.ProductComponent = [
 	{
 		name: 'ProductCategoryBox',
 		path: 'components/page/Product/ProductCategoryBox'
+	},
+	{
+		name: 'ProductCategoryBoxV2',
+		path: 'components/page/Product/ProductCategoryBoxV2'
 	},
 	{
 		name: 'ProductImageBox',

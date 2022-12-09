@@ -28,6 +28,7 @@ const ProductsGrid = dynamic(() => import('components/page/Products/ProductsGrid
 const ProductsBannerV2 = dynamic(() => import('components/page/ProductsV2/ProductsBannerV2'), {suspense: true,});
 const ProductsGridV2 = dynamic(() => import('components/page/ProductsV2/ProductsGridV2'), {suspense: true,});
 const ProductInfoAndSliderBox = dynamic(() => import('components/page/Product/ProductInfoAndSliderBox'), {suspense: true,});
+const ProductInfoAndSliderBoxV2 = dynamic(() => import('components/page/Product/ProductInfoAndSliderBoxV2'), {suspense: true,});
 const ProductTextWithImageBox = dynamic(() => import('components/page/Product/ProductTextWithImageBox'), {suspense: true,});
 const ProductFeatureWithImage = dynamic(() => import('components/page/Product/ProductFeatureWithImage'), {suspense: true,});
 const CompareProduct = dynamic(() => import('components/page/Product/CompareProduct'), {suspense: true,});
@@ -283,6 +284,7 @@ ProductsGrid:ProductsGrid,
 ProductsBannerV2:ProductsBannerV2,
 ProductsGridV2:ProductsGridV2,
 ProductInfoAndSliderBox:ProductInfoAndSliderBox,
+ProductInfoAndSliderBoxV2:ProductInfoAndSliderBoxV2,
 ProductTextWithImageBox:ProductTextWithImageBox,
 ProductFeatureWithImage:ProductFeatureWithImage,
 CompareProduct:CompareProduct,

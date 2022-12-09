@@ -83,9 +83,11 @@ const GoogleTvFeatureBlocks = ({ data: { structure } }) => {
 										alt={structure?.block3?.icon?.alt}
 										width='50'
 									/>
-									<div className='subtitle'>
-										{structure?.block3?.subtitle?.value}
-									</div>
+									<div
+										className='subtitle'
+										dangerouslySetInnerHTML={{
+											__html: structure?.block3?.subtitle?.value
+										}}></div>
 									<div className='title'>{structure?.block3?.title?.value}</div>
 									<div className='images'>
 										{structure?.block3?.list?.value.map((item, index) => (
