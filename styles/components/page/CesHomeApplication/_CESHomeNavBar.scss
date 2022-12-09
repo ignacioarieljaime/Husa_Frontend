@@ -1,64 +1,77 @@
 /* cataloge navbar */
 .catalog-navbar {
-  position: sticky;
-  z-index: 1001;
-  top: 0;
-  background-color: #151515 !important;
+	position: sticky;
+	z-index: 1001;
+	top: 0;
+	background-color: #151515;
 
-  &.bg-turquoise {
-    background-color: #063741;
-  }
+	&.bg-turquoise {
+		background-color: #063741;
+	}
 
-  span {
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 32px;
-    color: #fff;
-  }
+	span {
+		font-weight: 400;
+		font-size: 15px;
+		line-height: 32px;
+		color: #fff;
+	}
 
-  ul {
-    list-style: none;
-    margin: 0;
+	ul {
+		list-style: none;
+		margin: 0;
 
-    li {
-      &:last-child {
-        padding: 0;
-      }
+		li {
+			&:last-child {
+				padding: 0;
+			}
 
-      button {
-        font-weight: 300;
-        font-size: 15px;
-        text-transform: uppercase;
-        line-height: 32px;
-        color: #000;
-        background-color: #00AAA6 !important;
-        padding: 14px 20px;
-        border: none;
-        transition: all ease 0.4s;
+			button {
+				font-weight: 300;
+				font-size: 15px;
+				text-transform: uppercase;
+				line-height: 32px;
+				color: #000;
+				background-color: #00aaa6 !important;
+				padding: 14px 20px;
+				border: none;
+				transition: all ease 0.4s;
 
-        &:hover {
-          color: #fff;
-        }
-      }
-    }
-  }
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+	}
 
-  li,
-  > nav > span {
-    padding: 14px 20px;
-  }
+	li,
+	> nav > span {
+		padding: 14px 20px;
+	}
 
-  a {
-    text-decoration: none;
-  }
+	a {
+		text-decoration: none;
+	}
 
-  .underline-on-hover {
-    &:hover {
-      background-color: transparent;
+	.underline-on-hover {
+		&:hover {
+			background-color: transparent;
 
-      &::after {
-        width: 100%;
-      }
-    }
-  }
+			&::after {
+				width: 100%;
+			}
+		}
+	}
+}
+
+.catalog-navbar-v2 {
+	.underline-on-hover::after {
+		background-color: white !important;
+	}
+	.where_to_buy {
+		background-color: #000 !important;
+		color: #fff !important;
+	}
+	li * {
+		font-weight: 500 !important;
+	}
 }

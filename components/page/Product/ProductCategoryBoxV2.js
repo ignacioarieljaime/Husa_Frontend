@@ -5,7 +5,7 @@ import React, { useState, useRef, useEffect } from 'react'
 
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
-function ProductCategoryBox({ data, pim }) {
+function ProductCategoryBoxV2({ data, pim }) {
 	const router = useRouter()
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [fix, setFix] = useState(false)
@@ -25,7 +25,11 @@ function ProductCategoryBox({ data, pim }) {
 	return (
 		<>
 			{' '}
-			<div id={data.name + data.id} className='catalog-navbar' ref={menu}>
+			<div
+				id={data.name + data.id}
+				className='catalog-navbar catalog-navbar-v2'
+				style={{ backgroundColor: structure?.backgroundColor?.value }}
+				ref={menu}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 						<li className='me-md-auto'>
@@ -63,6 +67,7 @@ function ProductCategoryBox({ data, pim }) {
 						</li>
 						<li>
 							<button
+								className='where_to_buy'
 								style={{ padding: fix ? '20px 20px' : '14px 20px' }}
 								onClick={() =>
 									pim?.retailers.length !== 0
@@ -84,4 +89,4 @@ function ProductCategoryBox({ data, pim }) {
 	)
 }
 
-export default ProductCategoryBox
+export default ProductCategoryBoxV2

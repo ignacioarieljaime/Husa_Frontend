@@ -29,7 +29,7 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 						spaceBetween={35}
 						freeMode={true}
 						slidesPerView={'auto'}
-						centeredSlides={true}
+						centeredSlides={false}
 						grabCursor={true}
 						className='support-products-slider '>
 						{structure?.list?.value.map((item, index) => (

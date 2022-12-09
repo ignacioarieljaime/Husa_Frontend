@@ -25,25 +25,26 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans, loading }) => {
 								Enter the price in which you purchased your Televsion.
 							</p>
 							<p className='description'>
-								Price
-								paid with applicable sales tax.
+								Price paid with applicable sales tax.
 							</p>
-							<div className='extended-warranty-input'>
-								<input
-									placeholder='Enter price'
-									type='text'
-									onChange={e => setPrice(e.target.value)}
-								/>
-								<Dollar />
-							</div>
-							<button
-								className='n-btn black-outline d-flex align-items-center mx-auto transparent'
-								onClick={() => getPlans(parseFloat(price))}
-								disabled={loading}
-							>
-								Enter
-								{loading && <Spinner className={'ms-2'} size={20} />}
-							</button>
+							<form>
+								<div className='extended-warranty-input'>
+									<input
+										placeholder='Enter price'
+										type='text'
+										onChange={e => setPrice(e.target.value)}
+									/>
+									<Dollar />
+								</div>
+								<button
+									className='n-btn black-outline d-flex align-items-center mx-auto transparent'
+									onClick={() => getPlans(parseFloat(price))}
+									onSubmit={() => getPlans(parseFloat(price))}
+									disabled={loading}>
+									Enter
+									{loading && <Spinner className={'ms-2'} size={20} />}
+								</button>
+							</form>
 						</div>
 					</div>
 				)}
