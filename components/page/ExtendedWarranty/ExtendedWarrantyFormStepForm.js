@@ -95,7 +95,6 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{!date && <label className='custom-label'>Purchase Date</label>}
 						<input
 							onChange={e => {
 								setDate(e.target.value)
