@@ -1,7 +1,32 @@
-import React from 'react'
+import Spinner from 'components/common/Spinner'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { GetProductWithSeriesAndProductIdApi } from 'services/Product'
 import RelatedProductsItem from './RelatedProductsItem'
 
-const RelatedProducts = ({ data: { structure } }) => {
+const RelatedProducts = ({ data }) => {
+	let { structure } = data
+	const router = useRouter()
+
+	const [series, setSeries] = useState()
+
+	useEffect(() => {
+		let seriesId = structure?.list?.value?.items.map(item => item.id)
+		getSeries(seriesId)
+	}, [])
+
+	const getSeries = async _seriesId => {
+		setSeries('loading')
+		try {
+			let response = await GetProductWithSeriesAndProductIdApi(
+				router,
+				`series_id=${encodeURIComponent(JSON.stringify(_seriesId))}`
+			)
+			setSeries(response.data.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 	return (
 		<section>
 			<div className='container p-12 d-none d-md-block'>
@@ -12,9 +37,15 @@ const RelatedProducts = ({ data: { structure } }) => {
 					}}></article>
 			</div>
 			<div className='related-items'>
-				{structure?.list?.value.map((item, index) => (
-					<RelatedProductsItem key={index} data={item} />
-				))}
+				{series === 'loading' ? (
+					<Spinner size={35} />
+				) : Array.isArray(series) ? (
+					series.map((item, index) => (
+						<RelatedProductsItem key={index} data={item} />
+					))
+				) : (
+					''
+				)}
 			</div>
 		</section>
 	)
