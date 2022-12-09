@@ -21,7 +21,6 @@ const ExtendedWarrantyProductGrid = () => {
 		setModelNumber('Select')
 	}, [category])
 
-
 	useEffect(() => {
 		if (productCategories && category.name === 'Select') {
 			if (router.query.category_id) {
@@ -67,20 +66,18 @@ const ExtendedWarrantyProductGrid = () => {
 				productCategories={productCategories}
 			/>
 			<section className='products-v2'>
-
-
 				<div className='container mb-8 mb-md-20'>
 					<h2 className='title fs-2hx'>
 						Protect Your{' '}
 						<span className='text-primary'>
-									{category?.name === 'Select' ? 'All Products' : category?.name}
+							{category?.name === 'Select' ? 'All Products' : category?.name}
 						</span>
 					</h2>
 					<p className='description'>
 						Find your{' '}
 						<span className='text-lowercase'>
-									{category?.name === 'Select' ? 'product' : category?.name}
-								</span>{' '}
+							{category?.name === 'Select' ? 'product' : category?.name}
+						</span>{' '}
 						model to continue.
 					</p>
 				</div>

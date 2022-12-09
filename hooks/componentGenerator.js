@@ -39,6 +39,7 @@ const ProductFeatureWithParagraph = dynamic(() => import('components/page/Produc
 const ProductTextWithIcon = dynamic(() => import('components/page/Product/ProductTextWithIcon'), {suspense: true,});
 const ProductStaticContent = dynamic(() => import('components/page/Product/ProductStaticContent'), {suspense: true,});
 const ProductCategoryBox = dynamic(() => import('components/page/Product/ProductCategoryBox'), {suspense: true,});
+const ProductCategoryBoxV2 = dynamic(() => import('components/page/Product/ProductCategoryBoxV2'), {suspense: true,});
 const ProductImageBox = dynamic(() => import('components/page/Product/ProductImageBox'), {suspense: true,});
 const ProductBigContent = dynamic(() => import('components/page/Product/ProductBigContent'), {suspense: true,});
 const ProductFeaturesWithIcon = dynamic(() => import('components/page/Product/ProductFeaturesWithIcon'), {suspense: true,});
@@ -295,6 +296,7 @@ ProductFeatureWithParagraph:ProductFeatureWithParagraph,
 ProductTextWithIcon:ProductTextWithIcon,
 ProductStaticContent:ProductStaticContent,
 ProductCategoryBox:ProductCategoryBox,
+ProductCategoryBoxV2:ProductCategoryBoxV2,
 ProductImageBox:ProductImageBox,
 ProductBigContent:ProductBigContent,
 ProductFeaturesWithIcon:ProductFeaturesWithIcon,

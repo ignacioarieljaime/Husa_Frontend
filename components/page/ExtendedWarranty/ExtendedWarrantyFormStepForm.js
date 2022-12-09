@@ -94,22 +94,20 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{label && <label className='custom-label'>Purchase Date</label>}
 						<input
 							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									purchase_date: e.target.value
+									postal_code: e.target.value
 								}))
 							}
 							required
-							onFocus={() => setlabel(false)}
-							onBlur={() => setlabel(true)}
-							placeholder='Purchase Date'
-							type='date'
+							placeholder='Postal code'
+							type='text'
 						/>
 					</div>
 				</div>
+
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
 						<input
@@ -130,16 +128,19 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
+						{label && <label className='custom-label'>Purchase Date</label>}
 						<input
 							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									postal_code: e.target.value
+									purchase_date: e.target.value
 								}))
 							}
 							required
-							placeholder='Postal code'
-							type='text'
+							onFocus={() => setlabel(false)}
+							onBlur={() => setlabel(true)}
+							placeholder='Purchase Date'
+							type='date'
 						/>
 					</div>
 				</div>
