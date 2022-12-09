@@ -11,7 +11,6 @@ function ProductCategoryBox({ data, pim }) {
 	const [fix, setFix] = useState(false)
 	const menu = useRef()
 
-
 	useEffect(() => {
 		window.addEventListener('scroll', () => {
 			if (menu?.current?.offsetTop <= window.scrollY + 72) {
@@ -22,12 +21,11 @@ function ProductCategoryBox({ data, pim }) {
 		})
 	}, [])
 
-
 	let { structure } = data
 	return (
 		<>
 			{' '}
-			<div id={data.name + data.id} className='catalog-navbar bg-dark' ref={menu}>
+			<div id={data.name + data.id} className='catalog-navbar' ref={menu}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 						<li className='me-md-auto'>

@@ -1,511 +1,944 @@
-
 import React from 'react'
-import ProductsBox from 'components/common/ProductsBox';
-import TextEditor from 'components/common/TextEditor';
-import ImageBox from 'components/common/ImageBox';
-import LetsGetRealTextBox from 'components/common/LetsGetRealTextBox';
-import Header from 'components/common/Header/Header';
-import NeedHelpBox from 'components/common/NeedHelpBox';
-import BreadCrumb from 'components/common/BreadCrumb';
-import IFrame from 'components/common/IFrame';
-import UnauthorizedListCommon from 'components/common/UnauthorizedListCommon';
-import OfferClaimForm from 'components/common/OfferClaimForm';
-import SimpleImagesList from 'components/common/SimpleImagesList';
-import PromoBanner from 'components/common/PromoBanner';
-import AuthorizedRetailersBadge from 'components/page/AuthorizedRetailers/AuthorizedRetailersBadge';
-import AuthorizedRetailersFeatures from 'components/page/AuthorizedRetailers/AuthorizedRetailersFeatures';
-import AuthorizedRetailersNote from 'components/page/AuthorizedRetailers/AuthorizedRetailersNote';
-import AuthorizedRetailersLogos from 'components/page/AuthorizedRetailers/AuthorizedRetailersLogos';
-import UnauthorizedList from 'components/page/AuthorizedRetailers/UnauthorizedList';
-import LandingSlider from 'components/page/Landing/LandingSlider';
-import LandingProductsBox from 'components/page/Landing/LandingProductsBox';
-import LandingVideoPlayer from 'components/page/Landing/LandingVideoPlayer.js';
-import ProductsBanner from 'components/page/Products/ProductsBanner';
-import ProductsGrid from 'components/page/Products/ProductsGrid';
-import ProductsBannerV2 from 'components/page/ProductsV2/ProductsBannerV2';
-import ProductsGridV2 from 'components/page/ProductsV2/ProductsGridV2';
-import ProductInfoAndSliderBox from 'components/page/Product/ProductInfoAndSliderBox';
-import ProductTextWithImageBox from 'components/page/Product/ProductTextWithImageBox';
-import ProductFeatureWithImage from 'components/page/Product/ProductFeatureWithImage';
-import CompareProduct from 'components/page/Product/CompareProduct';
-import ProductWhereToBuy from 'components/page/Product/ProductWhereToBuy';
-import ListImageBox from 'components/page/Product/ListImageBox';
-import ProductBigScreenTextsBox from 'components/page/Product/ProductBigScreenTextsBox';
-import ProductFeatureWithParagraph from 'components/page/Product/ProductFeatureWithParagraph';
-import ProductTextWithIcon from 'components/page/Product/ProductTextWithIcon';
-import ProductStaticContent from 'components/page/Product/ProductStaticContent';
-import ProductCategoryBox from 'components/page/Product/ProductCategoryBox';
-import ProductImageBox from 'components/page/Product/ProductImageBox';
-import ProductBigContent from 'components/page/Product/ProductBigContent';
-import ProductFeaturesWithIcon from 'components/page/Product/ProductFeaturesWithIcon';
-import ProductRelatedItemsBox from 'components/page/Product/ProductRelatedItemsBox';
-import ProductReviewBox from 'components/page/Product/ProductReviewBox';
-import ProductNewsBox from 'components/page/Product/ProductNewsBox';
-import ProductBottomImageBox from 'components/page/Product/ProductBottomImageBox';
-import ProductDetailsBox from 'components/page/Product/ProductDetailsBox';
-import ProductFineMeInStore from 'components/page/Product/ProductFindMeInStore';
-import ProductResourceBox from 'components/page/Product/ProductResourceBox';
-import ProductPackageHeader from 'components/page/Product/ProductPackageHeader';
-import ProductPackagesSlider from 'components/page/Product/ProductPackagesSlider';
-import SmartInfoHead from 'components/page/SmartInfo/SmartInfoHead';
-import ProductFeatureWithImageWithBTN from 'components/page/SmartInfo/ProductFeatureWithImageWithBTN';
-import SmartInfoTvsBox from 'components/page/SmartInfo/SmartInfoTvsBox';
-import SmartInfoTextBox from 'components/page/SmartInfo/SmartInfoTextBox';
-import SmartInfoTextAndImageBox from 'components/page/SmartInfo/SmartInfoTextAndImageBox';
-import SmartInfoInteractBox from 'components/page/SmartInfo/SmartInfoInteractBox';
-import SmartInfoFindHisense from 'components/page/SmartInfo/SmartInfoFindHisense';
-import SmartInfoBetterNewOrOldBox from 'components/page/SmartInfo/SmartInfoBetterNewOrOldBox';
-import SupportHeadIntro from 'components/page/Support/SupportHeadIntro';
-import SupportCovidBox from 'components/page/Support/SupportCovidBox';
-import SupportCategoryBox from 'components/page/Support/SupportCategoryBox';
-import SupportNewHead from 'components/page/Support/SupportNewHead';
-import ProductsCategoriesWithSearch from 'components/page/Support/ProductsCategoriesWithSearch';
-import ProductsSupportOptions from 'components/page/Support/ProductsSupportOptions';
-import SupportNeedAssistance from 'components/page/Support/SupportNeedAssistance';
-import SupportNewProducts from 'components/page/Support/SupportNewProducts';
-import SupportNewHeadV2 from 'components/page/Support/SupportNewHeadV2';
-import SupportNeedMoreWithButton from 'components/page/Support/SupportNeedMoreWithButton';
-import RegisterHead from 'components/page/Register/RegisterHead';
-import RegisterForm from 'components/page/Register/RegisterForm';
-import FAQhead from 'components/page/FAQ/FAQhead';
-import FAQContentBox from 'components/page/FAQ/FAQContentBox';
-import FAQDescriptionWithTwoBox from 'components/page/FAQ/FAQDescriptionWithTwoBox';
-import ContactUsHead from 'components/page/ContactUs/ContactUsHead';
-import ContactUsForm from 'components/page/ContactUs/ContactUsForm';
-import ContactUsNewHead from 'components/page/ContactUs/ContactUsNewHead';
-import ContactUsNewForm from 'components/page/ContactUs/ContactUsNewForm';
-import ContactUsPhoneUs from 'components/page/ContactUs/ContactUsPhoneUs';
-import ContactUsAboutHisense from 'components/page/ContactUs/ContactUsAboutHisense';
-import CompanyHeaderIntro from 'components/page/Company/CompanyHeaderIntro';
-import CompanyNavBar from 'components/page/Company/CompanyNavBar';
-import CompanyInfo from 'components/page/Company/CompanyInfo';
-import CompanySubmenu from 'components/page/Company/CompanySubmenu';
-import CommercialIntro from 'components/page/Commercial/CommercialIntro';
-import CommercialTowImageBox from 'components/page/Commercial/CommercialTowImageBox';
-import CommercialBecomeAPartner from 'components/page/Commercial/CommercialBecomeAPartner';
-import TVAndAudioHead from 'components/page/TvAndAudio/TVAndAudioHead';
-import TVAndAudioTvShopBox from 'components/page/TvAndAudio/TVAndAudioTvShopBox';
-import TVAndAudioIntro from 'components/page/TvAndAudio/TVAndAudioIntro';
-import TVAndAudioLaserIntro from 'components/page/TvAndAudio/TVAndAudioLaserIntro';
-import TVAndAudioSmartChoice from 'components/page/TvAndAudio/TVAndAudioSmartChoice';
-import TVAndAudioFindHisense from 'components/page/TvAndAudio/TVAndAudioFindHisense';
-import TVAndAudioFindProduct from 'components/page/TvAndAudio/TVAndAudioFindProduct';
-import UHDIntro from 'components/page/UHD/UHDIntro';
-import UHDNewsBox from 'components/page/UHD/UHDNewsBox';
-import UHDAbilityBox from 'components/page/UHD/UHDAbilityBox';
-import UHDFindTv from 'components/page/UHD/UHDFindTv';
-import ULEDHead from 'components/page/ULED/ULEDHead';
-import ULEDProducts from 'components/page/ULED/ULEDProducts';
-import ULEDImageAndTextItem from 'components/page/ULED/ULEDImageAndTextItem';
-import ULEDTextBox from 'components/page/ULED/ULEDTextBox';
-import ULEDImageBoxWithBtn from 'components/page/ULED/ULEDImageBoxWithBtn';
-import ULEDAllTech from 'components/page/ULED/ULEDAllTech';
-import ULEDImageAndTextBox from 'components/page/ULED/ULEDImageAndTextBox';
-import ULEDGreatTvTextBox from 'components/page/ULED/ULEDGreatTvTextBox';
-import LaserHead from 'components/page/Laser/LaserHead';
-import LaserImageAndTextBox from 'components/page/Laser/LaserImageAndTextBox';
-import LaserTitleAndSubTitleBox from 'components/page/Laser/LaserTitleAndSubTitleBox';
-import LaserFinedWithImage from 'components/page/Laser/LaserFinedWithImage';
-import DishwashersHead from 'components/page/Dishwashers/DishwashersHead';
-import ProductSupportInfo from 'components/page/ProductSupport/ProductSupportInfo';
-import ProductSupportLinks from 'components/page/ProductSupport/ProductSupportLinks';
-import ProductSupportNewHead from 'components/page/ProductSupport/ProductSupportNewHead';
-import ProductSupportNavBar from 'components/page/ProductSupport/ProductSupportNavBar';
-import ProductSupportVideoBox from 'components/page/ProductSupport/ProductSupportVideoBox';
-import ProductSupportFAQ from 'components/page/ProductSupport/ProductSupportFAQ';
-import ProductSupportRegister from 'components/page/ProductSupport/ProductSupportRegister';
-import ProductSupportReplacement from 'components/page/ProductSupport/ProductSupportReplacement';
-import HomeApplianceFeatures from 'components/page/HomeAppliances/HomeApplianceFeatures';
-import HomeApplianceQA from 'components/page/HomeAppliances/HomeApplianceQA';
-import HomeApplianceTextBoxWithImage from 'components/page/HomeAppliances/HomeApplianceTextBoxWithImage';
-import HomeApplianceTextBox from 'components/page/HomeAppliances/HomeApplianceTextBox';
-import HomeApplianceImageWithBackground from 'components/page/HomeAppliances/HomeApplianceImageWithBackground';
-import CESHomeNavBar from 'components/page/CES/HomeApplication/CESHomeNavBar';
-import CESHomeImageAndText from 'components/page/CES/HomeApplication/CESHomeImageAndText';
-import CESLaserLearnMore from 'components/page/CES/Laster/CESLaserLearnMore';
-import ImageBoxWithPaddingAndBgBlack from 'components/page/CES/Laster/ImageBoxWithPaddingAndBgBlack';
-import CEOLaserLikeBox from 'components/page/CES/Laster/CEOLasterLikeBox';
-import MoreTvHead from 'components/page/MoreTv/MoreTvHead';
-import MoreTvBox from 'components/page/MoreTv/MoreTvBox';
-import MoreTvVideoBox from 'components/page/MoreTv/MoreTvVideoBox';
-import MoreTvAmericaBox from 'components/page/MoreTv/MoreTvAmericaBox';
-import MoreTvLessTalk from 'components/page/MoreTv/MoreTvLessTalk';
-import MoreTvHisensePromise from 'components/page/MoreTv/MoreTvHisensePromise';
-import MoreTvGrabSlider from 'components/page/MoreTv/MoreTvGrabSlider';
-import MoreTvLessTalkForm from 'components/page/MoreTv/MoreTvLessTalkForm';
-import MoreTvExperts from 'components/page/MoreTv/MoreTvExperts';
-import MoreTVNewItemsBox from 'components/page/MoreTv/MoreTvNewItemsBox';
-import MoreTVNewHisensePromise from 'components/page/MoreTv/MoreTvNewHisensePromise';
-import BlogListHead from 'components/page/BlogList/BlogListHead';
-import BlogListSearchBox from 'components/page/BlogList/BlogListSearchBox';
-import BlogListReadArticleBox from 'components/page/BlogList/BlogListReadArticleBox';
-import BlogListLittleReadArticleBox from 'components/page/BlogList/BlogListLittleReadArticleBox';
-import BlogListSoundBarItemsBox from 'components/page/BlogList/BlogListSoundBarItemsBox';
-import BlogListWithBigTitleAndLittleItem from 'components/page/BlogList/BlogListWithBigTitleAndLittleItem';
-import BlogDescriptionBox from 'components/page/Blog/BlogDescriptionBox';
-import BlogImageGalleryBox from 'components/page/Blog/BlogImageGalleryBox';
-import BlogImageAndTextBox from 'components/page/Blog/BlogImageAndTextBox';
-import BlogVideoBox from 'components/page/Blog/BlogVideoBox';
-import BlogTwoImage from 'components/page/Blog/BlogTwoImage';
-import BlogSecondDescriptionBox from 'components/page/Blog/BlogSecondDescriptionBox';
-import BlogEasySlider from 'components/page/Blog/BlogEasySlider';
-import BlogBigImageAndTextBox from 'components/page/Blog/BlogBigImageAndTextBox';
-import BlogDescriptionWithShare from 'components/page/Blog/BlogDescriptionWithShare';
-import BlogHead from 'components/page/Blog/BlogHead';
-import BlogCubeSlider from 'components/page/Blog/BlogCubeSlider';
-import BlogMoreStories from 'components/page/Blog/BlogMoreStories';
-import PDPProductInfoSliderAndText from 'components/page/PDP/PDPProductInfoSliderAndText';
-import PDPNavBar from 'components/page/PDP/PDPNavBar';
-import PDPImageAndInfoGrayBg from 'components/page/PDP/PDPImageAndInfoGrayBg';
-import PDPVideoBox from 'components/page/PDP/PDPVideoBox';
-import PDPImageAndInfoDarkBg from 'components/page/PDP/PDPImageAndInfoDarkBg';
-import PDPImageAndInfoLightGrayBg from 'components/page/PDP/PDPImageAndInfoLightGrayBg';
-import PDMImageAndInfoSilverBg from 'components/page/PDP/PDMImageAndInfoSilverBg';
-import PDPTopFeatures from 'components/page/PDP/PDPTopFeatures';
-import PDPDescriptionSliderWithDarkGray from 'components/page/PDP/PDPDescriptionSliderWithDarkGray';
-import PDPTextAndLongImageBox from 'components/page/PDP/PDPTextAndLongImageBox';
-import PDPReviewsAndAwards from 'components/page/PDP/PDPReviewsAndAwards';
-import PDPReadyToBuyBox from 'components/page/PDP/PDPReadyToBuyBox';
-import PDPChooseULEDTvBox from 'components/page/PDP/PDPChooseULEDTvBox';
-import ListVideoPlayer from 'components/page/PDP/ListVideoPlayer';
-import SponsorshipDescriptionGrayBg from 'components/page/Sponsorship/SponsorshipDescriptionGrayBg';
-import SponsorshipVideoAndTextBox from 'components/page/Sponsorship/SponsorshipVideoAndTextBox';
-import SponsorshipBigImageAndText from 'components/page/Sponsorship/SponsorshipBigImageAndText';
-import SponsorshipImagesWithButton from 'components/page/Sponsorship/SponsorshipImagesWithButton';
-import SponsorshipTitleBox from 'components/page/Sponsorship/SponsorshipTitleBox';
-import SponsorshipTextGradient from 'components/page/Sponsorship/SponsorshipTextGradient';
-import SponsorImageAndText from 'components/page/Sponsorship/SponsorImageAndText';
-import SponsorImageAndLogo from 'components/page/Sponsorship/SponsorImageAndLogo';
-import HeaderGoogleTv from 'components/page/Day100/HeaderGoogleTv';
-import HeaderBanner from 'components/page/Day100/HeaderBanner';
-import ClaimPrize from 'components/page/Day100/ClaimPrize';
-import DoubleWarranty from 'components/page/Day100/DoubleWarranty';
-import EligibleModels from 'components/page/Day100/EligibleModels';
-import ExpertsAdv from 'components/page/Day100/ExpertsAdv';
-import DigitalTrends from 'components/page/Day100/DigitalTrends';
-import FeatureBadges from 'components/page/Day100/FeatureBadges';
-import Guarantee from 'components/page/Day100/Guarantee';
-import HeroBanner from 'components/page/L9G/HeroBanner';
-import ScrollableVideo from 'components/page/L9G/ScrollableVideo';
-import PureColor from 'components/page/L9G/PureColor';
-import ColorFeature from 'components/page/L9G/ColorFeature';
-import LumensOfBrightness from 'components/page/L9G/LumensOfBrightness';
-import SmoothMotion from 'components/page/L9G/SmoothMotion';
-import ScreenSize from 'components/page/L9G/ScreenSize';
-import LightRejection from 'components/page/L9G/LightRejection';
-import DolbyVision from 'components/page/L9G/DolbyVision';
-import DolbyAtmos from 'components/page/L9G/DolbyAtmos';
-import FineTouches from 'components/page/L9G/FineTouches';
-import AndroidTv from 'components/page/L9G/AndroidTv';
-import FeatureBlock from 'components/page/L9G/FeatureBlock';
-import Awards from 'components/page/L9G/Awards';
-import Comments from 'components/page/L9G/Comments';
-import FAQs from 'components/page/L9G/FAQs';
-import Specs from 'components/page/L9G/Specs';
-import Resources from 'components/page/L9G/Resources';
-import Retailers from 'components/page/L9G/Retailers';
-import WhereToBuy from 'components/page/L9G/WhereToBuy';
-import L9GProductDetailsBox from 'components/page/L9G/L9GProductDetailsBox';
-import HomePageMBSlider from 'components/page/HomePageMB/HomePageMBSlider';
-import HomePageMBProductsSlider from 'components/page/HomePageMB/HomePageMBProductsSlider';
-import HomePageMBVideoPlayer from 'components/page/HomePageMB/HomePageMBVideoPlayer';
-import HomePageMBTextedBoxes from 'components/page/HomePageMB/HomePageMBTextedBoxes';
-import HomePageMBTextedBoxesItem from 'components/page/HomePageMB/HomePageMBTextedBoxesItem';
-import HomePageMBDiscovery from 'components/page/HomePageMB/HomePageMBDiscovery';
-import HomePageMBDiscoveryItem from 'components/page/HomePageMB/HomePageMBDiscoveryItem';
-import BlockCategories from 'components/page/NewHomePage/BlockCategories';
-import BlockTVHero from 'components/page/NewHomePage/BlockTVHero';
-import BlockKitchenHero from 'components/page/NewHomePage/BlockKitchenHero';
-import BlockFeatured from 'components/page/NewHomePage/BlockFeatured';
-import BlockHero from 'components/page/NewHomePage/BlockHero';
-import BlockSpotlight from 'components/page/NewHomePage/BlockSpotlight';
-import BlockCards from 'components/page/NewHomePage/BlockCards';
-import ExtendedWarrantyBanner from 'components/page/ExtendedWarranty/ExtendedWarrantyBanner';
-import ExtendedWarrantyFAQ from 'components/page/ExtendedWarranty/ExtendedWarrantyFAQ';
-import ExtendedWarrantyFeatureBlocks from 'components/page/ExtendedWarranty/ExtendedWarrantyFeatureBlocks';
-import ExtendedWarrantyWizard from 'components/page/ExtendedWarranty/ExtendedWarrantyWizard';
-import ExtendedWarrantyTextBlock from 'components/page/ExtendedWarranty/ExtendedWarrantyTextBlock';
-import ExtendedWarrantyProductsSlider from 'components/page/ExtendedWarranty/ExtendedWarrantyProductsSlider';
-import ExtendedWarrantyProductGrid from 'components/page/ExtendedWarranty/ExtendedWarrantyProductGrid';
-import ExtendedWarrantyPaymentStatus from 'components/page/ExtendedWarranty/ExtendedWarrantyPaymentStatus';
-import TelevisionsBlockBanner from 'components/page/Televisions/TelevisionsBlockBanner';
-import TelevisionsBlockCards from 'components/page/Televisions/TelevisionsBlockCards';
-import TelevisionsBlockHero from 'components/page/Televisions/TelevisionsBlockHero';
-import TelevisionsBlockSpotlight from 'components/page/Televisions/TelevisionsBlockSpotlight';
-import TelevisionsTvHero from 'components/page/Televisions/TelevisionsTvHero';
-import PrivacyPolicyTextEditor from 'components/page/PrivacyPolicy/PrivacyPolicyTextEditor';
-import UpgradeL9GForm from 'components/page/Upgrade/UpgradeL9GForm';
-import BeyondLaserBanner from 'components/page/BeyondLaser/BeyondLaserBanner';
-import BeyondLaserHeader from 'components/page/BeyondLaser/BeyondLaserHeader';
-import BeyondLaserMomentsBlock from 'components/page/BeyondLaser/BeyondLaserMomentsBlock';
-import BeyondLaserImageBlock from 'components/page/BeyondLaser/BeyondLaserImageBlock';
-import BeyondLaserTextBlock from 'components/page/BeyondLaser/BeyondLaserTextBlock';
-import BeyondLaserQuoteBlock from 'components/page/BeyondLaser/BeyondLaserQuoteBlock';
-import BeyondLaserIframeBlock from 'components/page/BeyondLaser/BeyondLaserIframeBlock';
-import BeyondLaserFooterBlock from 'components/page/BeyondLaser/BeyondLaserFooterBlock';
-import BeyondLaserFlipDevice from 'components/page/BeyondLaser/BeyondLaserFlipDevice';
-import Subscribe from 'components/common/Subscribe';
-import Footer from 'components/common/Footer'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
+
+const ProductsBox = dynamic(() => import('components/common/ProductsBox'))
+const TextEditor = dynamic(() => import('components/common/TextEditor'))
+const ImageBox = dynamic(() => import('components/common/ImageBox'))
+const LetsGetRealTextBox = dynamic(() =>
+	import('components/common/LetsGetRealTextBox')
+)
+const Header = dynamic(() => import('components/common/Header/Header'))
+const NeedHelpBox = dynamic(() => import('components/common/NeedHelpBox'))
+const BreadCrumb = dynamic(() => import('components/common/BreadCrumb'))
+const IFrame = dynamic(() => import('components/common/IFrame'))
+const UnauthorizedListCommon = dynamic(() =>
+	import('components/common/UnauthorizedListCommon')
+)
+const OfferClaimForm = dynamic(() => import('components/common/OfferClaimForm'))
+const SimpleImagesList = dynamic(() =>
+	import('components/common/SimpleImagesList')
+)
+const PromoBanner = dynamic(() => import('components/common/PromoBanner'))
+const AuthorizedRetailersBadge = dynamic(() =>
+	import('components/page/AuthorizedRetailers/AuthorizedRetailersBadge')
+)
+const AuthorizedRetailersFeatures = dynamic(() =>
+	import('components/page/AuthorizedRetailers/AuthorizedRetailersFeatures')
+)
+const AuthorizedRetailersNote = dynamic(() =>
+	import('components/page/AuthorizedRetailers/AuthorizedRetailersNote')
+)
+const AuthorizedRetailersLogos = dynamic(() =>
+	import('components/page/AuthorizedRetailers/AuthorizedRetailersLogos')
+)
+const UnauthorizedList = dynamic(() =>
+	import('components/page/AuthorizedRetailers/UnauthorizedList')
+)
+const LandingSlider = dynamic(() =>
+	import('components/page/Landing/LandingSlider')
+)
+const LandingProductsBox = dynamic(() =>
+	import('components/page/Landing/LandingProductsBox')
+)
+const LandingVideoPlayer = dynamic(() =>
+	import('components/page/Landing/LandingVideoPlayer.js')
+)
+const ProductsBanner = dynamic(() =>
+	import('components/page/Products/ProductsBanner')
+)
+const ProductsGrid = dynamic(() =>
+	import('components/page/Products/ProductsGrid')
+)
+const ProductsBannerV2 = dynamic(() =>
+	import('components/page/ProductsV2/ProductsBannerV2')
+)
+const ProductsGridV2 = dynamic(() =>
+	import('components/page/ProductsV2/ProductsGridV2')
+)
+const ProductInfoAndSliderBox = dynamic(() =>
+	import('components/page/Product/ProductInfoAndSliderBox')
+)
+const ProductInfoAndSliderBoxV2 = dynamic(() =>
+	import('components/page/Product/ProductInfoAndSliderBoxV2')
+)
+const ProductTextWithImageBox = dynamic(() =>
+	import('components/page/Product/ProductTextWithImageBox')
+)
+const RelatedProducts = dynamic(() =>
+	import('components/page/Product/RelatedProducts')
+)
+const ProductFeatureWithImage = dynamic(() =>
+	import('components/page/Product/ProductFeatureWithImage')
+)
+const CompareProduct = dynamic(() =>
+	import('components/page/Product/CompareProduct')
+)
+const ProductWhereToBuy = dynamic(() =>
+	import('components/page/Product/ProductWhereToBuy')
+)
+const ListImageBox = dynamic(() =>
+	import('components/page/Product/ListImageBox')
+)
+const ProductBigScreenTextsBox = dynamic(() =>
+	import('components/page/Product/ProductBigScreenTextsBox')
+)
+const ProductFeatureWithParagraph = dynamic(() =>
+	import('components/page/Product/ProductFeatureWithParagraph')
+)
+const ProductTextWithIcon = dynamic(() =>
+	import('components/page/Product/ProductTextWithIcon')
+)
+const ProductStaticContent = dynamic(() =>
+	import('components/page/Product/ProductStaticContent')
+)
+const ProductCategoryBox = dynamic(() =>
+	import('components/page/Product/ProductCategoryBox')
+)
+const ProductCategoryBoxV2 = dynamic(() =>
+	import('components/page/Product/ProductCategoryBoxV2')
+)
+const ProductImageBox = dynamic(() =>
+	import('components/page/Product/ProductImageBox')
+)
+const ProductBigContent = dynamic(() =>
+	import('components/page/Product/ProductBigContent')
+)
+const ProductFeaturesWithIcon = dynamic(() =>
+	import('components/page/Product/ProductFeaturesWithIcon')
+)
+const ProductRelatedItemsBox = dynamic(() =>
+	import('components/page/Product/ProductRelatedItemsBox')
+)
+const ProductReviewBox = dynamic(() =>
+	import('components/page/Product/ProductReviewBox')
+)
+const ProductNewsBox = dynamic(() =>
+	import('components/page/Product/ProductNewsBox')
+)
+const ProductBottomImageBox = dynamic(() =>
+	import('components/page/Product/ProductBottomImageBox')
+)
+const ProductDetailsBox = dynamic(() =>
+	import('components/page/Product/ProductDetailsBox')
+)
+const ProductFineMeInStore = dynamic(() =>
+	import('components/page/Product/ProductFindMeInStore')
+)
+const ProductResourceBox = dynamic(() =>
+	import('components/page/Product/ProductResourceBox')
+)
+const ProductPackageHeader = dynamic(() =>
+	import('components/page/Product/ProductPackageHeader')
+)
+const ProductPackagesSlider = dynamic(() =>
+	import('components/page/Product/ProductPackagesSlider')
+)
+const SmartInfoHead = dynamic(() =>
+	import('components/page/SmartInfo/SmartInfoHead')
+)
+const ProductFeatureWithImageWithBTN = dynamic(() =>
+	import('components/page/SmartInfo/ProductFeatureWithImageWithBTN')
+)
+const SmartInfoTvsBox = dynamic(() =>
+	import('components/page/SmartInfo/SmartInfoTvsBox')
+)
+const SmartInfoTextBox = dynamic(() =>
+	import('components/page/SmartInfo/SmartInfoTextBox')
+)
+const SmartInfoTextAndImageBox = dynamic(() =>
+	import('components/page/SmartInfo/SmartInfoTextAndImageBox')
+)
+const SmartInfoInteractBox = dynamic(() =>
+	import('components/page/SmartInfo/SmartInfoInteractBox')
+)
+const SmartInfoFindHisense = dynamic(() =>
+	import('components/page/SmartInfo/SmartInfoFindHisense')
+)
+const SmartInfoBetterNewOrOldBox = dynamic(() =>
+	import('components/page/SmartInfo/SmartInfoBetterNewOrOldBox')
+)
+const SupportHeadIntro = dynamic(() =>
+	import('components/page/Support/SupportHeadIntro')
+)
+const SupportCovidBox = dynamic(() =>
+	import('components/page/Support/SupportCovidBox')
+)
+const SupportCategoryBox = dynamic(() =>
+	import('components/page/Support/SupportCategoryBox')
+)
+const SupportNewHead = dynamic(() =>
+	import('components/page/Support/SupportNewHead')
+)
+const ProductsCategoriesWithSearch = dynamic(() =>
+	import('components/page/Support/ProductsCategoriesWithSearch')
+)
+const ProductsSupportOptions = dynamic(() =>
+	import('components/page/Support/ProductsSupportOptions')
+)
+const SupportNeedAssistance = dynamic(() =>
+	import('components/page/Support/SupportNeedAssistance')
+)
+const SupportNewProducts = dynamic(() =>
+	import('components/page/Support/SupportNewProducts')
+)
+const SupportNewHeadV2 = dynamic(() =>
+	import('components/page/Support/SupportNewHeadV2')
+)
+const SupportNeedMoreWithButton = dynamic(() =>
+	import('components/page/Support/SupportNeedMoreWithButton')
+)
+const RegisterHead = dynamic(() =>
+	import('components/page/Register/RegisterHead')
+)
+const RegisterForm = dynamic(() =>
+	import('components/page/Register/RegisterForm')
+)
+const FAQhead = dynamic(() => import('components/page/FAQ/FAQhead'))
+const FAQContentBox = dynamic(() => import('components/page/FAQ/FAQContentBox'))
+const FAQDescriptionWithTwoBox = dynamic(() =>
+	import('components/page/FAQ/FAQDescriptionWithTwoBox')
+)
+const ContactUsHead = dynamic(() =>
+	import('components/page/ContactUs/ContactUsHead')
+)
+const ContactUsChat = dynamic(() =>
+	import('components/page/ContactUs/ContactUsChat')
+)
+const ContactUsForm = dynamic(() =>
+	import('components/page/ContactUs/ContactUsForm')
+)
+const ContactUsNewHead = dynamic(() =>
+	import('components/page/ContactUs/ContactUsNewHead')
+)
+const ContactUsNewForm = dynamic(() =>
+	import('components/page/ContactUs/ContactUsNewForm')
+)
+const ContactUsPhoneUs = dynamic(() =>
+	import('components/page/ContactUs/ContactUsPhoneUs')
+)
+const ContactUsAboutHisense = dynamic(() =>
+	import('components/page/ContactUs/ContactUsAboutHisense')
+)
+const CompanyHeaderIntro = dynamic(() =>
+	import('components/page/Company/CompanyHeaderIntro')
+)
+const CompanyNavBar = dynamic(() =>
+	import('components/page/Company/CompanyNavBar')
+)
+const CompanyInfo = dynamic(() => import('components/page/Company/CompanyInfo'))
+const CompanySubmenu = dynamic(() =>
+	import('components/page/Company/CompanySubmenu')
+)
+const CommercialIntro = dynamic(() =>
+	import('components/page/Commercial/CommercialIntro')
+)
+const CommercialTowImageBox = dynamic(() =>
+	import('components/page/Commercial/CommercialTowImageBox')
+)
+const CommercialBecomeAPartner = dynamic(() =>
+	import('components/page/Commercial/CommercialBecomeAPartner')
+)
+const TVAndAudioHead = dynamic(() =>
+	import('components/page/TvAndAudio/TVAndAudioHead')
+)
+const TVAndAudioTvShopBox = dynamic(() =>
+	import('components/page/TvAndAudio/TVAndAudioTvShopBox')
+)
+const TVAndAudioIntro = dynamic(() =>
+	import('components/page/TvAndAudio/TVAndAudioIntro')
+)
+const TVAndAudioLaserIntro = dynamic(() =>
+	import('components/page/TvAndAudio/TVAndAudioLaserIntro')
+)
+const TVAndAudioSmartChoice = dynamic(() =>
+	import('components/page/TvAndAudio/TVAndAudioSmartChoice')
+)
+const TVAndAudioFindHisense = dynamic(() =>
+	import('components/page/TvAndAudio/TVAndAudioFindHisense')
+)
+const TVAndAudioFindProduct = dynamic(() =>
+	import('components/page/TvAndAudio/TVAndAudioFindProduct')
+)
+const UHDIntro = dynamic(() => import('components/page/UHD/UHDIntro'))
+const UHDNewsBox = dynamic(() => import('components/page/UHD/UHDNewsBox'))
+const UHDAbilityBox = dynamic(() => import('components/page/UHD/UHDAbilityBox'))
+const UHDFindTv = dynamic(() => import('components/page/UHD/UHDFindTv'))
+const ULEDHead = dynamic(() => import('components/page/ULED/ULEDHead'))
+const ULEDProducts = dynamic(() => import('components/page/ULED/ULEDProducts'))
+const ULEDImageAndTextItem = dynamic(() =>
+	import('components/page/ULED/ULEDImageAndTextItem')
+)
+const ULEDTextBox = dynamic(() => import('components/page/ULED/ULEDTextBox'))
+const ULEDImageBoxWithBtn = dynamic(() =>
+	import('components/page/ULED/ULEDImageBoxWithBtn')
+)
+const ULEDAllTech = dynamic(() => import('components/page/ULED/ULEDAllTech'))
+const ULEDImageAndTextBox = dynamic(() =>
+	import('components/page/ULED/ULEDImageAndTextBox')
+)
+const ULEDGreatTvTextBox = dynamic(() =>
+	import('components/page/ULED/ULEDGreatTvTextBox')
+)
+const LaserHead = dynamic(() => import('components/page/Laser/LaserHead'))
+const LaserImageAndTextBox = dynamic(() =>
+	import('components/page/Laser/LaserImageAndTextBox')
+)
+const LaserTitleAndSubTitleBox = dynamic(() =>
+	import('components/page/Laser/LaserTitleAndSubTitleBox')
+)
+const LaserFinedWithImage = dynamic(() =>
+	import('components/page/Laser/LaserFinedWithImage')
+)
+const DishwashersHead = dynamic(() =>
+	import('components/page/Dishwashers/DishwashersHead')
+)
+const ProductSupportInfo = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportInfo')
+)
+const ProductSupportLinks = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportLinks')
+)
+const ProductSupportNewHead = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportNewHead')
+)
+const ProductSupportNavBar = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportNavBar')
+)
+const ProductSupportVideoBox = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportVideoBox')
+)
+const ProductSupportFAQ = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportFAQ')
+)
+const ProductSupportRegister = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportRegister')
+)
+const ProductSupportReplacement = dynamic(() =>
+	import('components/page/ProductSupport/ProductSupportReplacement')
+)
+const HomeApplianceFeatures = dynamic(() =>
+	import('components/page/HomeAppliances/HomeApplianceFeatures')
+)
+const HomeApplianceQA = dynamic(() =>
+	import('components/page/HomeAppliances/HomeApplianceQA')
+)
+const HomeApplianceTextBoxWithImage = dynamic(() =>
+	import('components/page/HomeAppliances/HomeApplianceTextBoxWithImage')
+)
+const HomeApplianceTextBox = dynamic(() =>
+	import('components/page/HomeAppliances/HomeApplianceTextBox')
+)
+const HomeApplianceImageWithBackground = dynamic(() =>
+	import('components/page/HomeAppliances/HomeApplianceImageWithBackground')
+)
+const CESHomeNavBar = dynamic(() =>
+	import('components/page/CES/HomeApplication/CESHomeNavBar')
+)
+const CESHomeImageAndText = dynamic(() =>
+	import('components/page/CES/HomeApplication/CESHomeImageAndText')
+)
+const CESLaserLearnMore = dynamic(() =>
+	import('components/page/CES/Laster/CESLaserLearnMore')
+)
+const ImageBoxWithPaddingAndBgBlack = dynamic(() =>
+	import('components/page/CES/Laster/ImageBoxWithPaddingAndBgBlack')
+)
+const CEOLaserLikeBox = dynamic(() =>
+	import('components/page/CES/Laster/CEOLasterLikeBox')
+)
+const MoreTvHead = dynamic(() => import('components/page/MoreTv/MoreTvHead'))
+const MoreTvBox = dynamic(() => import('components/page/MoreTv/MoreTvBox'))
+const MoreTvVideoBox = dynamic(() =>
+	import('components/page/MoreTv/MoreTvVideoBox')
+)
+const MoreTvAmericaBox = dynamic(() =>
+	import('components/page/MoreTv/MoreTvAmericaBox')
+)
+const MoreTvLessTalk = dynamic(() =>
+	import('components/page/MoreTv/MoreTvLessTalk')
+)
+const MoreTvHisensePromise = dynamic(() =>
+	import('components/page/MoreTv/MoreTvHisensePromise')
+)
+const MoreTvGrabSlider = dynamic(() =>
+	import('components/page/MoreTv/MoreTvGrabSlider')
+)
+const MoreTvLessTalkForm = dynamic(() =>
+	import('components/page/MoreTv/MoreTvLessTalkForm')
+)
+const MoreTvExperts = dynamic(() =>
+	import('components/page/MoreTv/MoreTvExperts')
+)
+const MoreTVNewItemsBox = dynamic(() =>
+	import('components/page/MoreTv/MoreTvNewItemsBox')
+)
+const MoreTVNewHisensePromise = dynamic(() =>
+	import('components/page/MoreTv/MoreTvNewHisensePromise')
+)
+const BlogListHead = dynamic(() =>
+	import('components/page/BlogList/BlogListHead')
+)
+const BlogListSearchBox = dynamic(() =>
+	import('components/page/BlogList/BlogListSearchBox')
+)
+const BlogListReadArticleBox = dynamic(() =>
+	import('components/page/BlogList/BlogListReadArticleBox')
+)
+const BlogListLittleReadArticleBox = dynamic(() =>
+	import('components/page/BlogList/BlogListLittleReadArticleBox')
+)
+const BlogListSoundBarItemsBox = dynamic(() =>
+	import('components/page/BlogList/BlogListSoundBarItemsBox')
+)
+const BlogListWithBigTitleAndLittleItem = dynamic(() =>
+	import('components/page/BlogList/BlogListWithBigTitleAndLittleItem')
+)
+const BlogDescriptionBox = dynamic(() =>
+	import('components/page/Blog/BlogDescriptionBox')
+)
+const BlogImageGalleryBox = dynamic(() =>
+	import('components/page/Blog/BlogImageGalleryBox')
+)
+const BlogImageAndTextBox = dynamic(() =>
+	import('components/page/Blog/BlogImageAndTextBox')
+)
+const BlogVideoBox = dynamic(() => import('components/page/Blog/BlogVideoBox'))
+const BlogTwoImage = dynamic(() => import('components/page/Blog/BlogTwoImage'))
+const BlogSecondDescriptionBox = dynamic(() =>
+	import('components/page/Blog/BlogSecondDescriptionBox')
+)
+const BlogEasySlider = dynamic(() =>
+	import('components/page/Blog/BlogEasySlider')
+)
+const BlogBigImageAndTextBox = dynamic(() =>
+	import('components/page/Blog/BlogBigImageAndTextBox')
+)
+const BlogDescriptionWithShare = dynamic(() =>
+	import('components/page/Blog/BlogDescriptionWithShare')
+)
+const BlogHead = dynamic(() => import('components/page/Blog/BlogHead'))
+const BlogCubeSlider = dynamic(() =>
+	import('components/page/Blog/BlogCubeSlider')
+)
+const BlogMoreStories = dynamic(() =>
+	import('components/page/Blog/BlogMoreStories')
+)
+const PDPProductInfoSliderAndText = dynamic(() =>
+	import('components/page/PDP/PDPProductInfoSliderAndText')
+)
+const PDPNavBar = dynamic(() => import('components/page/PDP/PDPNavBar'))
+const PDPImageAndInfoGrayBg = dynamic(() =>
+	import('components/page/PDP/PDPImageAndInfoGrayBg')
+)
+const PDPVideoBox = dynamic(() => import('components/page/PDP/PDPVideoBox'))
+const PDPImageAndInfoDarkBg = dynamic(() =>
+	import('components/page/PDP/PDPImageAndInfoDarkBg')
+)
+const PDPImageAndInfoLightGrayBg = dynamic(() =>
+	import('components/page/PDP/PDPImageAndInfoLightGrayBg')
+)
+const PDMImageAndInfoSilverBg = dynamic(() =>
+	import('components/page/PDP/PDMImageAndInfoSilverBg')
+)
+const PDPTopFeatures = dynamic(() =>
+	import('components/page/PDP/PDPTopFeatures')
+)
+const PDPDescriptionSliderWithDarkGray = dynamic(() =>
+	import('components/page/PDP/PDPDescriptionSliderWithDarkGray')
+)
+const PDPTextAndLongImageBox = dynamic(() =>
+	import('components/page/PDP/PDPTextAndLongImageBox')
+)
+const PDPReviewsAndAwards = dynamic(() =>
+	import('components/page/PDP/PDPReviewsAndAwards')
+)
+const PDPReadyToBuyBox = dynamic(() =>
+	import('components/page/PDP/PDPReadyToBuyBox')
+)
+const PDPChooseULEDTvBox = dynamic(() =>
+	import('components/page/PDP/PDPChooseULEDTvBox')
+)
+const ListVideoPlayer = dynamic(() =>
+	import('components/page/PDP/ListVideoPlayer')
+)
+const SponsorshipDescriptionGrayBg = dynamic(() =>
+	import('components/page/Sponsorship/SponsorshipDescriptionGrayBg')
+)
+const SponsorshipVideoAndTextBox = dynamic(() =>
+	import('components/page/Sponsorship/SponsorshipVideoAndTextBox')
+)
+const SponsorshipBigImageAndText = dynamic(() =>
+	import('components/page/Sponsorship/SponsorshipBigImageAndText')
+)
+const SponsorshipImagesWithButton = dynamic(() =>
+	import('components/page/Sponsorship/SponsorshipImagesWithButton')
+)
+const SponsorshipTitleBox = dynamic(() =>
+	import('components/page/Sponsorship/SponsorshipTitleBox')
+)
+const SponsorshipTextGradient = dynamic(() =>
+	import('components/page/Sponsorship/SponsorshipTextGradient')
+)
+const SponsorImageAndText = dynamic(() =>
+	import('components/page/Sponsorship/SponsorImageAndText')
+)
+const SponsorImageAndLogo = dynamic(() =>
+	import('components/page/Sponsorship/SponsorImageAndLogo')
+)
+const HeaderGoogleTv = dynamic(() =>
+	import('components/page/Day100/HeaderGoogleTv')
+)
+const HeaderBanner = dynamic(() =>
+	import('components/page/Day100/HeaderBanner')
+)
+const ClaimPrize = dynamic(() => import('components/page/Day100/ClaimPrize'))
+const DoubleWarranty = dynamic(() =>
+	import('components/page/Day100/DoubleWarranty')
+)
+const EligibleModels = dynamic(() =>
+	import('components/page/Day100/EligibleModels')
+)
+const ExpertsAdv = dynamic(() => import('components/page/Day100/ExpertsAdv'))
+const DigitalTrends = dynamic(() =>
+	import('components/page/Day100/DigitalTrends')
+)
+const FeatureBadges = dynamic(() =>
+	import('components/page/Day100/FeatureBadges')
+)
+const Guarantee = dynamic(() => import('components/page/Day100/Guarantee'))
+const HeroBanner = dynamic(() => import('components/page/L9G/HeroBanner'))
+const ScrollableVideo = dynamic(() =>
+	import('components/page/L9G/ScrollableVideo')
+)
+const PureColor = dynamic(() => import('components/page/L9G/PureColor'))
+const ColorFeature = dynamic(() => import('components/page/L9G/ColorFeature'))
+const LumensOfBrightness = dynamic(() =>
+	import('components/page/L9G/LumensOfBrightness')
+)
+const SmoothMotion = dynamic(() => import('components/page/L9G/SmoothMotion'))
+const ScreenSize = dynamic(() => import('components/page/L9G/ScreenSize'))
+const LightRejection = dynamic(() =>
+	import('components/page/L9G/LightRejection')
+)
+const DolbyVision = dynamic(() => import('components/page/L9G/DolbyVision'))
+const DolbyAtmos = dynamic(() => import('components/page/L9G/DolbyAtmos'))
+const FineTouches = dynamic(() => import('components/page/L9G/FineTouches'))
+const AndroidTv = dynamic(() => import('components/page/L9G/AndroidTv'))
+const FeatureBlock = dynamic(() => import('components/page/L9G/FeatureBlock'))
+const Awards = dynamic(() => import('components/page/L9G/Awards'))
+const Comments = dynamic(() => import('components/page/L9G/Comments'))
+const FAQs = dynamic(() => import('components/page/L9G/FAQs'))
+const Specs = dynamic(() => import('components/page/L9G/Specs'))
+const Resources = dynamic(() => import('components/page/L9G/Resources'))
+const Retailers = dynamic(() => import('components/page/L9G/Retailers'))
+const WhereToBuy = dynamic(() => import('components/page/L9G/WhereToBuy'))
+const L9GProductDetailsBox = dynamic(() =>
+	import('components/page/L9G/L9GProductDetailsBox')
+)
+const HomePageMBSlider = dynamic(() =>
+	import('components/page/HomePageMB/HomePageMBSlider')
+)
+const HomePageMBProductsSlider = dynamic(() =>
+	import('components/page/HomePageMB/HomePageMBProductsSlider')
+)
+const HomePageMBVideoPlayer = dynamic(() =>
+	import('components/page/HomePageMB/HomePageMBVideoPlayer')
+)
+const HomePageMBTextedBoxes = dynamic(() =>
+	import('components/page/HomePageMB/HomePageMBTextedBoxes')
+)
+const HomePageMBTextedBoxesItem = dynamic(() =>
+	import('components/page/HomePageMB/HomePageMBTextedBoxesItem')
+)
+const HomePageMBDiscovery = dynamic(() =>
+	import('components/page/HomePageMB/HomePageMBDiscovery')
+)
+const HomePageMBDiscoveryItem = dynamic(() =>
+	import('components/page/HomePageMB/HomePageMBDiscoveryItem')
+)
+const BlockCategories = dynamic(() =>
+	import('components/page/NewHomePage/BlockCategories')
+)
+const BlockTVHero = dynamic(() =>
+	import('components/page/NewHomePage/BlockTVHero')
+)
+const BlockKitchenHero = dynamic(() =>
+	import('components/page/NewHomePage/BlockKitchenHero')
+)
+const BlockFeatured = dynamic(() =>
+	import('components/page/NewHomePage/BlockFeatured')
+)
+const BlockHero = dynamic(() => import('components/page/NewHomePage/BlockHero'))
+const BlockSpotlight = dynamic(() =>
+	import('components/page/NewHomePage/BlockSpotlight')
+)
+const BlockCards = dynamic(() =>
+	import('components/page/NewHomePage/BlockCards')
+)
+const ExtendedWarrantyBanner = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyBanner')
+)
+const ExtendedWarrantyFAQ = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyFAQ')
+)
+const ExtendedWarrantyFeatureBlocks = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyFeatureBlocks')
+)
+const ExtendedWarrantyWizard = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyWizard')
+)
+const ExtendedWarrantyTextBlock = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyTextBlock')
+)
+const ExtendedWarrantyProductsSlider = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyProductsSlider')
+)
+const ExtendedWarrantyProductGrid = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyProductGrid')
+)
+const ExtendedWarrantyPaymentStatus = dynamic(() =>
+	import('components/page/ExtendedWarranty/ExtendedWarrantyPaymentStatus')
+)
+const TelevisionsBlockBanner = dynamic(() =>
+	import('components/page/Televisions/TelevisionsBlockBanner')
+)
+const TelevisionsBlockCards = dynamic(() =>
+	import('components/page/Televisions/TelevisionsBlockCards')
+)
+const TelevisionsBlockHero = dynamic(() =>
+	import('components/page/Televisions/TelevisionsBlockHero')
+)
+const TelevisionsBlockSpotlight = dynamic(() =>
+	import('components/page/Televisions/TelevisionsBlockSpotlight')
+)
+const TelevisionsTvHero = dynamic(() =>
+	import('components/page/Televisions/TelevisionsTvHero')
+)
+const PrivacyPolicyTextEditor = dynamic(() =>
+	import('components/page/PrivacyPolicy/PrivacyPolicyTextEditor')
+)
+const UpgradeL9GForm = dynamic(() =>
+	import('components/page/Upgrade/UpgradeL9GForm')
+)
+const BeyondLaserBanner = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserBanner')
+)
+const BeyondLaserHeader = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserHeader')
+)
+const BeyondLaserMomentsBlock = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserMomentsBlock')
+)
+const BeyondLaserImageBlock = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserImageBlock')
+)
+const BeyondLaserTextBlock = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserTextBlock')
+)
+const BeyondLaserQuoteBlock = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserQuoteBlock')
+)
+const BeyondLaserIframeBlock = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserIframeBlock')
+)
+const BeyondLaserFooterBlock = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserFooterBlock')
+)
+const BeyondLaserFlipDevice = dynamic(() =>
+	import('components/page/BeyondLaser/BeyondLaserFlipDevice')
+)
+const GoogleTvBanner = dynamic(() =>
+	import('components/page/GoogleTv/GoogleTvBanner')
+)
+const GoogleTvHero = dynamic(() =>
+	import('components/page/GoogleTv/GoogleTvHero')
+)
+const GoogleTvProducts = dynamic(() =>
+	import('components/page/GoogleTv/GoogleTvProducts')
+)
+const GoogleTvTops = dynamic(() =>
+	import('components/page/GoogleTv/GoogleTvTops')
+)
+const GoogleTvTextBox = dynamic(() =>
+	import('components/page/GoogleTv/GoogleTvTextBox')
+)
+const GoogleTvFeatureBlocks = dynamic(() =>
+	import('components/page/GoogleTv/GoogleTvFeatureBlocks')
+)
+const Subscribe = dynamic(() => import('components/common/Subscribe'))
+const Footer = dynamic(() => import('components/common/Footer'))
 
 const Components = {
-    ProductsBox:ProductsBox,
-TextEditor:TextEditor,
-ImageBox:ImageBox,
-LetsGetRealTextBox:LetsGetRealTextBox,
-Header:Header,
-NeedHelpBox:NeedHelpBox,
-BreadCrumb:BreadCrumb,
-IFrame:IFrame,
-UnauthorizedListCommon:UnauthorizedListCommon,
-OfferClaimForm:OfferClaimForm,
-SimpleImagesList:SimpleImagesList,
-PromoBanner:PromoBanner,
-AuthorizedRetailersBadge:AuthorizedRetailersBadge,
-AuthorizedRetailersFeatures:AuthorizedRetailersFeatures,
-AuthorizedRetailersNote:AuthorizedRetailersNote,
-AuthorizedRetailersLogos:AuthorizedRetailersLogos,
-UnauthorizedList:UnauthorizedList,
-LandingSlider:LandingSlider,
-LandingProductsBox:LandingProductsBox,
-LandingVideoPlayer:LandingVideoPlayer,
-ProductsBanner:ProductsBanner,
-ProductsGrid:ProductsGrid,
-ProductsBannerV2:ProductsBannerV2,
-ProductsGridV2:ProductsGridV2,
-ProductInfoAndSliderBox:ProductInfoAndSliderBox,
-ProductTextWithImageBox:ProductTextWithImageBox,
-ProductFeatureWithImage:ProductFeatureWithImage,
-CompareProduct:CompareProduct,
-ProductWhereToBuy:ProductWhereToBuy,
-ListImageBox:ListImageBox,
-ProductBigScreenTextsBox:ProductBigScreenTextsBox,
-ProductFeatureWithParagraph:ProductFeatureWithParagraph,
-ProductTextWithIcon:ProductTextWithIcon,
-ProductStaticContent:ProductStaticContent,
-ProductCategoryBox:ProductCategoryBox,
-ProductImageBox:ProductImageBox,
-ProductBigContent:ProductBigContent,
-ProductFeaturesWithIcon:ProductFeaturesWithIcon,
-ProductRelatedItemsBox:ProductRelatedItemsBox,
-ProductReviewBox:ProductReviewBox,
-ProductNewsBox:ProductNewsBox,
-ProductBottomImageBox:ProductBottomImageBox,
-ProductDetailsBox:ProductDetailsBox,
-ProductFineMeInStore:ProductFineMeInStore,
-ProductResourceBox:ProductResourceBox,
-ProductPackageHeader:ProductPackageHeader,
-ProductPackagesSlider:ProductPackagesSlider,
-SmartInfoHead:SmartInfoHead,
-ProductFeatureWithImageWithBTN:ProductFeatureWithImageWithBTN,
-SmartInfoTvsBox:SmartInfoTvsBox,
-SmartInfoTextBox:SmartInfoTextBox,
-SmartInfoTextAndImageBox:SmartInfoTextAndImageBox,
-SmartInfoInteractBox:SmartInfoInteractBox,
-SmartInfoFindHisense:SmartInfoFindHisense,
-SmartInfoBetterNewOrOldBox:SmartInfoBetterNewOrOldBox,
-SupportHeadIntro:SupportHeadIntro,
-SupportCovidBox:SupportCovidBox,
-SupportCategoryBox:SupportCategoryBox,
-SupportNewHead:SupportNewHead,
-ProductsCategoriesWithSearch:ProductsCategoriesWithSearch,
-ProductsSupportOptions:ProductsSupportOptions,
-SupportNeedAssistance:SupportNeedAssistance,
-SupportNewProducts:SupportNewProducts,
-SupportNewHeadV2:SupportNewHeadV2,
-SupportNeedMoreWithButton:SupportNeedMoreWithButton,
-RegisterHead:RegisterHead,
-RegisterForm:RegisterForm,
-FAQhead:FAQhead,
-FAQContentBox:FAQContentBox,
-FAQDescriptionWithTwoBox:FAQDescriptionWithTwoBox,
-ContactUsHead:ContactUsHead,
-ContactUsForm:ContactUsForm,
-ContactUsNewHead:ContactUsNewHead,
-ContactUsNewForm:ContactUsNewForm,
-ContactUsPhoneUs:ContactUsPhoneUs,
-ContactUsAboutHisense:ContactUsAboutHisense,
-CompanyHeaderIntro:CompanyHeaderIntro,
-CompanyNavBar:CompanyNavBar,
-CompanyInfo:CompanyInfo,
-CompanySubmenu:CompanySubmenu,
-CommercialIntro:CommercialIntro,
-CommercialTowImageBox:CommercialTowImageBox,
-CommercialBecomeAPartner:CommercialBecomeAPartner,
-TVAndAudioHead:TVAndAudioHead,
-TVAndAudioTvShopBox:TVAndAudioTvShopBox,
-TVAndAudioIntro:TVAndAudioIntro,
-TVAndAudioLaserIntro:TVAndAudioLaserIntro,
-TVAndAudioSmartChoice:TVAndAudioSmartChoice,
-TVAndAudioFindHisense:TVAndAudioFindHisense,
-TVAndAudioFindProduct:TVAndAudioFindProduct,
-UHDIntro:UHDIntro,
-UHDNewsBox:UHDNewsBox,
-UHDAbilityBox:UHDAbilityBox,
-UHDFindTv:UHDFindTv,
-ULEDHead:ULEDHead,
-ULEDProducts:ULEDProducts,
-ULEDImageAndTextItem:ULEDImageAndTextItem,
-ULEDTextBox:ULEDTextBox,
-ULEDImageBoxWithBtn:ULEDImageBoxWithBtn,
-ULEDAllTech:ULEDAllTech,
-ULEDImageAndTextBox:ULEDImageAndTextBox,
-ULEDGreatTvTextBox:ULEDGreatTvTextBox,
-LaserHead:LaserHead,
-LaserImageAndTextBox:LaserImageAndTextBox,
-LaserTitleAndSubTitleBox:LaserTitleAndSubTitleBox,
-LaserFinedWithImage:LaserFinedWithImage,
-DishwashersHead:DishwashersHead,
-ProductSupportInfo:ProductSupportInfo,
-ProductSupportLinks:ProductSupportLinks,
-ProductSupportNewHead:ProductSupportNewHead,
-ProductSupportNavBar:ProductSupportNavBar,
-ProductSupportVideoBox:ProductSupportVideoBox,
-ProductSupportFAQ:ProductSupportFAQ,
-ProductSupportRegister:ProductSupportRegister,
-ProductSupportReplacement:ProductSupportReplacement,
-HomeApplianceFeatures:HomeApplianceFeatures,
-HomeApplianceQA:HomeApplianceQA,
-HomeApplianceTextBoxWithImage:HomeApplianceTextBoxWithImage,
-HomeApplianceTextBox:HomeApplianceTextBox,
-HomeApplianceImageWithBackground:HomeApplianceImageWithBackground,
-CESHomeNavBar:CESHomeNavBar,
-CESHomeImageAndText:CESHomeImageAndText,
-CESLaserLearnMore:CESLaserLearnMore,
-ImageBoxWithPaddingAndBgBlack:ImageBoxWithPaddingAndBgBlack,
-CEOLaserLikeBox:CEOLaserLikeBox,
-MoreTvHead:MoreTvHead,
-MoreTvBox:MoreTvBox,
-MoreTvVideoBox:MoreTvVideoBox,
-MoreTvAmericaBox:MoreTvAmericaBox,
-MoreTvLessTalk:MoreTvLessTalk,
-MoreTvHisensePromise:MoreTvHisensePromise,
-MoreTvGrabSlider:MoreTvGrabSlider,
-MoreTvLessTalkForm:MoreTvLessTalkForm,
-MoreTvExperts:MoreTvExperts,
-MoreTVNewItemsBox:MoreTVNewItemsBox,
-MoreTVNewHisensePromise:MoreTVNewHisensePromise,
-BlogListHead:BlogListHead,
-BlogListSearchBox:BlogListSearchBox,
-BlogListReadArticleBox:BlogListReadArticleBox,
-BlogListLittleReadArticleBox:BlogListLittleReadArticleBox,
-BlogListSoundBarItemsBox:BlogListSoundBarItemsBox,
-BlogListWithBigTitleAndLittleItem:BlogListWithBigTitleAndLittleItem,
-BlogDescriptionBox:BlogDescriptionBox,
-BlogImageGalleryBox:BlogImageGalleryBox,
-BlogImageAndTextBox:BlogImageAndTextBox,
-BlogVideoBox:BlogVideoBox,
-BlogTwoImage:BlogTwoImage,
-BlogSecondDescriptionBox:BlogSecondDescriptionBox,
-BlogEasySlider:BlogEasySlider,
-BlogBigImageAndTextBox:BlogBigImageAndTextBox,
-BlogDescriptionWithShare:BlogDescriptionWithShare,
-BlogHead:BlogHead,
-BlogCubeSlider:BlogCubeSlider,
-BlogMoreStories:BlogMoreStories,
-PDPProductInfoSliderAndText:PDPProductInfoSliderAndText,
-PDPNavBar:PDPNavBar,
-PDPImageAndInfoGrayBg:PDPImageAndInfoGrayBg,
-PDPVideoBox:PDPVideoBox,
-PDPImageAndInfoDarkBg:PDPImageAndInfoDarkBg,
-PDPImageAndInfoLightGrayBg:PDPImageAndInfoLightGrayBg,
-PDMImageAndInfoSilverBg:PDMImageAndInfoSilverBg,
-PDPTopFeatures:PDPTopFeatures,
-PDPDescriptionSliderWithDarkGray:PDPDescriptionSliderWithDarkGray,
-PDPTextAndLongImageBox:PDPTextAndLongImageBox,
-PDPReviewsAndAwards:PDPReviewsAndAwards,
-PDPReadyToBuyBox:PDPReadyToBuyBox,
-PDPChooseULEDTvBox:PDPChooseULEDTvBox,
-ListVideoPlayer:ListVideoPlayer,
-SponsorshipDescriptionGrayBg:SponsorshipDescriptionGrayBg,
-SponsorshipVideoAndTextBox:SponsorshipVideoAndTextBox,
-SponsorshipBigImageAndText:SponsorshipBigImageAndText,
-SponsorshipImagesWithButton:SponsorshipImagesWithButton,
-SponsorshipTitleBox:SponsorshipTitleBox,
-SponsorshipTextGradient:SponsorshipTextGradient,
-SponsorImageAndText:SponsorImageAndText,
-SponsorImageAndLogo:SponsorImageAndLogo,
-HeaderGoogleTv:HeaderGoogleTv,
-HeaderBanner:HeaderBanner,
-ClaimPrize:ClaimPrize,
-DoubleWarranty:DoubleWarranty,
-EligibleModels:EligibleModels,
-ExpertsAdv:ExpertsAdv,
-DigitalTrends:DigitalTrends,
-FeatureBadges:FeatureBadges,
-Guarantee:Guarantee,
-HeroBanner:HeroBanner,
-ScrollableVideo:ScrollableVideo,
-PureColor:PureColor,
-ColorFeature:ColorFeature,
-LumensOfBrightness:LumensOfBrightness,
-SmoothMotion:SmoothMotion,
-ScreenSize:ScreenSize,
-LightRejection:LightRejection,
-DolbyVision:DolbyVision,
-DolbyAtmos:DolbyAtmos,
-FineTouches:FineTouches,
-AndroidTv:AndroidTv,
-FeatureBlock:FeatureBlock,
-Awards:Awards,
-Comments:Comments,
-FAQs:FAQs,
-Specs:Specs,
-Resources:Resources,
-Retailers:Retailers,
-WhereToBuy:WhereToBuy,
-L9GProductDetailsBox:L9GProductDetailsBox,
-HomePageMBSlider:HomePageMBSlider,
-HomePageMBProductsSlider:HomePageMBProductsSlider,
-HomePageMBVideoPlayer:HomePageMBVideoPlayer,
-HomePageMBTextedBoxes:HomePageMBTextedBoxes,
-HomePageMBTextedBoxesItem:HomePageMBTextedBoxesItem,
-HomePageMBDiscovery:HomePageMBDiscovery,
-HomePageMBDiscoveryItem:HomePageMBDiscoveryItem,
-BlockCategories:BlockCategories,
-BlockTVHero:BlockTVHero,
-BlockKitchenHero:BlockKitchenHero,
-BlockFeatured:BlockFeatured,
-BlockHero:BlockHero,
-BlockSpotlight:BlockSpotlight,
-BlockCards:BlockCards,
-ExtendedWarrantyBanner:ExtendedWarrantyBanner,
-ExtendedWarrantyFAQ:ExtendedWarrantyFAQ,
-ExtendedWarrantyFeatureBlocks:ExtendedWarrantyFeatureBlocks,
-ExtendedWarrantyWizard:ExtendedWarrantyWizard,
-ExtendedWarrantyTextBlock:ExtendedWarrantyTextBlock,
-ExtendedWarrantyProductsSlider:ExtendedWarrantyProductsSlider,
-ExtendedWarrantyProductGrid:ExtendedWarrantyProductGrid,
-ExtendedWarrantyPaymentStatus:ExtendedWarrantyPaymentStatus,
-TelevisionsBlockBanner:TelevisionsBlockBanner,
-TelevisionsBlockCards:TelevisionsBlockCards,
-TelevisionsBlockHero:TelevisionsBlockHero,
-TelevisionsBlockSpotlight:TelevisionsBlockSpotlight,
-TelevisionsTvHero:TelevisionsTvHero,
-PrivacyPolicyTextEditor:PrivacyPolicyTextEditor,
-UpgradeL9GForm:UpgradeL9GForm,
-BeyondLaserBanner:BeyondLaserBanner,
-BeyondLaserHeader:BeyondLaserHeader,
-BeyondLaserMomentsBlock:BeyondLaserMomentsBlock,
-BeyondLaserImageBlock:BeyondLaserImageBlock,
-BeyondLaserTextBlock:BeyondLaserTextBlock,
-BeyondLaserQuoteBlock:BeyondLaserQuoteBlock,
-BeyondLaserIframeBlock:BeyondLaserIframeBlock,
-BeyondLaserFooterBlock:BeyondLaserFooterBlock,
-BeyondLaserFlipDevice:BeyondLaserFlipDevice,
-Subscribe:Subscribe,
-Footer:Footer
+	ProductsBox: ProductsBox,
+	TextEditor: TextEditor,
+	ImageBox: ImageBox,
+	LetsGetRealTextBox: LetsGetRealTextBox,
+	Header: Header,
+	NeedHelpBox: NeedHelpBox,
+	BreadCrumb: BreadCrumb,
+	IFrame: IFrame,
+	UnauthorizedListCommon: UnauthorizedListCommon,
+	OfferClaimForm: OfferClaimForm,
+	SimpleImagesList: SimpleImagesList,
+	PromoBanner: PromoBanner,
+	AuthorizedRetailersBadge: AuthorizedRetailersBadge,
+	AuthorizedRetailersFeatures: AuthorizedRetailersFeatures,
+	AuthorizedRetailersNote: AuthorizedRetailersNote,
+	AuthorizedRetailersLogos: AuthorizedRetailersLogos,
+	UnauthorizedList: UnauthorizedList,
+	LandingSlider: LandingSlider,
+	LandingProductsBox: LandingProductsBox,
+	LandingVideoPlayer: LandingVideoPlayer,
+	ProductsBanner: ProductsBanner,
+	ProductsGrid: ProductsGrid,
+	ProductsBannerV2: ProductsBannerV2,
+	ProductsGridV2: ProductsGridV2,
+	ProductInfoAndSliderBox: ProductInfoAndSliderBox,
+	ProductInfoAndSliderBoxV2: ProductInfoAndSliderBoxV2,
+	ProductTextWithImageBox: ProductTextWithImageBox,
+	RelatedProducts: RelatedProducts,
+	ProductFeatureWithImage: ProductFeatureWithImage,
+	CompareProduct: CompareProduct,
+	ProductWhereToBuy: ProductWhereToBuy,
+	ListImageBox: ListImageBox,
+	ProductBigScreenTextsBox: ProductBigScreenTextsBox,
+	ProductFeatureWithParagraph: ProductFeatureWithParagraph,
+	ProductTextWithIcon: ProductTextWithIcon,
+	ProductStaticContent: ProductStaticContent,
+	ProductCategoryBox: ProductCategoryBox,
+	ProductCategoryBoxV2: ProductCategoryBoxV2,
+	ProductImageBox: ProductImageBox,
+	ProductBigContent: ProductBigContent,
+	ProductFeaturesWithIcon: ProductFeaturesWithIcon,
+	ProductRelatedItemsBox: ProductRelatedItemsBox,
+	ProductReviewBox: ProductReviewBox,
+	ProductNewsBox: ProductNewsBox,
+	ProductBottomImageBox: ProductBottomImageBox,
+	ProductDetailsBox: ProductDetailsBox,
+	ProductFineMeInStore: ProductFineMeInStore,
+	ProductResourceBox: ProductResourceBox,
+	ProductPackageHeader: ProductPackageHeader,
+	ProductPackagesSlider: ProductPackagesSlider,
+	SmartInfoHead: SmartInfoHead,
+	ProductFeatureWithImageWithBTN: ProductFeatureWithImageWithBTN,
+	SmartInfoTvsBox: SmartInfoTvsBox,
+	SmartInfoTextBox: SmartInfoTextBox,
+	SmartInfoTextAndImageBox: SmartInfoTextAndImageBox,
+	SmartInfoInteractBox: SmartInfoInteractBox,
+	SmartInfoFindHisense: SmartInfoFindHisense,
+	SmartInfoBetterNewOrOldBox: SmartInfoBetterNewOrOldBox,
+	SupportHeadIntro: SupportHeadIntro,
+	SupportCovidBox: SupportCovidBox,
+	SupportCategoryBox: SupportCategoryBox,
+	SupportNewHead: SupportNewHead,
+	ProductsCategoriesWithSearch: ProductsCategoriesWithSearch,
+	ProductsSupportOptions: ProductsSupportOptions,
+	SupportNeedAssistance: SupportNeedAssistance,
+	SupportNewProducts: SupportNewProducts,
+	SupportNewHeadV2: SupportNewHeadV2,
+	SupportNeedMoreWithButton: SupportNeedMoreWithButton,
+	RegisterHead: RegisterHead,
+	RegisterForm: RegisterForm,
+	FAQhead: FAQhead,
+	FAQContentBox: FAQContentBox,
+	FAQDescriptionWithTwoBox: FAQDescriptionWithTwoBox,
+	ContactUsHead: ContactUsHead,
+	ContactUsChat: ContactUsChat,
+	ContactUsForm: ContactUsForm,
+	ContactUsNewHead: ContactUsNewHead,
+	ContactUsNewForm: ContactUsNewForm,
+	ContactUsPhoneUs: ContactUsPhoneUs,
+	ContactUsAboutHisense: ContactUsAboutHisense,
+	CompanyHeaderIntro: CompanyHeaderIntro,
+	CompanyNavBar: CompanyNavBar,
+	CompanyInfo: CompanyInfo,
+	CompanySubmenu: CompanySubmenu,
+	CommercialIntro: CommercialIntro,
+	CommercialTowImageBox: CommercialTowImageBox,
+	CommercialBecomeAPartner: CommercialBecomeAPartner,
+	TVAndAudioHead: TVAndAudioHead,
+	TVAndAudioTvShopBox: TVAndAudioTvShopBox,
+	TVAndAudioIntro: TVAndAudioIntro,
+	TVAndAudioLaserIntro: TVAndAudioLaserIntro,
+	TVAndAudioSmartChoice: TVAndAudioSmartChoice,
+	TVAndAudioFindHisense: TVAndAudioFindHisense,
+	TVAndAudioFindProduct: TVAndAudioFindProduct,
+	UHDIntro: UHDIntro,
+	UHDNewsBox: UHDNewsBox,
+	UHDAbilityBox: UHDAbilityBox,
+	UHDFindTv: UHDFindTv,
+	ULEDHead: ULEDHead,
+	ULEDProducts: ULEDProducts,
+	ULEDImageAndTextItem: ULEDImageAndTextItem,
+	ULEDTextBox: ULEDTextBox,
+	ULEDImageBoxWithBtn: ULEDImageBoxWithBtn,
+	ULEDAllTech: ULEDAllTech,
+	ULEDImageAndTextBox: ULEDImageAndTextBox,
+	ULEDGreatTvTextBox: ULEDGreatTvTextBox,
+	LaserHead: LaserHead,
+	LaserImageAndTextBox: LaserImageAndTextBox,
+	LaserTitleAndSubTitleBox: LaserTitleAndSubTitleBox,
+	LaserFinedWithImage: LaserFinedWithImage,
+	DishwashersHead: DishwashersHead,
+	ProductSupportInfo: ProductSupportInfo,
+	ProductSupportLinks: ProductSupportLinks,
+	ProductSupportNewHead: ProductSupportNewHead,
+	ProductSupportNavBar: ProductSupportNavBar,
+	ProductSupportVideoBox: ProductSupportVideoBox,
+	ProductSupportFAQ: ProductSupportFAQ,
+	ProductSupportRegister: ProductSupportRegister,
+	ProductSupportReplacement: ProductSupportReplacement,
+	HomeApplianceFeatures: HomeApplianceFeatures,
+	HomeApplianceQA: HomeApplianceQA,
+	HomeApplianceTextBoxWithImage: HomeApplianceTextBoxWithImage,
+	HomeApplianceTextBox: HomeApplianceTextBox,
+	HomeApplianceImageWithBackground: HomeApplianceImageWithBackground,
+	CESHomeNavBar: CESHomeNavBar,
+	CESHomeImageAndText: CESHomeImageAndText,
+	CESLaserLearnMore: CESLaserLearnMore,
+	ImageBoxWithPaddingAndBgBlack: ImageBoxWithPaddingAndBgBlack,
+	CEOLaserLikeBox: CEOLaserLikeBox,
+	MoreTvHead: MoreTvHead,
+	MoreTvBox: MoreTvBox,
+	MoreTvVideoBox: MoreTvVideoBox,
+	MoreTvAmericaBox: MoreTvAmericaBox,
+	MoreTvLessTalk: MoreTvLessTalk,
+	MoreTvHisensePromise: MoreTvHisensePromise,
+	MoreTvGrabSlider: MoreTvGrabSlider,
+	MoreTvLessTalkForm: MoreTvLessTalkForm,
+	MoreTvExperts: MoreTvExperts,
+	MoreTVNewItemsBox: MoreTVNewItemsBox,
+	MoreTVNewHisensePromise: MoreTVNewHisensePromise,
+	BlogListHead: BlogListHead,
+	BlogListSearchBox: BlogListSearchBox,
+	BlogListReadArticleBox: BlogListReadArticleBox,
+	BlogListLittleReadArticleBox: BlogListLittleReadArticleBox,
+	BlogListSoundBarItemsBox: BlogListSoundBarItemsBox,
+	BlogListWithBigTitleAndLittleItem: BlogListWithBigTitleAndLittleItem,
+	BlogDescriptionBox: BlogDescriptionBox,
+	BlogImageGalleryBox: BlogImageGalleryBox,
+	BlogImageAndTextBox: BlogImageAndTextBox,
+	BlogVideoBox: BlogVideoBox,
+	BlogTwoImage: BlogTwoImage,
+	BlogSecondDescriptionBox: BlogSecondDescriptionBox,
+	BlogEasySlider: BlogEasySlider,
+	BlogBigImageAndTextBox: BlogBigImageAndTextBox,
+	BlogDescriptionWithShare: BlogDescriptionWithShare,
+	BlogHead: BlogHead,
+	BlogCubeSlider: BlogCubeSlider,
+	BlogMoreStories: BlogMoreStories,
+	PDPProductInfoSliderAndText: PDPProductInfoSliderAndText,
+	PDPNavBar: PDPNavBar,
+	PDPImageAndInfoGrayBg: PDPImageAndInfoGrayBg,
+	PDPVideoBox: PDPVideoBox,
+	PDPImageAndInfoDarkBg: PDPImageAndInfoDarkBg,
+	PDPImageAndInfoLightGrayBg: PDPImageAndInfoLightGrayBg,
+	PDMImageAndInfoSilverBg: PDMImageAndInfoSilverBg,
+	PDPTopFeatures: PDPTopFeatures,
+	PDPDescriptionSliderWithDarkGray: PDPDescriptionSliderWithDarkGray,
+	PDPTextAndLongImageBox: PDPTextAndLongImageBox,
+	PDPReviewsAndAwards: PDPReviewsAndAwards,
+	PDPReadyToBuyBox: PDPReadyToBuyBox,
+	PDPChooseULEDTvBox: PDPChooseULEDTvBox,
+	ListVideoPlayer: ListVideoPlayer,
+	SponsorshipDescriptionGrayBg: SponsorshipDescriptionGrayBg,
+	SponsorshipVideoAndTextBox: SponsorshipVideoAndTextBox,
+	SponsorshipBigImageAndText: SponsorshipBigImageAndText,
+	SponsorshipImagesWithButton: SponsorshipImagesWithButton,
+	SponsorshipTitleBox: SponsorshipTitleBox,
+	SponsorshipTextGradient: SponsorshipTextGradient,
+	SponsorImageAndText: SponsorImageAndText,
+	SponsorImageAndLogo: SponsorImageAndLogo,
+	HeaderGoogleTv: HeaderGoogleTv,
+	HeaderBanner: HeaderBanner,
+	ClaimPrize: ClaimPrize,
+	DoubleWarranty: DoubleWarranty,
+	EligibleModels: EligibleModels,
+	ExpertsAdv: ExpertsAdv,
+	DigitalTrends: DigitalTrends,
+	FeatureBadges: FeatureBadges,
+	Guarantee: Guarantee,
+	HeroBanner: HeroBanner,
+	ScrollableVideo: ScrollableVideo,
+	PureColor: PureColor,
+	ColorFeature: ColorFeature,
+	LumensOfBrightness: LumensOfBrightness,
+	SmoothMotion: SmoothMotion,
+	ScreenSize: ScreenSize,
+	LightRejection: LightRejection,
+	DolbyVision: DolbyVision,
+	DolbyAtmos: DolbyAtmos,
+	FineTouches: FineTouches,
+	AndroidTv: AndroidTv,
+	FeatureBlock: FeatureBlock,
+	Awards: Awards,
+	Comments: Comments,
+	FAQs: FAQs,
+	Specs: Specs,
+	Resources: Resources,
+	Retailers: Retailers,
+	WhereToBuy: WhereToBuy,
+	L9GProductDetailsBox: L9GProductDetailsBox,
+	HomePageMBSlider: HomePageMBSlider,
+	HomePageMBProductsSlider: HomePageMBProductsSlider,
+	HomePageMBVideoPlayer: HomePageMBVideoPlayer,
+	HomePageMBTextedBoxes: HomePageMBTextedBoxes,
+	HomePageMBTextedBoxesItem: HomePageMBTextedBoxesItem,
+	HomePageMBDiscovery: HomePageMBDiscovery,
+	HomePageMBDiscoveryItem: HomePageMBDiscoveryItem,
+	BlockCategories: BlockCategories,
+	BlockTVHero: BlockTVHero,
+	BlockKitchenHero: BlockKitchenHero,
+	BlockFeatured: BlockFeatured,
+	BlockHero: BlockHero,
+	BlockSpotlight: BlockSpotlight,
+	BlockCards: BlockCards,
+	ExtendedWarrantyBanner: ExtendedWarrantyBanner,
+	ExtendedWarrantyFAQ: ExtendedWarrantyFAQ,
+	ExtendedWarrantyFeatureBlocks: ExtendedWarrantyFeatureBlocks,
+	ExtendedWarrantyWizard: ExtendedWarrantyWizard,
+	ExtendedWarrantyTextBlock: ExtendedWarrantyTextBlock,
+	ExtendedWarrantyProductsSlider: ExtendedWarrantyProductsSlider,
+	ExtendedWarrantyProductGrid: ExtendedWarrantyProductGrid,
+	ExtendedWarrantyPaymentStatus: ExtendedWarrantyPaymentStatus,
+	TelevisionsBlockBanner: TelevisionsBlockBanner,
+	TelevisionsBlockCards: TelevisionsBlockCards,
+	TelevisionsBlockHero: TelevisionsBlockHero,
+	TelevisionsBlockSpotlight: TelevisionsBlockSpotlight,
+	TelevisionsTvHero: TelevisionsTvHero,
+	PrivacyPolicyTextEditor: PrivacyPolicyTextEditor,
+	UpgradeL9GForm: UpgradeL9GForm,
+	BeyondLaserBanner: BeyondLaserBanner,
+	BeyondLaserHeader: BeyondLaserHeader,
+	BeyondLaserMomentsBlock: BeyondLaserMomentsBlock,
+	BeyondLaserImageBlock: BeyondLaserImageBlock,
+	BeyondLaserTextBlock: BeyondLaserTextBlock,
+	BeyondLaserQuoteBlock: BeyondLaserQuoteBlock,
+	BeyondLaserIframeBlock: BeyondLaserIframeBlock,
+	BeyondLaserFooterBlock: BeyondLaserFooterBlock,
+	BeyondLaserFlipDevice: BeyondLaserFlipDevice,
+	GoogleTvBanner: GoogleTvBanner,
+	GoogleTvHero: GoogleTvHero,
+	GoogleTvProducts: GoogleTvProducts,
+	GoogleTvTops: GoogleTvTops,
+	GoogleTvTextBox: GoogleTvTextBox,
+	GoogleTvFeatureBlocks: GoogleTvFeatureBlocks,
+	Subscribe: Subscribe,
+	Footer: Footer
 }
 
-export default (block, pim) => {
-    if (typeof Components[block.name] !== 'undefined') {
-        return React.createElement(Components[block.name], {
-            key: block.id,
-            data: block,
-            pim: pim
-        })
-    }
-    // return React.createElement(
-    // 	() => <div>The component {block.component} has not been created yet.</div>,
-    // 	{ key: block._uid }
-    // )
-}     
+export default (block, pim, notification) => {
+	if (typeof Components[block.name] !== 'undefined') {
+		return React.createElement(Components[block.name], {
+			key: block.id,
+			data: block,
+			pim: pim,
+			notification: notification
+		})
+	}
+	// return React.createElement(
+	// 	() => <div>The component {block.component} has not been created yet.</div>,
+	// 	{ key: block._uid }
+	// )
+}

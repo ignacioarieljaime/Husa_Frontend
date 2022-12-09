@@ -11,11 +11,12 @@ const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 	const [collapsed, setCollapsed] = useState(true)
 	const windowSize = useWindowSize()
 	const accordionContent = useRef()
+	const accordionContentHeight = useRef()
 
 	useEffect(() => {
 		if (!collapsed) {
 			accordionContent.current.style.maxHeight =
-				accordionContent.current.scrollHeight + 'px'
+				accordionContentHeight.current.offsetHeight + 'px'
 		} else {
 			accordionContent.current.style.maxHeight = '0px'
 		}
@@ -36,23 +37,26 @@ const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 				</span>
 			</button>
 			<div className='faq-accordion-content' ref={accordionContent}>
-				{questions.map((item, index) => (
-					<div key={index} className='faq-accordion-question-item'>
-						<h4 className='faq-accordion-question'>
-							{item?.question?.value}
-							<span>
-								<FontAwesomeIcon
-									icon={faCircleXmark}
-									size={'xl'}
-									className='ms-2'
-								/>
-							</span>
-						</h4>
-						<div
-							className='faq-accordion-answer'
-							dangerouslySetInnerHTML={{ __html: item?.answer?.value }}></div>
-					</div>
-				))}
+				<div ref={accordionContentHeight}>
+					{' '}
+					{questions.map((item, index) => (
+						<div key={index} className='faq-accordion-question-item'>
+							<h4 className='faq-accordion-question'>
+								{item?.question?.value}
+								<button onClick={() => setCollapsed(collapsed => !collapsed)}>
+									<FontAwesomeIcon
+										icon={faCircleXmark}
+										size={'xl'}
+										className='ms-2'
+									/>
+								</button>
+							</h4>
+							<div
+								className='faq-accordion-answer'
+								dangerouslySetInnerHTML={{ __html: item?.answer?.value }}></div>
+						</div>
+					))}
+				</div>
 			</div>
 		</div>
 	)

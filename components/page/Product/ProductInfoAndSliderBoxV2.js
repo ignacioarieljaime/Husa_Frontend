@@ -1,0 +1,85 @@
+import dynamic from 'next/dynamic'
+import React, { useState } from 'react'
+// component
+const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
+const ProductInfoSlider = dynamic(() => import('./ProductInfoSlider'))
+const ProductSliderLinkButtonV2 = dynamic(() =>
+	import('./ProductSliderLinkButtonV2')
+)
+
+function ProductInfoAndSliderBoxV2({ pim, data }) {
+	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
+
+	return (
+		<section
+			id={data.name + data.id}
+			style={{
+				backgroundColor: data?.structure?.backgroundColor?.value
+			}}
+			className='product single-product single-product-v2'>
+			<div className='container'>
+				<div className='row'>
+					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
+					<div className='col-12 col-md-6 product-info my-auto'>
+						<h2
+							className={`title ${
+								pim?.custom_fields.find(item => item.title === 'h2 Title')
+									?.value
+									? 'text-white mb-5'
+									: 'text-white fs-2hx mb-1'
+							} `}>
+							{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+								? pim?.custom_fields.find(item => item.title === 'h2 Title')
+										?.value?.value
+								: pim?.custom_fields?.find(
+										item => item.title === 'Product Type'
+								  )?.value}
+						</h2>
+						<h1 className='serie text-white mb-8'>
+							{
+								pim?.custom_fields.find(item => item.title === 'span Title')
+									?.value
+							}
+						</h1>
+						<span className='tip mb-5 text-uppercase text-white'>
+							{pim?.name}
+						</span>
+						<p className='text-white'>Model: {pim?.model}</p>
+						<div
+							className='model-toggle '
+							style={{ color: data?.structure?.backgroundColor?.value }}>
+							{pim?.series[0]?.values.map(
+								(item, index) =>
+									item.title && (
+										<ProductSliderLinkButtonV2
+											key={index}
+											data={item}
+											pim={pim}
+										/>
+									)
+							)}
+						</div>
+						<div className='product-rating'></div>
+						<button
+							className=' pdp_where_to_buy_btn px-6 py-3'
+							style={{ color: data?.structure?.backgroundColor?.value }}
+							onClick={() =>
+								pim?.retailers.length !== 0
+									? setChanelAdviserHandler(!chanelAdviserHandler)
+									: {}
+							}>
+							{pim?.retailers.length !== 0 ? 'Where To Buy' : 'coming soon'}
+						</button>
+					</div>
+				</div>
+			</div>
+			<ModalChanelAdviser
+				condition={chanelAdviserHandler}
+				handler={setChanelAdviserHandler}
+				model={pim?.model}
+			/>
+		</section>
+	)
+}
+
+export default ProductInfoAndSliderBoxV2

@@ -9,7 +9,7 @@ import { GetProductPlans } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 
-const ExtendedWarrantyWizard = () => {
+const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 	const [step, setStep] = useState({
 		title: 'Products',
 		id: 0
@@ -74,7 +74,11 @@ const ExtendedWarrantyWizard = () => {
 			price={price}
 			onClick={planSelectionHandler}
 		/>,
-		<ExtendedWarrantyFormStep product={product} plan={plan} />
+		<ExtendedWarrantyFormStep
+			product={product}
+			plan={plan}
+			terms={structure?.terms?.value}
+		/>
 	]
 
 	return (

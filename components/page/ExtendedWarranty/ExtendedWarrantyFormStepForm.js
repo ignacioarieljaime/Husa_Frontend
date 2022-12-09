@@ -13,10 +13,12 @@ const ExtendedWarrantyFormStepForm = ({
 	onSubmit,
 	formBody,
 	loading,
-	retailers
+	retailers,
+	terms
 }) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
+	const [date, setDate] = useState('')
 
 	return (
 		<form onSubmit={onSubmit} className='form'>
@@ -93,22 +95,22 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{label && <label className='custom-label'>Purchase Date</label>}
 						<input
-							onChange={e =>
+							onChange={e => {
+								setDate(e.target.value)
 								onChange(prevState => ({
 									...prevState,
-									purchase_date: e.target.value
+									postal_code: e.target.value
 								}))
-							}
+							}}
+							value={date}
 							required
-							onFocus={() => setlabel(false)}
-							onBlur={() => setlabel(true)}
-							placeholder='Purchase Date'
-							type='date'
+							placeholder='Postal code'
+							type='text'
 						/>
 					</div>
 				</div>
+
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
 						<input
@@ -129,31 +131,33 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
+						{label && <label className='custom-label'>Purchase Date</label>}
 						<input
 							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									postal_code: e.target.value
+									purchase_date: e.target.value
 								}))
 							}
 							required
-							placeholder='Postal code'
-							type='text'
+							onFocus={() => setlabel(false)}
+							onBlur={() => setlabel(true)}
+							placeholder='Purchase Date'
+							type='date'
 						/>
 					</div>
 				</div>
 				<div className='col-12 '>
 					<div className='extended-warranty-input'>
-						<CustomSelectBox
-							options={retailers}
-							onChange={_value =>
+						<input
+							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									retailer_id: _value.id
+									retailer_id: e.target.value
 								}))
 							}
-							title={'Retailer'}
-							className={'w-100 d-flex justify-content-between'}
+							placeholder='Retailer'
+							type='text'
 						/>
 					</div>
 				</div>
@@ -184,7 +188,9 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 			</div>
 			<RadioCheckBox
-				label='I acknowledge and agree to the Terms & Conditions.'
+				label='I acknowledge and agree to the '
+				button='Terms & Conditions.'
+				text={terms}
 				onChange={setAcceptTerms}
 				checked={acceptTerms}
 			/>

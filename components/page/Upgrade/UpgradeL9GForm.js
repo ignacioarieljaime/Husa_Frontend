@@ -21,17 +21,6 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 	const [acceptTerms, setAcceptTerms] = useState(false)
 	const windowSize = useWindowSize()
 
-	structure = {
-		text: {
-			value:
-				"<p>All season long, D. Wade, the Chairman of Upgrades, has been coming to the defense of fans looking for their next big screen upgrade. Well now the clock is ticking down, and D. Wade is coming in clutch with his biggest play yet - your chance to get the brand new 100-inch L9G TriChroma Laser TV for FREE. It's home entertainment at a massive scale. And once you go big there's no going back.</p><p>It's simple - purchase the 100-inch L9G TriChroma Laser TV from an authorized reseller between Sep 1 - Sep 30, then complete this form. Write a short essay and tell D. Wade why, now more than ever, you deserve this BIG screen upgrade and why he should foot the bill for you. Be original, be creative, and be convincing. At the end of the contest, the Chairman himself will select three winners and reimburse the purchase price of their 100-inch L9G TriChroma Laser TV.</p>"
-		},
-		conditions: {
-			value:
-				'<p>PURCHASE NECESSARY. Enter Contest between 9/1/21 at 12:00 AM ET and 9/30/21 at 11:59 PM ET; Open to legal residents of the 50 U.S. &amp; D.C., who are 18+ at time of entry. Limit 1 entry per person. See <a href="upgrade-with-wade/l9g-trichroma-laser-tv/terms-and-conditions" target="_blank" title="Official Rules">Official Rules</a> for full details on how to enter, eligibility requirements, prize description and limitations. Void where prohibited.</p>'
-		}
-	}
-
 	const dataSchemaHandler = (_key, _value) => {
 		setDataSchema({ ...dataSchema, [_key]: _value })
 	}
@@ -46,7 +35,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 		setLoading('button')
 		try {
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/l9g-trichroma',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/l9g-trichroma`,
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
@@ -237,7 +226,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 					<article
 						className='article purchase-conditions'
 						dangerouslySetInnerHTML={{
-							__html: structure?.conditions?.value
+							__html: structure?.rule?.value
 						}}></article>
 				</div>
 			</div>

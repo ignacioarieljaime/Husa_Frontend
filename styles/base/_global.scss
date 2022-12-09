@@ -3,6 +3,7 @@
 * {
 	--primary-color: #00cccc;
 	--secondary-color: rgba(0, 158, 145, 1);
+	font-display: swap;
 }
 
 body {
@@ -95,8 +96,8 @@ input {
 	h1,
 	h2,
 	h3 {
-    font-size: 54px;
-    line-height: 60px;
+		font-size: 54px;
+		line-height: 60px;
 	}
 
 	a,
@@ -119,7 +120,7 @@ input {
 		p,
 		li {
 			font-size: 22.5px !important;
-			line-height: 37.5px  !important;
+			line-height: 37.5px !important;
 		}
 	}
 	.article {
@@ -655,6 +656,27 @@ input {
 	&:hover {
 		img {
 			transform: scale(1.2);
+		}
+	}
+}
+
+.product_new_item {
+	.little_image {
+		display: flex;
+		align-items: center;
+		margin: 48px auto 12px;
+		max-width: 192px;
+
+		img {
+			width: 48px;
+			height: 48px;
+		}
+		h6 {
+			color: #292929;
+			font-size: 14px;
+			font-weight: 400;
+			margin-left: 12px;
+			line-height: 18px;
 		}
 	}
 }

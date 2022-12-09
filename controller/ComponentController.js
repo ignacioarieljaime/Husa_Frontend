@@ -28,13 +28,19 @@ return (
 	<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
-      	<section>{data.widgets.map(block => componentGenerator(block, pim))}</section>
+      	<section>
+				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : <>this page don't have any components</>}
+		</section>
 	</Layout>
     )
   }
 ${
 	_page.model_id !== 0
-		? `  export async function getServerSideProps(context) {		
+		? `  export async function getServerSideProps({req,res}) {		
+			res.setHeader(
+				'Cache-Control',
+				'public, s-maxage=10, stale-while-revalidate=59'
+			)
 			console.log('send cxm request')
 				let data = await axios
 				   .get(
@@ -51,7 +57,7 @@ ${
 				console.log('send pim request')
 				 let pim = await axios
 						.get(
-							'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/${_page.model_id}'
+							'${process.env.PIM_API_ROUTE}/getProduct/${_page.model_id}'
 						)
 						.then(response => {
 							console.log('get pim data')
@@ -62,7 +68,11 @@ ${
 							return null
 						})
 	return { props: { pim,data }} }`
-		: `export async function getServerSideProps(context) {		
+		: `export async function getServerSideProps({req,res}) {		
+			res.setHeader(
+				'Cache-Control',
+				'public, s-maxage=10, stale-while-revalidate=59'
+			)
 			console.log('send cxm request')
 				let data = await axios
 				   .get(

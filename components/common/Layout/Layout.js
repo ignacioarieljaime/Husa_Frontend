@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CompareModal from 'components/page/Product/CompareModal'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { getSettingApi } from 'services/cxm'
+import Spinner from '../Spinner'
 
 function Layout({ children, meta, title }) {
 	const [compareRoute, setCompareRoute] = useState()
@@ -50,6 +51,10 @@ function Layout({ children, meta, title }) {
 				<title>{title}</title>
 				<meta name='viewport' />
 				<meta name='og:url' content={router.route} />
+				<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+				<meta name='apple-touch-fullscreen' content='yes' />
+				<meta name='apple-mobile-web-app-capable' content='yes' />
 				{meta &&
 					meta.map(item =>
 						item.rel === 'blank' ? (
@@ -61,7 +66,14 @@ function Layout({ children, meta, title }) {
 			</Head>
 			<section className={`layout ${title}`}>
 				<ToastContainer />
-				<> {children}</>
+				<Suspense
+					fallback={
+						<>
+							<Spinner size={50} />
+						</>
+					}>
+					<> {children}</>
+				</Suspense>
 			</section>
 			{showGoTop && (
 				<button

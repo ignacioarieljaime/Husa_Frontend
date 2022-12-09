@@ -18,7 +18,7 @@ function Subscribe() {
 			setLoading(true)
 			try {
 				let response = await axios.post(
-					'https://imcrm.dev-api.hisenseportal.com/api/hisense/lead',
+					`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/lead`,
 					{ email: emailName }
 				)
 				if (response.status === 200) {

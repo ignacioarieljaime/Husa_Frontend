@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { faCircleInfo, faXmarkCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCircleInfo, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Spinner from '../../common/Spinner'
 
@@ -16,19 +16,6 @@ const ExtendedWarrantyFileInput = ({
 	const inputRef = useRef(null)
 	const [file, setFile] = useState()
 
-	const clearField = () => {
-		onChange(
-			name,
-			{
-				id: id,
-				asset: '',
-				name: name
-			},
-			true
-		)
-		setFile('')
-	}
-
 	return (
 		<div className='extended-warranty-file-input'>
 			<div className='d-flex justify-content-start align-items-start align-items-md-center flex-column flex-md-row p-4'>
@@ -44,8 +31,9 @@ const ExtendedWarrantyFileInput = ({
 				)}
 			</div>
 			<div
-				className={`input ${!value || value === '' ? '' : 'activated'}`}
-				onClick={() => inputRef.current.click()}>
+				className={`input position-relative ${
+					value === '' ? '' : 'activated'
+				}`}>
 				{loading === name && (
 					<div
 						className={'position-absolute top-50 '}
@@ -57,35 +45,43 @@ const ExtendedWarrantyFileInput = ({
 						<Spinner size={30} />
 					</div>
 				)}
-				<div className='content'>
-					<div>{!value || value === '' ? boxContent : 'Image Uploaded'}</div>
-					{file?.name && loading !== name && (
-						<div
-							className='file-delete'
-							onClick={e => {
-								e.stopPropagation()
-								clearField()
+
+				{file ? (
+					<>
+						<button
+							onClick={() => {
+								onChange(name, null)
+								setFile(null)
 							}}>
-							<FontAwesomeIcon icon={faXmarkCircle} className='me-2' />
-							{file?.name}
-						</div>
-					)}
-				</div>
-				<input
-					type='file'
-					ref={inputRef}
-					onChange={e => {
-						const file = e.target.files && e.target.files[0]
-						if (file?.type.startsWith('image')) {
-							onChange(name, {
-								id: id,
-								asset: e.target.files && e.target.files[0],
-								name: name
-							})
-							setFile(e.target.files && e.target.files[0])
-						}
-					}}
-				/>
+							<FontAwesomeIcon icon={faXmark} />
+						</button>
+						<img
+							src={file}
+							className='w-100 h-100 top-0 left-0 position-absolute'
+						/>
+					</>
+				) : (
+					<div className='content'>
+						{value === '' ? boxContent : 'Image Uploaded'}
+					</div>
+				)}
+
+				{!file && (
+					<input
+						type='file'
+						ref={inputRef}
+						onChange={e => {
+							const file = e.target.files[0]
+							setFile(URL.createObjectURL(e.target.files[0]))
+							file?.type.startsWith('image') &&
+								onChange(name, {
+									id: id,
+									asset: e.target.files && e.target.files[0],
+									name: name
+								})
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	)

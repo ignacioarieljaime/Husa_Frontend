@@ -18,7 +18,7 @@ const BlockSpotlight = ({ data }) => {
 		setProducts('loading')
 		setActiveProduct(_data?.category)
 
-		const searchType = _data.type === 'products' ? `products_id=` : `series_id=`
+		let searchType = _data.type === 'products' ? `products_id=` : `series_id=`
 		searchType += JSON.stringify(_data.items.map(item => item.id))
 		try {
 			let response = await GetProductWithSeriesAndProductIdApi(

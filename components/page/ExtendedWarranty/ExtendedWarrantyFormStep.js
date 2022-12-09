@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { GetProductRetailersApi } from '../../../services/Product'
 
-const ExtendedWarrantyFormStep = ({ product, plan }) => {
+const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 	const router = useRouter()
 	const [retailers, setRetailers] = useState([])
 	const [assets, setAssets] = useState([])
@@ -39,16 +39,21 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 		getRetailers(product.id)
 	}, [])
 
-	const assetsUploadHandler = (name, _asset, isCleanup) => {
+	const assetsUploadHandler = (name, _asset) => {
 		let temp = assets
-		if (temp.length > 0 && temp.some(item => item.id === _asset.id))
-			temp.splice(
-				temp.findIndex(item => item.id === _asset.id),
-				1
-			)
-		temp.push(_asset)
-		setAssets(temp)
-		submitFormAssets(name, _asset, isCleanup)
+		if (!_asset) {
+			setAssets([])
+			submitFormAssets(name, null)
+		} else {
+			if (temp.length > 0 && temp.some(item => item.id === _asset.id))
+				temp.splice(
+					temp.findIndex(item => item.id === _asset.id),
+					1
+				)
+			temp.push(_asset)
+			setAssets(temp)
+			submitFormAssets(name, _asset)
+		}
 	}
 
 	const submitAssets = async asset => {
@@ -137,8 +142,9 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 			setLoading(null)
 		} catch (error) {
 			setLoading(null)
-			toast.error(_asset.name.replace(/_+/g, ' ') + ' upload failed')
-			console.log(error)
+			_asset?.name &&
+				toast.error(_asset.name.replace(/_+/g, ' ') + ' upload failed')
+			console.error(error)
 		}
 	}
 
@@ -170,6 +176,7 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 						formBody={formBody}
 						loading={loading}
 						retailers={retailers}
+						terms={terms}
 					/>
 				</div>
 			</section>

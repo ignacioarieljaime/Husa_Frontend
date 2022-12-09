@@ -89,7 +89,7 @@ function RegisterForm({ data }) {
 		try {
 			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/register-product`,
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
 			if (response.status === 200) {

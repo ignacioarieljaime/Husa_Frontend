@@ -23,21 +23,27 @@
 	}
 }
 .product-support-head {
-	.image-container{
+	.image-container {
 		position: relative;
 		padding-top: 100%;
 		height: 0;
 		text-align: center;
-		img{
-			position: absolute;
-			top: 50%;
+		> div {
+			position: absolute !important;
+			top: 45%;
+			width: 100%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			height: 80%;
-			width: auto;
-			max-width: 100%;
 		}
-
+		// img{
+		// 	position: absolute;
+		// 	top: 50%;
+		// 	left: 50%;
+		// 	transform: translate(-50%, -50%);
+		// 	height: 80%;
+		// 	width: auto;
+		// 	max-width: 100%;
+		// }
 	}
 	.download-able-item {
 		padding: 25px;

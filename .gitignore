@@ -37,8 +37,7 @@ yarn-error.log*
 # local env files
 .env
 
-/utils/urlData.json
-/utils/redirects.json
+/utils/*.json
 
 
 # robots.txt
