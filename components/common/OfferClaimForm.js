@@ -166,7 +166,7 @@ let selectBox = [
 
 function OfferClaimForm({ data }) {
 	let { structure } = data
-	console.log(structure);
+	console.log(structure)
 	let router = useRouter()
 	const [disabled, setDisabled] = useState(false)
 	const [categories, setCategories] = useState([])
@@ -201,7 +201,7 @@ function OfferClaimForm({ data }) {
 		try {
 			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/offer-claim',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/offer-claim`,
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
 			if (response.status === 200) {
@@ -225,7 +225,7 @@ function OfferClaimForm({ data }) {
 		try {
 			let response = await axios({
 				method: 'post',
-				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
 				data: formData,
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})

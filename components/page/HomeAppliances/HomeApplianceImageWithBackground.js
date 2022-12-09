@@ -12,7 +12,7 @@ const HomeApplianceImageWithBackground = ({ data: { structure } }) => {
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h3 className='fs-2hx'>{structure?.title?.value}</h3>
+					<h3>{structure?.title?.value}</h3>
 					<h4>{structure?.subtitle?.value}</h4>
 				</div>
 			</div>

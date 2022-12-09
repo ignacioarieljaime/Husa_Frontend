@@ -2,12 +2,13 @@ import axios from 'axios'
 
 export async function GetProducts(_categoryId, _model, _search) {
 	let response = await axios.get(
-		'https://imecom.dev-api.hisenseportal.com/api/v1/customer/products',
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/products`,
 		{
 			params: {
 				category_id: _categoryId,
 				model: _model,
-				search: _search
+				search: _search,
+				brand_id: 3
 			}
 		}
 	)
@@ -16,7 +17,7 @@ export async function GetProducts(_categoryId, _model, _search) {
 
 export async function GetProductPlans(_price) {
 	let response = await axios.post(
-		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/plans`,
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/plans`,
 		{
 			price: _price
 		}
@@ -26,7 +27,7 @@ export async function GetProductPlans(_price) {
 
 export async function postFormAssets(_data) {
 	let response = await axios.post(
-		`https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f`,
+		process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
 		_data
 	)
 	return response
@@ -34,7 +35,7 @@ export async function postFormAssets(_data) {
 
 export async function submitForm(_data) {
 	let response = await axios.post(
-		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/create`,
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/create`,
 		_data
 	)
 	return response
@@ -42,14 +43,14 @@ export async function submitForm(_data) {
 
 export async function GetPaymentUrl(_token) {
 	let response = await axios.post(
-		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/invoice/pay/${_token}`
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/invoice/pay/${_token}`
 	)
 	return response
 }
 
 export async function GetPaymenStatus(_invoice) {
 	let response = await axios.post(
-		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/invoice/show/${_invoice}`
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/invoice/show/${_invoice}`
 	)
 	return response
 }

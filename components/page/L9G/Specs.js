@@ -19,10 +19,10 @@ const Specs = ({ pim, data }) => {
 
 	return (
 		<section className='l9g'>
-			<div className={`specs specs-l-nine-g px-4 px-md-20 black-banner `}>
+			<div className={`specs specs-l-nine-g px-4 px-md-20 black-banner specs_box_data `}>
 				<h2 className='fs-md-2tx text-white text-center'>
 					{structure?.title?.value}
-					<span class=' text-primary ms-2'>
+					<span className=' text-primary ms-2'>
 						{structure?.coloredTitle?.value}
 					</span>
 				</h2>

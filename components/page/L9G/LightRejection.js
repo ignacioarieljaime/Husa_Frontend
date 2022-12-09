@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 
 const LightRejection = ({ data: { structure } }) => {
 	const [activeTab, setActiveTab] = useState(0)
-	console.log(structure)
 
 	return (
 		<section className='l9g'>
@@ -53,10 +52,10 @@ const LightRejection = ({ data: { structure } }) => {
 						</div>
 					))}
 				</div>
-				<div className='d-flex justify-content-between align-items-start flex-wrap flex-sm-nowrap'>
+				<div className='d-flex justify-content-between  flex-wrap flex-sm-nowrap'>
 					{structure?.specs?.value.map((spec, index) => (
-						<div>
-							<div className='px-4 px-md-20 py-4 py-md-15'>
+						<div className='d-flex flex-column '>
+							<div className='px-4 px-md-20 py-4 py-md-15 flex-grow-1 d-flex flex-column'>
 								<div
 									className='fs-sm-2 fs-md-2x fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
 									data-aos='fade-zoom-in'
@@ -67,13 +66,17 @@ const LightRejection = ({ data: { structure } }) => {
 								<div
 									className='caption fs-9 fs-md-2 fw-light mb-8'
 									dangerouslySetInnerHTML={{
-										__html: structure?.text?.value
+										__html: spec?.text?.value
 									}}></div>
 							</div>
 							<div className='row justify-content-between align-items-start flex-md-nowrap mx-0 px-0 px-md-20 '>
 								{spec?.features?.value.map((feature, index) => (
 									<div className='feature mb-5 mb-md-0 px-4 px-md-0 mx-1'>
-										<div className='color-bar active'></div>
+										<div
+											className='color-bar active'
+											data-aos='size-animation'
+											data-aos-duration='1000'
+											data-aos-delay='450'></div>
 										<div
 											className='fs-sm-2 fs-md-2tx fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
 											data-aos='fade-zoom-in'

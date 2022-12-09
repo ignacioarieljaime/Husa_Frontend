@@ -8,15 +8,19 @@
 			font-size: 60px;
 			line-height: 120%;
 		}
+
 		.support-products-searchbox {
 			background: #221f20;
 			border-color: #221f20;
+			position: relative;
 			max-width: 420px;
+
 			input {
 				color: #fff;
 				background-color: transparent;
 				width: 100%;
 				max-width: 320px;
+
 				&:focus {
 					background-color: transparent !important;
 				}
@@ -27,8 +31,54 @@
 					color: #fff;
 				}
 			}
+			div {
+				left: 0;
+				width: 100%;
+				background: #221f20;
+				position: absolute;
+				top: 65%;
+				padding: 25px 0 10px 0;
+				border-radius: 0 0 10px 10px;
+				-webkit-border-radius: 0 0 10px 10px;
+				-moz-border-radius: 0 0 10px 10px;
+				-ms-border-radius: 0 0 10px 10px;
+				-o-border-radius: 0 0 10px 10px;
+				z-index: 10;
+
+				ul {
+					list-style: none;
+					padding: 0 20px;
+					max-height: 190px;
+					display: flex;
+					overflow: auto;
+					flex-direction: column;
+					gap: 5px;
+					li {
+						text-align: left;
+						a {
+							width: 100%;
+							text-decoration: none;
+							text-align: left;
+							color: #fff;
+							transition: all 0.3s;
+							display: inline-block;
+							white-space: nowrap;
+							overflow: hidden !important;
+							text-overflow: ellipsis;
+							-webkit-transition: all 0.3s;
+							-moz-transition: all 0.3s;
+							-ms-transition: all 0.3s;
+							-o-transition: all 0.3s;
+							&:hover {
+								color: #00a29c;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
+
 	&::before {
 		content: '';
 		position: absolute;
@@ -50,19 +100,25 @@
 			max-width: 230px;
 			height: 255px;
 			position: relative;
+
 			div {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
 				align-items: center;
 				height: 100%;
+
 				.slider-image {
-					max-width: 90px;
+					height: 93px;
 					width: 100%;
-					max-height: 80px;
-					justify-self: center;
-					margin: auto 0;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					img {
+						object-fit: contain;
+					}
 				}
+
 				a {
 					white-space: nowrap;
 				}
@@ -74,10 +130,12 @@
 .extended-warranty-text-block {
 	margin: 0;
 	text-align: center;
+
 	.text-block-image {
 		width: 100%;
 		max-width: 720px;
 	}
+
 	.text-block-content {
 		display: flex;
 		justify-content: center;
@@ -88,39 +146,43 @@
 		max-width: 550px;
 		margin: 0 auto;
 		color: #221f20;
-		.title {
+
+		h5 {
+			font-size: 16px;
 			font-weight: 400;
-			line-height: 120%;
 			text-align: center;
-			letter-spacing: -0.02em;
-			margin-bottom: 30px;
 		}
-		.tiny-title {
+
+		h2 {
+			font-size: 48px;
+			line-height: 57px;
 			font-weight: 400;
+			color: #383838;
+		}
+
+		p {
+			font-weight: 300;
 			font-size: 16px;
 			line-height: 120%;
-			letter-spacing: -0.02em;
-			margin-bottom: 30px;
-		}
-		.description {
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 120%;
+			color: #383838;
 		}
 	}
 }
 
 .extended-warranty-faq {
 	padding: 50px 12px 120px;
+
 	* {
 		color: #221f20;
 	}
+
 	.faq-accordion-container {
 		.faq-accordion-item {
 			border-radius: 50px;
-			overflow: hidden;
 			margin-bottom: 60px;
+			overflow: hidden;
 			border: 1px solid #dbddde;
+
 			.faq-accordion-button {
 				background: #dbddde;
 				border: none;
@@ -133,24 +195,29 @@
 				font-size: 34px;
 				line-height: 120%;
 				letter-spacing: -0.02em;
+
 				span {
 					svg {
 						background-color: #fff;
 						border-radius: 50%;
+
 						path {
 							fill: #00a29c;
 						}
 					}
 				}
 			}
+
 			.faq-accordion-content {
 				transition: all 0.5s ease-in;
 				background: transparent;
+
 				.faq-accordion-question-item {
 					padding: 30px;
 					border-top: 1px solid #dbddde;
 					font-size: 16px;
 					background: transparent;
+
 					.faq-accordion-question {
 						font-size: 16px;
 						line-height: 120%;
@@ -159,15 +226,30 @@
 						justify-content: space-between;
 						align-items: center;
 						margin-bottom: 50px;
+
+						@include mqm(1440) {
+							font-size: 26px;
+						}
+						button {
+							border: none;
+							background-color: transparent;
+							padding: 0;
+						}
+
 						svg path {
 							fill: #00a29c;
 						}
 					}
+
 					.faq-accordion-answer {
 						font-weight: 300;
 						line-height: 120%;
 						max-width: 700px;
+						@include mqm(1440) {
+							font-size: 24px;
+						}
 					}
+
 					.faq-accordion-extras {
 						font-weight: 400;
 						margin-top: 30px;
@@ -189,16 +271,18 @@
 		transform: translate(-50%, -50%);
 		width: 100%;
 		max-width: 1270px;
+
 		> div {
 			background: #221f20;
 			border-color: #221f20;
 			border-radius: 1000px;
 			padding: 50px 100px;
 			text-align: center;
+
 			form {
 				display: flex;
 				justify-content: space-between;
-				align-items: end;
+				align-items: flex-end;
 
 				.label {
 					font-weight: 400;
@@ -208,16 +292,19 @@
 					text-transform: uppercase;
 					color: #ffffff;
 				}
+
 				.support-products-searchbox {
 					margin: 0;
 					padding: 6px 16px;
 					background: transparent;
 					border: 1px solid #ffffff;
 					border-radius: 1000px;
+
 					input {
 						background-color: inherit;
 						font-size: 14px;
 						color: #ffffff;
+
 						&::placeholder {
 							font-size: 14px;
 						}
@@ -226,36 +313,45 @@
 							background-color: transparent !important;
 						}
 					}
+
 					button {
 						color: #ffffff;
 					}
 				}
+
 				.dropdown-select-box {
 					min-width: unset;
 					width: 100%;
+
 					.dropdown-select-box-options {
 						background: #221f20 !important;
 						border: 1px solid #fff;
 						z-index: 2;
+
 						ul li {
 							color: #ffffff;
 						}
 					}
+
 					button {
 						border: 1px solid #fff;
 						color: #fff;
+
 						span {
 							margin: 0 !important;
 						}
 					}
 				}
+
 				> button {
 					padding: 16px;
 				}
 			}
+
 			.close {
 				transform: rotate(-90deg);
 			}
+
 			> button {
 				font-weight: 400;
 				font-size: 10px;
@@ -268,19 +364,24 @@
 			}
 		}
 	}
+
 	.products-v2 {
 		margin-bottom: 60px;
+
 		h2 {
 			font-size: 48px;
 			line-height: 120%;
 		}
+
 		.extended-warranty-products-grid {
-			margin: 0 60px 0px 60px;
+			margin: 0 60px 0 60px;
+
 			.product-item-v2 {
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				align-items: start;
+				align-items: flex-start;
+
 				.image {
 					margin: 0 auto 40px;
 					width: 100%;
@@ -288,9 +389,11 @@
 					max-height: 320px;
 					max-width: 240px;
 					text-align: center;
+
 					img {
 						width: 100%;
 						height: 100%;
+						object-fit: contain;
 					}
 				}
 			}
@@ -304,23 +407,29 @@
 	left: 0;
 	width: 100vw;
 	height: 100vh;
+	z-index: 110;
+
 	.extended-warranty-dialog-backdrop {
 		background: rgba(0, 0, 0, 0.295);
 		width: 100%;
 		height: 100%;
 	}
+
 	.extended-warranty-dialog-content {
 		position: absolute;
 		top: 50%;
 		left: 50%;
-		width: 100%;
-		height: 100%;
-		max-width: 300px;
-		max-height: 300px;
+		padding: 20px;
+		width: fit-content;
+		height: fit-content;
+		min-width: 300px;
+		min-height: 300px;
+		max-height: 90vh;
+		max-width: 90vw;
 		transform: translate(-50%, -50%);
 		background: #ffffff;
 		border: 1px solid #dbddde;
-		box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+		box-shadow: 0 10px 16px rgba(20, 37, 63, 0.06);
 		border-radius: 25px;
 		display: flex;
 		flex-direction: column;
@@ -330,14 +439,18 @@
 
 		.image-container {
 			background: #cbcbcb;
-			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+			box-shadow: 0 10px 16px rgba(20, 37, 63, 0.06);
 			border-radius: 25px;
 			margin-bottom: 15px;
-			width: 100%;
-			height: 100%;
-			max-width: 125px;
-			max-height: 125px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				max-width: 300px;
+				max-height: 300px;
+			}
 		}
+
 		.title {
 			font-weight: 400;
 			font-size: 16px;
@@ -346,12 +459,28 @@
 			color: #221f20;
 			margin-bottom: 30px;
 		}
+
 		.description {
 			font-weight: 400;
 			font-size: 12px;
 			line-height: 17px;
 			color: #221f20;
 			margin: 0;
+		}
+		.article {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				margin-top: 0;
+			}
+			p,a{
+				margin-bottom: 0;
+				text-align: left;
+				text-justify:newspaper;
+			}
 		}
 	}
 }
@@ -361,6 +490,7 @@
 		height: 60px;
 		width: 100%;
 		background: #221f20;
+
 		.text {
 			height: 50px;
 			padding: 0 50px;
@@ -370,28 +500,43 @@
 			font-size: 12px;
 			line-height: 17px;
 			color: #ffffff;
+
 			span {
 				cursor: pointer;
 			}
 		}
+
 		.indicator {
 			background: #00a29c;
 			height: 10px;
 		}
 	}
+
 	.purchased-price-step,
 	.service-plans {
 		background: #fbfbfb;
 		padding: 180px 16px;
+
+		.box {
+			.description {
+				font-weight: 300 !important;
+				font-size: 16px !important;
+				line-height: 120% !important;
+				color: #383838 !important;
+			}
+		}
+
 		.content-container {
 			display: flex;
 			justify-content: center;
 			align-items: flex-start;
 			margin: 0 auto;
 			max-width: 1100px;
+
 			.product {
 				text-align: center;
 				padding: 15px 35px;
+
 				.model {
 					font-weight: 400;
 					font-size: 16px;
@@ -400,6 +545,7 @@
 					color: #00a29c;
 					margin-bottom: 15px;
 				}
+
 				.title {
 					font-weight: 400;
 					font-size: 24px;
@@ -409,9 +555,11 @@
 					color: #221f20;
 					margin-bottom: 15px;
 				}
+
 				.image {
 					width: 100%;
 				}
+
 				.price-label {
 					margin: 25px 0 15px;
 					font-weight: 400;
@@ -421,13 +569,15 @@
 					color: #221f20;
 				}
 			}
+
 			.box {
 				background: #ffffff;
 				border: 1px solid #dbddde;
-				box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+				box-shadow: 0 10px 16px rgba(20, 37, 63, 0.06);
 				border-radius: 50px;
-				padding: 100px 170px;
+				padding: 100px 160px;
 				text-align: center;
+
 				.title {
 					font-weight: 400;
 					font-size: 24px;
@@ -436,6 +586,7 @@
 					color: #221f20;
 					margin-bottom: 30px;
 				}
+
 				.description {
 					font-weight: 400;
 					font-size: 16px;
@@ -446,6 +597,7 @@
 			}
 		}
 	}
+
 	.service-plans {
 		.content-container {
 			.box {
@@ -455,10 +607,12 @@
 				.title {
 					padding: 50px 0 25px;
 				}
+
 				.plans {
 					padding: 0;
 					margin: 0;
 					list-style: none;
+
 					.plan {
 						display: flex;
 						justify-content: space-between;
@@ -470,13 +624,16 @@
 						line-height: 120%;
 						letter-spacing: -0.02em;
 						color: #221f20;
+
 						.text-primary {
 							color: #00a29c !important;
 						}
+
 						div {
 							display: flex;
 							justify-content: space-between;
 							align-items: flex-end;
+
 							span {
 								display: block;
 								padding: 0 4px;
@@ -487,11 +644,13 @@
 			}
 		}
 	}
+
 	.extended-warranty-form-step {
 		.selection-card {
 			padding: 30px 0;
 			max-width: 1200px;
 			margin: 0 auto;
+
 			.label {
 				font-weight: 400;
 				font-size: 16px;
@@ -501,25 +660,30 @@
 				color: #221f20;
 				margin-bottom: 15px;
 			}
+
 			.custom-card {
 				background: #fbfbfb;
-				box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+				box-shadow: 0 10px 16px rgba(20, 37, 63, 0.06);
 				border-radius: 25px;
 				padding: 15px 0;
+
 				.product {
 					display: flex;
 					justify-content: flex-start;
 					align-items: center;
 					padding: 0;
+
 					.image {
 						width: 100%;
 						height: 100%;
 						max-width: 120px;
 						order: 1;
 					}
+
 					.text {
 						text-align: start;
 						order: 2;
+
 						.model {
 							font-weight: 400;
 							font-size: 12px;
@@ -527,6 +691,7 @@
 							color: #221f20;
 							margin-bottom: 10px;
 						}
+
 						.title {
 							font-weight: 400;
 							font-size: 16px;
@@ -536,6 +701,7 @@
 						}
 					}
 				}
+
 				.plan span {
 					font-weight: 400;
 					font-size: 24px;
@@ -547,10 +713,12 @@
 				}
 			}
 		}
+
 		.form {
 			padding: 100px 0;
 			max-width: 1000px;
 			margin: 0 auto;
+
 			.title {
 				font-weight: 400;
 				font-size: 24px;
@@ -558,10 +726,12 @@
 				text-align: center;
 				letter-spacing: -0.02em;
 			}
+
 			.extended-warranty-input {
 				padding-top: 60px;
 				margin: 0;
 			}
+
 			.extended-warranty-file-input {
 				margin-top: 40px;
 			}
@@ -573,13 +743,16 @@
 	max-width: 1000px;
 	margin: 0 auto;
 	padding: 90px 0;
+
 	.status-container {
 		padding: 30px;
 		text-align: center;
+
 		.status-image {
 			width: 105px;
 			margin-bottom: 50px;
 		}
+
 		h2 .ql-size-large {
 			font-weight: 400;
 			font-size: 48px;
@@ -587,37 +760,45 @@
 			letter-spacing: -0.02em;
 			margin-bottom: 30px;
 		}
+
 		p {
 			margin: 0;
+
 			.ql-size-small {
 				font-weight: 400;
 				font-size: 16px;
 				line-height: 80%;
 			}
+
 			&:last-child {
 				margin-bottom: 30px;
 			}
 		}
+
 		.custom-card {
 			background: #fbfbfb;
-			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+			box-shadow: 0 10px 16px rgba(20, 37, 63, 0.06);
 			border-radius: 50px;
 			margin-bottom: 55px;
+
 			.product {
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
 				padding: 35px 12px;
+
 				.image {
 					width: 100%;
 					max-width: 350px;
 				}
+
 				.title {
 					font-weight: 400;
 					font-size: 20px;
 					line-height: 120%;
 					letter-spacing: -0.02em;
 				}
+
 				.model {
 					font-weight: 400;
 					font-size: 12px;
@@ -625,9 +806,11 @@
 					margin-bottom: 15px;
 				}
 			}
+
 			.details {
 				border-left: 1px solid #dbddde;
 				padding: 0;
+
 				* {
 					text-align: start;
 					font-weight: 400;
@@ -636,11 +819,13 @@
 					text-decoration: none;
 					letter-spacing: -0.02em;
 					color: #221f20;
+
 					> span {
 						font-weight: 700;
 						padding-left: 10px;
 					}
 				}
+
 				> div {
 					height: 33.333%;
 					padding: 0 16px;
@@ -648,6 +833,7 @@
 					justify-content: flex-start;
 					align-items: center;
 					border-bottom: 1px solid #dbddde;
+
 					&:last-child {
 						border-bottom: 0;
 					}
@@ -665,6 +851,7 @@
 		letter-spacing: -0.02em;
 		color: #000000;
 	}
+
 	.modal-btn {
 		font-weight: 400;
 		font-size: 10px;
@@ -677,14 +864,38 @@
 		padding: 0;
 		text-align: start;
 	}
+
 	.input {
 		border: 1px dashed #cbcbcb;
 		width: 100%;
 		height: 100%;
 		min-height: 200px;
 		position: relative;
-		padding: 20px;
-		cursor: pointer;
+		padding: 0 !important;
+		img {
+			object-fit: cover;
+		}
+		button {
+			position: absolute;
+			border: none;
+			background-color: transparent;
+			top: 10px;
+			right: 10px;
+			z-index: 1;
+			padding: 0;
+			width: 25px;
+			height: 25px;
+			border-radius: 100%;
+			-webkit-border-radius: 100%;
+			-moz-border-radius: 100%;
+			-ms-border-radius: 100%;
+			-o-border-radius: 100%;
+			background-color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
 		.content {
 			position: absolute;
 			top: 50%;
@@ -698,9 +909,17 @@
 			width: 100%;
 			text-align: center;
 		}
+
 		input {
-			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			cursor: pointer;
 		}
+
 		&.activated {
 			background-color: #eeeeee;
 		}
@@ -715,6 +934,7 @@
 	align-items: center;
 	justify-content: center;
 	position: relative;
+
 	.custom-label {
 		display: block;
 		position: absolute;
@@ -726,7 +946,8 @@
 		letter-spacing: -0.02em;
 		color: #221f20;
 	}
-	 input {
+
+	input {
 		width: 100%;
 		border: none;
 		background: transparent;
@@ -766,12 +987,14 @@
 @media (max-width: 768px) {
 	.extended-warrant-banner {
 		padding-top: 350px;
-		height: 0px;
+		height: 0;
+
 		.heading-text {
 			.ql-size-large {
 				font-size: 24px;
 			}
 		}
+
 		.img-fluid::before {
 			content: '';
 			position: absolute;
@@ -790,17 +1013,21 @@
 	}
 	.extended-warranty-faq {
 		padding: 50px 12px;
+
 		.faq-accordion-container {
 			.faq-accordion-item {
 				border-radius: 25px;
 				margin-bottom: 20px;
+
 				.faq-accordion-button {
 					padding: 16px;
 					font-size: 20px;
 				}
+
 				.faq-accordion-content {
 					.faq-accordion-question-item {
 						padding: 16px;
+
 						.faq-accordion-answer {
 							font-size: 14px;
 						}
@@ -812,34 +1039,42 @@
 	.extended-warranty-model-selection {
 		.products-v2 {
 			margin: 20px 0;
+
 			h2 {
 				font-size: 28px;
 				line-height: 120%;
 			}
+
 			.extended-warranty-products-grid {
 				margin: 0 16px;
 			}
 		}
+
 		.extended-warranty-search-product {
 			position: relative;
 			top: -40px;
 			bottom: 0;
 			left: 0;
 			transform: translate(0, 0);
+
 			> div {
-				border-radius: 0px;
+				border-radius: 0;
 				padding: 25px 15px;
+
 				form {
 					flex-direction: column;
 					justify-content: space-between;
 					align-items: center;
 					overflow-y: hidden;
+
 					> div > div {
 						margin-bottom: 30px;
 					}
+
 					.support-products-searchbox {
 						margin: 0 auto;
 					}
+
 					.dropdown-select-box {
 						max-width: 300px;
 						width: 100%;
@@ -875,35 +1110,44 @@
 				height: 10px;
 			}
 		}
+
 		.service-plans,
 		.purchased-price-step {
 			background: #fbfbfb;
 			padding: 16px 16px 100px;
+
 			.content-container {
 				flex-wrap: wrap;
+
 				.product {
 					margin: 0 auto 16px;
 					max-width: 500px;
+
 					.title {
 						font-size: 20px;
 					}
 				}
+
 				.box {
 					border-radius: 25px;
 					padding: 67px 27px;
+
 					.title {
 						font-size: 20px;
 					}
+
 					.description {
 						font-size: 14px;
 					}
 				}
 			}
 		}
+
 		.service-plans {
 			.content-container {
 				.box {
 					padding: 0;
+
 					.plans {
 						.plan {
 							div {
@@ -915,46 +1159,58 @@
 				}
 			}
 		}
+
 		.extended-warranty-form-step {
 			.selection-card {
 				padding: 24px 18px;
+
 				.custom-card {
 					padding: 30px 20px;
+
 					.product {
 						justify-content: center;
 						flex-direction: column;
 						margin-bottom: 40px;
+
 						.image {
 							width: 100%;
 							height: 100%;
 							max-width: 120px;
 							order: 2;
 						}
+
 						.text {
 							order: 1;
 							text-align: center;
+
 							.model {
 								margin-bottom: 30px;
 							}
+
 							.title {
 								font-size: 14px;
 								margin-bottom: 16px;
 							}
 						}
 					}
+
 					.plan span {
 						font-size: 20px;
 					}
 				}
 			}
+
 			.form {
 				padding: 60px 0;
+
 				.title {
 					font-size: 20px;
 				}
+
 				.extended-warranty-input {
 					padding-top: 30px;
 				}
+
 				.extended-warranty-file-input {
 					margin-top: 30px;
 				}
@@ -963,49 +1219,75 @@
 	}
 	.extended-warranty-payment-status {
 		padding: 40px 0 70px;
+
 		.status-container {
 			padding: 0 16px;
+
 			.status-image {
 				width: 80px;
 			}
+
 			h2 .ql-size-large {
 				font-size: 24px;
 			}
+
 			p .ql-size-small {
 				font-size: 14px;
 			}
+
 			.custom-card {
 				border-radius: 25px;
+
 				.product {
 					flex-direction: column-reverse;
 					justify-content: center;
 					align-items: center;
 					padding: 15px 20px;
+
 					.image {
 						margin-bottom: 35px;
 					}
+
 					.title {
 						margin-bottom: 15px;
 					}
+
 					.model {
 						margin-bottom: 15px;
 					}
 				}
+
 				.details {
 					border-left: 0;
 					padding: 0;
+
 					* {
 						> span {
 							font-weight: 700;
 							padding-left: 10px;
 						}
 					}
+
 					> div {
 						padding: 30px 16px;
 						border-top: 1px solid #dbddde;
 						border-bottom: 0;
 					}
 				}
+			}
+		}
+	}
+	.extended-warranty-dialog {
+		.extended-warranty-dialog-content {
+			top: calc(50% + 72px);
+			min-width: 250px;
+			min-height: 100px;
+			max-height: 80vh;
+			max-width: 90vw;
+			width: 80%;
+			transform: translate(-50%, -60%);
+			.article {
+				overflow: scroll;
 			}
 		}
 	}

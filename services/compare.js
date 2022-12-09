@@ -8,7 +8,7 @@ export async function CompareProductsApi(router, _productsId) {
 		)}=${item}`
 	})
 	let response = await axios.get(
-		`https://impim.dev-api.hisenseportal.com/api/cms/compare${_filter}`
+		`${process.env.NEXT_PUBLIC_PIM_API_ROUTE}/compare${_filter}`
 	)
 	return response
 }

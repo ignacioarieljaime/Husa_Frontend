@@ -3,23 +3,23 @@ import React from 'react'
 function ProductBigContent({ data }) {
 	let { structure } = data
 	return (
-		<div id={data.name + data.id} className='tiny-banner p-md-4'>
+		<div id={data.name + data.id} className='tiny-banner big_content_box p-md-4'>
 			<div className='container px-6 px-md-8 py-12'>
 				<article className='article text-center'>
 					<h2
-						className={`text-black mb-12 flex ${
-							structure?.flex?.value === 'column' ? 'd-flex flex-column' : ''
+						className={`text-black mb-12 d-flex  ${
+							structure?.flex?.value === 'column' ? 'flex-column' : 'justify-content-center gap-2'
 						} ${
 							structure?.order?.value === 'reverse' &&
 							structure?.flex?.value === 'column'
 								? 'flex-column-reverse'
 								: structure?.order?.value === 'reverse' &&
-								  structure?.flex?.value === 'flex'
-								? 'flex-row-reverse'
-								: ''
+								structure?.flex?.value === 'row'
+									? 'flex-row-reverse'
+									: ''
 						}`}>
-						{structure?.blackTitle?.value}
-						<span className='d-block text-primary'>
+						<span className={"text-nowrap"}>{structure?.blackTitle?.value}</span>
+						<span className='d-block text-primary text-nowrap'>
 							{structure?.coloredTitle?.value}
 						</span>
 					</h2>

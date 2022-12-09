@@ -1,0 +1,50 @@
+.google_tv_hero {
+	background-color: #000;
+	position: relative;
+	.custom_container {
+		position: relative;
+		top: 100px;
+		max-width: 1000px;
+		margin: 0 auto;
+		.title * {
+			color: #fff;
+			font-weight: 400;
+			font-size: 90px;
+			line-height: 120%;
+			text-align: center;
+			u {
+				background-image: linear-gradient(
+					-59deg,
+					#32a953 20%,
+					#fbbc12 50%,
+					#eb4435 66%
+				);
+				background-clip: text;
+				color: transparent;
+			}
+		}
+		img {
+			width: 100%;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.google_tv_hero {
+		.custom_container {
+			.title * {
+				font-size: 72px;
+			}
+		}
+	}
+}
+@media (max-width: 575px) {
+	.google_tv_hero {
+		.custom_container {
+			top: 70px;
+			.title * {
+				font-size: 42px;
+			}
+		}
+	}
+}

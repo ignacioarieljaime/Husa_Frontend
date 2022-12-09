@@ -89,7 +89,7 @@ function RegisterForm({ data }) {
 		try {
 			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/register-product`,
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
 			if (response.status === 200) {
@@ -113,7 +113,7 @@ function RegisterForm({ data }) {
 		try {
 			let response = await axios({
 				method: 'post',
-				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
 				data: formData,
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
@@ -130,7 +130,9 @@ function RegisterForm({ data }) {
 	return (
 		<section className={disabled && `d-none`}>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
-				<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
+				<article className='article'>
+					<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
+				</article>
 				<form
 					action=''
 					onSubmit={submitData}
@@ -255,7 +257,7 @@ function RegisterForm({ data }) {
 							style={{ zIndex: 9 }}
 							onChange={e => setFile(e.target.files[0])}
 						/>
-						<div className='file-upload-box' onclick='triggerFileUpload()'>
+						<div className='file-upload-box'>
 							<div>Drag & Drop a File Here</div>
 							<p>Upload Images</p>
 						</div>
@@ -284,8 +286,11 @@ function RegisterForm({ data }) {
 						<button
 							disabled={loading}
 							type='submit'
-							className='form-submit-btn d-flex align-items-center'>
-							<span className='me-2'> {structure?.subtitle?.value}</span>
+							className='form-submit-btn d-flex mx-auto align-items-center'>
+							<span className='me-2 underline-on-hover'>
+								{' '}
+								{structure?.subtitle?.value}
+							</span>
 							{loading && <Spinner size={25} />}
 						</button>
 					</div>

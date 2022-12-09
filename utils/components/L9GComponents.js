@@ -3,6 +3,7 @@ module.exports.L9GComponents = [
 		name: 'HeroBanner',
 		path: 'components/page/L9G/HeroBanner'
 	},
+
 	{
 		name: 'ScrollableVideo',
 		path: 'components/page/L9G/ScrollableVideo'
@@ -48,8 +49,8 @@ module.exports.L9GComponents = [
 		path: 'components/page/L9G/AndroidTv'
 	},
 	{
-		name: 'FeatureBlocks',
-		path: 'components/page/L9G/FeatureBlocks'
+		name: 'FeatureBlock',
+		path: 'components/page/L9G/FeatureBlock'
 	},
 	{
 		name: 'Awards',
@@ -78,5 +79,9 @@ module.exports.L9GComponents = [
 	{
 		name: 'WhereToBuy',
 		path: 'components/page/L9G/WhereToBuy'
+	},
+	{
+		name: 'L9GProductDetailsBox',
+		path: 'components/page/L9G/L9GProductDetailsBox'
 	}
 ]

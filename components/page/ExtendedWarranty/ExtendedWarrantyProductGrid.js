@@ -3,10 +3,9 @@ import ExtendedWarrantyProduct from './ExtendedWarrantyProduct'
 import Spinner from 'components/common/Spinner'
 import ExtendedWarrantySearchProduct from './ExtendedWarrantySearchProduct'
 import { useRouter } from 'next/router'
-import axios from 'axios'
 import { GetProducts } from 'services/ExtendedWarranty'
 
-const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
+const ExtendedWarrantyProductGrid = () => {
 	const [products, setProducts] = useState([])
 	const [productCategories, setProductCategories] = useState()
 	const [models, setModels] = useState()
@@ -23,7 +22,11 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 	}, [category])
 
 	useEffect(() => {
-		if (productCategories && category.name === 'Select') {
+		if (
+			productCategories &&
+			productCategories.length !== 0 &&
+			category.name === 'Select'
+		) {
 			if (router.query.category_id) {
 				setCategory(
 					productCategories.find(
@@ -47,7 +50,7 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 		try {
 			let response = await GetProducts(category, modelNumber, searchTerm)
 			setProducts(response?.data?.products)
-			setProductCategories(response?.data?.categories)
+			!productCategories && setProductCategories(response?.data?.categories)
 			setModels(response?.data?.models)
 		} catch (error) {
 			console.log(error)
@@ -67,6 +70,22 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 				productCategories={productCategories}
 			/>
 			<section className='products-v2'>
+				<div className='container mb-8 mb-md-20'>
+					<h2 className='title fs-2hx'>
+						Protect Your{' '}
+						<span className='text-primary'>
+							{category?.name === 'Select' ? 'All Products' : category?.name}
+						</span>
+					</h2>
+					<p className='description'>
+						Find your{' '}
+						<span className='text-lowercase'>
+							{category?.name === 'Select' ? 'product' : category?.name}
+						</span>{' '}
+						model to continue.
+					</p>
+				</div>
+
 				{!Array.isArray(products) ? (
 					<div className='w-100 d-flex justify-content-center'>
 						<Spinner className={'mt-5'} size={80} />
@@ -77,21 +96,6 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 					</div>
 				) : (
 					<>
-						<div className='container mb-8 mb-md-20'>
-							<h2 className='title fs-2hx'>
-								Protect Your{' '}
-								<span className='text-primary'>
-									{category?.name === 'Select' ? 'Products' : category?.name}
-								</span>
-							</h2>
-							<p className='description'>
-								Find your{' '}
-								<span className='text-lowercase'>
-									{category?.name === 'Select' ? 'product' : category?.name}
-								</span>{' '}
-								model to continue.
-							</p>
-						</div>
 						<div className='extended-warranty-products-grid products-grid'>
 							<div className='products'>
 								{products.map((item, index) => (
@@ -106,4 +110,4 @@ const ExtendedWarrantyProductGrid = ({ data: { structure } }) => {
 	)
 }
 
-export default ExtendedWarrantyProductGrid
+export default React.memo(ExtendedWarrantyProductGrid)

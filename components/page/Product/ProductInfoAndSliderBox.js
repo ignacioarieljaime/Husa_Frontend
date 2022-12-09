@@ -15,11 +15,19 @@ function ProductInfoAndSliderBox({ pim, data }) {
 				<div className='row'>
 					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
 					<div className='col-12 col-md-6 product-info my-auto'>
-						<h2 className='text-primary fs-2x mb-5'>
-							{
+						<h2
+							className={`${
 								pim?.custom_fields.find(item => item.title === 'h2 Title')
 									?.value
-							}
+									? 'text-primary fs-2x mb-5'
+									: 'text-black fs-2hx mb-1'
+							} `}>
+							{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+								? pim?.custom_fields.find(item => item.title === 'h2 Title')
+										?.value?.value
+								: pim?.custom_fields?.find(
+										item => item.title === 'Product Type'
+								  )?.value}
 						</h2>
 						<h1 className='fs-2hx mb-8'>
 							{
@@ -27,8 +35,8 @@ function ProductInfoAndSliderBox({ pim, data }) {
 									?.value
 							}
 						</h1>
-						<span className='fs-2hx mb-5'>{pim?.name}</span>
-						<p className='text-primary'>Model: {pim?.model}</p>
+						<span className='fs-2hx mb-5 text-uppercase'>{pim?.name}</span>
+						<p className='text-primary-new'>Model: {pim?.model}</p>
 						<div className='model-toggle '>
 							{pim?.series[0]?.values.map(
 								(item, index) =>
@@ -43,7 +51,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						</div>
 						<div className='product-rating'></div>
 						<button
-							className='btn btn-primary rounded-0 px-6 py-3'
+							className=' pdp_where_to_buy_btn rounded-0 px-6 py-3'
 							onClick={() =>
 								pim?.retailers.length !== 0
 									? setChanelAdviserHandler(!chanelAdviserHandler)

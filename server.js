@@ -5,30 +5,14 @@ const next = require('next')
 const notifier = require('node-notifier')
 const path = require('path')
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const hostname = 'localhost'
+const port = process.env.APP_PORT
+const app = next({ dev, hostname, port })
 const handle = app.getRequestHandler()
-let redirectsRoute = []
-
-const redirectRequestHandler = (async () => {
-	try {
-		let response = await axios.get(`${process.env.CXM_API_ROUTE}/getRedirects`)
-		redirectsRoute = response.data.data
-	} catch (error) {
-		console.log(error)
-	}
-})()
 
 app.prepare().then(() => {
 	const port = process.env.APP_PORT
 	const server = express()
-	redirectsRoute.map(
-		item =>
-			item.source_url &&
-			server.all(item.source_url, (req, res) => {
-				res.redirect(item.redirect_url)
-				return
-			})
-	)
 
 	server.all('*', (req, res) => {
 		return handle(req, res)

@@ -7,14 +7,14 @@ import HamburgerMenu from './HamburgerMenu'
 import HamburgerMenuIcon from 'components/icons/HamburgerMenuIcon'
 import Logo from 'components/icons/Logo'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
-import SubMenuHeader from './SubMenuHeader'
 import axios from 'axios'
 // import { setHeaderData } from 'redux/slices/layout'
 import NavBarDropDown from './NavBarDropDown'
 import Link from 'next/link'
 import HeaderSearchBox from './HeaderSearchBox'
+import HeaderNotification from './HeaderNotification'
 
-function Header({ isBlog = false, data: { structure } }) {
+function Header({ data: { structure }, notification }) {
 	// const { headerData } = useSelector(state => state.layoutData)
 	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
@@ -25,6 +25,7 @@ function Header({ isBlog = false, data: { structure } }) {
 			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
 			: getMenu()
 	}, [])
+
 	useEffect(() => {
 		if (!searchInputCondition) {
 			setTimeout(() => {
@@ -111,12 +112,14 @@ function Header({ isBlog = false, data: { structure } }) {
 
 				{/* <SubMenuHeader /> */}
 			</nav>
+			{notification && (
+				<div className={'position-fixed w-100'} style={{ zIndex: 999999999 }}>
+					{notification.map(item => (
+						<HeaderNotification data={item} />
+					))}
+				</div>
+			)}
 
-			{/* <div className='container-fluid home-top-advertisement'>
-				<a href='https://www.hisense-usa.com/product-safety-recall'>
-					Recall Information: French Door Refrigerator
-				</a>
-			</div> */}
 			{headerData && <HamburgerMenu data={headerData} asideMenu={asideMenu} />}
 		</header>
 	)

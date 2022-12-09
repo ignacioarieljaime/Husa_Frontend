@@ -1,0 +1,106 @@
+.beyond_laser_header {
+	position: fixed;
+	left: 0%;
+	top: 0%;
+	right: 0%;
+	bottom: auto;
+	z-index: 100;
+	display: block;
+	padding-top: 2%;
+	padding-bottom: 3%;
+	margin-top: 0%;
+	padding-right: 5%;
+	padding-left: 5%;
+	height: 8em;
+	background-image: linear-gradient(
+		180deg,
+		rgba(0, 0, 0, 0.55),
+		transparent 83%
+	);
+	.content {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+		.header_item {
+			width: 33.33333%;
+			padding: 0 12px;
+			display: flex;
+			height: 100%;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			position: relative;
+			float: left;
+			min-height: 1px;
+			.left_logo,
+			.middle_logo {
+				width: 100%;
+				vertical-align: middle;
+				display: inline-block;
+				text-align: left;
+			}
+			.header_link {
+				justify-self: right;
+				align-items: center;
+				display: flex;
+				padding: 1% 28px 0px 30px;
+				justify-content: center;
+				border: 3px solid #fff;
+				border-radius: 50px;
+				background-color: transparent;
+				font-family: 'HISENSE AEON', sans-serif;
+				font-size: 16px;
+				font-weight: 400;
+				letter-spacing: 0.3em;
+				color: white;
+				line-height: inherit;
+				text-decoration: none;
+				text-transform: uppercase;
+				cursor: pointer;
+			}
+		}
+	}
+}
+	
+@media screen and (max-width: 768px) {
+	.beyond_laser_header {
+		height: 4vh;
+		padding-right: 2%;
+		padding-left: 2%;
+		.content {
+			.header_item {
+				&:nth-child(2){
+					display: none;
+				}
+				width: 50%;
+				left: auto;
+				right: auto;
+				.header_link {
+					display: none;
+					padding-right: 4vw;
+					padding-left: 4vw;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 479px) {
+	.beyond_laser_header {
+		height: 16vw;
+		.content {
+			margin-left: 0;
+			margin-right: 0;
+			.header_item {
+				.header_link {
+					display: block;
+					padding-top: 2.5vw;
+					padding-bottom: 2.2vw;
+					padding-left: 5vw;
+					font-size: 3.5vw;
+				}
+			}
+		}
+	}
+}

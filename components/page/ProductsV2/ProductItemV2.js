@@ -7,6 +7,7 @@ import { RouteHandler } from 'utils/routeHandler'
 import { useDispatch } from 'react-redux'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 import { addNewCompare } from 'redux/slices/compare'
+import CustomImage from 'components/common/CustomImage'
 
 const ProductItemV2 = ({ data }) => {
 	let { media, name, model, id } = data
@@ -32,16 +33,20 @@ const ProductItemV2 = ({ data }) => {
 		<>
 			{' '}
 			<div className='product-item-v2 px-5 py-8'>
-				<div className='text-center mb-10'>
-					<img
-						src={currentItem?.media?.url}
+				<div className='text-center mb-10 w-100'>
+					<CustomImage
+						wrapperWidth={'100%'}
+						wrapperHeight={'182px'}
 						style={{ maxHeight: '182px' }}
+						src={currentItem?.media?.url}
 						alt={name}
 					/>
 				</div>
-				<div className='product-item-v2-content'>
-					<div className='mb-3'>{currentItem?.model}</div>
-					{seriesTitle && <p className='mb-7'>{seriesTitle?.value}</p>}
+				<div className='product-item-v2-content flex-grow-1 d-flex flex-column justify-content-between'>
+					<div>
+						<div className='mb-3'>{currentItem?.model}</div>
+						{seriesTitle && <p className='mb-7'>{seriesTitle?.value}</p>}
+					</div>
 
 					{Array.isArray(data?.products) && (
 						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center mb-8'>
@@ -63,37 +68,39 @@ const ProductItemV2 = ({ data }) => {
 						</div>
 					)}
 
-					<div className='d-flex flex-wrap justify-content-center  align-items-center mb-10'>
-						<Link href={url ? url : '/'}>
-							<a className='n-btn outline-black  m-2'>View Product</a>
-						</Link>
-						<button
-							disabled={currentItem.retailer ? false : true}
-							onClick={() =>
-								currentItem.retailer && setChanelAdviserHandler(true)
-							}
-							style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
-							className={`n-btn  m-2 ${
-								currentItem.retailer
-									? 'primary-text '
-									: 'text-black opacity-50 bg-transparent border-0'
-							}`}>
-							Where to Buy
-							<span>
-								<FontAwesomeIcon
-									icon={faChevronRight}
-									size={'sm'}
-									className='ms-2'
-								/>
-							</span>
-						</button>
-					</div>
-					<div className='text-center'>
-						<button
-							onClick={() => dispatch(addNewCompare(currentItem))}
-							className='n-btn grey-text compare-btn ps-6 rounded-0'>
-							Add To Compare
-						</button>
+					<div>
+						<div className='d-flex flex-wrap justify-content-center  gap-2 align-items-center mb-10'>
+							<Link href={url ? url : '/'}>
+								<a className='n-btn outline-black  '>View Product</a>
+							</Link>
+							<button
+								disabled={currentItem.retailer ? false : true}
+								onClick={() =>
+									currentItem.retailer && setChanelAdviserHandler(true)
+								}
+								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
+								className={`n-btn ${
+									currentItem.retailer
+										? 'primary-text '
+										: 'text-black opacity-50 bg-transparent border-0'
+								}`}>
+								Where to Buy
+								<span>
+									<FontAwesomeIcon
+										icon={faChevronRight}
+										size={'sm'}
+										className='ms-2'
+									/>
+								</span>
+							</button>
+						</div>
+						<div className='text-center'>
+							<button
+								onClick={() => dispatch(addNewCompare(currentItem))}
+								className='n-btn grey-text compare-btn ps-6 rounded-0'>
+								Add To Compare
+							</button>
+						</div>
 					</div>
 				</div>
 				<ModalChanelAdviser

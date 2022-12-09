@@ -1,20 +1,41 @@
 import React from 'react'
 
 import Link from 'next/link'
-
-function BlogListSoundBardItem({ data }) {
+import {
+	useParallax,
+	useParallaxController,
+	ParallaxProvider
+} from 'react-scroll-parallax'
+const BlogListSoundBardItem = ({ data }) => {
 	return (
-		<div className='row align-items-center py-8 border-bottom mx-0 blog-article-box'>
+		<ParallaxProvider>
+			<BlogListSoundBardItemContainer data={data} />
+		</ParallaxProvider>
+	)
+}
+function BlogListSoundBardItemContainer({ data }) {
+	const parallaxController = useParallaxController()
+
+	const imageRef = useParallax({
+		speed: 10,
+		translateY: [0, -10]
+	})
+
+	return (
+		<div className='row align-items-center py-8 border-bottom mx-0 blog-article-box-row'>
 			<figure className='col-12 col-md-9 mb-0 px-0'>
 				<div className='row justify-content-between align-items-center'>
 					<div className='col-12 col-md-4 col-lg-3 mb-5 mb-md-0'>
 						<div className='image-box'>
-							<Link href={data?.link?.value}>
+							<Link href={data?.link?.value ? data?.link?.value : '/'}>
 								<a>
 									<img
 										src={data?.image?.src}
 										alt={data?.image?.alt}
 										width='100%'
+										height='110%'
+										ref={imageRef.ref}
+										onLoad={() => parallaxController.update()}
 									/>
 								</a>
 							</Link>
@@ -22,7 +43,7 @@ function BlogListSoundBardItem({ data }) {
 					</div>
 					<figcaption className='col-12 col-md-8'>
 						<div className='text-start mb-3'>
-							<Link href={data?.tagLink?.value}>
+							<Link href={data?.tagLink?.value ? data?.tagLink?.value : '/'}>
 								<a className='text-primary-dark text-decoration-none'>
 									{data?.tagLink?.title}
 								</a>
@@ -36,7 +57,7 @@ function BlogListSoundBardItem({ data }) {
 			</figure>
 			<div className='col-12 col-md-3 px-0'>
 				<div className='text-start text-md-end'>
-					<Link href={data?.link?.value}>
+					<Link href={data?.link?.value ? data?.link?.value : '/'}>
 						<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 							{data?.link?.title}
 						</a>

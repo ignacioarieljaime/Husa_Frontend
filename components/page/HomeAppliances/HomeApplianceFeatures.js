@@ -8,12 +8,12 @@ const HomeApplianceFeatures = ({ data: { structure } }) => {
 			<div className='cool-features article container'>
 				<h2 className='title'>
 					{structure?.mainTitleBlack?.value}{' '}
-					<span className='text-primary'>
+					<span className='text-primary-new'>
 						{structure?.mainTitleColored?.value}
 					</span>
 				</h2>
 				<Link href={structure?.link?.value}>
-					<a className='link'>{structure?.link?.title}</a>
+					<a className='link fs-8'>{structure?.link?.title}</a>
 				</Link>
 				<div className='cool-features-container'>
 					{structure?.list?.value.map((item, index) => (

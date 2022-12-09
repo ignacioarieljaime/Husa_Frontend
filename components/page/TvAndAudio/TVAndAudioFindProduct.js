@@ -26,7 +26,8 @@ function TVAndAudioFindProduct({ data: { structure } }) {
 							<img
 								src={structure?.image.src}
 								alt={structure?.image.alt}
-								width='100%'
+								width='80%'
+								className='text-center'
 							/>
 						</div>
 					</article>

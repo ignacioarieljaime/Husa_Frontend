@@ -11,15 +11,18 @@
 # next.js
 /.next/
 /out/
+/.idea
+
+# webstorm
+/.idea
 
 # production
 /build
 /pages/*
 /public/*.xml
 
+/hooks/componentGenerator.js
 
-
-/pages/*
 
 # misc
 .DS_Store
@@ -34,7 +37,15 @@ yarn-error.log*
 # local env files
 .env
 
-/utils/urlData.json
+/utils/*.json
+
+
+# robots.txt
+/public/robots.txt
+/public/assets/robots.txt
+
+# middleware
+middleware.js
 
 # vercel
 .vercel

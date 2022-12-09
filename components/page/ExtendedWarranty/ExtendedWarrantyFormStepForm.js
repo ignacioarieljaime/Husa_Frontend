@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import RadioCheckBox from 'components/common/RadioCheckBox'
 import ExtendedWarrantyFileInput from './ExtendedWarrantyFileInput'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
-import Link from 'next/link'
+import Spinner from '../../common/Spinner'
+import CustomSelectBox from '../../common/selectBox'
 
 const ExtendedWarrantyFormStepForm = ({
 	onChange,
@@ -10,13 +11,17 @@ const ExtendedWarrantyFormStepForm = ({
 	acceptTerms,
 	setAcceptTerms,
 	onSubmit,
-	formBody
+	formBody,
+	loading,
+	retailers,
+	terms
 }) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
+	const [date, setDate] = useState('')
 
 	return (
-		<form className='form'>
+		<form onSubmit={onSubmit} className='form'>
 			<h3 className='title'>Fill out the form below to complete your order.</h3>
 			<div className='row mx-0 mb-8'>
 				<div className='col-12 col-md-6'>
@@ -25,11 +30,26 @@ const ExtendedWarrantyFormStepForm = ({
 							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									first_name: e.target.value.split(' ')[0],
-									last_name: e.target.value.split(' ')[1]
+									first_name: e.target.value
 								}))
 							}
-							placeholder='Full Name'
+							required
+							placeholder='First Name'
+							type='text'
+						/>
+					</div>
+				</div>
+				<div className='col-12 col-md-6'>
+					<div className='extended-warranty-input'>
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState,
+									last_name: e.target.value
+								}))
+							}
+							required
+							placeholder='Last Name'
 							type='text'
 						/>
 					</div>
@@ -40,6 +60,7 @@ const ExtendedWarrantyFormStepForm = ({
 							onChange={e =>
 								onChange(prevState => ({ ...prevState, email: e.target.value }))
 							}
+							required
 							placeholder='Email'
 							type='email'
 						/>
@@ -51,6 +72,7 @@ const ExtendedWarrantyFormStepForm = ({
 							onChange={e =>
 								onChange(prevState => ({ ...prevState, phone: e.target.value }))
 							}
+							required
 							placeholder='Phone Number'
 							type='tel'
 						/>
@@ -65,6 +87,7 @@ const ExtendedWarrantyFormStepForm = ({
 									address: e.target.value
 								}))
 							}
+							required
 							placeholder='Address'
 							type='text'
 						/>
@@ -72,14 +95,17 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{label && <label className='custom-label'>Purchase Date</label>}
+						{!date && <label className='custom-label'>Purchase Date</label>}
 						<input
-							onChange={e =>
+							onChange={e => {
+								setDate(e.target.value)
 								onChange(prevState => ({
 									...prevState,
 									purchase_date: e.target.value
 								}))
-							}
+							}}
+							value={date}
+							required
 							onFocus={() => setlabel(false)}
 							onBlur={() => setlabel(true)}
 							placeholder='Purchase Date'
@@ -99,7 +125,37 @@ const ExtendedWarrantyFormStepForm = ({
 									}
 								}))
 							}
+							required
 							placeholder='Serial Number'
+							type='text'
+						/>
+					</div>
+				</div>
+				<div className='col-12 col-md-6'>
+					<div className='extended-warranty-input'>
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState,
+									postal_code: e.target.value
+								}))
+							}
+							required
+							placeholder='Postal code'
+							type='text'
+						/>
+					</div>
+				</div>
+				<div className='col-12 '>
+					<div className='extended-warranty-input'>
+						<input
+							onChange={e =>
+								onChange(prevState => ({
+									...prevState,
+									retailer_id: e.target.value
+								}))
+							}
+							placeholder='Retailer'
 							type='text'
 						/>
 					</div>
@@ -114,6 +170,7 @@ const ExtendedWarrantyFormStepForm = ({
 						value={formBody.product.model_plate_sticker}
 						name='model_plate_sticker'
 						onChange={onUpload}
+						loading={loading}
 						modalOnClick={() => setShowModal(showModal => !showModal)}
 					/>
 				</div>
@@ -124,21 +181,25 @@ const ExtendedWarrantyFormStepForm = ({
 						value={formBody.product.receipt_photo}
 						name='receipt_photo'
 						onChange={onUpload}
+						loading={loading}
 						boxContent='Upload Your Receipt Photo'
 					/>
 				</div>
 			</div>
 			<RadioCheckBox
-				label='I acknowledge and agree to the Terms & Conditions.'
+				label='I acknowledge and agree to the '
+				button='Terms & Conditions.'
+				text={terms}
 				onChange={setAcceptTerms}
 				checked={acceptTerms}
 			/>
 			<div className=' mt-15 text-center'>
 				<button
-					className='n-btn outline-black py-4'
-					type='button'
-					onClick={onSubmit}>
+					className='n-btn outline-black py-4 d-flex align-items-center mx-auto '
+					type='submit'
+					disabled={!acceptTerms || loading === 'button' ? true : false}>
 					Proceed to Payment
+					{loading === 'button' && <Spinner className={'ms-3'} size={20} />}
 				</button>
 				{/* <Link href={'/ewp-confirmation-page'}>
 					<a className='n-btn outline-black py-4'>Proceed to Payment</a>

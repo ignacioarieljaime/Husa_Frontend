@@ -1,4 +1,5 @@
 import React from 'react'
+import CustomImage from '../../common/CustomImage'
 
 const ProductsBannerV2 = ({ data }) => {
 	const { structure } = data
@@ -6,17 +7,19 @@ const ProductsBannerV2 = ({ data }) => {
 	return (
 		<section>
 			<div className='heading'>
-				<img
+				<CustomImage
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}
-					width={'100%'}
-					style={{ height: '422px' }}
+					wrapperWidth={'100%'}
+					wrapperHeight={'422px'}
 					className={'img-fluid'}
 				/>
 				<div className='heading-text'>
-					<div
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
-						className='fs-md-3qx fw-normal text-white mw-50 mx-auto'></div>
+					<article className='large_article'>
+						<div
+							dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
+							className='fs-md-3qx fw-normal text-white mw-50 mx-auto'></div>
+					</article>
 				</div>
 			</div>
 		</section>

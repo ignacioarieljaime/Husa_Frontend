@@ -9,6 +9,7 @@ import 'swiper/css/thumbs'
 
 // import required modules
 import { FreeMode, Thumbs } from 'swiper'
+import CustomImage from 'components/common/CustomImage'
 
 function ProductInfoSlider({ pim, firstImage }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
@@ -24,10 +25,11 @@ function ProductInfoSlider({ pim, firstImage }) {
 				{firstImage && (
 					<SwiperSlide key={'custom'}>
 						<span className='media-slider-wrapper'>
-							<img
+							<CustomImage
 								src={firstImage}
 								alt='Front U8G Hisense s'
 								className='slider-media'
+								wrapperHeight={'100%'}
 							/>
 						</span>
 					</SwiperSlide>
@@ -37,10 +39,11 @@ function ProductInfoSlider({ pim, firstImage }) {
 						item.type_id === 1 && item.url !== firstImage ? (
 							<SwiperSlide key={index}>
 								<span className='media-slider-wrapper'>
-									<img
+									<CustomImage
 										src={item.url}
 										alt='Front U8G Hisense s'
 										className='slider-media'
+										wrapperHeight={'100%'}
 									/>
 								</span>
 								<figcaption className='figure-caption'>{item.title}</figcaption>
@@ -61,11 +64,12 @@ function ProductInfoSlider({ pim, firstImage }) {
 						aria-hidden='true'
 						tabIndex={'-1'}
 						aria-label={`slide-${0}`}>
-						<img
+						<CustomImage
 							src={firstImage}
 							alt='Front U8G Hisense s'
 							aria-hidden='true'
 							tabIndex='-1'
+							wrapperHeight={'91px'}
 						/>
 					</SwiperSlide>
 				)}
@@ -76,11 +80,12 @@ function ProductInfoSlider({ pim, firstImage }) {
 								aria-hidden='true'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}>
-								<img
+								<CustomImage
 									src={item.url}
 									alt='Front U8G Hisense s'
 									aria-hidden='true'
 									tabIndex='-1'
+									wrapperHeight={'91px'}
 								/>
 							</SwiperSlide>
 						) : null

@@ -9,7 +9,7 @@ const BlockCards = ({ data: { structure } }) => {
 				<div className='new-home-page-boxes mb-13'>
 					<div
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
-						className='fs-3qx mb-10 header'></div>
+						className='fs-3qx mb-10 header px-0 px-md-6'></div>
 					<div className='boxes'>
 						{structure?.list?.value.map((item, index) => (
 							<BlockCardsItem

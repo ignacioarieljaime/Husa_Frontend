@@ -20,7 +20,8 @@ function BlogHead({ data: { structure } }) {
 		<section>
 			<div className='blog-header mt-20'>
 				<div className='container mb-13'>
-					<Link href={structure?.tagLink?.value}>
+					<Link
+						href={structure?.tagLink?.value ? structure?.tagLink?.value : '/'}>
 						<a className='text-primary-dark fs-5 fw-normal mb-10 d-block text-decoration-none'>
 							{structure?.tagLink?.title}
 						</a>

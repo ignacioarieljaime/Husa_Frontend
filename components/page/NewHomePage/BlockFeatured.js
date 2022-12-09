@@ -9,6 +9,7 @@ import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import CustomImage from '../../common/CustomImage'
 
 const BlockFeatured = ({ data: { structure } }) => {
 	return (
@@ -16,9 +17,9 @@ const BlockFeatured = ({ data: { structure } }) => {
 			<Swiper
 				navigation={true}
 				pagination={true}
+				centeredSlides={true}
 				spaceBetween={8}
 				slidesPerView={'auto'}
-				centeredSlides={true}
 				grabCursor={true}
 				loop={true}
 				modules={[Pagination, Navigation]}
@@ -33,12 +34,11 @@ const BlockFeatured = ({ data: { structure } }) => {
 						<h3 className='slider-title fs-2'>{item?.title?.value}</h3>
 						<div className='slider-body'>
 							{item?.image ? (
-								<img
+								<CustomImage
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									className='slider-image'
-									width='100%'
-									height='100%'
+									wrapperWidth={'100%'}
 								/>
 							) : (
 								<div className='slider-video'>
@@ -49,9 +49,9 @@ const BlockFeatured = ({ data: { structure } }) => {
 								</div>
 							)}
 							<div className='slider-content'>
-								{/* <h5 className='description d-none d-md-block'>
+								<h5 className='description d-none d-md-block'>
 									{item?.description?.value}
-								</h5> */}
+								</h5>
 								<Link href={item?.link?.value ? item?.link?.value : '/'}>
 									<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
 										{item?.link?.title}

@@ -45,6 +45,10 @@
 			left: 36%;
 		}
 		.swiper-pagination {
+			width: fit-content !important;
+			left: 50%;
+			transform: translateX(-50%);
+		
 			.swiper-pagination-bullet-active {
 				background: #292929;
 			}

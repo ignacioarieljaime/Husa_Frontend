@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Dollar from 'components/icons/Dollar'
 import Spinner from 'components/common/Spinner'
 
-const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans }) => {
+const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans, loading }) => {
 	const [price, setPrice] = useState()
 
 	return (
@@ -22,7 +22,10 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans }) => {
 						<div className='box'>
 							<div className='title'>Purchased Price</div>
 							<p className='description'>
-								Enter the price in which you purchased your Televsion. Price
+								Enter the price in which you purchased your Televsion.
+							</p>
+							<p className='description'>
+								Price
 								paid with applicable sales tax.
 							</p>
 							<div className='extended-warranty-input'>
@@ -34,9 +37,12 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans }) => {
 								<Dollar />
 							</div>
 							<button
-								className='n-btn black-outline transparent'
-								onClick={() => getPlans(parseFloat(price))}>
+								className='n-btn black-outline d-flex align-items-center mx-auto transparent'
+								onClick={() => getPlans(parseFloat(price))}
+								disabled={loading}
+							>
 								Enter
+								{loading && <Spinner className={'ms-2'} size={20} />}
 							</button>
 						</div>
 					</div>

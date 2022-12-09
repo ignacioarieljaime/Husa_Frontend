@@ -1,8 +1,11 @@
 import React from 'react'
 
-const FeatureBlocksItem = ({ title, description, videoSrc }) => {
+const FeatureBlocksItem = ({ title, text, videoSrc, direction }) => {
 	return (
-		<div className='row description-blocks align-items-center'>
+		<div
+			className={`row ${
+				direction === 'rtl' ? 'flex-row-reverse' : ''
+			} description-blocks align-items-center`}>
 			<div className='video-half col-12 col-md-6 p-4 p-md-0'>
 				<video
 					width='100%'
@@ -21,7 +24,9 @@ const FeatureBlocksItem = ({ title, description, videoSrc }) => {
 					data-aos-duration='1000'>
 					<h3 className='fs-5 fs-md-2qx mb-2'>{title}</h3>
 				</div>
-				<p className='fs-9 fs-md-2 mb-0'>{description}</p>
+				<div
+					className='fs-9 fs-md-2 mb-0'
+					dangerouslySetInnerHTML={{ __html: text }}></div>
 			</article>
 		</div>
 	)

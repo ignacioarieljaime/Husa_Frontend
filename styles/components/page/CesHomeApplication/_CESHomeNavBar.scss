@@ -1,49 +1,64 @@
 /* cataloge navbar */
 .catalog-navbar {
-	position: sticky;
-	z-index: 1001;
-	top: 0;
-	background-color: #151515 !important;
-	&.bg-turquoise {
-		background-color: #063741;
-	}
-	span {
-		font-weight: 500;
-		font-size: 15px;
-		line-height: 32px;
-		color: #fff;
-	}
-	ul {
-		list-style: none;
-		margin: 0;
-		li {
-			&:last-child {
-				padding: 0;
-			}
-			button {
-				font-weight: 500;
-				font-size: 15px;
-				line-height: 32px;
-				color: #fff;
-				background-color: var(--primary-color) !important;
-				padding: 20px 20px;
-				border: none;
-			}
-		}
-	}
-	li,
-	> nav > span {
-		padding: 14px 20px;
-	}
-	a {
-		text-decoration: none;
-	}
-	.underline-on-hover {
-		&:hover {
-			background-color: transparent;
-			&::after {
-				width: 100%;
-			}
-		}
-	}
+  position: sticky;
+  z-index: 1001;
+  top: 0;
+  background-color: #151515 !important;
+
+  &.bg-turquoise {
+    background-color: #063741;
+  }
+
+  span {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 32px;
+    color: #fff;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    li {
+      &:last-child {
+        padding: 0;
+      }
+
+      button {
+        font-weight: 300;
+        font-size: 15px;
+        text-transform: uppercase;
+        line-height: 32px;
+        color: #000;
+        background-color: #00AAA6 !important;
+        padding: 14px 20px;
+        border: none;
+        transition: all ease 0.4s;
+
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  li,
+  > nav > span {
+    padding: 14px 20px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .underline-on-hover {
+    &:hover {
+      background-color: transparent;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
 }

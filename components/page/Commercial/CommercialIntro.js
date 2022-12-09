@@ -3,12 +3,12 @@ import React from 'react'
 function CommercialIntro({ data: { structure } }) {
 	return (
 		<section>
-			<div className='black-banner px-md-4 pb-md-4 pt-0 pt-md-15'>
+			<div className='black-banner px-md-4 py-md-15'>
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
-						<h2 className='text-white mb-6'>
+						<h2 className='commercial_intro_title text-white mb-6'>
 							{structure?.title?.value}
-							<span className='text-primary d-block d-sm-inline ms-2'>
+							<span className='text-primary-new d-block d-sm-inline ms-2'>
 								{structure?.coloredTitle?.value}
 							</span>
 						</h2>

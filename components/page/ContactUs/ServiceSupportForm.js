@@ -1,4 +1,4 @@
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { faCircleInfo, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import CustomInput from 'components/common/Input'
@@ -11,8 +11,9 @@ import { GetCategoriesApi, GetSeriesModelsApi } from 'services/category'
 import RoleModal from './RoleModal'
 
 let warrantyOption = [
-	{ name: 'YES', value: 'known' },
-	{ name: 'NO', value: 'unknown' }
+	{ name: 'UNKNOWN', value: 'unknown' },
+	{ name: 'YES', value: 'yes' },
+	{ name: 'NO', value: 'no' }
 ]
 let serviceTypeOption = [{ name: 'Technical Support', value: 'technical' }]
 
@@ -23,6 +24,7 @@ function ServiceSupportForm({ formHandler }) {
 	const [categories, setCategories] = useState([])
 	const [models, setModels] = useState([])
 	const [loading, setLoading] = useState(false)
+	const [imageLoading, setImageLoading] = useState(false)
 	const [file, setFile] = useState(null)
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
@@ -84,43 +86,44 @@ function ServiceSupportForm({ formHandler }) {
 
 		setLoading(true)
 		try {
-			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/support',
-				{ ...dataSchema, image: fileUploadCondition }
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/support`,
+				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended')
+				toast.success('ticket sended', { toastId: 'submit_success' })
 				formHandler(true)
 				setDisabled(true)
-			} else if (response.status === 422) {
-				toast.error('ticket didn"t sended')
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended')
+			toast.error('ticket didn"t sended', { toastId: 'submit_failed' })
 			setLoading(false)
 			console.log(error)
 		}
 	}
 
-	const uploadFile = async () => {
+	const uploadFile = async _file => {
+		setImageLoading(true)
+		setFile(_file)
 		const formData = new FormData()
-		formData.append('attachment', file)
+		formData.append('attachment', _file)
 
 		try {
 			let response = await axios({
 				method: 'post',
-				url: 'https://assets.dev-api.hisenseportal.com/api/v1/upload/d6357c2807362f',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
 				data: formData,
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
 			if (response.status === 200) {
-				dataSchemaHandler('receipt_image', response.data.view_link)
-				return response.data.view_link
+				dataSchemaHandler('image', response.data.view_link)
+				toast.success('image upload successfully')
+				setImageLoading(false)
 			}
-			return null
 		} catch (error) {
+			toast.error("image didn't uploaded")
+			setImageLoading(false)
 			console.log(error)
 		}
 	}
@@ -234,17 +237,33 @@ function ServiceSupportForm({ formHandler }) {
 					<span>Max 3 Images (Optional)</span>
 
 					<div className='file-upload-box position-relative'>
-						<input
-							type='file'
-							className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
-							style={{ zIndex: 1 }}
-							id='contact-file-input'
-							accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
-							multiple='multiple'
-							onChange={e => setFile(e.target.files[0])}
-						/>
-						<div>Drag & Drop a File Here</div>
-						<p>Upload Images</p>
+						{imageLoading && (
+							<div className='image_loading'>
+								<Spinner size={35} />
+							</div>
+						)}
+						{file ? (
+							<>
+								<button className='remove_img' onClick={() => setFile(null)}>
+									<FontAwesomeIcon icon={faXmark} />
+								</button>
+								<img src={URL.createObjectURL(file)} />
+							</>
+						) : (
+							<>
+								<input
+									type='file'
+									className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
+									style={{ zIndex: 1 }}
+									id='contact-file-input'
+									accept='.jpg, .png, .jpeg'
+									multiple='multiple'
+									onChange={e => uploadFile(e.target.files[0])}
+								/>
+								<div>Drag & Drop a File Here</div>
+								<p>Upload Images</p>
+							</>
+						)}
 					</div>
 				</div>
 				<div className='col-12 text-center'>

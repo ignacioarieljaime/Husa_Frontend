@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ExtendedWarrantyFormStepForm from './ExtendedWarrantyFormStepForm'
 import ExtendedWarrantyFormStepSelectionCard from './ExtendedWarrantyFormStepSelectionCard'
 
@@ -9,74 +9,51 @@ import {
 } from 'services/ExtendedWarranty'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
-import Joi from 'joi'
+import { GetProductRetailersApi } from '../../../services/Product'
 
-const ExtendedWarrantyFormStep = ({ product, plan }) => {
+const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
+	const router = useRouter()
+	const [retailers, setRetailers] = useState([])
+	const [assets, setAssets] = useState([])
+	const [acceptTerms, setAcceptTerms] = useState(false)
+	const [loading, setLoading] = useState(null)
 	const [formBody, setFormBody] = useState({
 		product: {
 			id: product.id,
-			model_plate_sticker: '',
-			receipt_photo: '',
-			serial_number: ''
+			model_plate_sticker: null,
+			receipt_photo: null,
+			serial_number: null
 		},
 		plan_id: plan.id,
-		first_name: '',
+		first_name: null,
 		last_name: '',
-		phone: '',
-		email: '',
-		address: '',
-		purchase_date: ''
-	})
-	const [assets, setAssets] = useState([])
-	const [acceptTerms, setAcceptTerms] = useState(false)
-	const router = useRouter()
-
-	const schema = Joi.object({
-		first_name: Joi.string()
-			.messages({ 'string.empty': 'Name field is empty' })
-			.required(),
-		last_name: Joi.string()
-			.messages({ 'string.empty': 'Last name is not entered' })
-			.required(),
-		email: Joi.string()
-			.email({ tlds: { allow: false } })
-			.messages({ 'string.empty': 'Email field is empty' })
-			.required(),
-		phone: Joi.number()
-			.integer()
-			.messages({ 'number.empty': 'Phone number field is empty' })
-			.required(),
-		address: Joi.string()
-			.messages({ 'string.empty': 'Address field is empty' })
-			.required(),
-		purchase_date: Joi.date()
-			.messages({ 'date.empty': 'Purchase date field is empty' })
-			.required(),
-		plan_id: Joi.number(),
-		product: Joi.object({
-			serial_number: Joi.string()
-				.messages({ 'string.empty': 'Serial number field is empty' })
-				.required(),
-			model_plate_sticker: Joi.string()
-				.messages({ 'string.empty': 'Please upload model plate sticker' })
-				.required(),
-			receipt_photo: Joi.string()
-				.messages({ 'string.empty': 'Please upload receipt photo' })
-				.required(),
-			id: Joi.number()
-		})
+		phone: null,
+		email: null,
+		address: null,
+		purchase_date: null,
+		postal_code: null,
+		retailer_id: null
 	})
 
-	const assetsUploadHandler = _asset => {
+	useEffect(() => {
+		getRetailers(product.id)
+	}, [])
+
+	const assetsUploadHandler = (name, _asset) => {
 		let temp = assets
-		if (temp.length > 0 && temp.some(item => item.id === _asset.id))
-			temp.splice(
-				temp.findIndex(item => item.id === _asset.id),
-				1
-			)
-		temp.push(_asset)
-		setAssets(temp)
-		submitFormAssets(_asset)
+		if (!_asset) {
+			setAssets([])
+			submitFormAssets(name, null)
+		} else {
+			if (temp.length > 0 && temp.some(item => item.id === _asset.id))
+				temp.splice(
+					temp.findIndex(item => item.id === _asset.id),
+					1
+				)
+			temp.push(_asset)
+			setAssets(temp)
+			submitFormAssets(name, _asset)
+		}
 	}
 
 	const submitAssets = async asset => {
@@ -84,20 +61,36 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 		formData.append('attachment', asset)
 		try {
 			let response = await postFormAssets(formData)
-			return response?.data?.view_link
-		} catch (err) {}
+			if (response.status === 200) {
+				return response?.data?.view_link
+			}
+		} catch (err) {
+			toast.error(err.response.data.message, { toastId: 'upload file' })
+		}
 	}
 
-	const submitFormData = async () => {
-		if (acceptTerms) {
+	const submitFormData = async e => {
+		e.preventDefault()
+
+		if (!formBody.product.model_plate_sticker) {
+			toast.error('please upload model plate sticker', {
+				toastId: 'model_plate_sticker'
+			})
+		} else if (!formBody.product.receipt_photo) {
+			toast.error('please upload receipt photo', { toastId: 'receipt_photo' })
+		} else if (!formBody.retailer_id) {
+			toast.error('please select retailer', { toastId: 'retailer_id' })
+		} else {
+			setLoading('button')
 			try {
-				if (schema.validate(formBody)?.error) {
-					toast.error(schema.validate(formBody)?.error?.details[0]?.message)
-				} else {
-					let response = await submitForm(formBody)
-					redirectToPayment(response?.data?.invoice?.token)
-				}
+				let response = await submitForm(formBody)
+				await redirectToPayment(response?.data?.invoice?.token)
+				setLoading(null)
 			} catch (error) {
+				setLoading(null)
+				if (error?.response?.data?.errors?.last_name) {
+					toast.error('Please enter your full name')
+				}
 				console.log(error)
 			}
 		}
@@ -109,18 +102,19 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 			router.push(link.data.url)
 		} catch (error) {
 			console.log(error)
-			if (error.response.status === 401)
+			if (error.response.status === 401) {
 				toast.error('Submission failed', {
 					autoClose: true
 				})
-			else
+			} else
 				toast.error('Something went wrong', {
 					autoClose: true
 				})
 		}
 	}
 
-	const submitFormAssets = async _asset => {
+	const submitFormAssets = async (name, _asset) => {
+		setLoading(name)
 		try {
 			let link = await submitAssets(_asset.asset)
 			setFormBody(prevState => ({
@@ -131,9 +125,21 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 				}
 			}))
 			toast.success(_asset.name.replace(/_+/g, ' ') + ' uploaded successfuly')
+			setLoading(null)
 		} catch (error) {
-			toast.error(_asset.name.replace(/_+/g, ' ') + ' upload failed')
+			setLoading(null)
+			_asset?.name &&
+				toast.error(_asset.name.replace(/_+/g, ' ') + ' upload failed')
 			console.log(error)
+		}
+	}
+
+	const getRetailers = async _productId => {
+		try {
+			let response = await GetProductRetailersApi(router, _productId)
+			setRetailers(response.data)
+		} catch (e) {
+			console.log(e)
 		}
 	}
 
@@ -154,6 +160,9 @@ const ExtendedWarrantyFormStep = ({ product, plan }) => {
 						setAcceptTerms={setAcceptTerms}
 						onSubmit={submitFormData}
 						formBody={formBody}
+						loading={loading}
+						retailers={retailers}
+						terms={terms}
 					/>
 				</div>
 			</section>

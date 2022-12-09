@@ -1,6 +1,7 @@
 import React from 'react'
+import Image from "public/assets/images/where_is_serial_number.jpg"
 
-const ExtendedWarrantyModelNumberDialog = ({ product, image, onClose }) => {
+const ExtendedWarrantyModelNumberDialog = ({ product, onClose }) => {
 	return (
 		<div className='extended-warranty-dialog'>
 			<div
@@ -12,9 +13,9 @@ const ExtendedWarrantyModelNumberDialog = ({ product, image, onClose }) => {
 					<br /> Model Number
 				</div>
 				<div className='image-container'>
-					<img src={Image?.src} alt={image?.alt} width='100%' />
+					<img src={Image?.src} alt={"serial"} />
 				</div>
-				<p className='description'>{product}</p>
+				{/*<p className='description'>{product}</p>*/}
 			</div>
 		</div>
 	)

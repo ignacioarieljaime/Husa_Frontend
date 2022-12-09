@@ -16,6 +16,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 	})
 	const [product, setProduct] = useState()
 	const [plans, setPlans] = useState()
+	const [loading, setLoading] = useState(false)
 	const [price, setPrice] = useState()
 	const [plan, setPlan] = useState({
 		id: 0,
@@ -35,6 +36,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 	}
 
 	const getPlans = async _price => {
+		setLoading(true)
 		try {
 			let response = await GetProductPlans(_price)
 			setPrice(_price)
@@ -43,7 +45,9 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 				id: 1,
 				title: 'Purchased Price'
 			})
+			setLoading(false)
 		} catch (error) {
+			setLoading(false)
 			console.log(error)
 			toast.error('Entered price is not valid')
 		}
@@ -62,6 +66,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 		<ExtendedWarrantyPurchasedPriceStep
 			product={product}
 			getPlans={getPlans}
+			loading={loading}
 		/>,
 		<ExtendedWarrantySevicePlansStep
 			product={product}
@@ -69,7 +74,11 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 			price={price}
 			onClick={planSelectionHandler}
 		/>,
-		<ExtendedWarrantyFormStep product={product} plan={plan} />
+		<ExtendedWarrantyFormStep
+			product={product}
+			plan={plan}
+			terms={structure?.terms?.value}
+		/>
 	]
 
 	return (

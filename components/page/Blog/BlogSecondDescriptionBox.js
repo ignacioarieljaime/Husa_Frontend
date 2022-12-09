@@ -6,8 +6,15 @@ function BlogSecondDescriptionBox({ data: { structure } }) {
 			<div className='bg-light-orange-gradient py-20'>
 				<div className='container my-10'>
 					<div
-						className='big-title'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						data-aos='fade-zoom-in'
+						data-aos-duration='1600'
+						data-aos-delay='450'>
+						<div
+							className='big-title'
+							dangerouslySetInnerHTML={{
+								__html: structure?.title?.value
+							}}></div>
+					</div>
 				</div>
 			</div>
 		</section>

@@ -2,7 +2,7 @@ const fs = require('fs')
 
 module.exports = async (page, content) => {
 	let route = ''
-	if (page.route.includes('/index')) {
+	if (page?.route.includes('/index')) {
 		route = page.route.replace('/index', '')
 	} else {
 		if (page.route === '/') {

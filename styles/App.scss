@@ -1,3 +1,6 @@
+// mixin
+@import './base/mixins';
+
 // bootstrap
 @import './base/bootstrapStyle';
 
@@ -8,17 +11,11 @@
 @import './base/fonts';
 @import './base/fontSocicon';
 
-
-// mixin
-@import './base/mixins';
-
 // base
 @import './base/global';
 
-
 // components
 @import './components/page/CesHomeApplication/homeApplience';
-
 
 //common
 @import './components/common/header.scss';
@@ -37,15 +34,12 @@
 @import './components/common/customCheckbox';
 @import './components/common/textBoxImage';
 
-
 // L9J
 @import './components/page/L9G/colorFeature';
 @import './components/page/L9G/heroBanner';
-@import './components/page/L9G/l9g';
+// @import './components/page/L9G/l9g';
 @import './components/page/L9G/pureColor';
 @import './components/page/L9G/scorllableVideo';
-
-
 
 // sponsor ship
 @import './components/page/sponsorShip';
@@ -127,3 +121,29 @@
 
 // Television
 @import "./components/page/Televisions/Televisions";
+
+// Product
+@import "./components/page/Product/PackagesSlider.scss";
+
+
+// Upgrade
+@import "./components/page/Upgrade/UpgradeL9GForm";
+
+// BeyondLaser
+@import "./components/page/BeyondLaser/Banner";
+@import "./components/page/BeyondLaser/Header";
+@import "./components/page/BeyondLaser/MomentsBlock.scss";
+@import "./components/page/BeyondLaser/ImageBlock";
+@import "./components/page/BeyondLaser/TextBlock";
+@import "./components/page/BeyondLaser/QuoteBlock";
+@import "./components/page/BeyondLaser/IframeBlock";
+@import "./components/page/BeyondLaser/FooterBlock";
+@import "./components/page/BeyondLaser/FlipDevice";
+
+// GoogleTV
+@import "./components/page/GoogleTv/banner";
+@import './components/page/GoogleTv/featureBlocks';
+@import './components/page/GoogleTv/hero';
+@import './components/page/GoogleTv/products';
+@import './components/page/GoogleTv/textBox';
+@import './components/page/GoogleTv/tops';

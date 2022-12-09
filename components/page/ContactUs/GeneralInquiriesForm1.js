@@ -31,7 +31,7 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/inquery',
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/inquery`,
 				dataSchema
 			)
 
@@ -107,8 +107,8 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					className={`d-flex mx-auto align-items-center ${
 						btnClass ? btnClass : 'form-submit-btn '
 					}`}>
-					<span className='me-2'> SUBMIT</span>
-					{loading && <Spinner size={25} />}
+					<span > SUBMIT</span>
+					{loading && <Spinner className={"ms-2"} size={25} />}
 				</button>
 			</div>
 		</form>

@@ -26,13 +26,24 @@ module.exports.CommonComponents = [
 	{
 		name: 'BreadCrumb',
 		path: 'components/common/BreadCrumb'
+	},{
+		name: 'IFrame',
+		path: 'components/common/IFrame'
 	},
 	{
-		name: 'UnauthorizedList',
-		path: 'components/common/UnauthorizedList'
+		name: 'UnauthorizedListCommon',
+		path: 'components/common/UnauthorizedListCommon'
 	},
 	{
 		name: 'OfferClaimForm',
 		path: 'components/common/OfferClaimForm'
+	},
+	{
+		name: 'SimpleImagesList',
+		path: 'components/common/SimpleImagesList'
+	},
+	{
+		name: 'PromoBanner',
+		path: 'components/common/PromoBanner'
 	}
 ]

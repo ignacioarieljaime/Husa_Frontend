@@ -1,18 +1,33 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
 function ProductCategoryBox({ data, pim }) {
 	const router = useRouter()
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
+	const [fix, setFix] = useState(false)
+	const menu = useRef()
+
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			if (menu?.current?.offsetTop <= window.scrollY + 72) {
+				setFix(true)
+			} else {
+				setFix(false)
+			}
+		})
+	}, [])
+
 
 	let { structure } = data
 	return (
 		<>
 			{' '}
-			<div id={data.name + data.id} className='catalog-navbar bg-dark'>
+			<div id={data.name + data.id} className='catalog-navbar bg-dark' ref={menu}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 						<li className='me-md-auto'>
@@ -50,7 +65,7 @@ function ProductCategoryBox({ data, pim }) {
 						</li>
 						<li>
 							<button
-								className='btn-primary'
+								style={{ padding: fix ? '20px 20px' : '14px 20px' }}
 								onClick={() =>
 									pim?.retailers.length !== 0
 										? setChanelAdviserHandler(!chanelAdviserHandler)
