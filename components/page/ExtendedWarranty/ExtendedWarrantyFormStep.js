@@ -130,7 +130,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 			setLoading(null)
 			_asset?.name &&
 				toast.error(_asset.name.replace(/_+/g, ' ') + ' upload failed')
-			console.log(error)
+			console.error(error)
 		}
 	}
 

@@ -9,15 +9,6 @@ const ProductSliderLinkButton = dynamic(() =>
 
 const ProductPackageHeader = ({ pim, data }) => {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
-	pim = {
-		...pim,
-		packageItems: [
-			'26.6 cu. ft. French Door Refrigerator (HRF266N6CSE1)',
-			'Freestanding Electric Range with 5.8 cu. ft. (HBE3501CPS)',
-			'1.7 cu. ft. Over-the-Range Microwave (HMVZ173SS)',
-			'Top-Control Dishwasher (HUI6220XCUS)'
-		]
-	}
 
 	return (
 		<section
