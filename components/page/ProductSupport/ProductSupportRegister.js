@@ -14,6 +14,7 @@ import RoleModal from '../ContactUs/RoleModal'
 import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
+import CustomImage from 'components/common/CustomImage'
 
 function ProductSupportRegister({ pim, data }) {
 	let { structure } = data
@@ -46,13 +47,14 @@ function ProductSupportRegister({ pim, data }) {
 		e.preventDefault()
 		setLoading(true)
 		try {
-			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				'https://imcrm.dev-api.hisenseportal.com/api/hisense/contact/register-product',
-				{ ...dataSchema, receipt_image: fileUploadCondition }
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/register-product`,
+				{ ...dataSchema }
 			)
 			if (response.status === 200) {
 				toast.success('ticket sended')
+				e.target.reset()
+				setFile()
 			} else {
 				toast.error('ticket didn"t sended')
 			}
@@ -64,9 +66,10 @@ function ProductSupportRegister({ pim, data }) {
 		}
 	}
 
-	const uploadFile = async () => {
+	const uploadFile = async _file => {
 		const formData = new FormData()
-		formData.append('attachment', file)
+		setFile(_file)
+		formData.append('attachment', _file)
 
 		try {
 			let response = await axios({
@@ -76,10 +79,9 @@ function ProductSupportRegister({ pim, data }) {
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
 			if (response.status === 200) {
+				toast.success('file uploaded')
 				dataSchemaHandler('receipt_image', response.data.view_link)
-				return response.data.view_link
 			}
-			return null
 		} catch (error) {
 			console.log(error)
 		}
@@ -183,19 +185,40 @@ function ProductSupportRegister({ pim, data }) {
 							/>
 						</div>
 						<div className='col-12 mb-10 file-upload position-relative'>
-							<input
-								type='file'
-								id='contact-file-input'
-								accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
-								multiple='multiple'
-								className='position-absolute top-0 right-0 w-100 h-100 opacity-0'
-								style={{ zIndex: 9 }}
-								onChange={e => setFile(e.target.files[0])}
-							/>
-							<div className='file-upload-box' onclick='triggerFileUpload()'>
-								<div>Drag & Drop a File Here</div>
-								<p>Upload Images</p>
-							</div>
+							{file ? (
+								<>
+									<CustomImage
+										src={URL.createObjectURL(file)}
+										wrapperWidth={'100%'}
+										wrapperHeight={'270px'}
+									/>
+									<button
+										className='remove_image_button'
+										type='button'
+										onClick={() => {
+											setFile()
+											dataSchemaHandler('receipt_image', null)
+										}}>
+										<FontAwesomeIcon icon={faXmark} />
+									</button>
+								</>
+							) : (
+								<>
+									<input
+										type='file'
+										id='contact-file-input'
+										accept='.jpg, .png, .jpeg'
+										multiple='multiple'
+										className='position-absolute curser-pointer top-0 right-0 w-100 h-100 opacity-0'
+										style={{ zIndex: 9 }}
+										onChange={e => uploadFile(e.target.files[0])}
+									/>
+									<div className='file-upload-box'>
+										<div>Drag & Drop a File Here</div>
+										<p>Upload Images</p>
+									</div>
+								</>
+							)}
 						</div>
 						<div className='col-12 mb-10 news-check'>
 							<span
@@ -217,9 +240,9 @@ function ProductSupportRegister({ pim, data }) {
 							<button
 								type='submit'
 								disabled={loading}
-								className='n-btn outline-black transparent py-4 px-9'>
-								<span className='me-2'>REGISTER</span>
-								{loading && <Spinner size={25} />}
+								className='n-btn outline-black d-flex mx-auto transparent py-4 px-9'>
+								<span >REGISTER</span>
+								{loading && <Spinner className='ms-2' size={25} />}
 							</button>
 						</div>
 					</form>

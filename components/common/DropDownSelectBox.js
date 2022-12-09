@@ -20,7 +20,6 @@ const DropDownSelectBox = ({ options, value, title, onChange }) => {
 			setShow(false)
 		}
 	}
-
 	return (
 		<div className={`dropdown-select-box ${show ? 'show' : ''}`}>
 			<button

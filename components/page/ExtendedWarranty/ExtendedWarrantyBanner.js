@@ -45,7 +45,7 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 								value={searchTerm}
 								onChange={e => searchProduct(e.target.value)}
 							/>
-							{Array.isArray(productsList) ? (
+							{showProductsList ? (
 								<button
 									onClick={() => {
 										setShowProductsList(false)

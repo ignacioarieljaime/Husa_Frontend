@@ -28,7 +28,9 @@ return (
 	<Layout title={'${_page.title}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
-      	<section>{data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null ))}</section>
+      	<section>
+				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : <>this page don't have any components</>}
+		</section>
 	</Layout>
     )
   }
@@ -55,7 +57,7 @@ ${
 				console.log('send pim request')
 				 let pim = await axios
 						.get(
-							'https://impim.dev-api.hisenseportal.com/api/cms/getProduct/${_page.model_id}'
+							'${process.env.PIM_API_ROUTE}/getProduct/${_page.model_id}'
 						)
 						.then(response => {
 							console.log('get pim data')

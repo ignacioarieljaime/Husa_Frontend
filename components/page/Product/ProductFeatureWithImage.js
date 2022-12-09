@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
 function ProductFeatureWithImage({ data }) {
@@ -17,10 +18,10 @@ function ProductFeatureWithImage({ data }) {
 					<h2>{structure?.title?.value}</h2>
 					<p>{structure?.description?.value}</p>
 				</article>
-				<img
+				<CustomImage
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}
-					class='p-0 col-12 col-md-6 order-1'
+					wrapperClass='p-0 col-12 col-md-6 order-1'
 				/>
 			</div>
 		</section>
