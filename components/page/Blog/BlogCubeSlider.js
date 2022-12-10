@@ -56,11 +56,11 @@ function BlogCubeSlider({ data: { structure } }) {
 					</Swiper>
 				</div>
 			</div>
-			{/* <ModalChanelAdviser
+			<ModalChanelAdviser
 				condition={chanelAdviserHandler}
 				handler={setChanelAdviserHandler}
 				// model={currentdata.model}
-			/> */}
+			/>
 		</section>
 	)
 }
