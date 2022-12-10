@@ -35,7 +35,8 @@ return (
     )
   }
 ${
-	_page.model_id !== 0
+	_page.model_id !== 0 &&
+	(_page.model_type === 'product' || _page.model_type === 'support')
 		? `  export async function getServerSideProps({req,res}) {		
 			res.setHeader(
 				'Cache-Control',
