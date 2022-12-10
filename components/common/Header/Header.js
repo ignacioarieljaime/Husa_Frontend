@@ -113,7 +113,7 @@ function Header({ data: { structure }, notification }) {
 				{/* <SubMenuHeader /> */}
 			</nav>
 			{notification && (
-				<div className={'position-fixed w-100'} style={{ zIndex: 999999999 }}>
+				<div className={'position-fixed w-100'} style={{ zIndex: 9999 }}>
 					{notification.map(item => (
 						<HeaderNotification data={item} />
 					))}

@@ -65,11 +65,13 @@ function ProductCategoryBox({ data, pim }) {
 							<button
 								style={{ padding: fix ? '20px 20px' : '14px 20px' }}
 								onClick={() =>
-									pim?.retailers.length !== 0
+									pim?.buy_status === 'ChannelAdvisor'
 										? setChanelAdviserHandler(!chanelAdviserHandler)
 										: {}
 								}>
-								{pim?.retailers.length !== 0 ? 'Where To Buy' : 'Coming Soon'}
+								{pim?.buy_status === 'ChannelAdvisor'
+									? 'Where To Buy'
+									: 'Coming Soon'}
 							</button>
 						</li>
 					</ul>

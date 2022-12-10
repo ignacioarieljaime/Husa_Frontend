@@ -64,11 +64,13 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							className=' pdp_where_to_buy_btn px-6 py-3'
 							style={{ color: data?.structure?.backgroundColor?.value }}
 							onClick={() =>
-								pim?.retailers.length !== 0
+								pim?.buy_status === 'ChannelAdvisor'
 									? setChanelAdviserHandler(!chanelAdviserHandler)
 									: {}
 							}>
-							{pim?.retailers.length !== 0 ? 'Where To Buy' : 'coming soon'}
+							{pim?.buy_status === 'ChannelAdvisor'
+								? 'Where To Buy'
+								: 'coming soon'}
 						</button>
 					</div>
 				</div>
