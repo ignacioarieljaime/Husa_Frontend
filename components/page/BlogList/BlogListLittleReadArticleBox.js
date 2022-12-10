@@ -21,19 +21,19 @@ function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
 
 	const image1Ref = useParallax({
 		speed: 7,
-		translateY: ['-20px', '-130px']
+		translateY: [22, -22]
 	})
 
 	const image2Ref = useParallax({
 		speed: 10,
-		translateY: ['-20px', '-130px']
+		translateY: [15, -15]
 	})
 	return (
 		<section>
-			<div className='container'>
+			<div>
 				<div className='row  justify-content-between align-items-start pb-0 pb-md-20'>
 					<div className='article_container col-12 col-md-4 mb-20'>
-						<figure className='blog-article-box'>
+						<figure className='blog-article-box' ref={image1Ref.ref}>
 							<div className='image-box'>
 								<Link
 									href={
@@ -47,7 +47,6 @@ function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
 											alt={smallPost?.value?.image?.alt}
 											width='100%'
 											height='100%'
-											ref={image1Ref.ref}
 											onLoad={() => parallaxController.update()}
 										/>
 									</a>
@@ -89,7 +88,7 @@ function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
 						</figure>
 					</div>
 					<div className='article_container col-12 col-md-6 mb-20'>
-						<figure className='blog-article-box'>
+						<figure ref={image2Ref.ref} className='blog-article-box'>
 							<div className='image-box'>
 								<Link
 									href={
@@ -103,7 +102,6 @@ function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
 											alt={largePost?.value?.image?.alt}
 											width='100%'
 											height='100%'
-											ref={image2Ref.ref}
 											onLoad={() => parallaxController.update()}
 										/>
 									</a>

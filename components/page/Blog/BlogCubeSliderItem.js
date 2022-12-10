@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 const BlogCubeSliderItem = ({ data, modalHandler }) => {
 	return (
 		<>
-			<div className='row align-items-center px-10'>
+			<div className='row align-items-center px-10 blog_cube_slider_item'>
 				<div className='col-12 col-md-5 order-2 order-md-1 text-center text-md-start'>
-					<h5 className='fs-4 fw-normal mb-3'>{data?.model?.value}</h5>
-					<h6 className='fs-3qx fw-normal mb-4 text-break'>
+					<h5 className='model fw-normal mb-3'>{data?.model?.value}</h5>
+					<h6 className='title fw-normal mb-4 text-break'>
 						{data?.title?.value}
 					</h6>
 					<div

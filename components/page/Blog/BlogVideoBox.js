@@ -17,7 +17,7 @@ function BlogVideoBox({ data: { structure } }) {
 	}
 	return (
 		<section>
-			<div className='container my-20'>
+			<div className='blog_text_container my-20'>
 				<div
 					className={`video-container blog-video-container ${
 						playVideo ? 'playing' : ''

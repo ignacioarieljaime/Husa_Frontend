@@ -4,7 +4,7 @@ function BlogSecondDescriptionBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='bg-light-orange-gradient py-20'>
-				<div className='container my-10'>
+				<div className='blog_text_container my-10'>
 					<div
 						data-aos='fade-zoom-in'
 						data-aos-duration='1600'
