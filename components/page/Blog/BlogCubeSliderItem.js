@@ -14,10 +14,11 @@ const BlogCubeSliderItem = ({ data, modalHandler }) => {
 						className='text-muted fw-normal mb-5'></div>
 					<button
 						onClick={() => {
-							modalHandler(true)
+							data?.link?.value.includes('openChannelAdvisor') &&
+								modalHandler(data?.link?.value.split(':')[1])
 						}}
 						className='btn btn-outline-dark text-uppercase rounded-5 px-5 py-2 fs-8'>
-						WHERE TO BUY
+						{data?.link?.title}
 					</button>
 				</div>
 				<div className='col-12 col-md-7 order-1 order-md-2'>
