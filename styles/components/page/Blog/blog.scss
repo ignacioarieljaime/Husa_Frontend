@@ -1,41 +1,40 @@
-.article_container {
-	.blog-article-box {
-		.image-box {
-			overflow: hidden;
-			width: 100%;
-			border-radius: 10px;
-			max-height: 525px;
-		}
-		img {
-			border-radius: 10px;
-			max-height: 650px;
-			transform: rotate(0) scale(1);
-			transition: transform 0.5s ease-in-out;
-		}
-
-		&:hover {
-			img {
-				transform: rotate(0.47deg) scale(1.02);
-			}
-		}
-
-		.blog-article-box .text-primary-dark {
-			transition: color 0.3s ease-in-out;
-			cursor: pointer;
-			text-decoration: none;
-		}
-	}
-	&:last-child {
+.blog_custom_conrainer {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+	.article_container {
 		.blog-article-box {
 			.image-box {
-				max-height: 660px;
+				position: relative;
+				overflow: hidden;
+				height: 0;
+				padding-top: 130%;
+				border-radius: 10px;
+			}
+			img {
+				position: absolute;
+				left: 0;
+				top: 50%;
+				width: 100%;
+				height: 100%;
+				border-radius: 10px;
+				transform: rotate(0) scale(1) translateY(-50%);
+				transition: transform 0.5s ease-in-out;
+			}
+
+			&:hover {
+				img {
+					transform: rotate(0.47deg) scale(1.02) translateY(-50%);
+				}
+			}
+
+			.blog-article-box .text-primary-dark {
+				transition: color 0.3s ease-in-out;
+				cursor: pointer;
+				text-decoration: none;
 			}
 		}
-		img {
-			max-height: 800px;
-		}
 	}
-}
 .blog-article-box-row {
 	.image-box {
 		overflow: hidden;
@@ -160,6 +159,22 @@ article.blog-article {
 		color: #818181;
 	}
 }
+
+@media (max-width: 1200px) {
+	.custom_conrainer {
+		.article_container {
+			.blog-article-box {
+				img {
+					width: 85%;
+				}
+
+				figcaption {
+					width: 85%;
+				}
+			}
+		}
+	}
+}
 @media (max-width: 1920px) {
 	article.blog-article {
 		h1,
@@ -213,12 +228,21 @@ article.blog-article {
 		&:last-child {
 			.blog-article-box {
 				.image-box {
-					max-height: 445px;
+					height: 100%;
+					padding-top: 0;
 				}
 
 				img {
-					max-height: 580px;
-					height: 580px;
+					position: relative;
+					left: 0;
+					top: 0;
+					width: 100%;
+					transform: rotate(0) scale(1) translateY(0);
+				}
+				&:hover {
+					img {
+						transform: rotate(0.47deg) scale(1.02) translateY(0%);
+					}
 				}
 			}
 		}

@@ -19,21 +19,21 @@ const BlogListLittleReadArticleBox = ({ data: { largePost, smallPost } }) => {
 function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
 	const parallaxController = useParallaxController()
 
-	const image1Ref = useParallax({
+	const card1Ref = useParallax({
 		speed: 7,
-		translateY: [22, -22]
+		translateY: [10, -25]
 	})
 
-	const image2Ref = useParallax({
+	const card2Ref = useParallax({
 		speed: 10,
-		translateY: [15, -15]
+		translateY: [10, -10]
 	})
 	return (
 		<section>
-			<div>
-				<div className='row  justify-content-between align-items-start pb-0 pb-md-20'>
+			<div className='blog_custom_conrainer'>
+				<div className='row  justify-content-between align-items-start pb-0 pb-md-20 custom_conrainer'>
 					<div className='article_container col-12 col-md-4 mb-20'>
-						<figure className='blog-article-box' ref={image1Ref.ref}>
+						<figure className='blog-article-box' ref={card1Ref.ref}>
 							<div className='image-box'>
 								<Link
 									href={
@@ -88,7 +88,7 @@ function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
 						</figure>
 					</div>
 					<div className='article_container col-12 col-md-6 mb-20'>
-						<figure ref={image2Ref.ref} className='blog-article-box'>
+						<figure className='blog-article-box' ref={card2Ref.ref}>
 							<div className='image-box'>
 								<Link
 									href={
