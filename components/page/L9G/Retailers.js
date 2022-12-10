@@ -1,29 +1,32 @@
-import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useEffect, useState } from 'react'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const Retailers = ({ pim, data: { structure } }) => {
 	const windowSize = useWindowSize()
-	const [items, setItems] = useState(3)
+	const [items, setItems] = useState([])
 
-	// useEffect(() => {
-	// 	let temp = pim?.retailers.filter(item => {
-	// 		if (item?.id) return item
-	// 	})
-	// 	if (temp % items !== 0) {
-	// 		let count = items - (temp % items)
-	// 		for (let i = 0; i < count; i++) {
-	// 			pim?.retailers.push({})
-	// 		}
-	// 	}
-	// 	pim = { ...pim, retailers: temp }
-	// }, [items])
+	const itemsLengthHandler = _cols => {
+		let temp = items.filter(item => {
+			if (item?.id) return item
+		})
+		if (temp.length % _cols !== 0) {
+			let count = _cols - (temp.length % _cols)
+			for (let i = 0; i < count; i++) {
+				temp.push({})
+			}
+		}
+		setItems(temp)
+	}
 
-	// useEffect(() => {
-	// 	if (windowSize[0] > 991) setItems(3)
-	// 	else if (windowSize[0] <= 991 && windowSize[0] > 575) setItems(2)
-	// 	else setItems(1)
-	// 	console.log(items)
-	// }, [windowSize])
+	useEffect(() => {
+		if (windowSize[0] > 991) itemsLengthHandler(3)
+		else if (windowSize[0] <= 991 && windowSize[0] > 575) itemsLengthHandler(2)
+		else itemsLengthHandler(1)
+	}, [windowSize[0]])
+
+	useEffect(() => {
+		if (pim?.retailers) setItems(pim?.retailers)
+	}, [])
 
 	return (
 		<section>
@@ -33,7 +36,7 @@ const Retailers = ({ pim, data: { structure } }) => {
 					<p className='mb-9 fs-4'>{structure?.subtitle?.value}</p>
 				</div>
 				<div className='grid-container' style={{ backgroundColor: '#dedede' }}>
-					{pim?.retailers.map((item, index) => (
+					{items.map((item, index) => (
 						<div
 							key={'retailer-' + index}
 							className='grid-item d-flex align-items-center justify-content-center'>
