@@ -86,11 +86,14 @@ function ProductsItem({ data }) {
 					{productYear.map((item, index) => (
 						<li key={'year' + index}>
 							<span className='title'>{item.year}</span>
-							{item.products.map((model, index) => (
-								<Link key={'model' + index} href={RouteHandler(model?.id)}>
-									<a className='model'>{model.model}</a>
-								</Link>
-							))}
+							{item.products.map(
+								(model, index) =>
+									RouteHandler(model?.id) && (
+										<Link key={'model' + index} href={RouteHandler(model?.id)}>
+											<a className='model'>{model.model}</a>
+										</Link>
+									)
+							)}
 						</li>
 					))}
 				</ul>
