@@ -102,18 +102,20 @@ const ProductsFilter = ({
 			<div>
 				<div className='d-flex justify-content-between align-items-center mb-4 mb-md-0'>
 					<div className='fw-normal fs-8 d-block d-md-none'>Filter</div>
-					<button
-						className='n-btn outline-primary mb-md-8'
-						onClick={checkboxClearHandler}>
-						Clear Filters
-						{filterCounter > 0 ? (
-							<>
-								<span className='ms-2'>({filterCounter})</span>
-							</>
-						) : (
-							''
-						)}
-					</button>
+					{filterList.length !== 0 && filterList.length !== 0 ? (
+						<button
+							className='n-btn outline-primary mb-md-8'
+							onClick={checkboxClearHandler}>
+							Clear Filters
+							{filterCounter > 0 ? (
+								<>
+									<span className='ms-2'>({filterCounter})</span>
+								</>
+							) : (
+								''
+							)}
+						</button>
+					) : null}
 				</div>
 				<div className='filter-group-container pb-4 pb-md-0'>
 					{filterList &&
