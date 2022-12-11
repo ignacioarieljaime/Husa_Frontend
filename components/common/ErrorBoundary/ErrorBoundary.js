@@ -21,13 +21,11 @@ class ErrorBoundary extends Component {
 		if (this.state.hasError) {
 			// You can render any custom fallback UI
 			return (
-				<div>
-					<h2>Oops, there is an error!</h2>
-					<button
-						type='button'
-						onClick={() => this.setState({ hasError: false })}>
-						Try again?
-					</button>
+				<div class='main-error-page'>
+					<h1 class='error-title'>Woops! Something went wrong :(</h1>
+					<h2 class='error-subtitle'>
+						Have you tried turning it off and on again?
+					</h2>
 				</div>
 			)
 		}
