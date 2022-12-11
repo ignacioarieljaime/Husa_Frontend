@@ -66,8 +66,9 @@
 		}
 	}
 }
-.product_support_head_image{
+.product_support_head_image {
 	width: unset !important;
+	max-height: 600px !important;
 }
 .videos-container-product-support {
 	overflow-y: auto;
