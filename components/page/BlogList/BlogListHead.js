@@ -25,7 +25,7 @@ function BlogListHeadContainer({ structure }) {
 	})
 	return (
 		<section>
-			<div className='blog-header blog-header-list mt-10 mb-20'>
+			<div className='blog-header blog-header-list  mt-10 mb-20'>
 				<div className='container-fluid container-xxl ps-6 mb-13'>
 					<div className='row mb-14 mb-md-0'>
 						<div className='col-4 col-sm-6 align-self-center align-self-md-start ms-xxl-n5'>

@@ -797,10 +797,10 @@
 			display: block;
 			margin-bottom: 5px;
 		}
-		input{
+		input {
 			cursor: pointer;
 		}
-		img{
+		img {
 			object-fit: cover;
 		}
 		.remove_image_button {
@@ -2171,6 +2171,54 @@ header {
 			a {
 				text-decoration: none;
 				color: var(--primary-color);
+			}
+		}
+	}
+}
+
+.air_products_image_box {
+	.content {
+		position: absolute;
+		left: 3%;
+		top: 10%;
+		color: #292929;
+		max-width: 255px;
+		padding: 12px;
+		.title {
+			font-size: 30px;
+			line-height: 36px;
+			font-weight: 700;
+			margin-bottom: 24px;
+		}
+		.subtitle {
+			font-size: 30px;
+			line-height: 36px;
+			font-weight: 400;
+			margin-bottom: 24px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.air_products_image_box {
+		height: 100% !important;
+		padding-top: 0% !important;
+		.content {
+			position: relative;
+			left: 0%;
+			top: 0%;
+			padding: 12px;
+
+			.title {
+				font-size: 24px;
+				line-height: 32px;
+				margin-bottom: 16px;
+			}
+
+			.subtitle {
+				font-size: 24px;
+				line-height: 32px;
+				margin-bottom: 16px;
 			}
 		}
 	}

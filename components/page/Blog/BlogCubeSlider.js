@@ -26,7 +26,6 @@ function BlogCubeSlider({ data: { structure } }) {
 		}
 	}
 
-
 	return (
 		<section>
 			<div className='bg-light-orange-gradient'>

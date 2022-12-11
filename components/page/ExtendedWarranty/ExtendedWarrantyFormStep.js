@@ -113,8 +113,22 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 		}
 	}
 
-	const submitFormAssets = async (name, _asset) => {
+	const submitFormAssets = async (name, _asset, isCleanup) => {
 		setLoading(name)
+
+		if (isCleanup) {
+			toast.success('Image deleted successfully')
+			setFormBody(prevState => ({
+				...prevState,
+				product: {
+					...prevState.product,
+					[_asset.name]: ''
+				}
+			}))
+			setLoading(null)
+			return
+		}
+
 		try {
 			let link = await submitAssets(_asset.asset)
 			setFormBody(prevState => ({
