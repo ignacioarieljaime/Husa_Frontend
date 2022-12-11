@@ -1,6 +1,6 @@
 import React from 'react'
 
-function HamburgerMenuIcon() {
+function HamburgerMenuIcon({ color }) {
 	return (
 		<svg
 			version='1.1'
@@ -10,9 +10,18 @@ function HamburgerMenuIcon() {
 			viewBox='0 0 32 32'
 			className='hamburger-menu'
 			aria-hidden='true'>
-			<path className='bar bar-top' d='M3.969 15.094h24v2h-24v-2z'></path>
-			<path className='bar bar-middle' d='M3.969 15.094h24v2h-24v-2z'></path>
-			<path className='bar bar-bottom' d='M3.969 15.094h24v2h-24v-2z'></path>
+			<path
+				className='bar bar-top'
+				fill={color}
+				d='M3.969 15.094h24v2h-24v-2z'></path>
+			<path
+				className='bar bar-middle'
+				fill={color}
+				d='M3.969 15.094h24v2h-24v-2z'></path>
+			<path
+				className='bar bar-bottom'
+				fill={color}
+				d='M3.969 15.094h24v2h-24v-2z'></path>
 		</svg>
 	)
 }

@@ -1,0 +1,32 @@
+.kitchen_suite_carousel {
+	.kitchen_suite_items {
+		max-width: 1280px;
+		margin: 0 auto;
+		.kitchen_suite_item {
+            @include mqm(768) {
+                width: 50% !important;
+            }
+			@include mqm(991) {
+				width: 33% !important;
+			}
+			.type {
+				font-weight: 500;
+				font-size: 28px;
+				line-height: 32px;
+			}
+			.title {
+				margin-bottom: 0;
+				margin-top: 24px;
+				font-size: 16px;
+				font-weight: 500;
+			}
+			.item-features * {
+				text-align: start !important;
+			}
+		}
+	}
+
+	.swiper-pagination {
+		bottom: -30px !important;
+	}
+}

@@ -10,7 +10,8 @@ module.exports.ProductComponent = [
 	{
 		name: 'ProductTextWithImageBox',
 		path: 'components/page/Product/ProductTextWithImageBox'
-	},{
+	},
+	{
 		name: 'RelatedProducts',
 		path: 'components/page/Product/RelatedProducts'
 	},
@@ -101,5 +102,13 @@ module.exports.ProductComponent = [
 	{
 		name: 'ProductPackagesSlider',
 		path: 'components/page/Product/ProductPackagesSlider'
+	},
+	{
+		name: 'ProductPackageBigScreenTextsBox',
+		path: 'components/page/Product/ProductPackageBigScreenTextsBox'
+	},
+	{
+		name: 'ProductPackageItems',
+		path: 'components/page/Product/ProductPackageItems'
 	}
 ]

@@ -54,7 +54,6 @@ function Header({ data: { structure }, notification }) {
 	return (
 		<header>
 			<nav
-				style={{ transitionDelay: '2s' }}
 				className={`navbar navbar-expand justify-content-center  
 					theme-${structure.theme.value}
 				 top-nav py-3 px-sm-4 fixed-top flex-wrap ${
@@ -64,7 +63,9 @@ function Header({ data: { structure }, notification }) {
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<Link href='/'>
 							<a className='navbar-brand m-0 col-xl-4 text-start'>
-								<Logo />
+								<Logo
+									color={structure.theme.value === 'light' ? '#000' : '#fff'}
+								/>
 							</a>
 						</Link>
 						<h1>Hisense</h1>
@@ -85,7 +86,9 @@ function Header({ data: { structure }, notification }) {
 									}`}
 									onClick={() => setSearchInputCondition(!searchInputCondition)}
 									aria-label='search'>
-									<MagnifierIcon />
+									<MagnifierIcon
+										stroke={structure.theme.value === 'light' ? '#000' : '#fff'}
+									/>
 								</button>
 							</li>
 							<li className='nav-item-button' data-button='menu'>
@@ -99,7 +102,9 @@ function Header({ data: { structure }, notification }) {
 											: setAsideMenu(!asideMenu)
 									}
 									aria-label='hamburger menu toggler'>
-									<HamburgerMenuIcon />
+									<HamburgerMenuIcon
+										color={structure.theme.value === 'light' ? '#000' : '#fff'}
+									/>
 								</button>
 							</li>
 						</ul>
