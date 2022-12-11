@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
 const Awards = ({ data: { structure } }) => {
@@ -11,7 +12,7 @@ const Awards = ({ data: { structure } }) => {
 				</div>
 				<div className='awards-list'>
 					{structure?.awards?.value.map((award, index) => (
-						<img src={award?.image?.src} alt={award?.image?.alt} />
+						<CustomImage src={award?.image?.src} alt={award?.image?.alt} />
 					))}
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useWindowSize } from 'hooks/useWindowSize'
+import CustomImage from 'components/common/CustomImage'
 
 const Retailers = ({ pim, data: { structure } }) => {
 	const windowSize = useWindowSize()
@@ -39,11 +40,11 @@ const Retailers = ({ pim, data: { structure } }) => {
 					{items.map((item, index) => (
 						<div
 							key={'retailer-' + index}
-							className='grid-item d-flex align-items-center justify-content-center'>
-							<img
+							className='grid-item d-flex retailers_item align-items-center justify-content-center'>
+							<CustomImage
 								src={item?.media?.external_url}
 								alt={item?.media?.caption}
-								width='100%'
+								wrapperWidth='100%'
 								style={{ maxWidth: '250px' }}
 							/>
 						</div>

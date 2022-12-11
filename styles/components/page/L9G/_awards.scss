@@ -1,17 +1,28 @@
 .awards {
-    max-width: 1440px;
-    margin: 0 auto;
-    .awards-list {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 72px 0;
-        border-top: 2px solid #ececec;
-        > * {
-            padding: 10px;
-            max-width: 180px;
-            max-height: 180px;
-        }
-    }
+	max-width: 1440px;
+	margin: 0 auto;
+	.awards-list {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+		padding: 72px 0;
+		border-top: 2px solid #ececec;
+		> * {
+			padding: 10px;
+			max-width: 180px;
+			max-height: 180px;
+
+			img {
+				max-width: 180px;
+				max-height: 180px;
+			}
+		}
+	}
+}
+
+.retailers_item {
+	img {
+		max-width: unset !important;
+	}
 }
