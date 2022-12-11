@@ -17,12 +17,12 @@ function ProductsItem({ data }) {
 		products.forEach(element => {
 			let year = element.product.customFields
 				.find(item => item.type_name === 'Main Fields')
-				.custom_fields.find(item => item.name === 'Year')
+				?.custom_fields.find(item => item.name === 'Year')
 
-			if (years.find(item => item.year === year.value)) {
-				let oldItem = years.find(item => item.year === year.value)
+			if (years.find(item => item.year === year?.value)) {
+				let oldItem = years.find(item => item.year === year?.value)
 				let newYear = {
-					year: year.value,
+					year: year?.value,
 					products: [
 						...oldItem.products,
 						{ id: element.product.id, model: element.product.model }
@@ -37,7 +37,7 @@ function ProductsItem({ data }) {
 				years = [
 					...years,
 					{
-						year: year.value,
+						year: year?.value,
 						products: [{ id: element.product.id, model: element.product.model }]
 					}
 				]
