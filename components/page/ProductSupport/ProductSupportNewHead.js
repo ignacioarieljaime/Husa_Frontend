@@ -19,6 +19,7 @@ function ProductSupportNewHead({ pim }) {
 							) : (
 								<CustomImage
 									src={pim?.assets.find(item => item.type_id === 1).url}
+									wrapperClass={'product_support_head_image'}
 									alt='featured image'
 									// width='80%'
 								/>
