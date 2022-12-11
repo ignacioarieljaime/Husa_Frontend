@@ -2,12 +2,6 @@ import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
 const ProductPackageBigScreenTextsBox = ({ data: { structure } }) => {
-	structure = {
-		...structure,
-		image: {
-			src: 'https://assets.hisense-usa.com/assets/ContentBuilderImages/00696b4a52/2-year_ScaleMaxWidthWzMwNDhd__ScaleMaxWidthWzMwNDhd.png-abmr6u.png-i687l1.png'
-		}
-	}
 	return (
 		<section>
 			<div className='tiny-banner product-big-screen'>
