@@ -92,7 +92,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 			)
 			if (response.status === 200) {
 				toast.success('ticket sended', { toastId: 'submit_success' })
-				formHandler(true)
+				e.target.reset()
 				setDisabled(true)
 			}
 			setLoading(false)
