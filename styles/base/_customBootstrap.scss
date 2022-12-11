@@ -1289,21 +1289,19 @@ article:hover > .img-box-shadow-hover {
 	z-index: 1000;
 }
 .theme-dark {
-	--nav-background-color: #000;
-	--nav-text-color: #fff;
-	background: var(--nav-background-color);
+	background: #000;
+	color: #fff;
+	transition: all 0.4s ease-in-out;
 }
 .theme-light {
-	--nav-background-color: #fff;
-	--nav-text-color: #000;
-	background: var(--nav-background-color);
-	transition: all 0.3s ease-in-out;
+	background: #fff;
+	color: #000;
+	transition: all 0.4s ease-in-out;
 }
 header {
 	.theme-light:hover {
-		--nav-background-color: #000;
-		--nav-text-color: #fff;
-		background: var(--nav-background-color);
+		background: #000;
+		color: #fff;
 	}
 }
 

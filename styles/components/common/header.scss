@@ -101,10 +101,18 @@ header.blog {
 	.navbar-brand {
 		position: relative;
 		z-index: 3;
-
-		svg {
-			path {
-				fill: var(--nav-text-color);
+	}
+	svg {
+		path {
+			transition: fill stroke 0.4s ease-in-out;
+		}
+	}
+	&:hover {
+		.navbar-brand {
+			svg {
+				path {
+					fill: #fff;
+				}
 			}
 		}
 	}
@@ -122,30 +130,40 @@ header.blog {
 	.nav-item {
 		.nav-link {
 			position: relative;
-			color: var(--nav-text-color);
+			color: inherit;
 			font-style: normal;
 			font-weight: 500;
 			font-size: 14px;
 			line-height: 13px;
 			text-transform: uppercase;
 			padding: 0.5em 0 !important;
+			transition: all 0.4s ease-in-out;
+		}
+	}
+	&:hover {
+		.nav-item {
+			.nav-link {
+				color: #fff;
+			}
 		}
 	}
 	.nav-link {
 		letter-spacing: 1.3px;
 		white-space: nowrap;
 	}
-	li {
-		&.nav-item-button {
-			&[data-button='menu'] {
-				svg {
-					path {
-						fill: var(--nav-text-color);
+	&:hover {
+		li {
+			&.nav-item-button {
+				&[data-button='menu'] {
+					svg {
+						path {
+							fill: #fff;
+						}
 					}
 				}
-			}
-			&.nav-item-button[data-button='search'] svg path {
-				stroke: var(--nav-text-color);
+				&.nav-item-button[data-button='search'] svg path {
+					stroke: #fff;
+				}
 			}
 		}
 	}
@@ -158,6 +176,31 @@ header.blog {
 	}
 	&.hidden,
 	&.search-mode {
+		background: #000;
+		color: #fff;
+
+		.navbar-brand {
+			svg {
+				path {
+					fill: #fff;
+				}
+			}
+		}
+		li {
+			&.nav-item-button {
+				&[data-button='menu'] {
+					svg {
+						path {
+							fill: #fff;
+						}
+					}
+				}
+
+				&.nav-item-button[data-button='search'] svg path {
+					stroke: #fff;
+				}
+			}
+		}
 		li {
 			display: none;
 			&.nav-item-button[data-button='menu'] {
@@ -529,7 +572,6 @@ header.blog {
 
 .hamburger-menu {
 	.bar {
-		fill: #fff;
 		transform-origin: 50% 50%;
 		transition: all 0.2s ease;
 	}

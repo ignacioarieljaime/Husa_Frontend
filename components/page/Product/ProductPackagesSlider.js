@@ -5,12 +5,13 @@ import { Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import Link from 'next/link'
+import CustomImage from 'components/common/CustomImage'
 
-const ProductPackagesSlider = ({ pim, data }) => {
+const ProductPackagesSlider = ({ data: { structure } }) => {
 	return (
 		<section className='package_types_slider'>
 			<article className='article'>
-				<h2>Kitchen Appliance Packages</h2>
+				<h2>{structure?.title?.value}</h2>
 			</article>
 			<div>
 				<Swiper
@@ -21,23 +22,22 @@ const ProductPackagesSlider = ({ pim, data }) => {
 					grabCursor={true}
 					draggable={true}
 					slidesPerView={'auto'}>
-					{pim &&
-						pim?.packages.map((item, index) => (
-							<SwiperSlide
-								aria-hidden='true'
-								className='item'
-								key={index}
-								tabIndex={'-1'}
-								aria-label={`slide-${index + 1}`}>
-								<div>
-									<img src={item?.image} alt={item?.title} />
-									<h5>{item?.title}</h5>
-									<Link href={item?.link?.value}>
-										<a>{item?.link?.title}</a>
-									</Link>
-								</div>
-							</SwiperSlide>
-						))}
+					{structure?.list?.value.map((item, index) => (
+						<SwiperSlide
+							aria-hidden='true'
+							className='item'
+							key={index}
+							tabIndex={'-1'}
+							aria-label={`slide-${index + 1}`}>
+							<div>
+								<CustomImage src={item?.image?.src} alt={item?.image?.alt} />
+								<h5>{item?.title?.value}</h5>
+								<Link href={item?.link?.value}>
+									<a>{item?.link?.title}</a>
+								</Link>
+							</div>
+						</SwiperSlide>
+					))}
 				</Swiper>
 			</div>
 		</section>

@@ -42,7 +42,7 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							}
 						</h1>
 						<span className='tip mb-5 text-uppercase text-white'>
-							{pim?.name}
+							{data?.structure?.description?.value}
 						</span>
 						<p className='text-white'>Model: {pim?.model}</p>
 						<div
