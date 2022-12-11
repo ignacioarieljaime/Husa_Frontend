@@ -196,9 +196,9 @@ input {
 		rgba(255, 153, 0, 0.1) 100%
 	);
 }
-.blog_text_container{
-	max-width:1100px;
-	margin: 0 auto; 
+.blog_text_container {
+	max-width: 1100px;
+	margin: 0 auto;
 	padding: 12px;
 }
 
@@ -685,11 +685,21 @@ input {
 		}
 	}
 }
-.contaact_us_phone_us{
-	img{
+.contaact_us_phone_us {
+	img {
 		object-fit: contain !important;
 	}
 }
-.scorllable-video .text-heading{
+.scorllable-video .text-heading {
 	z-index: 999 !important;
+}
+
+.modal {
+	z-index: 9999999;
+	.modal-content {
+		> div {
+			overflow: auto;
+			max-height: 73vh;
+		}
+	}
 }
