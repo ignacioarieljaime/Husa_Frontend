@@ -30,7 +30,7 @@ const BeyondLaserBanner = ({ data: { structure } }) => {
 						<a
 							className='chevron_link'
 							data-aos='fade-down'
-							data-aos-delay='600'
+							data-aos-delay='2500'
 							data-aos-duration='1000'>
 							<FontAwesomeIcon icon={faChevronDown} size='2xl' />
 						</a>

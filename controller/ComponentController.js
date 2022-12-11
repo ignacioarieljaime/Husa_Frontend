@@ -25,7 +25,9 @@ import componentGenerator from 'hooks/componentGenerator';
 
 function Index${_page.id}({pim,data}) {
 return (
-	<Layout title={'${_page.title}'} meta={${
+	<Layout header={data?.widgets[0]?.name === "Header"} title={'${
+		_page.title
+	}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
       	<section>

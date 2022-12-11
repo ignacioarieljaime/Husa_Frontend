@@ -4,9 +4,10 @@ import {
 	faTwitter,
 	faFacebook
 } from '@fortawesome/free-brands-svg-icons'
-import React from 'react'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
+import React from 'react'
 import Link from 'next/link'
+import { toast } from 'react-toastify'
 
 function BlogHead({ data: { structure } }) {
 	const icons = {
@@ -14,6 +15,11 @@ function BlogHead({ data: { structure } }) {
 		linkedin: faLinkedinIn,
 		facebook: faFacebook,
 		twitter: faTwitter
+	}
+
+	const copyUrl = () => {
+		toast.success('Link copied successfully')
+		navigator.clipboard.writeText(window.location.href)
 	}
 
 	return (
@@ -31,17 +37,29 @@ function BlogHead({ data: { structure } }) {
 						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
-						{structure?.list?.value.map((item, index) => (
-							<a
-								href={item?.link?.value}
-								key={index}
-								className='text-primary-dark'>
-								<FontAwesomeIcon
-									icon={icons[item?.socialMedia?.value]}
-									size={'xl'}
-								/>
-							</a>
-						))}
+						{structure?.list?.value.map((item, index) =>
+							item?.socialMedia?.value !== 'link' ? (
+								<a
+									href={item?.link?.value}
+									key={index}
+									className='text-primary-dark'>
+									<FontAwesomeIcon
+										icon={icons[item?.socialMedia?.value]}
+										size={'xl'}
+									/>
+								</a>
+							) : (
+								<button
+									onClick={copyUrl}
+									key={index}
+									className='text-primary-dark bg-transparent border-0'>
+									<FontAwesomeIcon
+										icon={icons[item?.socialMedia?.value]}
+										size={'xl'}
+									/>
+								</button>
+							)
+						)}
 					</div>
 				</div>
 			</div>

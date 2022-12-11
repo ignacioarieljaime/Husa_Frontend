@@ -16,6 +16,9 @@ body {
 	.layout {
 		padding-top: 72px;
 		position: relative;
+		&.no_header {
+			padding-top: 0 !important;
+		}
 	}
 
 	.Day {
