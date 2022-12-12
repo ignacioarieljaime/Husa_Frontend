@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleInfo, faCheck } from '@fortawesome/free-solid-svg-icons'
+import {
+	faCircleInfo,
+	faCheck,
+	faXmark
+} from '@fortawesome/free-solid-svg-icons'
 import CustomSelectBox from 'components/common/selectBox'
 import CustomInput from 'components/common/Input'
 import RoleModal from '../ContactUs/RoleModal'
@@ -22,6 +26,7 @@ function RegisterForm({ data }) {
 	const [modalCondition, setModalCondition] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [file, setFile] = useState(null)
+	const [imageLoading, setImageLoading] = useState(null)
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -87,28 +92,29 @@ function RegisterForm({ data }) {
 
 		setLoading(true)
 		try {
-			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
 				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
-				{ ...dataSchema, receipt_image: fileUploadCondition }
+				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended')
-				setDisabled(true)
+				toast.success('ticket sended', { toastId: 'ticket-sended' })
+				e.target.reset()
 			} else {
-				toast.error('ticket didn"t sended')
+				toast.error('ticket didn"t sended', { toastId: 'ticket-error' })
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended')
+			toast.error('ticket didn"t sended', { toastId: 'ticket-error' })
 			setLoading(false)
 			console.log(error)
 		}
 	}
 
-	const uploadFile = async () => {
+	const uploadFile = async e => {
+		setFile(e.target.files[0])
+		setImageLoading(true)
 		const formData = new FormData()
-		formData.append('attachment', file)
+		formData.append('attachment', e.target.files[0])
 
 		try {
 			let response = await axios({
@@ -118,11 +124,14 @@ function RegisterForm({ data }) {
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
 			if (response.status === 200) {
+				toast.success('image uploaded', { toastId: 'image-uploaded' })
 				dataSchemaHandler('receipt_image', response.data.view_link)
-				return response.data.view_link
 			}
-			return null
+			setImageLoading(false)
 		} catch (error) {
+			setImageLoading(false)
+
+			toast.error('image flailed', { toastId: 'image-flailed' })
 			console.log(error)
 		}
 	}
@@ -248,18 +257,34 @@ function RegisterForm({ data }) {
 						/>
 					</div>
 					<div className='col-12 mb-10 file-upload position-relative'>
-						<input
-							type='file'
-							id='contact-file-input'
-							accept='.jpg, .png, .jpeg, .pdf, .docx, .doc'
-							multiple='multiple'
-							className='position-absolute top-0 right-0 w-100 h-100 opacity-0'
-							style={{ zIndex: 9 }}
-							onChange={e => setFile(e.target.files[0])}
-						/>
-						<div className='file-upload-box'>
-							<div>Drag & Drop a File Here</div>
-							<p>Upload Images</p>
+						<div className='file-upload-box position-relative'>
+							{imageLoading && (
+								<div className='image_loading'>
+									<Spinner size={35} />
+								</div>
+							)}
+							{file ? (
+								<>
+									<button className='remove_img' onClick={() => setFile(null)}>
+										<FontAwesomeIcon icon={faXmark} />
+									</button>
+									<img src={URL.createObjectURL(file)} />
+								</>
+							) : (
+								<>
+									<input
+										type='file'
+										className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
+										style={{ zIndex: 1 }}
+										id='contact-file-input'
+										accept='.jpg, .png, .jpeg'
+										multiple='multiple'
+										onChange={uploadFile}
+									/>
+									<div>Drag & Drop a File Here</div>
+									<p>Upload Images</p>
+								</>
+							)}
 						</div>
 					</div>
 					<div className='col-12 mb-10 news-check'>
