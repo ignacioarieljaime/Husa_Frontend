@@ -11,13 +11,15 @@ function ProductFindMeInStore({ pim, data }) {
 					<p className='fs-5 fw-normal mb-12'>
 						Check with these retailers for product availability.
 					</p>
-					<div className='row justify-content-evenly align-items-center'>
+					<div className='row justify-content-center align-items-center'>
 						{pim?.retailers.map((item, index) => (
 							<div key={index}>
 								<CustomImage
 									src={item.Media?.url}
 									alt='featured-image'
 									wrapperHeight={'150'}
+									WrapperMaxWidth={'192px'}
+									wrapperClass='px-6'
 								/>
 							</div>
 						))}

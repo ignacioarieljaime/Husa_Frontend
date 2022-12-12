@@ -19,9 +19,9 @@ export async function GetProductsApi(navigate, _categoryId) {
 export async function GetProductsListApi(navigate, _categoryId, _filter) {
 	let filter = ''
 	_filter &&
-	_filter.forEach(item => {
-		filter += '&filters[]=' + item.filter_value
-	})
+		_filter.forEach(item => {
+			filter += '&filters[]=' + item.filter_value
+		})
 
 	let response = await useFetch(navigate).get(
 		`/getProductsList?category_id=${_categoryId}&condition=or${filter}`
@@ -41,7 +41,9 @@ export async function GetProductsListNewApi(
 			: ''
 
 	let response = await useFetch(navigate).get(
-		`/productsIndex?category_id=${_categoryId}${filter}${_sort ? _sort : ''}&brand_id=3`
+		`/productsIndex?category_id=${_categoryId}${filter}${
+			_sort ? _sort : ''
+		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 	)
 	return response
 }
@@ -64,10 +66,7 @@ export async function GetProductWithSeriesAndProductIdApi(
 	return response
 }
 
-export async function GetProductRetailersApi(
-	navigate,
-	_productId
-) {
+export async function GetProductRetailersApi(navigate, _productId) {
 	let response = await useFetch(navigate).get(`/getRetailers/${_productId}`)
 	return response
 }
