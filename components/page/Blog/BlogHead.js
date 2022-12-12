@@ -8,18 +8,55 @@ import { faLink } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
+import {
+	FacebookShareButton,
+	TwitterShareButton,
+	LinkedinShareButton
+} from 'react-share'
 
 function BlogHead({ data: { structure } }) {
-	const icons = {
-		link: faLink,
-		linkedin: faLinkedinIn,
-		facebook: faFacebook,
-		twitter: faTwitter
+	const socialMedia = {
+		link: {
+			button: <button></button>,
+			icon: faLink
+		},
+		linkedin: {
+			button: LinkedinShareButton,
+			icon: faLinkedinIn
+		},
+		facebook: {
+			button: FacebookShareButton,
+			icon: faFacebook
+		},
+		twitter: {
+			button: TwitterShareButton,
+			icon: faTwitter
+		}
 	}
 
 	const copyUrl = () => {
 		toast.success('Link copied successfully')
 		navigator.clipboard.writeText(window.location.href)
+	}
+
+	const buttonGenerator = (Component, icon, index) => {
+		if (icon === faLink)
+			return (
+				<button
+					key={index}
+					className='text-primary-dark bg-transparent border-0 px-2 mx-1'
+					onClick={copyUrl}>
+					<FontAwesomeIcon icon={icon} size={'xl'} />
+				</button>
+			)
+		return (
+			<Component
+				url={window.location.href}
+				key={index}
+				className='text-primary-dark px-2 mx-1'>
+				<FontAwesomeIcon icon={icon} size={'xl'} />
+			</Component>
+		)
 	}
 
 	return (
@@ -38,26 +75,10 @@ function BlogHead({ data: { structure } }) {
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
 						{structure?.list?.value.map((item, index) =>
-							item?.socialMedia?.value !== 'link' ? (
-								<a
-									href={item?.link?.value}
-									key={index}
-									className='text-primary-dark'>
-									<FontAwesomeIcon
-										icon={icons[item?.socialMedia?.value]}
-										size={'xl'}
-									/>
-								</a>
-							) : (
-								<button
-									onClick={copyUrl}
-									key={index}
-									className='text-primary-dark bg-transparent border-0'>
-									<FontAwesomeIcon
-										icon={icons[item?.socialMedia?.value]}
-										size={'xl'}
-									/>
-								</button>
+							buttonGenerator(
+								socialMedia[item?.socialMedia?.value].button,
+								socialMedia[item?.socialMedia?.value].icon,
+								index
 							)
 						)}
 					</div>
