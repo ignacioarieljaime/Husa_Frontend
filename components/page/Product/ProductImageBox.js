@@ -11,7 +11,7 @@ function ProductImageBox({ data }) {
 			<CustomImage
 				src={structure?.image?.src}
 				wrapperClass={'position-absolute top-0'}
-				wrapperHeight={'100%'}
+				wrapperHeight={'101%'}
 				wrapperWidth='100%'
 				alt={structure?.image?.alt}
 			/>

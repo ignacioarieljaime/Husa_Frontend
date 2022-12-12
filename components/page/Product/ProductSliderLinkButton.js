@@ -11,7 +11,7 @@ function ProductSliderLinkButton({ data, pim }) {
 					<a
 						className={`btn  m-2 rounded-3 m-0 ${
 							pim?.custom_fields[2]?.value === data.title
-								? 'btn-primary'
+								? 'btn-primary-new text-white'
 								: 'btn-outline-dark'
 						}`}>
 						{data.title}
@@ -22,7 +22,7 @@ function ProductSliderLinkButton({ data, pim }) {
 					disabled
 					className={`btn  m-2 rounded-3 m-0 ${
 						pim?.custom_fields[2]?.value === data.title
-							? 'btn-primary'
+							? 'btn-primary-new text-white'
 							: 'btn-outline-dark'
 					}`}>
 					{data.title}

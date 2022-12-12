@@ -129,7 +129,7 @@ input {
 	.article {
 		h1,
 		h2,
-		h3 {
+		h3,.extra_title {
 			font-size: 52.5px !important;
 			line-height: 60px !important;
 		}
@@ -166,7 +166,7 @@ input {
 	}
 	.article {
 		h2,
-		h3 {
+		h3,.extra_title {
 			font-size: 32px !important;
 			line-height: 36px;
 		}

@@ -11,6 +11,8 @@ function CustomImage({
 	wrapperWidth,
 	wrapperHeight,
 	wrapperClass,
+	WrapperMaxWidth,
+	WrapperMaxHeight,
 	onLoad = () => {}
 }) {
 	const image = useRef()
@@ -37,6 +39,8 @@ function CustomImage({
 					...style,
 					height: wrapperHeight,
 					width: wrapperWidth,
+					maxWidth: WrapperMaxWidth,
+					maxHeight: WrapperMaxHeight,
 					position: 'relative'
 				}}>
 				<Image
