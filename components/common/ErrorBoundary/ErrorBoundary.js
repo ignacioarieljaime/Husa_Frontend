@@ -15,13 +15,14 @@ class ErrorBoundary extends Component {
 	}
 	componentDidCatch(error, errorInfo) {
 		let errorComponent = JSON.stringify(error.stack)
-			?.split('at')[1]
-			?.split('(')[0]
+			?.split('at ')[1]
+			?.split(' (')[0]
 
 		this.saveError(`${error.message} in the  ${errorComponent} component`)
 	}
 
 	saveError = async _error => {
+		console.log(_error)
 		let message = {
 			message: _error,
 			route: window.location.href,
