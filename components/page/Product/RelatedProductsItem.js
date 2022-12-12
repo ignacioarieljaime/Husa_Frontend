@@ -83,19 +83,24 @@ function ProductsItem({ data }) {
 					))}
 				</div>
 				<ul className='models-list'>
-					{productYear.map((item, index) => (
-						<li key={'year' + index}>
-							<span className='title'>{item.year}</span>
-							{item.products.map(
-								(model, index) =>
-									RouteHandler(model?.id) && (
-										<Link key={'model' + index} href={RouteHandler(model?.id)}>
-											<a className='model'>{model.model}</a>
-										</Link>
-									)
-							)}
-						</li>
-					))}
+					{productYear.map(
+						(item, index) =>
+							item?.year && (
+								<li key={'year' + index}>
+									<span className='title'>{item.year}</span>
+									{item.products.map(
+										(model, index) =>
+											RouteHandler(model?.id) && (
+												<Link
+													key={'model' + index}
+													href={RouteHandler(model?.id)}>
+													<a className='model'>{model.model}</a>
+												</Link>
+											)
+									)}
+								</li>
+							)
+					)}
 				</ul>
 			</div>
 		</>
