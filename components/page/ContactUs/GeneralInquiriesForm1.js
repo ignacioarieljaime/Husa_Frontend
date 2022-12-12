@@ -37,6 +37,7 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 
 			if (response.status === 200) {
 				toast.success('successful')
+				e.target.reset()
 				formHandler(true)
 			} else {
 				toast.error('is not true')
@@ -107,8 +108,8 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					className={`d-flex mx-auto align-items-center ${
 						btnClass ? btnClass : 'form-submit-btn '
 					}`}>
-					<span > SUBMIT</span>
-					{loading && <Spinner className={"ms-2"} size={25} />}
+					<span> SUBMIT</span>
+					{loading && <Spinner className={'ms-2'} size={25} />}
 				</button>
 			</div>
 		</form>
