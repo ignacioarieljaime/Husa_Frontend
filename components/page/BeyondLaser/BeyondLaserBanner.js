@@ -14,12 +14,12 @@ const BeyondLaserBanner = ({ data: { structure } }) => {
 				</div>
 				<div className='content'>
 					<div className='text'>
-						<h1 data-aos='fade' data-aos-delay='2000' data-aos-duration='1000'>
+						<h1 data-aos='fade' data-aos-delay='1300' data-aos-duration='1000'>
 							{structure?.tinyTitle?.value}
 						</h1>
 						<h2
 							data-aos='fade-up'
-							data-aos-delay='500'
+							data-aos-delay='200'
 							data-aos-duration='1000'>
 							{structure?.title?.value}
 						</h2>
@@ -30,7 +30,7 @@ const BeyondLaserBanner = ({ data: { structure } }) => {
 						<a
 							className='chevron_link'
 							data-aos='fade-down'
-							data-aos-delay='2500'
+							data-aos-delay='1800'
 							data-aos-duration='1000'>
 							<FontAwesomeIcon icon={faChevronDown} size='2xl' />
 						</a>

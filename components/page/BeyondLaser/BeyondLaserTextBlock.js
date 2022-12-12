@@ -1,9 +1,11 @@
 import React from 'react'
 
-const BeyondLaserTextBlock = ({ data: { structure } }) => {
+const BeyondLaserTextBlock = ({ data }) => {
+	const { structure } = data
+
 	return (
 		<section>
-			<div className='beyond_laser_text_block'>
+			<div id={data?.name + data?.id} className='beyond_laser_text_block'>
 				<div
 					className='content'
 					data-aos='fade-up'

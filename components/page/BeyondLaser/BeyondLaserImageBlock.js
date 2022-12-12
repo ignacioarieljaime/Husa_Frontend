@@ -1,9 +1,10 @@
 import React from 'react'
 
-const BeyondLaserImageBlock = ({ data: { structure } }) => {
+const BeyondLaserImageBlock = ({ data }) => {
+	const { structure } = data
 	return (
 		<section>
-			<div style={{ backgroundColor: '#111' }}>
+			<div id={data?.name + data?.id} style={{ backgroundColor: '#111' }}>
 				<div
 					data-aos='fade'
 					data-aos-delay='800'

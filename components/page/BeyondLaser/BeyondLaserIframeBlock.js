@@ -1,9 +1,10 @@
 import React from 'react'
 
-const BeyondLaserIframeBlock = ({ data: { structure } }) => {
+const BeyondLaserIframeBlock = ({ data }) => {
+	const { structure } = data
 	return (
 		<section>
-			<div className='beyond_laser_iframe_block'>
+			<div id={data?.name + data?.id} className='beyond_laser_iframe_block'>
 				<div
 					data-aos='fade'
 					data-aos-delay='700'

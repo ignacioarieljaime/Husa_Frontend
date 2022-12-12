@@ -1,9 +1,10 @@
 import React from 'react'
 
-const BeyondLaserQuoteBlock = ({ data: { structure } }) => {
+const BeyondLaserQuoteBlock = ({ data }) => {
+	const { structure } = data
 	return (
 		<section>
-			<div className='beyond_laser_quote_block'>
+			<div id={data?.name + data?.id} className='beyond_laser_quote_block'>
 				<div className='row box mx-0'>
 					<div className='video_container col-12 col-md-6'>
 						<video muted={true} playsInline={true} autoPlay={true} loop={true}>

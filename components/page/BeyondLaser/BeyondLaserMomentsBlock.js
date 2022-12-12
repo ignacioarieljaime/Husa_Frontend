@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
 
-const BeyondLaserMomentsBlock = ({ data: { structure } }) => {
+const BeyondLaserMomentsBlock = ({ data }) => {
+	const { structure } = data
+
 	return (
 		<section>
-			<div className='beyond_laser_moments_block'>
+			<div id={data?.name + data?.id} className='beyond_laser_moments_block'>
 				<div
 					className='text'
 					data-aos='fade-up'

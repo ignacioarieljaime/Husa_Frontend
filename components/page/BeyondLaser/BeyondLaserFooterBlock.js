@@ -44,7 +44,7 @@ const BeyondLaserFooterBlock = ({ data: { structure } }) => {
 					))}
 				</ul>
 				<div
-					data-aos='fade-up'
+					data-aos='fade'
 					data-aos-delay='300'
 					data-aos-duration='1000'
 					className='copy_right'
