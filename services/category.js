@@ -1,8 +1,9 @@
 import useFetch from 'hooks/useFetch'
 
-
 export async function GetCategoriesApi(navigate) {
-	let response = await useFetch(navigate).get(`/getCategories`)
+	let response = await useFetch(navigate).get(
+		`/getCategories?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
 	return response
 }
 

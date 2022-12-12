@@ -10,12 +10,13 @@ function MoreTVBox({ data }) {
 					{structure?.list?.value?.map((item, index) => {
 						return (
 							<MoreTVItem
+								comingSoon={item?.comingSoon?.value}
 								key={index}
-								image={item.image}
-								title={item.title.value}
-								model={item.model.value}
-								description={item.description.value}
-								link={item.link}
+								image={item?.image}
+								title={item?.title?.value}
+								model={item?.model?.value}
+								description={item?.description?.value}
+								link={item?.link}
 							/>
 						)
 					})}

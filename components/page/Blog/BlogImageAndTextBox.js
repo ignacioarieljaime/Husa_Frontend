@@ -27,7 +27,7 @@ function BlogImageAndTextBoxContainer({ structure }) {
 	})
 	return (
 		<section>
-			<div className='container my-20 py-5 py-lg-20'>
+			<div className='blog_text_container my-20 py-5 py-lg-20'>
 				<div className='row justify-content-between align-items-center mt-20'>
 					<div className='col-12 col-lg-6 mb-20 mb-lg-0'>
 						<div className='row justify-content-between align-items-center'>

@@ -5,7 +5,7 @@
 	margin-bottom: 0%;
 	padding: 0% 15% 15%;
 	background-color: #020202;
-	.title {
+	.title *{
 		text-align: center;
 		margin-bottom: 33px;
 		font-family: 'HISENSE AEON', sans-serif;
@@ -48,7 +48,7 @@
 
 @media screen and (max-width: 479px) {
 	.beyond_laser_iframe_block {
-		.title {
+		.title *{
 			font-size: 4vw;
 		}
 	}

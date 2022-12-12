@@ -39,6 +39,10 @@
 	background-color: var(--primary-color) !important;
 	border-color: var(--primary-color) !important;
 }
+.btn-primary-new {
+	background-color: #00AAA6 !important;
+	border-color: #00AAA6 !important;
+}
 .btn-primary:hover {
 	background-color: var(--primary-color) !important;
 	border-color: var(--primary-color) !important;
@@ -797,10 +801,10 @@
 			display: block;
 			margin-bottom: 5px;
 		}
-		input{
+		input {
 			cursor: pointer;
 		}
-		img{
+		img {
 			object-fit: cover;
 		}
 		.remove_image_button {
@@ -1289,21 +1293,19 @@ article:hover > .img-box-shadow-hover {
 	z-index: 1000;
 }
 .theme-dark {
-	--nav-background-color: #000;
-	--nav-text-color: #fff;
-	background: var(--nav-background-color);
+	background: #000;
+	color: #fff;
+	transition: all 0.4s ease-in-out;
 }
 .theme-light {
-	--nav-background-color: #fff;
-	--nav-text-color: #000;
-	background: var(--nav-background-color);
-	transition: all 0.3s ease-in-out;
+	background: #fff;
+	color: #000;
+	transition: all 0.4s ease-in-out;
 }
 header {
 	.theme-light:hover {
-		--nav-background-color: #000;
-		--nav-text-color: #fff;
-		background: var(--nav-background-color);
+		background: #000;
+		color: #fff;
 	}
 }
 
@@ -2087,8 +2089,8 @@ header {
 .product_static_content {
 	@include mqm(1200) {
 		h4 {
-			font-size: 42px !important;
-			margin-bottom: 34px !important;
+			font-size: 42px ;
+			margin-bottom: 34px ;
 		}
 	}
 
@@ -2171,6 +2173,54 @@ header {
 			a {
 				text-decoration: none;
 				color: var(--primary-color);
+			}
+		}
+	}
+}
+
+.air_products_image_box {
+	.content {
+		position: absolute;
+		left: 3%;
+		top: 10%;
+		color: #292929;
+		max-width: 255px;
+		padding: 12px;
+		.title {
+			font-size: 30px;
+			line-height: 36px;
+			font-weight: 700;
+			margin-bottom: 24px;
+		}
+		.subtitle {
+			font-size: 30px;
+			line-height: 36px;
+			font-weight: 400;
+			margin-bottom: 24px;
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.air_products_image_box {
+		height: 100% !important;
+		padding-top: 0% !important;
+		.content {
+			position: relative;
+			left: 0%;
+			top: 0%;
+			padding: 12px;
+
+			.title {
+				font-size: 24px;
+				line-height: 32px;
+				margin-bottom: 16px;
+			}
+
+			.subtitle {
+				font-size: 24px;
+				line-height: 32px;
+				margin-bottom: 16px;
 			}
 		}
 	}

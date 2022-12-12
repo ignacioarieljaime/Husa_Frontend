@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -56,11 +56,11 @@ function BlogCubeSlider({ data: { structure } }) {
 					</Swiper>
 				</div>
 			</div>
-			{/* <ModalChanelAdviser
+			<ModalChanelAdviser
 				condition={chanelAdviserHandler}
 				handler={setChanelAdviserHandler}
-				// model={currentdata.model}
-			/> */}
+				model={chanelAdviserHandler}
+			/>
 		</section>
 	)
 }

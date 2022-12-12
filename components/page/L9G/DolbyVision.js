@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
 const DolbyVision = ({ data: { structure } }) => {
@@ -12,7 +13,7 @@ const DolbyVision = ({ data: { structure } }) => {
 						{structure?.title?.value}
 					</h2>
 				</div>
-				<img src={structure?.image?.src} alt={structure?.image?.aly} />
+				<CustomImage src={structure?.image?.src} alt={structure?.image?.alt} />
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption mw-md-50 fs-9 fs-md-2 fw-light'

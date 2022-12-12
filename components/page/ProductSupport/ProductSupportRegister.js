@@ -247,8 +247,9 @@ function ProductSupportRegister({ pim, data }) {
 						</div>
 					</form>
 				</div>
+				
 				{modalCondition && (
-					<RoleModal modalHandler={() => setModalCondition(false)} />
+					<RoleModal data={structure?.modelText?.value} modalHandler={() => setModalCondition(false)} />
 				)}
 			</div>
 		</section>

@@ -17,32 +17,28 @@ function BlogTwoImageContainer({ structure }) {
 
 	const image1Ref = useParallax({
 		speed: 10,
-		translateY: ['0px', '-50px']
+		translateY: [0, -10]
 	})
 	const image2Ref = useParallax({
 		speed: 10,
-		translateY: ['-50px', '0px']
+		translateY: [-10, 0]
 	})
 	return (
 		<section>
 			<div className='mb-20'>
-				<div className='row double-banner  mx-0'>
-					<div className='col-12 col-md-6 px-0 header-secondary overflow-hidden'>
+				<div className='row blog_banner mx-0'>
+					<div className='col-12 col-md-6 px-0 header-secondary2 overflow-hidden'>
 						<img
 							src={structure?.image1?.src}
 							alt={structure?.image1?.alt}
-							width='100%'
-							height='110%'
 							ref={image1Ref.ref}
 							onLoad={() => parallaxController.update()}
 						/>
 					</div>
-					<div className='col-12 col-md-6 px-0 header-secondary overflow-hidden'>
+					<div className='col-12 col-md-6 px-0 header-secondary2 overflow-hidden'>
 						<img
 							src={structure?.image2?.src}
 							alt={structure?.image2?.alt}
-							width='100%'
-							height='110%'
 							ref={image2Ref.ref}
 							onLoad={() => parallaxController.update()}
 						/>

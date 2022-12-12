@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { Component } from 'react'
 
 class ErrorBoundary extends Component {
@@ -13,21 +14,39 @@ class ErrorBoundary extends Component {
 		return { hasError: true }
 	}
 	componentDidCatch(error, errorInfo) {
-		// You can use your own error logging service here
-		console.log({ error, errorInfo })
+		let errorComponent = JSON.stringify(error.stack)
+			?.split('at ')[1]
+			?.split(' (')[0]
+
+		this.saveError(`${error.message} in the  ${errorComponent} component`)
+	}
+
+	saveError = async _error => {
+		console.log(_error)
+		let message = {
+			message: _error,
+			route: window.location.href,
+			status: 0
+		}
+		try {
+			let response = await axios.post(
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/addError`,
+				message
+			)
+		} catch (error) {
+			console.log(error)
+		}
 	}
 	render() {
 		// Check if the error is thrown
 		if (this.state.hasError) {
 			// You can render any custom fallback UI
 			return (
-				<div>
-					<h2>Oops, there is an error!</h2>
-					<button
-						type='button'
-						onClick={() => this.setState({ hasError: false })}>
-						Try again?
-					</button>
+				<div class='main-error-page'>
+					<h1 class='error-title'>Woops! Something went wrong :(</h1>
+					<h2 class='error-subtitle'>
+						Have you tried turning it off and on again?
+					</h2>
 				</div>
 			)
 		}

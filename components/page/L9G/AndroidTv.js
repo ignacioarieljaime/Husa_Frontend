@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
 const AndroidTv = ({ data: { structure } }) => {
@@ -17,11 +18,11 @@ const AndroidTv = ({ data: { structure } }) => {
 					{structure?.list?.value.map((item, index) => (
 						<div className='col-12 col-md-6' key={index}>
 							<article className=' text-start'>
-								<img
+								<CustomImage
 									src={item?.image?.src}
 									alt={item?.image?.alt}
-									width='100%'
-									className='my-4 my-md-19'
+									wrapperWidth='100%'
+									wrapperClass='my-4 my-md-19'
 								/>
 								<div>
 									<h3

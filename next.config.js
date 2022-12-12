@@ -18,13 +18,19 @@ const moduleExports = {
 			'https://imcrm.stage-api.hisenseportal.com/api/hisense',
 		NEXT_PUBLIC_PIM_API_ROUTE:
 			process.env.PIM_API_ROUTE ||
-			'https://impim.stage-api.hisenseportal.com/api/cms'
+			'https://impim.stage-api.hisenseportal.com/api/cms',
+		NEXT_PUBLIC_BRAND_ID: process.env.BRAND_ID || 3
 	},
 	sentry: {
 		hideSourceMaps: true
 	},
 	images: {
-		domains: ['assets.hisenseportal.com', 'assets.hisense-usa.com', '*'],
+		domains: [
+			'assets.hisenseportal.com',
+			'assets.hisense-usa.com',
+			'hisense-usa.stagingtank.com',
+			'*'
+		],
 		deviceSizes: [360, 640, 750, 828, 1080, 1200, 1920, 2048, 3840]
 	},
 	async headers() {

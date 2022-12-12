@@ -1,9 +1,65 @@
 import React from 'react'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+	faLinkedinIn,
+	faTwitter,
+	faFacebook
+} from '@fortawesome/free-brands-svg-icons'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { toast } from 'react-toastify'
+import {
+	FacebookShareButton,
+	TwitterShareButton,
+	LinkedinShareButton
+} from 'react-share'
 function BlogDescriptionWithShare({ data: { structure } }) {
+	const socialMedia = {
+		link: {
+			button: <button></button>,
+			icon: faLink
+		},
+		linkedin: {
+			button: LinkedinShareButton,
+			icon: faLinkedinIn
+		},
+		facebook: {
+			button: FacebookShareButton,
+			icon: faFacebook
+		},
+		twitter: {
+			button: TwitterShareButton,
+			icon: faTwitter
+		}
+	}
+
+	const copyUrl = () => {
+		toast.success('Link copied successfully')
+		navigator.clipboard.writeText(window.location.href)
+	}
+
+	const buttonGenerator = (Component, icon, index) => {
+		if (icon === faLink)
+			return (
+				<button
+					key={index}
+					className='text-primary-dark bg-transparent border-0 px-2 mx-1'
+					onClick={copyUrl}>
+					<FontAwesomeIcon icon={icon} size={'xl'} />
+				</button>
+			)
+		return (
+			<Component
+				url={window.location.href}
+				key={index}
+				className='text-primary-dark px-2 mx-1'>
+				<FontAwesomeIcon icon={icon} size={'xl'} />
+			</Component>
+		)
+	}
+
 	return (
 		<section>
-			<div className='tiny-banner container py-md-20 my-20'>
+			<div className='blog_text_container py-md-20 my-20'>
 				<article className='blog-article'>
 					<h3>{structure?.title?.value}</h3>
 					<div
@@ -12,12 +68,13 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 						}}></div>
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
-						{structure?.list?.value.map((item, index) => (
-							<a
-								href={item?.link?.value}
-								key={index}
-								className={`text-primary-dark socicon socicon-${item?.socialMedia?.value}`}></a>
-						))}
+						{structure?.list?.value.map((item, index) =>
+							buttonGenerator(
+								socialMedia[item?.socialMedia?.value].button,
+								socialMedia[item?.socialMedia?.value].icon,
+								index
+							)
+						)}
 					</div>
 				</article>
 			</div>

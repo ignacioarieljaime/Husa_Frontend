@@ -17,12 +17,12 @@ function ProductsItem({ data }) {
 		products.forEach(element => {
 			let year = element.product.customFields
 				.find(item => item.type_name === 'Main Fields')
-				.custom_fields.find(item => item.name === 'Year')
+				?.custom_fields.find(item => item.name === 'Year')
 
-			if (years.find(item => item.year === year.value)) {
-				let oldItem = years.find(item => item.year === year.value)
+			if (years.find(item => item.year === year?.value)) {
+				let oldItem = years.find(item => item.year === year?.value)
 				let newYear = {
-					year: year.value,
+					year: year?.value,
 					products: [
 						...oldItem.products,
 						{ id: element.product.id, model: element.product.model }
@@ -37,7 +37,7 @@ function ProductsItem({ data }) {
 				years = [
 					...years,
 					{
-						year: year.value,
+						year: year?.value,
 						products: [{ id: element.product.id, model: element.product.model }]
 					}
 				]
@@ -83,16 +83,24 @@ function ProductsItem({ data }) {
 					))}
 				</div>
 				<ul className='models-list'>
-					{productYear.map((item, index) => (
-						<li key={'year' + index}>
-							<span className='title'>{item.year}</span>
-							{item.products.map((model, index) => (
-								<Link key={'model' + index} href={RouteHandler(model?.id)}>
-									<a className='model'>{model.model}</a>
-								</Link>
-							))}
-						</li>
-					))}
+					{productYear.map(
+						(item, index) =>
+							item?.year && (
+								<li key={'year' + index}>
+									<span className='title'>{item.year}</span>
+									{item.products.map(
+										(model, index) =>
+											RouteHandler(model?.id) && (
+												<Link
+													key={'model' + index}
+													href={RouteHandler(model?.id)}>
+													<a className='model'>{model.model}</a>
+												</Link>
+											)
+									)}
+								</li>
+							)
+					)}
 				</ul>
 			</div>
 		</>

@@ -33,7 +33,7 @@ function BlogListSearchBox({ data: { structure } }) {
 
 	return (
 		<section>
-			<div className='container'>
+			<div className='blog_text_container'>
 				<div className='row mb-9 pt-9 mx-0 border-top'>
 					<div
 						className='col-12 col-md-7 py-3 px-0 fs-5'

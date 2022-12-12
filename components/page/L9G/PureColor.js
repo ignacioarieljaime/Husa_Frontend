@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 
-const PureColor = () => {
+const PureColor = ({ data }) => {
+	let { structure } = data
 	return (
 		<section className='l9g'>
 			<div className='pure-color'>
@@ -10,7 +11,7 @@ const PureColor = () => {
 					data-aos-duration='1000'
 					data-aos-delay='200'>
 					<h2 className='fs-5 fs-md-2hx text-white text-start py-5 px-5 px-md-20'>
-						3 Pure-Color Lasers.
+						{structure?.title?.value}
 					</h2>
 				</div>
 				<video
@@ -20,7 +21,7 @@ const PureColor = () => {
 					autoPlay={true}
 					loop={true}
 					playsInline={true}>
-					<source src='https://player.vimeo.com/external/585404879.hd.mp4?s=862ec08597335d11ae1fc97988b9711a9182d37f&amp;profile_id=175' />
+					<source src={structure?.video?.value} />
 				</video>
 			</div>
 		</section>

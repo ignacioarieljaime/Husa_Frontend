@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
 const HeroBanner = ({ data: { structure } }) => {
@@ -12,12 +13,12 @@ const HeroBanner = ({ data: { structure } }) => {
 					className='galaxy-video desktop'>
 					<source src={structure?.video?.value} />
 				</video>
-				<img
+				<CustomImage
 					src={structure?.desktopImage?.src}
 					alt={structure?.desktopImage?.alt}
 					className='device-img desktop'
 				/>
-				<img
+				<CustomImage
 					src={structure?.mobileImage?.src}
 					alt={structure?.mobileImage?.alt}
 					className='device-img mobile'

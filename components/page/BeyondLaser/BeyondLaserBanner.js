@@ -10,21 +10,28 @@ const BeyondLaserBanner = ({ data: { structure } }) => {
 				<div className='video_container'>
 					<video autoPlay={true} muted={true} loop={true} playsinline={true}>
 						<source src={structure?.video?.value} data-wf-ignore='true' />
-						<source
-							src='videos/laserbgv-transcode.webm'
-							data-wf-ignore='true'
-						/>
 					</video>
 				</div>
 				<div className='content'>
 					<div className='text'>
-						<h1>{structure?.tinyTitle?.value}</h1>
-						<h2>{structure?.title?.value}</h2>
+						<h1 data-aos='fade' data-aos-delay='2000' data-aos-duration='1000'>
+							{structure?.tinyTitle?.value}
+						</h1>
+						<h2
+							data-aos='fade-up'
+							data-aos-delay='500'
+							data-aos-duration='1000'>
+							{structure?.title?.value}
+						</h2>
 					</div>
 				</div>
 				{structure?.link?.value && (
 					<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
-						<a className='chevron_link'>
+						<a
+							className='chevron_link'
+							data-aos='fade-down'
+							data-aos-delay='2500'
+							data-aos-duration='1000'>
 							<FontAwesomeIcon icon={faChevronDown} size='2xl' />
 						</a>
 					</Link>

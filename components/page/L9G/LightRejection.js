@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import React, { useState } from 'react'
 
 const LightRejection = ({ data: { structure } }) => {
@@ -45,7 +46,7 @@ const LightRejection = ({ data: { structure } }) => {
 					</div>
 					{structure?.tabs?.value.map((tab, index) => (
 						<div className={`tab-image ${activeTab === index ? 'active' : ''}`}>
-							<img src={tab?.image?.src} alt={tab?.image?.alt} />
+							<CustomImage src={tab?.image?.src} alt={tab?.image?.alt} />
 							<div
 								className='fs-9 fs-md-3 fw-light'
 								dangerouslySetInnerHTML={{ __html: tab?.text?.value }}></div>

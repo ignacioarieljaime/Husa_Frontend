@@ -25,7 +25,9 @@ import componentGenerator from 'hooks/componentGenerator';
 
 function Index${_page.id}({pim,data}) {
 return (
-	<Layout title={'${_page.title}'} meta={${
+	<Layout header={data?.widgets[0]?.name === "Header"} title={'${
+		_page.title
+	}'} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
       	<section>
@@ -35,7 +37,8 @@ return (
     )
   }
 ${
-	_page.model_id !== 0
+	_page.model_id !== 0 &&
+	(_page.model_type === 'product' || _page.model_type === 'support')
 		? `  export async function getServerSideProps({req,res}) {		
 			res.setHeader(
 				'Cache-Control',

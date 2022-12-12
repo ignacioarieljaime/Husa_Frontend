@@ -1,9 +1,9 @@
 .blog-header {
-	overflow-x: hidden;
-
+	max-width: 1100px;
+	margin: 0 auto;
 	.sea-floating-img {
 		position: relative;
-		left: 30%;
+		left: 25%;
 		transform: translateX(-10%);
 		width: 100%;
 		max-width: 475px;
@@ -24,8 +24,8 @@
 	}
 	.header-text {
 		* {
-			line-height: 6.5vw;
-			font-size: 6vw;
+			line-height: 125px;
+			font-size: 112px;
 			color: #101010;
 			font-weight: 400;
 		}
@@ -41,15 +41,24 @@
 		&.header-gradient-radial-text u {
 			font-weight: 300;
 			background: #95a128;
-			background: -webkit-radial-gradient(circle farthest-side at left center,
-				#FF9900 0%,
-				#43898A 31%,
-				#FF9900 100%);
-			background: -moz-radial-gradient(circle farthest-side at left center,
-				#FF9900 0%,
-				#43898A 31%,
-				#FF9900 100%);
-			background: radial-gradient(circle farthest-side at left center, #FF9900 0%, #43898A 31%, #FF9900 100%);
+			background: -webkit-radial-gradient(
+				circle farthest-side at left center,
+				#ff9900 0%,
+				#43898a 31%,
+				#ff9900 100%
+			);
+			background: -moz-radial-gradient(
+				circle farthest-side at left center,
+				#ff9900 0%,
+				#43898a 31%,
+				#ff9900 100%
+			);
+			background: radial-gradient(
+				circle farthest-side at left center,
+				#ff9900 0%,
+				#43898a 31%,
+				#ff9900 100%
+			);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 		}
@@ -61,38 +70,38 @@
 		transform: translate(-60%, -40%);
 	}
 }
-@media (max-width: 1920px) {
-	.blog-header {
-		.header-text * {
-			line-height: 8vw;
-			font-size: 7.5vw;
-		}
-	}
-}
 @media (max-width: 1200px) {
 	.blog-header {
-		.header-text *{
-			line-height: 8.5vw;
+		.header-text * {
+			line-height: 10vw;
 			font-size: 9vw;
 		}
 		.floating-text {
 			top: 50%;
 			left: 45%;
 			transform: translate(-50%, -40%);
+			* {
+				line-height: 14.5vw;
+				font-size: 13vw;
+			}
+		}
+		.seconde-header * {
+			line-height: 12vw;
+			font-size: 11vw;
 		}
 	}
 }
 @media (max-width: 768px) {
 	.blog-header {
-		.header-text *{
-			font-size: 14vw;
-			line-height: 15vw;
-		}
 		.floating-text {
 			position: relative;
 			top: 0;
 			left: 0;
 			transform: translate(0, 0);
+			* {
+				line-height: 16.2vw;
+				font-size: 15vw;
+			}
 		}
 		.sea-floating-img {
 			left: 0;
@@ -107,6 +116,10 @@
 	.blog-header {
 		.tv-floating-img {
 			width: 100%;
+		}
+		.seconde-header * {
+			line-height: 13vw;
+			font-size: 12vw;
 		}
 	}
 }

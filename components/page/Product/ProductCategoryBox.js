@@ -25,7 +25,11 @@ function ProductCategoryBox({ data, pim }) {
 	return (
 		<>
 			{' '}
-			<div id={data.name + data.id} className='catalog-navbar' ref={menu}>
+			<div
+				id={data.name + data.id}
+				className='catalog-navbar'
+				ref={menu}
+				style={{ zIndex: fix ? 100005 : 10 }}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 						<li className='me-md-auto'>
@@ -65,11 +69,13 @@ function ProductCategoryBox({ data, pim }) {
 							<button
 								style={{ padding: fix ? '20px 20px' : '14px 20px' }}
 								onClick={() =>
-									pim?.retailers.length !== 0
+									pim?.buy_status === 'ChannelAdvisor'
 										? setChanelAdviserHandler(!chanelAdviserHandler)
 										: {}
 								}>
-								{pim?.retailers.length !== 0 ? 'Where To Buy' : 'Coming Soon'}
+								{pim?.buy_status === 'ChannelAdvisor'
+									? 'Where To Buy'
+									: 'Coming Soon'}
 							</button>
 						</li>
 					</ul>

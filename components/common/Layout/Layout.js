@@ -9,7 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { getSettingApi } from 'services/cxm'
 import Spinner from '../Spinner'
 
-function Layout({ children, meta, title }) {
+function Layout({ children, meta, title, header }) {
 	const [compareRoute, setCompareRoute] = useState()
 	const [showGoTop, setShowGoTop] = useState(false)
 	const router = useRouter()
@@ -64,7 +64,7 @@ function Layout({ children, meta, title }) {
 						)
 					)}
 			</Head>
-			<section className={`layout ${title}`}>
+			<section className={`layout ${title} ${header ? '' : 'no_header'}`}>
 				<ToastContainer />
 				<Suspense
 					fallback={

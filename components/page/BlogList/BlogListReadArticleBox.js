@@ -17,24 +17,23 @@ function BlogListReadArticleBoxContainer({ structure }) {
 
 	const imageRef = useParallax({
 		speed: 10,
-		translateY: [-3, 3]
+		translateY: [12, -12]
 	})
 
 	return (
 		<section>
-			<div className='container'>
-				<div className='row mb-20 pb-0 pb-md-20'>
+			<div className='blog_text_container'>
+				<div className='row mb-20'>
 					<div className='col-12'>
-						<figure className='blog-article-box-full'>
-							<div className='header-secondary image-box'>
+						<figure className='blog-article-box-full' ref={imageRef.ref}>
+							<div className='image-box'>
 								<Link
 									href={structure?.link?.value ? structure?.link?.value : '/'}>
-									<a>
+									<a className='d-block'>
 										<img
 											src={structure?.image?.src}
 											alt={structure?.image?.alt}
 											width='100%'
-											ref={imageRef.ref}
 											onLoad={() => parallaxController.update()}
 										/>
 									</a>

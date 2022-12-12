@@ -18,7 +18,7 @@ function BlogListSoundBardItemContainer({ data }) {
 
 	const imageRef = useParallax({
 		speed: 10,
-		translateY: [0, -10]
+		translateY: [0, -5]
 	})
 
 	return (
@@ -28,7 +28,7 @@ function BlogListSoundBardItemContainer({ data }) {
 					<div className='col-12 col-md-4 col-lg-3 mb-5 mb-md-0'>
 						<div className='image-box'>
 							<Link href={data?.link?.value ? data?.link?.value : '/'}>
-								<a>
+								<a className='d-block'>
 									<img
 										src={data?.image?.src}
 										alt={data?.image?.alt}

@@ -12,11 +12,23 @@
 		}
 		.swiper-slide {
 			text-align: center;
+			.blog_cube_slider_item {
+				.title {
+					font-size: 52px;
+					line-height: 62px;
+					color: #101010;
+				}
+				.model {
+					font-size: 22px;
+					line-height: 31px;
+					color: #101010;
+				}
+			}
 		}
 	}
 	> .swiper-wrapper {
 		padding-top: 60px;
-		cursor: url(../../../../public/assets/images/custom-cursor.png) 0 0 , grab !important;
+		cursor: url(../../../../public/assets/images/custom-cursor.png) 0 0, grab !important;
 	}
 	> .swiper-pagination-bullets {
 		top: 0;
@@ -41,7 +53,9 @@
 }
 
 @media (max-width: 768px) {
-	.blog-big-coverflow .swiper-pagination-bullets {
-		text-align: center;
+	.blog-big-coverflow {
+		.swiper-pagination-bullets {
+			text-align: center;
+		}
 	}
 }

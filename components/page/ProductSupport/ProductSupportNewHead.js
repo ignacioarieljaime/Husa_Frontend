@@ -8,9 +8,10 @@ function ProductSupportNewHead({ pim }) {
 			<div className='container'>
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
-						<div className='image-container'>
+						<div className='image-container '>
 							{pim?.assets.find(item => item.order === 1) ? (
 								<CustomImage
+									wrapperClass={'product_support_head_image'}
 									src={pim?.assets.find(item => item.order === 1).url}
 									alt='featured image'
 									// width='80%'
@@ -18,6 +19,7 @@ function ProductSupportNewHead({ pim }) {
 							) : (
 								<CustomImage
 									src={pim?.assets.find(item => item.type_id === 1).url}
+									wrapperClass={'product_support_head_image'}
 									alt='featured image'
 									// width='80%'
 								/>

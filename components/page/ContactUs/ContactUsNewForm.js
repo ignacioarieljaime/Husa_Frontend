@@ -6,6 +6,7 @@ import ServiceSupportFormV2 from './ServiceSupportFormV2'
 function ContactUsNewForm({ data }) {
 	let { structure } = data
 	const [generalInquiriesForm, setGeneralInquiriesForm] = useState(true)
+	console.log(structure)
 	return (
 		<section className='border-bottom border-dark'>
 			<div className='px-8 px-md-20 mt-20'>
@@ -46,7 +47,7 @@ function ContactUsNewForm({ data }) {
 					) : (
 						<>
 							<h2 className='fs-1 mb-18 text-center'>
-								{structure?.form?.value?.title?.value}
+								{structure?.connection?.value?.title?.value}
 							</h2>
 							<ServiceSupportFormV2 data={structure?.connection?.value} />
 						</>

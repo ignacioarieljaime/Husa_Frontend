@@ -16,6 +16,9 @@ body {
 	.layout {
 		padding-top: 72px;
 		position: relative;
+		&.no_header {
+			padding-top: 0 !important;
+		}
 	}
 
 	.Day {
@@ -126,7 +129,7 @@ input {
 	.article {
 		h1,
 		h2,
-		h3 {
+		h3,.extra_title {
 			font-size: 52.5px !important;
 			line-height: 60px !important;
 		}
@@ -163,7 +166,7 @@ input {
 	}
 	.article {
 		h2,
-		h3 {
+		h3,.extra_title {
 			font-size: 32px !important;
 			line-height: 36px;
 		}
@@ -195,6 +198,11 @@ input {
 		rgba(67, 137, 138, 0.1) 0%,
 		rgba(255, 153, 0, 0.1) 100%
 	);
+}
+.blog_text_container {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 12px;
 }
 
 .modal {
@@ -677,6 +685,24 @@ input {
 			font-weight: 400;
 			margin-left: 12px;
 			line-height: 18px;
+		}
+	}
+}
+.contaact_us_phone_us {
+	img {
+		object-fit: contain !important;
+	}
+}
+.scorllable-video .text-heading {
+	z-index: 999 !important;
+}
+
+.modal {
+	z-index: 9999999;
+	.modal-content {
+		> div {
+			overflow: auto;
+			max-height: 73vh;
 		}
 	}
 }

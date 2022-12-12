@@ -16,7 +16,7 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 			style={{
 				backgroundColor: data?.structure?.backgroundColor?.value
 			}}
-			className='product single-product single-product-v2'>
+			className='product single-product single-product-v2 theme-light'>
 			<div className='container'>
 				<div className='row'>
 					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
@@ -25,29 +25,27 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							className={`title ${
 								pim?.custom_fields.find(item => item.title === 'h2 Title')
 									?.value
-									? 'text-white mb-5'
-									: 'text-white fs-2hx mb-1'
+									? 'text-dark mb-5'
+									: 'text-dark fs-2hx mb-1'
 							} `}>
 							{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
 								? pim?.custom_fields.find(item => item.title === 'h2 Title')
-										?.value?.value
+										?.value
 								: pim?.custom_fields?.find(
 										item => item.title === 'Product Type'
 								  )?.value}
 						</h2>
-						<h1 className='serie text-white mb-8'>
+						<h1 className='serie text-dark mb-8'>
 							{
 								pim?.custom_fields.find(item => item.title === 'span Title')
 									?.value
 							}
 						</h1>
-						<span className='tip mb-5 text-uppercase text-white'>
-							{pim?.name}
+						<span className='! mb-5 text-uppercase text-dark'>
+							{data?.structure?.description?.value}
 						</span>
-						<p className='text-white'>Model: {pim?.model}</p>
-						<div
-							className='model-toggle '
-							style={{ color: data?.structure?.backgroundColor?.value }}>
+						<p className='text-dark'>Model: {pim?.model}</p>
+						<div className='model-toggle '>
 							{pim?.series[0]?.values.map(
 								(item, index) =>
 									item.title && (
@@ -62,13 +60,16 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						<div className='product-rating'></div>
 						<button
 							className=' pdp_where_to_buy_btn px-6 py-3'
+							disabled={pim?.buy_status ? false : true}
 							style={{ color: data?.structure?.backgroundColor?.value }}
 							onClick={() =>
-								pim?.retailers.length !== 0
+								pim?.buy_status === 'ChannelAdvisor'
 									? setChanelAdviserHandler(!chanelAdviserHandler)
 									: {}
 							}>
-							{pim?.retailers.length !== 0 ? 'Where To Buy' : 'coming soon'}
+							{pim?.buy_status === 'ChannelAdvisor'
+								? 'Where To Buy'
+								: 'coming soon'}
 						</button>
 					</div>
 				</div>
