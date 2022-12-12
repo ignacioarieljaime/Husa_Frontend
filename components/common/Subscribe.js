@@ -18,7 +18,7 @@ function Subscribe() {
 			setLoading(true)
 			try {
 				let response = await axios.post(
-					`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/lead`,
+					`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639724668c001`,
 					{ email: emailName }
 				)
 				if (response.status === 200) {
