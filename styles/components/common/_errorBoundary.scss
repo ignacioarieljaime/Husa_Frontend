@@ -1,0 +1,29 @@
+.error_page{
+    position: relative;
+    .image_container{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        img{
+            object-fit: cover;
+        }
+        .backdrop{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    .content{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        transform : translateY(-50%);
+        padding: 0 12px;
+    }
+}
