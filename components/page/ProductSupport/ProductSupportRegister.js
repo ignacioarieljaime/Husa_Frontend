@@ -48,7 +48,7 @@ function ProductSupportRegister({ pim, data }) {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/register-product`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {

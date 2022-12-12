@@ -87,7 +87,7 @@ function ServiceSupportForm({ formHandler }) {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/support`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63970dbd680aa`,
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {

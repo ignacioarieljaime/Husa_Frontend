@@ -15,7 +15,7 @@ const moduleExports = {
 			'https://imecom.stage-api.hisenseportal.com/api/v1',
 		NEXT_PUBLIC_CRM_API_ROUTE:
 			process.env.CRM_API_ROUTE ||
-			'https://imcrm.stage-api.hisenseportal.com/api/hisense',
+			'https://imcrm2.dev-api.hisenseportal.com/api/v1/form/fill',
 		NEXT_PUBLIC_PIM_API_ROUTE:
 			process.env.PIM_API_ROUTE ||
 			'https://impim.stage-api.hisenseportal.com/api/cms',

@@ -31,7 +31,7 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/inquery`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63971063e8013`,
 				dataSchema
 			)
 

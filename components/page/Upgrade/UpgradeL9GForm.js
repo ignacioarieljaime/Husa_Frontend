@@ -35,7 +35,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 		setLoading('button')
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/l9g-trichroma`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639712e52ac39`,
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
