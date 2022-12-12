@@ -18,11 +18,13 @@ const ProductPackageItem = ({ data }) => {
 					</div>
 				</div>
 				<div className='text-left mt-8'>
-					<Link href={data?.shopNow?.value}>
-						<a className='btn btn-primary rounded-5 px-5 py-2'>
-							{data?.shopNow?.title}
-						</a>
-					</Link>
+					{data?.link?.value ? (
+						<Link href={data?.link?.value}>
+							<a className='btn btn-primary rounded-5 px-5 py-2'>
+								{data?.link?.title}
+							</a>
+						</Link>
+					) : null}
 				</div>
 			</div>
 		</div>
