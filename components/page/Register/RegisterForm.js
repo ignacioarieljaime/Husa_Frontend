@@ -99,6 +99,7 @@ function RegisterForm({ data }) {
 			if (response.status === 200) {
 				toast.success('ticket sended', { toastId: 'ticket-sended' })
 				e.target.reset()
+				setFile(null)
 			} else {
 				toast.error('ticket didn"t sended', { toastId: 'ticket-error' })
 			}

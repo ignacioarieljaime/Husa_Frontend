@@ -47,7 +47,7 @@ function H8FPromoForm({ data }) {
 		try {
 			let fileUploadCondition = await uploadFile()
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F6397146c0d259`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/contact/offer-claim`,
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
 			if (response.status === 200) {
