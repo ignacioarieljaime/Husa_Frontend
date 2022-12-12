@@ -6,17 +6,25 @@ import {
 	ParallaxProvider
 } from 'react-scroll-parallax'
 
-const BlogListLittleReadArticleBox = ({ data: { largePost, smallPost } }) => {
+const BlogListLittleReadArticleBox = ({
+	index,
+	data: { largePost, smallPost }
+}) => {
 	return (
 		<ParallaxProvider>
 			<BlogListLittleReadArticleBoxContainer
+				index={index}
 				largePost={largePost}
 				smallPost={smallPost}
 			/>
 		</ParallaxProvider>
 	)
 }
-function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
+function BlogListLittleReadArticleBoxContainer({
+	largePost,
+	smallPost,
+	index
+}) {
 	const parallaxController = useParallaxController()
 
 	const card1Ref = useParallax({
@@ -31,7 +39,10 @@ function BlogListLittleReadArticleBoxContainer({ largePost, smallPost }) {
 	return (
 		<section>
 			<div className='blog_custom_conrainer'>
-				<div className='row  justify-content-between align-items-start pb-0 pb-md-20 custom_conrainer'>
+				<div
+					className={`row  justify-content-between align-items-start pb-0 pb-md-20 custom_conrainer ${
+						index % 2 !== 0 ? 'flex-row-reverse' : null
+					}`}>
 					<div className='article_container col-12 col-md-4 mb-20'>
 						<figure className='blog-article-box' ref={card1Ref.ref}>
 							<div className='image-box'>

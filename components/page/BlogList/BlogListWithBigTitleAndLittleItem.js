@@ -25,7 +25,11 @@ function BlogListWithBigTitleAndLittleItem({ data: { structure } }) {
 					{structure?.list?.value.map(
 						(item, index) =>
 							index < showCount && (
-								<BlogListLittleReadArticleBox key={index} data={item} />
+								<BlogListLittleReadArticleBox
+									key={index}
+									index={index}
+									data={item}
+								/>
 							)
 					)}
 
