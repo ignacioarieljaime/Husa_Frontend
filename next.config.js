@@ -18,7 +18,8 @@ const moduleExports = {
 			'https://imcrm.stage-api.hisenseportal.com/api/hisense',
 		NEXT_PUBLIC_PIM_API_ROUTE:
 			process.env.PIM_API_ROUTE ||
-			'https://impim.stage-api.hisenseportal.com/api/cms'
+			'https://impim.stage-api.hisenseportal.com/api/cms',
+		NEXT_PUBLIC_BRAND_ID: process.env.BRAND_ID || 3
 	},
 	sentry: {
 		hideSourceMaps: true

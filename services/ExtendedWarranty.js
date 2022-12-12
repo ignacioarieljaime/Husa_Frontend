@@ -8,7 +8,7 @@ export async function GetProducts(_categoryId, _model, _search) {
 				category_id: _categoryId,
 				model: _model,
 				search: _search,
-				brand_id: 3
+				brand_id: process.env.NEXT_PUBLIC_BRAND_ID
 			}
 		}
 	)
