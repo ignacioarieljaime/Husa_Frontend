@@ -159,16 +159,19 @@ function RegisterForm({ data }) {
 							}}
 						/>
 					</div>
-					<div className='col-12 mb-10 custom-select-box'>
-						<CustomSelectBox
-							title={'PLEASE SELECT YOUR SERIES'}
-							required={true}
-							options={series}
-							onChange={_value =>
-								dataSchemaHandler('product_series', _value.name)
-							}
-						/>
-					</div>
+
+					{series?.length !== 0 && (
+						<div className='col-12 mb-10 custom-select-box'>
+							<CustomSelectBox
+								title={'PLEASE SELECT YOUR SERIES'}
+								required={true}
+								options={series}
+								onChange={_value =>
+									dataSchemaHandler('product_series', _value.name)
+								}
+							/>
+						</div>
+					)}
 					{dataSchema.product_category && (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
