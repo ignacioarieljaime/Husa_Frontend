@@ -92,6 +92,10 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductFindMeInStore'
 	},
 	{
+		name: 'ProductFindMeInStore',
+		path: 'components/page/Product/ProductFindMeInStore'
+	},
+	{
 		name: 'ProductResourceBox',
 		path: 'components/page/Product/ProductResourceBox'
 	},
