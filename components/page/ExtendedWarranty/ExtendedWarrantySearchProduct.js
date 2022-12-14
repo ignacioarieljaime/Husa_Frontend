@@ -102,12 +102,6 @@ const ExtendedWarrantySearchProduct = ({
 							className={`ms-2 ${showMore ? 'close' : ''}`}
 						/>
 					</button>
-					<button
-						className='n-btn mt-6 mt-md-8'
-						onClick={() => setDialogOpen(true)}>
-						<FontAwesomeIcon icon={faCircleInfo} className='me-2' size='xl' />
-						Where do i find my model number?
-					</button>
 				</div>
 			</div>
 			{dialogOpen && (
