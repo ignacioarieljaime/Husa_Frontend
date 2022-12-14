@@ -65,7 +65,10 @@ function Layout({ children, meta, title, header }) {
 						item.rel === 'blank' ? (
 							<meta name={item.name} content={item.content} />
 						) : (
-							<meta property={`og:${item.name}`} content={item.content} />
+							<meta
+								property={item.name.split('=')[1].replace(/"/g, '')}
+								content={item.content ? item.content : ''}
+							/>
 						)
 					)}
 			</Head>
