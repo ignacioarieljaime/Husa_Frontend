@@ -1,5 +1,3 @@
-const { withSentryConfig } = require('@sentry/nextjs')
-
 const moduleExports = {
 	reactStrictMode: true,
 	swcMinify: true,
@@ -21,9 +19,7 @@ const moduleExports = {
 			'https://impim.stage-api.hisenseportal.com/api/cms',
 		NEXT_PUBLIC_BRAND_ID: process.env.BRAND_ID || 3
 	},
-	sentry: {
-		hideSourceMaps: true
-	},
+
 	images: {
 		domains: [
 			'assets.hisenseportal.com',
@@ -49,8 +45,5 @@ const moduleExports = {
 	}
 }
 
-const sentryWebpackPluginOptions = {
-	silent: true
-}
-
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)
+// module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)
+module.exports = moduleExports

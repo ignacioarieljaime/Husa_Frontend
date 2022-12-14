@@ -7,14 +7,19 @@ import React, { Suspense, useEffect, useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { getSettingApi } from 'services/cxm'
-import Spinner from '../Spinner'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 function Layout({ children, meta, title, header }) {
 	const [compareRoute, setCompareRoute] = useState()
 	const [showGoTop, setShowGoTop] = useState(false)
 	const router = useRouter()
+	const [showChild, setShowChild] = useState(false)
 
 	useEffect(() => {
+		AOS.init()
+		AOS.refresh()
+		setShowChild(true)
 		getSetting()
 		window.addEventListener('scroll', () => listenToScroll(window.innerHeight))
 		return () => window.removeEventListener('scroll', () => listenToScroll(0))
@@ -66,14 +71,8 @@ function Layout({ children, meta, title, header }) {
 			</Head>
 			<section className={`layout ${title} ${header ? '' : 'no_header'}`}>
 				<ToastContainer />
-				<Suspense
-					fallback={
-						<>
-							<Spinner size={50} />
-						</>
-					}>
-					<> {children}</>
-				</Suspense>
+
+				<> {children}</>
 			</section>
 			{showGoTop && (
 				<button
@@ -83,8 +82,6 @@ function Layout({ children, meta, title, header }) {
 					<FontAwesomeIcon icon={faChevronUp} />
 				</button>
 			)}
-
-			<CompareModal route={compareRoute} />
 		</>
 	)
 }
