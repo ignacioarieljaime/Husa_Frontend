@@ -50,6 +50,7 @@ function Layout({ children, meta, title, header }) {
 	const goUpHandler = () => {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 	}
+	console.log(meta)
 	return (
 		<>
 			<Head>
@@ -64,9 +65,14 @@ function Layout({ children, meta, title, header }) {
 					meta.map(item =>
 						item.rel === 'blank' ? (
 							<meta name={item.name} content={item.content} />
+						) : item.rel === 'http-equiv' ? (
+							<meta
+								httpEquiv={item.name}
+								content={item.content ? item.content : ''}
+							/>
 						) : (
 							<meta
-								property={item.name.split('=')[1].replace(/"/g, '')}
+								property={item?.name?.split('=')[1]?.replace(/"/g, '')}
 								content={item.content ? item.content : ''}
 							/>
 						)
