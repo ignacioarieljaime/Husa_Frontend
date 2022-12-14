@@ -50,7 +50,6 @@ function Layout({ children, meta, title, header }) {
 	const goUpHandler = () => {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 	}
-	console.log(meta)
 	return (
 		<>
 			<Head>

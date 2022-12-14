@@ -42,7 +42,7 @@ const SmoothMotionContainer = ({ structure }) => {
 	})
 
 	useEffect(() => {
-		setWindowWidthSize(window.innerWidth)
+		setWindowWidthSize(innerWidth)
 		if (windowSize[0]) {
 			bluredImage.current.style.width =
 				slider?.element?.progress * windowSize[0] * 0.8 +

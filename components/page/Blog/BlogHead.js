@@ -5,7 +5,7 @@ import {
 	faFacebook
 } from '@fortawesome/free-brands-svg-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
 import {
@@ -15,6 +15,7 @@ import {
 } from 'react-share'
 
 function BlogHead({ data: { structure } }) {
+	const [location, setLocation] = useState('')
 	const socialMedia = {
 		link: {
 			button: <button></button>,
@@ -34,6 +35,11 @@ function BlogHead({ data: { structure } }) {
 		}
 	}
 
+	useEffect(() => {
+		setLocation(window.location.href)
+	}, [])
+	
+
 	const copyUrl = () => {
 		toast.success('Link copied successfully')
 		navigator.clipboard.writeText(window.location.href)
@@ -51,7 +57,7 @@ function BlogHead({ data: { structure } }) {
 			)
 		return (
 			<Component
-				url={window.location.href}
+				url={location}
 				key={index}
 				className='text-primary-dark px-2 mx-1'>
 				<FontAwesomeIcon icon={icon} size={'xl'} />

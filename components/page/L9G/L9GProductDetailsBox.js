@@ -1,7 +1,9 @@
 import { useWindowSize } from 'hooks/useWindowSize'
+import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 
 function L9GProductDetailsBox({ pim, data }) {
+	const router = useRouter()
 	const [showMore, setShowMore] = useState(false)
 	const spaceContainer = useRef()
 	const windowSize = useWindowSize()
@@ -15,11 +17,11 @@ function L9GProductDetailsBox({ pim, data }) {
 		}
 	}, [showMore, windowSize])
 
-	// useEffect(() => {
-	// 	if (window.location.hash === `#${data?.name + data?.id}`) {
-	// 		setShowMore(true)
-	// 	}
-	// }, [window.location.hash])
+	useEffect(() => {
+		if (router.asPath.includes(`#${data?.name + data?.id}`)) {
+			setShowMore(true)
+		}
+	}, [router.asPath])
 
 	return (
 		<div
