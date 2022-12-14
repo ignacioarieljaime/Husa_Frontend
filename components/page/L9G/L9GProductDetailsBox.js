@@ -15,11 +15,11 @@ function L9GProductDetailsBox({ pim, data }) {
 		}
 	}, [showMore, windowSize])
 
-	useEffect(() => {
-		if (window.location.hash === `#${data?.name + data?.id}`) {
-			setShowMore(true)
-		}
-	}, [window.location.hash])
+	// useEffect(() => {
+	// 	if (window.location.hash === `#${data?.name + data?.id}`) {
+	// 		setShowMore(true)
+	// 	}
+	// }, [window.location.hash])
 
 	return (
 		<div

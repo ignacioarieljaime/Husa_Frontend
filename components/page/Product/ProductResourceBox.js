@@ -22,7 +22,10 @@ function ProductResourceBox({ pim, data }) {
 						)
 				)}
 				<li>
-					<Link href={`/support/${router.pathname.split('/').at(-1)}`}>
+					<Link
+						href={`/support/${
+							router.pathname.split('/')[router.pathname.split('/').length - 1]
+						}`}>
 						<a>
 							<span className='underline-on-hover text-uppercase'>
 								PRODUCT SUPPORT
