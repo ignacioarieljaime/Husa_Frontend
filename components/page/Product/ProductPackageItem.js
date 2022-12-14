@@ -6,12 +6,12 @@ const ProductPackageItem = ({ data }) => {
 		<div className='item day-100'>
 			<div className='d-flex flex-column h-100 justify-content-between align-items-start'>
 				<div>
-					<span className='text-primary type'>{data?.title?.value}</span>
+					<span className='text-primary type'>{data?.label?.value}</span>
 					<div className='text-center position-relative mb-10'>
 						<img src={data?.image?.src} alt={data?.image?.alt} width='90%' />
 					</div>
 					<div>
-						<h5 className='title'>{data?.grayText?.value} </h5>
+						<h5 className='title'>{data?.title?.value}</h5>
 						<div
 							className='item-features'
 							dangerouslySetInnerHTML={{ __html: data?.specs.value }}></div>
