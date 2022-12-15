@@ -5,36 +5,31 @@
 	.google_tv_tops_item {
 		padding: 60px 50px;
 		text-align: center;
-        margin: 20px 0;
+		margin: 20px 0;
 		&:nth-child(n + 2) {
 			border-left: 1px solid #cbcbcb;
 		}
 
+		.title {
+			font-weight: 400 !important;
+			font-size: 24px !important;
+			line-height: 120% !important;
+			color: #383838 !important;
+			margin-bottom: 20px;
+		}
 		div {
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6 {
-				font-weight: 400 !important;
-				font-size: 24px !important;
-				line-height: 120% !important;
-				color: #383838 !important;
-				margin-bottom: 20px;
-			}
-
 			p {
 				font-weight: 300 !important;
 				font-size: 16px !important;
 				line-height: 120% !important;
 				color: #383838 !important;
+				margin-bottom: 5px;
 			}
 		}
 
 		img {
 			object-fit: contain;
-            max-width: 50px;
+			max-width: 50px;
 		}
 	}
 }
@@ -59,7 +54,7 @@
 @media (max-width: 575px) {
 	.google_tv_tops {
 		.google_tv_tops_item {
-        margin:  0;
+			margin: 0;
 			width: 100% !important;
 			border-left: none !important;
 		}
