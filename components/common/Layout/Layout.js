@@ -94,7 +94,7 @@ function Layout({ children, meta, title, header }) {
 				src='https://www.googletagmanager.com/ns.html?id=GTM-WBPC7RT'
 				height='0'
 				width='0'
-				style='display:none;visibility:hidden'></iframe>
+				style={{ display: 'none', visibility: 'hidden' }}></iframe>
 		</>
 	)
 }
