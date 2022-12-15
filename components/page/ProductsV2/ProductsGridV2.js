@@ -34,7 +34,7 @@ const ProductsGridV2 = ({ data }) => {
 		} else {
 			getProducts([])
 		}
-	}, [sortingMethod])
+	}, [router.asPath, sortingMethod])
 
 	const getProducts = async _filter => {
 		setProducts('loading')
