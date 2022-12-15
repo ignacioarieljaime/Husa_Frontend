@@ -19,18 +19,14 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 
 	const searchHandler = async _value => {
 		setInput(_value)
-		if (_value.length >= 2) {
-			setResult('loading')
-			try {
-				let response = await axios.get(
-					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchPage/${_value}`
-				)
-				setResult(response.data)
-			} catch (error) {
-				console.log(error)
-			}
-		} else {
-			setResult()
+		setResult('loading')
+		try {
+			let response = await axios.get(
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchPage/${_value}`
+			)
+			setResult(response.data)
+		} catch (error) {
+			console.log(error)
 		}
 	}
 	return (
@@ -56,33 +52,32 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 						<Spinner />
 					) : (
 						<div>
-							<div>
-								<h6>Products</h6>
-								<ul>
-									{result?.products.length !== 0 ? (
-										result?.products.map((item, index) => (
+							{result?.products.length !== 0 && (
+								<div>
+									<h6>Products</h6>
+									<ul>
+										{result?.products.map((item, index) => (
 											<li key={`search-item-${index}`}>
-												<Link href={item.route}>
-													<a>
+												<Link target={'_blank'} href={item.route}>
+													<a target={'_blank'}>
 														<TelevisionSearchIcon />
 														{item.title}
 													</a>
 												</Link>
 											</li>
-										))
-									) : (
-										<div>it's empty</div>
-									)}
-								</ul>
-							</div>
-							<div>
-								<h6>supports</h6>
-								<ul>
-									{result?.support.length !== 0 ? (
-										result?.support.map((item, index) => (
+										))}
+									</ul>
+								</div>
+							)}
+
+							{result?.support.length !== 0 && (
+								<div>
+									<h6>supports</h6>
+									<ul>
+										{result?.support.map((item, index) => (
 											<li key={`search-item-${index}`}>
-												<Link href={item.route}>
-													<a>
+												<Link target={'_blank'} href={item.route}>
+													<a target={'_blank'}>
 														<SupportIcon />
 														{item.title}
 														<span className='ms-2'>
@@ -91,29 +86,26 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 													</a>
 												</Link>
 											</li>
-										))
-									) : (
-										<div>it's empty</div>
-									)}
-								</ul>
-							</div>
-							<div>
-								<h6>documents</h6>
-								<ul>
-									{result?.documents.length !== 0 ? (
-										result?.documents.map((item, index) => (
+										))}
+									</ul>
+								</div>
+							)}
+
+							{result?.documents.length !== 0 && (
+								<div>
+									<h6>documents</h6>
+									<ul>
+										{result?.documents.map((item, index) => (
 											<li key={`search-item-${index}`}>
-												<a href={item.url} download>
+												<a target={'_blank'} href={item.url}>
 													<DocumentIcon />
 													{item.title}
 												</a>
 											</li>
-										))
-									) : (
-										<div>it's empty</div>
-									)}
-								</ul>
-							</div>
+										))}
+									</ul>
+								</div>
+							)}
 						</div>
 					)}
 				</div>
