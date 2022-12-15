@@ -66,7 +66,7 @@ function Layout({ children, meta, title, header }) {
 							<meta name={item.name} content={item.content} />
 						) : item.rel === 'http-equiv' ? (
 							<meta
-								httpEquiv={item.name}
+								http-equiv={item.name}
 								content={item.content ? item.content : ''}
 							/>
 						) : (
