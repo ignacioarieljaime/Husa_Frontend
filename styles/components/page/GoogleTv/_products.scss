@@ -9,9 +9,13 @@
 	.products {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		align-items: stretch;
 
 		.item {
+			display:flex;
+			justify-content:space-between;
+			align-items:start;
+			flex-direction:column;
 			color: #565260;
 			padding-bottom: 50px;
 			margin: 0 15px;

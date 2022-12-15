@@ -13,10 +13,10 @@ import ProductPackagesSliderItem from './ProductPackagesSliderItem'
 
 const ProductPackagesSlider = ({ data }) => {
 	const { structure } = data
+	const [product, setProduct] = useState([])
+	const [series, setSeries] = useState()
 
 	const router = useRouter()
-
-	const [series, setSeries] = useState()
 
 	useEffect(() => {
 		let seriesId = structure?.list?.value?.items.map(item => item.id)
@@ -36,6 +36,26 @@ const ProductPackagesSlider = ({ data }) => {
 		}
 	}
 
+	useEffect(() => {
+		const temp = product
+		if (Array.isArray(series))
+			series.forEach(item => {
+				const { products } = item
+				if (Array.isArray(products))
+					products.forEach(element => {
+						if (element?.product?.category?.name === 'Kitchen Suites') {
+							temp.push(element)
+						}
+					})
+				else {
+					if (products?.product?.category?.name === 'Kitchen Suites') {
+						temp.push(products)
+					}
+				}
+			})
+		setProduct(temp)
+	}, [series])
+
 	return (
 		<section className='package_types_slider'>
 			<article className='article'>
@@ -53,7 +73,7 @@ const ProductPackagesSlider = ({ data }) => {
 					{series === 'loading' ? (
 						<Spinner size={35} />
 					) : Array.isArray(series) ? (
-						series.map((item, index) => (
+						product.map((item, index) => (
 							<SwiperSlide
 								aria-hidden='true'
 								className='item'
