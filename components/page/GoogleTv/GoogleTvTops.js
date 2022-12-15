@@ -16,6 +16,7 @@ const GoogleTvTops = ({ data: { structure } }) => {
 								alt={item?.image?.alt}
 								className='mb-3'
 							/>
+							<h5 className='title'>{structure?.title?.value}</h5>
 							<div
 								dangerouslySetInnerHTML={{ __html: item?.text?.value }}
 								className='fs-base mb-9'></div>

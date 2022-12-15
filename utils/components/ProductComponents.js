@@ -56,6 +56,10 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductCategoryBoxV2'
 	},
 	{
+		name: 'ProductPackageCategoryBox',
+		path: 'components/page/Product/ProductPackageCategoryBox'
+	},
+	{
 		name: 'ProductImageBox',
 		path: 'components/page/Product/ProductImageBox'
 	},

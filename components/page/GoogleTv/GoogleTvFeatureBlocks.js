@@ -22,7 +22,7 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 							<div className='block_1'>
 								<div className='content'>
 									<div
-										className='title'
+										className='title mb-10'
 										dangerouslySetInnerHTML={{
 											__html: structure?.block1?.value?.text?.value
 										}}></div>
@@ -30,6 +30,7 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 										src={structure?.block1?.value?.image?.src}
 										alt={structure?.block1?.value?.image?.alt}
 										width='100%'
+										className='mb-md-5'
 									/>
 								</div>
 							</div>
@@ -121,13 +122,14 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 									<div className='title'>
 										{structure?.block4?.value?.title?.value}
 									</div>
-									<div className='subtitle mt-5'>
+									<div className='subtitle mb-10'>
 										{structure?.block4?.value?.subtitle?.value}
 									</div>
 									<img
 										src={structure?.block4?.value?.image?.src}
 										alt={structure?.block4?.value?.image?.alt}
 										width='100%'
+										height='80%'
 									/>
 								</div>
 							</div>
