@@ -1,35 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { rootReducer } from './rootReducer'
-
-import {
-	persistStore,
-	persistReducer,
-	FLUSH,
-	REHYDRATE,
-	PAUSE,
-	PERSIST,
-	PURGE,
-	REGISTER
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-
-const persistConfig = {
-	key: 'root',
-	version: 1,
-	storage
-}
-
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+import UserAuthSlice from './slices/auth'
+import LayoutSlice from './slices/layout'
+import CompareSlice from './slices/compare'
 
 export const store = configureStore({
-	reducer: rootReducer,
-	devTools: process.env.NODE_ENV !== 'production',
-	middleware: getDefaultMiddleware =>
-		getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-			}
-		}).concat()
+	reducer: {
+		userAuth: UserAuthSlice,
+		layoutData: LayoutSlice,
+		compareData: CompareSlice
+	}
 })
-
-export let persistor = persistStore(store)

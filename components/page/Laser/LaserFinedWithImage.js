@@ -21,7 +21,7 @@ function LaserFinedWithImage({ data: { structure } }) {
 						</div>
 						<Link href={structure?.linkUrl?.value}>
 							<a className='btn btn-outline-light rounded-5 mt-12 px-8'>
-								{structure?.linkTitle?.title}
+								{structure?.linkUrl?.title}
 							</a>
 						</Link>
 					</article>

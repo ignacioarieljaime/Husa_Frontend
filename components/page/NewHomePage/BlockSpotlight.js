@@ -50,7 +50,7 @@ const BlockSpotlight = ({ data }) => {
 						<Spinner size={50} />
 					</div>
 				) : (
-					<div className='product-list'>
+					<div className='product-list justify-content-center'>
 						{products.map((item, index) => (
 							<BlockSpotlightItem
 								data={item}

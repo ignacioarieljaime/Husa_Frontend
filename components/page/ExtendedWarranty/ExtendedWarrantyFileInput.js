@@ -18,18 +18,6 @@ const ExtendedWarrantyFileInput = ({
 
 	return (
 		<div className='extended-warranty-file-input'>
-			<div className='d-flex justify-content-start align-items-start align-items-md-center flex-column flex-md-row p-4'>
-				<label>{label}</label>
-				{modalOnClick && (
-					<button
-						className='n-btn modal-btn ms-0 ms-md-3 mt-3 mt-md-0'
-						type='button'
-						onClick={modalOnClick}>
-						<FontAwesomeIcon icon={faCircleInfo} className='me-2' size='xl' />
-						Where do i find my model number?
-					</button>
-				)}
-			</div>
 			<div
 				className={`input position-relative ${
 					value === '' ? '' : 'activated'

@@ -12,13 +12,14 @@ const SmoothMotion = ({ data: { structure } }) => {
 }
 
 const SmoothMotionContainer = ({ structure }) => {
+	const [windowWidthSize, setWindowWidthSize] = useState(0)
 	const windowSize = useWindowSize()
-	const [position, setPosition] = useState({ x: window.innerWidth / 10, y: 0 })
-	// let position = { x: window.innerWidth / 10, y: 0 }
+	const [position, setPosition] = useState({ x: windowWidthSize / 10, y: 0 })
+	// let position = { x: windowWidthSize / 10, y: 0 }
 	const bluredImage = useRef()
 	let boundaries = {
-		left: window.innerWidth / 10,
-		right: (window.innerWidth * 9) / 10,
+		left: windowWidthSize / 10,
+		right: (windowWidthSize * 9) / 10,
 		top: 0,
 		bottom: 0
 	}
@@ -26,21 +27,22 @@ const SmoothMotionContainer = ({ structure }) => {
 	let slider = useParallax({
 		speed: 10,
 		translateX: [
-			(windowSize[0] ? windowSize[0] : window.innerWidth) / 10 + 'px',
-			(windowSize[0] ? windowSize[0] : window.innerWidth) * 0.9 + 'px'
+			(windowSize[0] ? windowSize[0] : windowWidthSize) / 10 + 'px',
+			(windowSize[0] ? windowSize[0] : windowWidthSize) * 0.9 + 'px'
 		],
 		translateY: [0, 0],
 		onChange: el => {
 			bluredImage.current.style.width =
 				el.progress *
-					(windowSize[0] ? windowSize[0] : window.innerWidth) *
+					(windowSize[0] ? windowSize[0] : windowWidthSize) *
 					0.8 +
-				(windowSize[0] ? windowSize[0] : window.innerWidth) / 10 +
+				(windowSize[0] ? windowSize[0] : windowWidthSize) / 10 +
 				'px'
 		}
 	})
 
 	useEffect(() => {
+		setWindowWidthSize(innerWidth)
 		if (windowSize[0]) {
 			bluredImage.current.style.width =
 				slider?.element?.progress * windowSize[0] * 0.8 +

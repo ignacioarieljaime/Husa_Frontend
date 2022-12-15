@@ -52,9 +52,18 @@ function ProductCategoryBox({ data, pim }) {
 								href={
 									// structure?.support?.value ? structure?.support.value : '/'
 									`/support/${
-										router.pathname.split('/').at(-1).startsWith('H')
-											? router.pathname.split('/').at(-1).replace('H', 'h')
-											: router.pathname.split('/').at(-1)
+										router.pathname
+											.split('/')
+											[router.pathname.split('/').length - 1].startsWith('H')
+											? router.pathname
+													.split('/')
+													[router.pathname.split('/').length - 1].replace(
+														'H',
+														'h'
+													)
+											: router.pathname.split('/')[
+													router.pathname.split('/').length - 1
+											  ]
 									}`
 								}>
 								<a>

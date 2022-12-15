@@ -1,10 +1,12 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 import ProductDetailLstItem from './ProductDetailLstItem'
 
 function ProductDetailsBox({ pim, data }) {
 	let { structure } = data
+	let router = useRouter()
 	const [showMore, setShowMore] = useState(false)
 	const spaceContainer = useRef()
 
@@ -18,10 +20,10 @@ function ProductDetailsBox({ pim, data }) {
 	}, [showMore])
 
 	useEffect(() => {
-		if (window.location.hash === `#${data?.name + data?.id}`) {
+		if (router.asPath.includes(`#${data?.name + data?.id}`)) {
 			setShowMore(true)
 		}
-	}, [window.location.hash])
+	}, [router.asPath])
 
 	return (
 		<div

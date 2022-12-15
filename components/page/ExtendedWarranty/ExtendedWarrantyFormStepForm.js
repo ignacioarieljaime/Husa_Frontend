@@ -131,7 +131,7 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{label && <label className='custom-label'>Purchase Date</label>}
+						{!formBody.purchase_date && <label className='custom-label'>Purchase Date</label>}
 						<input
 							onChange={e =>
 								onChange(prevState => ({

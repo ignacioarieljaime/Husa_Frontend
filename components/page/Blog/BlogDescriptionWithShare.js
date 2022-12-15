@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faLinkedinIn,
@@ -13,6 +13,7 @@ import {
 	LinkedinShareButton
 } from 'react-share'
 function BlogDescriptionWithShare({ data: { structure } }) {
+	const [location, setLocation] = useState('')
 	const socialMedia = {
 		link: {
 			button: <button></button>,
@@ -32,6 +33,12 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 		}
 	}
 
+
+	useEffect(() => {
+		setLocation(window.location.href)
+	}, [])
+	
+
 	const copyUrl = () => {
 		toast.success('Link copied successfully')
 		navigator.clipboard.writeText(window.location.href)
@@ -49,7 +56,7 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 			)
 		return (
 			<Component
-				url={window.location.href}
+				url={location}
 				key={index}
 				className='text-primary-dark px-2 mx-1'>
 				<FontAwesomeIcon icon={icon} size={'xl'} />

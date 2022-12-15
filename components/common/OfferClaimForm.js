@@ -170,7 +170,6 @@ let selectBox = [
 
 function OfferClaimForm({ data }) {
 	let { structure } = data
-	console.log(structure)
 	let router = useRouter()
 	const [disabled, setDisabled] = useState(false)
 	const [categories, setCategories] = useState([])
@@ -212,6 +211,7 @@ function OfferClaimForm({ data }) {
 				toast.success('ticket sended')
 				e.target.reset()
 				setFile(null)
+				setActiveCheckBox(false)
 			} else {
 				toast.error('ticket didn"t sended')
 			}

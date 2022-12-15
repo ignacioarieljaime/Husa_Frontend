@@ -209,13 +209,11 @@
 	}
 
 	.product-list {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-		grid-template-rows: auto;
+		display: flex;
 
 		.spotlight-releases-item {
 			text-align: center;
-			padding: 30px 15px;
+			width: 20%;
 
 			.image {
 				object-fit: contain;
@@ -636,13 +634,13 @@
 	}
 }
 @media (max-width: 575px) {
-  .new-home-page-boxes {
-    .boxes {
-      .box {
-        .box-content {
-          padding: 16px;
-        }
-      }
-    }
-  }
+	.new-home-page-boxes {
+		.boxes {
+			.box {
+				.box-content {
+					padding: 16px;
+				}
+			}
+		}
+	}
 }

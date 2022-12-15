@@ -2,7 +2,7 @@ import useFetch from '../hooks/useFetch'
 
 export async function GetProductByFilterApi(navigate, _filter) {
 	let response = await useFetch(navigate).post(
-		`/getProductsByFilterValueCondition`,
+		`/getProductsByFilterValueCondition?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 		{
 			condition: 'or',
 			data: _filter
@@ -12,7 +12,9 @@ export async function GetProductByFilterApi(navigate, _filter) {
 }
 
 export async function GetProductsApi(navigate, _categoryId) {
-	let response = await useFetch(navigate).post(`/getProducts/${_categoryId}`)
+	let response = await useFetch(navigate).post(
+		`/getProducts/${_categoryId}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
 	return response
 }
 
@@ -24,7 +26,7 @@ export async function GetProductsListApi(navigate, _categoryId, _filter) {
 		})
 
 	let response = await useFetch(navigate).get(
-		`/getProductsList?category_id=${_categoryId}&condition=or${filter}`
+		`/getProductsList?category_id=${_categoryId}&condition=or${filter}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 	)
 	return response
 }
@@ -49,12 +51,16 @@ export async function GetProductsListNewApi(
 }
 
 export async function GetSingleProduct(navigate, _productId) {
-	let response = await useFetch(navigate).get(`/getProduct/${_productId}`)
+	let response = await useFetch(navigate).get(
+		`/getProduct/${_productId}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
 	return response
 }
 
 export async function GetSearchResult(navigate, _searchTerm) {
-	let response = await useFetch(navigate).get(`/searchResult/${_searchTerm}`)
+	let response = await useFetch(navigate).get(
+		`/searchResult/${_searchTerm}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
 	return response
 }
 
@@ -62,11 +68,15 @@ export async function GetProductWithSeriesAndProductIdApi(
 	navigate,
 	_searchValue
 ) {
-	let response = await useFetch(navigate).get(`/productsIndex?${_searchValue}`)
+	let response = await useFetch(navigate).get(
+		`/productsIndex?${_searchValue}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
 	return response
 }
 
 export async function GetProductRetailersApi(navigate, _productId) {
-	let response = await useFetch(navigate).get(`/getRetailers/${_productId}`)
+	let response = await useFetch(navigate).get(
+		`/getRetailers/${_productId}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
 	return response
 }
