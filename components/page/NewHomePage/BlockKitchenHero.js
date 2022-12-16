@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	useParallax,
 	useParallaxController,
@@ -17,6 +17,11 @@ const BlockKitchenHero = ({ data: { structure } }) => {
 
 const BlockKitchenContainer = ({ structure }) => {
 	const parallaxController = useParallaxController()
+	const [text, setText] = useState(null)
+
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 
 	const lineRef = useParallax({
 		speed: 5,
@@ -51,9 +56,10 @@ const BlockKitchenContainer = ({ structure }) => {
 							<h5 className='tiny-title'>{structure?.tinyTitle?.value}</h5>
 							<h3
 								className='subtitle fs-2x'
-								dangerouslySetInnerHTML={{ __html: structure?.text?.value }}>
+								dangerouslySetInnerHTML={{ __html: text }}>
 								{/* {structure?.title?.value} */}
 							</h3>
+
 							<Link
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a className='n-btn outline-white transparent d-block w-fit mb-5 mb-md-0'>
