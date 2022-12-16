@@ -6,7 +6,8 @@ function ProductFilterItemV2({
 	filterController,
 	data,
 	filterParentId,
-	passedFilter
+	passedFilter,
+	filterType
 }) {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	useEffect(() => {
@@ -33,7 +34,11 @@ function ProductFilterItemV2({
 					className='me-3'
 					onClick={e => {
 						setCheckBoxCondition(!checkBoxCondition)
-						filterController(e, { ...data, filterId: filterParentId })
+						filterController(
+							e,
+							{ ...data, filterId: filterParentId },
+							filterType
+						)
 					}}
 				/>
 				<label htmlFor='filter' className='filter-label'>

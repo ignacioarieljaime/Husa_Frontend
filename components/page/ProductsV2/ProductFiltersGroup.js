@@ -33,35 +33,38 @@ const ProductFiltersGroup = ({
 		} else {
 			setFilterList(filter.filter_values)
 		}
-	}, [])
+	}, [filter])
 
-	return (
-		<div className={`filter-group ${filterCollapse ? 'open' : ''}`}>
-			<button
-				className='n-btn black-text filter-btn'
-				onClick={() => setFilterCollapse(filterCollapse => !filterCollapse)}>
-				{filter.name}{' '}
-				<span className='ms-5'>
-					<FontAwesomeIcon icon={faChevronDown} />
-				</span>
-			</button>
-			<ul ref={checkboxWrapper} className='filter-list'>
-				{filterList.map(
-					(item, index) =>
-						item.title && (
-							<ProductFilterItemV2
-								checkboxConditionRender={checkBoxCondition}
-								filterController={filterController}
-								data={item}
-								passedFilter={passedFilter}
-								filterParentId={filter.content_record_id}
-								key={`filter-${item.title}-${index}`}
-							/>
-						)
-				)}
-			</ul>
-		</div>
-	)
+	if (filter.filter_values.length !== 0) {
+		return (
+			<div className={`filter-group ${filterCollapse ? 'open' : ''}`}>
+				<button
+					className='n-btn black-text filter-btn'
+					onClick={() => setFilterCollapse(filterCollapse => !filterCollapse)}>
+					{filter.name}{' '}
+					<span className='ms-5'>
+						<FontAwesomeIcon icon={faChevronDown} />
+					</span>
+				</button>
+				<ul ref={checkboxWrapper} className='filter-list'>
+					{filterList.map(
+						(item, index) =>
+							item.title && (
+								<ProductFilterItemV2
+									checkboxConditionRender={checkBoxCondition}
+									filterController={filterController}
+									data={item}
+									passedFilter={passedFilter}
+									filterParentId={filter.content_record_id}
+									filterType={filter.content_type}
+									key={`filter-${item.title}-${index}`}
+								/>
+							)
+					)}
+				</ul>
+			</div>
+		)
+	}
 }
 
 export default ProductFiltersGroup

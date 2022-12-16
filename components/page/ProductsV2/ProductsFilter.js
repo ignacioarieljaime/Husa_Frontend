@@ -12,6 +12,7 @@ const ProductsFilter = ({
 	setFilters
 }) => {
 	let router = useRouter()
+	const [filterListData, setFilterListData] = useState([])
 	const [filterCounter, setFilterCounter] = useState()
 	const [sowMoreLimitation, setSowMoreLimitation] = useState(4)
 	useEffect(() => {
@@ -24,8 +25,12 @@ const ProductsFilter = ({
 				: []
 		)
 	}, [])
+	useEffect(() => {
+		setFilterListData(filterList)
+	}, [filterList])
 
-	const filterController = (e, _filter) => {
+	const filterController = (e, _filter, _filterType) => {
+		console.log(_filterType)
 		let _filtersBox = filters
 		let filterWrapperExisted = _filtersBox.find(
 			item => item.id === _filter.filterId
@@ -41,6 +46,7 @@ const ProductsFilter = ({
 					...removeExitItemOfFilters,
 					{
 						id: filterWrapperExisted.id,
+						type: _filterType,
 						values: [...filterWrapperExisted.values, _filter.title]
 					}
 				]
@@ -58,6 +64,7 @@ const ProductsFilter = ({
 						...removeExitItemOfFilters,
 						{
 							id: filterWrapperExisted.id,
+							type: _filterType,
 							values: removeExitItem
 						}
 					]
@@ -66,6 +73,7 @@ const ProductsFilter = ({
 		} else {
 			_filtersBox.push({
 				id: _filter.filterId,
+				type: _filterType,
 				values: [_filter.title]
 			})
 		}
@@ -118,8 +126,8 @@ const ProductsFilter = ({
 					) : null}
 				</div>
 				<div className='filter-group-container pb-4 pb-md-0'>
-					{filterList &&
-						filterList.map(
+					{filterListData &&
+						filterListData.map(
 							(filterItem, index) =>
 								index + 1 <= sowMoreLimitation && (
 									<ProductFiltersGroup
@@ -132,11 +140,11 @@ const ProductsFilter = ({
 									/>
 								)
 						)}
-					{filterList && filterList.length > 4 ? (
+					{filterListData && filterListData.length > 4 ? (
 						<button
 							onClick={() =>
 								setSowMoreLimitation(
-									sowMoreLimitation !== 4 ? 4 : filterList.length
+									sowMoreLimitation !== 4 ? 4 : filterListData.length
 								)
 							}
 							className='n-btn outline-black text-nowrap mx-2'>
