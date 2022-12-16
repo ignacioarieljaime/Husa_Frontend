@@ -30,7 +30,7 @@ function ProductsGrid({
 		} else {
 			getProducts([])
 		}
-	}, [])
+	}, [router.asPath])
 
 	const getProducts = async _filter => {
 		setProducts('loading')
