@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
 	useParallax,
@@ -17,7 +17,10 @@ const BlockTVHero = ({ data: { structure } }) => {
 
 const BlockTVContainer = ({ structure }) => {
 	const parallaxController = useParallaxController()
-
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(structure)
+	}, [])
 	const imageRef = useParallax({
 		speed: 10,
 		translateY: ['50px', '-150px']
@@ -34,15 +37,15 @@ const BlockTVContainer = ({ structure }) => {
 			<div className='black-parallax-box'>
 				<div
 					className='title gradient-text fs-5qx fs-xxl-4tx px-4 px-md-0'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 				<div className='row mx-0'>
 					<div
 						ref={imageRef.ref}
 						className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
-						{structure?.image?.src && (
+						{content?.image?.src && (
 							<CustomImage
-								src={structure?.image?.src}
-								alt={structure?.image?.alt}
+								src={content?.image?.src}
+								alt={content?.image?.alt}
 								onLoad={() => parallaxController.update()}
 								wrapperWidth={'100%'}
 							/>
@@ -53,12 +56,11 @@ const BlockTVContainer = ({ structure }) => {
 							<div
 								className='subtitle gradient-text'
 								dangerouslySetInnerHTML={{
-									__html: structure?.text?.value
+									__html: content?.text?.value
 								}}></div>
-							<Link
-								href={structure?.link?.value ? structure?.link?.value : '/'}>
+							<Link href={content?.link?.value ? content?.link?.value : '/'}>
 								<a className='n-btn outline-white transparent'>
-									{structure?.link?.title}
+									{content?.link?.title}
 								</a>
 							</Link>
 						</div>

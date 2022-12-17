@@ -1,6 +1,12 @@
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import Tv from 'public/assets/images/100-day/tv.png'
+
 const EligbleModelsItem = ({ data }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(data?.specs?.value)
+	}, [])
+
 	return (
 		<div className='item day-100'>
 			<div className='d-flex flex-column h-100 justify-content-between align-items-start'>
@@ -17,7 +23,7 @@ const EligbleModelsItem = ({ data }) => {
 						<h4 className='item-series'>{data?.series?.value}</h4>
 						<div
 							className='item-features text-center'
-							dangerouslySetInnerHTML={{ __html: data?.specs.value }}></div>
+							dangerouslySetInnerHTML={{ __html: text }}></div>
 					</div>
 				</div>
 				<div className='text-left mt-8 d-flex justify-content-center align-items-center w-100'>

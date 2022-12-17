@@ -9,12 +9,13 @@ const RelatedProducts = ({ data }) => {
 	const router = useRouter()
 
 	const [series, setSeries] = useState()
+	const [text, setText] = useState(null)
 
 	useEffect(() => {
 		let seriesId = structure?.list?.value?.items.map(item => item.id)
 		getSeries(seriesId)
+		setText(structure?.title?.value)
 	}, [])
-
 	const getSeries = async _seriesId => {
 		setSeries('loading')
 		try {
@@ -33,7 +34,7 @@ const RelatedProducts = ({ data }) => {
 				<article
 					className='article'
 					dangerouslySetInnerHTML={{
-						__html: structure?.title?.value
+						__html: text
 					}}></article>
 			</div>
 			<div className='related-items'>

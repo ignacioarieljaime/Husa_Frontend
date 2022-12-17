@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -7,12 +7,16 @@ import Link from 'next/link'
 import CustomImage from '../../common/CustomImage'
 
 const BlockCategories = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div className='new-home-page-appliances mb-20'>
 				<h2
 					className='title fs-3x mb-15'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
+					dangerouslySetInnerHTML={{ __html: text }}></h2>
 				<Swiper
 					navigation={false}
 					pagination={false}
@@ -28,7 +32,7 @@ const BlockCategories = ({ data: { structure } }) => {
 								alt={item?.image?.alt}
 								className={'slider-image my-auto'}
 								wrapperHeight={'236px'}
-								wrapperWidth={"100%"}
+								wrapperWidth={'100%'}
 							/>
 							<Link href={item?.link?.value ? item?.link?.value : '/'}>
 								<a className='slider-title text-nowrap n-btn outline-black transparent'>

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const GoogleTvTops = ({ data: { structure } }) => {
+	const [list, setList] = useState([])
+	useEffect(() => {
+		setList(structure?.list?.value)
+	}, [])
 	return (
 		<section>
 			<div className='google_tv_tops '>
 				<div className='row justify-content-evenly align-items-center mx-3'>
-					{structure?.list?.value.map((item, index) => (
+					{list.map((item, index) => (
 						<div
 							key={index}
 							className={'google_tv_tops_item py-10 px-6 px-md-13 py-md-15'}

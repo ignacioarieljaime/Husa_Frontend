@@ -1,10 +1,12 @@
-import React from 'react'
-
-// image
+import React, { useEffect, useState } from 'react'
 import InfoIcon from 'public/assets/images/info.png'
 
 function AuthorizedRetailersNote({ data }) {
 	let { structure } = data
+	const [text, setText] = useState()
+	useEffect(() => {
+		setText(structure?.note?.value)
+	}, [])
 	return (
 		<section>
 			<div>
@@ -19,7 +21,7 @@ function AuthorizedRetailersNote({ data }) {
 					<p
 						style={{ margin: 0 }}
 						dangerouslySetInnerHTML={{
-							__html: structure?.note?.value
+							__html: text
 						}}></p>
 				</div>
 			</div>

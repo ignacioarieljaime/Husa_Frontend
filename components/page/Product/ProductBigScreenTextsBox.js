@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function ProductBigScreenTextsBox({ data }) {
 	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div className='tiny-banner product-big-screen'>
@@ -16,7 +20,7 @@ function ProductBigScreenTextsBox({ data }) {
 						</h2>
 						<p
 							dangerouslySetInnerHTML={{
-								__html: structure?.paragraph?.value
+								__html: text
 							}}></p>
 					</article>
 				</div>

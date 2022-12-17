@@ -1,22 +1,26 @@
 import { alt } from 'joi'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const TelevisionsTvHero = ({ data: { structure } }) => {
+const TelevisionsTvHero = ({ data }) => {
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div className='televisions-tv-hero'>
-				<div className='container'>
+				<div className='container televisions_container'>
 					<div className='header-content'>
 						<div
 							className='title gradient-text mb-8'
 							dangerouslySetInnerHTML={{
-								__html: structure?.title?.value
+								__html: content?.title?.value
 							}}></div>
 						<div
 							className='subtitle mb-3 mb-md-7'
 							dangerouslySetInnerHTML={{
-								__html: structure?.subtitle?.value
+								__html: content?.subtitle?.value
 							}}></div>
 					</div>
 					<div className='row justify-content-center align-items-center'>
@@ -24,45 +28,44 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 							<div
 								className='tv-item full-size'
 								style={{
-									backgroundImage: `url(${structure?.fullSizeCard?.value?.backgroundImage?.src})`
+									backgroundImage: `url(${content?.fullSizeCard?.value?.backgroundImage?.src})`
 								}}>
 								<img
-									src={structure?.fullSizeCard?.value?.badge?.src}
-									alt={structure?.fullSizeCard?.value?.badge?.alt}
+									src={content?.fullSizeCard?.value?.badge?.src}
+									alt={content?.fullSizeCard?.value?.badge?.alt}
 									className='badge'
 								/>
 								<div className='content'>
 									<img
-										src={structure?.fullSizeCard?.value?.titleImage?.src}
-										alt={structure?.fullSizeCard?.value?.titleImage?.alt}
+										src={content?.fullSizeCard?.value?.titleImage?.src}
+										alt={content?.fullSizeCard?.value?.titleImage?.alt}
 										className='image'
 									/>
 									<div
 										className={`title ${
-											structure?.fullSizeCard?.value?.theme?.value === 'light'
+											content?.fullSizeCard?.value?.theme?.value === 'light'
 												? 'text-white'
 												: ''
 										}`}
 										dangerouslySetInnerHTML={{
-											__html: structure?.fullSizeCard?.value?.title?.value
+											__html: content?.fullSizeCard?.value?.title?.value
 										}}></div>
-									{structure?.fullSizeCard?.value?.link?.value ? (
-										<Link href={structure?.fullSizeCard?.value?.link?.value}>
+									{content?.fullSizeCard?.value?.link?.value ? (
+										<Link href={content?.fullSizeCard?.value?.link?.value}>
 											<a
 												className={`n-btn transparent d-block w-fit ${
-													structure?.fullSizeCard?.value?.theme?.value ===
-													'light'
+													content?.fullSizeCard?.value?.theme?.value === 'light'
 														? 'outline-white'
 														: 'outline-black'
 												}`}>
-												{structure?.fullSizeCard?.value?.link?.title}
+												{content?.fullSizeCard?.value?.link?.title}
 											</a>
 										</Link>
 									) : null}
 								</div>
 							</div>
 						</div>
-						{structure?.coloredCardsList?.value.map((item, index) => (
+						{content?.coloredCardsList?.value.map((item, index) => (
 							<div className='col-12 col-lg-6 py-3' key={index}>
 								<div
 									className='tv-item colored-bg'
@@ -103,24 +106,24 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 						<div className='col-12 col-lg-6 py-3'>
 							<div className='tv-item no-bg'>
 								<img
-									src={structure?.noBgCard?.value?.logoImage?.src}
-									alt={structure?.noBgCard?.value?.logoImage?.alt}
+									src={content?.noBgCard?.value?.logoImage?.src}
+									alt={content?.noBgCard?.value?.logoImage?.alt}
 									className='logo'
 								/>
 								<img
-									src={structure?.noBgCard?.value?.titleImage?.src}
-									alt={structure?.noBgCard?.value?.titleImage?.alt}
+									src={content?.noBgCard?.value?.titleImage?.src}
+									alt={content?.noBgCard?.value?.titleImage?.alt}
 									className='image'
 								/>
 								<div
 									className='title'
 									dangerouslySetInnerHTML={{
-										__html: structure?.noBgCard?.value?.title?.value
+										__html: content?.noBgCard?.value?.title?.value
 									}}></div>
-								{structure?.noBgCard?.value?.link?.value ? (
-									<Link href={structure?.noBgCard?.value?.link?.value}>
+								{content?.noBgCard?.value?.link?.value ? (
+									<Link href={content?.noBgCard?.value?.link?.value}>
 										<a className='n-btn outline-white transparent d-block w-fit'>
-											{structure?.noBgCard?.value?.link?.title}
+											{content?.noBgCard?.value?.link?.title}
 										</a>
 									</Link>
 								) : null}
@@ -130,7 +133,7 @@ const TelevisionsTvHero = ({ data: { structure } }) => {
 							<div
 								className='tv-item simple'
 								style={{
-									backgroundImage: `url(${structure?.simpleCard?.value?.image?.src})`
+									backgroundImage: `url(${content?.simpleCard?.value?.image?.src})`
 								}}></div>
 						</div>
 					</div>

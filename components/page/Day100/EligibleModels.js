@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import EligbleModelsItem from './EligbleModelsItem'
 
@@ -9,6 +9,10 @@ import { Navigation } from 'swiper'
 
 const EligibleModels = ({ data }) => {
 	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section className='day-100 eligible_models_slider '>
 			<div className='bg-grey px-13 eligble-models py-20'>
@@ -46,8 +50,7 @@ const EligibleModels = ({ data }) => {
 						</a>
 					</Link>
 					{}
-					<div
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+					<div dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 			</div>
 		</section>

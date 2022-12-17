@@ -1,7 +1,12 @@
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const Gaurantee = ({ data }) => {
 	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section className='day-100'>
 			<div className='bg-purple py-15'>
@@ -29,7 +34,8 @@ const Gaurantee = ({ data }) => {
 								/>
 							</div>
 						</div>
-						<Link href={
+						<Link
+							href={
 								structure?.rightLink?.value ? structure?.rightLink?.value : '/'
 							}>
 							<a className='col-12 text-decoration-none my-5 my-lg-0 col-md-6 order-3  col-lg-4'>
@@ -42,7 +48,7 @@ const Gaurantee = ({ data }) => {
 					</div>
 					<div
 						className='guarantee-details'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 			</div>
 		</section>

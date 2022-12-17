@@ -65,7 +65,7 @@ const ExtendedWarrantyPaymentStatus = ({
 		let response = await GetPaymentUrl(_invoice)
 		router.push(response?.data?.url)
 	}
-console.log(statusData)
+	console.log(statusData)
 	return (
 		<section>
 			<div className='extended-warranty-payment-status'>
@@ -111,11 +111,11 @@ console.log(statusData)
 											</span>
 										</div>
 										<div className=''>
-											<a
-												href={statusData?.invoice?.product?.warranty_card}
-												target='_blank'>
-												Downlaod Extended Warranty Card{' '}
-											</a>
+											{content?.termsLink?.value ? (
+												<Link href={content?.termsLink?.value}>
+													<a target='_blank'>{content?.termsLink?.title}</a>
+												</Link>
+											) : null}
 											<div className='ms-3 ms-md-1'>
 												<FontAwesomeIcon icon={faUpRightFromSquare} />
 											</div>

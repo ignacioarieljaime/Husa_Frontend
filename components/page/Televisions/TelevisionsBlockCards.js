@@ -1,41 +1,43 @@
-import React from 'react'
+import Link from 'next/link'
+import React, { useEffect, useState } from 'react'
 import TelevisionsBlockCardsItem from './TelevisionsBlockCardsItem'
 
-import img from 'public/assets/images/contact.png'
-import Link from 'next/link'
-
-const TelevisionsBlockCards = ({ data: { structure } }) => {
+const TelevisionsBlockCards = ({ data }) => {
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div className='televisions-cards'>
-				<div className='container'>
+				<div className='container televisions_container'>
 					<div
 						className='title'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 					<div
 						className='subtitle'
 						dangerouslySetInnerHTML={{
-							__html: structure?.subtitle?.value
+							__html: content?.subtitle?.value
 						}}></div>
 					<div className='row justify-content-center'>
-						{structure?.list?.value.map((item, index) => (
+						{content?.list?.value.map((item, index) => (
 							<TelevisionsBlockCardsItem data={item} key={index} />
 						))}
 						<div className='col-12 py-3'>
 							<div
 								className='hisense-support-card card-item'
 								style={{
-									backgroundImage: `url(${structure?.supportBox?.value?.image?.src})`
+									backgroundImage: `url(${content?.supportBox?.value?.image?.src})`
 								}}>
 								<div className='box'>
 									<div
 										dangerouslySetInnerHTML={{
-											__html: structure?.supportBox?.value?.title?.value
+											__html: content?.supportBox?.value?.title?.value
 										}}></div>
-									{structure?.supportBox?.value?.link?.value ? (
-										<Link href={structure?.supportBox?.value?.link?.value}>
+									{content?.supportBox?.value?.link?.value ? (
+										<Link href={content?.supportBox?.value?.link?.value}>
 											<a className='n-btn outline-white transparent d-block w-fit'>
-												{structure?.supportBox?.value?.link?.title}
+												{content?.supportBox?.value?.link?.title}
 											</a>
 										</Link>
 									) : null}

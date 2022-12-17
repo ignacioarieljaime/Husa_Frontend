@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const BeyondLaserQuoteBlock = ({ data }) => {
 	const { structure } = data
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='beyond_laser_quote_block'>
@@ -18,7 +22,7 @@ const BeyondLaserQuoteBlock = ({ data }) => {
 							data-aos-duration='1000'
 							className='text'
 							dangerouslySetInnerHTML={{
-								__html: structure?.text?.value
+								__html: content?.text?.value
 							}}></div>
 						<div
 							data-aos='fade'
@@ -26,7 +30,7 @@ const BeyondLaserQuoteBlock = ({ data }) => {
 							data-aos-duration='1000'
 							className='quote'
 							dangerouslySetInnerHTML={{
-								__html: structure?.quote?.value
+								__html: content?.quote?.value
 							}}></div>
 					</div>
 				</div>

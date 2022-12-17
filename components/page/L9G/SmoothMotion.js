@@ -15,6 +15,10 @@ const SmoothMotionContainer = ({ structure }) => {
 	const [windowWidthSize, setWindowWidthSize] = useState(0)
 	const windowSize = useWindowSize()
 	const [position, setPosition] = useState({ x: windowWidthSize / 10, y: 0 })
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(structure)
+	}, [])
 	// let position = { x: windowWidthSize / 10, y: 0 }
 	const bluredImage = useRef()
 	let boundaries = {
@@ -33,9 +37,7 @@ const SmoothMotionContainer = ({ structure }) => {
 		translateY: [0, 0],
 		onChange: el => {
 			bluredImage.current.style.width =
-				el.progress *
-					(windowSize[0] ? windowSize[0] : windowWidthSize) *
-					0.8 +
+				el.progress * (windowSize[0] ? windowSize[0] : windowWidthSize) * 0.8 +
 				(windowSize[0] ? windowSize[0] : windowWidthSize) / 10 +
 				'px'
 		}
@@ -59,13 +61,13 @@ const SmoothMotionContainer = ({ structure }) => {
 						className='title-card fs-5 fs-md-2hx text-white text-start mb-0 aos-init'
 						data-aos='fade'
 						data-aos-duration='1000'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 				</div>
 				<div className='blured-image-container'>
 					<div className='screen'>
 						<img
-							src={structure?.fadedImage?.src}
-							alt={structure?.fadedImage?.alt}
+							src={content?.fadedImage?.src}
+							alt={content?.fadedImage?.alt}
 						/>
 					</div>
 					<Draggable
@@ -77,13 +79,14 @@ const SmoothMotionContainer = ({ structure }) => {
 						<div className='screen-slider' ref={slider?.ref}></div>
 					</Draggable>
 					<div className='screen overlay' ref={bluredImage}>
-						<img src={structure?.image?.src} alt={structure?.image?.alt} />
+						<img src={content?.image?.src} alt={content?.image?.alt} />
 					</div>
-				</div>`
+				</div>
+				`
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption fs-9 fs-md-2 fw-light'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
 				</div>
 			</div>
 		</section>

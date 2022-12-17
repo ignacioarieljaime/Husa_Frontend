@@ -1,9 +1,12 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const BeyondLaserMomentsBlock = ({ data }) => {
 	const { structure } = data
-
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='beyond_laser_moments_block'>
@@ -12,7 +15,7 @@ const BeyondLaserMomentsBlock = ({ data }) => {
 					data-aos='fade-up'
 					data-aos-delay='500'
 					data-aos-duration='1000'
-					dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: text }}></div>
 				<div className='moments'>
 					{structure?.list?.value.map((item, index) => (
 						<figure key={index} className='moment'>

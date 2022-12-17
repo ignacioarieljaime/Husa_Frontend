@@ -22,7 +22,8 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans, loading }) => {
 						<div className='box'>
 							<div className='title'>Purchased Price</div>
 							<p className='description'>
-								Enter the price in which you purchased your Televsion.
+								Enter the price in which you purchased your{' '}
+								{product?.Category?.name}.
 							</p>
 							<p className='description'>
 								Price paid with applicable sales tax.

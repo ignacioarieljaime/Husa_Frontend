@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -15,7 +15,10 @@ function BlogListSearchBox({ data: { structure } }) {
 	const [blogList, setBlogList] = useState(null)
 	const [blogListCondition, setBlogListCondition] = useState(false)
 	const [inputValue, setInputValue] = useState(null)
-
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	const searchBlog = async _searchValue => {
 		setInputValue(_searchValue)
 		setBlogListCondition(true)
@@ -37,7 +40,7 @@ function BlogListSearchBox({ data: { structure } }) {
 				<div className='row mb-9 pt-9 mx-0 border-top'>
 					<div
 						className='col-12 col-md-7 py-3 px-0 fs-5'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<div className='col-12 col-md-5 py-3 px-0'>
 						<div className='row justify-content-start justify-content-md-end align-items-center position-relative'>
 							<div className='col-xl-4 dropdown'>

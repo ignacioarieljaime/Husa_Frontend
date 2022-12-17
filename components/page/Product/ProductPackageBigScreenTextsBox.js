@@ -1,7 +1,11 @@
 import CustomImage from 'components/common/CustomImage'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ProductPackageBigScreenTextsBox = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div className='tiny-banner product-big-screen'>
@@ -21,7 +25,7 @@ const ProductPackageBigScreenTextsBox = ({ data: { structure } }) => {
 						</h2>
 						<p
 							dangerouslySetInnerHTML={{
-								__html: structure?.paragraph?.value
+								__html: text
 							}}></p>
 					</article>
 					{structure?.image?.src && (

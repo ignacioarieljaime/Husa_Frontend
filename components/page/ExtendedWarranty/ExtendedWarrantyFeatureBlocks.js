@@ -15,7 +15,7 @@ const ExtendedWarrantyFeatureBlocks = ({ data: { structure } }) => {
 				{structure?.title?.value ? (
 					<h2 className='fs-2hx mb-17'>{structure?.title?.value}</h2>
 				) : null}
-				<div className='row justify-content-evenly align-items-center mx-3'>
+				<div className='row justify-content-evenly align-items-stretch mx-3'>
 					{structure?.list?.value.map((item, index) => (
 						<ExtendedWarrantyFeatureBlocksItem
 							key={index}

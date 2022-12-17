@@ -1,7 +1,11 @@
 import CustomImage from 'components/common/CustomImage'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const HeroBanner = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.mobileText?.value)
+	}, [])
 	return (
 		<section className='l9g'>
 			<div className='hero-banner'>
@@ -33,7 +37,7 @@ const HeroBanner = ({ data: { structure } }) => {
 					<div
 						className='mobile heading'
 						dangerouslySetInnerHTML={{
-							__html: structure?.mobileText?.value
+							__html: text
 						}}></div>
 				</div>
 			</div>

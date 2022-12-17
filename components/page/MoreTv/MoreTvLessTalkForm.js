@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // image
 import TvFlipped from 'public/assets/images/more-tv/tv-flipped.png'
@@ -9,7 +9,10 @@ import Link from 'next/link'
 
 function MoreTVLessTalkForm({ data }) {
 	const [activeCheckbox, setActiveCheckbox] = useState(false)
-	let { structure } = data
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
@@ -18,19 +21,19 @@ function MoreTVLessTalkForm({ data }) {
 						<div className='row align-items-center'>
 							<div className='col-12 col-md-6 pe-lg-10'>
 								<h4 className='fs-3qx fw-normal text-white mb-10 mb-md-20'>
-									{structure?.whiteTitle?.value}
+									{content?.whiteTitle?.value}
 									<span className='d-block opacity-75'>
-										{structure?.title?.value}
+										{content?.title?.value}
 									</span>
 								</h4>
 								<div
 									className='fs-2 text-white fw-normal mb-7'
 									dangerouslySetInnerHTML={{
-										__html: structure?.paragraph?.value
+										__html: content?.paragraph?.value
 									}}></div>
 								<img
-									src={structure?.image?.src}
-									alt={structure?.image?.alt}
+									src={content?.image?.src}
+									alt={content?.image?.alt}
 									width='80%'
 									className='d-none d-md-block'
 								/>
@@ -39,7 +42,7 @@ function MoreTVLessTalkForm({ data }) {
 								<form action=''>
 									<div
 										dangerouslySetInnerHTML={{
-											__html: structure?.formText?.value
+											__html: content?.formText?.value
 										}}
 										className='fw-normal text-white mb-11'></div>
 									<p className='fw-normal text-white mb-2'>Select answer</p>
@@ -124,8 +127,8 @@ function MoreTVLessTalkForm({ data }) {
 												I agree to the
 												<Link
 													href={
-														structure?.termsAndConditionsUrl?.value
-															? structure?.termsAndConditionsUrl?.value
+														content?.termsAndConditionsUrl?.value
+															? content?.termsAndConditionsUrl?.value
 															: '/'
 													}>
 													<a className='text-white ms-2'>terms & conditions</a>

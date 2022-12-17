@@ -8,9 +8,9 @@ const ProductPackagesSliderItem = ({ data }) => {
 
 	return (
 		<div>
-			<CustomImage src={data?.media?.src} alt={data?.product?.name} />
-			<h5>{data?.product?.category?.name + ' ' + data?.product?.name}</h5>
-			<Link href={'/' + data?.model}>
+			<CustomImage src={data?.image} alt={data?.name} />
+			<h5>{data?.name}</h5>
+			<Link href={RouteHandler(data?.id) ? RouteHandler(data?.id) : '/'}>
 				<a>Learn more</a>
 			</Link>
 		</div>

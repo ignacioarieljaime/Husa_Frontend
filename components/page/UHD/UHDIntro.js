@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function UHDIntro({ data: { structure } }) {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
@@ -18,7 +22,7 @@ function UHDIntro({ data: { structure } }) {
 						<div
 							className='fw-normal d-flex flex-column align-items-center text-white m-auto'
 							dangerouslySetInnerHTML={{
-								__html: structure?.paragraph?.value
+								__html: text
 							}}></div>
 						<a
 							href={structure?.link?.value}

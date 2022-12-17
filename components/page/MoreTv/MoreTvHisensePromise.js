@@ -1,12 +1,11 @@
-import React from 'react'
-
-// image
-import ImageHisenseSign from 'public/assets/images/more-tv/hisense-sign.png'
-import ImageJoel from 'public/assets/images/more-tv/joel-reading.png'
+import React, { useEffect, useState } from 'react'
 
 function MoreTVHisensePromise({ data }) {
 	const { structure } = data
-
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
@@ -19,7 +18,7 @@ function MoreTVHisensePromise({ data }) {
 							<p
 								className='fs-5 text-white fw-normal mb-7'
 								dangerouslySetInnerHTML={{
-									__html: structure?.paragraph?.value
+									__html: text
 								}}></p>
 							<img
 								src={structure?.image?.src}

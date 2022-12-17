@@ -5,8 +5,8 @@ import CustomImage from 'components/common/CustomImage'
 function ContactUsPhoneUs({ data }) {
 	let { structure } = data
 	return (
-		<section className='contaact_us_phone_us'>
-			<div className='container mt-15 mb-20'>
+		<section className='contaact_us_phone_us '>
+			<div className='container-lg mt-15 mb-20'>
 				<h3 className='mb-15 text-center text-md-start'>
 					{structure?.title?.value}
 				</h3>

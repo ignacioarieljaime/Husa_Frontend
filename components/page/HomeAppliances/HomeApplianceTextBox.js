@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const HomeApplianceTextBox = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div className='black-banner p-md-4 home-appliance-text-box'>
@@ -16,7 +20,7 @@ const HomeApplianceTextBox = ({ data: { structure } }) => {
 						<p
 							className='fs-5 m-auto'
 							dangerouslySetInnerHTML={{
-								__html: structure?.paragraph?.value
+								__html: text
 							}}></p>
 					</article>
 				</div>

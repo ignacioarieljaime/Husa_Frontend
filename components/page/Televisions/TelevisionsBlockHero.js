@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const TelevisionsBlockHero = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div className='televisions-hero'>
@@ -10,8 +14,7 @@ const TelevisionsBlockHero = ({ data: { structure } }) => {
 					className='image'
 				/>
 				<div className='content'>
-					<div
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+					<div dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 			</div>
 		</section>

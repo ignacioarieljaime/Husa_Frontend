@@ -1,10 +1,14 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 function RoleModal({ modalHandler, data }) {
 	const modal = useRef()
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(data)
+	}, [])
 	const outSide = useOutsideClick(modal)
 	return (
 		<div
@@ -25,7 +29,7 @@ function RoleModal({ modalHandler, data }) {
 						aria-label='Close'>
 						<FontAwesomeIcon icon={faXmark} />
 					</button>
-					<div dangerouslySetInnerHTML={{ __html: data }}></div>
+					<div dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 			</div>
 		</div>

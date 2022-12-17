@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-// image
-import Image from 'public/assets/images/more-tv/header-television.png'
 import Link from 'next/link'
 
 function MoreTVHead({ data }) {
-	const { structure } = data
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
@@ -15,25 +16,25 @@ function MoreTVHead({ data }) {
 							<h4
 								className='header-texts'
 								dangerouslySetInnerHTML={{
-									__html: structure?.title?.value
+									__html: content?.title?.value
 								}}></h4>
 							<p
 								className='fs-5 text-white fw-normal mb-7'
 								dangerouslySetInnerHTML={{
-									__html: structure?.description?.value
+									__html: content?.description?.value
 								}}></p>
-							{structure?.link?.value && (
-								<Link href={structure?.link?.value}>
+							{content?.link?.value && (
+								<Link href={content?.link?.value}>
 									<a className='btn btn-glowing rounded-5'>
-										{structure?.link?.title}
+										{content?.link?.title}
 									</a>
 								</Link>
 							)}
 						</div>
 						<div className='col-12 col-md-6'>
 							<img
-								src={structure?.image?.src}
-								alt={structure?.image?.alt}
+								src={content?.image?.src}
+								alt={content?.image?.alt}
 								width='100%'
 							/>
 						</div>

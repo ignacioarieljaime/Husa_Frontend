@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const LumensOfBrightness = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section className='l9g'>
 			<div className='lumens-of-brightness py-4 pb-md-0 pt-md-10 px-0'>
@@ -23,7 +27,7 @@ const LumensOfBrightness = ({ data: { structure } }) => {
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption mw-md-50 fs-9 fs-md-2 fw-light'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 				<div className='row justify-content-between align-items-center mw-md-50 flex-md-nowrap mx-0 px-0 px-md-20 pb-20'>
 					{structure?.list?.value.map((item, index) => (

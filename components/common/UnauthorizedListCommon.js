@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function UnauthorizedListCommon({ data }) {
 	let { structure } = data
+	const [list, setList] = useState([])
+	useEffect(() => {
+		setList(structure?.list?.value)
+	}, [])
 	return (
 		<section>
 			<article className='article unathorized-list'>
 				<div className='container-md'>
 					<div className='row justify-content-center align-items-stretch flex-wrap mx-auto px-3 pb-10'>
-						{structure?.list?.value.map((item, index) => (
+						{list.map((item, index) => (
 							<div
 								key={index}
 								className='list-container'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	useParallax,
 	useParallaxController,
@@ -13,6 +13,10 @@ const BlogListHead = ({ data: { structure } }) => {
 	)
 }
 function BlogListHeadContainer({ structure }) {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	const parallaxController = useParallaxController()
 
 	const image1Ref = useParallax({
@@ -49,7 +53,7 @@ function BlogListHeadContainer({ structure }) {
 					</div>
 					<div
 						className='header-text header-gradient-radial-text floating-text'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 			</div>
 		</section>

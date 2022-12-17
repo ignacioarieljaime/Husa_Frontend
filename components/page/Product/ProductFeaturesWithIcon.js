@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ProductFeatureWithParagraph = ({ data }) => {
 	const [detailCondition, setDetailCondition] = useState(false)
 	const { structure } = data
-
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<>
 			<section id={data.name + data.id}>
@@ -46,7 +49,7 @@ const ProductFeatureWithParagraph = ({ data }) => {
 						<p
 							class='col-12 col-md-6 m-0'
 							dangerouslySetInnerHTML={{
-								__html: structure?.paragraph?.value
+								__html: text
 							}}></p>
 					</article>
 					<div
@@ -56,7 +59,11 @@ const ProductFeatureWithParagraph = ({ data }) => {
 						{structure?.listOff?.value.map((item, index) => (
 							<div key={`list-off-${index}`} class='p-5'>
 								<div class='p-2 rounded-4 bg-light-2'>
-									<img src={item?.image?.src} alt={item?.image?.alt} width='120' />
+									<img
+										src={item?.image?.src}
+										alt={item?.image?.alt}
+										width='120'
+									/>
 								</div>
 								<div class='jarg-text-section mt-5'>
 									<span class='jarg-toggle-text'>{item?.paragraph?.value}</span>
@@ -71,7 +78,11 @@ const ProductFeatureWithParagraph = ({ data }) => {
 						{structure?.listOn?.value.map((item, index) => (
 							<div key={`list-on-${index}`} class='p-5'>
 								<div class='p-2 rounded-4 bg-light-2'>
-									<img src={item?.image?.src} alt={item?.image?.alt} width='120' />
+									<img
+										src={item?.image?.src}
+										alt={item?.image?.alt}
+										width='120'
+									/>
 								</div>
 								<div class='jarg-text-section mt-5'>
 									<span class='jarg-toggle-text'>{item?.paragraph?.value}</span>

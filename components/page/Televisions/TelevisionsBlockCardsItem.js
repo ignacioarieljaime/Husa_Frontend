@@ -1,36 +1,42 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const TelevisionsBlockCardsItem = ({ data }) => {
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data)
+	}, [])
 	return (
 		<div className='col-12 col-lg-6 py-3'>
 			<div className='card-item'>
 				{data?.backgroundImage?.src ? (
 					<img
-						src={data?.backgroundImage?.src}
-						alt={data?.backgroundImage?.alt}
+						src={content?.backgroundImage?.src}
+						alt={content?.backgroundImage?.alt}
 						className='background-image'
 					/>
 				) : null}
 				<div className='content'>
 					<div
 						className='title'
-						dangerouslySetInnerHTML={{ __html: data?.title?.value }}></div>
-					{data?.image?.src ? (
+						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
+					{content?.image?.src ? (
 						<img
-							src={data?.image?.src}
-							alt={data?.image?.alt}
+							src={content?.image?.src}
+							alt={content?.image?.alt}
 							className='image'
 						/>
 					) : null}
 					<div>
 						<div
 							className='subtitle'
-							dangerouslySetInnerHTML={{ __html: data?.subtitle?.value }}></div>
-						{data?.link?.value ? (
-							<Link href={data?.link?.value}>
+							dangerouslySetInnerHTML={{
+								__html: content?.subtitle?.value
+							}}></div>
+						{content?.link?.value ? (
+							<Link href={content?.link?.value}>
 								<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
-									{data?.link?.title}
+									{content?.link?.title}
 								</a>
 							</Link>
 						) : null}

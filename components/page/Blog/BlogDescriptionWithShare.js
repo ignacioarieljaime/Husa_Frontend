@@ -13,6 +13,7 @@ import {
 	LinkedinShareButton
 } from 'react-share'
 function BlogDescriptionWithShare({ data: { structure } }) {
+	const [text, setText] = useState(null)
 	const [location, setLocation] = useState('')
 	const socialMedia = {
 		link: {
@@ -33,11 +34,10 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 		}
 	}
 
-
 	useEffect(() => {
+		setText(structure?.text?.value)
 		setLocation(window.location.href)
 	}, [])
-	
 
 	const copyUrl = () => {
 		toast.success('Link copied successfully')
@@ -71,7 +71,7 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 					<h3>{structure?.title?.value}</h3>
 					<div
 						dangerouslySetInnerHTML={{
-							__html: structure?.text?.value
+							__html: text
 						}}></div>
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>

@@ -1,9 +1,14 @@
+import React, { useEffect, useState } from 'react'
 import star from 'public/assets/images/100-day/star.png'
 import Logo from 'components/icons/Logo'
 import GoogleTv from 'public/assets/images/100-day/googletv.png'
 
 function HeaderBanner({ data }) {
 	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section className='day-100  position-relative'>
 			<div className='header-secondary'>
@@ -35,7 +40,7 @@ function HeaderBanner({ data }) {
 				<div className='container  claim-prize  '>
 					<article
 						className='article text-center text-white'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}>
+						dangerouslySetInnerHTML={{ __html: text }}>
 						{/* <p className='d-none d-md-block text-white fw-bold fs-5 mb-8'>
 							FROM SEPTEMBER 1ST - OCTOBER 31ST,
 						</p>

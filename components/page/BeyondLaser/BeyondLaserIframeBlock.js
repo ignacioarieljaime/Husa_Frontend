@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const BeyondLaserIframeBlock = ({ data }) => {
 	const { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='beyond_laser_iframe_block'>
@@ -10,7 +14,7 @@ const BeyondLaserIframeBlock = ({ data }) => {
 					data-aos-delay='700'
 					data-aos-duration='1000'
 					className='title'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: text }}></div>
 				<div
 					className='iframe_container'
 					data-aos='fade-up'

@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function FAQhead({ data }) {
 	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div
@@ -12,7 +16,7 @@ function FAQhead({ data }) {
 				className='faq-single-color-header'>
 				<div
 					className='heading-text'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: text }}></div>
 			</div>
 		</section>
 	)

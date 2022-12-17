@@ -1,21 +1,25 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-const BeyondLaserFooterBlock = ({ data: { structure } }) => {
+const BeyondLaserFooterBlock = ({ data }) => {
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div className='beyond_laser_footer_block'>
 				<img
-					src={structure?.image1?.src}
-					alt={structure?.image1?.alt}
+					src={content?.image1?.src}
+					alt={content?.image1?.alt}
 					width='120'
 					data-aos='fade-up'
 					data-aos-delay='300'
 					data-aos-duration='1000'
 				/>
 				<img
-					src={structure?.image2?.src}
-					alt={structure?.image2?.alt}
+					src={content?.image2?.src}
+					alt={content?.image2?.alt}
 					width='200'
 					className='mt-5'
 					data-aos='fade-up'
@@ -27,13 +31,13 @@ const BeyondLaserFooterBlock = ({ data: { structure } }) => {
 					data-aos-delay='700'
 					data-aos-duration='1000'
 					className='title'
-					dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
 				<ul
 					className='social_media'
 					data-aos='fade-up'
 					data-aos-delay='300'
 					data-aos-duration='1000'>
-					{structure?.list?.value.map((item, index) => (
+					{content?.list?.value.map((item, index) => (
 						<li key={index}>
 							<Link href={item?.link?.value ? item?.link?.value : '/'}>
 								<a>
@@ -49,7 +53,7 @@ const BeyondLaserFooterBlock = ({ data: { structure } }) => {
 					data-aos-duration='1000'
 					className='copy_right'
 					dangerouslySetInnerHTML={{
-						__html: structure?.copyRight?.value
+						__html: content?.copyRight?.value
 					}}></div>
 			</div>
 		</section>

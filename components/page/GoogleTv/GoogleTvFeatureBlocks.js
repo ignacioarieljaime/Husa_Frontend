@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const GoogleTvFeatureBlocks = ({ data }) => {
-	let { structure } = data
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div className='google_tv_feature_blocks'>
@@ -10,12 +13,12 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 						<article className='article'>
 							<div
 								dangerouslySetInnerHTML={{
-									__html: structure?.text?.value
+									__html: content?.text?.value
 								}}></div>
 						</article>
 					</div>
 					<div className='image'>
-						<img src={structure?.image?.src} alt={structure?.image?.alt} />
+						<img src={content?.image?.src} alt={content?.image?.alt} />
 					</div>
 					<div className='row justify-content-center align-items-stretch'>
 						<div className='col-12 col-md-6 py-3'>
@@ -24,11 +27,11 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 									<div
 										className='title mb-10'
 										dangerouslySetInnerHTML={{
-											__html: structure?.block1?.value?.text?.value
+											__html: content?.block1?.value?.text?.value
 										}}></div>
 									<img
-										src={structure?.block1?.value?.image?.src}
-										alt={structure?.block1?.value?.image?.alt}
+										src={content?.block1?.value?.image?.src}
+										alt={content?.block1?.value?.image?.alt}
 										width='100%'
 										className='mb-md-5'
 									/>
@@ -41,38 +44,38 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 									<div
 										className='title mb-10'
 										dangerouslySetInnerHTML={{
-											__html: structure?.block2?.value?.text?.value
+											__html: content?.block2?.value?.text?.value
 										}}></div>
 									<div className='d-flex justify-content-center align-items-center'>
 										<img
-											src={structure?.block2?.value?.icon1?.src}
-											alt={structure?.block2?.value?.icon1?.alt}
+											src={content?.block2?.value?.icon1?.src}
+											alt={content?.block2?.value?.icon1?.alt}
 											width='10%'
 											className='me-3'
 										/>
 										<img
-											src={structure?.block2?.value?.icon2?.src}
-											alt={structure?.block2?.value?.icon2?.alt}
+											src={content?.block2?.value?.icon2?.src}
+											alt={content?.block2?.value?.icon2?.alt}
 											width='10%'
 											className='ms-3'
 										/>
 									</div>
 									<div className='d-flex justify-content-center align-items-center flex-wrap flex-md-nowrap mb-7'>
 										<img
-											src={structure?.block2?.value?.image1?.src}
-											alt={structure?.block2?.value?.image1?.alt}
+											src={content?.block2?.value?.image1?.src}
+											alt={content?.block2?.value?.image1?.alt}
 											className='full-size-sm'
 										/>
 										<img
-											src={structure?.block2?.value?.image2?.src}
-											alt={structure?.block2?.value?.image2?.alt}
+											src={content?.block2?.value?.image2?.src}
+											alt={content?.block2?.value?.image2?.alt}
 											className='full-size-sm'
 										/>
 									</div>
 									<div
 										className='subtitle'
 										dangerouslySetInnerHTML={{
-											__html: structure?.block2?.value?.subtitle?.value
+											__html: content?.block2?.value?.subtitle?.value
 										}}></div>
 								</div>
 							</div>
@@ -81,37 +84,34 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 							<div className='block_3'>
 								<div className='content'>
 									<img
-										src={structure?.block3?.value?.icon?.src}
-										alt={structure?.block3?.value?.icon?.alt}
+										src={content?.block3?.value?.icon?.src}
+										alt={content?.block3?.value?.icon?.alt}
 										width='50'
 									/>
 									<div
 										dangerouslySetInnerHTML={{
-											__html: structure?.block3?.value?.subtitle?.value
+											__html: content?.block3?.value?.subtitle?.value
 										}}
 										className='subtitle'></div>
 									<div className='title'>
-										{structure?.block3?.value?.title?.value}
+										{content?.block3?.value?.title?.value}
 									</div>
 									<div className='images'>
-										{structure?.block3?.value?.list?.value.map(
-											(item, index) => (
-												<img
-													key={index}
-													src={item.image?.src}
-													alt={item.image?.alt}
-													width={
-														100 / structure?.block3?.value?.list?.value.length +
-														'%'
-													}
-												/>
-											)
-										)}
+										{content?.block3?.value?.list?.value.map((item, index) => (
+											<img
+												key={index}
+												src={item.image?.src}
+												alt={item.image?.alt}
+												width={
+													100 / content?.block3?.value?.list?.value.length + '%'
+												}
+											/>
+										))}
 									</div>
 									<div
 										className='text'
 										dangerouslySetInnerHTML={{
-											__html: structure?.block3?.value?.text?.value
+											__html: content?.block3?.value?.text?.value
 										}}></div>
 								</div>
 							</div>
@@ -120,14 +120,14 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 							<div className='block_4'>
 								<div className='content'>
 									<div className='title'>
-										{structure?.block4?.value?.title?.value}
+										{content?.block4?.value?.title?.value}
 									</div>
 									<div className='subtitle mb-10'>
-										{structure?.block4?.value?.subtitle?.value}
+										{content?.block4?.value?.subtitle?.value}
 									</div>
 									<img
-										src={structure?.block4?.value?.image?.src}
-										alt={structure?.block4?.value?.image?.alt}
+										src={content?.block4?.value?.image?.src}
+										alt={content?.block4?.value?.image?.alt}
 										width='100%'
 										height='80%'
 									/>
@@ -139,15 +139,13 @@ const GoogleTvFeatureBlocks = ({ data }) => {
 								className='block_5'
 								style={{
 									backgroundImage:
-										'url(' +
-										structure?.block5?.value?.backgroundImage?.src +
-										')'
+										'url(' + content?.block5?.value?.backgroundImage?.src + ')'
 								}}>
 								<div className='content'>
 									<div
 										className='title'
 										dangerouslySetInnerHTML={{
-											__html: structure?.block5?.value?.text?.value
+											__html: content?.block5?.value?.text?.value
 										}}></div>
 								</div>
 							</div>
