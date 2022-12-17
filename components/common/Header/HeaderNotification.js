@@ -7,12 +7,17 @@ function HeaderNotification({ data }) {
 	console.log(data)
 	return (
 		<div
-			style={{ background: data?.background_color}}
-			className={`container-fluid home-top-advertisement ${
-				notificationDismiss ? 'd-block' : 'd-none'
+			style={{ background: data?.background_color }}
+			className={`container-fluid home-top-advertisement justify-content-start justify-content-sm-center ${
+				notificationDismiss ? 'd-flex' : 'd-none'
 			}`}>
+			<Link href={data?.link ? data?.link : '/'}>
+				<a style={{ color: data?.text_color }}>{data?.text}</a>
+			</Link>
 			<button onClick={() => serNotificationDismiss(false)}>
-				<span style={{ color: data?.text_color }} className={'me-3 mt-1'}>
+				<span
+					style={{ color: data?.text_color }}
+					className={'me-3 mt-1 d-none d-md-block'}>
 					Dismiss
 				</span>
 				<DismissIcon
@@ -20,9 +25,6 @@ function HeaderNotification({ data }) {
 					background={data?.background_color}
 				/>
 			</button>
-			<Link href={data?.link ? data?.link : '/'}>
-				<a style={{ color: data?.text_color }}>{data?.text}</a>
-			</Link>
 		</div>
 	)
 }

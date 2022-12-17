@@ -16,6 +16,7 @@ import {
 
 function BlogHead({ data: { structure } }) {
 	const [location, setLocation] = useState('')
+	const [text, setText] = useState(null)
 	const socialMedia = {
 		link: {
 			button: <button></button>,
@@ -36,9 +37,9 @@ function BlogHead({ data: { structure } }) {
 	}
 
 	useEffect(() => {
+		setText(structure?.title?.value)
 		setLocation(window.location.href)
 	}, [])
-	
 
 	const copyUrl = () => {
 		toast.success('Link copied successfully')
@@ -77,7 +78,7 @@ function BlogHead({ data: { structure } }) {
 					</Link>
 					<div
 						className='header-text header-gradient-text mb-12'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
 						{structure?.list?.value.map((item, index) =>

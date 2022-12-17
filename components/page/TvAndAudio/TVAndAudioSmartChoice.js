@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 // image
 import Link from 'next/link'
 
 function TVAndAudioSmartChoice({ data: { structure } }) {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div className='tiny-banner p-md-4'>
@@ -19,7 +23,7 @@ function TVAndAudioSmartChoice({ data: { structure } }) {
 							<p
 								className='fw-normal m-auto mb-4'
 								dangerouslySetInnerHTML={{
-									__html: structure?.paragraph?.value
+									__html: text
 								}}></p>
 							<img
 								className='tv_and_audio_Laser_intro'

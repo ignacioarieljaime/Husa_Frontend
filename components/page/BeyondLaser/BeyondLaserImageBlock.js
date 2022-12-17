@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const BeyondLaserImageBlock = ({ data }) => {
 	const { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section>
 			<div id={data?.name + data?.id} style={{ backgroundColor: '#111' }}>
@@ -15,7 +19,7 @@ const BeyondLaserImageBlock = ({ data }) => {
 						<div
 							className='text'
 							dangerouslySetInnerHTML={{
-								__html: structure?.text?.value
+								__html: text
 							}}></div>
 						<div
 							className='primary'

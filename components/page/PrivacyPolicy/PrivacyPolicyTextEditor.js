@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const PrivacyPolicyTextEditor = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value ? structure?.text?.value : structure?.text)
+	}, [])
 	return (
 		<article
 			style={{ maxWidth: `${structure?.width?.value}px` }}
@@ -10,9 +14,7 @@ const PrivacyPolicyTextEditor = ({ data: { structure } }) => {
 			<div
 				className='mx-6'
 				dangerouslySetInnerHTML={{
-					__html: structure?.text?.value
-						? structure?.text?.value
-						: structure?.text
+					__html: text
 				}}></div>
 		</article>
 	)

@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function BlogSecondDescriptionBox({ data: { structure } }) {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div className='bg-light-orange-gradient py-20'>
@@ -12,7 +16,7 @@ function BlogSecondDescriptionBox({ data: { structure } }) {
 						<div
 							className='big-title'
 							dangerouslySetInnerHTML={{
-								__html: structure?.title?.value
+								__html: text
 							}}></div>
 					</div>
 				</div>

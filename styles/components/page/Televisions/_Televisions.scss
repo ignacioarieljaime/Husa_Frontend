@@ -1,3 +1,9 @@
+.televisions_container{
+		@include mqm(1400) {
+			max-width: 1250px;
+		}	
+}
+
 .televisions-hero,
 .televisions-banner {
 	position: relative;

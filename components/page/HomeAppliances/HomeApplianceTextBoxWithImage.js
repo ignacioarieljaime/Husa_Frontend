@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div
@@ -17,7 +21,7 @@ const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
 						<p
 							className='paragraph'
 							dangerouslySetInnerHTML={{
-								__html: structure?.paragraph?.value
+								__html: text
 							}}></p>
 					</article>
 					{structure?.link && (

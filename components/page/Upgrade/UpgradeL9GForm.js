@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useReducer, useState, useRef } from 'react'
+import React, { useReducer, useState, useRef, useEffect } from 'react'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useWindowSize } from 'hooks/useWindowSize'
@@ -7,7 +7,7 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 
-const UpgradeL9GForm = ({ data: { structure } }) => {
+const UpgradeL9GForm = ({ data }) => {
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -19,8 +19,13 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 	const [loading, setLoading] = useState(null)
 	const inputRef = useRef(null)
 	const [acceptTerms, setAcceptTerms] = useState(false)
+
 	const windowSize = useWindowSize()
 
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	const dataSchemaHandler = (_key, _value) => {
 		setDataSchema({ ...dataSchema, [_key]: _value })
 	}
@@ -79,7 +84,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 					<article
 						className='article'
 						dangerouslySetInnerHTML={{
-							__html: structure?.text?.value
+							__html: content?.text?.value
 						}}></article>
 					<form onSubmit={submitData} className='row form mx-0'>
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
@@ -226,7 +231,7 @@ const UpgradeL9GForm = ({ data: { structure } }) => {
 					<article
 						className='article purchase-conditions'
 						dangerouslySetInnerHTML={{
-							__html: structure?.rule?.value
+							__html: content?.rule?.value
 						}}></article>
 				</div>
 			</div>

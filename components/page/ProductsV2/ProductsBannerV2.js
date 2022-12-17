@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CustomImage from '../../common/CustomImage'
 
 const ProductsBannerV2 = ({ data }) => {
 	const { structure } = data
-
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div className='heading'>
@@ -17,7 +20,7 @@ const ProductsBannerV2 = ({ data }) => {
 				<div className='heading-text'>
 					<article className='large_article'>
 						<div
-							dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
+							dangerouslySetInnerHTML={{ __html: text }}
 							className='fs-md-3qx fw-normal text-white mw-50 mx-auto'></div>
 					</article>
 				</div>

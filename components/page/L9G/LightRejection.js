@@ -1,9 +1,12 @@
 import CustomImage from 'components/common/CustomImage'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const LightRejection = ({ data: { structure } }) => {
+const LightRejection = ({ data }) => {
 	const [activeTab, setActiveTab] = useState(0)
-
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section className='l9g'>
 			<div className='light-rejection py-4 pb-md-0 pt-md-20 px-0'>
@@ -12,7 +15,7 @@ const LightRejection = ({ data: { structure } }) => {
 						className='fs-5 fs-md-2hx text-white text-start mb-0 aos-init aos-animate'
 						data-aos='fade'
 						data-aos-duration='1000'>
-						{structure?.title?.value}
+						{content?.title?.value}
 					</h2>
 				</div>
 				<video
@@ -21,16 +24,16 @@ const LightRejection = ({ data: { structure } }) => {
 					loop={true}
 					playsInline={true}
 					className='px-4 px-md-0'>
-					<source src={structure?.video?.value} />
+					<source src={content?.video?.value} />
 				</video>
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption fs-9 fs-md-2 mw-md-50 fw-light mb-8'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
 				</div>
 				<div className='position-relative'>
 					<div className='tabs-container mt-4'>
-						{structure?.tabs?.value.map((tab, index) => (
+						{content?.tabs?.value.map((tab, index) => (
 							<div className='m-3' key={index}>
 								<button
 									className={`btn text-white tab-btn ${
@@ -44,7 +47,7 @@ const LightRejection = ({ data: { structure } }) => {
 							</div>
 						))}
 					</div>
-					{structure?.tabs?.value.map((tab, index) => (
+					{content?.tabs?.value.map((tab, index) => (
 						<div className={`tab-image ${activeTab === index ? 'active' : ''}`}>
 							<CustomImage src={tab?.image?.src} alt={tab?.image?.alt} />
 							<div
@@ -54,7 +57,7 @@ const LightRejection = ({ data: { structure } }) => {
 					))}
 				</div>
 				<div className='d-flex justify-content-between  flex-wrap flex-sm-nowrap'>
-					{structure?.specs?.value.map((spec, index) => (
+					{content?.specs?.value.map((spec, index) => (
 						<div className='d-flex flex-column '>
 							<div className='px-4 px-md-20 py-4 py-md-15 flex-grow-1 d-flex flex-column'>
 								<div

@@ -1,8 +1,11 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function MoreTVVideoBox({ data }) {
-	const { structure } = data
+	const [content, setContent] = useState(null)
+	useEffect(() => {
+		setContent(data?.structure)
+	}, [])
 	return (
 		<section>
 			<div className='container-fluid py-9 text-center'>
@@ -12,7 +15,7 @@ function MoreTVVideoBox({ data }) {
 						<iframe
 							width='100%'
 							height='100%'
-							src={structure?.video?.value}
+							src={content?.video?.value}
 							title='YouTube video player'
 							frameBorder='0'
 							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
@@ -21,13 +24,13 @@ function MoreTVVideoBox({ data }) {
 				</div>
 				<h3
 					className='fs-3hx fw-normal'
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
+					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
 				<div
-					dangerouslySetInnerHTML={{ __html: structure?.paragraph?.value }}
+					dangerouslySetInnerHTML={{ __html: content?.paragraph?.value }}
 					className='text-muted fw-normal mw-md-50 mx-auto mb-5'></div>
-				<Link href={structure?.link?.value}>
+				<Link href={content?.link?.value}>
 					<a className='text-black text-uppercase fw-normal fs-8'>
-						{structure?.link?.title}
+						{content?.link?.title}
 					</a>
 				</Link>
 			</div>

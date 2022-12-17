@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 function ProductsSupportOptions({ data }) {
 	let { structure } = data
+	const [list, setList] = useState([])
+	useEffect(() => {
+		setList(structure?.list?.value)
+	}, [])
 	return (
 		<section className='border-top border-dark'>
 			<div className='supports supports-new row justify-content-center align-items-stretch mx-0'>
-				{structure?.list?.value.map((item, index) => (
+				{list.map((item, index) => (
 					<div
 						key={'support-item' + index}
 						className='col-12 col-sm-6 col-md-4 d-flex flex-column justify-content-between align-items-center px-13 py-18'>

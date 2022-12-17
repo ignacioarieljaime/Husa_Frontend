@@ -15,6 +15,7 @@ const ProductsGridV2 = ({ data }) => {
 	const [products, setProducts] = useState([])
 	const [filterList, setFilterList] = useState()
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
+	const [text, setText] = useState(null)
 	const router = useRouter()
 
 	const options = [
@@ -27,7 +28,9 @@ const ProductsGridV2 = ({ data }) => {
 			value: 'oldest'
 		}
 	]
-
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	useEffect(() => {
 		if (router.query.filter) {
 			getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
@@ -76,8 +79,7 @@ const ProductsGridV2 = ({ data }) => {
 				<div className='row justify-content-start align-items-center px-3 mb-15'>
 					<BreadCrumb />
 				</div>
-				<div
-					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+				<div dangerouslySetInnerHTML={{ __html: text }}></div>
 			</div>
 			<div className='products-v2 mx-3 mx-md-13'>
 				<div className='products-sorting d-none d-md-block'>

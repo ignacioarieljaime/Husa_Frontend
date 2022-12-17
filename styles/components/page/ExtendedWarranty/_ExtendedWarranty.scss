@@ -1,8 +1,9 @@
 .extended-warrant-banner {
 	position: relative;
-	height: 442px;
+	height: 360px;
 
 	.heading-text {
+		z-index: 2;
 		.ql-size-large {
 			font-weight: 400;
 			font-size: 60px;
@@ -14,7 +15,7 @@
 			border-color: #221f20;
 			position: relative;
 			max-width: 420px;
-
+			margin: 28px auto 0;
 			input {
 				color: #fff;
 				background-color: transparent;
@@ -25,7 +26,6 @@
 					background-color: transparent !important;
 				}
 			}
-
 			button {
 				svg {
 					color: #fff;
@@ -158,7 +158,7 @@
 			text-align: center;
 			line-height: 22px;
 		}
-		
+
 		h2 {
 			font-size: 48px;
 			line-height: 56px;
@@ -189,10 +189,10 @@
 			border-radius: 50px;
 			margin-bottom: 60px;
 			overflow: hidden;
-			border: 1px solid #F0F2F2;
+			border: 1px solid #f0f2f2;
 
 			.faq-accordion-button {
-				background: #F0F2F2;
+				background: #f0f2f2;
 				border: none;
 				padding: 35px 40px;
 				width: 100%;
@@ -217,15 +217,16 @@
 			}
 
 			.faq-accordion-content {
-				transition: all 0.5s ease-in;
+				transition: all 200ms 0.5s ease-in;
 				background: transparent;
 
 				.faq-accordion-question-item {
 					padding: 30px;
-					border-top: 1px solid #F0F2F2;
+					border-top: 1px solid #f0f2f2;
 					font-size: 16px;
 					background: transparent;
-
+					overflow: hidden;
+					transition: all  0.5s ease-in;
 					.faq-accordion-question {
 						font-size: 16px;
 						line-height: 120%;
@@ -233,7 +234,6 @@
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
-						margin-bottom: 50px;
 						text-align: start;
 
 						@include mqm(1920) {
@@ -450,7 +450,7 @@
 			box-shadow: 0 10px 16px rgba(20, 37, 63, 0.06);
 			border-radius: 25px;
 			margin-bottom: 15px;
-			
+
 			img {
 				width: 100%;
 				height: 100%;
@@ -458,7 +458,7 @@
 				max-height: 300px;
 			}
 		}
-		
+
 		.title {
 			font-weight: 400;
 			font-size: 16px;
@@ -467,7 +467,7 @@
 			color: #221f20;
 			margin-bottom: 30px;
 		}
-		
+
 		.description {
 			font-weight: 400;
 			font-size: 12px;
@@ -995,11 +995,11 @@
 			}
 		}
 	}
-.extended-warranty-dialog {
-	.extended-warranty-dialog-content {
-		max-width: 50vw;
+	.extended-warranty-dialog {
+		.extended-warranty-dialog-content {
+			max-width: 50vw;
+		}
 	}
-}
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,11 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const GoogleTvBanner = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div className='google-tv-banner'>
@@ -19,7 +23,7 @@ const GoogleTvBanner = ({ data: { structure } }) => {
 					</div>
 					<div
 						className='title'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 					{structure?.link?.value && (
 						<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
 							<a className='n-btn white text-center d-block w-fit mx-auto'>

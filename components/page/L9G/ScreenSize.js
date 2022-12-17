@@ -1,9 +1,12 @@
 import CustomImage from 'components/common/CustomImage'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const ScreenSize = ({ data: { structure } }) => {
 	const [activeTab, setActiveTab] = useState(0)
-
+	const [list, setList] = useState([])
+	useEffect(() => {
+		setList(structure?.tabs?.value)
+	}, [])
 	return (
 		<section className='l9g'>
 			<div className='screen-size'>
@@ -18,7 +21,7 @@ const ScreenSize = ({ data: { structure } }) => {
 				</div>
 				<div className='position-relative'>
 					<div className='tabs-container mt-4'>
-						{structure?.tabs?.value.map((tab, index) => (
+						{list.map((tab, index) => (
 							<div className='m-3' key={index}>
 								<button
 									className={`btn text-white tab-btn ${
@@ -32,7 +35,7 @@ const ScreenSize = ({ data: { structure } }) => {
 							</div>
 						))}
 					</div>
-					{structure?.tabs?.value.map((tab, index) => (
+					{list.map((tab, index) => (
 						<div className={`tab-image ${activeTab === index ? 'active' : ''}`}>
 							<CustomImage src={tab?.image?.src} alt={tab?.image?.alt} />
 							<div

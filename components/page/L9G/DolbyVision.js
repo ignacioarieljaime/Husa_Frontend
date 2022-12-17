@@ -1,7 +1,11 @@
 import CustomImage from 'components/common/CustomImage'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const DolbyVision = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section className='l9g'>
 			<div className='dolby-vision py-4 pb-md-0 pt-md-20 px-0'>
@@ -17,7 +21,7 @@ const DolbyVision = ({ data: { structure } }) => {
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption mw-md-50 fs-9 fs-md-2 fw-light'
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 			</div>
 		</section>

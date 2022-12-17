@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useParallax, ParallaxProvider } from 'react-scroll-parallax'
 
 const ScrollableVideo = ({ data: { structure } }) => {
-
 	return (
 		<ParallaxProvider>
 			<ScrollableVideoContainer structure={structure} />
@@ -12,6 +11,11 @@ const ScrollableVideo = ({ data: { structure } }) => {
 }
 
 const ScrollableVideoContainer = ({ structure }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
+
 	const textRef = useParallax({
 		speed: 10,
 		translateY: [100, -120],
@@ -37,7 +41,7 @@ const ScrollableVideoContainer = ({ structure }) => {
 					<div
 						className='line'
 						ref={textRef.ref}
-						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 			</div>
 		</section>

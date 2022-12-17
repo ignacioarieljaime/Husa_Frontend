@@ -40,8 +40,8 @@
 	border-color: var(--primary-color) !important;
 }
 .btn-primary-new {
-	background-color: #00AAA6 !important;
-	border-color: #00AAA6 !important;
+	background-color: #00aaa6 !important;
+	border-color: #00aaa6 !important;
 }
 .btn-primary:hover {
 	background-color: var(--primary-color) !important;
@@ -977,27 +977,27 @@
 .home-top-advertisement {
 	z-index: 1001;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	top: 70px;
 	pointer-events: none;
-	justify-content: center !important;
 	background: #c7c7c7;
 	width: 100%;
-	padding: 6px 0;
+	padding: 6px 12px;
 	text-align: center;
 	transition: all 0.3s 300ms ease-in-out;
-
 	button {
 		display: flex;
 		align-items: center;
-		right: 15%;
-		position: absolute;
 		background: transparent;
+		position: absolute;
+		right: 12px;
 		border: none;
 		font-weight: 400;
 		font-size: 12px;
 		color: #ffffff;
 		pointer-events: all;
+		justify-self: flex-end;
 	}
 
 	a {
@@ -1007,9 +1007,25 @@
 		color: #ffffff;
 		text-decoration: none;
 		pointer-events: all;
+		display: block;
 
 		&:hover {
 			text-decoration: underline;
+		}
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.home-top-advertisement {
+		justify-content:flex-end !important;
+		a {
+			width: 100%;
+			order: 2;
+		}
+		button {
+			position: relative;
+			right: 0;
+			order: 1;
 		}
 	}
 }
@@ -2089,8 +2105,8 @@ header {
 .product_static_content {
 	@include mqm(1200) {
 		h4 {
-			font-size: 42px ;
-			margin-bottom: 34px ;
+			font-size: 42px;
+			margin-bottom: 34px;
 		}
 	}
 
@@ -2224,4 +2240,8 @@ header {
 			}
 		}
 	}
+}
+
+.object_fit_cover img{
+	object-fit: cover;
 }

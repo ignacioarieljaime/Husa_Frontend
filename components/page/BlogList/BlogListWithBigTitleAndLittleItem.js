@@ -1,10 +1,14 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import BlogListLittleReadArticleBox from './BlogListLittleReadArticleBox'
 
 function BlogListWithBigTitleAndLittleItem({ data: { structure } }) {
 	const [showCount, setChowCount] = useState(1)
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	console.log(structure?.list?.value)
 	return (
 		<section>
@@ -14,7 +18,7 @@ function BlogListWithBigTitleAndLittleItem({ data: { structure } }) {
 						<div
 							className='header-text header-gradient-radial-text seconde-header mb-8'
 							dangerouslySetInnerHTML={{
-								__html: structure?.title?.value
+								__html: text
 							}}></div>
 						<a
 							href={structure?.link?.value}

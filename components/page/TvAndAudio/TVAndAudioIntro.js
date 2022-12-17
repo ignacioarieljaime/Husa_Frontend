@@ -1,7 +1,11 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function TVAndAudioIntro({ data: { structure } }) {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.paragraph?.value)
+	}, [])
 	return (
 		<section>
 			<div className='tiny-banner tv-and-audio-intro p-md-4'>
@@ -17,7 +21,7 @@ function TVAndAudioIntro({ data: { structure } }) {
 							<p
 								className='fw-normal m-auto'
 								dangerouslySetInnerHTML={{
-									__html: structure?.paragraph?.value
+									__html: text
 								}}></p>
 						</div>
 						{structure?.link?.value && (

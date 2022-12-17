@@ -321,7 +321,8 @@
           align-items: center;
           width: 100%;
           overflow-x: auto;
-
+          position: relative;
+          z-index: 100;
           .filter-group {
             margin-bottom: 0px;
             margin: 0px 8px;

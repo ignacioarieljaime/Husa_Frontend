@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { faMagnifyingGlass, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
@@ -9,7 +9,10 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 	const [searchTerm, setSearchTerm] = useState('')
 	const [productsList, setProductsList] = useState()
 	const [showProductsList, setShowProductsList] = useState(false)
-
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	const searchProduct = async _searchValue => {
 		setProductsList('loading')
 		setShowProductsList(true)
@@ -35,8 +38,8 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 				/>
 				<div className='heading-text'>
 					<div
-						className='text-white mb-4 mb-md-10'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						className='text-white mb-4 mb-md-7'
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 					{structure?.showSearch?.value && (
 						<div className='support-products-searchbox'>
 							<input
@@ -68,9 +71,14 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 										) : Array.isArray(productsList) ? (
 											<>
 												{productsList.map(item => (
-													<li>
+													<li
+														data-toggle='tooltip'
+														data-placement='top'
+														title={`${item.name} (${item?.model})`}>
 														<Link href={`/ewp-wizard-plan-selector/${item.id}`}>
-															<a>{item.name}</a>
+															<a>
+																{item.name} ({item?.model})
+															</a>
 														</Link>
 													</li>
 												))}

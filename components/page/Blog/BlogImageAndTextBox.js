@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	useParallax,
 	useParallaxController,
@@ -14,6 +14,10 @@ const BlogImageAndTextBox = ({ data: { structure } }) => {
 }
 
 function BlogImageAndTextBoxContainer({ structure }) {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	const parallaxController = useParallaxController()
 
 	const image1Ref = useParallax({
@@ -55,7 +59,7 @@ function BlogImageAndTextBoxContainer({ structure }) {
 						<article className='blog-article'>
 							<div
 								dangerouslySetInnerHTML={{
-									__html: structure?.text?.value
+									__html: text
 								}}></div>
 						</article>
 					</div>

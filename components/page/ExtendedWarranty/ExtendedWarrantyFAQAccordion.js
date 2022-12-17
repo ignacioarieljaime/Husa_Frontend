@@ -6,21 +6,31 @@ import {
 	faChevronCircleDown,
 	faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
+import ExtendedWarrantyFAQAccordionItem from './ExtendedWarrantyFAQAccordionItem'
 
 const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 	const [collapsed, setCollapsed] = useState(true)
+	const [checkHeight, setCheckHeight] = useState(true)
 	const windowSize = useWindowSize()
 	const accordionContent = useRef()
 	const accordionContentHeight = useRef()
-
+	const [h, sh] = useState(0)
+	const [list, setList] = useState([])
 	useEffect(() => {
-		if (!collapsed) {
-			accordionContent.current.style.maxHeight =
-				accordionContentHeight.current.offsetHeight + 'px'
-		} else {
-			accordionContent.current.style.maxHeight = '0px'
-		}
-	}, [collapsed, windowSize])
+		setList(questions)
+	}, [])
+	useEffect(() => {
+		setTimeout(() => {
+			if (!collapsed) {
+				accordionContent.current.style.maxHeight =
+					accordionContentHeight.current.offsetHeight + 'px'
+				sh(accordionContentHeight.current.offsetHeight)
+			} else {
+				accordionContent.current.style.maxHeight = '0px'
+			}
+		}, 50)
+		setCheckHeight(false)
+	}, [collapsed, windowSize, checkHeight])
 
 	return (
 		<div className={`faq-accordion-item ${collapsed ? 'collapsed' : ''}`}>
@@ -39,22 +49,12 @@ const ExtendedWarrantyFAQAccordion = ({ title, questions }) => {
 			<div className='faq-accordion-content' ref={accordionContent}>
 				<div ref={accordionContentHeight}>
 					{' '}
-					{questions.map((item, index) => (
-						<div key={index} className='faq-accordion-question-item'>
-							<h4 className='faq-accordion-question'>
-								{item?.question?.value}
-								<button onClick={() => setCollapsed(collapsed => !collapsed)}>
-									<FontAwesomeIcon
-										icon={faCircleXmark}
-										size={'xl'}
-										className='ms-2'
-									/>
-								</button>
-							</h4>
-							<div
-								className='faq-accordion-answer'
-								dangerouslySetInnerHTML={{ __html: item?.answer?.value }}></div>
-						</div>
+					{list.map((item, index) => (
+						<ExtendedWarrantyFAQAccordionItem
+							key={index}
+							data={item}
+							onClick={() => setCheckHeight(true)}
+						/>
 					))}
 				</div>
 			</div>

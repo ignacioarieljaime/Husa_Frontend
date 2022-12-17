@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function SponsorshipBigImageAndText({ data }) {
 	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section className='sponsor-ship-bg'>
 			<div className='container pt-17'>
@@ -14,7 +18,7 @@ function SponsorshipBigImageAndText({ data }) {
 					/>
 				</div>
 				<div
-					dangerouslySetInnerHTML={{ __html: structure?.text?.value }}
+					dangerouslySetInnerHTML={{ __html: text }}
 					className='fs-4 text-white mt-16'></div>
 			</div>
 		</section>

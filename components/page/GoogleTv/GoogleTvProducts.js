@@ -9,8 +9,9 @@ const GoogleTvProducts = ({ data }) => {
 	const { structure } = data
 	let router = useRouter()
 	const [products, setProducts] = useState('loading')
-
+	const [text, setText] = useState(null)
 	useEffect(() => {
+		setText(structure?.title?.value)
 		getProductWithCategory(structure?.list?.value)
 	}, [])
 
@@ -36,7 +37,7 @@ const GoogleTvProducts = ({ data }) => {
 				<article className='article'>
 					<div
 						className='title'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></div>
 				</article>
 				<div className='products'>
 					{products === 'loading' ? (

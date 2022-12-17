@@ -1,7 +1,12 @@
+import React, { useEffect, useState } from 'react'
 import ClaimPrizeLevels from './ClaimPrizeLevels'
 
 const ClaimPrize = ({ data }) => {
 	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section className='position-relative day-100 '>
 			<div className='bg-eggplant pb-15'>
@@ -29,7 +34,7 @@ const ClaimPrize = ({ data }) => {
 						<article
 							className='article text-center'
 							dangerouslySetInnerHTML={{
-								__html: structure?.text?.value
+								__html: text
 							}}></article>
 					</div>
 				</div>

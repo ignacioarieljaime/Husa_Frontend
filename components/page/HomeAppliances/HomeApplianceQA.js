@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
 const HomeApplianceQA = ({ data: { structure } }) => {
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
@@ -17,7 +21,7 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 							<p
 								className='text-white fw-normal m-auto mb-4'
 								dangerouslySetInnerHTML={{
-									__html: structure?.text?.value
+									__html: text
 								}}></p>
 							<Link href={structure?.link?.value}>
 								<a className='text-decoration-none text-primary-new fs-8 text-uppercase d-block w-fit mx-auto mb-8'>
