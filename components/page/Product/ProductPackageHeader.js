@@ -9,7 +9,6 @@ const ProductSliderLinkButton = dynamic(() =>
 
 const ProductPackageHeader = ({ pim, data }) => {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
-
 	return (
 		<section
 			id={data.name + data.id}
@@ -30,9 +29,11 @@ const ProductPackageHeader = ({ pim, data }) => {
 						<div className='package-details'>
 							<span>MPN :</span>
 							<ul>
-								{pim?.packageItems?.map((item, index) => (
-									<li key={index}>{item}</li>
-								))}
+								{pim?.custom_fields?.map((item, index) => {
+									if (item.title.includes('p_')) {
+										return <li key={index}>{item.value}</li>
+									}
+								})}
 							</ul>
 						</div>
 						<button
