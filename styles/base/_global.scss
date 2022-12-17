@@ -296,7 +296,6 @@ input {
 	width: 600px;
 	height: 250px;
 	padding: 0px 36px 10px 36px;
-	box-shadow: -1px 0 25px -5px #000;
 	bottom: -250px;
 	position: fixed;
 	right: 50%;
@@ -420,6 +419,8 @@ input {
 
 .compare_modal_active {
 	bottom: 0 !important;
+	box-shadow: -1px 0 25px -5px #000;
+
 }
 
 .compare_layout_button {

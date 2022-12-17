@@ -82,6 +82,7 @@ function Layout({ children, meta, title, header }) {
 
 				<> {children}</>
 			</section>
+			<CompareModal route={compareRoute} />
 			{showGoTop && (
 				<button
 					id='back-to-top-button'
