@@ -14,7 +14,7 @@ function ContactUsChat({ data }) {
 						<h6>{structure?.subtitle?.value}</h6>
 					</div>
 					<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
-						<a className='btn btn-outline-dark fw-bold rounded-5 py-3 px-4'>
+						<a className='btn btn-outline-dark fw-bold rounded-5 py-3 px-4 mt-10 mt-md-0'>
 							{structure?.link?.title}
 						</a>
 					</Link>

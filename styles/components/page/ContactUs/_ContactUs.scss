@@ -100,13 +100,29 @@
 section.contact_us_chat {
 	border-bottom: 1px solid #000 !important;
 	padding: 50px 0;
-
+	> .container {
+		max-width: 1200px;
+	}
 	.contact_us_chat_content {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
-
+		justify-content: center;
+		flex-wrap: wrap;
+		@include mqm(768) {
+			justify-content: space-between;
+			div {
+				h6 {
+					text-align: start;
+				}
+			}
+		}
 		div {
+			&:first-child {
+				width: 100%;
+				@include mqm(768) {
+					width: auto;
+				}
+			}
 			h5 {
 				font-size: 1.75rem;
 				margin-bottom: 20px !important;
@@ -115,6 +131,7 @@ section.contact_us_chat {
 				font-weight: 300 !important;
 				font-size: 20px;
 				margin-bottom: 0;
+				text-align: center;
 			}
 		}
 	}

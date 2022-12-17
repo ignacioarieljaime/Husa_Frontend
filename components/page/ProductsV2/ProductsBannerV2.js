@@ -7,6 +7,7 @@ const ProductsBannerV2 = ({ data }) => {
 	useEffect(() => {
 		setText(structure?.title?.value)
 	}, [])
+
 	return (
 		<section>
 			<div className='heading'>
@@ -21,7 +22,7 @@ const ProductsBannerV2 = ({ data }) => {
 					<article className='large_article'>
 						<div
 							dangerouslySetInnerHTML={{ __html: text }}
-							className='fs-md-3qx fw-normal text-white mw-50 mx-auto'></div>
+							className='fw-normal text-white px-3'></div>
 					</article>
 				</div>
 			</div>

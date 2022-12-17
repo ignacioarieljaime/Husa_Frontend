@@ -690,6 +690,9 @@ input {
 	}
 }
 .contaact_us_phone_us {
+	> .container{
+		max-width: 1200px;
+	}
 	img {
 		object-fit: contain !important;
 	}
