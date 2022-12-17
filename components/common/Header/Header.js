@@ -68,7 +68,6 @@ function Header({ data: { structure }, notification }) {
 								/>
 							</a>
 						</Link>
-						<h1>Hisense</h1>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
 							{headerData?.widgets?.centerOption.map((item, index) => (
 								<NavBarDropDown key={`right-${index}`} data={item} />
