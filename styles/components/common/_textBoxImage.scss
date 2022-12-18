@@ -99,13 +99,17 @@
 		max-height: 600px;
 	}
 	.heading-text {
-		h3 {
+		h1,h2,h3 {
 			font-weight: 400;
-			font-size: 96px;
+			font-size: 54px;
 			line-height: 120%;
 			letter-spacing: -0.02em;
 			margin: 0;
+			@include mqm (1920){
+			font-size: 67.5px;
+			}
 		}
+
 		h4 {
 			margin-top: 55px;
 			font-weight: 400;
@@ -179,7 +183,7 @@
 	}
 
 	.heading-text {
-		h3 {
+		h1,h2,h3 {
 			font-size: 42px;
 		}
 	}

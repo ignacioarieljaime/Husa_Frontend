@@ -288,7 +288,7 @@
 	}
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 	.category-products {
 		.products-container {
 			.item {
@@ -317,16 +317,17 @@
 
 				.filter-group-container {
 					width: 100%;
-					overflow-x: auto;
 					z-index: 100;
 					.filter-group-wrapper {
 						display: flex;
 						justify-content: space-between;
 						align-items: center;
+						overflow-x: auto;
+						overflow-y: hidden;
 						.filter-group {
 							margin-bottom: 0px;
 							margin: 0px 8px;
-							position: absolute;
+							// position: absolute;
 							z-index: 100;
 							width: fit-content;
 

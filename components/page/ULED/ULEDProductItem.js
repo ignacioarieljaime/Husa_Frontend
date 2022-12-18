@@ -16,7 +16,7 @@ function ULEDProductItem({ data, itemLength }) {
 				style={{ width: `${100 / itemLength}%` }}
 				className='platform platform-uled platform-uled-item'>
 				<h2 className='text-light'>{title?.value}</h2>
-				<p className='text-black fs-2 fw-normal'>{description?.value}</p>
+				<h3 className='text-black fs-2 fw-normal'>{description?.value}</h3>
 				<div className='py-9 text-center'>
 					<img
 						src={image?.src}

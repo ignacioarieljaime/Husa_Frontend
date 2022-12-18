@@ -7,13 +7,13 @@ function LaserFinedWithImage({ data: { structure } }) {
 			<div className='black-banner p-md-4'>
 				<div className='container px-6 px-md-8 pt-20 pb-12'>
 					<article className='article text-center'>
-						<h3 className='text-white mb-7'>
+						<h2 className='text-white mb-7' style={{ fontSize: '38px' }}>
 							{structure?.title?.value}
 							<span className='text-primary'>
 								{' '}
 								{structure?.coloredTitle?.value}
 							</span>
-						</h3>
+						</h2>
 						<div>
 							<p className='fw-normal mw-md-50 text-white m-auto'>
 								{structure.description.value}

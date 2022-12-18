@@ -40,12 +40,12 @@ const ProductFeatureWithParagraph = ({ data }) => {
 			<section>
 				<div class='container-fluid px-lg-20'>
 					<article class='row article align-items-center mx-0 w-100'>
-						<h3 class='col-12 col-md-6 mb-7 my-md-auto'>
+						<h2 class='col-12 col-md-6 mb-7 my-md-auto'>
 							{structure?.blackTitle?.value}
 							<span class='d-block text-secondary'>
 								{structure?.coloredTitle?.value}
 							</span>
-						</h3>
+						</h2>
 						<p
 							class='col-12 col-md-6 m-0'
 							dangerouslySetInnerHTML={{

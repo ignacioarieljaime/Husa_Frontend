@@ -15,21 +15,27 @@ const NotFound = ({ data: { structure } }) => {
 					<CustomImage
 						src={structure?.image?.src}
 						alt={structure?.image?.alt}
+						className={'image'}
+						wrapperWidth={'100%'}
+						wrapperHeight={'100%'}
 					/>
 				</div>
 				<div className='content'>
-					<h1 class='title'>404</h1>
+					<h1 class='title'>{structure?.title?.value}</h1>
 					<article className='article'>
-						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+						<div
+							className='mb-12 mb-md-0'
+							dangerouslySetInnerHTML={{ __html: text }}></div>
 						<div className='button_group'>
 							{structure?.link1?.value ? (
 								<Link href={structure?.link1?.value}>
-									<a>{structure?.link1?.title}</a>
+									<a className='link'>{structure?.link1?.title}</a>
 								</Link>
-							) : null}
+							) : null}{' '}
+							<p className='mx-6 mb-0'>OR</p>
 							{structure?.link2?.value ? (
 								<Link href={structure?.link2?.value}>
-									<a>{structure?.link2?.title}</a>
+									<a className='link'>{structure?.link2?.title}</a>
 								</Link>
 							) : null}
 						</div>

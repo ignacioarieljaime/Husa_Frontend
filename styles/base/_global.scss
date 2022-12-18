@@ -110,8 +110,38 @@ input {
 		line-height: 28px;
 	}
 }
+.small_article {
+	h1,
+	h2,
+	h3 {
+		font-size: 33px;
+		line-height: 36px;
+	}
+
+	a,
+	p,
+	li {
+		font-size: 18px !important;
+		line-height: 28px;
+	}
+}
 
 @media (min-width: 1920px) {
+	.small_article {
+		h1,
+		h2,
+		h3 {
+			font-size: 42px !important;
+			line-height: 45px !important;
+		}
+
+		a,
+		p,
+		li {
+			font-size: 22.5px !important;
+			line-height: 37.5px !important;
+		}
+	}
 	.large_article {
 		h1,
 		h2,
@@ -129,7 +159,8 @@ input {
 	.article {
 		h1,
 		h2,
-		h3,.extra_title {
+		h3,
+		.extra_title {
 			font-size: 52.5px !important;
 			line-height: 60px !important;
 		}
@@ -150,6 +181,21 @@ input {
 }
 
 @media (max-width: 768px) {
+	.small_article {
+		h1,
+		h2,
+		h3 {
+			font-size: 24px;
+			line-height: 36px;
+		}
+
+		a,
+		p,
+		li {
+			font-size: 14px !important;
+			line-height: 24px;
+		}
+	}
 	.large_article {
 		h1,
 		h2,
@@ -166,7 +212,8 @@ input {
 	}
 	.article {
 		h2,
-		h3,.extra_title {
+		h3,
+		.extra_title {
 			font-size: 32px !important;
 			line-height: 36px;
 		}
@@ -420,7 +467,6 @@ input {
 .compare_modal_active {
 	bottom: 0 !important;
 	box-shadow: -1px 0 25px -5px #000;
-
 }
 
 .compare_layout_button {
@@ -690,7 +736,7 @@ input {
 	}
 }
 .contaact_us_phone_us {
-	> .container{
+	> .container {
 		max-width: 1200px;
 	}
 	img {

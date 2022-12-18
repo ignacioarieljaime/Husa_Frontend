@@ -39,14 +39,16 @@ const ProductFiltersGroup = ({
 	}, [filter])
 
 	useEffect(() => {
-		let prevEl = buttonGroup.current.previousElementSibling
-		if (windowSize[0] < 768 && prevEl) {
-			let prevLeft = prevEl.style.left.slice(0, -2)
-				? parseFloat(prevEl.style.left.slice(0, -2))
-				: 0
-			buttonGroup.current.style.left =
-				prevLeft + prevEl.getBoundingClientRect().width + 16 + 'px'
-		}
+		// let prevEl = buttonGroup.current.previousElementSibling
+		// if (windowSize[0] < 768 && prevEl) {
+		// 	let prevLeft = prevEl.style.left.slice(0, -2)
+		// 		? parseFloat(prevEl.style.left.slice(0, -2)) + 8
+		// 		: 8
+		// 	checkboxWrapper.current.style.left =
+		// 		prevLeft + prevEl.getBoundingClientRect().width + 16 + 'px'
+		// }
+		checkboxWrapper.current.style.width =
+			buttonGroup.current.getBoundingClientRect().width + 'px'
 	}, [windowSize])
 
 	if (filter.filter_values.length !== 0) {

@@ -1,0 +1,65 @@
+.not_found {
+	position: relative;
+	.background {
+		position: relative;
+		height: 570px;
+		width: 100%;
+		.image {
+			position: absolute !important;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			img {
+				object-fit: cover;
+			}
+		}
+	}
+	.content {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+		text-align: center;
+		color: #fff;
+		.title {
+			font-size: 216px;
+			@include mq(768) {
+				font-size: 120px;
+                margin-bottom: 24px;
+			}
+		}
+		.button_group {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			@include mq(768) {
+				flex-direction: column;
+			}
+			p {
+				line-height: 54px !important;
+			}
+			.link {
+				flex: 0 0 auto;
+				background: #252525;
+				padding: 0 24px;
+				-webkit-transition: all 300ms ease;
+				transition: all 300ms ease;
+				flex-flow: row nowrap;
+				text-align: center;
+				text-transform: uppercase;
+				color: #fff;
+				justify-content: center;
+				display: flex;
+				line-height: 54px !important;
+				text-decoration: none;
+				@include mq(768) {
+					width: 100%;
+				}
+				&:hover {
+					background: #00cccc;
+				}
+			}
+		}
+	}
+}

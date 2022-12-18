@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import React from 'react'
 
@@ -5,9 +6,16 @@ function TVAndAudioTvShopItem({ data: { image, title, link, description } }) {
 	return (
 		<div className='col-12 col-md-3 px-6 mb-10 mb-lg-0 tv-shop-box-item'>
 			<figure>
-				<img src={image?.src} alt={image?.alt} width={'75%'} className='mb-3' />
+				<div className='image_wrapper'>
+					<CustomImage
+						src={image?.src}
+						alt={image?.alt}
+						// width={'75%'}
+						className='image mb-3 mx-auto'
+					/>
+				</div>
 				<figcaption>
-					<p className='text-white fw-normal'>{title?.value}</p>
+					<h4 className='text-white fs-5 fw-normal'>{title?.value}</h4>
 					<p className='text-white fw-normal'>{description?.value}</p>
 				</figcaption>
 			</figure>
