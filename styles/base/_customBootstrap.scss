@@ -1017,7 +1017,7 @@
 
 @media screen and (max-width: 400px) {
 	.home-top-advertisement {
-		justify-content:flex-end !important;
+		justify-content: flex-end !important;
 		a {
 			width: 100%;
 			order: 2;
@@ -1106,6 +1106,10 @@ article:hover > .img-box-shadow-hover {
 
 .jarg-section {
 	padding: 75px 0;
+	.jarg_container {
+		max-width: 1072px;
+		margin: 0 auto;
+	}
 }
 .jarg-section .jarg-switch {
 	background: #000;
@@ -2242,6 +2246,6 @@ header {
 	}
 }
 
-.object_fit_cover img{
+.object_fit_cover img {
 	object-fit: cover;
 }

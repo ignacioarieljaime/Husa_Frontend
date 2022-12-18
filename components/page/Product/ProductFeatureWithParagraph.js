@@ -6,7 +6,7 @@ const ProductFeatureWithParagraph = ({ data }) => {
 	return (
 		<section id={data.name + data.id}>
 			<div class='jarg-section bg-light'>
-				<div class='px-lg-20'>
+				<div class='px-lg-20 jarg_container'>
 					<div class='row'>
 						<div class='col-12'>
 							<img
