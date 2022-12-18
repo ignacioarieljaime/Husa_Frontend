@@ -8,6 +8,7 @@ const ProductSliderLinkButtonV2 = dynamic(() =>
 )
 
 function ProductInfoAndSliderBoxV2({ pim, data }) {
+	let { structure } = data
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 
 	return (
@@ -27,7 +28,7 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 									?.value
 									? 'text-dark mb-5'
 									: 'text-dark fs-2hx mb-1'
-							} `}>
+							} ${structure?.theme.value === 'light' && 'text-white'}`}>
 							{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
 								? pim?.custom_fields.find(item => item.title === 'h2 Title')
 										?.value
@@ -35,16 +36,27 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 										item => item.title === 'Product Type'
 								  )?.value}
 						</h2>
-						<h1 className='serie text-dark mb-8'>
+						<h1
+							className={`serie  mb-8 ${
+								structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+							}`}>
 							{
 								pim?.custom_fields.find(item => item.title === 'span Title')
 									?.value
 							}
 						</h1>
-						<span className='! mb-5 text-uppercase text-dark'>
+						<span
+							className={`! mb-5 text-uppercase ${
+								structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+							}`}>
 							{data?.structure?.description?.value}
 						</span>
-						<p className='text-dark'>Model: {pim?.model}</p>
+						<p
+							className={`${
+								structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+							}`}>
+							Model: {pim?.model}
+						</p>
 						<div className='model-toggle '>
 							{pim?.series[0]?.values.map(
 								(item, index) =>
@@ -59,7 +71,9 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						</div>
 						<div className='product-rating'></div>
 						<button
-							className=' pdp_where_to_buy_btn px-6 py-3'
+							className={`pdp_where_to_buy_btn px-6 py-3 ${
+								structure?.theme.value === 'light' && 'light_hover' 
+							}`}
 							disabled={pim?.buy_status ? false : true}
 							style={{ color: data?.structure?.backgroundColor?.value }}
 							onClick={() =>

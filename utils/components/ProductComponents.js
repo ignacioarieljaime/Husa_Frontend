@@ -96,6 +96,14 @@ module.exports.ProductComponent = [
 		path: 'components/page/Product/ProductFindMeInStore'
 	},
 	{
+		name: 'ProductMoreTv',
+		path: 'components/page/Product/ProductMoreTv'
+	},
+	{
+		name: 'ProductTwinImages',
+		path: 'components/page/Product/ProductTwinImages'
+	},
+	{
 		name: 'ProductFindMeInStore',
 		path: 'components/page/Product/ProductFindMeInStore'
 	},

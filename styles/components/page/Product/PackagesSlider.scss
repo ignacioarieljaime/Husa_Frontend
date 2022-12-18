@@ -62,14 +62,14 @@
 		> button {
 			background-color: #000 !important;
 			color: #fff !important;
-				&:hover{
+			&:hover {
 				background-color: #000 !important;
 				opacity: 0.9;
 			}
 		}
-		> button:disabled{
+		> button:disabled {
 			opacity: 0.5;
-			&:hover{
+			&:hover {
 				background-color: #000 !important;
 			}
 		}
@@ -83,6 +83,15 @@
 			&:hover {
 				opacity: 0.7;
 				background-color: #ffffff !important;
+			}
+		}
+
+		.light_hover {
+			background-color: #fff !important;
+			color: #000 !important;
+			&:hover {
+				color: #000 !important;
+				background-color: #fff !important;
 			}
 		}
 		.n-btn {
