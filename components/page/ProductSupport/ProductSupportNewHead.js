@@ -12,13 +12,13 @@ function ProductSupportNewHead({ pim }) {
 							{pim?.assets.find(item => item.order === 1) ? (
 								<CustomImage
 									wrapperClass={'product_support_head_image'}
-									src={pim?.assets.find(item => item.order === 1).url}
+									src={pim?.assets.find(item => item.order === 1)?.url}
 									alt='featured image'
 									// width='80%'
 								/>
 							) : (
 								<CustomImage
-									src={pim?.assets.find(item => item.type_id === 1).url}
+									src={pim?.assets.find(item => item.type_id === 1)?.url}
 									wrapperClass={'product_support_head_image'}
 									alt='featured image'
 									// width='80%'
