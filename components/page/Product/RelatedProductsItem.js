@@ -53,12 +53,14 @@ function ProductsItem({ data }) {
 					<span className='new_product'>New</span>
 				)}
 				<Link href={'/'}>
-					<CustomImage
-						src={productSelected?.media?.url}
-						wrapperHeight={'280px'}
-						wrapperWidth='100%'
-						alt={productSelected?.media?.caption}
-					/>
+					<div className='img_wrapper'>
+						<CustomImage
+							src={productSelected?.media?.url}
+							wrapperWidth='100%'
+							alt={productSelected?.media?.caption}
+							className='img'
+						/>
+					</div>
 				</Link>
 				{data && (
 					<h3 className='serie mt-5'>
@@ -86,18 +88,20 @@ function ProductsItem({ data }) {
 					{productYear.map(
 						(item, index) =>
 							item?.year && (
-								<li key={'year' + index}>
-									<span className='title'>{item.year}</span>
-									{item.products.map(
-										(model, index) =>
-											RouteHandler(model?.id) && (
-												<Link
-													key={'model' + index}
-													href={RouteHandler(model?.id)}>
-													<a className='model'>{model.model}</a>
-												</Link>
-											)
-									)}
+								<li key={'year' + index} className='d-flex align-items-center'>
+									<span className='title mb-0'>{item.year}</span>
+									<span className='d-flex flex-wrap'>
+										{item.products.map(
+											(model, index) =>
+												RouteHandler(model?.id) && (
+													<Link
+														key={'model' + index}
+														href={RouteHandler(model?.id)}>
+														<a className='model'>{model.model}</a>
+													</Link>
+												)
+										)}
+									</span>
 								</li>
 							)
 					)}

@@ -36,10 +36,11 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 								  )?.value}
 						</h2>
 						<h1 className='serie text-dark mb-8'>
-							{
-								pim?.custom_fields.find(item => item.title === 'span Title')
-									?.value
-							}
+							{pim?.custom_fields.find(item => item.title === 'span Title')
+								?.value
+								? pim?.custom_fields.find(item => item.title === 'span Title')
+										?.value
+								: pim?.name}
 						</h1>
 						<span className='! mb-5 text-uppercase text-dark'>
 							{data?.structure?.description?.value}

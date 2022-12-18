@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import ProductFilterItemV2 from './ProductFilterItemV2'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const ProductFiltersGroup = ({
 	filter,
@@ -11,6 +12,8 @@ const ProductFiltersGroup = ({
 	index
 }) => {
 	const checkboxWrapper = useRef()
+	const buttonGroup = useRef()
+	const windowSize = useWindowSize()
 	const [filterCollapse, setFilterCollapse] = useState(
 		index <= 2 ? true : false
 	)
@@ -35,9 +38,22 @@ const ProductFiltersGroup = ({
 		}
 	}, [filter])
 
+	useEffect(() => {
+		let prevEl = buttonGroup.current.previousElementSibling
+		if (windowSize[0] < 768 && prevEl) {
+			let prevLeft = prevEl.style.left.slice(0, -2)
+				? parseFloat(prevEl.style.left.slice(0, -2))
+				: 0
+			buttonGroup.current.style.left =
+				prevLeft + prevEl.getBoundingClientRect().width + 16 + 'px'
+		}
+	}, [windowSize])
+
 	if (filter.filter_values.length !== 0) {
 		return (
-			<div className={`filter-group ${filterCollapse ? 'open' : ''}`}>
+			<div
+				className={`filter-group ${filterCollapse ? 'open' : ''}`}
+				ref={buttonGroup}>
 				<button
 					className='n-btn black-text filter-btn'
 					onClick={() => setFilterCollapse(filterCollapse => !filterCollapse)}>
