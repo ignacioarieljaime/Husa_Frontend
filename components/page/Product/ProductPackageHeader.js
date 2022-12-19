@@ -56,11 +56,13 @@ const ProductPackageHeader = ({ pim, data }) => {
 						<button
 							className=' pdp_where_to_buy_btn rounded-0 px-6 py-3'
 							onClick={() =>
-								pim?.retailers?.length !== 0
+								pim?.buy_status === 'ChannelAdvisor'
 									? setChanelAdviserHandler(!chanelAdviserHandler)
 									: {}
 							}>
-							{pim?.retailers?.length !== 0 ? 'Where To Buy' : 'coming soon'}
+							{pim?.buy_status === 'ChannelAdvisor'
+								? 'Where To Buy'
+								: 'coming soon'}
 						</button>
 					</div>
 				</div>
