@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 // component
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
@@ -8,7 +8,26 @@ const ProductSliderLinkButton = dynamic(() =>
 )
 
 const ProductPackageHeader = ({ pim, data }) => {
+	const [MPNData, setMPNData] = useState([])
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
+	useEffect(() => {
+		sortMPNData()
+	}, [])
+
+	const sortMPNData = () => {
+		let MPN = []
+		pim?.custom_fields?.map((item, index) => {
+			if (item.title.includes('product_')) {
+				item.sortNumber = Number(item.title.split('_')[1])
+				MPN.push(item)
+			}
+		})
+
+		setMPNData(
+			MPN.sort((first, second) => first.sortNumber - second.sortNumber)
+		)
+	}
+
 	return (
 		<section
 			id={data.name + data.id}
@@ -29,11 +48,9 @@ const ProductPackageHeader = ({ pim, data }) => {
 						<div className='package-details'>
 							<span>MPN :</span>
 							<ul>
-								{pim?.custom_fields?.map((item, index) => {
-									if (item.title.includes('p_')) {
-										return <li key={index}>{item.value}</li>
-									}
-								})}
+								{MPNData.map((item, index) => (
+									<li key={'mpn' + index}>{item.value}</li>
+								))}
 							</ul>
 						</div>
 						<button
