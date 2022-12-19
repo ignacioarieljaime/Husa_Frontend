@@ -40,10 +40,11 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							className={`serie  mb-8 ${
 								structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
 							}`}>
-							{
-								pim?.custom_fields.find(item => item.title === 'span Title')
-									?.value
-							}
+							{pim?.custom_fields.find(item => item.title === 'span Title')
+								?.value
+								? pim?.custom_fields.find(item => item.title === 'span Title')
+										?.value
+								: pim?.name}
 						</h1>
 						<span
 							className={`! mb-5 text-uppercase ${
@@ -72,7 +73,7 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						<div className='product-rating'></div>
 						<button
 							className={`pdp_where_to_buy_btn px-6 py-3 ${
-								structure?.theme.value === 'light' && 'light_hover' 
+								structure?.theme.value === 'light' && 'light_hover'
 							}`}
 							disabled={pim?.buy_status ? false : true}
 							style={{ color: data?.structure?.backgroundColor?.value }}

@@ -6,7 +6,7 @@ function CommercialIntro({ data: { structure } }) {
 			<div className='black-banner px-md-4 py-md-15'>
 				<div className='container px-6 px-md-8 py-20'>
 					<article className='article text-center'>
-						<h2 className='commercial_intro_title text-white mb-6'>
+						<h2 className=' fw-bold text-white mb-6'>
 							{structure?.title?.value}
 							<span className='text-primary-new d-block d-sm-inline ms-2'>
 								{structure?.coloredTitle?.value}

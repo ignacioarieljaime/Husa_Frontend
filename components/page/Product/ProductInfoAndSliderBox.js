@@ -31,17 +31,15 @@ function ProductInfoAndSliderBox({ pim, data }) {
 								  )?.value}
 						</h2>
 						<article className='article'>
-							<h1 className='mb-8'>
+							<h3 className='my-3 text-uppercase fw-bold extra_title'>
 								{
 									pim?.custom_fields.find(item => item.title === 'span Title')
 										?.value
 								}
-							</h1>
-							<h3 className='mb-5 text-uppercase fw-normal extra_title'>
-								{pim?.name}
 							</h3>
+							<h1 className='mb-5 mt-0'>{pim?.name}</h1>
 						</article>
-						<p className='text-primary-new'>Model: {pim?.model}</p>
+						<p className='text-primary-new mt-5'>Model: {pim?.model}</p>
 						<div className='model-toggle '>
 							{pim?.series[0]?.values.map(
 								(item, index) =>

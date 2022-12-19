@@ -7,11 +7,13 @@ const ProductWhereToBuy = ({ pim, data }) => {
 	return (
 		<>
 			<div id={data.name + data.id} class='buy-green-banner'>
-				<h2>{structure?.title?.value}</h2>
-				<h2>{structure?.littleTitle?.value}</h2>
+				<article className='article'>
+					<h2 className='my-1'>{structure?.title?.value}</h2>
+					<h2 className='mt-1'>{structure?.littleTitle?.value}</h2>
+				</article>
 				<button
 					onClick={() => setChanelAdviserHandler(true)}
-					disabled={pim?.buy_status === 'ChannelAdvisor'  ? false : true}
+					disabled={pim?.buy_status === 'ChannelAdvisor' ? false : true}
 					class='btn btn-turquoise'>
 					{structure?.whereToBuy?.title}
 				</button>

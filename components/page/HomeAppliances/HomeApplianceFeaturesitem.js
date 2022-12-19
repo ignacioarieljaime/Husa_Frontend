@@ -8,7 +8,7 @@ const HomeApplianceFeaturesitem = ({
 			<img src={image?.src} alt={image?.alt} className='image' />
 			<div className='divider-border position-relative'>
 				<h3 className='title'>{grayTitle?.value}</h3>
-				<h5 className='colored-title'>{coloredTitle?.value}</h5>
+				<p className='colored-title'>{coloredTitle?.value}</p>
 				<p className='paragraph'>{paragraph?.value}</p>
 				{Note?.value && <p className='note'>* {Note?.value}</p>}
 			</div>

@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FineTouchesTab from './FineTouchesTab'
 
 const FineTouches = ({ data: { structure } }) => {
 	const [activeTab, setActiveTab] = useState(0)
-
+	const [list, setList] = useState([])
+	useEffect(() => {
+		setList(structure?.tabs?.value)
+	})
 	return (
 		<section className='l9g'>
 			<div className='fine-touches'>
@@ -18,7 +21,7 @@ const FineTouches = ({ data: { structure } }) => {
 				</div>
 				<div className='bg-black position-relative pb-2 pb-md-15'>
 					<div className='tabs-container mt-4'>
-						{structure?.tabs?.value.map((tab, index) => (
+						{list.map((tab, index) => (
 							<div className='m-3'>
 								<button
 									className={`btn text-white tab-btn ${
@@ -33,8 +36,8 @@ const FineTouches = ({ data: { structure } }) => {
 						))}
 					</div>
 					<FineTouchesTab
-						videoSrc={structure?.tabs?.value[activeTab].video?.value}
-						description={structure?.tabs?.value[activeTab].text?.value}
+						videoSrc={list[activeTab]?.video?.value}
+						description={list[activeTab]?.text?.value}
 					/>
 				</div>
 			</div>

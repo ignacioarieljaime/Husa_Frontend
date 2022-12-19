@@ -3,21 +3,21 @@ import React, { useRef, useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 import { useParallax, ParallaxProvider } from 'react-scroll-parallax'
 
-const SmoothMotion = ({ data: { structure } }) => {
+const SmoothMotion = ({ data }) => {
 	return (
 		<ParallaxProvider>
-			<SmoothMotionContainer structure={structure} />
+			<SmoothMotionContainer data={data} />
 		</ParallaxProvider>
 	)
 }
 
-const SmoothMotionContainer = ({ structure }) => {
+const SmoothMotionContainer = ({ data }) => {
 	const [windowWidthSize, setWindowWidthSize] = useState(0)
 	const windowSize = useWindowSize()
 	const [position, setPosition] = useState({ x: windowWidthSize / 10, y: 0 })
 	const [content, setContent] = useState(null)
 	useEffect(() => {
-		setContent(structure)
+		setContent(data?.structure)
 	}, [])
 	// let position = { x: windowWidthSize / 10, y: 0 }
 	const bluredImage = useRef()

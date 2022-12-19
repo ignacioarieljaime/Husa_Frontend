@@ -10,19 +10,21 @@ function LaserHead({ data: { structure } }) {
 			<div className='black-banner p-md-4'>
 				<div className='container px-6 px-md-8 pt-20 pb-12'>
 					<article className='article text-center'>
-						<img
-							src={structure?.image?.src}
-							alt={structure?.image?.alt}
-							className='banner-logo mb-20'
-						/>
+						<h1 className='my-0'>
+							<img
+								src={structure?.image?.src}
+								alt={structure?.image?.alt}
+								className='banner-logo mb-20'
+							/>
+						</h1>
 						<div>
 							<p className='fs-5 text-primary fw-normal mx-auto mb-1'>
-							{structure?.title?.value}
+								{structure?.title?.value}
 							</p>
 						</div>
 						<div>
 							<p className='fw-normal text-white m-auto'>
-							{structure?.paragraph?.value}
+								{structure?.paragraph?.value}
 							</p>
 						</div>
 						<Link href={structure?.link?.value}>

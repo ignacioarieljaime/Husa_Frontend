@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import UHDNewsItem from './UHDNewsItem'
 
 function UHDNewsBox({ data: { structure } }) {
+	const [list, setList] = useState([])
+	useEffect(() => {
+		setList(structure?.list?.value)
+	}, [])
 	return (
 		<section>
 			<div className='container-fluid py-6'>
 				<div className='row align-items-start'>
-					{structure?.list?.value.map((item, index) => (
+					{list.map((item, index) => (
 						<UHDNewsItem data={item} key={index} />
 					))}
 				</div>

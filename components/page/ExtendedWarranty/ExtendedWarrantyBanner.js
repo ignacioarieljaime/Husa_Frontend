@@ -36,7 +36,7 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 					style={{ height: '100%' }}
 					className={'img-fluid'}
 				/>
-				<div className='heading-text'>
+				<div className='heading-text px-3'>
 					<div
 						className='text-white mb-4 mb-md-7'
 						dangerouslySetInnerHTML={{ __html: text }}></div>

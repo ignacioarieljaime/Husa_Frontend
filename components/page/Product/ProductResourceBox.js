@@ -7,7 +7,9 @@ function ProductResourceBox({ pim, data }) {
 	const router = useRouter()
 	return (
 		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
-			<h2>Resources</h2>
+			<article className='article'>
+				<h2 className='my-10'>Resources</h2>
+			</article>
 			<ul>
 				{pim?.assets.map(
 					(item, index) =>

@@ -126,31 +126,33 @@ const ProductsFilter = ({
 					) : null}
 				</div>
 				<div className='filter-group-container pb-4 pb-md-0'>
-					{filterListData &&
-						filterListData.map(
-							(filterItem, index) =>
-								index + 1 <= sowMoreLimitation && (
-									<ProductFiltersGroup
-										index={index}
-										key={`filter-${filterItem.name}-${filterItem.id} `}
-										filter={filterItem}
-										passedFilter={filters}
-										filterController={filterController}
-										checkBoxCondition={checkBoxCondition}
-									/>
-								)
-						)}
-					{filterListData && filterListData.length > 4 ? (
-						<button
-							onClick={() =>
-								setSowMoreLimitation(
-									sowMoreLimitation !== 4 ? 4 : filterListData.length
-								)
-							}
-							className='n-btn outline-black text-nowrap mx-2'>
-							{sowMoreLimitation === 4 ? 'Show More' : 'Show Less'}
-						</button>
-					) : null}
+					<div className='filter-group-wrapper'>
+						{filterListData &&
+							filterListData.map(
+								(filterItem, index) =>
+									index + 1 <= sowMoreLimitation && (
+										<ProductFiltersGroup
+											index={index}
+											key={`filter-${filterItem.name}-${filterItem.id} `}
+											filter={filterItem}
+											passedFilter={filters}
+											filterController={filterController}
+											checkBoxCondition={checkBoxCondition}
+										/>
+									)
+							)}
+						{filterListData && filterListData.length > 4 ? (
+							<button
+								onClick={() =>
+									setSowMoreLimitation(
+										sowMoreLimitation !== 4 ? 4 : filterListData.length
+									)
+								}
+								className='n-btn outline-black text-nowrap mx-2'>
+								{sowMoreLimitation === 4 ? 'Show More' : 'Show Less'}
+							</button>
+						) : null}
+					</div>
 				</div>
 			</div>
 		</aside>
