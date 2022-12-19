@@ -3,6 +3,7 @@ import ProductFilterItemV2 from './ProductFilterItemV2'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useWindowSize } from 'hooks/useWindowSize'
+import { useRect } from 'hooks/useRect'
 
 const ProductFiltersGroup = ({
 	filter,
@@ -18,6 +19,8 @@ const ProductFiltersGroup = ({
 		index <= 2 ? true : false
 	)
 	const [filterList, setFilterList] = useState([])
+	const elRect = useRect(buttonGroup)
+
 	useEffect(() => {
 		if (
 			passedFilter.length > 0 &&
@@ -39,7 +42,9 @@ const ProductFiltersGroup = ({
 	}, [filter])
 
 	useEffect(() => {
-		// let prevEl = buttonGroup.current.previousElementSibling
+		console.log(elRect)
+		console.log(elRect)
+		checkboxWrapper.current.style.left = elRect.left - 12 + 'px'
 		// if (windowSize[0] < 768 && prevEl) {
 		// 	let prevLeft = prevEl.style.left.slice(0, -2)
 		// 		? parseFloat(prevEl.style.left.slice(0, -2)) + 8
@@ -47,9 +52,8 @@ const ProductFiltersGroup = ({
 		// 	checkboxWrapper.current.style.left =
 		// 		prevLeft + prevEl.getBoundingClientRect().width + 16 + 'px'
 		// }
-		checkboxWrapper.current.style.width =
-			buttonGroup.current.getBoundingClientRect().width + 'px'
-	}, [windowSize])
+		checkboxWrapper.current.style.width = elRect.width + 'px'
+	}, [windowSize, buttonGroup.current])
 
 	if (filter.filter_values.length !== 0) {
 		return (

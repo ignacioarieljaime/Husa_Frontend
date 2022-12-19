@@ -106,7 +106,7 @@ const ProductsFilter = ({
 		filterRequest([])
 	}
 	return (
-		<aside className='mobile-filter-line'>
+		<aside className='mobile-filter-line pb-4'>
 			<div>
 				<div className='d-flex justify-content-between align-items-center mb-4 mb-md-0'>
 					<div className='fw-normal fs-8 d-block d-md-none'>Filter</div>
@@ -125,7 +125,7 @@ const ProductsFilter = ({
 						</button>
 					) : null}
 				</div>
-				<div className='filter-group-container pb-4 pb-md-0'>
+				<div className='filter-group-container pb-md-0'>
 					<div className='filter-group-wrapper'>
 						{filterListData &&
 							filterListData.map(

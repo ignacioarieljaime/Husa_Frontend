@@ -40,7 +40,7 @@ const BlockSpotlightItem = ({ data }) => {
 			</ul>
 			{/* <div className='models'></div> */}
 			<Link href={productLink ? productLink : '/'}>
-				<a className='n-btn outline-black transparent'>
+				<a className='n-btn outline-black transparent d-block w-fit mx-auto'>
 					Explore the{' '}
 					{seriesTitle
 						? seriesTitle?.custom_fields.find(item => item.name === 'h2 Title')
