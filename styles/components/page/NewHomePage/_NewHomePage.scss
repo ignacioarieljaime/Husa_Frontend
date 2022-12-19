@@ -210,11 +210,21 @@
 
 	.product-list {
 		display: flex;
-
+		@include mq(991) {
+			flex-wrap: wrap;
+		}
 		.spotlight-releases-item {
 			text-align: center;
 			width: 20%;
-
+			@include mq(1300) {
+				width: 25%;
+			}
+			@include mq(991) {
+				width: 50%;
+			}
+			@include mq(500) {
+				width: 100%;
+			}
 			.image {
 				object-fit: contain;
 				margin-bottom: 16px;
