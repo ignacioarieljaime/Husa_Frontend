@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import AOS from 'aos'
 
 const LumensOfBrightness = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
 	useEffect(() => {
 		setText(structure?.text?.value)
+		setTimeout(() => {
+			AOS.refresh()
+		}, 1000)
 	}, [])
 	return (
 		<section className='l9g'>

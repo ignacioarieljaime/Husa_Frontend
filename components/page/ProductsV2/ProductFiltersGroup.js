@@ -42,16 +42,7 @@ const ProductFiltersGroup = ({
 	}, [filter])
 
 	useEffect(() => {
-		console.log(elRect)
-		console.log(elRect)
 		checkboxWrapper.current.style.left = elRect.left - 12 + 'px'
-		// if (windowSize[0] < 768 && prevEl) {
-		// 	let prevLeft = prevEl.style.left.slice(0, -2)
-		// 		? parseFloat(prevEl.style.left.slice(0, -2)) + 8
-		// 		: 8
-		// 	checkboxWrapper.current.style.left =
-		// 		prevLeft + prevEl.getBoundingClientRect().width + 16 + 'px'
-		// }
 		checkboxWrapper.current.style.width = elRect.width + 'px'
 	}, [windowSize, buttonGroup.current])
 
