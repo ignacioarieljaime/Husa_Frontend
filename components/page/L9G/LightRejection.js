@@ -1,11 +1,15 @@
 import CustomImage from 'components/common/CustomImage'
 import React, { useState, useEffect } from 'react'
+import AOS from 'aos'
 
 const LightRejection = ({ data }) => {
 	const [activeTab, setActiveTab] = useState(0)
 	const [content, setContent] = useState(null)
 	useEffect(() => {
 		setContent(data?.structure)
+		setTimeout(() => {
+			AOS.refresh()
+		}, 1500)
 	}, [])
 	return (
 		<section className='l9g'>

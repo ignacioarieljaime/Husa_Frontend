@@ -35,7 +35,7 @@ const HeroBanner = ({ data: { structure } }) => {
 						className='logo desktop'
 					/>
 					<div
-						className='mobile heading'
+						className='mobile heading text-white'
 						dangerouslySetInnerHTML={{
 							__html: text
 						}}></div>

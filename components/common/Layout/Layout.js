@@ -18,7 +18,9 @@ function Layout({ children, meta, title, header }) {
 
 	useEffect(() => {
 		AOS.init()
-		AOS.refresh()
+		setInterval(() => {
+			AOS.refresh()
+		}, 5000)
 		setShowChild(true)
 		getSetting()
 		window.addEventListener('scroll', () => listenToScroll(window.innerHeight))
