@@ -1,18 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import CustomImage from '../../common/CustomImage'
 
 function SupportNeedMoreWithButton({ data }) {
 	let { structure } = data
 	return (
 		<section>
-			<div className='heading support-heading support-new-heading'>
-				<CustomImage
-					src={structure?.image?.src}
-					alt={structure?.image?.alt}
-					wrapperWidth='100%'
-					wrapperHeight={'375px'}
-				/>
+			<div className='heading support-heading support-new-heading need_more_help_banner'>
 				<div className='heading-text'>
 					<h4
 						className='text-white fs-2hx fw-normal mb-7'
@@ -21,7 +14,7 @@ function SupportNeedMoreWithButton({ data }) {
 					</h4>
 					{structure?.link?.value && (
 						<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
-							<a className='n-btn outline-white transparent'>
+							<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
 								{structure?.link?.title}
 							</a>
 						</Link>
