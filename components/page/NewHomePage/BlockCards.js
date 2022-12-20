@@ -28,7 +28,9 @@ const BlockCards = ({ data: { structure } }) => {
 				{structure?.link?.value && (
 					<div className='text-center'>
 						<Link href={structure?.link?.value}>
-							<a className='n-btn outline-black'>{structure?.link?.title}</a>
+							<a className='n-btn outline-black d-block w-fit mx-auto'>
+								{structure?.link?.title}
+							</a>
 						</Link>
 					</div>
 				)}

@@ -4,7 +4,7 @@ import React from 'react'
 
 function ProductSupportNewHead({ pim }) {
 	return (
-		<section className='product product-support-head'>
+		<section className='product product-support-head p-0'>
 			<div className='container'>
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
@@ -14,14 +14,14 @@ function ProductSupportNewHead({ pim }) {
 									wrapperClass={'product_support_head_image'}
 									src={pim?.assets.find(item => item.order === 1)?.url}
 									alt='featured image'
-									// width='80%'
+									// wrapperWidth='80%'
 								/>
 							) : (
 								<CustomImage
 									src={pim?.assets.find(item => item.type_id === 1)?.url}
 									wrapperClass={'product_support_head_image'}
 									alt='featured image'
-									// width='80%'
+									// wrapperWidth='80%'
 								/>
 							)}
 						</div>

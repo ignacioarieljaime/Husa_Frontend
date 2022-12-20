@@ -6,9 +6,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper'
 
 // Import Swiper styles
 import 'swiper/css'
+import 'swiper/css/navigation'
 import Link from 'next/link'
 import axios from 'axios'
 import Spinner from 'components/common/Spinner'
@@ -61,13 +63,15 @@ const SupportNewProducts = ({ data }) => {
 					Select a product category to get started.
 				</h3>
 				<Swiper
-					navigation={false}
+					navigation={true}
 					pagination={false}
 					spaceBetween={35}
 					slidesPerView={'auto'}
 					centeredSlides={true}
 					grabCursor={true}
-					className='support-products-slider'>
+					dir='rtl'
+					modules={[Navigation]}
+					className='support-products-slider px-12'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item '>
 							<div className='d-flex flex-column '>
@@ -122,7 +126,7 @@ const SupportNewProducts = ({ data }) => {
 												<Spinner size={20} />
 											</li>
 										) : Array.isArray(searchProductsList) &&
-										searchProductsList.length > 0 ? (
+										  searchProductsList.length > 0 ? (
 											searchProductsList.map((item, index) => (
 												<li key={'search-list-' + index}>
 													<Link href={item.route}>
