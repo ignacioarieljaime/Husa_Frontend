@@ -48,6 +48,7 @@ const ExtendedWarrantyPaymentStatus = ({
 		try {
 			let response = await GetPaymenStatus(_invoice)
 			setStatusData(response?.data)
+			console.log(response?.data)
 		} catch (error) {
 			if (error.response.status === 404) {
 				toast.error('Token is invalid', {
@@ -65,7 +66,6 @@ const ExtendedWarrantyPaymentStatus = ({
 		let response = await GetPaymentUrl(_invoice)
 		router.push(response?.data?.url)
 	}
-	console.log(statusData)
 	return (
 		<section>
 			<div className='extended-warranty-payment-status'>
@@ -111,6 +111,7 @@ const ExtendedWarrantyPaymentStatus = ({
 											</span>
 										</div>
 										<div className=''>
+										Full terms and condition 
 											{content?.termsLink?.value ? (
 												<Link href={content?.termsLink?.value}>
 													<a target='_blank'>{content?.termsLink?.title}</a>
