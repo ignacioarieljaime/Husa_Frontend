@@ -23,7 +23,7 @@ const BlockSpotlightItem = ({ data }) => {
 	return (
 		<div className='spotlight-releases-item'>
 			<Link href={productLink ? productLink : '/'}>
-				<a>
+				<a className='w-100'>
 					<CustomImage
 						src={product?.media?.url}
 						className='image'
