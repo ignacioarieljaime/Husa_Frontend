@@ -216,6 +216,10 @@
 		.spotlight-releases-item {
 			text-align: center;
 			width: 20%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
 			@include mq(1300) {
 				width: 25%;
 			}
@@ -455,6 +459,12 @@
 			&.full-size {
 				width: calc(100% - 72px);
 				padding-top: 30%;
+				.box-content {
+					align-items: center;
+				}
+				a{
+					margin: 0 auto;
+				}
 			}
 		}
 	}
