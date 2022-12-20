@@ -9,7 +9,8 @@ fs.readdir(path.resolve(__dirname, '../pages'), (err, files) => {
 				file !== '404.js' &&
 				file !== '_app.js' &&
 				file !== '_error.js' &&
-				file !== '_document.js'
+				file !== '_document.js' &&
+				file !== 'api'
 			) {
 				fs.rm(
 					path.resolve(__dirname, '../pages', file),
