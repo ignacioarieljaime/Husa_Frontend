@@ -22,11 +22,15 @@ const BlockSpotlightItem = ({ data }) => {
 
 	return (
 		<div className='spotlight-releases-item'>
-			<CustomImage
-				src={product?.media?.url}
-				className='image'
-				wrapperHeight={'176px'}
-			/>
+			<Link href={productLink ? productLink : '/'}>
+				<a>
+					<CustomImage
+						src={product?.media?.url}
+						className='image'
+						wrapperHeight={'176px'}
+					/>
+				</a>
+			</Link>
 			<h5 className='description'>{seriesTitle && product?.model}</h5>
 			<h3 className='title'>
 				{seriesTitle
