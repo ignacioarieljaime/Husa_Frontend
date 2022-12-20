@@ -8,7 +8,15 @@ export default async function handler(req, res) {
 				...req.body
 			}
 		)
-		res.status(201).json(response.data)
+		res.status(200).json({
+			data: {
+				Status: 'success',
+				Message: 'Successfully registered product'
+			},
+			success: true,
+			message: '',
+			code: 'OK'
+		})
 	} catch (error) {
 		res.status(400).json(error.response.data)
 	}
