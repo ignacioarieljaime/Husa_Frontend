@@ -30,7 +30,6 @@ const GoogleTvProducts = ({ data }) => {
 		}
 	}
 
-	console.log(data)
 	return (
 		<section>
 			<div className='google_tv_products'>
@@ -53,8 +52,6 @@ const GoogleTvProducts = ({ data }) => {
 							let year = item?.products[0]?.product?.customFields
 								.find(item => item?.type_name === 'Main Fields')
 								?.custom_fields.find(item => item?.name === 'Year')?.value
-							console.log(year)
-							console.log(new Date().getFullYear())
 							return (
 								<div
 									key={index}
@@ -88,7 +85,8 @@ const GoogleTvProducts = ({ data }) => {
 														item.value && <li key={index}>{item.value}</li>
 												)}
 										</ul>
-										{/* <h6 className='description'>{item?.description?.value}</h6> */}
+	
+										<h6 className='description'>{item?.products[0]?.product?.name}</h6>
 										<Link
 											href={
 												RouteHandler(item?.products[0]?.product?.id)
