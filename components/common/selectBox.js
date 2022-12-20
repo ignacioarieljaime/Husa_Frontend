@@ -29,7 +29,7 @@ function CustomSelectBox({ required = false, title, options, onChange, className
 					</p>
 				</div>
 			</div>
-			<ul className='select-box-list top-100'>
+			<ul className='select-box-list top-100 w-100'>
 				{options && Array.isArray(options) ? (
 					<>
 						{options.length === 0 ? (

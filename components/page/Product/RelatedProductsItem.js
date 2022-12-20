@@ -52,15 +52,18 @@ function ProductsItem({ data }) {
 				{productSelected?.isNew === 1 && (
 					<span className='new_product'>New</span>
 				)}
-				<Link href={'/'}>
-					<div className='img_wrapper'>
+				<Link
+					href={
+						RouteHandler(productSelected?.id) ? RouteHandler(productSelected?.id) : '/'
+					}>
+					<a className='img_wrapper'>
 						<CustomImage
 							src={productSelected?.media?.url}
 							wrapperWidth='100%'
 							alt={productSelected?.media?.caption}
 							className='img'
 						/>
-					</div>
+					</a>
 				</Link>
 				{data && (
 					<h3 className='serie mt-5'>

@@ -300,6 +300,19 @@
 	}
 }
 
+.need_more_help_banner {
+	padding: 64px 12px;
+	background-color: #00a29c;
+	&:after {
+		display: none;
+	}
+	.heading-text {
+		position: relative !important;
+		top: 0 !important;
+		transform: translate(0, 0) !important;
+	}
+}
+
 @media (max-width: 768px) {
 	.supports-new > div:nth-child(n + 2) {
 		border-left: none;

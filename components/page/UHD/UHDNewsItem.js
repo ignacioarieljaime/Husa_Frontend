@@ -1,14 +1,16 @@
+import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
-function UHDNewsItem({ data }) {
+function UHDNewsItem({ data, count }) {
 	let { image, title, description } = data
 	return (
 		<div className='col-12 col-md-4'>
 			<article className='small_article text-start'>
-				<img
+				<CustomImage
 					src={image?.src}
 					alt={image?.alt}
-					width='100%'
+					wrapperWidth='100%'
+					wrapperHeight={count > 2 ? '700px' : 'fit-content'}
 					className='img-box-shadow-hover'
 				/>
 				<div className='px-4 divider-border position-relative'>

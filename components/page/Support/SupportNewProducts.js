@@ -102,7 +102,7 @@ const SupportNewProducts = ({ data }) => {
 								style={{ cursor: 'pointer' }}
 								onClick={() => setSearchBoxCondition(!searchBoxCondition)}
 								className='drop_down  d-flex justify-content-between border-bottom px-3 pb-3  border-dark'>
-								please select your product
+								select your model
 								<FontAwesomeIcon icon={faAngleDown} />
 							</div>
 							{searchBoxCondition && (
@@ -131,7 +131,7 @@ const SupportNewProducts = ({ data }) => {
 												<li key={'search-list-' + index}>
 													<Link href={item.route}>
 														<a className='text-primary decora'>
-															{item.product.name}
+															{item.product.model}
 														</a>
 													</Link>
 												</li>
