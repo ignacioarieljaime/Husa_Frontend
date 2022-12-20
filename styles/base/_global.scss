@@ -756,3 +756,9 @@ input {
 		}
 	}
 }
+
+.spec-after-style{
+	&::before{
+		color: #292929 !important;
+	}
+}
