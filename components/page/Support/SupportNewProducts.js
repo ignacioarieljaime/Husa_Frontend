@@ -106,7 +106,7 @@ const SupportNewProducts = ({ data }) => {
 									<input
 										type='text'
 										className='border-bottom border-gray w-100 mt-2 border-0 py-2 px-3'
-										placeholder='search select your product '
+										placeholder='search your model'
 										onChange={e => searchHandler(e.target.value)}
 										onBlur={() =>
 											setTimeout(() => {
