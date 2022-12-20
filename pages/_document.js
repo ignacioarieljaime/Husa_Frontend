@@ -8,6 +8,7 @@ export default function Document() {
 				{' '}
 				<Main />
 				<NextScript />
+				<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 				<noscript
 					dangerouslySetInnerHTML={{
 						__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBPC7RT" height="0" width="0" style="display: none; visibility: hidden;" />`
