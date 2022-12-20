@@ -9,6 +9,7 @@ function ProductSupportNewHead({ pim }) {
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container '>
+						
 							{pim?.assets.find(item => item.order === 1) ? (
 								<CustomImage
 									wrapperClass={'product_support_head_image'}
