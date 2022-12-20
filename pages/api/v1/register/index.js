@@ -18,6 +18,24 @@ export default async function handler(req, res) {
 			code: 'OK'
 		})
 	} catch (error) {
-		res.status(400).json(error.response.data)
+		res.status(200).json(errorHandler(error.response.data.errors))
+	}
+}
+
+const errorHandler = _data => {
+	let errorItems = []
+	for (var property in _data) {
+		errorItems.push({
+			message: `${property} cannot be blank`,
+			fieldName: `${property}`,
+			messageType: 'error',
+			messageCast: 'text'
+		}) // Outputs: foo, fiz or fiz, foo
+	}
+	return {
+		data: errorItems,
+		success: false,
+		message: 'Error registering product',
+		code: 'ERROR'
 	}
 }
