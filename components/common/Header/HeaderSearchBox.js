@@ -72,7 +72,7 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 
 							{result?.support.length !== 0 && (
 								<div>
-									<h6>supports</h6>
+									<h6>Support</h6>
 									<ul>
 										{result?.support.map((item, index) => (
 											<li key={`search-item-${index}`}>
@@ -93,7 +93,7 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 
 							{result?.documents.length !== 0 && (
 								<div>
-									<h6>documents</h6>
+									<h6>Documents</h6>
 									<ul>
 										{result?.documents.map((item, index) => (
 											<li key={`search-item-${index}`}>
