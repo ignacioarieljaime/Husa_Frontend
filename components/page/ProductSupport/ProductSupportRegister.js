@@ -240,7 +240,7 @@ function ProductSupportRegister({ pim, data }) {
 							<button
 								type='submit'
 								disabled={loading}
-								className='n-btn outline-black d-flex mx-auto transparent py-4 px-9'>
+								className='n-btn outline-black d-flex mx-auto transparent py-2 px-4'>
 								<span >REGISTER</span>
 								{loading && <Spinner className='ms-2' size={25} />}
 							</button>
