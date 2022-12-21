@@ -18,7 +18,8 @@ const moduleExports = {
 			process.env.PIM_API_ROUTE ||
 			'https://impim.stage-api.hisenseportal.com/api/cms',
 		NEXT_PUBLIC_BRAND_ID: process.env.BRAND_ID || 3,
-		NEXT_PUBLIC_GTM_ID: process.env.GTM_ID || 'GTM-WBPC7RT'
+		NEXT_PUBLIC_GTM_ID: process.env.GTM_ID || 'GTM-WBPC7RT',
+		NEXT_PUBLIC_VELARO_ID: process.env.VELARO_ID || '30263'
 	},
 
 	images: {
