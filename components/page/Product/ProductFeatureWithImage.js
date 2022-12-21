@@ -7,12 +7,12 @@ function ProductFeatureWithImage({ data }) {
 		<section>
 			<div
 				style={{ background: structure?.backgroundColor?.value }}
-				class={`row description-blocks theme-${structure?.theme?.value} ${
+				className={`row description-blocks theme-${structure?.theme?.value} ${
 					structure?.theme?.value === 'dark' ? 'text-white' : ''
 				} align-items-center ${
 					structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''
 				}`}>
-				<article class='introduction col-12 col-md-6 order-2'>
+				<article className='introduction col-12 col-md-6 order-2'>
 					<h4>{structure?.littleTitle?.value}</h4>
 
 					<h2>{structure?.title?.value}</h2>

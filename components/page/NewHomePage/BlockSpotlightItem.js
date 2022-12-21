@@ -23,7 +23,7 @@ const BlockSpotlightItem = ({ data }) => {
 	return (
 		<div className='spotlight-releases-item'>
 			<Link href={productLink ? productLink : '/'}>
-				<a>
+				<a className='w-100'>
 					<CustomImage
 						src={product?.media?.url}
 						className='image'
@@ -31,18 +31,14 @@ const BlockSpotlightItem = ({ data }) => {
 					/>
 				</a>
 			</Link>
-			<h5 className='description'>{seriesTitle && product?.model}</h5>
+			<h5 className='description'>{product?.model}</h5>
 			<h3 className='title'>
 				{seriesTitle
 					? seriesTitle?.custom_fields.find(item => item.name === 'h2 Title')
 							.value
-					: product?.customFields.find(item =>
-							item?.type_name?.includes(' filters')
-					  )
-					? product?.customFields
+					: product?.customFields
 							.find(item => item?.type_name?.includes(' filters'))
-							?.custom_fields.find(item => item.name === 'Product Type')?.value
-					: product?.model}
+							?.custom_fields.find(item => item.name === 'Product Type')?.value}
 			</h3>
 			<ul className='d-flex flex-wrap justify-content-center list-unstyled gap-2'>
 				{Array.isArray(data.products) &&
