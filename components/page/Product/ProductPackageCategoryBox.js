@@ -6,7 +6,7 @@ import React, { useState, useRef, useEffect } from 'react'
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
 function ProductPackageCategoryBox({ data, pim }) {
-	const router = useRouter()
+	let { structure } = data
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [fix, setFix] = useState(false)
 	const menu = useRef()
@@ -21,7 +21,6 @@ function ProductPackageCategoryBox({ data, pim }) {
 		})
 	}, [])
 
-	let { structure } = data
 	return (
 		<>
 			{' '}
@@ -32,11 +31,17 @@ function ProductPackageCategoryBox({ data, pim }) {
 				ref={menu}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-start align-items-center p-0 m-0'>
-						<li className='me-md-auto'>
-							<span className='underline-on-hover text-uppercase'>
-								{pim?.model}
-							</span>
-						</li>
+						{structure?.tags?.value.map((item, index) => (
+							<li className='me-md-auto' key={`category-item-${index}`}>
+								<Link href={item.target.value ? item.target.value : '/'}>
+									<a>
+										<span className='underline-on-hover text-uppercase'>
+											{item.title.value}
+										</span>
+									</a>
+								</Link>
+							</li>
+						))}
 
 						{/* {structure?.tags?.value.map((item, index) => (
 							<li key={`category-item-${index}`}>
