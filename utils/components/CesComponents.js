@@ -19,5 +19,26 @@ module.exports.CesComponents = [
 	{
 		name: 'CEOLaserLikeBox',
 		path: 'components/page/CES/Laster/CEOLasterLikeBox'
+	},
+	{
+		name: 'CesBanner',
+		path: 'components/page/CES/CesBanner'
+	},
+
+	{
+		name: 'CesAwards',
+		path: 'components/page/CES/CesAwards'
+	},
+	{
+		name: 'CesCards',
+		path: 'components/page/CES/CesCards'
+	},
+	{
+		name: 'CesHero',
+		path: 'components/page/CES/CesHero'
+	},
+	{
+		name: 'CesTextBox',
+		path: 'components/page/CES/CesTextBox'
 	}
 ]
