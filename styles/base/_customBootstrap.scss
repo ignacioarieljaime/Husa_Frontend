@@ -531,6 +531,25 @@
 			right: 0;
 		}
 	}
+
+	.link_box {
+		margin-top: 5px;
+		h6 {
+			font-weight: 300;
+		}
+
+		a {
+			color: #009c9b;
+			font-size: 14px;
+			text-decoration: none;
+			svg {
+				margin-left: 5px;
+				path {
+					fill: #009c9b;
+				}
+			}
+		}
+	}
 }
 
 /* backdrop */

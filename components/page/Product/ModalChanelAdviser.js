@@ -1,6 +1,8 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import GoToPageIcon from 'components/icons/GoToPageIcon'
 import useOutsideClick from 'hooks/useOutsideClick'
+import Link from 'next/link'
 import React, { useRef } from 'react'
 
 function ModalChanelAdviser({ condition, handler, model }) {
@@ -72,9 +74,17 @@ function ModalChanelAdviser({ condition, handler, model }) {
 					</div> */}
 				<iframe
 					width={'100%'}
-					height={'100%'}
+					height={'83vh'}
 					src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
 					frameborder='0'></iframe>
+				<div className='link_box'>
+					<h5>Hisense Authorized Dealers</h5>
+					<Link href={'/authorized-retailers'}>
+						<a>
+							Why Buy from an Authorized Dealer? <GoToPageIcon />
+						</a>
+					</Link>
+				</div>
 			</div>
 		</div>
 	)
