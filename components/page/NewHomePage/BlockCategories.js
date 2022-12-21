@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper'
 
+import 'swiper/css/navigation'
 import 'swiper/css'
 import Link from 'next/link'
 import CustomImage from '../../common/CustomImage'
@@ -18,13 +20,14 @@ const BlockCategories = ({ data: { structure } }) => {
 					className='title fs-3x mb-15'
 					dangerouslySetInnerHTML={{ __html: text }}></h2>
 				<Swiper
-					navigation={false}
+					navigation={true}
 					pagination={false}
 					spaceBetween={16}
 					slidesPerView={'auto'}
 					centeredSlides={false}
+					modules={[Navigation]}
 					grabCursor={true}
-					className='appliances-slider'>
+					className='appliances-slider px-md-3'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item'>
 							<CustomImage

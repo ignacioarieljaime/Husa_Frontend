@@ -387,6 +387,20 @@
 				max-height: calc(100% - 70px);
 			}
 		}
+		.swiper-button-next,
+		.swiper-button-prev {
+			&::after {
+				font-size: 40px;
+				font-weight: 900;
+				color: #00a29c;
+			}
+		}
+		.swiper-button-next {
+			right: 25px;
+		}
+		.swiper-button-prev {
+			left: 25px;
+		}
 	}
 }
 
@@ -462,7 +476,7 @@
 				.box-content {
 					align-items: center;
 				}
-				a{
+				a {
 					margin: 0 auto;
 				}
 			}
