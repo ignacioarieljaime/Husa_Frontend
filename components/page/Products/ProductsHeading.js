@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function ProductsBanner({ data }) {
+function ProductsHeading({ data }) {
 	let { structure } = data
 	const [text, setText] = useState(null)
 	useEffect(() => {
@@ -24,4 +24,4 @@ function ProductsBanner({ data }) {
 	)
 }
 
-export default ProductsBanner
+export default ProductsHeading
