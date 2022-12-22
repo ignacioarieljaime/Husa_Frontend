@@ -74,6 +74,7 @@ function ModalChanelAdviser({ condition, handler, model }) {
 					</div> */}
 				<iframe
 					width={'100%'}
+					style={{ height: '83vh' }}
 					height={'83vh'}
 					src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
 					frameborder='0'></iframe>

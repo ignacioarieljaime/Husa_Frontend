@@ -307,7 +307,7 @@ header.blog {
 			animation-fill-mode: forwards;
 		}
 		img {
-			max-height: 250px;
+			max-height: 330px;
 			object-fit: contain;
 		}
 		h3 {
@@ -377,7 +377,7 @@ header.blog {
 		&:hover {
 			.nav-dropdown-list {
 				opacity: 1;
-				height: 410px;
+				height: 500px;
 				padding: 80px 40px 40px 40px;
 
 				> * {
