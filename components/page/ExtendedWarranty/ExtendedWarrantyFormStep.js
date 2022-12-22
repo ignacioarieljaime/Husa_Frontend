@@ -17,6 +17,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 	const [assets, setAssets] = useState([])
 	const [acceptTerms, setAcceptTerms] = useState(false)
 	const [loading, setLoading] = useState(null)
+	const [error, setError] = useState(null)
 	const [formBody, setFormBody] = useState({
 		product: {
 			id: product.id,
@@ -70,6 +71,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 	}
 
 	const submitFormData = async e => {
+		setError(null)
 		e.preventDefault()
 		if (!formBody.product.model_plate_sticker) {
 			toast.error('please upload model plate sticker', {
@@ -77,7 +79,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 			})
 		} else if (!formBody.product.receipt_photo) {
 			toast.error('please upload receipt photo', { toastId: 'receipt_photo' })
-		} else if (!formBody.retailer_id) {
+		} else if (!formBody.product.retailer) {
 			toast.error('please select retailer', { toastId: 'retailer_id' })
 		} else {
 			setLoading('button')
@@ -87,10 +89,9 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 				setLoading(null)
 			} catch (error) {
 				setLoading(null)
-				if (error?.response?.data?.errors?.last_name) {
-					toast.error('Please enter your full name')
+				if (error?.response?.status === 422) {
+					setError(error?.response?.data?.errors)
 				}
-				console.log(error)
 			}
 		}
 	}
@@ -176,6 +177,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 						loading={loading}
 						retailers={retailers}
 						terms={terms}
+						errors={error}
 					/>
 				</div>
 			</section>

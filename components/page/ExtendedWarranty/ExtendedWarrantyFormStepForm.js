@@ -14,7 +14,8 @@ const ExtendedWarrantyFormStepForm = ({
 	formBody,
 	loading,
 	retailers,
-	terms
+	terms,
+	errors
 }) => {
 	const [showModal, setShowModal] = useState(false)
 	const [label, setlabel] = useState(true)
@@ -23,7 +24,7 @@ const ExtendedWarrantyFormStepForm = ({
 	return (
 		<form onSubmit={onSubmit} className='form'>
 			<h3 className='title'>Fill out the form below to complete your order.</h3>
-			<div className='row mx-0 mb-8'>
+			<div className='row mx-0 mb-8 extended-warranty-form'>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
 						<input
@@ -37,6 +38,9 @@ const ExtendedWarrantyFormStepForm = ({
 							placeholder='First Name'
 							type='text'
 						/>
+					</div>
+					<div className='error_message'>
+						{errors?.first_name && errors?.first_name[0]}
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
@@ -53,6 +57,9 @@ const ExtendedWarrantyFormStepForm = ({
 							type='text'
 						/>
 					</div>
+					<div className='error_message'>
+						{errors?.last_name && errors?.last_name[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
@@ -62,8 +69,11 @@ const ExtendedWarrantyFormStepForm = ({
 							}
 							required
 							placeholder='Email'
-							type='email'
+							type='text'
 						/>
+					</div>
+					<div className='error_message'>
+						{errors?.email && errors?.email[0]}
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
@@ -76,6 +86,9 @@ const ExtendedWarrantyFormStepForm = ({
 							placeholder='Phone Number'
 							type='tel'
 						/>
+					</div>
+					<div className='error_message'>
+						{errors?.phone && errors?.phone[0]}
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
@@ -91,6 +104,9 @@ const ExtendedWarrantyFormStepForm = ({
 							placeholder='Address'
 							type='text'
 						/>
+					</div>
+					<div className='error_message'>
+						{errors?.address && errors?.address[0]}
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
@@ -108,6 +124,9 @@ const ExtendedWarrantyFormStepForm = ({
 							placeholder='Postal code'
 							type='text'
 						/>
+					</div>
+					<div className='error_message'>
+						{errors?.postal_code && errors?.postal_code[0]}
 					</div>
 				</div>
 
@@ -128,10 +147,13 @@ const ExtendedWarrantyFormStepForm = ({
 							type='text'
 						/>
 					</div>
+					<div className='error_message'>
+						{errors?.serial_number && errors?.serial_number[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{!formBody.purchase_date && (
+						{!formBody.product.purchase_date && (
 							<label className='custom-label'>Purchase Date</label>
 						)}
 						<input
@@ -152,6 +174,9 @@ const ExtendedWarrantyFormStepForm = ({
 							type='date'
 						/>
 					</div>
+					<div className='error_message'>
+						{errors?.purchase_date && errors?.purchase_date[0]}
+					</div>
 				</div>
 				<div className='col-12 '>
 					<div className='extended-warranty-input'>
@@ -168,6 +193,9 @@ const ExtendedWarrantyFormStepForm = ({
 							placeholder='Retailer'
 							type='text'
 						/>
+					</div>
+					<div className='error_message'>
+						{errors?.retailer && errors?.retailer[0]}
 					</div>
 				</div>
 			</div>
