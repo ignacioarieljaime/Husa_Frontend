@@ -226,7 +226,7 @@
 					font-size: 16px;
 					background: transparent;
 					overflow: hidden;
-					transition: all  0.5s ease-in;
+					transition: all 0.5s ease-in;
 					.faq-accordion-question {
 						font-size: 16px;
 						line-height: 120%;
@@ -738,6 +738,13 @@
 				line-height: 120%;
 				text-align: center;
 				letter-spacing: -0.02em;
+			}
+			.extended-warranty-form {
+				.error_message {
+					color: red;
+					font-size: 14px;
+					margin-top: 5px;
+				}
 			}
 
 			.extended-warranty-input {
