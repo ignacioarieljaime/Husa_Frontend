@@ -43,7 +43,7 @@ function ProductPackageCategoryBox({ data, pim }) {
 							</li>
 						))}
 
-						{/* {structure?.tags?.value.map((item, index) => (
+						{structure?.tags?.value.map((item, index) => (
 							<li key={`category-item-${index}`}>
 								<Link href={item.target.value ? item.target.value : '/'}>
 									<a>
@@ -54,7 +54,8 @@ function ProductPackageCategoryBox({ data, pim }) {
 								</Link>
 							</li>
 						))}
-						<li className=''>
+
+						{/* <li className=''>
 							<Link
 								href={
 									// structure?.support?.value ? structure?.support.value : '/'

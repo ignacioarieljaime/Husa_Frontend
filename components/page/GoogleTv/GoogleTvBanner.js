@@ -1,3 +1,4 @@
+import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
@@ -10,16 +11,22 @@ const GoogleTvBanner = ({ data: { structure } }) => {
 		<section>
 			<div className='google-tv-banner'>
 				<div className='background'>
-					<img
+					<CustomImage
 						src={structure?.backgroundImage?.src}
 						alt={structure?.backgroundImage?.alt}
+						wrapperHeight='100%'
+						wrapperWidth='100%'
 						className='image'
 					/>
 				</div>
 				<div className='content'>
 					<div className='logos'>
 						<img src={structure?.image1?.src} alt={structure?.image1?.alt} />
-						<img src={structure?.image2?.src} alt={structure?.image2?.alt} />
+						<img
+							src={structure?.image2?.src}
+							alt={structure?.image2?.alt}
+							style={{ maxWidth: '320px', width: '32%' }}
+						/>
 					</div>
 					<div
 						className='title'

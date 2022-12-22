@@ -9,11 +9,14 @@ function ProductsHeading({ data }) {
 	return (
 		<div className='all-tvs-heading d-flex'>
 			<div className='col-12 col-md-6 text_box'>
-				<h2>{structure?.title?.value}</h2>
-				<div
-					dangerouslySetInnerHTML={{
-						__html: text
-					}}></div>
+				<article className='large_article'>
+					<h1 className='my-9'>{structure?.title?.value}</h1>
+					<div
+						className='fs-base'
+						dangerouslySetInnerHTML={{
+							__html: text
+						}}></div>
+				</article>
 			</div>
 			<div className='col-12 col-md-6 image_container'>
 				<div className='image_wrapper'>

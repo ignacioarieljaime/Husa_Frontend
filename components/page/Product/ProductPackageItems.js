@@ -6,9 +6,12 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper'
 
-const ProductPackageItems = ({ data: { structure } }) => {
+const ProductPackageItems = ({ data }) => {
+	const { structure } = data
 	return (
-		<section className='day-100 eligible_models_slider kitchen_suite_carousel'>
+		<section
+			id={data?.name + data?.id}
+			className='day-100 eligible_models_slider kitchen_suite_carousel'>
 			<div className='bg-grey px-8 px-md-13 eligble-models py-10'>
 				<div className='container text-center'>
 					<article className='article'>

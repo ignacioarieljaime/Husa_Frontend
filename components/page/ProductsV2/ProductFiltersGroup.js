@@ -41,10 +41,10 @@ const ProductFiltersGroup = ({
 		}
 	}, [filter])
 
-	useEffect(() => {
-		checkboxWrapper.current.style.left = elRect.left - 12 + 'px'
-		checkboxWrapper.current.style.width = elRect.width + 'px'
-	}, [windowSize, buttonGroup.current])
+	// useEffect(() => {
+	// 	checkboxWrapper.current.style.left = elRect.left - 12 + 'px'
+	// 	checkboxWrapper.current.style.width = elRect.width + 'px'
+	// }, [windowSize, buttonGroup.current])
 
 	if (filter.filter_values.length !== 0) {
 		return (
