@@ -71,30 +71,29 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 
 	const submitFormData = async e => {
 		e.preventDefault()
-		console.log(formBody)
 
-		// if (!formBody.product.model_plate_sticker) {
-		// 	toast.error('please upload model plate sticker', {
-		// 		toastId: 'model_plate_sticker'
-		// 	})
-		// } else if (!formBody.product.receipt_photo) {
-		// 	toast.error('please upload receipt photo', { toastId: 'receipt_photo' })
-		// } else if (!formBody.retailer_id) {
-		// 	toast.error('please select retailer', { toastId: 'retailer_id' })
-		// } else {
-		// 	setLoading('button')
-		// 	try {
-		// 		let response = await submitForm(formBody)
-		// 		await redirectToPayment(response?.data?.invoice?.token)
-		// 		setLoading(null)
-		// 	} catch (error) {
-		// 		setLoading(null)
-		// 		if (error?.response?.data?.errors?.last_name) {
-		// 			toast.error('Please enter your full name')
-		// 		}
-		// 		console.log(error)
-		// 	}
-		// }
+		if (!formBody.product.model_plate_sticker) {
+			toast.error('please upload model plate sticker', {
+				toastId: 'model_plate_sticker'
+			})
+		} else if (!formBody.product.receipt_photo) {
+			toast.error('please upload receipt photo', { toastId: 'receipt_photo' })
+		} else if (!formBody.retailer_id) {
+			toast.error('please select retailer', { toastId: 'retailer_id' })
+		} else {
+			setLoading('button')
+			try {
+				let response = await submitForm(formBody)
+				await redirectToPayment(response?.data?.invoice?.token)
+				setLoading(null)
+			} catch (error) {
+				setLoading(null)
+				if (error?.response?.data?.errors?.last_name) {
+					toast.error('Please enter your full name')
+				}
+				console.log(error)
+			}
+		}
 	}
 
 	const redirectToPayment = async token => {
