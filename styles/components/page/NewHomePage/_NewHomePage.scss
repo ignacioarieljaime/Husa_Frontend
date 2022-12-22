@@ -387,19 +387,32 @@
 				max-height: calc(100% - 70px);
 			}
 		}
-		.swiper-button-next,
-		.swiper-button-prev {
+		.swiper-button-prev,
+		.swiper-button-next {
+			background: #00a29c;
+			width: 75px;
+			height: 75px;
+			border-radius: 50%;
+			opacity: 0.3;
+			transition: all 0.3s ease-in;
+
 			&::after {
-				font-size: 40px;
+				color: #fff;
+				font-size: 30px;
 				font-weight: 900;
-				color: #00a29c;
+			}
+
+			&:hover {
+				opacity: 0.8;
 			}
 		}
-		.swiper-button-next {
-			right: 25px;
-		}
+
 		.swiper-button-prev {
 			left: 25px;
+		}
+
+		.swiper-button-next {
+			right: 25px;
 		}
 	}
 }
