@@ -131,12 +131,18 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{!formBody.purchase_date && <label className='custom-label'>Purchase Date</label>}
+						{!formBody.purchase_date && (
+							<label className='custom-label'>Purchase Date</label>
+						)}
 						<input
 							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									purchase_date: e.target.value
+									...prevState,
+									product: {
+										...prevState.product,
+										purchase_date: e.target.value
+									}
 								}))
 							}
 							required
@@ -153,7 +159,10 @@ const ExtendedWarrantyFormStepForm = ({
 							onChange={e =>
 								onChange(prevState => ({
 									...prevState,
-									retailer_id: e.target.value
+									product: {
+										...prevState.product,
+										retailer: e.target.value
+									}
 								}))
 							}
 							placeholder='Retailer'
