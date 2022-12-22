@@ -5,7 +5,7 @@ const HomeAppliancePromoProducts = ({ data }) => {
 	const [content, setContent] = useState({})
 	useEffect(() => {
 		setContent(data?.structure)
-	})
+	}, [])
 
 	return (
 		<section>
