@@ -7,6 +7,7 @@ const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
 function ProductPackageCategoryBox({ data, pim }) {
 	let { structure } = data
+
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [fix, setFix] = useState(false)
 	const menu = useRef()
