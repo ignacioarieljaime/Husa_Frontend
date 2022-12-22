@@ -18,5 +18,13 @@ module.exports.HomeAppliances = [
 	{
 		name: 'HomeApplianceImageWithBackground',
 		path: 'components/page/HomeAppliances/HomeApplianceImageWithBackground'
+	},
+	{
+		name: 'HomeAppliancePromoBanner',
+		path: 'components/page/HomeAppliances/HomeAppliancePromoBanner'
+	},
+	{
+		name: 'HomeAppliancePromoProducts',
+		path: 'components/page/HomeAppliances/HomeAppliancePromoProducts'
 	}
 ]
