@@ -34,28 +34,31 @@ const LumensOfBrightness = ({ data: { structure } }) => {
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>
 				<div className='row justify-content-between align-items-center mw-md-50 flex-md-nowrap mx-0 px-0 px-md-20 pb-20'>
-					{structure?.list?.value.map((item, index) => (
-						<div key={index} className='feature mb-5 mb-md-0 px-4'>
-							<div
-								className='color-bar active'
-								data-aos='size-animation2'
-								data-aos-duration='1000'
-								data-aos-delay='450'></div>
-							<div
-								className='fs-sm-2 fs-md-2hx fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
-								data-aos='fade-zoom-in'
-								data-aos-duration='1000'
-								data-aos-delay='450'>
-								{item?.title?.value}
-							</div>
-							<div
-								className='fs-8 fs-md-5 discription mt-1 mt-md-2 aos-init aos-animate'
-								data-aos='fade-zoom-in'
-								data-aos-duration='1000'>
-								{item?.subtitle?.value}
-							</div>
-						</div>
-					))}
+					{structure?.list?.value.map(
+						(item, index) =>
+							!Array.isArray(item) && (
+								<div key={index} className='feature mb-5 mb-md-0 px-4'>
+									<div
+										className='color-bar active'
+										data-aos='size-animation2'
+										data-aos-duration='1000'
+										data-aos-delay='450'></div>
+									<div
+										className='fs-sm-2 fs-md-2hx fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
+										data-aos='fade-zoom-in'
+										data-aos-duration='1000'
+										data-aos-delay='450'>
+										{item?.title?.value}
+									</div>
+									<div
+										className='fs-8 fs-md-5 discription mt-1 mt-md-2 aos-init aos-animate'
+										data-aos='fade-zoom-in'
+										data-aos-duration='1000'>
+										{item?.subtitle?.value}
+									</div>
+								</div>
+							)
+					)}
 				</div>
 			</div>
 		</section>
