@@ -31,6 +31,11 @@ function ProductPackageCategoryBox({ data, pim }) {
 				ref={menu}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-start align-items-center p-0 m-0'>
+						{/* <li className='me-md-auto'>
+							<span className='underline-on-hover text-uppercase'>
+								{pim?.model}
+							</span>
+						</li> */}
 						{structure?.tags?.value.map((item, index) => (
 							<li className='me-md-auto' key={`category-item-${index}`}>
 								<Link href={item.target.value ? item.target.value : '/'}>
@@ -42,7 +47,7 @@ function ProductPackageCategoryBox({ data, pim }) {
 								</Link>
 							</li>
 						))}
-
+{/* 
 						{structure?.tags?.value.map((item, index) => (
 							<li key={`category-item-${index}`}>
 								<Link href={item.target.value ? item.target.value : '/'}>
@@ -53,7 +58,7 @@ function ProductPackageCategoryBox({ data, pim }) {
 									</a>
 								</Link>
 							</li>
-						))}
+						))} */}
 
 						{/* <li className=''>
 							<Link

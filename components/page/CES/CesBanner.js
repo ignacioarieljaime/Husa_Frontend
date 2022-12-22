@@ -15,12 +15,16 @@ const CesBanner = ({ data: { structure } }) => {
 			<div className='ces_banner'>
 				<div className='image_container'>
 					<CustomImage
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
+						src={structure?.image1?.src}
+						alt={structure?.image1?.alt}
+						wrapperWidth={'100%'}
+						WrapperMaxWidth={'150px'}
 					/>
 					<CustomImage
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
+						src={structure?.image2?.src}
+						alt={structure?.image2?.alt}
+						wrapperWidth={'100%'}
+						WrapperMaxWidth={'150px'}
 					/>
 				</div>
 				<h1 className='title'>{structure?.title?.value}</h1>
@@ -31,7 +35,9 @@ const CesBanner = ({ data: { structure } }) => {
 					<Link href={structure?.link?.value}>
 						<a className='link'>
 							{structure?.link?.title}
-							<FontAwesomeIcon icon={faPlayCircle} />
+							<span>
+								<FontAwesomeIcon icon={faPlayCircle} size={'xl'} />
+							</span>
 						</a>
 					</Link>
 				)}

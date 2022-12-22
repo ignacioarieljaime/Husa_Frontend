@@ -6,6 +6,7 @@ import CustomImage from '../../common/CustomImage'
 const BlockSpotlightItem = ({ data }) => {
 	const [productLink, setProductLink] = useState()
 	const [product, setProduct] = useState()
+	const [productsItems, setProductsItems] = useState([])
 	let seriesTitle = product?.customFields?.find(
 		item => item.type_name === 'Top Titles'
 	)
@@ -18,7 +19,21 @@ const BlockSpotlightItem = ({ data }) => {
 			setProduct(data?.products?.product)
 			setProductLink(RouteHandler(data?.products?.product?.id))
 		}
+		sortItemSize()
 	}, [])
+
+	const sortItemSize = () => {
+		let _data = null
+		if (Array.isArray(data.products)) {
+			_data = data.products.map(item => {
+				item.size = item.value && Number(item.value.replace('"', ''))
+				return item
+			})
+			setProductsItems(_data.sort((first, second) => first.size - second.size))
+		} else {
+			setProductsItems(data)
+		}
+	}
 
 	return (
 		<div className='spotlight-releases-item'>
@@ -41,8 +56,8 @@ const BlockSpotlightItem = ({ data }) => {
 							?.custom_fields.find(item => item.name === 'Product Type')?.value}
 			</h3>
 			<ul className='d-flex flex-wrap justify-content-center list-unstyled gap-2'>
-				{Array.isArray(data.products) &&
-					data.products.map(item => item.value && <li>{item.value}</li>)}
+				{Array.isArray(productsItems) &&
+					productsItems.map(item => item.value && <li>{item.value}</li>)}
 			</ul>
 			{/* <div className='models'></div> */}
 			<Link href={productLink ? productLink : '/'}>
