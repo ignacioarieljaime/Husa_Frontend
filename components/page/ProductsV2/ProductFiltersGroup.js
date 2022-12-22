@@ -50,6 +50,7 @@ const ProductFiltersGroup = ({
 		return (
 			<div
 				className={`filter-group ${filterCollapse ? 'open' : ''}`}
+				style={{ zIndex: 100 - index }}
 				ref={buttonGroup}>
 				<button
 					className='n-btn black-text filter-btn'
