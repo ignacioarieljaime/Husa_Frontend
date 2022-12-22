@@ -45,5 +45,9 @@ module.exports.CommonComponents = [
 	{
 		name: 'PromoBanner',
 		path: 'components/common/PromoBanner'
+	},
+	{
+		name: 'VelaroChatBox',
+		path: 'components/common/VelaroChatBox'
 	}
 ]

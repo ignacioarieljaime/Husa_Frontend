@@ -22,7 +22,9 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 			id: product.id,
 			model_plate_sticker: null,
 			receipt_photo: null,
-			serial_number: null
+			serial_number: null,
+			retailer: null,
+			purchase_date: null
 		},
 		plan_id: plan.id,
 		first_name: null,
@@ -30,9 +32,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 		phone: null,
 		email: null,
 		address: null,
-		purchase_date: null,
-		postal_code: null,
-		retailer_id: null
+		postal_code: null
 	})
 
 	useEffect(() => {
@@ -71,7 +71,6 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 
 	const submitFormData = async e => {
 		e.preventDefault()
-
 		if (!formBody.product.model_plate_sticker) {
 			toast.error('please upload model plate sticker', {
 				toastId: 'model_plate_sticker'
