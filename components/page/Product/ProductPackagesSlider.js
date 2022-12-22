@@ -57,7 +57,7 @@ const ProductPackagesSlider = ({ data }) => {
 	// }, [series])
 
 	return (
-		<section className='package_types_slider'>
+		<section id={data?.name + data?.id} className='package_types_slider'>
 			<article className='article'>
 				{/* <h2>{structure?.title?.value}</h2> */}
 				<h2>Kitchen Appliance Packages</h2>

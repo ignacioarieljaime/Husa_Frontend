@@ -32,13 +32,13 @@ function ProductPackageCategoryBox({ data, pim }) {
 				ref={menu}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-start align-items-center p-0 m-0'>
-						<li className='me-md-auto'>
+						{/* <li className='me-md-auto'>
 							<span className='underline-on-hover text-uppercase'>
 								{pim?.model}
 							</span>
-						</li>
+						</li> */}
 
-						{/* {structure?.tags?.value.map((item, index) => (
+						{structure?.tags?.value.map((item, index) => (
 							<li key={`category-item-${index}`}>
 								<Link href={item.target.value ? item.target.value : '/'}>
 									<a>
@@ -49,7 +49,8 @@ function ProductPackageCategoryBox({ data, pim }) {
 								</Link>
 							</li>
 						))}
-						<li className=''>
+
+						{/* <li className=''>
 							<Link
 								href={
 									// structure?.support?.value ? structure?.support.value : '/'
