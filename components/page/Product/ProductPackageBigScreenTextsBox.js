@@ -1,14 +1,17 @@
 import CustomImage from 'components/common/CustomImage'
 import React, { useState, useEffect } from 'react'
 
-const ProductPackageBigScreenTextsBox = ({ data: { structure } }) => {
+const ProductPackageBigScreenTextsBox = ({ data }) => {
+	const { structure } = data
 	const [text, setText] = useState(null)
 	useEffect(() => {
 		setText(structure?.paragraph?.value)
 	}, [])
 	return (
 		<section>
-			<div className='tiny-banner product-big-screen'>
+			<div
+				id={data?.name + data?.id}
+				className='tiny-banner product-big-screen'>
 				<div className='container px-6 px-lg-0 py-12'>
 					<article className='article text-center'>
 						<h2
