@@ -22,10 +22,17 @@ const ExtendedWarrantyPaymentStatus = ({
 	const router = useRouter()
 
 	useEffect(() => {
-		if (router?.query?.invoice) setInvoice(router?.query?.invoice)
-		else {
+		if (router?.query?.stat !== 'ok' || !router?.query?.stat) {
 			setIsLoading(false)
-			toast.error('Token not found')
+			return
+		} else {
+			if (router?.query?.invoice) {
+				setInvoice(router?.query?.invoice)
+				getStatus(router?.query?.invoice)
+			} else {
+				setIsLoading(false)
+				toast.error('Token not found')
+			}
 		}
 	}, [])
 
@@ -36,20 +43,17 @@ const ExtendedWarrantyPaymentStatus = ({
 		}
 	}, [list, statusData])
 
-	useEffect(() => {
-		if (invoice) {
-			setTimeout(async () => {
-				await getStatus(invoice)
-			}, 10000)
-		}
-	}, [invoice])
-
 	const getStatus = async _invoice => {
 		try {
 			let response = await GetPaymenStatus(_invoice)
-			setStatusData(response?.data)
-			console.log(response?.data)
+			if (!response?.data?.invoice?.process?.id) {
+				getStatus(router?.query?.invoice)
+			} else {
+				setStatusData(response?.data)
+				setIsLoading(false)
+			}
 		} catch (error) {
+			setIsLoading(false)
 			if (error.response.status === 404) {
 				toast.error('Token is invalid', {
 					autoClose: false
@@ -59,7 +63,6 @@ const ExtendedWarrantyPaymentStatus = ({
 			}
 			console.log(error)
 		}
-		setIsLoading(false)
 	}
 
 	const retryPayment = async _invoice => {
@@ -111,15 +114,18 @@ const ExtendedWarrantyPaymentStatus = ({
 											</span>
 										</div>
 										<div className=''>
-										Full terms and condition 
+											<a href={'/'} download>
+												Full terms and condition
+												<span className='ms-3 ms-md-1'>
+													<FontAwesomeIcon icon={faUpRightFromSquare} />
+												</span>
+											</a>
 											{content?.termsLink?.value ? (
 												<Link href={content?.termsLink?.value}>
 													<a target='_blank'>{content?.termsLink?.title}</a>
 												</Link>
 											) : null}
-											<div className='ms-3 ms-md-1'>
-												<FontAwesomeIcon icon={faUpRightFromSquare} />
-											</div>
+
 											<div className='ms-4 ms-md-7'>
 												<AdobeAcrobat />
 											</div>
@@ -146,7 +152,9 @@ const ExtendedWarrantyPaymentStatus = ({
 								</a>
 							</Link>
 						)}
-						{!statusData?.invoice?.transaction ? (
+						{!router?.query?.stat ||
+						router?.query?.stat !== 'ok' ||
+						!statusData?.invoice?.transaction ? (
 							<button
 								className='n-btn outline-black py-4 mx-3 my-8 my-sm-4'
 								onClick={() => retryPayment(invoice)}>

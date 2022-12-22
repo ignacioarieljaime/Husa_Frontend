@@ -6,9 +6,10 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
 let selectBoxOption = [
-	{ name: 'Marketing or PR', value: 1 },
-	{ name: 'Customer Support', value: 2 },
-	{ name: 'Human Resources', value: 3 }
+	{ name: 'Where to Buy', value: 1 },
+	{ name: 'Pre-Purchase Inquiry', value: 2 },
+	{ name: 'Human Resources/Careers', value: 3 },
+	{ name: 'Other', value: 4 }
 ]
 
 function GeneralInquiriesForm({ btnClass, formHandler }) {

@@ -1,0 +1,32 @@
+.ces_text_box {
+	padding: 30px;
+	margin: 90px 0;
+	text-align: center;
+	.title {
+		font-weight: 400;
+		font-size: 48px;
+		line-height: 56px;
+		letter-spacing: -0.02em;
+		background: linear-gradient(121.77deg, #585eaa 0%, #f0a8a9 84.38%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
+		margin-bottom: 30px;
+		@include mq(768) {
+			font-size: 34px;
+			line-height: 42px;
+		}
+	}
+	.subtitle {
+		* {
+			font-weight: 400;
+			font-size: 20px;
+			line-height: 25px;
+			letter-spacing: -0.02em;
+			color: #000000;
+			margin-bottom: 0px;
+		}
+		margin-bottom: 30px;
+	}
+}

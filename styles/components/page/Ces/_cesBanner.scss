@@ -1,0 +1,47 @@
+.ces_banner {
+	background: #0e0d0d;
+	text-align: center;
+    padding: 115px 12px;
+    .image_container{
+        display: flex;  
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto 60px;
+        max-width: 350px;
+    }
+	.title {
+		background: linear-gradient(121.77deg, #585eaa 0%, #f0a8a9 84.38%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		text-fill-color: transparent;
+		font-weight: 400;
+		font-size: 96px;
+		line-height: 109px;
+		letter-spacing: -0.02em;
+		margin-bottom: 30px;
+	}
+	.subtitle {
+		color: #ffffff;
+		margin-bottom: 60px;
+		* {
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 30px;
+			text-align: center;
+			letter-spacing: -0.02em;
+			margin-bottom: 0;
+		}
+	}
+	.link {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 20px;
+		color: #ffffff;
+        text-decoration: none;
+        span{
+            margin-left:10px;
+        }
+	}
+}
