@@ -114,15 +114,18 @@ const ExtendedWarrantyPaymentStatus = ({
 											</span>
 										</div>
 										<div className=''>
-											Full terms and condition
+											<a href={'/'} download>
+												Full terms and condition
+												<span className='ms-3 ms-md-1'>
+													<FontAwesomeIcon icon={faUpRightFromSquare} />
+												</span>
+											</a>
 											{content?.termsLink?.value ? (
 												<Link href={content?.termsLink?.value}>
 													<a target='_blank'>{content?.termsLink?.title}</a>
 												</Link>
 											) : null}
-											<div className='ms-3 ms-md-1'>
-												<FontAwesomeIcon icon={faUpRightFromSquare} />
-											</div>
+
 											<div className='ms-4 ms-md-7'>
 												<AdobeAcrobat />
 											</div>
