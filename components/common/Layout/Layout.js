@@ -27,8 +27,8 @@ function Layout({ children, meta, title, header }) {
 		return () => window.removeEventListener('scroll', () => listenToScroll(0))
 	}, [])
 	useEffect(() => {
-		if (document.querySelector('.velaro-cobrowse-block')) {
-			document.querySelector('.velaro-cobrowse-block').style.display = 'none'
+		if (document.querySelector('.velaro-launcher-container')) {
+			document.querySelector('.velaro-launcher-container').style.display = 'none'
 		}
 	}, [router.asPath])
 

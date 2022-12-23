@@ -1,7 +1,13 @@
 import Script from 'next/script'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 function VelaroChatBox() {
+	useEffect(() => {
+		if (document.querySelector('.velaro-launcher-container')) {
+			document.querySelector('.velaro-launcher-container').style.display = 'block'
+		}
+	}, [])
+
 	return (
 		<Script>
 			{`
