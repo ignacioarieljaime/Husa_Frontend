@@ -6,13 +6,9 @@ function ProductNewsItem({ itemCount, data, divider }) {
 	return (
 		<div
 			style={{ width: `${100 / itemCount}%` }}
-			className={` mb-18 mb-md-0 product_news_box_item`}>
+			className={` mb-8 mb-md-0 product_news_box_item`}>
 			<article className='article text-start product_new_item'>
-				<CustomImage
-					src={image?.src}
-					alt={image?.alt}
-					wrapperWidth={'100%'}
-				/>
+				<CustomImage src={image?.src} alt={image?.alt} wrapperWidth={'100%'} />
 
 				{littleImage?.value?.image?.src && littleImage?.value?.text?.value ? (
 					<div className='little_image'>
@@ -26,11 +22,11 @@ function ProductNewsItem({ itemCount, data, divider }) {
 						divider ? 'divider-border position-relative' : ''
 					}`}>
 					{smallTitle?.value ? (
-						<h6 className='fs-2 mb-3 product_news_item_small_title   mt-13'>
+						<h6 className='mb-3 product_news_item_small_title   mt-13'>
 							{smallTitle?.value}
 						</h6>
 					) : (
-						<h4 className='fs-2 mb-3 mt-13'>{title?.value}</h4>
+						<h4 className='mb-3 mt-13'>{title?.value}</h4>
 					)}
 
 					<p

@@ -97,6 +97,9 @@
 .home-appliance-image {
 	img {
 		max-height: 600px;
+		@include mq(768){
+			position: relative;
+		}
 	}
 	.heading-text {
 		h1,h2,h3 {
