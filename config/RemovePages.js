@@ -6,7 +6,6 @@ fs.readdir(path.resolve(__dirname, '../pages'), (err, files) => {
 	if (files.includes('index.js')) {
 		files.forEach(file => {
 			if (
-				file !== '404.js' &&
 				file !== '_app.js' &&
 				file !== '_error.js' &&
 				file !== '_document.js' &&

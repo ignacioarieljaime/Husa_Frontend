@@ -19,6 +19,8 @@
 # production
 /build
 /pages/*
+/pages/404.js
+
 /public/*.xml
 /public/*.txt
 
