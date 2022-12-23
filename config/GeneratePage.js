@@ -26,7 +26,7 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 
 		PageController(
 			page,
-			page.title === '404'
+			page.route === '/404'
 				? GenerateNotFoundPage(page, pageComponents, _condition)
 				: GenerateComponentStructure(page, pageComponents, _condition)
 		)
