@@ -84,7 +84,7 @@ const ProductItemV2 = ({ data }) => {
 								}
 								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
 								className={`n-btn ${
-									currentItem.retailer
+									currentItem?.buy_status === 'ChannelAdvisor'
 										? 'primary-text '
 										: 'text-black opacity-50 bg-transparent border-0'
 								}`}>
