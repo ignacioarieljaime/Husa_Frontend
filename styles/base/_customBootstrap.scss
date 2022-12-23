@@ -2205,8 +2205,7 @@ header {
 
 .product_news_box_item {
 	p,
-	h4,
-	h6 {
+	h4 {
 		font-size: 22.5px !important;
 		line-height: 37.5px !important;
 		@include mq(1919) {
@@ -2218,7 +2217,7 @@ header {
 			line-height: 24px !important;
 		}
 	}
-	h4,h6{
+	h4 {
 		font-weight: 500;
 	}
 	p {
@@ -2232,7 +2231,7 @@ header {
 			line-height: 30px !important;
 		}
 	}
-	@include mq(768){
+	@include mq(768) {
 		width: 100% !important;
 	}
 }
