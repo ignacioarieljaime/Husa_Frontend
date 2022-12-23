@@ -68,7 +68,17 @@ ${
 							console.error('Error:', error)
 							return null
 						})
-	return { props: { pim,data }} }`
+						if (data?.status_id === 2) {
+							return {
+								redirect: {
+									destination: '/404',
+									permanent: false
+								}
+							}
+						} else {
+							return { props: { pim,data }}
+						}
+	 }`
 		: `export async function getServerSideProps({req,res}) {		
 			res.setHeader(
 				'Cache-Control',
@@ -87,7 +97,17 @@ ${
 					   console.error('Error:', error)
 					   return null
 				   })	
-	return { props: { data }} }`
+				   if (data?.status_id === 2) {
+					return {
+						redirect: {
+							destination: '/404',
+							permanent: false
+						}
+					}
+				} else {
+					return { props: { data }} 
+				}
+}`
 }
 export default Index${_page.id}`
 }
