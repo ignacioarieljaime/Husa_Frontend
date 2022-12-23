@@ -25,26 +25,26 @@ const generateMiddleware = _redirects => {
 const generateContent = _redirects => {
 	const routes = _redirects.map(item => item.source_url && item.source_url)
 	return `
-	    import { NextResponse } from 'next/server'
-	    import RedirectData from 'utils/redirects.json'
-	    let redirectedUrl = RedirectData.map(item => item?.source_url && item)
-
-	    export function middleware(request) {
-	    	if (
-	    		redirectedUrl.find(item => item?.source_url === request.nextUrl.pathname)
-	    	) {
-	    		const url = new URL(
-	    			redirectedUrl.find(
-	    				item => item?.source_url === request.nextUrl.pathname
-	    			).redirect_url,
-	    			request.url
-	    		)
-	    		return NextResponse.redirect(url)
-	    	}
-	    }
-
-	    export const config = {
-	    	matcher: ${JSON.stringify(routes.filter(item => item))}
-	    }
+	import { NextResponse } from 'next/server'
+	import RedirectData from 'utils/redirects.json'
+	let redirectedUrl = RedirectData.map(item => item?.source_url && item)
+	
+	export function middleware(request) {
+		let reqUrl = request.nextUrl.pathname
+		if(request.nextUrl.search){
+			reqUrl += request.nextUrl.search
+		}
+		if (
+			redirectedUrl.find(item => item?.source_url === reqUrl)
+		) {
+			const url = new URL(
+				redirectedUrl.find(
+					item => item?.source_url === reqUrl
+				).redirect_url,
+				request.url
+			)
+			return NextResponse.redirect(url)
+		}
+	}
 	`
 }
