@@ -4,9 +4,7 @@ function LaserTitleAndSubtitleBox({ data: { structure } }) {
 	return (
 		<section>
 			<div
-				className={`${
-					structure?.theme?.value === 'dark' ? 'black-banner' : ''
-				}`}>
+				className={`${structure?.theme?.value === 'dark' ? 'bg-black' : ''}`}>
 				<div className={`tiny-banner p-md-4`}>
 					<div className='container px-6 px-md-8 py-20'>
 						<article className='article text-center'>
