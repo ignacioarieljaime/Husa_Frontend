@@ -8,7 +8,7 @@ function UHDNewsBox({ data: { structure } }) {
 	}, [])
 	return (
 		<section>
-			<div className='container-fluid py-6'>
+			<div className='container-fluid uhd_news_box py-6'>
 				<div className='row align-items-start'>
 					{list.map((item, index) => (
 						<UHDNewsItem count={list?.length} data={item} key={index} />

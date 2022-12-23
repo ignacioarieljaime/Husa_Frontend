@@ -15,26 +15,20 @@ function ProductFeatureWithImage({ data }) {
 				<article className='introduction col-12 col-md-6 order-2'>
 					<h4
 						style={{
-							color: structure?.textColor?.value
-								? structure?.textColor?.value
-								: '#000'
+							color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 						}}>
 						{structure?.littleTitle?.value}
 					</h4>
 
 					<h2
 						style={{
-							color: structure?.textColor?.value
-								? structure?.textColor?.value
-								: '#000'
+							color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 						}}>
 						{structure?.title?.value}
 					</h2>
 					<p
 						style={{
-							color: structure?.textColor?.value
-								? structure?.textColor?.value
-								: '#000'
+							color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 						}}>
 						{structure?.description?.value}
 					</p>

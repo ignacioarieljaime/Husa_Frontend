@@ -10,15 +10,15 @@ function SmartInfoBetterNewOrOldBox({ data }) {
 				<div className='shade mt-n19'></div>
 				<article className='article'>
 					<div className='container advertise mt-19 px-6 px-md-3'>
-						<h2>{structure?.title?.value}</h2>
+						<h2 className='title'>{structure?.title?.value}</h2>
 						<div>
 							<Link
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
-								<a>
+								<a className='link'>
 									<img
 										src={structure?.image?.src}
-										width={'640px'}
-										height={'640px'}
+										width={'100%'}
+										height={'100%'}
 										alt={structure?.image?.alt}
 									/>
 								</a>

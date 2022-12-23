@@ -7,7 +7,7 @@ import Link from 'next/link'
 function ULEDHead({ data: { structure } }) {
 	return (
 		<section>
-			<div className='heading'>
+			<div className='heading uled_head'>
 				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}
@@ -15,10 +15,14 @@ function ULEDHead({ data: { structure } }) {
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h1 className='mw-50 mx-auto'>{structure?.title?.value}</h1>
-					<Link href={structure?.link?.value}>
-						<a className='btn btn-light text'>{structure?.link?.title}</a>
-					</Link>
+					<article className='article'>
+						<h1 className=''>{structure?.title?.value}</h1>
+						<Link href={structure?.link?.value}>
+							<a className='btn btn-light text my-3 my-md-auto'>
+								{structure?.link?.title}
+							</a>
+						</Link>
+					</article>
 				</div>
 			</div>
 		</section>
