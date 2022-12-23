@@ -2205,7 +2205,7 @@ header {
 
 .product_news_box_item {
 	p,
-	h4 {
+	.product_news_item_small_title {
 		font-size: 22.5px !important;
 		line-height: 37.5px !important;
 		@include mq(1919) {
@@ -2217,7 +2217,7 @@ header {
 			line-height: 24px !important;
 		}
 	}
-	h4 {
+	.product_news_item_small_title {
 		font-weight: 500;
 	}
 	p {
