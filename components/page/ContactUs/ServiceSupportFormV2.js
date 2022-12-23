@@ -221,14 +221,11 @@ function ServiceSupportFormV2({ data, formHandler }) {
 					<span className='info'>
 						If television related, please include firmware version
 					</span>
-					<textarea
-						name=''
-						cols='30'
+					<input
 						onChange={e => dataSchemaHandler('text', e.target.value)}
-						rows='1'
 						required
 						placeholder='DESCRIPTION OF SUPPORT'
-						className='form-container-inner-input'></textarea>
+						className='form-container-inner-input'/>
 
 					<span className='input-error'>This field is required.</span>
 				</div>

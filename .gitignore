@@ -20,6 +20,7 @@
 /build
 /pages/*
 /public/*.xml
+/public/*.txt
 
 /hooks/componentGenerator.js
 

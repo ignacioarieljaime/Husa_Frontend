@@ -217,14 +217,11 @@ function ServiceSupportForm({ formHandler }) {
 					/>
 				</div>
 				<div className='col-12 mb-10'>
-					<textarea
-						name=''
-						cols='30'
+					<input
 						onChange={e => dataSchemaHandler('text', e.target.value)}
-						rows='1'
 						required
 						placeholder='DESCRIPTION OF SUPPORT'
-						className='form-container-inner-input'></textarea>
+						className='form-container-inner-input'/>
 					<span className='fs-9'>
 						If television related, please include firmware version
 					</span>
