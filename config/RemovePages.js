@@ -73,3 +73,24 @@ fs.readdir(path.resolve(__dirname, '../hooks'), (err, files) => {
 		}
 	)
 })
+fs.readdir(path.resolve(__dirname, '../public'), (err, files) => {
+	if (err) throw err
+	fs.rm(
+		path.resolve(__dirname, '../public/robots.txt'),
+		{ recursive: true, force: true },
+		err => {
+			if (err) {
+				return console.log('robots.txt removed', err)
+			}
+		}
+	)
+	fs.rm(
+		path.resolve(__dirname, '../public/assets/robots.txt'),
+		{ recursive: true, force: true },
+		err => {
+			if (err) {
+				return console.log('robots.txt removed', err)
+			}
+		}
+	)
+})
