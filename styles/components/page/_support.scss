@@ -181,7 +181,7 @@
 	}
 	.support-products-slider {
 		.swiper-wrapper {
-			// justify-content: flex-end;
+			justify-content: flex-end;
 		}
 		.swiper-button-prev,
 		.swiper-button-next {
@@ -209,21 +209,21 @@
 			}
 		}
 		.swiper-button-prev {
-			right: 20%;
-			@include mq(1440) {
-				right: 10%;
-			}
-			@include mq(575) {
-				right: 10px;
-			}
-		}
-		.swiper-button-next {
 			left: 20%;
 			@include mq(1440) {
 				left: 10%;
 			}
 			@include mq(575) {
 				left: 10px;
+			}
+		}
+		.swiper-button-next {
+			right: 20%;
+			@include mq(1440) {
+				right: 10%;
+			}
+			@include mq(575) {
+				right: 10px;
 			}
 		}
 		.slider-item {

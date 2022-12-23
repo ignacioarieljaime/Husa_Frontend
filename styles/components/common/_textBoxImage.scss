@@ -21,6 +21,9 @@
 
 	&.dark {
 		background: #000000;
+		@include mq(768){
+			background: #292929;
+		}
 	}
 }
 

@@ -69,7 +69,7 @@ const SupportNewProducts = ({ data }) => {
 					slidesPerView={'auto'}
 					centeredSlides={true}
 					grabCursor={true}
-					dir='rtl'
+					// dir='rtl'
 					modules={[Navigation]}
 					className='support-products-slider px-12'>
 					{structure?.list?.value.map((item, index) => (
