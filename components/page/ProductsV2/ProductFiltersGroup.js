@@ -22,15 +22,20 @@ const ProductFiltersGroup = ({
 	const elRect = useRect(buttonGroup)
 
 	useEffect(() => {
-		if (
-			passedFilter.length > 0 &&
-			passedFilter.find(item => item.id === filter.content_record_id)
-		) {
-			windowSize[0] > 768 && setFilterCollapse(true)
-		}
-		if (index <= 2 && windowSize[0] > 768) {
-			setFilterCollapse(true)
-		}
+		let XTime = setInterval(() => {
+			if (windowSize[0] !== undefined) {
+				if (
+					passedFilter.length > 0 &&
+					passedFilter.find(item => item.id === filter.content_record_id)
+				) {
+					windowSize[0] > 768 && setFilterCollapse(true)
+				}
+				if (index <= 2 && windowSize[0] > 768) {
+					setFilterCollapse(true)
+				}
+				clearInterval(XTime)
+			}
+		}, 100)
 
 		if (!Number.isNaN(Number(filter?.filter_values[1]?.title?.split('"')[0]))) {
 			let changeToNumber = filter.filter_values.map(item => {
