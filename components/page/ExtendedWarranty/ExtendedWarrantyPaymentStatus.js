@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 
 const ExtendedWarrantyPaymentStatus = ({
 	data: {
-		structure: { list }
+		structure: { list, PDF }
 	}
 }) => {
 	const [invoice, setInvoice] = useState()
@@ -114,7 +114,7 @@ const ExtendedWarrantyPaymentStatus = ({
 											</span>
 										</div>
 										<div className=''>
-											<a href={'https://files.hisense-usa.com/download/f2763a5637a2d43f'} download>
+											<a href={PDF?.src ? PDF?.src : '/'} download>
 												Full terms and condition
 												<span className='ms-3 ms-md-1'>
 													<FontAwesomeIcon icon={faUpRightFromSquare} />
