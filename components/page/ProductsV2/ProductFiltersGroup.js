@@ -39,7 +39,7 @@ const ProductFiltersGroup = ({
 		} else {
 			setFilterList(filter.filter_values)
 		}
-	}, [filter])
+	}, [filter, windowSize[0]])
 
 	useEffect(() => {
 		if (windowSize[0] < 768) setFilterCollapse(false)
