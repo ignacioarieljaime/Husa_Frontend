@@ -56,25 +56,6 @@ function Layout({ children, meta, title, header }) {
 		<>
 			<Head>
 				<title>{title}</title>
-				<link
-					rel='apple-touch-icon'
-					sizes='180x180'
-					href='public/apple-touch-icon.png'
-				/>
-				<link
-					rel='icon'
-					type='image/png'
-					href='public/favicon-32x32.png'
-					sizes='32x32'
-				/>
-				<link
-					rel='icon'
-					type='image/png'
-					href='public/favicon-16x16.png'
-					sizes='16x16'
-				/>
-
-				<link rel='shortcut icon' href='public/favicon.ico' />
 				<meta name='viewport' />
 				<meta name='og:url' content={router.route} />
 				<meta http-equiv='X-UA-Compatible' content='IE=edge' />

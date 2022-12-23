@@ -31,7 +31,6 @@ const ProductFiltersGroup = ({
 		if (index <= 2 && windowSize[0] > 768) {
 			setFilterCollapse(true)
 		}
-		clearInterval(XTime)
 
 		if (!Number.isNaN(Number(filter?.filter_values[1]?.title?.split('"')[0]))) {
 			let changeToNumber = filter.filter_values.map(item => {
