@@ -26,6 +26,11 @@ function Layout({ children, meta, title, header }) {
 		window.addEventListener('scroll', () => listenToScroll(window.innerHeight))
 		return () => window.removeEventListener('scroll', () => listenToScroll(0))
 	}, [])
+	useEffect(() => {
+		if (document.querySelector('.velaro-cobrowse-block')) {
+			document.querySelector('.velaro-cobrowse-block').style.display = 'none'
+		}
+	}, [router.asPath])
 
 	const listenToScroll = _screenHeight => {
 		const winScroll =
