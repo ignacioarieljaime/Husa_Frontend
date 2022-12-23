@@ -26,6 +26,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 	const [loading, setLoading] = useState(false)
 	const [imageLoading, setImageLoading] = useState(false)
 	const [file, setFile] = useState(null)
+	const [errors, setErrors] = useState(null)
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -83,7 +84,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 
 	const submitData = async e => {
 		e.preventDefault()
-
+		setErrors(null)
 		setLoading(true)
 		try {
 			let response = await axios.post(
@@ -94,11 +95,17 @@ function ServiceSupportFormV2({ data, formHandler }) {
 				toast.success('ticket sended', { toastId: 'submit_success' })
 				e.target.reset()
 				setDisabled(true)
+				setFile(null)
 			}
 			setLoading(false)
 		} catch (error) {
 			toast.error('ticket didn"t sended', { toastId: 'submit_failed' })
 			setLoading(false)
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			} else {
+				toast.error('ticket didn"t sended')
+			}
 			console.log(error)
 		}
 	}
@@ -141,6 +148,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('first_name', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.first_name && errors?.first_name[0]}
+					</div>
 				</div>{' '}
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -148,6 +158,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('last_name', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.last_name && errors?.last_name[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -155,6 +168,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('email', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.email && errors?.email[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -162,6 +178,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('phone_number', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.phone_number && errors?.phone_number[0]}
+					</div>
 				</div>
 				<div className='col-12 mb-10'>
 					<CustomSelectBox
@@ -172,6 +191,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 							getSeriesModels(_value.id)
 						}}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_category && errors?.product_category[0]}
+					</div>
 				</div>
 				<div className='col-12 mb-10 '>
 					<CustomSelectBox
@@ -179,6 +201,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('product_model', _value.name)}
 						title={'PLEASE SELECT YOUR MODEL'}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_model && errors?.product_model[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -188,6 +213,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						placeholder={'SERIAL NUMBER'}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_serial_number && errors?.product_serial_number[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10 d-flex'>
 					<button
@@ -225,7 +253,8 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						onChange={e => dataSchemaHandler('text', e.target.value)}
 						required
 						placeholder='DESCRIPTION OF SUPPORT'
-						className='form-container-inner-input'/>
+						className='form-container-inner-input'
+					/>
 
 					<span className='input-error'>This field is required.</span>
 				</div>

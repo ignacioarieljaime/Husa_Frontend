@@ -193,6 +193,7 @@ function OfferClaimForm({ data }) {
 		city: null,
 		state: null
 	})
+	const [errors, setErrors] = useState(null)
 
 	const dataSchemaHandler = (_key, _value) => {
 		setDataSchema({ ...dataSchema, [_key]: _value })
@@ -200,7 +201,7 @@ function OfferClaimForm({ data }) {
 
 	const submitData = async e => {
 		e.preventDefault()
-
+		setErrors(null)
 		setLoading(true)
 		try {
 			let response = await axios.post(
@@ -217,8 +218,12 @@ function OfferClaimForm({ data }) {
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended')
 			setLoading(false)
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			} else {
+				toast.error('ticket didn"t sended')
+			}
 			console.log(error)
 		}
 	}
@@ -264,6 +269,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('model_number', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.model_number && errors?.model_number[0]}
+							</div>
 						</div>
 						<div className='col-6  mb-10 d-flex'>
 							<button
@@ -280,6 +288,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('order_id', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.order_id && errors?.order_id[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -290,6 +301,9 @@ function OfferClaimForm({ data }) {
 									dataSchemaHandler('date_of_purchase', _value)
 								}
 							/>
+							<div className='input_error_message'>
+								{errors?.date_of_purchase && errors?.date_of_purchase[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -297,6 +311,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('first_name', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.first_name && errors?.first_name[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -304,6 +321,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('last_name', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.last_name && errors?.last_name[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -312,6 +332,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('email', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.email && errors?.email[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -319,6 +342,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('address', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.address && errors?.address[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -326,6 +352,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('city', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.city && errors?.city[0]}
+							</div>
 						</div>
 
 						<div className='col-6 mb-10 custom-select-box'>
@@ -337,6 +366,9 @@ function OfferClaimForm({ data }) {
 									dataSchemaHandler('state', _value.name)
 								}}
 							/>
+							<div className='input_error_message'>
+								{errors?.state && errors?.state[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -344,6 +376,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('postal_code', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.postal_code && errors?.postal_code[0]}
+							</div>
 						</div>
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
@@ -351,6 +386,9 @@ function OfferClaimForm({ data }) {
 								required={true}
 								onChange={_value => dataSchemaHandler('phone_number', _value)}
 							/>
+							<div className='input_error_message'>
+								{errors?.phone_number && errors?.phone_number[0]}
+							</div>
 						</div>
 					</div>
 

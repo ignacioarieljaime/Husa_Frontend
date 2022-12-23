@@ -36,8 +36,10 @@ function ProductSupportRegister({ pim, data }) {
 		receipt_image: null,
 		future_news: acceptRole ? '0' : '1'
 	})
+	const [imageLoading, setImageLoading] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [file, setFile] = useState(null)
+	const [errors, setErrors] = useState(null)
 
 	const dataSchemaHandler = (_title, _value) => {
 		setDataSchema({ ...dataSchema, [_title]: _value })
@@ -46,6 +48,7 @@ function ProductSupportRegister({ pim, data }) {
 	const submitData = async e => {
 		e.preventDefault()
 		setLoading(true)
+		setErrors(null)
 		try {
 			let response = await axios.post(
 				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
@@ -62,6 +65,9 @@ function ProductSupportRegister({ pim, data }) {
 		} catch (error) {
 			toast.error('ticket didn"t sended')
 			setLoading(false)
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			}
 			console.log(error)
 		}
 	}
@@ -70,6 +76,7 @@ function ProductSupportRegister({ pim, data }) {
 		const formData = new FormData()
 		setFile(_file)
 		formData.append('attachment', _file)
+		setImageLoading(true)
 
 		try {
 			let response = await axios({
@@ -81,8 +88,10 @@ function ProductSupportRegister({ pim, data }) {
 			if (response.status === 200) {
 				toast.success('file uploaded')
 				dataSchemaHandler('receipt_image', response.data.view_link)
+				setImageLoading(false)
 			}
 		} catch (error) {
+			setImageLoading(false)
 			console.log(error)
 		}
 	}
@@ -105,6 +114,9 @@ function ProductSupportRegister({ pim, data }) {
 								placeholder={'PLEASE SELECT YOUR PRODUCT'}
 								defaultValue={dataSchema.product_category}
 							/>
+							<div className='input_error_message'>
+								{errors?.product_category && errors?.product_category[0]}
+							</div>
 						</div>
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomInput
@@ -112,6 +124,9 @@ function ProductSupportRegister({ pim, data }) {
 								placeholder={'PLEASE SELECT YOUR MODEL'}
 								defaultValue={dataSchema.product_model}
 							/>
+							<div className='input_error_message'>
+								{errors?.product_model && errors?.product_model[0]}
+							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
@@ -121,6 +136,10 @@ function ProductSupportRegister({ pim, data }) {
 									dataSchemaHandler('product_serial_number', _value)
 								}
 							/>
+							<div className='input_error_message'>
+								{errors?.product_serial_number &&
+									errors?.product_serial_number[0]}
+							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10 d-flex'>
 							<button
@@ -137,6 +156,9 @@ function ProductSupportRegister({ pim, data }) {
 								onChange={_value => dataSchemaHandler('first_name', _value)}
 								required={true}
 							/>
+							<div className='input_error_message'>
+								{errors?.first_name && errors?.first_name[0]}
+							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
@@ -144,6 +166,9 @@ function ProductSupportRegister({ pim, data }) {
 								onChange={_value => dataSchemaHandler('last_name', _value)}
 								required={true}
 							/>
+							<div className='input_error_message'>
+								{errors?.last_name && errors?.last_name[0]}
+							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
@@ -152,6 +177,9 @@ function ProductSupportRegister({ pim, data }) {
 								onChange={_value => dataSchemaHandler('email', _value)}
 								required={true}
 							/>
+							<div className='input_error_message'>
+								{errors?.email && errors?.email[0]}
+							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
@@ -159,6 +187,9 @@ function ProductSupportRegister({ pim, data }) {
 								onChange={_value => dataSchemaHandler('postal_code', _value)}
 								required={true}
 							/>
+							<div className='input_error_message'>
+								{errors?.postal_code && errors?.postal_code[0]}
+							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
@@ -166,6 +197,9 @@ function ProductSupportRegister({ pim, data }) {
 								placeholder={'PHONE NUMBER'}
 								required={true}
 							/>
+							<div className='input_error_message'>
+								{errors?.phone_number && errors?.phone_number[0]}
+							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
 							<CustomInput
@@ -173,6 +207,9 @@ function ProductSupportRegister({ pim, data }) {
 								placeholder={'PURCHASED FROM'}
 								required={true}
 							/>
+							<div className='input_error_message'>
+								{errors?.purchased_from && errors?.purchased_from[0]}
+							</div>
 						</div>
 						<div className='col-12 mb-10'>
 							<CustomInput
@@ -183,8 +220,16 @@ function ProductSupportRegister({ pim, data }) {
 								required={true}
 								placeholder={'PURCHASED FROM'}
 							/>
+							<div className='input_error_message'>
+								{errors?.date_of_purchase && errors?.date_of_purchase[0]}
+							</div>
 						</div>
 						<div className='col-12 mb-10 file-upload position-relative'>
+							{imageLoading && (
+								<div className='image_loading_spinner_box position-absolute'>
+									<Spinner size={35} />
+								</div>
+							)}
 							{file ? (
 								<>
 									<CustomImage
@@ -241,15 +286,18 @@ function ProductSupportRegister({ pim, data }) {
 								type='submit'
 								disabled={loading}
 								className='n-btn outline-black d-flex mx-auto transparent py-2 px-4'>
-								<span >Register</span>
+								<span>Register</span>
 								{loading && <Spinner className='ms-2' size={25} />}
 							</button>
 						</div>
 					</form>
 				</div>
-				
+
 				{modalCondition && (
-					<RoleModal data={structure?.modelText?.value} modalHandler={() => setModalCondition(false)} />
+					<RoleModal
+						data={structure?.modelText?.value}
+						modalHandler={() => setModalCondition(false)}
+					/>
 				)}
 			</div>
 		</section>
