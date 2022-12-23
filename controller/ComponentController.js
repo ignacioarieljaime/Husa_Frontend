@@ -70,10 +70,7 @@ ${
 						})
 						if (data?.status_id === 2) {
 							return {
-								redirect: {
-									destination: '/404',
-									permanent: false
-								}
+								notFound: true
 							}
 						} else {
 							return { props: { pim,data }}
@@ -99,10 +96,7 @@ ${
 				   })	
 				   if (data?.status_id === 2) {
 					return {
-						redirect: {
-							destination: '/404',
-							permanent: false
-						}
+						notFound: true
 					}
 				} else {
 					return { props: { data }} 
@@ -110,6 +104,45 @@ ${
 }`
 }
 export default Index${_page.id}`
+}
+
+const GenerateNotFoundPage = (_page, _content, _condition) => {
+	return `
+import axios from 'axios'
+import Layout from "components/common/Layout/Layout";
+import componentGenerator from 'hooks/componentGenerator';
+
+function Error({pim,data}) {
+return (
+	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={${
+		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
+	}}>
+      	<section>
+				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : <>this page don't have any components</>}
+		</section>
+	</Layout>
+    )
+  }
+export async function getStaticProps() {		
+
+			console.log('send cxm request')
+				let data = await axios
+				   .get(
+					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+				   )
+				   .then(response => {
+					   console.log('get cxm data')
+					   return response.data
+				   })
+				   .catch(error => {
+					   console.error('Error:', error)
+					   return null
+				   })	
+
+					return { props: { data }} 
+				
+}
+export default Error`
 }
 
 const GenerateAllComponentStructure = () => {
@@ -135,5 +168,6 @@ const GenerateAllComponentStructure = () => {
 module.exports = {
 	FindComponent,
 	GenerateComponentStructure,
-	GenerateAllComponentStructure
+	GenerateAllComponentStructure,
+	GenerateNotFoundPage
 }
