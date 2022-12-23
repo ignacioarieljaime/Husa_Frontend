@@ -10,14 +10,14 @@ const ProductFiltersGroup = ({
 	passedFilter,
 	filterController,
 	checkBoxCondition,
-	index
+	index,
+	filterResponsiveStatus,
+	setFilterResponsiveStatus
 }) => {
 	const checkboxWrapper = useRef()
 	const buttonGroup = useRef()
 	const windowSize = useWindowSize()
-	const [filterCollapse, setFilterCollapse] = useState(
-		index <= 2 ? true : false
-	)
+	const [filterCollapse, setFilterCollapse] = useState(false)
 	const [filterList, setFilterList] = useState([])
 	const elRect = useRect(buttonGroup)
 
@@ -26,6 +26,9 @@ const ProductFiltersGroup = ({
 			passedFilter.length > 0 &&
 			passedFilter.find(item => item.id === filter.content_record_id)
 		) {
+			windowSize[0] > 768 && setFilterCollapse(true)
+		}
+		if (index <= 2 && windowSize[0] > 768) {
 			setFilterCollapse(true)
 		}
 
@@ -41,21 +44,38 @@ const ProductFiltersGroup = ({
 		}
 	}, [filter])
 
-	// useEffect(() => {
-	// 	checkboxWrapper.current.style.left = elRect.left - 12 + 'px'
-	// 	checkboxWrapper.current.style.width = elRect.width + 'px'
-	// }, [windowSize, buttonGroup.current])
-
 	if (filter.filter_values.length !== 0) {
 		return (
 			<div
-				className={`filter-group ${filterCollapse ? 'open' : ''}`}
+				className={`filter-group ${
+					windowSize[0] < 768
+						? `${filterResponsiveStatus === index ? 'open' : ''}`
+						: `${filterCollapse ? 'open' : ''}`
+				}`}
 				style={{ zIndex: 100 - index }}
 				ref={buttonGroup}>
 				<button
 					className='n-btn black-text filter-btn'
-					onClick={() => setFilterCollapse(filterCollapse => !filterCollapse)}>
+					onClick={() => {
+						windowSize[0] < 768
+							? filterResponsiveStatus === index
+								? setFilterResponsiveStatus(null)
+								: setFilterResponsiveStatus(index)
+							: setFilterCollapse(filterCollapse => !filterCollapse)
+					}}>
 					{filter.name}{' '}
+					{windowSize[0] < 768 && (
+						<>
+							{passedFilter.map(
+								item =>
+									item.id === filter.content_record_id && (
+										<span className='ms-2 '>
+											<>( {item.values.length} )</>
+										</span>
+									)
+							)}
+						</>
+					)}
 					<span className='ms-5'>
 						<FontAwesomeIcon icon={faChevronDown} />
 					</span>

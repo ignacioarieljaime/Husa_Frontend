@@ -15,6 +15,7 @@ const ProductsFilter = ({
 	const [filterListData, setFilterListData] = useState([])
 	const [filterCounter, setFilterCounter] = useState()
 	const [sowMoreLimitation, setSowMoreLimitation] = useState(4)
+	const [filterResponsiveStatus, setFilterResponsiveStatus] = useState(false)
 	useEffect(() => {
 		if (router.query.filter) {
 			filterCounterHandler(JSON.parse(decodeURIComponent(router.query.filter)))
@@ -117,7 +118,7 @@ const ProductsFilter = ({
 							Clear Filters
 							{filterCounter > 0 ? (
 								<>
-									<span className='ms-2'>({filterCounter})</span>
+									<span className='ms-2'>( {filterCounter} )</span>
 								</>
 							) : (
 								''
@@ -138,6 +139,8 @@ const ProductsFilter = ({
 											passedFilter={filters}
 											filterController={filterController}
 											checkBoxCondition={checkBoxCondition}
+											setFilterResponsiveStatus={setFilterResponsiveStatus}
+											filterResponsiveStatus={filterResponsiveStatus}
 										/>
 									)
 							)}
