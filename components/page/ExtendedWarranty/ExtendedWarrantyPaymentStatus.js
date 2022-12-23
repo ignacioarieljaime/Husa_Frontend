@@ -114,7 +114,7 @@ const ExtendedWarrantyPaymentStatus = ({
 											</span>
 										</div>
 										<div className=''>
-											<a href={'/'} download>
+											<a href={'https://files.hisense-usa.com/download/f2763a5637a2d43f'} download>
 												Full terms and condition
 												<span className='ms-3 ms-md-1'>
 													<FontAwesomeIcon icon={faUpRightFromSquare} />
