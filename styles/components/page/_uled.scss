@@ -80,3 +80,42 @@
 		}
 	}
 }
+
+.uled_head {
+	@include mq(768) {
+		img {
+			position: relative;
+			height: 440px !important;
+		}
+	}
+	.heading-text {
+		max-width: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		.article {
+			h1,
+			h2,
+			h3 {
+				margin: 36px 0;
+				font-size: 52.5px !important;
+				line-height: 60px;
+
+				@include mq(1920) {
+					font-size: 42px !important;
+					line-height: 48px;
+				}
+
+				@include mq(768) {
+					font-size: 32px !important;
+					line-height: 36px;
+				}
+			}
+		}
+		@include mq(1400) {
+			max-width: 75%;
+		}
+		@include mq(768) {
+			max-width: 80%;
+		}
+	}
+}

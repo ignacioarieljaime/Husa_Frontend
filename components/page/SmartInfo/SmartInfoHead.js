@@ -14,10 +14,12 @@ function SmartInfoHead({ data }) {
 					height='100%'
 				/>
 				<div className='heading-text'>
-					<h1>{structure?.title?.value}</h1>
-					<Link href={structure?.link?.value}>
-						<a className='btn btn-light text'>{structure?.link?.title}</a>
-					</Link>
+					<article className='article'>
+						<h1>{structure?.title?.value}</h1>
+						<Link href={structure?.link?.value}>
+							<a className='btn btn-light text'>{structure?.link?.title}</a>
+						</Link>
+					</article>
 				</div>
 			</div>
 		</section>

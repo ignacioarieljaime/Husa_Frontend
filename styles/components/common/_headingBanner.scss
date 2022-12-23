@@ -29,6 +29,34 @@
 		text-align: center;
 		height: 0;
 		padding-top: 40.9%;
+		.article {
+			h1,
+			h2,
+			h3 {
+				margin: 36px 0;
+				font-size: 52.5px !important;
+				line-height: 60px !important;
+
+				@include mq(1920) {
+					font-size: 42px !important;
+					line-height: 48px !important;
+				}
+
+				@include mq(768) {
+					font-size: 32px !important;
+					line-height: 36px !important;
+				}
+			}
+		}
+		@include mq(768) {
+			padding-top: 60%;
+			a {
+				padding: 8px 16px !important;
+			}
+		}
+		@include mq(575) {
+			padding-top: 88%;
+		}
 		img {
 			position: absolute;
 			left: 0;

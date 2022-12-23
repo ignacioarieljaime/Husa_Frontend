@@ -15,9 +15,7 @@ const ProductFiltersGroup = ({
 	const checkboxWrapper = useRef()
 	const buttonGroup = useRef()
 	const windowSize = useWindowSize()
-	const [filterCollapse, setFilterCollapse] = useState(
-		index <= 2 ? true : false
-	)
+	const [filterCollapse, setFilterCollapse] = useState(false)
 	const [filterList, setFilterList] = useState([])
 	const elRect = useRect(buttonGroup)
 
