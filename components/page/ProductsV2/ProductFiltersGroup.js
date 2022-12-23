@@ -23,6 +23,7 @@ const ProductFiltersGroup = ({
 
 	useEffect(() => {
 		let XTime = setInterval(() => {
+			console.log(windowSize)
 			if (windowSize[0] !== undefined) {
 				if (
 					passedFilter.length > 0 &&
