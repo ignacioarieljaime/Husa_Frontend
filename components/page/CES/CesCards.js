@@ -89,8 +89,7 @@ const CesCards = ({ data }) => {
 							</div>
 						</div>
 						{/* block3 */}
-						<div
-							className={`box flex-column justify-content-between d-flex col-12 col-md-6`}>
+						<div className={`box flex-column d-flex col-12 col-md-6`}>
 							<div className='box-background'>
 								<CustomImage
 									src={content?.block3?.value?.backgroundImage?.src}
@@ -140,8 +139,7 @@ const CesCards = ({ data }) => {
 							</div>
 						</div>
 						{/* block4 */}
-						<div
-							className={`box flex-column justify-content-between d-flex col-12 col-md-6`}>
+						<div className={`box flex-column d-flex col-12 col-md-6`}>
 							<div className='box-background'>
 								<CustomImage
 									src={content?.block4?.value?.backgroundImage?.src}
@@ -191,8 +189,7 @@ const CesCards = ({ data }) => {
 							</div>
 						</div>
 						{/* block5 */}
-						<div
-							className={`box flex-column justify-content-between d-flex col-12 col-md-6`}>
+						<div className={`box flex-column d-flex col-12 col-md-6`}>
 							<div className='box-background'>
 								<CustomImage
 									src={content?.block5?.value?.backgroundImage?.src}
@@ -242,8 +239,7 @@ const CesCards = ({ data }) => {
 							</div>
 						</div>
 						{/* block6 */}
-						<div
-							className={`box flex-column justify-content-between d-flex col-12 col-md-6`}>
+						<div className={`box flex-column d-flex col-12 col-md-6`}>
 							<div className='box-background'>
 								<CustomImage
 									src={content?.block6?.value?.backgroundImage?.src}

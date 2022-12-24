@@ -2,12 +2,18 @@
 	padding: 150px 12px 85px;
 	gap: 24px;
 	background-color: #000;
+	@include mq(768) {
+		padding: 50px 12px 30px;
+	}
 
 	.custom_container {
 		margin: 0 auto;
-		max-width: 1440px;
+		max-width: 1200px;
 		.title {
 			margin-bottom: 55px;
+			@include mq(768) {
+				margin-bottom: 20px;
+			}
 			* {
 				font-weight: 400;
 				font-size: 60px;
@@ -42,7 +48,18 @@
 				padding-top: 50%;
 				border-radius: 50px;
 				overflow: hidden;
-
+				justify-content: space-between;
+				@include mq(768) {
+					padding-top: 100%;
+					width: 100%;
+					border-radius: 25px;
+				}
+				@include mq(500) {
+					padding-top: 0;
+					height: 100vw;
+					min-height: 320px;
+					justify-content: flex-end;
+				}
 				.box-background {
 					position: absolute;
 					top: 0;
@@ -68,7 +85,10 @@
 					flex-direction: column;
 					justify-content: flex-end;
 					align-items: flex-start;
-
+					@include mq(500) {
+						position: relative;
+						padding: 20px;
+					}
 					.title {
 						font-weight: 400;
 						font-size: 34px;
@@ -80,6 +100,9 @@
 
 					img {
 						max-width: 300px;
+						@include mq(768) {
+							max-width: 200px;
+						}
 					}
 				}
 
@@ -111,9 +134,8 @@
 			box-shadow: none;
 			transition: all 0.3s ease-in-out;
 			border-radius: 50px;
-
-			&:hover {
-				box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+			@include mq(768) {
+				border-radius: 25px;
 			}
 
 			&.full-size {
@@ -123,18 +145,36 @@
 				padding-top: 40%;
 				width: 100%;
 				position: relative;
+				@include mq(768) {
+					padding-top: 100%;
+				}
+				@include mq(500) {
+					padding-top: 0;
+					height: 100vw;
+					min-height: 320px;
+				}
 
 				.content {
 					position: absolute;
 					text-align: start;
 					left: 6%;
 					top: 12%;
+					@include mq(500) {
+						position: relative;
+						left: 0;
+						top: 0;
+						padding: 20px;
+					}
 
 					.logo {
 						display: block;
 						width: 65%;
 						max-width: 200px;
 						margin-bottom: 16px;
+						@include mq(500) {
+							width: 50%;
+							max-width: 150px;
+						}
 					}
 
 					.image {
@@ -142,6 +182,10 @@
 						width: 100%;
 						max-width: 325px;
 						margin-bottom: 30px;
+						@include mq(500) {
+							width: 70%;
+							max-width: 220px;
+						}
 					}
 
 					.title {
@@ -169,7 +213,9 @@
 					left: 50%;
 					top: 50%;
 					transform: translate(-50%, -50%);
-
+					@include mq(500) {
+						position: absolute !important;
+					}
 					.n-btn {
 						margin: 0 auto;
 					}
