@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 const BreadCrumb = () => {
 	const router = useRouter()
-	const [routs] = useState(router.pathname.split('/'))
+	const [routs] = useState(router.pathname.split('/').splice(1, 2))
 	const generateRoute = _index => {
 		let subRoute = ''
 		routs.forEach((element, index) => {
