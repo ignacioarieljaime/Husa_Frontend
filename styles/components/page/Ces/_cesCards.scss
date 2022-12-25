@@ -1,5 +1,226 @@
-.ces_cards{
-    max-width: 1150px;
-    margin: 0 auto;
-    padding: 150px 12px 85px
+.ces_cards {
+	padding: 150px 12px 85px;
+	gap: 24px;
+	background-color: #000;
+	@include mq(768) {
+		padding: 50px 12px 30px;
+	}
+
+	.custom_container {
+		margin: 0 auto;
+		max-width: 1200px;
+		.title {
+			margin-bottom: 55px;
+			@include mq(768) {
+				margin-bottom: 20px;
+			}
+			* {
+				font-weight: 400;
+				font-size: 60px;
+				line-height: 68px;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+
+				@include mq(768) {
+					font-size: 34px;
+				}
+
+				u {
+					background: linear-gradient(121.77deg, #585eaa 0%, #f0a8a9 84.38%);
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+					background-clip: text;
+					text-fill-color: transparent;
+				}
+			}
+		}
+
+		.boxes {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 16px;
+			justify-content: center;
+
+			.box {
+				width: calc(50% - 8px);
+				position: relative;
+				height: 0;
+				padding-top: 50%;
+				border-radius: 50px;
+				overflow: hidden;
+				justify-content: space-between;
+				@include mq(768) {
+					padding-top: 100%;
+					width: 100%;
+					border-radius: 25px;
+				}
+				@include mq(500) {
+					padding-top: 0;
+					height: 100vw;
+					min-height: 320px;
+					justify-content: flex-end;
+				}
+				.box-background {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+
+					img {
+						object-fit: cover;
+						height: 100%;
+					}
+				}
+
+				.box-content {
+					position: absolute;
+					top: 0;
+					left: 0;
+					padding: 40px;
+					width: 100%;
+					height: 100%;
+					text-align: start;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					align-items: flex-start;
+					@include mq(500) {
+						position: relative;
+						padding: 20px;
+					}
+					.title {
+						font-weight: 400;
+						font-size: 34px;
+
+						@include mq(768) {
+							font-size: 18px;
+						}
+					}
+
+					img {
+						max-width: 300px;
+						@include mq(768) {
+							max-width: 200px;
+						}
+					}
+				}
+
+				.box-background-shade {
+					background: rgba(34, 31, 32, 0.3);
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+				}
+
+				&.full-size {
+					width: calc(100% - 72px);
+					padding-top: 30%;
+
+					.box-content {
+						align-items: center;
+					}
+
+					a {
+						margin: 0 auto;
+					}
+				}
+			}
+		}
+
+		.tv-item {
+			box-shadow: none;
+			transition: all 0.3s ease-in-out;
+			border-radius: 50px;
+			@include mq(768) {
+				border-radius: 25px;
+			}
+
+			&.full-size {
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center center;
+				padding-top: 40%;
+				width: 100%;
+				position: relative;
+				@include mq(768) {
+					padding-top: 100%;
+				}
+				@include mq(500) {
+					padding-top: 0;
+					height: 100vw;
+					min-height: 320px;
+				}
+
+				.content {
+					position: absolute;
+					text-align: start;
+					left: 6%;
+					top: 12%;
+					@include mq(500) {
+						position: relative;
+						left: 0;
+						top: 0;
+						padding: 20px;
+					}
+
+					.logo {
+						display: block;
+						width: 65%;
+						max-width: 200px;
+						margin-bottom: 16px;
+						@include mq(500) {
+							width: 50%;
+							max-width: 150px;
+						}
+					}
+
+					.image {
+						display: block;
+						width: 100%;
+						max-width: 325px;
+						margin-bottom: 30px;
+						@include mq(500) {
+							width: 70%;
+							max-width: 220px;
+						}
+					}
+
+					.title {
+						font-weight: 400;
+						font-size: 34px;
+						line-height: 120%;
+						letter-spacing: -0.02em;
+						color: #232323;
+						margin-bottom: 16px;
+
+						* {
+							margin: 0;
+						}
+
+						&.text-white * {
+							color: #fff !important;
+						}
+					}
+				}
+			}
+
+			&.block1 {
+				.content {
+					text-align: center;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					@include mq(500) {
+						position: absolute !important;
+					}
+					.n-btn {
+						margin: 0 auto;
+					}
+				}
+			}
+		}
+	}
 }
