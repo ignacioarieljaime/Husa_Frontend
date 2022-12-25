@@ -289,6 +289,13 @@ const CesCards = ({ data }) => {
 							</div>
 						</div>
 					</div>
+					<div>
+						{content?.link?.value ? (
+							<Link href={content?.link?.value}>
+								<a className='n-btn outline-white'>{content?.link?.title}</a>
+							</Link>
+						) : null}
+					</div>
 				</div>
 			</div>
 		</section>
