@@ -3,7 +3,8 @@ const Axios = require('axios').default
 const PageController = require('../controller/PageController')
 const {
 	FindComponent,
-	GenerateComponentStructure
+	GenerateComponentStructure,
+	GenerateNotFoundPage
 } = require('../controller/ComponentController')
 const UrlController = require('../controller/UrlController')
 
@@ -22,9 +23,12 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 	UrlController(_pages)
 	_pages.forEach(page => {
 		let pageComponents = FindComponent(page.widgets)
+
 		PageController(
 			page,
-			GenerateComponentStructure(page, pageComponents, _condition)
+			page.route === '/404'
+				? GenerateNotFoundPage(page, pageComponents, _condition)
+				: GenerateComponentStructure(page, pageComponents, _condition)
 		)
 	})
 }

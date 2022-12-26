@@ -498,6 +498,11 @@ input {
 		height: 23px;
 	}
 }
+.input_error_message {
+	color: red;
+	font-size: 14px;
+	margin-top: 5px;
+}
 
 .compare_error_wrapper {
 	background: rgba(0, 0, 0, 0.75);

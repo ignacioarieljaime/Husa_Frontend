@@ -7,7 +7,7 @@ function ProductNewsItem({ itemCount, data, divider }) {
 		<div
 			style={{ width: `${100 / itemCount}%` }}
 			className={` mb-8 mb-md-0 product_news_box_item`}>
-			<article className='article text-start product_new_item'>
+			<article className='small_article text-start product_new_item'>
 				<CustomImage src={image?.src} alt={image?.alt} wrapperWidth={'100%'} />
 
 				{littleImage?.value?.image?.src && littleImage?.value?.text?.value ? (
@@ -26,7 +26,7 @@ function ProductNewsItem({ itemCount, data, divider }) {
 							{smallTitle?.value}
 						</h6>
 					) : (
-						<h4 className='mb-3 mt-13'>{title?.value}</h4>
+						<h3 className=' mb-3 mt-13'>{title?.value}</h3>
 					)}
 
 					<p

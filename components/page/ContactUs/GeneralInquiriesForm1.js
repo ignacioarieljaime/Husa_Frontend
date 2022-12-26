@@ -6,14 +6,15 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
 let selectBoxOption = [
-	{ name: 'Where to Buy', value: 1 },
-	{ name: 'Pre-Purchase Inquiry', value: 2 },
-	{ name: 'Human Resources/Careers', value: 3 },
-	{ name: 'Other', value: 4 }
+	{ name: 'Where to Buy', value: 'Where to Buy' },
+	{ name: 'Pre-Purchase Inquiry', value: 'Pre-Purchase Inquiry' },
+	{ name: 'Human Resources/Careers', value: 'Human Resources/Careers' },
+	{ name: 'Other', value: 'Other' }
 ]
 
 function GeneralInquiriesForm({ btnClass, formHandler }) {
 	const [loading, setLoading] = useState(false)
+	const [errors, setErrors] = useState(null)
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -30,6 +31,7 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 	const submitData = async e => {
 		e.preventDefault()
 		setLoading(true)
+		setErrors(null)
 		try {
 			let response = await axios.post(
 				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63971063e8013`,
@@ -46,6 +48,9 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 			setLoading(false)
 		} catch (error) {
 			setLoading(false)
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			}
 			console.log(error)
 		}
 	}
@@ -62,6 +67,9 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					onChange={_value => dataSchemaHandler('department', _value.value)}
 					title={'WHAT IS YOUR INQUIRY RELATED TO?'}
 				/>
+				<div className='input_error_message'>
+					{errors?.department && errors?.department[0]}
+				</div>
 			</div>
 			<div className='col-12 col-md-6 mb-10'>
 				<CustomInput
@@ -69,6 +77,9 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					onChange={_value => dataSchemaHandler('first_name', _value)}
 					required={true}
 				/>
+				<div className='input_error_message'>
+					{errors?.first_name && errors?.first_name[0]}
+				</div>
 			</div>
 			<div className='col-12 col-md-6 mb-10'>
 				<CustomInput
@@ -76,6 +87,9 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					onChange={_value => dataSchemaHandler('last_name', _value)}
 					required={true}
 				/>
+				<div className='input_error_message'>
+					{errors?.last_name && errors?.last_name[0]}
+				</div>
 			</div>
 			<div className='col-12 col-md-6 mb-10'>
 				<CustomInput
@@ -83,6 +97,9 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					onChange={_value => dataSchemaHandler('email', _value)}
 					required={true}
 				/>
+				<div className='input_error_message'>
+					{errors?.email && errors?.email[0]}
+				</div>
 			</div>
 			<div className='col-12 col-md-6 mb-10'>
 				<CustomInput
@@ -90,6 +107,9 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					onChange={_value => dataSchemaHandler('phone_number', _value)}
 					required={true}
 				/>
+				<div className='input_error_message'>
+					{errors?.phone_number && errors?.phone_number[0]}
+				</div>
 			</div>
 			<div className='col-12 mb-10'>
 				<textarea
@@ -100,6 +120,9 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 					onChange={e => dataSchemaHandler('message', e.target.value)}
 					placeholder='MESSAGE'
 					className='form-container-inner-input'></textarea>
+				<div className='input_error_message'>
+					{errors?.message && errors?.message[0]}
+				</div>
 				<span className='input-error'>This field is required.</span>
 			</div>
 			<div className='col-12 text-center '>

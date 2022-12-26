@@ -42,6 +42,7 @@ function RegisterForm({ data }) {
 		receipt_image: null,
 		future_news: '0'
 	})
+	const [errors, setErrors] = useState(null)
 
 	useEffect(() => {
 		getCategories()
@@ -89,7 +90,7 @@ function RegisterForm({ data }) {
 
 	const submitData = async e => {
 		e.preventDefault()
-
+		setErrors(null)
 		setLoading(true)
 		try {
 			let response = await axios.post(
@@ -107,7 +108,9 @@ function RegisterForm({ data }) {
 		} catch (error) {
 			toast.error('ticket didn"t sended', { toastId: 'ticket-error' })
 			setLoading(false)
-			console.log(error)
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			}
 		}
 	}
 
@@ -158,6 +161,9 @@ function RegisterForm({ data }) {
 								getSeriesModels(_value.id)
 							}}
 						/>
+						<div className='input_error_message'>
+							{errors?.product_category && errors?.product_category[0]}
+						</div>
 					</div>
 
 					{series?.length !== 0 && (
@@ -170,6 +176,9 @@ function RegisterForm({ data }) {
 									dataSchemaHandler('product_series', _value.name)
 								}
 							/>
+							<div className='input_error_message'>
+								{errors?.product_model && errors?.product_model[0]}
+							</div>
 						</div>
 					)}
 					{dataSchema.product_category && (
@@ -182,6 +191,9 @@ function RegisterForm({ data }) {
 									dataSchemaHandler('product_model', _value.name)
 								}
 							/>
+							<div className='input_error_message'>
+								{errors?.product_model && errors?.product_model[0]}
+							</div>
 						</div>
 					)}
 
@@ -210,6 +222,9 @@ function RegisterForm({ data }) {
 							required={true}
 							value={dataSchema.first_name}
 						/>
+						<div className='input_error_message'>
+							{errors?.first_name && errors?.first_name[0]}
+						</div>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
@@ -218,14 +233,21 @@ function RegisterForm({ data }) {
 							required={true}
 							value={dataSchema.last_name}
 						/>
+						<div className='input_error_message'>
+							{errors?.last_name && errors?.last_name[0]}
+						</div>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
 							placeholder={'EMAIL'}
 							onChange={_value => dataSchemaHandler('email', _value)}
 							required={true}
+							type={'email'}
 							value={dataSchema.email}
 						/>
+						<div className='input_error_message'>
+							{errors?.email && errors?.email[0]}
+						</div>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
@@ -234,6 +256,9 @@ function RegisterForm({ data }) {
 							required={true}
 							value={dataSchema.postal_code}
 						/>
+						<div className='input_error_message'>
+							{errors?.postal_code && errors?.postal_code[0]}
+						</div>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
@@ -242,6 +267,9 @@ function RegisterForm({ data }) {
 							onChange={_value => dataSchemaHandler('phone_number', _value)}
 							value={dataSchema.phone_number}
 						/>
+						<div className='input_error_message'>
+							{errors?.phone_number && errors?.phone_number[0]}
+						</div>
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
@@ -250,6 +278,9 @@ function RegisterForm({ data }) {
 							required={true}
 							value={dataSchema.purchased_from}
 						/>
+						<div className='input_error_message'>
+							{errors?.purchased_from && errors?.purchased_from[0]}
+						</div>
 					</div>
 					<div className='col-12 mb-10'>
 						<label htmlFor='date-input'>Date of Purchase</label>
@@ -259,6 +290,9 @@ function RegisterForm({ data }) {
 							required={true}
 							value={dataSchema.date_of_purchase}
 						/>
+						<div className='input_error_message'>
+							{errors?.date_of_purchase && errors?.date_of_purchase[0]}
+						</div>
 					</div>
 					<div className='col-12 mb-10 file-upload position-relative'>
 						<div className='file-upload-box position-relative'>

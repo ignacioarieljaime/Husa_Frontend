@@ -14,12 +14,16 @@ module.exports = async (page, content) => {
 		}
 	}
 
-	if (route === '/') {
-		fs.writeFile(`./pages/index.js`, content, err => {
-			if (err) {
-				console.error(err)
+	if (page.route === '/404' || route === '/') {
+		fs.writeFile(
+			`./pages/${page.title === '404' ? '404.js' : 'index.js'}`,
+			content,
+			err => {
+				if (err) {
+					console.error(err)
+				}
 			}
-		})
+		)
 	} else if (!fs.existsSync(route)) {
 		await fs.mkdirSync(`./pages/${route}`, { recursive: true })
 		fs.writeFile(`./pages/${route}/index.js`, content, err => {

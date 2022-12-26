@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useReducer, useState, useRef, useEffect } from 'react'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useWindowSize } from 'hooks/useWindowSize'
 import axios from 'axios'
@@ -16,12 +16,12 @@ const UpgradeL9GForm = ({ data }) => {
 		description: null,
 		proof_of_purchase: null
 	})
+	const [errors, setErrors] = useState(null)
 	const [loading, setLoading] = useState(null)
 	const inputRef = useRef(null)
 	const [acceptTerms, setAcceptTerms] = useState(false)
-
+	const [file, setFile] = useState(null)
 	const windowSize = useWindowSize()
-
 	const [content, setContent] = useState(null)
 	useEffect(() => {
 		setContent(data?.structure)
@@ -32,6 +32,7 @@ const UpgradeL9GForm = ({ data }) => {
 
 	const submitData = async e => {
 		e.preventDefault()
+		setErrors(null)
 		if (!dataSchema.proof_of_purchase) {
 			toast.error('please upload image')
 			return
@@ -46,16 +47,22 @@ const UpgradeL9GForm = ({ data }) => {
 			if (response.status === 200) {
 				toast.success('ticket sended', { toastId: 'success' })
 				e.target.reset()
+				setFile(null)
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended')
 			setLoading(false)
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			} else {
+				toast.error('ticket didn"t sended')
+			}
 			console.log(error)
 		}
 	}
 
 	const uploadFile = async _file => {
+		setFile(_file)
 		const formData = new FormData()
 		formData.append('attachment', _file)
 		setLoading('file')
@@ -80,7 +87,7 @@ const UpgradeL9GForm = ({ data }) => {
 	return (
 		<section>
 			<div className='upgrade_l9g_form'>
-				<div className='container'>
+				<div className='container form-container'>
 					<article
 						className='article'
 						dangerouslySetInnerHTML={{
@@ -98,6 +105,9 @@ const UpgradeL9GForm = ({ data }) => {
 									type='text'
 								/>
 							</div>
+							<div className='input_error_message'>
+								{errors?.first_name && errors?.first_name[0]}
+							</div>
 							<p className='feed'></p>
 						</div>
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
@@ -109,6 +119,9 @@ const UpgradeL9GForm = ({ data }) => {
 									type='text'
 								/>
 							</div>
+							<div className='input_error_message'>
+								{errors?.last_name && errors?.last_name[0]}
+							</div>
 							<p className='feed'></p>
 						</div>
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
@@ -119,6 +132,9 @@ const UpgradeL9GForm = ({ data }) => {
 									placeholder='Email'
 									type='email'
 								/>
+							</div>
+							<div className='input_error_message'>
+								{errors?.email && errors?.email[0]}
 							</div>
 							<p className='feed'></p>
 						</div>
@@ -132,6 +148,9 @@ const UpgradeL9GForm = ({ data }) => {
 									placeholder='Phone'
 									type='tel'
 								/>
+							</div>
+							<div className='input_error_message'>
+								{errors?.phone_number && errors?.phone_number[0]}
 							</div>
 							<p className='feed'></p>
 						</div>
@@ -147,43 +166,61 @@ const UpgradeL9GForm = ({ data }) => {
 									placeholder='Why should D. Wade foot the bill for your Laser TV? Max 250 words'
 								/>
 							</div>
+							<div className='input_error_message'>
+								{errors?.description && errors?.description[0]}
+							</div>
 							<p className='feed'></p>
 						</div>
 						<div className='col-12'>
-							<div className='file-input-box'>
+							<div className='file-input-box file-upload'>
 								<label>Proof of purchase</label>
-								<div
-									className={`input ${
-										!dataSchema.proof_of_purchase ? '' : 'activated'
-									}`}
-									onClick={() => inputRef.current.click()}>
+								<div className={`input file-upload-box`}>
 									{loading === 'file' && (
 										<div className='spinner_bg'>
 											<Spinner size={40} />
 										</div>
 									)}
-									<div className='content'>
-										{windowSize[0] > 600 ? (
-											<>
-												<p>
-													{!dataSchema.proof_of_purchase
-														? 'Drag & Drop a File Here'
-														: 'Upload Complete'}
-												</p>
-												<p className='divider'>or</p>
-												<article className='article'>
-													<p>Upload</p>
-												</article>
-											</>
-										) : null}
-									</div>
-									<input
-										type='file'
-										ref={inputRef}
-										onChange={e =>
-											e.target.files.length > 0 && uploadFile(e.target.files[0])
-										}
-									/>
+									{file ? (
+										<>
+											<button
+												className='remove_img'
+												onClick={() => setFile(null)}>
+												<FontAwesomeIcon icon={faXmark} />
+											</button>
+											<img
+												className='position-absolute top-0 right-0 w-100 h-100'
+												src={URL.createObjectURL(file)}
+											/>
+										</>
+									) : (
+										<>
+											<div className='content'>
+												{windowSize[0] > 600 ? (
+													<>
+														<p>
+															{!dataSchema.proof_of_purchase
+																? 'Drag & Drop a File Here'
+																: 'Upload Complete'}
+														</p>
+														<p className='divider'>or</p>
+														<article className='article'>
+															<p>Upload</p>
+														</article>
+													</>
+												) : null}
+											</div>
+
+											<input
+												type='file'
+												className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
+												style={{ zIndex: 1 }}
+												id='contact-file-input'
+												accept='.jpg, .png, .jpeg'
+												multiple='multiple'
+												onChange={e => uploadFile(e.target.files[0])}
+											/>
+										</>
+									)}
 								</div>
 							</div>
 						</div>

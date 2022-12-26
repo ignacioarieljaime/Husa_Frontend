@@ -74,17 +74,23 @@ const ProductItemV2 = ({ data }) => {
 								<a className='n-btn outline-black  '>View Product</a>
 							</Link>
 							<button
-								disabled={currentItem.retailer ? false : true}
+								disabled={
+									currentItem?.buy_status === 'ChannelAdvisor' ? false : true
+								}
 								onClick={() =>
-									currentItem.retailer && setChanelAdviserHandler(true)
+									currentItem?.buy_status === 'ChannelAdvisor'
+										? setChanelAdviserHandler(!chanelAdviserHandler)
+										: {}
 								}
 								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
 								className={`n-btn ${
-									currentItem.retailer
+									currentItem?.buy_status === 'ChannelAdvisor'
 										? 'primary-text '
 										: 'text-black opacity-50 bg-transparent border-0'
 								}`}>
-								Where to Buy
+								{currentItem?.buy_status === 'ChannelAdvisor'
+									? 'Where To Buy'
+									: 'coming soon'}
 								<span>
 									<FontAwesomeIcon
 										icon={faChevronRight}
