@@ -14,7 +14,7 @@ const CesCards = ({ data }) => {
 				<div className='custom_container'>
 					<div
 						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
 					<div className='row justify-content-center align-items-center boxes px-3'>
 						<div className='col-12 px-0'>
 							<div
@@ -97,7 +97,6 @@ const CesCards = ({ data }) => {
 									wrapperHeight='100%'
 									wrapperWidth='100%'
 								/>
-								<div className='box-background-shade'></div>
 							</div>
 							<div className='box-content'>
 								<div>
@@ -147,7 +146,6 @@ const CesCards = ({ data }) => {
 									wrapperHeight='100%'
 									wrapperWidth='100%'
 								/>
-								<div className='box-background-shade'></div>
 							</div>
 							<div className='box-content'>
 								<div>
@@ -197,7 +195,6 @@ const CesCards = ({ data }) => {
 									wrapperHeight='100%'
 									wrapperWidth='100%'
 								/>
-								<div className='box-background-shade'></div>
 							</div>
 							<div className='box-content'>
 								<div>
@@ -247,7 +244,6 @@ const CesCards = ({ data }) => {
 									wrapperHeight='100%'
 									wrapperWidth='100%'
 								/>
-								<div className='box-background-shade'></div>
 							</div>
 							<div className='box-content'>
 								<div>
@@ -292,7 +288,9 @@ const CesCards = ({ data }) => {
 					<div>
 						{content?.link?.value ? (
 							<Link href={content?.link?.value}>
-								<a className='n-btn outline-white'>{content?.link?.title}</a>
+								<a className='n-btn outline-white d-block w-fit mx-auto mt-12'>
+									{content?.link?.title}
+								</a>
 							</Link>
 						) : null}
 					</div>

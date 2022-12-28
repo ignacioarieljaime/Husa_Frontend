@@ -11,6 +11,7 @@
 		top: 90px;
 		left: 0;
 		max-width: 1340px;
+		max-height: 700px;
 		margin: 0 auto;
 		border-radius: 50px;
 		overflow: hidden;
@@ -51,6 +52,11 @@
 				margin-bottom: 40px;
 				@include mq(768) {
 					font-size: 18px !important;
+				}
+			}
+			a {
+				@include mq(500){
+					font-size: 12px !important;
 				}
 			}
 		}
