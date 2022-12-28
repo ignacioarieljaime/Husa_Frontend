@@ -1,6 +1,9 @@
 .uledx_waitlist {
 	height: calc(100vh - 72px);
-    background-color: #141414;
+	background-color: #141414;
+	@include mq(768) {
+		height: 100%;
+	}
 	& > div {
 		height: 100%;
 		& > div {
@@ -10,6 +13,9 @@
 	.uledx_waitlist_video {
 		position: relative;
 		height: 100%;
+		@include mq(768) {
+			height: 400px;
+		}
 		video {
 			position: absolute;
 			left: 0;

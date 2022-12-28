@@ -9,11 +9,11 @@ const ULEDXWaitlist = ({ data }) => {
 		<section>
 			<div className='uledx_waitlist'>
 				<div className='row mx-0'>
-					<div className='col-12 col-md-7 col-lg-8 px-0'>
+					<div className='col-12 col-md-7 px-0'>
 						<ULEDXWaitlistVideoBox data={structure?.video} />
 					</div>
-					<div className='col-12 col-md-5 col-lg-4 px-0'>
-						<ULEDXWaitlistForm />
+					<div className='col-12 col-md-5 px-0'>
+						<ULEDXWaitlistForm data={structure} />
 					</div>
 				</div>
 			</div>
