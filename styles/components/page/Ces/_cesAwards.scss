@@ -40,6 +40,9 @@
 		}
 		.swiper-slide {
 			width: fit-content;
+			a{
+				text-decoration: none;
+			}
 			.item {
 				max-width: 450px;
 				min-width: 380px;

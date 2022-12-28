@@ -4,7 +4,7 @@ const ULEDXWaitlistForm = ({ data }) => {
 	return (
 		<div className='uledx_waitlist_form'>
 			<div className='content'>
-				<h4>{data?.title?.value}</h4>
+				<h4 class>{data?.title?.value}</h4>
 				<form>
 					<div className='form_inp'>
 						<input type='text' placeHolder='' name='' value='' />
