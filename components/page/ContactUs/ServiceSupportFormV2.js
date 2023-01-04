@@ -245,6 +245,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('service_type', _value.value)}
 						title={'TYPE OF SERVICE REQUEST'}
 					/>
+					<div className='input_error_message'>
+						{errors?.service_type && errors?.service_type[0]}
+					</div>
 				</div>
 				<div className='col-12 mb-10 description_of_support_input'>
 					<label>Description Of Support</label>
