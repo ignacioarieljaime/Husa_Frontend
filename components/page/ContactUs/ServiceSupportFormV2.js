@@ -99,12 +99,11 @@ function ServiceSupportFormV2({ data, formHandler }) {
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended', { toastId: 'submit_failed' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			} else {
-				toast.error('ticket didn"t sended')
+				toast.error('ticket didn"t sended', { toastId: 'submit_failed' })
 			}
 			console.log(error)
 		}
@@ -236,6 +235,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						}
 						title={'IS YOUR PRODUCT UNDER WARRANTY?'}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_warranty && errors?.product_warranty[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomSelectBox
@@ -255,8 +257,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						placeholder='DESCRIPTION OF SUPPORT'
 						className='form-container-inner-input'
 					/>
-
-					<span className='input-error'>This field is required.</span>
+					<div className='input_error_message'>
+						{errors?.text && errors?.text[0]}
+					</div>
 				</div>
 				<div className='col-12 mb-10 file-upload description_of_support_input'>
 					<label htmlFor='file-upload '>
