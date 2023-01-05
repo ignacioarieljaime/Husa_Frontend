@@ -10,24 +10,23 @@ const ProductFiltersGroup = ({
 	passedFilter,
 	filterController,
 	checkBoxCondition,
-	index
+	index,
+	setResponsiveCollapseStatus,
+	responsiveCollapseStatus
 }) => {
 	const checkboxWrapper = useRef()
 	const buttonGroup = useRef()
-	const windowSize = useWindowSize()
-	const [filterCollapse, setFilterCollapse] = useState(
-		index <= 2 ? true : false
-	)
+	const [widthSize] = useWindowSize()
+	const [filterCollapse, setFilterCollapse] = useState(false)
 	const [filterList, setFilterList] = useState([])
 	const elRect = useRect(buttonGroup)
-
 	useEffect(() => {
-		if (
-			passedFilter.length > 0 &&
-			passedFilter.find(item => item.id === filter.content_record_id)
-		) {
-			setFilterCollapse(true)
-		}
+		// if (
+		// 	passedFilter.length > 0 &&
+		// 	passedFilter.find(item => item.id === filter.content_record_id)
+		// ) {
+		// 	setFilterCollapse(true)
+		// }
 
 		if (!Number.isNaN(Number(filter?.filter_values[1]?.title?.split('"')[0]))) {
 			let changeToNumber = filter.filter_values.map(item => {
@@ -39,12 +38,16 @@ const ProductFiltersGroup = ({
 		} else {
 			setFilterList(filter.filter_values)
 		}
-	}, [filter, windowSize[0]])
+	}, [filter, widthSize])
 
 	useEffect(() => {
-		if (windowSize[0] < 768) setFilterCollapse(false)
+		if (widthSize < 768) setFilterCollapse(false)
 		else setFilterCollapse(index <= 2 ? true : false)
-	}, [windowSize])
+	}, [widthSize])
+
+	useEffect(() => {
+		if (widthSize < 768) setFilterCollapse(false)
+	}, [responsiveCollapseStatus])
 
 	// useEffect(() => {
 	// 	checkboxWrapper.current.style.left = elRect.left - 12 + 'px'
@@ -59,7 +62,14 @@ const ProductFiltersGroup = ({
 				ref={buttonGroup}>
 				<button
 					className='n-btn black-text filter-btn'
-					onClick={() => setFilterCollapse(filterCollapse => !filterCollapse)}>
+					onClick={() => {
+						if (widthSize < 768) {
+							setResponsiveCollapseStatus(!responsiveCollapseStatus)
+							setTimeout(() => setFilterCollapse(!filterCollapse), 100)
+						} else {
+							setFilterCollapse(!filterCollapse)
+						}
+					}}>
 					{filter.name}{' '}
 					<span className='ms-5'>
 						<FontAwesomeIcon icon={faChevronDown} />

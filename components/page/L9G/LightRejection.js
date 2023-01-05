@@ -27,9 +27,10 @@ const LightRejection = ({ data }) => {
 					autoPlay={true}
 					loop={true}
 					playsInline={true}
-					className='px-4 px-md-0'>
-					<source src={content?.video?.value} />
-				</video>
+					className='px-4 px-md-0'
+					src={content?.video?.value}
+				/>
+
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption fs-9 fs-md-2 mw-md-50 fw-light mb-8'
