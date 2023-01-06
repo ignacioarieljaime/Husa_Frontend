@@ -6,7 +6,6 @@ import {
 } from 'react-parallax-mouse'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import ParallaxBanner from '../../../public/assets/images/parallxBanner.png'
 import CustomImage from '../../common/CustomImage'
 
 const BlockHero = ({ data: { structure } }) => {
@@ -18,7 +17,13 @@ const BlockHero = ({ data: { structure } }) => {
 		<section>
 			<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
 				<div className='parallax-banner'>
-					<CustomImage src={ParallaxBanner.src} alt={'parallax background'} className={'img-fluid'} wrapperHeight={"100%"} wrapperWidth={"100%"} />
+					<CustomImage
+						src={structure?.backgroundImage?.src}
+						alt={'parallax background'}
+						className={'img-fluid'}
+						wrapperHeight={'100%'}
+						wrapperWidth={'100%'}
+					/>
 					<div className='banner-content'>
 						<MouseParallaxChild
 							factorX={0.03}

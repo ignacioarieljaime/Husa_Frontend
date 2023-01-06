@@ -15,6 +15,8 @@ const ProductsFilter = ({
 	const [filterListData, setFilterListData] = useState([])
 	const [filterCounter, setFilterCounter] = useState()
 	const [sowMoreLimitation, setSowMoreLimitation] = useState(4)
+	const [responsiveCollapseStatus, setResponsiveCollapseStatus] =
+		useState(false)
 	const [filterResponsiveStatus, setFilterResponsiveStatus] = useState(false)
 	useEffect(() => {
 		if (router.query.filter) {
@@ -31,7 +33,6 @@ const ProductsFilter = ({
 	}, [filterList])
 
 	const filterController = (e, _filter, _filterType) => {
-		console.log(_filterType)
 		let _filtersBox = filters
 		let filterWrapperExisted = _filtersBox.find(
 			item => item.id === _filter.filterId
@@ -133,6 +134,8 @@ const ProductsFilter = ({
 								(filterItem, index) =>
 									index + 1 <= sowMoreLimitation && (
 										<ProductFiltersGroup
+											responsiveCollapseStatus={responsiveCollapseStatus}
+											setResponsiveCollapseStatus={setResponsiveCollapseStatus}
 											index={index}
 											key={`filter-${filterItem.name}-${filterItem.id} `}
 											filter={filterItem}

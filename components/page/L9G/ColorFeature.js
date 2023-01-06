@@ -29,9 +29,10 @@ const ColorFeature = ({ data }) => {
 							muted={true}
 							autoPlay={true}
 							loop={true}
-							playsInline={true}>
-							<source src={content?.leftVideo?.value} />
-						</video>
+							playsInline={true}
+							src={content?.leftVideo?.value}
+						/>
+
 						<div className='video-content'>
 							<div
 								className=' aos-init aos-animate'

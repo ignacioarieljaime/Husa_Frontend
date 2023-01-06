@@ -1,15 +1,27 @@
 .ces_banner {
 	background: #0e0d0d;
 	text-align: center;
-    padding: 115px 12px;
-    .image_container{
-        display: flex;  
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin: 0 auto 60px;
-        max-width: 350px;
-    }
+	padding: 115px 12px;
+	.image_container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin: 0 auto 60px;
+		max-width: 350px;
+		@include mq(350) {
+			justify-content: center;
+			flex-wrap: wrap;
+		}
+	}
+	a {
+		width: 100%;
+		max-width: 150px;
+		@include mq(350) {
+			padding: 8px 0;
+			max-width: 170px;
+		}
+	}
 	.title {
 		background: linear-gradient(121.77deg, #585eaa 0%, #f0a8a9 84.38%);
 		-webkit-background-clip: text;
@@ -21,6 +33,10 @@
 		line-height: 109px;
 		letter-spacing: -0.02em;
 		margin-bottom: 30px;
+		@include mq(768) {
+			font-size: 60px;
+			line-height: 68px;
+		}
 	}
 	.subtitle {
 		color: #ffffff;
@@ -39,9 +55,9 @@
 		font-size: 14px;
 		line-height: 20px;
 		color: #ffffff;
-        text-decoration: none;
-        span{
-            margin-left:10px;
-        }
+		text-decoration: none;
+		span {
+			margin-left: 10px;
+		}
 	}
 }

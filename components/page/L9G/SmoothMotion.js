@@ -4,14 +4,11 @@ import Draggable from 'react-draggable'
 import { useParallax, ParallaxProvider } from 'react-scroll-parallax'
 
 const SmoothMotion = ({ data }) => {
-	return (
-		<ParallaxProvider>
-			<SmoothMotionContainer data={data} />
-		</ParallaxProvider>
-	)
+	return <SmoothMotionContainer data={data} />
 }
 
 const SmoothMotionContainer = ({ data }) => {
+	const [mousePosition, setMousePosition] = useState(0)
 	const [windowWidthSize, setWindowWidthSize] = useState(0)
 	const windowSize = useWindowSize()
 	const [position, setPosition] = useState({ x: windowWidthSize / 10, y: 0 })
@@ -21,6 +18,7 @@ const SmoothMotionContainer = ({ data }) => {
 	}, [])
 	// let position = { x: windowWidthSize / 10, y: 0 }
 	const bluredImage = useRef()
+	const slider = useRef()
 	let boundaries = {
 		left: windowWidthSize / 10,
 		right: (windowWidthSize * 9) / 10,
@@ -28,20 +26,20 @@ const SmoothMotionContainer = ({ data }) => {
 		bottom: 0
 	}
 
-	let slider = useParallax({
-		speed: 10,
-		translateX: [
-			(windowSize[0] ? windowSize[0] : windowWidthSize) / 10 + 'px',
-			(windowSize[0] ? windowSize[0] : windowWidthSize) * 0.9 + 'px'
-		],
-		translateY: [0, 0],
-		onChange: el => {
-			bluredImage.current.style.width =
-				el.progress * (windowSize[0] ? windowSize[0] : windowWidthSize) * 0.8 +
-				(windowSize[0] ? windowSize[0] : windowWidthSize) / 10 +
-				'px'
-		}
-	})
+	// let slider = useParallax({
+	// 	speed: 10,
+	// 	translateX: [
+	// 		(windowSize[0] ? windowSize[0] : windowWidthSize) / 10 + 'px',
+	// 		(windowSize[0] ? windowSize[0] : windowWidthSize) * 0.9 + 'px'
+	// 	],
+	// 	translateY: [0, 0],
+	// 	onChange: el => {
+	// 		bluredImage.current.style.width =
+	// 			el.progress * (windowSize[0] ? windowSize[0] : windowWidthSize) * 0.8 +
+	// 			(windowSize[0] ? windowSize[0] : windowWidthSize) / 10 +
+	// 			'px'
+	// 	}
+	// })
 
 	useEffect(() => {
 		setWindowWidthSize(innerWidth)
@@ -53,8 +51,35 @@ const SmoothMotionContainer = ({ data }) => {
 		}
 	}, [windowSize])
 
+	const mouseDrag = () => {
+		console.log(slider)
+		slider.current.style.left = `${mousePosition}px`
+		bluredImage.current.style.width = mousePosition + 'px'
+	}
+
+	useEffect(() => {
+		let element = document.querySelector('.blured-image-container')
+
+		document.addEventListener('scroll', e => {
+			let elementStart = element.offsetTop
+			let elementEnd = element.offsetHeight + element.offsetTop
+			let windowStart = window.pageYOffset
+			let windowEnd = window.pageYOffset + window.innerHeight
+			let elementWithScreenHeight = element.offsetHeight + window.innerHeight
+
+			if (windowEnd >= elementStart && elementEnd >= windowStart) {
+				let scrollPosition =
+					elementWithScreenHeight -
+					(element.offsetHeight + elementStart - windowStart)
+				let withPresent = (scrollPosition * 100) / elementWithScreenHeight
+				slider.current.style.left = `${withPresent}%`
+				bluredImage.current.style.width = withPresent + '%'
+			}
+		})
+	}, [])
+
 	return (
-		<section className='l9g'>
+		<section onDrag={e => setMousePosition(e.clientX)} className='l9g'>
 			<div className='smooth-motion py-4 pb-md-0 pt-md-10 px-0'>
 				<div className='px-4 px-md-20 py-6 pt-8 py-md-20'>
 					<div
@@ -70,14 +95,20 @@ const SmoothMotionContainer = ({ data }) => {
 							alt={content?.fadedImage?.alt}
 						/>
 					</div>
-					<Draggable
+					{/* <Draggable
 						axis='x'
 						position={position}
 						bounds={boundaries}
 						// onDrag={(e, data) => setPosition({ x: data.x, y: data.y })}
-					>
-						<div className='screen-slider' ref={slider?.ref}></div>
-					</Draggable>
+						onDrag={(e, data) => console.log(`x:${data.x }, y:${data.y}`)}> */}
+					<div
+						onDrag={mouseDrag}
+						onDragEnd={() =>
+							setMousePosition({ ...mousePosition, status: false })
+						}
+						className='screen-slider'
+						ref={slider}></div>
+					{/* </Draggable> */}
 					<div className='screen overlay' ref={bluredImage}>
 						<img src={content?.image?.src} alt={content?.image?.alt} />
 					</div>
