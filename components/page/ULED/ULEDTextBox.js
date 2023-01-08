@@ -12,10 +12,10 @@ function ULEDTextBox({ data }) {
 
 					<div className='col-12 col-md-6 '>
 						{structure?.paragraphOne?.value && (
-							<p className=' m-0'>{structure?.paragraphOne?.value}</p>
+							<p className='fw-light m-0'>{structure?.paragraphOne?.value}</p>
 						)}
 						{structure?.paragraphTwo?.value && (
-							<p className=' m-0'>{structure?.paragraphTwo?.value}</p>
+							<p className='fw-light m-0'>{structure?.paragraphTwo?.value}</p>
 						)}
 					</div>
 				</article>
