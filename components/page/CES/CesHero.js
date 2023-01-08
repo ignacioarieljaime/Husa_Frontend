@@ -22,7 +22,6 @@ const CesHeroContainer = ({ structure }) => {
 
 	const blockRef = useParallax({
 		speed: -5,
-		rootMargin: { top: 4000, right: 4000, bottom: 4000, left: 4000 },
 		shouldAlwaysCompleteAnimation: true,
 		disabled: windowSize[0] < 768 ? true : false,
 		scale: [1, 0.5],

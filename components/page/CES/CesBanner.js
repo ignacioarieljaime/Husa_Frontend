@@ -14,42 +14,18 @@ const CesBanner = ({ data: { structure } }) => {
 		<section>
 			<div className='ces_banner'>
 				<div className='image_container'>
-					{structure?.imageLink1?.value ? (
-						<Link href={structure?.imageLink1?.value}>
-							<a className='d-block'>
-								<CustomImage
-									src={structure?.image1?.src}
-									alt={structure?.image1?.alt}
-									wrapperWidth={'100%'}
-								/>
-							</a>
-						</Link>
-					) : (
-						<CustomImage
-							src={structure?.image1?.src}
-							alt={structure?.image1?.alt}
-							wrapperWidth={'100%'}
-						/>
-					)}
-					{structure?.imageLink2?.value ? (
-						<Link href={structure?.imageLink2?.value}>
-							<a className='d-block'>
-								<CustomImage
-									src={structure?.image2?.src}
-									alt={structure?.image2?.alt}
-									wrapperWidth={'100%'}
-									WrapperMaxWidth={'150px'}
-								/>
-							</a>
-						</Link>
-					) : (
-						<CustomImage
-							src={structure?.image2?.src}
-							alt={structure?.image2?.alt}
-							wrapperWidth={'100%'}
-							WrapperMaxWidth={'150px'}
-						/>
-					)}
+					<CustomImage
+						src={structure?.image1?.src}
+						alt={structure?.image1?.alt}
+						wrapperWidth={'100%'}
+						WrapperMaxWidth={'150px'}
+					/>
+					<CustomImage
+						src={structure?.image2?.src}
+						alt={structure?.image2?.alt}
+						wrapperWidth={'100%'}
+						WrapperMaxWidth={'150px'}
+					/>
 				</div>
 				<h1 className='title'>{structure?.title?.value}</h1>
 				<div

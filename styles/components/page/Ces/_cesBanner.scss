@@ -9,18 +9,6 @@
 		width: 100%;
 		margin: 0 auto 60px;
 		max-width: 350px;
-		@include mq(350) {
-			justify-content: center;
-			flex-wrap: wrap;
-		}
-	}
-	a {
-		width: 100%;
-		max-width: 150px;
-		@include mq(350) {
-			padding: 8px 0;
-			max-width: 170px;
-		}
 	}
 	.title {
 		background: linear-gradient(121.77deg, #585eaa 0%, #f0a8a9 84.38%);
@@ -33,10 +21,6 @@
 		line-height: 109px;
 		letter-spacing: -0.02em;
 		margin-bottom: 30px;
-		@include mq(768) {
-			font-size: 60px;
-			line-height: 68px;
-		}
 	}
 	.subtitle {
 		color: #ffffff;
@@ -58,6 +42,23 @@
 		text-decoration: none;
 		span {
 			margin-left: 10px;
+		}
+	}
+	&.type_2 {
+		padding: 60px 12px;
+		.custom_container {
+			max-width: 1200px;
+			margin: 0 auto;
+			.title {
+				font-size: 60px;
+				line-height: 68px;
+			}
+			.text {
+				color: #fff;
+				font-weight: 400;
+				font-size: 20px;
+				line-height: 25px;
+			}
 		}
 	}
 }

@@ -4,7 +4,7 @@ import CesAwardsItem from './CesAwardsItem'
 
 import 'swiper/css'
 
-const CesAwards = ({ data }) => {
+const CesAwards2 = ({ data }) => {
 	const [content, setContent] = useState(null)
 	useEffect(() => {
 		setContent(data?.structure)
@@ -14,7 +14,7 @@ const CesAwards = ({ data }) => {
 		<section>
 			<div className='ces_awards'>
 				<div
-					className='title'
+					className='title mini'
 					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 				<Swiper
 					navigation={false}
@@ -35,4 +35,4 @@ const CesAwards = ({ data }) => {
 	)
 }
 
-export default CesAwards
+export default CesAwards2

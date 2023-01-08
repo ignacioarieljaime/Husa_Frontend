@@ -1,9 +1,5 @@
 .ces_awards {
 	background: #232323;
-	margin-bottom: 150px;
-	@include mq(768) {
-		margin-bottom: 80px;
-	}
 	.title {
 		padding: 100px 163px 0;
 		@include mq(768) {
@@ -29,6 +25,25 @@
 				text-fill-color: transparent;
 			}
 		}
+		&.mini {
+			position: relative;
+			top: 150px;
+			padding: 70px 163px 0;
+			@include mq(768) {
+				top: 80px;
+				padding: 50px 12px 0;
+			}
+			* {
+				font-size: 34px;
+				line-height: 42px;
+				color: #525454;
+
+				@include mq(768) {
+					font-size: 26px;
+					line-height: 34px;
+				}
+			}
+		}
 	}
 	.awards_slider {
 		padding: 0 163px;
@@ -40,45 +55,90 @@
 		}
 		.swiper-slide {
 			width: fit-content;
-			a{
-				text-decoration: none;
-			}
+			height: 100%;
 			.item {
-				max-width: 450px;
-				min-width: 380px;
+				max-width: 400px;
+				min-width: 350px;
 				background: #103a42;
-				padding: 60px;
+				padding: 40px;
 				box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
 				border-radius: 50px;
+				height: 100%;
 				@include mq(768) {
 					padding: 30px;
 					border-radius: 25px;
 				}
 				@include mq(575) {
-					min-width: 260px;
+					min-width: 280px;
 				}
-				.award_title {
-					font-weight: 400;
-					font-size: 24px;
-					line-height: 30px;
-					text-align: center;
-					letter-spacing: -0.02em;
-					color: #ffffff;
-				}
-				.award_image{
-					position: relative;
-					padding-top: 80%;
-					width: 100%;
-					height: 0;
-					margin : 45px 0 0;
-					> div {
-						position: absolute !important;
-						left: 0;
-						top: 0;
+				a {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					align-items: center;
+					text-decoration: none;
+					height: 100%;
+					.img_container {
+						position: relative;
 						width: 100%;
-						height: 100%;
+						height: 0;
+						padding-top: 70%;
+						margin-bottom: 20px;
+						div {
+							position: absolute !important;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+						}
+					}
+					.award_title {
+						font-weight: 400;
+						font-size: 24px;
+						line-height: 30px;
+						letter-spacing: -0.02em;
+						color: #ffffff;
+						margin-bottom: 12px;
+					}
+
+					.award_subtitle {
+						color: #00aaa6;
+						font-size: 14px;
+						font-weight: 400;
+						margin-bottom: 5px;
 					}
 				}
+			}
+		}
+	}
+	&.contained {
+		.title {
+			padding: 70px 163px 30px;
+			@include mq(768) {
+				padding: 40px 12px 20px;
+			}
+			* {
+				text-align: center;
+				font-weight: 400;
+				font-size: 60px;
+				line-height: 68px;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+				u{
+					display: inline-block;
+				}
+				@include mq(768) {
+					font-size: 34px;
+					line-height: 42px;
+				}
+			}
+		}
+		.awards_slider {
+			padding: 0 163px 50px;
+			top: 0;
+			@include mq(768) {
+				padding: 0 12px 30px;
+				top: 0;
 			}
 		}
 	}

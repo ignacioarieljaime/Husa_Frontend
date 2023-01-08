@@ -1,0 +1,6 @@
+.ces_navigation_button {
+	padding: 250px 12px 100px;
+	@include mq(768) {
+		padding: 120px 12px 60px;
+	}
+}

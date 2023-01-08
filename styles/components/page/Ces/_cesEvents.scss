@@ -1,0 +1,47 @@
+.ces_events {
+	.article {
+		h2 {
+			margin: 18px 0 32px !important;
+			font-weight: 400;
+		}
+		p,
+		a {
+			font-weight: 300;
+			padding: 0 !important;
+		}
+	}
+}
+
+.ces_contact_box {
+	background: #e7e6e6;
+	padding: 20px;
+	.title {
+		font-weight: 700;
+		font-size: 20px;
+		margin-top: 20px;
+	}
+	.link {
+		color: #00aaa6;
+		text-decoration: none;
+	}
+	.address {
+		font-size: 20px;
+		color: #78787a;
+		margin-bottom: 0;
+		font-weight: 700;
+	}
+}
+
+.ces_links {
+	display: block;
+	font-size: 18px;
+	color: #000;
+	font-weight: light;
+}
+
+
+.ces_news_container{
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 12px;
+}
