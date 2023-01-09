@@ -30,6 +30,7 @@ function ProductSupportRegister({ pim, data }) {
 				{formCondition ? (
 					<ProductSupportServiceRegister
 						data={structure}
+						pim={pim}
 						formHandler={setFormDisplay}
 					/>
 				) : (
