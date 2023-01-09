@@ -13,6 +13,7 @@ const CESBanner2 = ({ data: { structure } }) => {
 							wrapperWidth={'100%'}
 							WrapperMaxWidth={'120px'}
 						/>
+
 						<CustomImage
 							src={structure?.image2?.src}
 							alt={structure?.image2?.alt}

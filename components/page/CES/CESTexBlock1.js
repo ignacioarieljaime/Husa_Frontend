@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 const CESTexBlock1 = ({ data }) => {
 	const [content, setContent] = useState({ data })
+
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])

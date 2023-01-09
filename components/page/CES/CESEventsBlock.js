@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 const CESEventsBlock = ({ data }) => {
 	const [content, setContent] = useState({ data })
+
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])

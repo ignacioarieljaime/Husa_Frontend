@@ -17,5 +17,4 @@ const CESNavigationButton = ({ data: { structure } }) => {
 		</section>
 	)
 }
-
 export default CESNavigationButton
