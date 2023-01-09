@@ -8,7 +8,7 @@ const CesTextBox = ({ data: { structure } }) => {
 	}, [])
 	return (
 		<section>
-			<div className='ces_text_box'>
+			<div className='ces_text_box pt-20'>
 				<h2 className='title'>{structure?.title?.value}</h2>
 				<div
 					className='subtitle'

@@ -4,7 +4,7 @@ import CesAwardsItem from './CesAwardsItem'
 
 import 'swiper/css'
 
-const CesAwards2 = ({ data }) => {
+const CESAwards2 = ({ data }) => {
 	const [content, setContent] = useState(null)
 	useEffect(() => {
 		setContent(data?.structure)
@@ -35,4 +35,4 @@ const CesAwards2 = ({ data }) => {
 	)
 }
 
-export default CesAwards2
+export default CESAwards2

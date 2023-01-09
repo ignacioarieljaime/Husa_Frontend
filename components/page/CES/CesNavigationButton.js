@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const CesNavigationButton = ({ data: { structure } }) => {
+const CESNavigationButton = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div
@@ -18,4 +18,4 @@ const CesNavigationButton = ({ data: { structure } }) => {
 	)
 }
 
-export default CesNavigationButton
+export default CESNavigationButton
