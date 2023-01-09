@@ -15,7 +15,7 @@ function ProductSupportRegister({ pim, data }) {
 							className={`tab-btn ${!formCondition && 'active'}`}
 							id='tab-1'
 							onClick={() => setFormCondition(false)}>
-							{structure.title.value}
+							{structure?.title?.value}
 						</button>
 					</div>
 					<div className='ms-6'>
@@ -23,7 +23,7 @@ function ProductSupportRegister({ pim, data }) {
 							className={`tab-btn ${formCondition && 'active'}`}
 							id='tab-2'
 							onClick={() => setFormCondition(true)}>
-							{structure.secondTitle.value}
+							{structure?.secondTitle?.value}
 						</button>
 					</div>
 				</div>
