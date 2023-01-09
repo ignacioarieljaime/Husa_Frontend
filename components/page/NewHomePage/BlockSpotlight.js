@@ -9,6 +9,8 @@ const BlockSpotlight = ({ data }) => {
 	let router = useRouter()
 	const [products, setProducts] = useState('loading')
 	const [activeProduct, setActiveProduct] = useState()
+	const [productSortCXM, setProductSortCXM] = useState()
+	const [productType, setProductType] = useState()
 
 	useEffect(() => {
 		getProductWithCategory(structure?.tabs?.value[0])
@@ -17,7 +19,8 @@ const BlockSpotlight = ({ data }) => {
 	const getProductWithCategory = async _data => {
 		setProducts('loading')
 		setActiveProduct(_data?.category)
-
+		setProductSortCXM(_data?.items)
+		setProductType(_data.type)
 		let searchType = _data.type === 'products' ? `products_id=` : `series_id=`
 		searchType += JSON.stringify(_data.items.map(item => item.id))
 		try {
@@ -25,12 +28,12 @@ const BlockSpotlight = ({ data }) => {
 				router,
 				searchType
 			)
+			console.log(response.data.data)
 			setProducts(response.data.data)
 		} catch (error) {
 			console.log(error)
 		}
 	}
-
 	return (
 		<section>
 			<div className='container spotlight-releases'>
@@ -51,9 +54,13 @@ const BlockSpotlight = ({ data }) => {
 					</div>
 				) : (
 					<div className='product-list justify-content-center'>
-						{products.map((item, index) => (
+						{productSortCXM.map((item, index) => (
 							<BlockSpotlightItem
-								data={item}
+								data={products.find(productItem =>
+									productType === 'products'
+										? item.id === productItem.products.product.id
+										: item.id === productItem.id
+								)}
 								key={'block-spot-light-' + index}
 							/>
 						))}

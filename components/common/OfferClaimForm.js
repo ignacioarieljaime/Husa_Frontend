@@ -209,12 +209,12 @@ function OfferClaimForm({ data }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended')
+				toast.success('ticket was sent successfully')
 				e.target.reset()
 				setFile(null)
 				setActiveCheckBox(false)
 			} else {
-				toast.error('ticket didn"t sended')
+				toast.error('ticket didn"t send')
 			}
 			setLoading(false)
 		} catch (error) {
@@ -222,7 +222,7 @@ function OfferClaimForm({ data }) {
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			} else {
-				toast.error('ticket didn"t sended')
+				toast.error('ticket didn"t send')
 			}
 			console.log(error)
 		}
@@ -421,6 +421,9 @@ function OfferClaimForm({ data }) {
 									<p>Upload Images</p>
 								</>
 							)}
+						</div>
+						<div className='input_error_message'>
+							{errors?.receipt_image && errors?.receipt_image[0]}
 						</div>
 					</div>
 					<div className='col-12 mb-10 news-check'>

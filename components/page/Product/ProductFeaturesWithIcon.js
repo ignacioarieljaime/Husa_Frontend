@@ -47,7 +47,7 @@ const ProductFeatureWithParagraph = ({ data }) => {
 							</span>
 						</h2>
 						<p
-							class='col-12 col-md-6 m-0'
+							class='col-12 col-md-6 m-0 fw-light'
 							dangerouslySetInnerHTML={{
 								__html: text
 							}}></p>

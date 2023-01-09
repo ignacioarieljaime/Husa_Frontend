@@ -45,7 +45,7 @@ const UpgradeL9GForm = ({ data }) => {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended', { toastId: 'success' })
+				toast.success('ticket was sent successfully', { toastId: 'success' })
 				e.target.reset()
 				setFile(null)
 			}
@@ -55,7 +55,7 @@ const UpgradeL9GForm = ({ data }) => {
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			} else {
-				toast.error('ticket didn"t sended')
+				toast.error('ticket didn"t send')
 			}
 			console.log(error)
 		}
@@ -221,6 +221,9 @@ const UpgradeL9GForm = ({ data }) => {
 											/>
 										</>
 									)}
+								</div>
+								<div className='input_error_message'>
+									{errors?.proof_of_purchase && errors?.proof_of_purchase[0]}
 								</div>
 							</div>
 						</div>
