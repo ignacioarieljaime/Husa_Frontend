@@ -1,7 +1,7 @@
 module.exports.CesComponents = [
 	{
-		name: 'CESHomeNavBar',
-		path: 'components/page/CES/HomeApplication/CESHomeNavBar'
+		name: 'CesHomeNavBar',
+		path: 'components/page/CES/HomeApplication/CesHomeNavBar'
 	},
 
 	{
@@ -9,7 +9,7 @@ module.exports.CesComponents = [
 		path: 'components/page/CES/HomeApplication/CESHomeImageAndText'
 	},
 	{
-		name: 'CESLaserLearnMore',
+		name: 'CesLaserLearnMore',
 		path: 'components/page/CES/Laster/CESLaserLearnMore'
 	},
 	{
@@ -42,47 +42,47 @@ module.exports.CesComponents = [
 	},
 
 	{
-		name: 'CESBanner2',
+		name: 'CesBanner2',
 		path: 'components/page/CES/CesBanner2'
 	},
 	{
-		name: 'CESAwards2',
+		name: 'CesAwards2',
 		path: 'components/page/CES/CesAwards3'
 	},
 	{
-		name: 'CESAwards3',
+		name: 'CesAwards3',
 		path: 'components/page/CES/CesAwards3'
 	},
 	{
-		name: 'CESEventsBlock',
-		path: 'components/page/CES/CESEventsBlock'
+		name: 'CesEventsBlock',
+		path: 'components/page/CES/CesEventsBlock'
 	},
 	{
-		name: 'CESHeadingBlock',
-		path: 'components/page/CES/CESHeadingBlock'
+		name: 'CesHeadingBlock',
+		path: 'components/page/CES/CesHeadingBlock'
 	},
 	{
-		name: 'CESImagesBlock1',
-		path: 'components/page/CES/CESImagesBlock1'
+		name: 'CesImagesBlock1',
+		path: 'components/page/CES/CesImagesBlock1'
 	},
 	{
-		name: 'CESNavigationButton',
+		name: 'CesNavigationButton',
 		path: 'components/page/CES/CesNavigationButton'
 	},
 	{
-		name: 'CESNewsBlock',
-		path: 'components/page/CES/CESNewsBlock'
+		name: 'CesNewsBlock',
+		path: 'components/page/CES/CesNewsBlock'
 	},
 	{
-		name: 'CESTexBlock1',
-		path: 'components/page/CES/CESTexBlock1'
+		name: 'CesTextBlock1',
+		path: 'components/page/CES/CesTextBlock1'
 	},
 	{
-		name: 'CESTexBlock2',
-		path: 'components/page/CES/CESTexBlock2'
+		name: 'CesTextBlock2',
+		path: 'components/page/CES/CesTextBlock2'
 	},
 	{
-		name: 'CESTexBlock3',
-		path: 'components/page/CES/CESTexBlock3'
+		name: 'CesTextBlock3',
+		path: 'components/page/CES/CesTextBlock3'
 	}
 ]
