@@ -17,7 +17,8 @@ let warrantyOption = [
 ]
 let serviceTypeOption = [{ name: 'Technical Support', value: 'technical' }]
 
-function ProductSupportServiceRegister({ data, formHandler }) {
+function ProductSupportServiceRegister({ data, formHandler, pim }) {
+	const [errors, setErrors] = useState(null)
 	const router = useRouter()
 	const [modalCondition, setModalCondition] = useState(false)
 	const [disabled, setDisabled] = useState(false)
@@ -31,9 +32,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 		last_name: null,
 		email: null,
 		phone_number: null,
-		product_category: null,
-		product_model: null,
 		product_serial_number: null,
+		product_category: pim?.Category?.name,
+		product_model: pim?.model,
 		product_warranty: null,
 		service_type: null,
 		text: null,
@@ -91,13 +92,16 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended', { toastId: 'submit_success' })
+				toast.success('ticket was sent successfully', { toastId: 'submit_success' })
 				formHandler(true)
 				setDisabled(true)
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended', { toastId: 'submit_failed' })
+			toast.error('ticket didn"t send')
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			}
 			setLoading(false)
 			console.log(error)
 		}
@@ -148,6 +152,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('first_name', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.first_name && errors?.first_name[0]}
+					</div>
 				</div>{' '}
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -155,6 +162,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('last_name', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.last_name && errors?.last_name[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -162,6 +172,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('email', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.email && errors?.email[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -169,23 +182,29 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('phone_number', _value)}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.phone_number && errors?.phone_number[0]}
+					</div>
 				</div>
-				<div className='col-12 mb-10'>
-					<CustomSelectBox
-						options={categories}
-						title={'PLEASE SELECT YOUR PRODUCT'}
-						onChange={_value => {
-							dataSchemaHandler('product_category', _value.name)
-							getSeriesModels(_value.id)
-						}}
+				<div className='col-12 mb-10 custom-select-box'>
+					<CustomInput
+						disabled={true}
+						placeholder={'PLEASE SELECT YOUR PRODUCT'}
+						defaultValue={dataSchema.product_category}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_category && errors?.product_category[0]}
+					</div>
 				</div>
-				<div className='col-12 mb-10 '>
-					<CustomSelectBox
-						options={models}
-						onChange={_value => dataSchemaHandler('product_model', _value.name)}
-						title={'PLEASE SELECT YOUR MODEL'}
+				<div className='col-12 mb-10 custom-select-box'>
+					<CustomInput
+						disabled={true}
+						placeholder={'PLEASE SELECT YOUR MODEL'}
+						defaultValue={dataSchema.product_model}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_model && errors?.product_model[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
@@ -195,6 +214,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 						placeholder={'SERIAL NUMBER'}
 						required={true}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_serial_number && errors?.product_serial_number[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10 d-flex'>
 					<button
@@ -215,6 +237,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 						}
 						title={'IS YOUR PRODUCT UNDER WARRANTY?'}
 					/>
+					<div className='input_error_message'>
+						{errors?.product_warranty && errors?.product_warranty[0]}
+					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomSelectBox
@@ -222,6 +247,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 						onChange={_value => dataSchemaHandler('service_type', _value.value)}
 						title={'TYPE OF SERVICE REQUEST'}
 					/>
+					<div className='input_error_message'>
+						{errors?.service_type && errors?.service_type[0]}
+					</div>
 				</div>
 				<div className='col-12 mb-10'>
 					<input
@@ -233,6 +261,9 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 					<span className='fs-9'>
 						If television related, please include firmware version
 					</span>
+					<div className='input_error_message'>
+						{errors?.text && errors?.text[0]}
+					</div>
 					<span className='input-error'>This field is required.</span>
 				</div>
 				<div className='col-12 mb-10 file-upload'>
@@ -241,34 +272,39 @@ function ProductSupportServiceRegister({ data, formHandler }) {
 					</label>
 					<span>Max 3 Images (Optional)</span>
 
-					<div className='file-upload-box position-relative'>
-						{imageLoading && (
-							<div className='image_loading'>
-								<Spinner size={35} />
-							</div>
-						)}
-						{file ? (
-							<>
-								<button className='remove_img' onClick={() => setFile(null)}>
-									<FontAwesomeIcon icon={faXmark} />
-								</button>
-								<img src={URL.createObjectURL(file)} />
-							</>
-						) : (
-							<>
-								<input
-									type='file'
-									className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
-									style={{ zIndex: 1 }}
-									id='contact-file-input'
-									accept='.jpg, .png, .jpeg'
-									multiple='multiple'
-									onChange={e => uploadFile(e.target.files[0])}
-								/>
-								<div>Drag & Drop a File Here</div>
-								<p>Upload Images</p>
-							</>
-						)}
+					<div>
+						<div className='file-upload-box position-relative'>
+							{imageLoading && (
+								<div className='image_loading'>
+									<Spinner size={35} />
+								</div>
+							)}
+							{file ? (
+								<>
+									<button className='remove_img' onClick={() => setFile(null)}>
+										<FontAwesomeIcon icon={faXmark} />
+									</button>
+									<img src={URL.createObjectURL(file)} />
+								</>
+							) : (
+								<>
+									<input
+										type='file'
+										className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
+										style={{ zIndex: 1 }}
+										id='contact-file-input'
+										accept='.jpg, .png, .jpeg'
+										multiple='multiple'
+										onChange={e => uploadFile(e.target.files[0])}
+									/>
+									<div>Drag & Drop a File Here</div>
+									<p>Upload Images</p>
+								</>
+							)}
+						</div>
+						<div className='input_error_message'>
+							{errors?.text && errors?.text[0]}
+						</div>
 					</div>
 				</div>
 				<div className='col-12 text-center'>
