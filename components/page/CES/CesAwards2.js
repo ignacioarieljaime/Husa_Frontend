@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import CesAwardsItem from './CesAwardsItem'
-
 import 'swiper/css'
 
 const CESAwards2 = ({ data }) => {
