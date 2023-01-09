@@ -762,8 +762,12 @@ input {
 	}
 }
 
-.spec-after-style{
-	&::before{
+.spec-after-style {
+	&::before {
 		color: #292929 !important;
 	}
+}
+
+.Toastify__toast-container {
+	z-index: 999999 !important;
 }

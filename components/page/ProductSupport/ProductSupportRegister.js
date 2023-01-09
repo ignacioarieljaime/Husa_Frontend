@@ -55,19 +55,17 @@ function ProductSupportRegister({ pim, data }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended')
+				toast.success('ticket was sent successfully')
 				e.target.reset()
 				setFile()
-			} else {
-				toast.error('ticket didn"t sended')
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended')
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			}
+			toast.error('ticket didn"t send')
 			console.log(error)
 		}
 	}
@@ -264,6 +262,9 @@ function ProductSupportRegister({ pim, data }) {
 									</div>
 								</>
 							)}
+							<div className='input_error_message'>
+								{errors?.receipt_image && errors?.receipt_image[0]}
+							</div>
 						</div>
 						<div className='col-12 mb-10 news-check'>
 							<span

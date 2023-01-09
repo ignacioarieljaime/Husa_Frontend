@@ -92,7 +92,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended', { toastId: 'submit_success' })
+				toast.success('ticket was sent successfully', { toastId: 'submit_success' })
 				e.target.reset()
 				setDisabled(true)
 				setFile(null)
@@ -103,7 +103,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			} else {
-				toast.error('ticket didn"t sended', { toastId: 'submit_failed' })
+				toast.error('ticket didn"t send', { toastId: 'submit_failed' })
 			}
 			console.log(error)
 		}
@@ -128,7 +128,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 				setImageLoading(false)
 			}
 		} catch (error) {
-			toast.error("image didn't uploaded")
+			toast.error("image didn't upload")
 			setImageLoading(false)
 			console.log(error)
 		}
@@ -298,6 +298,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 								<p>Upload Images</p>
 							</>
 						)}
+					</div>
+					<div className='input_error_message'>
+						{errors?.image && errors?.image[0]}
 					</div>
 				</div>
 				<div className='col-12 text-center'>

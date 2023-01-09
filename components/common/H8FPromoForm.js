@@ -51,14 +51,15 @@ function H8FPromoForm({ data }) {
 				{ ...dataSchema, receipt_image: fileUploadCondition }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended')
+				toast.success('ticket was sent successfully')
 				setDisabled(true)
 			} else {
-				toast.error('ticket didn"t sended')
+				toast.error('ticket didn"t send')
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended')
+			
+			toast.error('ticket didn"t send')
 			setLoading(false)
 			console.log(error)
 		}

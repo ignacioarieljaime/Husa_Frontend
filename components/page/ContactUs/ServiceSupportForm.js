@@ -91,13 +91,13 @@ function ServiceSupportForm({ formHandler }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended', { toastId: 'submit_success' })
+				toast.success('ticket was sent successfully', { toastId: 'submit_success' })
 				formHandler(true)
 				setDisabled(true)
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended', { toastId: 'submit_failed' })
+			toast.error('ticket didn"t send', { toastId: 'submit_failed' })
 			setLoading(false)
 			console.log(error)
 		}
@@ -122,7 +122,7 @@ function ServiceSupportForm({ formHandler }) {
 				setImageLoading(false)
 			}
 		} catch (error) {
-			toast.error("image didn't uploaded")
+			toast.error("image didn't upload")
 			setImageLoading(false)
 			console.log(error)
 		}

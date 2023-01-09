@@ -98,15 +98,15 @@ function RegisterForm({ data }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket sended', { toastId: 'ticket-sended' })
+				toast.success('ticket was sent successfully', { toastId: 'ticket-sended' })
 				e.target.reset()
 				setFile(null)
 			} else {
-				toast.error('ticket didn"t sended', { toastId: 'ticket-error' })
+				toast.error('ticket didn"t send', { toastId: 'ticket-error' })
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t sended', { toastId: 'ticket-error' })
+			toast.error('ticket didn"t send', { toastId: 'ticket-error' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
@@ -323,6 +323,9 @@ function RegisterForm({ data }) {
 									<p>Upload Images</p>
 								</>
 							)}
+						</div>
+						<div className='input_error_message'>
+							{errors?.receipt_image && errors?.receipt_image[0]}
 						</div>
 					</div>
 					<div className='col-12 mb-10 news-check'>
