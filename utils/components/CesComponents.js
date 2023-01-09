@@ -47,11 +47,11 @@ module.exports.CesComponents = [
 	},
 	{
 		name: 'CESAwards2',
-		path: 'components/page/CES/CESAwards2'
+		path: 'components/page/CES/CesAwards3'
 	},
 	{
 		name: 'CESAwards3',
-		path: 'components/page/CES/CESAwards3'
+		path: 'components/page/CES/CesAwards3'
 	},
 	{
 		name: 'CESEventsBlock',
@@ -67,7 +67,7 @@ module.exports.CesComponents = [
 	},
 	{
 		name: 'CESNavigationButton',
-		path: 'components/page/CES/CESNavigationButton'
+		path: 'components/page/CES/CesNavigationButton'
 	},
 	{
 		name: 'CESNewsBlock',
