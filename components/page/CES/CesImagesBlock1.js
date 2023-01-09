@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-const CESImagesBlock1 = ({ data }) => {
+const CesImagesBlock1 = ({ data }) => {
 	const [content, setContent] = useState({ data })
 
 	useEffect(() => {
@@ -79,5 +79,4 @@ const CESImagesBlock1 = ({ data }) => {
 		</section>
 	)
 }
-
-export default CESImagesBlock1
+export default CesImagesBlock1

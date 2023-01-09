@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const CESHeadingBlock = ({ data }) => {
+const CesHeadingBlock = ({ data }) => {
 	const [content, setContent] = useState({ data })
 
 	useEffect(() => {
@@ -34,5 +34,4 @@ const CESHeadingBlock = ({ data }) => {
 		</section>
 	)
 }
-
-export default CESHeadingBlock
+export default CesHeadingBlock

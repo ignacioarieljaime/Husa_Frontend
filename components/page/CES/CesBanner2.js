@@ -1,7 +1,6 @@
 import React from 'react'
 import CustomImage from 'components/common/CustomImage'
-
-const CESBanner2 = ({ data: { structure } }) => {
+const CesBanner2 = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='ces_banner type_2'>
@@ -32,4 +31,4 @@ const CESBanner2 = ({ data: { structure } }) => {
 	)
 }
 
-export default CESBanner2
+export default CesBanner2

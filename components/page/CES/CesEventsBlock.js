@@ -2,7 +2,7 @@ import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-const CESEventsBlock = ({ data }) => {
+const CesEventsBlock = ({ data }) => {
 	const [content, setContent] = useState({ data })
 
 	useEffect(() => {
@@ -46,5 +46,4 @@ const CESEventsBlock = ({ data }) => {
 		</section>
 	)
 }
-
-export default CESEventsBlock
+export default CesEventsBlock

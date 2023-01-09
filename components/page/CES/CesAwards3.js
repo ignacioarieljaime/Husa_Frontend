@@ -3,12 +3,11 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import CesAwardsItem from './CesAwardsItem'
 import 'swiper/css'
 
-const CESAwards3 = ({ data }) => {
+const CesAwards3 = ({ data }) => {
 	const [content, setContent] = useState(null)
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
-
 	return (
 		<section>
 			<div className='ces_awards contained'>
@@ -34,4 +33,4 @@ const CESAwards3 = ({ data }) => {
 	)
 }
 
-export default CESAwards3
+export default CesAwards3
