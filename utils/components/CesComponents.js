@@ -43,7 +43,7 @@ module.exports.CesComponents = [
 
 	{
 		name: 'CESBanner2',
-		path: 'components/page/CES/CESBanner2'
+		path: 'components/page/CES/CesBanner2'
 	},
 	{
 		name: 'CESAwards2',
