@@ -41,29 +41,25 @@ const CesHeroContainer = ({ structure }) => {
 						wrapperWidth={'100%'}
 					/>
 					<div className='banner-content'>
+						<h1
+							className='title fs-3x'
+							dangerouslySetInnerHTML={{
+								__html: structure?.title?.value
+							}}></h1>
 						<div>
-							<h1
-								className='title fs-5qx'
-								data-aos='fade-up'
-								data-aos-duration='900'
-								data-aos-delay='300'>
-								{structure?.title?.value}
-							</h1>
-							<p
-								className='description fs-4'
-								data-aos='fade'
-								data-aos-duration='700'
-								data-aos-delay='1500'>
-								{structure?.subtitle?.value}
-							</p>
+							{structure?.link?.value ? (
+								<Link
+									href={structure?.link?.value ? structure?.link?.value : '/'}>
+									<a className='n-btn outline-white transparent fs-4'>
+										{structure?.link?.title}
+									</a>
+								</Link>
+							) : null}
 							<Link
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
-								<a
-									className='n-btn white'
-									data-aos='fade'
-									data-aos-duration='900'
-									data-aos-delay='2000'>
+								<a className='n-btn white-text ms-2'>
 									{structure?.link?.title}
+									{'>'}
 								</a>
 							</Link>
 						</div>

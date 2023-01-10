@@ -189,8 +189,8 @@
 				.content {
 					position: absolute;
 					text-align: start;
-					left: 6%;
-					top: 12%;
+					left: 5%;
+					top: 20%;
 					@include mq(500) {
 						position: relative;
 						left: 0;
@@ -221,14 +221,14 @@
 					}
 
 					.title {
-						font-weight: 400;
-						font-size: 34px;
-						line-height: 120%;
-						letter-spacing: -0.02em;
-						color: #232323;
 						margin-bottom: 16px;
-
+						
 						* {
+							font-weight: 400;
+							font-size: 34px;
+							line-height: 120%;
+							letter-spacing: -0.02em;
+							color: #232323;
 							margin: 0;
 						}
 
