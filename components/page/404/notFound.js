@@ -24,7 +24,7 @@ const NotFound = ({ data: { structure } }) => {
 					<h1 class='title'>{structure?.title?.value}</h1>
 					<article className='article'>
 						<div
-							className='mb-12 mb-md-0'
+							className='mb-12'
 							dangerouslySetInnerHTML={{ __html: text }}></div>
 						<div className='button_group'>
 							{structure?.link1?.value ? (
