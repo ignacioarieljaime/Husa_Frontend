@@ -11,8 +11,13 @@
 		border-radius: 50px;
 		overflow: hidden;
 		@include mq(768) {
+			height: 60vw;
 			position: relative;
 			top: 0;
+			border-radius: 20px;
+		}
+		@include mq(500) {
+			height: 80vw;
 		}
 		img {
 			object-fit: cover;
@@ -25,14 +30,19 @@
 			top: 100%;
 			left: 0;
 			width: 100%;
-			transform: translateY(-150%);
+			transform: translateY(-100%);
 			text-align: center;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			padding: 12px 30px;
 			color: #ffffff;
-
+			@include mq(500) {
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				padding: 12px 12px;
+			}
 			.title {
 				font-weight: 400;
 				line-height: 120%;
@@ -40,7 +50,7 @@
 				@include mq(768) {
 					font-size: 32px !important;
 				}
-				u{
+				u {
 					color: #00aaa6;
 					text-decoration: none;
 				}

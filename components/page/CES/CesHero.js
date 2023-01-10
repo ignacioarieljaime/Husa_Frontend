@@ -2,7 +2,7 @@ import React from 'react'
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 
-const CesHero = ({ structure }) => {
+const CesHero = ({ data: { structure } }) => {
 	return (
 		<section>
 			<div className='ces_hero'>
@@ -28,7 +28,7 @@ const CesHero = ({ structure }) => {
 									href={
 										structure?.link1?.value ? structure?.link1?.value : '/'
 									}>
-									<a className='n-btn outline-white transparent fs-4'>
+									<a className='n-btn outline-white transparent d-inline-block w-fit fs-md-4'>
 										{structure?.link1?.title}
 									</a>
 								</Link>
@@ -38,7 +38,7 @@ const CesHero = ({ structure }) => {
 									href={
 										structure?.link2?.value ? structure?.link2?.value : '/'
 									}>
-									<a className='n-btn white-text ms-2'>
+									<a className='n-btn white-text ms-2 fs-8 fs-md-base'>
 										{structure?.link2?.title} {'>'}
 									</a>
 								</Link>

@@ -50,18 +50,27 @@
     }
 
     div {
-      h4 {
+      &.light{
+        h3,h4,h5,h6 {
+            color: #fff;
+          }
+        
+          p {
+            color: #fff;
+          }
+      }
+      h3,h4,h5,h6 {
         font-weight: 400 !important;
         font-size: 20px !important;
         line-height: 120% !important;
-        color: #383838 !important;
+        color: #383838;
       }
 
       p {
         font-weight: 300 !important;
         font-size: 16px !important;
         line-height: 120% !important;
-        color: #383838 !important;
+        color: #383838;
         margin: 0;
       }
     }

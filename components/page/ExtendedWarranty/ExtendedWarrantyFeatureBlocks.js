@@ -22,6 +22,7 @@ const ExtendedWarrantyFeatureBlocks = ({ data: { structure } }) => {
 							image={item?.image}
 							link={item?.link}
 							text={item?.text?.value}
+							light={structure?.backgroundColor?.value !== null}
 							width={100 / structure?.list?.value?.length}
 						/>
 					))}

@@ -3,10 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import CustomImage from '../../common/CustomImage'
 
-const ExtendedWarrantyFeatureBlocksItem = ({ image, text, link, width }) => {
+const ExtendedWarrantyFeatureBlocksItem = ({
+	image,
+	text,
+	link,
+	width,
+	light
+}) => {
 	return (
 		<div
-			className={'home-page-mb-discovery-item py-10 px-6 px-md-13 py-md-15'}
+			className={`home-page-mb-discovery-item py-10 px-6 px-md-13 py-md-15`}
 			style={{ width: width + '%' }}>
 			<CustomImage
 				wrapperHeight={'70px'}
@@ -16,7 +22,7 @@ const ExtendedWarrantyFeatureBlocksItem = ({ image, text, link, width }) => {
 			/>
 			<div
 				dangerouslySetInnerHTML={{ __html: text }}
-				className='fs-base mb-9'></div>
+				className={`fs-base mb-9 ${light ? 'light' : ''}`}></div>
 			<a href={link?.value} className='n-btn primary-text'>
 				{link?.title}
 				{link?.title && (
