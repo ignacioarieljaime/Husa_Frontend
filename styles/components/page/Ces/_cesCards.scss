@@ -222,7 +222,7 @@
 
 					.title {
 						margin-bottom: 16px;
-						
+
 						* {
 							font-weight: 400;
 							font-size: 34px;
@@ -239,17 +239,30 @@
 				}
 			}
 
-			&.block1 {
+			&.block2 {
 				.content {
 					text-align: center;
-					left: 50%;
-					top: 50%;
-					transform: translate(-50%, -50%);
+					top: 84%;
+					left: 0;
+					width: 100%;
+					transform: translateY(-50%);
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					flex-wrap: nowrap;
+					padding: 0 50px;
 					@include mq(500) {
+						top: 88%;
 						position: absolute !important;
+						padding: 0 32px;
 					}
-					.n-btn {
-						margin: 0 auto;
+					.title {
+						text-align: start;
+						* {
+							@include mq(768) {
+								font-size: 18px;
+							}
+						}
 					}
 				}
 			}
