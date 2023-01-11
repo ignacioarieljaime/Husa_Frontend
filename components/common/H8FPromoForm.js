@@ -54,12 +54,12 @@ function H8FPromoForm({ data }) {
 				toast.success('ticket was sent successfully')
 				setDisabled(true)
 			} else {
-				toast.error('ticket didn"t send')
+				toast.error("ticket didn't send")
 			}
 			setLoading(false)
 		} catch (error) {
 			
-			toast.error('ticket didn"t send')
+			toast.error("ticket didn't send")
 			setLoading(false)
 			console.log(error)
 		}

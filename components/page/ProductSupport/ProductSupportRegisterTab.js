@@ -59,11 +59,11 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 				e.target.reset()
 				setFile()
 			} else {
-				toast.error('ticket didn"t send')
+				toast.error("ticket didn't send")
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t send')
+			toast.error("ticket didn't send")
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)

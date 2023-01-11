@@ -55,7 +55,7 @@ const UpgradeL9GForm = ({ data }) => {
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			} else {
-				toast.error('ticket didn"t send')
+				toast.error("ticket didn't send")
 			}
 			console.log(error)
 		}
