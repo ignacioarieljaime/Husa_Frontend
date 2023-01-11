@@ -65,7 +65,7 @@ function BlogListLittleReadArticleBoxContainer({
 							</div>
 							<figcaption>
 								<div className='row justify-content-between align-items-center mt-5'>
-									<div className='col-12 text-start mb-3'>
+									{/* <div className='col-12 text-start mb-3'>
 										<Link
 											href={
 												smallPost?.value?.tagLink?.value
@@ -76,7 +76,7 @@ function BlogListLittleReadArticleBoxContainer({
 												{smallPost?.value?.tagLink?.title}
 											</a>
 										</Link>
-									</div>
+									</div> */}
 									<div className='col-12 mb-8'>
 										<h3 className='fs-3 mb-0'>
 											{smallPost?.value?.title?.value}
@@ -120,7 +120,7 @@ function BlogListLittleReadArticleBoxContainer({
 							</div>
 							<figcaption>
 								<div className='row justify-content-between align-items-center mt-5'>
-									<div className='col-12 text-start mb-3'>
+									{/* <div className='col-12 text-start mb-3'>
 										<Link
 											href={
 												largePost?.value?.tagLink?.value
@@ -131,7 +131,7 @@ function BlogListLittleReadArticleBoxContainer({
 												{largePost?.value?.tagLink?.title}
 											</a>
 										</Link>
-									</div>
+									</div> */}
 									<div className='col-12 mb-8'>
 										<h3 className='fs-3 mb-0'>
 											{largePost?.value?.title?.value}

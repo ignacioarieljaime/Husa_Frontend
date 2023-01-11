@@ -44,7 +44,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 									<div className='col-12 col-md-9 order-2 order-md-1 mb-8'>
 										<h3 className='fs-3 mb-0'>{structure?.title?.value}</h3>
 									</div>
-									<div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
+									{/* <div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
 										<Link
 											href={
 												structure?.tagLink?.value
@@ -55,7 +55,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 												{structure?.tagLink?.title}
 											</a>
 										</Link>
-									</div>
+									</div> */}
 									<div className='col-12 order-3 text-start'>
 										<Link
 											href={
