@@ -43,7 +43,7 @@ function BlogListSearchBox({ data: { structure } }) {
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<div className='col-12 col-md-5 py-3 px-0'>
 						<div className='row justify-content-start justify-content-md-end align-items-center position-relative'>
-							<div className='col-xl-4 dropdown'>
+							{/* <div className='col-xl-4 dropdown'>
 								<button
 									className='bg-transparent border-0'
 									onClick={() => setDropDownCondition(!dropDownCondition)}>
@@ -72,7 +72,7 @@ function BlogListSearchBox({ data: { structure } }) {
 										</li>
 									</ul>
 								)}
-							</div>
+							</div> */}
 							<div className='col-xl-4 '>
 								<div className='d-flex justify-content-between align-items-center '>
 									<div>

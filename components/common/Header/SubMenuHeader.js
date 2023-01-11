@@ -17,7 +17,7 @@ function SubMenuHeader() {
 				</div>
 				<div class='col-12 col-md-5 px-0'>
 					<div class='row justify-content-start justify-content-md-end align-items-center'>
-						<div class='col-xl-4 col-xxl-3 dropdown'>
+						{/* <div class='col-xl-4 col-xxl-3 dropdown'>
 							<button
 								className='bg-transparent border-0'
 								onClick={() => setDropDownCondition(!dropDownCondition)}>
@@ -46,7 +46,7 @@ function SubMenuHeader() {
 									</li>
 								</ul>
 							)}
-						</div>
+						</div> */}
 						<div class='col-xl-4 col-xxl-3 d-flex justify-content-between align-items-center'>
 							<input type='text' placeholder='Search' class='search-articles' />
 							<button class='search-articles-btn'>
