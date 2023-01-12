@@ -10,7 +10,7 @@ const CesTexBlock1 = ({ data }) => {
 
 	return (
 		<section>
-			<div className='container pt-10'>
+			<div className='container pt-10 ces_news'>
 				<div className='row mb-6'>
 					<div className='col-12 col-md-5'>
 						<img
@@ -23,6 +23,7 @@ const CesTexBlock1 = ({ data }) => {
 						<h2 className='fs-1 fw-bolder-700'>{content?.title?.value}</h2>
 						<h4 className='fs-3 fw-bolder-700'>{content?.subtitle?.value}</h4>
 						<div
+							className='description'
 							dangerouslySetInnerHTML={{
 								__html: content?.description?.value
 							}}></div>
