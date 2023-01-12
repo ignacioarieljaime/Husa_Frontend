@@ -37,6 +37,10 @@ module.exports.CesComponents = [
 		path: 'components/page/CES/CesHero'
 	},
 	{
+		name: 'CesHero2',
+		path: 'components/page/CES/CesHero2'
+	},
+	{
 		name: 'CesTextBox',
 		path: 'components/page/CES/CesTextBox'
 	},
