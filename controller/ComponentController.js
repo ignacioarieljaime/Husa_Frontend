@@ -92,7 +92,7 @@ ${
 					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
 					   {
 						   headers: {
-							   'ip': req.ip
+							   'CLIENT_ID': req.ip
 						   }
 					   }
 				   )
@@ -141,7 +141,7 @@ export async function getStaticProps() {
 					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
 					   {
 						   headers: {
-							   'ip': req.ip
+							   'CLIENT_ID': req.ip
 						   }
 					   }
 				   )
