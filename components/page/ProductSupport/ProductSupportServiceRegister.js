@@ -40,6 +40,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 		text: null,
 		image: null
 	})
+	const [tickedSended, setTickedSended] = useState(null)
 
 	useEffect(() => {
 		getCategories()
@@ -62,26 +63,6 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 		}
 	}
 
-	const getSeriesModels = async _categoryId => {
-		setModels('loading')
-		try {
-			let response = await GetSeriesModelsApi(
-				router,
-				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
-			)
-			if (response.status === 200) {
-				setModels(
-					response.data.models.map(item => {
-						return { name: item }
-					})
-				)
-			}
-		} catch (error) {
-			setModels([])
-			console.log(error)
-		}
-	}
-
 	const submitData = async e => {
 		e.preventDefault()
 
@@ -92,19 +73,27 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket was sent successfully', { toastId: 'submit_success' })
-				formHandler(true)
+				toast.success('Registered Successfully', {
+					toastId: 'ticket-sended'
+				})
+				e.target.reset()
+				setTickedSended(true)
+				resetData()
 				setDisabled(true)
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error("ticket didn't send")
+			setTickedSended(false)
+			toast.error("Registered wasn't Successfully", { toastId: 'ticket-error' })
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			}
 			setLoading(false)
 			console.log(error)
 		}
+		setTimeout(() => {
+			setTickedSended(null)
+		}, 3000)
 	}
 
 	const uploadFile = async _file => {
@@ -130,6 +119,23 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 			setImageLoading(false)
 			console.log(error)
 		}
+	}
+
+	const resetData = () => {
+		setFile(null)
+		setDataSchema({
+			first_name: null,
+			last_name: null,
+			email: null,
+			phone_number: null,
+			product_serial_number: null,
+			product_category: pim?.Category?.name,
+			product_model: pim?.model,
+			product_warranty: null,
+			service_type: null,
+			text: null,
+			image: null
+		})
 	}
 
 	return (
@@ -315,6 +321,11 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						<span className='me-2'>SUBMIT</span>
 						{loading && <Spinner size={25} />}
 					</button>
+					{tickedSended === true ? (
+						<div style={{ color: 'green' }}>Registered Successfully</div>
+					) : tickedSended === false ? (
+						<div style={{ color: 'red' }}>Registered wasn't Successfully</div>
+					) : null}
 				</div>
 			</form>
 			{modalCondition && (

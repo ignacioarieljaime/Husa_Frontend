@@ -26,10 +26,10 @@ function ProductBigContent({ data }) {
 								? 'flex-row-reverse'
 								: ''
 						}`}>
-						<span className={'text-nowrap'}>
+						<span className={'text-md-nowrap lh-base'}>
 							{structure?.blackTitle?.value}
 						</span>
-						<span className='d-flex justify-content-center text-primary text-nowrap'>
+						<span className='d-flex justify-content-center text-primary text-md-nowrap'>
 							{structure?.coloredTitle?.value}
 						</span>
 					</h2>

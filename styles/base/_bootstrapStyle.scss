@@ -12322,6 +12322,9 @@ fieldset:disabled .btn {
 }
 
 @media (min-width: 768px) {
+  .text-md-nowrap {
+      white-space: nowrap !important;
+  }
   .float-md-start {
     float: left !important;
   }
