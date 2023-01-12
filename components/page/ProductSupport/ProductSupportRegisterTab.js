@@ -40,6 +40,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 	const [loading, setLoading] = useState(false)
 	const [file, setFile] = useState(null)
 	const [errors, setErrors] = useState(null)
+	const [tickedSended, setTickedSended] = useState(null)
 
 	const dataSchemaHandler = (_title, _value) => {
 		setDataSchema({ ...dataSchema, [_title]: _value })
@@ -55,21 +56,52 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket was sent successfully')
+				toast.success('Registered Successfully', {
+					toastId: 'ticket-sended'
+				})
+				setTickedSended(true)
 				e.target.reset()
-				setFile()
+				resetData()
 			} else {
-				toast.error("ticket didn't send")
+				setTickedSended(false)
+				toast.error("Registered wasn't Successfully", {
+					toastId: 'ticket-error'
+				})
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error("ticket didn't send")
+			setTickedSended(false)
+			toast.error("Registered wasn't Successfully", { toastId: 'ticket-error' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			}
 			console.log(error)
 		}
+		setTimeout(() => {
+			setTickedSended(null)
+		}, 3000)
+	}
+
+	const resetData = () => {
+		setAcceptRole(false)
+		setFile(null)
+		setDataSchema({
+			first_name: null,
+			last_name: null,
+			email: null,
+			phone_number: null,
+			postal_code: null,
+			product_category: pim?.Category?.name,
+			product_model: pim?.model,
+			product_series: pim?.custom_fields.find(item => item.title === 'h2 Title')
+				?.value,
+			product_serial_number: null,
+			purchased_from: null,
+			date_of_purchase: null,
+			receipt_image: null,
+			future_news: acceptRole ? '0' : '1'
+		})
 	}
 
 	const uploadFile = async _file => {
@@ -294,6 +326,15 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								<span>Register</span>
 								{loading && <Spinner className='ms-2' size={25} />}
 							</button>
+							{tickedSended === true ? (
+								<div style={{ color: 'green', marginTop: '10px' }}>
+									Registered Successfully
+								</div>
+							) : tickedSended === false ? (
+								<div style={{ color: 'red', marginTop: '10px' }}>
+									Registered wasn't Successfully
+								</div>
+							) : null}
 						</div>
 					</form>
 				</div>

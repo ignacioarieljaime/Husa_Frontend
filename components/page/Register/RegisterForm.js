@@ -43,6 +43,7 @@ function RegisterForm({ data }) {
 		future_news: '0'
 	})
 	const [errors, setErrors] = useState(null)
+	const [tickedSended, setTickedSended] = useState(null)
 
 	useEffect(() => {
 		getCategories()
@@ -98,20 +99,49 @@ function RegisterForm({ data }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket was sent successfully', { toastId: 'ticket-sended' })
 				e.target.reset()
-				setFile(null)
+				resetData()
+				toast.success('Registered Successfully', {
+					toastId: 'ticket-sended'
+				})
+				setTickedSended(true)
 			} else {
-				toast.error("ticket didn't send", { toastId: 'ticket-error' })
+				toast.error("Registered wasn't Successfully", {
+					toastId: 'ticket-error'
+				})
+				setTickedSended(false)
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error("ticket didn't send", { toastId: 'ticket-error' })
+			setTickedSended(false)
+			toast.error("Registered wasn't Successfully", { toastId: 'ticket-error' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			}
 		}
+		setTimeout(() => {
+			setTickedSended(null)
+		}, 3000)
+	}
+	const resetData = () => {
+		setActiveCheckBox(false)
+		setFile(null)
+		setDataSchema({
+			first_name: null,
+			last_name: null,
+			product_series: null,
+			email: null,
+			phone_number: null,
+			postal_code: null,
+			product_category: null,
+			product_model: null,
+			product_serial_number: null,
+			purchased_from: null,
+			date_of_purchase: null,
+			receipt_image: null,
+			future_news: '0'
+		})
 	}
 
 	const uploadFile = async e => {
@@ -141,7 +171,7 @@ function RegisterForm({ data }) {
 	}
 
 	return (
-		<section className={disabled && `d-none`}>
+		<section>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
 				<article className='article'>
 					<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
@@ -359,6 +389,11 @@ function RegisterForm({ data }) {
 							</span>
 							{loading && <Spinner size={25} />}
 						</button>
+						{tickedSended === true ? (
+							<div style={{ color: 'green' }}>Registered Successfully</div>
+						) : tickedSended === false ? (
+							<div style={{ color: 'red' }}>Registered wasn't Successfully</div>
+						) : null}
 					</div>
 				</form>
 			</div>
