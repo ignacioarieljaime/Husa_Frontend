@@ -214,7 +214,7 @@ function OfferClaimForm({ data }) {
 				setFile(null)
 				setActiveCheckBox(false)
 			} else {
-				toast.error('ticket didn"t send')
+				toast.error("ticket didn't send")
 			}
 			setLoading(false)
 		} catch (error) {
@@ -222,7 +222,7 @@ function OfferClaimForm({ data }) {
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			} else {
-				toast.error('ticket didn"t send')
+				toast.error("ticket didn't send")
 			}
 			console.log(error)
 		}

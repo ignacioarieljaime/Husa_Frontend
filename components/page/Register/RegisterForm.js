@@ -102,11 +102,11 @@ function RegisterForm({ data }) {
 				e.target.reset()
 				setFile(null)
 			} else {
-				toast.error('ticket didn"t send', { toastId: 'ticket-error' })
+				toast.error("ticket didn't send", { toastId: 'ticket-error' })
 			}
 			setLoading(false)
 		} catch (error) {
-			toast.error('ticket didn"t send', { toastId: 'ticket-error' })
+			toast.error("ticket didn't send", { toastId: 'ticket-error' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)

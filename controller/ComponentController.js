@@ -111,37 +111,48 @@ const GenerateNotFoundPage = (_page, _content, _condition) => {
 import axios from 'axios'
 import Layout from "components/common/Layout/Layout";
 import componentGenerator from 'hooks/componentGenerator';
+import { useEffect, useState } from 'react'
+import Spinner from 'components/common/Spinner'
 
-function Error({pim,data}) {
+
+function Error() {
+	const [data, setData] = useState(null)
+	useEffect(() => {
+		getData()
+	}, [])
+	const getData = async () => {
+		let data = await axios
+		.get(
+			'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+		)
+			.then(response => {
+				console.log('get cxm data')
+				setData(response.data)
+			})
+			.catch(error => {
+				console.error('Error:', error)
+				return null
+			})
+	}
+
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={${
 		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
 	}}>
       	<section>
-				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : <>this page don't have any components</>}
+				{data?.widgets ? data.widgets.map(block => componentGenerator(block, null , block.name === 'Header' ? data.notifications : null )) : 	<div
+				style={{
+					height: '100vh',
+					display: 'flex',
+					justifyContent: 'center'
+				}}>
+				<Spinner />
+			</div>}
 		</section>
 	</Layout>
     )
   }
-export async function getStaticProps() {		
 
-			console.log('send cxm request')
-				let data = await axios
-				   .get(
-					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
-				   )
-				   .then(response => {
-					   console.log('get cxm data')
-					   return response.data
-				   })
-				   .catch(error => {
-					   console.error('Error:', error)
-					   return null
-				   })	
-
-					return { props: { data }} 
-				
-}
 export default Error`
 }
 
