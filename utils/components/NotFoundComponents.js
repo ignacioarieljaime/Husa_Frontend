@@ -1,6 +1,6 @@
 module.exports.NotFoundComponent = [
 	{
-		name: 'notFound',
-		path: 'components/page/404/notFound'
+		name: 'NotFound ',
+		path: 'components/page/404/NotFound'
 	}
 ]
