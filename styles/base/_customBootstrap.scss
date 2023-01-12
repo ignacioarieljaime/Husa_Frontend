@@ -2158,7 +2158,7 @@ header {
 .big_content_box {
 	@include mqm(1200) {
 		h2 {
-			font-size: 54px !important;
+			font-size: 52px !important;
 		}
 	}
 	@include mq(1200) {
