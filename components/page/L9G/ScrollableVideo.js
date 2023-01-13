@@ -18,7 +18,7 @@ const ScrollableVideoContainer = ({ structure }) => {
 
 	const textRef = useParallax({
 		speed: 10,
-		translateY: [100, -120],
+		translateY: [-20, -60],
 		opacity: [0.3, 1]
 	})
 

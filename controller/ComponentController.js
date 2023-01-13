@@ -45,7 +45,12 @@ ${
 			console.log('send cxm request')
 				let data = await axios
 				   .get(
-					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
+					   {
+						   headers: {
+							   'CLIENT_ID': req.ip
+						   }
+					   }
 				   )
 				   .then(response => {
 					   console.log('get cxm data')
@@ -84,7 +89,12 @@ ${
 			console.log('send cxm request')
 				let data = await axios
 				   .get(
-					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
+					   {
+						   headers: {
+							   'CLIENT_ID': req.ip
+						   }
+					   }
 				   )
 				   .then(response => {
 					   console.log('get cxm data')
