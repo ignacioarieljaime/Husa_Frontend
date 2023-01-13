@@ -11,6 +11,14 @@ module.exports = {
 			robotAccessibility
 				? {
 						userAgent: '*',
+						disallow: '/televisions/all-tvs',
+						disallow: '/audio/home-audio',
+						disallow: '/home-appliance/dishwashers/all-dishwashers',
+						disallow: '/home-appliance/refrigerators/all-refrigerators',
+						disallow: '/home-appliance/microwave-ovens/all-microwave-ovens',
+						disallow: '/home-appliance/electric-range',
+						disallow: '/home-appliance/kitchen-suites',
+						disallow: '/air-products/all-air-products',
 						allow: '/'
 				  }
 				: {
