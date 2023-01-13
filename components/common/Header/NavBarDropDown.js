@@ -5,7 +5,8 @@ import CustomImage from '../CustomImage'
 function NavBarDropDown({ data }) {
 	return (
 		<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
-			{data.url ? (
+			
+			{!data.url || data.url === "" ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
 					<span className='underline-on-hover'>{data.name}</span>
 				</a>
