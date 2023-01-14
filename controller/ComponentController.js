@@ -190,7 +190,13 @@ function Error() {
 
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={${
-		_condition === 'pages' ? _page.meta : JSON.stringify(_page.meta)
+		_condition === 'pages'
+			? `${
+					typeof _page.meta === 'string'
+						? _page.meta
+						: JSON.stringify(_page.meta)
+			  }`
+			: JSON.stringify(_page.meta)
 	}}>
       	<section>
 				{data?.widgets ? data.widgets.map(block => componentGenerator(block, null , block.name === 'Header' ? data.notifications : null )) : 	<div
