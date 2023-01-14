@@ -19,11 +19,13 @@ function TVAndAudioTvShopItem({ data: { image, title, link, description } }) {
 					<p className='text-white fw-normal'>{description?.value}</p>
 				</figcaption>
 			</figure>
-			<Link href={link?.value}>
-				<a className='mt-auto text-primary-new text-decoration-none text-uppercase fw-normal fs-8'>
-					{link?.title}
-				</a>
-			</Link>
+			{link?.value && (
+				<Link href={link?.value}>
+					<a className='mt-auto text-primary-new text-decoration-none text-uppercase fw-normal fs-8'>
+						{link?.title}
+					</a>
+				</Link>
+			)}
 		</div>
 	)
 }

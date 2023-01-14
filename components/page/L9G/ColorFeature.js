@@ -58,9 +58,9 @@ const ColorFeature = ({ data }) => {
 							muted={true}
 							autoPlay={true}
 							loop={true}
-							playsInline={true}>
-							<source src={rigthVideo} />
-						</video>
+							src={rigthVideo}
+							playsInline={true}
+						/>
 						<div className='video-content'>
 							<div
 								className=' aos-init aos-animate'

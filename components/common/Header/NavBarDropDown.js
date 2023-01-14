@@ -5,11 +5,19 @@ import CustomImage from '../CustomImage'
 function NavBarDropDown({ data }) {
 	return (
 		<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
-			<Link href={data.url ? data.url : ''}>
-				<a className='nav-link'>
+			
+			{!data.url || data.url === "" ? (
+				<a style={{ cursor: 'default' }} className='nav-link'>
 					<span className='underline-on-hover'>{data.name}</span>
 				</a>
-			</Link>
+			) : (
+				<Link href={data.url ? data.url : ''}>
+					<a className='nav-link'>
+						<span className='underline-on-hover'>{data.name}</span>
+					</a>
+				</Link>
+			)}
+
 			{data.columns.length !== 0 && (
 				<div className='nav-dropdown-list'>
 					<div className='container-fluid'>

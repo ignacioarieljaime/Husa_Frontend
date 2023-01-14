@@ -9,9 +9,10 @@ function Footer() {
 	// const { footerData } = useSelector(state => state.layoutData)
 
 	useEffect(() => {
-		sessionStorage.getItem('footerData')
-			? setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
-			: getFooter()
+		if (sessionStorage.getItem('footerData')) {
+			setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
+		}
+		getFooter()
 	}, [])
 
 	const getFooter = async () => {
@@ -19,11 +20,16 @@ function Footer() {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
 			)
-			setFooterData(response.data.data.find(item => item.title === 'footer'))
-			sessionStorage.setItem(
-				'footerData',
-				JSON.stringify(response.data.data.find(item => item.title === 'footer'))
-			)
+			let footerData = response.data.data.find(item => item.title === 'footer')
+
+			if (
+				!sessionStorage.getItem('footerData') ||
+				(sessionStorage.getItem('footerData') &&
+					sessionStorage.getItem('footerData') !== JSON.stringify(footerData))
+			) {
+				sessionStorage.setItem('footerData', JSON.stringify(footerData))
+				setFooterData(footerData)
+			}
 		} catch (error) {
 			console.log(error)
 		}

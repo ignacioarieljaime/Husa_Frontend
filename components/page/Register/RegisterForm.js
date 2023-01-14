@@ -165,7 +165,9 @@ function RegisterForm({ data }) {
 		} catch (error) {
 			setImageLoading(false)
 
-			toast.error('image flailed', { toastId: 'image-flailed' })
+			toast.error("The photo wasn't uploaded successfully ", {
+				toastId: 'image-failed'
+			})
 			console.log(error)
 		}
 	}

@@ -4,7 +4,7 @@ import React from 'react'
 function SmartInfoFindHisense({ data }) {
 	let { structure } = data
 	return (
-		<section>
+		<section id={data?.name + data?.id}>
 			<div className='container-fluid explore explore-smart-page px-7 py-0 p-md-20'>
 				<article className='article row py-6'>
 					<h2 className='col-12 col-md-6 mb-7 my-md-auto text-black'>
