@@ -40,7 +40,7 @@ return (
       	<section>
 				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
 					<>
-						{JSON.stringify(data)}
+						{data}
 					</>
 				}
 		</section>
@@ -71,7 +71,7 @@ ${
 				   })
 				   .catch(error => {
 					   console.error('Error:', error)
-					   return error
+				return JSON.stringify(error)
 				   })	
 				console.log('send pim request')
 				 let pim = await axios
@@ -115,7 +115,7 @@ ${
 				   })
 				   .catch(error => {
 					   console.error('Error:', error)
-					   return error
+				return JSON.stringify(error)
 				   })	
 				   if (data?.status_id === 2) {
 					return {
