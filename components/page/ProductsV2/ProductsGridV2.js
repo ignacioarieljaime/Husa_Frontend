@@ -37,7 +37,7 @@ const ProductsGridV2 = ({ data }) => {
 		} else {
 			getProducts([])
 		}
-	}, [router.asPath, sortingMethod])
+	}, [router.query?.filter, sortingMethod])
 
 	const getProducts = async _filter => {
 		setProducts('loading')
@@ -47,10 +47,16 @@ const ProductsGridV2 = ({ data }) => {
 			// 	null,
 			// 	`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
 			// )
-			router.push(
-				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`,
-				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`,
-				{ shallow: true }
+			router.replace(
+				{
+					query: {
+						filter: `${encodeURIComponent(JSON.stringify(_filter))}`
+					}
+				},
+				undefined,
+				{
+					shallow: true
+				}
 			)
 		}
 
