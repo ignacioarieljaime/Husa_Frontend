@@ -40,37 +40,7 @@ return (
       	<section>
 				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
 					<>
-						<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
-							<div className='error_page'>
-								<div className='image_container'>
-									<CustomImage
-										src='https://assets.hisense-usa.com/resources/themes/default/images/products/lg9/section-7-daylight.jpg'
-										alt='background'
-										wrapperWidth={'100%'}
-										wrapperHeight={'100%'}
-									/>
-									<div className='backdrop'></div>
-								</div>
-								<div className='content'>
-									<MouseParallaxChild
-										factorX={0.015}
-										factorY={0.015}
-										resetOnLeave={true}>
-										<div className='mb-20'>
-											<Logo width={'250'} height={'50'} />
-										</div>
-										<h2 className='fs-3x lh-base mb-15'>
-											Oops!
-											<br />
-											We're sorry
-										</h2>
-										<p className='fs-8 fs-md-5'>
-											Our website is under construction, please be patient.
-										</p>
-									</MouseParallaxChild>
-								</div>
-							</div>
-						</MouseParallaxContainer>
+						{JSON.stringify(data)}
 					</>
 				}
 		</section>
@@ -101,7 +71,7 @@ ${
 				   })
 				   .catch(error => {
 					   console.error('Error:', error)
-					   return null
+					   return error
 				   })	
 				console.log('send pim request')
 				 let pim = await axios
@@ -145,7 +115,7 @@ ${
 				   })
 				   .catch(error => {
 					   console.error('Error:', error)
-					   return null
+					   return error
 				   })	
 				   if (data?.status_id === 2) {
 					return {

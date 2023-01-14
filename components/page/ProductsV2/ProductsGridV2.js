@@ -42,10 +42,15 @@ const ProductsGridV2 = ({ data }) => {
 	const getProducts = async _filter => {
 		setProducts('loading')
 		if (_filter) {
-			window.history.replaceState(
-				null,
-				null,
-				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
+			// window.history.replaceState(
+			// 	null,
+			// 	null,
+			// 	`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
+			// )
+			router.push(
+				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`,
+				`?filter=${encodeURIComponent(JSON.stringify(_filter))}`,
+				{ shallow: true }
 			)
 		}
 
@@ -56,6 +61,7 @@ const ProductsGridV2 = ({ data }) => {
 				_filter,
 				sortingMethod ? `&sort=${sortingMethod.value}` : null
 			)
+
 			setProducts(response.data.data)
 			getFilters(response.data.filterTypes)
 		} catch (error) {
