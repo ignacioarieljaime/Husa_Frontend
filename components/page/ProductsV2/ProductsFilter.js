@@ -18,16 +18,19 @@ const ProductsFilter = ({
 	const [responsiveCollapseStatus, setResponsiveCollapseStatus] =
 		useState(false)
 	const [filterResponsiveStatus, setFilterResponsiveStatus] = useState(false)
+
 	useEffect(() => {
 		if (router.query.filter) {
 			filterCounterHandler(JSON.parse(decodeURIComponent(router.query.filter)))
 		}
+		console.log(router.query.filter)
 		setFilters(
 			router.query.filter
 				? JSON.parse(decodeURIComponent(router.query.filter))
 				: []
 		)
-	}, [])
+	}, [router.query.filter])
+
 	useEffect(() => {
 		setFilterListData(filterList)
 	}, [filterList])

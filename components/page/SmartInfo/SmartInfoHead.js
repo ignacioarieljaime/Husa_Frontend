@@ -16,9 +16,11 @@ function SmartInfoHead({ data }) {
 				<div className='heading-text'>
 					<article className='article'>
 						<h1>{structure?.title?.value}</h1>
-						<Link href={structure?.link?.value}>
-							<a className='btn btn-light text'>{structure?.link?.title}</a>
-						</Link>
+						{structure?.link?.value && (
+							<Link href={structure?.link?.value}>
+								<a className='btn btn-light text'>{structure?.link?.title}</a>
+							</Link>
+						)}
 					</article>
 				</div>
 			</div>

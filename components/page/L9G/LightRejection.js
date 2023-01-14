@@ -37,9 +37,9 @@ const LightRejection = ({ data }) => {
 						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
 				</div>
 				<div className='position-relative'>
-					<div className='tabs-container mt-4'>
+					<div className='tabs-container mt-2 mt-md-4'>
 						{content?.tabs?.value.map((tab, index) => (
-							<div className='m-3' key={index}>
+							<div className='m-1 m-sm-3' key={index}>
 								<button
 									className={`btn text-white tab-btn ${
 										activeTab === index ? 'active' : ''

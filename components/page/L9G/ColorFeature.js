@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react'
 
 const ColorFeature = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const [leftVideo, setLeftVideo] = useState(null)
+	const [rigthVideo, setRightVideo] = useState(null)
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
 	useEffect(() => {
+		if (content?.leftVideo?.value) setLeftVideo(content?.leftVideo?.value)
+		if (content?.rightVideo?.value) setRightVideo(content?.rightVideo?.value)
+
 		let element = document.querySelector('div.text p span')
 		if (element) {
 			element.classList.add('aos-animate')
@@ -30,7 +35,7 @@ const ColorFeature = ({ data }) => {
 							autoPlay={true}
 							loop={true}
 							playsInline={true}
-							src={content?.leftVideo?.value}
+							src={leftVideo}
 						/>
 
 						<div className='video-content'>
@@ -53,9 +58,9 @@ const ColorFeature = ({ data }) => {
 							muted={true}
 							autoPlay={true}
 							loop={true}
-							playsInline={true}>
-							<source src={content?.rightVideo?.value} />
-						</video>
+							src={rigthVideo}
+							playsInline={true}
+						/>
 						<div className='video-content'>
 							<div
 								className=' aos-init aos-animate'

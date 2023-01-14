@@ -5,7 +5,7 @@ import Link from 'next/link'
 function SmartInfoBetterNewOrOldBox({ data }) {
 	let { structure } = data
 	return (
-		<section>
+		<section id={data?.name + data?.id}>
 			<div className='position-relative'>
 				<div className='shade mt-n19'></div>
 				<article className='article'>

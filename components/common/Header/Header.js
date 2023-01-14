@@ -21,9 +21,10 @@ function Header({ data: { structure }, notification }) {
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
 	useEffect(() => {
-		sessionStorage.getItem('headerData')
-			? setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
-			: getMenu()
+		if (sessionStorage.getItem('headerData')) {
+			setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
+		}
+		getMenu()
 	}, [])
 
 	useEffect(() => {
@@ -41,11 +42,16 @@ function Header({ data: { structure }, notification }) {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
 			)
-			setHeaderData(response.data.data.find(item => item.title === 'header'))
-			sessionStorage.setItem(
-				'headerData',
-				JSON.stringify(response.data.data.find(item => item.title === 'header'))
-			)
+			let headerData = response.data.data.find(item => item.title === 'header')
+
+			if (
+				!sessionStorage.getItem('headerData') ||
+				(sessionStorage.getItem('headerData') &&
+					sessionStorage.getItem('headerData') !== JSON.stringify(headerData))
+			) {
+				sessionStorage.setItem('headerData', JSON.stringify(headerData))
+				setHeaderData(headerData)
+			}
 		} catch (error) {
 			console.log(error)
 		}
