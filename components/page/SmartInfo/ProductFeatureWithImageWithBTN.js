@@ -4,7 +4,7 @@ import React from 'react'
 function ProductFeatureWithImageWithBTN({ data }) {
 	let { structure } = data
 	return (
-		<section>
+		<section id={data?.name + data?.id}>
 			<div class='p-0 mx-md-9 mx-4 '>
 				<div
 					class={`row description-blocks bg-black align-items-center ${

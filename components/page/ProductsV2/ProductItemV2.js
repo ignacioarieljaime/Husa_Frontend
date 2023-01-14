@@ -44,8 +44,12 @@ const ProductItemV2 = ({ data }) => {
 				</div>
 				<div className='product-item-v2-content flex-grow-1 d-flex flex-column justify-content-between'>
 					<div>
-						<div className='mb-3'>{currentItem?.model}</div>
-						{seriesTitle && <p className='mb-7'>{seriesTitle?.value}</p>}
+						<div className='mb-3'>
+							{seriesTitle?.value
+								? seriesTitle.value.split(' ')[0]
+								: currentItem?.model}
+						</div>
+						<p className='mb-7'>{currentItem.name}</p>
 					</div>
 
 					{Array.isArray(data?.products) && (
