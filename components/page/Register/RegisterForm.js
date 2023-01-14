@@ -98,7 +98,9 @@ function RegisterForm({ data }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket was sent successfully', { toastId: 'ticket-sended' })
+				toast.success('ticket was sent successfully', {
+					toastId: 'ticket-sended'
+				})
 				e.target.reset()
 				setFile(null)
 			} else {
@@ -135,7 +137,9 @@ function RegisterForm({ data }) {
 		} catch (error) {
 			setImageLoading(false)
 
-			toast.error('image flailed', { toastId: 'image-flailed' })
+			toast.error("The photo wasn't uploaded successfully ", {
+				toastId: 'image-failed'
+			})
 			console.log(error)
 		}
 	}
