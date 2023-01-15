@@ -28,7 +28,7 @@ const SupportNewProducts = ({ data }) => {
 		setSearchProductsList('loading')
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${_value}&type=support`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${_value}&type=support&status[]=3&status[]=1`
 			)
 			setSearchProductsList(response.data.data)
 		} catch (error) {
@@ -47,7 +47,7 @@ const SupportNewProducts = ({ data }) => {
 
 			try {
 				let response = await axios.get(
-					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${_categoryId}&type=support`
+					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${_categoryId}&type=support&status[]=3&status[]=1`
 				)
 				setSearchProductsList(response.data.data)
 			} catch (error) {
