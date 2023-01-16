@@ -156,12 +156,10 @@ const UpgradeL9GForm = ({ data }) => {
 						</div>
 						<div className='position-relative px-0 px-md-3 col-12 mb-4'>
 							<div className='form-field textarea'>
-								<textarea
+								<input
 									onChange={e =>
 										dataSchemaHandler('description', e.target.value)
 									}
-									cols='20'
-									row='5'
 									required
 									placeholder='Why should D. Wade foot the bill for your Laser TV? Max 250 words'
 								/>

@@ -112,14 +112,13 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 				</div>
 			</div>
 			<div className='col-12 mb-10'>
-				<textarea
+				<input
 					name=''
-					cols='30'
-					rows='1'
 					required
 					onChange={e => dataSchemaHandler('message', e.target.value)}
 					placeholder='MESSAGE'
-					className='form-container-inner-input'></textarea>
+					className='form-container-inner-input'
+				/>
 				<div className='input_error_message'>
 					{errors?.message && errors?.message[0]}
 				</div>
