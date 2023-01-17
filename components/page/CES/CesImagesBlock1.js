@@ -39,7 +39,7 @@ const CesImagesBlock1 = ({ data }) => {
 									</h3>
 									{content?.link1?.value ? (
 										<Link href={content?.link1?.value}>
-											<a className='outline-white n-btn transparent d-block w-fit '>
+											<a className='outline-white n-btn text-nowrap transparent d-block w-fit '>
 												{content?.link1?.title}
 											</a>
 										</Link>
@@ -65,7 +65,7 @@ const CesImagesBlock1 = ({ data }) => {
 									</h3>
 									{content?.link2?.value ? (
 										<Link href={content?.link2?.value}>
-											<a className='n-btn transparent d-block w-fit outline-white '>
+											<a className='n-btn transparent text-nowrap d-block w-fit outline-white '>
 												{content?.link2?.title}
 											</a>
 										</Link>
