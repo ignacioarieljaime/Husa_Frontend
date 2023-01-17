@@ -64,14 +64,14 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 				resetData()
 			} else {
 				setTickedSended(false)
-				toast.error("Registered wasn't Successfully", {
+				toast.error("Register wasn't Successfully", {
 					toastId: 'ticket-error'
 				})
 			}
 			setLoading(false)
 		} catch (error) {
 			setTickedSended(false)
-			toast.error("Registered wasn't Successfully", { toastId: 'ticket-error' })
+			toast.error("Register wasn't Successfully", { toastId: 'ticket-error' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
@@ -332,7 +332,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								</div>
 							) : tickedSended === false ? (
 								<div style={{ color: 'red', marginTop: '10px' }}>
-									Registered wasn't Successfully
+									Register wasn't Successfully
 								</div>
 							) : null}
 						</div>

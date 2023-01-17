@@ -106,7 +106,7 @@ function RegisterForm({ data }) {
 				})
 				setTickedSended(true)
 			} else {
-				toast.error("Registered wasn't Successfully", {
+				toast.error("Register wasn't Successfully", {
 					toastId: 'ticket-error'
 				})
 				setTickedSended(false)
@@ -114,7 +114,7 @@ function RegisterForm({ data }) {
 			setLoading(false)
 		} catch (error) {
 			setTickedSended(false)
-			toast.error("Registered wasn't Successfully", { toastId: 'ticket-error' })
+			toast.error("Register wasn't Successfully", { toastId: 'ticket-error' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
@@ -394,7 +394,7 @@ function RegisterForm({ data }) {
 						{tickedSended === true ? (
 							<div style={{ color: 'green' }}>Registered Successfully</div>
 						) : tickedSended === false ? (
-							<div style={{ color: 'red' }}>Registered wasn't Successfully</div>
+							<div style={{ color: 'red' }}>Register wasn't Successfully</div>
 						) : null}
 					</div>
 				</form>
