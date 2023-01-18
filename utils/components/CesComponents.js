@@ -88,5 +88,13 @@ module.exports.CesComponents = [
 	{
 		name: 'CesTextBlock3',
 		path: 'components/page/CES/CesTextBlock3'
+	},
+	{
+		name: 'CesIframe',
+		path: 'components/page/CES/CesIframe'
+	},
+	{
+		name: 'CesPeople',
+		path: 'components/page/CES/CesPeople'
 	}
 ]
