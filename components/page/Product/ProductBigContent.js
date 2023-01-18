@@ -29,7 +29,7 @@ function ProductBigContent({ data }) {
 						<span className={'text-md-nowrap lh-base'}>
 							{structure?.blackTitle?.value}
 						</span>
-						<span className='d-flex justify-content-center text-primary text-md-nowrap'>
+						<span className='d-flex justify-content-center align-items-center lh-base text-primary text-md-nowrap'>
 							{structure?.coloredTitle?.value}
 						</span>
 					</h2>
