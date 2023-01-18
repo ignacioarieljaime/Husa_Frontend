@@ -10,6 +10,14 @@
 			padding: 0 !important;
 		}
 	}
+	&.ces_people{
+		img {
+			border-radius: 50%;
+		}
+		.divider{
+			border-left: 1px solid #bbb
+		}
+	}
 }
 
 .ces_contact_box {
