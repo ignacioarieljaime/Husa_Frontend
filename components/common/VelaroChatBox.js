@@ -5,6 +5,8 @@ function VelaroChatBox() {
 	const [show, setShow] = useState(false)
 	useEffect(() => {
 		setShow(true)
+			window.hasChat = true
+
 		return () => {
 			window.hasChat = false
 		}
@@ -13,7 +15,7 @@ function VelaroChatBox() {
 	return (
 		<>
 			{show ? (
-				<Script>
+				<script>
 					{`
 window.hasChat = true;
 
@@ -47,7 +49,7 @@ window.hasChat = true;
     });
 
 }());`}
-				</Script>
+				</script>
 			) : (
 				<></>
 			)}

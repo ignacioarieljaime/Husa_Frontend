@@ -28,19 +28,15 @@ function Layout({ children, meta, title, header }) {
 	}, [])
 
 	useEffect(() => {
-		let velaroElement = document.querySelector('#velaro-container')
+		let velaroElement = document.querySelector('.velaro-cobrowse-block')
 
 		if (velaroElement) {
+			window.hasChat = false
+
 			if (router.pathname.includes('contact')) {
 				velaroElement.style.display = 'inline-block !important'
 			} else {
 				velaroElement.style.display = 'none !important'
-			}
-		}
-
-		return () => {
-			if (velaroElement) {
-				velaroElement.style.display = 'inline-block !important'
 			}
 		}
 	}, [])
