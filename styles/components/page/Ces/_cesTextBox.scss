@@ -37,6 +37,11 @@
 	@include mq(768) {
 		padding: 0 12px 30px;
 	}
+	.text-white{
+		* {
+			color: #fff !important;
+		}
+	}
 	.article{
 		max-width: 1000px;
 		margin: 0 auto;
