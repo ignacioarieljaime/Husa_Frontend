@@ -6,7 +6,7 @@ function VelaroChatBox() {
 	const [show, setShow] = useState(false)
 	const router = useRouter()
 	useEffect(() => {
-		if (router.pathname.includes('contain')) {
+		if (router.pathname.includes('contact')) {
 			setShow(true)
 		}
 		return () => {
