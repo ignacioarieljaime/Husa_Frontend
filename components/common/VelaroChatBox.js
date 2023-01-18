@@ -1,12 +1,16 @@
+import { useRouter } from 'next/router'
 import Script from 'next/script'
 import React, { useEffect, useState } from 'react'
 
 function VelaroChatBox() {
 	const [show, setShow] = useState(false)
+	const router = useRouter()
 	useEffect(() => {
-		setShow(true)
+		if (router.pathname.includes('contact')) {
+			setShow(true)
+		}
 		return () => {
-			window.hasChat = false
+			setShow(false)
 		}
 	}, [])
 
@@ -15,7 +19,7 @@ function VelaroChatBox() {
 			{show ? (
 				<Script>
 					{`
-window.hasChat = true;
+window.hasChat = ${show};
 
 (function () {
     var w = window; var d = document;

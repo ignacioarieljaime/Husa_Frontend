@@ -23,7 +23,7 @@ const ProductItemV2 = ({ data }) => {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [screenSize, setScreenSize] = useState()
 	useEffect(() => {
-		setUrl(RouteHandler(currentItem.id))
+		setUrl(RouteHandler(currentItem.id, 'product'))
 		setScreenSize(
 			currentItem.customFields.find(item => item.type_name === 'TV filters')
 				?.custom_fields
