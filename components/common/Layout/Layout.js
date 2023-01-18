@@ -31,15 +31,15 @@ function Layout({ children, meta, title, header }) {
 		let velaroElement = document.querySelector('.velaro-cobrowse-block')
 
 		if (velaroElement) {
-			window.hasChat = false
-
 			if (router.pathname.includes('contact')) {
 				velaroElement.style.display = 'inline-block !important'
+				window.hasChat = true
 			} else {
 				velaroElement.style.display = 'none !important'
+				window.hasChat = false
 			}
 		}
-	}, [])
+	}, [router.pathname])
 
 	const listenToScroll = _screenHeight => {
 		const winScroll =
