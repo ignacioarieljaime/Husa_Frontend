@@ -28,8 +28,7 @@ function Layout({ children, meta, title, header }) {
 	}, [])
 
 	useEffect(() => {
-		let velaroElement = document.querySelector('.velaro-cobrowse-block')
-		console.log(velaroElement);
+		let velaroElement = document.querySelector('.velaro-launcher-frame')
 
 		if (velaroElement) {
 			if (router.pathname.includes('contact')) {
