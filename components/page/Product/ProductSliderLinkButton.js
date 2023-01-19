@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { RouteHandler } from 'utils/routeHandler'
 
 function ProductSliderLinkButton({ data, pim }) {
-	const [url] = useState(RouteHandler(data.products[0]))
+	const [url] = useState(RouteHandler(data.products[0], 'product'))
 	return (
 		<>
 			{url ? (
