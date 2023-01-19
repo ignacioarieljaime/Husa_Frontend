@@ -5,6 +5,7 @@
 	"scripts": {
 		"prebuild": "node ./config/GenerateRobotsTxt.js",
 		"generatePages": "node ./config/GeneratePage.js",
+		"removeSitemap": "node ./config/RemoveSitemap.js",
 		"removePages": "node ./config/RemovePages.js",
 		"createComponentGenerator": "node ./config/CreateComponentGenerator.js",
 		"generateMiddleware": "node ./config/GenerateRedirectMiddleware.js",
