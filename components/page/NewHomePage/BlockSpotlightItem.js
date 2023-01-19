@@ -14,10 +14,10 @@ const BlockSpotlightItem = ({ data }) => {
 	useEffect(() => {
 		if (Array.isArray(data.products)) {
 			setProduct(data?.products[0]?.product)
-			setProductLink(RouteHandler(data?.products[0]?.product?.id))
+			setProductLink(RouteHandler(data?.products[0]?.product?.id, 'product'))
 		} else {
 			setProduct(data?.products?.product)
-			setProductLink(RouteHandler(data?.products?.product?.id))
+			setProductLink(RouteHandler(data?.products?.product?.id, 'product'))
 		}
 		sortItemSize()
 	}, [])
