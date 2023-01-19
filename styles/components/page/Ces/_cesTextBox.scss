@@ -30,3 +30,20 @@
 		margin-bottom: 30px;
 	}
 }
+
+.ces_iframe {
+	background-color: #000;
+	padding: 0 10% 30px;
+	@include mq(768) {
+		padding: 0 12px 30px;
+	}
+	.text-white{
+		* {
+			color: #fff !important;
+		}
+	}
+	.article{
+		max-width: 1000px;
+		margin: 0 auto;
+	}
+}

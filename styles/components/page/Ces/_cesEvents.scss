@@ -10,6 +10,50 @@
 			padding: 0 !important;
 		}
 	}
+	&.ces_people {
+		overflow: hidden !important;
+		.column {
+			.article {
+				img {
+					border-radius: 50%;
+				}
+				&.divider {
+					border-left: 1px solid #bbb;
+				}
+			}
+			.img_container {
+				order: 0;
+				margin: 24px 0;
+				transition: all 300ms ease;
+				padding-top: 75%;
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				overflow: hidden;
+				width: 100%;
+				div {
+					position: absolute !important;
+					left: 50%;
+					top: 50%;
+					z-index: 1;
+					width: 100%;
+					height: 100%;
+					max-width: none;
+					transform: translate3d(-50%, -50%, 0);
+					max-height: 100%;
+				}
+			}
+			&:hover {
+				.img_container {
+					overflow: visible;
+					box-shadow: 0 6px 20px 0 rgb(0 0 0 / 19%),
+						0 8px 17px 0 rgb(0 0 0 / 20%);
+				}
+			}
+		}
+	}
 }
 
 .ces_contact_box {
@@ -39,8 +83,7 @@
 	font-weight: light;
 }
 
-
-.ces_news_container{
+.ces_news_container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 12px;
