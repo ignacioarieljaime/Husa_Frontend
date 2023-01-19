@@ -17,6 +17,7 @@ function Layout({ children, meta, title, header }) {
 	const [showChild, setShowChild] = useState(false)
 
 	useEffect(() => {
+		checkIsAdmin()
 		AOS.init()
 		setInterval(() => {
 			AOS.refresh()
@@ -40,6 +41,19 @@ function Layout({ children, meta, title, header }) {
 			}
 		}
 	}, [router.pathname])
+
+	const checkIsAdmin = () => {
+		if (process.env.NEXT_PUBLIC_APP_LOCATION !== 'production') {
+			if (!localStorage.getItem('isLogin')) {
+				let password = prompt('please enter your password')
+				if (password === '1fGUE6514tKx$aU#3No9') {
+					localStorage.setItem('isLogin', 'true')
+				} else {
+					window.location = `https://www.hisense-usa.com${router.pathname}`
+				}
+			}
+		}
+	}
 
 	const listenToScroll = _screenHeight => {
 		const winScroll =
