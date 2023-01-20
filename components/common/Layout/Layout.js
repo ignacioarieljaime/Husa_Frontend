@@ -46,7 +46,7 @@ function Layout({ children, meta, title, header }) {
 		if (process.env.NEXT_PUBLIC_APP_LOCATION !== 'production') {
 			if (!localStorage.getItem('isLogin')) {
 				let password = prompt('please enter your password')
-				if (password === '1fGUE6514tKx$aU#3No9') {
+				if (password === 'husaOne') {
 					localStorage.setItem('isLogin', 'true')
 				} else {
 					window.location = `https://www.hisense-usa.com${router.pathname}`
