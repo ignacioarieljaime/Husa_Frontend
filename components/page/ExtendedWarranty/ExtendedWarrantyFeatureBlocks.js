@@ -2,7 +2,6 @@ import React from 'react'
 import ExtendedWarrantyFeatureBlocksItem from './ExtendedWarrantyFeatureBlocksItem'
 
 const ExtendedWarrantyFeatureBlocks = ({ data: { structure } }) => {
-	console.log(structure)
 	return (
 		<section>
 			<div
