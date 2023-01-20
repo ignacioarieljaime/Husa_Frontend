@@ -28,7 +28,7 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 
 	const getProduct = async () => {
 		try {
-			let response = await GetSingleProduct(router, router?.query?.product)
+			let response = await GetSingleProduct(router, router?.query?.productId)
 			setProduct(response?.data?.data)
 		} catch (error) {
 			console.log(error)
@@ -59,6 +59,9 @@ const ExtendedWarrantyWizard = ({ data: { structure } }) => {
 	}
 
 	useEffect(() => {
+		if (!router?.query?.productId) {
+			router.back(-1)
+		}
 		getProduct()
 	}, [])
 

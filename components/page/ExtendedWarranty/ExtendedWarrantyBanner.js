@@ -10,6 +10,7 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 	const [productsList, setProductsList] = useState()
 	const [showProductsList, setShowProductsList] = useState(false)
 	const [text, setText] = useState(null)
+
 	useEffect(() => {
 		setText(structure?.title?.value)
 	}, [])
@@ -75,7 +76,7 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 														data-toggle='tooltip'
 														data-placement='top'
 														title={`${item.name} (${item?.model})`}>
-														<Link href={`/ewp-wizard-plan-selector/${item.id}`}>
+														<Link href={`/${structure?.link?.value}?productId=${item.id}`}>
 															<a>
 																{item.name} ({item?.model})
 															</a>

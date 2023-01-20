@@ -38,12 +38,11 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 									<div className='slider-image'>
 										<img src={item?.image?.src} alt={item?.image?.alt} />
 									</div>
+									{console.log(item)}
 
 									<Link
-										href={`/ewp-model-selection-page?category_id=${
-											categories.find(
-												category => category?.name === item?.link?.title
-											)?.id
+										href={`/${structure?.link?.value}?category_id=${
+											item?.category?.value
 										}`}>
 										<a className='slider-title n-btn outline-black'>
 											{item?.link?.title}

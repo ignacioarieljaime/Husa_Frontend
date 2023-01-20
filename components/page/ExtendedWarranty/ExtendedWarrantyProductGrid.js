@@ -5,7 +5,8 @@ import ExtendedWarrantySearchProduct from './ExtendedWarrantySearchProduct'
 import { useRouter } from 'next/router'
 import { GetProducts } from 'services/ExtendedWarranty'
 
-const ExtendedWarrantyProductGrid = () => {
+const ExtendedWarrantyProductGrid = ({ data }) => {
+	let { structure } = data
 	const [products, setProducts] = useState([])
 	const [productCategories, setProductCategories] = useState()
 	const [models, setModels] = useState()
@@ -99,7 +100,11 @@ const ExtendedWarrantyProductGrid = () => {
 						<div className='extended-warranty-products-grid products-grid'>
 							<div className='products'>
 								{products.map((item, index) => (
-									<ExtendedWarrantyProduct key={index} data={item} />
+									<ExtendedWarrantyProduct
+										link={structure?.link?.value ? structure?.link?.value : '/'}
+										key={index}
+										data={item}
+									/>
 								))}
 							</div>
 						</div>

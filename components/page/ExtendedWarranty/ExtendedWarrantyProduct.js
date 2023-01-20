@@ -2,10 +2,12 @@ import React from 'react'
 import Link from 'next/link'
 
 const ExtendedWarrantyProduct = ({
-	data: { main_image, name, model, id, custom_field }
+	data: { main_image, name, model, id, custom_field },
+	link
 }) => {
+	console.log();
 	return (
-		<Link href={`/ewp-wizard-plan-selector/${id}`}>
+		<Link href={`/${link}?productId=${id}`}>
 			<a className='text-decoration-none'>
 				<div className='product-item-v2 h-100 px-5 py-8'>
 					<div className='image'>
