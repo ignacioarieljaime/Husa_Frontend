@@ -57,6 +57,21 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 			console.log(error)
 		}
 	}
+	
+	const categoryChangeHandler=(_data)=>{
+		router.replace(
+			{
+				query: {
+					category_id: _data.id
+				}
+			},
+			undefined,
+			{
+				shallow: true
+			}
+		)
+		setCategory(_data)
+	}
 
 	return (
 		<div className='extended-warranty-model-selection'>
@@ -64,7 +79,7 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 				onSearchChange={setSearchTerm}
 				searchTerm={searchTerm}
 				category={category}
-				onCategoryChange={setCategory}
+				onCategoryChange={categoryChangeHandler}
 				modelNumber={modelNumber}
 				onModelNumber={setModelNumber}
 				models={models}

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import { useWindowSize } from '../../../hooks/useWindowSize'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
+import { useRouter } from 'next/router'
 
 const ExtendedWarrantySearchProduct = ({
 	onSearchChange,
@@ -22,6 +23,7 @@ const ExtendedWarrantySearchProduct = ({
 	const [showMore, setShowMore] = useState(false)
 	const [dialogOpen, setDialogOpen] = useState(false)
 	const filterAccordion = useRef()
+	const router = useRouter()
 	const windowSize = useWindowSize()
 
 	useEffect(() => {
@@ -43,6 +45,17 @@ const ExtendedWarrantySearchProduct = ({
 	const clear = () => {
 		onSearchChange('')
 		onModelNumber('Select')
+		router.replace(
+			{
+				query: {
+					category_id: ''
+				}
+			},
+			undefined,
+			{
+				shallow: true
+			}
+		)
 		onCategoryChange({
 			id: null,
 			name: 'Select'

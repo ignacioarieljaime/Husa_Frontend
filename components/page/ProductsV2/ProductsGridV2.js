@@ -32,7 +32,7 @@ const ProductsGridV2 = ({ data }) => {
 		setText(structure?.title?.value)
 	}, [])
 	useEffect(() => {
-		console.log("changed")
+		console.log('changed')
 		if (router.query.filter) {
 			getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
 		} else {
@@ -49,17 +49,17 @@ const ProductsGridV2 = ({ data }) => {
 			// 	null,
 			// 	`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
 			// )
-			// router.replace(
-			// 	{
-			// 		query: {
-			// 			filter: `${encodeURIComponent(JSON.stringify(_filter))}`
-			// 		}
-			// 	},
-			// 	undefined,
-			// 	{
-			// 		shallow: true
-			// 	}
-			// )
+			router.replace(
+				{
+					query: {
+						filter: `${encodeURIComponent(JSON.stringify(_filter))}`
+					}
+				},
+				undefined,
+				{
+					shallow: true
+				}
+			)
 		}
 
 		try {
