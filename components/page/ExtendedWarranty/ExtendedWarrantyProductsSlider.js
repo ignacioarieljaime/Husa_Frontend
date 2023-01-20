@@ -38,14 +38,15 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 									<div className='slider-image'>
 										<img src={item?.image?.src} alt={item?.image?.alt} />
 									</div>
-									{console.log(item)}
 
 									<Link
-										href={`/${structure?.link?.value}?category_id=${
-											item?.category?.value
-										}`}>
+										href={`/${structure?.link?.value}?category_id=${item?.category?.value}`}>
 										<a className='slider-title n-btn outline-black'>
-											{item?.link?.title}
+											{
+												item?.category?.items.find(
+													catItem => item?.category?.value == catItem.id
+												)?.name
+											}
 										</a>
 									</Link>
 								</div>
