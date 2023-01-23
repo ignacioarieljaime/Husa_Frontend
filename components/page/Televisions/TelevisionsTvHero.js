@@ -13,6 +13,9 @@ const TelevisionsTvHero = ({ data }) => {
 				<div className='container televisions_container'>
 					<div className='header-content'>
 						<div
+							data-aos='fade'
+							data-aos-delay='500'
+							data-aos-duration='1000'
 							className='title gradient-text mb-8'
 							dangerouslySetInnerHTML={{
 								__html: content?.title?.value

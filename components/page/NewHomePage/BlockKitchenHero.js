@@ -54,11 +54,11 @@ const BlockKitchenContainer = ({ structure }) => {
 					<div className='col-12 col-md-5 content'>
 						<div className='p-1'>
 							<h5 className='tiny-title'>{structure?.tinyTitle?.value}</h5>
-							<h3
-								className='subtitle fs-2x'
+							<div
+								className='subtitle fs-2x mb-7'
 								dangerouslySetInnerHTML={{ __html: text }}>
 								{/* {structure?.title?.value} */}
-							</h3>
+							</div>
 
 							<Link
 								href={structure?.link?.value ? structure?.link?.value : '/'}>

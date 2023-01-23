@@ -47,7 +47,11 @@
 			align-items: center;
 			height: 100%;
 			max-width: 680px;
-
+			transform: scale(1);
+			transition: all 0.4s ease-in-out;
+			&:hover {
+				transform: scale(1.02);
+			}
 			.slider-title {
 				font-weight: 400;
 				line-height: 120%;
@@ -220,6 +224,11 @@
 			flex-direction: column;
 			justify-content: space-between;
 			align-items: center;
+			transform: scale(1);
+			transition: all 0.4s ease-in-out;
+			&:hover {
+				transform: scale(1.03);
+			}
 			@include mq(1300) {
 				width: 25%;
 			}
@@ -319,11 +328,11 @@
 			}
 		}
 
-		.subtitle {
+		.subtitle * {
 			font-weight: 400;
 			line-height: 120%;
 			letter-spacing: -0.02em;
-			margin-bottom: 30px;
+			// margin-bottom: 30px;
 
 			.ql-size-huge {
 				font-size: 48px;
@@ -365,6 +374,9 @@
 	}
 
 	.appliances-slider {
+		@include mqm(768) {
+			padding: 20px 12px 20px 160px !important;
+		}
 		.swiper-wrapper {
 			align-items: stretch;
 		}
@@ -380,7 +392,11 @@
 			justify-content: space-between;
 			align-items: center;
 			padding: 50px;
-
+			transform: scale(1);
+			transition: all 0.4s ease-in-out;
+			&:hover {
+				transform: scale(1.02);
+			}
 			.slider-image {
 				object-fit: contain !important;
 				max-width: 100%;
@@ -509,6 +525,7 @@
 .intro-section {
 	padding: 0 150px 0 0;
 
+	
 	.image {
 		max-width: 750px;
 
