@@ -47,8 +47,7 @@ yarn-error.log*
 /public/robots.txt
 /public/assets/robots.txt
 
-# middleware
-middleware.js
+
 
 # vercel
 .vercel
