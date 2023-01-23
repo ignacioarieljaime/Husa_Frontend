@@ -58,6 +58,10 @@
 						font-size: 60px;
 						line-height: 68px;
 					}
+					@include mq(768) {
+						font-size: 36px;
+						line-height: 42px;
+					}
 				}
 			}
 		}
@@ -274,6 +278,5 @@
 			text-align: start !important;
 			font-size: 20px !important;
 		}
-		
 	}
 }
