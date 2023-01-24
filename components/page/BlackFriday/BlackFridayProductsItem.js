@@ -61,7 +61,10 @@ const BlackFridayProductsItem = ({ data }) => {
 								{data?.series.length > 1 ? (
 									data?.series.map((item, index) => (
 										<button
-											onClick={() => setActiveSerie(item)}
+											onClick={() => {
+												getProduct(item.id)
+												setActiveSerie(item)
+											}}
 											className={`${
 												item?.id === activeSerie?.id ? 'active' : ''
 											}`}

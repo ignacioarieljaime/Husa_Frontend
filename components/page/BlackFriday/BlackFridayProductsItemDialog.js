@@ -18,7 +18,7 @@ const BlackFridayProductsItem = ({ onClick, retailers }) => {
 				<div className='content'>
 					<p>Available at these authorized retailers:</p>
 					<div className='text-center'>
-						{retailers.length > 0
+						{retailers && retailers.length > 0
 							? retailers.map((item, index) =>
 									item?.Media?.url ? (
 										<Link href={item?.pivot?.value}>
