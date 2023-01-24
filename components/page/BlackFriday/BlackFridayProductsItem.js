@@ -11,6 +11,7 @@ import BlackFridayProductsItemDialog from './BlackFridayProductsItemDialog'
 const BlackFridayProductsItem = ({ data }) => {
 	const [showDialgo, setShowDialog] = useState(false)
 	const [product, setProduct] = useState(null)
+	const [activeSerie, setActiveSerie] = useState(null)
 	const router = useRouter()
 
 	const getProduct = async _id => {
@@ -20,13 +21,14 @@ const BlackFridayProductsItem = ({ data }) => {
 
 	useEffect(() => {
 		if (data?.id) getProduct(data?.id)
+		setActiveSerie(data?.series[0])
 	}, [data])
 
 	return (
 		<>
 			<figure className='product_item'>
 				<div className='d-flex flex-column justify-content-between align-items-start h-100'>
-					<div className='d-flex justify-content-between align-items-center'>
+					<div className='d-flex justify-content-between align-items-center w-100'>
 						<h4 className='series'>
 							{product?.custom_fields.filter(
 								field => field.title === 'h2 Title'
@@ -36,7 +38,7 @@ const BlackFridayProductsItem = ({ data }) => {
 								  )[0].value
 								: product?.model}
 						</h4>
-						<span className='sale_limit'>{data?.saleLimit?.value}</span>
+						<span className='sale_limit'>{data?.title}</span>
 					</div>
 					<div
 						className={`img_container mb-10 mx-auto ${
@@ -56,12 +58,12 @@ const BlackFridayProductsItem = ({ data }) => {
 								<p>Select a size:</p>
 							) : null}
 							<div className='types_list'>
-								{product?.series[0]?.values.length > 0 ? (
-									product?.series[0]?.values.map((item, index) => (
+								{data?.series.length > 1 ? (
+									data?.series.map((item, index) => (
 										<button
-											onClick={() => getProduct(item?.products[0])}
+											onClick={() => setActiveSerie(item)}
 											className={`${
-												item?.products[0] === product?.id ? 'active' : ''
+												item?.id === activeSerie?.id ? 'active' : ''
 											}`}
 											key={index}>
 											{item?.title}
@@ -74,13 +76,18 @@ const BlackFridayProductsItem = ({ data }) => {
 						</div>
 						<div>
 							<span className='new_price'>
-								{Math.round((data?.price * (100 - data?.discount)) / 10) / 10}$
+								{Math.round(
+									(parseFloat(activeSerie?.price) *
+										(100 - parseFloat(activeSerie?.discount))) /
+										10
+								) / 10}
+								$
 							</span>
-							<span className='sale'>{data?.discount}%</span>
+							<span className='sale'>{parseFloat(activeSerie?.discount)}%</span>
 							<div className='old_price'>
 								Reg:{' '}
 								<span className='text-decoration-line-through'>
-									{data?.price}$
+									{parseFloat(activeSerie?.price)}$
 								</span>
 							</div>
 						</div>

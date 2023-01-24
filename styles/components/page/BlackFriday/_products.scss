@@ -15,12 +15,12 @@
 			border-radius: 16px;
 			padding: 24px;
 			background-color: white;
-			max-width: 375px;
+			max-width: 410px;
 			min-width: 250px;
 			margin: 0;
 			.series {
 				margin: 12px 0;
-				font-size: 32px;
+				font-size: 30px;
 				color: #202020;
 				line-height: 36px;
 				font-weight: bold;
@@ -128,10 +128,14 @@
 				width: 100%;
 				padding: 24px;
 				height: fit-content;
-				max-height: 80%;
+				max-height: 720px;
 				background-color: #fff;
 				@include mq(768){
 					width: 85%;
+				}
+				.content{
+					overflow: auto;
+					max-height: 670px;
 				}
 				.close_button {
 					position: absolute;
