@@ -21,7 +21,7 @@ const BlackFridayProductsItem = ({ onClick, retailers }) => {
 						{retailers.length > 0
 							? retailers.map((item, index) =>
 									item?.Media?.url ? (
-										<Link href={item?.Media?.url}>
+										<Link href={item?.pivot?.value}>
 											<a>
 												<CustomImage
 													key={index}
