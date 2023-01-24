@@ -1,0 +1,53 @@
+.black_friday_footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	background-color: #1a2a2d;
+	position: relative;
+	ul {
+		padding: 0;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		align-items: center;
+		list-style: none;
+		li {
+			line-height: 60px;
+			min-height: 60px;
+			transition: all 0.3s ease-in;
+			padding: 0 24px;
+			&:hover {
+				background-color: #0e0e0e;
+			}
+			a {
+				color: #999999;
+				text-decoration: none;
+				span {
+					font-size: 12px;
+					font-weight: 500;
+					position: relative;
+					&::after {
+						background-color: #fff;
+						height: 1px;
+					}
+					&:hover::after {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+	span {
+		position: relative;
+		right: 0;
+		top: 0;
+        padding-right: 4px;
+		line-height: 60px;
+		min-height: 60px;
+		font-size: 12px;
+		color: #999999;
+		font-weight: 500;
+	}
+}
