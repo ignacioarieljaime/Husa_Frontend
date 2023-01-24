@@ -27,6 +27,20 @@ function Layout({ children, meta, title, header }) {
 		return () => window.removeEventListener('scroll', () => listenToScroll(0))
 	}, [])
 
+	useEffect(() => {
+		let velaroElement = document.querySelector('.velaro-launcher-frame')
+
+		if (velaroElement) {
+			if (router.pathname.includes('contact')) {
+				velaroElement.style.display = 'inline-block !important'
+				window.hasChat = true
+			} else {
+				velaroElement.style.display = 'none !important'
+				window.hasChat = false
+			}
+		}
+	}, [router.pathname])
+
 	const listenToScroll = _screenHeight => {
 		const winScroll =
 			document.body.scrollTop || document.documentElement.scrollTop
