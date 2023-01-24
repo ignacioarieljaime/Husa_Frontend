@@ -59,7 +59,7 @@ const BlockTVContainer = ({ structure }) => {
 									__html: content?.text?.value
 								}}></div>
 							<Link href={content?.link?.value ? content?.link?.value : '/'}>
-								<a className='n-btn outline-white transparent'>
+								<a className='n-btn outline-white transparent d-block w-fit mt-4'>
 									{content?.link?.title}
 								</a>
 							</Link>

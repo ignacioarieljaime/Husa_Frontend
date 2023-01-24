@@ -15,9 +15,12 @@ const BlockCategories = ({ data: { structure } }) => {
 	}, [])
 	return (
 		<section>
-			<div className='new-home-page-appliances mb-20'>
+			<div className='new-home-page-appliances mb-16'>
 				<h2
 					className='title fs-3x mb-15'
+					data-aos='fade'
+					data-aos-delay='500'
+					data-aos-duration='1000'
 					dangerouslySetInnerHTML={{ __html: text }}></h2>
 				<Swiper
 					navigation={true}
@@ -27,7 +30,7 @@ const BlockCategories = ({ data: { structure } }) => {
 					centeredSlides={false}
 					modules={[Navigation]}
 					grabCursor={true}
-					className='appliances-slider px-md-3'>
+					className='appliances-slider px-0'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item'>
 							<CustomImage
