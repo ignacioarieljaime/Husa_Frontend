@@ -32,9 +32,10 @@ export default function Document() {
 				<Main />
 				<NextScript />
 				<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
-				<script>
-					{`(function () {
-window.hasChat = true;
+				<Script>
+					{`
+					window.hasChat = false;
+					(function () {
     var w = window; var d = document;
     if (w.Velaro) { return; }
     var v = function () { return v.c(arguments) };
@@ -64,7 +65,7 @@ window.hasChat = true;
     });
 
 }());`}
-				</script>
+				</Script>
 				<noscript
 					dangerouslySetInnerHTML={{
 						__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;" />`
