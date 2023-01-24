@@ -24,7 +24,7 @@ export default function Document() {
 				/>
 
 				<link rel='shortcut icon' href='/favicon/favicon.ico' />
-				<link rel="manifest" href="/favicon/site.webmanifest"></link>
+				<link rel='manifest' href='/favicon/site.webmanifest'></link>
 			</Head>
 			<body>
 				{' '}

@@ -1,0 +1,39 @@
+.black_friday_navigation {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #00a6a5;
+	ul {
+		padding: 0;
+		margin: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		list-style: none;
+		li {
+			line-height: 60px;
+			min-height: 60px;
+			transition: all 0.3s ease-in;
+			padding: 0 24px;
+			&:hover {
+				background-color: #009f9e;
+			}
+			a {
+				color: #fff;
+				text-decoration: none;
+				span {
+					font-size: 26px;
+					font-weight: 700;
+					position: relative;
+					&::after {
+						background-color: #fff;
+						height: 1px;
+					}
+					&:hover::after {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
