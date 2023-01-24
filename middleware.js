@@ -9,16 +9,20 @@ export async function middleware(request) {
 	if (!reqUrl.includes('.')) {
 		let pageInfo = null
 		console.error('start middleware')
-		await fetch(`${process.env.CXM_API_ROUTE}/getPageByUrl/${reqUrl}`)
+		console.log(
+			`${process.env.CXM_API_ROUTE}/getPageByUrl/${encodeURIComponent(reqUrl)}`
+		)
+		await fetch(
+			`${process.env.CXM_API_ROUTE}/getPageByUrl/${encodeURIComponent(reqUrl)}`
+		)
 			.then(response => response.json())
 			.then(data => (pageInfo = data))
 			.catch(err => console.log(err))
-		console.error('end middleware')
-console.log(pageInfo)
 		if (
 			pageInfo?.message === 'Page not found!' ||
 			pageInfo?.status?.name !== 'Published'
 		) {
+			console.log("404")
 			const url = request.nextUrl.clone()
 			url.pathname = `/404`
 			return NextResponse.rewrite(url)
