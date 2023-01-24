@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
 
-const BlackFridayProductsItem = ({ onClick, model }) => {
+const BlackFridayProductsItem = ({ onClick, retailers }) => {
 	return (
 		<div className='retailers_dialog'>
 			<div className='backdrop' onClick={() => onClick(false)}></div>
@@ -16,27 +16,25 @@ const BlackFridayProductsItem = ({ onClick, model }) => {
 					<FontAwesomeIcon icon={faXmark} size={'lg'} />
 				</button>
 				<p>Available at these authorized retailers:</p>
-				<iframe
-					width={'100%'}
-					style={{ height: '83vh' }}
-					height={'83vh'}
-					src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
-					frameborder='0'></iframe>
 				<div className='text-center'>
-					{/* {data?.retailers?.value.map((item, index) => (
-						<Link>
-							<a>
-								<CustomImage
-									key={index}
-									src={item?.image?.src}
-									alt={item?.image?.alt}
-									wrapperWidth={'125px'}
-									wrapperHeight={'125px'}
-									className='mx-auto'
-								/>
-							</a>
-						</Link>
-					))} */}
+					{retailers.length > 0
+						? retailers.map((item, index) =>
+								item?.Media?.url ? (
+									<Link href={item?.Media?.url}>
+										<a>
+											<CustomImage
+												key={index}
+												src={item?.Media?.url}
+												alt={item?.name}
+												wrapperWidth={'125px'}
+												wrapperHeight={'125px'}
+												className='mx-auto'
+											/>
+										</a>
+									</Link>
+								) : null
+						  )
+						: null}
 				</div>
 			</div>
 		</div>
