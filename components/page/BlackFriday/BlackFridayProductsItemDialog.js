@@ -8,6 +8,7 @@ import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
 
 const BlackFridayProductsItem = ({ onClick, retailers }) => {
+	console.log(retailers)
 	return (
 		<div className='retailers_dialog'>
 			<div className='backdrop' onClick={() => onClick(false)}></div>
@@ -20,7 +21,7 @@ const BlackFridayProductsItem = ({ onClick, retailers }) => {
 					<div className='text-center'>
 						{retailers && retailers.length > 0
 							? retailers.map((item, index) =>
-									item?.Media?.url ? (
+									item?.Media?.url && item?.pivot?.value ? (
 										<Link href={item?.pivot?.value}>
 											<a>
 												<CustomImage
