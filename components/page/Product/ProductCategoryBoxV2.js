@@ -91,7 +91,8 @@ function ProductCategoryBoxV2({ data, pim }) {
 					</ul>
 				</nav>
 				<ModalChanelAdviser
-					product={pim}
+					productId={pim.id}
+					type={pim.buy_status}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
 					model={pim?.model}

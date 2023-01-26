@@ -72,7 +72,8 @@ function ProductsItem({ data }) {
 				</div>
 			</div>
 			<ModalChanelAdviser
-				product={data}
+				productId={id}
+				type={data.buy_status}
 				condition={chanelAdviserHandler}
 				handler={setChanelAdviserHandler}
 				model={model}

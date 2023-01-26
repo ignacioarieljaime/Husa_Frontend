@@ -68,7 +68,8 @@ const ProductPackageHeader = ({ pim, data }) => {
 				</div>
 			</div>
 			<ModalChanelAdviser
-				product={pim}
+				productId={pim.id}
+				type={pim.buy_status}
 				condition={chanelAdviserHandler}
 				handler={setChanelAdviserHandler}
 				model={pim?.model}

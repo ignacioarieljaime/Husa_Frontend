@@ -6,35 +6,36 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { GetSingleProduct } from 'services/Product'
 
-const CustomChannelAdvisor = ({ data }) => {
+const CustomChannelAdvisor = ({ id }) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
 
 	const getProduct = async () => {
 		// setLoading(true)
-		const response = await GetSingleProduct(router, data?.id)
+		const response = await GetSingleProduct(router, id)
 		setProduct(response?.data?.data)
 		setLoading(false)
 	}
 
 	useEffect(() => {
 		getProduct()
-	}, [data])
+	}, [id])
 
 	return (
 		<div className='custom_channel_advisor'>
 			<div className='row justify-content-start align-items-center mb-2 mx-0 flex-nowrap'>
 				<div className='col-3'>
 					<CustomImage
-						src={data?.media?.url}
-						alt={data?.name}
+						src={product?.image}
+						alt={product?.name}
 						wrapperWidth={'100%'}
+						wrapperHeight={'100px'}
 					/>
 				</div>
 				<div className='col-9'>
-					<p className='model'>Hisense {data?.model}</p>
-					<p className='title'>{data?.name}</p>
+					<p className='model'>Hisense {product?.model}</p>
+					<p className='title'>{product?.name}</p>
 				</div>
 			</div>
 			<div className='black_box'>
