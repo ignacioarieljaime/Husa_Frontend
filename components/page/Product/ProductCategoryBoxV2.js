@@ -79,11 +79,13 @@ function ProductCategoryBoxV2({ data, pim }) {
 								className='where_to_buy'
 								style={{ padding: fix ? '20px 20px' : '14px 20px' }}
 								onClick={() =>
-									pim?.buy_status === 'ChannelAdvisor'
+									pim?.buy_status === 'ChannelAdvisor' ||
+									pim?.buy_status === 'Internal'
 										? setChanelAdviserHandler(!chanelAdviserHandler)
 										: {}
 								}>
-								{pim?.buy_status === 'ChannelAdvisor'
+								{pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
 									? 'Where To Buy'
 									: 'Coming Soon'}
 							</button>

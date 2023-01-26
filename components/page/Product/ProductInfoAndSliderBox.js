@@ -56,11 +56,11 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						<button
 							className=' pdp_where_to_buy_btn rounded-0 px-6 py-3'
 							onClick={() =>
-								pim?.buy_status === 'ChannelAdvisor'
+								pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
 									? setChanelAdviserHandler(!chanelAdviserHandler)
 									: {}
 							}>
-							{pim?.buy_status === 'ChannelAdvisor'
+							{pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
 								? 'Where To Buy'
 								: 'coming soon'}
 						</button>
