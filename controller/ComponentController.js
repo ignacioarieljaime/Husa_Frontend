@@ -242,13 +242,7 @@ return (
 				return null
 			})
 	}
-	if (data?.status_id === 2) {
-		return {
-			notFound: true
-		}
-	} else {
-		return { props: { data, pim: pim ? pim : null } }
-	}
+	return { props: { data, pim: pim ? pim : null } }
 }
 
 export default Preview`
