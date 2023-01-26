@@ -12,11 +12,13 @@ const WhereToBuy = ({ pim, data }) => {
 			<button
 				className='btn'
 				onClick={() =>
-					pim?.buy_status === 'ChannelAdvisor'
+					pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
 						? setChanelAdviserHandler(!chanelAdviserHandler)
 						: {}
 				}>
-				{pim?.buy_status === 'ChannelAdvisor' ? 'Where To Buy' : 'coming soon'}
+				{pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
+					? 'Where To Buy'
+					: 'coming soon'}
 			</button>
 			<ModalChanelAdviser
 				productId={pim.id}

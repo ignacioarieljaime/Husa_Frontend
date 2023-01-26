@@ -13,7 +13,12 @@ const ProductWhereToBuy = ({ pim, data }) => {
 				</article>
 				<button
 					onClick={() => setChanelAdviserHandler(true)}
-					disabled={pim?.buy_status === 'ChannelAdvisor' ? false : true}
+					disabled={
+						pim?.buy_status === 'ChannelAdvisor' ||
+						pim?.buy_status === 'Internal'
+							? false
+							: true
+					}
 					class='btn btn-turquoise'>
 					{structure?.whereToBuy?.title}
 				</button>
