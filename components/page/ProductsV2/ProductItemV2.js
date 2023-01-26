@@ -110,6 +110,7 @@ const ProductItemV2 = ({ data }) => {
 					</div>
 				</div>
 				<ModalChanelAdviser
+					product={currentItem}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}

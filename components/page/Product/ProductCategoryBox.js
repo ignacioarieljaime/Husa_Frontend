@@ -90,6 +90,7 @@ function ProductCategoryBox({ data, pim }) {
 					</ul>
 				</nav>
 				<ModalChanelAdviser
+					product={pim}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
 					model={pim?.model}

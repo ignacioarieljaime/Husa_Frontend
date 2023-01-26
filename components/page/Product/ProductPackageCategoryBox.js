@@ -48,7 +48,7 @@ function ProductPackageCategoryBox({ data, pim }) {
 								</Link>
 							</li>
 						))}
-{/* 
+						{/* 
 						{structure?.tags?.value.map((item, index) => (
 							<li key={`category-item-${index}`}>
 								<Link href={item.target.value ? item.target.value : '/'}>
@@ -95,6 +95,7 @@ function ProductPackageCategoryBox({ data, pim }) {
 					</ul>
 				</nav>
 				<ModalChanelAdviser
+					product={pim}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
 					model={pim?.model}

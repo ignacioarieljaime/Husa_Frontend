@@ -72,6 +72,7 @@ function ProductsItem({ data }) {
 				</div>
 			</div>
 			<ModalChanelAdviser
+				product={data}
 				condition={chanelAdviserHandler}
 				handler={setChanelAdviserHandler}
 				model={model}

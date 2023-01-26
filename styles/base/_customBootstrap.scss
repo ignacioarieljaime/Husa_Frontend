@@ -1076,7 +1076,7 @@
 		object-fit: cover;
 	}
 }
-article:hover  img.img-box-shadow-hover {
+article:hover img.img-box-shadow-hover {
 	box-shadow: 0 6px 20px 0 rgb(0 0 0 / 19%), 0 8px 17px 0 rgb(0 0 0 / 20%);
 }
 /* ///////////////////// multi color platform //////////////////////  */
@@ -2462,5 +2462,76 @@ header {
 	z-index: 2;
 	#loading-spinner {
 		margin-bottom: 0 !important;
+	}
+}
+
+.custom_channel_advisor {
+	.model {
+		font-weight: 100;
+		color: #58595b;
+		font-size: 18px;
+		margin-bottom: 8px;
+		text-align: start;
+	}
+	.title {
+		font-size: 18px;
+		margin: 0;
+		color: black;
+		font-weight: 500;
+		text-align: start;
+	}
+	.black_box {
+		background: black;
+		padding: 15px 10px 0;
+		margin: 0px;
+		width: 100%;
+		.white_box {
+			width: 100%;
+			color: black;
+			background: #fff;
+			font-size: 12px;
+			padding: 10px 5px;
+			margin: 0px;
+			text-align: center;
+		}
+	}
+	.no_retailer {
+		font-weight: 100;
+		color: #58595b;
+		font-size: 18px;
+		margin-top: 40px;
+	}
+	.buy_now {
+		color: black;
+		background: #00a6a5;
+		padding: 15px 0px;
+		transition: all 0.2s;
+		width: 100%;
+		max-width: 150px;
+		border-radius: 40px;
+		text-transform: uppercase;
+		font-size: 12px;
+		cursor: pointer;
+		text-decoration: none;
+		transition: all 0.3s ease-in;
+		&:hover {
+			color: #fff;
+		}
+	}
+	.check {
+		width: 100%;
+		font-size: 14px;
+		color: #4d4d4f;
+		font-weight: 300;
+	}
+	.status {
+		width: 100%;
+		font-size: 14px;
+		color: #00a6a5;
+		font-weight: 300;
+		padding-left: 10px;
+	}
+	.divider_bottom{
+		border-bottom: solid 1px #ddd;
 	}
 }

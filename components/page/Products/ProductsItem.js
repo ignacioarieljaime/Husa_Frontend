@@ -121,6 +121,7 @@ function ProductsItem({ data }) {
 					</button>
 				</div>
 				<ModalChanelAdviser
+					product={currentItem}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}
