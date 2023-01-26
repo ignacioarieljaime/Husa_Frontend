@@ -78,11 +78,13 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							disabled={pim?.buy_status ? false : true}
 							style={{ color: data?.structure?.backgroundColor?.value }}
 							onClick={() =>
-								pim?.buy_status === 'ChannelAdvisor'
+								pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
 									? setChanelAdviserHandler(!chanelAdviserHandler)
 									: {}
 							}>
-							{pim?.buy_status === 'ChannelAdvisor'
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal'
 								? 'Where To Buy'
 								: 'coming soon'}
 						</button>
