@@ -75,20 +75,26 @@ const ProductItemV2 = ({ data }) => {
 							</Link>
 							<button
 								disabled={
-									currentItem?.buy_status === 'ChannelAdvisor' ? false : true
+									currentItem?.buy_status === 'ChannelAdvisor' ||
+									currentItem?.buy_status === 'Internal'
+										? false
+										: true
 								}
 								onClick={() =>
-									currentItem?.buy_status === 'ChannelAdvisor'
+									currentItem?.buy_status === 'ChannelAdvisor' ||
+									currentItem?.buy_status === 'Internal'
 										? setChanelAdviserHandler(!chanelAdviserHandler)
 										: {}
 								}
 								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
 								className={`n-btn ${
-									currentItem?.buy_status === 'ChannelAdvisor'
+									currentItem?.buy_status === 'ChannelAdvisor' ||
+									currentItem?.buy_status === 'Internal'
 										? 'primary-text '
 										: 'text-black opacity-50 bg-transparent border-0'
 								}`}>
-								{currentItem?.buy_status === 'ChannelAdvisor'
+								{currentItem?.buy_status === 'ChannelAdvisor' ||
+								currentItem?.buy_status === 'Internal'
 									? 'Where To Buy'
 									: 'coming soon'}
 								<span>
