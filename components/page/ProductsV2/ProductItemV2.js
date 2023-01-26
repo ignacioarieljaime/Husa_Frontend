@@ -110,6 +110,8 @@ const ProductItemV2 = ({ data }) => {
 					</div>
 				</div>
 				<ModalChanelAdviser
+					productId={currentItem.id}
+					type={currentItem.buy_status}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}

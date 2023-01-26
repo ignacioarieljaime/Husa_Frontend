@@ -4,8 +4,9 @@ import GoToPageIcon from 'components/icons/GoToPageIcon'
 import useOutsideClick from 'hooks/useOutsideClick'
 import Link from 'next/link'
 import React, { useRef } from 'react'
+import CustomChannelAdvisor from './CustomChannelAdvisor'
 
-function ModalChanelAdviser({ condition, handler, model }) {
+function ModalChanelAdviser({ productId, condition, handler, model, type }) {
 	const modalOverView = useRef()
 	const outside = useOutsideClick(modalOverView)
 	return (
@@ -72,12 +73,16 @@ function ModalChanelAdviser({ condition, handler, model }) {
 							</a>
 						</div>
 					</div> */}
-				<iframe
-					width={'100%'}
-					style={{ height: '83vh' }}
-					height={'83vh'}
-					src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
-					frameborder='0'></iframe>
+				{type === 'ChannelAdvisor' ? (
+					<iframe
+						width={'100%'}
+						style={{ height: '83vh' }}
+						height={'83vh'}
+						src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
+						frameBorder='0'></iframe>
+				) : (
+					<CustomChannelAdvisor id={productId} />
+				)}
 				<div className='link_box'>
 					<h5>Hisense Authorized Dealers</h5>
 					<Link href={'/authorized-retailers'}>

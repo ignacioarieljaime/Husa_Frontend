@@ -19,6 +19,8 @@ const WhereToBuy = ({ pim, data }) => {
 				{pim?.buy_status === 'ChannelAdvisor' ? 'Where To Buy' : 'coming soon'}
 			</button>
 			<ModalChanelAdviser
+				productId={pim.id}
+				type={pim.buy_status}
 				condition={chanelAdviserHandler}
 				handler={setChanelAdviserHandler}
 				model={pim?.model}

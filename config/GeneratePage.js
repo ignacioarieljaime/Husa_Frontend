@@ -4,7 +4,8 @@ const PageController = require('../controller/PageController')
 const {
 	FindComponent,
 	GenerateComponentStructure,
-	GenerateNotFoundPage
+	GenerateNotFoundPage,
+	GenerateDynamicPageComponents
 } = require('../controller/ComponentController')
 const UrlController = require('../controller/UrlController')
 
@@ -24,11 +25,20 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 	_pages.forEach(page => {
 		let pageComponents = FindComponent(page.widgets)
 
-		PageController(
-			page,
-			page.route === '/404'
-				? GenerateNotFoundPage(page, pageComponents, _condition)
-				: GenerateComponentStructure(page, pageComponents, _condition)
-		)
+		if (page.route === '/preview/[pageid]') {
+			if (process.env.APP_LOCATION !== 'production') {
+				PageController(
+					page,
+					GenerateDynamicPageComponents(page, pageComponents, _condition)
+				)
+			}
+		} else {
+			PageController(
+				page,
+				page.route === '/404'
+					? GenerateNotFoundPage(page, pageComponents, _condition)
+					: GenerateComponentStructure(page, pageComponents, _condition)
+			)
+		}
 	})
 }
