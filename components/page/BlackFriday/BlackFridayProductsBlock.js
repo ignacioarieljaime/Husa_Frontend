@@ -17,9 +17,11 @@ const BlackFridayProductsBlock = ({ data }) => {
 						<BlackFridayProductsItem key={index} data={item} />
 					))}
 				</div>
-				<div
-					className='note'
-					dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+				{content?.text?.value ? (
+					<div
+						className='note'
+						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+				) : null}
 			</div>
 		</section>
 	)
