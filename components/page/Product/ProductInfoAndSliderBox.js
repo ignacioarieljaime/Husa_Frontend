@@ -56,24 +56,29 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						<button
 							className=' pdp_where_to_buy_btn rounded-0 px-6 py-3'
 							onClick={() =>
-								pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
+								pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
 									? setChanelAdviserHandler(!chanelAdviserHandler)
 									: {}
 							}>
-							{pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal'
 								? 'Where To Buy'
 								: 'coming soon'}
 						</button>
 					</div>
 				</div>
 			</div>
-			<ModalChanelAdviser
-				productId={pim.id}
-				type={pim.buy_status}
-				condition={chanelAdviserHandler}
-				handler={setChanelAdviserHandler}
-				model={pim?.model}
-			/>
+
+			{pim && (
+				<ModalChanelAdviser
+					productId={pim.id}
+					type={pim.buy_status}
+					condition={chanelAdviserHandler}
+					handler={setChanelAdviserHandler}
+					model={pim?.model}
+				/>
+			)}
 		</section>
 	)
 }

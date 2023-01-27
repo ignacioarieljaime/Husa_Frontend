@@ -23,13 +23,15 @@ const ProductWhereToBuy = ({ pim, data }) => {
 					{structure?.whereToBuy?.title}
 				</button>
 			</div>
-			<ModalChanelAdviser
-				productId={pim.id}
-				type={pim.buy_status}
-				condition={chanelAdviserHandler}
-				handler={setChanelAdviserHandler}
-				model={pim?.model}
-			/>
+			{pim && (
+				<ModalChanelAdviser
+					productId={pim.id}
+					type={pim.buy_status}
+					condition={chanelAdviserHandler}
+					handler={setChanelAdviserHandler}
+					model={pim?.model}
+				/>
+			)}
 		</>
 	)
 }
