@@ -232,7 +232,7 @@ return (
 
 	if (data?.model_id && data?.model_id > 0) {
 		pim = await axios
-			.get("${process.env.PIM_API_ROUTE}/getProduct/" + data.model_id)
+			.get("${process.env.PIM_API_ROUTE}/getProduct/" + data.model_id + "?status[]=1&status[]=2&status[]=3")
 			.then(response => {
 				console.log('get pim data')
 				return response.data.data
