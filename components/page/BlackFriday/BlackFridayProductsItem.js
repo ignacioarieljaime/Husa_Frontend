@@ -45,11 +45,13 @@ const BlackFridayProductsItem = ({ data }) => {
 			{valid ? (
 				<figure className='product_item'>
 					<div className='d-flex flex-column justify-content-between align-items-start h-100'>
-						<div className='	w-100'>
+						<div className='w-100'>
 							<h4 className='series'>
-								{product?.custom_fields.filter(
-									field => field.title === 'h2 Title'
-								).length > 0
+								{data?.title
+									? data?.title
+									: product?.custom_fields.filter(
+											field => field.title === 'h2 Title'
+									  ).length > 0
 									? product?.custom_fields.filter(
 											field => field.title === 'h2 Title'
 									  )[0].value
@@ -94,13 +96,7 @@ const BlackFridayProductsItem = ({ data }) => {
 								</div>
 							</div>
 							<div>
-								<span className='new_price'>
-									$
-									{(
-										(parseFloat(activeSerie?.price) / 100) *
-										(100 - parseFloat(activeSerie?.discount))
-									).toFixed(2) * 1}
-								</span>
+								<span className='new_price'>${final_price}</span>
 								<span className='sale'>
 									{parseFloat(activeSerie?.discount)}% OFF
 								</span>
