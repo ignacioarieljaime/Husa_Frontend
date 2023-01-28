@@ -23,7 +23,7 @@ const BlackFridayProductsItem = ({ data }) => {
 	}
 
 	useEffect(() => {
-		if (data?.id) getProduct(data?.id)
+		if (data?.series[0]?.id) getProduct(data?.series[0]?.id)
 		setActiveSerie(data?.series[0])
 	}, [data])
 
