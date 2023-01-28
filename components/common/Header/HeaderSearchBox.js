@@ -35,7 +35,10 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 				className={`search-form col-12 col-sm-9 ${
 					searchInputCondition && 'visible'
 				}`}>
-				<button className='btn py-0' type='button' aria-label='search item'>
+				<button
+					className='btn py-0 search_button'
+					type='button'
+					aria-label='search item'>
 					<MagnifierIcon />
 				</button>
 				<input

@@ -457,7 +457,7 @@
 		left: 0;
 		top: 0;
 		background-color: rgba(0, 0, 0, 0.5);
-		z-index: 9990;
+		z-index: 110000;
 		display: none;
 	}
 	.where-to-buy-drawer {
@@ -466,7 +466,7 @@
 		width: 550px;
 		right: -100%;
 		left: unset;
-		z-index: 10000;
+		z-index: 110001;
 		overflow-y: auto;
 		-ms-overflow-style: none;
 		scrollbar-width: none;

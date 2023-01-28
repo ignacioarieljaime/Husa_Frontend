@@ -257,6 +257,13 @@ header.blog {
 		clip-path: inset(0 0 0 100%);
 		transition: all 0.3s 300ms ease-in-out;
 
+		.search_button:focus-within,
+		.search_button:focus-visible,
+		.search_button:hover {
+			border: none;
+			outline: none;
+		}
+
 		&.visible {
 			clip-path: inset(0 0 0 0);
 		}
@@ -530,7 +537,7 @@ header.blog {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		transition:all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
 
 		&:hover {
 			background: #000;

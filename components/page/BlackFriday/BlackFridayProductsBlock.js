@@ -1,16 +1,22 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import React, { useEffect, useRef, useState } from 'react'
 import BlackFridayProductsItem from './BlackFridayProductsItem'
 
 const BlackFridayProductsBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
-		console.log(data)
 		setContent(data?.structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
 
 	return (
-		<section id={data?.name + data?.id}>
+		<section id={data?.name + data?.id} ref={ref}>
 			<div className='black_friday_products'>
 				<div className='products_grid'>
 					{content?.list?.value.map((item, index) => (

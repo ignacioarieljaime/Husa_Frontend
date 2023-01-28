@@ -91,16 +91,16 @@ function ProductCategoryBox({ data, pim }) {
 						</li>
 					</ul>
 				</nav>
-				{pim && (
-					<ModalChanelAdviser
-						productId={pim.id}
-						type={pim.buy_status}
-						condition={chanelAdviserHandler}
-						handler={setChanelAdviserHandler}
-						model={pim?.model}
-					/>
-				)}
 			</div>
+			{pim && (
+				<ModalChanelAdviser
+					productId={pim.id}
+					type={pim.buy_status}
+					condition={chanelAdviserHandler}
+					handler={setChanelAdviserHandler}
+					model={pim?.model}
+				/>
+			)}
 		</>
 	)
 }

@@ -16,7 +16,10 @@
 			padding: 24px;
 			background-color: white;
 			max-width: 410px;
-			min-width: 250px;
+			min-width: 360px;
+			@include mq(575) {
+				min-width: 250px;
+			}
 			margin: 0;
 			.series {
 				margin: 12px 0;
@@ -75,6 +78,7 @@
 				font-size: 24px;
 				color: #00cccc;
 				line-height: 28px;
+				direction: ltr;
 			}
 			.sale {
 				margin-left: 12px;
