@@ -96,7 +96,15 @@ const BlackFridayProductsItem = ({ data }) => {
 								</div>
 							</div>
 							<div>
-								<span className='new_price'>${final_price}</span>
+								<span className='new_price'>
+									$
+									{activeSerie?.final_price
+										? activeSerie?.final_price
+										: (
+												(parseFloat(activeSerie?.price) / 100) *
+												(100 - parseFloat(activeSerie?.discount))
+										  ).toFixed(2) * 1}
+								</span>
 								<span className='sale'>
 									{parseFloat(activeSerie?.discount)}% OFF
 								</span>
