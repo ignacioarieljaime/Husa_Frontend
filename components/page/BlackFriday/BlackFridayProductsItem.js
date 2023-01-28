@@ -47,8 +47,8 @@ const BlackFridayProductsItem = ({ data }) => {
 					<div className='d-flex flex-column justify-content-between align-items-start h-100'>
 						<div className='w-100'>
 							<h4 className='series'>
-								{data?.title
-									? data?.title
+								{activeSerie?.header
+									? activeSerie?.header
 									: product?.custom_fields.filter(
 											field => field.title === 'h2 Title'
 									  ).length > 0
