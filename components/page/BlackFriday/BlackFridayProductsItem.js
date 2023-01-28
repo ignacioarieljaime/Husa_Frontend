@@ -70,31 +70,33 @@ const BlackFridayProductsItem = ({ data }) => {
 							</div>
 						</div>
 						<div className='w-100'>
-							<h6 className='title'>{product?.name}</h6>
-							<div className='types'>
-								{product?.series[0]?.values.length > 0 ? (
+							<h6 className={`title ${data?.series.length > 1 ? '' : 'mb-25'}`}>
+								{product?.name}
+							</h6>
+							{data?.series.length > 1 ? (
+								<div className='types'>
 									<p>Select a size:</p>
-								) : null}
-								<div className='types_list'>
-									{data?.series.length > 1
-										? data?.series.map((item, index) =>
-												item?.price && item?.discount ? (
-													<button
-														onClick={() => {
-															getProduct(item.id)
-															setActiveSerie(item)
-														}}
-														className={`${
-															item?.id === activeSerie?.id ? 'active' : ''
-														}`}
-														key={index}>
-														{item?.title}
-													</button>
-												) : null
-										  )
-										: null}
+									<div className='types_list'>
+										{data?.series.length > 1
+											? data?.series.map((item, index) =>
+													item?.price && item?.discount ? (
+														<button
+															onClick={() => {
+																getProduct(item.id)
+																setActiveSerie(item)
+															}}
+															className={`${
+																item?.id === activeSerie?.id ? 'active' : ''
+															}`}
+															key={index}>
+															{item?.title}
+														</button>
+													) : null
+											  )
+											: null}
+									</div>
 								</div>
-							</div>
+							) : null}
 							<div>
 								<span className='new_price'>
 									$
