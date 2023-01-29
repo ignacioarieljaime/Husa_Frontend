@@ -10,6 +10,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { RouteHandler } from 'utils/routeHandler'
 
 const BlackFridayProductsItem = ({ data }) => {
+	const [sortedData, setSortedData] = useState({})
 	const [showDialgo, setShowDialog] = useState(false)
 	const [product, setProduct] = useState(null)
 	const [activeSerie, setActiveSerie] = useState(null)
@@ -23,15 +24,29 @@ const BlackFridayProductsItem = ({ data }) => {
 	}
 
 	useEffect(() => {
-		if (data?.series[0]?.id) getProduct(data?.series[0]?.id)
-		setActiveSerie(data?.series[0])
+		setSortedData({
+			...data,
+			series: data?.series.sort(
+				(a, b) =>
+					parseFloat(b.title.slice(0, -1)) - parseFloat(a.title.slice(0, -1))
+			)
+		})
 	}, [data])
+
+	useEffect(() => {
+		if (sortedData?.series && sortedData?.series.length > 0) {
+			if (sortedData?.series[0]?.id) getProduct(sortedData?.series[0]?.id)
+			setActiveSerie(sortedData?.series[0])
+		}
+	}, [sortedData])
 
 	const checkValid = () => {
 		let isValid = false
-		data?.series.forEach(item => {
-			if (item.price !== null && item.discount !== null) isValid = true
-		})
+		sortedData?.series &&
+			sortedData?.series.length > 0 &&
+			sortedData?.series.forEach(item => {
+				if (item.price !== null && item.discount !== null) isValid = true
+			})
 		return isValid
 	}
 
@@ -70,15 +85,18 @@ const BlackFridayProductsItem = ({ data }) => {
 							</div>
 						</div>
 						<div className='w-100'>
-							<h6 className={`title ${data?.series.length > 1 ? '' : 'mb-25'}`}>
+							<h6
+								className={`title ${
+									sortedData?.series.length > 1 ? '' : 'mb-25'
+								}`}>
 								{product?.name}
 							</h6>
-							{data?.series.length > 1 ? (
+							{sortedData?.series.length > 1 ? (
 								<div className='types'>
 									<p>Select a size:</p>
 									<div className='types_list'>
-										{data?.series.length > 1
-											? data?.series.map((item, index) =>
+										{sortedData?.series.length > 1
+											? sortedData?.series.map((item, index) =>
 													item?.price && item?.discount ? (
 														<button
 															onClick={() => {
