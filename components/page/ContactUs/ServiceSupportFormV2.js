@@ -254,11 +254,11 @@ function ServiceSupportFormV2({ data, formHandler }) {
 					<span className='info'>
 						If television related, please include firmware version
 					</span>
-					<input
+					<textarea
 						onChange={e => dataSchemaHandler('text', e.target.value)}
 						required
 						placeholder='DESCRIPTION OF SUPPORT'
-						className='form-container-inner-input'
+						className='form-container-inner-input input_text_area_box'
 					/>
 					<div className='input_error_message'>
 						{errors?.text && errors?.text[0]}

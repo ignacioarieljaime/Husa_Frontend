@@ -258,11 +258,11 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 					</div>
 				</div>
 				<div className='col-12 mb-10'>
-					<input
+					<textarea
 						onChange={e => dataSchemaHandler('text', e.target.value)}
 						required
 						placeholder='DESCRIPTION OF SUPPORT'
-						className='form-container-inner-input'
+						className='form-container-inner-input input_text_area_box'
 					/>
 					<span className='fs-9'>
 						If television related, please include firmware version
