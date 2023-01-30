@@ -130,7 +130,7 @@ function Header({ data: { structure }, notification }) {
 				</div>
 			)}
 
-			{headerData && <HamburgerMenu data={headerData} asideMenu={asideMenu} />}
+			{headerData && <HamburgerMenu data={headerData} asideHandler={setAsideMenu} asideMenu={asideMenu} />}
 		</header>
 	)
 }
