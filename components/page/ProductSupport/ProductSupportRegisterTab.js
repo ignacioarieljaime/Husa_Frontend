@@ -293,7 +293,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 										/>
 										<div className='file-upload-box'>
 											<div>Drag & Drop a File Here</div>
-											<p>Upload Images</p>
+											<p>Upload receipt  here</p>
 										</div>
 									</>
 								)}

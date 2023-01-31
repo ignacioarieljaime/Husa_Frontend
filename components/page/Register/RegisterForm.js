@@ -352,7 +352,7 @@ function RegisterForm({ data }) {
 										onChange={uploadFile}
 									/>
 									<div>Drag & Drop a File Here</div>
-									<p>Upload Images</p>
+									<p>Upload receipt here</p>
 								</>
 							)}
 						</div>

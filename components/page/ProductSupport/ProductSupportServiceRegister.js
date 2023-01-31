@@ -304,7 +304,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 										onChange={e => uploadFile(e.target.files[0])}
 									/>
 									<div>Drag & Drop a File Here</div>
-									<p>Upload Images</p>
+									<p>Upload file here</p>
 								</>
 							)}
 						</div>
