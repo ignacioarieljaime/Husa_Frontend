@@ -11,6 +11,9 @@
 		flex-wrap: wrap;
 		gap: 24px;
 		padding: 24px;
+		@include mq(575) {
+			padding: 24px 12px;
+		}
 		.product_item {
 			border-radius: 16px;
 			padding: 24px;
@@ -18,8 +21,13 @@
 			max-width: 360px;
 			min-width: 360px;
 			@include mq(575) {
-				max-width: 250px;
-				min-width: 250px;
+				max-width: 310px;
+				min-width: 310px;
+			}
+			@include mq(420) {
+				max-width: unset;
+				min-width: unset;
+				width: 100%;
 			}
 			margin: 0;
 			.series {
@@ -40,8 +48,8 @@
 				font-size: 22px;
 				font-weight: 400;
 				color: #202020;
-				&.mb-25{
-					margin-bottom:120px;
+				&.mb-25 {
+					margin-bottom: 120px;
 				}
 			}
 			.types {
@@ -61,6 +69,9 @@
 					align-self: center;
 					margin-bottom: 12px;
 					width: 100%;
+					@include mq(420){
+						flex-wrap: wrap;
+					}
 					button {
 						border: 1px solid #404040;
 						height: 40px;
