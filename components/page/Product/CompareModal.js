@@ -2,7 +2,9 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CompareIcon from 'components/icons/CompareIcon'
 import useOutsideClick from 'hooks/useOutsideClick'
+import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -12,6 +14,8 @@ import {
 } from 'redux/slices/compare'
 
 function CompareModal({ route }) {
+	const [width] = useWindowSize()
+	const router = useRouter()
 	const dispatch = useDispatch()
 	const compareErrorModal = useRef()
 	const compareErrorModalOutside = useOutsideClick(compareErrorModal)
@@ -44,7 +48,7 @@ function CompareModal({ route }) {
 					onClick={() => dispatch(changeCompareCondition(false))}>
 					<FontAwesomeIcon icon={faXmark} color={'#818181'} />
 				</button>
-				<h6>COMPARE 3 PRODUCTS</h6>
+				<h6>COMPARE {compareList.length} PRODUCTS</h6>
 				<div className='list__btns'>
 					<div className='list'>
 						{compareList.map((item, index) => (
@@ -64,14 +68,21 @@ function CompareModal({ route }) {
 							onClick={() => dispatch(removeCompare('all'))}>
 							Clear All
 						</button>
-						<Link
-							href={`${route ? route?.value : ''}${
-								productsId.length !== 0
-									? `?productsId=${JSON.stringify(productsId)}`
-									: ''
-							}`}>
-							<a className='compare_btn'>COMPARE</a>
-						</Link>
+
+						{productsId.length < 2 ? (
+							<button className='compare_btn' disabled={productsId.length < 2}>
+								COMPARE
+							</button>
+						) : (
+							<Link
+								href={`${route ? route?.value : ''}${
+									productsId.length !== 0
+										? `?productsId=${JSON.stringify(productsId)}`
+										: ''
+								}`}>
+								<a className='compare_btn'>COMPARE</a>
+							</Link>
+						)}
 					</div>
 				</div>
 			</div>
@@ -90,19 +101,35 @@ function CompareModal({ route }) {
 						<FontAwesomeIcon icon={faXmark} color={'#fff'} />
 					</button>
 					<p>
-						You can compare a maximum of 3 products. Please remove a product
-						before adding another one
+						You can compare a maximum of {width < 768 ? 2 : 3} products. Please
+						remove a product before adding another one
 					</p>
 				</div>
 			</section>
 
 			{compareList.length !== 0 && (
-				<button
-					onClick={() => dispatch(changeCompareCondition(true))}
-					className='compare_layout_button'>
-					<CompareIcon />
-					Compare
-				</button>
+				<>
+					{width < 768 ? (
+						<Link
+							href={`${route ? route?.value : ''}${
+								productsId.length !== 0
+									? `?productsId=${JSON.stringify(productsId)}`
+									: ''
+							}`}>
+							<a className='compare_layout_button'>
+								<CompareIcon />
+								Compare ({compareList.length})
+							</a>
+						</Link>
+					) : (
+						<button
+							onClick={() => dispatch(changeCompareCondition(true))}
+							className='compare_layout_button'>
+							<CompareIcon />
+							Compare
+						</button>
+					)}
+				</>
 			)}
 		</>
 	)
