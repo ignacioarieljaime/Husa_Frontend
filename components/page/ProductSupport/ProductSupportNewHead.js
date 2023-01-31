@@ -37,7 +37,7 @@ function ProductSupportNewHead({ pim }) {
 										item.type_id === 3 && (
 											<div className='col-12 col-sm-6 py-3'>
 												<a
-													href={item.url}
+													href={item.url ? item.url : '/'}
 													download={true}
 													className='download-able-item text-uppercase'>
 													{item?.caption || item?.title ? (

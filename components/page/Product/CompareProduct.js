@@ -8,7 +8,7 @@ import CompareProductItem from './CompareProductItem'
 function CompareProduct() {
 	const router = useRouter()
 	let { compareList } = useSelector(state => state.compareData)
-	const [products, setProducts] = useState("loading")
+	const [products, setProducts] = useState('loading')
 	useEffect(() => {
 		try {
 			compareProducts(JSON.parse(router.asPath.split('=')[1]))
@@ -27,37 +27,39 @@ function CompareProduct() {
 		}
 	}
 	return (
-		<table className='compare_product_table'>
-			<tbody>
-				{products === 'loading' ? (
-					<div className='py-10'>
-						<Spinner size={60} />
-					</div>
-				) : products === 'error' ? (
-					'problem in url'
-				) : (
-					<>
-						<tr>
-							<td>Model</td>
-							{products &&
-								products.products.map((item, index) => (
-									<td>
-										<img src={item?.media?.url} alt={item?.media?.caption} />
-										<h6>Model: {item?.model}</h6>
-										<h5>{item?.name}</h5>
-									</td>
-								))}
-						</tr>
-						{products?.customFields.map((item, index) => (
-							<CompareProductItem data={item} key={'compare-item-' + index} />
-						))}
-						{products?.properties.map((item, index) => (
-							<CompareProductItem data={item} key={'compare-item-' + index} />
-						))}
-					</>
-				)}
-			</tbody>
-		</table>
+		<section className='compare_product_table_wrapper'>
+			<table className='compare_product_table'>
+				<tbody>
+					{products === 'loading' ? (
+						<div className='py-10'>
+							<Spinner size={60} />
+						</div>
+					) : products === 'error' ? (
+						'problem in url'
+					) : (
+						<>
+							<tr>
+								<td>Model</td>
+								{products &&
+									products.products.map((item, index) => (
+										<td>
+											<img src={item?.media?.url} alt={item?.media?.caption} />
+											<h6>Model: {item?.model}</h6>
+											<h5>{item?.name}</h5>
+										</td>
+									))}
+							</tr>
+							{products?.customFields.map((item, index) => (
+								<CompareProductItem data={item} key={'compare-item-' + index} />
+							))}
+							{products?.properties.map((item, index) => (
+								<CompareProductItem data={item} key={'compare-item-' + index} />
+							))}
+						</>
+					)}
+				</tbody>
+			</table>
+		</section>
 	)
 }
 

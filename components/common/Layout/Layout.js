@@ -9,9 +9,11 @@ import 'react-toastify/dist/ReactToastify.css'
 import { getSettingApi } from 'services/cxm'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 function Layout({ children, meta, title, header }) {
 	const [compareRoute, setCompareRoute] = useState()
+	const [width] = useWindowSize()
 	const [showGoTop, setShowGoTop] = useState(false)
 	const router = useRouter()
 	const [showChild, setShowChild] = useState(false)

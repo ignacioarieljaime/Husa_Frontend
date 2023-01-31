@@ -14,16 +14,29 @@ const CompareSlice = createSlice({
 			state.compareCondition = action.payload
 		},
 		addNewCompare: (state, action) => {
-			state.compareCondition = true
-			if (
-				state.compareList.length <= 2 &&
-				!state.compareList.find(item => item.id === action.payload.id)
-			) {
-				state.compareList = [...state.compareList, action.payload]
-			} else if (state.compareList.length === 3) {
-				state.compareErrorCondition = true
-			}
+			let isMobileDevice = screen.width < 768 ? true : false
 
+			if (isMobileDevice) {
+				if (
+					state.compareList.length <= 1 &&
+					!state.compareList.find(item => item.id === action.payload.id)
+				) {
+					state.compareList = [...state.compareList, action.payload]
+				} else if (state.compareList.length === 2) {
+					state.compareErrorCondition = true
+				}
+			} else {
+				state.compareCondition = true
+
+				if (
+					state.compareList.length <= 2 &&
+					!state.compareList.find(item => item.id === action.payload.id)
+				) {
+					state.compareList = [...state.compareList, action.payload]
+				} else if (state.compareList.length === 3) {
+					state.compareErrorCondition = true
+				}
+			}
 		},
 		removeCompare: (state, action) => {
 			if (action.payload === 'all') {

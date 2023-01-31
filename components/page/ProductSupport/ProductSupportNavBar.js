@@ -31,7 +31,7 @@ function ProductSupportNavBar({ pim, data }) {
 					</li>
 					{structure?.tags?.value.map((item, index) => (
 						<li>
-							<Link href={item?.target?.value}>
+							<Link href={item?.target?.value ? item?.target?.value : '/'}>
 								<a>
 									<span className='underline-on-hover'>
 										{item?.title?.value}

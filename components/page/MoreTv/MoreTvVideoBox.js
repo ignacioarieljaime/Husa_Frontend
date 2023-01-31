@@ -28,7 +28,7 @@ function MoreTVVideoBox({ data }) {
 				<div
 					dangerouslySetInnerHTML={{ __html: content?.paragraph?.value }}
 					className='text-muted fw-normal mw-md-50 mx-auto mb-5'></div>
-				<Link href={content?.link?.value}>
+				<Link href={content?.link?.value ? content?.link?.value : '/'}>
 					<a className='text-black text-uppercase fw-normal fs-8'>
 						{content?.link?.title}
 					</a>
