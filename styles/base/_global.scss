@@ -771,3 +771,15 @@ input {
 .Toastify__toast-container {
 	z-index: 999999 !important;
 }
+
+.input_text_area_box {
+	resize: none;
+	height: 250px !important;
+	border: 1px solid #292929 !important;
+    padding: 15px 20px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+}

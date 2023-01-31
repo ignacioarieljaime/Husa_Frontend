@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import HamburgerMenuDropdowns from './HamburgerMenuDropdowns'
 
-function HamburgerMenu({ data: { widgets }, asideMenu }) {
+function HamburgerMenu({ data: { widgets }, asideMenu, asideHandler }) {
 	let menus = [...widgets.centerOption, ...widgets.rightOption]
 	return (
 		<nav
@@ -14,6 +14,7 @@ function HamburgerMenu({ data: { widgets }, asideMenu }) {
 					<HamburgerMenuDropdowns
 						key={`hamburger-menu-${index}`}
 						columns={columns}
+						asideHandler={asideHandler}
 					/>
 				))}
 			</ul>
@@ -23,7 +24,9 @@ function HamburgerMenu({ data: { widgets }, asideMenu }) {
 				{widgets.hamburger.map((menu, index) => (
 					<li key={`menu-${index}`} className='nav-item my-md-1'>
 						<Link href={menu.url ? menu.url : ''}>
-							<a className='nav-link mx-md-2 my-md-1  fw-bolder-700'>
+							<a
+								onClick={() => asideHandler(false)}
+								className='nav-link mx-md-2 my-md-1  fw-bolder-700'>
 								<span className='underline-on-hover'>{menu.name}</span>
 							</a>
 						</Link>

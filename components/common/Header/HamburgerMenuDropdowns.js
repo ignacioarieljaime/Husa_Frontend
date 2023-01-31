@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 
-const HamburgerMenuDropdowns = ({ columns }) => {
+const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 	const [show, setShow] = useState(false)
 
 	return (
@@ -22,7 +22,9 @@ const HamburgerMenuDropdowns = ({ columns }) => {
 					<>
 						{colum.map(item => (
 							<Link href={item.url ? item.url : ''}>
-								<a className='dropdown-item'>
+								<a
+									onClick={() => asideHandler(false)}
+									className='dropdown-item'>
 									<span className='underline-on-hover'>{item.name}</span>
 									{/* <FontAwesomeIcon icon={faChevronLeft} size='sm' /> */}
 								</a>
