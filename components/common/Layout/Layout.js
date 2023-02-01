@@ -47,7 +47,10 @@ function Layout({ children, meta, title, header }) {
 
 	const checkIsAdmin = () => {
 		if (process.env.NEXT_PUBLIC_APP_LOCATION !== 'production') {
-			if (!localStorage.getItem('isLogin')) {
+			if (
+				!localStorage.getItem('isLogin') &&
+				!router.pathname.includes('preview')
+			) {
 				let password = prompt('please enter your password')
 				if (password === 'husaOne') {
 					localStorage.setItem('isLogin', 'true')
