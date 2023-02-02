@@ -150,6 +150,19 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.product_category && errors?.product_category[0]}
 							</div>
 						</div>
+						{
+							dataSchema.series&&	<div className='col-12 mb-10 custom-select-box'>
+							<CustomInput
+								disabled={true}
+								placeholder={'PLEASE SELECT YOUR MODEL'}
+								defaultValue={dataSchema.series}
+							/>
+							<div className='input_error_message'>
+								{errors?.series && errors?.series[0]}
+							</div>
+						</div>
+						}
+					
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomInput
 								disabled={true}
