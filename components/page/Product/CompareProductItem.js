@@ -16,9 +16,15 @@ function CompareProductItem({ data }) {
 	}
 	return (
 		<tr>
-			<td>{data.name}</td>
+			<td>{data.name === 'Dropbox Assets' ? 'Product type' : data.name}</td>
 			{values.map((item, index) => (
-				<td key={'item-row-' + index}>{item.value ? item.value : '----'}</td>
+				<td key={'item-row-' + index}>
+					{!item.value
+						? '----'
+						: item.value.includes('\\u')
+						? item.value.split("\\u")[0]
+						: item.value}
+				</td>
 			))}
 		</tr>
 	)

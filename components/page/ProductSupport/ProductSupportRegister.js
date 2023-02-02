@@ -7,7 +7,7 @@ function ProductSupportRegister({ pim, data }) {
 	const [formCondition, setFormCondition] = useState(false)
 	const [formDisplay, setFormDisplay] = useState()
 	return (
-		<section className={formDisplay && 'd-none'}>
+		<section id={data.name + data.id} className={formDisplay && 'd-none'}>
 			<div className='container form-container px-8 px-md-20 mt-12'>
 				<div className='d-flex justify-content-center align-items-center flex-nowrap mb-15'>
 					<div className='me-6'>
