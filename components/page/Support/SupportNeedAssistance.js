@@ -7,9 +7,8 @@ import CustomImage from 'components/common/CustomImage'
 
 function SupportNeedAssistance({ data }) {
 	let { structure } = data
-	console.log(structure, 'support')
 	return (
-		<section>
+		<section id={data.name + data.id}>
 			<div className='heading support-heading'>
 				<CustomImage
 					src={structure?.image?.src}

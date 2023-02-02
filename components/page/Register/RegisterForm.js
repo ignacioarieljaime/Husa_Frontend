@@ -30,7 +30,7 @@ function RegisterForm({ data }) {
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
-		product_series: null,
+		series: null,
 		email: null,
 		phone_number: null,
 		postal_code: null,
@@ -130,7 +130,7 @@ function RegisterForm({ data }) {
 		setDataSchema({
 			first_name: null,
 			last_name: null,
-			product_series: null,
+			series: null,
 			email: null,
 			phone_number: null,
 			postal_code: null,
@@ -205,7 +205,7 @@ function RegisterForm({ data }) {
 								required={true}
 								options={series}
 								onChange={_value =>
-									dataSchemaHandler('product_series', _value.name)
+									dataSchemaHandler('series', _value.name)
 								}
 							/>
 							<div className='input_error_message'>

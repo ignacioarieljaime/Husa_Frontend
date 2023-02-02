@@ -28,7 +28,15 @@ const ProductFiltersGroup = ({
 		// 	setFilterCollapse(true)
 		// }
 
-		if (!Number.isNaN(Number(filter?.filter_values[1]?.title?.split('"')[0]))) {
+		if (filter?.filter_values[1]?.title.includes(' CH')) {
+			let changeToNumber = filter.filter_values.map(item => {
+				item.number = item?.title ? Number(item?.title?.split(' ')[0]) : null
+				return item
+			})
+			setFilterList(changeToNumber.sort((a, b) => b.number - a.number))
+		} else if (
+			!Number.isNaN(Number(filter?.filter_values[1]?.title?.split('"')[0]))
+		) {
 			let changeToNumber = filter.filter_values.map(item => {
 				item.number = item?.title ? Number(item?.title?.split('"')[0]) : null
 				return item

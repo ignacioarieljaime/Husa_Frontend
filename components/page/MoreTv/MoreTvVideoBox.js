@@ -7,7 +7,7 @@ function MoreTVVideoBox({ data }) {
 		setContent(data?.structure)
 	}, [])
 	return (
-		<section>
+		<section id={data.name + data.id}>
 			<div className='container-fluid py-9 text-center'>
 				<h2 className='fs-1 fw-normal mb-9'>Watch the video</h2>
 				<div className='video-container more-tv-video-container'>

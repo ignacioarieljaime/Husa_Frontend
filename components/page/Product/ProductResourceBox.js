@@ -17,7 +17,7 @@ function ProductResourceBox({ pim, data }) {
 							<li key={index}>
 								<a href={item.url ? item.url : ''} download>
 									<span className='underline-on-hover text-uppercase'>
-										{item.caption}
+										{item.caption ? item.caption : item.title}
 									</span>
 								</a>
 							</li>

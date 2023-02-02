@@ -23,7 +23,6 @@ const ProductsFilter = ({
 		if (router.query.filter) {
 			filterCounterHandler(JSON.parse(decodeURIComponent(router.query.filter)))
 		}
-		console.log(router.query.filter)
 		setFilters(
 			router.query.filter
 				? JSON.parse(decodeURIComponent(router.query.filter))
