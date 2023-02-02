@@ -28,8 +28,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		postal_code: null,
 		product_category: pim?.Category?.name,
 		product_model: pim?.model,
-		series: pim?.custom_fields.find(item => item.title === 'h2 Title')
-			?.value,
+		product_series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
 		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
@@ -94,8 +93,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 			postal_code: null,
 			product_category: pim?.Category?.name,
 			product_model: pim?.model,
-			series: pim?.custom_fields.find(item => item.title === 'h2 Title')
-				?.value,
+			product_series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
 			product_serial_number: null,
 			purchased_from: null,
 			date_of_purchase: null,
@@ -150,19 +148,19 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.product_category && errors?.product_category[0]}
 							</div>
 						</div>
-						{
-							dataSchema.series&&	<div className='col-12 mb-10 custom-select-box'>
-							<CustomInput
-								disabled={true}
-								placeholder={'PLEASE SELECT YOUR MODEL'}
-								defaultValue={dataSchema.series}
-							/>
-							<div className='input_error_message'>
-								{errors?.series && errors?.series[0]}
+						{/* {dataSchema.series && (
+							<div className='col-12 mb-10 custom-select-box'>
+								<CustomInput
+									disabled={true}
+									placeholder={'PLEASE SELECT YOUR MODEL'}
+									defaultValue={dataSchema.series}
+								/>
+								<div className='input_error_message'>
+									{errors?.series && errors?.series[0]}
+								</div>
 							</div>
-						</div>
-						}
-					
+						)} */}
+
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomInput
 								disabled={true}
@@ -306,7 +304,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 										/>
 										<div className='file-upload-box'>
 											<div>Drag & Drop a File Here</div>
-											<p>Upload receipt  here</p>
+											<p>Upload receipt here</p>
 										</div>
 									</>
 								)}

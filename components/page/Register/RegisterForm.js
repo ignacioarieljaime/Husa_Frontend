@@ -30,7 +30,7 @@ function RegisterForm({ data }) {
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
-		series: null,
+		product_series: null,
 		email: null,
 		phone_number: null,
 		postal_code: null,
@@ -130,7 +130,7 @@ function RegisterForm({ data }) {
 		setDataSchema({
 			first_name: null,
 			last_name: null,
-			series: null,
+			product_series: null,
 			email: null,
 			phone_number: null,
 			postal_code: null,
