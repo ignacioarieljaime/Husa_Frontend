@@ -205,7 +205,7 @@ function RegisterForm({ data }) {
 								required={true}
 								options={series}
 								onChange={_value =>
-									dataSchemaHandler('series', _value.name)
+									dataSchemaHandler('product_series', _value.name)
 								}
 							/>
 							<div className='input_error_message'>
