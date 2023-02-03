@@ -198,7 +198,7 @@ function RegisterForm({ data }) {
 						</div>
 					</div>
 
-					{series?.length !== 0 && (
+					{/* {series?.length !== 0 && (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={'PLEASE SELECT YOUR SERIES'}
@@ -212,7 +212,7 @@ function RegisterForm({ data }) {
 								{errors?.product_model && errors?.product_model[0]}
 							</div>
 						</div>
-					)}
+					)} */}
 					{dataSchema.product_category && (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
