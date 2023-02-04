@@ -28,8 +28,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		postal_code: null,
 		product_category: pim?.Category?.name,
 		product_model: pim?.model,
-		series: pim?.custom_fields.find(item => item.title === 'h2 Title')
-			?.value,
+		series: pim.series[0].title,
 		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
@@ -94,8 +93,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 			postal_code: null,
 			product_category: pim?.Category?.name,
 			product_model: pim?.model,
-			series: pim?.custom_fields.find(item => item.title === 'h2 Title')
-				?.value,
+			series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
 			product_serial_number: null,
 			purchased_from: null,
 			date_of_purchase: null,
