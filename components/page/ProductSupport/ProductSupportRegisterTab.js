@@ -28,7 +28,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		postal_code: null,
 		product_category: pim?.Category?.name,
 		product_model: pim?.model,
-		product_series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
+		series: pim.series[0].title,
 		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
@@ -93,7 +93,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 			postal_code: null,
 			product_category: pim?.Category?.name,
 			product_model: pim?.model,
-			product_series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
+			series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
 			product_serial_number: null,
 			purchased_from: null,
 			date_of_purchase: null,
@@ -148,24 +148,25 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.product_category && errors?.product_category[0]}
 							</div>
 						</div>
-						{/* {dataSchema.series && (
+
+						{pim?.series.length !== 0 && (
 							<div className='col-12 mb-10 custom-select-box'>
 								<CustomInput
 									disabled={true}
 									placeholder={'PLEASE SELECT YOUR MODEL'}
-									defaultValue={dataSchema.series}
+									defaultValue={pim.series[0].title}
 								/>
 								<div className='input_error_message'>
 									{errors?.series && errors?.series[0]}
 								</div>
 							</div>
-						)} */}
+						)}
 
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomInput
 								disabled={true}
 								placeholder={'PLEASE SELECT YOUR MODEL'}
-								defaultValue={dataSchema.product_model}
+								defaultValue={pim?.model}
 							/>
 							<div className='input_error_message'>
 								{errors?.product_model && errors?.product_model[0]}

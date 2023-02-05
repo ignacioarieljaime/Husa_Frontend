@@ -20,6 +20,7 @@ function RegisterForm({ data }) {
 	let router = useRouter()
 	const [disabled, setDisabled] = useState(false)
 	const [categories, setCategories] = useState([])
+	const [categoryId, setCategoryId] = useState(null)
 	const [series, setSeries] = useState([])
 	const [models, setModels] = useState([])
 	const [activeCheckBox, setActiveCheckBox] = useState(false)
@@ -30,7 +31,7 @@ function RegisterForm({ data }) {
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
-		product_series: null,
+		series: null,
 		email: null,
 		phone_number: null,
 		postal_code: null,
@@ -75,7 +76,34 @@ function RegisterForm({ data }) {
 				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 			)
 			if (response.status === 200) {
-				setSeries(response.data.series)
+				if (response.data.series.length >= 1) {
+					setCategoryId(_categoryId)
+					setSeries(response.data.series)
+					setModels([])
+				} else {
+					setSeries([])
+					setModels(
+						response.data.models.map(item => {
+							return { name: item }
+						})
+					)
+				}
+			}
+		} catch (error) {
+			setSeries([])
+			setModels([])
+			console.log(error)
+		}
+	}
+
+	const getModels = async _seriesId => {
+		setModels('loading')
+		try {
+			let response = await GetSeriesModelsApi(
+				router,
+				`category_id=${categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}&series_id=${_seriesId}`
+			)
+			if (response.status === 200) {
 				setModels(
 					response.data.models.map(item => {
 						return { name: item }
@@ -83,7 +111,6 @@ function RegisterForm({ data }) {
 				)
 			}
 		} catch (error) {
-			setSeries([])
 			setModels([])
 			console.log(error)
 		}
@@ -130,7 +157,7 @@ function RegisterForm({ data }) {
 		setDataSchema({
 			first_name: null,
 			last_name: null,
-			product_series: null,
+			series: null,
 			email: null,
 			phone_number: null,
 			postal_code: null,
@@ -198,22 +225,23 @@ function RegisterForm({ data }) {
 						</div>
 					</div>
 
-					{/* {series?.length !== 0 && (
+					{series?.length !== 0 && (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={'PLEASE SELECT YOUR SERIES'}
 								required={true}
 								options={series}
-								onChange={_value =>
-									dataSchemaHandler('product_series', _value.name)
-								}
+								onChange={_value => {
+									dataSchemaHandler('series', _value.name)
+									getModels(_value.id)
+								}}
 							/>
 							<div className='input_error_message'>
 								{errors?.product_model && errors?.product_model[0]}
 							</div>
 						</div>
-					)} */}
-					{dataSchema.product_category && (
+					)}
+					{models?.length !== 0 && (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={'PLEASE SELECT YOUR MODEL'}
