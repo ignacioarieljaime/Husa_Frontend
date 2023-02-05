@@ -1,0 +1,49 @@
+.hvac_contact_us {
+	background: #103a42;
+	padding: 60px 12px;
+	.content {
+		max-width: 890px;
+		margin: 0 auto;
+		.title {
+			font-size: 48px;
+			line-height: 56px;
+			text-align: center;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0 0 30px;
+			font-weight: 400;
+			@include mq(768) {
+				font-size: 24px;
+				line-height: 30px;
+			}
+		}
+		.subtitle {
+			margin: 0 0 30px;
+			* {
+				margin: 0;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 22px;
+				text-align: center;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+			}
+		}
+		.form-container {
+			.form-container-inner-input {
+				border-color: #fff;
+                background: transparent;
+                color: #fff;
+                &::placeholder{
+                    color: #ffffffbd;
+                }
+                &:focus,
+                &:focus-visible,
+                &:focus-within{
+                    background: transparent !important;
+                    box-shadow: none !important;
+                }
+			}
+		}
+	}
+}
