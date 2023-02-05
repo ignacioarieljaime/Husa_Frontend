@@ -1,0 +1,163 @@
+.hvac_features {
+	background: #f0f2f2;
+	padding: 115px 12px 65px;
+	.title {
+		margin: 0 0 85px;
+		* {
+			font-weight: 400;
+			font-size: 96px;
+			line-height: 109px;
+			text-align: center;
+			letter-spacing: -0.02em;
+			color: #000000;
+			margin: 0;
+			@include mq(768) {
+				font-size: 60px;
+				line-height: 72px;
+			}
+		}
+		u {
+			color: #00aaa6;
+			text-decoration: none;
+		}
+	}
+	.cards {
+		max-width: 1120px;
+		margin: 0 auto;
+		.cards_item {
+			background: #ffffff;
+			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+			border-radius: 50px;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 10px 32px;
+			margin: 0 0 16px;
+			@include mq(768) {
+				padding: 18px !important;
+			}
+			.images {
+				padding: 16px 24px;
+				@include mq(768) {
+					padding: 16px;
+				}
+			}
+			.content {
+				padding: 16px;
+				.title {
+					font-weight: 400;
+					font-size: 48px;
+					line-height: 56px;
+					letter-spacing: -0.02em;
+					color: #000000;
+					margin: 0 0 60px;
+					@include mq(768) {
+						margin: 0 0 40px;
+						font-size: 28px;
+						line-height: 34px;
+					}
+				}
+				.text {
+					* {
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 22px;
+						color: #000000;
+						margin: 0;
+					}
+				}
+			}
+			&.rtl-v {
+				padding: 90px 70px;
+				flex-direction: column;
+				.content {
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-start;
+					@include mqm(768) {
+						margin-bottom: 40px;
+					}
+					.title {
+						margin: 0;
+						width: 50%;
+					}
+					.text {
+						width: 50%;
+					}
+					@include mq(768) {
+						display: block;
+						.title {
+							width: 100%;
+							margin: 0 0 60px;
+						}
+						.text {
+							width: 100%;
+						}
+					}
+				}
+			}
+			&.ltr-v {
+				padding: 90px 70px;
+				flex-direction: column;
+				.content {
+					order: 2;
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-start;
+					.title {
+						margin: 0;
+						width: 50%;
+					}
+					.text {
+						width: 50%;
+					}
+					@include mq(768) {
+						display: block;
+						.title {
+							margin: 0 0 60px;
+							width: 100%;
+						}
+						.text {
+							width: 100%;
+						}
+					}
+				}
+				.images {
+					@include mqm(768) {
+						margin-bottom: 40px;
+					}
+					order: 1;
+				}
+			}
+			&.rtl-h {
+				flex-direction: row;
+				@include mqm(768) {
+					> * {
+						width: 50%;
+					}
+				}
+			}
+			&.ltr-h {
+				flex-direction: row;
+				.content {
+					order: 1;
+				}
+				.images {
+					order: 2;
+				}
+				@include mqm(768) {
+					.content {
+						order: 2;
+					}
+					.images {
+						order: 1;
+					}
+					> * {
+						width: 50%;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,54 @@
+.hvac_image_box {
+	position: relative;
+	padding-top: 48%;
+	@include mq(768) {
+	padding-top: 0;
+	height: 500px;
+}
+	.image_container {
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		img {
+			object-fit: cover;
+		}
+	}
+	.content {
+		@include mq(768) {
+			position: relative;
+		}
+		background: linear-gradient(
+			189.34deg,
+			rgba(34, 31, 32, 0) 59.24%,
+			rgba(34, 31, 32, 0.9) 94.19%
+		);
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		.text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100%;
+			max-width: 950px;
+			padding: 0 12px;
+			margin: 0 auto;
+			transform: translate(-50%, -50%);
+			font-weight: 400;
+			font-size: 34px;
+			line-height: 42px;
+			text-align: center;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 0;
+			@include mq(768) {
+				font-size: 24px;
+				line-height: 30px;
+			}
+		}
+	}
+}
