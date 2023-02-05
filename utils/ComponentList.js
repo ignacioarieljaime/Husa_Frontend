@@ -37,6 +37,7 @@ const { BeyondLaserComponents } = require('./components/BeyondLaserComponents')
 const { GoogleTvComponents } = require('./components/GoogleTvComponents')
 const { NotFoundComponent } = require('./components/NotFoundComponents')
 const { BlackFridayComponents } = require('./components/BlackFridayComponents')
+const { HVACComponents } = require('./components/HVACComponents')
 module.exports.ComponentList = [
 	...CommonComponents,
 	...AuthorizedRetailers,
@@ -75,6 +76,7 @@ module.exports.ComponentList = [
 	...GoogleTvComponents,
 	...NotFoundComponent,
 	...BlackFridayComponents,
+	...HVACComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'

@@ -1,0 +1,122 @@
+.hvac_sales_cycle {
+	padding: 100px 12px;
+	.title {
+		text-align: center;
+		* {
+			font-weight: 400;
+			font-size: 34px;
+			line-height: 42px;
+			letter-spacing: -0.02em;
+			margin: 0;
+			color: #000000;
+			@include mq(768) {
+				font-size: 24px;
+				line-height: 30px;
+			}
+		}
+		u {
+			color: #00aaa6;
+			text-decoration: none;
+		}
+	}
+	.text {
+		text-align: center;
+		* {
+			margin: 0;
+			font-weight: 400;
+			font-size: 20px;
+			line-height: 25px;
+			letter-spacing: -0.02em;
+			color: #000000;
+			@include mq(768) {
+				font-size: 18px;
+				line-height: 24px;
+			}
+		}
+	}
+	.cycle {
+		margin: 30px 0;
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		flex-wrap: wrap;
+		.cycle_item {
+			max-width: 290px;
+			min-width: 280px;
+			border-right: 1px solid #c7c7c9;
+			padding: 15px;
+			@include mq(1440) {
+				width: 25% !important;
+				margin: 7px 0;
+				&:nth-last-child(2) {
+					border-right: none;
+				}
+			}
+			@include mq(1161) {
+				width: 33.3% !important;
+				&:nth-last-child(2) {
+					border-right: 1px solid #c7c7c9;
+				}
+				&:nth-last-child(3) {
+					border-right: none;
+				}
+			}
+			@include mq(880) {
+				width: 50% !important;
+				border-right: none !important;
+				&:nth-child(odd) {
+					border-right: 1px solid #c7c7c9 !important;
+				}
+			}
+			@include mq(600) {
+				width: 100% !important;
+				border-right: none !important;
+				&:nth-child(odd) {
+					border-right: none !important;
+				}
+			}
+			&:last-child {
+				border-right: none !important;
+			}
+			.image_container {
+				filter: drop-shadow(0px 10px 16px rgba(20, 37, 63, 0.06));
+				width: 250px;
+				height: 250px;
+				margin: 0 auto;
+
+				.background {
+					position: absolute !important;
+					left: 0;
+					top: 0;
+					width: 100%;
+					height: 100%;
+					border-radius: 50%;
+					overflow: hidden;
+					img {
+						object-fit: cover;
+					}
+				}
+				.icon {
+					position: absolute !important;
+					left: 50%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					width: 100%;
+				}
+			}
+			h4 {
+				margin: 16px 0 0;
+				font-weight: 400;
+				font-size: 24px;
+				line-height: 30px;
+				text-align: center;
+				letter-spacing: -0.02em;
+				color: #000000;
+				@include mq(768) {
+					font-size: 20px;
+					line-height: 26px;
+				}
+			}
+		}
+	}
+}

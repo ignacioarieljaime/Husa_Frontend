@@ -1,0 +1,44 @@
+.hvac_banner {
+	background: #000000;
+	padding: 160px 0;
+	@include mq(768) {
+		padding: 120px 0;
+	}
+	.content {
+		padding: 30px;
+		width: 100%;
+		max-width: 790px;
+		margin: 0 auto;
+		text-align: center;
+		@include mq(768) {
+			padding: 12px;
+		}
+		.title {
+			font-weight: 400;
+			font-size: 48px;
+			line-height: 56px;
+			letter-spacing: -0.02em;
+			color: #ffffff;
+			margin: 30px 0 0;
+			@include mq(768) {
+				font-size: 24px;
+				line-height: 30px;
+			}
+		}
+		.text {
+			max-width: 600px;
+			margin: 30px auto 0;
+			@include mq(768) {
+				margin: 18px auto 0;
+			}
+			* {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 22px;
+				letter-spacing: -0.02em;
+				color: #ffffff;
+				margin: 0;
+			}
+		}
+	}
+}
