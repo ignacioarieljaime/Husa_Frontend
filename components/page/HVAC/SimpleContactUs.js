@@ -33,7 +33,7 @@ const SimpleContactUs = ({ data }) => {
 		setErrors(null)
 		try {
 			let response = await axios.post(
-				`https://imcrm2.dev-api.hisenseportal.com/api/v1/form/fill/F63e0dd3ba8cd7`,
+				`https://imcrm2.stage-api.hisenseportal.com/api/v1/form/fill/F63e0dd3ba8cd7`,
 				body
 			)
 			if (response.status === 200) {
