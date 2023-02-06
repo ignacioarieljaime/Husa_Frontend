@@ -3,9 +3,11 @@ import CustomInput from 'components/common/Input'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import { schema } from './ContactUsFormSchema'
+import axios from 'axios'
 
 const SimpleContactUs = ({ data }) => {
 	const { structure } = data
+	const [text, setText] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [errors, setErrors] = useState(null)
 	const [body, setBody] = useState({
@@ -16,27 +18,39 @@ const SimpleContactUs = ({ data }) => {
 		email: null,
 		message: null
 	})
-	const [text, setText] = useState(null)
+
 	useEffect(() => {
 		setText(structure?.subtitle?.value)
 	})
 
 	const dataInsertionHandler = (_key, _value) => {
 		setBody({ ...body, [_key]: _value })
-		validationHandler(_key, _value)
 	}
 
-	const validationHandler = (_key, _value) => {
-		const log = schema[_key].validate(_value)
-		if (log.error) {
-			console.log(log)
-			toast.error(log.error.message)
+	const submitData = async e => {
+		e.preventDefault()
+		setLoading(true)
+		setErrors(null)
+		try {
+			let response = await axios.post(
+				`https://imcrm2.dev-api.hisenseportal.com/api/v1/form/fill/F63e0dd3ba8cd7`,
+				body
+			)
+			if (response.status === 200) {
+				toast.success('successful')
+				e.target.reset()
+			} else {
+				toast.error('is not true')
+			}
+			setLoading(false)
+		} catch (error) {
+			setLoading(false)
+			if (error?.response?.status === 422) {
+				setErrors(error?.response?.data?.errors)
+			}
+			console.log(error)
 		}
 	}
-
-	// useEffect(() => {
-	// 	validationHandler()
-	// }, [body])
 
 	return (
 		<section>
@@ -48,6 +62,7 @@ const SimpleContactUs = ({ data }) => {
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<form
 						action=''
+						onSubmit={e => submitData(e)}
 						className='form-container form-container-inner-group active row'>
 						<div className='col-12 mb-10'>
 							<CustomInput
@@ -56,7 +71,7 @@ const SimpleContactUs = ({ data }) => {
 								required={true}
 							/>
 							<div className='input_error_message'>
-								{/* {errors?.company && errors?.company[0]} */}
+								{errors?.company && errors?.company[0]}
 							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
@@ -66,7 +81,7 @@ const SimpleContactUs = ({ data }) => {
 								required={true}
 							/>
 							<div className='input_error_message'>
-								{/* {errors?.first_name && errors?.first_name[0]} */}
+								{errors?.first_name && errors?.first_name[0]}
 							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
@@ -76,7 +91,7 @@ const SimpleContactUs = ({ data }) => {
 								required={true}
 							/>
 							<div className='input_error_message'>
-								{/* {errors?.last_name && errors?.last_name[0]} */}
+								{errors?.last_name && errors?.last_name[0]}
 							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
@@ -88,7 +103,7 @@ const SimpleContactUs = ({ data }) => {
 								required={true}
 							/>
 							<div className='input_error_message'>
-								{/* {errors?.phone_number && errors?.phone_number[0]} */}
+								{errors?.phone_number && errors?.phone_number[0]}
 							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-10'>
@@ -98,7 +113,7 @@ const SimpleContactUs = ({ data }) => {
 								required={true}
 							/>
 							<div className='input_error_message'>
-								{/* {errors?.email && errors?.email[0]} */}
+								{errors?.email && errors?.email[0]}
 							</div>
 						</div>
 						<div className='col-12 mb-10'>
@@ -110,16 +125,16 @@ const SimpleContactUs = ({ data }) => {
 								className='form-container-inner-input'
 							/>
 							<div className='input_error_message'>
-								{/* {errors?.message && errors?.message[0]} */}
+								{errors?.message && errors?.message[0]}
 							</div>
 						</div>
 						<div className='col-12 text-center '>
 							<button
 								type='submit'
-								// disabled={loading}
+								disabled={loading}
 								className={`d-flex mx-auto align-items-center n-btn outline-white transparent px-6 py-4`}>
 								<span> SUBMIT</span>
-								{/* {loading && <Spinner className={'ms-2'} size={25} />} */}
+								{loading && <Spinner className={'ms-2'} size={25} />}
 							</button>
 						</div>
 					</form>
