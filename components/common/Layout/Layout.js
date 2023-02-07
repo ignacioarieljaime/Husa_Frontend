@@ -17,16 +17,7 @@ function Layout({ children, meta, title, header }) {
 	const [showGoTop, setShowGoTop] = useState(false)
 	const router = useRouter()
 	const [showChild, setShowChild] = useState(false)
-	const [comp, setComp] = useState(<></>)
-
-	useEffect(() => {
-		const load = async () => {
-			const velaroGenerator = (await import('../VelaroChat')).default
-			setComp(velaroGenerator)
-		}
-
-		load()
-	}, [])
+	
 
 	useEffect(() => {
 		checkIsAdmin()
@@ -137,7 +128,6 @@ function Layout({ children, meta, title, header }) {
 					<FontAwesomeIcon icon={faChevronUp} />
 				</button>
 			)}
-			<>{comp}</>
 		</>
 	)
 }
