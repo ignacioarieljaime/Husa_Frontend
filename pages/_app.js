@@ -8,8 +8,21 @@ import { store } from 'redux/store'
 // style
 import 'styles/App.scss'
 import Script from 'next/script'
+import { useEffect, useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
+	const [comp, setComp] = useState(<></>)
+
+	useEffect(() => {
+		const load = async () => {
+			const velaroGenerator = (await import('../components/common/VelaroChat'))
+				.default
+			setComp(velaroGenerator)
+		}
+
+		load()
+	}, [])
+
 	// if (typeof window === 'undefined') {
 	// 	return <></>
 	// } else {
@@ -25,6 +38,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
       `}
 				</Script>
+				<>{comp}</>
 				<Component {...pageProps} />
 			</Provider>
 		</ErrorBoundary>
