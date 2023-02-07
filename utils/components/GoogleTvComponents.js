@@ -8,7 +8,23 @@ module.exports.GoogleTvComponents = [
 	{ name: 'GoogleTvTops', path: 'components/page/GoogleTv/GoogleTvTops' },
 	{ name: 'GoogleTvTextBox', path: 'components/page/GoogleTv/GoogleTvTextBox' },
 	{
-		name: 'GoogleTvFeatureBlocks',
-		path: 'components/page/GoogleTv/GoogleTvFeatureBlocks'
+		name: 'GoogleTvFeatureBlocksType1',
+		path: 'components/page/GoogleTv/GoogleTvFeatureBlocksType1'
+	},
+	{
+		name: 'GoogleTvFeatureBlocksType2',
+		path: 'components/page/GoogleTv/GoogleTvFeatureBlocksType2'
+	},
+	{
+		name: 'GoogleTvFeatureBlocksType3',
+		path: 'components/page/GoogleTv/GoogleTvFeatureBlocksType3'
+	},
+	{
+		name: 'GoogleTvFeaturesIntro',
+		path: 'components/page/GoogleTv/GoogleTvFeaturesIntro'
+	},
+	{
+		name: 'GoogleTvIframe',
+		path: 'components/page/GoogleTv/GoogleTvIframe'
 	}
 ]

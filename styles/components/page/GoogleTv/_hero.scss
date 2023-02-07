@@ -1,30 +1,47 @@
 .google_tv_hero {
 	background-color: #000;
 	position: relative;
+	& + section {
+		padding-top: 130px;
+		@include mq(991) {
+			padding-top: 50px;
+		}
+	}
 	.custom_container {
+		height: 100%;
 		position: relative;
-		top: 100px;
-		max-width: 1000px;
+		top: 180px;
+		@include mq(991) {
+			top: 120px;
+		}
+		max-width: 1105px;
 		margin: 0 auto;
-		.title * {
-			color: #fff;
-			font-weight: 400;
-			font-size: 90px;
-			line-height: 120%;
-			text-align: center;
-			u {
-				background-image: linear-gradient(
-					-59deg,
-					#32a953 20%,
-					#fbbc12 50%,
-					#eb4435 66%
-				);
-				background-clip: text;
-				color: transparent;
+		.title {
+			* {
+				color: #fff;
+				font-weight: 400;
+				font-size: 96px;
+				line-height: 120px;
+				text-align: center;
+				u {
+					background-image: linear-gradient(
+						-59deg,
+						#32a953 20%,
+						#fbbc12 50%,
+						#eb4435 66%
+					);
+					background-clip: text;
+					color: transparent;
+				}
 			}
 		}
-		img {
-			width: 100%;
+		.image_container {
+			max-width: 1000px;
+			margin: 0 auto;
+			img {
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 }
@@ -33,7 +50,8 @@
 	.google_tv_hero {
 		.custom_container {
 			.title * {
-				font-size: 72px;
+				font-size: 60px;
+				line-height: 72px;
 			}
 		}
 	}
@@ -43,7 +61,8 @@
 		.custom_container {
 			top: 70px;
 			.title * {
-				font-size: 42px;
+				font-size: 34px;
+				line-height: 42px;
 			}
 		}
 	}
