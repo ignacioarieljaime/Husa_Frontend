@@ -19,7 +19,7 @@ const moduleExports = {
 			'https://impim.stage-api.hisenseportal.com/api/cms',
 		NEXT_PUBLIC_BRAND_ID: process.env.BRAND_ID || 3,
 		NEXT_PUBLIC_GTM_ID: process.env.GTM_ID || 'GTM-WBPC7RT',
-		NEXT_PUBLIC_VELARO_ID: process.env.VELARO_ID || '30263',
+		NEXT_PUBLIC_VELARO_ID: process.env.VELARO_ID || '20216',
 		NEXT_PUBLIC_APP_LOCATION: process.env.APP_LOCATION || 'stage'
 	},
 
