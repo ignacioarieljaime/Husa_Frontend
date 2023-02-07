@@ -1,10 +1,19 @@
 .google_tv_products {
-	padding: 200px 0;
+	padding: 100px 0;
 	margin: 0 auto;
 	max-width: 1440px;
 	.title {
+		margin-bottom: 30px;
 		color: #2c2b2d;
 		text-align: center;
+		font-weight: 400;
+		font-size: 34px;
+		line-height: 42px;
+		letter-spacing: -0.02em;
+		@include mq(768) {
+			font-size: 28px;
+			line-height: 36px;
+		}
 	}
 	.products {
 		display: flex;
@@ -12,13 +21,15 @@
 		align-items: stretch;
 
 		.item {
-			display:flex;
-			justify-content:space-between;
-			align-items:start;
-			flex-direction:column;
+			display: flex;
+			justify-content: space-between;
+			align-items: start;
+			flex-direction: column;
 			color: #565260;
 			padding-bottom: 50px;
 			margin: 0 15px;
+			max-width: 25%;
+			width: 25%;
 			border-bottom: 1px solid #d5d5d5;
 			.subtitle {
 				font-weight: 300;
@@ -61,6 +72,7 @@
 				color: #565260 !important;
 				text-decoration: none;
 				padding: 12px 40px;
+				text-align: center;
 				&:hover {
 					background-color: #565260 !important;
 					color: #fff !important;
@@ -76,7 +88,10 @@
 		.products {
 			flex-wrap: wrap;
 			.item {
+				max-width: calc(50% - 30px);
+				width: calc(50% - 30px);
 				min-width: 250px;
+				margin-bottom: 24px;
 			}
 		}
 	}
@@ -84,11 +99,6 @@
 @media (max-width: 768px) {
 	.google_tv_products {
 		padding: 90px 0;
-		.products {
-			.item {
-				width: calc(50% - 30px) !important;
-			}
-		}
 	}
 }
 @media (max-width: 575px) {
@@ -97,6 +107,7 @@
 			.item {
 				min-width: unset;
 				width: calc(100% - 30px) !important;
+				max-width: calc(100% - 30px) !important;
 			}
 		}
 	}

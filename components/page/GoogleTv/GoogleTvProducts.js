@@ -33,11 +33,7 @@ const GoogleTvProducts = ({ data }) => {
 	return (
 		<section>
 			<div className='google_tv_products'>
-				<article className='article'>
-					<div
-						className='title'
-						dangerouslySetInnerHTML={{ __html: text }}></div>
-				</article>
+				<h2 className='title' dangerouslySetInnerHTML={{ __html: text }}></h2>
 				<div className='products'>
 					{products === 'loading' ? (
 						<div className='w-100 d-flex justify-content-center'>
@@ -85,8 +81,10 @@ const GoogleTvProducts = ({ data }) => {
 														item.value && <li key={index}>{item.value}</li>
 												)}
 										</ul>
-	
-										<h6 className='description'>{item?.products[0]?.product?.name}</h6>
+
+										<h6 className='description'>
+											{item?.products[0]?.product?.name}
+										</h6>
 										<Link
 											href={
 												RouteHandler(item?.products[0]?.product?.id)

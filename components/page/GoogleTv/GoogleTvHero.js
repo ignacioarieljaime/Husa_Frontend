@@ -6,15 +6,11 @@ const GoogleTvHero = ({ data: { structure } }) => {
 		setText(structure?.title?.value)
 	}, [])
 	return (
-		<section>
-			<div className='google_tv_hero'>
-				<div className='custom_container'>
-					<div
-						className='title'
-						dangerouslySetInnerHTML={{ __html: text }}></div>
-					<div>
-						<img src={structure?.image?.src} alt={structure?.image?.alt} />
-					</div>
+		<section className='google_tv_hero'>
+			<div className='custom_container'>
+				<div className='title' dangerouslySetInnerHTML={{ __html: text }}></div>
+				<div className='image_container'>
+					<img src={structure?.image?.src} alt={structure?.image?.alt} />
 				</div>
 			</div>
 		</section>
