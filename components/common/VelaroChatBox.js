@@ -1,18 +1,14 @@
-import { useRouter } from 'next/router'
-import React, { useEffect } from 'react'
+import Head from 'next/head'
+import React, { useState, useEffect } from 'react'
 
-function VelaroChatBox() {
-	const router = useRouter()
-	useEffect(() => {
-		if (router.pathname.includes('contact')) {
-			window.hasChat = true
-		}
-		return () => {
-			window.hasChat = false
-		}
-	}, [])
+const customCss = '.velaro-custom-launcher-frame{display: inline-block !important}'
 
-	return <></>
+export default function VelaroChatBox() {
+	return (
+		<>
+			<Head>
+				<style>{customCss}</style>
+			</Head>
+		</>
+	)
 }
-
-export default VelaroChatBox
