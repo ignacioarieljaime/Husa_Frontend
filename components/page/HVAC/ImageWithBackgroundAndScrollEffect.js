@@ -43,12 +43,7 @@ const ImageWithBackgroundAndScrollEffectContainer = ({ structure }) => {
 					data-aos='fade'
 					data-aos-delay='200'
 					data-aos-duration='1000'>
-					<h3
-						data-aos='fade-up'
-						data-aos-delay='1500'
-						data-aos-duration='1000'
-						className='text'
-						dangerouslySetInnerHTML={{ __html: text }}></h3>
+					<h3 className='text' dangerouslySetInnerHTML={{ __html: text }}></h3>
 				</div>
 			</div>
 		</section>
