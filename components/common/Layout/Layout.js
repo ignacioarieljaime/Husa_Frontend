@@ -32,18 +32,9 @@ function Layout({ children, meta, title, header }) {
 	}, [])
 
 	useEffect(() => {
-		let velaroElement = document.querySelector('.velaro-launcher-frame')
 		window.scrollTo(0, 0)
 
-		if (velaroElement) {
-			if (router.pathname.includes('contact')) {
-				velaroElement.style.display = 'inline-block !important'
-				window.hasChat = true
-			} else {
-				velaroElement.style.display = 'none !important'
-				window.hasChat = false
-			}
-		}
+
 	}, [router.pathname])
 
 	const checkIsAdmin = () => {
