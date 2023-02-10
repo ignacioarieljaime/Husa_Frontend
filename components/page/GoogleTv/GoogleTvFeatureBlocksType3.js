@@ -7,7 +7,7 @@ const GoogleTvFeatureBlocksType3 = ({ data }) => {
 	}, [])
 	return (
 		<section className='google_tv_feature_blocks'>
-			<div className='custom_container' style={{ paddingBottom: '200px' }}>
+			<div className='custom_container'>
 				<div className='row justify-content-center align-items-stretch'>
 					<div className='col-12 col-md-6 py-3'>
 						<div className='block_4'>

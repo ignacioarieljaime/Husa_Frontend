@@ -1,4 +1,7 @@
 .google_tv_feature_blocks {
+	&:last-of-type{
+		padding-bottom: 200px;
+	}
 	background: #ececec;
 	.custom_container {
 		// position: relative;
