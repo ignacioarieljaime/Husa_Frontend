@@ -8,7 +8,6 @@ const ProductSliderLinkButton = dynamic(() =>
 )
 
 function ProductInfoAndSliderBox({ pim, data }) {
-	console.log(pim, 'ProductInfoAndSliderBox')
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	return (
 		<section id={data.name + data.id} className='product single-product'>

@@ -6,15 +6,13 @@ const GoogleTvTextBox = ({ data: { structure } }) => {
 		setText(structure?.text?.value)
 	}, [])
 	return (
-		<section>
-			<div
-				className={`google-tv-text-box ${
-					structure?.theme?.value === 'dark' ? 'dark' : 'light'
-				}`}>
-				<article className='article'>
-					<div dangerouslySetInnerHTML={{ __html: text }}></div>
-				</article>
-			</div>
+		<section
+			className={`google-tv-text-box ${
+				structure?.theme?.value === 'dark' ? 'dark' : 'light'
+			}`}>
+			<article className='article'>
+				<div dangerouslySetInnerHTML={{ __html: text }}></div>
+			</article>
 		</section>
 	)
 }

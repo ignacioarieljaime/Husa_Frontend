@@ -109,7 +109,7 @@ function CompareModal({ route }) {
 
 			{compareList.length !== 0 && (
 				<>
-					{width < 768 ? (
+					{/* {width < 768 ? (
 						<Link
 							href={`${route ? route?.value : ''}${
 								productsId.length !== 0
@@ -121,14 +121,14 @@ function CompareModal({ route }) {
 								Compare ({compareList.length})
 							</a>
 						</Link>
-					) : (
-						<button
-							onClick={() => dispatch(changeCompareCondition(true))}
-							className='compare_layout_button'>
-							<CompareIcon />
-							Compare
-						</button>
-					)}
+					) : ( */}
+					<button
+						onClick={() => dispatch(changeCompareCondition(true))}
+						className='compare_layout_button'>
+						<CompareIcon />
+						Compare
+					</button>
+					{/* )} */}
 				</>
 			)}
 		</>
