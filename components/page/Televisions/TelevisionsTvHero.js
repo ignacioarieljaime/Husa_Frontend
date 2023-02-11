@@ -71,44 +71,49 @@ const TelevisionsTvHero = ({ data }) => {
 								</div>
 							</div>
 						) : null}
-						{content?.coloredCardsList?.value.map((item, index) => (
-							<div className='col-12 col-lg-6 py-3' key={index}>
-								<div
-									className='tv-item colored-bg'
-									style={{
-										backgroundColor: item?.backgroundColor?.value
-									}}>
-									<div className='content'>
-										<img
-											src={item?.image?.src}
-											alt={item?.image?.alt}
-											className='image'
-										/>
-										<div>
-											<div
-												className={`title ${
-													item?.theme?.value === 'light' ? 'text-white' : ''
-												}`}
-												dangerouslySetInnerHTML={{
-													__html: item?.title?.value
-												}}></div>
-											{item?.link?.value ? (
-												<Link href={item?.link?.value}>
-													<a
-														className={`n-btn transparent d-block w-fit ${
-															item?.theme?.value === 'light'
-																? 'outline-white'
-																: 'outline-black'
-														}`}>
-														{item?.link?.title}
-													</a>
-												</Link>
-											) : null}
+						{content?.coloredCardsList?.value.map((item, index) =>
+							item?.backgroundColor?.value &&
+							item?.image?.src &&
+							item?.link?.value &&
+							item?.title?.value ? (
+								<div className='col-12 col-lg-6 py-3' key={index}>
+									<div
+										className='tv-item colored-bg'
+										style={{
+											backgroundColor: item?.backgroundColor?.value
+										}}>
+										<div className='content'>
+											<img
+												src={item?.image?.src}
+												alt={item?.image?.alt}
+												className='image'
+											/>
+											<div>
+												<div
+													className={`title ${
+														item?.theme?.value === 'light' ? 'text-white' : ''
+													}`}
+													dangerouslySetInnerHTML={{
+														__html: item?.title?.value
+													}}></div>
+												{item?.link?.value ? (
+													<Link href={item?.link?.value}>
+														<a
+															className={`n-btn transparent d-block w-fit ${
+																item?.theme?.value === 'light'
+																	? 'outline-white'
+																	: 'outline-black'
+															}`}>
+															{item?.link?.title}
+														</a>
+													</Link>
+												) : null}
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-						))}
+							) : null
+						)}
 						{content?.noBgCard?.value?.titleImage?.src &&
 						content?.noBgCard?.value?.title?.value &&
 						content?.noBgCard?.value?.link?.value ? (
