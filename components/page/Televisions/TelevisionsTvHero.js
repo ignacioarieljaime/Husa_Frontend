@@ -139,6 +139,47 @@ const TelevisionsTvHero = ({ data }) => {
 									backgroundImage: `url(${content?.simpleCard?.value?.image?.src})`
 								}}></div>
 						</div>
+						<div className='col-12 py-3'>
+							<div
+								className='tv-item full-size'
+								style={{
+									backgroundImage: `url(${content?.bottomCard?.value?.backgroundImage?.src})`
+								}}>
+								<img
+									src={content?.bottomCard?.value?.badge?.src}
+									alt={content?.bottomCard?.value?.badge?.alt}
+									className='badge'
+								/>
+								<div className='content'>
+									<img
+										src={content?.bottomCard?.value?.titleImage?.src}
+										alt={content?.bottomCard?.value?.titleImage?.alt}
+										className='image'
+									/>
+									<div
+										className={`title ${
+											content?.bottomCard?.value?.theme?.value === 'light'
+												? 'text-white'
+												: ''
+										}`}
+										dangerouslySetInnerHTML={{
+											__html: content?.bottomCard?.value?.title?.value
+										}}></div>
+									{content?.bottomCard?.value?.link?.value ? (
+										<Link href={content?.bottomCard?.value?.link?.value}>
+											<a
+												className={`n-btn transparent d-block w-fit ${
+													content?.bottomCard?.value?.theme?.value === 'light'
+														? 'outline-white'
+														: 'outline-black'
+												}`}>
+												{content?.bottomCard?.value?.link?.title}
+											</a>
+										</Link>
+									) : null}
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
