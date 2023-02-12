@@ -1,0 +1,63 @@
+.laser_installation_hero {
+	background-color: #000;
+	position: relative;
+	height: 100%;
+	max-height: 750px;
+	& + section {
+		padding-top: 320px;
+		@include mq(991) {
+            padding-top: 30%;
+		}
+        @include mq(575) {
+            padding-top: 40%;
+        }
+	}
+	.custom_container {
+		height: 100%;
+		position: relative;
+		top: 100px;
+		@include mq(991) {
+			top: 130px;
+		}
+		@include mq(575) {
+			top: 100px;
+		}
+		max-width: 900px;
+		margin: 0 auto;
+		.title {
+			margin-bottom: 12px;
+			* {
+				margin-bottom: 0;
+				color: #fff;
+				font-weight: 400;
+				font-size: 96px;
+				line-height: 120px;
+				text-align: center;
+				@include mq(991) {
+					font-size: 72px;
+					line-height: 86px;
+				}
+				@include mq(768) {
+					font-size: 60px;
+					line-height: 72px;
+				}
+				@include mq(575) {
+					font-size: 34px;
+					line-height: 42px;
+				}
+				u {
+					text-decoration: none;
+					color: #00aaa6;
+				}
+			}
+		}
+		.image_container {
+			max-width: 1000px;
+			margin: 0 auto;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}
