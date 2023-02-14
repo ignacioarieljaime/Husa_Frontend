@@ -76,7 +76,8 @@ const ExtendedWarrantyBanner = ({ data: { structure } }) => {
 														data-toggle='tooltip'
 														data-placement='top'
 														title={`${item.name} (${item?.model})`}>
-														<Link href={`/${structure?.link?.value}?productId=${item.id}`}>
+														<Link
+															href={`/${structure?.link?.value}?productId=${item.id}`}>
 															<a>
 																{item.name} ({item?.model})
 															</a>

@@ -49,7 +49,12 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 	const getProducts = async (category, modelNumber, searchTerm) => {
 		setProducts('loading')
 		try {
-			let response = await GetProducts(category, modelNumber, searchTerm)
+			let response = await GetProducts(
+				category,
+				modelNumber,
+				searchTerm,
+				'?status[]=1&status[]=3'
+			)
 			setProducts(response?.data?.products)
 			!productCategories && setProductCategories(response?.data?.categories)
 			setModels(response?.data?.models)
@@ -57,8 +62,8 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 			console.log(error)
 		}
 	}
-	
-	const categoryChangeHandler=(_data)=>{
+
+	const categoryChangeHandler = _data => {
 		router.replace(
 			{
 				query: {
