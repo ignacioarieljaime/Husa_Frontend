@@ -4,9 +4,11 @@ import Spinner from 'components/common/Spinner'
 import GoToPageIcon from 'components/icons/GoToPageIcon'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import ChannelAdvisorLocally from './ChannelAdvisorLocally'
 
 const ChannelAdvisorDynamicRetailer = ({ model }) => {
 	const [data, setData] = useState('loading')
+	const [isLocally, setIsLocally] = useState(false)
 	useEffect(() => {
 		getChannelAdvisorData()
 	}, [])
@@ -31,6 +33,12 @@ const ChannelAdvisorDynamicRetailer = ({ model }) => {
 
 	return (
 		<div className='custom_channel_advisor'>
+			<iframe
+				width={'100%'}
+				style={{ height: '83vh' }}
+				height={'83vh'}
+				src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
+				frameBorder='0'></iframe>
 			{data === 'loading' ? (
 				<Spinner />
 			) : (
@@ -59,30 +67,39 @@ const ChannelAdvisorDynamicRetailer = ({ model }) => {
 					</div>
 
 					<div className='black_box'>
-						<div className='white_box'>BUY ONLINE</div>
+						<div className={`white_box ${!isLocally && 'active'}`}>
+							<button onClick={() => setIsLocally(false)}>BUY ONLINE</button>
+						</div>
+						<div className={`white_box ${isLocally && 'active'}`}>
+							<button onClick={() => setIsLocally(true)}>FIND LOCALLY</button>
+						</div>
 					</div>
-					<div>
-						{data?.OnlineRetailers && data?.OnlineRetailers.length > 0 ? (
-							data?.OnlineRetailers.map((item, index) => (
-								<div
-									key={index}
-									className='d-flex justify-content-between align-items-center my-4 mx-4 py-4 divider_bottom'>
-									<CustomImage src={item?.LogoUrl} wrapperWidth={'100px'} />
-									<div>
-										<div className='check'>Check Retailer</div>
-										<div className='status'>Available</div>
+					{isLocally ? (
+						<ChannelAdvisorLocally model={model} />
+					) : (
+						<div>
+							{data?.OnlineRetailers && data?.OnlineRetailers.length > 0 ? (
+								data?.OnlineRetailers.map((item, index) => (
+									<div
+										key={index}
+										className='d-flex justify-content-between align-items-center my-4 mx-4 py-4 divider_bottom'>
+										<CustomImage src={item?.LogoUrl} wrapperWidth={'100px'} />
+										<div>
+											<div className='check'>Check Retailer</div>
+											<div className='status'>Available</div>
+										</div>
+										<Link
+											target={'_blank'}
+											href={item?.ProductLink ? item?.ProductLink : '/'}>
+											<a className='buy_now'>Buy Now</a>
+										</Link>
 									</div>
-									<Link
-										target={'_blank'}
-										href={item?.ProductLink ? item?.ProductLink : '/'}>
-										<a className='buy_now'>Buy Now</a>
-									</Link>
-								</div>
-							))
-						) : (
-							<p className='no_retailer'>Check Back Soon for Availability.</p>
-						)}
-					</div>
+								))
+							) : (
+								<p className='no_retailer'>Check Back Soon for Availability.</p>
+							)}
+						</div>
+					)}
 				</>
 			)}
 		</div>
