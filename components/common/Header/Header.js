@@ -13,9 +13,11 @@ import NavBarDropDown from './NavBarDropDown'
 import Link from 'next/link'
 import HeaderSearchBox from './HeaderSearchBox'
 import HeaderNotification from './HeaderNotification'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 function Header({ data: { structure }, notification }) {
 	// const { headerData } = useSelector(state => state.layoutData)
+	const [width] = useWindowSize()
 	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
@@ -96,22 +98,26 @@ function Header({ data: { structure }, notification }) {
 									/>
 								</button>
 							</li>
-							<li className='nav-item-button' data-button='menu'>
-								<button
-									className={`btn hamburger-icon p-2 ${
-										asideMenu || searchInputCondition ? 'close' : ''
-									}`}
-									onClick={() =>
-										searchInputCondition
-											? setSearchInputCondition(false)
-											: setAsideMenu(!asideMenu)
-									}
-									aria-label='hamburger menu toggler'>
-									<HamburgerMenuIcon
-										color={structure.theme.value === 'light' ? '#000' : '#fff'}
-									/>
-								</button>
-							</li>
+							{headerData?.widgets?.hamburger.length || width > 992 ? null : (
+								<li className='nav-item-button' data-button='menu'>
+									<button
+										className={`btn hamburger-icon p-2 ${
+											asideMenu || searchInputCondition ? 'close' : ''
+										}`}
+										onClick={() =>
+											searchInputCondition
+												? setSearchInputCondition(false)
+												: setAsideMenu(!asideMenu)
+										}
+										aria-label='hamburger menu toggler'>
+										<HamburgerMenuIcon
+											color={
+												structure.theme.value === 'light' ? '#000' : '#fff'
+											}
+										/>
+									</button>
+								</li>
+							)}
 						</ul>
 					</div>
 				</div>
@@ -130,7 +136,13 @@ function Header({ data: { structure }, notification }) {
 				</div>
 			)}
 
-			{headerData && <HamburgerMenu data={headerData} asideHandler={setAsideMenu} asideMenu={asideMenu} />}
+			{headerData && (
+				<HamburgerMenu
+					data={headerData}
+					asideHandler={setAsideMenu}
+					asideMenu={asideMenu}
+				/>
+			)}
 		</header>
 	)
 }
