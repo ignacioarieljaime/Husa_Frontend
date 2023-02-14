@@ -1,11 +1,8 @@
 import axios from 'axios'
 
-export async function GetProducts(_categoryId, _model, _search, filter) {
-	console.log(filter);
+export async function GetProducts(_categoryId, _model, _search) {
 	let response = await axios.get(
-		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/products${
-			filter ? filter : ''
-		}`,
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/products`,
 		{
 			params: {
 				category_id: _categoryId,
