@@ -3,7 +3,15 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CustomCheckBox from './CustomCheckBox'
 
-const DropDownSelectBox = ({ options, value, title, onChange }) => {
+const DropDownSelectBox = ({
+	options,
+	value,
+	title,
+	onChange,
+	className,
+	prefixIcon,
+	placeholder
+}) => {
 	const [show, setShow] = useState(false)
 
 	const newValueHandler = newValue => {
@@ -21,18 +29,16 @@ const DropDownSelectBox = ({ options, value, title, onChange }) => {
 		}
 	}
 	return (
-		<div className={`dropdown-select-box ${show ? 'show' : ''}`}>
+		<div className={`dropdown-select-box ${show ? 'show' : ''} ${className}`}>
 			<button
 				className='dropdown-select-box-button'
 				type='button'
 				onClick={() => setShow(!show)}>
-				{title && title + ': '}
-				{typeof value === 'string'
-					? value
-					: value?.name
-					? value.name
-					: options[0].name}
-				<span className='ms-5'>
+				{prefixIcon ? <span className='me-3'>{prefixIcon}</span> : null}
+				{title}
+				{!value && placeholder}
+				{typeof value === 'string' ? value : value?.name ? value.name : ''}
+				<span className='arrow ms-auto'>
 					<FontAwesomeIcon icon={faChevronDown} />
 				</span>
 			</button>
