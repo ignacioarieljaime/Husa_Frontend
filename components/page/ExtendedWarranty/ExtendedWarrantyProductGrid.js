@@ -57,8 +57,8 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 			console.log(error)
 		}
 	}
-	
-	const categoryChangeHandler=(_data)=>{
+
+	const categoryChangeHandler = _data => {
 		router.replace(
 			{
 				query: {
