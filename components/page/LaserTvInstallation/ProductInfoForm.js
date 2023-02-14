@@ -1,13 +1,13 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
+import Spinner from 'components/common/Spinner'
 import LaserTv from 'components/icons/LaserTv'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import {
-	GetProductWithSeriesAndProductIdApi,
-	GetProductsListNewApi
-} from 'services/Product'
+import { toast } from 'react-toastify'
+import { GetProductsListNewApi } from 'services/Product'
 import CardLayout from './CardLayout'
 
 const ProductInfoForm = ({ data, dispatch }) => {
@@ -157,8 +157,33 @@ const ProductInfoForm = ({ data, dispatch }) => {
 		}
 	]
 
-	const uploadFile = () => {
-		console.log()
+	const uploadFile = async e => {
+		setFile(e.target.files[0])
+		setImageLoading(true)
+		const formData = new FormData()
+		formData.append('attachment', e.target.files[0])
+		console.log(formData.get('attachment'))
+		try {
+			let response = await axios.post(
+				process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
+				{
+					data: formData,
+					headers: { 'Content-Type': 'multipart/form-data' }
+				}
+			)
+			if (response.status === 200) {
+				toast.success('image uploaded', { toastId: 'image-uploaded' })
+				dispatch({ receipt_photo: response.data.view_link })
+			}
+			setImageLoading(false)
+		} catch (error) {
+			setImageLoading(false)
+
+			toast.error("The photo wasn't uploaded successfully ", {
+				toastId: 'image-failed'
+			})
+			console.log(error)
+		}
 	}
 
 	return (

@@ -1,4 +1,4 @@
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Calender from 'components/common/Calender'
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
@@ -7,6 +7,9 @@ import React, { useState } from 'react'
 import BooleanButtonGroup from './BooleanButtonGroup'
 import CardLayout from './CardLayout'
 import CustomInput from 'components/common/Input'
+import Spinner from 'components/common/Spinner'
+import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const InstallationInfoForm = ({ data, dispatch }) => {
 	const [sortingMethod, setSortingMethod] = useState()
@@ -23,6 +26,36 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 			value: 'oldest'
 		}
 	]
+
+	const uploadFile = async e => {
+		setFile(e.target.files[0])
+		setImageLoading(true)
+		const formData = new FormData()
+		formData.append('attachment', e.target.files[0])
+		console.log(formData)
+		try {
+			let response = await axios.post(
+				process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
+				{
+					data: formData,
+					headers: { 'Content-Type': 'multipart/form-data' }
+				}
+			)
+			if (response.status === 200) {
+				toast.success('image uploaded', { toastId: 'image-uploaded' })
+				dispatch({ install_location_photo: response.data.view_link })
+			}
+			setImageLoading(false)
+		} catch (error) {
+			setImageLoading(false)
+
+			toast.error("The photo wasn't uploaded successfully ", {
+				toastId: 'image-failed'
+			})
+			console.log(error)
+		}
+	}
+
 	return (
 		<CardLayout title='Installation Information' icon={<Wrench />}>
 			<div className='row mx-0'>
@@ -142,7 +175,7 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 									id='contact-file-input'
 									accept='.jpg, .png, .jpeg'
 									multiple='multiple'
-									// onChange={uploadFile}
+									onChange={uploadFile}
 								/>
 								<article className='d-flex justify-content-center align-items-center flex-wrap'>
 									<p>Drop files to attach, or</p>
