@@ -147,7 +147,7 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 					<div className='form_text_field'>
 						<input
 							onChange={e => inputChangeHandler(e)}
-							name='zip_code'
+							name='PostalZipCode'
 							type='text'
 							placeholder='ZIP Code'
 						/>

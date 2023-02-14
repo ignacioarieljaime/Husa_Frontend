@@ -5,14 +5,14 @@ const BooleanButtonGroup = ({ status, onClick }) => {
 		<div className='button_group'>
 			<button
 				type='button'
-				onClick={() => onClick(true)}
-				className={`me-4 my-4 ${status ? 'active' : ''}`}>
+				onClick={() => onClick('yes')}
+				className={`me-4 my-4 ${status === 'yes' ? 'active' : ''}`}>
 				<span></span> Yes
 			</button>
 			<button
 				type='button'
-				onClick={() => onClick(false)}
-				className={`my-4 ${status === false ? 'active' : ''}`}>
+				onClick={() => onClick('no')}
+				className={`my-4 ${status === 'no' ? 'active' : ''}`}>
 				<span></span> No
 			</button>
 		</div>

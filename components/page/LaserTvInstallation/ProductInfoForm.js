@@ -162,18 +162,15 @@ const ProductInfoForm = ({ data, dispatch }) => {
 		setImageLoading(true)
 		const formData = new FormData()
 		formData.append('attachment', e.target.files[0])
-		console.log(formData.get('attachment'))
 		try {
 			let response = await axios.post(
 				process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
-				{
-					data: formData,
-					headers: { 'Content-Type': 'multipart/form-data' }
-				}
+				formData,
+				{ headers: { 'Content-Type': 'multipart/form-data' } }
 			)
 			if (response.status === 200) {
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
-				dispatch({ receipt_photo: response.data.view_link })
+				dispatch({ receipt_image: response.data.view_link })
 			}
 			setImageLoading(false)
 		} catch (error) {
@@ -193,9 +190,11 @@ const ProductInfoForm = ({ data, dispatch }) => {
 					<div className='form_select_field z-3'>
 						<DropDownSelectBox
 							options={screenSizes}
-							value={data.screen_size}
+							value={data.laser_tv_screen_size}
 							placeholder='Laser TV Screen Size'
-							onChange={newValue => dispatch({ screen_size: newValue.value })}
+							onChange={newValue =>
+								dispatch({ laser_tv_screen_size: newValue.value })
+							}
 						/>
 					</div>
 				</div>
@@ -203,9 +202,11 @@ const ProductInfoForm = ({ data, dispatch }) => {
 					<div className='form_select_field z-2'>
 						<DropDownSelectBox
 							options={models}
-							value={data.model_number}
+							value={data.laser_tv_model_number}
 							placeholder='Laser TV Model Number '
-							onChange={newValue => dispatch({ model_number: newValue.value })}
+							onChange={newValue =>
+								dispatch({ laser_tv_model_number: newValue.value })
+							}
 						/>
 					</div>
 				</div>
@@ -213,9 +214,11 @@ const ProductInfoForm = ({ data, dispatch }) => {
 					<div className='form_select_field z-1'>
 						<DropDownSelectBox
 							options={retailers}
-							value={data.retailer}
+							value={data.purchased_from}
 							placeholder='Where did you purchase?'
-							onChange={newValue => dispatch({ retailer: newValue.value })}
+							onChange={newValue =>
+								dispatch({ purchased_from: newValue.value })
+							}
 						/>
 					</div>
 				</div>

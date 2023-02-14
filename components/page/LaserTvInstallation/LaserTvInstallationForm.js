@@ -26,20 +26,20 @@ const LaserTvInstallationForm = ({ data }) => {
 			address: '',
 			city: '',
 			state: '',
-			zip_code: '',
-			screen_size: '',
-			model_number: '',
-			retailer: '',
-			receipt_photo: '',
-			install_location: '',
-			install_location_photo: '',
-			wall_material: '',
+			PostalZipCode: '',
+			laser_tv_screen_size: '',
+			laser_tv_model_number: '',
+			purchased_from: '',
+			receipt_image: '',
+			where_to_install: '',
+			installation_location_photo: '',
+			material_of_wall: '',
 			floor_type: '',
-			internet_type: '',
-			installation_date: '',
-			tv_stand: null,
-			power_outlet: null,
-			wall_space: null
+			wireless_wired_internet: '',
+			expected_date: '',
+			do_you_have_tv_stand: null,
+			power_outlet_available: null,
+			sufficient_wall_space: null
 		}
 	)
 
@@ -49,10 +49,11 @@ const LaserTvInstallationForm = ({ data }) => {
 		setErrors(null)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63eb5ac8e78b1`,
+				'https://imcrm2.dev-api.hisenseportal.com/api/v1/form/fill/F63eb5ac8e78b1',
+				// `${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63eb5ac8e78b1`,
 				formBody
 			)
-			if (response.status === 200) {
+			if (response.data.id && response.data.created_at) {
 				toast.success('successful')
 				e.target.reset()
 			} else {

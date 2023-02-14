@@ -32,18 +32,15 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 		setImageLoading(true)
 		const formData = new FormData()
 		formData.append('attachment', e.target.files[0])
-		console.log(formData)
 		try {
 			let response = await axios.post(
 				process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
-				{
-					data: formData,
-					headers: { 'Content-Type': 'multipart/form-data' }
-				}
+				formData,
+				{ headers: { 'Content-Type': 'multipart/form-data' } }
 			)
 			if (response.status === 200) {
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
-				dispatch({ install_location_photo: response.data.view_link })
+				dispatch({ installation_location_photo: response.data.view_link })
 			}
 			setImageLoading(false)
 		} catch (error) {
@@ -62,10 +59,10 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 				<div className='col-12 col-md-6 mb-8'>
 					<label className='laser_label'>Do you have a TV stand?</label>
 					<BooleanButtonGroup
-						status={data.tv_stand}
-						onClick={newValue => dispatch({ tv_stand: newValue })}
+						status={data.do_you_have_tv_stand}
+						onClick={newValue => dispatch({ do_you_have_tv_stand: newValue })}
 					/>
-					{data.tv_stand === false ? (
+					{data.do_you_have_tv_stand === false ? (
 						<div className='error'>
 							<p>
 								We’re sorry, but a TV stand with a recommended height of 15”-20”
@@ -88,10 +85,10 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 						(120V/60Hz)
 					</label>
 					<BooleanButtonGroup
-						status={data.power_outlet}
-						onClick={newValue => dispatch({ power_outlet: newValue })}
+						status={data.power_outlet_available}
+						onClick={newValue => dispatch({ power_outlet_available: newValue })}
 					/>
-					{data.power_outlet === false ? (
+					{data.power_outlet_available === false ? (
 						<div className='error'>
 							<p>
 								We’re sorry, but a power outlet of 120V/60Hz is required for
@@ -109,10 +106,10 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 						Do you have sufficient wall space?
 					</label>
 					<BooleanButtonGroup
-						status={data.wall_space}
-						onClick={newValue => dispatch({ wall_space: newValue })}
+						status={data.sufficient_wall_space}
+						onClick={newValue => dispatch({ sufficient_wall_space: newValue })}
 					/>
-					{data.wall_space === false ? (
+					{data.sufficient_wall_space === false ? (
 						<div className='error'>
 							<p>
 								We’re sorry, but at least minimum wall space clearance above the
@@ -143,10 +140,10 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 					<div className='form_select_field z-1'>
 						<DropDownSelectBox
 							options={options}
-							value={data.install_location}
+							value={data.where_to_install}
 							title='Where to install?'
 							onChange={newValue =>
-								dispatch({ install_location: newValue.value })
+								dispatch({ where_to_install: newValue.value })
 							}
 						/>
 					</div>
@@ -191,9 +188,11 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 					<div className='form_select_field z-4'>
 						<DropDownSelectBox
 							options={options}
-							value={data.wall_material}
+							value={data.material_of_wall}
 							title='Material of Wall'
-							onChange={newValue => dispatch({ wall_material: newValue.value })}
+							onChange={newValue =>
+								dispatch({ material_of_wall: newValue.value })
+							}
 						/>
 					</div>
 				</div>
@@ -211,9 +210,11 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 					<div className='form_select_field z-2'>
 						<DropDownSelectBox
 							options={options}
-							value={data.internet_type}
+							value={data.wireless_wired_internet}
 							title='Wireless or Wired Internet'
-							onChange={newValue => dispatch({ internet_type: newValue.value })}
+							onChange={newValue =>
+								dispatch({ wireless_wired_internet: newValue.value })
+							}
 						/>
 					</div>
 				</div>
@@ -224,8 +225,8 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 							placeholder={'Expected Installation Date'}
 							required={true}
 							className='date_input'
-							value={data.installation_date}
-							onChange={newValue => dispatch({ installation_date: newValue })}
+							value={data.expected_date}
+							onChange={newValue => dispatch({ expected_date: newValue })}
 						/>
 						<div className='tip mt-4'>
 							<p>
