@@ -1,0 +1,322 @@
+.laser_installation_form {
+	padding: 100px 12px;
+	max-width: 970px;
+	margin: 0 auto;
+	.title {
+		font-weight: 400;
+		font-size: 48px;
+		line-height: 56px;
+		text-align: center;
+		letter-spacing: -0.02em;
+		color: #000000;
+		margin-bottom: 30px;
+		@include mq(768) {
+			font-size: 34px;
+			line-height: 42px;
+		}
+	}
+	.subtitle {
+		margin-bottom: 60px;
+		* {
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 22px;
+			text-align: center;
+			letter-spacing: -0.02em;
+			color: #000000;
+			margin: 0;
+		}
+	}
+	.card_layout {
+		border: 1px solid #c7c7c9;
+		border-radius: 25px;
+		padding: 32px 16px;
+		margin-bottom: 32px;
+		@include mq(768) {
+			padding: 32px 8px;
+		}
+		.title {
+			text-align: start;
+			font-weight: 400;
+			font-size: 34px;
+			line-height: 42px;
+			letter-spacing: -0.02em;
+			color: #000000;
+			margin: 0 0 0 20px;
+			@include mq(768) {
+				font-size: 28px;
+				line-height: 36px;
+			}
+		}
+		.laser_label {
+			margin-bottom: 10px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 22px;
+			letter-spacing: -0.02em;
+			color: #000000;
+		}
+		.tip {
+			margin-top: 10px;
+			* {
+				font-weight: 400;
+				font-size: 12px;
+				line-height: 16px;
+				color: #000000;
+			}
+		}
+		.error {
+			margin-top: 10px;
+			* {
+				font-weight: 400;
+				font-size: 12px;
+				line-height: 16px;
+				color: #d83a49;
+			}
+		}
+		.date_input {
+			padding: 16px;
+			border: 1px solid #000000;
+			font-weight: 400;
+			font-size: 16px;
+			width: 100%;
+			line-height: 22px;
+			letter-spacing: -0.02em;
+			color: #000000;
+			background-color: #fff;
+			border-radius: 20px;
+			font-weight: 400;
+			font-size: 16px;
+			line-height: 22px;
+			letter-spacing: -0.02em;
+			color: #000000;
+		}
+		.error{
+			color:#d83a49;
+			font-size: 12px;
+			font-weight: 400;
+		}
+		.form_text_field {
+			width: 100%;
+			input {
+				width: 100%;
+				padding: 16px;
+				border: 0;
+				border-bottom: 1px solid #000000;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 22px;
+				letter-spacing: -0.02em;
+				color: #000000;
+				&::placeholder {
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 22px;
+					letter-spacing: -0.02em;
+					color: #000000;
+				}
+				&:focus {
+					box-shadow: none !important;
+				}
+			}
+		}
+		.form_select_field {
+			width: 100%;
+			position: relative;
+			&.z-1 {
+				z-index: 1;
+			}
+			&.z-2 {
+				z-index: 2;
+			}
+			&.z-3 {
+				z-index: 3;
+			}
+			&.z-4 {
+				z-index: 4;
+			}
+			.dropdown-select-box {
+				position: relative;
+				z-index: 1;
+				border-radius: 1000px;
+				min-width: 200px;
+				width: 100%;
+				border: none !important;
+				background-color: #fff;
+
+				button {
+					padding: 16px;
+					border: 1px solid #000000;
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 22px;
+					letter-spacing: -0.02em;
+					color: #000000;
+					background-color: #fff;
+				}
+				.dropdown-select-box-options {
+					background-color: #fff;
+					border: 1px solid #000000;
+					padding: 8px 16px;
+					li {
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 22px;
+						letter-spacing: -0.02em;
+						color: #000000;
+					}
+				}
+			}
+		}
+		.file-upload {
+			padding: 16px;
+
+			span {
+				font-size: 12px;
+				font-weight: 300;
+				color: #202020;
+				display: block;
+				margin-bottom: 5px;
+			}
+			input {
+				cursor: pointer;
+			}
+			img {
+				object-fit: cover;
+			}
+			.remove_image_button {
+				position: absolute;
+				top: 10px;
+				right: 25px;
+				background-color: #fff;
+				border: none;
+				width: 30px;
+				height: 30px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 100%;
+				z-index: 2;
+				-webkit-border-radius: 100%;
+				-moz-border-radius: 100%;
+				-ms-border-radius: 100%;
+				-o-border-radius: 100%;
+			}
+			.file-upload-box {
+				position: relative;
+				width: 100%;
+				margin: 0;
+				height: 85px;
+				padding: 16px 0;
+				border-radius: 0.5em;
+				overflow: hidden;
+				border: 2px dashed #ddd;
+				text-align: center;
+				@include mq(575) {
+					height: 100px;
+				}
+				.remove_img {
+					position: absolute;
+					top: 10px;
+					right: 10px;
+					width: 25px;
+					height: 25px;
+					background-color: #fff;
+					border-radius: 100%;
+					-webkit-border-radius: 100%;
+					-moz-border-radius: 100%;
+					-ms-border-radius: 100%;
+					-o-border-radius: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					z-index: 2;
+					border: none;
+				}
+				.image_loading {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 100%;
+					height: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background-color: rgba($color: #000000, $alpha: 0.5);
+					z-index: 2;
+
+					#loading-spinner {
+						margin-bottom: 0 !important;
+					}
+				}
+				img {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 100%;
+					object-fit: cover;
+					height: 100%;
+				}
+				div {
+					color: #ddd;
+					font-size: 26px !important;
+					line-height: 1.625em;
+					margin-bottom: 40px;
+				}
+				p {
+					color: #444;
+					font-size: 14px;
+					line-height: 24px;
+					margin: 0;
+				}
+				input {
+					cursor: pointer;
+				}
+				article {
+					position: absolute;
+					top: 50%;
+					left: 0;
+					width: 100%;
+					transform: translateY(-50%);
+				}
+			}
+		}
+		.button_group {
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			flex-wrap: wrap;
+			button {
+				padding: 16px 24px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border: 1px solid #000000;
+				border-radius: 1000px;
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 19px;
+				text-align: center;
+				color: #000000;
+				background-color: #fff;
+				transition: all 0.3s ease-in-out;
+				span {
+					margin-right: 16px;
+					background: #c7c7c9;
+					display: block;
+					width: 20px;
+					height: 20px;
+					border-radius: 50%;
+					transition: all 0.3s ease-in-out;
+				}
+				&.active {
+					color: #fff;
+					background-color: #000;
+					span {
+						background: #00aaa6;
+					}
+				}
+			}
+		}
+	}
+}

@@ -773,12 +773,18 @@
 			margin-bottom: 50px;
 		}
 
-		h2 .ql-size-large {
+		h2 {
 			font-weight: 400;
-			font-size: 48px;
+			font-size: 34px;
 			line-height: 120%;
 			letter-spacing: -0.02em;
+
 			margin-bottom: 30px;
+			.ql-size-large {
+				font-size: 48px;
+				line-height: 120%;
+				letter-spacing: -0.02em;
+			}
 		}
 
 		p {

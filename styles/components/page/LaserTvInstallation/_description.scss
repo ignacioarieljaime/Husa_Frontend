@@ -1,0 +1,61 @@
+.laser_installation_description {
+	background: #f0f2f2;
+	padding-bottom: 32px;
+	.content {
+		padding: 30px;
+		max-width: 850px;
+		margin: 0 auto;
+		@include mq(768) {
+			padding: 12px;
+		}
+		.title {
+			margin-bottom: 30px;
+			* {
+				font-weight: 400;
+				font-size: 24px;
+				line-height: 30px;
+				text-align: center;
+				letter-spacing: -0.02em;
+				color: #000000;
+				margin: 0;
+				@include mq(768) {
+					font-size: 20px;
+					line-height: 28px;
+				}
+			}
+		}
+		.item {
+			background: #ffffff;
+			border-radius: 50%;
+			padding: 25px;
+			width: 200px;
+			height: 200px;
+			text-align: center;
+			vertical-align: middle;
+			margin: 30px;
+			@include mq(575) {
+				margin: 12px;
+			}
+			.image {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+		.text {
+			margin-top: 30px;
+			* {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 22px;
+				text-align: center;
+				letter-spacing: -0.02em;
+				color: #000000;
+				margin: 0;
+			}
+			strong {
+				font-weight: bolder;
+			}
+		}
+	}
+}

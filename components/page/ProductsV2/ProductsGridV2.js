@@ -100,7 +100,7 @@ const ProductsGridV2 = ({ data }) => {
 					<DropDownSelectBox
 						options={options}
 						value={sortingMethod}
-						title='Sort by'
+						title='Sort by: '
 						onChange={setSortingMethod}
 					/>
 				</div>
