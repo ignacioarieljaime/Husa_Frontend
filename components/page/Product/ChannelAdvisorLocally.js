@@ -1,19 +1,29 @@
 import axios from 'axios'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
 import React, { useState } from 'react'
-import GoogleMapReact from 'google-map-react'
-import { Country, State, City } from 'country-state-city'
 import Spinner from 'components/common/Spinner'
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>
+import PinIcon from 'components/icons/PinIcon'
+import PhoneIcon from 'components/icons/PhoneIcon'
+import CarIcon from 'components/icons/CarIcon'
+import ClockIcon from 'components/icons/ClockIcon'
+import OpenNewIcon from 'components/icons/OpenNewIcon'
+import dynamic from 'next/dynamic'
+const ChannelAdvisorGoogleMap = dynamic(
+	() => import('./ChannelAdvisorGoogleMap'),
+	{
+		loading: () => 'Loading...',
+		ssr: false
+	}
+)
 
 const ChannelAdvisorLocally = ({ model }) => {
 	const [distance, setDistance] = useState(5)
 	const [search, setSearch] = useState()
 	const [cities, setCities] = useState(null)
+	const [data, setData] = useState(null)
 	const [position, setPosition] = useState({
-		lat: 10.99835602,
-		lng: 77.01502627
+		lat: -3.745,
+		lng: -38.523
 	})
 
 	const getCity = async () => {
@@ -29,6 +39,11 @@ const ChannelAdvisorLocally = ({ model }) => {
 		}
 	}
 	const getChannelAdvisorData = async data => {
+		setData('loading')
+		setPosition({
+			lat: data.lat,
+			lng: data.lon
+		})
 		setCities(null)
 		try {
 			let response = await axios.get(
@@ -40,9 +55,9 @@ const ChannelAdvisorLocally = ({ model }) => {
 					}
 				}
 			)
-			setData(response.data)
-			console.log(response)
+			setData(response.data.LocalRetailerStores)
 		} catch (error) {
+			setData([])
 			console.log(error)
 		}
 	}
@@ -73,7 +88,8 @@ const ChannelAdvisorLocally = ({ model }) => {
 										<li>
 											<button
 												onClick={() => getChannelAdvisorData(item?.properties)}>
-												{item.properties.address_line2}
+												{item.properties.address_line1},
+												{item.properties.country}
 											</button>
 										</li>
 									))}
@@ -91,7 +107,64 @@ const ChannelAdvisorLocally = ({ model }) => {
 					<option value={50}>50 Miles</option>
 				</select>
 			</div>
-			<div style={{ height: '150px', width: '100%' }}></div>
+			<ChannelAdvisorGoogleMap position={position} markers={data} />
+
+			<div className='channel_advisor_locally_retailers mt-5'>
+				{data === 'loading' ? (
+					<div className='mt-5'>
+						<Spinner />
+					</div>
+				) : Array.isArray(data) && data.length  ? (
+					data.map((item, index) => (
+						<div className='item'>
+							<div className='pin_detail'>
+								<div className='pin'>
+									<PinIcon />
+									<span>{index + 1}</span>
+									{item?.DistanceFromUserLocation} mi
+								</div>
+								<div className='detail'>
+									<img src={item.RetailerLogoUrl} />
+									<div>
+										<p>
+											{item.StreetLine1}, {item.City}
+										</p>{' '}
+										<p>
+											{item.CountryCode},{item.PostalCode}
+										</p>
+									</div>
+									<span>
+										<PhoneIcon />
+										{item.Phone}
+									</span>
+									<a href='#'>
+										<CarIcon /> Directions
+									</a>
+								</div>
+							</div>
+							<div className='check_retailer'>
+								<h5>Check Retailer</h5>
+								<h6>Assume Availability</h6>
+								<p>Assume Availability</p>
+
+								<span className='clock'>
+									<ClockIcon />
+									open: {item.Hours.split(',')[0].slice(2, 7)}-
+									{item.Hours.split(',')[0].slice(8, 13)}
+								</span>
+								<span className='clock'>
+									<OpenNewIcon />
+									Buy Online
+								</span>
+							</div>
+						</div>
+					))
+				) : Array.isArray(data) && data.length === 0 ? (
+					'empty'
+				) : (
+					'please select a city'
+				)}
+			</div>
 		</div>
 	)
 }
