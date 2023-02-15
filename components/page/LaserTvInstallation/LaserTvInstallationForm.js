@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import React, { useEffect, useReducer, useState } from 'react'
 import { toast } from 'react-toastify'
 import InstallationInfoForm from './InstallationInfoForm'
@@ -10,6 +11,7 @@ const LaserTvInstallationForm = ({ data }) => {
 	const [text, setText] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [errors, setErrors] = useState(null)
+	const route = useRouter()
 	const [formBody, dispatch] = useReducer(
 		(state, update) => {
 			console.log(state)
@@ -57,6 +59,13 @@ const LaserTvInstallationForm = ({ data }) => {
 			if (response.data.userForm.id && response.data.userForm.created_at) {
 				console.log('hi')
 				toast.success('Submission successful')
+				route.push(
+					{
+						pathname: structure?.link?.value,
+						query: { token: response.data.userForm.id }
+					},
+					structure?.link?.value
+				)
 				e.target.reset()
 			} else {
 				toast.error('Submission failed')

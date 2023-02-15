@@ -14,5 +14,9 @@ module.exports.LaserTvInstallationComponents = [
 	{
 		name: 'LaserTvInstallationForm',
 		path: '/components/page/LaserTvInstallation/LaserTvInstallationForm'
+	},
+	{
+		name: 'LaserTvInstallationConfirmation',
+		path: '/components/page/LaserTvInstallation/LaserTvInstallationConfirmation'
 	}
 ]
