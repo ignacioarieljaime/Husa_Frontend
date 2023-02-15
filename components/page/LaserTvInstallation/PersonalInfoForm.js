@@ -3,7 +3,7 @@ import UserCircleOutline from 'components/icons/UserCircleOutline'
 import React, { useState } from 'react'
 import CardLayout from './CardLayout'
 
-const PersonalInfoForm = ({ data, dispatch }) => {
+const PersonalInfoForm = ({ data, dispatch, errors }) => {
 	const states = [
 		{ name: 'Alabama', value: 'AL' },
 		{ name: 'Alaska', value: 'AK' },
@@ -79,8 +79,12 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							onChange={e => inputChangeHandler(e)}
 							name='first_name'
 							type='text'
+							required={true}
 							placeholder='First Name'
 						/>
+						{errors?.first_name ? (
+							<p className='error'>{errors?.first_name}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
@@ -89,8 +93,12 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							onChange={e => inputChangeHandler(e)}
 							name='last_name'
 							type='text'
+							required={true}
 							placeholder='Last Name'
 						/>
+						{errors?.last_name ? (
+							<p className='error'>{errors?.last_name}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
@@ -99,8 +107,12 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							onChange={e => inputChangeHandler(e)}
 							name='phone_number'
 							type='text'
+							required={true}
 							placeholder='Phone number'
 						/>
+						{errors?.phone_number ? (
+							<p className='error'>{errors?.phone_number}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
@@ -109,8 +121,10 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							onChange={e => inputChangeHandler(e)}
 							name='email'
 							type='email'
+							required={true}
 							placeholder='Email'
 						/>
+						{errors?.email ? <p className='error'>{errors?.email}</p> : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
@@ -119,8 +133,12 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							onChange={e => inputChangeHandler(e)}
 							name='address'
 							type='text'
+							required={true}
 							placeholder='Address'
 						/>
+						{errors?.address ? (
+							<p className='error'>{errors?.address}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
@@ -129,8 +147,10 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							onChange={e => inputChangeHandler(e)}
 							name='city'
 							type='text'
+							required={true}
 							placeholder='City'
 						/>
+						{errors?.city ? <p className='error'>{errors?.city}</p> : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8 mb-md-0'>
@@ -141,6 +161,7 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							placeholder='State'
 							onChange={newValue => dispatch({ state: newValue.value })}
 						/>
+						{errors?.state ? <p className='error'>{errors?.state}</p> : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
@@ -149,8 +170,12 @@ const PersonalInfoForm = ({ data, dispatch }) => {
 							onChange={e => inputChangeHandler(e)}
 							name='PostalZipCode'
 							type='text'
+							required={true}
 							placeholder='ZIP Code'
 						/>
+						{errors?.PostalZipCode ? (
+							<p className='error'>{errors?.PostalZipCode}</p>
+						) : null}
 					</div>
 				</div>
 			</div>

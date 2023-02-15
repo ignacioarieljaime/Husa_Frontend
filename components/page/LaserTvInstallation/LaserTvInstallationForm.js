@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useReducer, useState } from 'react'
+import { toast } from 'react-toastify'
 import InstallationInfoForm from './InstallationInfoForm'
 import PersonalInfoForm from './PersonalInfoForm'
 import ProductInfoForm from './ProductInfoForm'
@@ -53,11 +54,12 @@ const LaserTvInstallationForm = ({ data }) => {
 				// `${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63eb5ac8e78b1`,
 				formBody
 			)
-			if (response.data.id && response.data.created_at) {
-				toast.success('successful')
+			if (response.data.userForm.id && response.data.userForm.created_at) {
+				console.log('hi')
+				toast.success('Submission successful')
 				e.target.reset()
 			} else {
-				toast.error('is not true')
+				toast.error('Submission failed')
 			}
 			setLoading(false)
 		} catch (error) {
@@ -81,10 +83,22 @@ const LaserTvInstallationForm = ({ data }) => {
 					className='subtitle'
 					dangerouslySetInnerHTML={{ __html: text }}></div>
 				<form onSubmit={e => submitForm(e)}>
-					<PersonalInfoForm data={formBody} dispatch={dispatch} />
-					<ProductInfoForm data={formBody} dispatch={dispatch} />
-					<InstallationInfoForm data={formBody} dispatch={dispatch} />
-					<div className='text-center m-15'>
+					<PersonalInfoForm
+						data={formBody}
+						dispatch={dispatch}
+						errors={errors}
+					/>
+					<ProductInfoForm
+						data={formBody}
+						dispatch={dispatch}
+						errors={errors}
+					/>
+					<InstallationInfoForm
+						data={formBody}
+						dispatch={dispatch}
+						errors={errors}
+					/>
+					<div className='text-center mb-0 mb-md-15 m-15'>
 						<button className='n-btn primary py-4 px-6'>Submit</button>
 					</div>
 				</form>

@@ -11,7 +11,7 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 
-const InstallationInfoForm = ({ data, dispatch }) => {
+const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	const [sortingMethod, setSortingMethod] = useState()
 	const [imageLoading, setImageLoading] = useState(null)
 	const [file, setFile] = useState(null)
@@ -62,7 +62,10 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 						status={data.do_you_have_tv_stand}
 						onClick={newValue => dispatch({ do_you_have_tv_stand: newValue })}
 					/>
-					{data.do_you_have_tv_stand === false ? (
+					{errors?.do_you_have_tv_stand ? (
+						<p className='error'>{errors?.do_you_have_tv_stand}</p>
+					) : null}
+					{data.do_you_have_tv_stand === 'no' ? (
 						<div className='error'>
 							<p>
 								We’re sorry, but a TV stand with a recommended height of 15”-20”
@@ -88,7 +91,10 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 						status={data.power_outlet_available}
 						onClick={newValue => dispatch({ power_outlet_available: newValue })}
 					/>
-					{data.power_outlet_available === false ? (
+					{errors?.power_outlet_available ? (
+						<p className='error'>{errors?.power_outlet_available}</p>
+					) : null}
+					{data.power_outlet_available === 'no' ? (
 						<div className='error'>
 							<p>
 								We’re sorry, but a power outlet of 120V/60Hz is required for
@@ -109,7 +115,10 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 						status={data.sufficient_wall_space}
 						onClick={newValue => dispatch({ sufficient_wall_space: newValue })}
 					/>
-					{data.sufficient_wall_space === false ? (
+					{errors?.sufficient_wall_space ? (
+						<p className='error'>{errors?.sufficient_wall_space}</p>
+					) : null}
+					{data.sufficient_wall_space === 'no' ? (
 						<div className='error'>
 							<p>
 								We’re sorry, but at least minimum wall space clearance above the
@@ -141,11 +150,14 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 						<DropDownSelectBox
 							options={options}
 							value={data.where_to_install}
-							title='Where to install?'
+							placeholder='Where to install?'
 							onChange={newValue =>
 								dispatch({ where_to_install: newValue.value })
 							}
 						/>
+						{errors?.where_to_install ? (
+							<p className='error'>{errors?.where_to_install}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8 file-upload position-relative'>
@@ -183,17 +195,23 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 							</>
 						)}
 					</div>
+					{errors?.installation_location_photo ? (
+						<p className='error'>{errors?.installation_location_photo}</p>
+					) : null}
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
 					<div className='form_select_field z-4'>
 						<DropDownSelectBox
 							options={options}
 							value={data.material_of_wall}
-							title='Material of Wall'
+							placeholder='Material of Wall'
 							onChange={newValue =>
 								dispatch({ material_of_wall: newValue.value })
 							}
 						/>
+						{errors?.material_of_wall ? (
+							<p className='error'>{errors?.material_of_wall}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
@@ -201,32 +219,38 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 						<DropDownSelectBox
 							options={options}
 							value={data.floor_type}
-							title='Floor Type'
+							placeholder='Floor Type'
 							onChange={newValue => dispatch({ floor_type: newValue.value })}
 						/>
 					</div>
+					{errors?.floor_type ? (
+						<p className='error'>{errors?.floor_type}</p>
+					) : null}
 				</div>
 				<div className='col-12 col-md-6 mb-8 mb-md-0'>
 					<div className='form_select_field z-2'>
 						<DropDownSelectBox
 							options={options}
 							value={data.wireless_wired_internet}
-							title='Wireless or Wired Internet'
+							placeholder='Wireless or Wired Internet'
 							onChange={newValue =>
 								dispatch({ wireless_wired_internet: newValue.value })
 							}
 						/>
+						{errors?.wireless_wired_internet ? (
+							<p className='error'>{errors?.wireless_wired_internet}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='form_select_field z-1'>
-						<CustomInput
+						<input
 							type='date'
 							placeholder={'Expected Installation Date'}
 							required={true}
-							className='date_input'
-							value={data.expected_date}
-							onChange={newValue => dispatch({ expected_date: newValue })}
+							className='form-container-inner-input date_input'
+							value={data.expected_date && data.expected_date}
+							onChange={e => dispatch({ expected_date: e.target.value })}
 						/>
 						<div className='tip mt-4'>
 							<p>
@@ -235,6 +259,9 @@ const InstallationInfoForm = ({ data, dispatch }) => {
 								damage).
 							</p>
 						</div>
+						{errors?.expected_date ? (
+							<p className='error'>{errors?.expected_date}</p>
+						) : null}
 					</div>
 				</div>
 			</div>

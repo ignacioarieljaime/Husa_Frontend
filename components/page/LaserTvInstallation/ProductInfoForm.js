@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 import { GetProductsListNewApi } from 'services/Product'
 import CardLayout from './CardLayout'
 
-const ProductInfoForm = ({ data, dispatch }) => {
+const ProductInfoForm = ({ data, dispatch, errors }) => {
 	const [products, setProducts] = useState(null)
 	const [filters, setFilters] = useState(null)
 	const [screenSizes, setScreenSizes] = useState(null)
@@ -196,6 +196,9 @@ const ProductInfoForm = ({ data, dispatch }) => {
 								dispatch({ laser_tv_screen_size: newValue.value })
 							}
 						/>
+						{errors?.laser_tv_screen_size ? (
+							<p className='error'>{errors?.laser_tv_screen_size}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
@@ -208,6 +211,9 @@ const ProductInfoForm = ({ data, dispatch }) => {
 								dispatch({ laser_tv_model_number: newValue.value })
 							}
 						/>
+						{errors?.laser_tv_model_number ? (
+							<p className='error'>{errors?.laser_tv_model_number}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8 mb-md-0'>
@@ -220,6 +226,9 @@ const ProductInfoForm = ({ data, dispatch }) => {
 								dispatch({ purchased_from: newValue.value })
 							}
 						/>
+						{errors?.purchased_from ? (
+							<p className='error'>{errors?.purchased_from}</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 file-upload position-relative'>
@@ -257,6 +266,9 @@ const ProductInfoForm = ({ data, dispatch }) => {
 							</>
 						)}
 					</div>
+					{errors?.receipt_image ? (
+						<p className='error'>{errors?.receipt_image}</p>
+					) : null}
 				</div>
 			</div>
 		</CardLayout>
