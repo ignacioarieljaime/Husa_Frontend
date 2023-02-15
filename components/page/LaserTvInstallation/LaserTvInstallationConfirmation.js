@@ -29,11 +29,14 @@ const LaserTvInstallationConfirmation = ({ data }) => {
 				style={{ maxWidth: '800px' }}>
 				{!isLoading ? (
 					<div className='status-container'>
-						<img
-							className='status-image'
-							src={content?.image?.src}
-							alt={content?.image?.alt}
-						/>
+						{content?.image?.src ? (
+							<img
+								className='status-image'
+								src={content?.image?.src}
+								alt={content?.image?.alt}
+							/>
+						) : null}
+						<h2 className='title'>{content?.title?.value}</h2>
 						<div
 							dangerouslySetInnerHTML={{
 								__html: content?.text?.value
