@@ -17,7 +17,7 @@ const LaserTvInstallationConfirmation = ({ data }) => {
 		} else {
 			toast.error('Token not found')
 			setTimeout(() => {
-				router.push('no-page-found')
+				router.push('/')
 			}, 3000)
 		}
 	}, [])
