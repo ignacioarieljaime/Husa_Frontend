@@ -21,13 +21,19 @@ const ProductItemV2 = ({ data }) => {
 	const [url, setUrl] = useState()
 
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
-	const [screenSize, setScreenSize] = useState()
+	const [screenSize, setScreenSize] = useState(null)
+	useEffect(() => {
+		if (Array.isArray(data?.products)) {
+			let addSizeToItem = data?.products.map(item => ({
+				...item,
+				size: item?.value ? Number(item?.value.replaceAll('"', '')) : 0
+			}))
+			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
+		}
+	}, [])
+
 	useEffect(() => {
 		setUrl(RouteHandler(currentItem.id, 'product'))
-		setScreenSize(
-			currentItem.customFields.find(item => item.type_name === 'TV filters')
-				?.custom_fields
-		)
 	}, [currentItem])
 	return (
 		<>
@@ -48,9 +54,9 @@ const ProductItemV2 = ({ data }) => {
 						<p className='mb-7'>{currentItem.name}</p>
 					</div>
 
-					{Array.isArray(data?.products) && (
+					{screenSize && (
 						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center mb-8'>
-							{data?.products?.map(
+							{screenSize.map(
 								(item, index) =>
 									item.value && (
 										<button
