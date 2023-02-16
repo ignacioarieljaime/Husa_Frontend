@@ -2,11 +2,19 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 
-function CustomSelectBox({ required = false, title, options, onChange, className = '' }) {
+function CustomSelectBox({
+	required = false,
+	title,
+	options,
+	onChange,
+	className = ''
+}) {
 	const [value, setValue] = useState(title)
 	return (
 		<div className={`custom-select-box ${className}`}>
-			<div className={`form-container-inner-input select-container ${className}`} tabIndex='1'>
+			<div
+				className={`form-container-inner-input select-container ${className}`}
+				tabIndex='1'>
 				<div className={`select-box-item ${className}`}>
 					<input
 						className='input'
@@ -17,13 +25,18 @@ function CustomSelectBox({ required = false, title, options, onChange, className
 						checked='checked'
 						disabled
 					/>
-					<p className={`input-text d-flex align-items-center justify-content-between ${className}`}>
+					<p
+						className={`input-text d-flex align-items-center justify-content-between ${className}`}>
 						{options === 'loading' ? (
 							'loading ...'
 						) : (
 							<>
 								{value}
-								<FontAwesomeIcon icon={faChevronDown} size={'xs'} />
+								<FontAwesomeIcon
+									style={{ width: '10px' }}
+									icon={faChevronDown}
+									size={'1x'}
+								/>
 							</>
 						)}
 					</p>

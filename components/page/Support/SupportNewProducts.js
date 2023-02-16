@@ -30,6 +30,7 @@ const SupportNewProducts = ({ data }) => {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${_value}&type=support&status[]=3&status[]=1`
 			)
+			console.log(response.data.data)
 			setSearchProductsList(response.data.data)
 		} catch (error) {
 			setSearchProductsList([])
@@ -49,7 +50,11 @@ const SupportNewProducts = ({ data }) => {
 				let response = await axios.get(
 					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${_categoryId}&type=support&status[]=3&status[]=1`
 				)
-				setSearchProductsList(response.data.data)
+				setSearchProductsList(
+					response?.data?.data.sort((a, b) =>
+						a.product.model.localeCompare(b.product.model)
+					)
+				)
 			} catch (error) {
 				setSearchProductsList([])
 				console.log(error)

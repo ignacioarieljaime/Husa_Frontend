@@ -67,7 +67,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 		try {
 			let response = await GetSeriesModelsApi(
 				router,
-				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}&status[]=1&status[]=3`
 			)
 			if (response.status === 200) {
 				setModels(
@@ -92,7 +92,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket was sent successfully', { toastId: 'submit_success' })
+				toast.success('ticket was sent successfully', {
+					toastId: 'submit_success'
+				})
 				e.target.reset()
 				setDisabled(true)
 				setFile(null)
@@ -194,16 +196,20 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						{errors?.product_category && errors?.product_category[0]}
 					</div>
 				</div>
-				<div className='col-12 mb-10 '>
-					<CustomSelectBox
-						options={models}
-						onChange={_value => dataSchemaHandler('product_model', _value.name)}
-						title={'PLEASE SELECT YOUR MODEL'}
-					/>
-					<div className='input_error_message'>
-						{errors?.product_model && errors?.product_model[0]}
+				{models.length !== 0 && (
+					<div className='col-12 mb-10 '>
+						<CustomSelectBox
+							options={models}
+							onChange={_value =>
+								dataSchemaHandler('product_model', _value.name)
+							}
+							title={'PLEASE SELECT YOUR MODEL'}
+						/>
+						<div className='input_error_message'>
+							{errors?.product_model && errors?.product_model[0]}
+						</div>
 					</div>
-				</div>
+				)}
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomInput
 						onChange={_value =>
@@ -223,7 +229,11 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						data-toggle='modal'
 						onClick={() => setModalCondition(true)}
 						data-target='#serial-numbers'>
-						<FontAwesomeIcon icon={faCircleInfo} size={'xl'} />
+						<FontAwesomeIcon
+							icon={faCircleInfo}
+							style={{ width: '25px' }}
+							size={'xl'}
+						/>
 						<span className='ms-2'>Where do I find the serial number?</span>
 					</button>
 				</div>
