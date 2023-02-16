@@ -1,6 +1,6 @@
 import axios from 'axios'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Spinner from 'components/common/Spinner'
 import PinIcon from 'components/icons/PinIcon'
 import PhoneIcon from 'components/icons/PhoneIcon'
@@ -21,10 +21,20 @@ const ChannelAdvisorLocally = ({ model }) => {
 	const [search, setSearch] = useState()
 	const [cities, setCities] = useState(null)
 	const [data, setData] = useState(null)
+	const [onlineRetailer, setOnlineRetailer] = useState([])
 	const [position, setPosition] = useState({
 		lat: -3.745,
 		lng: -38.523
 	})
+	const [zoom, setZoom] = useState(9)
+
+	useEffect(() => {
+		const delayDebounceFn = setTimeout(() => {
+			if (search) getCity()
+		}, 500)
+
+		return () => clearTimeout(delayDebounceFn)
+	}, [search, distance])
 
 	const getCity = async () => {
 		setCities('loading')
@@ -40,6 +50,7 @@ const ChannelAdvisorLocally = ({ model }) => {
 	}
 	const getChannelAdvisorData = async data => {
 		setData('loading')
+		setZoom(9)
 		setPosition({
 			lat: data.lat,
 			lng: data.lon
@@ -56,6 +67,7 @@ const ChannelAdvisorLocally = ({ model }) => {
 				}
 			)
 			setData(response.data.LocalRetailerStores)
+			setOnlineRetailer(response.data.OnlineRetailers)
 		} catch (error) {
 			setData([])
 			console.log(error)
@@ -75,9 +87,10 @@ const ChannelAdvisorLocally = ({ model }) => {
 						}}
 						placeholder='Type Location'
 					/>
-					<button onClick={getCity}>
+
+					<span>
 						<MagnifierIcon stroke={'#000'} />
-					</button>
+					</span>
 					{cities && (
 						<div>
 							{cities === 'loading' ? (
@@ -107,16 +120,24 @@ const ChannelAdvisorLocally = ({ model }) => {
 					<option value={50}>50 Miles</option>
 				</select>
 			</div>
-			<ChannelAdvisorGoogleMap position={position} markers={data} />
+			<ChannelAdvisorGoogleMap position={position} zoom={zoom} markers={data} />
 
 			<div className='channel_advisor_locally_retailers mt-5'>
 				{data === 'loading' ? (
 					<div className='mt-5'>
 						<Spinner />
 					</div>
-				) : Array.isArray(data) && data.length  ? (
+				) : Array.isArray(data) && data.length ? (
 					data.map((item, index) => (
-						<div className='item'>
+						<div
+							onClick={() => {
+								setPosition({
+									lat: item.Latitude,
+									lng: item.Longitude
+								})
+								setZoom(15)
+							}}
+							className='item'>
 							<div className='pin_detail'>
 								<div className='pin'>
 									<PinIcon />
@@ -137,7 +158,9 @@ const ChannelAdvisorLocally = ({ model }) => {
 										<PhoneIcon />
 										{item.Phone}
 									</span>
-									<a href='#'>
+									<a
+										target={'_blank'}
+										href={`https://www.google.com/maps/search/?api=1&query=${item.Latitude},${item.Longitude}`}>
 										<CarIcon /> Directions
 									</a>
 								</div>
@@ -145,17 +168,31 @@ const ChannelAdvisorLocally = ({ model }) => {
 							<div className='check_retailer'>
 								<h5>Check Retailer</h5>
 								<h6>Assume Availability</h6>
-								<p>Assume Availability</p>
+								{item.Availability === 'AssumeAvailability' ? (
+									<p>Assume Availability</p>
+								) : (
+									<p className='error'>Out of Stock</p>
+								)}
 
 								<span className='clock'>
 									<ClockIcon />
 									open: {item.Hours.split(',')[0].slice(2, 7)}-
 									{item.Hours.split(',')[0].slice(8, 13)}
 								</span>
-								<span className='clock'>
-									<OpenNewIcon />
-									Buy Online
-								</span>
+								{onlineRetailer.find(
+									retailer => retailer.DisplayName === item.RetailerName
+								)?.ProductLink && (
+									<a
+										href={
+											onlineRetailer.find(
+												retailer => retailer.DisplayName === item.RetailerName
+											)?.ProductLink
+										}
+										className={`clock`}>
+										<OpenNewIcon />
+										Buy Online
+									</a>
+								)}
 							</div>
 						</div>
 					))

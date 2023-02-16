@@ -2564,6 +2564,7 @@ header {
 			padding: 0 5px 0 15px;
 			height: 45px;
 		}
+		span,
 		button {
 			flex-shrink: 0;
 			border: none;
@@ -2691,6 +2692,19 @@ header {
 				margin: 0;
 				text-align: left;
 			}
+			a {
+				font-size: 13px;
+				color: #00a6a5;
+				text-align: left;
+				display: flex;
+				gap: 5px;
+				text-decoration: none;
+			}
+
+			.error {
+				color: red !important;
+				font-size: 16px;
+			}
 
 			span {
 				margin: 5px 0;
@@ -2701,7 +2715,6 @@ header {
 				justify-content: flex-start;
 				font-size: 10px;
 				color: #3c2a28;
-
 			}
 		}
 	}
