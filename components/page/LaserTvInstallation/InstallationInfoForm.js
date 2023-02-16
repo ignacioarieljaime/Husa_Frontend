@@ -16,14 +16,67 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	const [imageLoading, setImageLoading] = useState(null)
 	const [file, setFile] = useState(null)
 
-	const options = [
+	const installationLocation = [
 		{
-			name: 'Newest',
-			value: 'newest'
+			name: 'Basement',
+			value: 'basement'
 		},
 		{
-			name: 'Oldest',
-			value: 'oldest'
+			name: 'Family room',
+			value: 'family_room'
+		},
+		{
+			name: 'Theater room',
+			value: 'theater_room'
+		}
+	]
+
+	const materialOfWall = [
+		{
+			name: 'Drywall',
+			value: 'drywall'
+		},
+		{
+			name: 'Concrete',
+			value: 'concrete'
+		},
+		{
+			name: 'Wood',
+			value: 'wood'
+		},
+		{
+			name: 'Plaster',
+			value: 'plaster'
+		}
+	]
+
+	const FloorType = [
+		{
+			name: 'Wood',
+			value: 'wood'
+		},
+		{
+			name: 'Carpet',
+			value: 'carpet'
+		},
+		{
+			name: 'Tile',
+			value: 'tile'
+		},
+		{
+			name: 'High gloss floor',
+			value: 'high_gloss_floor'
+		}
+	]
+
+	const internetType = [
+		{
+			name: 'Wireless',
+			value: 'wireless'
+		},
+		{
+			name: 'Wired',
+			value: 'wired'
 		}
 	]
 
@@ -146,9 +199,9 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8'></div>
 				<div className='col-12 col-md-6 mb-8'>
-					<div className='form_select_field z-1'>
+					<div className='form_select_field z-4'>
 						<DropDownSelectBox
-							options={options}
+							options={installationLocation}
 							value={data.where_to_install}
 							placeholder='Where to install?'
 							onChange={newValue =>
@@ -200,9 +253,9 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					) : null}
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
-					<div className='form_select_field z-4'>
+					<div className='form_select_field z-3'>
 						<DropDownSelectBox
-							options={options}
+							options={materialOfWall}
 							value={data.material_of_wall}
 							placeholder='Material of Wall'
 							onChange={newValue =>
@@ -215,9 +268,9 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					</div>
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
-					<div className='form_select_field z-3'>
+					<div className='form_select_field z-2'>
 						<DropDownSelectBox
-							options={options}
+							options={FloorType}
 							value={data.floor_type}
 							placeholder='Floor Type'
 							onChange={newValue => dispatch({ floor_type: newValue.value })}
@@ -228,9 +281,9 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					) : null}
 				</div>
 				<div className='col-12 col-md-6 mb-8 mb-md-0'>
-					<div className='form_select_field z-2'>
+					<div className='form_select_field z-1'>
 						<DropDownSelectBox
-							options={options}
+							options={internetType}
 							value={data.wireless_wired_internet}
 							placeholder='Wireless or Wired Internet'
 							onChange={newValue =>
@@ -243,7 +296,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					</div>
 				</div>
 				<div className='col-12 col-md-6'>
-					<div className='form_select_field z-1'>
+					<div className='form_select_field'>
 						<input
 							type='date'
 							placeholder={'Expected Installation Date'}
