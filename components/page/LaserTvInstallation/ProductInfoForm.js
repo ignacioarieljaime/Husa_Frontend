@@ -4,108 +4,90 @@ import axios from 'axios'
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import Spinner from 'components/common/Spinner'
 import LaserTv from 'components/icons/LaserTv'
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
-import { GetProductsListNewApi } from 'services/Product'
 import CardLayout from './CardLayout'
 
 const ProductInfoForm = ({ data, dispatch, errors }) => {
-	const [products, setProducts] = useState(null)
-	const [filters, setFilters] = useState(null)
-	const [screenSizes, setScreenSizes] = useState(null)
-	const [models, setModels] = useState(null)
 	const [imageLoading, setImageLoading] = useState(null)
 	const [file, setFile] = useState(null)
-	const router = useRouter()
 
-	useEffect(() => {
-		getProductWithCategory()
-	}, [])
-
-	useEffect(() => {
-		if (filters && filters.length > 0) {
-			const sizes = filters[0]?.filters
-				.find(filter => filter.id === 3)
-				?.filter_values.filter(value => value?.title)
-				.map(item => ({ name: item.title, value: item.title.slice(0, 3) }))
-			if (sizes) setScreenSizes(sizes)
+	const screenSizes = [
+		{
+			name: '90"',
+			value: '90'
+		},
+		{
+			name: '100"',
+			value: '100'
+		},
+		{
+			name: '120"',
+			value: '120'
 		}
-		if (products) {
-			const models = []
-			products.map(product => {
-				if (Array.isArray(product?.products)) {
-					models = [
-						...models,
-						...product?.products.map(item => ({
-							name: item?.product?.model,
-							value: item?.product?.model
-						}))
-					]
-				} else {
-					models.push({
-						name: product?.products?.product?.model,
-						value: product?.products?.product?.model
-					})
-				}
-			})
-			setModels(models)
+	]
+	const models = [
+		{
+			name: '120L9G-CINE120A',
+			value: '120L9G-CINE120A'
+		},
+		{
+			name: '100L9G-CINE100A',
+			value: '100L9G-CINE100A'
+		},
+		{
+			name: '100L9G-DLT100B',
+			value: '100L9G-DLT100B'
+		},
+		{
+			name: '120L5G-CINE120A',
+			value: '120L5G-CINE120A'
+		},
+		{
+			name: '100L5G-CINE100A',
+			value: '100L5G-CINE100A'
+		},
+		{
+			name: '100L5G-DLT100B',
+			value: '100L5G-DLT100B'
+		},
+		{
+			name: '90L5G-DLT90B',
+			value: '90L5G-DLT90B'
 		}
-	}, [products])
-
-	const getProductWithCategory = async () => {
-		try {
-			let response = await GetProductsListNewApi(router, 3, [
-				{ id: 7, type: 'CF', values: ['Laser TV'] }
-			])
-			console.log(response.data)
-			setProducts(response.data.data)
-			setFilters(response.data.filterTypes)
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
+	]
 	const retailers = [
-		{
-			name: 'Curacao',
-			value: 'curacao'
-		},
-		{
-			name: 'Exchange',
-			value: 'exchange'
-		},
 		{
 			name: 'Amazon',
 			value: 'amazon'
+		},
+		{
+			name: 'Adir international',
+			value: 'adir_international'
 		},
 		{
 			name: 'Best Buy',
 			value: 'best_buy'
 		},
 		{
-			name: 'walmart.com',
-			value: 'walmart'
+			name: 'BJs',
+			value: 'bjs'
 		},
 		{
-			name: 'Brandsmart Usa',
+			name: 'B&H',
+			value: 'b&h'
+		},
+		{
+			name: 'Beach Camera',
+			value: 'beach_camera'
+		},
+		{
+			name: 'Brandsmart USA',
 			value: 'brandsmart_usa'
 		},
 		{
-			name: 'costco.com',
+			name: 'Costco',
 			value: 'costco'
-		},
-		{
-			name: 'Walts',
-			value: 'walts'
-		},
-		{
-			name: 'Conns',
-			value: 'conns'
-		},
-		{
-			name: 'Target',
-			value: 'target'
 		},
 		{
 			name: 'Crutchfield',
@@ -116,44 +98,52 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 			value: 'electronic_express'
 		},
 		{
-			name: 'Newegg',
-			value: 'eewegg'
+			name: 'Electroline wholesale',
+			value: 'electroline_wholesale'
 		},
 		{
-			name: 'PC Richard',
-			value: 'pc_richard'
+			name: 'Harco',
+			value: 'harco'
 		},
 		{
-			name: 'BJs',
-			value: 'bjs'
+			name: 'Hendley',
+			value: 'hendley'
+		},
+		{
+			name: 'Kings Appliance',
+			value: 'kings_appliance'
+		},
+		{
+			name: 'La curacao',
+			value: 'la_curacao'
+		},
+		{
+			name: 'Project Screen',
+			value: 'project_screen'
+		},
+		{
+			name: 'P.C Richard&Son',
+			value: 'pc_richard&son'
+		},
+		{
+			name: 'Samsclub',
+			value: 'samsclub'
+		},
+		{
+			name: 'Value Electronics',
+			value: 'value_electronics'
+		},
+		{
+			name: 'Walts',
+			value: 'walts'
 		},
 		{
 			name: 'World Wide Stereo',
 			value: 'world_wide_stereo'
 		},
 		{
-			name: 'Projector Screen',
-			value: 'projector_screen'
-		},
-		{
-			name: 'BH photo video',
-			value: 'bh_photo_video'
-		},
-		{
-			name: 'valueelectronics.com',
-			value: 'valueelectronics'
-		},
-		{
-			name: 'lowes.com',
-			value: 'lowes'
-		},
-		{
-			name: 'skybygramophone.com',
-			value: 'skybygramophone'
-		},
-		{
-			name: 'Beach Camera',
-			value: 'beach_camera'
+			name: 'Others',
+			value: 'others'
 		}
 	]
 

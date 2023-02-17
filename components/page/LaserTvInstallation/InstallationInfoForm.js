@@ -22,18 +22,30 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'basement'
 		},
 		{
+			name: 'Living room',
+			value: 'living_room'
+		},
+		{
+			name: 'Bedroom',
+			value: 'bedroom'
+		},
+		{
 			name: 'Family room',
 			value: 'family_room'
 		},
 		{
 			name: 'Theater room',
 			value: 'theater_room'
+		},
+		{
+			name: 'Others',
+			value: 'others'
 		}
 	]
 
 	const materialOfWall = [
 		{
-			name: 'Drywall',
+			name: 'Drywall (depth > 0.4inch)',
 			value: 'drywall'
 		},
 		{
@@ -41,12 +53,16 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'concrete'
 		},
 		{
-			name: 'Wood',
-			value: 'wood'
+			name: 'Stone',
+			value: 'stone'
 		},
 		{
 			name: 'Plaster',
 			value: 'plaster'
+		},
+		{
+			name: 'Others',
+			value: 'others'
 		}
 	]
 
@@ -64,8 +80,16 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'tile'
 		},
 		{
+			name: 'Marble',
+			value: 'marble'
+		},
+		{
 			name: 'High gloss floor',
 			value: 'high_gloss_floor'
+		},
+		{
+			name: 'Others',
+			value: 'others'
 		}
 	]
 
@@ -75,8 +99,12 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'wireless'
 		},
 		{
-			name: 'Wired',
-			value: 'wired'
+			name: 'Wire',
+			value: 'wire'
+		},
+		{
+			name: 'Others',
+			value: 'others'
 		}
 	]
 
