@@ -35,9 +35,9 @@ function RegisterForm({ data }) {
 		email: null,
 		phone_number: null,
 		postal_code: null,
-		product_category: null,
-		product_model: null,
-		product_serial_number: null,
+		product_category: router.query?.ProductCategory,
+		product_model: router.query?.InternalModelNumber,
+		product_serial_number: router.query?.SerialNumber,
 		purchased_from: null,
 		date_of_purchase: null,
 		receipt_image: null,
@@ -47,7 +47,7 @@ function RegisterForm({ data }) {
 	const [tickedSended, setTickedSended] = useState(null)
 
 	useEffect(() => {
-		getCategories()
+		!router.query?.ProductCategory && getCategories()
 	}, [])
 
 	const dataSchemaHandler = (_key, _value) => {
@@ -121,10 +121,25 @@ function RegisterForm({ data }) {
 		setErrors(null)
 		setLoading(true)
 		try {
-			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
-				{ ...dataSchema }
-			)
+			let response = router.query?.ProductCategory
+				? await axios.post(
+						`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63a195c3610ca`,
+						{
+							FirstName: dataSchema.first_name,
+							InternalModelNumber: dataSchema.product_model,
+							LastName: dataSchema.last_name,
+							ModelNumber: dataSchema.product_model,
+							PostalZipCode: dataSchema.postal_code,
+							ProductType: dataSchema.product_category,
+							SerialNumber: dataSchema.product_serial_number,
+							Email: dataSchema.email
+						}
+				  )
+				: await axios.post(
+						`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
+						{ ...dataSchema }
+				  )
+
 			if (response.status === 200) {
 				e.target.reset()
 				resetData()
@@ -161,9 +176,9 @@ function RegisterForm({ data }) {
 			email: null,
 			phone_number: null,
 			postal_code: null,
-			product_category: null,
-			product_model: null,
-			product_serial_number: null,
+			product_category: router.query?.ProductCategory,
+			product_model: router.query?.InternalModelNumber,
+			product_serial_number: router.query?.SerialNumber,
 			purchased_from: null,
 			date_of_purchase: null,
 			receipt_image: null,
@@ -210,20 +225,31 @@ function RegisterForm({ data }) {
 					onSubmit={submitData}
 					className='form-container-inner row active'
 					id='form-tab-1'>
-					<div className='col-12 mb-10 custom-select-box'>
-						<CustomSelectBox
-							title={'PLEASE SELECT YOUR PRODUCT'}
-							required={true}
-							options={categories}
-							onChange={_value => {
-								dataSchemaHandler('product_category', _value.name)
-								getSeriesModels(_value.id)
-							}}
-						/>
-						<div className='input_error_message'>
-							{errors?.product_category && errors?.product_category[0]}
+					{router.query?.ProductCategory ? (
+						<div className='col-12  mb-10'>
+							<CustomInput
+								placeholder={'SERIAL NUMBER'}
+								required={true}
+								disabled={dataSchema?.product_category}
+								value={dataSchema?.product_category}
+							/>
 						</div>
-					</div>
+					) : (
+						<div className='col-12 mb-10 custom-select-box'>
+							<CustomSelectBox
+								title={'PLEASE SELECT YOUR PRODUCT'}
+								required={true}
+								options={categories}
+								onChange={_value => {
+									dataSchemaHandler('product_category', _value.name)
+									getSeriesModels(_value.id)
+								}}
+							/>
+							<div className='input_error_message'>
+								{errors?.product_category && errors?.product_category[0]}
+							</div>
+						</div>
+					)}
 
 					{series?.length !== 0 && (
 						<div className='col-12 mb-10 custom-select-box'>
@@ -241,7 +267,16 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)}
-					{models?.length !== 0 && (
+					{router.query?.InternalModelNumber ? (
+						<div className='col-12  mb-10'>
+							<CustomInput
+								placeholder={'SERIAL NUMBER'}
+								required={true}
+								disabled={dataSchema?.product_model}
+								value={dataSchema?.product_model}
+							/>
+						</div>
+					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={'PLEASE SELECT YOUR MODEL'}
@@ -255,12 +290,14 @@ function RegisterForm({ data }) {
 								{errors?.product_model && errors?.product_model[0]}
 							</div>
 						</div>
-					)}
+					) : null}
 
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
 							placeholder={'SERIAL NUMBER'}
 							required={true}
+							disabled={router.query?.SerialNumber}
+							value={router.query?.SerialNumber}
 							onChange={_value =>
 								dataSchemaHandler('product_serial_number', _value)
 							}
@@ -271,7 +308,11 @@ function RegisterForm({ data }) {
 							className='modal-btn'
 							type='button'
 							onClick={() => setModalCondition(true)}>
-							<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
+							<FontAwesomeIcon
+								icon={faCircleInfo}
+								style={{ width: '25px' }}
+								size={'xl'}
+							/>
 							<span className='ms-2'> Where do I find the serial number?</span>
 						</button>
 					</div>
