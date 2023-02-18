@@ -157,7 +157,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-4'>
 						<DropDownSelectBox
 							options={states}
-							value={states.find(state => state.value === data.state)?.name}
+							value={data.state}
 							placeholder='State'
 							onChange={newValue => dispatch({ state: newValue.value })}
 						/>
