@@ -37,7 +37,11 @@ const DropDownSelectBox = ({
 				{prefixIcon ? <span className='me-3'>{prefixIcon}</span> : null}
 				{title}
 				{!value && placeholder}
-				{typeof value === 'string' ? value : value?.name ? value.name : ''}
+				{typeof value === 'string'
+					? options.find(option => option?.value === value)?.name
+					: value?.name
+					? value.name
+					: ''}
 				<span className='arrow ms-auto'>
 					<FontAwesomeIcon icon={faChevronDown} />
 				</span>
