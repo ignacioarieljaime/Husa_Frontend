@@ -9,7 +9,9 @@ function ProductStaticContent({ data }) {
 	return (
 		<div id={data.name + data.id} className='product_static_content'>
 			<article className='article'>
-				<h3>{structure.title.value}</h3>
+				<h4 style={{ fontSize: '48px', lineHeight: 'unset' }}>
+					{structure.title.value}
+				</h4>
 				<div
 					dangerouslySetInnerHTML={{
 						__html: text

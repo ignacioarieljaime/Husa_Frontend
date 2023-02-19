@@ -41,11 +41,11 @@ function Footer() {
 				<div className='row'>
 					<div className='col-12 col-xxl-6 full-width-border-sm'>
 						<div className='row align-items-start'>
-							<a
-								href='/pages/landing/index.html'
-								className='footer-logo px-0 mb-1 mb-md-11'>
-								<Logo color={'#009E91'} height={'14'} width={'86'} />
-							</a>
+							<Link href='/'>
+								<a className='footer-logo px-0 mb-1 mb-md-11'>
+									<Logo color={'#009E91'} height={'14'} width={'86'} />
+								</a>
+							</Link>
 
 							{footerData?.widgets?.columns.map((columns, index) => (
 								<div className='footer-nav px-0 px-md-3' key={index}>

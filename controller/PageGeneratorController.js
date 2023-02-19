@@ -10,8 +10,8 @@ import Layout from 'components/common/Layout/Layout';
 
 
 ${ComponentList.map(
-		item => `const ${item.name} = dynamic(() => import('${item.path}'))`
-	).join(';')}
+	item => `const ${item.name} = dynamic(() => import('${item.path}'))`
+).join(';')}
 
 
 function Index({data,pim}) {
@@ -25,9 +25,9 @@ function Index({data,pim}) {
 
 		<Layout>
 		<section> ${ComponentList.map(
-		componentItem =>
-			`{components.includes('${componentItem.name}') && <${componentItem.name} pim={pim} data={data.widgets.find(item => item.name === '${componentItem.name}')}/>}`
-	).join('')}</section>
+			componentItem =>
+				`{components.includes('${componentItem.name}') && <${componentItem.name} pim={pim} data={data.widgets.find(item => item.name === '${componentItem.name}')}/>}`
+		).join('')}</section>
 		</Layout>
 			
 	)
@@ -73,9 +73,18 @@ export async function getServerSideProps(context) {
 			return response.data
 		})
 		.catch(error => {
+			if (error?.response?.status === 404) {
+				return 404
+			}
 			console.error('Error:', error)
 			return null
 		})
+
+	if (pim === 404) {
+		return {
+			notFound: true
+		}
+	}
 
 	return { props: { data, pim } }	
 		`

@@ -20,12 +20,14 @@ function ProductFeatureWithImage({ data }) {
 						{structure?.littleTitle?.value}
 					</h4>
 
-					<h2
+					<h4
 						style={{
+							lineHeight: 'unset',
+							fontSize: '42px',
 							color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 						}}>
 						{structure?.title?.value}
-					</h2>
+					</h4>
 					<p
 						style={{
 							color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
