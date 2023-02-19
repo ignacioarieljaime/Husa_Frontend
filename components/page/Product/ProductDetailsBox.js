@@ -37,14 +37,15 @@ function ProductDetailsBox({ pim, data }) {
 			<div ref={spaceContainer} className='specs-container'>
 				{pim?.properties.map((item, index) => (
 					<div key={`specs-${index}`} className='discription-list mb-10'>
-						<h3
+						<h5
+							style={{ fontSize: '28px' }}
 							className={
 								structure?.theme?.value === 'light'
 									? 'text-black'
 									: 'text-white'
 							}>
 							{item.title}
-						</h3>
+						</h5>
 						<dl className='row m-0'>
 							{item.items.map((item, childIndex) => (
 								<ProductDetailLstItem

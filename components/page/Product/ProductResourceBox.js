@@ -8,7 +8,9 @@ function ProductResourceBox({ pim, data }) {
 	return (
 		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
 			<article className='article'>
-				<h2 className='my-10'>Resources</h2>
+				<h4 style={{ fontSize: '48px' }} className='my-10'>
+					Resources
+				</h4>
 			</article>
 			<ul>
 				{pim?.assets.map(

@@ -6,9 +6,11 @@ function ULEDTextBox({ data }) {
 		<section id={data?.name + data?.id}>
 			<div className='container-fluid px-7 py-14 p-md-20'>
 				<article className='row article'>
-					<h2 className='col-12 col-md-6 mb-7 my-md-auto px-0 px-md-8'>
+					<h4
+						style={{ fontSize: '42px', lineHeight: 'unset' }}
+						className='col-12 col-md-6 mb-7 my-md-auto px-0 px-md-8'>
 						{structure?.title?.value}
-					</h2>
+					</h4>
 
 					<div className='col-12 col-md-6 '>
 						{structure?.paragraphOne?.value && (

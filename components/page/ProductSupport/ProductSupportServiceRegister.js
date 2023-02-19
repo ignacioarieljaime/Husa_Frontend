@@ -140,7 +140,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 
 	return (
 		<>
-			<h3 className='text-center title mb-4'>{data?.secondTitle?.value}</h3>
+			<h4 className='text-center title mb-4'>{data?.secondTitle?.value}</h4>
 			{data?.secondSubtitle?.value && (
 				<p className='text-center fs-5 fw-normal mb-15'>
 					{data?.secondSubtitle?.value}

@@ -129,7 +129,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		<section id={data.name + data.id} className='border-bottom border-dark'>
 			<div className='container py-10'>
 				<div className='form-container mx-auto'>
-					<h3 className='text-center title mb-4'>{data?.title?.value}</h3>
+					<h4 className='text-center title mb-4'>{data?.title?.value}</h4>
 					<p className='text-center fs-5 fw-normal mb-15'>
 						{data?.subtitle?.value}
 					</p>
