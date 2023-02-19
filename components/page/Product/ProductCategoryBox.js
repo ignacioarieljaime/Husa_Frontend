@@ -29,7 +29,7 @@ function ProductCategoryBox({ data, pim }) {
 				id={data.name + data.id}
 				className='catalog-navbar'
 				ref={menu}
-				style={{ zIndex: fix ? 100005 : 10 }}>
+				style={{ zIndex: fix ? 999 : 10 }}>
 				<nav className=''>
 					<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 						<li className='me-md-auto'>
