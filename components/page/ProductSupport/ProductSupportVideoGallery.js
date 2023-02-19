@@ -38,8 +38,8 @@ const ProductSupportVideoGallery = ({ data }) => {
 							if (item.length === 3)
 								return (
 									<>
-										<div key={index} className='col-12 col-md-7 py-3'>
-											<div className='video_container h-100'>
+										<div key={index} className='col-12 col-md-8 py-3'>
+											<div className='video_container'>
 												<iframe
 													width='100%'
 													height='100%'
@@ -50,7 +50,7 @@ const ProductSupportVideoGallery = ({ data }) => {
 													allowFullScreen></iframe>
 											</div>
 										</div>
-										<div className='col-12 col-md-5 py-3'>
+										<div className='col-12 col-md-4 py-3'>
 											<div className='pb-3'>
 												<div className='video_container half mb-0'>
 													<iframe
@@ -94,6 +94,9 @@ const ProductSupportVideoGallery = ({ data }) => {
 									</div>
 								)
 						})}
+				</div>
+				<div className='text-end mt-5'>
+					<p>{content?.list?.value.length} videos</p>
 				</div>
 			</div>
 		</section>

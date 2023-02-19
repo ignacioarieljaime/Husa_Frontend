@@ -137,17 +137,20 @@
 		overflow-y: auto;
 		.video_container {
 			height: 0;
-			padding-top: 80%;
+			padding-top: 77%;
 			position: relative;
 			background-color: #ccc;
-			&.full_size{
+			&.full_size {
 				padding-top: 50%;
 			}
 			&.half {
-				padding-top: 60%;
+				padding-top: 76%;
 			}
 			@include mq(768) {
 				padding-top: 50% !important;
+			}
+			@include mq(575) {
+				padding-top: 70% !important;
 			}
 			iframe {
 				position: absolute;
