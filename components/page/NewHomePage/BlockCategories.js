@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
@@ -10,6 +10,9 @@ import CustomImage from '../../common/CustomImage'
 
 const BlockCategories = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
+	const navigationPrevRef = useRef(null)
+	const navigationNextRef = useRef(null)
+
 	useEffect(() => {
 		setText(structure?.title?.value)
 	}, [])
@@ -23,7 +26,11 @@ const BlockCategories = ({ data: { structure } }) => {
 					data-aos-duration='1000'
 					dangerouslySetInnerHTML={{ __html: text }}></h2>
 				<Swiper
-					navigation={true}
+					navigation={{
+						enabled: true,
+						prevEl: navigationPrevRef.current,
+						nextEl: navigationNextRef.current
+					}}
 					pagination={false}
 					spaceBetween={16}
 					slidesPerView={'auto'}
@@ -47,6 +54,20 @@ const BlockCategories = ({ data: { structure } }) => {
 							</Link>
 						</SwiperSlide>
 					))}
+					<div
+						data-aos='swiper-navigation'
+						data-aos-delay='1000'
+						data-aos-duration='300'
+						className='swiper-button-prev'
+						ref={navigationPrevRef}
+					/>
+					<div
+						data-aos='swiper-navigation'
+						data-aos-delay='1000'
+						data-aos-duration='300'
+						className='swiper-button-next'
+						ref={navigationNextRef}
+					/>
 				</Swiper>
 			</div>
 		</section>
