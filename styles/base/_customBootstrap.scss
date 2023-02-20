@@ -1358,7 +1358,7 @@ article:hover img.img-box-shadow-hover {
 /* navigation bar */
 
 .top-nav {
-	z-index: 1000;
+	z-index: 998;
 }
 .theme-dark {
 	background: #000;
@@ -1371,9 +1371,16 @@ article:hover img.img-box-shadow-hover {
 	transition: all 0.4s ease-in-out;
 }
 header {
-	.theme-light:hover {
-		background: #000;
-		color: #fff;
+	.theme-light {
+		&:hover {
+			background: #000;
+			color: #fff;
+		}
+
+		@include mq(768) {
+			background: #000;
+			color: #fff;
+		}
 	}
 }
 
@@ -2531,7 +2538,27 @@ header {
 		font-weight: 300;
 		padding-left: 10px;
 	}
-	.divider_bottom{
+	.divider_bottom {
 		border-bottom: solid 1px #ddd;
+	}
+}
+
+.landing_new_banner {
+	position: relative;
+	padding-top: 42%;
+	width: 100%;
+	height: 0;
+	.background {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	.content{
+		position: absolute;
+		left: 50%;
+		top: 20%;
+		transform: translate(-50%,-50%);
 	}
 }

@@ -116,6 +116,15 @@ header.blog {
 			}
 		}
 	}
+	@include mq(768) {
+		.navbar-brand {
+			svg {
+				path {
+					fill: #fff;
+				}
+			}
+		}
+	}
 
 	&.nav-absolute {
 		position: absolute;
@@ -161,6 +170,23 @@ header.blog {
 						}
 					}
 				}
+				&.nav-item-button[data-button='search'] svg path {
+					stroke: #fff;
+				}
+			}
+		}
+	}
+	@include mq(768) {
+		li {
+			&.nav-item-button {
+				&[data-button='menu'] {
+					svg {
+						path {
+							fill: #fff;
+						}
+					}
+				}
+
 				&.nav-item-button[data-button='search'] svg path {
 					stroke: #fff;
 				}
@@ -266,6 +292,10 @@ header.blog {
 
 		&.visible {
 			clip-path: inset(0 0 0 0);
+			.search_button{
+				opacity: 0;
+				cursor: default;
+			}
 		}
 	}
 	.search-box {

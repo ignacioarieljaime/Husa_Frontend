@@ -120,3 +120,53 @@
 		padding-right: 0;
 	}
 }
+.product_support_video_gallery {
+	max-width: 1200px;
+	padding: 100px 12px;
+
+	.title {
+		margin-bottom: 20px !important;
+
+		* {
+			font-size: 1.75rem;
+			font-weight: 400px;
+			line-height: 120%;
+		}
+	}
+
+	.videos {
+		height: 64vh;
+		overflow-y: auto;
+
+		.video_container {
+			height: 0;
+			padding-top: 77%;
+			position: relative;
+			background-color: #ccc;
+
+			&.full_size {
+				padding-top: 50%;
+			}
+
+			&.half {
+				padding-top: 76%;
+			}
+
+			@include mq(768) {
+				padding-top: 50% !important;
+			}
+
+			@include mq(575) {
+				padding-top: 70% !important;
+			}
+
+			iframe {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

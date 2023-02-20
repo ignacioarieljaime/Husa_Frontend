@@ -17,6 +17,7 @@
 		top: 0;
 		width: 100%;
 		height: 100%;
+		object-fit: cover;
 	}
 	.content {
 		position: absolute;
@@ -70,7 +71,7 @@
 	.text-content {
 		color: #ffffff;
 		text-align: center;
-		max-width: 760px;
+		max-width: 630px;
 		margin: 0 auto 30px;
 
 		h1,
@@ -85,13 +86,15 @@
 			letter-spacing: -0.02em;
 		}
 		p {
-			font-weight: 400;
+			font-weight: 300;
 			font-size: 16px;
 			line-height: 140%;
 			margin-bottom: 0;
 		}
 	}
 	.items {
+		max-width: 1200px;
+		margin: 0 auto;
 		.televisions-spotlight-item {
 			display: flex;
 			flex-direction: column;
@@ -261,7 +264,7 @@
 			// 	border-color: #232323 !important;
 			// }
 		}
-		*{
+		* {
 			transition: all 0.3s ease-in-out;
 		}
 		&.full-size {
@@ -445,7 +448,8 @@
 @media (max-width: 768px) {
 	.televisions-hero,
 	.televisions-banner {
-		padding-top: 60%;
+		padding-top: 0;
+		height: 400px;
 		.content {
 			bottom: 15%;
 			div * {
@@ -454,7 +458,6 @@
 		}
 	}
 	.televisions-banner {
-		padding-top: 70%;
 		.content {
 			left: calc(12px + 25%);
 			top: 40%;

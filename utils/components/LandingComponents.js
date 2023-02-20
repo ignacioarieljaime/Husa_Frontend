@@ -10,5 +10,9 @@ module.exports.LandingComponents = [
 	{
 		name: 'LandingVideoPlayer',
 		path: 'components/page/Landing/LandingVideoPlayer.js'
+	},
+	{
+		name: 'LandingStaticBanner',
+		path: 'components/page/Landing/LandingStaticBanner.js'
 	}
 ]
