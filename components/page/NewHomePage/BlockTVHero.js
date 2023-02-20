@@ -41,7 +41,7 @@ const BlockTVContainer = ({ structure }) => {
 				<div className='row mx-0'>
 					<div
 						ref={imageRef.ref}
-						className='col-12 col-md-6 col-lg-7 ps-0 pl-4 pl-md-0 image'>
+						className='col-12 col-lg-7 ps-0 pl-4 pl-lg-0 image'>
 						{content?.image?.src && (
 							<CustomImage
 								src={content?.image?.src}
@@ -51,7 +51,7 @@ const BlockTVContainer = ({ structure }) => {
 							/>
 						)}{' '}
 					</div>
-					<div className='col-12 col-md-5 content mt-8 mt-md-0'>
+					<div className='col-12 col-lg-5 content mt-8 mt-lg-0'>
 						<div className='p-1 p-lg-7'>
 							<div
 								className='subtitle gradient-text'

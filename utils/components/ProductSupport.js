@@ -2,7 +2,8 @@ module.exports.ProductSupportComponents = [
 	{
 		name: 'ProductSupportInfo',
 		path: 'components/page/ProductSupport/ProductSupportInfo'
-	},{
+	},
+	{
 		name: 'ProductSupportLinks',
 		path: 'components/page/ProductSupport/ProductSupportLinks'
 	},
@@ -29,5 +30,9 @@ module.exports.ProductSupportComponents = [
 	{
 		name: 'ProductSupportReplacement',
 		path: 'components/page/ProductSupport/ProductSupportReplacement'
+	},
+	{
+		name: 'ProductSupportVideoGallery',
+		path: 'components/page/ProductSupport/ProductSupportVideoGallery'
 	}
 ]
