@@ -70,13 +70,15 @@ function Header({ data: { structure }, notification }) {
 				style={asideMenu || searchInputCondition ? { zIndex: 1000 } : null}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
-						<Link href='/'>
-							<a className='navbar-brand m-0 col-xl-4 text-start'>
-								<Logo
-									color={structure.theme.value === 'light' ? '#000' : '#fff'}
-								/>
-							</a>
-						</Link>
+						<div className='m-0 col-xl-4 py-1'>
+							<Link href='/'>
+								<a className='navbar-brand m-0 text-start'>
+									<Logo
+										color={structure.theme.value === 'light' ? '#000' : '#fff'}
+									/>
+								</a>
+							</Link>
+						</div>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
 							{headerData?.widgets?.centerOption.map((item, index) => (
 								<NavBarDropDown key={`right-${index}`} data={item} />
