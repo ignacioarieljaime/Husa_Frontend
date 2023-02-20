@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-
 const ProductSupportVideoGallery = ({ data }) => {
 	const [grid, setGrid] = useState([])
 	const [content, setContent] = useState(null)
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
-
 	useEffect(() => {
 		const collection = []
 		const items = []
@@ -25,7 +23,6 @@ const ProductSupportVideoGallery = ({ data }) => {
 		})
 		setGrid(collection)
 	}, [content])
-
 	return (
 		<section id={data?.name + data?.id}>
 			<div className='product_support_video_gallery container'>
@@ -102,5 +99,4 @@ const ProductSupportVideoGallery = ({ data }) => {
 		</section>
 	)
 }
-
 export default ProductSupportVideoGallery

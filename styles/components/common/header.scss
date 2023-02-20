@@ -292,6 +292,10 @@ header.blog {
 
 		&.visible {
 			clip-path: inset(0 0 0 0);
+			.search_button{
+				opacity: 0;
+				cursor: default;
+			}
 		}
 	}
 	.search-box {
