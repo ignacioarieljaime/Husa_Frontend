@@ -196,7 +196,7 @@ function ServiceSupportForm({ formHandler }) {
 						data-toggle='modal'
 						onClick={() => setModalCondition(true)}
 						data-target='#serial-numbers'>
-						<FontAwesomeIcon icon={faCircleInfo} size={'xl'} />
+						<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
 						<span className='ms-2'>Where do I find the serial number?</span>
 					</button>
 				</div>

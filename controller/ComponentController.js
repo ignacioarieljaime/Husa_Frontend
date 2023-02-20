@@ -105,9 +105,18 @@ ${
 							return response.data.data
 						})
 						.catch(error => {
+							if (error?.response?.status === 404) {
+								return 404
+							}
 							console.error('Error:', error)
 							return null
 						})
+				
+					if (pim === 404) {
+						return {
+							notFound: true
+						}
+					}
 						if (data?.status?.name !== 'Published' || data?.status_id === 2) {
 							return {
 								notFound: true

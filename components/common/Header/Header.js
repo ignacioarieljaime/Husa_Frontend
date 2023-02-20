@@ -66,7 +66,8 @@ function Header({ data: { structure }, notification }) {
 					theme-${structure.theme.value}
 				 top-nav py-3 px-sm-4 fixed-top flex-wrap ${
 						!topNavCondition && 'search-mode'
-					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}>
+					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}
+				style={asideMenu || searchInputCondition ? { zIndex: 1000 } : null}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<Link href='/'>

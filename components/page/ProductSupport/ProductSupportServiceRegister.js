@@ -140,7 +140,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 
 	return (
 		<>
-			<h3 className='text-center title mb-4'>{data?.secondTitle?.value}</h3>
+			<h4 className='text-center title mb-4'>{data?.secondTitle?.value}</h4>
 			{data?.secondSubtitle?.value && (
 				<p className='text-center fs-5 fw-normal mb-15'>
 					{data?.secondSubtitle?.value}
@@ -231,7 +231,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						data-toggle='modal'
 						onClick={() => setModalCondition(true)}
 						data-target='#serial-numbers'>
-						<FontAwesomeIcon icon={faCircleInfo} size={'xl'} />
+						<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
 						<span className='ms-2'>Where do I find the serial number?</span>
 					</button>
 				</div>

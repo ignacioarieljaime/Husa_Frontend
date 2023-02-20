@@ -8,8 +8,8 @@ const ProductWhereToBuy = ({ pim, data }) => {
 		<>
 			<div id={data.name + data.id} class='buy-green-banner'>
 				<article className='article'>
-					<h2 className='my-1'>{structure?.title?.value}</h2>
-					<h2 className='mt-1'>{structure?.littleTitle?.value}</h2>
+					<h4 className='my-1'>{structure?.title?.value}</h4>
+					<h4 className='mt-1'>{structure?.littleTitle?.value}</h4>
 				</article>
 				<button
 					onClick={() => setChanelAdviserHandler(true)}

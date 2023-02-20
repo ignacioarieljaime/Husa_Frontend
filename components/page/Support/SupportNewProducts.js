@@ -21,16 +21,34 @@ const SupportNewProducts = ({ data }) => {
 	const [activeSearchBox, setActiveSearchBox] = useState(false)
 	const [searchProductsList, setSearchProductsList] = useState()
 	const [searchBoxCondition, setSearchBoxCondition] = useState(false)
+	const [searchValue, setSearchValue] = useState('')
 
 	let { structure } = data
+	useEffect(() => {
+		if (!searchBoxCondition) {
+			return
+		}
+		const timer = setTimeout(() => {
+			searchHandler()
+		}, 700)
 
-	const searchHandler = async _value => {
+		return () => clearTimeout(timer)
+	}, [searchValue])
+
+	const searchHandler = async () => {
 		setSearchProductsList('loading')
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${_value}&type=support&status[]=3&status[]=1`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${searchValue}&type=support&status[]=3&status[]=1`
 			)
-			setSearchProductsList(response.data.data)
+			let data = response.data.data.map(item => ({
+				route: item.route,
+				model: item?.product?.model
+			}))
+
+			setSearchProductsList(
+				data.sort((a, b) => a.model.localeCompare(b.model))
+			)
 		} catch (error) {
 			setSearchProductsList([])
 			console.log(error)
@@ -38,6 +56,8 @@ const SupportNewProducts = ({ data }) => {
 	}
 
 	const searchActiveHandler = async _categoryId => {
+		setSearchProductsList('loading')
+
 		if (_categoryId !== categoryId) {
 			setActiveSearchBox(false)
 			setCategoryId(_categoryId)
@@ -49,7 +69,14 @@ const SupportNewProducts = ({ data }) => {
 				let response = await axios.get(
 					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${_categoryId}&type=support&status[]=3&status[]=1`
 				)
-				setSearchProductsList(response.data.data)
+				let data = response.data.data.map(item => ({
+					route: item.route,
+					model: item?.product?.model
+				}))
+
+				setSearchProductsList(
+					data.sort((a, b) => a.model.localeCompare(b.model))
+				)
 			} catch (error) {
 				setSearchProductsList([])
 				console.log(error)
@@ -85,6 +112,7 @@ const SupportNewProducts = ({ data }) => {
 								<button
 									onClick={() => {
 										searchActiveHandler(item?.category?.value)
+										setSearchValue('')
 									}}
 									className={`slider-title n-btn outline-black ${
 										item?.category?.value === categoryId && 'bg-dark text-white'
@@ -111,7 +139,7 @@ const SupportNewProducts = ({ data }) => {
 										type='text'
 										className='border-bottom border-gray w-100 mt-2 border-0 py-2 px-3'
 										placeholder='search your model'
-										onChange={e => searchHandler(e.target.value)}
+										onChange={e => setSearchValue(e.target.value)}
 										onBlur={() =>
 											setTimeout(() => {
 												setSearchBoxCondition(false)
@@ -130,9 +158,7 @@ const SupportNewProducts = ({ data }) => {
 											searchProductsList.map((item, index) => (
 												<li key={'search-list-' + index}>
 													<Link href={item.route}>
-														<a className='text-primary decora'>
-															{item.product.model}
-														</a>
+														<a className='text-primary decora'>{item.model}</a>
 													</Link>
 												</li>
 											))

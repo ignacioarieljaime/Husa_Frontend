@@ -18,7 +18,7 @@ const ProductsBannerV2 = ({ data }) => {
 					className={'img-fluid'}
 				/>
 				<div className='heading-text'>
-					<article className='large_article'>
+					<article className='large_article grid_banner'>
 						<div
 							dangerouslySetInnerHTML={{ __html: content?.title?.value }}
 							className='fw-normal text-white px-3'></div>
