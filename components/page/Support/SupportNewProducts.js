@@ -25,9 +25,12 @@ const SupportNewProducts = ({ data }) => {
 
 	let { structure } = data
 	useEffect(() => {
+		if (!searchBoxCondition) {
+			return
+		}
 		const timer = setTimeout(() => {
 			searchHandler()
-		}, 1000)
+		}, 700)
 
 		return () => clearTimeout(timer)
 	}, [searchValue])
@@ -38,9 +41,13 @@ const SupportNewProducts = ({ data }) => {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${searchValue}&type=support&status[]=3&status[]=1`
 			)
-			let data = response.data.data
+			let data = response.data.data.map(item => ({
+				route: item.route,
+				model: item?.product?.model
+			}))
+
 			setSearchProductsList(
-				data.sort((a, b) => a.product.model.localeCompare(b.product.model))
+				data.sort((a, b) => a.model.localeCompare(b.model))
 			)
 		} catch (error) {
 			setSearchProductsList([])
@@ -49,6 +56,8 @@ const SupportNewProducts = ({ data }) => {
 	}
 
 	const searchActiveHandler = async _categoryId => {
+		setSearchProductsList('loading')
+
 		if (_categoryId !== categoryId) {
 			setActiveSearchBox(false)
 			setCategoryId(_categoryId)
@@ -60,7 +69,14 @@ const SupportNewProducts = ({ data }) => {
 				let response = await axios.get(
 					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${_categoryId}&type=support&status[]=3&status[]=1`
 				)
-				setSearchProductsList(response?.data?.data)
+				let data = response.data.data.map(item => ({
+					route: item.route,
+					model: item?.product?.model
+				}))
+
+				setSearchProductsList(
+					data.sort((a, b) => a.model.localeCompare(b.model))
+				)
 			} catch (error) {
 				setSearchProductsList([])
 				console.log(error)
@@ -96,6 +112,7 @@ const SupportNewProducts = ({ data }) => {
 								<button
 									onClick={() => {
 										searchActiveHandler(item?.category?.value)
+										setSearchValue('')
 									}}
 									className={`slider-title n-btn outline-black ${
 										item?.category?.value === categoryId && 'bg-dark text-white'
@@ -141,9 +158,7 @@ const SupportNewProducts = ({ data }) => {
 											searchProductsList.map((item, index) => (
 												<li key={'search-list-' + index}>
 													<Link href={item.route}>
-														<a className='text-primary decora'>
-															{item.product.model}
-														</a>
+														<a className='text-primary decora'>{item.model}</a>
 													</Link>
 												</li>
 											))
