@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // component
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 const ProductInfoSlider = dynamic(() => import('./ProductInfoSlider'))
@@ -9,6 +9,17 @@ const ProductSliderLinkButton = dynamic(() =>
 
 function ProductInfoAndSliderBox({ pim, data }) {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
+	const [screenSize, setScreenSize] = useState([])
+
+	useEffect(() => {
+		if (Array.isArray(pim?.series[0].values)) {
+			let addSizeToItem = pim?.series[0].values.map(item => ({
+				...item,
+				size: item?.title ? Number(item?.title.replaceAll('"', '')) : 0
+			}))
+			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
+		}
+	}, [])
 	return (
 		<section id={data.name + data.id} className='product single-product'>
 			<div className='' style={{ paddingTop: '4%' }}>
@@ -40,7 +51,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						</article>
 						<p className='text-primary-new mt-5'>Model: {pim?.model}</p>
 						<div className='model-toggle '>
-							{pim?.series[0]?.values.map(
+							{screenSize.map(
 								(item, index) =>
 									item.title && (
 										<ProductSliderLinkButton

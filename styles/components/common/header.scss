@@ -282,17 +282,18 @@ header.blog {
 		margin-top: 15px;
 		clip-path: inset(0 0 0 100%);
 		transition: all 0.3s 300ms ease-in-out;
-
-		.search_button:focus-within,
-		.search_button:focus-visible,
-		.search_button:hover {
-			border: none;
-			outline: none;
+		.search_button {
+			&:focus-within,
+			&:focus-visible,
+			&:hover {
+				border: none;
+				outline: none;
+			}
 		}
-
 		&.visible {
 			clip-path: inset(0 0 0 0);
-			.search_button{
+			.search_button {
+				display: none;
 				opacity: 0;
 				cursor: default;
 			}
