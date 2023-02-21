@@ -38,8 +38,8 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'theater_room'
 		},
 		{
-			name: 'Others',
-			value: 'others'
+			name: 'Other',
+			value: 'other'
 		}
 	]
 
@@ -61,8 +61,8 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'plaster'
 		},
 		{
-			name: 'Others',
-			value: 'others'
+			name: 'Other',
+			value: 'other'
 		}
 	]
 
@@ -88,8 +88,8 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'high_gloss_floor'
 		},
 		{
-			name: 'Others',
-			value: 'others'
+			name: 'Other',
+			value: 'other'
 		}
 	]
 
@@ -103,8 +103,8 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			value: 'wire'
 		},
 		{
-			name: 'Others',
-			value: 'others'
+			name: 'Other',
+			value: 'other'
 		}
 	]
 
@@ -230,6 +230,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-4'>
 						<DropDownSelectBox
 							options={installationLocation}
+							disabledOptions={[{ name: 'Where to install?' }]}
 							value={data.where_to_install}
 							placeholder='Where to install?'
 							onChange={newValue =>
@@ -284,6 +285,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-3'>
 						<DropDownSelectBox
 							options={materialOfWall}
+							disabledOptions={[{ name: 'Material of Wall' }]}
 							value={data.material_of_wall}
 							placeholder='Material of Wall'
 							onChange={newValue =>
@@ -299,6 +301,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-2'>
 						<DropDownSelectBox
 							options={FloorType}
+							disabledOptions={[{ name: 'Floor Type' }]}
 							value={data.floor_type}
 							placeholder='Floor Type'
 							onChange={newValue => dispatch({ floor_type: newValue.value })}
@@ -312,6 +315,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-1'>
 						<DropDownSelectBox
 							options={internetType}
+							disabledOptions={[{ name: 'Wireless or Wired Internet' }]}
 							value={data.wireless_wired_internet}
 							placeholder='Wireless or Wired Internet'
 							onChange={newValue =>
