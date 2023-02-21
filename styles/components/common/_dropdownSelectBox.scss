@@ -45,6 +45,10 @@
 				justify-content: flex-start;
 				align-items: center;
 				text-align: start;
+				&.disabled{
+					color: #868686 !important;
+					cursor: default;
+				}
 			}
 		}
 	}
@@ -60,4 +64,13 @@
 			border-top: none !important;
 		}
 	}
+}
+
+.dropdown-select-box-backdrop{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1;
 }

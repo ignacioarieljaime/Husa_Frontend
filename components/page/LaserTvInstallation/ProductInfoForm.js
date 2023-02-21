@@ -180,6 +180,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-3'>
 						<DropDownSelectBox
 							options={screenSizes}
+							disabledOptions={[{ name: 'Laser TV Screen Size' }]}
 							value={data.laser_tv_screen_size}
 							placeholder='Laser TV Screen Size'
 							onChange={newValue =>
@@ -195,8 +196,9 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-2'>
 						<DropDownSelectBox
 							options={models}
+							disabledOptions={[{ name: 'Laser TV Model Number' }]}
 							value={data.laser_tv_model_number}
-							placeholder='Laser TV Model Number '
+							placeholder='Laser TV Model Number'
 							onChange={newValue =>
 								dispatch({ laser_tv_model_number: newValue.value })
 							}
@@ -210,6 +212,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-1'>
 						<DropDownSelectBox
 							options={retailers}
+							disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.purchased_from}
 							placeholder='Where did you purchase?'
 							onChange={newValue =>

@@ -1,9 +1,11 @@
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import UserCircleOutline from 'components/icons/UserCircleOutline'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CardLayout from './CardLayout'
 
 const PersonalInfoForm = ({ data, dispatch, errors }) => {
+	const [formattedPhoneNumber, setFormattedPhoneNumber] = useState()
+
 	const states = [
 		{ name: 'Alabama', value: 'AL' },
 		{ name: 'Alaska', value: 'AK' },
@@ -70,6 +72,33 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 		dispatch({ [e.target.name]: e.target.value })
 	}
 
+	const formatPhoneNumber = () => {
+		if (!formattedPhoneNumber) {
+			dispatch({ phone_number: null })
+			return formattedPhoneNumber
+		}
+		const phoneNumber = formattedPhoneNumber.replace(/[^\d]/g, '')
+
+		dispatch({ phone_number: parseFloat(phoneNumber) })
+
+		const phoneNumberLength = phoneNumber.length
+
+		if (phoneNumberLength < 4) return phoneNumber
+
+		if (phoneNumberLength < 7) {
+			return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`
+		}
+
+		return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+			3,
+			6
+		)}-${phoneNumber.slice(6, 10)}`
+	}
+
+	useEffect(() => {
+		setFormattedPhoneNumber(formatPhoneNumber())
+	}, [formattedPhoneNumber])
+
 	return (
 		<CardLayout title='Personal Information' icon={<UserCircleOutline />}>
 			<div className='row mx-0'>
@@ -104,9 +133,12 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 				<div className='col-12 col-md-6 mb-8'>
 					<div className='form_text_field'>
 						<input
-							onChange={e => inputChangeHandler(e)}
+							onChange={e => {
+								setFormattedPhoneNumber(e.target.value)
+							}}
 							name='phone_number'
 							type='text'
+							value={formattedPhoneNumber}
 							required={true}
 							placeholder='Phone number'
 						/>
@@ -157,6 +189,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 					<div className='form_select_field z-4'>
 						<DropDownSelectBox
 							options={states}
+							disabledOptions={[{ name: 'State' }]}
 							value={data.state}
 							placeholder='State'
 							onChange={newValue => dispatch({ state: newValue.value })}
