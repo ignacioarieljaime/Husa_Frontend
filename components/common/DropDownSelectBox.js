@@ -13,7 +13,6 @@ const DropDownSelectBox = ({
 	placeholder
 }) => {
 	const [show, setShow] = useState(false)
-
 	const newValueHandler = newValue => {
 		if (Array.isArray(value)) {
 			if (value.some(item => item.value === newValue.value)) {
@@ -37,8 +36,8 @@ const DropDownSelectBox = ({
 				{prefixIcon ? <span className='me-3'>{prefixIcon}</span> : null}
 				{title}
 				{!value && placeholder}
-				{typeof value === 'string'
-					? options.find(option => option?.value === value)?.name
+				{typeof value === 'string' && options
+					? value
 					: value?.name
 					? value.name
 					: ''}
