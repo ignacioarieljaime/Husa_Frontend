@@ -1,7 +1,7 @@
-import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import UserCircleOutline from 'components/icons/UserCircleOutline'
 import React, { useEffect, useState } from 'react'
 import CardLayout from './CardLayout'
+import LaserInstallationDropDownSelectBox from './LaserInstallationDropDownSelectBox'
 
 const PersonalInfoForm = ({ data, dispatch, errors }) => {
 	const [formattedPhoneNumber, setFormattedPhoneNumber] = useState()
@@ -9,18 +9,14 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 	const states = [
 		{ name: 'Alabama', value: 'AL' },
 		{ name: 'Alaska', value: 'AK' },
-		{ name: 'American Samoa', value: 'AS' },
 		{ name: 'Arizona', value: 'AZ' },
 		{ name: 'Arkansas', value: 'AR' },
 		{ name: 'California', value: 'CA' },
 		{ name: 'Colorado', value: 'CO' },
 		{ name: 'Connecticut', value: 'CT' },
 		{ name: 'Delaware', value: 'DE' },
-		{ name: 'District of Columbia', value: 'DC' },
-		{ name: 'States of Micronesia', value: 'FM' },
 		{ name: 'Florida', value: 'FL' },
 		{ name: 'Georgia', value: 'GA' },
-		{ name: 'Guam', value: 'GU' },
 		{ name: 'Hawaii', value: 'HI' },
 		{ name: 'Idaho', value: 'ID' },
 		{ name: 'Illinois', value: 'IL' },
@@ -30,7 +26,6 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 		{ name: 'Kentucky', value: 'KY' },
 		{ name: 'Louisiana', value: 'LA' },
 		{ name: 'Maine', value: 'ME' },
-		{ name: 'Marshall Islands', value: 'MH' },
 		{ name: 'Maryland', value: 'MD' },
 		{ name: 'Massachusetts', value: 'MA' },
 		{ name: 'Michigan', value: 'MI' },
@@ -46,13 +41,10 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 		{ name: 'New York', value: 'NY' },
 		{ name: 'North Carolina', value: 'NC' },
 		{ name: 'North Dakota', value: 'ND' },
-		{ name: 'Northern Mariana Islands', value: 'MP' },
 		{ name: 'Ohio', value: 'OH' },
 		{ name: 'Oklahoma', value: 'OK' },
-		{ name: 'Oregan', value: 'OR' },
-		{ name: 'Palau', value: 'PW' },
+		{ name: 'Oregon', value: 'OR' },
 		{ name: 'Pennsilvania', value: 'PA' },
-		{ name: 'Puerto Rico', value: 'PR' },
 		{ name: 'Rhode Island', value: 'RI' },
 		{ name: 'South Carolina', value: 'SC' },
 		{ name: 'South Dakota', value: 'SD' },
@@ -60,7 +52,6 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 		{ name: 'Texas', value: 'TX' },
 		{ name: 'Utah', value: 'UT' },
 		{ name: 'Vermont', value: 'VT' },
-		{ name: 'Virgin Islands', value: 'VI' },
 		{ name: 'Virginia', value: 'VA' },
 		{ name: 'Washington', value: 'WA' },
 		{ name: 'West Virginia', value: 'WV' },
@@ -187,7 +178,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8 mb-md-0'>
 					<div className='form_select_field z-4'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={states}
 							disabledOptions={[{ name: 'State' }]}
 							value={data.state}
