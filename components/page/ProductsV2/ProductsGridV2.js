@@ -40,9 +40,7 @@ const ProductsGridV2 = ({ data }) => {
 	}, [router.query?.filter, sortingMethod])
 
 	const getProducts = async _filter => {
-		console.log(_filter)
 		setProducts('loading')
-
 		if (_filter && _filter.length !== 0) {
 			router.replace(
 				{
