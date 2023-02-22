@@ -15,7 +15,10 @@ module.exports.AuthorizedRetailers = [
 		name: 'AuthorizedRetailersLogos',
 		path: 'components/page/AuthorizedRetailers/AuthorizedRetailersLogos'
 	},
-	
+	{
+		name: 'AuthorizedRetailersBanner',
+		path: 'components/page/AuthorizedRetailers/AuthorizedRetailersBanner'
+	},
 	{
 		name: 'UnauthorizedList',
 		path: 'components/page/AuthorizedRetailers/UnauthorizedList'

@@ -832,3 +832,72 @@ input {
 .velaro-custom-launcher-frame {
 	visibility: hidden;
 }
+
+.authorized_retailers_banner {
+	position: relative;
+	> div {
+		position: absolute;
+		top: 30%;
+		right: 50%;
+		transform: translateX(50%);
+		-webkit-transform: translateX(50%);
+		-moz-transform: translateX(50%);
+		-ms-transform: translateX(50%);
+		-o-transform: translateX(50%);
+		h1 {
+			font-size: 118px;
+			text-align: center;
+			max-width: 1515px;
+
+			@include mq(3567) {
+				font-size: 81px;
+				max-width: 1136px;
+			}
+			@include mq(2390) {
+				font-size: 58px;
+				max-width: 795px;
+			}
+			@include mq(1827) {
+				font-size: 40px;
+				max-width: 547px;
+			}
+			@include mq(1227) {
+				font-size: 30px;
+				max-width: 408px;
+			}
+			@include mq(920) {
+				font-size: 20px;
+				max-width: 270px;
+			}
+			@include mq(603) {
+				font-size: 14px;
+				max-width: 191px;
+			}
+		}
+
+		h6 {
+			text-align: center;
+			margin-top: 71px;
+			font-size: 43px;
+			font-weight: 300;
+			@include mq(2390) {
+				margin-top: 18px;
+				font-size: 35px;
+			}
+			@include mq(1827) {
+				margin-top: 14px;
+				font-size: 24px;
+			}
+			@include mq(1227) {
+				font-size: 14px;
+			}
+			@include mq(920) {
+				font-size: 12px;
+			}
+			@include mq(603) {
+				margin-top: 5px;
+				font-size: 10px;
+			}
+		}
+	}
+}
