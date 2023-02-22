@@ -32,23 +32,18 @@ const ProductsGridV2 = ({ data }) => {
 		setText(structure?.title?.value)
 	}, [])
 	useEffect(() => {
-		console.log('changed')
 		if (router.query.filter) {
 			getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
 		} else {
-			getProducts([])
+			getProducts()
 		}
 	}, [router.query?.filter, sortingMethod])
 
 	const getProducts = async _filter => {
+		console.log(_filter)
 		setProducts('loading')
 
-		if (_filter) {
-			// window.history.replaceState(
-			// 	null,
-			// 	null,
-			// 	`?filter=${encodeURIComponent(JSON.stringify(_filter))}`
-			// )
+		if (_filter && _filter.length !== 0) {
 			router.replace(
 				{
 					query: {
@@ -60,6 +55,18 @@ const ProductsGridV2 = ({ data }) => {
 					shallow: true
 				}
 			)
+		} else {
+			if (router.query.filter) {
+				router.replace(
+					{
+						query: {}
+					},
+					undefined,
+					{
+						shallow: true
+					}
+				)
+			}
 		}
 
 		try {
