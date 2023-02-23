@@ -81,7 +81,7 @@ function RegisterForm({ data }) {
 		try {
 			let response = await GetSeriesModelsApi(
 				router,
-				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}&status[]=1&status[]=3`
 			)
 			if (response.status === 200) {
 				setModels(
