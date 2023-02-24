@@ -47,7 +47,9 @@ const SupportNewProducts = ({ data }) => {
 			}))
 
 			setSearchProductsList(
-				data.sort((a, b) => a.model.localeCompare(b.model))
+				data.sort((a, b) =>
+					sortWorkHandler(a.model).localeCompare(sortWorkHandler(b.model))
+				)
 			)
 		} catch (error) {
 			setSearchProductsList([])
@@ -73,13 +75,24 @@ const SupportNewProducts = ({ data }) => {
 					route: item.route,
 					model: item?.product?.model
 				}))
-
+				// sortWorkHandler(data[0].model)
 				setSearchProductsList(
-					data.sort((a, b) => a.model.localeCompare(b.model))
+					data.sort((a, b) =>
+						sortWorkHandler(a.model).localeCompare(sortWorkHandler(b.model))
+					)
 				)
 			} catch (error) {
 				setSearchProductsList([])
 				console.log(error)
+			}
+		}
+	}
+	const sortWorkHandler = _data => {
+		let position = ''
+		for (const word of _data.split('')) {
+			if (/[a-zA-Z]/.test(word)) {
+				position = _data.split('').indexOf(word)
+				return _data.slice(position)
 			}
 		}
 	}
