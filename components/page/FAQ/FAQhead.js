@@ -16,6 +16,7 @@ function FAQhead({ data }) {
 				className='faq-single-color-header'>
 				<div
 					className='heading-text'
+					style={{ maxWidth: structure?.width?.value + 'px' }}
 					dangerouslySetInnerHTML={{ __html: text }}></div>
 			</div>
 		</section>

@@ -51,7 +51,15 @@ function RegisterForm({ data }) {
 	}, [])
 
 	const dataSchemaHandler = (_key, _value) => {
-		setDataSchema({ ...dataSchema, [_key]: _value })
+		if (_key === 'product_model') {
+			setDataSchema({
+				...dataSchema,
+				product_model: _value?.model,
+				series: _value?.series?.length ? _value?.series[0]?.name : null
+			})
+		} else {
+			setDataSchema({ ...dataSchema, [_key]: _value })
+		}
 	}
 
 	const getCategories = async () => {
@@ -73,21 +81,26 @@ function RegisterForm({ data }) {
 		try {
 			let response = await GetSeriesModelsApi(
 				router,
-				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}&status[]=1`
 			)
 			if (response.status === 200) {
-				if (response.data.series.length >= 1) {
-					setCategoryId(_categoryId)
-					setSeries(response.data.series)
-					setModels([])
-				} else {
-					setSeries([])
-					setModels(
-						response.data.models.map(item => {
-							return { name: item }
-						})
-					)
-				}
+				setModels(
+					response.data.modelSeries.map(item => {
+						return { ...item, name: item.model }
+					})
+				)
+				// if (response.data.series.length >= 1) {
+				// 	setCategoryId(_categoryId)
+				// 	setSeries(response.data.series)
+				// 	setModels([])
+				// } else {
+				// 	setSeries([])
+				// 	setModels(
+				// 		response.data.models.map(item => {
+				// 			return { name: item }
+				// 		})
+				// 	)
+				// }
 			}
 		} catch (error) {
 			setSeries([])
@@ -251,7 +264,7 @@ function RegisterForm({ data }) {
 						</div>
 					)}
 
-					{series?.length !== 0 && (
+					{/* {series?.length !== 0 && (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={'PLEASE SELECT YOUR SERIES'}
@@ -266,7 +279,7 @@ function RegisterForm({ data }) {
 								{errors?.product_model && errors?.product_model[0]}
 							</div>
 						</div>
-					)}
+					)} */}
 					{router.query?.InternalModelNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
@@ -282,9 +295,7 @@ function RegisterForm({ data }) {
 								title={'PLEASE SELECT YOUR MODEL'}
 								required={true}
 								options={models}
-								onChange={_value =>
-									dataSchemaHandler('product_model', _value.name)
-								}
+								onChange={_value => dataSchemaHandler('product_model', _value)}
 							/>
 							<div className='input_error_message'>
 								{errors?.product_model && errors?.product_model[0]}
