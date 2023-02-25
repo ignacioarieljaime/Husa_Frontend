@@ -72,7 +72,12 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						</div>
 						<div className='product-rating'></div>
 						<button
-							className={`pdp_where_to_buy_btn px-6 py-3 ${
+							className={`pdp_where_to_buy_btn ${
+								pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
+									? ''
+									: 'disabled'
+							} px-6 py-3 ${
 								structure?.theme.value === 'light' && 'light_hover'
 							}`}
 							disabled={pim?.buy_status ? false : true}

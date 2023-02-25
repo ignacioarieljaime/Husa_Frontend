@@ -1,12 +1,12 @@
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
-import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import Spinner from 'components/common/Spinner'
 import LaserTv from 'components/icons/LaserTv'
 import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import CardLayout from './CardLayout'
+import LaserInstallationDropDownSelectBox from './LaserInstallationDropDownSelectBox'
 
 const ProductInfoForm = ({ data, dispatch, errors }) => {
 	const [imageLoading, setImageLoading] = useState(null)
@@ -178,7 +178,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 			<div className='row mx-0'>
 				<div className='col-12 col-md-6 mb-8'>
 					<div className='form_select_field z-3'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={screenSizes}
 							disabledOptions={[{ name: 'Laser TV Screen Size' }]}
 							value={data.laser_tv_screen_size}
@@ -194,7 +194,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
 					<div className='form_select_field z-2'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={models}
 							disabledOptions={[{ name: 'Laser TV Model Number' }]}
 							value={data.laser_tv_model_number}
@@ -210,7 +210,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8 mb-md-0'>
 					<div className='form_select_field z-1'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={retailers}
 							disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.purchased_from}

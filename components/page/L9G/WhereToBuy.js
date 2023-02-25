@@ -10,7 +10,11 @@ const WhereToBuy = ({ pim, data }) => {
 	return (
 		<div className='vertical-where-to-buy d-none d-md-block'>
 			<button
-				className='btn'
+				className={`btn ${
+					pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
+						? ''
+						: 'disabled'
+				}`}
 				onClick={() =>
 					pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
 						? setChanelAdviserHandler(!chanelAdviserHandler)

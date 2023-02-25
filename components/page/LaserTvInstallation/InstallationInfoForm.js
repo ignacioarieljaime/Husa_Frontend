@@ -1,7 +1,6 @@
 import { faChevronDown, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Calender from 'components/common/Calender'
-import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import Wrench from 'components/icons/Wrench'
 import React, { useState } from 'react'
 import BooleanButtonGroup from './BooleanButtonGroup'
@@ -10,6 +9,7 @@ import CustomInput from 'components/common/Input'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import LaserInstallationDropDownSelectBox from './LaserInstallationDropDownSelectBox'
 
 const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	const [sortingMethod, setSortingMethod] = useState()
@@ -228,7 +228,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				<div className='col-12 col-md-6 mb-8'></div>
 				<div className='col-12 col-md-6 mb-8'>
 					<div className='form_select_field z-4'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={installationLocation}
 							disabledOptions={[{ name: 'Where to install?' }]}
 							value={data.where_to_install}
@@ -283,7 +283,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
 					<div className='form_select_field z-3'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={materialOfWall}
 							disabledOptions={[{ name: 'Material of Wall' }]}
 							value={data.material_of_wall}
@@ -299,7 +299,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8'>
 					<div className='form_select_field z-2'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={FloorType}
 							disabledOptions={[{ name: 'Floor Type' }]}
 							value={data.floor_type}
@@ -313,7 +313,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8 mb-md-0'>
 					<div className='form_select_field z-1'>
-						<DropDownSelectBox
+						<LaserInstallationDropDownSelectBox
 							options={internetType}
 							disabledOptions={[{ name: 'Wireless or Wired Internet' }]}
 							value={data.wireless_wired_internet}
