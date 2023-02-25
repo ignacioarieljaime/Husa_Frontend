@@ -54,7 +54,12 @@ const ProductPackageHeader = ({ pim, data }) => {
 							</ul>
 						</div>
 						<button
-							className=' pdp_where_to_buy_btn rounded-0 px-6 py-3'
+							className={`${
+								pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
+									? ''
+									: 'disabled'
+							} pdp_where_to_buy_btn rounded-0 px-6 py-3`}
 							onClick={() =>
 								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'

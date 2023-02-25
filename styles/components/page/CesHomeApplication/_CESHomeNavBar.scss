@@ -39,6 +39,15 @@
 				&:hover {
 					color: #fff;
 				}
+				&.disabled {
+					cursor: default;
+					background: #ababb0 !important;
+					color: #fff !important;
+					&:hover {
+						color: #fff !important;
+						background: #ababb0 !important;
+					}
+				}
 			}
 		}
 	}
@@ -70,6 +79,16 @@
 	.where_to_buy {
 		background-color: #000 !important;
 		color: #fff !important;
+		&.disabled {
+			cursor: default;
+			background: #ababb0 !important;
+			color: #fff !important;
+
+			&:hover {
+				color: #fff !important;
+				background: #ababb0 !important;
+			}
+		}
 	}
 	li * {
 		font-weight: 500 !important;

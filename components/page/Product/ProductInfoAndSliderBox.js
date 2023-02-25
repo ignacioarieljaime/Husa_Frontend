@@ -64,7 +64,12 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						</div>
 						<div className='product-rating'></div>
 						<button
-							className=' pdp_where_to_buy_btn rounded-0 px-6 py-3'
+							className={`pdp_where_to_buy_btn ${
+								pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
+									? ''
+									: 'disabled'
+							} rounded-0 px-6 py-3`}
 							onClick={() =>
 								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
