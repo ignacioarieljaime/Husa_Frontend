@@ -243,11 +243,11 @@
 					background-color: rgba(0, 0, 0, 0.6);
 					color: #fff;
 					margin: 0;
-					@include mq(575){
+					@include mq(575) {
 						padding: 10px;
 						left: 20px;
 						width: 70%;
-						font-size:10px;
+						font-size: 10px;
 					}
 					@include mq(400) {
 						left: 10px;
@@ -278,7 +278,17 @@
 		transform: rotate(90deg) translateY(-50%);
 		transform-origin: center center;
 		border-radius: 0;
-
+		&.disabled {
+			cursor: default;
+			background: #ababb0 !important;
+			color: #fff !important;
+			border-color: #ababb0 !important;
+			&:hover {
+				color: #fff !important;
+				background: #ababb0 !important;
+				border-color: #ababb0 !important;
+			}
+		}
 		&:hover {
 			opacity: 0.6;
 			border-color: #00aaa6;

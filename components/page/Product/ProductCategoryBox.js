@@ -76,6 +76,12 @@ function ProductCategoryBox({ data, pim }) {
 						</li>
 						<li>
 							<button
+								className={`${
+									pim?.buy_status === 'ChannelAdvisor' ||
+									pim?.buy_status === 'Internal'
+										? ''
+										: 'disabled'
+								}`}
 								style={{ padding: fix ? '20px 20px' : '14px 20px' }}
 								onClick={() =>
 									pim?.buy_status === 'ChannelAdvisor' ||
