@@ -184,7 +184,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 							value={data.laser_tv_screen_size}
 							placeholder='Laser TV Screen Size'
 							onChange={newValue =>
-								dispatch({ laser_tv_screen_size: newValue.value })
+								dispatch({ laser_tv_screen_size: newValue.title })
 							}
 						/>
 						{errors?.laser_tv_screen_size ? (
@@ -200,7 +200,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 							value={data.laser_tv_model_number}
 							placeholder='Laser TV Model Number'
 							onChange={newValue =>
-								dispatch({ laser_tv_model_number: newValue.value })
+								dispatch({ laser_tv_model_number: newValue.title })
 							}
 						/>
 						{errors?.laser_tv_model_number ? (
@@ -216,7 +216,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 							value={data.purchased_from}
 							placeholder='Where did you purchase?'
 							onChange={newValue =>
-								dispatch({ purchased_from: newValue.value })
+								dispatch({ purchased_from: newValue.title })
 							}
 						/>
 						{errors?.purchased_from ? (
