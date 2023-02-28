@@ -184,7 +184,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 							value={data.laser_tv_screen_size}
 							placeholder='Laser TV Screen Size'
 							onChange={newValue =>
-								dispatch({ laser_tv_screen_size: newValue.value })
+								dispatch({ laser_tv_screen_size: newValue.name })
 							}
 						/>
 						{errors?.laser_tv_screen_size ? (
@@ -200,7 +200,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 							value={data.laser_tv_model_number}
 							placeholder='Laser TV Model Number'
 							onChange={newValue =>
-								dispatch({ laser_tv_model_number: newValue.value })
+								dispatch({ laser_tv_model_number: newValue.name })
 							}
 						/>
 						{errors?.laser_tv_model_number ? (
@@ -215,9 +215,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 							disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.purchased_from}
 							placeholder='Where did you purchase?'
-							onChange={newValue =>
-								dispatch({ purchased_from: newValue.value })
-							}
+							onChange={newValue => dispatch({ purchased_from: newValue.name })}
 						/>
 						{errors?.purchased_from ? (
 							<p className='error'>{errors?.purchased_from}</p>

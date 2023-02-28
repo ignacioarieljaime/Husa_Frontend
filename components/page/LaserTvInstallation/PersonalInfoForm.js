@@ -70,7 +70,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 		}
 		const phoneNumber = formattedPhoneNumber.replace(/[^\d]/g, '')
 
-		dispatch({ phone_number: parseFloat(phoneNumber) })
+		dispatch({ phone_number: phoneNumber })
 
 		const phoneNumberLength = phoneNumber.length
 
@@ -183,7 +183,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 							disabledOptions={[{ name: 'State' }]}
 							value={data.state}
 							placeholder='State'
-							onChange={newValue => dispatch({ state: newValue.value })}
+							onChange={newValue => dispatch({ state: newValue.name })}
 						/>
 						{errors?.state ? <p className='error'>{errors?.state}</p> : null}
 					</div>

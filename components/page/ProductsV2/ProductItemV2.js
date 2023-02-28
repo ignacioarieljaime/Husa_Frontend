@@ -97,7 +97,7 @@ const ProductItemV2 = ({ data }) => {
 									currentItem?.buy_status === 'ChannelAdvisor' ||
 									currentItem?.buy_status === 'Internal'
 										? 'primary-text '
-										: 'text-black opacity-50 bg-transparent border-0'
+										: 'disabled_btn'
 								}`}>
 								{currentItem?.buy_status === 'ChannelAdvisor' ||
 								currentItem?.buy_status === 'Internal'
