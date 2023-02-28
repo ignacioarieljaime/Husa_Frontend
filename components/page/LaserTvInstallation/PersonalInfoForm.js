@@ -70,7 +70,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 		}
 		const phoneNumber = formattedPhoneNumber.replace(/[^\d]/g, '')
 
-		dispatch({ phone_number: parseFloat(phoneNumber) })
+		dispatch({ phone_number: phoneNumber })
 
 		const phoneNumberLength = phoneNumber.length
 
