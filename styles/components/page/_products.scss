@@ -226,7 +226,11 @@
 
 				.product-item-v2-content {
 					color: #221f20;
-
+					.disabled_btn:disabled {
+						background: #ababb0 !important;
+						border: 1px solid #ababb0 !important;
+						color: white !important;
+					}
 					> div {
 						div:first-child {
 							color: #a6a8ac;
