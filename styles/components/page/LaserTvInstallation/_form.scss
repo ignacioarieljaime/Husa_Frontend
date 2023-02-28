@@ -27,6 +27,9 @@
 			margin: 0;
 		}
 	}
+	.submission_error {
+		color: #d83a49;
+	}
 	.card_layout {
 		border: 1px solid #c7c7c9;
 		border-radius: 25px;
@@ -91,8 +94,8 @@
 			letter-spacing: -0.02em;
 			color: #000000;
 		}
-		.error{
-			color:#d83a49;
+		.error {
+			color: #d83a49;
 			font-size: 12px;
 			font-weight: 400;
 		}
