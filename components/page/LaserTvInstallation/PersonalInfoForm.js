@@ -183,7 +183,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 							disabledOptions={[{ name: 'State' }]}
 							value={data.state}
 							placeholder='State'
-							onChange={newValue => dispatch({ state: newValue.value })}
+							onChange={newValue => dispatch({ state: newValue.title })}
 						/>
 						{errors?.state ? <p className='error'>{errors?.state}</p> : null}
 					</div>

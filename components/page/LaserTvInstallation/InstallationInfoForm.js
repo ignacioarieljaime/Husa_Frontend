@@ -234,7 +234,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							value={data.where_to_install}
 							placeholder='Where to install?'
 							onChange={newValue =>
-								dispatch({ where_to_install: newValue.value })
+								dispatch({ where_to_install: newValue.title })
 							}
 						/>
 						{errors?.where_to_install ? (
@@ -289,7 +289,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							value={data.material_of_wall}
 							placeholder='Material of Wall'
 							onChange={newValue =>
-								dispatch({ material_of_wall: newValue.value })
+								dispatch({ material_of_wall: newValue.title })
 							}
 						/>
 						{errors?.material_of_wall ? (
@@ -304,7 +304,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							disabledOptions={[{ name: 'Floor Type' }]}
 							value={data.floor_type}
 							placeholder='Floor Type'
-							onChange={newValue => dispatch({ floor_type: newValue.value })}
+							onChange={newValue => dispatch({ floor_type: newValue.title })}
 						/>
 					</div>
 					{errors?.floor_type ? (
@@ -319,7 +319,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							value={data.wireless_wired_internet}
 							placeholder='Wireless or Wired Internet'
 							onChange={newValue =>
-								dispatch({ wireless_wired_internet: newValue.value })
+								dispatch({ wireless_wired_internet: newValue.title })
 							}
 						/>
 						{errors?.wireless_wired_internet ? (
