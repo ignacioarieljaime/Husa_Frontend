@@ -335,7 +335,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							required={true}
 							className='form-container-inner-input date_input'
 							value={data.expected_date && data.expected_date}
-							onChange={e => dispatch({ expected_date: e.target.name })}
+							onChange={e => dispatch({ expected_date: e.target.value })}
 						/>
 						<div className='tip mt-4'>
 							<p>
