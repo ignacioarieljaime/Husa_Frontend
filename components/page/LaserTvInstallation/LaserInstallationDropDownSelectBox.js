@@ -52,7 +52,9 @@ const LaserInstallationDropDownSelectBox = ({
 					{title}
 					{!value && placeholder}
 					{typeof value === 'string'
-						? options.find(option => option?.value === value)?.name
+						? options.find(
+								option => option?.value === value || option?.name === value
+						  )?.name
 						: value?.name
 						? value.name
 						: ''}
