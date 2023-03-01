@@ -2,23 +2,21 @@ import React from 'react'
 import Link from 'next/link'
 
 const ExtendedWarrantyProduct = ({
-	data: { main_image, name, model, id, custom_field },
+	data: { image, name, model, id, custom_field },
 	link
 }) => {
-	console.log();
 	return (
 		<Link href={`/${link}?productId=${id}`}>
 			<a className='text-decoration-none'>
 				<div className='product-item-v2 h-100 px-5 py-8'>
 					<div className='image'>
-						<img src={main_image?.external_url} alt={name} width='80%' />
+						<img src={image} alt={name} width='80%' />
 					</div>
 					<div className='product-item-v2-content'>
 						<div className='text-primary mb-4'>
-							{
+							{custom_field &&
 								custom_field.find(item => item.name === 'h2 Title')?.pivot
-									?.custom_field_value
-							}
+									?.custom_field_value}
 						</div>
 						<p className='mb-4'>{name}</p>
 						<div className='text-primary'>Model: {model}</div>
