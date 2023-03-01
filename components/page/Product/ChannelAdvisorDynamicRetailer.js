@@ -6,12 +6,14 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ChannelAdvisorLocally from './ChannelAdvisorLocally'
 
-const ChannelAdvisorDynamicRetailer = ({ model }) => {
+const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
 	const [data, setData] = useState('loading')
 	const [isLocally, setIsLocally] = useState(false)
 	useEffect(() => {
-		getChannelAdvisorData()
-	}, [])
+		if (condition) {
+			getChannelAdvisorData()
+		}
+	}, [condition])
 
 	const getChannelAdvisorData = async () => {
 		setData('loading')

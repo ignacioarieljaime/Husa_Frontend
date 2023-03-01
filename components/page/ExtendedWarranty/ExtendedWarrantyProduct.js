@@ -5,7 +5,6 @@ const ExtendedWarrantyProduct = ({
 	data: { image, name, model, id, custom_field },
 	link
 }) => {
-	console.log()
 	return (
 		<Link href={`/${link}?productId=${id}`}>
 			<a className='text-decoration-none'>
