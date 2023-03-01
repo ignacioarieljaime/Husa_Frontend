@@ -327,7 +327,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 						) : null}
 					</div>
 				</div>
-				<div className='col-12 col-md-6'>
+				{/* <div className='col-12 col-md-6'>
 					<div className='form_select_field'>
 						<input
 							type='date'
@@ -348,7 +348,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							<p className='error'>{errors?.expected_date}</p>
 						) : null}
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</CardLayout>
 	)
