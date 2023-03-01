@@ -29,15 +29,15 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<ErrorBoundary>
 			<Provider store={store}>
-				<Script id='google-tag-manager' strategy='afterInteractive'>
-					{`
-					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');
-      `}
-				</Script>
+				{/* <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script> */}
+				<Script
+					security='lazyOnload'
+					src='https://www.googletagmanager.com/gtag/js?id=G-J0M7EGP1BP'></Script>
+				<Script security='lazyOnload'>{`  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J0M7EGP1BP');`}</Script>
 				<>{comp}</>
 				<Component {...pageProps} />
 			</Provider>
