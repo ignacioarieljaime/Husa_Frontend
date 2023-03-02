@@ -29,14 +29,6 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<ErrorBoundary>
 			<Provider store={store}>
-				<Script
-					security='lazyOnload'
-					src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID}`}></Script>
-				<Script security='lazyOnload'>{`  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID}');`}</Script>
 				<>{comp}</>
 				<Component {...pageProps} />
 			</Provider>
