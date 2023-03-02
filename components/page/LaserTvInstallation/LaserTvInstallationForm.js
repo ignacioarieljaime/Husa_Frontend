@@ -14,8 +14,6 @@ const LaserTvInstallationForm = ({ data }) => {
 	const route = useRouter()
 	const [formBody, dispatch] = useReducer(
 		(state, update) => {
-			console.log(state)
-			console.log(update)
 			return {
 				...state,
 				...update
@@ -52,7 +50,7 @@ const LaserTvInstallationForm = ({ data }) => {
 		setErrors(null)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63ed0bae44639`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63f10369a2bac`,
 				formBody
 			)
 			if (response.data.userForm.id && response.data.userForm.created_at) {
