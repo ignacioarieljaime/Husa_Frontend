@@ -14,6 +14,13 @@ function ProductFeatureWithImageWithBTN({ data }) {
 						<h2> {structure?.title?.value}</h2>
 						<p>{structure?.paragraphOne?.value}</p>
 						<p>{structure?.paragraphTwo?.value}</p>
+						{structure?.learn_more?.value && (
+							<Link href={structure?.learn_more?.value}>
+								<a className='text-white fw-light d-block mb-10'>
+									{structure?.learn_more?.title}
+								</a>
+							</Link>
+						)}
 						{structure?.link?.value && (
 							<Link href={structure?.link?.value}>
 								<a className='text-logo px-4 text-decoration-none'>
