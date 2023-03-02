@@ -327,11 +327,11 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 						) : null}
 					</div>
 				</div>
-				{/* <div className='col-12 col-md-6'>
+				<div className='col-12 col-md-6'>
 					<div className='form_select_field'>
 						<input
 							type='date'
-							placeholder={'Expected Installation Date'}
+							placeholder={'Requested Installation Date'}
 							required={true}
 							className='form-container-inner-input date_input'
 							value={data.expected_date && data.expected_date}
@@ -348,7 +348,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							<p className='error'>{errors?.expected_date}</p>
 						) : null}
 					</div>
-				</div> */}
+				</div>
 			</div>
 		</CardLayout>
 	)
