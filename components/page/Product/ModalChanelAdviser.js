@@ -76,7 +76,7 @@ function ModalChanelAdviser({ productId, condition, handler, model, type }) {
 					</div> */}
 				{type === 'ChannelAdvisor' ? (
 					<>
-						<ChannelAdvisorDynamicRetailer model={model} />
+						<ChannelAdvisorDynamicRetailer condition={condition} model={model} />
 						{/* <iframe
 						width={'100%'}
 						style={{ height: '83vh' }}

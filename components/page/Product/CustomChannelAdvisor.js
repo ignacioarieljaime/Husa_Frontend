@@ -39,7 +39,9 @@ const CustomChannelAdvisor = ({ id }) => {
 				</div>
 			</div>
 			<div className='black_box'>
-				<div className='white_box'>BUY ONLINE</div>
+				<div style={{ width: '100%' }} className='white_box active'>
+					BUY ONLINE
+				</div>
 			</div>
 			<div>
 				{!loading ? (
