@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-// image
-import Image from 'public/assets/images/4k-uled/heading.jpg'
 import Link from 'next/link'
 
 function ULEDHead({ data: { structure } }) {
+	const [text, setText] = useState()
+
+	useEffect(() => {
+		setText(structure?.title?.value)
+	})
 	return (
 		<section>
 			<div className='heading uled_head'>
@@ -16,7 +19,11 @@ function ULEDHead({ data: { structure } }) {
 				/>
 				<div className='heading-text'>
 					<article className='article'>
-						<h1 className=''>{structure?.title?.value}</h1>
+						<h1
+							className=''
+							dangerouslySetInnerHTML={{
+								__html: text
+							}}></h1>
 						<Link href={structure?.link?.value}>
 							<a className='btn btn-light text my-3 my-md-auto'>
 								{structure?.link?.title}
