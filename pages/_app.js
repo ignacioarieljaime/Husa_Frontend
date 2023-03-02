@@ -29,15 +29,14 @@ function MyApp({ Component, pageProps }) {
 	return (
 		<ErrorBoundary>
 			<Provider store={store}>
-				{/* <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script> */}
 				<Script
 					security='lazyOnload'
-					src='https://www.googletagmanager.com/gtag/js?id=G-J0M7EGP1BP'></Script>
+					src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID}`}></Script>
 				<Script security='lazyOnload'>{`  window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-J0M7EGP1BP');`}</Script>
+  gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID}');`}</Script>
 				<>{comp}</>
 				<Component {...pageProps} />
 			</Provider>
