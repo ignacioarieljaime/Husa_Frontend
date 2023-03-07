@@ -10,6 +10,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
 	const [data, setData] = useState('loading')
 	const [isLocally, setIsLocally] = useState(false)
 	useEffect(() => {
+		console.log(process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY);
 		if (condition) {
 			getChannelAdvisorData()
 		}
@@ -64,13 +65,19 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
 
 					<div className='black_box'>
 						<div
-							style={{ width: '100%' }}
+							style={{
+								width: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
+									? '50%'
+									: '100%'
+							}}
 							className={`white_box ${!isLocally && 'active'}`}>
 							<button onClick={() => setIsLocally(false)}>BUY ONLINE</button>
 						</div>
-						{/* <div className={`white_box ${isLocally && 'active'}`}>
-							<button onClick={() => setIsLocally(true)}>FIND LOCALLY</button>
-						</div> */}
+						{process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY && (
+							<div className={`white_box ${isLocally && 'active'}`}>
+								<button onClick={() => setIsLocally(true)}>FIND LOCALLY</button>
+							</div>
+						)}
 					</div>
 					{isLocally ? (
 						<ChannelAdvisorLocally model={model} />
