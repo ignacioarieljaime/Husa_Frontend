@@ -44,7 +44,18 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 		let temp = assets
 		if (!_asset) {
 			setAssets([])
-			submitFormAssets(name, null)
+			if (name === 'model_plate_sticker') {
+				setFormBody({
+					...formBody,
+					product: { ...formBody.product, model_plate_sticker: null }
+				})
+			}
+			if (name === 'receipt_photo') {
+				setFormBody({
+					...formBody,
+					product: { ...formBody.product, receipt_photo: null }
+				})
+			}
 		} else {
 			if (temp.length > 0 && temp.some(item => item.id === _asset.id))
 				temp.splice(
