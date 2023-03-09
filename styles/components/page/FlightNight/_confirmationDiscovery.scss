@@ -1,0 +1,55 @@
+.flight_night_discovery {
+  padding: 64px 0;
+  .title {
+    margin-bottom: 32px;
+    * {
+      margin: 0;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 30px;
+      text-align: center;
+      letter-spacing: -0.02em;
+      color: #000000;
+    }
+  }
+  .discover {
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    flex-wrap: wrap;
+    > .item {
+      width: 50%;
+      padding: 30px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border-left: 1px solid #c7c7c9;
+      @include mq(450) {
+        border-top: 1px solid #c7c7c9;
+      }
+      &:first-child {
+        border-left: none;
+        @include mq(450) {
+          border-top: none;
+        }
+      }
+      .item_title {
+        margin-bottom: 16px;
+        * {
+          margin: 0;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 30px;
+          text-align: center;
+          letter-spacing: -0.02em;
+          color: #000000;
+        }
+      }
+      @include mq(450) {
+        width: 100%;
+      }
+    }
+  }
+}
