@@ -3,9 +3,8 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
 import CustomCheckBox from 'components/common/CustomCheckBox'
-import { useEffect } from 'react'
 
-const LaserInstallationDropDownSelectBox = ({
+const FlightNightSelectBox = ({
 	disabledOptions,
 	options,
 	value,
@@ -16,8 +15,6 @@ const LaserInstallationDropDownSelectBox = ({
 	placeholder
 }) => {
 	const [show, setShow] = useState(false)
-
-	
 	const newValueHandler = newValue => {
 		if (Array.isArray(value)) {
 			if (value.some(item => item.value === newValue.value)) {
@@ -100,4 +97,4 @@ const LaserInstallationDropDownSelectBox = ({
 	)
 }
 
-export default LaserInstallationDropDownSelectBox
+export default FlightNightSelectBox
