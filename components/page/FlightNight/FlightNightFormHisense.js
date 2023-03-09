@@ -1,17 +1,25 @@
+import Spinner from 'components/common/Spinner'
 import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import LaserInstallationDropDownSelectBox from '../LaserTvInstallation/LaserInstallationDropDownSelectBox'
+import LaserInstallationDropDownSelectBoxMulti from '../LaserTvInstallation/LaserInstallationDropDownSelectBoxMulti'
 import FlightNightCustomCheckbox from './FlightNightCustomCheckbox'
 
-const FlightNightFormHisense = ({ data, onChange, title }) => {
+const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 	const [terms, setTerms] = useState(false)
 	const [updated, setUpdated] = useState(false)
 	const [text, setText] = useState(null)
 	useEffect(() => {
 		setText(title)
 	}, [])
+	useEffect(() => {
+		if (data.future_news !== updated) {
+			setUpdated(data.future_news ? 1 : 0)
+		}
+	}, [data.future_news])
+
 	const familiarity = [
 		{ name: 'Very familiar', value: 'Very familiar' },
 		{ name: 'Somewhat familiar', value: 'Somewhat familiar' },
@@ -25,24 +33,33 @@ const FlightNightFormHisense = ({ data, onChange, title }) => {
 			<div className='line top'></div>
 			<div className='row justify-content-center align-items-center mx-0'>
 				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field z-6'>
+					<div className='form_select_field  position-relative z-6'>
 						<label className='label'>
 							How familiar with Hisense were you before today?
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={familiarity}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							// value={data.purchased_from}
+							value={data.how_familiar_hisense}
 							placeholder='Choose your answer'
-							// onChange={newValue => dispatch({ purchased_from: newValue.name })}
+							onChange={value => onChange('how_familiar_hisense', value.value)}
 						/>
-						{/* {errors?.PostalZipCode ? (
-							<p className='error'>{errors?.PostalZipCode}</p>
-						) : null} */}
+						{errors?.how_familiar_hisense ? (
+							<p
+								style={{
+									color: 'red',
+									position: 'absolute',
+									bottom: "-42px",
+									left: '0'
+								}}
+								className='error mt-2'>
+								{errors?.how_familiar_hisense}
+							</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field z-5'>
+					<div className='form_select_field  position-relative z-5'>
 						<label className='label'>
 							After today, are you more likely to consider Hisense for your next
 							TV?
@@ -50,51 +67,78 @@ const FlightNightFormHisense = ({ data, onChange, title }) => {
 						<LaserInstallationDropDownSelectBox
 							options={familiarity}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							// value={data.purchased_from}
+							value={data.consider_hisense_tv}
 							placeholder='Choose your answer'
-							// onChange={newValue => dispatch({ purchased_from: newValue.name })}
+							onChange={value => onChange('consider_hisense_tv', value.value)}
 						/>{' '}
-						{/* {errors?.PostalZipCode ? (
-							<p className='error'>{errors?.PostalZipCode}</p>
-						) : null} */}
+						{errors?.consider_hisense_tv ? (
+							<p
+								style={{
+									color: 'red',
+									position: 'absolute',
+									bottom: "-42px",
+									left: '0'
+								}}
+								className='error mt-2'>
+								{errors?.consider_hisense_tv}
+							</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field  z-4'>
+					<div className='form_select_field position-relative  z-4'>
 						<label className='label'>
 							Which TV brands do you currently own at home?
 						</label>
-						<LaserInstallationDropDownSelectBox
+						<LaserInstallationDropDownSelectBoxMulti
 							options={familiarity}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							value={data.currentTvBrand}
+							value={data.which_brand_own}
 							placeholder='Choose your answer'
-							onChange={newValue => onChange({ currentTvBrand: newValue.name })}
+							onChange={newValue => onChange('which_brand_own', newValue)}
 						/>{' '}
-						{/* {errors?.PostalZipCode ? (
-							<p className='error'>{errors?.PostalZipCode}</p>
-						) : null} */}
+						{errors?.which_brand_own ? (
+							<p
+								style={{
+									color: 'red',
+									position: 'absolute',
+									bottom: "-42px",
+									left: '0'
+								}}
+								className='error mt-2'>
+								{errors?.which_brand_own}
+							</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field z-3'>
+					<div className='form_select_field  position-relative z-3'>
 						<label className='label'>
 							How likely are you to buy a new TV in the next 6 months?
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={familiarity}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							// value={data.purchased_from}
+							value={data.how_likely_tv_next6}
 							placeholder='Choose your answer'
-							// onChange={newValue => dispatch({ purchased_from: newValue.name })}
+							onChange={value => onChange('how_likely_tv_next6', value.value)}
 						/>{' '}
-						{/* {errors?.PostalZipCode ? (
-							<p className='error'>{errors?.PostalZipCode}</p>
-						) : null} */}
+						{errors?.how_likely_tv_next6 ? (
+							<p
+								style={{
+									color: 'red',
+									position: 'absolute',
+									bottom: "-42px",
+									left: '0'
+								}}
+								className='error mt-2'>
+								{errors?.how_likely_tv_next6}
+							</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field z-2'>
+					<div className='form_select_field  position-relative z-2'>
 						<label className='label'>
 							How likely would you consider a Hisense Laser TV for your next
 							television?
@@ -102,30 +146,50 @@ const FlightNightFormHisense = ({ data, onChange, title }) => {
 						<LaserInstallationDropDownSelectBox
 							options={familiarity}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							// value={data.purchased_from}
+							value={data.how_likely_lasertv_next}
 							placeholder='Choose your answer'
-							// onChange={newValue => dispatch({ purchased_from: newValue.name })}
+							onChange={value =>
+								onChange('how_likely_lasertv_next', value.value)
+							}
 						/>{' '}
-						{/* {errors?.PostalZipCode ? (
-							<p className='error'>{errors?.PostalZipCode}</p>
-						) : null} */}
+						{errors?.how_likely_lasertv_next ? (
+							<p
+								style={{
+									color: 'red',
+									position: 'absolute',
+									bottom: "-42px",
+									left: '0'
+								}}
+								className='error mt-2'>
+								{errors?.how_likely_lasertv_next}
+							</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field z-1'>
+					<div className='form_select_field  position-relative z-1'>
 						<label className='label'>
 							What do you like most about the Hisense Laser TV?
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={familiarity}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							// value={data.purchased_from}
+							value={data.what_like_abt_lasertv}
 							placeholder='Choose your answer'
-							// onChange={newValue => dispatch({ purchased_from: newValue.name })}
+							onChange={value => onChange('what_like_abt_lasertv', value.value)}
 						/>{' '}
-						{/* {errors?.PostalZipCode ? (
-							<p className='error'>{errors?.PostalZipCode}</p>
-						) : null} */}
+						{errors?.what_like_abt_lasertv ? (
+							<p
+								style={{
+									color: 'red',
+									position: 'absolute',
+									bottom: "-42px",
+									left: '0'
+								}}
+								className='error mt-2'>
+								{errors?.what_like_abt_lasertv}
+							</p>
+						) : null}
 					</div>
 				</div>
 				<div className='col-12 col-md-6 px-4 pt-4'>
@@ -144,14 +208,22 @@ const FlightNightFormHisense = ({ data, onChange, title }) => {
 				<div className='col-12 col-md-6 px-4 pt-4'>
 					<FlightNightCustomCheckbox
 						status={updated}
-						onClick={() => setUpdated(prevState => !prevState)}>
+						onClick={() => {
+							onChange('future_news', updated ? 0 : 1)
+							setUpdated(prevState => !prevState)
+						}}>
 						<p>
 							Yes, please keep me updated on news, offers, or future events.
 						</p>
 					</FlightNightCustomCheckbox>
 				</div>
 				<div className='col-12 col-md-6 pt-12 text-center'>
-					<button className='n-btn primary py-4 px-6 '>Submit</button>
+					<button
+						disabled={!terms || loading ? true : false}
+						className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
+						Submit
+						{loading && <Spinner size={20} />}
+					</button>
 				</div>
 			</div>
 		</div>
