@@ -1,13 +1,17 @@
 import Link from 'next/link'
 import React from 'react'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import LaserInstallationDropDownSelectBox from '../LaserTvInstallation/LaserInstallationDropDownSelectBox'
 import FlightNightCustomCheckbox from './FlightNightCustomCheckbox'
 
-const FlightNightFormHisense = ({ data, onChange }) => {
+const FlightNightFormHisense = ({ data, onChange, title }) => {
 	const [terms, setTerms] = useState(false)
 	const [updated, setUpdated] = useState(false)
-
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(title)
+	}, [])
 	const familiarity = [
 		{ name: 'Very familiar', value: 'Very familiar' },
 		{ name: 'Somewhat familiar', value: 'Somewhat familiar' },
@@ -17,10 +21,7 @@ const FlightNightFormHisense = ({ data, onChange }) => {
 
 	return (
 		<div className='hisense'>
-			<h3 className='title'>
-				<p>Now, just a few</p>
-				<p> questions...</p>
-			</h3>
+			<h3 dangerouslySetInnerHTML={{ __html: title }} className='title'></h3>
 			<div className='line top'></div>
 			<div className='row justify-content-center align-items-center mx-0'>
 				<div className='col-12 col-md-6 px-4 pb-8'>

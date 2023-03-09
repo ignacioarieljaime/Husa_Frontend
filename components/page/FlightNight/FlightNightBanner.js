@@ -1,7 +1,14 @@
 import CustomImage from 'components/common/CustomImage'
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
-const FlightNightBanner = () => {
+const FlightNightBanner = ({ data }) => {
+	let { structure } = data
+	const [text, setText] = useState(null)
+	useEffect(() => {
+		setText(structure?.title?.value)
+	}, [])
 	return (
 		<section>
 			<div className='flight_night_banner'>
@@ -11,10 +18,11 @@ const FlightNightBanner = () => {
 					wrapperHeight='auto'
 					// className='
 					wrapperClass='mx-auto mb-4 image_container'
-					src='https://assets.hisense-usa.com/assets/ContentBuilderImages/f5181ad032/XClass_HisenseWebsiteImage_1020212x1-1__ScaleMaxWidthWzMwNDhd.png-9zoj74.png'
+					src={structure?.image?.src}
+					alt={structure?.image?.alt}
 				/>
 				<h2 className='title'>
-					<p>enter for a chance to win</p>
+					<p dangerouslySetInnerHTML={{ __html: text }}></p>
 				</h2>
 			</div>
 		</section>
