@@ -3,7 +3,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
 import CustomCheckBox from 'components/common/CustomCheckBox'
-import FlightNightXIcon from 'components/icons/FlightNightXicon'
+import FlightNightXIcon from 'components/icons/FlightNightXIcon'
 import { useEffect } from 'react'
 
 const LaserInstallationDropDownSelectBoxMulti = ({
