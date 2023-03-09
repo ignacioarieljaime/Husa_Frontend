@@ -10,7 +10,6 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
 	const [data, setData] = useState('loading')
 	const [isLocally, setIsLocally] = useState(false)
 	useEffect(() => {
-		console.log(process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY);
 		if (condition) {
 			getChannelAdvisorData()
 		}
@@ -96,7 +95,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
 										<Link
 											target={'_blank'}
 											href={item?.ProductLink ? item?.ProductLink : '/'}>
-											<a className='buy_now'>Buy Now</a>
+											<a data-retailer={item.Name} className={`buy_now ${item.Name}`}>Buy Now</a>
 										</Link>
 									</div>
 								))
