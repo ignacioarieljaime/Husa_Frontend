@@ -7,6 +7,48 @@ import LaserInstallationDropDownSelectBox from '../LaserTvInstallation/LaserInst
 import LaserInstallationDropDownSelectBoxMulti from '../LaserTvInstallation/LaserInstallationDropDownSelectBoxMulti'
 import FlightNightCustomCheckbox from './FlightNightCustomCheckbox'
 
+const familiarity = [
+	{ name: 'Very familiar', value: 'Very familiar' },
+	{ name: 'Somewhat familiar', value: 'Somewhat familiar' },
+	{ name: 'Not familiar', value: 'Not familiar' },
+	{ name: 'Unsure', value: 'Unsure' }
+]
+const nextTv = [
+	{ name: 'Very much so', value: 'Very much so' },
+	{ name: ' A little more', value: ' A little more' },
+	{ name: 'Unsure', value: 'Unsure' },
+	{ name: 'Not at all', value: 'Not at all' }
+]
+
+const brand = [
+	{ name: 'Hisense', value: 'Hisense' },
+	{ name: ' LG', value: ' LG' },
+	{ name: 'Samsung', value: 'Samsung' },
+	{ name: 'Sony', value: 'Sony' },
+	{ name: 'TCL', value: 'TCL' },
+	{ name: 'Vizio', value: 'Vizio' },
+	{ name: 'Other', value: 'Other' }
+]
+const nextSixMonths = [
+	{ name: ' Very likely', value: ' Very likely' },
+	{ name: 'Somewhat likely', value: 'Somewhat likely' },
+	{ name: 'Unsure', value: 'Unsure' },
+	{ name: 'Not at all', value: 'Not at all' }
+]
+
+const nextTelevision = [
+	{ name: ' Very likely', value: ' Very likely' },
+	{ name: 'Somewhat likely', value: 'Somewhat likely' },
+	{ name: 'Unsure', value: 'Unsure' },
+	{ name: 'Not at all', value: 'Not at all' }
+]
+const laserTV = [
+	{ name: 'Size of picture', value: 'Size of picture' },
+	{ name: ' Portability', value: ' Portability' },
+	{ name: 'Less strain on the eyes', value: 'Less strain on the eyes' },
+	{ name: 'More eco-friendly', value: 'More eco-friendly' }
+]
+
 const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 	const [terms, setTerms] = useState(false)
 	const [updated, setUpdated] = useState(false)
@@ -19,13 +61,6 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 			setUpdated(data.future_news ? 1 : 0)
 		}
 	}, [data.future_news])
-
-	const familiarity = [
-		{ name: 'Very familiar', value: 'Very familiar' },
-		{ name: 'Somewhat familiar', value: 'Somewhat familiar' },
-		{ name: 'Not familiar', value: 'Not familiar' },
-		{ name: 'Unsure', value: 'Unsure' }
-	]
 
 	return (
 		<div className='hisense'>
@@ -49,7 +84,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 								style={{
 									color: 'red',
 									position: 'absolute',
-									bottom: "-42px",
+									bottom: '-42px',
 									left: '0'
 								}}
 								className='error mt-2'>
@@ -65,7 +100,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 							TV?
 						</label>
 						<LaserInstallationDropDownSelectBox
-							options={familiarity}
+							options={nextTv}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.consider_hisense_tv}
 							placeholder='Choose your answer'
@@ -76,7 +111,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 								style={{
 									color: 'red',
 									position: 'absolute',
-									bottom: "-42px",
+									bottom: '-42px',
 									left: '0'
 								}}
 								className='error mt-2'>
@@ -91,7 +126,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 							Which TV brands do you currently own at home?
 						</label>
 						<LaserInstallationDropDownSelectBoxMulti
-							options={familiarity}
+							options={brand}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.which_brand_own}
 							placeholder='Choose your answer'
@@ -102,7 +137,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 								style={{
 									color: 'red',
 									position: 'absolute',
-									bottom: "-42px",
+									bottom: '-42px',
 									left: '0'
 								}}
 								className='error mt-2'>
@@ -117,7 +152,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 							How likely are you to buy a new TV in the next 6 months?
 						</label>
 						<LaserInstallationDropDownSelectBox
-							options={familiarity}
+							options={nextSixMonths}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.how_likely_tv_next6}
 							placeholder='Choose your answer'
@@ -128,7 +163,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 								style={{
 									color: 'red',
 									position: 'absolute',
-									bottom: "-42px",
+									bottom: '-42px',
 									left: '0'
 								}}
 								className='error mt-2'>
@@ -144,7 +179,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 							television?
 						</label>
 						<LaserInstallationDropDownSelectBox
-							options={familiarity}
+							options={nextTelevision}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.how_likely_lasertv_next}
 							placeholder='Choose your answer'
@@ -157,7 +192,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 								style={{
 									color: 'red',
 									position: 'absolute',
-									bottom: "-42px",
+									bottom: '-42px',
 									left: '0'
 								}}
 								className='error mt-2'>
@@ -172,7 +207,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 							What do you like most about the Hisense Laser TV?
 						</label>
 						<LaserInstallationDropDownSelectBox
-							options={familiarity}
+							options={laserTV}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
 							value={data.what_like_abt_lasertv}
 							placeholder='Choose your answer'
@@ -183,7 +218,7 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 								style={{
 									color: 'red',
 									position: 'absolute',
-									bottom: "-42px",
+									bottom: '-42px',
 									left: '0'
 								}}
 								className='error mt-2'>
