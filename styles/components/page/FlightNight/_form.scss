@@ -21,6 +21,7 @@
         line-height: 22px;
         letter-spacing: -0.02em;
         color: #ffffff;
+        font-family: "Neutra";
         margin: 8px 0;
         text-transform: uppercase;
       }
@@ -41,6 +42,7 @@
       margin-bottom: 32px;
       * {
         font-weight: 700;
+        font-family: "Neutra";
         font-size: 34px;
         line-height: 42px;
         text-align: center;
@@ -92,6 +94,7 @@
       }
       .label {
         font-weight: 700;
+        font-family: "Neutra";
         font-size: 16px;
         line-height: 22px;
         letter-spacing: -0.02em;
@@ -100,8 +103,8 @@
         text-transform: uppercase;
       }
 
-      .place_holder{
-        color: #8C8F8F;
+      .place_holder {
+        color: #8c8f8f;
       }
 
       .dropdown-select-box {

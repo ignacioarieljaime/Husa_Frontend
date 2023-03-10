@@ -55,9 +55,11 @@ const LaserInstallationDropDownSelectBoxMulti = ({
 					onClick={() => setShow(!show)}>
 					{prefixIcon ? <span className='me-3'>{prefixIcon}</span> : null}
 					{title}
-					{!Array.isArray(value) || value.length === 0
-						? placeholder
-						: value.map(item => <>{item},</>)}
+					{!Array.isArray(value) || value.length === 0 ? (
+						<span className='place_holder'>{placeholder}</span>
+					) : (
+						value.map(item => <>{item},</>)
+					)}
 
 					<span className='arrow ms-auto'>
 						<FontAwesomeIcon icon={faChevronDown} />

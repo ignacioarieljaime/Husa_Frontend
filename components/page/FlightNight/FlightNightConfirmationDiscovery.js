@@ -12,7 +12,9 @@ const FlightNightConfirmationDiscovery = ({ data }) => {
 	return (
 		<section>
 			<div className='flight_night_discovery'>
-				<h3 dangerouslySetInnerHTML={{ __html: text }} className='title'></h3>
+				<h3
+					dangerouslySetInnerHTML={{ __html: text }}
+					className='title px-4 px-sm-0'></h3>
 				<div className='discover'>
 					{structure?.list?.value?.map(item => (
 						<div className='item'>
@@ -25,9 +27,9 @@ const FlightNightConfirmationDiscovery = ({ data }) => {
 								alt={item?.image?.alt}
 							/>
 							<div className='mt-4'>
-								<h4 dangerouslySetInnerHTML={{__html:item?.title?.value}} className='item_title'>
-							
-								</h4>
+								<h4
+									dangerouslySetInnerHTML={{ __html: item?.title?.value }}
+									className='item_title'></h4>
 								<Link href={item?.link?.value ? item?.link?.value : '/'}>
 									<a className='n-btn outline-black d-block w-fit mx-auto p-4'>
 										{item?.link?.title}

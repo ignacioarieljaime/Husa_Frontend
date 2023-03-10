@@ -28,12 +28,11 @@
       border-left: 1px solid #c7c7c9;
       @include mq(450) {
         border-top: 1px solid #c7c7c9;
+        border-left: none;
       }
       &:first-child {
-        border-left: none;
-        @include mq(450) {
-          border-top: none;
-        }
+        border-top: none !important;
+        border-left: none !important;
       }
       .item_title {
         margin-bottom: 16px;

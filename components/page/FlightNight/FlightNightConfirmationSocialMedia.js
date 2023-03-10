@@ -37,6 +37,8 @@ const FlightNightConfirmationSocialMedia = ({ data }) => {
 										wrapperClass='d-inline-block'
 										WrapperMaxWidth='20px'
 										WrapperMaxHeight='20px'
+										wrapperWidth='20px'
+										wrapperHeight='20px'
 										src={structure?.image2?.src}
 										alt={structure?.image2?.alt}
 									/>

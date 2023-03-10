@@ -245,10 +245,12 @@ const FlightNightFormHisense = ({
 							I have read and agree to the{' '}
 							<button
 								type='button'
+								className='px-0'
 								style={{
 									background: 'transparent',
 									color: 'white',
-									border: 'none'
+									border: 'none',
+									textDecoration: 'underline'
 								}}
 								onClick={() => setModalStatus(true)}>
 								Terms & Conditions
@@ -278,7 +280,10 @@ const FlightNightFormHisense = ({
 					</button>
 				</div>
 				{modalStatus && (
-					<RoleModal modalHandler={() => setModalStatus(false)} data={termsData} />
+					<RoleModal
+						modalHandler={() => setModalStatus(false)}
+						data={termsData}
+					/>
 				)}
 			</div>
 		</div>
