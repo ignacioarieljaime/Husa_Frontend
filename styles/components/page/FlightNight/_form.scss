@@ -100,6 +100,10 @@
         text-transform: uppercase;
       }
 
+      .place_holder{
+        color: #8C8F8F;
+      }
+
       .dropdown-select-box {
         position: relative;
         z-index: 1;
@@ -117,7 +121,7 @@
         button {
           padding: 16px;
           border: 1px solid #000000;
-          font-weight: 400;
+          font-weight: 300;
           font-size: 16px;
           line-height: 22px;
           letter-spacing: -0.02em;

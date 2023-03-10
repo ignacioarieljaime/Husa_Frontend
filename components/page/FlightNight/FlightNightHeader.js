@@ -10,13 +10,13 @@ const FlightNightHeader = ({ data }) => {
 				<CustomImage
 					src={structure?.logoImage?.src}
 					alt={structure?.logoImage?.alt}
-					wrapperWidth='75px'
+					wrapperWidth='100px'
 					wrapperHeight='auto'
 				/>
 				<CustomImage
 					src={structure?.campaignImage?.src}
 					alt={structure?.campaignImage?.alt}
-					wrapperWidth='100px'
+					wrapperWidth='75px'
 					wrapperHeight='auto'
 				/>
 			</div>

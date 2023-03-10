@@ -6,7 +6,7 @@ const FlightNightFooter = ({ data }) => {
 
 	return (
 		<footer>
-			<div className='bg-black d-flex justify-content-center py-4'>
+			<div className='bg-black d-flex justify-content-center align-items-center py-4'>
 				<CustomImage
 					wrapperWidth='100%'
 					WrapperMaxWidth='100px'
