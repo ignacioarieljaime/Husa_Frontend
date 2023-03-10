@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import RoleModal from '../ContactUs/RoleModal'
 import LaserInstallationDropDownSelectBox from '../LaserTvInstallation/LaserInstallationDropDownSelectBox'
 import LaserInstallationDropDownSelectBoxMulti from '../LaserTvInstallation/LaserInstallationDropDownSelectBoxMulti'
 import FlightNightCustomCheckbox from './FlightNightCustomCheckbox'
@@ -49,9 +50,18 @@ const laserTV = [
 	{ name: 'More eco-friendly', value: 'More eco-friendly' }
 ]
 
-const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
+const FlightNightFormHisense = ({
+	data,
+	onChange,
+	title,
+	loading,
+	errors,
+	submitText,
+	termsData
+}) => {
 	const [terms, setTerms] = useState(false)
 	const [updated, setUpdated] = useState(false)
+	const [modalStatus, setModalStatus] = useState(false)
 	const [text, setText] = useState(null)
 	useEffect(() => {
 		setText(title)
@@ -233,9 +243,16 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 						onClick={() => setTerms(prevState => !prevState)}>
 						<p>
 							I have read and agree to the{' '}
-							<Link href=''>
-								<a>Terms & Conditions</a>
-							</Link>{' '}
+							<button
+								type='button'
+								style={{
+									background: 'transparent',
+									color: 'white',
+									border: 'none'
+								}}
+								onClick={() => setModalStatus(true)}>
+								Terms & Conditions
+							</button>{' '}
 							of this giveaway.
 						</p>
 					</FlightNightCustomCheckbox>
@@ -256,10 +273,13 @@ const FlightNightFormHisense = ({ data, onChange, title, loading, errors }) => {
 					<button
 						disabled={!terms || loading ? true : false}
 						className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
-						Submit
+						{submitText}
 						{loading && <Spinner size={20} />}
 					</button>
 				</div>
+				{modalStatus && (
+					<RoleModal modalHandler={() => setModalStatus(false)} data={termsData} />
+				)}
 			</div>
 		</div>
 	)

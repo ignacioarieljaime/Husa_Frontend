@@ -7,6 +7,7 @@ import FlightNightFormPersonal from './FlightNightFormPersonal'
 
 const FlightNightForm = ({ data }) => {
 	let { structure } = data
+	console.log(structure)
 	const [errors, setErrors] = useState()
 	const [loading, setLoading] = useState(false)
 	const [dataSchema, setDataSchema] = useState({
@@ -86,6 +87,8 @@ const FlightNightForm = ({ data }) => {
 				<FlightNightFormHisense
 					loading={loading}
 					title={structure?.secondTitle?.value}
+					submitText={structure?.submitText?.value}
+					termsData={structure?.terms?.value}
 					data={dataSchema}
 					errors={errors}
 					onChange={dataSchemaHandler}
