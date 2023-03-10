@@ -17,7 +17,6 @@ const LaserInstallationDropDownSelectBox = ({
 }) => {
 	const [show, setShow] = useState(false)
 
-	
 	const newValueHandler = newValue => {
 		if (Array.isArray(value)) {
 			if (value.some(item => item.value === newValue.value)) {
@@ -53,7 +52,7 @@ const LaserInstallationDropDownSelectBox = ({
 					onClick={() => setShow(!show)}>
 					{prefixIcon ? <span className='me-3'>{prefixIcon}</span> : null}
 					{title}
-					{!value && placeholder}
+					{!value ? <span className='place_holder'>{placeholder}</span> : null}
 					{typeof value === 'string'
 						? options.find(
 								option => option?.value === value || option?.name === value
