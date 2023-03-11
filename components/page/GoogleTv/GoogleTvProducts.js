@@ -23,7 +23,6 @@ const GoogleTvProducts = ({ data }) => {
 				router,
 				'series_id=' + JSON.stringify(_data.items.map(item => item.id))
 			)
-			console.log(response.data.data)
 			setProducts(response.data.data)
 		} catch (error) {
 			console.log(error)

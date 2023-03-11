@@ -4,7 +4,6 @@ import DismissIcon from '../../icons/DismissIcon'
 
 function HeaderNotification({ data }) {
 	const [notificationDismiss, serNotificationDismiss] = useState(true)
-	console.log(data)
 	return (
 		<div
 			style={{ background: data?.background_color }}

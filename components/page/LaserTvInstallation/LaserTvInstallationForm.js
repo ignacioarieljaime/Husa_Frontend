@@ -52,7 +52,6 @@ const LaserTvInstallationForm = ({ data }) => {
 				formBody
 			)
 			if (response.data.userForm.id && response.data.userForm.created_at) {
-				console.log('hi')
 				toast.success('Submission successful')
 				route.push(
 					{

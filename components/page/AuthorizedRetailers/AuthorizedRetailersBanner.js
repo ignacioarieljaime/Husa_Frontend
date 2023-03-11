@@ -2,7 +2,6 @@ import React from 'react'
 
 const AuthorizedRetailersBanner = ({ data }) => {
 	let { structure } = data
-	console.log(structure)
 	return (
 		<div
 			className='authorized_retailers_banner'

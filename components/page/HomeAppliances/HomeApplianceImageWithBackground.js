@@ -1,7 +1,6 @@
 import React from 'react'
 
 const HomeApplianceImageWithBackground = ({ data: { structure } }) => {
-	console.log(structure)
 	return (
 		<section>
 			<div className='heading home-appliance-image'>

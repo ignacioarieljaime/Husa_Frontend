@@ -3,7 +3,6 @@ import Dollar from 'components/icons/Dollar'
 import Spinner from 'components/common/Spinner'
 
 const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans, loading }) => {
-	console.log(product);
 	const [price, setPrice] = useState()
 
 	return (
