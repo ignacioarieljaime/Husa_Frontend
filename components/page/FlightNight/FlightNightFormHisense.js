@@ -133,7 +133,10 @@ const FlightNightFormHisense = ({
 				<div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field position-relative  z-4'>
 						<label className='label'>
-							Which TV brands do you currently own at home? *
+							Which TV brands do you currently own at home?
+							<small className='d-block text-white fw-light fst-italic fs-9 text-capitalize'>
+								Multiple options can be selected
+							</small>
 						</label>
 						<LaserInstallationDropDownSelectBoxMulti
 							options={brand}
