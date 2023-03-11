@@ -80,7 +80,7 @@ const FlightNightFormHisense = ({
 				<div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field  position-relative z-6'>
 						<label className='label'>
-							How familiar with Hisense were you before today?
+							How familiar with Hisense were you before today? *
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={familiarity}
@@ -107,7 +107,7 @@ const FlightNightFormHisense = ({
 					<div className='form_select_field  position-relative z-5'>
 						<label className='label'>
 							After today, are you more likely to consider Hisense for your next
-							TV?
+							TV? *
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={nextTv}
@@ -133,7 +133,7 @@ const FlightNightFormHisense = ({
 				<div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field position-relative  z-4'>
 						<label className='label'>
-							Which TV brands do you currently own at home?
+							Which TV brands do you currently own at home? *
 						</label>
 						<LaserInstallationDropDownSelectBoxMulti
 							options={brand}
@@ -159,7 +159,7 @@ const FlightNightFormHisense = ({
 				<div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field  position-relative z-3'>
 						<label className='label'>
-							How likely are you to buy a new TV in the next 6 months?
+							How likely are you to buy a new TV in the next 6 months? *
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={nextSixMonths}
@@ -186,7 +186,7 @@ const FlightNightFormHisense = ({
 					<div className='form_select_field  position-relative z-2'>
 						<label className='label'>
 							How likely would you consider a Hisense Laser TV for your next
-							television?
+							television? *
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={nextTelevision}
@@ -214,7 +214,7 @@ const FlightNightFormHisense = ({
 				<div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field  position-relative z-1'>
 						<label className='label'>
-							What do you like most about the Hisense Laser TV?
+							What do you like most about the Hisense Laser TV? *
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={laserTV}

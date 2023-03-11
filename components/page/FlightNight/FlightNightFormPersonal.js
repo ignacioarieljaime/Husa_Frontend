@@ -14,7 +14,7 @@ const FlightNightFormPersonal = ({ title, onChange, errors }) => {
 			<div className='row justify-content-center align-items-center mx-0'>
 				<div className='col-12 col-md-6 px-4 pb-4'>
 					<div className='form_text_field  position-relative '>
-						<label className='label'>FIRST NAME</label>
+						<label className='label'>FIRST NAME *</label>
 						<input
 							onInput={e => onChange('first_name', e.target.value)}
 							name='PostalZipCode'
@@ -37,7 +37,7 @@ const FlightNightFormPersonal = ({ title, onChange, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-4'>
 					<div className='form_text_field  position-relative'>
-						<label className='label'>LAST NAME</label>
+						<label className='label'>LAST NAME *</label>
 						<input
 							onInput={e => onChange('last_name', e.target.value)}
 							name='PostalZipCode'
@@ -60,7 +60,7 @@ const FlightNightFormPersonal = ({ title, onChange, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-4'>
 					<div className='form_text_field  position-relative'>
-						<label className='label'>EMAIL ADDRESS </label>
+						<label className='label'>EMAIL ADDRESS *</label>
 						<input
 							onInput={e => onChange('email', e.target.value)}
 							name='PostalZipCode'
@@ -83,7 +83,7 @@ const FlightNightFormPersonal = ({ title, onChange, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 px-4 pb-4'>
 					<div className='form_text_field  position-relative'>
-						<label className='label'>PHONE NUMBER</label>
+						<label className='label'>PHONE NUMBER *</label>
 						<input
 							onInput={e => onChange('phone_number', e.target.value)}
 							name='PostalZipCode'
