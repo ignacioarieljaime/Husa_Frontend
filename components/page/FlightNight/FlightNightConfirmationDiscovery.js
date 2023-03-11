@@ -30,11 +30,13 @@ const FlightNightConfirmationDiscovery = ({ data }) => {
 								<h4
 									dangerouslySetInnerHTML={{ __html: item?.title?.value }}
 									className='item_title'></h4>
-								<Link href={item?.link?.value ? item?.link?.value : '/'}>
-									<a className='n-btn outline-black d-block w-fit mx-auto p-4'>
-										{item?.link?.title}
-									</a>
-								</Link>
+
+								<a
+									target={'_blank'}
+									href={item?.link?.value ? item?.link?.value : '/'}
+									className='n-btn outline-black d-block w-fit mx-auto p-4'>
+									{item?.link?.title}
+								</a>
 							</div>
 						</div>
 					))}

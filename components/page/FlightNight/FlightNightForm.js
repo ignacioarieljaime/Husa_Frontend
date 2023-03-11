@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
@@ -6,8 +7,8 @@ import FlightNightFormHisense from './FlightNightFormHisense'
 import FlightNightFormPersonal from './FlightNightFormPersonal'
 
 const FlightNightForm = ({ data }) => {
+	const router = useRouter()
 	let { structure } = data
-	console.log(structure)
 	const [errors, setErrors] = useState()
 	const [loading, setLoading] = useState(false)
 	const [dataSchema, setDataSchema] = useState({
@@ -45,6 +46,7 @@ const FlightNightForm = ({ data }) => {
 				{ ...dataSchema }
 			)
 			e.target.reset()
+
 			setDataSchema({
 				first_name: null,
 				last_name: null,
@@ -64,6 +66,9 @@ const FlightNightForm = ({ data }) => {
 				toast.success('form submitted', {
 					toastId: 'submit_success'
 				})
+				if (structure?.submitText?.value) {
+					router.push(structure?.submitText?.value)
+				}
 			}
 			setLoading(false)
 		} catch (error) {

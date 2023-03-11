@@ -2,7 +2,6 @@ import React from 'react'
 
 function IFrame({ data }) {
 	let { structure } = data
-	console.log(structure)
 	return (
 		<iframe
 			style={{
