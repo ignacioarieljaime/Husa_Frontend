@@ -87,7 +87,7 @@ const FlightNightForm = ({ data }) => {
 				<FlightNightFormHisense
 					loading={loading}
 					title={structure?.secondTitle?.value}
-					submitText={structure?.submitText?.value}
+					submitText={structure?.submitText?.title}
 					termsData={structure?.terms?.value}
 					data={dataSchema}
 					errors={errors}

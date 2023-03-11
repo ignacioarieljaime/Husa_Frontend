@@ -28,7 +28,7 @@ const FlightNightConfirmationSocialMedia = ({ data }) => {
 						dangerouslySetInnerHTML={{ __html: subtitle }}
 						className='subtitle'></div>
 					<div className='row mx-0 justify-content-center align-items-start'>
-						<div className='col-12 col-sm-6 text-center mb-8'>
+						<div className='col-12 col-sm-6 d-flex justify-content-center align-items-center flex-sm-column flex-column-reverse text-center mb-8'>
 							<Link
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a className='n-btn primary p-4 gap-2 d-inline-flex m-auto'>
@@ -46,7 +46,7 @@ const FlightNightConfirmationSocialMedia = ({ data }) => {
 							</Link>
 							<div
 								dangerouslySetInnerHTML={{ __html: captionTwo }}
-								className='caption'></div>
+								className='caption mt-0 mt-sm-4 mb-4 mb-sm-0'></div>
 						</div>
 						<div className='col-12 col-sm-6 text-center mb-8'>
 							<CustomImage
