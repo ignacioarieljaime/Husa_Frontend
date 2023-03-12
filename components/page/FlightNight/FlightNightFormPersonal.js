@@ -106,12 +106,11 @@ const FlightNightFormPersonal = ({ title, onChange, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 px-4'>
 					<div className='form_text_field  position-relative'>
-						<label className='label'>social media handle</label>
+							<label className='label'>INSTAGRAM USERNAME</label>
 						<input
 							onInput={e => onChange('social_media_handle', e.target.value)}
 							name='PostalZipCode'
 							type='text'
-							required={true}
 						/>
 						{errors?.social_media_handle ? (
 							<p
