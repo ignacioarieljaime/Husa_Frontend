@@ -135,11 +135,21 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	}
 
 	const formatDate = (_year, _month, _day) => {
+		console.log('year ', _year)
+		console.log('month ', _month)
+		console.log('day ', _day)
 		if (_month > 12) {
 			_month = 1
 			_year += 1
 		}
-		return new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10)
+		console.log('year ', _year)
+		console.log('month ', _month)
+		console.log('day ', _day)
+		const maxDate = new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10)
+		console.log(new Date(`${_year}-${_month}-${_day}`))
+		console.log(new Date(`${_year}-${_month}-${_day}`).toJSON())
+		console.log(new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10))
+		return maxDate
 	}
 
 	return (
@@ -342,11 +352,11 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							placeholder={'Requested Installation Date'}
 							required={true}
 							min={new Date().toJSON().slice(0, 10)}
-							// max={formatDate(
-							// 	new Date().getFullYear(),
-							// 	new Date().getMonth() + 2,
-							// 	new Date().getDate()
-							// )}
+							max={formatDate(
+								new Date().getFullYear(),
+								new Date().getMonth() + 2,
+								new Date().getDate()
+							)}
 							className='form-container-inner-input date_input'
 							value={data.expected_date && data.expected_date}
 							onChange={e => dispatch({ expected_date: e.target.value })}
