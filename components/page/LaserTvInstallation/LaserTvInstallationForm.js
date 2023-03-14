@@ -91,16 +91,16 @@ const LaserTvInstallationForm = ({ data }) => {
 						dispatch={dispatch}
 						errors={errors}
 					/> */}
-					<ProductInfoForm
+					{/* <ProductInfoForm
 						data={formBody}
 						dispatch={dispatch}
 						errors={errors}
-					/>
-					<InstallationInfoForm
+					/> */}
+					{/* <InstallationInfoForm
 						data={formBody}
 						dispatch={dispatch}
 						errors={errors}
-					/>
+					/> */}
 					<div className='text-center mb-0 mb-md-15 m-15'>
 						<button className='n-btn primary py-4 px-6 mb-7'>Submit</button>
 						{errors ? (
