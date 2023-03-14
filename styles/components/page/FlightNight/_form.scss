@@ -165,25 +165,34 @@
     flex-wrap: nowrap;
     .button {
       border: 1px solid #ffffff;
-      border-radius: 50%;
       width: 20px;
       height: 20px;
       min-width: 20px;
       min-height: 20px;
       position: relative;
       background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-right: 16px;
       &.active {
-        &::after {
+        &::before {
           content: "";
           display: block;
           position: absolute;
           left: 1px;
           top: 1px;
-          border-radius: 50%;
+          z-index: 1;
           width: 16px;
           height: 16px;
           background-color: #00aaa6;
+        }
+        svg{
+          position: relative;
+          z-index: 2;
+          path {
+              fill: #fff;
+            }
         }
       }
     }
