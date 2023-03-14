@@ -74,9 +74,9 @@ const LaserTvInstallationForm = ({ data }) => {
 		}
 	}
 
-	useEffect(() => {
-		setText(structure?.text?.value)
-	}, [])
+	// useEffect(() => {
+	// 	setText(structure?.text?.value)
+	// }, [])
 
 	return (
 		<section>
