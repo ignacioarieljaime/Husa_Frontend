@@ -51,6 +51,9 @@ const ExtendedWarrantyPaymentStatus = ({
 			} else {
 				setStatusData(response?.data)
 				setIsLoading(false)
+				setTimeout(() => {
+					window.open(response.data?.invoice?.product?.warranty_card, '_blank')
+				}, 300)
 			}
 		} catch (error) {
 			setIsLoading(false)

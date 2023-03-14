@@ -84,23 +84,16 @@ function RegisterForm({ data }) {
 				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}&status[]=1`
 			)
 			if (response.status === 200) {
+				let data = response.data.modelSeries.map(item => ({
+					...item,
+					name: item.model
+				}))
+
 				setModels(
-					response.data.modelSeries.map(item => {
-						return { ...item, name: item.model }
-					})
+					data.sort((a, b) =>
+						sortWorkHandler(a.name).localeCompare(sortWorkHandler(b.name))
+					)
 				)
-				// if (response.data.series.length >= 1) {
-				// 	setCategoryId(_categoryId)
-				// 	setSeries(response.data.series)
-				// 	setModels([])
-				// } else {
-				// 	setSeries([])
-				// 	setModels(
-				// 		response.data.models.map(item => {
-				// 			return { name: item }
-				// 		})
-				// 	)
-				// }
 			}
 		} catch (error) {
 			setSeries([])
@@ -224,6 +217,16 @@ function RegisterForm({ data }) {
 				toastId: 'image-failed'
 			})
 			console.log(error)
+		}
+	}
+
+	const sortWorkHandler = _data => {
+		let position = ''
+		for (const word of _data.split('')) {
+			if (/[a-zA-Z]/.test(word)) {
+				position = _data.split('').indexOf(word)
+				return _data.slice(position)
+			}
 		}
 	}
 

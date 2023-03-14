@@ -134,6 +134,14 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 		}
 	}
 
+	const formatDate = (_year, _month, _day) => {
+		if (_month > 12) {
+			_month = 1
+			_year += 1
+		}
+		return new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10)
+	}
+
 	return (
 		<CardLayout title='Installation Information' icon={<Wrench />}>
 			<div className='row mx-0'>
@@ -327,12 +335,18 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 						) : null}
 					</div>
 				</div>
-				{/* <div className='col-12 col-md-6'>
+				<div className='col-12 col-md-6'>
 					<div className='form_select_field'>
 						<input
 							type='date'
-							placeholder={'Expected Installation Date'}
+							placeholder={'Requested Installation Date'}
 							required={true}
+							min={new Date().toJSON().slice(0, 10)}
+							max={formatDate(
+								new Date().getFullYear(),
+								new Date().getMonth() + 2,
+								new Date().getDate()
+							)}
 							className='form-container-inner-input date_input'
 							value={data.expected_date && data.expected_date}
 							onChange={e => dispatch({ expected_date: e.target.value })}
@@ -348,7 +362,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							<p className='error'>{errors?.expected_date}</p>
 						) : null}
 					</div>
-				</div> */}
+				</div>
 			</div>
 		</CardLayout>
 	)

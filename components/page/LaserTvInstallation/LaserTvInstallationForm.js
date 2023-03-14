@@ -13,14 +13,10 @@ const LaserTvInstallationForm = ({ data }) => {
 	const [errors, setErrors] = useState(null)
 	const route = useRouter()
 	const [formBody, dispatch] = useReducer(
-		(state, update) => {
-			console.log(state)
-			console.log(update)
-			return {
-				...state,
-				...update
-			}
-		},
+		(state, update) => ({
+			...state,
+			...update
+		}),
 		{
 			first_name: '',
 			last_name: '',
