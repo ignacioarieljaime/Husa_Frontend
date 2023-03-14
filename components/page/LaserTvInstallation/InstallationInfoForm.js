@@ -147,11 +147,13 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			console.log('month ', _month)
 			console.log('day ', _day)
 			const maxDate = new Date(`${_year}-${_month}-${_day}`)
-				.toJSON()
-				.slice(0, 10)
+				?.toJSON()
+				?.slice(0, 10)
 			console.log(new Date(`${_year}-${_month}-${_day}`))
-			console.log(new Date(`${_year}-${_month}-${_day}`).toJSON())
-			console.log(new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10))
+			console.log(new Date(`${_year}-${_month}-${_day}`)?.toJSON())
+			console.log(
+				new Date(`${_year}-${_month}-${_day}`)?.toJSON()?.slice(0, 10)
+			)
 			return maxDate
 		}
 	}
