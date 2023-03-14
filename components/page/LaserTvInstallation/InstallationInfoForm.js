@@ -135,11 +135,16 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	}
 
 	const formatDate = (_year, _month, _day) => {
-		if (_month > 12) {
-			_month = 1
-			_year += 1
+		if (_year && _month && _day) {
+			if (_month > 12) {
+				_month = 1
+				_year += 1
+			}
+			const maxDate = new Date(`${_year}-${_month}-${_day}`)
+				?.toJSON()
+				?.slice(0, 10)
+			return maxDate
 		}
-		return new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10)
 	}
 
 	return (
