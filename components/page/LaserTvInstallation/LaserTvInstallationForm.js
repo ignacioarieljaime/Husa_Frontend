@@ -74,18 +74,18 @@ const LaserTvInstallationForm = ({ data }) => {
 		}
 	}
 
-	// useEffect(() => {
-	// 	setText(structure?.text?.value)
-	// }, [])
+	useEffect(() => {
+		setText(structure?.text?.value)
+	}, [])
 
 	return (
 		<section>
 			<div className='laser_installation_form'>
 				<h3 className='title'>{structure?.title?.value}</h3>
-				{/* <div
+				<div
 					className='subtitle'
 					dangerouslySetInnerHTML={{ __html: text }}></div>
-				<form onSubmit={e => submitForm(e)}>
+				{/* <form onSubmit={e => submitForm(e)}>
 					<PersonalInfoForm
 						data={formBody}
 						dispatch={dispatch}
