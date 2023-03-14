@@ -342,11 +342,11 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 							placeholder={'Requested Installation Date'}
 							required={true}
 							min={new Date().toJSON().slice(0, 10)}
-							max={formatDate(
-								new Date().getFullYear(),
-								new Date().getMonth() + 2,
-								new Date().getDate()
-							)}
+							// max={formatDate(
+							// 	new Date().getFullYear(),
+							// 	new Date().getMonth() + 2,
+							// 	new Date().getDate()
+							// )}
 							className='form-container-inner-input date_input'
 							value={data.expected_date && data.expected_date}
 							onChange={e => dispatch({ expected_date: e.target.value })}
