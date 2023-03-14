@@ -135,21 +135,25 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	}
 
 	const formatDate = (_year, _month, _day) => {
-		console.log('year ', _year)
-		console.log('month ', _month)
-		console.log('day ', _day)
-		if (_month > 12) {
-			_month = 1
-			_year += 1
+		if (_year && _month && _day) {
+			console.log('year ', _year)
+			console.log('month ', _month)
+			console.log('day ', _day)
+			if (_month > 12) {
+				_month = 1
+				_year += 1
+			}
+			console.log('year ', _year)
+			console.log('month ', _month)
+			console.log('day ', _day)
+			const maxDate = new Date(`${_year}-${_month}-${_day}`)
+				.toJSON()
+				.slice(0, 10)
+			console.log(new Date(`${_year}-${_month}-${_day}`))
+			console.log(new Date(`${_year}-${_month}-${_day}`).toJSON())
+			console.log(new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10))
+			return maxDate
 		}
-		console.log('year ', _year)
-		console.log('month ', _month)
-		console.log('day ', _day)
-		const maxDate = new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10)
-		console.log(new Date(`${_year}-${_month}-${_day}`))
-		console.log(new Date(`${_year}-${_month}-${_day}`).toJSON())
-		console.log(new Date(`${_year}-${_month}-${_day}`).toJSON().slice(0, 10))
-		return maxDate
 	}
 
 	return (
