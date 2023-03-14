@@ -85,12 +85,12 @@ const LaserTvInstallationForm = ({ data }) => {
 				<div
 					className='subtitle'
 					dangerouslySetInnerHTML={{ __html: text }}></div>
-				{/* <form onSubmit={e => submitForm(e)}>
-					<PersonalInfoForm
+				<form onSubmit={e => submitForm(e)}>
+					{/* <PersonalInfoForm
 						data={formBody}
 						dispatch={dispatch}
 						errors={errors}
-					/>
+					/> */}
 					<ProductInfoForm
 						data={formBody}
 						dispatch={dispatch}
@@ -110,7 +110,7 @@ const LaserTvInstallationForm = ({ data }) => {
 							</p>
 						) : null}
 					</div>
-				</form> */}
+				</form>
 			</div>
 		</section>
 	)
