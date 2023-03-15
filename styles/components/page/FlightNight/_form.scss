@@ -171,6 +171,9 @@
       min-height: 20px;
       position: relative;
       background-color: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-right: 16px;
       &.active {
         &::before {
@@ -184,14 +187,12 @@
           height: 16px;
           background-color: #00aaa6;
         }
-
-        svg {
+        svg{
           position: relative;
           z-index: 2;
-
           path {
-            fill: #fff;
-          }
+              fill: #fff;
+            }
         }
       }
     }
