@@ -99,7 +99,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 				router.push(response?.data?.url)
 
 				// await redirectToPayment(response?.data?.invoice?.token)
-				setLoading(null)
+				// setLoading(null)
 			} catch (error) {
 				setLoading(null)
 				if (error?.response?.status === 422) {
