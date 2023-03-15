@@ -6,21 +6,28 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { GetSingleProduct } from 'services/Product'
 
-const CustomChannelAdvisor = ({ id }) => {
+const CustomChannelAdvisor = ({ id, condition }) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
 
 	const getProduct = async () => {
-		// setLoading(true)
-		const response = await GetSingleProduct(router, id)
-		setProduct(response?.data?.data)
-		setLoading(false)
+		setLoading(true)
+		try {
+			const response = await GetSingleProduct(router, id)
+			setProduct(response?.data?.data)
+			setLoading(false)
+		} catch (error) {
+			setLoading(false)
+			console.log(error)
+		}
 	}
 
 	useEffect(() => {
-		getProduct()
-	}, [id])
+		if (condition) {
+			getProduct()
+		}
+	}, [condition, id])
 
 	return (
 		<div className='custom_channel_advisor'>
@@ -69,7 +76,9 @@ const CustomChannelAdvisor = ({ id }) => {
 						<p className='no_retailer'>Check Back Soon for Availability.</p>
 					)
 				) : (
-					<Spinner />
+					<div className='py-5'>
+						<Spinner />
+					</div>
 				)}
 			</div>
 		</div>
