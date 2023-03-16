@@ -6,10 +6,11 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { GetSingleProduct } from 'services/Product'
 
-const CustomChannelAdvisor = ({ id, condition }) => {
+const CustomChannelAdvisor = ({ id, condition, productData }) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
+	console.log(productData)
 
 	const getProduct = async () => {
 		setLoading(true)
@@ -68,7 +69,16 @@ const CustomChannelAdvisor = ({ id, condition }) => {
 								</div>
 								<Link
 									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
-									<a className='buy_now'>Buy Now</a>
+									<a
+										data-dataLayer={JSON.stringify({
+											name: productData?.name,
+											model: productData?.model,
+											id: productData?.id,
+											retailer: item?.name
+										})}
+										className='buy_now'>
+										Buy Now
+									</a>
 								</Link>
 							</div>
 						))

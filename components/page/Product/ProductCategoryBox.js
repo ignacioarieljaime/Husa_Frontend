@@ -100,6 +100,7 @@ function ProductCategoryBox({ data, pim }) {
 			</div>
 			{pim && (
 				<ModalChanelAdviser
+					product={pim}
 					productId={pim.id}
 					type={pim.buy_status}
 					condition={chanelAdviserHandler}

@@ -121,6 +121,7 @@ function ProductsItem({ data }) {
 					</button>
 				</div>
 				<ModalChanelAdviser
+					product={currentItem}
 					productId={currentItem.id}
 					type={currentItem.buy_status}
 					condition={chanelAdviserHandler}
