@@ -10,7 +10,6 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
-	console.log(productData)
 
 	const getProduct = async () => {
 		setLoading(true)
@@ -70,11 +69,15 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 								<Link
 									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
 									<a
-										data-dataLayer={JSON.stringify({
-											name: productData?.name,
+										data-retailer={JSON.stringify({
+											productTitle: productData?.name,
 											model: productData?.model,
-											id: productData?.id,
-											retailer: item?.name
+											productType: productData?.category?.name,
+											retailer: item?.name,
+											size: productData?.customFields
+												.find(item => item.type_name === 'TV filters')
+												?.custom_fields.find(item => item.name === 'Size class')
+												?.value
 										})}
 										className='buy_now'>
 										Buy Now
