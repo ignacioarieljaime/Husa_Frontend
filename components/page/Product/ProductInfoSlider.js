@@ -22,26 +22,36 @@ function ProductInfoSlider({ pim, firstImage }) {
 				}}
 				modules={[FreeMode, Thumbs]}
 				className=' gallery-top'>
-				{firstImage && (
+				{pim && pim.find(item => item.order === 1) ? (
 					<SwiperSlide key={'custom'}>
 						<span className='media-slider-wrapper'>
 							<CustomImage
-								src={firstImage}
-								alt='Front U8G Hisense s'
+								src={pim.find(item => item.order === 1)?.url}
+								alt={
+									pim.find(item => item.order === 1)?.caption
+										? pim.find(item => item.order === 1)?.caption
+										: pim.find(item => item.order === 1)?.title
+								}
+								title={
+									pim.find(item => item.order === 1)?.caption
+										? pim.find(item => item.order === 1)?.caption
+										: pim.find(item => item.order === 1)?.title
+								}
 								className='slider-media'
 								wrapperHeight={'100%'}
 							/>
 						</span>
 					</SwiperSlide>
-				)}
+				) : null}
 				{pim &&
 					pim.map((item, index) =>
 						item.type_id === 1 && item.url !== firstImage ? (
 							<SwiperSlide key={index}>
 								<span className='media-slider-wrapper'>
 									<CustomImage
-										src={item.url}
-										alt='Front U8G Hisense s'
+										src={item?.url}
+										title={item?.caption ? item?.caption : item?.title}
+										alt={item?.caption ? item?.caption : item?.title}
 										className='slider-media'
 										wrapperHeight={'100%'}
 									/>
@@ -66,7 +76,6 @@ function ProductInfoSlider({ pim, firstImage }) {
 						aria-label={`slide-${0}`}>
 						<CustomImage
 							src={firstImage}
-							alt='Front U8G Hisense s'
 							aria-hidden='true'
 							tabIndex='-1'
 							wrapperHeight={'91px'}
@@ -82,7 +91,8 @@ function ProductInfoSlider({ pim, firstImage }) {
 								aria-label={`slide-${index + 1}`}>
 								<CustomImage
 									src={item.url}
-									alt='Front U8G Hisense s'
+									alt={item?.caption ? item?.caption : item?.title}
+									title={item?.caption ? item?.caption : item?.title}
 									aria-hidden='true'
 									tabIndex='-1'
 									wrapperHeight={'91px'}

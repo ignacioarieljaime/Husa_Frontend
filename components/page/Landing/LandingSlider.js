@@ -15,7 +15,6 @@ import { useWindowSize } from 'hooks/useWindowSize'
 function LandingSlider({ data }) {
 	let { structure } = data
 	const size = useWindowSize()
-	console.log(size)
 	return (
 		<>
 			<Swiper

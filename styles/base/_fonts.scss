@@ -48,3 +48,33 @@
   font-weight: 700;
   src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Bold.otf') format('opentype')
 }
+
+
+/* Neutra */
+@font-face {
+  font-family: 'Neutra';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./../../public/assets/fonts/Neutra/NeutraText-Bold.otf') format('opentype')
+}
+
+@font-face {
+  font-family: 'Neutra';
+  font-style: italic;
+  font-weight: 700;
+  src: url('./../../public/assets/fonts/Neutra/NeutraText-BoldItalic.otf') format('opentype')
+}
+
+@font-face {
+  font-family: 'Neutra';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./../../public/assets/fonts/Neutra/NeutraText-Book.otf') format('opentype')
+}
+
+@font-face {
+  font-family: 'Neutra';
+  font-style: italic;
+  font-weight: 400;
+  src: url('./../../public/assets/fonts/Neutra/NeutraText-BookItalic.otf') format('opentype')
+}

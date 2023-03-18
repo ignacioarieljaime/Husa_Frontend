@@ -1,18 +1,19 @@
 .flight_night_banner {
-	background: #00aaa6;
-	padding: 30px 0;
-	.title {
-		padding: 0 30px;
-		* {
-			text-align: center;
-			font-style: normal;
-			font-weight: 700;
-			font-size: 34px;
-			line-height: 42px;
-			letter-spacing: -0.02em;
-			text-transform: uppercase;
-			color: #fff;
-            margin: 0 !important;
-		}
-	}
+  background: #00aaa6;
+  padding: 30px 0;
+  .title {
+    padding: 0 20px;
+    * {
+      font-family: "Neutra";
+      text-align: center;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: 42px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 !important;
+    }
+  }
 }

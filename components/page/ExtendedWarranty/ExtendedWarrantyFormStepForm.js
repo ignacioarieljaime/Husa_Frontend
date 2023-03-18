@@ -209,6 +209,7 @@ const ExtendedWarrantyFormStepForm = ({
 						name='model_plate_sticker'
 						onChange={onUpload}
 						loading={loading}
+						isBgWhite={true}
 						modalOnClick={() => setShowModal(showModal => !showModal)}
 					/>
 				</div>
@@ -220,6 +221,7 @@ const ExtendedWarrantyFormStepForm = ({
 						name='receipt_photo'
 						onChange={onUpload}
 						loading={loading}
+						isBgWhite={true}
 						boxContent='Upload Your Receipt Photo'
 					/>
 				</div>

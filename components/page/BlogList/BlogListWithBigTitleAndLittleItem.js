@@ -9,7 +9,6 @@ function BlogListWithBigTitleAndLittleItem({ data: { structure } }) {
 	useEffect(() => {
 		setText(structure?.title?.value)
 	}, [])
-	console.log(structure?.list?.value)
 	return (
 		<section>
 			<div className='bg-light-orange-gradient-light'>
