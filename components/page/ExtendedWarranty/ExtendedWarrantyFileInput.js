@@ -10,6 +10,7 @@ const ExtendedWarrantyFileInput = ({
 	modalOnClick,
 	id,
 	name,
+	isBgWhite,
 	value,
 	loading
 }) => {
@@ -18,7 +19,10 @@ const ExtendedWarrantyFileInput = ({
 
 	return (
 		<div className='extended-warranty-file-input'>
+			{label && <label className='mb-3 ps-4'>{label}</label>}
+
 			<div
+				style={isBgWhite && { background: 'transparent' }}
 				className={`input position-relative ${
 					value === '' ? '' : 'activated'
 				}`}>
@@ -50,7 +54,7 @@ const ExtendedWarrantyFileInput = ({
 					</>
 				) : (
 					<div className='content'>
-						{value === '' ? boxContent : 'Image Uploaded'}
+						{!value ? boxContent : 'Image Uploaded'}
 					</div>
 				)}
 

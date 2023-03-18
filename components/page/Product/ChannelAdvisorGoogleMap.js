@@ -14,7 +14,7 @@ const containerStyle = {
 
 function ChannelAdvisorGoogleMap({ position, markers, zoom }) {
 	const { isLoaded } = useJsApiLoader({
-		googleMapsApiKey: 'AIzaSyBAlmy2iZ1MPPxiLMlraJM86JX0nsmmltg',
+		googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY,
 		libraries: ['places']
 	})
 

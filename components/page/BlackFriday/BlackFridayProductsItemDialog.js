@@ -8,7 +8,6 @@ import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
 
 const BlackFridayProductsItem = ({ onClick, retailers }) => {
-	console.log(retailers)
 	return (
 		<div className='retailers_dialog'>
 			<div className='backdrop' onClick={() => onClick(false)}></div>
