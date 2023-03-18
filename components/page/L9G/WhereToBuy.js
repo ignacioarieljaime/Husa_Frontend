@@ -26,6 +26,7 @@ const WhereToBuy = ({ pim, data }) => {
 			</button>
 			{pim && (
 				<ModalChanelAdviser
+					product={pim}
 					productId={pim.id}
 					type={pim.buy_status}
 					condition={chanelAdviserHandler}

@@ -7,7 +7,14 @@ import React, { useRef } from 'react'
 import ChannelAdvisorDynamicRetailer from './ChannelAdvisorDynamicRetailer'
 import CustomChannelAdvisor from './CustomChannelAdvisor'
 
-function ModalChanelAdviser({ productId, condition, handler, model, type }) {
+function ModalChanelAdviser({
+	productId,
+	condition,
+	handler,
+	model,
+	type,
+	product
+}) {
 	const modalOverView = useRef()
 	const outside = useOutsideClick(modalOverView)
 	return (
@@ -76,7 +83,10 @@ function ModalChanelAdviser({ productId, condition, handler, model, type }) {
 					</div> */}
 				{type === 'ChannelAdvisor' ? (
 					<>
-						<ChannelAdvisorDynamicRetailer condition={condition} model={model} />
+						<ChannelAdvisorDynamicRetailer
+							condition={condition}
+							model={model}
+						/>
 						{/* <iframe
 							width={'100%'}
 							style={{ height: '83vh' }}
@@ -86,7 +96,11 @@ function ModalChanelAdviser({ productId, condition, handler, model, type }) {
 					</>
 				) : (
 					<>
-						<CustomChannelAdvisor id={productId} />
+						<CustomChannelAdvisor
+							id={productId}
+							productData={product}
+							condition={condition}
+						/>
 						<div className='link_box'>
 							<h5>Hisense Authorized Dealers</h5>
 							<Link href={'/authorized-retailers'}>

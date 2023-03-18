@@ -99,6 +99,7 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 			{pim && (
 				<ModalChanelAdviser
 					productId={pim.id}
+					product={pim}
 					type={pim.buy_status}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}

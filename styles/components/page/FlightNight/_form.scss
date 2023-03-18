@@ -187,14 +187,12 @@
           height: 16px;
           background-color: #00aaa6;
         }
-
-        svg {
+        svg{
           position: relative;
           z-index: 2;
-
           path {
-            fill: #fff;
-          }
+              fill: #fff;
+            }
         }
       }
     }
