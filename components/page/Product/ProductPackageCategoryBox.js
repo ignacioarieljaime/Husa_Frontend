@@ -103,6 +103,7 @@ function ProductPackageCategoryBox({ data, pim }) {
 					</ul>
 				</nav>
 				<ModalChanelAdviser
+					product={pim}
 					productId={pim.id}
 					type={pim.buy_status}
 					condition={chanelAdviserHandler}

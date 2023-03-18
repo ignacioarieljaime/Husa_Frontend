@@ -40,11 +40,11 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 
 	useEffect(() => {
 		getProducts(
-			category.id,
+			router?.query?.category_id,
 			modelNumber === 'Select' ? null : modelNumber,
 			searchTerm === '' ? null : searchTerm
 		)
-	}, [category, modelNumber, searchTerm])
+	}, [modelNumber, searchTerm, router?.query])
 
 	const getProducts = async (category, modelNumber, searchTerm) => {
 		setProducts('loading')
