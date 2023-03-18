@@ -26,5 +26,9 @@ module.exports.GoogleTvComponents = [
 	{
 		name: 'GoogleTvIframe',
 		path: 'components/page/GoogleTv/GoogleTvIframe'
+	},
+	{
+		name: 'BannerWithImageOrVideo',
+		path: 'components/page/GoogleTv/BannerWithImageOrVideo'
 	}
 ]
