@@ -10,14 +10,17 @@ import { getSettingApi } from 'services/cxm'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { useWindowSize } from 'hooks/useWindowSize'
+import axios from 'axios'
+import { setHeaderAndFooterData } from 'redux/slices/layout'
+import { useDispatch } from 'react-redux'
 
 function Layout({ children, meta, title, header }) {
 	const [compareRoute, setCompareRoute] = useState()
 	const [width] = useWindowSize()
+	const dispatch = useDispatch()
 	const [showGoTop, setShowGoTop] = useState(false)
 	const router = useRouter()
 	const [showChild, setShowChild] = useState(false)
-	
 
 	useEffect(() => {
 		checkIsAdmin()
@@ -33,9 +36,24 @@ function Layout({ children, meta, title, header }) {
 
 	useEffect(() => {
 		window.scrollTo(0, 0)
-
-
+		getMenu()
 	}, [router.pathname])
+
+	const getMenu = async () => {
+		try {
+			let response = await axios.get(
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
+			)
+			let headerData = response.data.data.find(item => item.title === 'header')
+			let footerData = response.data.data.find(item => item.title === 'footer')
+
+			sessionStorage.setItem('headerData', JSON.stringify(headerData))
+			sessionStorage.setItem('footerData', JSON.stringify(footerData))
+			dispatch(setHeaderAndFooterData(response.data.data))
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	const checkIsAdmin = () => {
 		if (process.env.NEXT_PUBLIC_APP_LOCATION !== 'production') {

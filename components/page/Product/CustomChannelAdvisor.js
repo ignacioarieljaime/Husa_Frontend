@@ -6,21 +6,28 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { GetSingleProduct } from 'services/Product'
 
-const CustomChannelAdvisor = ({ id }) => {
+const CustomChannelAdvisor = ({ id, condition, productData }) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
 
 	const getProduct = async () => {
-		// setLoading(true)
-		const response = await GetSingleProduct(router, id)
-		setProduct(response?.data?.data)
-		setLoading(false)
+		setLoading(true)
+		try {
+			const response = await GetSingleProduct(router, id)
+			setProduct(response?.data?.data)
+			setLoading(false)
+		} catch (error) {
+			setLoading(false)
+			console.log(error)
+		}
 	}
 
 	useEffect(() => {
-		getProduct()
-	}, [id])
+		if (condition) {
+			getProduct()
+		}
+	}, [condition, id])
 
 	return (
 		<div className='custom_channel_advisor'>
@@ -61,7 +68,20 @@ const CustomChannelAdvisor = ({ id }) => {
 								</div>
 								<Link
 									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
-									<a className='buy_now'>Buy Now</a>
+									<a
+										data-retailer={JSON.stringify({
+											productTitle: productData?.name,
+											model: productData?.model,
+											productType: productData?.category?.name,
+											retailer: item?.name,
+											size: productData?.customFields
+												.find(item => item.type_name === 'TV filters')
+												?.custom_fields.find(item => item.name === 'Size class')
+												?.value
+										})}
+										className='buy_now'>
+										Buy Now
+									</a>
 								</Link>
 							</div>
 						))
@@ -69,7 +89,9 @@ const CustomChannelAdvisor = ({ id }) => {
 						<p className='no_retailer'>Check Back Soon for Availability.</p>
 					)
 				) : (
-					<Spinner />
+					<div className='py-5'>
+						<Spinner />
+					</div>
 				)}
 			</div>
 		</div>
