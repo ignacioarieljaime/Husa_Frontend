@@ -14,9 +14,10 @@ import Link from 'next/link'
 import HeaderSearchBox from './HeaderSearchBox'
 import HeaderNotification from './HeaderNotification'
 import { useWindowSize } from 'hooks/useWindowSize'
+import { useSelector } from 'react-redux'
 
 function Header({ data: { structure }, notification }) {
-	// const { headerData } = useSelector(state => state.layoutData)
+	const { headerData: headerRedux } = useSelector(state => state.layoutData)
 	const [width] = useWindowSize()
 	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
@@ -26,8 +27,7 @@ function Header({ data: { structure }, notification }) {
 		if (sessionStorage.getItem('headerData')) {
 			setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
 		}
-		getMenu()
-	}, [])
+	}, [headerRedux])
 
 	useEffect(() => {
 		if (!searchInputCondition) {
@@ -38,26 +38,6 @@ function Header({ data: { structure }, notification }) {
 			setTopNavCondition(false)
 		}
 	}, [searchInputCondition])
-
-	const getMenu = async () => {
-		try {
-			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
-			)
-			let headerData = response.data.data.find(item => item.title === 'header')
-
-			if (
-				!sessionStorage.getItem('headerData') ||
-				(sessionStorage.getItem('headerData') &&
-					sessionStorage.getItem('headerData') !== JSON.stringify(headerData))
-			) {
-				sessionStorage.setItem('headerData', JSON.stringify(headerData))
-				setHeaderData(headerData)
-			}
-		} catch (error) {
-			console.log(error)
-		}
-	}
 
 	return (
 		<header>

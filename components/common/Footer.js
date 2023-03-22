@@ -2,38 +2,18 @@ import axios from 'axios'
 import Logo from 'components/icons/Logo'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 // import { setFooterData } from 'redux/slices/layout'
 
 function Footer() {
 	const [footerData, setFooterData] = useState()
-	// const { footerData } = useSelector(state => state.layoutData)
+	const { footerData: footerReduxData } = useSelector(state => state.layoutData)
 
 	useEffect(() => {
 		if (sessionStorage.getItem('footerData')) {
 			setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
 		}
-		getFooter()
-	}, [])
-
-	const getFooter = async () => {
-		try {
-			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
-			)
-			let footerData = response.data.data.find(item => item.title === 'footer')
-
-			if (
-				!sessionStorage.getItem('footerData') ||
-				(sessionStorage.getItem('footerData') &&
-					sessionStorage.getItem('footerData') !== JSON.stringify(footerData))
-			) {
-				sessionStorage.setItem('footerData', JSON.stringify(footerData))
-				setFooterData(footerData)
-			}
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	}, [footerReduxData])
 
 	return (
 		<footer className='footer px-6 py-10 pt-md-16 px-md-6 pb-md-6'>
