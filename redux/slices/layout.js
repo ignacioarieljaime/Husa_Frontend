@@ -9,14 +9,12 @@ const LayoutSlice = createSlice({
 	name: 'LayoutData',
 	initialState,
 	reducers: {
-		setHeaderData: (state, action) => {
-			state.headerData = action.payload
-		},
-		setFooterData: (state, action) => {
-			state.footerData = action.payload
+		setHeaderAndFooterData: (state, { payload }) => {
+			state.headerData = payload.find(item => item.title === 'header')
+			state.footerData = payload.find(item => item.title === 'footer')
 		}
 	}
 })
 
-export const { setHeaderData, setFooterData } = LayoutSlice.actions
+export const { setHeaderAndFooterData } = LayoutSlice.actions
 export default LayoutSlice.reducer
