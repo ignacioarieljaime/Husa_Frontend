@@ -46,27 +46,17 @@
 	}
 	.discription-list {
 		dt {
-			display: none;
-			visibility: hidden;
-			pointer-events: none;
-			text-indent: 0;
 			width: 100%;
-		}
-		dd {
+			font-weight: 600;
 			font-size: 15px;
 			line-height: 30px;
-			margin: 0;
-			padding: 5px;
+			color: #b3b3b3;
+			display: block;
+		}
+		.d_desc {
+			font-size: 15px;
+			line-height: 30px;
 			color: #292929;
-
-			&::before {
-				content: attr(data-label);
-				font-weight: 600;
-				font-size: 15px;
-				line-height: 30px;
-				color: #b3b3b3;
-				display: block;
-			}
 		}
 	}
 }
@@ -88,7 +78,7 @@
 	align-items: center;
 	text-align: center;
 	max-width: 860px;
-	margin:  0 auto;
+	margin: 0 auto;
 	h4 {
 		font-weight: 700;
 		font-size: 33px;
