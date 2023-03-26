@@ -24,6 +24,12 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 
 	useEffect(() => {
 		if (productCategories && productCategories.length !== 0) {
+			if (productCategories.some(category => category?.id === 9)) {
+				console.log(productCategories.filter(category => category?.id !== 9))
+				setProductCategories(
+					productCategories.filter(category => category?.id !== 9)
+				)
+			}
 			if (category.name === 'Select') {
 				if (router.query.category_id) {
 					setCategory(
@@ -32,10 +38,6 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 						)
 					)
 				} else if (!router.query.search) setCategory(productCategories[0])
-			} else if (productCategories.some(category => category?.id === 9)) {
-				setProductCategories(
-					productCategories.filter(category => category?.id !== 9)
-				)
 			}
 		}
 	}, [productCategories])
