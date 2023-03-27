@@ -25,7 +25,6 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 	useEffect(() => {
 		if (productCategories && productCategories.length !== 0) {
 			if (productCategories.some(category => category?.id === 9)) {
-				console.log(productCategories.filter(category => category?.id !== 9))
 				setProductCategories(
 					productCategories.filter(category => category?.id !== 9)
 				)
