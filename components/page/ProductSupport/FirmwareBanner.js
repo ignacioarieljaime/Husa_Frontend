@@ -38,13 +38,16 @@ const FirmwareBanner = ({ data }) => {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&string=${_value}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 			)
-			router.push(
-				{
-					pathname: response?.data?.data[0]?.route,
-					query: { model: JSON.stringify(model?.batch_groups) }
-				},
-				response?.data?.data[0]?.route
-			)
+			if (response?.data?.data && response?.data?.data.length > 0) {
+				console.log(response?.data?.data.length > 0)
+				router.push(
+					{
+						pathname: response?.data?.data[0]?.route,
+						query: { model: JSON.stringify(model?.batch_groups) }
+					},
+					response?.data?.data[0]?.route
+				)
+			}
 		} catch (error) {
 			console.log(error)
 		}
