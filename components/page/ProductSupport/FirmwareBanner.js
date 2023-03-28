@@ -4,17 +4,64 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CustomImage from 'components/common/CustomImage'
+import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
+import { getFirmWareModels } from 'services/servicePortal'
 import FirmwareBannerModelNumberDialog from './FirmwareBannerModelNumberDialog'
+import { RouteHandler } from 'utils/routeHandler'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+import Spinner from 'components/common/Spinner'
 
 const FirmwareBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const [showModal, setShowModal] = useState(false)
+	const [searchTerm, setSearchTerm] = useState([])
+	const [model, setModel] = useState({})
+	const [loading, setLoading] = useState(false)
+
+	const router = useRouter()
+
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
+
+	useEffect(() => {
+		if (model?.title) getPageUrl(model?.title)
+	}, [model])
+
+	const getPageUrl = async _value => {
+		try {
+			let response = await axios.get(
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&string=${_value}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+			)
+			router.push(
+				{
+					pathname: response?.data?.data[0]?.route,
+					query: { model: JSON.stringify(model?.batch_groups) }
+				},
+				response?.data?.data[0]?.route
+			)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const getModel = async _searchTerm => {
+		setLoading(true)
+		try {
+			const response = await getFirmWareModels(_searchTerm)
+			setModel(response?.data?.model)
+			setLoading(false)
+		} catch {
+			toast.error('There was an error getting the models')
+			setLoading(false)
+		}
+	}
+
 	return (
 		<section>
 			<div className='firmware_banner'>
@@ -30,13 +77,18 @@ const FirmwareBanner = ({ data }) => {
 					<h2
 						className='title'
 						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
-					<div className='search_container'>
-						<input type='text' placeholder='start typing your model number' />
-						<FontAwesomeIcon
-							icon={faMagnifyingGlass}
-							size='lg'
-							className='text-white'
+					<div className={`search_container`}>
+						<input
+							onChange={e => setSearchTerm(e.target.value)}
+							value={searchTerm}
+							type='text'
+							placeholder='start typing your serial or model number'
 						/>
+						<button
+							onClick={() => getModel(searchTerm)}
+							className='n-btn outline-white transparent py-4 px-6'>
+							{loading ? <Spinner size={20} /> : 'Search'}
+						</button>
 					</div>
 					<button
 						className='n-btn outline-white transparent p-4'
