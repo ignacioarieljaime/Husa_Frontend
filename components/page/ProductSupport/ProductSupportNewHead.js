@@ -11,7 +11,7 @@ function ProductSupportNewHead({ pim }) {
 
 	useEffect(() => {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
-			setFirmwareData(JSON.parse(router?.query?.model)[0])
+			setFirmwareData(JSON.parse(router?.query?.model))
 	}, [])
 
 	return (
@@ -67,8 +67,8 @@ function ProductSupportNewHead({ pim }) {
 									<p className='fs-base fw-normal mb-0 mt-7'>
 										Firmware and Software
 									</p>
-									<div className='row align-items-stretch w-100'>
-										{firmwareData?.versions?.current.map((item, index) => (
+									<div className='row align-items-stretch w-100 mb-8'>
+										{firmwareData.map((item, index) => (
 											<div className='col-12 col-sm-6 py-3' key={index}>
 												<a
 													href={item.download_link ? item.download_link : '/'}

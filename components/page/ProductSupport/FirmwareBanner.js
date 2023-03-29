@@ -30,7 +30,7 @@ const FirmwareBanner = ({ data }) => {
 	}, [])
 
 	useEffect(() => {
-		if (model?.title) getPageUrl(model?.title)
+		if (model?.model?.title) getPageUrl(model?.model?.title)
 	}, [model])
 
 	const getPageUrl = async _value => {
@@ -43,7 +43,7 @@ const FirmwareBanner = ({ data }) => {
 				router.push(
 					{
 						pathname: response?.data?.data[0]?.route,
-						query: { model: JSON.stringify(model?.batch_groups) }
+						query: { model: JSON.stringify(model?.files) }
 					},
 					response?.data?.data[0]?.route
 				)
@@ -57,7 +57,7 @@ const FirmwareBanner = ({ data }) => {
 		setLoading(true)
 		try {
 			const response = await getFirmWareModels(_searchTerm)
-			setModel(response?.data?.model)
+			setModel(response?.data)
 			setLoading(false)
 		} catch {
 			toast.error('There was an error getting the models')
