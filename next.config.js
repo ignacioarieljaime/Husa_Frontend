@@ -17,6 +17,9 @@ const moduleExports = {
 		NEXT_PUBLIC_PIM_API_ROUTE:
 			process.env.PIM_API_ROUTE ||
 			'https://impim.stage-api.hisenseportal.com/api/cms',
+		NEXT_PUBLIC_SERVICE_PORTAL_API_ROUTE:
+			process.env.SERVICE_PORTAL_ROUTE ||
+			'https://api.hsp.hisenseportal.com/api/v1/public',
 		NEXT_PUBLIC_BRAND_ID: process.env.BRAND_ID || 3,
 		NEXT_PUBLIC_GTM_ID: process.env.GTM_ID || 'GTM-WBPC7RT',
 		NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.GOOGLE_ANALYTICS,

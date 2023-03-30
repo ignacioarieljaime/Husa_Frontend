@@ -1,8 +1,19 @@
 import CustomImage from 'components/common/CustomImage'
 import DownloadIcon from 'components/icons/DownloadIcon'
+import { useRouter } from 'next/router'
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 function ProductSupportNewHead({ pim }) {
+	const [firmwareData, setFirmwareData] = useState(null)
+	const router = useRouter()
+
+	useEffect(() => {
+		if (router?.query?.model && typeof router?.query?.model === 'string')
+			setFirmwareData(JSON.parse(router?.query?.model))
+	}, [])
+
 	return (
 		<section className='product product-support-head p-0'>
 			<div className='container'>
@@ -30,7 +41,7 @@ function ProductSupportNewHead({ pim }) {
 						<div className='d-flex flex-column justify-content-center align-items-start h-100'>
 							<h2 className='fs-2 fw-bold mb-8'>{pim?.name}</h2>
 							<p className='text-primary-new mb-10'>Model: {pim?.model}</p>
-							<p className='fs-7 fw-normal mb-0'>Document Downloads</p>
+							<p className='fs-base fw-normal mb-0'>Document Downloads</p>
 							<div className='row align-items-stretch w-100'>
 								{pim?.assets.map(
 									item =>
@@ -45,12 +56,36 @@ function ProductSupportNewHead({ pim }) {
 													) : (
 														'Documentes Guide'
 													)}
-													<DownloadIcon />
+													<DownloadIcon color='#00AAA6' />
 												</a>
 											</div>
 										)
 								)}
 							</div>
+							{firmwareData && (
+								<>
+									<p className='fs-base fw-normal mb-0 mt-7'>
+										Firmware and Software
+									</p>
+									<div className='row align-items-stretch w-100 mb-8'>
+										{firmwareData.map((item, index) => (
+											<div className='col-12 col-sm-6 py-3' key={index}>
+												<a
+													href={item.download_link ? item.download_link : '/'}
+													download={true}
+													className='download-able-item text-uppercase'>
+													{item?.title || item?.original_name ? (
+														<>{item.title ? item.title : item.original_name}</>
+													) : (
+														'Documentes Guide'
+													)}
+													<DownloadIcon color='#00AAA6' />
+												</a>
+											</div>
+										))}
+									</div>
+								</>
+							)}
 						</div>
 					</div>
 				</div>

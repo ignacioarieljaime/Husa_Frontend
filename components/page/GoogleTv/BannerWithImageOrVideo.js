@@ -32,7 +32,7 @@ const BannerWithImageOrVideo = ({ data }) => {
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					{structure?.link?.value && (
 						<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
-							<a className='n-btn white text-center d-block w-fit mx-auto p-4'>
+							<a className='n-btn white text-center d-block w-fit mx-auto p-4 link'>
 								{structure?.link?.title}
 							</a>
 						</Link>
