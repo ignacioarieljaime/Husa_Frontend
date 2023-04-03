@@ -252,3 +252,21 @@
 		}
 	}
 }
+.firmware_modal_content {
+	overflow-y: auto;
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		text-align: center;
+		@include mqm(768) {
+			font-size: 28px;
+			line-height: 36px;
+		}
+	}
+	p {
+		text-align: start;
+	}
+}
