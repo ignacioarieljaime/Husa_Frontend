@@ -33,7 +33,6 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 		}
 	}
 
-	console.log('object')
 	return (
 		<div className='custom_channel_advisor'>
 			{data === 'loading' ? (
@@ -97,6 +96,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 											<div className='check'>Check Retailer</div>
 											<div className='status'>Available</div>
 										</div>
+
 										<Link
 											target={'_blank'}
 											href={item?.ProductLink ? item?.ProductLink : '/'}>
@@ -106,11 +106,21 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 												data-product-type={productData?.category?.name}
 												data-retailer={item?.Name}
 												data-size={
-													productData?.customFields
-														.find(item => item.type_name === 'TV filters')
-														?.custom_fields.find(
-															item => item.name === 'Size class'
-														)?.value
+													productData?.customFields?.find(
+														item => item.type_name === 'TV filters'
+													)
+														? productData?.customFields
+																?.find(item => item.type_name === 'TV filters')
+																?.custom_fields.find(
+																	item => item.name === 'Size class'
+																)?.value
+														: productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )
+														? productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )?.value
+														: ''
 												}
 												className={`buy_now ${item.Name}`}>
 												Buy Now
