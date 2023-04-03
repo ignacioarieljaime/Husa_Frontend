@@ -252,3 +252,26 @@
 		}
 	}
 }
+.firmware_modal_content {
+	@include mq(1440) {
+		max-width: 50vw !important;
+	}
+	.small_article {
+		overflow-y: auto;
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			text-align: center;
+			font-size: 28px !important;
+			line-height: 36px !important;
+		}
+		p {
+			text-align: start;
+			font-size: 16px !important;
+			line-height: 22px !important;
+		}
+	}
+}
