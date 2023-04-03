@@ -115,7 +115,7 @@ function Footer() {
 									/>
 								</a>
 							</div>
-							<p className='m-0 ms-8'>@Hisense_USA</p>
+							<p className='social_media_id'>@Hisense_USA</p>
 						</div>
 					</div>
 					<div className='line'></div>
