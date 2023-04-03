@@ -175,10 +175,16 @@ footer {
           .social_media_link {
             padding-left: 16px;
             path {
-              fill: #000000b3;
+              fill: #ffffffb3;
             }
           }
         }
+      }
+      .line {
+        width: 100%;
+        border-radius: 0px;
+        padding-top: 34px;
+        border-bottom: 1px solid #525454;
       }
     }
   }

@@ -95,16 +95,24 @@ function Footer() {
 						<div className='social_media'>
 							<div className='d-flex justify-content-between align-items-center'>
 								<a href='' target='_blank' className='social_media_link'>
-									<FacebookIcon />
+									<FacebookIcon
+										color={theme === 'dark' ? '#ffffffb3' : '#000000b3'}
+									/>
 								</a>
 								<a href='' target='_blank' className='social_media_link'>
-									<TwitterIcon />
+									<TwitterIcon
+										color={theme === 'dark' ? '#ffffffb3' : '#000000b3'}
+									/>
 								</a>
 								<a href='' target='_blank' className='social_media_link'>
-									<InstagramIcon />
+									<InstagramIcon
+										color={theme === 'dark' ? '#ffffffb3' : '#000000b3'}
+									/>
 								</a>
 								<a href='' target='_blank' className='social_media_link'>
-									<YouTubeIcon />
+									<YouTubeIcon
+										color={theme === 'dark' ? '#ffffffb3' : '#000000b3'}
+									/>
 								</a>
 							</div>
 							<p className='m-0 ms-8'>@Hisense_USA</p>
