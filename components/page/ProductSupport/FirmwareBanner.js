@@ -89,7 +89,7 @@ const FirmwareBanner = ({ data }) => {
 							onChange={e => setSearchTerm(e.target.value)}
 							value={searchTerm}
 							type='text'
-							placeholder='Enter your model number'
+							placeholder='Enter your product serial number'
 						/>
 						<button
 							onClick={() => getModel(searchTerm)}
