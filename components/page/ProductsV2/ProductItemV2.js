@@ -40,17 +40,22 @@ const ProductItemV2 = ({ data }) => {
 			{' '}
 			<div className='product-item-v2 px-5 py-8'>
 				<div className='text-center mb-10 w-100'>
-					<CustomImage
-						wrapperWidth={'100%'}
-						wrapperHeight={'182px'}
-						style={{ maxHeight: '182px' }}
-						src={currentItem?.media?.url}
-						alt={
-							currentItem?.media?.caption
-								? currentItem?.media?.caption
-								: currentItem?.media?.title
-						}
-					/>
+					<Link href={url ? url : '/'}>
+						<a >
+							{' '}
+							<CustomImage
+								wrapperWidth={'100%'}
+								wrapperHeight={'182px'}
+								style={{ maxHeight: '182px' }}
+								src={currentItem?.media?.url}
+								alt={
+									currentItem?.media?.caption
+										? currentItem?.media?.caption
+										: currentItem?.media?.title
+								}
+							/>
+						</a>
+					</Link>
 				</div>
 				<div className='product-item-v2-content flex-grow-1 d-flex flex-column justify-content-between'>
 					<div>
