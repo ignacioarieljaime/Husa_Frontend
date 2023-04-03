@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import ChannelAdvisorLocally from './ChannelAdvisorLocally'
 
-const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
+const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 	const [data, setData] = useState('loading')
 	const [isLocally, setIsLocally] = useState(false)
 	useEffect(() => {
@@ -33,6 +33,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
 		}
 	}
 
+	console.log('object')
 	return (
 		<div className='custom_channel_advisor'>
 			{data === 'loading' ? (
@@ -95,7 +96,21 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition }) => {
 										<Link
 											target={'_blank'}
 											href={item?.ProductLink ? item?.ProductLink : '/'}>
-											<a data-retailer={item.Name} className={`buy_now ${item.Name}`}>Buy Now</a>
+											<a
+												data-retailer={JSON.stringify({
+													productTitle: productData?.name,
+													model: productData?.model,
+													productType: productData?.category?.name,
+													retailer: item?.Name,
+													size: productData?.customFields
+														.find(item => item.type_name === 'TV filters')
+														?.custom_fields.find(
+															item => item.name === 'Size class'
+														)?.value
+												})}
+												className={`buy_now ${item.Name}`}>
+												Buy Now
+											</a>
 										</Link>
 									</div>
 								))
