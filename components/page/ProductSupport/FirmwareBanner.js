@@ -59,8 +59,12 @@ const FirmwareBanner = ({ data }) => {
 			const response = await getFirmWareModels(_searchTerm)
 			setModel(response?.data)
 			setLoading(false)
-		} catch {
-			toast.error('There was an error getting the models')
+		} catch (e) {
+			toast.error(
+				e?.response?.data?.message
+					? e?.response?.data?.message
+					: 'There was an error submitting your request.'
+			)
 			setLoading(false)
 		}
 	}
