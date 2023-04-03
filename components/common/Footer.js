@@ -19,7 +19,7 @@ function Footer() {
 		}
 	}, [footerReduxData])
 
-	const theme = 'dark'
+	const theme = 'light'
 	return (
 		// <footer className='footer px-6 py-10 pt-md-16 px-md-6 pb-md-6'>
 		// 	<div className='container-fluid'>
