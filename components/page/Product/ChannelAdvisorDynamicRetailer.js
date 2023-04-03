@@ -66,18 +66,22 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 					<div className='black_box'>
 						<div
 							style={{
-								width: process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY
-									? '50%'
-									: '100%'
+								width: '50%'
 							}}
 							className={`white_box ${!isLocally && 'active'}`}>
 							<button onClick={() => setIsLocally(false)}>BUY ONLINE</button>
 						</div>
-						{process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY && (
-							<div className={`white_box ${isLocally && 'active'}`}>
-								<button onClick={() => setIsLocally(true)}>FIND LOCALLY</button>
-							</div>
-						)}
+
+						<div className={`white_box  ${isLocally && 'active'}`}>
+							<button
+								className='tab_button'
+								disabled={
+									!process.env.NEXT_PUBLIC_GOOGLE_MAP_API_KEY ? true : false
+								}
+								onClick={() => setIsLocally(true)}>
+								FIND LOCALLY
+							</button>
+						</div>
 					</div>
 					{isLocally ? (
 						<ChannelAdvisorLocally model={model} />
