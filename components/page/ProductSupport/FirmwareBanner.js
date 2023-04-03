@@ -54,18 +54,22 @@ const FirmwareBanner = ({ data }) => {
 	}
 
 	const getModel = async _searchTerm => {
-		setLoading(true)
-		try {
-			const response = await getFirmWareModels(_searchTerm)
-			setModel(response?.data)
-			setLoading(false)
-		} catch (e) {
-			toast.error(
-				e?.response?.data?.message
-					? e?.response?.data?.message
-					: 'There was an error submitting your request.'
-			)
-			setLoading(false)
+		if (_searchTerm === '') {
+			toast.error('Please enter your product serial number')
+		} else {
+			setLoading(true)
+			try {
+				const response = await getFirmWareModels(_searchTerm)
+				setModel(response?.data)
+				setLoading(false)
+			} catch (e) {
+				toast.error(
+					e?.response?.data?.message
+						? e?.response?.data?.message
+						: 'There was an error submitting your request.'
+				)
+				setLoading(false)
+			}
 		}
 	}
 
@@ -89,7 +93,7 @@ const FirmwareBanner = ({ data }) => {
 							onChange={e => setSearchTerm(e.target.value)}
 							value={searchTerm}
 							type='text'
-							placeholder='Enter your model number'
+							placeholder='Enter your product serial number'
 						/>
 						<button
 							onClick={() => getModel(searchTerm)}
