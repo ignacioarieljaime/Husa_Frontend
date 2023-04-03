@@ -81,7 +81,44 @@ function ModalChanelAdviser({
 							</a>
 						</div>
 					</div> */}
-				{type === 'ChannelAdvisor' ? (
+				{condition && (
+					<>
+						{' '}
+						{type === 'ChannelAdvisor' ? (
+							<>
+								<ChannelAdvisorDynamicRetailer
+									condition={condition}
+									model={model}
+								/>
+								{/* <iframe
+									width={'100%'}
+									style={{ height: '83vh' }}
+									height={'83vh'}
+									src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
+									frameBorder='0'></iframe>
+							 */}
+							</>
+						) : (
+							<>
+								<CustomChannelAdvisor
+									id={productId}
+									productData={product}
+									condition={condition}
+								/>
+								<div className='link_box'>
+									<h5>Hisense Authorized Dealers</h5>
+									<Link href={'/authorized-retailers'}>
+										<a>
+											Why Buy from an Authorized Dealer? <GoToPageIcon />
+										</a>
+									</Link>
+								</div>
+							</>
+						)}
+					</>
+				)}
+				{/* merged from main but commented */}
+				{/* {type === 'ChannelAdvisor' ? (
 					<>
 						{process.env.APP_LOCATION === 'dev' ? (
 							<ChannelAdvisorDynamicRetailer
@@ -113,7 +150,7 @@ function ModalChanelAdviser({
 							</Link>
 						</div>
 					</>
-				)}
+				)} */}
 			</div>
 		</div>
 	)
