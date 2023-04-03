@@ -56,12 +56,15 @@ function ProductSupportNewHead({ pim }) {
 													) : (
 														'Documentes Guide'
 													)}
-													<DownloadIcon color='#00AAA6' />
+													<div>
+														<DownloadIcon color='#00AAA6' />
+													</div>
 												</a>
 											</div>
 										)
 								)}
 							</div>
+
 							{firmwareData && (
 								<>
 									<p className='fs-base fw-normal mb-0 mt-7'>
@@ -79,7 +82,9 @@ function ProductSupportNewHead({ pim }) {
 													) : (
 														'Documentes Guide'
 													)}
-													<DownloadIcon color='#00AAA6' />
+													<div>
+														<DownloadIcon color='#00AAA6' />
+													</div>
 												</a>
 											</div>
 										))}

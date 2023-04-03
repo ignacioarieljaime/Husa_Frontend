@@ -2472,6 +2472,9 @@ header {
 }
 
 .custom_channel_advisor {
+	.tab_button:disabled {
+		background-color: transparent !important;
+	}
 	.model {
 		font-weight: 100;
 		color: #58595b;
