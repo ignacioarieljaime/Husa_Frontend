@@ -120,10 +120,11 @@ function ModalChanelAdviser({
 				{/* merged from main but commented */}
 				{/* {type === 'ChannelAdvisor' ? (
 					<>
-						{process.env.APP_LOCATION === 'dev' ? (
+						{process.env.NEXT_PUBLIC_APP_LOCATION === 'dev' ? (
 							<ChannelAdvisorDynamicRetailer
 								condition={condition}
 								model={model}
+								productData={product}
 							/>
 						) : (
 							<iframe
