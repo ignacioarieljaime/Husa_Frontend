@@ -64,6 +64,7 @@ function ProductSupportNewHead({ pim }) {
 										)
 								)}
 							</div>
+
 							{firmwareData && (
 								<>
 									<p className='fs-base fw-normal mb-0 mt-7'>
