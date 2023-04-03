@@ -151,11 +151,35 @@ footer.footer {
 
 footer {
   .new_footer {
+    padding: 65px 0 28px;
     &.dark {
       background-color: #000;
     }
     &.light {
       background-color: #fff;
+    }
+    .content {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 12px;
+      .headline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
+        .social_media {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: nowrap;
+          .social_media_link {
+            padding-left: 16px;
+            path {
+              fill: #000000b3;
+            }
+          }
+        }
+      }
     }
   }
 }

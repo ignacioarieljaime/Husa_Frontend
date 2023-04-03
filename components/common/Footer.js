@@ -89,29 +89,31 @@ function Footer() {
 		// </footer>
 		<footer>
 			<div className={`new_footer ${theme}`}>
-				<div className='headline'>
-					<Logo color='#00AAA6' />
-					<div className='social_media'>
-						<div className='d-flex justify-content-between align-items-center'>
-							<a>
-								<FacebookIcon />
-							</a>
-							<a>
-								<TwitterIcon />
-							</a>
-							<a>
-								<InstagramIcon />
-							</a>
-							<a>
-								<YouTubeIcon />
-							</a>
+				<div className='content'>
+					<div className='headline'>
+						<Logo color='#00AAA6' />
+						<div className='social_media'>
+							<div className='d-flex justify-content-between align-items-center'>
+								<a href='' target='_blank' className='social_media_link'>
+									<FacebookIcon />
+								</a>
+								<a href='' target='_blank' className='social_media_link'>
+									<TwitterIcon />
+								</a>
+								<a href='' target='_blank' className='social_media_link'>
+									<InstagramIcon />
+								</a>
+								<a href='' target='_blank' className='social_media_link'>
+									<YouTubeIcon />
+								</a>
+							</div>
+							<p className='m-0 ms-8'>@Hisense_USA</p>
 						</div>
-						<p></p>
 					</div>
+					<div className='line'></div>
+					<div className='body'></div>
+					<div className='bottom_links'></div>
 				</div>
-				<div className='line'></div>
-				<div className='body'></div>
-				<div className='bottom_links'></div>
 			</div>
 		</footer>
 	)
