@@ -83,13 +83,19 @@ function ModalChanelAdviser({
 					</div> */}
 				{type === 'ChannelAdvisor' ? (
 					<>
-						{/* <ChannelAdvisorDynamicRetailer condition={condition} model={model} /> */}
-						<iframe
-							width={'100%'}
-							style={{ height: '83vh' }}
-							height={'83vh'}
-							src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
-							frameBorder='0'></iframe>
+						{process.env.APP_LOCATION === 'dev' ? (
+							<ChannelAdvisorDynamicRetailer
+								condition={condition}
+								model={model}
+							/>
+						) : (
+							<iframe
+								width={'100%'}
+								style={{ height: '83vh' }}
+								height={'83vh'}
+								src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
+								frameBorder='0'></iframe>
+						)}
 					</>
 				) : (
 					<>
