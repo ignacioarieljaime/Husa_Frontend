@@ -56,7 +56,9 @@ function ProductSupportNewHead({ pim }) {
 													) : (
 														'Documentes Guide'
 													)}
-													<DownloadIcon color='#00AAA6' />
+													<div>
+														<DownloadIcon color='#00AAA6' />
+													</div>
 												</a>
 											</div>
 										)
@@ -79,7 +81,9 @@ function ProductSupportNewHead({ pim }) {
 													) : (
 														'Documentes Guide'
 													)}
-													<DownloadIcon color='#00AAA6' />
+													<div>
+														<DownloadIcon color='#00AAA6' />
+													</div>
 												</a>
 											</div>
 										))}
