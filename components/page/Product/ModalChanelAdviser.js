@@ -83,7 +83,7 @@ function ModalChanelAdviser({
 					</div> */}
 				{type === 'ChannelAdvisor' ? (
 					<>
-						{process.env.NEXT_PUBLIC_APP_LOCATION === 'dev' ? (
+						{process.env.NEXT_PUBLIC_APP_LOCATION !== 'production' ? (
 							<ChannelAdvisorDynamicRetailer
 								condition={condition}
 								model={model}
