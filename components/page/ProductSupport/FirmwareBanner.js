@@ -19,7 +19,7 @@ import Spinner from 'components/common/Spinner'
 const FirmwareBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const [showModal, setShowModal] = useState(false)
-	const [searchTerm, setSearchTerm] = useState([])
+	const [searchTerm, setSearchTerm] = useState('')
 	const [model, setModel] = useState({})
 	const [loading, setLoading] = useState(false)
 
