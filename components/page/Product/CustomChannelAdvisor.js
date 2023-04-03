@@ -74,10 +74,21 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 										data-product-type={productData?.category?.name}
 										data-retailer={item?.name}
 										data-size={
-											productData?.customFields
-												.find(item => item.type_name === 'TV filters')
-												?.custom_fields.find(item => item.name === 'Size class')
-												?.value
+											productData?.customFields?.find(
+												item => item.type_name === 'TV filters'
+											)
+												? productData?.customFields
+														?.find(item => item.type_name === 'TV filters')
+														?.custom_fields.find(
+															item => item.name === 'Size class'
+														)?.value
+												: productData?.custom_fields?.find(
+														item => item.title === 'Size class'
+												  )
+												? productData?.custom_fields?.find(
+														item => item.title === 'Size class'
+												  )?.value
+												: ''
 										}
 										className='buy_now'>
 										Buy Now
