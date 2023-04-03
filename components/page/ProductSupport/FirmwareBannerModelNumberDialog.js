@@ -7,8 +7,8 @@ const FirmwareBannerModelNumberDialog = ({ text, onClose }) => {
 			<div
 				className='extended-warranty-dialog-backdrop'
 				onClick={onClose}></div>
-			<div className='extended-warranty-dialog-content'>
-				<article className='small_article firmware_modal_content'>
+			<div className='extended-warranty-dialog-content firmware_modal_content'>
+				<article className='small_article '>
 					<div
 						dangerouslySetInnerHTML={{
 							__html: text
