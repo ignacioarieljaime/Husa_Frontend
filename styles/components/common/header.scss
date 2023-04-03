@@ -281,7 +281,7 @@ header.blog {
     z-index: 3;
     margin-top: 15px;
     clip-path: inset(0 0 0 100%);
-    transition: all 0.3s 300ms ease-in-out;
+    transition: all 0.3s ease-in-out;
     .search_button {
       &:focus-within,
       &:focus-visible,
@@ -300,23 +300,37 @@ header.blog {
     }
   }
   .search-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     width: 100%;
+    height: 30px;
     background: transparent;
     border: none;
     border-bottom: 1px solid #ffffffcc;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    &::placeholder {
+    .search_close {
+      background: transparent;
+      padding: 3px;
+      border: none;
+    }
+    .search_field {
+      border: none;
+      width: 100%;
+      color: #fff;
       font-size: 14px;
       font-weight: 700;
-      color: #ffffff4d;
-      position: relative;
-      bottom: 5px;
-    }
-    &:focus {
-      outline: 0;
-      background-color: transparent !important;
+      background: transparent;
+      &::placeholder {
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff4d;
+        position: relative;
+        bottom: 2px;
+      }
+      &:focus {
+        outline: 0;
+        background-color: transparent !important;
+      }
     }
   }
   .nav-dropdown-list {

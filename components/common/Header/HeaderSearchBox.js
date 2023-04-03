@@ -7,8 +7,14 @@ import TelevisionSearchIcon from 'components/icons/TelevisionSearchIcon'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import Spinner from '../Spinner'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClose } from '@fortawesome/free-solid-svg-icons'
 
-function HeaderSearchBox({ searchInputCondition, theme }) {
+function HeaderSearchBox({
+	searchInputCondition,
+	theme,
+	setSearchInputCondition
+}) {
 	const [result, setResult] = useState()
 	const [input, setInput] = useState()
 
@@ -41,13 +47,22 @@ function HeaderSearchBox({ searchInputCondition, theme }) {
 					aria-label='search item'>
 					<MagnifierIcon />
 				</button>
-				<input
-					onChange={e => searchHandler(e.target.value)}
-					placeholder='SEARCH'
-					value={input}
-					className='search-box'
-					type='text'
-				/>
+				<div className='search-box'>
+					<input
+						onChange={e => searchHandler(e.target.value)}
+						placeholder='SEARCH'
+						value={input}
+						className='search_field'
+						type='text'
+					/>
+					<button
+						onClick={() => setSearchInputCondition(false)}
+						className='search_close py-0 '
+						type='button'
+						aria-label='search item'>
+						<FontAwesomeIcon icon={faClose} size='lg' className='text-white' />
+					</button>
+				</div>
 			</form>{' '}
 			{input && searchInputCondition ? (
 				<div className='search_result_box theme-dark '>

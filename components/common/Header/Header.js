@@ -107,6 +107,7 @@ function Header({ data: { structure }, notification }) {
 				<HeaderSearchBox
 					theme={structure.theme.value}
 					searchInputCondition={searchInputCondition}
+					setSearchInputCondition={setSearchInputCondition}
 				/>
 
 				{/* <SubMenuHeader /> */}
