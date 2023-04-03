@@ -69,16 +69,16 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 								<Link
 									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
 									<a
-										data-retailer={JSON.stringify({
-											productTitle: productData?.name,
-											model: productData?.model,
-											productType: productData?.category?.name,
-											retailer: item?.name,
-											size: productData?.customFields
+										data-product-title={productData?.name}
+										data-model={productData?.model}
+										data-product-type={productData?.category?.name}
+										data-retailer={item?.name}
+										data-size={
+											productData?.customFields
 												.find(item => item.type_name === 'TV filters')
 												?.custom_fields.find(item => item.name === 'Size class')
 												?.value
-										})}
+										}
 										className='buy_now'>
 										Buy Now
 									</a>
