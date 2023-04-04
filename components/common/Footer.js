@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 
 function Footer() {
 	const [footerData, setFooterData] = useState()
+
 	const { footerData: footerReduxData } = useSelector(state => state.layoutData)
 
 	useEffect(() => {
