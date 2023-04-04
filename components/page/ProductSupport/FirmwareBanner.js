@@ -54,7 +54,6 @@ const FirmwareBanner = ({ data }) => {
 	}
 
 	const getModel = async _searchTerm => {
-		console.log(_searchTerm)
 		if (_searchTerm === '') {
 			toast.error('Please enter your product serial number')
 		} else {
