@@ -65,13 +65,13 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 					<div className='black_box'>
 						<div
 							style={{
-								width: '50%'
+								width: '100%'
 							}}
 							className={`white_box ${!isLocally && 'active'}`}>
 							<button onClick={() => setIsLocally(false)}>BUY ONLINE</button>
 						</div>
 
-						<div className={`white_box  ${isLocally && 'active'}`}>
+						{/* <div className={`white_box  ${isLocally && 'active'}`}>
 							<button
 								className='tab_button'
 								disabled={
@@ -80,7 +80,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 								onClick={() => setIsLocally(true)}>
 								FIND LOCALLY
 							</button>
-						</div>
+						</div> */}
 					</div>
 					{isLocally ? (
 						<ChannelAdvisorLocally model={model} />
