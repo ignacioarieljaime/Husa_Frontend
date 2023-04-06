@@ -97,17 +97,17 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 											target={'_blank'}
 											href={item?.ProductLink ? item?.ProductLink : '/'}>
 											<a
-												data-retailer={JSON.stringify({
-													productTitle: productData?.name,
-													model: productData?.model,
-													productType: productData?.category?.name,
-													retailer: item?.Name,
-													size: productData?.customFields
+												data-product-title={productData?.name}
+												data-model={productData?.model}
+												data-product-type={productData?.category?.name}
+												data-retailer={item?.Name}
+												data-size={
+													productData?.customFields
 														.find(item => item.type_name === 'TV filters')
 														?.custom_fields.find(
 															item => item.name === 'Size class'
 														)?.value
-												})}
+												}
 												className={`buy_now ${item.Name}`}>
 												Buy Now
 											</a>
