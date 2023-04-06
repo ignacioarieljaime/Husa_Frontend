@@ -83,7 +83,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 						</div> */}
 					</div>
 					{isLocally ? (
-						<ChannelAdvisorLocally model={model} />
+						<ChannelAdvisorLocally productData={productData} model={model} />
 					) : (
 						<div>
 							{data?.OnlineRetailers && data?.OnlineRetailers.length > 0 ? (
@@ -101,26 +101,33 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 											target={'_blank'}
 											href={item?.ProductLink ? item?.ProductLink : '/'}>
 											<a
-												data-product-title={productData?.name}
-												data-model={productData?.model}
-												data-product-type={productData?.category?.name}
-												data-retailer={item?.Name}
-												data-size={
-													productData?.customFields?.find(
-														item => item.type_name === 'TV filters'
-													)
-														? productData?.customFields
-																?.find(item => item.type_name === 'TV filters')
-																?.custom_fields.find(
-																	item => item.name === 'Size class'
-																)?.value
-														: productData?.custom_fields?.find(
-																item => item.title === 'Size class'
-														  )
-														? productData?.custom_fields?.find(
-																item => item.title === 'Size class'
-														  )?.value
-														: ''
+												onClick={() =>
+													window.dataLayer.push({
+														event: 'view_product',
+														eventData: {
+															retailer: item?.Name,
+															productType: productData?.category?.name,
+															productTitle: productData?.name,
+															modal: productData?.model,
+															size: productData?.customFields?.find(
+																item => item.type_name === 'TV filters'
+															)
+																? productData?.customFields
+																		?.find(
+																			item => item.type_name === 'TV filters'
+																		)
+																		?.custom_fields.find(
+																			item => item.name === 'Size class'
+																		)?.value
+																: productData?.custom_fields?.find(
+																		item => item.title === 'Size class'
+																  )
+																? productData?.custom_fields?.find(
+																		item => item.title === 'Size class'
+																  )?.value
+																: ''
+														}
+													})
 												}
 												className={`buy_now ${item.Name}`}>
 												Buy Now

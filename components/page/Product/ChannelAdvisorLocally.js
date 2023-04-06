@@ -16,7 +16,7 @@ const ChannelAdvisorGoogleMap = dynamic(
 	}
 )
 
-const ChannelAdvisorLocally = ({ model }) => {
+const ChannelAdvisorLocally = ({ model, productData }) => {
 	const [distance, setDistance] = useState(5)
 	const [search, setSearch] = useState()
 	const [cities, setCities] = useState(null)
@@ -183,6 +183,32 @@ const ChannelAdvisorLocally = ({ model }) => {
 									retailer => retailer.DisplayName === item.RetailerName
 								)?.ProductLink && (
 									<a
+										onClick={() =>
+											window.dataLayer.push({
+												event: 'view_product',
+												eventData: {
+													retailer: item?.RetailerName,
+													productType: productData?.category?.name,
+													productTitle: productData?.name,
+													modal: productData?.model,
+													size: productData?.customFields?.find(
+														item => item.type_name === 'TV filters'
+													)
+														? productData?.customFields
+																?.find(item => item.type_name === 'TV filters')
+																?.custom_fields.find(
+																	item => item.name === 'Size class'
+																)?.value
+														: productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )
+														? productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )?.value
+														: ''
+												}
+											})
+										}
 										href={
 											onlineRetailer.find(
 												retailer => retailer.DisplayName === item.RetailerName
