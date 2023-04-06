@@ -117,7 +117,6 @@ function Footer() {
 
 	const theme = 'light'
 
-	console.log(footerData);
 	return (
 		// <footer className='footer px-6 py-10 pt-md-16 px-md-6 pb-md-6'>
 		// 	<div className='container-fluid'>
