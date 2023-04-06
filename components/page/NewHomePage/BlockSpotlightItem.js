@@ -12,7 +12,7 @@ const BlockSpotlightItem = ({ data }) => {
 	)
 
 	useEffect(() => {
-		if (Array.isArray(data.products)) {
+		if (Array.isArray(data?.products)) {
 			setProduct(data?.products[0]?.product)
 			setProductLink(RouteHandler(data?.products[0]?.product?.id, 'product'))
 		} else {
@@ -24,7 +24,7 @@ const BlockSpotlightItem = ({ data }) => {
 
 	const sortItemSize = () => {
 		let _data = null
-		if (Array.isArray(data.products)) {
+		if (Array.isArray(data?.products)) {
 			_data = data.products.map(item => {
 				item.size = item.value && Number(item.value.replace('"', ''))
 				return item

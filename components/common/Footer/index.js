@@ -116,6 +116,8 @@ function Footer() {
 	}
 
 	const theme = 'light'
+
+	console.log(footerData);
 	return (
 		// <footer className='footer px-6 py-10 pt-md-16 px-md-6 pb-md-6'>
 		// 	<div className='container-fluid'>
@@ -190,7 +192,7 @@ function Footer() {
 						<Logo color='#00AAA6' />
 						<div className='social_media'>
 							<div className='d-flex justify-content-between align-items-center'>
-								{bodyData?.widgets?.socials.map((item, index) => (
+								{footerData?.widgets?.socials.map((item, index) => (
 									<a
 										key={index}
 										href={item.url ? item.url : ''}
@@ -206,7 +208,7 @@ function Footer() {
 					</div>
 					<div className='line'></div>
 					<div className='body'>
-						{bodyData?.widgets?.columns.map((list, index) => (
+						{footerData?.widgets?.columns.map((list, index) => (
 							<div className='px-3'>
 								{list.map((item, index) => (
 									<FooterBodyList data={item} key={index} />
@@ -216,7 +218,7 @@ function Footer() {
 					</div>
 					<div className='bottom_links'>
 						<ul>
-							{bodyData?.widgets?.links.map((item, index) => (
+							{footerData?.widgets?.links.map((item, index) => (
 								<li key={index}>
 									<Link href={item.url ? item.url : ''}>
 										<a>{item?.name}</a>
