@@ -3,9 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
+import { useWindowSize } from 'hooks/useWindowSize'
+import { useEffect } from 'react'
 
 const FooterBodyList = ({ data }) => {
 	const [collapsed, setCollapsed] = useState(true)
+	const windowSize = useWindowSize()
+
+	useEffect(() => {
+		if (windowSize[0] > 769) {
+			setCollapsed(false)
+		}
+	}, [windowSize])
+
 	return (
 		<>
 			<h6
@@ -14,7 +24,9 @@ const FooterBodyList = ({ data }) => {
 				<Link href={data?.header?.url ? data?.header?.url : ''}>
 					<a>{data?.header?.name}</a>
 				</Link>
-				<FontAwesomeIcon icon={faChevronCircleRight} size='xl' />
+				{windowSize[0] < 769 && (
+					<FontAwesomeIcon icon={faChevronCircleRight} size='xl' />
+				)}
 			</h6>
 			{!collapsed && (
 				<ul>
