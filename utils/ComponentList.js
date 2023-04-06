@@ -89,6 +89,6 @@ module.exports.ComponentList = [
 	},
 	{
 		name: 'Footer',
-		path: 'components/common/Footer'
+		path: 'components/common/Footer/index'
 	}
 ]
