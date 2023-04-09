@@ -30,13 +30,14 @@ const FooterBodyList = ({ data }) => {
 			</h6>
 			{!collapsed && (
 				<ul>
-					{data?.columns.map((listItem, index) => (
-						<li key={index}>
-							<Link href={listItem?.url ? listItem?.url : ''}>
-								<a>{listItem?.name}</a>
-							</Link>
-						</li>
-					))}
+					{data?.columns &&
+						data?.columns.map((listItem, index) => (
+							<li key={index}>
+								<Link href={listItem?.url ? listItem?.url : ''}>
+									<a>{listItem?.name}</a>
+								</Link>
+							</li>
+						))}
 				</ul>
 			)}
 		</>
