@@ -154,9 +154,38 @@ footer {
     padding: 65px 0 28px;
     &.dark {
       background-color: #000;
+      .content {
+        .body {
+          .heading {
+            a {
+              color: #fff;
+            }
+          }
+          ul {
+            li {
+              a {
+                color: #fff;
+              }
+            }
+          }
+        }
+        .bottom_links {
+          ul {
+            li a {
+              color: #ffffff40;
+            }
+          }
+        }
+      }
     }
     &.light {
       background-color: #fff;
+      .line {
+        border-bottom: 1px solid #c7c7c9;
+      }
+      .social_media_id {
+        color: #c7c7c9;
+      }
     }
     .content {
       max-width: 1120px;
@@ -192,6 +221,7 @@ footer {
             line-height: 22px;
             letter-spacing: -0.02em;
             margin: 0 0 0 32px;
+            color: #525454;
           }
         }
       }

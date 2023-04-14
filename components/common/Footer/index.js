@@ -11,7 +11,8 @@ import { useSelector } from 'react-redux'
 import FooterBodyList from './FooterBodyList'
 // import { setFooterData } from 'redux/slices/layout'
 
-function Footer() {
+function Footer({ data }) {
+	const { theme } = data?.structure
 	const [footerData, setFooterData] = useState()
 	const { footerData: footerReduxData } = useSelector(state => state.layoutData)
 
@@ -20,102 +21,6 @@ function Footer() {
 			setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
 		}
 	}, [footerReduxData])
-
-	const bodyData = {
-		id: 2,
-		title: 'footer',
-		widgets: {
-			links: [
-				{ url: '/legal-disclaimer', name: 'Legal Disclaimer' },
-				{ url: '/privacy-policy', name: 'Privacy Policy' },
-				{ url: '/recycling-information', name: 'Recycling Information' },
-				{ id: 4, url: null, name: 'Sitemap' },
-				{
-					id: 5,
-					url: 'https://app.cookiepro.com/app/#/webform/b861842b-f225-4fcc-afcc-2b5930c9c2a2',
-					name: 'California Consumer Privacy Act Portal'
-				}
-			],
-			columns: [
-				[
-					{
-						header: { url: '/', name: 'Header Title 1' },
-						columns: [
-							{ url: '/company', name: 'COMPANY' },
-							{ url: '/authorized-retailers', name: 'AUTHORIZED RETAILERS' },
-							{ url: '/careers', name: 'CAREERS' },
-							{ url: '/compliance', name: 'COMPLIANCE' },
-							{
-								url: 'https://app.cookiepro.com/app/#/webform/b861842b-f225-4fcc-afcc-2b5930c9c2a2',
-								name: 'DO NOT SELL'
-							}
-						]
-					},
-					{
-						header: { url: '/', name: 'Header Title 1 - 2' },
-						columns: [
-							{ url: '/company', name: 'COMPANY' },
-							{ url: '/authorized-retailers', name: 'AUTHORIZED RETAILERS' },
-							{ url: '/careers', name: 'CAREERS' },
-							{ url: '/compliance', name: 'COMPLIANCE' },
-							{
-								url: 'https://app.cookiepro.com/app/#/webform/b861842b-f225-4fcc-afcc-2b5930c9c2a2',
-								name: 'DO NOT SELL'
-							}
-						]
-					}
-				],
-				[
-					{
-						header: { url: '/', name: 'Header Title 2' },
-						columns: [
-							{ url: '/tv-and-audio', name: 'TV + AUDIO' },
-							{ url: '/home-appliance', name: 'HOME APPLIANCES' },
-							{ url: '/air-products', name: 'AIR PRODUCTS' },
-							{
-								url: 'http://www.hisense-b2b.com/',
-								name: 'COMMERCIAL DISPLAYS'
-							},
-							{ url: '/commercial', name: 'COMMERCIAL REFRIGERATORS' }
-						]
-					}
-				],
-				[
-					{
-						header: { url: '/', name: 'Header Title 3' },
-						columns: [
-							{ url: '/support', name: 'SUPPORT' },
-							{ url: '/support/faq', name: 'FAQ' },
-							{ url: '/product-safety-recall', name: 'RECALL INFORMATION' },
-							{ url: '/contact', name: 'CONTACT' },
-							{ url: '/support/register', name: 'REGISTER' }
-						]
-					}
-				],
-				[
-					{
-						header: { url: '/', name: 'Header Title 4' },
-						columns: [{ url: '/', name: 'Sample Item' }]
-					}
-				],
-				[
-					{
-						header: { url: '/', name: 'Header Title 5' },
-						columns: [{ url: '/', name: 'Sample Item' }]
-					}
-				]
-			],
-			socials: [
-				{ url: 'https://www.facebook.com/hisenseusa/', name: 'facebook' },
-				{ url: 'https://twitter.com/hisense_usa', name: 'twitter' },
-				{ url: 'https://www.instagram.com/hisense_usa/', name: 'instagram' },
-				{ url: 'https://www.youtube.com/user/HisenseUSA', name: 'youtube' }
-			]
-		},
-		brand_id: 3
-	}
-
-	const theme = 'light'
 
 	return (
 		// <footer className='footer px-6 py-10 pt-md-16 px-md-6 pb-md-6'>
@@ -185,7 +90,7 @@ function Footer() {
 		// 	</div>
 		// </footer>
 		<footer>
-			<div className={`new_footer ${theme}`}>
+			<div className={`new_footer ${theme?.value}`}>
 				<div className='content'>
 					<div className='headline'>
 						<Logo color='#00AAA6' />
@@ -198,7 +103,7 @@ function Footer() {
 										className={`social_media_link socicon socicon-${item.name}`}
 										style={{
 											fontSize: '22px',
-											color: theme === 'dark' ? '#ffffffb3' : '#000000b3'
+											color: theme?.value === 'dark' ? '#ffffffb3' : '#000000b3'
 										}}></a>
 								))}
 							</div>
