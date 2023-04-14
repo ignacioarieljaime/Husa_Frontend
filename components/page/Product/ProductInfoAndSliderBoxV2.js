@@ -20,7 +20,11 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 			className='product single-product single-product-v2 theme-light'>
 			<div className='container'>
 				<div className='row'>
-					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
+					<ProductInfoSlider
+						firstImage={pim?.image}
+						pim={pim?.assets}
+						allData={pim}
+					/>
 					<div className='col-12 col-md-6 product-info my-auto'>
 						<h2
 							className={`title ${
