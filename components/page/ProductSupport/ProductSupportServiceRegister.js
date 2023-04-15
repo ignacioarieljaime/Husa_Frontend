@@ -269,8 +269,9 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						<textarea
 							onChange={e => dataSchemaHandler('text', e.target.value)}
 							required
+							maxLength={300}
 							placeholder='DESCRIPTION OF SUPPORT'
-							className='form-container-inner-input input_text_area_box'
+							className='form-container-inner-input input_text_area_box text_area_config'
 						/>
 						<span className='fs-9'>
 							If television related, please include firmware version

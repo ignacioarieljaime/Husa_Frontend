@@ -827,6 +827,11 @@ input {
 	-moz-border-radius: 10px;
 	-ms-border-radius: 10px;
 	-o-border-radius: 10px;
+	&.text_area_config {
+		white-space: break-spaces;
+		overflow-x: hidden !important;
+		overflow-y: auto !important;
+	}
 }
 
 .velaro-custom-launcher-frame {
