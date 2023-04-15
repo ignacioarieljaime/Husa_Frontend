@@ -1,6 +1,5 @@
 import CustomImage from 'components/common/CustomImage'
 import DownloadIcon from 'components/icons/DownloadIcon'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
@@ -48,36 +47,24 @@ function ProductSupportNewHead({ pim }) {
 									item =>
 										item.type_id === 3 && (
 											<div className='col-12 col-sm-6 py-3'>
-												{item.caption === 'Installation Request' ? (
-													<Link
-														target='_self'
-														href={'/televisions/laser-tv/installation-request'}>
-														<a className='download-able-item text-uppercase'>
-															{item?.caption || item?.title ? (
-																<>{item.caption ? item.caption : item.title}</>
-															) : (
-																'Documentes Guide'
-															)}
-															<DownloadIcon color='#00AAA6' />
-														</a>
-													</Link>
-												) : (
-													<a
-														href={item.url ? item.url : '/'}
-														download={true}
-														className='download-able-item text-uppercase'>
-														{item?.caption || item?.title ? (
-															<>{item.caption ? item.caption : item.title}</>
-														) : (
-															'Documentes Guide'
-														)}
+												<a
+													href={item.url ? item.url : '/'}
+													download={true}
+													className='download-able-item text-uppercase'>
+													{item?.caption || item?.title ? (
+														<>{item.caption ? item.caption : item.title}</>
+													) : (
+														'Documentes Guide'
+													)}
+													<div>
 														<DownloadIcon color='#00AAA6' />
-													</a>
-												)}
+													</div>
+												</a>
 											</div>
 										)
 								)}
 							</div>
+
 							{firmwareData && (
 								<>
 									<p className='fs-base fw-normal mb-0 mt-7'>
@@ -95,7 +82,9 @@ function ProductSupportNewHead({ pim }) {
 													) : (
 														'Documentes Guide'
 													)}
-													<DownloadIcon color='#00AAA6' />
+													<div>
+														<DownloadIcon color='#00AAA6' />
+													</div>
 												</a>
 											</div>
 										))}
