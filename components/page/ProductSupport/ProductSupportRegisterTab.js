@@ -130,7 +130,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 			<div className='container py-10'>
 				<div className='form-container mx-auto'>
 					<h4 className='text-center title mb-4'>{data?.title?.value}</h4>
-					<p className='text-center fs-5 fw-normal mb-15'>
+					<p className='text-center fs-5 fw-normal mb-9'>
 						{data?.subtitle?.value}
 					</p>
 					<form
@@ -190,7 +190,11 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								className='modal-btn'
 								type='button'
 								onClick={() => setModalCondition(state => !state)}>
-								<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
+								<FontAwesomeIcon
+									icon={faCircleInfo}
+									style={{ width: '25px' }}
+									size={'xl'}
+								/>
 								<span className='ms-2'>Where do I find the serial number?</span>
 							</button>
 						</div>

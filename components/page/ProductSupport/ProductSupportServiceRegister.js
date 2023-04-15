@@ -141,7 +141,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 	return (
 		<>
 			<div className='py-10'>
-				<h4 className='text-center title mb-4'>{data?.secondTitle?.value}</h4>
+				<h4 className='text-center title mb-20'>{data?.secondTitle?.value}</h4>
 				{data?.secondSubtitle?.value && (
 					<p className='text-center fs-5 fw-normal mb-15'>
 						{data?.secondSubtitle?.value}

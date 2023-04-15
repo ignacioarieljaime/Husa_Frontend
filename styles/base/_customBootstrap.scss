@@ -568,8 +568,12 @@
 /* back-to-top button */
 #back-to-top-button {
 	position: fixed;
-	right: 48px;
-	bottom: 40px;
+	right: 72px;
+	bottom: 72px;
+	@include mq(768) {
+		right: 16px;
+		bottom: 21px;
+	}
 	width: 48px;
 	height: 48px;
 	color: white;
