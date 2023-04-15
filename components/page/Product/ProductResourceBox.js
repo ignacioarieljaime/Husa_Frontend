@@ -16,13 +16,29 @@ function ProductResourceBox({ pim, data }) {
 				{pim?.assets.map(
 					(item, index) =>
 						item.type_id === 3 && (
-							<li key={index}>
-								<a href={item.url ? item.url : ''} download>
-									<span className='underline-on-hover text-uppercase'>
-										{item.caption ? item.caption : item.title}
-									</span>
-								</a>
-							</li>
+							<>
+								{item.caption === 'Installation Request' ? (
+									<li key={index}>
+										<Link
+											target='_self'
+											href={'/televisions/laser-tv/installation-request'}>
+											<a>
+												<span className='underline-on-hover text-uppercase'>
+													{item.caption ? item.caption : item.title}
+												</span>
+											</a>
+										</Link>
+									</li>
+								) : (
+									<li key={index}>
+										<a href={item.url ? item.url : ''} download>
+											<span className='underline-on-hover text-uppercase'>
+												{item.caption ? item.caption : item.title}
+											</span>
+										</a>
+									</li>
+								)}
+							</>
 						)
 				)}
 				<li>
