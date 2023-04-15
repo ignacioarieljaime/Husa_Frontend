@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useEffect } from 'react'
 
-const FooterBodyList = ({ data }) => {
+const FooterBodyList = ({ data, theme }) => {
 	const [collapsed, setCollapsed] = useState(true)
 	const windowSize = useWindowSize()
 
@@ -19,13 +19,17 @@ const FooterBodyList = ({ data }) => {
 	return (
 		<>
 			<h6
-				className={`heading ${collapsed ? '' : 'rotated'}`}
+				className={`heading ${collapsed ? 'mb-1' : 'rotated'}`}
 				onClick={() => setCollapsed(prevState => !prevState)}>
-				<Link href={data?.header?.url ? data?.header?.url : ''}>
-					<a>{data?.header?.name}</a>
+				<Link href={data?.header?.value ? data?.header?.value : ''}>
+					<a>{data?.header?.title}</a>
 				</Link>
 				{windowSize[0] < 769 && (
-					<FontAwesomeIcon icon={faChevronCircleRight} size='xl' />
+					<FontAwesomeIcon
+						icon={faChevronCircleRight}
+						size='xl'
+						color={theme === 'dark' ? '#FFF' : '#000'}
+					/>
 				)}
 			</h6>
 			{!collapsed && (

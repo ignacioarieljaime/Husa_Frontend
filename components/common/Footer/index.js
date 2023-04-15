@@ -109,9 +109,13 @@ function Footer({ data }) {
 					<div className='line'></div>
 					<div className='body'>
 						{footerData?.widgets?.columns.map((list, index) => (
-							<div className='px-3'>
+							<div key={index} className='px-3'>
 								{list.map((item, index) => (
-									<FooterBodyList data={item} key={index} />
+									<FooterBodyList
+										data={item}
+										key={index}
+										theme={theme?.value}
+									/>
 								))}
 							</div>
 						))}
