@@ -353,7 +353,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 									new Date().getMonth() + 2,
 									new Date().getDate()
 								)}
-								className='border-0 w-100 p-4'
+								className='border-0 w-100 p-4 bg-white'
 								width={'100%'}
 								value={data.expected_date && data.expected_date}
 								onChange={e => dispatch({ expected_date: e.target.value })}
