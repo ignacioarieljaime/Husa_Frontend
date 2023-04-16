@@ -324,18 +324,22 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 							</div>
 						</div>
 					</div>
-					<div className='col-12 text-center'>
+					<div className='col-12 text-center my-9'>
 						<button
-							disabled={loading}
 							type='submit'
-							className='form-submit-btn align-items-center mx-auto d-flex'>
-							<span className='me-2'>SUBMIT</span>
-							{loading && <Spinner size={25} />}
+							disabled={loading}
+							className='n-btn outline-black d-flex mx-auto transparent py-2 px-4'>
+							<span>SUBMIT</span>
+							{loading && <Spinner className='ms-2' size={25} />}
 						</button>
 						{tickedSended === true ? (
-							<div style={{ color: 'green' }}>Registered Successfully</div>
+							<div style={{ color: 'green', marginTop: '10px' }}>
+								Registered Successfully
+							</div>
 						) : tickedSended === false ? (
-							<div style={{ color: 'red' }}>Register wasn't Successfully</div>
+							<div style={{ color: 'red', marginTop: '10px' }}>
+								Register wasn't Successfully
+							</div>
 						) : null}
 					</div>
 				</form>

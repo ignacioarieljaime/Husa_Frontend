@@ -40,6 +40,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 	const [file, setFile] = useState(null)
 	const [errors, setErrors] = useState(null)
 	const [tickedSended, setTickedSended] = useState(null)
+	const [inputFocused, setInputFocused] = useState(false)
 
 	const dataSchemaHandler = (_title, _value) => {
 		setDataSchema({ ...dataSchema, [_title]: _value })
@@ -259,8 +260,16 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.purchased_from && errors?.purchased_from[0]}
 							</div>
 						</div>
-						<div className='col-12 mb-10'>
+						<div className='col-12 mb-10 position-relative'>
+							<label
+								className={`label_on_date_input ${
+									inputFocused || dataSchema.date_of_purchase ? 'focused' : ''
+								}`}>
+								PURCHASED DATE
+							</label>
 							<CustomInput
+								onFocus={() => setInputFocused(true)}
+								onBlur={() => setInputFocused(false)}
 								type={'date'}
 								onChange={_value =>
 									dataSchemaHandler('date_of_purchase', _value)
@@ -334,7 +343,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								Sign me up for future news
 							</label>
 						</div>
-						<div className='col-12 text-center'>
+						<div className='col-12 text-center my-9'>
 							<button
 								type='submit'
 								disabled={loading}
