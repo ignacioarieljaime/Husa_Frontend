@@ -69,6 +69,7 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 								<Link
 									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
 									<a
+										data-retailer={item?.name}
 										// onClick={() =>
 										// 	window.dataLayer.push({
 										// 		event: 'view_product',

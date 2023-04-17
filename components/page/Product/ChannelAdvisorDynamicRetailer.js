@@ -101,6 +101,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 											target={'_blank'}
 											href={item?.ProductLink ? item?.ProductLink : '/'}>
 											<a
+												data-retailer={item?.Name}
 												// onClick={() =>
 												// 	window.dataLayer.push({
 												// 		event: 'view_product',
