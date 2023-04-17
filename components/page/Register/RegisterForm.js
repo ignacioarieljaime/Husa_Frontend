@@ -463,11 +463,11 @@ function RegisterForm({ data }) {
 							Sign me up for future news
 						</label>
 					</div>
-					<div className='col-12 text-center'>
+					<div className='col-12 text-center my-12'>
 						<button
 							disabled={loading}
 							type='submit'
-							className='form-submit-btn d-flex mx-auto align-items-center'>
+							className='n-btn outline-black py-2 px-4 d-flex mx-auto align-items-center'>
 							<span className='me-2 underline-on-hover'>
 								{' '}
 								{structure?.subtitle?.value}
