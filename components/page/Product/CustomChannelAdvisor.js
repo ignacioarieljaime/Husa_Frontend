@@ -70,32 +70,32 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
 									<a
 										data-retailer={item?.name}
-										// onClick={() =>
-										// 	window.dataLayer.push({
-										// 		event: 'view_product',
-										// 		eventData: {
-										// 			retailer: item?.name,
-										// 			productType: productData?.category?.name,
-										// 			productTitle: productData?.name,
-										// 			modal: productData?.model,
-										// 			size: productData?.customFields?.find(
-										// 				item => item.type_name === 'TV filters'
-										// 			)
-										// 				? productData?.customFields
-										// 						?.find(item => item.type_name === 'TV filters')
-										// 						?.custom_fields.find(
-										// 							item => item.name === 'Size class'
-										// 						)?.value
-										// 				: productData?.custom_fields?.find(
-										// 						item => item.title === 'Size class'
-										// 				  )
-										// 				? productData?.custom_fields?.find(
-										// 						item => item.title === 'Size class'
-										// 				  )?.value
-										// 				: ''
-										// 		}
-										// 	})
-										// }
+										onClick={() =>
+											window.dataLayer.push({
+												event: 'view_product',
+												eventData: {
+													retailer: item?.name,
+													productType: productData?.category?.name,
+													productTitle: productData?.name,
+													modal: productData?.model,
+													size: productData?.customFields?.find(
+														item => item.type_name === 'TV filters'
+													)
+														? productData?.customFields
+																?.find(item => item.type_name === 'TV filters')
+																?.custom_fields.find(
+																	item => item.name === 'Size class'
+																)?.value
+														: productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )
+														? productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )?.value
+														: ''
+												}
+											})
+										}
 										className='buy_now'>
 										Buy Now
 									</a>
