@@ -342,20 +342,23 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='form_select_field'>
-						<input
-							type='date'
-							placeholder={'Requested Installation Date'}
-							required={true}
-							min={new Date().toJSON().slice(0, 10)}
-							max={formatDate(
-								new Date().getFullYear(),
-								new Date().getMonth() + 2,
-								new Date().getDate()
-							)}
-							className='form-container-inner-input date_input'
-							value={data.expected_date && data.expected_date}
-							onChange={e => dispatch({ expected_date: e.target.value })}
-						/>
+						<div className='date_input p-0 overflow-hidden'>
+							<input
+								type='date'
+								placeholder={'Requested Installation Date'}
+								required={true}
+								min={new Date().toJSON().slice(0, 10)}
+								max={formatDate(
+									new Date().getFullYear(),
+									new Date().getMonth() + 2,
+									new Date().getDate()
+								)}
+								className='border-0 w-100 p-4 bg-white'
+								width={'100%'}
+								value={data.expected_date && data.expected_date}
+								onChange={e => dispatch({ expected_date: e.target.value })}
+							/>
+						</div>
 						<div className='tip mt-4'>
 							<p>
 								Please have your Laser TV near the area you wish to have it

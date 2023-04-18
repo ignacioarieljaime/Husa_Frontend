@@ -101,7 +101,7 @@ const FirmwareBanner = ({ data }) => {
 						</button>
 					</div>
 					<button
-						className='n-btn outline-white transparent p-4'
+						className='n-btn white-text fs-8 border-0 text-decoration-underline transparent mt-4 p-4'
 						type='button'
 						onClick={() => setShowModal(prevState => !prevState)}>
 						<FontAwesomeIcon

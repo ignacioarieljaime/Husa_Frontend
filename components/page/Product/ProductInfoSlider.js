@@ -11,7 +11,7 @@ import 'swiper/css/thumbs'
 import { FreeMode, Thumbs } from 'swiper'
 import CustomImage from 'components/common/CustomImage'
 
-function ProductInfoSlider({ pim, firstImage }) {
+function ProductInfoSlider({ pim, firstImage, allData }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 	return (
 		<div className='col-12 col-md-6 product-gallery mb-12 mb-md-0 pe-md-10'>
@@ -22,6 +22,22 @@ function ProductInfoSlider({ pim, firstImage }) {
 				}}
 				modules={[FreeMode, Thumbs]}
 				className=' gallery-top'>
+				{pim && pim?.length === 0 ? (
+					<SwiperSlide>
+						<span className='media-slider-wrapper'>
+							<CustomImage
+								src={
+									allData?.Category?.customFields.find(
+										customFiledItem =>
+											customFiledItem?.custom_field?.name === 'upload pic'
+									)?.media?.external_url
+								}
+								className='slider-media'
+								wrapperHeight={'100%'}
+							/>
+						</span>
+					</SwiperSlide>
+				) : null}
 				{pim && pim.find(item => item.order === 1) ? (
 					<SwiperSlide key={'custom'}>
 						<span className='media-slider-wrapper'>

@@ -40,6 +40,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 	const [file, setFile] = useState(null)
 	const [errors, setErrors] = useState(null)
 	const [tickedSended, setTickedSended] = useState(null)
+	const [inputFocused, setInputFocused] = useState(false)
 
 	const dataSchemaHandler = (_title, _value) => {
 		setDataSchema({ ...dataSchema, [_title]: _value })
@@ -130,7 +131,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 			<div className='container py-10'>
 				<div className='form-container mx-auto'>
 					<h4 className='text-center title mb-4'>{data?.title?.value}</h4>
-					<p className='text-center fs-5 fw-normal mb-15'>
+					<p className='text-center fs-5 fw-normal mb-9'>
 						{data?.subtitle?.value}
 					</p>
 					<form
@@ -190,7 +191,11 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								className='modal-btn'
 								type='button'
 								onClick={() => setModalCondition(state => !state)}>
-								<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
+								<FontAwesomeIcon
+									icon={faCircleInfo}
+									style={{ width: '25px' }}
+									size={'xl'}
+								/>
 								<span className='ms-2'>Where do I find the serial number?</span>
 							</button>
 						</div>
@@ -255,8 +260,16 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.purchased_from && errors?.purchased_from[0]}
 							</div>
 						</div>
-						<div className='col-12 mb-10'>
+						<div className='col-12 mb-10 position-relative'>
+							<label
+								className={`label_on_date_input ${
+									inputFocused || dataSchema.date_of_purchase ? 'focused' : ''
+								}`}>
+								PURCHASED DATE
+							</label>
 							<CustomInput
+								onFocus={() => setInputFocused(true)}
+								onBlur={() => setInputFocused(false)}
 								type={'date'}
 								onChange={_value =>
 									dataSchemaHandler('date_of_purchase', _value)
@@ -330,7 +343,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								Sign me up for future news
 							</label>
 						</div>
-						<div className='col-12 text-center'>
+						<div className='col-12 text-center my-9'>
 							<button
 								type='submit'
 								disabled={loading}

@@ -35,7 +35,7 @@ const LaserTvInstallationForm = ({ data }) => {
 			material_of_wall: '',
 			floor_type: '',
 			wireless_wired_internet: '',
-			expected_date: '',
+			expected_date: new Date().toISOString().split('T')[0],
 			do_you_have_tv_stand: null,
 			power_outlet_available: null,
 			sufficient_wall_space: null

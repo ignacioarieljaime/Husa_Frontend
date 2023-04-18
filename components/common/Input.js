@@ -8,13 +8,17 @@ function CustomInput({
 	type = 'text',
 	defaultValue,
 	onChange,
-	value
+	value,
+	onFocus,
+	onBlur
 }) {
 	return (
 		<div>
 			<input
 				disabled={disabled}
 				type={type}
+				onFocus={onFocus}
+				onBlur={onBlur}
 				onChange={e => onChange(e.target.value)}
 				className={`form-container-inner-input ${className}`}
 				placeholder={placeholder}

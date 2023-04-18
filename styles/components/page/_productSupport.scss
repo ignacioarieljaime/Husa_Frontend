@@ -276,3 +276,21 @@
 		}
 	}
 }
+
+.label_on_date_input {
+	position: absolute;
+	top: 0;
+	left: 12px;
+	width: fit-content;
+	pointer-events: none;
+	height: 39px;
+	background-color: #fff !important;
+	font-size: 15px;
+	line-height: 30px;
+	color: #202020;
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+	&.focused {
+		opacity: 0;
+	}
+}

@@ -10,7 +10,6 @@ const ProductSliderLinkButton = dynamic(() =>
 function ProductInfoAndSliderBox({ pim, data }) {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [screenSize, setScreenSize] = useState([])
-
 	useEffect(() => {
 		if (Array.isArray(pim?.series[0]?.values)) {
 			let addSizeToItem = pim?.series[0].values.map(item => ({
@@ -24,7 +23,11 @@ function ProductInfoAndSliderBox({ pim, data }) {
 		<section id={data.name + data.id} className='product single-product'>
 			<div className='' style={{ paddingTop: '4%' }}>
 				<div className='row'>
-					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
+					<ProductInfoSlider
+						firstImage={pim?.image}
+						pim={pim?.assets}
+						allData={pim}
+					/>
 					<div className='col-12 col-md-6 product-info my-auto'>
 						<h2
 							className={`fw-normal ${
