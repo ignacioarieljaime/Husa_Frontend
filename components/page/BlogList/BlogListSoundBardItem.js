@@ -6,6 +6,7 @@ import {
 	useParallaxController,
 	ParallaxProvider
 } from 'react-scroll-parallax'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const BlogListSoundBardItem = ({ data }) => {
 	return (
 		<ParallaxProvider>
@@ -27,7 +28,9 @@ function BlogListSoundBardItemContainer({ data }) {
 				<div className='row justify-content-between align-items-center'>
 					<div className='col-12 col-md-4 col-lg-3 mb-5 mb-md-0'>
 						<div className='image-box'>
-							<Link href={data?.link?.value ? data?.link?.value : '/'}>
+							<Link
+								target={data?.image?.target ? data?.image?.target : '_self'}
+								href={data?.link?.value ? data?.link?.value : '/'}>
 								<a className='d-block'>
 									<img
 										src={data?.image?.src}
@@ -57,9 +60,17 @@ function BlogListSoundBardItemContainer({ data }) {
 			</figure>
 			<div className='col-12 col-md-3 px-0'>
 				<div className='text-start text-md-end'>
-					<Link href={data?.link?.value ? data?.link?.value : '/'}>
+					<Link
+						target={data?.link?.target ? data?.link?.target : '_self'}
+						href={data?.link?.value ? data?.link?.value : '/'}>
 						<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 							{data?.link?.title}
+							{data?.link?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
 						</a>
 					</Link>
 				</div>

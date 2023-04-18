@@ -39,7 +39,9 @@ const BeyondLaserFooterBlock = ({ data }) => {
 					data-aos-duration='1000'>
 					{content?.list?.value.map((item, index) => (
 						<li key={index}>
-							<Link href={item?.link?.value ? item?.link?.value : '/'}>
+							<Link
+								target={item?.link?.target ? item?.link?.target : '_self'}
+								href={item?.link?.value ? item?.link?.value : '/'}>
 								<a>
 									<img src={item?.image?.src} alt={item?.image?.alt} />
 								</a>

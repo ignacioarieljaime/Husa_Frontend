@@ -19,7 +19,9 @@ const BeyondLaserMomentsBlock = ({ data }) => {
 				<div className='moments'>
 					{structure?.list?.value.map((item, index) => (
 						<figure key={index} className='moment'>
-							<Link href={item?.link?.value ? item?.link?.value : '/'}>
+							<Link
+								target={item?.link?.target ? item?.link?.target : '_self'}
+								href={item?.link?.value ? item?.link?.value : '/'}>
 								<a>
 									<img
 										src={item?.image?.src}

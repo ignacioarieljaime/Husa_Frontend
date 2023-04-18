@@ -9,7 +9,9 @@ const BeyondLaserFlipDevice = ({ data: { structure } }) => {
 	return (
 		<div className='beyond_laser_flip_device'>
 			<div className='flip_device_container'>
-				<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
+				<Link
+					target={structure?.link?.target ? structure?.link?.target : '_self'}
+					href={structure?.link?.value ? structure?.link?.value : '/'}>
 					<a className='image'>
 						<img
 							src={structure?.image?.src}

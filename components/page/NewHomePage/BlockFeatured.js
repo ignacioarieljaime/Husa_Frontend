@@ -5,7 +5,7 @@ import { Pagination, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -52,9 +52,17 @@ const BlockFeatured = ({ data: { structure } }) => {
 								<h5 className='description d-none d-md-block'>
 									{item?.description?.value}
 								</h5>
-								<Link href={item?.link?.value ? item?.link?.value : '/'}>
+								<Link
+									target={item?.link?.target ? item?.link?.target : '_self'}
+									href={item?.link?.value ? item?.link?.value : '/'}>
 									<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
 										{item?.link?.title}
+										{item?.link?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
 									</a>
 								</Link>
 								{item?.video && (

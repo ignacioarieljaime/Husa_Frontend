@@ -3,6 +3,7 @@ import Link from 'next/link'
 import CustomImage from 'components/common/CustomImage'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesBanner = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
@@ -32,9 +33,17 @@ const CesBanner = ({ data: { structure } }) => {
 					className='subtitle'
 					dangerouslySetInnerHTML={{ __html: text }}></div>
 				{structure?.link?.value && (
-					<Link href={structure?.link?.value}>
+					<Link
+						target={structure?.link?.target ? structure?.link?.target : '_self'}
+						href={structure?.link?.value}>
 						<a className='link'>
 							{structure?.link?.title}
+							{structure?.link?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
 							<span>
 								<FontAwesomeIcon icon={faPlayCircle} size={'xl'} />
 							</span>

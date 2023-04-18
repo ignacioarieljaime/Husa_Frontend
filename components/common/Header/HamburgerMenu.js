@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React from 'react'
 import HamburgerMenuDropdowns from './HamburgerMenuDropdowns'
 
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+
 function HamburgerMenu({ data: { widgets }, asideMenu, asideHandler }) {
 	let menus = [...widgets.centerOption, ...widgets.rightOption]
 	return (
@@ -23,11 +25,19 @@ function HamburgerMenu({ data: { widgets }, asideMenu, asideHandler }) {
 				className='navbar-nav col-lg-6 offset-lg-6 position-relative my-lg-auto mb-20 mb-md-0'>
 				{widgets.hamburger.map((menu, index) => (
 					<li key={`menu-${index}`} className='nav-item my-md-1'>
-						<Link href={menu.url ? menu.url : ''}>
+						<Link
+							target={menu?.target ? menu?.target : '_self'}
+							href={menu.url ? menu.url : ''}>
 							<a
 								onClick={() => asideHandler(false)}
 								className='nav-link mx-md-2 my-md-1  fw-bolder-700'>
 								<span className='underline-on-hover'>{menu.name}</span>
+								{menu?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</li>

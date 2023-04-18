@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 
 const BeyondLaserHeader = ({ data: { structure } }) => {
 	return (
@@ -8,6 +9,11 @@ const BeyondLaserHeader = ({ data: { structure } }) => {
 				<div className='content'>
 					<div className='header_item justify-content-start'>
 						<Link
+							target={
+								structure?.leftImageLink?.target
+									? structure?.leftImageLink?.target
+									: '_self'
+							}
 							href={
 								structure?.leftImageLink?.value
 									? structure?.leftImageLink?.value
@@ -34,8 +40,19 @@ const BeyondLaserHeader = ({ data: { structure } }) => {
 					<div className='header_item justify-content-end'>
 						{structure?.link?.value && (
 							<Link
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
-								<a className='header_link'>{structure?.link?.title}</a>
+								<a className='header_link'>
+									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
+								</a>
 							</Link>
 						)}
 					</div>

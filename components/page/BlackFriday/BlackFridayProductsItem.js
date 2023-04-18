@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import BlackFridayProductsItemDialog from './BlackFridayProductsItemDialog'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { RouteHandler } from 'utils/routeHandler'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BlackFridayProductsItem = ({ data }) => {
 	const [sortedData, setSortedData] = useState({})
@@ -136,8 +137,18 @@ const BlackFridayProductsItem = ({ data }) => {
 								</div>
 							</div>
 							<div className='d-flex flex-wrap justify-content-center gap-2 align-items-center w-100 text-center mt-5 mb-3'>
-								<Link href={url ? url : '/'}>
-									<a className='n-btn outline-black  '>View Product</a>
+								<Link
+									// target={menu?.target ? menu?.target : '_self'}
+									href={url ? url : '/'}>
+									<a className='n-btn outline-black  '>
+										View Product
+										{/* {menu?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)} */}
+									</a>
 								</Link>
 								<button
 									onClick={() => setShowDialog(true)}

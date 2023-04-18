@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 import Spinner from '../Spinner'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function HeaderSearchBox({
 	searchInputCondition,
@@ -76,10 +77,18 @@ function HeaderSearchBox({
 									<ul>
 										{result?.products.map((item, index) => (
 											<li key={`search-item-${index}`}>
-												<Link target={'_blank'} href={item.route}>
-													<a target={'_blank'}>
+												<Link
+													target={item?.target ? item?.target : '_self'}
+													href={item.route}>
+													<a>
 														<TelevisionSearchIcon />
 														{item.title}
+														{item?.target === '_blank' && (
+															<img
+																style={{ marginLeft: '10px' }}
+																src={OpenPageOnNewTab.src}
+															/>
+														)}
 													</a>
 												</Link>
 											</li>
@@ -94,13 +103,21 @@ function HeaderSearchBox({
 									<ul>
 										{result?.support.map((item, index) => (
 											<li key={`search-item-${index}`}>
-												<Link target={'_blank'} href={item.route}>
+												<Link
+													target={item?.target ? item?.target : '_self'}
+													href={item.route}>
 													<a target={'_blank'}>
 														<SupportIcon />
 														{item.title}
 														<span className='ms-2'>
 															<GoToPageIcon />
 														</span>
+														{item?.target === '_blank' && (
+															<img
+																style={{ marginLeft: '10px' }}
+																src={OpenPageOnNewTab.src}
+															/>
+														)}
 													</a>
 												</Link>
 											</li>
