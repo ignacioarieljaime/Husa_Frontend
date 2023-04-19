@@ -58,7 +58,19 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							/>
 						</span>
 					</SwiperSlide>
-				) : null}
+				) : (
+					<SwiperSlide key={'custom'}>
+						<span className='media-slider-wrapper'>
+							<CustomImage
+								src={firstImage}
+								alt={allData?.name + ' - ' + allData?.model}
+								title={allData?.name}
+								className='slider-media'
+								wrapperHeight={'100%'}
+							/>
+						</span>
+					</SwiperSlide>
+				)}
 				{pim &&
 					pim.map((item, index) =>
 						item.type_id === 1 && item.url !== firstImage ? (
