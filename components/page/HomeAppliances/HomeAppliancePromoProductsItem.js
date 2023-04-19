@@ -6,7 +6,9 @@ const HomeAppliancePromoProductsItem = ({ data }) => {
 	return (
 		<figure className='item'>
 			{data?.link?.value && (
-				<Link href={data?.link?.value}>
+				<Link
+					target={data?.link?.target ? data?.link?.target : '_self'}
+					href={data?.link?.value}>
 					<a className='image_container'>
 						<CustomImage
 							src={data?.image?.src}
@@ -24,7 +26,9 @@ const HomeAppliancePromoProductsItem = ({ data }) => {
 						dangerouslySetInnerHTML={{ __html: data.text?.value }}></div>
 				</article>
 				{data?.link?.value && (
-					<Link href={data?.link?.value}>
+					<Link
+						target={data?.link?.target ? data?.link?.target : '_self'}
+						href={data?.link?.value}>
 						<a className='d-block w-fit mx-auto mt-6'>
 							<CustomImage
 								src={data?.retailer?.src}

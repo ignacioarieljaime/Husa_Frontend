@@ -1,5 +1,5 @@
 import React from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import Link from 'next/link'
 function SmartInfoTvsDifferentItem({
 	data: { description, image, color, title, link },
@@ -18,8 +18,15 @@ function SmartInfoTvsDifferentItem({
 				<img src={image.src} alt={image.alt} width='100%' height='100%' />
 			</div>
 			<p>{description.value}</p>
-			<Link href={link.value ? link.value : '/'}>
-				<a className='btn btn-light'>{link.title}</a>
+			<Link
+				target={link?.target ? link?.target : '_self'}
+				href={link.value ? link.value : '/'}>
+				<a className='btn btn-light'>
+					{link.title}{' '}
+					{link?.target === '_blank' && (
+						<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
+					)}
+				</a>
 			</Link>
 		</div>
 	)

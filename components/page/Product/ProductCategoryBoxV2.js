@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useState, useRef, useEffect } from 'react'
-
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 
 function ProductCategoryBoxV2({ data, pim }) {
@@ -37,10 +37,18 @@ function ProductCategoryBoxV2({ data, pim }) {
 						</li>
 						{structure?.tags?.value.map((item, index) => (
 							<li key={`category-item-${index}`}>
-								<Link href={item.target.value ? item.target.value : '/'}>
+								<Link
+									target={item.target?.target ? item.target?.target : '_self'}
+									href={item.target.value ? item.target.value : '/'}>
 									<a>
 										<span className='underline-on-hover text-uppercase'>
 											{item.title.value}
+											{item.target?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
 										</span>
 									</a>
 								</Link>

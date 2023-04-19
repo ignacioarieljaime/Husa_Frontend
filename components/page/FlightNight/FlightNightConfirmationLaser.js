@@ -1,7 +1,7 @@
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 const FlightNightConfirmationLaser = ({ data }) => {
 	let { structure } = data
 	const [text, setText] = useState(null)
@@ -40,9 +40,14 @@ const FlightNightConfirmationLaser = ({ data }) => {
 						/>
 					</div>
 				</div>
-				<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
+				<Link
+					target={structure?.link?.target ? structure?.link?.target : '_self'}
+					href={structure?.link?.value ? structure?.link?.value : '/'}>
 					<a className='n-btn outline-white transparent d-block w-fit mx-auto mt-4 p-4'>
 						{structure?.link?.title}
+						{structure?.link?.target === '_blank' && (
+							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
+						)}
 					</a>
 				</Link>
 			</div>

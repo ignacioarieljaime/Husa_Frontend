@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation } from 'swiper'
-
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 import 'swiper/css/navigation'
 import 'swiper/css'
 import Link from 'next/link'
@@ -47,9 +47,17 @@ const BlockCategories = ({ data: { structure } }) => {
 								wrapperHeight={'236px'}
 								wrapperWidth={'100%'}
 							/>
-							<Link href={item?.link?.value ? item?.link?.value : '/'}>
+							<Link
+								target={item?.link?.target ? item?.link?.target : '_self'}
+								href={item?.link?.value ? item?.link?.value : '/'}>
 								<a className='slider-title text-nowrap n-btn outline-black transparent'>
-									{item?.link?.title}
+									{item?.link?.title}{' '}
+									{item?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						</SwiperSlide>

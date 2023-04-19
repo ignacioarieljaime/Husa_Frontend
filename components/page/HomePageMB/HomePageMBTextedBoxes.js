@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import HomePageMBTextedBoxesItem from './HomePageMBTextedBoxesItem'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const HomePageMBTextedBoxes = ({ data }) => {
 	let { structure } = data
@@ -18,9 +19,17 @@ const HomePageMBTextedBoxes = ({ data }) => {
 					/>
 				))}
 				{structure?.link?.value && (
-					<Link href={structure?.link?.value}>
+					<Link
+						target={structure?.link?.target ? structure?.link?.target : '_self'}
+						href={structure?.link?.value}>
 						<a className='n-btn outline-black mt-20'>
-							{structure?.link?.title}
+							{structure?.link?.title}{' '}
+							{structure?.link?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
 						</a>
 					</Link>
 				)}

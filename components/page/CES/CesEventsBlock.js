@@ -1,7 +1,7 @@
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const CesEventsBlock = ({ data }) => {
 	const [content, setContent] = useState({ data })
 
@@ -35,9 +35,17 @@ const CesEventsBlock = ({ data }) => {
 							}}></div>
 					) : null}
 					{content?.link?.value ? (
-						<Link href={content?.link?.value}>
+						<Link
+							target={content?.link?.target ? content?.link?.target : '_self'}
+							href={content?.link?.value}>
 							<a className='n-btn black-text d-block w-fit p-0'>
 								{content?.link?.title} {'>'}
+								{content?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					) : null}

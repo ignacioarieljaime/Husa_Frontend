@@ -1,6 +1,7 @@
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesCards = ({ data }) => {
 	const [content, setContent] = useState(null)
@@ -44,7 +45,13 @@ const CesCards = ({ data }) => {
 												__html: content?.block1?.value?.title?.value
 											}}></div>
 										{content?.block1?.value?.link?.value ? (
-											<Link href={content?.block1?.value?.link?.value}>
+											<Link
+												target={
+													content?.block1?.value?.link?.target
+														? content?.block1?.value?.link?.target
+														: '_self'
+												}
+												href={content?.block1?.value?.link?.value}>
 												<a
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
 														content?.block1?.value?.theme?.value === 'light'
@@ -52,6 +59,14 @@ const CesCards = ({ data }) => {
 															: 'outline-black'
 													}`}>
 													{content?.block1?.value?.link?.title}
+
+													{content?.block1?.value?.link?.target ===
+														'_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
 												</a>
 											</Link>
 										) : null}
@@ -77,7 +92,13 @@ const CesCards = ({ data }) => {
 												__html: content?.block2?.value?.title?.value
 											}}></div>
 										{content?.block2?.value?.link?.value ? (
-											<Link href={content?.block2?.value?.link?.value}>
+											<Link
+												target={
+													content?.block2?.value?.link?.target
+														? content?.block2?.value?.link?.target
+														: '_self'
+												}
+												href={content?.block2?.value?.link?.value}>
 												<a
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ms-auto ${
 														content?.block2?.value?.theme?.value === 'light'
@@ -85,6 +106,13 @@ const CesCards = ({ data }) => {
 															: 'outline-black'
 													}`}>
 													{content?.block2?.value?.link?.title}
+													{content?.block2?.value?.link?.target ===
+														'_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
 												</a>
 											</Link>
 										) : null}
@@ -122,7 +150,11 @@ const CesCards = ({ data }) => {
 											{item?.title?.value}
 										</h3>
 										{item?.link?.title && item?.link?.value ? (
-											<Link href={item?.link?.value ? item?.link?.value : '/'}>
+											<Link
+												target={
+													item?.link?.target ? item?.link?.target : '_self'
+												}
+												href={item?.link?.value ? item?.link?.value : '/'}>
 												<a
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
 														item?.theme?.value === 'light'
@@ -130,6 +162,12 @@ const CesCards = ({ data }) => {
 															: 'outline-black'
 													}`}>
 													{item?.link?.title}
+													{item?.link?.target === '_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
 												</a>
 											</Link>
 										) : null}
@@ -165,7 +203,13 @@ const CesCards = ({ data }) => {
 												__html: content?.block3?.value?.title?.value
 											}}></div>
 										{content?.block3?.value?.link?.value ? (
-											<Link href={content?.block3?.value?.link?.value}>
+											<Link
+												target={
+													content?.block3?.value?.link?.target
+														? content?.block3?.value?.link?.target
+														: '_self'
+												}
+												href={content?.block3?.value?.link?.value}>
 												<a
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
 														content?.block3?.value?.theme?.value === 'light'
@@ -173,6 +217,13 @@ const CesCards = ({ data }) => {
 															: 'outline-black'
 													}`}>
 													{content?.block3?.value?.link?.title}
+													{content?.block3?.value?.link?.target ===
+														'_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
 												</a>
 											</Link>
 										) : null}

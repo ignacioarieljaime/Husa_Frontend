@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 
 const CesTexBlock1 = ({ data }) => {
 	const [content, setContent] = useState({ data })
@@ -28,11 +29,19 @@ const CesTexBlock1 = ({ data }) => {
 								__html: content?.description?.value
 							}}></div>
 						{content?.link?.value ? (
-							<Link href={content?.link?.value}>
+							<Link
+								target={content?.link?.target ? content?.link?.target : '_self'}
+								href={content?.link?.value}>
 								<a
 									className='fw-bold'
 									style={{ color: '#00aaa6', textDecoration: 'none' }}>
 									{content?.link?.title} {'>'}
+									{content?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						) : null}
@@ -62,11 +71,19 @@ const CesTexBlock1 = ({ data }) => {
 								</ul>
 							</div>
 							{content?.productLink?.value ? (
-								<Link href={content?.productLink?.value}>
+								<Link
+									target={content?.productLink?.target ? content?.productLink?.target : '_self'}
+									href={content?.productLink?.value}>
 									<a
 										className='fw-bolder-700 fs-6 mt-4'
 										style={{ color: '#00aaa6', textDecoration: 'none' }}>
 										{content?.productLink?.title} {'>'}
+										{content?.productLink?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
 									</a>
 								</Link>
 							) : null}

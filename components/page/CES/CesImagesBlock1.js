@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesImagesBlock1 = ({ data }) => {
 	const [content, setContent] = useState({ data })
@@ -38,9 +39,21 @@ const CesImagesBlock1 = ({ data }) => {
 										{content?.title1?.value}
 									</h3>
 									{content?.link1?.value ? (
-										<Link href={content?.link1?.value}>
+										<Link
+											target={
+												content?.link1?.target
+													? content?.link1?.target
+													: '_self'
+											}
+											href={content?.link1?.value}>
 											<a className='outline-white n-btn text-nowrap transparent d-block w-fit '>
 												{content?.link1?.title}
+												{content?.link1?.target === '_blank' && (
+													<img
+														style={{ marginLeft: '10px' }}
+														src={OpenPageOnNewTab.src}
+													/>
+												)}
 											</a>
 										</Link>
 									) : null}
@@ -64,9 +77,21 @@ const CesImagesBlock1 = ({ data }) => {
 										{content?.title2?.value}
 									</h3>
 									{content?.link2?.value ? (
-										<Link href={content?.link2?.value}>
+										<Link
+											target={
+												content?.link2?.target
+													? content?.link2?.target
+													: '_self'
+											}
+											href={content?.link2?.value}>
 											<a className='n-btn transparent text-nowrap d-block w-fit outline-white '>
 												{content?.link2?.title}
+												{content?.link2?.target === '_blank' && (
+													<img
+														style={{ marginLeft: '10px' }}
+														src={OpenPageOnNewTab.src}
+													/>
+												)}
 											</a>
 										</Link>
 									) : null}

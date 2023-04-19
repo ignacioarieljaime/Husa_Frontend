@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const Gaurantee = ({ data }) => {
 	let { structure } = data
 	const [text, setText] = useState(null)
@@ -13,6 +14,11 @@ const Gaurantee = ({ data }) => {
 				<div className='container'>
 					<div className='row align-items-center mb-15'>
 						<Link
+							target={
+								structure?.leftLink?.target
+									? structure?.leftLink?.target
+									: '_self'
+							}
 							href={
 								structure?.leftLink?.value ? structure?.leftLink?.value : '/'
 							}>
@@ -21,6 +27,12 @@ const Gaurantee = ({ data }) => {
 									<h2>{structure?.leftTitle?.value}</h2>
 									<p>{structure?.leftText?.value}</p>
 								</div>
+								{structure?.leftLink?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 
@@ -35,6 +47,11 @@ const Gaurantee = ({ data }) => {
 							</div>
 						</div>
 						<Link
+							target={
+								structure?.rightLink?.target
+									? structure?.rightLink?.target
+									: '_self'
+							}
 							href={
 								structure?.rightLink?.value ? structure?.rightLink?.value : '/'
 							}>
@@ -43,6 +60,12 @@ const Gaurantee = ({ data }) => {
 									<h2>{structure?.rightTitle?.value}</h2>
 									<p>{structure?.rightText?.value}</p>
 								</div>
+								{structure?.rightLink?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
@@ -25,9 +26,19 @@ const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
 							}}></p>
 					</article>
 					{structure?.link && (
-						<Link href={structure?.link?.value}>
+						<Link
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							href={structure?.link?.value}>
 							<a className='n-btn outline-white transparent'>
 								{structure?.link?.title}
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					)}

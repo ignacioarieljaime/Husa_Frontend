@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 function SmartInfoFindHisense({ data }) {
 	let { structure } = data
 	return (
@@ -13,9 +13,19 @@ function SmartInfoFindHisense({ data }) {
 					<div className='col-12 col-md-6 m-0'>
 						<p className='mb-2'>{structure?.description?.value}</p>
 						{structure?.link?.value && (
-							<Link href={structure?.link?.value}>
+							<Link
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								href={structure?.link?.value}>
 								<a className='btn btn-dark fs-md-base fs-8'>
 									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						)}

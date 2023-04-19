@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesTexBlock2 = ({ data }) => {
 	const [content, setContent] = useState({ data })
@@ -27,9 +28,19 @@ const CesTexBlock2 = ({ data }) => {
 									__html: content?.description?.value
 								}}></div>
 							{content?.link2?.value ? (
-								<Link href={content?.link2?.value}>
+								<Link
+									target={
+										content?.link2?.target ? content?.link2?.target : '_self'
+									}
+									href={content?.link2?.value}>
 									<a className='n-btn primary-text primary-hover'>
 										{content?.link2?.title} {'>'}
+										{content?.link2?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
 									</a>
 								</Link>
 							) : null}
@@ -49,9 +60,19 @@ const CesTexBlock2 = ({ data }) => {
 								))}
 							</ul>
 							{content?.link1?.value ? (
-								<Link href={content?.link1?.value}>
+								<Link
+									target={
+										content?.link1?.target ? content?.link1?.target : '_self'
+									}
+									href={content?.link1?.value}>
 									<a className='n-btn primary-text primary-hover text-decoration-none'>
 										{content?.link1?.title} {'>'}
+										{content?.link1?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
 									</a>
 								</Link>
 							) : null}

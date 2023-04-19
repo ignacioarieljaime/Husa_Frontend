@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 function TVAndAudioIntro({ data: { structure } }) {
 	const [text, setText] = useState(null)
 	useEffect(() => {
@@ -25,9 +25,18 @@ function TVAndAudioIntro({ data: { structure } }) {
 								}}></p>
 						</div>
 						{structure?.link?.value && (
-							<Link href={structure?.link?.value}>
+							<Link
+								target={structure?.link?.target ? structure?.link?.target : '_self'}
+								href={structure?.link?.value}>
 								<a className='btn btn-outline-secondary rounded-5 px-8 mt-12'>
 									{structure?.link?.title}
+
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						)}

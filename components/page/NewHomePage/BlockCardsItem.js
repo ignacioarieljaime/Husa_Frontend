@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import CustomImage from '../../common/CustomImage'
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 
 const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 	let { backgroundImage, bottomImage, title, topImage, link } = data
@@ -42,9 +43,17 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 
 					<h4 className='mb-3 mb-md-6 fs-4 fs-md-2'>{title?.value}</h4>
 					{link?.title && link?.value ? (
-						<Link href={link?.value ? link?.value : '/'}>
+						<Link
+							target={link?.target ? link?.target : '_self'}
+							href={link?.value ? link?.value : '/'}>
 							<a className='n-btn outline-white transparent d-block w-fit'>
 								{link?.title}
+								{link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					) : null}

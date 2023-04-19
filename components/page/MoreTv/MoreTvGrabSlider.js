@@ -21,11 +21,7 @@ function MoreTVGrabSlider({ data }) {
 		clickable: true,
 		renderBullet: function (index, className) {
 			return (
-				'<span class="' +
-				className +
-				'">' +
-				carouselItems[index] +
-				'</span>'
+				'<span class="' + className + '">' + carouselItems[index] + '</span>'
 			)
 		}
 	}
@@ -55,7 +51,7 @@ function MoreTVGrabSlider({ data }) {
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									className='slider-media'
-									width={"860"}
+									width={'860'}
 								/>
 							</span>
 							<div className='text-center'>
@@ -64,7 +60,9 @@ function MoreTVGrabSlider({ data }) {
 								<p className='text-muted fw-normal mb-5'>
 									{item?.grayTitle?.value}
 								</p>
-								<Link href={item?.link?.value}>
+								<Link
+									target={item?.link?.target ? item?.link?.target : '_self'}
+									href={item?.link?.value}>
 									<a className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
 										WHERE TO BUY
 									</a>

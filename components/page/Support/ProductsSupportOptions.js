@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 function ProductsSupportOptions({ data }) {
 	let { structure } = data
 	const [list, setList] = useState([])
@@ -25,9 +25,17 @@ function ProductsSupportOptions({ data }) {
 									__html: item?.paragraph?.value
 								}}></div>
 						</div>
-						<Link href={item?.link?.value}>
+						<Link
+							target={item?.link?.target ? item?.link?.target : '_self'}
+							href={item?.link?.value}>
 							<a className='btn btn-outline-dark px-4 py-3 rounded-5'>
 								{item?.linkTitle?.value}
+								{item?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</div>

@@ -7,6 +7,7 @@ import {
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import CustomImage from '../../common/CustomImage'
+import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
 
 const BlockHero = ({ data: { structure } }) => {
 	useEffect(() => {
@@ -45,6 +46,9 @@ const BlockHero = ({ data: { structure } }) => {
 									{structure?.subtitle?.value}
 								</p>
 								<Link
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
 									href={structure?.link?.value ? structure?.link?.value : '/'}>
 									<a
 										className='n-btn white'
@@ -52,6 +56,12 @@ const BlockHero = ({ data: { structure } }) => {
 										data-aos-duration='900'
 										data-aos-delay='2000'>
 										{structure?.link?.title}
+										{structure?.link?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
 									</a>
 								</Link>
 							</div>
