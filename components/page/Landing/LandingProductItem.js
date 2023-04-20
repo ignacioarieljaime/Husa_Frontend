@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 // image
 import ProductImage from 'public/assets/images/home/tv.png'
 
@@ -13,7 +13,9 @@ function LandingProductItem({ data: { image, link, title } }) {
 						target={link?.target ? link?.target : '_self'}
 						href={link.value}
 						title={image.alt}>
-						<a className='img-link'>
+						<a
+							target={link?.target ? link?.target : '_self'}
+							className='img-link'>
 							<img
 								src={image.src}
 								alt={image.alt}
@@ -28,7 +30,9 @@ function LandingProductItem({ data: { image, link, title } }) {
 					<Link
 						target={link?.target ? link?.target : '_self'}
 						href={link.value}>
-						<a className='btn btn-outline-dark shop-btn'>
+						<a
+							target={link?.target ? link?.target : '_self'}
+							className='btn btn-outline-dark shop-btn'>
 							{link.title}
 							{link?.target === '_blank' && (
 								<img

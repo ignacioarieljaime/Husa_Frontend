@@ -36,7 +36,11 @@ const CesBanner = ({ data: { structure } }) => {
 					<Link
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
 						href={structure?.link?.value}>
-						<a className='link'>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							className='link'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

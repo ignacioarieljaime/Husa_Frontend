@@ -34,7 +34,11 @@ const FlightNightConfirmationSocialMedia = ({ data }) => {
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
-								<a className='n-btn primary p-4 gap-2 d-inline-flex m-auto'>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='n-btn primary p-4 gap-2 d-inline-flex m-auto'>
 									{structure?.link?.title}
 									<CustomImage
 										wrapperClass='d-inline-block'

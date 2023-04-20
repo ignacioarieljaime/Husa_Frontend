@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const TelevisionsBlockSpotlightItem = ({ data }) => {
 	return (
 		<div className='col-12 col-sm-6 col-lg-3 televisions-spotlight-item'>
@@ -12,7 +12,9 @@ const TelevisionsBlockSpotlightItem = ({ data }) => {
 					<Link
 						target={data?.link?.target ? data?.link?.target : '_self'}
 						href={data?.link?.value}>
-						<a className='n-btn outline-white transparent d-block w-fit mx-auto'>
+						<a
+							target={data?.link?.target ? data?.link?.target : '_self'}
+							className='n-btn outline-white transparent d-block w-fit mx-auto'>
 							{data?.link?.title}
 							{data?.link?.target === '_blank' && (
 								<img

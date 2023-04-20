@@ -12,6 +12,7 @@ function ListImageBox({ data }) {
 					target={item?.link?.target ? item?.link?.target : '_self'}
 					href={item?.link?.value ? item?.link?.value : '/'}>
 					<a
+						target={item?.link?.target ? item?.link?.target : '_self'}
 						style={{
 							width: `calc(${100 / structure?.list?.value.length}% - 25px)`
 						}}

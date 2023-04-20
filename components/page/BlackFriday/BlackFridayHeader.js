@@ -14,7 +14,11 @@ const BlackFridayHeader = ({ data: { structure } }) => {
 								structure?.image?.target ? structure?.image?.target : '_self'
 							}
 							href='/'>
-							<a className='navbar-brand m-0 col-xl-4 text-start'>
+							<a
+								target={
+									structure?.image?.target ? structure?.image?.target : '_self'
+								}
+								className='navbar-brand m-0 col-xl-4 text-start'>
 								<CustomImage
 									src={structure?.image?.src}
 									alt={structure?.image?.alt}

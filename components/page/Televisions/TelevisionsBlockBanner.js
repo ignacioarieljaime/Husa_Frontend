@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const TelevisionsBlockBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
 	useEffect(() => {
@@ -27,7 +27,9 @@ const TelevisionsBlockBanner = ({ data }) => {
 						<Link
 							target={content?.link?.target ? content?.link?.target : '_self'}
 							href={content?.link?.value}>
-							<a className='n-btn outline-white transparent d-block w-fit'>
+							<a
+								target={content?.link?.target ? content?.link?.target : '_self'}
+								className='n-btn outline-white transparent d-block w-fit'>
 								{content?.link?.title}
 								{content?.link?.target === '_blank' && (
 									<img

@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const ModalChanelAdviser = dynamic(() =>
 	import('../Product/ModalChanelAdviser')
 )
@@ -42,6 +42,7 @@ function ULEDProductItem({ data, itemLength }) {
 									target={item?.link?.target ? item?.link?.target : '_self'}
 									href={item?.link?.value ? item?.link?.value : '/'}>
 									<a
+										target={item?.link?.target ? item?.link?.target : '_self'}
 										className={`btn ${
 											index === 0
 												? 'btn-light'

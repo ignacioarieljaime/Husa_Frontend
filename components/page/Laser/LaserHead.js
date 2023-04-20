@@ -33,7 +33,11 @@ function LaserHead({ data: { structure } }) {
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
 							href={structure?.link?.value}>
-							<a className='btn btn-outline-light rounded-5 px-8 mt-12'>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='btn btn-outline-light rounded-5 px-8 mt-12'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

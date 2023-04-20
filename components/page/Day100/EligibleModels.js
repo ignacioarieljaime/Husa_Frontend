@@ -28,7 +28,13 @@ const EligibleModels = ({ data }) => {
 									: '_self'
 							}
 							href={structure?.linkUrl?.value}>
-							<a className='text-purple fs-2'>
+							<a
+								target={
+									structure?.linkTitle?.target
+										? structure?.linkTitle?.target
+										: '_self'
+								}
+								className='text-purple fs-2'>
 								{structure?.linkTitle?.value}{' '}
 								{structure?.linkTitle?.target === '_blank' && (
 									<img
@@ -61,7 +67,11 @@ const EligibleModels = ({ data }) => {
 					<Link
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
 						href={structure?.link?.value}>
-						<a className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
 							{structure?.link?.title}
 
 							{structure?.link?.target === '_blank' && (

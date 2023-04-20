@@ -34,7 +34,13 @@ function BlogListReadArticleBoxContainer({ structure }) {
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
 									href={structure?.link?.value ? structure?.link?.value : '/'}>
-									<a className='d-block'>
+									<a
+										target={
+											structure?.link?.target
+												? structure?.link?.target
+												: '_self'
+										}
+										className='d-block'>
 										<img
 											src={structure?.image?.src}
 											alt={structure?.image?.alt}
@@ -71,7 +77,13 @@ function BlogListReadArticleBoxContainer({ structure }) {
 											href={
 												structure?.link?.value ? structure?.link?.value : '/'
 											}>
-											<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											<a
+												target={
+													structure?.link?.target
+														? structure?.link?.target
+														: '_self'
+												}
+												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 												{structure?.link?.title}
 												{structure?.link?.target === '_blank' && (
 													<img

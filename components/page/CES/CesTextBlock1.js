@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesTexBlock1 = ({ data }) => {
 	const [content, setContent] = useState({ data })
@@ -33,6 +33,9 @@ const CesTexBlock1 = ({ data }) => {
 								target={content?.link?.target ? content?.link?.target : '_self'}
 								href={content?.link?.value}>
 								<a
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
 									className='fw-bold'
 									style={{ color: '#00aaa6', textDecoration: 'none' }}>
 									{content?.link?.title} {'>'}
@@ -72,9 +75,18 @@ const CesTexBlock1 = ({ data }) => {
 							</div>
 							{content?.productLink?.value ? (
 								<Link
-									target={content?.productLink?.target ? content?.productLink?.target : '_self'}
+									target={
+										content?.productLink?.target
+											? content?.productLink?.target
+											: '_self'
+									}
 									href={content?.productLink?.value}>
 									<a
+										target={
+											content?.productLink?.target
+												? content?.productLink?.target
+												: '_self'
+										}
 										className='fw-bolder-700 fs-6 mt-4'
 										style={{ color: '#00aaa6', textDecoration: 'none' }}>
 										{content?.productLink?.title} {'>'}

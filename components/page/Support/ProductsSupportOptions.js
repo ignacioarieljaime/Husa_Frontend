@@ -28,7 +28,9 @@ function ProductsSupportOptions({ data }) {
 						<Link
 							target={item?.link?.target ? item?.link?.target : '_self'}
 							href={item?.link?.value}>
-							<a className='btn btn-outline-dark px-4 py-3 rounded-5'>
+							<a
+								target={item?.link?.target ? item?.link?.target : '_self'}
+								className='btn btn-outline-dark px-4 py-3 rounded-5'>
 								{item?.linkTitle?.value}
 								{item?.link?.target === '_blank' && (
 									<img

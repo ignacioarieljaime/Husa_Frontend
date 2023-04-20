@@ -26,7 +26,9 @@ const CesNewsBlock = ({ data }) => {
 										target={item?.link?.target ? item?.link?.target : '_self'}
 										key='index'
 										href={item?.link?.value}>
-										<a className='ces_links'>
+										<a
+											target={item?.link?.target ? item?.link?.target : '_self'}
+											className='ces_links'>
 											{item?.link?.title}
 											{item?.link?.target === '_blank' && (
 												<img
@@ -51,7 +53,13 @@ const CesNewsBlock = ({ data }) => {
 												: '_self'
 										}
 										href={content?.secondLink?.value}>
-										<a className='me-1 link'>
+										<a
+											target={
+												content?.secondLink?.target
+													? content?.secondLink?.target
+													: '_self'
+											}
+											className='me-1 link'>
 											{content?.secondLink?.title}
 											{content?.secondLink?.target === '_blank' && (
 												<img

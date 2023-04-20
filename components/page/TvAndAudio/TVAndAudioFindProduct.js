@@ -1,5 +1,5 @@
 import React from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import Link from 'next/link'
 
 function TVAndAudioFindProduct({ data: { structure } }) {
@@ -23,7 +23,11 @@ function TVAndAudioFindProduct({ data: { structure } }) {
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
 								href={structure?.link.value}>
-								<a className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 mt-8 mb-6'>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 mt-8 mb-6'>
 									{structure?.link.title}
 									{structure?.link?.target === '_blank' && (
 										<img

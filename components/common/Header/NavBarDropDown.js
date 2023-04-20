@@ -13,7 +13,9 @@ function NavBarDropDown({ data }) {
 				<Link
 					target={data?.target ? data?.target : '_self'}
 					href={data.url ? data.url : ''}>
-					<a className='nav-link'>
+					<a
+						target={data?.target ? data?.target : '_self'}
+						className='nav-link'>
 						<span className='underline-on-hover'>{data.name}</span>
 						{data?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
@@ -42,7 +44,10 @@ function NavBarDropDown({ data }) {
 														<Link
 															target={colum?.target ? colum?.target : '_self'}
 															href={colum.url ? colum.url : ''}>
-															<a>
+															<a
+																target={
+																	colum?.target ? colum?.target : '_self'
+																}>
 																<span className='underline-on-hover'>
 																	{colum.name}
 																</span>
@@ -68,7 +73,9 @@ function NavBarDropDown({ data }) {
 											<Link
 												target={product?.target ? product?.target : '_self'}
 												href={product.url ? product.url : ''}>
-												<a className={`col-${12 / data.products.length}`}>
+												<a
+													target={product?.target ? product?.target : '_self'}
+													className={`col-${12 / data.products.length}`}>
 													<CustomImage
 														src={product.image}
 														alt='featured image'

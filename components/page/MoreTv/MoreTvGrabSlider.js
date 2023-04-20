@@ -63,7 +63,9 @@ function MoreTVGrabSlider({ data }) {
 								<Link
 									target={item?.link?.target ? item?.link?.target : '_self'}
 									href={item?.link?.value}>
-									<a className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
+									<a
+										target={item?.link?.target ? item?.link?.target : '_self'}
+										className='btn btn-info-light text-uppercase text-navy fw-bold rounded-5'>
 										WHERE TO BUY
 									</a>
 								</Link>

@@ -21,7 +21,7 @@ function SmartInfoTvsDifferentItem({
 			<Link
 				target={link?.target ? link?.target : '_self'}
 				href={link.value ? link.value : '/'}>
-				<a className='btn btn-light'>
+				<a	target={link?.target ? link?.target : '_self'} className='btn btn-light'>
 					{link.title}{' '}
 					{link?.target === '_blank' && (
 						<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const EligbleModelsItem = ({ data }) => {
 	const [text, setText] = useState(null)
@@ -31,7 +31,9 @@ const EligbleModelsItem = ({ data }) => {
 					<Link
 						target={data?.shopNow?.target ? data?.shopNow?.target : '_self'}
 						href={data?.shopNow?.value}>
-						<a className='btn btn-primary rounded-5 px-5 py-2'>
+						<a
+							target={data?.shopNow?.target ? data?.shopNow?.target : '_self'}
+							className='btn btn-primary rounded-5 px-5 py-2'>
 							{data?.shopNow?.title}
 							{data?.shopNow?.target === '_blank' && (
 								<img
@@ -44,7 +46,11 @@ const EligbleModelsItem = ({ data }) => {
 					<Link
 						target={data?.learnMore?.target ? data?.learnMore?.target : '_self'}
 						href={data?.learnMore?.value}>
-						<a className='text-purple ms-5'>
+						<a
+							target={
+								data?.learnMore?.target ? data?.learnMore?.target : '_self'
+							}
+							className='text-purple ms-5'>
 							{data?.learnMore?.title}
 							{data?.learnMore?.target === '_blank' && (
 								<img

@@ -31,7 +31,9 @@ function MoreTVVideoBox({ data }) {
 				<Link
 					target={content?.link?.target ? content?.link?.target : '_self'}
 					href={content?.link?.value ? content?.link?.value : '/'}>
-					<a className='text-black text-uppercase fw-normal fs-8'>
+					<a
+						target={content?.link?.target ? content?.link?.target : '_self'}
+						className='text-black text-uppercase fw-normal fs-8'>
 						{content?.link?.title}
 						{content?.link?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />

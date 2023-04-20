@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function ProductSupportNavBar({ pim, data }) {
 	let { structure } = data
@@ -35,7 +35,10 @@ function ProductSupportNavBar({ pim, data }) {
 							<Link
 								target={item?.target?.target ? item?.target?.target : '_self'}
 								href={item?.target?.value ? item?.target?.value : '/'}>
-								<a>
+								<a
+									target={
+										item?.target?.target ? item?.target?.target : '_self'
+									}>
 									<span className='underline-on-hover'>
 										{item?.title?.value}
 										{item?.target?.target === '_blank' && (

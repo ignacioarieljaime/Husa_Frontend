@@ -22,7 +22,13 @@ const Gaurantee = ({ data }) => {
 							href={
 								structure?.leftLink?.value ? structure?.leftLink?.value : '/'
 							}>
-							<a className='col-12 text-decoration-none my-5 my-lg-0 col-md-6 order-2 order-md-2 order-lg-1 col-lg-4'>
+							<a
+								target={
+									structure?.leftLink?.target
+										? structure?.leftLink?.target
+										: '_self'
+								}
+								className='col-12 text-decoration-none my-5 my-lg-0 col-md-6 order-2 order-md-2 order-lg-1 col-lg-4'>
 								<div className='warranty-adv'>
 									<h2>{structure?.leftTitle?.value}</h2>
 									<p>{structure?.leftText?.value}</p>
@@ -55,7 +61,13 @@ const Gaurantee = ({ data }) => {
 							href={
 								structure?.rightLink?.value ? structure?.rightLink?.value : '/'
 							}>
-							<a className='col-12 text-decoration-none my-5 my-lg-0 col-md-6 order-3  col-lg-4'>
+							<a
+								target={
+									structure?.rightLink?.target
+										? structure?.rightLink?.target
+										: '_self'
+								}
+								className='col-12 text-decoration-none my-5 my-lg-0 col-md-6 order-3  col-lg-4'>
 								<div className='warranty-adv'>
 									<h2>{structure?.rightTitle?.value}</h2>
 									<p>{structure?.rightText?.value}</p>

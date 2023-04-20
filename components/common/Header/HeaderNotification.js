@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import DismissIcon from '../../icons/DismissIcon'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function HeaderNotification({ data }) {
 	const [notificationDismiss, serNotificationDismiss] = useState(true)
@@ -14,7 +14,9 @@ function HeaderNotification({ data }) {
 			<Link
 				target={data?.target ? data?.target : '_self'}
 				href={data?.link ? data?.link : '/'}>
-				<a style={{ color: data?.text_color }}>
+				<a
+					target={data?.target ? data?.target : '_self'}
+					style={{ color: data?.text_color }}>
 					{data?.text}
 
 					{data?.target === '_blank' && (

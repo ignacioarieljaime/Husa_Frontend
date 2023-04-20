@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const HomePageMBTextedBoxesItem = ({
 	image,
@@ -35,7 +35,9 @@ const HomePageMBTextedBoxesItem = ({
 						<Link
 							target={link?.target ? link?.target : '_self'}
 							href={link?.value}>
-							<a className='n-btn outline-white transparent'>
+							<a
+								target={link?.target ? link?.target : '_self'}
+								className='n-btn outline-white transparent'>
 								{link?.title}
 								{link?.target === '_blank' && (
 									<img

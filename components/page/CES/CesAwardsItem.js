@@ -9,7 +9,7 @@ const CesAwardsItem = ({ data }) => {
 				<Link
 					target={data?.link?.target ? data?.link?.target : '_self'}
 					href={data?.link?.value}>
-					<a>
+					<a target={data?.link?.target ? data?.link?.target : '_self'}>
 						<div className='img_container'>
 							<CustomImage
 								src={data?.image?.src}
@@ -26,7 +26,9 @@ const CesAwardsItem = ({ data }) => {
 								<Link
 									target={data?.link?.target ? data?.link?.target : '_self'}
 									href={data?.link?.value}>
-									<a className='n-btn white-text d-block w-fit'>
+									<a
+										target={data?.link?.target ? data?.link?.target : '_self'}
+										className='n-btn white-text d-block w-fit'>
 										{data?.link?.title}
 										{data?.link?.target === '_blank' && (
 											<img

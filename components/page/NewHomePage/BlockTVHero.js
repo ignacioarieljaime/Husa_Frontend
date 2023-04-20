@@ -6,7 +6,7 @@ import {
 	ParallaxProvider
 } from 'react-scroll-parallax'
 import CustomImage from '../../common/CustomImage'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BlockTVHero = ({ data: { structure } }) => {
 	return (
@@ -59,10 +59,12 @@ const BlockTVContainer = ({ structure }) => {
 								dangerouslySetInnerHTML={{
 									__html: content?.text?.value
 								}}></div>
-							<Link
-								target={content?.link?.target ? content?.link?.target : '_self'}
-								href={content?.link?.value ? content?.link?.value : '/'}>
-								<a className='n-btn outline-white transparent d-block w-fit mt-4'>
+							<Link href={content?.link?.value ? content?.link?.value : '/'}>
+								<a
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
+									className='n-btn outline-white transparent d-block w-fit mt-4'>
 									{content?.link?.title}
 									{content?.link?.target === '_blank' && (
 										<img

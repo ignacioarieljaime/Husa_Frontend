@@ -76,7 +76,13 @@ function BlogHead({ data: { structure } }) {
 							structure?.tagLink?.target ? structure?.tagLink?.target : '_self'
 						}
 						href={structure?.tagLink?.value ? structure?.tagLink?.value : '/'}>
-						<a className='text-primary-dark fs-5 fw-normal mb-10 d-block text-decoration-none'>
+						<a
+							target={
+								structure?.tagLink?.target
+									? structure?.tagLink?.target
+									: '_self'
+							}
+							className='text-primary-dark fs-5 fw-normal mb-10 d-block text-decoration-none'>
 							{structure?.tagLink?.title}
 							{structure?.tagLink?.target === '_blank' && (
 								<img

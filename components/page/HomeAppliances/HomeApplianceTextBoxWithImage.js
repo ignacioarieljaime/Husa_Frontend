@@ -31,7 +31,11 @@ const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
 							href={structure?.link?.value}>
-							<a className='n-btn outline-white transparent'>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='n-btn outline-white transparent'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

@@ -9,7 +9,9 @@ const HomeAppliancePromoProductsItem = ({ data }) => {
 				<Link
 					target={data?.link?.target ? data?.link?.target : '_self'}
 					href={data?.link?.value}>
-					<a className='image_container'>
+					<a
+						target={data?.link?.target ? data?.link?.target : '_self'}
+						className='image_container'>
 						<CustomImage
 							src={data?.image?.src}
 							alt={data?.image?.alt}
@@ -29,7 +31,9 @@ const HomeAppliancePromoProductsItem = ({ data }) => {
 					<Link
 						target={data?.link?.target ? data?.link?.target : '_self'}
 						href={data?.link?.value}>
-						<a className='d-block w-fit mx-auto mt-6'>
+						<a
+							target={data?.link?.target ? data?.link?.target : '_self'}
+							className='d-block w-fit mx-auto mt-6'>
 							<CustomImage
 								src={data?.retailer?.src}
 								alt={data?.retailer?.alt}

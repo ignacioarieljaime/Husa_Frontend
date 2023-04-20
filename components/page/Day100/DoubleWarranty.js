@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const DoubleWarranty = ({ data }) => {
 	let { structure } = data
@@ -17,7 +17,13 @@ const DoubleWarranty = ({ data }) => {
 							href={
 								structure?.leftLink?.value ? structure?.leftLink?.value : '/'
 							}>
-							<a className='d-none text-decoration-none d-md-block col-12 my-5 my-lg-0 col-md-6 order-2 order-md-2 order-lg-1 col-lg-4'>
+							<a
+								target={
+									structure?.leftLink?.target
+										? structure?.leftLink?.target
+										: '_self'
+								}
+								className='d-none text-decoration-none d-md-block col-12 my-5 my-lg-0 col-md-6 order-2 order-md-2 order-lg-1 col-lg-4'>
 								<div className='warranty-adv '>
 									<h2>{structure?.leftTitle?.value}</h2>
 									<p>{structure?.leftText?.value}</p>
@@ -50,7 +56,13 @@ const DoubleWarranty = ({ data }) => {
 							href={
 								structure?.rightLink?.value ? structure?.rightLink?.value : '/'
 							}>
-							<a className='d-none d-md-block text-decoration-none col-12 my-5 my-lg-0 col-md-6 order-3  col-lg-4'>
+							<a
+								target={
+									structure?.rightLink?.target
+										? structure?.rightLink?.target
+										: '_self'
+								}
+								className='d-none d-md-block text-decoration-none col-12 my-5 my-lg-0 col-md-6 order-3  col-lg-4'>
 								<div className='warranty-adv'>
 									<h2>{structure?.rightTitle?.value}</h2>
 									<p>{structure?.rightText?.value}</p>

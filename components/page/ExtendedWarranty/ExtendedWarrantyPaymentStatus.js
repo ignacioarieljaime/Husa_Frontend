@@ -131,7 +131,12 @@ const ExtendedWarrantyPaymentStatus = ({
 															: '_self'
 													}
 													href={content?.termsLink?.value}>
-													<a target='_blank'>
+													<a
+														target={
+															content?.termsLink?.target
+																? content?.termsLink?.target
+																: '_self'
+														}>
 														{content?.termsLink?.title}
 														{content?.termsLink?.target === '_blank' && (
 															<img
@@ -166,7 +171,11 @@ const ExtendedWarrantyPaymentStatus = ({
 							<Link
 								target={content?.link?.target ? content?.link?.target : '_self'}
 								href={content?.link?.value ? content?.link?.value : '/'}>
-								<a className='n-btn outline-black py-4 mx-3 my-8 my-sm-4'>
+								<a
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
+									className='n-btn outline-black py-4 mx-3 my-8 my-sm-4'>
 									{content?.link?.title}
 									{content?.link?.target === '_blank' && (
 										<img

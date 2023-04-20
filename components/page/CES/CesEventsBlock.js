@@ -38,7 +38,9 @@ const CesEventsBlock = ({ data }) => {
 						<Link
 							target={content?.link?.target ? content?.link?.target : '_self'}
 							href={content?.link?.value}>
-							<a className='n-btn black-text d-block w-fit p-0'>
+							<a
+								target={content?.link?.target ? content?.link?.target : '_self'}
+								className='n-btn black-text d-block w-fit p-0'>
 								{content?.link?.title} {'>'}
 								{content?.link?.target === '_blank' && (
 									<img

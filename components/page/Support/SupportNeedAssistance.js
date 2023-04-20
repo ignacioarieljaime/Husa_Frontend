@@ -22,7 +22,11 @@ function SupportNeedAssistance({ data }) {
 					<Link
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
 						href={structure?.link?.value ? structure?.link?.value : '/'}>
-						<a className='btn btn-light rounded-5 px-4 py-2'>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							className='btn btn-light rounded-5 px-4 py-2'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

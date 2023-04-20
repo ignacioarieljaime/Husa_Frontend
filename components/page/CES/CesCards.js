@@ -53,6 +53,11 @@ const CesCards = ({ data }) => {
 												}
 												href={content?.block1?.value?.link?.value}>
 												<a
+													target={
+														content?.block1?.value?.link?.target
+															? content?.block1?.value?.link?.target
+															: '_self'
+													}
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
 														content?.block1?.value?.theme?.value === 'light'
 															? 'outline-white'
@@ -100,6 +105,11 @@ const CesCards = ({ data }) => {
 												}
 												href={content?.block2?.value?.link?.value}>
 												<a
+													target={
+														content?.block2?.value?.link?.target
+															? content?.block2?.value?.link?.target
+															: '_self'
+													}
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ms-auto ${
 														content?.block2?.value?.theme?.value === 'light'
 															? 'outline-white'
@@ -156,6 +166,9 @@ const CesCards = ({ data }) => {
 												}
 												href={item?.link?.value ? item?.link?.value : '/'}>
 												<a
+													target={
+														item?.link?.target ? item?.link?.target : '_self'
+													}
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
 														item?.theme?.value === 'light'
 															? 'outline-white'
@@ -211,6 +224,11 @@ const CesCards = ({ data }) => {
 												}
 												href={content?.block3?.value?.link?.value}>
 												<a
+													target={
+														content?.block3?.value?.link?.target
+															? content?.block3?.value?.link?.target
+															: '_self'
+													}
 													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
 														content?.block3?.value?.theme?.value === 'light'
 															? 'outline-white'

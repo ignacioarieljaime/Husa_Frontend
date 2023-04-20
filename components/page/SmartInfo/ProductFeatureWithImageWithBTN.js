@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 function ProductFeatureWithImageWithBTN({ data }) {
 	let { structure } = data
 	return (
@@ -16,9 +16,19 @@ function ProductFeatureWithImageWithBTN({ data }) {
 						<p>{structure?.paragraphTwo?.value}</p>
 						{structure?.learn_more?.value && (
 							<Link
-								target={structure?.learn_more?.target ? structure?.learn_more?.target : '_self'}
+								target={
+									structure?.learn_more?.target
+										? structure?.learn_more?.target
+										: '_self'
+								}
 								href={structure?.learn_more?.value}>
-								<a className='text-white fw-light d-block mb-10'>
+								<a
+									target={
+										structure?.learn_more?.target
+											? structure?.learn_more?.target
+											: '_self'
+									}
+									className='text-white fw-light d-block mb-10'>
 									{structure?.learn_more?.title}
 									{structure?.learn_more?.target === '_blank' && (
 										<img
@@ -31,9 +41,15 @@ function ProductFeatureWithImageWithBTN({ data }) {
 						)}
 						{structure?.link?.value && (
 							<Link
-								target={structure?.link?.target ? structure?.link?.target : '_self'}
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								href={structure?.link?.value}>
-								<a className='text-logo px-4 text-decoration-none'>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='text-logo px-4 text-decoration-none'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (
 										<img

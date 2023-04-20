@@ -22,7 +22,11 @@ function SmartInfoHead({ data }) {
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
 								href={structure?.link?.value}>
-								<a className='btn btn-light text'>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='btn btn-light text'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (
 										<img

@@ -10,7 +10,9 @@ const HeaderGoogleTv = ({ data }) => {
 						<Link
 							target={item?.image?.target ? item?.image?.target : '_self'}
 							href={item?.link?.value}>
-							<a className='border-start border-2 border-secondary '>
+							<a
+								target={item?.image?.target ? item?.image?.target : '_self'}
+								className='border-start border-2 border-secondary '>
 								<img
 									key={'header' + index}
 									src={item?.image?.src}

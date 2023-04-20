@@ -22,7 +22,11 @@ const HomePageMBTextedBoxes = ({ data }) => {
 					<Link
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
 						href={structure?.link?.value}>
-						<a className='n-btn outline-black mt-20'>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							className='n-btn outline-black mt-20'>
 							{structure?.link?.title}{' '}
 							{structure?.link?.target === '_blank' && (
 								<img

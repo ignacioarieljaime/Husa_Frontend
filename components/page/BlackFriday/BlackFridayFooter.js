@@ -13,7 +13,7 @@ const BlackFridayFooter = ({ data: { structure } }) => {
 								<Link
 									target={item?.link?.target ? item?.link?.target : '_self'}
 									href={item?.link?.value}>
-									<a>
+									<a target={item?.link?.target ? item?.link?.target : '_self'}>
 										<span className='underline-on-hover'>
 											{item?.link?.title}
 										</span>

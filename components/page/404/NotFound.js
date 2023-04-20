@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const NotFound = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
@@ -49,14 +49,14 @@ const NotFound = ({ data: { structure } }) => {
 							) : null}{' '}
 							<p className='mx-6 mb-0'>OR</p>
 							{structure?.link2?.value ? (
-								<Link
-									target={
-										structure?.link2?.target
-											? structure?.link2?.target
-											: '_self'
-									}
-									href={structure?.link2?.value}>
-									<a className='link'>
+								<Link href={structure?.link2?.value}>
+									<a
+										target={
+											structure?.link2?.target
+												? structure?.link2?.target
+												: '_self'
+										}
+										className='link'>
 										{structure?.link2?.title}
 										{structure?.link2?.target === '_blank' && (
 											<img

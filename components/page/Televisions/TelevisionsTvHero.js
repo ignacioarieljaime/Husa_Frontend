@@ -63,6 +63,11 @@ const TelevisionsTvHero = ({ data }) => {
 												}
 												href={content?.fullSizeCard?.value?.link?.value}>
 												<a
+													target={
+														content?.fullSizeCard?.value?.link?.target
+															? content?.fullSizeCard?.value?.link?.target
+															: '_self'
+													}
 													className={`n-btn transparent d-block w-fit ${
 														content?.fullSizeCard?.value?.theme?.value ===
 														'light'
@@ -117,6 +122,11 @@ const TelevisionsTvHero = ({ data }) => {
 														}
 														href={item?.link?.value}>
 														<a
+															target={
+																item?.link?.target
+																	? item?.link?.target
+																	: '_self'
+															}
 															className={`n-btn transparent d-block w-fit ${
 																item?.theme?.value === 'light'
 																	? 'outline-white'
@@ -166,7 +176,13 @@ const TelevisionsTvHero = ({ data }) => {
 													: '_self'
 											}
 											href={content?.noBgCard?.value?.link?.value}>
-											<a className='n-btn outline-white transparent d-block w-fit'>
+											<a
+												target={
+													content?.noBgCard?.value?.link?.target
+														? content?.noBgCard?.value?.link?.target
+														: '_self'
+												}
+												className='n-btn outline-white transparent d-block w-fit'>
 												{content?.noBgCard?.value?.link?.title}
 												{content?.noBgCard?.value?.link?.target ===
 													'_blank' && (
@@ -226,6 +242,11 @@ const TelevisionsTvHero = ({ data }) => {
 												}
 												href={content?.bottomCard?.value?.link?.value}>
 												<a
+													target={
+														content?.bottomCard?.value?.link?.target
+															? content?.bottomCard?.value?.link?.target
+															: '_self'
+													}
 													className={`n-btn transparent d-block w-fit ${
 														content?.bottomCard?.value?.theme?.value === 'light'
 															? 'outline-white'

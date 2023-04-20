@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function CompanySubmenu({ data }) {
 	let { structure } = data
@@ -13,7 +13,7 @@ function CompanySubmenu({ data }) {
 							<Link
 								target={item?.title?.target ? item?.title?.target : '_self'}
 								href={item?.target?.value}>
-								<a>
+								<a target={item?.title?.target ? item?.title?.target : '_self'}>
 									<span class='underline-on-hover'>
 										{item?.title?.value}
 										{item?.title?.target === '_blank' && (

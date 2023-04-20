@@ -5,7 +5,7 @@ import {
 	useParallaxController,
 	ParallaxProvider
 } from 'react-scroll-parallax'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BlogListLittleReadArticleBox = ({
 	index,
@@ -58,7 +58,12 @@ function BlogListLittleReadArticleBoxContainer({
 											? smallPost?.value?.link?.value
 											: '/'
 									}>
-									<a>
+									<a
+										target={
+											smallPost?.value?.link?.target
+												? smallPost?.value?.link?.target
+												: '_self'
+										}>
 										<img
 											src={smallPost?.value?.image?.src}
 											alt={smallPost?.value?.image?.alt}
@@ -100,7 +105,13 @@ function BlogListLittleReadArticleBoxContainer({
 													? smallPost?.value?.link?.value
 													: '/'
 											}>
-											<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											<a
+												target={
+													smallPost?.value?.link?.target
+														? smallPost?.value?.link?.target
+														: '_self'
+												}
+												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 												{smallPost?.value?.link?.title}
 												{smallPost?.value?.link?.target === '_blank' && (
 													<img
@@ -129,7 +140,12 @@ function BlogListLittleReadArticleBoxContainer({
 											? largePost?.value?.link?.value
 											: '/'
 									}>
-									<a>
+									<a
+										target={
+											largePost?.value?.link?.target
+												? largePost?.value?.link?.target
+												: '_self'
+										}>
 										<img
 											src={largePost?.value?.image?.src}
 											alt={largePost?.value?.image?.alt}
@@ -171,7 +187,13 @@ function BlogListLittleReadArticleBoxContainer({
 													? largePost?.value?.link?.value
 													: '/'
 											}>
-											<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											<a
+												target={
+													largePost?.value?.link?.target
+														? largePost?.value?.link?.target
+														: '_self'
+												}
+												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 												{largePost?.value?.link?.title}
 												{largePost?.value?.link?.target === '_blank' && (
 													<img

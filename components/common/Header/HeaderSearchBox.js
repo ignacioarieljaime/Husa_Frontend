@@ -80,7 +80,7 @@ function HeaderSearchBox({
 												<Link
 													target={item?.target ? item?.target : '_self'}
 													href={item.route}>
-													<a>
+													<a target={item?.target ? item?.target : '_self'}>
 														<TelevisionSearchIcon />
 														{item.title}
 														{item?.target === '_blank' && (
@@ -106,7 +106,7 @@ function HeaderSearchBox({
 												<Link
 													target={item?.target ? item?.target : '_self'}
 													href={item.route}>
-													<a target={'_blank'}>
+													<a target={item?.target ? item?.target : '_self'}>
 														<SupportIcon />
 														{item.title}
 														<span className='ms-2'>

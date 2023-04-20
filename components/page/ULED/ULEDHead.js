@@ -29,7 +29,11 @@ function ULEDHead({ data: { structure } }) {
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
 							href={structure?.link?.value}>
-							<a className='btn btn-light text my-3 my-md-auto'>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='btn btn-light text my-3 my-md-auto'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

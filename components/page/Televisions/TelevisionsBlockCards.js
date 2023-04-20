@@ -42,7 +42,13 @@ const TelevisionsBlockCards = ({ data }) => {
 													: '_self'
 											}
 											href={content?.supportBox?.value?.link?.value}>
-											<a className='n-btn outline-white transparent d-block w-fit'>
+											<a
+												target={
+													content?.supportBox?.value?.link?.target
+														? content?.supportBox?.value?.link?.target
+														: '_self'
+												}
+												className='n-btn outline-white transparent d-block w-fit'>
 												{content?.supportBox?.value?.link?.title}
 												{content?.supportBox?.value?.link?.target ===
 													'_blank' && (

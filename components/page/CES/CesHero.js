@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesHero = ({ data: { structure } }) => {
 	return (
@@ -34,7 +34,13 @@ const CesHero = ({ data: { structure } }) => {
 									href={
 										structure?.link1?.value ? structure?.link1?.value : '/'
 									}>
-									<a className='n-btn outline-white transparent d-inline-block w-fit fs-md-4'>
+									<a
+										target={
+											structure?.link1?.target
+												? structure?.link1?.target
+												: '_self'
+										}
+										className='n-btn outline-white transparent d-inline-block w-fit fs-md-4'>
 										{structure?.link1?.title}
 										{structure?.link1?.target === '_blank' && (
 											<img
@@ -47,11 +53,21 @@ const CesHero = ({ data: { structure } }) => {
 							) : null}
 							{structure?.link2?.value ? (
 								<Link
-									target={structure?.link2?.target ? structure?.link2?.target : '_self'}
+									target={
+										structure?.link2?.target
+											? structure?.link2?.target
+											: '_self'
+									}
 									href={
 										structure?.link2?.value ? structure?.link2?.value : '/'
 									}>
-									<a className='n-btn white-text ms-2 fs-8 fs-md-base'>
+									<a
+										target={
+											structure?.link2?.target
+												? structure?.link2?.target
+												: '_self'
+										}
+										className='n-btn white-text ms-2 fs-8 fs-md-base'>
 										{structure?.link2?.title} {'>'}
 										{structure?.link2?.target === '_blank' && (
 											<img

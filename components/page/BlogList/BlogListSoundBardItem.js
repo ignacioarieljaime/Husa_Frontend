@@ -31,7 +31,9 @@ function BlogListSoundBardItemContainer({ data }) {
 							<Link
 								target={data?.image?.target ? data?.image?.target : '_self'}
 								href={data?.link?.value ? data?.link?.value : '/'}>
-								<a className='d-block'>
+								<a
+									target={data?.image?.target ? data?.image?.target : '_self'}
+									className='d-block'>
 									<img
 										src={data?.image?.src}
 										alt={data?.image?.alt}
@@ -63,7 +65,9 @@ function BlogListSoundBardItemContainer({ data }) {
 					<Link
 						target={data?.link?.target ? data?.link?.target : '_self'}
 						href={data?.link?.value ? data?.link?.value : '/'}>
-						<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+						<a
+							target={data?.link?.target ? data?.link?.target : '_self'}
+							className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 							{data?.link?.title}
 							{data?.link?.target === '_blank' && (
 								<img

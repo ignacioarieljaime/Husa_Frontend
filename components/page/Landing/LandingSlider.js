@@ -29,6 +29,7 @@ function LandingSlider({ data }) {
 								target={item?.url?.target ? item?.url?.target : '_self'}
 								href={item?.url?.value ? item?.url?.value : ''}>
 								<a
+									target={item?.url?.target ? item?.url?.target : '_self'}
 									className='w-100 h-100 '
 									style={{
 										background: `url(${

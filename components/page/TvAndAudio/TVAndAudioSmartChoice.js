@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 // image
 import Link from 'next/link'
 
@@ -33,9 +33,15 @@ function TVAndAudioSmartChoice({ data: { structure } }) {
 							/>
 						</div>
 						<Link
-							target={structure?.link?.target ? structure?.link?.target : '_self'}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
 							href={structure?.link?.value}>
-							<a className='text-decoration-none text-primary-new d-block fs-8 text-uppercase mt-8'>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='text-decoration-none text-primary-new d-block fs-8 text-uppercase mt-8'>
 								{structure?.link?.title}{' '}
 								{structure?.link?.target === '_blank' && (
 									<img

@@ -21,7 +21,7 @@ function TVAndAudioTvShopItem({ data: { image, title, link, description } }) {
 			</figure>
 			{link?.value && (
 				<Link target={link?.target ? link?.target : '_self'} href={link?.value}>
-					<a className='mt-auto text-primary-new text-decoration-none text-uppercase fw-normal fs-8'>
+					<a target={link?.target ? link?.target : '_self'} className='mt-auto text-primary-new text-decoration-none text-uppercase fw-normal fs-8'>
 						{link?.title}
 						{link?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />

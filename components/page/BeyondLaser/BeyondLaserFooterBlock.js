@@ -42,7 +42,7 @@ const BeyondLaserFooterBlock = ({ data }) => {
 							<Link
 								target={item?.link?.target ? item?.link?.target : '_self'}
 								href={item?.link?.value ? item?.link?.value : '/'}>
-								<a>
+								<a target={item?.link?.target ? item?.link?.target : '_self'}>
 									<img src={item?.image?.src} alt={item?.image?.alt} />
 								</a>
 							</Link>

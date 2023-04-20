@@ -18,7 +18,11 @@ function SponsorshipImagesWithButton({ data }) {
 					<Link
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
 						href={structure?.link?.value}>
-						<a className='btn btn-secondary text-white rounded-5  px-10 py-3'>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							className='btn btn-secondary text-white rounded-5  px-10 py-3'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

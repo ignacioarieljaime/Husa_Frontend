@@ -33,7 +33,11 @@ const CesTexBlock2 = ({ data }) => {
 										content?.link2?.target ? content?.link2?.target : '_self'
 									}
 									href={content?.link2?.value}>
-									<a className='n-btn primary-text primary-hover'>
+									<a
+										target={
+											content?.link2?.target ? content?.link2?.target : '_self'
+										}
+										className='n-btn primary-text primary-hover'>
 										{content?.link2?.title} {'>'}
 										{content?.link2?.target === '_blank' && (
 											<img
@@ -65,7 +69,11 @@ const CesTexBlock2 = ({ data }) => {
 										content?.link1?.target ? content?.link1?.target : '_self'
 									}
 									href={content?.link1?.value}>
-									<a className='n-btn primary-text primary-hover text-decoration-none'>
+									<a
+										target={
+											content?.link1?.target ? content?.link1?.target : '_self'
+										}
+										className='n-btn primary-text primary-hover text-decoration-none'>
 										{content?.link1?.title} {'>'}
 										{content?.link1?.target === '_blank' && (
 											<img

@@ -4,7 +4,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import CustomImage from '../../common/CustomImage'
 
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const ULEDXHome = ({ data: { structure } }) => {
 	useEffect(() => {
 		AOS.init()
@@ -37,9 +37,14 @@ const ULEDXHome = ({ data: { structure } }) => {
 							{structure?.subtitle?.value}
 						</p>
 						<Link
-							target={structure?.link?.target ? structure?.link?.target : '_self'}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
 							href={structure?.link?.value ? structure?.link?.value : '/'}>
 							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								className='n-btn white'
 								data-aos='fade'
 								data-aos-duration='900'
