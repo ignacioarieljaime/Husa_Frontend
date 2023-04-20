@@ -47,7 +47,7 @@ const ProductItemV2 = ({ data }) => {
 								wrapperWidth={'100%'}
 								wrapperHeight={'182px'}
 								style={{ maxHeight: '182px' }}
-								src={currentItem?.image}
+								src={currentItem?.media?.url}
 								alt={
 									currentItem?.media?.caption
 										? currentItem?.media?.caption

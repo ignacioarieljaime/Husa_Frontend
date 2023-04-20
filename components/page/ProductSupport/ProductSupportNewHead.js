@@ -8,20 +8,11 @@ import { useEffect } from 'react'
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
-	const [image, setImage] = useState(null)
 	const router = useRouter()
 
 	useEffect(() => {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
-		// mohammad I'm not responsible for this code block, ask mohsen for it   /   definetly ask MOHSEN!!!!!!!!!!!!!!!!!!!
-		if (pim?.assets.find(item => item.order === 1)) {
-			setImage(pim?.assets.find(item => item.order === 1)?.url)
-		} else if (pim?.assets.find(item => item.type_id === 1)) {
-			setImage(pim?.assets.find(item => item.type_id === 1)?.url)
-		} else {
-			setImage(pim?.image)
-		}
 	}, [])
 
 	return (
@@ -30,11 +21,19 @@ function ProductSupportNewHead({ pim }) {
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container '>
-							{image && (
+							{pim?.assets.find(item => item.order === 1) ? (
 								<CustomImage
 									wrapperClass={'product_support_head_image'}
-									src={image}
+									src={pim?.assets.find(item => item.order === 1)?.url}
 									alt='featured image'
+									// wrapperWidth='80%'
+								/>
+							) : (
+								<CustomImage
+									src={pim?.assets.find(item => item.type_id === 1)?.url}
+									wrapperClass={'product_support_head_image'}
+									alt='featured image'
+									// wrapperWidth='80%'
 								/>
 							)}
 						</div>
