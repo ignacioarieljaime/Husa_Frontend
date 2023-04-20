@@ -33,7 +33,7 @@ const SimpleContactUs = ({ data }) => {
 		setErrors(null)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63e12da777b27`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63e12e6085b69`,
 				body
 			)
 			if (response.status === 200) {
@@ -48,6 +48,7 @@ const SimpleContactUs = ({ data }) => {
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			}
+			toast.error('Submission Failed')
 			console.log(error)
 		}
 	}
