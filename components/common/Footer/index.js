@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import FooterBodyList from './FooterBodyList'
 // import { setFooterData } from 'redux/slices/layout'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function Footer({ data }) {
 	const { theme } = data?.structure
@@ -95,6 +96,7 @@ function Footer({ data }) {
 								{footerData?.widgets?.socials.map((item, index) => (
 									<a
 										key={index}
+										target={item?.target ? item?.target : '_self'}
 										href={item.url ? item.url : ''}
 										className={`social_media_link socicon socicon-${item.name}`}
 										style={{
@@ -125,7 +127,15 @@ function Footer({ data }) {
 							{footerData?.widgets?.links.map((item, index) => (
 								<li key={index}>
 									<Link href={item.url ? item.url : ''}>
-										<a>{item?.name}</a>
+										<a target={item?.target ? item?.target : '_self'}>
+											{item?.name}
+											{item?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
+										</a>
 									</Link>
 								</li>
 							))}
