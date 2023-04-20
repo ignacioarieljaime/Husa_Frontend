@@ -25,7 +25,7 @@ const FooterBodyList = ({ data, theme }) => {
 				<Link href={data?.header?.value ? data?.header?.value : ''}>
 					<a target={data?.header?.target}>
 						{data?.header?.title}
-						{item?.target === '_blank' && (
+						{data?.header?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
 						)}
 					</a>
@@ -46,7 +46,7 @@ const FooterBodyList = ({ data, theme }) => {
 								<Link href={listItem?.url ? listItem?.url : ''}>
 									<a target={listItem?.target ? listItem?.target : '_self'}>
 										{listItem?.name}
-										{item?.target === '_blank' && (
+										{listItem?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}
