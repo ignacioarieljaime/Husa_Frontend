@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const HomeApplianceQA = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
 	useEffect(() => {
@@ -24,9 +24,15 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 									__html: text
 								}}></p>
 							<Link
-								target={structure?.link?.target ? structure?.link?.target : '_self'}
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								href={structure?.link?.value}>
-								<a className='text-decoration-none text-primary-new fs-8 text-uppercase d-block w-fit mx-auto mb-8'>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='text-decoration-none text-primary-new fs-8 text-uppercase d-block w-fit mx-auto mb-8'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (
 										<img

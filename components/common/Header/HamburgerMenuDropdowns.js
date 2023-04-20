@@ -10,7 +10,9 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 				<Link
 					target={columns?.target ? columns?.target : '_self'}
 					href={columns.url ? columns.url : ''}>
-					<a className='nav-link dropdown-toggle lh-base p-1 px-3 m-2 underline-on-hover'>
+					<a
+						target={columns?.target ? columns?.target : '_self'}
+						className='nav-link dropdown-toggle lh-base p-1 px-3 m-2 underline-on-hover'>
 						{columns.name}
 						{columns?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />

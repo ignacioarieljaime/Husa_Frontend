@@ -29,6 +29,7 @@ function HamburgerMenu({ data: { widgets }, asideMenu, asideHandler }) {
 							target={menu?.target ? menu?.target : '_self'}
 							href={menu.url ? menu.url : ''}>
 							<a
+								target={menu?.target ? menu?.target : '_self'}
 								onClick={() => asideHandler(false)}
 								className='nav-link mx-md-2 my-md-1  fw-bolder-700'>
 								<span className='underline-on-hover'>{menu.name}</span>

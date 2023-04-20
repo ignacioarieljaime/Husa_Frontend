@@ -1,7 +1,7 @@
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import OpenPageOnNewTab from "public/assets/images/OpenNewPageIcon.png"
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const GoogleTvBanner = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
@@ -34,9 +34,15 @@ const GoogleTvBanner = ({ data: { structure } }) => {
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					{structure?.link?.value && (
 						<Link
-							target={structure?.link?.target ? structure?.link?.target : '_self'}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
 							href={structure?.link?.value ? structure?.link?.value : '/'}>
-							<a className='n-btn white text-center d-block w-fit mx-auto'>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='n-btn white text-center d-block w-fit mx-auto'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img
