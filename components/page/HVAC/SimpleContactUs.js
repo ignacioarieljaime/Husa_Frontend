@@ -33,7 +33,7 @@ const SimpleContactUs = ({ data }) => {
 		setErrors(null)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63e12da777b27`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.HAVC_TOKEN}`,
 				body
 			)
 			if (response.status === 200) {
