@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import OpenNewPageIcon from "public/assets/images/OpenNewPageIcon.png"
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
@@ -58,7 +59,8 @@ function ProductSupportNewHead({ pim }) {
 															) : (
 																'Documentes Guide'
 															)}
-															<DownloadIcon color='#00AAA6' />
+															{/* <DownloadIcon color='#00AAA6' /> */}
+														<img src={OpenNewPageIcon.src} />
 														</a>
 													</Link>
 												) : (
