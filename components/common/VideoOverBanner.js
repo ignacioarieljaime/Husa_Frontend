@@ -14,15 +14,16 @@ const VideoOverBanner = ({ data }) => {
 						autoplay={true}
 						muted={true}
 						src={structure?.video?.value}></video>
-				</div>
-				<div className='image_container'>
-					<CustomImage
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
-						WrapperMaxWidth={'100%'}
-						WrapperMaxHeight={'100%'}
-						className='image'
-					/>
+					<div className='image_container'>
+						<CustomImage
+							src={structure?.image?.src}
+							alt={structure?.image?.alt}
+							WrapperMaxWidth={'100%'}
+							WrapperMaxHeight={'100%'}
+							wrapperHeight={'100%'}
+							className='image'
+						/>
+					</div>
 				</div>
 			</div>
 		</section>

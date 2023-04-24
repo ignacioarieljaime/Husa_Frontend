@@ -7,7 +7,7 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 const VideoAndImageBanner = ({ data }) => {
 	const { structure } = data
 	const [text, setText] = useState(null)
-	const aspectRatio = useAspectRatio(structure?.backgroundImage?.src)
+	const aspectRatio = useAspectRatio(structure?.['backgroundImage ']?.src)
 
 	useEffect(() => {
 		setText(structure?.subtitle?.value)
@@ -23,8 +23,8 @@ const VideoAndImageBanner = ({ data }) => {
 							: {}
 					}>
 					<CustomImage
-						src={structure?.backgroundImage?.src}
-						alt={structure?.backgroundImage?.alt}
+						src={structure?.['backgroundImage ']?.src}
+						alt={structure?.['backgroundImage ']?.alt}
 						WrapperMaxHeight={'100%'}
 						WrapperMaxWidth={'100%'}
 						wrapperWidth={'100%'}
@@ -40,7 +40,13 @@ const VideoAndImageBanner = ({ data }) => {
 						wrapperWidth={'100%'}
 						className='second_image'
 					/>
-					<div className='video_container'>
+					<div
+						className='video_container'
+						style={
+							aspectRatio < 1
+								? { paddingTop: (aspectRatio * 100).toFixed(2) / 2 + '%' }
+								: {}
+						}>
 						<video
 							loop={true}
 							autoplay={true}
