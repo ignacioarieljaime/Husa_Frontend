@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
+import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
 
 function ProductResourceBox({ pim, data }) {
 	let { structure } = data
@@ -26,6 +27,10 @@ function ProductResourceBox({ pim, data }) {
 												<span className='underline-on-hover text-uppercase'>
 													{item.caption ? item.caption : item.title}
 												</span>
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenNewPageIcon.src}
+												/>
 											</a>
 										</Link>
 									</li>
@@ -61,6 +66,7 @@ function ProductResourceBox({ pim, data }) {
 								<span className='underline-on-hover text-uppercase'>
 									INSTALLATION REQUEST
 								</span>
+								<img style={{ marginLeft: '5px' }} src={OpenNewPageIcon.src} />
 							</a>
 						</Link>
 					</li>

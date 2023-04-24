@@ -26,7 +26,8 @@ module.exports.CommonComponents = [
 	{
 		name: 'BreadCrumb',
 		path: 'components/common/BreadCrumb'
-	},{
+	},
+	{
 		name: 'IFrame',
 		path: 'components/common/IFrame'
 	},
@@ -49,5 +50,13 @@ module.exports.CommonComponents = [
 	{
 		name: 'VelaroChatBox',
 		path: 'components/common/VelaroChatBox'
+	},
+	{
+		name: 'VideoOverBanner',
+		path: 'components/common/VideoOverBanner'
+	},
+	{
+		name: 'VideoAndImageBanner',
+		path: 'components/common/VideoAndImageBanner'
 	}
 ]
