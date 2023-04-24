@@ -25,8 +25,11 @@ function LandingSlider({ data }) {
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
 						<div className='carousel-item-wrapper'>
-							<Link href={item?.url?.value ? item?.url?.value : ''}>
+							<Link
+								target={item?.url?.target ? item?.url?.target : '_self'}
+								href={item?.url?.value ? item?.url?.value : ''}>
 								<a
+									target={item?.url?.target ? item?.url?.target : '_self'}
 									className='w-100 h-100 '
 									style={{
 										background: `url(${

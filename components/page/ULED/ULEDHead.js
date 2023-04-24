@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import Link from 'next/link'
 
 function ULEDHead({ data: { structure } }) {
@@ -24,9 +24,23 @@ function ULEDHead({ data: { structure } }) {
 							dangerouslySetInnerHTML={{
 								__html: text
 							}}></h1>
-						<Link href={structure?.link?.value}>
-							<a className='btn btn-light text my-3 my-md-auto'>
+						<Link
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							href={structure?.link?.value}>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='btn btn-light text my-3 my-md-auto'>
 								{structure?.link?.title}
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</article>

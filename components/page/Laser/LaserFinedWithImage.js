@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function LaserFinedWithImage({ data: { structure } }) {
 	return (
@@ -19,9 +20,27 @@ function LaserFinedWithImage({ data: { structure } }) {
 								{structure.description.value}
 							</p>
 						</div>
-						<Link href={structure?.linkUrl?.value}>
-							<a className='btn btn-outline-light rounded-5 mt-12 px-8'>
+						<Link
+							target={
+								structure?.linkUrl?.target
+									? structure?.linkUrl?.target
+									: '_self'
+							}
+							href={structure?.linkUrl?.value}>
+							<a
+								target={
+									structure?.linkUrl?.target
+										? structure?.linkUrl?.target
+										: '_self'
+								}
+								className='btn btn-outline-light rounded-5 mt-12 px-8'>
 								{structure?.linkUrl?.title}
+								{structure?.linkUrl?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</article>

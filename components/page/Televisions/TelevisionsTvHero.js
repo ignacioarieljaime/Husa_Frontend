@@ -1,7 +1,7 @@
 import { alt } from 'joi'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const TelevisionsTvHero = ({ data }) => {
 	const [content, setContent] = useState(null)
 	useEffect(() => {
@@ -55,8 +55,19 @@ const TelevisionsTvHero = ({ data }) => {
 												__html: content?.fullSizeCard?.value?.title?.value
 											}}></div>
 										{content?.fullSizeCard?.value?.link?.value ? (
-											<Link href={content?.fullSizeCard?.value?.link?.value}>
+											<Link
+												target={
+													content?.fullSizeCard?.value?.link?.target
+														? content?.fullSizeCard?.value?.link?.target
+														: '_self'
+												}
+												href={content?.fullSizeCard?.value?.link?.value}>
 												<a
+													target={
+														content?.fullSizeCard?.value?.link?.target
+															? content?.fullSizeCard?.value?.link?.target
+															: '_self'
+													}
 													className={`n-btn transparent d-block w-fit ${
 														content?.fullSizeCard?.value?.theme?.value ===
 														'light'
@@ -64,6 +75,14 @@ const TelevisionsTvHero = ({ data }) => {
 															: 'outline-black'
 													}`}>
 													{content?.fullSizeCard?.value?.link?.title}
+
+													{content?.fullSizeCard?.value?.link?.target ===
+														'_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
 												</a>
 											</Link>
 										) : null}
@@ -97,14 +116,29 @@ const TelevisionsTvHero = ({ data }) => {
 														__html: item?.title?.value
 													}}></div>
 												{item?.link?.value ? (
-													<Link href={item?.link?.value}>
+													<Link
+														target={
+															item?.link?.target ? item?.link?.target : '_self'
+														}
+														href={item?.link?.value}>
 														<a
+															target={
+																item?.link?.target
+																	? item?.link?.target
+																	: '_self'
+															}
 															className={`n-btn transparent d-block w-fit ${
 																item?.theme?.value === 'light'
 																	? 'outline-white'
 																	: 'outline-black'
 															}`}>
 															{item?.link?.title}
+															{item?.link?.target === '_blank' && (
+																<img
+																	style={{ marginLeft: '10px' }}
+																	src={OpenPageOnNewTab.src}
+																/>
+															)}
 														</a>
 													</Link>
 												) : null}
@@ -135,9 +169,28 @@ const TelevisionsTvHero = ({ data }) => {
 											__html: content?.noBgCard?.value?.title?.value
 										}}></div>
 									{content?.noBgCard?.value?.link?.value ? (
-										<Link href={content?.noBgCard?.value?.link?.value}>
-											<a className='n-btn outline-white transparent d-block w-fit'>
+										<Link
+											target={
+												content?.noBgCard?.value?.link?.target
+													? content?.noBgCard?.value?.link?.target
+													: '_self'
+											}
+											href={content?.noBgCard?.value?.link?.value}>
+											<a
+												target={
+													content?.noBgCard?.value?.link?.target
+														? content?.noBgCard?.value?.link?.target
+														: '_self'
+												}
+												className='n-btn outline-white transparent d-block w-fit'>
 												{content?.noBgCard?.value?.link?.title}
+												{content?.noBgCard?.value?.link?.target ===
+													'_blank' && (
+													<img
+														style={{ marginLeft: '10px' }}
+														src={OpenPageOnNewTab.src}
+													/>
+												)}
 											</a>
 										</Link>
 									) : null}
@@ -181,14 +234,33 @@ const TelevisionsTvHero = ({ data }) => {
 												__html: content?.bottomCard?.value?.title?.value
 											}}></div>
 										{content?.bottomCard?.value?.link?.value ? (
-											<Link href={content?.bottomCard?.value?.link?.value}>
+											<Link
+												target={
+													content?.bottomCard?.value?.link?.target
+														? content?.bottomCard?.value?.link?.target
+														: '_self'
+												}
+												href={content?.bottomCard?.value?.link?.value}>
 												<a
+													target={
+														content?.bottomCard?.value?.link?.target
+															? content?.bottomCard?.value?.link?.target
+															: '_self'
+													}
 													className={`n-btn transparent d-block w-fit ${
 														content?.bottomCard?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'
 													}`}>
 													{content?.bottomCard?.value?.link?.title}
+
+													{content?.bottomCard?.value?.link?.target ===
+														'_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
 												</a>
 											</Link>
 										) : null}

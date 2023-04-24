@@ -4,7 +4,7 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import Link from 'next/link'
 import React, { useState } from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 function ProductsCategoriesWithSearch({ data }) {
 	let { structure } = data
 	const [categoryId, setCategoryId] = useState()
@@ -82,8 +82,25 @@ function ProductsCategoriesWithSearch({ data }) {
 										  searchProductsList.length > 0 ? (
 											searchProductsList.map((item, index) => (
 												<li>
-													<Link href={item.route}>
-														<a>{item.product.name}</a>
+													<Link
+														target={
+															item.route?.target ? item.route?.target : '_self'
+														}
+														href={item.route}>
+														<a
+															target={
+																item.route?.target
+																	? item.route?.target
+																	: '_self'
+															}>
+															{item.product.name}
+															{item.route?.target === '_blank' && (
+																<img
+																	style={{ marginLeft: '10px' }}
+																	src={OpenPageOnNewTab.src}
+																/>
+															)}
+														</a>
 													</Link>
 												</li>
 											))

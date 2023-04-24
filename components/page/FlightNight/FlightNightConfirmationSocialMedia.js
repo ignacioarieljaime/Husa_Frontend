@@ -30,8 +30,15 @@ const FlightNightConfirmationSocialMedia = ({ data }) => {
 					<div className='row mx-0 justify-content-center align-items-start'>
 						<div className='col-12 col-sm-6 d-flex justify-content-center align-items-center flex-sm-column flex-column-reverse text-center mb-8'>
 							<Link
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
-								<a className='n-btn primary p-4 gap-2 d-inline-flex m-auto'>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='n-btn primary p-4 gap-2 d-inline-flex m-auto'>
 									{structure?.link?.title}
 									<CustomImage
 										wrapperClass='d-inline-block'

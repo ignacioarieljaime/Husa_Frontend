@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Link from 'next/link'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import 'swiper/css'
 
 const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
@@ -40,13 +40,30 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 									</div>
 
 									<Link
+										target={
+											structure?.link?.target
+												? structure?.link?.target
+												: '_self'
+										}
 										href={`/${structure?.link?.value}?category_id=${item?.category?.value}`}>
-										<a className='slider-title n-btn outline-black'>
+										<a
+											target={
+												structure?.link?.target
+													? structure?.link?.target
+													: '_self'
+											}
+											className='slider-title n-btn outline-black'>
 											{
 												item?.category?.items.find(
 													catItem => item?.category?.value == catItem.id
 												)?.name
 											}
+											{structure?.link?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
 										</a>
 									</Link>
 								</div>

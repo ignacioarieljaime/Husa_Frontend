@@ -5,6 +5,7 @@ import {
 	useParallaxController,
 	ParallaxProvider
 } from 'react-scroll-parallax'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BlogListLittleReadArticleBox = ({
 	index,
@@ -47,12 +48,22 @@ function BlogListLittleReadArticleBoxContainer({
 						<figure className='blog-article-box' ref={card1Ref.ref}>
 							<div className='image-box'>
 								<Link
+									target={
+										smallPost?.value?.link?.target
+											? smallPost?.value?.link?.target
+											: '_self'
+									}
 									href={
 										smallPost?.value?.link?.value
 											? smallPost?.value?.link?.value
 											: '/'
 									}>
-									<a>
+									<a
+										target={
+											smallPost?.value?.link?.target
+												? smallPost?.value?.link?.target
+												: '_self'
+										}>
 										<img
 											src={smallPost?.value?.image?.src}
 											alt={smallPost?.value?.image?.alt}
@@ -84,13 +95,30 @@ function BlogListLittleReadArticleBoxContainer({
 									</div>
 									<div className='col-12 order-3 text-start'>
 										<Link
+											target={
+												smallPost?.value?.link?.target
+													? smallPost?.value?.link?.target
+													: '_self'
+											}
 											href={
 												smallPost?.value?.link?.value
 													? smallPost?.value?.link?.value
 													: '/'
 											}>
-											<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											<a
+												target={
+													smallPost?.value?.link?.target
+														? smallPost?.value?.link?.target
+														: '_self'
+												}
+												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 												{smallPost?.value?.link?.title}
+												{smallPost?.value?.link?.target === '_blank' && (
+													<img
+														style={{ marginLeft: '10px' }}
+														src={OpenPageOnNewTab.src}
+													/>
+												)}
 											</a>
 										</Link>
 									</div>
@@ -102,12 +130,22 @@ function BlogListLittleReadArticleBoxContainer({
 						<figure className='blog-article-box' ref={card2Ref.ref}>
 							<div className='image-box'>
 								<Link
+									target={
+										largePost?.value?.link?.target
+											? largePost?.value?.link?.target
+											: '_self'
+									}
 									href={
 										largePost?.value?.link?.value
 											? largePost?.value?.link?.value
 											: '/'
 									}>
-									<a>
+									<a
+										target={
+											largePost?.value?.link?.target
+												? largePost?.value?.link?.target
+												: '_self'
+										}>
 										<img
 											src={largePost?.value?.image?.src}
 											alt={largePost?.value?.image?.alt}
@@ -139,13 +177,30 @@ function BlogListLittleReadArticleBoxContainer({
 									</div>
 									<div className='col-12 order-3 text-start'>
 										<Link
+											target={
+												largePost?.value?.link?.target
+													? largePost?.value?.link?.target
+													: '_self'
+											}
 											href={
 												largePost?.value?.link?.value
 													? largePost?.value?.link?.value
 													: '/'
 											}>
-											<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											<a
+												target={
+													largePost?.value?.link?.target
+														? largePost?.value?.link?.target
+														: '_self'
+												}
+												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 												{largePost?.value?.link?.title}
+												{largePost?.value?.link?.target === '_blank' && (
+													<img
+														style={{ marginLeft: '10px' }}
+														src={OpenPageOnNewTab.src}
+													/>
+												)}
 											</a>
 										</Link>
 									</div>

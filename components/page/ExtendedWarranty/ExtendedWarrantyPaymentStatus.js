@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const ExtendedWarrantyPaymentStatus = ({
 	data: {
 		structure: { list, PDF }
@@ -124,8 +124,27 @@ const ExtendedWarrantyPaymentStatus = ({
 												</span>
 											</a>
 											{content?.termsLink?.value ? (
-												<Link href={content?.termsLink?.value}>
-													<a target='_blank'>{content?.termsLink?.title}</a>
+												<Link
+													target={
+														content?.termsLink?.target
+															? content?.termsLink?.target
+															: '_self'
+													}
+													href={content?.termsLink?.value}>
+													<a
+														target={
+															content?.termsLink?.target
+																? content?.termsLink?.target
+																: '_self'
+														}>
+														{content?.termsLink?.title}
+														{content?.termsLink?.target === '_blank' && (
+															<img
+																style={{ marginLeft: '10px' }}
+																src={OpenPageOnNewTab.src}
+															/>
+														)}
+													</a>
 												</Link>
 											) : null}
 
@@ -149,9 +168,21 @@ const ExtendedWarrantyPaymentStatus = ({
 							</div>
 						) : null}
 						{content?.link?.title && (
-							<Link href={content?.link?.value ? content?.link?.value : '/'}>
-								<a className='n-btn outline-black py-4 mx-3 my-8 my-sm-4'>
+							<Link
+								target={content?.link?.target ? content?.link?.target : '_self'}
+								href={content?.link?.value ? content?.link?.value : '/'}>
+								<a
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
+									className='n-btn outline-black py-4 mx-3 my-8 my-sm-4'>
 									{content?.link?.title}
+									{content?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						)}

@@ -4,6 +4,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import CustomImage from '../../common/CustomImage'
 
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const ULEDXHome = ({ data: { structure } }) => {
 	useEffect(() => {
 		AOS.init()
@@ -35,13 +36,26 @@ const ULEDXHome = ({ data: { structure } }) => {
 							data-aos-delay='1500'>
 							{structure?.subtitle?.value}
 						</p>
-						<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
+						<Link
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							href={structure?.link?.value ? structure?.link?.value : '/'}>
 							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								className='n-btn white'
 								data-aos='fade'
 								data-aos-duration='900'
 								data-aos-delay='2000'>
-								{structure?.link?.title}
+								{structure?.link?.title}{' '}
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</div>

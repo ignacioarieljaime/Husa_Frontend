@@ -1,5 +1,5 @@
 import React from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import Link from 'next/link'
 
 function SmartInfoHead({ data }) {
@@ -17,8 +17,24 @@ function SmartInfoHead({ data }) {
 					<article className='article'>
 						<h1>{structure?.title?.value}</h1>
 						{structure?.link?.value && (
-							<Link href={structure?.link?.value}>
-								<a className='btn btn-light text'>{structure?.link?.title}</a>
+							<Link
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								href={structure?.link?.value}>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='btn btn-light text'>
+									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
+								</a>
 							</Link>
 						)}
 					</article>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const ProductPackageItem = ({ data }) => {
 	return (
 		<div className='item day-100'>
@@ -24,9 +24,19 @@ const ProductPackageItem = ({ data }) => {
 					</div>
 					<div className='text-left mt-0 mt-md-8 w-100'>
 						{data?.link?.value ? (
-							<Link href={data?.link?.value}>
-								<a className='btn btn-primary rounded-5 px-5 py-2'>
+							<Link
+								target={data?.link?.target ? data?.link?.target : '_self'}
+								href={data?.link?.value}>
+								<a
+									target={data?.link?.target ? data?.link?.target : '_self'}
+									className='btn btn-primary rounded-5 px-5 py-2'>
 									{data?.link?.title}
+									{data?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						) : null}

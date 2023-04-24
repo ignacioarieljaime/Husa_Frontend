@@ -13,6 +13,7 @@ import {
 	TwitterShareButton,
 	LinkedinShareButton
 } from 'react-share'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function BlogHead({ data: { structure } }) {
 	const [location, setLocation] = useState('')
@@ -71,9 +72,24 @@ function BlogHead({ data: { structure } }) {
 			<div className='blog-header overflow-hidden mt-20'>
 				<div className='px-3 mb-13'>
 					<Link
+						target={
+							structure?.tagLink?.target ? structure?.tagLink?.target : '_self'
+						}
 						href={structure?.tagLink?.value ? structure?.tagLink?.value : '/'}>
-						<a className='text-primary-dark fs-5 fw-normal mb-10 d-block text-decoration-none'>
+						<a
+							target={
+								structure?.tagLink?.target
+									? structure?.tagLink?.target
+									: '_self'
+							}
+							className='text-primary-dark fs-5 fw-normal mb-10 d-block text-decoration-none'>
 							{structure?.tagLink?.title}
+							{structure?.tagLink?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
 						</a>
 					</Link>
 					<div

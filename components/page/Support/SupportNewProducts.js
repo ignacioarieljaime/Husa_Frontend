@@ -15,7 +15,7 @@ import Link from 'next/link'
 import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import CustomImage from '../../common/CustomImage'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const SupportNewProducts = ({ data }) => {
 	const [categoryId, setCategoryId] = useState()
 	const [activeSearchBox, setActiveSearchBox] = useState(false)
@@ -170,8 +170,26 @@ const SupportNewProducts = ({ data }) => {
 										  searchProductsList.length > 0 ? (
 											searchProductsList.map((item, index) => (
 												<li key={'search-list-' + index}>
-													<Link href={item.route}>
-														<a className='text-primary decora'>{item.model}</a>
+													<Link
+														target={
+															item.route?.target ? item.route?.target : '_self'
+														}
+														href={item.route}>
+														<a
+															target={
+																item.route?.target
+																	? item.route?.target
+																	: '_self'
+															}
+															className='text-primary decora'>
+															{item.model}
+															{item.route?.target === '_blank' && (
+																<img
+																	style={{ marginLeft: '10px' }}
+																	src={OpenPageOnNewTab.src}
+																/>
+															)}
+														</a>
 													</Link>
 												</li>
 											))

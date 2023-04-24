@@ -41,7 +41,7 @@ const ProductItemV2 = ({ data }) => {
 			<div className='product-item-v2 px-5 py-8'>
 				<div className='text-center mb-10 w-100'>
 					<Link href={url ? url : '/'}>
-						<a >
+						<a>
 							{' '}
 							<CustomImage
 								wrapperWidth={'100%'}

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 import TVAndAudioTvShopItem from './TVAndAudioTvShopItem'
 
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 function TVAndAudioTvShopBox({ data: { structure } }) {
 	return (
 		<section>
@@ -16,9 +17,25 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 						</div>
 						{structure?.link?.title && (
 							<div>
-								<Link href={structure?.link?.value}>
-									<a className='n-btn outline-white transparent text-uppercase py-4 px-9'>
+								<Link
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									href={structure?.link?.value}>
+									<a
+										target={
+											structure?.link?.target
+												? structure?.link?.target
+												: '_self'
+										}
+										className='n-btn outline-white transparent text-uppercase py-4 px-9'>
 										{structure?.link?.title}
+										{structure?.link?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
 									</a>
 								</Link>
 							</div>

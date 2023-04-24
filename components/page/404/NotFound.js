@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const NotFound = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
@@ -29,13 +30,41 @@ const NotFound = ({ data: { structure } }) => {
 						<div className='button_group'>
 							{structure?.link1?.value ? (
 								<Link href={structure?.link1?.value}>
-									<a className='link'>{structure?.link1?.title}</a>
+									<a
+										target={
+											structure?.link1?.target
+												? structure?.link1?.target
+												: '_self'
+										}
+										className='link'>
+										{structure?.link1?.title}
+										{structure?.link1?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
+									</a>
 								</Link>
 							) : null}{' '}
 							<p className='mx-6 mb-0'>OR</p>
 							{structure?.link2?.value ? (
 								<Link href={structure?.link2?.value}>
-									<a className='link'>{structure?.link2?.title}</a>
+									<a
+										target={
+											structure?.link2?.target
+												? structure?.link2?.target
+												: '_self'
+										}
+										className='link'>
+										{structure?.link2?.title}
+										{structure?.link2?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
+									</a>
 								</Link>
 							) : null}
 						</div>

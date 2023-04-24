@@ -2,6 +2,7 @@ import React from 'react'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BeyondLaserBanner = ({ data: { structure } }) => {
 	return (
@@ -26,7 +27,11 @@ const BeyondLaserBanner = ({ data: { structure } }) => {
 					</div>
 				</div>
 				{structure?.link?.value && (
-					<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
+					<Link
+						target={
+							structure?.link?.target ? structure?.link?.target : '_blank'
+						}
+						href={structure?.link?.value ? structure?.link?.value : '/'}>
 						<a
 							className='chevron_link'
 							data-aos='fade-down'

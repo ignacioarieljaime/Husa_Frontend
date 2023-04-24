@@ -5,6 +5,8 @@ import {
 	useParallaxController,
 	ParallaxProvider
 } from 'react-scroll-parallax'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+
 const BlogListReadArticleBox = ({ data: { structure } }) => {
 	return (
 		<ParallaxProvider>
@@ -28,8 +30,17 @@ function BlogListReadArticleBoxContainer({ structure }) {
 						<figure className='blog-article-box-full' ref={imageRef.ref}>
 							<div className='image-box'>
 								<Link
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
 									href={structure?.link?.value ? structure?.link?.value : '/'}>
-									<a className='d-block'>
+									<a
+										target={
+											structure?.link?.target
+												? structure?.link?.target
+												: '_self'
+										}
+										className='d-block'>
 										<img
 											src={structure?.image?.src}
 											alt={structure?.image?.alt}
@@ -58,11 +69,28 @@ function BlogListReadArticleBoxContainer({ structure }) {
 									</div> */}
 									<div className='col-12 order-3 text-start'>
 										<Link
+											target={
+												structure?.link?.target
+													? structure?.link?.target
+													: '_self'
+											}
 											href={
 												structure?.link?.value ? structure?.link?.value : '/'
 											}>
-											<a className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+											<a
+												target={
+													structure?.link?.target
+														? structure?.link?.target
+														: '_self'
+												}
+												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
 												{structure?.link?.title}
+												{structure?.link?.target === '_blank' && (
+													<img
+														style={{ marginLeft: '10px' }}
+														src={OpenPageOnNewTab.src}
+													/>
+												)}
 											</a>
 										</Link>
 									</div>

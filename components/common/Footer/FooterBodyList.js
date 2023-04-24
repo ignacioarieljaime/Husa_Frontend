@@ -5,6 +5,7 @@ import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useEffect } from 'react'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const FooterBodyList = ({ data, theme }) => {
 	const [collapsed, setCollapsed] = useState(true)
@@ -22,7 +23,12 @@ const FooterBodyList = ({ data, theme }) => {
 				className={`heading ${collapsed ? 'mb-1' : 'rotated'}`}
 				onClick={() => setCollapsed(prevState => !prevState)}>
 				<Link href={data?.header?.value ? data?.header?.value : ''}>
-					<a>{data?.header?.title}</a>
+					<a target={data?.header?.target}>
+						{data?.header?.title}
+						{data?.header?.target === '_blank' && (
+							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
+						)}
+					</a>
 				</Link>
 				{windowSize[0] < 769 && (
 					<FontAwesomeIcon
@@ -38,7 +44,15 @@ const FooterBodyList = ({ data, theme }) => {
 						data?.columns.map((listItem, index) => (
 							<li key={index}>
 								<Link href={listItem?.url ? listItem?.url : ''}>
-									<a>{listItem?.name}</a>
+									<a target={listItem?.target ? listItem?.target : '_self'}>
+										{listItem?.name}
+										{listItem?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
+									</a>
 								</Link>
 							</li>
 						))}

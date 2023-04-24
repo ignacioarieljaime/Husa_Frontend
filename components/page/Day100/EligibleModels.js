@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import EligbleModelsItem from './EligbleModelsItem'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import 'swiper/css'
 import Link from 'next/link'
 import 'swiper/css/navigation'
@@ -21,8 +21,28 @@ const EligibleModels = ({ data }) => {
 						{structure?.title?.value}
 					</h2>
 					<h3 className='mb-12'>
-						<Link href={structure?.linkUrl?.value}>
-							<a className='text-purple fs-2'>{structure?.linkTitle?.value}</a>
+						<Link
+							target={
+								structure?.linkTitle?.target
+									? structure?.linkTitle?.target
+									: '_self'
+							}
+							href={structure?.linkUrl?.value}>
+							<a
+								target={
+									structure?.linkTitle?.target
+										? structure?.linkTitle?.target
+										: '_self'
+								}
+								className='text-purple fs-2'>
+								{structure?.linkTitle?.value}{' '}
+								{structure?.linkTitle?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
+							</a>
 						</Link>
 					</h3>
 				</div>
@@ -44,9 +64,22 @@ const EligibleModels = ({ data }) => {
 					</Swiper>
 				</div>
 				<div className='container text-center'>
-					<Link href={structure?.link?.value}>
-						<a className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
+					<Link
+						target={structure?.link?.target ? structure?.link?.target : '_self'}
+						href={structure?.link?.value}>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
 							{structure?.link?.title}
+
+							{structure?.link?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
 						</a>
 					</Link>
 					{}

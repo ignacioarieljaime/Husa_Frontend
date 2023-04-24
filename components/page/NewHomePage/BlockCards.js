@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import BlockCardsItem from './BlockCardsItem'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BlockCards = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
@@ -27,9 +28,23 @@ const BlockCards = ({ data: { structure } }) => {
 				</div>
 				{structure?.link?.value && (
 					<div className='text-center'>
-						<Link href={structure?.link?.value}>
-							<a className='n-btn outline-black d-block w-fit mx-auto'>
+						<Link
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							href={structure?.link?.value}>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='n-btn outline-black d-block w-fit mx-auto'>
 								{structure?.link?.title}
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</div>

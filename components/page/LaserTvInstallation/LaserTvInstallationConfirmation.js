@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const LaserTvInstallationConfirmation = ({ data }) => {
 	const [content, setContent] = useState()
@@ -42,9 +43,21 @@ const LaserTvInstallationConfirmation = ({ data }) => {
 								__html: content?.text?.value
 							}}></div>
 						{content?.link?.title && (
-							<Link href={content?.link?.value ? content?.link?.value : '/'}>
-								<a className='n-btn outline-black py-3 px-5 mx-3 my-8 my-sm-4'>
+							<Link
+								target={content?.link?.target ? content?.link?.target : '_self'}
+								href={content?.link?.value ? content?.link?.value : '/'}>
+								<a
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
+									className='n-btn outline-black py-3 px-5 mx-3 my-8 my-sm-4'>
 									{content?.link?.title}
+									{content?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						)}

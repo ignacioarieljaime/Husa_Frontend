@@ -9,6 +9,7 @@ import {
 import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import Link from 'next/link'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function BlogListSearchBox({ data: { structure } }) {
 	const [dropDownCondition, setDropDownCondition] = useState(false)
@@ -109,8 +110,21 @@ function BlogListSearchBox({ data: { structure } }) {
 												) : (
 													blogList.map(item => (
 														<li>
-															<Link href={item?.route ? item?.route : '/'}>
-																<a>{item.title}</a>
+															<Link
+																target={item?.target ? item?.target : '_self'}
+																href={item?.route ? item?.route : '/'}>
+																<a
+																	target={
+																		item?.target ? item?.target : '_self'
+																	}>
+																	{item.title}
+																	{item?.target === '_blank' && (
+																		<img
+																			style={{ marginLeft: '10px' }}
+																			src={OpenPageOnNewTab.src}
+																		/>
+																	)}
+																</a>
 															</Link>
 														</li>
 													))

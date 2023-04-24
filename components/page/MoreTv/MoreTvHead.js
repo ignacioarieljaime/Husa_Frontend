@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import Link from 'next/link'
 
 function MoreTVHead({ data }) {
@@ -24,9 +24,23 @@ function MoreTVHead({ data }) {
 									__html: content?.description?.value
 								}}></p>
 							{content?.link?.value && (
-								<Link href={content?.link?.value}>
-									<a className='btn btn-glowing rounded-5'>
-										{content?.link?.title}
+								<Link
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
+									href={content?.link?.value}>
+									<a
+										target={
+											content?.link?.target ? content?.link?.target : '_self'
+										}
+										className='btn btn-glowing rounded-5'>
+										{content?.link?.title}{' '}
+										{content?.link?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
 									</a>
 								</Link>
 							)}

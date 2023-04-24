@@ -6,6 +6,7 @@ import {
 	ParallaxProvider
 } from 'react-scroll-parallax'
 import CustomImage from '../../common/CustomImage'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BlockKitchenHero = ({ data: { structure } }) => {
 	return (
@@ -61,9 +62,22 @@ const BlockKitchenContainer = ({ structure }) => {
 							</div>
 
 							<Link
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								href={structure?.link?.value ? structure?.link?.value : '/'}>
-								<a className='n-btn outline-white transparent d-block w-fit mb-5 mb-md-0'>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='n-btn outline-white transparent d-block w-fit mb-5 mb-md-0'>
 									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
 								</a>
 							</Link>
 						</div>

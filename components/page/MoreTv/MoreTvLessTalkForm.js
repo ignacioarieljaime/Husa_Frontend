@@ -6,6 +6,7 @@ import CustomInput from 'components/common/Input'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function MoreTVLessTalkForm({ data }) {
 	const [activeCheckbox, setActiveCheckbox] = useState(false)
@@ -126,12 +127,32 @@ function MoreTVLessTalkForm({ data }) {
 												className='fw-normal text-white mb-0 ms-1 text-nowrap'>
 												I agree to the
 												<Link
+													target={
+														content?.termsAndConditionsUrl?.target
+															? content?.termsAndConditionsUrl?.target
+															: '_self'
+													}
 													href={
 														content?.termsAndConditionsUrl?.value
 															? content?.termsAndConditionsUrl?.value
 															: '/'
 													}>
-													<a className='text-white ms-2'>terms & conditions</a>
+													<a
+														target={
+															content?.termsAndConditionsUrl?.target
+																? content?.termsAndConditionsUrl?.target
+																: '_self'
+														}
+														className='text-white ms-2'>
+														terms & conditions{' '}
+														{content?.termsAndConditionsUrl?.target ===
+															'_blank' && (
+															<img
+																style={{ marginLeft: '10px' }}
+																src={OpenPageOnNewTab.src}
+															/>
+														)}
+													</a>
 												</Link>
 											</label>
 										</div>

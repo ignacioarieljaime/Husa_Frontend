@@ -3,6 +3,7 @@ import React from 'react'
 // image
 import Image from 'public/assets/images/laser-tv/lasertv-4k-logo.png'
 import Link from 'next/link'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function LaserHead({ data: { structure } }) {
 	return (
@@ -27,9 +28,23 @@ function LaserHead({ data: { structure } }) {
 								{structure?.paragraph?.value}
 							</p>
 						</div>
-						<Link href={structure?.link?.value}>
-							<a className='btn btn-outline-light rounded-5 px-8 mt-12'>
+						<Link
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							href={structure?.link?.value}>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='btn btn-outline-light rounded-5 px-8 mt-12'>
 								{structure?.link?.title}
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
 							</a>
 						</Link>
 					</article>
