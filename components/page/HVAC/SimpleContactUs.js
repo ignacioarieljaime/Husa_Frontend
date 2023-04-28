@@ -48,6 +48,7 @@ const SimpleContactUs = ({ data }) => {
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
 			}
+			toast.error('Submission Failed')
 			console.log(error)
 		}
 	}
