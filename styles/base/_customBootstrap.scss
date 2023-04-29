@@ -2214,10 +2214,32 @@ header {
 }
 
 .product_news_box_item {
+	.note {
+		h6 {
+			font-size: 22.5px !important;
+			line-height: 37.5px !important;
+		}
+		@include mq(1919) {
+			h6 {
+				font-size: 18px !important;
+				line-height: 30px !important;
+			}
+		}
+		@include mq(1280) {
+			h6 {
+				font-size: 14px !important;
+				line-height: 24px !important;
+			}
+		}
+		h6 {
+			font-weight: 300;
+		}
+	}
 	p,
 	.product_news_item_small_title {
 		font-size: 22.5px !important;
 		line-height: 37.5px !important;
+
 		@include mq(1919) {
 			font-size: 18px !important;
 			line-height: 30px !important;
@@ -2225,9 +2247,6 @@ header {
 		@include mq(1280) {
 			font-size: 14px !important;
 			line-height: 24px !important;
-		}
-		h6 {
-			font-weight: 300;
 		}
 	}
 	.product_news_item_small_title {
