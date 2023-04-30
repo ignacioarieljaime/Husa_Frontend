@@ -31,7 +31,7 @@ function ProductNewsItem({ itemCount, data, divider }) {
 
 					<p
 						dangerouslySetInnerHTML={{ __html: note?.value }}
-						className='fw-normal m-auto mb-4'></p>
+						className='note fw-normal m-auto mb-4'></p>
 				</div>
 			</article>
 		</div>
