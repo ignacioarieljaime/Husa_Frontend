@@ -14,13 +14,15 @@ function ProductSupportNewHead({ pim }) {
 	useEffect(() => {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
-		// mohammad I'm not responsible for this code block, ask mohsen for it   /   definetly ask MOHSEN!!!!!!!!!!!!!!!!!!!
+		// 
 		if (pim?.assets.find(item => item.order === 1)) {
 			setImage(pim?.assets.find(item => item.order === 1)?.url)
 		} else if (pim?.assets.find(item => item.type_id === 1)) {
 			setImage(pim?.assets.find(item => item.type_id === 1)?.url)
-		} else {
+		} else if (pim?.image) {
 			setImage(pim?.image)
+		} else if(pim?.Category?.media?.url) {
+			setImage(pim?.Category?.media?.url)
 		}
 	}, [])
 

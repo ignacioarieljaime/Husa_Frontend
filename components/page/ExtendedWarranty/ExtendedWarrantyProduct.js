@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 
 const ExtendedWarrantyProduct = ({
-	data: { image, name, model, id, custom_field },
+	data: { image, name, model, id, custom_field, Category },
 	link
 }) => {
 	return (
@@ -10,7 +10,11 @@ const ExtendedWarrantyProduct = ({
 			<a className='text-decoration-none'>
 				<div className='product-item-v2 h-100 px-5 py-8'>
 					<div className='image'>
-						<img src={image} alt={name} width='80%' />
+						<img
+							src={image ? image : Category?.media?.url}
+							alt={name}
+							width='80%'
+						/>
 					</div>
 					<div className='product-item-v2-content'>
 						<div className='text-primary mb-4'>
