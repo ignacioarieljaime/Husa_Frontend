@@ -15,7 +15,6 @@ function ProductSupportNewHead({ pim }) {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
 	}, [])
-
 	return (
 		<section className='product product-support-head p-0'>
 			<div className='container'>
