@@ -440,6 +440,24 @@ header.blog {
 .top-nav .nav-dropdown-list > * {
   display: none;
 }
+.header_background_layout {
+  height: 0px;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  top: 45px;
+  z-index: 5;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  
+  &.active {
+    height: 500px;
+  }
+}
 
 @media (max-width: 1200px) {
   .top-nav .search-form {

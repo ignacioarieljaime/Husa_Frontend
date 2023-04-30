@@ -2,9 +2,12 @@ import Link from 'next/link'
 import React from 'react'
 import CustomImage from '../CustomImage'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
-function NavBarDropDown({ data }) {
+function NavBarDropDown({ data, handler }) {
 	return (
-		<li className='nav-item dropdown-list-toggle me-4 me-xl-6'>
+		<li
+			onMouseEnter={() => handler(data.name)}
+			onMouseLeave={() => handler(null)}
+			className='nav-item dropdown-list-toggle pe-4 pe-xl-6'>
 			{!data.url || data.url === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
 					<span className='underline-on-hover'>{data.name}</span>

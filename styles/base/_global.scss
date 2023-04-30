@@ -5,6 +5,11 @@
 	--secondary-color: rgba(0, 158, 145, 1);
 	font-display: swap;
 }
+.text_editor {
+	a {
+		text-decoration: none !important;
+	}
+}
 
 body {
 	font-family: 'hisense';
