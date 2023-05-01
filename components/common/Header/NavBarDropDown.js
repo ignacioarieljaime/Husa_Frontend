@@ -7,7 +7,7 @@ function NavBarDropDown({ data, handler }) {
 		<li
 			onMouseEnter={() => handler(data.name)}
 			onMouseLeave={() => handler(null)}
-			className='nav-item dropdown-list-toggle pe-4 pe-xl-6'>
+			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.url || data.url === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
 					<span className='underline-on-hover'>{data.name}</span>
