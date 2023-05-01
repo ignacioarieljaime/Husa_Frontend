@@ -5,7 +5,8 @@
 	--secondary-color: rgba(0, 158, 145, 1);
 	font-display: swap;
 }
-.text_editor {
+.text_editor,
+.faq-descriptions {
 	a {
 		text-decoration: none !important;
 	}
@@ -743,6 +744,9 @@ input {
 			background-color: #adf;
 			pointer-events: none;
 		}
+	}
+	* {
+		text-decoration: none !important;
 	}
 }
 
