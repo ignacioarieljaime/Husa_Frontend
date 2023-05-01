@@ -52,18 +52,14 @@ function ProductsItem({ data }) {
 						<Link href={url}>
 							<a>
 								<img
-									src={currentItem.media?.url}
+									src={currentItem?.image ? currentItem?.image : currentItem?.media?.url}
 									height={280}
 									alt='featured image'
 								/>
 							</a>
 						</Link>
 					) : (
-						<img
-							src={currentItem.media?.url}
-							height={280}
-							alt='featured image'
-						/>
+						<img src={currentItem?.image ? currentItem?.image : currentItem?.media?.url} height={280} alt='featured image' />
 					)}
 					{seriesTitle && <h3>{seriesTitle?.value}</h3>}
 
