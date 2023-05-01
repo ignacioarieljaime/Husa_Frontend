@@ -5,10 +5,10 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import OpenNewPageIcon from "public/assets/images/OpenNewPageIcon.png"
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
-	const [image, setImage] = useState(null)
 	const router = useRouter()
 
 	useEffect(() => {
@@ -25,18 +25,25 @@ function ProductSupportNewHead({ pim }) {
 			setImage(pim?.Category?.media?.url)
 		}
 	}, [])
-
 	return (
 		<section className='product product-support-head p-0'>
 			<div className='container'>
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container '>
-							{image && (
+							{pim?.assets.find(item => item.order === 1) ? (
 								<CustomImage
 									wrapperClass={'product_support_head_image'}
-									src={image}
+									src={pim?.assets.find(item => item.order === 1)?.url}
 									alt='featured image'
+									// wrapperWidth='80%'
+								/>
+							) : (
+								<CustomImage
+									src={pim?.assets.find(item => item.type_id === 1)?.url}
+									wrapperClass={'product_support_head_image'}
+									alt='featured image'
+									// wrapperWidth='80%'
 								/>
 							)}
 						</div>
@@ -61,7 +68,8 @@ function ProductSupportNewHead({ pim }) {
 															) : (
 																'Documentes Guide'
 															)}
-															<DownloadIcon color='#00AAA6' />
+															{/* <DownloadIcon color='#00AAA6' /> */}
+														<img src={OpenNewPageIcon.src} />
 														</a>
 													</Link>
 												) : (

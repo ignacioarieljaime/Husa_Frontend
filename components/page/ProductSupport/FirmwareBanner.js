@@ -34,17 +34,26 @@ const FirmwareBanner = ({ data }) => {
 	}, [model])
 
 	const getPageUrl = async _value => {
+		// this method called after getModel method 
+		// this method send request to cxm to getting product url by product model
+		// because this method get us list of products we should find the specific model in the response
+		// and redirect to the final destination
 		try {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&status[]=3&status[]=1&string=${_value}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 			)
+
 			if (response?.data?.data && response?.data?.data.length > 0) {
-				router.push(
-					{
-						pathname: response?.data?.data[0]?.route,
-						query: { model: JSON.stringify(model?.files) }
-					},
-					response?.data?.data[0]?.route
+				response?.data?.data.forEach(
+					item =>
+						item.product.model === _value &&
+						router.push(
+							{
+								pathname: item.route,
+								query: { model: JSON.stringify(model?.files) }
+							},
+							item.route
+						)
 				)
 			}
 		} catch (error) {
@@ -109,7 +118,7 @@ const FirmwareBanner = ({ data }) => {
 							size='lg'
 							className='me-2'
 						/>
-						Where do I find my model number?
+						Where do I find my serial number?
 					</button>
 				</div>
 			</div>
