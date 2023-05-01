@@ -26,7 +26,6 @@ function ProductSupportNewHead({ pim }) {
 			setImage(pim?.Category?.media?.url)
 		}
 	}, [])
-
 	return (
 		<section className='product product-support-head p-0'>
 			<div className='container'>
