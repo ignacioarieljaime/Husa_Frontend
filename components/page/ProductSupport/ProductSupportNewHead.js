@@ -5,10 +5,11 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import OpenNewPageIcon from "public/assets/images/OpenNewPageIcon.png"
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
-	const [image, setImage] = useState(null)
+	const [image, setImage] = useState("")
 	const router = useRouter()
 
 	useEffect(() => {
@@ -32,13 +33,13 @@ function ProductSupportNewHead({ pim }) {
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container '>
-							{image && (
+							
 								<CustomImage
 									wrapperClass={'product_support_head_image'}
 									src={image}
 									alt='featured image'
+									// wrapperWidth='80%'
 								/>
-							)}
 						</div>
 					</div>
 					<div className='col-12 col-lg-6 ps-lg-10'>
@@ -61,7 +62,8 @@ function ProductSupportNewHead({ pim }) {
 															) : (
 																'Documentes Guide'
 															)}
-															<DownloadIcon color='#00AAA6' />
+															{/* <DownloadIcon color='#00AAA6' /> */}
+														<img src={OpenNewPageIcon.src} />
 														</a>
 													</Link>
 												) : (
