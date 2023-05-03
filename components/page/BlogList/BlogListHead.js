@@ -37,6 +37,7 @@ function BlogListHeadContainer({ structure }) {
 								src={structure?.image1?.src}
 								alt={structure?.image1?.alt}
 								className='tv-floating-img'
+								style={{ objectFit: 'cover' }}
 								ref={image1Ref.ref}
 								onLoad={() => parallaxController.update()}
 							/>
@@ -46,6 +47,7 @@ function BlogListHeadContainer({ structure }) {
 								src={structure?.image2?.src}
 								alt={structure?.image2?.alt}
 								className='sea-floating-img'
+								style={{ objectFit: 'cover' }}
 								ref={image2Ref.ref}
 								onLoad={() => parallaxController.update()}
 							/>

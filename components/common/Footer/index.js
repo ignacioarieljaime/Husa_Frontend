@@ -139,6 +139,7 @@ function Footer({ data }) {
 									</Link>
 								</li>
 							))}
+							<li>2023 © Copyright Hisense</li>
 						</ul>
 					</div>
 				</div>
