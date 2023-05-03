@@ -173,7 +173,7 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 	return (
 		<section className='extended-warranty-form-step'>
 			<ExtendedWarrantyFormStepSelectionCard
-				image={product?.image}
+				image={product?.image ? product?.image : product?.Category?.media?.url}
 				title={product?.name}
 				model={product?.model}
 				plan={plan}
