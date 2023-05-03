@@ -69,6 +69,7 @@ function BlogListLittleReadArticleBoxContainer({
 											alt={smallPost?.value?.image?.alt}
 											width='100%'
 											height='100%'
+											style={{ objectFit: 'cover' }}
 											onLoad={() => parallaxController.update()}
 										/>
 									</a>
@@ -115,7 +116,7 @@ function BlogListLittleReadArticleBoxContainer({
 												{smallPost?.value?.link?.title}
 												{smallPost?.value?.link?.target === '_blank' && (
 													<img
-														style={{ marginLeft: '10px' }}
+														style={{ marginLeft: '10px', objectFit: 'cover' }}
 														src={OpenPageOnNewTab.src}
 													/>
 												)}
@@ -149,6 +150,7 @@ function BlogListLittleReadArticleBoxContainer({
 										<img
 											src={largePost?.value?.image?.src}
 											alt={largePost?.value?.image?.alt}
+											style={{ objectFit: 'cover' }}
 											width='100%'
 											height='100%'
 											onLoad={() => parallaxController.update()}
@@ -197,7 +199,7 @@ function BlogListLittleReadArticleBoxContainer({
 												{largePost?.value?.link?.title}
 												{largePost?.value?.link?.target === '_blank' && (
 													<img
-														style={{ marginLeft: '10px' }}
+														style={{ marginLeft: '10px', objectFit: 'cover' }}
 														src={OpenPageOnNewTab.src}
 													/>
 												)}
