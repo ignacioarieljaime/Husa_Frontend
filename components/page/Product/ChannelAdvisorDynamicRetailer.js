@@ -39,37 +39,37 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 				<Spinner />
 			) : (
 				<>
-					<div className='row justify-content-start align-items-center mb-2 mx-0 flex-nowrap'>
-						<div className='col-3'>
+					<div className='row justify-content-start flex-column align-items-center mb-2 mx-0 flex-nowrap'>
+						<div className='col-3 w-100'>
 							<CustomImage
 								src={data?.ProductImage}
 								alt={data?.Description}
 								wrapperWidth={'100%'}
-								wrapperHeight={'100px'}
+								wrapperHeight={'256px'}
 							/>
 						</div>
-						<div className='col-9'>
-							<p className='model'>Hisense {data?.ModelName}</p>
-							<p className='title'>{data?.Description}</p>
+						<div className='col-9 d-flex w-100 flex-column mb-5 text-center align-items-center'>
+							<p className='model'>model: {data?.ModelName}</p>
+							<p className='title text-center'>{data?.Description}</p>
+						</div>
+						<div className='link_box'>
+							<h5>Hisense Authorized Dealers</h5>
+							<Link href={'/authorized-retailers'}>
+								<a>
+									Why Buy from an Authorized Dealer? <GoToPageIcon />
+								</a>
+							</Link>
 						</div>
 					</div>
-					<div className='link_box mt-5 mb-5'>
-						<h5>Hisense Authorized Dealers</h5>
-						<Link href={'/authorized-retailers'}>
-							<a>
-								Why Buy from an Authorized Dealer? <GoToPageIcon />
-							</a>
-						</Link>
-					</div>
 
-					<div className='black_box'>
+					{/* <div className='black_box'>
 						<div
 							style={{
 								width: '100%'
 							}}
 							className={`white_box ${!isLocally && 'active'}`}>
 							<button onClick={() => setIsLocally(false)}>BUY ONLINE</button>
-						</div>
+						</div> */}
 
 						{/* <div className={`white_box  ${isLocally && 'active'}`}>
 							<button
@@ -81,7 +81,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 								FIND LOCALLY
 							</button>
 						</div> */}
-					</div>
+					{/* </div> */}
 					{isLocally ? (
 						<ChannelAdvisorLocally productData={productData} model={model} />
 					) : (
@@ -90,12 +90,12 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 								data?.OnlineRetailers.map((item, index) => (
 									<div
 										key={index}
-										className='d-flex justify-content-between align-items-center my-4 mx-4 py-4 divider_bottom'>
+										className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
 										<CustomImage src={item?.LogoUrl} wrapperWidth={'100px'} />
-										<div>
+										{/* <div>
 											<div className='check'>Check Retailer</div>
 											<div className='status'>Available</div>
-										</div>
+										</div> */}
 
 										<Link
 											target={'_blank'}
