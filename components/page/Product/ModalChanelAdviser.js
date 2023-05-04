@@ -84,11 +84,11 @@ function ModalChanelAdviser({
 				{type === 'ChannelAdvisor' ? (
 					<>
 						{/* {process.env.NEXT_PUBLIC_APP_LOCATION !== 'production' ? ( */}
-							<ChannelAdvisorDynamicRetailer
-								condition={condition}
-								model={model}
-								productData={product}
-							/>
+						<ChannelAdvisorDynamicRetailer
+							condition={condition}
+							model={model}
+							productData={product}
+						/>
 						{/* ) : (
 							<iframe
 								width={'100%'}
@@ -99,21 +99,11 @@ function ModalChanelAdviser({
 						)} */}
 					</>
 				) : (
-					<>
-						<CustomChannelAdvisor
-							id={productId}
-							productData={product}
-							condition={condition}
-						/>
-						<div className='link_box'>
-							<h5>Hisense Authorized Dealers</h5>
-							<Link href={'/authorized-retailers'}>
-								<a>
-									Why Buy from an Authorized Dealer? <GoToPageIcon />
-								</a>
-							</Link>
-						</div>
-					</>
+					<CustomChannelAdvisor
+						id={productId}
+						productData={product}
+						condition={condition}
+					/>
 				)}
 			</div>
 		</div>

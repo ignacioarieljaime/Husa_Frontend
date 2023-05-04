@@ -534,8 +534,10 @@
 
 	.link_box {
 		margin-top: 5px;
-		h6 {
+		h5 {
 			font-weight: 300;
+			font-size: 18px;
+			margin-bottom: 0;
 		}
 
 		a {
@@ -2505,7 +2507,7 @@ header {
 		font-weight: 100;
 		color: #58595b;
 		font-size: 18px;
-		margin-bottom: 8px;
+		margin-bottom: 0;
 		text-align: start;
 	}
 	.title {
