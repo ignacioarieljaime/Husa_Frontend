@@ -44,6 +44,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 										<img
 											src={structure?.image?.src}
 											alt={structure?.image?.alt}
+											style={{ objectFit: 'cover' }}
 											width='100%'
 											onLoad={() => parallaxController.update()}
 										/>
@@ -87,7 +88,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 												{structure?.link?.title}
 												{structure?.link?.target === '_blank' && (
 													<img
-														style={{ marginLeft: '10px' }}
+														style={{ marginLeft: '10px', objectFit: 'cover' }}
 														src={OpenPageOnNewTab.src}
 													/>
 												)}

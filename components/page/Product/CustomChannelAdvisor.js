@@ -1,5 +1,6 @@
 import CustomImage from 'components/common/CustomImage'
 import Spinner from 'components/common/Spinner'
+import GoToPageIcon from 'components/icons/GoToPageIcon'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
@@ -31,41 +32,52 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 
 	return (
 		<div className='custom_channel_advisor'>
-			<div className='row justify-content-start align-items-center mb-2 mx-0 flex-nowrap'>
-				<div className='col-3'>
+			<div className='row flex-column justify-content-start align-items-center mb-2 mx-0 flex-nowrap'>
+				<div className='col-3 w-100'>
 					<CustomImage
 						src={product?.image}
 						alt={product?.name}
 						wrapperWidth={'100%'}
-						wrapperHeight={'100px'}
+						wrapperHeight={'256px'}
 					/>
 				</div>
-				<div className='col-9'>
-					<p className='model'>Hisense {product?.model}</p>
-					<p className='title'>{product?.name}</p>
+				<div className='col-9 d-flex w-100 flex-column mb-5 align-items-center'>
+					<p className='model'>model: {product?.model}</p>
+					<p style={{ fontSize: '1.5rem' }} className='title text-center'>
+						{product?.name}
+					</p>
+				</div>
+				<div className='link_box'>
+					<h5>Hisense Authorized Dealers</h5>
+					<Link href={'/authorized-retailers'}>
+						<a>
+							Why Buy from an Authorized Dealer? <GoToPageIcon />
+						</a>
+					</Link>
 				</div>
 			</div>
-			<div className='black_box'>
+			{/* <div className='black_box'>
 				<div style={{ width: '100%' }} className='white_box active'>
 					BUY ONLINE
 				</div>
-			</div>
+			</div> */}
 			<div>
 				{!loading ? (
 					product?.retailers && product?.retailers.length > 0 ? (
 						product?.retailers.map((item, index) => (
 							<div
 								key={index}
-								className='d-flex justify-content-between align-items-center my-4 mx-4 py-4 divider_bottom'>
+								className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
 								<CustomImage
 									src={item?.Media?.url}
 									alt={item?.name}
 									wrapperWidth={'100px'}
 								/>
-								<div>
+								{/* <div>
 									<div className='check'>Check Retailer</div>
 									<div className='status'>Available</div>
-								</div>
+								</div> */}
+
 								<Link
 									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
 									<a

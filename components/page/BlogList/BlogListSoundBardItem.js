@@ -37,6 +37,7 @@ function BlogListSoundBardItemContainer({ data }) {
 									<img
 										src={data?.image?.src}
 										alt={data?.image?.alt}
+										style={{ objectFit: 'cover' }}
 										width='100%'
 										height='110%'
 										ref={imageRef.ref}
@@ -71,7 +72,7 @@ function BlogListSoundBardItemContainer({ data }) {
 							{data?.link?.title}
 							{data?.link?.target === '_blank' && (
 								<img
-									style={{ marginLeft: '10px' }}
+									style={{ marginLeft: '10px', objectFit: 'cover' }}
 									src={OpenPageOnNewTab.src}
 								/>
 							)}

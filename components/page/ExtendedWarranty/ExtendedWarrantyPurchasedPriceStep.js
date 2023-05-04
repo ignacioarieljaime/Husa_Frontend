@@ -17,7 +17,7 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans, loading }) => {
 						<div className='product'>
 							<h6 className='model'>{product?.model}</h6>
 							<h5 className='title'>{product?.name}</h5>
-							<img src={product?.image} alt={product?.name} className='image' />
+							<img src={product?.image ? product?.image : product?.Category?.media?.url} alt={product?.name} className='image' />
 						</div>
 						<div className='box'>
 							<div className='title'>Purchased Price</div>

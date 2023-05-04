@@ -23,6 +23,7 @@ function Header({ data: { structure }, notification }) {
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
+	const [dropDown, setDropDown] = useState(null)
 	useEffect(() => {
 		if (sessionStorage.getItem('headerData')) {
 			setHeaderData(JSON.parse(sessionStorage.getItem('headerData')))
@@ -61,12 +62,22 @@ function Header({ data: { structure }, notification }) {
 						</div>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
 							{headerData?.widgets?.centerOption.map((item, index) => (
-								<NavBarDropDown key={`right-${index}`} data={item} />
+								<NavBarDropDown
+									status={dropDown}
+									handler={setDropDown}
+									key={`right-${index}`}
+									data={item}
+								/>
 							))}
 						</ul>
 						<ul className='navbar-nav align-items-center justify-content-end p-0 col-4'>
 							{headerData?.widgets?.rightOption.map((item, index) => (
-								<NavBarDropDown key={`right-${index}`} data={item} />
+								<NavBarDropDown
+									status={dropDown}
+									handler={setDropDown}
+									key={`right-${index}`}
+									data={item}
+								/>
 							))}
 
 							<li className='nav-item-button' data-button='search'>
@@ -112,6 +123,8 @@ function Header({ data: { structure }, notification }) {
 
 				{/* <SubMenuHeader /> */}
 			</nav>
+			<div className={`header_background_layout ${dropDown && 'active'}`}></div>
+
 			{notification && (
 				<div className={'position-fixed w-100'} style={{ zIndex: 999 }}>
 					{notification.map(item => (
