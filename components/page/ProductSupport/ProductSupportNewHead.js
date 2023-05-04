@@ -2,15 +2,18 @@ import CustomImage from 'components/common/CustomImage'
 import DownloadIcon from 'components/icons/DownloadIcon'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
+import SupportFirmwareLoading from 'components/common/SupportFirmwareLoading'
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
 	const [image, setImage] = useState()
+	const [downloadLoading, setDownloadLoading] = useState(false)
 	const router = useRouter()
+	const downloadRef = useRef()
 
 	useEffect(() => {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
@@ -26,9 +29,44 @@ function ProductSupportNewHead({ pim }) {
 			setImage(pim?.Category?.media?.url)
 		}
 	}, [])
+
+	const downloadFile = async _url => {
+		setDownloadLoading(true)
+		const xhr = new XMLHttpRequest()
+		download(_url)
+		addListeners(xhr)
+		xhr.open('GET', _url)
+		xhr.send()
+	}
+
+	function download(link) {
+		downloadRef.current.setAttribute('href', link)
+		downloadRef.current.style.display = 'none'
+		downloadRef.current.click()
+	}
+
+	function addListeners(xhr) {
+		xhr.addEventListener('progress', handleEvent)
+		xhr.addEventListener('error', handleEvent)
+		xhr.addEventListener('abort', handleEvent)
+	}
+
+	function handleEvent(e) {
+		if (e.type === 'progress' && e?.total) {
+			setDownloadLoading(false)
+		} else if (e.type === 'error' || e.type === 'abort') {
+			setDownloadLoading(false)
+		}
+	}
+
 	return (
 		<section className='product product-support-head p-0'>
+			{/* {downloadLoading &&  */}
+			<SupportFirmwareLoading />
+			{/* } */}
+
 			<div className='container'>
+				<a ref={downloadRef}></a>
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container '>
@@ -101,17 +139,23 @@ function ProductSupportNewHead({ pim }) {
 									</p>
 									<div className='row align-items-stretch w-100 mb-8'>
 										{firmwareData.map((item, index) => (
-											<div className='col-12 col-sm-6 py-3' key={index}>
-												<a
-													href={item.download_link ? item.download_link : '/'}
-													download={true}
-													className='download-able-item text-uppercase'>
+											<div
+												className='col-12 col-sm-6 py-3 support_firmware_btn'
+												key={index}>
+												<a className='download-able-item text-uppercase'>
 													{item?.title || item?.original_name ? (
 														<>{item.title ? item.title : item.original_name}</>
 													) : (
 														'Documentes Guide'
 													)}
 													<DownloadIcon color='#00AAA6' />
+													<input
+														onClick={() => downloadFile(item.download_link)}
+														class='xhr success'
+														type='button'
+														name='xhr'
+														value='Click to start XHR (success)'
+													/>
 												</a>
 											</div>
 										))}
