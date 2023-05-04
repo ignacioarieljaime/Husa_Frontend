@@ -61,9 +61,9 @@ function ProductSupportNewHead({ pim }) {
 
 	return (
 		<section className='product product-support-head p-0'>
-			{/* {downloadLoading &&  */}
+			{downloadLoading && 
 			<SupportFirmwareLoading />
-			{/* } */}
+			}
 
 			<div className='container'>
 				<a ref={downloadRef}></a>
