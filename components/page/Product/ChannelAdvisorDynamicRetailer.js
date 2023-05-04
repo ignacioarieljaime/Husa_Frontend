@@ -50,7 +50,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 						</div>
 						<div className='col-9 d-flex w-100 flex-column mb-5 text-center align-items-center'>
 							<p className='model'>model: {data?.ModelName}</p>
-							<p className='title text-center'>{data?.Description}</p>
+							<p style={{ fontSize: '1.5rem' }} className='title text-center'>{data?.Description}</p>
 						</div>
 						<div className='link_box'>
 							<h5>Hisense Authorized Dealers</h5>
