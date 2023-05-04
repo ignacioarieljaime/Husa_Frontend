@@ -10,7 +10,7 @@ import SupportFirmwareLoading from 'components/common/SupportFirmwareLoading'
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
-	const [image, setImage] = useState("")
+	const [image, setImage] = useState('')
 	const router = useRouter()
 	const downloadRef = useRef()
 
@@ -18,12 +18,12 @@ function ProductSupportNewHead({ pim }) {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
 		//
-		if (pim?.assets?.find(item => item.order === 1)) {
-			setImage(pim?.assets.find(item => item.order === 1)?.url)
-		} else if (pim?.assets.find(item => item.type_id === 1)) {
-			setImage(pim?.assets.find(item => item.type_id === 1)?.url)
-		} else if (pim?.image) {
+		if (pim?.image) {
 			setImage(pim?.image)
+		} else if (
+			pim?.assets?.find(item => item.order === 1 && item.type_id === 1)
+		) {
+			setImage(pim?.assets.find(item => item.order === 1 && item.type_id)?.url)
 		} else if (pim?.Category?.media?.url) {
 			setImage(pim?.Category?.media?.url)
 		}
@@ -69,13 +69,12 @@ function ProductSupportNewHead({ pim }) {
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container '>
-							
-								<CustomImage
-									wrapperClass={'product_support_head_image'}
-									src={image}
-									alt='featured image'
-									// wrapperWidth='80%'
-								/>
+							<CustomImage
+								wrapperClass={'product_support_head_image'}
+								src={image}
+								alt='featured image'
+								// wrapperWidth='80%'
+							/>
 						</div>
 					</div>
 					<div className='col-12 col-lg-6 ps-lg-10'>
