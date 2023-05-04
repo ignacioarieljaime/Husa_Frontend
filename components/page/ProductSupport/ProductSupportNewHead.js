@@ -5,23 +5,24 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import OpenNewPageIcon from "public/assets/images/OpenNewPageIcon.png"
+import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
+	const [image, setImage] = useState()
 	const router = useRouter()
 
 	useEffect(() => {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
-		// 
-		if (pim?.assets.find(item => item.order === 1)) {
+		//
+		if (pim?.assets?.find(item => item.order === 1)) {
 			setImage(pim?.assets.find(item => item.order === 1)?.url)
 		} else if (pim?.assets.find(item => item.type_id === 1)) {
 			setImage(pim?.assets.find(item => item.type_id === 1)?.url)
 		} else if (pim?.image) {
 			setImage(pim?.image)
-		} else if(pim?.Category?.media?.url) {
+		} else if (pim?.Category?.media?.url) {
 			setImage(pim?.Category?.media?.url)
 		}
 	}, [])
@@ -69,7 +70,7 @@ function ProductSupportNewHead({ pim }) {
 																'Documentes Guide'
 															)}
 															{/* <DownloadIcon color='#00AAA6' /> */}
-														<img src={OpenNewPageIcon.src} />
+															<img src={OpenNewPageIcon.src} />
 														</a>
 													</Link>
 												) : (
@@ -93,6 +94,10 @@ function ProductSupportNewHead({ pim }) {
 								<>
 									<p className='fs-base fw-normal mb-0 mt-7'>
 										Firmware and Software
+									</p>
+									<p className='text-warning' style={{ fontSize: '14px' }}>
+										this firmware is intended only intended for the model that
+										is listed
 									</p>
 									<div className='row align-items-stretch w-100 mb-8'>
 										{firmwareData.map((item, index) => (
