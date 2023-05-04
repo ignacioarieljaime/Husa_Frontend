@@ -10,8 +10,7 @@ import SupportFirmwareLoading from 'components/common/SupportFirmwareLoading'
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
-	const [image, setImage] = useState()
-	const [downloadLoading, setDownloadLoading] = useState(false)
+	const [image, setImage] = useState("")
 	const router = useRouter()
 	const downloadRef = useRef()
 
@@ -70,21 +69,13 @@ function ProductSupportNewHead({ pim }) {
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
 						<div className='image-container '>
-							{pim?.assets.find(item => item.order === 1) ? (
+							
 								<CustomImage
 									wrapperClass={'product_support_head_image'}
-									src={pim?.assets.find(item => item.order === 1)?.url}
+									src={image}
 									alt='featured image'
 									// wrapperWidth='80%'
 								/>
-							) : (
-								<CustomImage
-									src={pim?.assets.find(item => item.type_id === 1)?.url}
-									wrapperClass={'product_support_head_image'}
-									alt='featured image'
-									// wrapperWidth='80%'
-								/>
-							)}
 						</div>
 					</div>
 					<div className='col-12 col-lg-6 ps-lg-10'>
