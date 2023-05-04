@@ -38,21 +38,17 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						</span>
 					</SwiperSlide>
 				) : null}
-				{pim && pim.find(item => item.order === 1 && item.type_id === 1) ? (
+				{firstImage ? (
 					<SwiperSlide key={'custom'}>
 						<span className='media-slider-wrapper'>
 							<CustomImage
-								src={pim.find(item => item.order === 1)?.url}
-								alt={
-									pim.find(item => item.order === 1)?.caption
-										? pim.find(item => item.order === 1)?.caption
-										: pim.find(item => item.order === 1)?.title
-								}
-								title={
-									pim.find(item => item.order === 1)?.caption
-										? pim.find(item => item.order === 1)?.caption
-										: pim.find(item => item.order === 1)?.title
-								}
+								src={firstImage}
+								// alt={firstImage}
+								// title={
+								// 	pim.find(item => item.order === 1)?.caption
+								// 		? pim.find(item => item.order === 1)?.caption
+								// 		: pim.find(item => item.order === 1)?.title
+								// }
 								className='slider-media'
 								wrapperHeight={'100%'}
 							/>
