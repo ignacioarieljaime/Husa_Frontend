@@ -38,7 +38,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						</span>
 					</SwiperSlide>
 				) : null}
-				{pim && pim.find(item => item.order === 1) ? (
+				{pim && pim.find(item => item.order === 1 && item.type_id === 1) ? (
 					<SwiperSlide key={'custom'}>
 						<span className='media-slider-wrapper'>
 							<CustomImage
