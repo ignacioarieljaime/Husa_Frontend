@@ -56,6 +56,7 @@ const ProductItemV2 = ({ data }) => {
 							/>
 						</a>
 					</Link>
+					
 				</div>
 				<div className='product-item-v2-content flex-grow-1 d-flex flex-column justify-content-between'>
 					<div>
