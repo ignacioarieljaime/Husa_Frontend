@@ -7,9 +7,11 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
 import SupportFirmwareLoading from 'components/common/SupportFirmwareLoading'
+import { useSwiperSlide } from 'swiper/react'
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
+	const [downloadLoading, setDownloadLoading] = useState(false)
 	const [image, setImage] = useState('')
 	const router = useRouter()
 	const downloadRef = useRef()
