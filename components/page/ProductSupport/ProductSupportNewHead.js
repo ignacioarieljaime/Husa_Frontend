@@ -14,6 +14,16 @@ function ProductSupportNewHead({ pim }) {
 	useEffect(() => {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
+		// 
+		if (pim?.assets.find(item => item.order === 1)) {
+			setImage(pim?.assets.find(item => item.order === 1)?.url)
+		} else if (pim?.assets.find(item => item.type_id === 1)) {
+			setImage(pim?.assets.find(item => item.type_id === 1)?.url)
+		} else if (pim?.image) {
+			setImage(pim?.image)
+		} else if(pim?.Category?.media?.url) {
+			setImage(pim?.Category?.media?.url)
+		}
 	}, [])
 	return (
 		<section className='product product-support-head p-0'>
