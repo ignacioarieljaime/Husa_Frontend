@@ -1,0 +1,241 @@
+.news_room_news_box {
+	.items {
+		margin-top: 96px;
+		max-width: 1090px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+	.news_room_main_news_item {
+		background: #f0f2f2;
+		box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+		border-radius: 50px;
+		overflow: hidden;
+		&.horizontal {
+			width: 100%;
+			height: 622px;
+			display: flex;
+			> div {
+				width: 50%;
+			}
+			.text {
+				padding: 64px;
+
+				h2 {
+					font-style: normal;
+					font-weight: 400;
+					font-size: 34px;
+					line-height: 42px;
+					color: #000000;
+				}
+			}
+		}
+		&.vertical {
+			display: flex;
+			flex-direction: column;
+			width: calc(50% - 16px);
+
+			.text {
+				padding: 32px 64px;
+
+				h2 {
+					margin: 41px 0;
+					font-style: normal;
+					font-weight: 400;
+					font-size: 24px;
+					line-height: 30px;
+					color: #000000;
+				}
+			}
+		}
+
+		&.three_item {
+			width: calc(33.3333% - 16px) !important;
+
+			.text {
+				padding: 24px 32px;
+				.subject {
+					font-size: 10px;
+				}
+				h2 {
+					font-weight: 300;
+					font-size: 16px;
+					line-height: 22px;
+					color: #000000;
+					margin: 14px 0;
+				}
+
+				.date {
+					font-size: 12px;
+				}
+			}
+		}
+		.text {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			span {
+				font-style: normal;
+				color: #ababb0;
+			}
+			.subjject {
+				font-weight: 400;
+				font-size: 10px;
+				line-height: 14px;
+				letter-spacing: 0.2em;
+				text-transform: uppercase;
+			}
+			.date {
+				font-weight: 400;
+				font-size: 12px;
+			}
+		}
+	}
+
+	.view_archive {
+		width: fit-content;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		margin: 96px auto;
+		height: 51px;
+		border: 1px solid #000000;
+		border-radius: 1000px;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 19px;
+		padding: 0 16px;
+		text-align: center;
+		color: #000000;
+	}
+}
+
+.news_room_search_filter {
+	background: #232323;
+
+	> div {
+		max-width: 1090px;
+		> div {
+			height: 86px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			> span {
+				font-style: normal;
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 22px;
+				color: #00aaa6;
+			}
+
+			> div {
+				display: flex;
+				align-items: center;
+				gap: 16px;
+
+				.select_box_custom {
+					position: relative;
+					> span {
+						font-weight: 400;
+						font-size: 16px;
+						line-height: 22px;
+						color: #ffffff;
+						padding: 16px;
+						gap: 32px;
+						min-width: 117.08px;
+						height: 54px;
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						line-height: 0;
+						border: 1px solid #ffffff;
+						border-radius: 1000px;
+					}
+					> div {
+						display: none;
+					}
+					&:hover {
+						> div {
+							display: inline-block;
+							position: absolute;
+							top: 100%;
+							left: 0;
+							width: 100%;
+							padding-top: 10px;
+
+							ul {
+								padding: 0;
+								list-style: none;
+								background-color: #fff;
+								border-radius: 10px;
+								-webkit-border-radius: 10px;
+								-moz-border-radius: 10px;
+								-ms-border-radius: 10px;
+								-o-border-radius: 10px;
+								overflow: hidden;
+								box-shadow: 0 10px 15px rgba($color: #000000, $alpha: 0.3);
+
+								li {
+									button {
+										padding: 15px 20px;
+										background-color: transparent;
+										width: 100%;
+										text-align: left;
+										border: none;
+
+										&.active {
+											background-color: #00aaa6;
+											color: #fff;
+											&:hover {
+												background-color: #00aaa6;
+											}
+										}
+
+										&:hover {
+											background-color: #f0f2f2;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.product_select_box {
+					width: 300px;
+				}
+				.custom_input_box {
+					position: relative;
+
+					svg {
+						position: absolute;
+						right: 16px;
+						top: 50%;
+						transform: translateY(-50%);
+						-webkit-transform: translateY(-50%);
+						-moz-transform: translateY(-50%);
+						-ms-transform: translateY(-50%);
+						-o-transform: translateY(-50%);
+						path {
+							stroke: #ffffff;
+						}
+					}
+					input {
+						width: 300px;
+						height: 52px;
+						border: 1px solid #ffffff;
+						border-radius: 1000px;
+						padding: 0 50px 0 16px;
+						background-color: transparent;
+						color: #8c8f8f;
+
+						&:focus {
+							background-color: transparent !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
