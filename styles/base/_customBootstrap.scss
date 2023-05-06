@@ -2216,6 +2216,12 @@ header {
 }
 
 .product_news_box_item {
+	.ql-size-small{
+		font-size: 12px!important;
+		line-height: 12px !important;
+		display: flex;
+		font-weight: 100;
+	}
 	.note {
 		h6 {
 			font-size: 22.5px !important;
