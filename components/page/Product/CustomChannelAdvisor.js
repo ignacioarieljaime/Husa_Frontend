@@ -33,11 +33,11 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 	return (
 		<div className='custom_channel_advisor'>
 			<div className='row flex-column justify-content-start align-items-center mb-2 mx-0 flex-nowrap'>
-				<div className='col-3 w-100'>
+				<div className='col-3 w-100 d-flex justify-content-center'>
 					<CustomImage
 						src={product?.image}
+						wrapperWidth={"fit-content"}
 						alt={product?.name}
-						wrapperWidth={'100%'}
 						wrapperHeight={'256px'}
 					/>
 				</div>

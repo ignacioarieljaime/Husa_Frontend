@@ -40,11 +40,11 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 			) : (
 				<>
 					<div className='row justify-content-start flex-column align-items-center mb-2 mx-0 flex-nowrap'>
-						<div className='col-3 w-100'>
+						<div className='col-3 w-100 d-flex justify-content-center'>
 							<CustomImage
 								src={data?.ProductImage}
 								alt={data?.Description}
-								wrapperWidth={'100%'}
+								wrapperWidth={"fit-content"}
 								wrapperHeight={'256px'}
 							/>
 						</div>
