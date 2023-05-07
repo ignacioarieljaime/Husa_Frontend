@@ -68,11 +68,12 @@ function ProductSupportNewHead({ pim }) {
 				<a ref={downloadRef}></a>
 				<div className='row align-items-center'>
 					<div className='col-12 col-lg-6 product-gallery mb-12 mb-lg-0  text-center'>
-						<div className='image-container '>
+						<div className='image-container'>
 							<CustomImage
 								wrapperClass={'product_support_head_image'}
 								src={image}
 								alt='featured image'
+								objectFit='contain'
 								// wrapperWidth='80%'
 							/>
 						</div>

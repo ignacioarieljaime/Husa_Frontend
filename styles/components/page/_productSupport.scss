@@ -70,10 +70,8 @@
 }
 .product_support_head_image {
 	// width: unset !important;
-	img {
-		max-height: 450px !important;
-		object-fit: contain;
-	}
+	max-width: 464px;
+	max-height: 278.4px;
 }
 .videos-container-product-support {
 	overflow-y: auto;
