@@ -19,7 +19,12 @@ const ExtendedWarrantyPaymentStatus = ({
 	const [statusData, setStatusData] = useState()
 	const [content, setContent] = useState()
 	const [isLoading, setIsLoading] = useState(true)
+	const [errorData, setErrorData] = useState()
 	const router = useRouter()
+	const [paymentMessage, setPaymentMessage] = useState({
+		transaction: 'Checking payment',
+		pdf: null
+	})
 
 	useEffect(() => {
 		if (router?.query?.stat !== 'ok' || !router?.query?.stat) {
@@ -46,9 +51,21 @@ const ExtendedWarrantyPaymentStatus = ({
 	const getStatus = async _invoice => {
 		try {
 			let response = await GetPaymenStatus(_invoice)
+			if (response?.data?.invoice?.transaction) {
+				setPaymentMessage({
+					transaction: 'Payment was successful',
+					pdf: 'generating PDF'
+				})
+			}
+
 			if (!response?.data?.invoice?.process?.id) {
 				getStatus(router?.query?.invoice)
+				setErrorData(response?.data)
 			} else {
+				setPaymentMessage({
+					transaction: 'Payment was successful',
+					pdf: 'generated'
+				})
 				setStatusData(response?.data)
 				setIsLoading(false)
 				setTimeout(() => {
@@ -86,6 +103,24 @@ const ExtendedWarrantyPaymentStatus = ({
 							dangerouslySetInnerHTML={{
 								__html: content?.text?.value
 							}}></div>
+						<div>
+							<div>
+								payment:{' '}
+								<span className=''>
+									{errorData?.invoice?.transaction
+										? 'Payment was successful'
+										: "Payment wasn't successful"}
+								</span>
+							</div>
+							{errorData?.invoice?.transaction && (
+								<div>
+									PDF:{' '}
+									{errorData?.process
+										? 'Your PDF was generated'
+										: "Your PDF wasn't generated"}
+								</div>
+							)}
+						</div>
 						{statusData?.invoice?.transaction ? (
 							<div className='custom-card'>
 								<div className='row align-items-stretch mx-0'>
@@ -197,8 +232,14 @@ const ExtendedWarrantyPaymentStatus = ({
 						) : null}
 					</div>
 				) : (
-					<div className='w-100 d-flex justify-content-center py-20'>
-						<Spinner className={'mt-5'} size={80} />
+					<div className='w-100 d-flex  flex-column align-items-center justify-content-center py-20'>
+						<Spinner className={'mt-5 mb-5'} size={80} />
+						<div>
+							<div>
+								payment: <span className=''>{paymentMessage?.transaction}</span>
+							</div>
+							{paymentMessage?.pdf && <div>PDF: {paymentMessage?.pdf}</div>}
+						</div>
 					</div>
 				)}
 			</div>
