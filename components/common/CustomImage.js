@@ -13,7 +13,7 @@ function CustomImage({
 	wrapperClass,
 	WrapperMaxWidth,
 	WrapperMaxHeight,
-	objectFit = 'unset',
+	objectFit = 'contain',
 	onLoad = () => {}
 }) {
 	const image = useRef()
