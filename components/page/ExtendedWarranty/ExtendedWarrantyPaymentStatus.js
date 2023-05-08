@@ -19,7 +19,12 @@ const ExtendedWarrantyPaymentStatus = ({
 	const [statusData, setStatusData] = useState()
 	const [content, setContent] = useState()
 	const [isLoading, setIsLoading] = useState(true)
+	const [errorData, setErrorData] = useState()
 	const router = useRouter()
+	const [paymentMessage, setPaymentMessage] = useState({
+		transaction: 'Checking payment',
+		pdf: null
+	})
 
 	useEffect(() => {
 		if (router?.query?.stat !== 'ok' || !router?.query?.stat) {
@@ -46,10 +51,25 @@ const ExtendedWarrantyPaymentStatus = ({
 	const getStatus = async _invoice => {
 		try {
 			let response = await GetPaymenStatus(_invoice)
+			if (response?.data?.invoice?.transaction) {
+				setPaymentMessage({
+					transaction: 'Payment was successful',
+					pdf: 'generating PDF'
+				})
+			}
+
 			if (!response?.data?.invoice?.process?.id) {
-				getStatus(router?.query?.invoice)
+				setTimeout(() => {
+					getStatus(router?.query?.invoice)
+				}, 2000)
+				setErrorData(response?.data)
 			} else {
+				setPaymentMessage({
+					transaction: 'Payment was successful',
+					pdf: 'generated'
+				})
 				setStatusData(response?.data)
+				setErrorData(response?.data)
 				setIsLoading(false)
 				setTimeout(() => {
 					window.open(response.data?.invoice?.product?.warranty_card, '_blank')
@@ -61,8 +81,6 @@ const ExtendedWarrantyPaymentStatus = ({
 				toast.error('Token is invalid', {
 					autoClose: false
 				})
-			} else {
-				toast.error('Something went wrong')
 			}
 			console.log(error)
 		}
@@ -82,10 +100,37 @@ const ExtendedWarrantyPaymentStatus = ({
 							src={content?.image?.src}
 							alt={content?.image?.alt}
 						/>
-						<div
+						{/* <div
 							dangerouslySetInnerHTML={{
 								__html: content?.text?.value
-							}}></div>
+							}}></div> */}
+						<div>
+							<div>
+								payment:{' '}
+								<span
+									style={{
+										color: errorData?.invoice?.transaction ? 'green' : 'red'
+									}}>
+									{errorData?.invoice?.transaction
+										? 'Payment was successful'
+										: "Payment wasn't successful"}
+								</span>
+							</div>
+							{errorData?.invoice?.transaction && (
+								<div>
+									PDF:{' '}
+									<span
+										style={{
+											color: errorData?.invoice?.process ? 'green' : 'red'
+										}}>
+										{' '}
+										{errorData?.invoice?.process
+											? 'Your PDF was generated'
+											: "Your PDF wasn't generated"}
+									</span>
+								</div>
+							)}
+						</div>
 						{statusData?.invoice?.transaction ? (
 							<div className='custom-card'>
 								<div className='row align-items-stretch mx-0'>
@@ -197,8 +242,40 @@ const ExtendedWarrantyPaymentStatus = ({
 						) : null}
 					</div>
 				) : (
-					<div className='w-100 d-flex justify-content-center py-20'>
-						<Spinner className={'mt-5'} size={80} />
+					<div className='w-100 d-flex  flex-column align-items-center justify-content-center py-20'>
+						<Spinner className={'mt-5 mb-5'} size={80} />
+						<div className='d-flex  flex-column align-items-center'>
+							<div>
+								payment:{' '}
+								<span
+									style={{
+										color:
+											paymentMessage?.transaction === 'Checking payment'
+												? 'black'
+												: errorData?.invoice?.transaction
+												? 'green'
+												: 'red'
+									}}>
+									{paymentMessage?.transaction}
+								</span>
+							</div>
+							{paymentMessage?.pdf && (
+								<div>
+									PDF:{' '}
+									<span
+										style={{
+											color:
+												paymentMessage?.pdf === 'generating PDF'
+													? 'black'
+													: errorData?.invoice?.process
+													? 'green'
+													: 'red'
+										}}>
+										{paymentMessage?.pdf}
+									</span>{' '}
+								</div>
+							)}
+						</div>
 					</div>
 				)}
 			</div>
