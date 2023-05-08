@@ -11,6 +11,11 @@
 				text-align: center;
 				line-height: 56px;
 				color: #000000;
+
+				@include mq(600) {
+				margin: 48px 0 ;
+					font-size: 24px;
+				}
 			}
 
 			.items {
@@ -24,6 +29,17 @@
 					background: #f0f2f2;
 					border-radius: 25px;
 					overflow: hidden;
+
+					@include mq(600) {
+						flex-direction: column;
+						height: unset;
+					}
+
+					img {
+						@include mq(600) {
+							height: 140px !important;
+						}
+					}
 
 					.text_box {
 						padding: 25px 32px;
@@ -49,6 +65,11 @@
 							color: #000000;
 							margin: 10px 0;
 							max-width: 596px;
+
+							@include mq(600) {
+								line-height: 19px;
+								font-size: 14px;
+							}
 						}
 						.date {
 							font-weight: 400;
