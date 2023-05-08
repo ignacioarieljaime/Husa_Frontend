@@ -78,7 +78,7 @@
 				font-size: 10px;
 			}
 			h2 {
-				font-weight: 300;
+				font-weight: 400;
 				font-size: 16px;
 				line-height: 22px;
 				color: #000000;
@@ -98,12 +98,13 @@
 			font-style: normal;
 			color: #ababb0;
 		}
-		.subjject {
+		.subject {
 			font-weight: 400;
 			font-size: 10px;
 			line-height: 14px;
-			letter-spacing: 0.2em;
 			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			font-size: 10px;
 		}
 		.date {
 			font-weight: 400;
@@ -118,10 +119,19 @@
 	> div {
 		max-width: 1090px;
 		> div {
-			height: 86px;
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			flex-direction: column;
+
+			@include mqm(980) {
+				height: 86px;
+				justify-content: space-between;
+				flex-direction: row;
+			}
+
+			@include mq(980) {
+				padding: 40px 0;
+			}
 
 			> span {
 				font-style: normal;
@@ -129,15 +139,35 @@
 				font-size: 16px;
 				line-height: 22px;
 				color: #00aaa6;
+
+				@include mq(980) {
+					margin-bottom: 32px;
+				}
 			}
 
 			> div {
 				display: flex;
 				align-items: center;
 				gap: 16px;
+				overflow: hidden;
+				transition: all 0.3s;
+				-webkit-transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				-ms-transition: all 0.3s;
+				-o-transition: all 0.3s;
+
+				@include mq(980) {
+					flex-direction: column;
+					gap: 32px;
+				}
 
 				.select_box_custom {
 					position: relative;
+
+					@include mq(980) {
+						width: 220px;
+					}
+
 					> span {
 						font-weight: 400;
 						font-size: 16px;
@@ -153,6 +183,10 @@
 						line-height: 0;
 						border: 1px solid #ffffff;
 						border-radius: 1000px;
+
+						@include mq(980) {
+							font-size: 14px;
+						}
 					}
 					> div {
 						display: none;
@@ -165,6 +199,7 @@
 							left: 0;
 							width: 100%;
 							padding-top: 10px;
+							z-index: 2;
 
 							ul {
 								padding: 0;
@@ -205,6 +240,9 @@
 				}
 				.product_select_box {
 					width: 300px;
+					@include mq(980) {
+						width: 220px;
+					}
 				}
 				.custom_input_box {
 					position: relative;
@@ -231,10 +269,72 @@
 						background-color: transparent;
 						color: #8c8f8f;
 
+						@include mq(980) {
+							width: 220px;
+							font-size: 14px;
+						}
+
 						&:focus {
 							background-color: transparent !important;
 						}
 					}
+				}
+
+				> button {
+					border: 1px solid #ffffff;
+					background-color: transparent;
+					border-radius: 1000px;
+					align-items: center;
+					padding: 0 16px;
+					height: 44px;
+					display: flex;
+					font-style: normal;
+					font-weight: 400;
+					font-size: 10px;
+					color: #ffffff;
+
+					@include mqm(980) {
+						display: none;
+					}
+				}
+			}
+
+			> button {
+				background-color: transparent;
+				display: flex;
+				font-weight: 400;
+				font-size: 12px;
+				border: none;
+				align-items: center;
+				line-height: 17px;
+				color: #ffffff;
+				margin-top: 40px;
+				gap: 10px;
+				padding: 0;
+				@include mqm(980) {
+					display: none;
+				}
+
+				&.close_button {
+					margin: 0;
+
+					svg {
+						transform: rotate(0deg);
+						-webkit-transform: rotate(0deg);
+						-moz-transform: rotate(0deg);
+						-ms-transform: rotate(0deg);
+						-o-transform: rotate(0deg);
+					}
+				}
+
+				svg {
+					width: 10px;
+					height: 6px;
+					transform: rotate(180deg);
+					-webkit-transform: rotate(180deg);
+					-moz-transform: rotate(180deg);
+					-ms-transform: rotate(180deg);
+					-o-transform: rotate(180deg);
 				}
 			}
 		}

@@ -3,11 +3,14 @@ import NewsSearchFilter from '../NewsSearchFilter'
 import CustomImage from 'components/common/CustomImage'
 import PaginationDabbleArrow from 'components/icons/PaginationDabbleArrow'
 import PaginationArrow from 'components/icons/PaginationArrow'
+import { useWindowSize } from 'hooks/useWindowSize'
+import NewsRoomMainNewsItem from '../NewsRoomMainNewsItem'
 
 const NewsPressArchive = () => {
+	const [width] = useWindowSize()
 	return (
 		<>
-			<NewsSearchFilter />
+			<NewsSearchFilter title={'Hisense Press Archive'} />
 			<div className='news_press_archive container'>
 				<div>
 					<div className='items_box'>
@@ -20,8 +23,8 @@ const NewsPressArchive = () => {
 										src={
 											'https://images.unsplash.com/photo-1540634354115-0a35d263fdf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
 										}
-										wrapperWidth={'370px'}
-										wrapperHeight={'100%'}
+										wrapperWidth={width > 600 ? '370px' : '100%'}
+										wrapperHeight={width > 600 ? '100%' : '144px'}
 									/>
 									<div className='text_box'>
 										<span className='subject'>press release</span>

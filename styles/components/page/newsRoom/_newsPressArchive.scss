@@ -11,6 +11,11 @@
 				text-align: center;
 				line-height: 56px;
 				color: #000000;
+
+				@include mq(600) {
+				margin: 48px 0 ;
+					font-size: 24px;
+				}
 			}
 
 			.items {
@@ -25,8 +30,19 @@
 					border-radius: 25px;
 					overflow: hidden;
 
+					@include mq(600) {
+						flex-direction: column;
+						height: unset;
+					}
+
+					img {
+						@include mq(600) {
+							height: 140px !important;
+						}
+					}
+
 					.text_box {
-						padding: 20px 32px;
+						padding: 25px 32px;
 						display: flex;
 						flex-direction: column;
 						justify-content: space-between;
@@ -34,10 +50,11 @@
 
 						.subject {
 							font-weight: 400;
-							font-size: 10px;
 							line-height: 14px;
 							text-transform: uppercase;
 							color: #ababb0;
+							letter-spacing: 0.2em;
+							font-size: 10px;
 						}
 
 						h5 {
@@ -48,6 +65,11 @@
 							color: #000000;
 							margin: 10px 0;
 							max-width: 596px;
+
+							@include mq(600) {
+								line-height: 19px;
+								font-size: 14px;
+							}
 						}
 						.date {
 							font-weight: 400;
@@ -90,9 +112,9 @@
 							margin-bottom: -4px;
 						}
 					}
-                    &.active{
-                        opacity: 1 !important;
-                    }
+					&.active {
+						opacity: 1 !important;
+					}
 				}
 			}
 		}
