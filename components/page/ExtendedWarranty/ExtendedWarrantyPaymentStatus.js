@@ -59,7 +59,9 @@ const ExtendedWarrantyPaymentStatus = ({
 			}
 
 			if (!response?.data?.invoice?.process?.id) {
-				getStatus(router?.query?.invoice)
+				setTimeout(() => {
+					getStatus(router?.query?.invoice)
+				}, 2000)
 				setErrorData(response?.data)
 			} else {
 				setPaymentMessage({
@@ -67,6 +69,7 @@ const ExtendedWarrantyPaymentStatus = ({
 					pdf: 'generated'
 				})
 				setStatusData(response?.data)
+				setErrorData(response?.data)
 				setIsLoading(false)
 				setTimeout(() => {
 					window.open(response.data?.invoice?.product?.warranty_card, '_blank')
@@ -78,8 +81,6 @@ const ExtendedWarrantyPaymentStatus = ({
 				toast.error('Token is invalid', {
 					autoClose: false
 				})
-			} else {
-				toast.error('Something went wrong')
 			}
 			console.log(error)
 		}
@@ -99,14 +100,17 @@ const ExtendedWarrantyPaymentStatus = ({
 							src={content?.image?.src}
 							alt={content?.image?.alt}
 						/>
-						<div
+						{/* <div
 							dangerouslySetInnerHTML={{
 								__html: content?.text?.value
-							}}></div>
+							}}></div> */}
 						<div>
 							<div>
 								payment:{' '}
-								<span className=''>
+								<span
+									style={{
+										color: errorData?.invoice?.transaction ? 'green' : 'red'
+									}}>
 									{errorData?.invoice?.transaction
 										? 'Payment was successful'
 										: "Payment wasn't successful"}
@@ -115,9 +119,15 @@ const ExtendedWarrantyPaymentStatus = ({
 							{errorData?.invoice?.transaction && (
 								<div>
 									PDF:{' '}
-									{errorData?.process
-										? 'Your PDF was generated'
-										: "Your PDF wasn't generated"}
+									<span
+										style={{
+											color: errorData?.invoice?.process ? 'green' : 'red'
+										}}>
+										{' '}
+										{errorData?.invoice?.process
+											? 'Your PDF was generated'
+											: "Your PDF wasn't generated"}
+									</span>
 								</div>
 							)}
 						</div>
@@ -234,11 +244,37 @@ const ExtendedWarrantyPaymentStatus = ({
 				) : (
 					<div className='w-100 d-flex  flex-column align-items-center justify-content-center py-20'>
 						<Spinner className={'mt-5 mb-5'} size={80} />
-						<div>
+						<div className='d-flex  flex-column align-items-center'>
 							<div>
-								payment: <span className=''>{paymentMessage?.transaction}</span>
+								payment:{' '}
+								<span
+									style={{
+										color:
+											paymentMessage?.transaction === 'Checking payment'
+												? 'black'
+												: errorData?.invoice?.transaction
+												? 'green'
+												: 'red'
+									}}>
+									{paymentMessage?.transaction}
+								</span>
 							</div>
-							{paymentMessage?.pdf && <div>PDF: {paymentMessage?.pdf}</div>}
+							{paymentMessage?.pdf && (
+								<div>
+									PDF:{' '}
+									<span
+										style={{
+											color:
+												paymentMessage?.pdf === 'generating PDF'
+													? 'black'
+													: errorData?.invoice?.process
+													? 'green'
+													: 'red'
+										}}>
+										{paymentMessage?.pdf}
+									</span>{' '}
+								</div>
+							)}
 						</div>
 					</div>
 				)}
