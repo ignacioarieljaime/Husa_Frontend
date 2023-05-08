@@ -13,7 +13,6 @@ function CustomImage({
 	wrapperClass,
 	WrapperMaxWidth,
 	WrapperMaxHeight,
-	objectFit = 'contain',
 	onLoad = () => {}
 }) {
 	const image = useRef()
@@ -45,7 +44,6 @@ function CustomImage({
 					position: 'relative'
 				}}>
 				<Image
-					objectFit={objectFit}
 					layout={layout}
 					src={src}
 					alt={alt}

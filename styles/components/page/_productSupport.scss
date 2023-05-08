@@ -71,6 +71,10 @@
 .product_support_head_image {
 	// width: unset !important;
 	max-width: 464px;
+
+	img{
+		object-fit: contain !important;
+	}
 }
 .videos-container-product-support {
 	overflow-y: auto;
