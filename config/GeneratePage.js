@@ -23,22 +23,24 @@ const requestHandler = (async () => {
 const controlPagesAndGenerate = (_pages, _condition) => {
 	UrlController(_pages)
 	_pages.forEach(page => {
-		let pageComponents = FindComponent(page.widgets)
+		if (!page.route.includes(' ')) {
+			let pageComponents = FindComponent(page.widgets)
 
-		if (page.route === '/preview/[pageid]') {
-			if (process.env.APP_LOCATION !== 'production') {
+			if (page.route === '/preview/[pageid]') {
+				if (process.env.APP_LOCATION !== 'production') {
+					PageController(
+						page,
+						GenerateDynamicPageComponents(page, pageComponents, _condition)
+					)
+				}
+			} else {
 				PageController(
 					page,
-					GenerateDynamicPageComponents(page, pageComponents, _condition)
+					page.route === '/404'
+						? GenerateNotFoundPage(page, pageComponents, _condition)
+						: GenerateComponentStructure(page, pageComponents, _condition)
 				)
 			}
-		} else {
-			PageController(
-				page,
-				page.route === '/404'
-					? GenerateNotFoundPage(page, pageComponents, _condition)
-					: GenerateComponentStructure(page, pageComponents, _condition)
-			)
 		}
 	})
 }
