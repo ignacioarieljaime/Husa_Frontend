@@ -8,6 +8,10 @@
 		text-align: center;
 		color: #000000;
 		margin-bottom: 62px;
+		@include mq(768){
+			font-size:34px;
+			line-height: 42px;
+		}
 	}
 	.news_room_slider_box {
 		.swiper-slide {
@@ -18,6 +22,9 @@
 			.slider_item {
 				background-image: url('https://thumbs.dreamstime.com/b/nutural-sunset-grass-green-close-up-meadow-sunset-blurred-background-108156303.jpg');
 				height: 625.5px;
+				@include mq(768){
+					height: 360px;
+				}
 				background-repeat: no-repeat;
 				background-size: cover;
 				border-radius: 50px;
@@ -57,6 +64,10 @@
 						text-align: center;
 						color: #ffffff;
 						margin-bottom: 32px;
+						@include mq(768){
+							font-size: 34px;
+							line-height: 42px;
+						}
 					}
 					h6 {
 						font-style: normal;
@@ -105,9 +116,15 @@
 		}
 		.swiper-button-prev {
 			left: 19%;
+			@include mq(768){
+				left: 8%;
+			}
 		}
 		.swiper-button-next {
 			right: 19%;
+			@include mq(768){
+				right: 8%;
+			}
 		}
 		.swiper-button-prev,
 		.swiper-button-next {

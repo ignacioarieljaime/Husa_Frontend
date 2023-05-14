@@ -1,8 +1,7 @@
 .news_single_slider {
 	.slider_item {
-		height: 810px;
-		background-size: cover !important;
-		background-repeat: no-repeat !important;
+		height: 0;
+		padding-top: 39.8%;
 		position: relative;
 		display: flex;
 		justify-content: center;
@@ -30,6 +29,13 @@
 			left: 0;
 			width: 100%;
 			height: 100vh;
+		}
+		.background{
+			position: absolute !important;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
 		}
 
 		.buttons {
@@ -97,14 +103,24 @@
 	}
 	.swiper-button-prev {
 		left: 127px;
+		@include mq(768){
+			left:8%;
+		}
 	}
 	.swiper-button-next {
 		right: 127px;
+		@include mq(768){
+			right:8%;
+		}
 	}
 	.swiper-button-prev,
 	.swiper-button-next {
 		width: 75px;
 		height: 75px;
+		@include mq(768){
+			width: 55px;
+			height: 55px;
+		}
 		background: #00aaa6;
 		border-radius: 100%;
 		-webkit-border-radius: 100%;

@@ -35,18 +35,36 @@
 		width: 100%;
 		height: 622px;
 		display: flex;
+		@include mq(768) {
+			flex-direction: column;
+			width: calc(50% - 16px);
+			height: auto;
+		}
+		@include mq(550) {
+			width: 100% !important;
+		}
 		> div {
-			width: 50%;
+			width: 50% !important;
+			@include mq(768) {
+				width: 100% !important;
+			}
 		}
 		.text {
 			padding: 64px;
-
+			@include mq(768) {
+				padding: 32px;
+			}
 			h2 {
 				font-style: normal;
 				font-weight: 400;
 				font-size: 34px;
 				line-height: 42px;
 				color: #000000;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 30px;
+					margin: 41px 0;
+				}
 			}
 		}
 	}
@@ -54,10 +72,14 @@
 		display: flex;
 		flex-direction: column;
 		width: calc(50% - 16px);
-
+		@include mq(550) {
+			width: 100% !important;
+		}
 		.text {
 			padding: 32px 64px;
-
+			@include mq(768) {
+				padding: 32px;
+			}
 			h2 {
 				margin: 41px 0;
 				font-style: normal;
@@ -71,9 +93,24 @@
 
 	&.three_item {
 		width: calc(33.3333% - 16px) !important;
-
+		@include mq(768) {
+			flex-direction: column;
+			width: calc(50% - 16px) !important;
+			height: auto;
+		}
+		@include mq(550) {
+			width: 100% !important;
+		}
+		.image {
+			@include mq(768) {
+				height: 268px !important;
+			}
+		}
 		.text {
 			padding: 24px 32px;
+			@include mq(768) {
+				padding: 32px;
+			}
 			.subject {
 				font-size: 10px;
 			}
@@ -83,6 +120,11 @@
 				line-height: 22px;
 				color: #000000;
 				margin: 14px 0;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 30px;
+					margin: 41px 0;
+				}
 			}
 
 			.date {
