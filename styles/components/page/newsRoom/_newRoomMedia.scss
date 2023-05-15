@@ -22,6 +22,25 @@
 			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
 			border-radius: 25px;
 			overflow: hidden;
+			position: relative;
+			.text {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+				-moz-transform: translate(-50%, -50%);
+				-ms-transform: translate(-50%, -50%);
+				-o-transform: translate(-50%, -50%);
+				font-style: normal;
+				font-weight: 400;
+				font-size: 48px;
+				line-height: 56px;
+				color: #ffffff;
+			}
+			a{
+				text-decoration: none;
+			}
 			&:first-child {
 				background: #ffffff;
 				a {
@@ -32,25 +51,6 @@
 				background: linear-gradient(97.93deg, #006664 0%, #fdaf17 100%);
 
 				> div {
-					&:first-child {
-						position: relative;
-						.text {
-							position: absolute;
-							top: 50%;
-							left: 50%;
-							transform: translate(-50%, -50%);
-							-webkit-transform: translate(-50%, -50%);
-							-moz-transform: translate(-50%, -50%);
-							-ms-transform: translate(-50%, -50%);
-							-o-transform: translate(-50%, -50%);
-							font-style: normal;
-							font-weight: 400;
-							font-size: 48px;
-							line-height: 56px;
-							color: #ffffff;
-						}
-					}
-
 					a {
 						padding: 0 16px;
 						height: 52px;
