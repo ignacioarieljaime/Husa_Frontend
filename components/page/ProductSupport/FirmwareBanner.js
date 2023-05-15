@@ -40,7 +40,7 @@ const FirmwareBanner = ({ data }) => {
 		// and redirect to the final destination
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&status[]=3&status[]=1&string=${_value?.title}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&status[]=7&status[]=3&status[]=1&string=${_value}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 			)
 
 			if (response?.data?.data && response?.data?.data.length > 0) {
