@@ -41,16 +41,19 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 				<>
 					<div className='row justify-content-start flex-column align-items-center mb-2 mx-0 flex-nowrap'>
 						<div className='col-3 w-100 d-flex justify-content-center'>
-							<CustomImage
+							{/* <CustomImage
 								src={data?.ProductImage}
 								alt={data?.Description}
-								wrapperWidth={"fit-content"}
+								wrapperWidth={"100%"}
 								wrapperHeight={'256px'}
-							/>
+							/> */}
+							<img src={data?.ProductImage} alt={data?.Description} height={'256px'} />
 						</div>
 						<div className='col-9 d-flex w-100 flex-column mb-5 text-center align-items-center'>
 							<p className='model'>model: {data?.ModelName}</p>
-							<p style={{ fontSize: '1.5rem' }} className='title text-center'>{data?.Description}</p>
+							<p style={{ fontSize: '1.5rem' }} className='title text-center'>
+								{data?.Description}
+							</p>
 						</div>
 						<div className='link_box'>
 							<h5>Hisense Authorized Dealers</h5>
@@ -71,7 +74,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 							<button onClick={() => setIsLocally(false)}>BUY ONLINE</button>
 						</div> */}
 
-						{/* <div className={`white_box  ${isLocally && 'active'}`}>
+					{/* <div className={`white_box  ${isLocally && 'active'}`}>
 							<button
 								className='tab_button'
 								disabled={
@@ -91,7 +94,8 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 									<div
 										key={index}
 										className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
-										<CustomImage src={item?.LogoUrl} wrapperWidth={'100px'} />
+										{/* <CustomImage src={item?.LogoUrl} wrapperWidth={'100px'} /> */}
+										<img src={item?.LogoUrl} width={'100px'} />
 										{/* <div>
 											<div className='check'>Check Retailer</div>
 											<div className='status'>Available</div>

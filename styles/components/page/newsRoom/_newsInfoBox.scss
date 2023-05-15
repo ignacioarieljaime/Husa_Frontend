@@ -1,123 +1,145 @@
 .news_single_info_box {
-	padding: 64px 32px;
-	border: 1px solid #c7c7c9;
-	border-radius: 25px;
-	max-width: 1090px;
-	margin-bottom: 62px;
-
-	.media {
-		display: flex;
-		gap: 32px;
-		align-items: center;
-		margin-bottom: 30px;
-		> span {
-			font-weight: 400;
-			font-size: 16px;
-			line-height: 22px;
-			color: #000000;
-			opacity: 0.6;
-		}
-
-		ul {
-			list-style: none;
-			padding: 0;
+	padding: 12px;
+	.content{
+		margin: 0 auto 62px;
+		max-width: 1090px;
+		border-radius: 25px;
+		padding: 64px 32px;
+		border: 1px solid #c7c7c9;
+		.media {
 			display: flex;
-			gap: 16px;
+			gap: 32px;
 			align-items: center;
-			margin: 0;
-
-			li {
+			margin-bottom: 30px;
+			> span {
+				font-weight: 400;
+				font-size: 16px;
+				line-height: 22px;
+				color: #000000;
+				opacity: 0.6;
+			}
+	
+			ul {
+				list-style: none;
+				padding: 0;
+				display: flex;
+				gap: 16px;
+				align-items: center;
 				margin: 0;
-				a {
-					svg {
-						path {
-							stroke: #00cccc;
-							fill: #00cccc;
+	
+				li {
+					margin: 0;
+					a {
+						svg {
+							path {
+								stroke: #00cccc;
+								fill: #00cccc;
+							}
 						}
 					}
 				}
 			}
 		}
-	}
-
-	.download_box {
-		padding: 32px;
-		background: #103a42;
-		border-radius: 25px;
-		display: flex;
-		list-style: none;
-		gap: 16px;
-		margin-bottom: 48px;
-		flex-wrap: wrap;
-
-		li {
-			width: calc(50% - 16px);
-			a {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 16px;
-				gap: 16px;
-				border: 1px solid #ffffff;
-				border-radius: 1000px;
-				font-style: normal;
-				font-weight: 400;
-				font-size: 14px;
-				line-height: 19px;
-				color: #ffffff;
-
-				svg {
-					path {
-						stroke: #fff;
-						fill: #fff;
-					}
+	
+		.download_box {
+			padding: 32px;
+			background: #103a42;
+			border-radius: 25px;
+			display: flex;
+			list-style: none;
+			gap: 16px;
+			margin-bottom: 48px;
+			flex-wrap: wrap;
+	
+			li {
+				width: calc(50% - 16px);
+				@include mq(575){
+				width: 100%;
+	
 				}
-				&:hover {
-					color: #fff;
+				a {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 16px;
+					gap: 16px;
+					border: 1px solid #ffffff;
+					border-radius: 1000px;
+					font-style: normal;
+					font-weight: 400;
+					font-size: 14px;
+					line-height: 19px;
+					color: #ffffff;
+	
+					svg {
+						path {
+							stroke: #fff;
+							fill: #fff;
+						}
+					}
+					&:hover {
+						color: #fff;
+					}
 				}
 			}
 		}
-	}
-
-	.info {
-		display: flex;
-
-		> div {
-			width: 50%;
-
-			> h5 {
-				margin-bottom: 48px;
-				font-weight: 400;
-				font-size: 20px;
-				line-height: 25px;
-				color: #000000;
+	
+		.info {
+			display: flex;
+			flex-wrap: nowrap;
+			justify-content: center;
+			align-items: flex-start;
+			@include mq(768) {
+				flex-wrap: wrap;
 			}
-
-			> p {
-				font-style: normal;
-				font-weight: 300;
-				font-size: 16px;
-				line-height: 22px;
-				color: #000000;
-			}
-
+	
 			> div {
-				display: flex;
-				> div {width: 50%;
-					h6 {
-						font-weight: 400;
-						font-size: 20px;
-						line-height: 25px;
-						color: #000000;
+				width: 50%;
+				@include mq(768) {
+					&:first-child {
+						margin-bottom: 50px;
 					}
-					ul {
-						padding: 0;
-						list-style: none;
-						li {
-							font-weight: 300;
-							font-size: 16px;
-							line-height: 22px;
+					width: 100%;
+				}
+	
+				> h5 {
+					margin-bottom: 48px;
+					font-weight: 400;
+					font-size: 20px;
+					line-height: 25px;
+					color: #000000;
+					@include mq(768) {
+						margin-bottom: 28px;
+					}
+				}
+	
+				> p {
+					font-style: normal;
+					font-weight: 300;
+					font-size: 16px;
+					line-height: 22px;
+					color: #000000;
+				}
+	
+				> div {
+					display: flex;
+					> div {
+						width: 50%;
+						h6 {
+							font-weight: 400;
+							font-size: 20px;
+							line-height: 25px;
 							color: #000000;
+						}
+						ul {
+							padding: 0;
+							list-style: none;
+							li {
+								font-weight: 300;
+								font-size: 16px;
+								line-height: 22px;
+								color: #000000;
+							}
 						}
 					}
 				}

@@ -1,6 +1,6 @@
 .news_room_media {
 	background: #103a42;
-	padding: 80px 0;
+	padding: 80px 12px;
 	h5 {
 		text-align: center;
 		font-style: normal;
@@ -9,16 +9,29 @@
 		line-height: 56px;
 		color: #ffffff;
 		margin-bottom: 60px;
+		@include mq(768) {
+			font-size: 34px;
+			line-height: 42px;
+		}
 	}
 
 	> div {
 		max-width: 1090px;
 		margin: auto;
 		display: flex;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
 		gap: 16px;
-
+		@include mq(768) {
+			flex-wrap: wrap;
+		}
 		> div {
 			width: 50%;
+			@include mq(768) {
+				width: 100%;
+				max-width: 500px;
+			}
 			box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
 			border-radius: 25px;
 			overflow: hidden;
@@ -37,8 +50,12 @@
 				font-size: 48px;
 				line-height: 56px;
 				color: #ffffff;
+				@include mq(768) {
+					font-size: 34px;
+					line-height: 42px;
+				}
 			}
-			a{
+			a {
 				text-decoration: none;
 			}
 			&:first-child {

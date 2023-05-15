@@ -13,9 +13,11 @@ import { Pagination, Navigation } from 'swiper'
 import CustomImage from 'components/common/CustomImage'
 import ResizeIcon from 'components/icons/ResizeIcon'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
+import { useAspectRatio } from 'hooks/useAspectRatio'
 
 const NewsSingleSlider = () => {
 	const [imageUrl, setImageUrl] = useState(null)
+
 	return (
 		<>
 			<Swiper
@@ -31,11 +33,15 @@ const NewsSingleSlider = () => {
 				{[1, 1, 2, 1].map(item => (
 					<SwiperSlide>
 						<div
-							style={{
-								background:
-									"url('https://images.unsplash.com/photo-1540634354115-0a35d263fdf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')"
-							}}
 							className={`slider_item`}>
+							<CustomImage
+								src={
+									'https://images.unsplash.com/photo-1540634354115-0a35d263fdf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+								}
+								wrapperHeight={'100%'}
+								wrapperWidth={'100%'}
+								className='background'
+							/>
 							<div className='buttons'>
 								<button
 									onClick={() =>

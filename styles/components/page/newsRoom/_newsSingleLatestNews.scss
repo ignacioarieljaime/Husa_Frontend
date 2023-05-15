@@ -7,24 +7,36 @@
 
 			h5 {
 				font-weight: 400;
-				font-size: 48px;
 				text-align: center;
+				font-size: 48px;
 				line-height: 56px;
 				color: #ffffff;
 				margin-bottom: 50px;
+				@include mq(768){
+					font-size: 34px;
+					line-height: 42px;
+				}
 			}
-
+			
 			.items {
 				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: nowrap;
+				@include mq(991){
+					flex-wrap: wrap;
+				}
 				gap: 16px;
 				margin-bottom: 64px;
+				& > div{
+					min-width: 290px;
+				}
 			}
 
 			> a {
 				display: flex;
 				width: fit-content;
 				margin: auto;
-				display: flex;
 				align-items: center;
 				padding: 0 16px;
 				height: 51px;

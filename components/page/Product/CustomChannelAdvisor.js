@@ -36,8 +36,9 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 				<div className='col-3 w-100 d-flex justify-content-center'>
 					<CustomImage
 						src={product?.image}
-						wrapperWidth={"fit-content"}
+						wrapperWidth={'100%'}
 						alt={product?.name}
+						objectFit='contain'
 						wrapperHeight={'256px'}
 					/>
 				</div>

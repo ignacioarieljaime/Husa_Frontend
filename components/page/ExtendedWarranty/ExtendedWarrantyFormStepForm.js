@@ -21,6 +21,21 @@ const ExtendedWarrantyFormStepForm = ({
 	const [label, setlabel] = useState(true)
 	const [date, setDate] = useState('')
 
+	
+
+	const formatDate = (_year, _month, _day) => {
+		if (_year && typeof _month === 'number' && _day) {
+			if (_month < 1) {
+				_month += 12
+				_year -= 1
+			}
+			const maxDate = new Date(`${_year}-${_month}-${_day}`)
+				?.toJSON()
+				?.slice(0, 10)
+			return maxDate
+		}
+	}
+
 	return (
 		<form onSubmit={onSubmit} className='form'>
 			<h3 className='title'>Fill out the form below to complete your order.</h3>
@@ -167,6 +182,12 @@ const ExtendedWarrantyFormStepForm = ({
 									}
 								}))
 							}
+							min={formatDate(
+								new Date().getFullYear(),
+								new Date().getMonth() - 2,
+								new Date().getDate()
+							)}
+							max={new Date().toJSON().slice(0, 10)}
 							required
 							onFocus={() => setlabel(false)}
 							onBlur={() => setlabel(true)}
