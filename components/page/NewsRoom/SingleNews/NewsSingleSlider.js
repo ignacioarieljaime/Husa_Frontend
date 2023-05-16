@@ -15,9 +15,10 @@ import ResizeIcon from 'components/icons/ResizeIcon'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import { useAspectRatio } from 'hooks/useAspectRatio'
 
-const NewsSingleSlider = () => {
+const NewsSingleSlider = ({ data }) => {
+	let { structure } = data
 	const [imageUrl, setImageUrl] = useState(null)
-
+	console.log(structure)
 	return (
 		<>
 			<Swiper
@@ -30,14 +31,12 @@ const NewsSingleSlider = () => {
 				}}
 				modules={[Pagination, Navigation]}
 				className='news_single_slider'>
-				{[1, 1, 2, 1].map(item => (
+				{structure?.list?.value?.map(item => (
 					<SwiperSlide>
-						<div
-							className={`slider_item`}>
+						<div className={`slider_item`}>
 							<CustomImage
-								src={
-									'https://images.unsplash.com/photo-1540634354115-0a35d263fdf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-								}
+								src={item?.image?.src}
+								alt={item?.image?.alt}
 								wrapperHeight={'100%'}
 								wrapperWidth={'100%'}
 								className='background'
@@ -45,20 +44,16 @@ const NewsSingleSlider = () => {
 							<div className='buttons'>
 								<button
 									onClick={() =>
-										setImageUrl(
-											imageUrl
-												? null
-												: 'https://images.unsplash.com/photo-1540634354115-0a35d263fdf6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-										)
+										setImageUrl(imageUrl ? null : item?.image?.src)
 									}>
 									Enlarge Image <ResizeIcon />
 								</button>
-								<a>
+								<a download={true} href={item?.image?.src}>
 									Download Image <DownloadIconV2 />
 								</a>
 							</div>
 
-							<h6>Image caption lorem ipsum.</h6>
+							<h6>{item?.subtitle?.value}</h6>
 						</div>
 					</SwiperSlide>
 				))}

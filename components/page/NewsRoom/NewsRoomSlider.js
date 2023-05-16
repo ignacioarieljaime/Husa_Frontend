@@ -6,41 +6,30 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
-import "swiper/css/navigation";
+import 'swiper/css/navigation'
 
 // import required modules
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from 'swiper'
 import Link from 'next/link'
 
-const NewsRoomSlider = () => {
+const NewsRoomSlider = ({ data }) => {
+	let { structure } = data
 	return (
 		<div className='news_room_slider'>
-			<h3>Newsroom</h3>
-			<Swiper
+			<h3>{structure?.title?.value}</h3>
+			{/* <Swiper
 				slidesPerView={'auto'}
 				spaceBetween={30}
 				loop
-                navigation={true}
+				navigation={true}
 				centeredSlides={true}
 				pagination={{
 					clickable: true
 				}}
-		        modules={[Pagination, Navigation]}
+				modules={[Pagination, Navigation]}
 				className='news_room_slider_box'>
-				{[1, 1, 2, 1].map(item => (
-					<SwiperSlide>
-						<div className='slider_item'>
-							<div>
-								<h5>Hisense TV Annoucement</h5>
-								<h6>Hisense TV Annoucement</h6>
-								<Link href={'/'}>
-									<a>Read More</a>
-								</Link>
-							</div>
-						</div>
-					</SwiperSlide>
-				))}
-			</Swiper>
+		
+			</Swiper> */}
 		</div>
 	)
 }

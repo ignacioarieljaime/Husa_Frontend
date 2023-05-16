@@ -1,6 +1,8 @@
 require('dotenv').config()
 const Axios = require('axios').default
 const PageController = require('../controller/PageController')
+const allPages = require('../rootes.json')
+
 const {
 	FindComponent,
 	GenerateComponentStructure,
@@ -9,20 +11,10 @@ const {
 } = require('../controller/ComponentController')
 const UrlController = require('../controller/UrlController')
 
-const requestHandler = (async () => {
-	console.log('send pages request')
-	try {
-		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`)
-		console.log('get pages')
-		controlPagesAndGenerate(response.data.data, 'pages')
-	} catch (error) {
-		console.log(error)
-	}
-})()
-
 const controlPagesAndGenerate = (_pages, _condition) => {
 	UrlController(_pages)
 	_pages.forEach(page => {
+		page.id === 1801 && console.log(page)
 		if (!page.route.includes(' ')) {
 			let pageComponents = FindComponent(page.widgets)
 
@@ -44,3 +36,15 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 		}
 	})
 }
+
+const requestHandler = (async () => {
+	console.log('send pages request')
+	try {
+		// let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`)
+		console.log('get pages')
+		// controlPagesAndGenerate(response.data.data, 'pages')
+		controlPagesAndGenerate(allPages.data, 'pages')
+	} catch (error) {
+		console.log(error)
+	}
+})()

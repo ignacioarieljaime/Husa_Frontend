@@ -45,11 +45,13 @@
 			right: 75px;
 			top: 65px;
 			gap: 26px;
+			z-index: 22;
 
 			a,
 			button {
 				display: flex;
 				align-items: center;
+				text-decoration: none;
 				padding: 0 16px;
 				gap: 16px;
 				height: 52px;
