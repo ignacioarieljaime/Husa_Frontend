@@ -8,16 +8,19 @@ import NewsRoomMainNewsItem from '../NewsRoomMainNewsItem'
 import axios from 'axios'
 import { useState } from 'react'
 import Spinner from 'components/common/Spinner'
+import NewsRoomPagination from './NewsRoomPagination'
 
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
+	const [pagination, setPagination] = useState()
 
 	const [filters, setFilters] = useState({
-		year: undefined,
-		product: undefined,
-		search: undefined
+		year: '',
+		product: '',
+		search: '',
+		page: 1
 	})
 
 	useEffect(() => {
@@ -28,18 +31,20 @@ const NewsPressArchive = ({ data }) => {
 		setNews('loading')
 		try {
 			let response = await axios.get(
-				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts?type=news&years=${filters.year}&product=${filters.product}&search=${filters.search}`
+				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts?type=news&year=${filters.year}&product=${filters.product}&title=${filters.search}&page=${filters.page}`
 			)
 
 			setNews(response.data.data)
+			setPagination(response.data.meta)
 		} catch (error) {
 			console.log(error)
 		}
 	}
+
 	return (
 		<>
 			<NewsSearchFilter
-				filter={filters}
+				filters={filters}
 				filterHandler={(_key, _value) =>
 					setFilters({ ...filters, [_key]: _value })
 				}
@@ -76,45 +81,12 @@ const NewsPressArchive = ({ data }) => {
 							) : null}
 						</div>
 
-						<ul>
-							<li>
-								<button>
-									<PaginationDabbleArrow />
-								</button>
-							</li>
-							<li>
-								<button>
-									<PaginationArrow />
-								</button>
-							</li>
-							<li className='active'>
-								<button>
-									<span>1</span>
-								</button>
-							</li>
-							<li>
-								<button>
-									{' '}
-									<span>2</span>
-								</button>
-							</li>
-							<li>
-								<button>
-									{' '}
-									<span>3</span>
-								</button>
-							</li>
-							<li className='active'>
-								<button>
-									<PaginationArrow />
-								</button>
-							</li>
-							<li className='active'>
-								<button>
-									<PaginationDabbleArrow />
-								</button>
-							</li>
-						</ul>
+						{pagination && (
+							<NewsRoomPagination
+								handler={(_page => setFilters({ ...filters, page: _page }))}
+								pagination={pagination}
+							/>
+						)}
 					</div>
 				</div>
 			</div>
