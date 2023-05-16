@@ -6,8 +6,38 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
+import Spinner from 'components/common/Spinner'
 
-const BlackFridayProductsItem = ({ onClick, retailers }) => {
+const BlackFridayProductsItem = ({ onClick, product }) => {
+	const router = useRouter()
+	const [retailers, setRetailers] = useState()
+
+	useEffect(() => {
+		getProduct()
+	}, [])
+
+	const getProduct = async () => {
+		setRetailers('loading')
+		try {
+			let response = await GetSingleProduct(router, product?.id)
+			filterRetailer(response.data.data?.retailers)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const filterRetailer = _retailer => {
+		let retailer = []
+
+		_retailer.forEach(element => {
+			if (product?.retailers?.find(item => item === element?.id)) {
+				retailer.push(element)
+			}
+		})
+
+		setRetailers(retailer)
+	}
+
 	return (
 		<div className='retailers_dialog'>
 			<div className='backdrop' onClick={() => onClick(false)}></div>
@@ -18,31 +48,35 @@ const BlackFridayProductsItem = ({ onClick, retailers }) => {
 				<div className='content'>
 					<p>Available at these authorized retailers:</p>
 					<div className='text-center'>
-						{retailers && retailers.length > 0
-							? retailers.map((item, index) =>
-									item?.Media?.url && item?.pivot?.value ? (
-										<Link
+						{retailers === 'loading' ? (
+							<div className='py-5'>
+								<Spinner />
+							</div>
+						) : Array.isArray(retailers) && retailers?.length > 0 ? (
+							retailers.map((item, index) =>
+								item?.Media?.url && item?.pivot?.value ? (
+									<Link
+										target={item?.Media?.target ? item?.Media?.target : '_self'}
+										href={item?.pivot?.value}>
+										<a
 											target={
 												item?.Media?.target ? item?.Media?.target : '_self'
-											}
-											href={item?.pivot?.value}>
-											<a
-												target={
-													item?.Media?.target ? item?.Media?.target : '_self'
-												}>
-												<CustomImage
-													key={index}
-													src={item?.Media?.url}
-													alt={item?.name}
-													wrapperWidth={'125px'}
-													wrapperHeight={'125px'}
-													className='mx-auto'
-												/>
-											</a>
-										</Link>
-									) : null
-							  )
-							: null}
+											}>
+											<CustomImage
+												key={index}
+												src={item?.Media?.url}
+												alt={item?.name}
+												wrapperWidth={'125px'}
+												wrapperHeight={'125px'}
+												className='mx-auto'
+											/>
+										</a>
+									</Link>
+								) : null
+							)
+						) : (
+							'empty'
+						)}
 					</div>
 				</div>
 			</div>
