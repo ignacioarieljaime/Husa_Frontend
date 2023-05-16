@@ -30,7 +30,7 @@ const BlackFridayProductsItem = ({ onClick, product }) => {
 		let retailer = []
 
 		_retailer.forEach(element => {
-			if (product?.retailers?.find(item => item.id === element?.id)) {
+			if (product?.retailers?.find(item => item === element?.id)) {
 				retailer.push(element)
 			}
 		})
