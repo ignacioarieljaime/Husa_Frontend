@@ -3,9 +3,25 @@ import MagnifierIcon from 'components/icons/MagnifierIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useState } from 'react'
 
-const NewsSearchFilter = ({ title = 'Featured News' }) => {
+const NewsSearchFilter = ({
+	title = 'Featured News',
+	filters,
+	filterHandler
+}) => {
 	const [openFilter, setOpenFilter] = useState(false)
 	const [width] = useWindowSize()
+	const [timer, setTimer] = useState(null)
+
+	const inputChanged = e => {
+		clearTimeout(timer)
+
+		const newTimer = setTimeout(() => {
+			filterHandler('search', e.target.value)
+		}, 500)
+
+		setTimer(newTimer)
+	}
+
 	return (
 		<div className='news_room_search_filter'>
 			<div className='container'>
@@ -41,7 +57,7 @@ const NewsSearchFilter = ({ title = 'Featured News' }) => {
 							</div>
 						</div>
 						<div className='custom_input_box'>
-							<input placeholder='search newsroom' />
+							<input onInput={inputChanged} placeholder='search newsroom' />
 							<MagnifierIcon />
 						</div>
 						<button>Reset Filter</button>
