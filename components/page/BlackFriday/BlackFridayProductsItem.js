@@ -171,7 +171,7 @@ const BlackFridayProductsItem = ({ data }) => {
 				<BlackFridayProductsItemDialog
 					onClick={setShowDialog}
 					model={product?.model}
-					retailers={product?.retailers}
+					product={data}
 				/>
 			) : null}
 		</>
