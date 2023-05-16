@@ -14,8 +14,6 @@ const BlackFridayProductsItem = ({ onClick, product }) => {
 
 	useEffect(() => {
 		getProduct()
-		console.log(product);
-	
 	}, [])
 
 	const getProduct = async () => {
