@@ -40,7 +40,7 @@ const CustomChannelAdvisor = ({
 	const filterRetailer = _retailer => {
 		let retailer = []
 		_retailer.forEach(element => {
-			if (customizeRetailerId?.find(item => item === element?.id)) {
+			if (customizeRetailerId?.find(item => item.id === element?.id)) {
 				retailer.push(element)
 			}
 		})
@@ -80,7 +80,7 @@ const CustomChannelAdvisor = ({
 					BUY ONLINE
 				</div>
 			</div> */}
-			<div>
+			<div className='mt-10'>
 				{!loading ? (
 					<>
 						{customizeRetailerId ? (
