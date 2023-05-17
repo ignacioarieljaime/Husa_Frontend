@@ -97,7 +97,6 @@ function ModalChanelAdviser({
 						productData={product}
 						condition={condition}
 						model={model}
-						customizeRetailerId={customizeRetailerId}
 					/>
 				)}
 			</div>
