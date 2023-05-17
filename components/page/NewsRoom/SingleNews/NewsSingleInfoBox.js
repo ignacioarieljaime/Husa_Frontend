@@ -1,9 +1,20 @@
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import FacebookIcon from 'components/icons/FacebookIcon'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import NewsSingleInfoLittleBox from './NewsSingleInfoLittleBox'
 
-const NewsSingleInfoBox = () => {
+const NewsSingleInfoBox = ({ data }) => {
+	const [aboutUs, setAboutUs] = useState()
+	const [mediaContent, setMediaContent] = useState()
+
+	let { structure } = data
+
+	useEffect(() => {
+		setAboutUs(structure?.about?.value?.text?.value)
+		setMediaContent(structure?.about?.value?.text?.value)
+	}, [])
+
 	return (
 		<div className='container news_single_info_box'>
 			<div className='content'>
@@ -19,55 +30,30 @@ const NewsSingleInfoBox = () => {
 						</li>
 					</ul>
 				</div>
+				{structure?.downloads?.value?.length !== 0 && (
+					<ul className='download_box'>
+						{structure?.downloads?.value?.map(item => (
+							<li>
+								<a download={true} href={item?.file?.src}>
+									{item?.file?.title} <DownloadIconV2 />
+								</a>
+							</li>
+						))}
+					</ul>
+				)}
 
-				<ul className='download_box'>
-					<li>
-						<a>
-							Download Text of This Article <DownloadIconV2 />
-						</a>
-					</li>
-					<li>
-						<a>
-							Download Text of This Article <DownloadIconV2 />
-						</a>
-					</li>
-					<li>
-						<a>
-							Download Text of This Article <DownloadIconV2 />
-						</a>
-					</li>
-				</ul>
 				<div className='info'>
 					<div>
-						<h5>Media Contacts</h5>
+						<h5>{structure?.contact?.value?.title?.value}</h5>
 						<div>
-							<div>
-								<h6>Full Name</h6>
-								<ul>
-									<li>Hisense</li>
-									<li>email@hisense.com</li>
-									<li>+1 (000) 000 0000</li>
-								</ul>
-							</div>
-							<div>
-								<h6>Full Name</h6>
-								<ul>
-									<li>Hisense</li>
-									<li>email@hisense.com</li>
-									<li>+1 (000) 000 0000</li>
-								</ul>
-							</div>
+							{structure?.contact?.value?.list?.value.map(item => (
+								<NewsSingleInfoLittleBox data={item} />
+							))}
 						</div>
 					</div>
 					<div>
-						<h5>About Hisense</h5>
-						<p>
-							Hisense USA is the U.S. headquarters that was established by our
-							parent company - Hisense - in Suwanee, GA less then 10 years ago.
-							We are a fast-growing consumer electronics and appliance
-							manufacturer that offers high-quality and cutting-edge TVs and
-							home appliances.
-						</p>
+						<h5> {structure?.about?.value?.title?.value}</h5>
+						<div dangerouslySetInnerHTML={{ __html: aboutUs }}></div>
 					</div>
 				</div>
 			</div>
