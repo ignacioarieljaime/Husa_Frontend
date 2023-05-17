@@ -8,7 +8,13 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { GetSingleProduct } from 'services/Product'
 
-const CustomChannelAdvisor = ({ id, condition, productData, model }) => {
+const CustomChannelAdvisor = ({
+	id,
+	condition,
+	productData,
+	model,
+	customizeRetailerId
+}) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [channelAdvisor, setChannelAdvisor] = useState()
@@ -17,21 +23,21 @@ const CustomChannelAdvisor = ({ id, condition, productData, model }) => {
 
 	useEffect(() => {
 		if (condition) {
-			getData()
+			getChannelAdvisorData()
 		}
 	}, [condition, id])
-
-	const getData = async () => {
-		await getChannelAdvisorData()
-		await getProduct()
-	}
 
 	const getProduct = async () => {
 		try {
 			const response = await GetSingleProduct(router, id)
 			setProduct(response?.data?.data)
-			setLoading(false)
-			orderingRetailer()
+			if (customizeRetailerId) {
+				filterRetailer(response.data.data?.retailers)
+				setLoading(false)
+			} else {
+				orderingRetailer(response?.data?.data)
+				setLoading(false)
+			}
 		} catch (error) {
 			setLoading(false)
 			console.log(error)
@@ -40,6 +46,7 @@ const CustomChannelAdvisor = ({ id, condition, productData, model }) => {
 
 	const getChannelAdvisorData = async () => {
 		setLoading(true)
+		setRetailers('loading')
 		try {
 			let response = await axios(
 				`https://productcatalog.channeladvisor.com/api/v1/offers/models/${model}?maxLocationsPerRetailer=25&maxResultsPerRetailer=25&IncludeVariations=true&tag=Hisense%20US%20EN%20Widget`,
@@ -51,15 +58,16 @@ const CustomChannelAdvisor = ({ id, condition, productData, model }) => {
 				}
 			)
 			setChannelAdvisor(response.data)
+			await getProduct()
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	const orderingRetailer = () => {
+	const orderingRetailer = _product => {
 		let retailer = []
 
-		product?.retailers?.forEach(element => {
+		_product?.retailers?.forEach(element => {
 			if (element?.pivot?.type === 'internal') {
 				retailer.push(element)
 			} else {
@@ -75,6 +83,17 @@ const CustomChannelAdvisor = ({ id, condition, productData, model }) => {
 						}
 					})
 				}
+			}
+		})
+		setRetailers(retailer)
+	}
+
+	const filterRetailer = _retailer => {
+		console.log(_retailer, customizeRetailerId)
+		let retailer = []
+		_retailer.forEach(element => {
+			if (customizeRetailerId?.find(item => item.id === element?.id)) {
+				retailer.push(element)
 			}
 		})
 
@@ -113,8 +132,8 @@ const CustomChannelAdvisor = ({ id, condition, productData, model }) => {
 				</div>
 			</div> */}
 			<div>
-				{!loading ? (
-					retailers && retailers.length > 0 ? (
+				{retailers !== 'loading' ? (
+					retailers.length > 0 ? (
 						retailers.map((item, index) => (
 							<div
 								key={index}

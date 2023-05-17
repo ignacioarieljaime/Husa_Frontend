@@ -13,7 +13,8 @@ function ModalChanelAdviser({
 	handler,
 	model,
 	type,
-	product
+	product,
+	customizeRetailerId
 }) {
 	const modalOverView = useRef()
 	const outside = useOutsideClick(modalOverView)
@@ -81,7 +82,7 @@ function ModalChanelAdviser({
 							</a>
 						</div>
 					</div> */}
-				{/* {type === 'ChannelAdvisor' ? (
+				{type === 'ChannelAdvisor' ? (
 					<>
 						<ChannelAdvisorDynamicRetailer
 							condition={condition}
@@ -89,14 +90,15 @@ function ModalChanelAdviser({
 							productData={product}
 						/>
 					</>
-				) : ( */}
+				) : (
 					<CustomChannelAdvisor
 						id={productId}
 						productData={product}
 						condition={condition}
 						model={model}
+						customizeRetailerId={customizeRetailerId}
 					/>
-				{/* )} */}
+				)}
 			</div>
 		</div>
 	)
