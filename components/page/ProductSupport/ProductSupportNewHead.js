@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
 import SupportFirmwareLoading from 'components/common/SupportFirmwareLoading'
 import { useSwiperSlide } from 'swiper/react'
+import ExclamationMarkIcon from 'components/icons/ExclamationMarkIcon'
 
 function ProductSupportNewHead({ pim }) {
 	const [firmwareData, setFirmwareData] = useState(null)
@@ -62,9 +63,7 @@ function ProductSupportNewHead({ pim }) {
 
 	return (
 		<section className='product product-support-head p-0'>
-			{downloadLoading && 
-			<SupportFirmwareLoading />
-			}
+			{downloadLoading && <SupportFirmwareLoading />}
 
 			<div className='container'>
 				<a ref={downloadRef}></a>
@@ -125,9 +124,9 @@ function ProductSupportNewHead({ pim }) {
 									<p className='fs-base fw-normal mb-0 mt-7'>
 										Firmware and Software
 									</p>
-									<p className='text-warning' style={{ fontSize: '14px' }}>
-										this firmware is intended only intended for the model that
-										is listed
+									<p className='d-flex align-items-start' style={{ fontSize: '14px', color: '#ff0000' }}>
+										<ExclamationMarkIcon />
+										This firmware is intended only for the model that is listed
 									</p>
 									<div className='row align-items-stretch w-100 mb-8'>
 										{firmwareData.map((item, index) => (
