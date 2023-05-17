@@ -9,6 +9,7 @@ import BlackFridayProductsItemDialog from './BlackFridayProductsItemDialog'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { RouteHandler } from 'utils/routeHandler'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 
 const BlackFridayProductsItem = ({ data }) => {
 	const [sortedData, setSortedData] = useState({})
@@ -18,6 +19,7 @@ const BlackFridayProductsItem = ({ data }) => {
 	const [valid, setValid] = useState(false)
 	const [url, setUrl] = useState(null)
 	const router = useRouter()
+	console.log(data);
 
 	const getProduct = async _id => {
 		const response = await GetSingleProduct(router, _id)
@@ -167,13 +169,26 @@ const BlackFridayProductsItem = ({ data }) => {
 					</div>
 				</figure>
 			) : null}
-			{showDialgo ? (
+			{/* {showDialgo ? (
 				<BlackFridayProductsItemDialog
 					onClick={setShowDialog}
 					model={product?.model}
 					product={activeSerie}
 				/>
-			) : null}
+			) : null} */}
+			{product && (
+				<ModalChanelAdviser
+					product={product}
+					productId={activeSerie?.id}
+					type={"static"}
+					condition={showDialgo}
+					handler={setShowDialog}
+					model={product.model}
+					customizeRetailerId={activeSerie?.retailers.filter(retailer =>
+						activeSerie?.selected_retailers.includes(retailer.id)
+					)}
+				/>
+			)}
 		</>
 	)
 }

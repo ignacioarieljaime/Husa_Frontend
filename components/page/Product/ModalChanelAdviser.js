@@ -13,7 +13,8 @@ function ModalChanelAdviser({
 	handler,
 	model,
 	type,
-	product
+	product,
+	customizeRetailerId
 }) {
 	const modalOverView = useRef()
 	const outside = useOutsideClick(modalOverView)
@@ -83,26 +84,19 @@ function ModalChanelAdviser({
 					</div> */}
 				{type === 'ChannelAdvisor' ? (
 					<>
-						{/* {process.env.NEXT_PUBLIC_APP_LOCATION !== 'production' ? ( */}
 						<ChannelAdvisorDynamicRetailer
 							condition={condition}
 							model={model}
 							productData={product}
 						/>
-						{/* ) : (
-							<iframe
-								width={'100%'}
-								style={{ height: '83vh' }}
-								height={'83vh'}
-								src={`https://where-to-buy.co/widgets/core/BuyOnlineBuyLocalV2/index.html?pid=12040849&model=${model}`}
-								frameBorder='0'></iframe>
-						)} */}
 					</>
 				) : (
 					<CustomChannelAdvisor
 						id={productId}
 						productData={product}
 						condition={condition}
+						model={model}
+						customizeRetailerId={customizeRetailerId}
 					/>
 				)}
 			</div>
