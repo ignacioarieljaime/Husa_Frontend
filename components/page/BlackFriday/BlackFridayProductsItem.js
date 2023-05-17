@@ -183,7 +183,9 @@ const BlackFridayProductsItem = ({ data }) => {
 					condition={showDialgo}
 					handler={setShowDialog}
 					model={product.model}
-					customizeRetailerId={activeSerie?.retailers}
+					customizeRetailerId={activeSerie?.retailers.filter(retailer =>
+						activeSerie?.selected_retailers.includes(retailer.id)
+					)}
 				/>
 			)}
 		</>
