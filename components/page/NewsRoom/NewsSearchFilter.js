@@ -3,6 +3,12 @@ import MagnifierIcon from 'components/icons/MagnifierIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useState } from 'react'
 
+let years = []
+
+for (let year = new Date().getFullYear(); year >= 1980; year--) {
+	years.push(year)
+}
+
 const NewsSearchFilter = ({
 	title = 'Featured News',
 	filters,
@@ -34,27 +40,32 @@ const NewsSearchFilter = ({
 						}}>
 						<div className='select_box_custom'>
 							<span>
-								Year <AngleArrow />
+								{filters?.year || 'Year'} <AngleArrow />
 							</span>
 							<div>
 								<ul>
-									<li>
-										<button>2004</button>
-									</li>
+									{years.map(item => (
+										<li>
+											<button onClick={() => filterHandler('year', item)}>
+												{item}
+											</button>
+										</li>
+									))}
 								</ul>
 							</div>
 						</div>
 						<div className='select_box_custom product_select_box'>
 							<span>
-								Product <AngleArrow />
+								{filters?.product || 'Product'}
+								<AngleArrow />
 							</span>
-							<div>
+							{/* <div>
 								<ul>
 									<li>
 										<button>2004</button>
 									</li>
 								</ul>
-							</div>
+							</div> */}
 						</div>
 						<div className='custom_input_box'>
 							<input onInput={inputChanged} placeholder='search newsroom' />

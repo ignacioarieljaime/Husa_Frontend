@@ -18,7 +18,6 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 const NewsSingleSlider = ({ data }) => {
 	let { structure } = data
 	const [imageUrl, setImageUrl] = useState(null)
-	console.log(structure)
 	return (
 		<>
 			<Swiper
@@ -46,10 +45,10 @@ const NewsSingleSlider = ({ data }) => {
 									onClick={() =>
 										setImageUrl(imageUrl ? null : item?.image?.src)
 									}>
-									Enlarge Image <ResizeIcon />
+									{item?.EnlargeBtn?.value} <ResizeIcon />
 								</button>
 								<a download={true} href={item?.image?.src}>
-									Download Image <DownloadIconV2 />
+									{item?.downloadBtn?.title} <DownloadIconV2 />
 								</a>
 							</div>
 

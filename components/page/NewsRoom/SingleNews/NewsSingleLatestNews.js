@@ -11,25 +11,25 @@ const NewsSingleLatestNews = ({ data }) => {
 	const [news, setNews] = useState()
 	const [title, setTitle] = useState()
 
-	console.log(structure)
+	console.log(structure, 's')
 
 	useEffect(() => {
 		setTitle(structure?.title?.value)
-		getNews()
+		// getNews()
 	}, [])
 
-	const getNews = async () => {
-		setNews('loading')
-		try {
-			let response = await axios.get(
-				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts?type=news`
-			)
+	// const getNews = async () => {
+	// 	setNews('loading')
+	// 	try {
+	// 		let response = await axios.get(
+	// 			`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts?type=news`
+	// 		)
 
-			setNews(response.data.data)
-		} catch (error) {
-			console.log(error)
-		}
-	}
+	// 		setNews(response.data.data)
+	// 	} catch (error) {
+	// 		console.log(error)
+	// 	}
+	// }
 	return (
 		<div className='single_news_latest_news'>
 			<div className='container'>
@@ -40,16 +40,23 @@ const NewsSingleLatestNews = ({ data }) => {
 							<Spinner />
 						) : Array.isArray(news) ? (
 							<>
-								{news?.map(
-									(item, index) =>
-										index < structure?.count?.value && (
-											<NewsRoomMainNewsItem data={item} isThree={true} />
-										)
-								)}
+								{structure?.list?.value?.map((item, index) => (
+									<>
+										{' '}
+										<NewsRoomMainNewsItem
+											image={item?.image?.src}
+											title={item?.title?.value}
+											date={item?.date?.value}
+											subject={item?.tagLink?.value}
+											link={item?.link?.value}
+											isThree={true}
+										/>
+									</>
+								))}
 							</>
 						) : null}
 					</div>
-					<Link href={structure?.link?.value || "/"}>
+					<Link href={structure?.link?.value || '/'}>
 						<a>{structure?.link?.title}</a>
 					</Link>
 				</div>
