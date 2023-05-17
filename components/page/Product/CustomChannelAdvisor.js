@@ -27,23 +27,6 @@ const CustomChannelAdvisor = ({
 		}
 	}, [condition, id])
 
-	const getProduct = async () => {
-		try {
-			const response = await GetSingleProduct(router, id)
-			setProduct(response?.data?.data)
-			if (customizeRetailerId) {
-				filterRetailer(response.data.data?.retailers)
-				setLoading(false)
-			} else {
-				orderingRetailer(response?.data?.data)
-				setLoading(false)
-			}
-		} catch (error) {
-			setLoading(false)
-			console.log(error)
-		}
-	}
-
 	const getChannelAdvisorData = async () => {
 		setLoading(true)
 		setRetailers('loading')
@@ -58,20 +41,37 @@ const CustomChannelAdvisor = ({
 				}
 			)
 			setChannelAdvisor(response.data)
-			await getProduct()
+			await getProduct(response.data)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	const orderingRetailer = _product => {
+	const getProduct = async _channelAdvisor => {
+		try {
+			const response = await GetSingleProduct(router, id)
+			setProduct(response?.data?.data)
+			if (customizeRetailerId) {
+				filterRetailer(response.data.data?.retailers)
+				setLoading(false)
+			} else {
+				orderingRetailer(_channelAdvisor, response?.data?.data)
+				setLoading(false)
+			}
+		} catch (error) {
+			setLoading(false)
+			console.log(error)
+		}
+	}
+
+	const orderingRetailer = (_channelAdvisor, _product) => {
 		let retailer = []
 
 		_product?.retailers?.forEach(element => {
 			if (element?.pivot?.type === 'internal') {
 				retailer.push(element)
 			} else {
-				let channelData = channelAdvisor?.OnlineRetailers?.find(
+				let channelData = _channelAdvisor?.OnlineRetailers?.find(
 					item => item.Name.toLowerCase() === element?.name?.toLowerCase()
 				)
 				if (channelData) {
