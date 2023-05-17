@@ -19,7 +19,6 @@ const BlackFridayProductsItem = ({ data }) => {
 	const [valid, setValid] = useState(false)
 	const [url, setUrl] = useState(null)
 	const router = useRouter()
-	console.log(data);
 
 	const getProduct = async _id => {
 		const response = await GetSingleProduct(router, _id)
@@ -180,7 +179,7 @@ const BlackFridayProductsItem = ({ data }) => {
 				<ModalChanelAdviser
 					product={product}
 					productId={activeSerie?.id}
-					type={"static"}
+					type={'static'}
 					condition={showDialgo}
 					handler={setShowDialog}
 					model={product.model}

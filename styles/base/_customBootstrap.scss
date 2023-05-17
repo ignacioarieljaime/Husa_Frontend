@@ -2216,8 +2216,8 @@ header {
 }
 
 .product_news_box_item {
-	.ql-size-small{
-		font-size: 17px!important;
+	.ql-size-small {
+		font-size: 17px !important;
 		line-height: 17px !important;
 		display: flex;
 		font-weight: 100;
@@ -2506,6 +2506,11 @@ header {
 }
 
 .custom_channel_advisor {
+	.custom_channel_advisor_product_image {
+		img {
+			object-fit: contain !important;
+		}
+	}
 	.tab_button:disabled {
 		background-color: transparent !important;
 	}
