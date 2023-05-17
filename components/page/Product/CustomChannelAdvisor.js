@@ -1,3 +1,4 @@
+import axios from 'axios'
 import CustomImage from 'components/common/CustomImage'
 import Spinner from 'components/common/Spinner'
 import GoToPageIcon from 'components/icons/GoToPageIcon'
@@ -11,31 +12,81 @@ const CustomChannelAdvisor = ({
 	id,
 	condition,
 	productData,
+	model,
 	customizeRetailerId
 }) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
-	const [retailers, setRetailers] = useState()
+	const [channelAdvisor, setChannelAdvisor] = useState()
+	const [retailers, setRetailers] = useState([])
 	const router = useRouter()
 
+	useEffect(() => {
+		if (condition) {
+			getChannelAdvisorData()
+		}
+	}, [condition, id])
+
 	const getProduct = async () => {
-		setLoading(true)
 		try {
 			const response = await GetSingleProduct(router, id)
 			setProduct(response?.data?.data)
-			customizeRetailerId && filterRetailer(response.data.data?.retailers)
-			setLoading(false)
+			if (customizeRetailerId) {
+				filterRetailer(response.data.data?.retailers)
+				setLoading(false)
+			} else {
+				orderingRetailer(response?.data?.data)
+				setLoading(false)
+			}
 		} catch (error) {
 			setLoading(false)
 			console.log(error)
 		}
 	}
 
-	useEffect(() => {
-		if (condition) {
-			getProduct()
+	const getChannelAdvisorData = async () => {
+		setLoading(true)
+		setRetailers('loading')
+		try {
+			let response = await axios(
+				`https://productcatalog.channeladvisor.com/api/v1/offers/models/${model}?maxLocationsPerRetailer=25&maxResultsPerRetailer=25&IncludeVariations=true&tag=Hisense%20US%20EN%20Widget`,
+				{
+					headers: {
+						Authorization:
+							'api-key ' + process.env.NEXT_PUBLIC_CHANNEL_ADVISOR_TOKEN
+					}
+				}
+			)
+			setChannelAdvisor(response.data)
+			await getProduct()
+		} catch (error) {
+			console.log(error)
 		}
-	}, [condition, id])
+	}
+
+	const orderingRetailer = _product => {
+		let retailer = []
+
+		_product?.retailers?.forEach(element => {
+			if (element?.pivot?.type === 'internal') {
+				retailer.push(element)
+			} else {
+				let channelData = channelAdvisor?.OnlineRetailers?.find(
+					item => item.Name.toLowerCase() === element?.name?.toLowerCase()
+				)
+				if (channelData) {
+					retailer.push({
+						...element,
+						pivot: {
+							...element.pivot,
+							value: channelData?.CartLink
+						}
+					})
+				}
+			}
+		})
+		setRetailers(retailer)
+	}
 
 	const filterRetailer = _retailer => {
 		let retailer = []
@@ -80,125 +131,62 @@ const CustomChannelAdvisor = ({
 					BUY ONLINE
 				</div>
 			</div> */}
-			<div className='mt-10'>
-				{!loading ? (
-					<>
-						{customizeRetailerId ? (
-							retailers && product?.retailers.length > 0 ? (
-								retailers.map((item, index) => (
-									<div
-										key={index}
-										className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
-										<CustomImage
-											src={item?.Media?.url}
-											alt={item?.name}
-											wrapperWidth={'100px'}
-										/>
-										{/* <div>
+			<div>
+				{retailers !== 'loading' ? (
+					retailers.length > 0 ? (
+						retailers.map((item, index) => (
+							<div
+								key={index}
+								className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
+								<CustomImage
+									src={item?.Media?.url}
+									alt={item?.name}
+									wrapperWidth={'100px'}
+								/>
+								{/* <div>
 									<div className='check'>Check Retailer</div>
 									<div className='status'>Available</div>
 								</div> */}
 
-										<Link
-											href={
-												item?.pivot?.value ? item?.pivot?.value : item?.name
-											}>
-											<a
-												data-retailer={item?.name}
-												onClick={() =>
-													window.dataLayer.push({
-														event: 'view_product',
-														eventData: {
-															retailer: item?.name,
-															productType: productData?.category?.name,
-															productTitle: productData?.name,
-															modal: productData?.model,
-															size: productData?.customFields?.find(
-																item => item.type_name === 'TV filters'
-															)
-																? productData?.customFields
-																		?.find(
-																			item => item.type_name === 'TV filters'
-																		)
-																		?.custom_fields.find(
-																			item => item.name === 'Size class'
-																		)?.value
-																: productData?.custom_fields?.find(
-																		item => item.title === 'Size class'
-																  )
-																? productData?.custom_fields?.find(
-																		item => item.title === 'Size class'
-																  )?.value
-																: ''
-														}
-													})
+								<Link
+									href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
+									<a
+										data-retailer={item?.name}
+										onClick={() =>
+											window.dataLayer.push({
+												event: 'view_product',
+												eventData: {
+													retailer: item?.name,
+													productType: productData?.category?.name,
+													productTitle: productData?.name,
+													modal: productData?.model,
+													size: productData?.customFields?.find(
+														item => item.type_name === 'TV filters'
+													)
+														? productData?.customFields
+																?.find(item => item.type_name === 'TV filters')
+																?.custom_fields.find(
+																	item => item.name === 'Size class'
+																)?.value
+														: productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )
+														? productData?.custom_fields?.find(
+																item => item.title === 'Size class'
+														  )?.value
+														: ''
 												}
-												className='buy_now'>
-												Buy Now
-											</a>
-										</Link>
-									</div>
-								))
-							) : (
-								<p className='no_retailer'>Check Back Soon for Availability.</p>
-							)
-						) : product?.retailers && product?.retailers.length > 0 ? (
-							product?.retailers.map((item, index) => (
-								<div
-									key={index}
-									className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
-									<CustomImage
-										src={item?.Media?.url}
-										alt={item?.name}
-										wrapperWidth={'100px'}
-									/>
-									{/* <div>
-									<div className='check'>Check Retailer</div>
-									<div className='status'>Available</div>
-								</div> */}
-
-									<Link
-										href={item?.pivot?.value ? item?.pivot?.value : item?.name}>
-										<a
-											data-retailer={item?.name}
-											onClick={() =>
-												window.dataLayer.push({
-													event: 'view_product',
-													eventData: {
-														retailer: item?.name,
-														productType: productData?.category?.name,
-														productTitle: productData?.name,
-														modal: productData?.model,
-														size: productData?.customFields?.find(
-															item => item.type_name === 'TV filters'
-														)
-															? productData?.customFields
-																	?.find(
-																		item => item.type_name === 'TV filters'
-																	)
-																	?.custom_fields.find(
-																		item => item.name === 'Size class'
-																	)?.value
-															: productData?.custom_fields?.find(
-																	item => item.title === 'Size class'
-															  )
-															? productData?.custom_fields?.find(
-																	item => item.title === 'Size class'
-															  )?.value
-															: ''
-													}
-												})
-											}
-											className='buy_now'>
-											Buy Now
-										</a>
-									</Link>
-								</div>
-							))
-						) : (
-							<p className='no_retailer'>Check Back Soon for Availability.</p>
-						)}
-					</>
+											})
+										}
+										className='buy_now'>
+										Buy Now
+									</a>
+								</Link>
+							</div>
+						))
+					) : (
+						<p className='no_retailer'>Check Back Soon for Availability.</p>
+					)
 				) : (
 					<div className='py-5'>
 						<Spinner />

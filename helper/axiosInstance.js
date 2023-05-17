@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_PIM_API_ROUTE,
-});
+	baseURL: 'https://impim.dev-api.hisenseportal.com/api/cms'
+})
 
-export default axiosInstance;
+export default axiosInstance
