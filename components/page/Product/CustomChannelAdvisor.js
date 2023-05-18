@@ -43,6 +43,7 @@ const CustomChannelAdvisor = ({
 			setChannelAdvisor(response.data)
 			await getProduct(response.data)
 		} catch (error) {
+			await getProduct()
 			console.log(error)
 		}
 	}

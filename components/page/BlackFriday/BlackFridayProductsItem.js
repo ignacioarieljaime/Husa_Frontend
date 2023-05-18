@@ -37,8 +37,13 @@ const BlackFridayProductsItem = ({ data }) => {
 
 	useEffect(() => {
 		if (sortedData?.series && sortedData?.series.length > 0) {
-			if (sortedData?.series[0]?.id) getProduct(sortedData?.series[0]?.id)
-			setActiveSerie(sortedData?.series[0])
+			for (let element of sortedData?.series) {
+				if (element?.price) {
+					if (element?.id) getProduct(element?.id)
+					setActiveSerie(element)
+					break
+				}
+			}
 		}
 	}, [sortedData])
 
@@ -99,7 +104,7 @@ const BlackFridayProductsItem = ({ data }) => {
 									<div className='types_list'>
 										{sortedData?.series.length > 1
 											? sortedData?.series.map((item, index) =>
-													item?.price && item?.discount ? (
+													Number(item?.price) || Number(item?.discount) ? (
 														<button
 															onClick={() => {
 																getProduct(item.id)
@@ -128,14 +133,16 @@ const BlackFridayProductsItem = ({ data }) => {
 										  ).toFixed(2) * 1}
 								</span>
 								<span className='sale'>
-									{parseFloat(activeSerie?.discount)}% OFF
+									{parseFloat(activeSerie?.discount) || 0}% OFF
 								</span>
-								<div className='old_price'>
-									Reg:{' '}
-									<span className='text-decoration-line-through dir-rtl'>
-										${parseFloat(activeSerie?.price)}
-									</span>
-								</div>
+								{activeSerie?.discount > 0 && (
+									<div className='old_price'>
+										Reg:{' '}
+										<span className='text-decoration-line-through dir-rtl'>
+											${parseFloat(activeSerie?.price)}
+										</span>
+									</div>
+								)}
 							</div>
 							<div className='d-flex flex-wrap justify-content-center gap-2 align-items-center w-100 text-center mt-5 mb-3'>
 								<Link
