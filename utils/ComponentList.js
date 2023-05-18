@@ -43,6 +43,7 @@ const {
 	LaserTvInstallationComponents
 } = require('./components/LaserTvInstallationComponents')
 const { FlightNightComponents } = require('./components/FlightNightComponents')
+const { NbaComponents } = require('./components/NbaComponents')
 module.exports.ComponentList = [
 	...CommonComponents,
 	...AuthorizedRetailers,
@@ -85,6 +86,7 @@ module.exports.ComponentList = [
 	...LaserTvInstallationComponents,
 	...FlightNightComponents,
 	...NewsRoomComponents,
+	...NbaComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'
