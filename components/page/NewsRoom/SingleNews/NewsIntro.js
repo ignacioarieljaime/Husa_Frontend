@@ -1,12 +1,21 @@
+import CopyNewsIcon from 'components/icons/CopyNewsIcon'
 import FacebookIcon from 'components/icons/FacebookIcon'
 import FacebookNewsRoomIcon from 'components/icons/FacebookNewsRoomIcon'
 import MailNewsIcon from 'components/icons/MailNewsIcon'
 import TwitterNewsRoomIcon from 'components/icons/TwitterNewsRoomIcon'
 import Link from 'next/link'
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 const NewsIntro = ({ data }) => {
 	let { structure } = data
+	const [pageUrl, setPageUrl] = useState()
+
+	useEffect(() => {
+		setPageUrl(window.location.href)
+	}, [])
+
 	return (
 		<div className=' container news_intro_box'>
 			<div>
@@ -17,24 +26,28 @@ const NewsIntro = ({ data }) => {
 					<span>Share Article</span>
 					<ul>
 						<li>
-							<a>
+							<a
+								href={`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`}
+								target='_blank'>
 								<FacebookNewsRoomIcon />
 							</a>
 						</li>
 						<li>
-							<a>
+							<a
+								target='_blank'
+								href={`https://twitter.com/intent/tweet?url=<?=urlencode(${pageUrl})?>`}>
 								<TwitterNewsRoomIcon />
 							</a>
 						</li>{' '}
-						<li>
+						{/* <li>
 							<a>
 								<MailNewsIcon />
 							</a>
-						</li>
+						</li> */}
 						<li>
-							<a>
-								<MailNewsIcon />
-							</a>
+							<button onClick={() => navigator.clipboard.writeText(pageUrl)}>
+								<CopyNewsIcon />
+							</button>
 						</li>
 					</ul>
 				</div>
