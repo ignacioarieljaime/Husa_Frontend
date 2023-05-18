@@ -40,7 +40,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 			) : (
 				<>
 					<div className='row justify-content-start flex-column align-items-center mb-2 mx-0 flex-nowrap'>
-						<div className='col-3 w-100'>
+						<div className='col-3 w-100 custom_channel_advisor_product_image'>
 							<CustomImage
 								src={data?.ProductImage}
 								alt={data?.Description}
