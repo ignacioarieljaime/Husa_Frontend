@@ -105,7 +105,7 @@ const NewsRoomNewsBox = ({ data }) => {
 				)}
 				{/* ) : null} */}
 			</div>
-			<Link href={structure?.link?.value}>
+			<Link href={structure?.link?.value || '/'}>
 				<a className='view_archive'>{structure?.link?.title}</a>
 			</Link>
 		</div>
