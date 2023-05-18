@@ -3,14 +3,18 @@ import FacebookIcon from 'components/icons/FacebookIcon'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import NewsSingleInfoLittleBox from './NewsSingleInfoLittleBox'
+import FacebookNewsRoomIcon from 'components/icons/FacebookNewsRoomIcon'
+import TwitterNewsRoomIcon from 'components/icons/TwitterNewsRoomIcon'
+import CopyNewsIcon from 'components/icons/CopyNewsIcon'
 
 const NewsSingleInfoBox = ({ data }) => {
 	const [aboutUs, setAboutUs] = useState()
 	const [mediaContent, setMediaContent] = useState()
-
+	const [pageUrl, setPageUrl] = useState()
 	let { structure } = data
 
 	useEffect(() => {
+		setPageUrl(window.location.href)
 		setAboutUs(structure?.about?.value?.text?.value)
 		setMediaContent(structure?.about?.value?.text?.value)
 	}, [])
@@ -22,11 +26,28 @@ const NewsSingleInfoBox = ({ data }) => {
 					<span>Share Article</span>
 					<ul>
 						<li>
-							<Link href={'/'}>
-								<a>
-									<FacebookIcon />
-								</a>
-							</Link>
+							<a
+								href={`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`}
+								target='_blank'>
+								<FacebookNewsRoomIcon />
+							</a>
+						</li>
+						<li>
+							<a
+								target='_blank'
+								href={`https://twitter.com/intent/tweet?url=<?=urlencode(${pageUrl})?>`}>
+								<TwitterNewsRoomIcon />
+							</a>
+						</li>{' '}
+						{/* <li>
+							<a>
+								<MailNewsIcon />
+							</a>
+						</li> */}
+						<li>
+							<button onClick={() => navigator.clipboard.writeText(pageUrl)}>
+								<CopyNewsIcon />
+							</button>
 						</li>
 					</ul>
 				</div>
