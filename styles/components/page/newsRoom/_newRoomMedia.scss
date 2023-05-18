@@ -36,6 +36,9 @@
 			border-radius: 25px;
 			overflow: hidden;
 			position: relative;
+			> div {
+				position: relative;
+			}
 			.text {
 				position: absolute;
 				top: 50%;

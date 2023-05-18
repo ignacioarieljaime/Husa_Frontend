@@ -11,6 +11,7 @@ const NewsRoomMainNewsItem = ({
 	image,
 	link
 }) => {
+	console.log(title)
 	return (
 		<>
 			<div
@@ -27,7 +28,9 @@ const NewsRoomMainNewsItem = ({
 					<span className='subject'>{subject}</span>
 
 					<h2>
-						<Link href={link || '/'}>{title}</Link>
+						<Link href={link || '/'}>
+							<a>{title}ّ</a>
+						</Link>
 					</h2>
 
 					<span className='date'>{date}</span>
