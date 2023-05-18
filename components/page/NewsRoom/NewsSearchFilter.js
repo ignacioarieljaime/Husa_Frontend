@@ -1,7 +1,8 @@
+import axios from 'axios'
 import AngleArrow from 'components/icons/AngleArrow'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 let years = []
 
@@ -17,6 +18,11 @@ const NewsSearchFilter = ({
 	const [openFilter, setOpenFilter] = useState(false)
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
+	const [filterData, setFilterData] = useState()
+
+	useEffect(() => {
+		getNews()
+	}, [])
 
 	const inputChanged = e => {
 		clearTimeout(timer)
@@ -26,6 +32,17 @@ const NewsSearchFilter = ({
 		}, 500)
 
 		setTimer(newTimer)
+	}
+
+	const getNews = async () => {
+		try {
+			let response = await axios.get(
+				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts/meta?type=news`
+			)
+			setFilterData(response?.data)
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
 	return (
@@ -44,7 +61,12 @@ const NewsSearchFilter = ({
 							</span>
 							<div>
 								<ul>
-									{years.map(item => (
+									<li>
+										<button onClick={() => filterHandler('year', null)}>
+											clear
+										</button>
+									</li>
+									{filterData?.years?.map(item => (
 										<li>
 											<button onClick={() => filterHandler('year', item)}>
 												{item}
@@ -59,13 +81,22 @@ const NewsSearchFilter = ({
 								{filters?.product || 'Product'}
 								<AngleArrow />
 							</span>
-							{/* <div>
+							<div>
 								<ul>
 									<li>
-										<button>2004</button>
+										<button onClick={() => filterHandler('product', null)}>
+											clear
+										</button>
 									</li>
+									{filterData?.tags?.map(item => (
+										<li>
+											<button onClick={() => filterHandler('product', item)}>
+												{item}
+											</button>
+										</li>
+									))}
 								</ul>
-							</div> */}
+							</div>
 						</div>
 						<div className='custom_input_box'>
 							<input onInput={inputChanged} placeholder='search newsroom' />

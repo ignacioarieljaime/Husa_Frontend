@@ -8,9 +8,21 @@ export async function getProductsWithCategoryApi(_categoryId) {
 }
 
 export async function getSettingApi() {
-
 	let response = await axios.get(
 		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getSettings`
+	)
+	return response
+}
+
+export async function GetNewsApi(filters, count) {
+	let response = await axios.get(
+		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=news${
+			filters.year ? '&year=' + filters.year : ''
+		}${filters.product ? '&tag=' + filters.product : ''}${
+			filters.search && '&title=' + filters.search
+		}&page=${filters.page}&perPage=${count || 10}&brand_id=${
+			process.env.NEXT_PUBLIC_BRAND_ID
+		}`
 	)
 	return response
 }
