@@ -1,3 +1,4 @@
+import axios from 'axios'
 import CustomImage from 'components/common/CustomImage'
 import Spinner from 'components/common/Spinner'
 import GoToPageIcon from 'components/icons/GoToPageIcon'
@@ -7,37 +8,107 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { GetSingleProduct } from 'services/Product'
 
-const CustomChannelAdvisor = ({ id, condition, productData }) => {
+const CustomChannelAdvisor = ({
+	id,
+	condition,
+	productData,
+	model,
+	customizeRetailerId
+}) => {
 	const [product, setProduct] = useState(null)
 	const [loading, setLoading] = useState(false)
+	const [channelAdvisor, setChannelAdvisor] = useState()
+	const [retailers, setRetailers] = useState([])
 	const router = useRouter()
 
-	const getProduct = async () => {
+	useEffect(() => {
+		if (condition) {
+			getChannelAdvisorData()
+		}
+	}, [condition, id])
+
+	const getChannelAdvisorData = async () => {
 		setLoading(true)
+		setRetailers('loading')
+		try {
+			let response = await axios(
+				`https://productcatalog.channeladvisor.com/api/v1/offers/models/${model}?maxLocationsPerRetailer=25&maxResultsPerRetailer=25&IncludeVariations=true&tag=Hisense%20US%20EN%20Widget`,
+				{
+					headers: {
+						Authorization:
+							'api-key ' + process.env.NEXT_PUBLIC_CHANNEL_ADVISOR_TOKEN
+					}
+				}
+			)
+			setChannelAdvisor(response.data)
+			await getProduct(response.data)
+		} catch (error) {
+			await getProduct()
+			console.log(error)
+		}
+	}
+
+	const getProduct = async _channelAdvisor => {
 		try {
 			const response = await GetSingleProduct(router, id)
 			setProduct(response?.data?.data)
-			setLoading(false)
+			if (customizeRetailerId) {
+				filterRetailer(response.data.data?.retailers)
+				setLoading(false)
+			} else {
+				orderingRetailer(_channelAdvisor, response?.data?.data)
+				setLoading(false)
+			}
 		} catch (error) {
 			setLoading(false)
 			console.log(error)
 		}
 	}
 
-	useEffect(() => {
-		if (condition) {
-			getProduct()
-		}
-	}, [condition, id])
+	const orderingRetailer = (_channelAdvisor, _product) => {
+		let retailer = []
+
+		_product?.retailers?.forEach(element => {
+			if (element?.pivot?.type === 'internal') {
+				retailer.push(element)
+			} else {
+				let channelData = _channelAdvisor?.OnlineRetailers?.find(
+					item => item.Name.toLowerCase() === element?.name?.toLowerCase()
+				)
+				if (channelData) {
+					retailer.push({
+						...element,
+						pivot: {
+							...element.pivot,
+							value: channelData?.CartLink
+						}
+					})
+				}
+			}
+		})
+		setRetailers(retailer)
+	}
+
+	const filterRetailer = _retailer => {
+		let retailer = []
+		_retailer.forEach(element => {
+			if (customizeRetailerId?.find(item => item.id === element?.id)) {
+				retailer.push(element)
+			}
+		})
+
+		setRetailers(retailer)
+	}
 
 	return (
 		<div className='custom_channel_advisor'>
 			<div className='row flex-column justify-content-start align-items-center mb-2 mx-0 flex-nowrap'>
-				<div className='col-3 w-100'>
+				<div className='col-3 w-100 custom_channel_advisor_product_image'>
 					<CustomImage
 						src={product?.image}
-						alt={product?.name}
 						wrapperWidth={'100%'}
+						alt={product?.name}
+						objectFit='contain'
 						wrapperHeight={'256px'}
 					/>
 				</div>
@@ -62,9 +133,9 @@ const CustomChannelAdvisor = ({ id, condition, productData }) => {
 				</div>
 			</div> */}
 			<div>
-				{!loading ? (
-					product?.retailers && product?.retailers.length > 0 ? (
-						product?.retailers.map((item, index) => (
+				{retailers !== 'loading' ? (
+					retailers.length > 0 ? (
+						retailers.map((item, index) => (
 							<div
 								key={index}
 								className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
