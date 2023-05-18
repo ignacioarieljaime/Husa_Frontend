@@ -17,19 +17,34 @@ const NewsRoomSlider = ({ data }) => {
 	return (
 		<div className='news_room_slider'>
 			<h3>{structure?.title?.value}</h3>
-			{/* <Swiper
+			<Swiper
 				slidesPerView={'auto'}
 				spaceBetween={30}
-				loop
 				navigation={true}
+				
 				centeredSlides={true}
 				pagination={{
 					clickable: true
 				}}
 				modules={[Pagination, Navigation]}
 				className='news_room_slider_box'>
-		
-			</Swiper> */}
+				{structure?.list?.value?.map((item, index) => (
+					<SwiperSlide key={'slider-item-' + index}>
+						<div
+							style={{ backgroundImage: `url(${item?.image?.src})` }}
+							className='slider_item'>
+							<div>
+								<h5>{item?.title?.value}</h5>
+								<h6>{item?.subtitle?.value}</h6>
+								<Link href={item?.btn?.value || '/'}>
+									<a>{item?.btn?.title}</a>
+								</Link>
+							</div>
+						</div>
+					</SwiperSlide>
+				))}
+				F
+			</Swiper>
 		</div>
 	)
 }

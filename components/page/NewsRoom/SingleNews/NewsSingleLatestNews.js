@@ -36,10 +36,10 @@ const NewsSingleLatestNews = ({ data }) => {
 				<div>
 					<h5 dangerouslySetInnerHTML={{ __html: title }}></h5>
 					<div className='items'>
-						{news === 'loading' ? (
+						{/* {news === 'loading' ? (
 							<Spinner />
 						) : Array.isArray(news) ? (
-							<>
+							<> */}
 								{structure?.list?.value?.map((item, index) => (
 									<>
 										{' '}
@@ -53,8 +53,8 @@ const NewsSingleLatestNews = ({ data }) => {
 										/>
 									</>
 								))}
-							</>
-						) : null}
+							{/* </> */}
+						{/* ) : null} */}
 					</div>
 					<Link href={structure?.link?.value || '/'}>
 						<a>{structure?.link?.title}</a>
