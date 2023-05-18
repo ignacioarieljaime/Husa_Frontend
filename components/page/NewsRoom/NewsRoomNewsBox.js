@@ -5,25 +5,35 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import axios from 'axios'
+import Spinner from 'components/common/Spinner'
+import { GetNewsApi } from 'services/cxm'
+import CustomImage from 'components/common/CustomImage'
+import { useWindowSize } from 'hooks/useWindowSize'
+import moment from 'moment'
 
-const NewsRoomNewsBox = () => {
+const NewsRoomNewsBox = ({ data }) => {
+	const [width] = useWindowSize()
+	let { structure } = data
 	const [news, setNews] = useState()
 	const [filters, setFilters] = useState({
-		year: undefined,
-		product: undefined,
-		search: undefined
+		year: '',
+		product: '',
+		search: '',
+		page: 1
 	})
 
 	useEffect(() => {
-		getNews()
+		if (filters?.product || filters?.search || filters?.year) {
+			getNews()
+		} else {
+			setNews(null)
+		}
 	}, [filters])
 
 	const getNews = async () => {
 		setNews('loading')
 		try {
-			let response = await axios.get(
-				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts?type=news&years=${filters.year}&product=${filters.product}&search=${filters.search}`
-			)
+			let response = await GetNewsApi(filters, structure?.count?.value)
 
 			setNews(response.data.data)
 		} catch (error) {
@@ -38,26 +48,65 @@ const NewsRoomNewsBox = () => {
 				filterHandler={(_key, _value) =>
 					setFilters({ ...filters, [_key]: _value })
 				}
-				title={structure?.titleOne?.value}
+				title={structure?.title?.value}
 			/>
-			<div className='container items'>
-				{news === 'loading' ? (
+			<div className='container items '>
+				{/* {news === 'loading' ? (
 					<Spinner />
-				) : Array.isArray(news) ? (
-					news.map(
+				) : Array.isArray(news) ? ( */}
+				{news ? (
+					<>
+						{news === 'loading' ? (
+							<div style={{ width: '100%' }}>
+								<Spinner />
+							</div>
+						) : (
+							<div className='news_room_news_box_search_items'>
+								{news.map(item => (
+									<div>
+										<div style={{ width: width > 600 ? '370px' : '100%' }}>
+											<CustomImage
+												src={
+													item?.meta?.find(
+														element => element?.name === 'property="og:image"'
+													)?.content
+												}
+												wrapperWidth={width > 600 ? '370px' : '100%'}
+												wrapperHeight={width > 600 ? '100%' : '144px'}
+											/>
+										</div>
+										<div className='text_box'>
+											<span className='subject'>{item?.tags[0]}</span>
+											<h5>{item?.title}</h5>
+											<span className='date'>
+												{moment(item?.created_at).format('MMMM DD YYYY')}
+											</span>
+										</div>
+									</div>
+								))}
+							</div>
+						)}
+					</>
+				) : (
+					structure?.list?.value.map(
 						(item, index) =>
 							index <= 5 && (
 								<NewsRoomMainNewsItem
-									data={item}
+									link={item?.link?.value}
+									date={item?.date?.value}
+									image={item?.image?.src}
+									subject={item?.tagLink?.value}
+									title={item?.title?.value}
 									isFirst={index === 0}
 									isThree={index > 2}
 								/>
 							)
 					)
-				) : null}
+				)}
+				{/* ) : null} */}
 			</div>
-			<Link href={'/'}>
-				<a className='view_archive'>View Archive</a>
+			<Link href={structure?.link?.value}>
+				<a className='view_archive'>{structure?.link?.title}</a>
 			</Link>
 		</div>
 	)
