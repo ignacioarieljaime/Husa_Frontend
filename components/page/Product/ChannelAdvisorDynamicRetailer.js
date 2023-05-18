@@ -40,14 +40,14 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 			) : (
 				<>
 					<div className='row justify-content-start flex-column align-items-center mb-2 mx-0 flex-nowrap'>
-						<div className='col-3 w-100 d-flex justify-content-center'>
-							{/* <CustomImage
+						<div className='col-3 w-100 custom_channel_advisor_product_image'>
+							<CustomImage
 								src={data?.ProductImage}
 								alt={data?.Description}
-								wrapperWidth={"100%"}
+								wrapperWidth={'100%'}
 								wrapperHeight={'256px'}
-							/> */}
-							<img src={data?.ProductImage} alt={data?.Description} height={'256px'} />
+							/>
+							{/* <img src={data?.ProductImage} alt={data?.Description} height={'256px'} /> */}
 						</div>
 						<div className='col-9 d-flex w-100 flex-column mb-5 text-center align-items-center'>
 							<p className='model'>model: {data?.ModelName}</p>
