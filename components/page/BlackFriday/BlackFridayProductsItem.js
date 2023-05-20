@@ -135,7 +135,7 @@ const BlackFridayProductsItem = ({ data }) => {
 								<span className='sale'>
 									{parseFloat(activeSerie?.discount) || 0}% OFF
 								</span>
-								{activeSerie?.discount > 0 && (
+								{activeSerie?.discount?.replaceAll('%', '') > 0 && (
 									<div className='old_price'>
 										Reg:{' '}
 										<span className='text-decoration-line-through dir-rtl'>
@@ -199,4 +199,4 @@ const BlackFridayProductsItem = ({ data }) => {
 	)
 }
 
-export default BlackFridayProductsItem
+export default React.memo(BlackFridayProductsItem)
