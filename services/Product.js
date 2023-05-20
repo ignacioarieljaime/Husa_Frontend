@@ -2,7 +2,7 @@ import useFetch from '../hooks/useFetch'
 
 export async function GetProductByFilterApi(navigate, _filter) {
 	let response = await useFetch(navigate).post(
-		`/getProductsByFilterValueCondition?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+		`/getProductsByIds?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 		{
 			condition: 'or',
 			data: _filter
@@ -14,6 +14,13 @@ export async function GetProductByFilterApi(navigate, _filter) {
 export async function GetProductsApi(navigate, _categoryId) {
 	let response = await useFetch(navigate).post(
 		`/getProducts/${_categoryId}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
+	return response
+}
+export async function GetProductsByIdsApi(navigate, ids) {
+	let response = await useFetch(navigate).post(
+		`/getProductsByIds?status[]=1&status[]=3&status[]=7`,
+		{ ids }
 	)
 	return response
 }

@@ -11,7 +11,7 @@ import { RouteHandler } from 'utils/routeHandler'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 
-const BlackFridayProductsItem = ({ data }) => {
+const BlackFridayProductsItem = ({ data, products }) => {
 	const [sortedData, setSortedData] = useState({})
 	const [showDialgo, setShowDialog] = useState(false)
 	const [product, setProduct] = useState(null)
@@ -24,7 +24,6 @@ const BlackFridayProductsItem = ({ data }) => {
 		const response = await GetSingleProduct(router, _id)
 		setProduct(response?.data?.data)
 	}
-
 	useEffect(() => {
 		setSortedData({
 			...data,
@@ -39,7 +38,14 @@ const BlackFridayProductsItem = ({ data }) => {
 		if (sortedData?.series && sortedData?.series.length > 0) {
 			for (let element of sortedData?.series) {
 				if (element?.price) {
-					if (element?.id) getProduct(element?.id)
+					if (products?.series?.length) {
+						products?.series[0]?.values?.productsList?.forEach(item => {
+							item?.id === element?.id && setProduct(item)
+						})
+					} else {
+						setProduct(products)
+					}
+
 					setActiveSerie(element)
 					break
 				}
@@ -61,6 +67,12 @@ const BlackFridayProductsItem = ({ data }) => {
 		if (checkValid()) setValid(true)
 		setUrl(RouteHandler(activeSerie?.id, 'product'))
 	}, [activeSerie])
+
+	const changeTvSizeHandler = _size => {
+		// products?.series[0]?.values?.productsList?.forEach(item => {
+		// 	item?.id === element?.id && setProduct(item)
+		// })
+	}
 
 	return (
 		<>
@@ -107,7 +119,7 @@ const BlackFridayProductsItem = ({ data }) => {
 													Number(item?.price) || Number(item?.discount) ? (
 														<button
 															onClick={() => {
-																getProduct(item.id)
+																changeTvSizeHandler(item)
 																setActiveSerie(item)
 															}}
 															className={`${
