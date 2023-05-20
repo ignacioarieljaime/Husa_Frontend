@@ -19,7 +19,7 @@ export async function GetProductsApi(navigate, _categoryId) {
 }
 export async function GetProductsByIdsApi(navigate, ids) {
 	let response = await useFetch(navigate).post(
-		`/getProductsByIds?status[]=1&status[]=3&status[]=7`,
+		`/getProductsByIds?status[]=1&status[]=3&status[]=7&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 		{ ids }
 	)
 	return response

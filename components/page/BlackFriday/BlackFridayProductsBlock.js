@@ -21,6 +21,8 @@ const BlackFridayProductsBlock = ({ data }) => {
 	useEffect(() => {
 		if (content?.list?.value && content?.list?.value?.length > 0) {
 			getProducts()
+		} else {
+			setProducts([])
 		}
 	}, [content?.list?.value])
 
