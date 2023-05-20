@@ -58,17 +58,21 @@
 						}
 
 						h5 {
-							font-style: normal;
-							font-weight: 400;
-							font-size: 20px;
-							line-height: 25px;
-							color: #000000;
 							margin: 10px 0;
 							max-width: 596px;
-
+							a {
+								font-style: normal;
+								font-weight: 400;
+								font-size: 20px;
+								line-height: 25px;
+								text-decoration: none;
+								color: #000000;
+							}
 							@include mq(600) {
-								line-height: 19px;
-								font-size: 14px;
+								a {
+									line-height: 19px;
+									font-size: 14px;
+								}
 							}
 						}
 						.date {

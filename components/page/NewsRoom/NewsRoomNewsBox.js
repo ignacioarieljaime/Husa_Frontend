@@ -77,7 +77,11 @@ const NewsRoomNewsBox = ({ data }) => {
 										</div>
 										<div className='text_box'>
 											<span className='subject'>{item?.tags[0]}</span>
-											<h5>{item?.title}</h5>
+											<h5>
+												<Link href={item?.route || '/'}>
+													<a>{item?.title}</a>
+												</Link>
+											</h5>
 											<span className='date'>
 												{moment(item?.created_at).format('MMMM DD YYYY')}
 											</span>
@@ -105,7 +109,7 @@ const NewsRoomNewsBox = ({ data }) => {
 				)}
 				{/* ) : null} */}
 			</div>
-			<Link href={structure?.link?.value || "/ّ"}>
+			<Link href={structure?.link?.value || '/ّ'}>
 				<a className='view_archive'>{structure?.link?.title}</a>
 			</Link>
 		</div>

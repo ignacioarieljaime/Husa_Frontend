@@ -11,6 +11,7 @@ import Spinner from 'components/common/Spinner'
 import NewsRoomPagination from './NewsRoomPagination'
 import moment from 'moment/moment'
 import { GetNewsApi } from 'services/cxm'
+import Link from 'next/link'
 
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
@@ -73,7 +74,11 @@ const NewsPressArchive = ({ data }) => {
 										</div>
 										<div className='text_box'>
 											<span className='subject'>{item?.tags[0]}</span>
-											<h5>{item?.title}</h5>
+											<h5>
+												<Link href={item?.route || '/'}>
+													<a>{item?.title}</a>
+												</Link>
+											</h5>
 											<span className='date'>
 												{moment(item?.created_at).format('MMMM DD YYYY')}
 											</span>
