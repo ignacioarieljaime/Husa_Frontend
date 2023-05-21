@@ -11,7 +11,6 @@ const NewsRoomMainNewsItem = ({
 	image,
 	link
 }) => {
-	console.log(title)
 	return (
 		<>
 			<div

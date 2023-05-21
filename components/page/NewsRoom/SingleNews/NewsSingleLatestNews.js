@@ -11,7 +11,6 @@ const NewsSingleLatestNews = ({ data }) => {
 	const [news, setNews] = useState()
 	const [title, setTitle] = useState()
 
-	console.log(structure, 's')
 
 	useEffect(() => {
 		setTitle(structure?.title?.value)
@@ -40,20 +39,19 @@ const NewsSingleLatestNews = ({ data }) => {
 							<Spinner />
 						) : Array.isArray(news) ? (
 							<> */}
-								{structure?.list?.value?.map((item, index) => (
-									<>
-										{' '}
-										<NewsRoomMainNewsItem
-											image={item?.image?.src}
-											title={item?.title?.value}
-											date={item?.date?.value}
-											subject={item?.tagLink?.value}
-											link={item?.link?.value}
-											isThree={true}
-										/>
-									</>
-								))}
-							{/* </> */}
+						{structure?.list?.value?.map((item, index) => (
+							<>
+								<NewsRoomMainNewsItem
+									image={item?.image?.src}
+									title={item?.title?.value}
+									date={item?.date?.value}
+									subject={item?.tagLink?.value}
+									link={item?.link?.value}
+									isThree={true}
+								/>
+							</>
+						))}
+						{/* </> */}
 						{/* ) : null} */}
 					</div>
 					<Link href={structure?.link?.value || '/'}>
