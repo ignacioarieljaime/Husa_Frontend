@@ -108,10 +108,16 @@
 				-moz-transition: all 0.3s;
 				-ms-transition: all 0.3s;
 				-o-transition: all 0.3s;
+				@include mq(768) {
+					width: 40px;
+				}
 			}
 			.swiper-pagination-bullet-active {
 				background: #00aaa6;
 				width: 210px;
+				@include mq(768) {
+					width: 70px;
+				}
 			}
 		}
 		.swiper-button-prev {
