@@ -39,11 +39,12 @@ const NewsSingleInfoBox = ({ data }) => {
 								<TwitterNewsRoomIcon />
 							</a>
 						</li>{' '}
-						{/* <li>
-							<a>
+						<li>
+							<a
+								href={`mailto:user@example.com?subject=Subject&body=${pageUrl}`}>
 								<MailNewsIcon />
 							</a>
-						</li> */}
+						</li>
 						<li>
 							<button onClick={() => navigator.clipboard.writeText(pageUrl)}>
 								<CopyNewsIcon />
