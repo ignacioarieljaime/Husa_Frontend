@@ -110,7 +110,9 @@ const NewsRoomNewsBox = ({ data }) => {
 				{/* ) : null} */}
 			</div>
 			<Link href={structure?.link?.value || '/ّ'}>
-				<a className='view_archive'>{structure?.link?.title}</a>
+				<a className='n-btn outline-black d-block w-fit mx-auto px-4 py-3 my-20'>
+					{structure?.link?.title}
+				</a>
 			</Link>
 		</div>
 	)

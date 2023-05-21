@@ -8,6 +8,13 @@
 		align-items: flex-end;
 		padding-bottom: 110px;
 		position: relative;
+		img {
+			object-fit: cover;
+		}
+		@include mq(768) {
+			padding-top: 0;
+			height: 430px;
+		}
 		&::after {
 			content: ' ';
 			display: flex;
@@ -30,7 +37,7 @@
 			width: 100%;
 			height: 100vh;
 		}
-		.background{
+		.background {
 			position: absolute !important;
 			top: 0;
 			left: 0;
@@ -46,6 +53,10 @@
 			top: 65px;
 			gap: 26px;
 			z-index: 22;
+			@include mq(768) {
+				right: 15px;
+				top: 25px;
+			}
 
 			a,
 			button {
@@ -60,16 +71,31 @@
 				font-style: normal;
 				font-weight: 400;
 				font-size: 16px;
-				line-height: 9px;
+				line-height: 22px;
 				text-align: center;
 				letter-spacing: -0.02em;
 				color: #ffffff;
 				background-color: transparent;
-
+				@include mq(768) {
+					font-size: 12px;
+					line-height: 12px;
+					padding: 12px !important;
+					gap: 8px;
+				}
 				svg {
+					transition: inherit;
 					path {
+						transition: inherit;
 						stroke: #fff;
 						fill: #fff;
+					}
+				}
+				&:hover {
+					svg {
+						path {
+							stroke: #000;
+							fill: #000;
+						}
 					}
 				}
 			}
@@ -105,21 +131,21 @@
 	}
 	.swiper-button-prev {
 		left: 127px;
-		@include mq(768){
-			left:8%;
+		@include mq(768) {
+			left: 8%;
 		}
 	}
 	.swiper-button-next {
 		right: 127px;
-		@include mq(768){
-			right:8%;
+		@include mq(768) {
+			right: 8%;
 		}
 	}
 	.swiper-button-prev,
 	.swiper-button-next {
 		width: 75px;
 		height: 75px;
-		@include mq(768){
+		@include mq(768) {
 			width: 55px;
 			height: 55px;
 		}

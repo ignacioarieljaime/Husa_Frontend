@@ -17,6 +17,8 @@
 			color: #000000;
 			max-width: 838px;
 			margin-bottom: 30px;
+			overflow: hidden;
+			word-wrap: break-word;
 			@include mq(768) {
 				font-size: 34px;
 				line-height: 42px;

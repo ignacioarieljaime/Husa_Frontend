@@ -33,7 +33,6 @@
 						background-color: transparent;
 						padding: 0;
 						border: none;
-
 					}
 					a {
 						svg {
@@ -56,7 +55,7 @@
 			gap: 16px;
 			margin-bottom: 48px;
 			flex-wrap: wrap;
-
+			cursor: pointer;
 			li {
 				width: calc(50% - 16px);
 				@include mq(575) {
@@ -119,16 +118,24 @@
 					}
 				}
 
-				> p {
+				p {
+					strong {
+						font-weight: 400;
+						font-size: 20px;
+						line-height: 25px;
+					}
 					font-style: normal;
 					font-weight: 300;
 					font-size: 16px;
 					line-height: 22px;
 					color: #000000;
+					margin-bottom: 12px;
+					word-break: break-all;
 				}
 
 				> div {
 					display: flex;
+					gap: 8px;
 					> div {
 						width: 50%;
 						h6 {
