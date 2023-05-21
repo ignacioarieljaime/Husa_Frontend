@@ -57,7 +57,7 @@ const NewsRoomNewsBox = ({ data }) => {
 				{news ? (
 					<>
 						{news === 'loading' ? (
-							<div style={{ width: '100%' }}>
+							<div style={{ width: '100%', marginBottom: '30px' }}>
 								<Spinner />
 							</div>
 						) : (
@@ -109,9 +109,11 @@ const NewsRoomNewsBox = ({ data }) => {
 				)}
 				{/* ) : null} */}
 			</div>
-			<Link href={structure?.link?.value || '/ّ'}>
-				<a className='view_archive'>{structure?.link?.title}</a>
-			</Link>
+			{!news && (
+				<Link href={structure?.link?.value || '/ّ'}>
+					<a className='view_archive'>{structure?.link?.title}</a>
+				</Link>
+			)}
 		</div>
 	)
 }
