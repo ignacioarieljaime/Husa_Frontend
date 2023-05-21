@@ -21,7 +21,6 @@ const NewsRoomSlider = ({ data }) => {
 				slidesPerView={'auto'}
 				spaceBetween={30}
 				navigation={true}
-				
 				centeredSlides={true}
 				pagination={{
 					clickable: true
@@ -43,7 +42,6 @@ const NewsRoomSlider = ({ data }) => {
 						</div>
 					</SwiperSlide>
 				))}
-				F
 			</Swiper>
 		</div>
 	)
