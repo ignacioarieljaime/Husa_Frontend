@@ -92,11 +92,11 @@ function ModalChanelAdviser({
 					</>
 				) : (
 					<CustomChannelAdvisor
+						customizeRetailerId={customizeRetailerId}
 						id={productId}
 						productData={product}
 						condition={condition}
 						model={model}
-						customizeRetailerId={customizeRetailerId}
 					/>
 				)}
 			</div>

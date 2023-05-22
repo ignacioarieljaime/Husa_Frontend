@@ -96,8 +96,8 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 			setLoading('button')
 			try {
 				let response = await submitForm(formBody)
+				console.log(response);
 				router.push(response?.data?.url)
-
 				// await redirectToPayment(response?.data?.invoice?.token)
 				// setLoading(null)
 			} catch (error) {
