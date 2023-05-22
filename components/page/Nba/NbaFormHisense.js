@@ -9,16 +9,12 @@ import LaserInstallationDropDownSelectBoxMulti from '../LaserTvInstallation/Lase
 import FlightNightCustomCheckbox from '../FlightNight/FlightNightCustomCheckbox'
 
 const familiarity = [
-	{ name: 'Very familiar', value: 'Very familiar' },
-	{ name: 'Somewhat familiar', value: 'Somewhat familiar' },
-	{ name: 'Not familiar', value: 'Not familiar' },
-	{ name: 'Unsure', value: 'Unsure' }
+	{ name: 'YES', value: 'Y' },
+	{ name: 'NO', value: 'N' }
 ]
 const nextTv = [
-	{ name: 'Very much so', value: 'Very much so' },
-	{ name: ' A little more', value: ' A little more' },
-	{ name: 'Unsure', value: 'Unsure' },
-	{ name: 'Not at all', value: 'Not at all' }
+	{ name: 'YES', value: 'Y' },
+	{ name: 'NO', value: 'N' }
 ]
 
 const brand = [
@@ -38,9 +34,10 @@ const NbaFormHisense = ({
 	loading,
 	errors,
 	submitText,
-	termsData
+	termsData,
+	terms,
+	setTerms
 }) => {
-	const [terms, setTerms] = useState(false)
 	const [updated, setUpdated] = useState(false)
 	const [modalStatus, setModalStatus] = useState(false)
 	const [text, setText] = useState(null)
@@ -59,21 +56,19 @@ const NbaFormHisense = ({
 				<h3 dangerouslySetInnerHTML={{ __html: title }} className='title'></h3>
 				<div className='line top'></div>
 				<div className='row justify-content-center align-items-center mx-0'>
-					<div className='col-12 px-4 pb-8'>
+					<div className='col-12 col-md-6 px-4 pb-8'>
 						<div className='form_select_field  position-relative z-6'>
 							<label className='label'>
-								How familiar with Hisense were you before today? *
+								Were you familiar with “Hisense” before today?
 							</label>
 							<LaserInstallationDropDownSelectBox
 								options={familiarity}
 								// disabledOptions={[{ name: 'Where did you purchase?' }]}
-								value={data.how_familiar_hisense}
+								value={data.were_you_familiar}
 								placeholder='Choose your answer'
-								onChange={value =>
-									onChange('how_familiar_hisense', value.value)
-								}
+								onChange={value => onChange('were_you_familiar', value.value)}
 							/>
-							{errors?.how_familiar_hisense ? (
+							{errors?.were_you_familiar ? (
 								<p
 									style={{
 										color: 'red',
@@ -82,25 +77,25 @@ const NbaFormHisense = ({
 										left: '0'
 									}}
 									className='error mt-2'>
-									{errors?.how_familiar_hisense}
+									{errors?.were_you_familiar}
 								</p>
 							) : null}
 						</div>
 					</div>
-					<div className='col-12 px-4 pb-8'>
+					<div className='col-12 col-md-6 px-4 pb-8'>
 						<div className='form_select_field  position-relative z-5'>
 							<label className='label'>
-								After today, are you more likely to consider Hisense for your
-								next TV? *
+								Are you more likely to purchase products from an official NBA
+								sponsor?
 							</label>
 							<LaserInstallationDropDownSelectBox
 								options={nextTv}
 								// disabledOptions={[{ name: 'Where did you purchase?' }]}
-								value={data.consider_hisense_tv}
+								value={data.are_you_more_likely}
 								placeholder='Choose your answer'
-								onChange={value => onChange('consider_hisense_tv', value.value)}
+								onChange={value => onChange('are_you_more_likely', value.value)}
 							/>{' '}
-							{errors?.consider_hisense_tv ? (
+							{errors?.are_you_more_likely ? (
 								<p
 									style={{
 										color: 'red',
@@ -109,41 +104,41 @@ const NbaFormHisense = ({
 										left: '0'
 									}}
 									className='error mt-2'>
-									{errors?.consider_hisense_tv}
+									{errors?.are_you_more_likely}
 								</p>
 							) : null}
 						</div>
 					</div>
-					<div className='col-12 px-4 pb-8'>
-						<div className='form_select_field position-relative  z-4'>
-							<label className='label'>
-								Which TV brands do you currently own at home?
-								<small className='d-block text-white fw-light fst-italic fs-9 text-capitalize'>
-									Multiple options can be selected
-								</small>
-							</label>
-							<LaserInstallationDropDownSelectBoxMulti
-								options={brand}
-								// disabledOptions={[{ name: 'Where did you purchase?' }]}
-								value={data.which_brand_own}
-								placeholder='Choose your answer'
-								onChange={newValue => onChange('which_brand_own', newValue)}
-							/>{' '}
-							{errors?.which_brand_own ? (
-								<p
-									style={{
-										color: 'red',
-										position: 'absolute',
-										bottom: '-42px',
-										left: '0'
-									}}
-									className='error mt-2'>
-									{errors?.which_brand_own}
-								</p>
-							) : null}
-						</div>
+					{/* <div className='col-12 col-md-6 px-4 pb-8'>
+					<div className='form_select_field position-relative  z-4'>
+						<label className='label'>
+							Which TV brands do you currently own at home?
+							<small className='d-block text-white fw-light fst-italic fs-9 text-capitalize'>
+								Multiple options can be selected
+							</small>
+						</label>
+						<LaserInstallationDropDownSelectBoxMulti
+							options={brand}
+							// disabledOptions={[{ name: 'Where did you purchase?' }]}
+							value={data.which_brand_own}
+							placeholder='Choose your answer'
+							onChange={newValue => onChange('which_brand_own', newValue)}
+						/>{' '}
+						{errors?.which_brand_own ? (
+							<p
+								style={{
+									color: 'red',
+									position: 'absolute',
+									bottom: '-42px',
+									left: '0'
+								}}
+								className='error mt-2'>
+								{errors?.which_brand_own}
+							</p>
+						) : null}
 					</div>
-					<div className='col-12 px-4 pt-4'>
+				</div> */}
+					<div className='col-12 col-md-6 px-4 pt-4'>
 						<FlightNightCustomCheckbox
 							status={terms}
 							onClick={() => setTerms(prevState => !prevState)}>
@@ -165,7 +160,7 @@ const NbaFormHisense = ({
 							</p>
 						</FlightNightCustomCheckbox>
 					</div>
-					<div className='col-12 px-4 pt-4'>
+					<div className='col-12 col-md-6 px-4 pt-4'>
 						<FlightNightCustomCheckbox
 							status={updated}
 							onClick={() => {
@@ -177,10 +172,8 @@ const NbaFormHisense = ({
 							</p>
 						</FlightNightCustomCheckbox>
 					</div>
-					<div className='col-12 pt-12 text-center'>
-						<button
-							disabled={!terms || loading ? true : false}
-							className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
+					<div className='col-12 col-md-6 pt-12 text-center'>
+						<button className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
 							{submitText}
 							{loading && <Spinner size={20} />}
 						</button>
