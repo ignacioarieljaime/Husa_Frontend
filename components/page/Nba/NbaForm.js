@@ -55,7 +55,7 @@ const NbaForm = ({ data }) => {
 				future_news: 0
 			})
 			if (response.status === 200) {
-				toast.success('form submitted', {
+				toast.success('Registration Complete', {
 					toastId: 'submit_success'
 				})
 				setTerms(false)
