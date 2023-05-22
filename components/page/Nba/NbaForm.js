@@ -76,7 +76,7 @@ const NbaForm = ({ data }) => {
 
 	return (
 		<section>
-			<form onSubmit={submitData} className='flight_night_form'>
+			<form onSubmit={submitData} className='flight_night_form nba'>
 				<NbaFormPersonal
 					title={structure?.title?.value}
 					data={dataSchema}
