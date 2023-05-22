@@ -29,7 +29,7 @@ const NewsRoomMainNewsItem = ({
 
 					<h2>
 						<Link href={link || '/'} target={target || '_self'}>
-							<a>{title}</a>
+							<a target={target || '_self'}>{title}</a>
 						</Link>
 					</h2>
 

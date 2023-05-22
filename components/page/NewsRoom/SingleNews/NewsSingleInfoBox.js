@@ -42,6 +42,7 @@ const NewsSingleInfoBox = ({ data }) => {
 						</li>{' '}
 						<li>
 							<a
+								target='_blank'
 								href={`mailto:user@example.com?subject=Subject&body=${pageUrl}`}>
 								<MailNewsIcon />
 							</a>
