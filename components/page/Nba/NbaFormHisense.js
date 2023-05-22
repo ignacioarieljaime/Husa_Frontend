@@ -56,7 +56,7 @@ const NbaFormHisense = ({
 				<h3 dangerouslySetInnerHTML={{ __html: title }} className='title'></h3>
 				<div className='line top'></div>
 				<div className='row justify-content-center align-items-center mx-0'>
-					<div className='col-12 col-md-6 px-4 pb-8'>
+					<div className='col-12 px-4 pb-8'>
 						<div className='form_select_field  position-relative z-6'>
 							<label className='label'>
 								Were you familiar with “Hisense” before today?
@@ -82,7 +82,7 @@ const NbaFormHisense = ({
 							) : null}
 						</div>
 					</div>
-					<div className='col-12 col-md-6 px-4 pb-8'>
+					<div className='col-12 px-4 pb-8'>
 						<div className='form_select_field  position-relative z-5'>
 							<label className='label'>
 								Are you more likely to purchase products from an official NBA
@@ -109,7 +109,7 @@ const NbaFormHisense = ({
 							) : null}
 						</div>
 					</div>
-					{/* <div className='col-12 col-md-6 px-4 pb-8'>
+					{/* <div className='col-12 px-4 pb-8'>
 					<div className='form_select_field position-relative  z-4'>
 						<label className='label'>
 							Which TV brands do you currently own at home?
@@ -138,7 +138,7 @@ const NbaFormHisense = ({
 						) : null}
 					</div>
 				</div> */}
-					<div className='col-12 col-md-6 px-4 pt-4'>
+					<div className='col-12 px-4 pt-4'>
 						<FlightNightCustomCheckbox
 							status={terms}
 							onClick={() => setTerms(prevState => !prevState)}>
@@ -160,7 +160,7 @@ const NbaFormHisense = ({
 							</p>
 						</FlightNightCustomCheckbox>
 					</div>
-					<div className='col-12 col-md-6 px-4 pt-4'>
+					<div className='col-12 px-4 pt-4'>
 						<FlightNightCustomCheckbox
 							status={updated}
 							onClick={() => {
@@ -172,7 +172,7 @@ const NbaFormHisense = ({
 							</p>
 						</FlightNightCustomCheckbox>
 					</div>
-					<div className='col-12 col-md-6 pt-12 text-center'>
+					<div className='col-12 pt-12 text-center'>
 						<button className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
 							{submitText}
 							{loading && <Spinner size={20} />}
