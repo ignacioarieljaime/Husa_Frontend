@@ -5,6 +5,58 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 16px;
+
+		
+	}
+	.pagination{
+		margin-bottom: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		> ul {
+			list-style: none;
+			padding: 0;
+			margin: auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 20px;
+
+			li {
+				&:first-child,
+				&:nth-child(2) {
+					transform: rotate(180deg);
+					-webkit-transform: rotate(180deg);
+					-moz-transform: rotate(180deg);
+					-ms-transform: rotate(180deg);
+					-o-transform: rotate(180deg);
+				}
+				opacity: 0.5;
+				button {
+					display: flex;
+					align-items: center;
+					padding: 0;
+					background-color: transparent;
+					border: none;
+
+					span {
+						display: block;
+						margin-bottom: -4px;
+					}
+				}
+				&.active {
+					opacity: 1 !important;
+
+					button {
+						&:disabled {
+							background: transparent !important;
+							opacity: 0.5;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.view_archive {

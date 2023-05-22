@@ -57,7 +57,7 @@ const NewsSingleInfoBox = ({ data }) => {
 					<ul className='download_box'>
 						{structure?.downloads?.value?.map(item => (
 							<li>
-								<a download={true} href={item?.file?.src}>
+								<a download target='_blank' href={item?.file?.src}>
 									{item?.file?.title} <DownloadIconV2 />
 								</a>
 							</li>
