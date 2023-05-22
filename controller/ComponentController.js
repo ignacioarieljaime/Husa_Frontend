@@ -125,6 +125,60 @@ ${
 							return { props: { pim,data }}
 						}
 	 }`
+		: _page.model_type === 'post'
+		? `  export async function getServerSideProps({req,res}) {		
+		res.setHeader(
+			'Cache-Control',
+			'public, s-maxage=10, stale-while-revalidate=59'
+		)
+		console.log('send cxm request')
+			let data = await axios
+			   .get(
+				   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
+				   {
+					   headers: {
+						   'CLIENT_ID': req.ip
+					   }
+				   }
+			   )
+			   .then(response => {
+				   console.log('get cxm data')
+				   return response.data
+			   })
+			   .catch(error => {
+				   console.error('Error:', error)
+				   return null
+			   })	
+			console.log('send pim request')
+			 let pim = await axios
+					.get(
+						'${process.env.CXM_API_ROUTE}/getPostInfo/${_page.post?.id}'
+					)
+					.then(response => {
+						console.log('get pim data')
+						return response.data.data
+					})
+					.catch(error => {
+						if (error?.response?.status === 404) {
+							return 404
+						}
+						console.error('Error:', error)
+						return null
+					})
+			
+				if (pim === 404) {
+					return {
+						notFound: true
+					}
+				}
+					if (data?.status?.name !== 'Published' || data?.status_id === 2) {
+						return {
+							notFound: true
+						}
+					} else {
+						return { props: { pim,data }}
+					}
+ }`
 		: `export async function getServerSideProps({req,res}) {		
 			res.setHeader(
 				'Cache-Control',
@@ -222,7 +276,12 @@ return (
 	console.log('send cxm request')
 	let data = await axios
 		.get(
-			'${process.env.CXM_API_ROUTE}/getPageInfo/' + query.pageid,
+${
+	_page.post
+		? '${process.env.CXM_API_ROUTE}/getPostInfo/${_page.post?.id}'
+		: '"${process.env.CXM_API_ROUTE}/getPageInfo/" + query.pageid'
+}
+		,
 			{
 				headers: {
 					CLIENT_ID: req.ip
@@ -241,7 +300,9 @@ return (
 
 	if (data?.model_id && data?.model_id > 0) {
 		pim = await axios
-			.get("${process.env.PIM_API_ROUTE}/getProduct/" + data.model_id + "?status[]=1&status[]=2&status[]=3")
+			.get("${
+				process.env.PIM_API_ROUTE
+			}/getProduct/" + data.model_id + "?status[]=1&status[]=2&status[]=3")
 			.then(response => {
 				console.log('get pim data')
 				return response.data.data

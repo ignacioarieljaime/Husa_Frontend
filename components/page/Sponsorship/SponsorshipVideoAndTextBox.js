@@ -19,7 +19,7 @@ function SponsorshipVideoAndTextBox({ data }) {
 		<section className='sponsor-ship-bg'>
 			<div className='container pt-20'>
 				<div className='video-container rounded-0'>
-					{content?.video?.value?.includes('player.vimeo.com') ? (
+					{content?.video?.value?.includes('vimeo') ? (
 						<iframe src={content?.video?.value}></iframe>
 					) : (
 						<video
@@ -33,7 +33,7 @@ function SponsorshipVideoAndTextBox({ data }) {
 					)}
 
 					{!playVideo &&
-					!content?.video?.value?.includes('player.vimeo.com') ? (
+					!content?.video?.value?.includes('vimeo') ? (
 						<button
 							onClick={() => videoHandler(true)}
 							id='video-play-btn'

@@ -27,6 +27,7 @@ const { HomePageMB } = require('./components/HomePageMB')
 const { NewHomePageComponents } = require('./components/NewHomePage')
 const { HomeAppliances } = require('./components/HomeAppliances')
 const { AuthorizedRetailers } = require('./components/AuthorizedRetailers')
+const { NewsRoomComponents } = require('./components/NewsRoomComponents')
 const {
 	ExtendedWarrantyComponents
 } = require('./components/ExtendedWarrantyComponents')
@@ -42,6 +43,7 @@ const {
 	LaserTvInstallationComponents
 } = require('./components/LaserTvInstallationComponents')
 const { FlightNightComponents } = require('./components/FlightNightComponents')
+const { NbaComponents } = require('./components/NbaComponents')
 module.exports.ComponentList = [
 	...CommonComponents,
 	...AuthorizedRetailers,
@@ -83,6 +85,8 @@ module.exports.ComponentList = [
 	...HVACComponents,
 	...LaserTvInstallationComponents,
 	...FlightNightComponents,
+	...NewsRoomComponents,
+	...NbaComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'

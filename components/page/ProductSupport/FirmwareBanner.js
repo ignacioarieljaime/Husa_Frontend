@@ -30,31 +30,43 @@ const FirmwareBanner = ({ data }) => {
 	}, [])
 
 	useEffect(() => {
-		if (model?.model?.title) getPageUrl(model?.model?.title)
+		if (model?.model?.title) getPageUrl(model?.model)
 	}, [model])
 
 	const getPageUrl = async _value => {
-		// this method called after getModel method 
+		// this method called after getModel method
 		// this method send request to cxm to getting product url by product model
 		// because this method get us list of products we should find the specific model in the response
 		// and redirect to the final destination
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&status[]=3&status[]=1&status[]=7&string=${_value}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&status[]=7&status[]=3&status[]=1&string=${_value}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 			)
 
 			if (response?.data?.data && response?.data?.data.length > 0) {
-				response?.data?.data.forEach(
-					item =>
-						item.product.model === _value &&
-						router.push(
-							{
-								pathname: item.route,
-								query: { model: JSON.stringify(model?.files) }
-							},
-							item.route
-						)
+				let product = response?.data?.data.find(
+					item => item?.product?.id === _value?.pid
 				)
+				if (product) {
+					router.push(
+						{
+							pathname: product?.route,
+							query: { model: JSON.stringify(model?.files) }
+						},
+						product?.route
+					)
+				}
+				// response?.data?.data.forEach(
+				// 	item =>
+				// 		item.product.model === _value &&
+				// 		router.push(
+				// 			{
+				// 				pathname: item.route,
+				// 				query: { model: JSON.stringify(model?.files) }
+				// 			},
+				// 			item.route
+				// 		)
+				// )
 			}
 		} catch (error) {
 			console.log(error)

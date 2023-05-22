@@ -2,6 +2,9 @@
   .personal {
     padding: 32px 16px;
     background: #ad1919;
+    &.nba {
+      background: #00aaa6;
+    }
     .title {
       margin-bottom: 16px;
       * {
@@ -187,12 +190,12 @@
           height: 16px;
           background-color: #00aaa6;
         }
-        svg{
+        svg {
           position: relative;
           z-index: 2;
           path {
-              fill: #fff;
-            }
+            fill: #fff;
+          }
         }
       }
     }
