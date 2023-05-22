@@ -15,9 +15,8 @@ const NbaForm = ({ data }) => {
 		first_name: null,
 		last_name: null,
 		email: null,
-		how_familiar_hisense: null,
-		consider_hisense_tv: null,
-		which_brand_own: [],
+		were_you_familiar: null,
+		are_you_more_likely: null,
 		future_news: 0
 	})
 
@@ -36,30 +35,23 @@ const NbaForm = ({ data }) => {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F640a037f4a62a`,
+				`https://imcrm2.dev-api.hisenseportal.com/api/v1/form/fill/${process.env.NEXT_PUBLIC_NBA_FORM_TOKEN}`,
 				{ ...dataSchema }
 			)
-			e.target.reset()
 
 			setDataSchema({
 				first_name: null,
 				last_name: null,
-				phone_number: null,
-				social_media_handle: null,
-				how_familiar_hisense: null,
-				consider_hisense_tv: null,
-				consider_hisense_tv: null,
-				how_likely_tv_next6: null,
-				how_likely_lasertv_next: null,
-				what_like_abt_lasertv: null,
-				which_brand_own: [],
 				email: null,
+				were_you_familiar: null,
+				are_you_more_likely: null,
 				future_news: 0
 			})
 			if (response.status === 200) {
 				toast.success('form submitted', {
 					toastId: 'submit_success'
 				})
+				e.target.reset()
 				if (structure?.submitText?.value) {
 					router.push(structure?.submitText?.value)
 				}

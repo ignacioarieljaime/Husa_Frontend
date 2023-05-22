@@ -9,16 +9,12 @@ import LaserInstallationDropDownSelectBoxMulti from '../LaserTvInstallation/Lase
 import FlightNightCustomCheckbox from '../FlightNight/FlightNightCustomCheckbox'
 
 const familiarity = [
-	{ name: 'Very familiar', value: 'Very familiar' },
-	{ name: 'Somewhat familiar', value: 'Somewhat familiar' },
-	{ name: 'Not familiar', value: 'Not familiar' },
-	{ name: 'Unsure', value: 'Unsure' }
+	{ name: 'YES', value: 'Y' },
+	{ name: 'NO', value: 'N' }
 ]
 const nextTv = [
-	{ name: 'Very much so', value: 'Very much so' },
-	{ name: ' A little more', value: ' A little more' },
-	{ name: 'Unsure', value: 'Unsure' },
-	{ name: 'Not at all', value: 'Not at all' }
+	{ name: 'YES', value: 'Y' },
+	{ name: 'NO', value: 'N' }
 ]
 
 const brand = [
@@ -61,16 +57,16 @@ const NbaFormHisense = ({
 				<div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field  position-relative z-6'>
 						<label className='label'>
-							How familiar with Hisense were you before today? *
+							Were you familiar with “Hisense” before today?
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={familiarity}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							value={data.how_familiar_hisense}
+							value={data.were_you_familiar}
 							placeholder='Choose your answer'
-							onChange={value => onChange('how_familiar_hisense', value.value)}
+							onChange={value => onChange('were_you_familiar', value.value)}
 						/>
-						{errors?.how_familiar_hisense ? (
+						{errors?.were_you_familiar ? (
 							<p
 								style={{
 									color: 'red',
@@ -79,7 +75,7 @@ const NbaFormHisense = ({
 									left: '0'
 								}}
 								className='error mt-2'>
-								{errors?.how_familiar_hisense}
+								{errors?.were_you_familiar}
 							</p>
 						) : null}
 					</div>
@@ -87,17 +83,17 @@ const NbaFormHisense = ({
 				<div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field  position-relative z-5'>
 						<label className='label'>
-							After today, are you more likely to consider Hisense for your next
-							TV? *
+							Are you more likely to purchase products from an official NBA
+							sponsor?
 						</label>
 						<LaserInstallationDropDownSelectBox
 							options={nextTv}
 							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							value={data.consider_hisense_tv}
+							value={data.are_you_more_likely}
 							placeholder='Choose your answer'
-							onChange={value => onChange('consider_hisense_tv', value.value)}
+							onChange={value => onChange('are_you_more_likely', value.value)}
 						/>{' '}
-						{errors?.consider_hisense_tv ? (
+						{errors?.are_you_more_likely ? (
 							<p
 								style={{
 									color: 'red',
@@ -106,12 +102,12 @@ const NbaFormHisense = ({
 									left: '0'
 								}}
 								className='error mt-2'>
-								{errors?.consider_hisense_tv}
+								{errors?.are_you_more_likely}
 							</p>
 						) : null}
 					</div>
 				</div>
-				<div className='col-12 col-md-6 px-4 pb-8'>
+				{/* <div className='col-12 col-md-6 px-4 pb-8'>
 					<div className='form_select_field position-relative  z-4'>
 						<label className='label'>
 							Which TV brands do you currently own at home?
@@ -139,7 +135,7 @@ const NbaFormHisense = ({
 							</p>
 						) : null}
 					</div>
-				</div>
+				</div> */}
 				<div className='col-12 col-md-6 px-4 pt-4'>
 					<FlightNightCustomCheckbox
 						status={terms}
