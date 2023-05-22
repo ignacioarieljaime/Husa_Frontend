@@ -6,6 +6,7 @@ import NewsSingleInfoLittleBox from './NewsSingleInfoLittleBox'
 import FacebookNewsRoomIcon from 'components/icons/FacebookNewsRoomIcon'
 import TwitterNewsRoomIcon from 'components/icons/TwitterNewsRoomIcon'
 import CopyNewsIcon from 'components/icons/CopyNewsIcon'
+import MailNewsIcon from 'components/icons/MailNewsIcon'
 
 const NewsSingleInfoBox = ({ data }) => {
 	const [aboutUs, setAboutUs] = useState()
