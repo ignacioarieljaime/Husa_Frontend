@@ -55,139 +55,143 @@ const NbaFormHisense = ({
 
 	return (
 		<div className='hisense'>
-			<h3 dangerouslySetInnerHTML={{ __html: title }} className='title'></h3>
-			<div className='line top'></div>
-			<div className='row justify-content-center align-items-center mx-0'>
-				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field  position-relative z-6'>
-						<label className='label'>
-							How familiar with Hisense were you before today? *
-						</label>
-						<LaserInstallationDropDownSelectBox
-							options={familiarity}
-							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							value={data.how_familiar_hisense}
-							placeholder='Choose your answer'
-							onChange={value => onChange('how_familiar_hisense', value.value)}
+			<div className='content'>
+				<h3 dangerouslySetInnerHTML={{ __html: title }} className='title'></h3>
+				<div className='line top'></div>
+				<div className='row justify-content-center align-items-center mx-0'>
+					<div className='col-12 px-4 pb-8'>
+						<div className='form_select_field  position-relative z-6'>
+							<label className='label'>
+								How familiar with Hisense were you before today? *
+							</label>
+							<LaserInstallationDropDownSelectBox
+								options={familiarity}
+								// disabledOptions={[{ name: 'Where did you purchase?' }]}
+								value={data.how_familiar_hisense}
+								placeholder='Choose your answer'
+								onChange={value =>
+									onChange('how_familiar_hisense', value.value)
+								}
+							/>
+							{errors?.how_familiar_hisense ? (
+								<p
+									style={{
+										color: 'red',
+										position: 'absolute',
+										bottom: '-42px',
+										left: '0'
+									}}
+									className='error mt-2'>
+									{errors?.how_familiar_hisense}
+								</p>
+							) : null}
+						</div>
+					</div>
+					<div className='col-12 px-4 pb-8'>
+						<div className='form_select_field  position-relative z-5'>
+							<label className='label'>
+								After today, are you more likely to consider Hisense for your
+								next TV? *
+							</label>
+							<LaserInstallationDropDownSelectBox
+								options={nextTv}
+								// disabledOptions={[{ name: 'Where did you purchase?' }]}
+								value={data.consider_hisense_tv}
+								placeholder='Choose your answer'
+								onChange={value => onChange('consider_hisense_tv', value.value)}
+							/>{' '}
+							{errors?.consider_hisense_tv ? (
+								<p
+									style={{
+										color: 'red',
+										position: 'absolute',
+										bottom: '-42px',
+										left: '0'
+									}}
+									className='error mt-2'>
+									{errors?.consider_hisense_tv}
+								</p>
+							) : null}
+						</div>
+					</div>
+					<div className='col-12 px-4 pb-8'>
+						<div className='form_select_field position-relative  z-4'>
+							<label className='label'>
+								Which TV brands do you currently own at home?
+								<small className='d-block text-white fw-light fst-italic fs-9 text-capitalize'>
+									Multiple options can be selected
+								</small>
+							</label>
+							<LaserInstallationDropDownSelectBoxMulti
+								options={brand}
+								// disabledOptions={[{ name: 'Where did you purchase?' }]}
+								value={data.which_brand_own}
+								placeholder='Choose your answer'
+								onChange={newValue => onChange('which_brand_own', newValue)}
+							/>{' '}
+							{errors?.which_brand_own ? (
+								<p
+									style={{
+										color: 'red',
+										position: 'absolute',
+										bottom: '-42px',
+										left: '0'
+									}}
+									className='error mt-2'>
+									{errors?.which_brand_own}
+								</p>
+							) : null}
+						</div>
+					</div>
+					<div className='col-12 px-4 pt-4'>
+						<FlightNightCustomCheckbox
+							status={terms}
+							onClick={() => setTerms(prevState => !prevState)}>
+							<p>
+								I have read and agree to the{' '}
+								<button
+									type='button'
+									className='px-0'
+									style={{
+										background: 'transparent',
+										color: 'white',
+										border: 'none',
+										textDecoration: 'underline'
+									}}
+									onClick={() => setModalStatus(true)}>
+									Terms & Conditions
+								</button>{' '}
+								of this giveaway.
+							</p>
+						</FlightNightCustomCheckbox>
+					</div>
+					<div className='col-12 px-4 pt-4'>
+						<FlightNightCustomCheckbox
+							status={updated}
+							onClick={() => {
+								onChange('future_news', updated ? 0 : 1)
+								setUpdated(prevState => !prevState)
+							}}>
+							<p>
+								Yes, please keep me updated on news, offers, or future events.
+							</p>
+						</FlightNightCustomCheckbox>
+					</div>
+					<div className='col-12 pt-12 text-center'>
+						<button
+							disabled={!terms || loading ? true : false}
+							className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
+							{submitText}
+							{loading && <Spinner size={20} />}
+						</button>
+					</div>
+					{modalStatus && (
+						<RoleModal
+							modalHandler={() => setModalStatus(false)}
+							data={termsData}
 						/>
-						{errors?.how_familiar_hisense ? (
-							<p
-								style={{
-									color: 'red',
-									position: 'absolute',
-									bottom: '-42px',
-									left: '0'
-								}}
-								className='error mt-2'>
-								{errors?.how_familiar_hisense}
-							</p>
-						) : null}
-					</div>
+					)}
 				</div>
-				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field  position-relative z-5'>
-						<label className='label'>
-							After today, are you more likely to consider Hisense for your next
-							TV? *
-						</label>
-						<LaserInstallationDropDownSelectBox
-							options={nextTv}
-							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							value={data.consider_hisense_tv}
-							placeholder='Choose your answer'
-							onChange={value => onChange('consider_hisense_tv', value.value)}
-						/>{' '}
-						{errors?.consider_hisense_tv ? (
-							<p
-								style={{
-									color: 'red',
-									position: 'absolute',
-									bottom: '-42px',
-									left: '0'
-								}}
-								className='error mt-2'>
-								{errors?.consider_hisense_tv}
-							</p>
-						) : null}
-					</div>
-				</div>
-				<div className='col-12 col-md-6 px-4 pb-8'>
-					<div className='form_select_field position-relative  z-4'>
-						<label className='label'>
-							Which TV brands do you currently own at home?
-							<small className='d-block text-white fw-light fst-italic fs-9 text-capitalize'>
-								Multiple options can be selected
-							</small>
-						</label>
-						<LaserInstallationDropDownSelectBoxMulti
-							options={brand}
-							// disabledOptions={[{ name: 'Where did you purchase?' }]}
-							value={data.which_brand_own}
-							placeholder='Choose your answer'
-							onChange={newValue => onChange('which_brand_own', newValue)}
-						/>{' '}
-						{errors?.which_brand_own ? (
-							<p
-								style={{
-									color: 'red',
-									position: 'absolute',
-									bottom: '-42px',
-									left: '0'
-								}}
-								className='error mt-2'>
-								{errors?.which_brand_own}
-							</p>
-						) : null}
-					</div>
-				</div>
-				<div className='col-12 col-md-6 px-4 pt-4'>
-					<FlightNightCustomCheckbox
-						status={terms}
-						onClick={() => setTerms(prevState => !prevState)}>
-						<p>
-							I have read and agree to the{' '}
-							<button
-								type='button'
-								className='px-0'
-								style={{
-									background: 'transparent',
-									color: 'white',
-									border: 'none',
-									textDecoration: 'underline'
-								}}
-								onClick={() => setModalStatus(true)}>
-								Terms & Conditions
-							</button>{' '}
-							of this giveaway.
-						</p>
-					</FlightNightCustomCheckbox>
-				</div>
-				<div className='col-12 col-md-6 px-4 pt-4'>
-					<FlightNightCustomCheckbox
-						status={updated}
-						onClick={() => {
-							onChange('future_news', updated ? 0 : 1)
-							setUpdated(prevState => !prevState)
-						}}>
-						<p>
-							Yes, please keep me updated on news, offers, or future events.
-						</p>
-					</FlightNightCustomCheckbox>
-				</div>
-				<div className='col-12 col-md-6 pt-12 text-center'>
-					<button
-						disabled={!terms || loading ? true : false}
-						className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
-						{submitText}
-						{loading && <Spinner size={20} />}
-					</button>
-				</div>
-				{modalStatus && (
-					<RoleModal
-						modalHandler={() => setModalStatus(false)}
-						data={termsData}
-					/>
-				)}
 			</div>
 		</div>
 	)
