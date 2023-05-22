@@ -11,6 +11,7 @@ const NbaForm = ({ data }) => {
 	let { structure } = data
 	const [errors, setErrors] = useState()
 	const [loading, setLoading] = useState(false)
+	const [terms, setTerms] = useState(false)
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -31,11 +32,17 @@ const NbaForm = ({ data }) => {
 
 	const submitData = async e => {
 		e.preventDefault()
+		if(!terms){
+			toast.error('Please accept Terms & Conditions  ', {
+				toastId: 'submit_error'
+			})
+			return
+		}
 
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				`https://imcrm2.dev-api.hisenseportal.com/api/v1/form/fill/${process.env.NEXT_PUBLIC_NBA_FORM_TOKEN}`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.NEXT_PUBLIC_NBA_FORM_TOKEN}`,
 				{ ...dataSchema }
 			)
 
@@ -51,6 +58,7 @@ const NbaForm = ({ data }) => {
 				toast.success('form submitted', {
 					toastId: 'submit_success'
 				})
+				setTerms(false)
 				e.target.reset()
 				if (structure?.submitText?.value) {
 					router.push(structure?.submitText?.value)
@@ -83,6 +91,8 @@ const NbaForm = ({ data }) => {
 					data={dataSchema}
 					errors={errors}
 					onChange={dataSchemaHandler}
+					terms={terms}
+					setTerms={setTerms}
 				/>
 			</form>
 		</section>

@@ -34,9 +34,8 @@ const NbaFormHisense = ({
 	loading,
 	errors,
 	submitText,
-	termsData
+	termsData,terms,setTerms
 }) => {
-	const [terms, setTerms] = useState(false)
 	const [updated, setUpdated] = useState(false)
 	const [modalStatus, setModalStatus] = useState(false)
 	const [text, setText] = useState(null)
@@ -172,7 +171,6 @@ const NbaFormHisense = ({
 				</div>
 				<div className='col-12 col-md-6 pt-12 text-center'>
 					<button
-						disabled={!terms || loading ? true : false}
 						className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
 						{submitText}
 						{loading && <Spinner size={20} />}
