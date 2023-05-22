@@ -32,7 +32,7 @@ const NbaForm = ({ data }) => {
 
 	const submitData = async e => {
 		e.preventDefault()
-		if(!terms){
+		if (!terms) {
 			toast.error('Please accept Terms & Conditions  ', {
 				toastId: 'submit_error'
 			})
@@ -60,8 +60,8 @@ const NbaForm = ({ data }) => {
 				})
 				setTerms(false)
 				e.target.reset()
-				if (structure?.submitText?.value) {
-					router.push(structure?.submitText?.value)
+				if (structure?.submitLink?.value) {
+					router.push(structure?.submitLink?.value)
 				}
 			}
 			setLoading(false)
