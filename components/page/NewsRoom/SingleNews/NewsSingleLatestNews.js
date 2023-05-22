@@ -56,7 +56,9 @@ const NewsSingleLatestNews = ({ data }) => {
 					<Link
 						target={structure?.link?.target || '_self'}
 						href={structure?.link?.value || '/'}>
-						<a>{structure?.link?.title}</a>
+						<a target={structure?.link?.target || '_self'}>
+							{structure?.link?.title}
+						</a>
 					</Link>
 				</div>
 			</div>
