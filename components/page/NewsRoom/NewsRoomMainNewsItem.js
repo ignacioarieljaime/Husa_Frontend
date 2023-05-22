@@ -9,7 +9,8 @@ const NewsRoomMainNewsItem = ({
 	title,
 	date,
 	image,
-	link
+	link,
+	target
 }) => {
 	return (
 		<>
@@ -27,8 +28,8 @@ const NewsRoomMainNewsItem = ({
 					<span className='subject'>{subject}</span>
 
 					<h2>
-						<Link href={link || '/'}>
-							<a>{title}ّ</a>
+						<Link href={link || '/'} target={target || '_self'}>
+							<a>{title}</a>
 						</Link>
 					</h2>
 

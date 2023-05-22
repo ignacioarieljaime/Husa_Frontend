@@ -21,7 +21,7 @@ const NewsIntro = ({ data }) => {
 			<div>
 				<h6>{structure?.subject?.value}</h6>
 				<h3>{structure?.title?.value}</h3>
-				<span>{structure?.title?.value}</span>
+				<span>{structure?.date?.value}</span>
 				<div>
 					<span>Share Article</span>
 					<ul>

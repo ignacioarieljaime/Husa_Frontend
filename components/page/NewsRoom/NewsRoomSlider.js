@@ -35,7 +35,9 @@ const NewsRoomSlider = ({ data }) => {
 							<div>
 								<h5>{item?.title?.value}</h5>
 								<h6>{item?.subtitle?.value}</h6>
-								<Link href={item?.btn?.value || '/'}>
+								<Link
+									target={item?.btn?.target || '_self'}
+									href={item?.btn?.value || '/'}>
 									<a>{item?.btn?.title}</a>
 								</Link>
 							</div>

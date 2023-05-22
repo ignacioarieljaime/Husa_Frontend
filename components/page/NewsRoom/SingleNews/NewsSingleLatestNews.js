@@ -11,7 +11,6 @@ const NewsSingleLatestNews = ({ data }) => {
 	const [news, setNews] = useState()
 	const [title, setTitle] = useState()
 
-
 	useEffect(() => {
 		setTitle(structure?.title?.value)
 		// getNews()
@@ -54,7 +53,9 @@ const NewsSingleLatestNews = ({ data }) => {
 						{/* </> */}
 						{/* ) : null} */}
 					</div>
-					<Link href={structure?.link?.value || '/'}>
+					<Link
+						target={structure?.link?.target || '_self'}
+						href={structure?.link?.value || '/'}>
 						<a>{structure?.link?.title}</a>
 					</Link>
 				</div>
