@@ -55,7 +55,6 @@
 			gap: 16px;
 			margin-bottom: 48px;
 			flex-wrap: wrap;
-			cursor: pointer;
 			li {
 				width: calc(50% - 16px);
 				@include mq(575) {
