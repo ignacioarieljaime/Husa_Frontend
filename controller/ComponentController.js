@@ -278,8 +278,8 @@ return (
 		.get(
 ${
 	_page.post
-		? '${process.env.CXM_API_ROUTE}/getPostInfo/${_page.post?.id}'
-		: '"${process.env.CXM_API_ROUTE}/getPageInfo/" + query.pageid'
+		? `"${process.env.CXM_API_ROUTE}/getPostInfo/" + _page.post?.id`
+		: `"${process.env.CXM_API_ROUTE}/getPageInfo/" + query.pageid`
 }
 		,
 			{
