@@ -9,12 +9,12 @@ import LaserInstallationDropDownSelectBoxMulti from '../LaserTvInstallation/Lase
 import FlightNightCustomCheckbox from '../FlightNight/FlightNightCustomCheckbox'
 
 const familiarity = [
-	{ name: 'YES', value: 'Y' },
-	{ name: 'NO', value: 'N' }
+	{ name: 'YES', value: 'Yes' },
+	{ name: 'NO', value: 'No' }
 ]
 const nextTv = [
-	{ name: 'YES', value: 'Y' },
-	{ name: 'NO', value: 'N' }
+	{ name: 'YES', value: 'Yes' },
+	{ name: 'NO', value: 'No' }
 ]
 
 const brand = [
