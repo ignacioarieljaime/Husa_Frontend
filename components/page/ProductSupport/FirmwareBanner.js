@@ -30,11 +30,11 @@ const FirmwareBanner = ({ data }) => {
 	}, [])
 
 	useEffect(() => {
-		if (model?.model?.title) getPageUrl(model?.model)
+		if (model?.model?.title) getPageUrl(model?.model?.title)
 	}, [model])
 
 	const getPageUrl = async _value => {
-		// this method called after getModel method
+		// this method called after getModel method 
 		// this method send request to cxm to getting product url by product model
 		// because this method get us list of products we should find the specific model in the response
 		// and redirect to the final destination
@@ -44,29 +44,17 @@ const FirmwareBanner = ({ data }) => {
 			)
 
 			if (response?.data?.data && response?.data?.data.length > 0) {
-				let product = response?.data?.data.find(
-					item => item?.product?.id === _value?.pid
+				response?.data?.data.forEach(
+					item =>
+						item.product.model === _value &&
+						router.push(
+							{
+								pathname: item.route,
+								query: { model: JSON.stringify(model?.files) }
+							},
+							item.route
+						)
 				)
-				if (product) {
-					router.push(
-						{
-							pathname: product?.route,
-							query: { model: JSON.stringify(model?.files) }
-						},
-						product?.route
-					)
-				}
-				// response?.data?.data.forEach(
-				// 	item =>
-				// 		item.product.model === _value &&
-				// 		router.push(
-				// 			{
-				// 				pathname: item.route,
-				// 				query: { model: JSON.stringify(model?.files) }
-				// 			},
-				// 			item.route
-				// 		)
-				// )
 			}
 		} catch (error) {
 			console.log(error)
