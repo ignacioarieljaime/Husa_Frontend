@@ -25,7 +25,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 	return (
 		<section>
 			<div className='blog_text_container'>
-				<div className='row mb-20'>
+				<div className='row mb-6 mb-md-10'>
 					<div className='col-12'>
 						<figure className='blog-article-box-full' ref={imageRef.ref}>
 							<div className='image-box'>
@@ -84,7 +84,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 														? structure?.link?.target
 														: '_self'
 												}
-												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+												className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
 												{structure?.link?.title}
 												{structure?.link?.target === '_blank' && (
 													<img

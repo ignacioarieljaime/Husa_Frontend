@@ -9,7 +9,7 @@ function ProductFeatureWithImage({ data }) {
 				style={{ background: structure?.backgroundColor?.value }}
 				className={`row description-blocks theme-${structure?.theme?.value} ${
 					structure?.theme?.value === 'dark' ? 'text-white' : ''
-				} align-items-center ${
+				} align-items-stretch ${
 					structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''
 				}`}>
 				<article className='introduction col-12 col-md-6 order-2'>

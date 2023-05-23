@@ -38,12 +38,12 @@ function BlogListSearchBox({ data: { structure } }) {
 	return (
 		<section>
 			<div className='blog_text_container'>
-				<div className='row mb-9 pt-9 mx-0 border-top'>
+				<div className='row mb-3 mb-md-9 pt-9 mx-0 border-top'>
 					<div
 						className='col-12 col-md-7 py-3 px-0 fs-5'
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<div className='col-12 col-md-5 py-3 px-0'>
-						<div className='row justify-content-start justify-content-md-end align-items-center position-relative'>
+						<div className='row justify-content-start justify-content-md-end align-items-center'>
 							{/* <div className='col-xl-4 dropdown'>
 								<button
 									className='bg-transparent border-0'
@@ -74,9 +74,9 @@ function BlogListSearchBox({ data: { structure } }) {
 									</ul>
 								)}
 							</div> */}
-							<div className='col-xl-4 '>
-								<div className='d-flex justify-content-between align-items-center '>
-									<div>
+							<div className='col-xl-6 '>
+								<div className='d-flex  align-items-center  position-relative'>
+									<div className=' position-relative'>
 										<input
 											type='text'
 											placeholder='Search'
@@ -100,7 +100,7 @@ function BlogListSearchBox({ data: { structure } }) {
 												}}>
 												<FontAwesomeIcon icon={faXmark} />
 											</button>
-											<ul>
+											<ul className='pt-8'>
 												{blogList === 'loading' ? (
 													<li>
 														<Spinner size={35} />

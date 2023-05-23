@@ -28,7 +28,7 @@ function BlogListHeadContainer({ structure }) {
 		translateY: ['0px', '30px']
 	})
 	return (
-		<section>
+		<section style={{ overflowX: 'hidden' }}>
 			<div className='blog-header blog-header-list  mt-10 mb-20'>
 				<div className='container-fluid container-xxl ps-6 mb-13'>
 					<div className='row mb-14 mb-md-0'>
