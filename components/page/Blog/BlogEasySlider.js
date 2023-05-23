@@ -16,6 +16,7 @@ function BlogEasySlider({ data: { structure } }) {
 						navigation={true}
 						modules={[Navigation]}
 						centeredSlides={true}
+						loop={true}
 						spaceBetween={10}
 						className='blog-big-centered'>
 						{structure?.list?.value.map((item, index) => (
@@ -26,6 +27,7 @@ function BlogEasySlider({ data: { structure } }) {
 							</SwiperSlide>
 						))}
 					</Swiper>
+					<div className='bg-light-orange-gradient'></div>
 				</div>
 			</div>
 		</section>
