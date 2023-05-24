@@ -35,7 +35,8 @@ export async function GetProductsListNewApi(
 	navigate,
 	_categoryId,
 	_filter,
-	_sort
+	_sort,
+	signal
 ) {
 	let filter =
 		_filter && _filter.length !== 0
@@ -45,7 +46,8 @@ export async function GetProductsListNewApi(
 	let response = await useFetch(navigate).get(
 		`/productsIndex?category_id=${_categoryId}${filter}${
 			_sort ? _sort : ''
-		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+		{ signal }
 	)
 	return response
 }

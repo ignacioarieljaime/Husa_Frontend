@@ -17,7 +17,7 @@ const ProductsGridV2 = ({ data }) => {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [text, setText] = useState(null)
 	const router = useRouter()
-
+	const controller = new AbortController()
 	const options = [
 		{
 			name: 'Newest',
@@ -33,11 +33,22 @@ const ProductsGridV2 = ({ data }) => {
 	}, [])
 	useEffect(() => {
 		if (router.query.filter) {
-			getProducts(JSON.parse(decodeURIComponent(router.query.filter)))
+			getProductHandler(JSON.parse(decodeURIComponent(router.query.filter)))
 		} else {
-			getProducts()
+			getProductHandler()
 		}
-	}, [router.query?.filter, sortingMethod])
+	}, [sortingMethod])
+
+	const getProductHandler = async _filter => {
+
+		await requestController()
+		await getProducts(_filter)
+	}
+	const requestController = () => {
+		if (products?.length && products === 'loading') {
+			window.stop() 
+		}
+	}
 
 	const getProducts = async _filter => {
 		setProducts('loading')
@@ -72,7 +83,8 @@ const ProductsGridV2 = ({ data }) => {
 				router,
 				structure?.category.value,
 				_filter,
-				sortingMethod ? `&sort=${sortingMethod.value}` : null
+				sortingMethod ? `&sort=${sortingMethod.value}` : null,
+				controller.signal
 			)
 
 			setProducts(response.data.data)
@@ -113,7 +125,7 @@ const ProductsGridV2 = ({ data }) => {
 					{filterList && filterList.length !== 0 ? (
 						<div className='products-filtering me-md-12'>
 							<ProductsFilter
-								filterRequest={getProducts}
+								filterRequest={getProductHandler}
 								filterList={filterList}
 								checkBoxCondition={checkBoxCondition}
 								setCheckBoxCondition={setCheckBoxCondition}
