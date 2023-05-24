@@ -117,7 +117,7 @@ ${
 							notFound: true
 						}
 					}
-						if (data?.status?.name !== 'Published' || data?.status_id === 2) {
+						if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 							return {
 								notFound: true
 							}
@@ -173,7 +173,7 @@ ${
 						notFound: true
 					}
 				}
-					if (data?.status?.name !== 'Published' || data?.status_id === 2) {
+					if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 						return {
 							notFound: true
 						}
@@ -204,7 +204,7 @@ ${
 					   console.error('Error:', error)
 					   return null
 				   })	
-				   if (data?.status?.name !== 'Published' || data?.status_id === 2) {
+				   if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 					return {
 						notFound: true
 					}
