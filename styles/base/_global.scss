@@ -1,8 +1,12 @@
 /* #region global */
 
+:root {
+	--toastify-color-success: #00aaa6 !important;
+}
+
 * {
 	--primary-color: #00cccc;
-	--secondary-color: rgba(0, 158, 145, 1);
+	--secondary-color: #009e91;
 	font-display: swap;
 }
 .text_editor,
