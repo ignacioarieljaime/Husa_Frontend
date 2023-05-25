@@ -1,3 +1,4 @@
+import axios from 'axios'
 import useFetch from '../hooks/useFetch'
 
 export async function GetProductByFilterApi(navigate, _filter) {
@@ -50,8 +51,8 @@ export async function GetProductsListNewApi(
 			? `&filters=${encodeURIComponent(JSON.stringify(_filter))}`
 			: ''
 
-	let response = await useFetch(navigate).get(
-		`/productsIndex?category_id=${_categoryId}${filter}${
+	let response = await axios.get(
+		`${process.env.NEXT_PUBLIC_PIM_API_ROUTE}/productsIndex?category_id=${_categoryId}${filter}${
 			_sort ? _sort : ''
 		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 		{ signal }
