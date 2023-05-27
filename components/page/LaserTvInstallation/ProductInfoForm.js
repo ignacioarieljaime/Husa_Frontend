@@ -7,6 +7,7 @@ import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import CardLayout from './CardLayout'
 import LaserInstallationDropDownSelectBox from './LaserInstallationDropDownSelectBox'
+import ProductInfoFormImageBox from './ProductInfoFormImageBox'
 
 const ProductInfoForm = ({ data, dispatch, errors }) => {
 	const [imageLoading, setImageLoading] = useState(null)
@@ -160,17 +161,26 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 			)
 			if (response.status === 200) {
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
-				dispatch({ receipt_image: response.data.view_link })
+				dispatch({
+					receipt_image: [...data?.receipt_image, response.data.view_link]
+				})
+				setFile(null)
 			}
 			setImageLoading(false)
 		} catch (error) {
 			setImageLoading(false)
-
+			setFile(null)
 			toast.error("The photo wasn't uploaded successfully ", {
 				toastId: 'image-failed'
 			})
 			console.log(error)
 		}
+	}
+
+	const removeOneImage = _image => {
+		dispatch({
+			receipt_image: data?.receipt_image.filter(item => item !== _image)
+		})
 	}
 
 	return (
@@ -224,6 +234,16 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 file-upload position-relative'>
 					<label className='laser_label'>Receipt Photo</label>
+					{data?.receipt_image?.map(item => (
+						<div className='file-upload-box position-relative mb-3'>
+							<button
+								className='remove_img'
+								onClick={() => removeOneImage(item)}>
+								<FontAwesomeIcon icon={faXmark} />
+							</button>
+							<img src={item} />
+						</div>
+					))}
 					<div className='file-upload-box position-relative'>
 						{imageLoading && (
 							<div className='image_loading'>

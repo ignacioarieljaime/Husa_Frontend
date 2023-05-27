@@ -121,10 +121,17 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			)
 			if (response.status === 200) {
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
-				dispatch({ installation_location_photo: response.data.view_link })
+				dispatch({
+					installation_location_photo: [
+						...data?.installation_location_photo,
+						response.data.view_link
+					]
+				})
+				setFile(null)
 			}
 			setImageLoading(false)
 		} catch (error) {
+			setFile(null)
 			setImageLoading(false)
 
 			toast.error("The photo wasn't uploaded successfully ", {
@@ -145,6 +152,14 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				?.slice(0, 10)
 			return maxDate
 		}
+	}
+
+	const removeOneImage = _image => {
+		dispatch({
+			installation_location_photo: data?.installation_location_photo.filter(
+				item => item !== _image
+			)
+		})
 	}
 
 	return (
@@ -257,6 +272,16 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8 file-upload position-relative'>
 					<label className='laser_label'>Installation Location Photo</label>
+					{data?.installation_location_photo?.map(item => (
+						<div className='file-upload-box position-relative mb-3'>
+							<button
+								className='remove_img'
+								onClick={() => removeOneImage(item)}>
+								<FontAwesomeIcon icon={faXmark} />
+							</button>
+							<img src={item} />
+						</div>
+					))}
 					<div className='file-upload-box position-relative'>
 						{imageLoading && (
 							<div className='image_loading'>
