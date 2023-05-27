@@ -10,7 +10,7 @@ const BlockCards = ({ data: { structure } }) => {
 	}, [])
 	return (
 		<section>
-			<div className='px-3 my-20'>
+			<div className='px-3 mt-0 mb-10 my-md-20'>
 				<div className='new-home-page-boxes mb-13'>
 					<div
 						dangerouslySetInnerHTML={{ __html: text }}

@@ -21,11 +21,11 @@ function BlogBigImageAndTextBoxContainer({ structure }) {
 	}, [])
 	const imageRef = useParallax({
 		speed: 10,
-		translateY: [0, -10]
+		translateY: [-5, 5]
 	})
 	return (
 		<section>
-			<div className='row mx-0 blog_banner'>
+			<div className='row align-items-stretch mx-0 blog_banner'>
 				<div className='col-12 col-md-6 px-0 header-secondary2 overflow-hidden'>
 					<img
 						src={structure?.image?.src}

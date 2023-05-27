@@ -28,12 +28,13 @@ header.blog {
   font-weight: 400;
   font-size: 18px;
   color: #101010;
-  width: 100px;
+  width: 150px;
 
   &:focus,
   &:focus-visible {
     background: transparent !important;
     outline: none;
+    box-shadow: none !important;
 
     &::placeholder {
       color: #10101071;
@@ -453,7 +454,7 @@ header.blog {
   -moz-transition: all 0.5s ease-in-out;
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
-  
+
   &.active {
     height: 500px;
   }
