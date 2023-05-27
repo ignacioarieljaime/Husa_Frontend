@@ -32,7 +32,7 @@ const NbaForm = ({ data }) => {
 
 	const submitData = async e => {
 		e.preventDefault()
-		if(!terms){
+		if (!terms) {
 			toast.error('Please accept Terms & Conditions  ', {
 				toastId: 'submit_error'
 			})
@@ -55,13 +55,13 @@ const NbaForm = ({ data }) => {
 				future_news: 0
 			})
 			if (response.status === 200) {
-				toast.success('form submitted', {
+				toast.success('Registration completed successfully.', {
 					toastId: 'submit_success'
 				})
 				setTerms(false)
 				e.target.reset()
-				if (structure?.submitText?.value) {
-					router.push(structure?.submitText?.value)
+				if (structure?.submitLink?.value) {
+					router.push(structure?.submitLink?.value)
 				}
 			}
 			setLoading(false)
@@ -76,7 +76,7 @@ const NbaForm = ({ data }) => {
 
 	return (
 		<section>
-			<form onSubmit={submitData} className='flight_night_form'>
+			<form onSubmit={submitData} className='flight_night_form nba'>
 				<NbaFormPersonal
 					title={structure?.title?.value}
 					data={dataSchema}

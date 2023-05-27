@@ -18,7 +18,7 @@
     margin: 0 auto;
     .image_container {
       position: relative;
-      padding-top: 100%;
+      padding-top: 140%;
       width: 100%;
       box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
       border-radius: 25px;
@@ -27,6 +27,9 @@
         position: absolute !important;
         left: 0;
         top: 0;
+        img {
+          object-fit: cover !important;
+        }
       }
       &::after {
         content: "";
