@@ -23,7 +23,6 @@ const NewsRoomNewsBox = ({ data }) => {
 		search: '',
 		page: 1
 	})
-
 	useEffect(() => {
 		if (filters?.product || filters?.search || filters?.year) {
 			getNews()
@@ -111,7 +110,7 @@ const NewsRoomNewsBox = ({ data }) => {
 								<NewsRoomMainNewsItem
 									link={item?.link?.value}
 									target={item?.link?.target}
-									date={item?.date?.value}
+									date={item?.created_at}
 									image={item?.image?.src}
 									subject={item?.tag?.value}
 									title={item?.title?.value}

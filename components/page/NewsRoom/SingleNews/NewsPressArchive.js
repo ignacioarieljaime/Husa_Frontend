@@ -32,7 +32,7 @@ const NewsPressArchive = ({ data }) => {
 	const getNews = async () => {
 		setNews('loading')
 		try {
-			let response = await GetNewsApi(filters, 15)
+			let response = await GetNewsApi(filters, structure?.count?.value)
 
 			setNews(response.data.data)
 			setPagination(response.data.meta)

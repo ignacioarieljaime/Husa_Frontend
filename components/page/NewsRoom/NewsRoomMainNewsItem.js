@@ -1,4 +1,5 @@
 import CustomImage from 'components/common/CustomImage'
+import moment from 'moment'
 import Link from 'next/link'
 import React from 'react'
 
@@ -33,7 +34,11 @@ const NewsRoomMainNewsItem = ({
 						</Link>
 					</h2>
 
-					<span className='date'>{date}</span>
+					<span className='date'>
+						{date && date.includes('T')
+							? moment(date).format('DD MMMM YYYY')
+							: date}
+					</span>
 				</div>
 			</div>
 		</>
