@@ -183,6 +183,10 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 		})
 	}
 
+	const showSingle = () => {
+		return data?.receipt_image?.length % 2 ? 'calc(50% - 4px)' : '100%'
+	}
+
 	return (
 		<CardLayout title='Product Information' icon={<LaserTv />}>
 			<div className='row mx-0'>
@@ -234,47 +238,62 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 file-upload position-relative'>
 					<label className='laser_label'>Receipt Photo</label>
-					{data?.receipt_image?.map(item => (
-						<div className='file-upload-box position-relative mb-3'>
-							<button
-								className='remove_img'
-								onClick={() => removeOneImage(item)}>
-								<FontAwesomeIcon icon={faXmark} />
-							</button>
-							<img src={item} />
-						</div>
-					))}
-					<div className='file-upload-box position-relative'>
-						{imageLoading && (
-							<div className='image_loading'>
-								<Spinner size={35} />
-							</div>
-						)}
-						{file ? (
-							<>
-								<button className='remove_img' onClick={() => setFile(null)}>
+					<div className='d-flex flex-wrap gap-2'>
+						{data?.receipt_image?.map((item, index) => (
+							<div
+								style={{ width: index === 4 ? '100%' : 'calc(50% - 4px)' }}
+								className='file-upload-box position-relative'>
+								<button
+									className='remove_img'
+									onClick={() => removeOneImage(item)}>
 									<FontAwesomeIcon icon={faXmark} />
 								</button>
-								<img src={URL.createObjectURL(file)} />
-							</>
-						) : (
-							<>
-								<input
-									type='file'
-									className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
-									style={{ zIndex: 1 }}
-									id='contact-file-input'
-									accept='.jpg, .png, .jpeg'
-									multiple='multiple'
-									onChange={uploadFile}
-								/>
-								<article className='d-flex justify-content-center align-items-center flex-wrap'>
-									<p>Drop files to attach, or</p>
-									<button className='n-btn outline-black ms-3 py-4 px-6'>
-										Browse
-									</button>
-								</article>
-							</>
+								<img src={item} />
+							</div>
+						))}
+						{data?.receipt_image?.length < 5 && (
+							<div
+								style={{
+									width: showSingle()
+								}}
+								className='file-upload-box position-relative'>
+								{imageLoading && (
+									<div className='image_loading'>
+										<Spinner size={35} />
+									</div>
+								)}
+								{file ? (
+									<>
+										<button
+											className='remove_img'
+											onClick={() => setFile(null)}>
+											<FontAwesomeIcon icon={faXmark} />
+										</button>
+										<img src={URL.createObjectURL(file)} />
+									</>
+								) : (
+									<>
+										<input
+											type='file'
+											className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
+											style={{ zIndex: 1 }}
+											id='contact-file-input'
+											accept='.jpg, .png, .jpeg'
+											multiple='multiple'
+											onChange={uploadFile}
+										/>
+										<article className='d-flex justify-content-center align-items-center flex-wrap'>
+											<p>Drop files to attach, or</p>
+											<button
+												className={`n-btn outline-black ms-3  px-6 ${
+													data?.receipt_image?.length % 2 ? 'py-2' : 'py-4'
+												}`}>
+												Browse
+											</button>
+										</article>
+									</>
+								)}
+							</div>
 						)}
 					</div>
 					{errors?.receipt_image ? (
