@@ -38,7 +38,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 		product_warranty: null,
 		service_type: null,
 		text: null,
-		image: null
+		image: []
 	})
 	const [tickedSended, setTickedSended] = useState(null)
 
@@ -110,11 +110,16 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
 			if (response.status === 200) {
-				dataSchemaHandler('image', response.data.view_link)
+				dataSchemaHandler('image', [
+					...dataSchema?.image,
+					response.data.view_link
+				])
 				toast.success('image uploaded successfully')
 				setImageLoading(false)
 			}
+			setFile(null)
 		} catch (error) {
+			setFile(null)
 			toast.error("image didn't uploaded")
 			setImageLoading(false)
 			console.log(error)
@@ -134,8 +139,15 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 			product_warranty: null,
 			service_type: null,
 			text: null,
-			image: null
+			image: []
 		})
+	}
+
+	const removeOneImage = _image => {
+		dataSchemaHandler(
+			'image',
+			dataSchema?.image.filter(item => item !== _image)
+		)
 	}
 
 	return (
@@ -286,43 +298,54 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 							SUPPORTING PHOTOS OR IMAGES OF THE PROBLEM
 						</label>
 						<span>Max 3 Images (Optional)</span>
-
-						<div>
-							<div className='file-upload-box position-relative'>
-								{imageLoading && (
-									<div className='image_loading'>
-										<Spinner size={35} />
-									</div>
-								)}
-								{file ? (
-									<>
-										<button
-											className='remove_img'
-											onClick={() => setFile(null)}>
-											<FontAwesomeIcon icon={faXmark} />
-										</button>
-										<img src={URL.createObjectURL(file)} />
-									</>
-								) : (
-									<>
-										<input
-											type='file'
-											className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
-											style={{ zIndex: 1 }}
-											id='contact-file-input'
-											accept='.jpg, .png, .jpeg'
-											multiple='multiple'
-											onChange={e => uploadFile(e.target.files[0])}
-										/>
-										<div>Drag & Drop a File Here</div>
-										<p>Upload file here</p>
-									</>
-								)}
+						{dataSchema?.image?.map(item => (
+							<div className='file-upload-box mb-3 position-relative'>
+								<button
+									className='remove_img'
+									onClick={() => removeOneImage(item)}>
+									<FontAwesomeIcon icon={faXmark} />
+								</button>
+								<img src={item} />
 							</div>
-							<div className='input_error_message'>
-								{errors?.text && errors?.text[0]}
+						))}
+						{dataSchema?.image?.length < 3 && (
+							<div>
+								<div className='file-upload-box position-relative'>
+									{imageLoading && (
+										<div className='image_loading'>
+											<Spinner size={35} />
+										</div>
+									)}
+									{file ? (
+										<>
+											<button
+												className='remove_img'
+												onClick={() => setFile(null)}>
+												<FontAwesomeIcon icon={faXmark} />
+											</button>
+											<img src={URL.createObjectURL(file)} />
+										</>
+									) : (
+										<>
+											<input
+												type='file'
+												className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
+												style={{ zIndex: 1 }}
+												id='contact-file-input'
+												accept='.jpg, .png, .jpeg'
+												multiple='multiple'
+												onChange={e => uploadFile(e.target.files[0])}
+											/>
+											<div>Drag & Drop a File Here</div>
+											<p>Upload file here</p>
+										</>
+									)}
+								</div>
+								<div className='input_error_message'>
+									{errors?.text && errors?.text[0]}
+								</div>
 							</div>
-						</div>
+						)}
 					</div>
 					<div className='col-12 text-center my-9'>
 						<button

@@ -1,8 +1,12 @@
 /* #region global */
 
+:root {
+	--toastify-color-success: #00aaa6 !important;
+}
+
 * {
 	--primary-color: #00cccc;
-	--secondary-color: rgba(0, 158, 145, 1);
+	--secondary-color: #009e91;
 	font-display: swap;
 }
 .text_editor,
@@ -939,7 +943,7 @@ input {
 		backdrop-filter: blur(5px);
 	}
 
-	span{
+	span {
 		position: relative;
 		z-index: 1;
 		color: #006664;
