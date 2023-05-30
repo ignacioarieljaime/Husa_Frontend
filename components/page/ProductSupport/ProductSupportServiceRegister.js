@@ -301,6 +301,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						{dataSchema?.image?.map(item => (
 							<div className='file-upload-box mb-3 position-relative'>
 								<button
+									type={'button'}
 									className='remove_img'
 									onClick={() => removeOneImage(item)}>
 									<FontAwesomeIcon icon={faXmark} />
@@ -319,6 +320,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 									{file ? (
 										<>
 											<button
+												type={'button'}
 												className='remove_img'
 												onClick={() => setFile(null)}>
 												<FontAwesomeIcon icon={faXmark} />
