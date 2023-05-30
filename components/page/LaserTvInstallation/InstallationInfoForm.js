@@ -121,10 +121,17 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 			)
 			if (response.status === 200) {
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
-				dispatch({ installation_location_photo: response.data.view_link })
+				dispatch({
+					installation_location_photo: [
+						...data?.installation_location_photo,
+						response.data.view_link
+					]
+				})
+				setFile(null)
 			}
 			setImageLoading(false)
 		} catch (error) {
+			setFile(null)
 			setImageLoading(false)
 
 			toast.error("The photo wasn't uploaded successfully ", {
@@ -145,6 +152,20 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				?.slice(0, 10)
 			return maxDate
 		}
+	}
+
+	const removeOneImage = _image => {
+		dispatch({
+			installation_location_photo: data?.installation_location_photo.filter(
+				item => item !== _image
+			)
+		})
+	}
+
+	const showSingle = () => {
+		return data?.installation_location_photo?.length % 2
+			? 'calc(50% - 4px)'
+			: '100%'
 	}
 
 	return (
@@ -257,39 +278,67 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 				</div>
 				<div className='col-12 col-md-6 mb-8 file-upload position-relative'>
 					<label className='laser_label'>Installation Location Photo</label>
-					<div className='file-upload-box position-relative'>
-						{imageLoading && (
-							<div className='image_loading'>
-								<Spinner size={35} />
-							</div>
-						)}
-						{file ? (
-							<>
-								<button className='remove_img' onClick={() => setFile(null)}>
+					<div className='d-flex flex-wrap gap-2'>
+						{data?.installation_location_photo?.map((item, index) => (
+							<div
+								style={{ width: index === 4 ? '100%' : 'calc(50% - 4px)' }}
+								className='file-upload-box position-relative'>
+								<button
+									className='remove_img'
+									onClick={() => removeOneImage(item)}>
 									<FontAwesomeIcon icon={faXmark} />
 								</button>
-								<img src={URL.createObjectURL(file)} />
-							</>
-						) : (
-							<>
-								<input
-									type='file'
-									className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
-									style={{ zIndex: 1 }}
-									id='contact-file-input'
-									accept='.jpg, .png, .jpeg'
-									multiple='multiple'
-									onChange={uploadFile}
-								/>
-								<article className='d-flex justify-content-center align-items-center flex-wrap'>
-									<p>Drop files to attach, or</p>
-									<button className='n-btn outline-black ms-3 py-4 px-6'>
-										Browse
-									</button>
-								</article>
-							</>
+								<img src={item} />
+							</div>
+						))}
+						{data?.installation_location_photo?.length < 5 && (
+							<div
+								style={{
+									width: showSingle()
+								}}
+								className='file-upload-box position-relative'>
+								{imageLoading && (
+									<div className='image_loading'>
+										<Spinner size={35} />
+									</div>
+								)}
+								{file ? (
+									<>
+										<button
+											className='remove_img'
+											onClick={() => setFile(null)}>
+											<FontAwesomeIcon icon={faXmark} />
+										</button>
+										<img src={URL.createObjectURL(file)} />
+									</>
+								) : (
+									<>
+										<input
+											type='file'
+											className=' position-absolute top-0 start-0 opacity-0 w-100 h-100'
+											style={{ zIndex: 1 }}
+											id='contact-file-input'
+											accept='.jpg, .png, .jpeg'
+											multiple='multiple'
+											onChange={uploadFile}
+										/>
+										<article className='d-flex justify-content-center align-items-center flex-wrap'>
+											<p>Drop files to attach, or</p>
+											<button
+												className={`n-btn outline-black ms-3  px-6 ${
+													data?.installation_location_photo?.length % 2
+														? 'py-2'
+														: 'py-4'
+												}`}>
+												Browse
+											</button>
+										</article>
+									</>
+								)}
+							</div>
 						)}
 					</div>
+
 					{errors?.installation_location_photo ? (
 						<p className='error'>{errors?.installation_location_photo}</p>
 					) : null}
