@@ -177,9 +177,6 @@
 .description-blocks {
 	margin: 0;
 }
-.description-blocks img {
-	object-fit: cover;
-}
 .description-blocks .introduction {
 	padding: 72px 128px;
 	margin: auto;
@@ -2323,11 +2320,6 @@ header {
 			a {
 				text-decoration: none;
 				color: var(--primary-color);
-				width: 100%;
-				display: block;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				overflow: hidden;
 			}
 		}
 	}

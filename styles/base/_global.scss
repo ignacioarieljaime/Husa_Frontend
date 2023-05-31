@@ -269,9 +269,16 @@ input {
 .blog_text_container {
 	max-width: 1100px;
 	margin: 0 auto;
-	padding: 12px;
+	padding: 12px 28px;
 	p {
 		margin-bottom: 0;
+	}
+}
+
+.blog-search-text {
+	u {
+		color: #43898a;
+		font-weight: bold;
 	}
 }
 
