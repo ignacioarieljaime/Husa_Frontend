@@ -25,7 +25,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 	return (
 		<section>
 			<div className='blog_text_container'>
-				<div className='row mb-6 mb-md-10'>
+				<div className='row mb-8 mb-md-10'>
 					<div className='col-12'>
 						<figure className='blog-article-box-full' ref={imageRef.ref}>
 							<div className='image-box'>

@@ -40,7 +40,7 @@ function BlogListSearchBox({ data: { structure } }) {
 			<div className='blog_text_container px-7'>
 				<div className='row mb-3 mb-md-9 pt-9 mx-0 border-top'>
 					<div
-						className='col-12 col-md-7 py-3 px-0 fs-5'
+						className='col-12 col-md-7 py-3 px-0 fs-5 blog-search-text'
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<div className='col-12 col-md-5 py-3 px-0'>
 						<div className='row justify-content-start justify-content-md-end align-items-center'>
