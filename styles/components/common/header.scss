@@ -94,7 +94,14 @@ header.blog {
 .header-secondary-product-image {
   img {
     position: unset !important;
-  }
+    top: unset !important;
+    left: unset !important;
+    transform: unset !important;
+    -webkit-transform: unset !important;
+    -moz-transform: unset !important;
+    -ms-transform: unset !important;
+    -o-transform: unset !important;
+}
 }
 
 .top-nav {
