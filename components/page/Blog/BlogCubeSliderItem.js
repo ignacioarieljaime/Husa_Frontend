@@ -21,7 +21,7 @@ const BlogCubeSliderItem = ({ data, modalHandler }) => {
 						{data?.link?.title}
 					</button>
 				</div>
-				<div className='col-12 col-md-7 order-1 order-md-2'>
+				<div className='col-12 col-md-7 order-1 order-md-2 image_container'>
 					<img
 						src={data?.image?.src}
 						alt={data?.image?.alt}
