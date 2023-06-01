@@ -72,6 +72,16 @@
       transform: scale(1.05);
     }
   }
+  &.blog-primary {
+    border-color: #43898a;
+    color: #fff !important;
+    background-color: #43898a !important;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
 
   &.primary-text {
     color: #00a29c !important;
@@ -169,7 +179,7 @@
     background: #239d98 !important;
   }
   &.disabled {
-	cursor: default;
+    cursor: default;
     background: #ababb0 !important;
     &:hover {
       background: #ababb0 !important;

@@ -41,10 +41,10 @@ function BlogListLittleReadArticleBoxContainer({
 		<section>
 			<div className='blog_custom_conrainer'>
 				<div
-					className={`row  justify-content-between align-items-start pb-0 pb-md-20 custom_conrainer ${
+					className={`row  justify-content-between align-items-start pb-16 pb-md-10 custom_conrainer ${
 						index % 2 !== 0 ? 'flex-row-reverse' : null
 					}`}>
-					<div className='article_container col-12 col-md-4 mb-20'>
+					<div className='article_container col-12 col-md-4 mb-0 mb-md-10'>
 						<figure className='blog-article-box' ref={card1Ref.ref}>
 							<div className='image-box'>
 								<Link
@@ -112,7 +112,7 @@ function BlogListLittleReadArticleBoxContainer({
 														? smallPost?.value?.link?.target
 														: '_self'
 												}
-												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+												className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
 												{smallPost?.value?.link?.title}
 												{smallPost?.value?.link?.target === '_blank' && (
 													<img
@@ -127,7 +127,7 @@ function BlogListLittleReadArticleBoxContainer({
 							</figcaption>
 						</figure>
 					</div>
-					<div className='article_container col-12 col-md-6 mb-20'>
+					<div className='article_container col-12 col-md-6 mb-0 mb-md-10'>
 						<figure className='blog-article-box' ref={card2Ref.ref}>
 							<div className='image-box'>
 								<Link
@@ -195,7 +195,7 @@ function BlogListLittleReadArticleBoxContainer({
 														? largePost?.value?.link?.target
 														: '_self'
 												}
-												className='btn btn-outline-dark green-hover px-6 py-3 rounded-5 text-uppercase'>
+												className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
 												{largePost?.value?.link?.title}
 												{largePost?.value?.link?.target === '_blank' && (
 													<img
