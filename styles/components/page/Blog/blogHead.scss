@@ -99,7 +99,7 @@
 			left: 0;
 			transform: translate(0, 0);
 			* {
-				line-height: 16.2vw;
+				line-height: 12vw;
 				font-size: 15vw;
 			}
 		}
@@ -120,6 +120,17 @@
 		.seconde-header * {
 			line-height: 13vw;
 			font-size: 12vw;
+		}
+	}
+}
+@media (max-width: 430px) {
+	.blog-header {
+		.sea-floating-img {
+			left: 0;
+			transform: translateX(0);
+			width: 100%;
+			max-width: 230px;
+			max-height: 230px;
 		}
 	}
 }

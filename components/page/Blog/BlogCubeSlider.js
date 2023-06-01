@@ -44,7 +44,7 @@ function BlogCubeSlider({ data: { structure } }) {
 						}}
 						pagination={pagination}
 						modules={[EffectCoverflow, Pagination]}
-						className='blog-big-coverflow mb-20 mt-15'>
+						className='blog-big-coverflow mb-15 mb-md-20 mt-15'>
 						{structure?.list?.value.map((item, index) => (
 							<SwiperSlide key={index}>
 								<BlogCubeSliderItem

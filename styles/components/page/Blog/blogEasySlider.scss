@@ -3,6 +3,13 @@
 	overflow: hidden;
 	position: relative;
 	left: 0;
+	.bg-light-orange-gradient {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 50%;
+	}
 }
 
 .blog-big-centered {
