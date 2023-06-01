@@ -32,7 +32,6 @@ const BlockCategories = ({ data: { structure } }) => {
 						nextEl: navigationNextRef.current
 					}}
 					pagination={false}
-					spaceBetween={16}
 					slidesPerView={'auto'}
 					centeredSlides={false}
 					modules={[Navigation]}
