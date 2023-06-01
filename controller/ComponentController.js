@@ -117,7 +117,7 @@ ${
 							notFound: true
 						}
 					}
-						if (data?.status?.name !== 'Published' || data?.status_id === 2) {
+						if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 							return {
 								notFound: true
 							}
@@ -156,7 +156,9 @@ ${
 					)
 					.then(response => {
 						console.log('get pim data')
-						return response.data.data
+						if(response?.data?.data)
+							return response.data.data
+						return {}
 					})
 					.catch(error => {
 						if (error?.response?.status === 404) {
@@ -171,7 +173,7 @@ ${
 						notFound: true
 					}
 				}
-					if (data?.status?.name !== 'Published' || data?.status_id === 2) {
+					if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 						return {
 							notFound: true
 						}
@@ -202,7 +204,7 @@ ${
 					   console.error('Error:', error)
 					   return null
 				   })	
-				   if (data?.status?.name !== 'Published' || data?.status_id === 2) {
+				   if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 					return {
 						notFound: true
 					}

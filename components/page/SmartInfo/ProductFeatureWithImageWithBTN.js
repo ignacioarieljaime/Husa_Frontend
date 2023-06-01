@@ -7,7 +7,7 @@ function ProductFeatureWithImageWithBTN({ data }) {
 		<section id={data?.name + data?.id}>
 			<div class='p-0 mx-md-9 mx-4 '>
 				<div
-					class={`row description-blocks bg-black align-items-center ${
+					class={`row description-blocks bg-black align-items-stretch ${
 						structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''
 					}`}>
 					<article class='introduction article text-white col-12 col-md-6 order-2 order-md-1'>

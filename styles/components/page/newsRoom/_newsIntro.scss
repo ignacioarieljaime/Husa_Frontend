@@ -17,7 +17,9 @@
 			color: #000000;
 			max-width: 838px;
 			margin-bottom: 30px;
-			@include mq(768){
+			overflow: hidden;
+			word-wrap: break-word;
+			@include mq(768) {
 				font-size: 34px;
 				line-height: 42px;
 			}
@@ -34,7 +36,7 @@
 		> div {
 			display: flex;
 			gap: 32px;
-            align-items: center;
+			align-items: center;
 			> span {
 				font-weight: 400;
 				font-size: 16px;
@@ -48,11 +50,16 @@
 				padding: 0;
 				display: flex;
 				gap: 16px;
-                align-items: center;
-                margin: 0;
+				align-items: center;
+				margin: 0;
 
 				li {
-                    margin: 0;
+					margin: 0;
+					button {
+						background-color: transparent;
+						padding: 0;
+						border: none;
+					}
 					a {
 						svg {
 							path {

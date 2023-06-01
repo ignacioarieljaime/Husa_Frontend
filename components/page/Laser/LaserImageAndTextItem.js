@@ -7,7 +7,7 @@ function LaserImageAndTextItem({ data: { image, title, description } }) {
 				<img src={image?.src} alt={image?.alt} width='100%' />
 				<div className='px-4 text-center'>
 					<h3 className='mb-3 mt-13'>{title?.value}</h3>
-					<p className='fw-normal m-auto mb-4'>{description?.value}</p>
+					<p className='fw-normal m-auto mb-0 mb-md-4'>{description?.value}</p>
 				</div>
 			</article>
 		</div>

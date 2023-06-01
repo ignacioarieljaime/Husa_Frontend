@@ -1,8 +1,9 @@
+import axios from 'axios'
 import useFetch from '../hooks/useFetch'
 
 export async function GetProductByFilterApi(navigate, _filter) {
 	let response = await useFetch(navigate).post(
-		`/getProductsByFilterValueCondition?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+		`/getProductsByIds?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 		{
 			condition: 'or',
 			data: _filter
@@ -14,6 +15,13 @@ export async function GetProductByFilterApi(navigate, _filter) {
 export async function GetProductsApi(navigate, _categoryId) {
 	let response = await useFetch(navigate).post(
 		`/getProducts/${_categoryId}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
+	return response
+}
+export async function GetProductsByIdsApi(navigate, ids) {
+	let response = await useFetch(navigate).post(
+		`/getProductsByIds?status[]=1&status[]=3&status[]=7&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+		{ ids }
 	)
 	return response
 }
@@ -35,17 +43,19 @@ export async function GetProductsListNewApi(
 	navigate,
 	_categoryId,
 	_filter,
-	_sort
+	_sort,
+	signal
 ) {
 	let filter =
 		_filter && _filter.length !== 0
 			? `&filters=${encodeURIComponent(JSON.stringify(_filter))}`
 			: ''
 
-	let response = await useFetch(navigate).get(
-		`/productsIndex?category_id=${_categoryId}${filter}${
+	let response = await axios.get(
+		`${process.env.NEXT_PUBLIC_PIM_API_ROUTE}/productsIndex?category_id=${_categoryId}${filter}${
 			_sort ? _sort : ''
-		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+		{ signal }
 	)
 	return response
 }

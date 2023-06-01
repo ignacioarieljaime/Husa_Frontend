@@ -11,7 +11,7 @@ import { RouteHandler } from 'utils/routeHandler'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 
-const BlackFridayProductsItem = ({ data }) => {
+const BlackFridayProductsItem = ({ data, products }) => {
 	const [sortedData, setSortedData] = useState({})
 	const [showDialgo, setShowDialog] = useState(false)
 	const [product, setProduct] = useState(null)
@@ -24,7 +24,6 @@ const BlackFridayProductsItem = ({ data }) => {
 		const response = await GetSingleProduct(router, _id)
 		setProduct(response?.data?.data)
 	}
-
 	useEffect(() => {
 		setSortedData({
 			...data,
@@ -39,7 +38,15 @@ const BlackFridayProductsItem = ({ data }) => {
 		if (sortedData?.series && sortedData?.series.length > 0) {
 			for (let element of sortedData?.series) {
 				if (element?.price) {
-					if (element?.id) getProduct(element?.id)
+					if (products?.series?.length) {
+						products?.series[0]?.values?.forEach(item => {
+							item?.productsList[0]?.id === element?.id &&
+								setProduct(item?.productsList[0])
+						})
+					} else {
+						setProduct(products)
+					}
+
 					setActiveSerie(element)
 					break
 				}
@@ -62,6 +69,13 @@ const BlackFridayProductsItem = ({ data }) => {
 		setUrl(RouteHandler(activeSerie?.id, 'product'))
 	}, [activeSerie])
 
+	const changeTvSizeHandler = _size => {
+		products?.series[0]?.values?.forEach(item => {
+			item?.productsList[0]?.id === _size?.id &&
+				setProduct(item?.productsList[0])
+		})
+	}
+
 	return (
 		<>
 			{valid ? (
@@ -71,20 +85,20 @@ const BlackFridayProductsItem = ({ data }) => {
 							<h4 className='series'>
 								{activeSerie?.header
 									? activeSerie?.header
-									: product?.custom_fields.filter(
+									: products?.custom_fields?.filter(
 											field => field.title === 'h2 Title'
 									  ).length > 0
-									? product?.custom_fields.filter(
+									? products?.custom_fields?.filter(
 											field => field.title === 'h2 Title'
 									  )[0].value
-									: product?.model}
+									: products?.model}
 							</h4>
 							<div
 								className={`img_container mb-10 mx-auto ${
 									product?.Category?.id === 5 ? 'vertical' : ''
 								}`}>
 								<CustomImage
-									src={product?.image}
+									src={product?.image || products?.image}
 									alt={product?.name}
 									wrapperWidth={'100%'}
 									wrapperMaxWidth={'100%'}
@@ -96,7 +110,7 @@ const BlackFridayProductsItem = ({ data }) => {
 								className={`title ${
 									sortedData?.series.length > 1 ? '' : 'mb-25'
 								}`}>
-								{product?.name}
+								{product?.name || products?.name}
 							</h6>
 							{sortedData?.series.length > 1 ? (
 								<div className='types'>
@@ -107,7 +121,7 @@ const BlackFridayProductsItem = ({ data }) => {
 													Number(item?.price) || Number(item?.discount) ? (
 														<button
 															onClick={() => {
-																getProduct(item.id)
+																changeTvSizeHandler(item)
 																setActiveSerie(item)
 															}}
 															className={`${

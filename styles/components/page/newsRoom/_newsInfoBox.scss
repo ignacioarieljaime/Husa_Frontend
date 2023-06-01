@@ -1,6 +1,6 @@
 .news_single_info_box {
 	padding: 12px;
-	.content{
+	.content {
 		margin: 0 auto 62px;
 		max-width: 1090px;
 		border-radius: 25px;
@@ -18,7 +18,7 @@
 				color: #000000;
 				opacity: 0.6;
 			}
-	
+
 			ul {
 				list-style: none;
 				padding: 0;
@@ -26,9 +26,14 @@
 				gap: 16px;
 				align-items: center;
 				margin: 0;
-	
+
 				li {
 					margin: 0;
+					button {
+						background-color: transparent;
+						padding: 0;
+						border: none;
+					}
 					a {
 						svg {
 							path {
@@ -40,7 +45,7 @@
 				}
 			}
 		}
-	
+
 		.download_box {
 			padding: 32px;
 			background: #103a42;
@@ -50,12 +55,10 @@
 			gap: 16px;
 			margin-bottom: 48px;
 			flex-wrap: wrap;
-	
 			li {
 				width: calc(50% - 16px);
-				@include mq(575){
-				width: 100%;
-	
+				@include mq(575) {
+					width: 100%;
 				}
 				a {
 					display: flex;
@@ -71,7 +74,7 @@
 					font-size: 14px;
 					line-height: 19px;
 					color: #ffffff;
-	
+
 					svg {
 						path {
 							stroke: #fff;
@@ -84,7 +87,7 @@
 				}
 			}
 		}
-	
+
 		.info {
 			display: flex;
 			flex-wrap: nowrap;
@@ -93,7 +96,7 @@
 			@include mq(768) {
 				flex-wrap: wrap;
 			}
-	
+
 			> div {
 				width: 50%;
 				@include mq(768) {
@@ -102,7 +105,7 @@
 					}
 					width: 100%;
 				}
-	
+
 				> h5 {
 					margin-bottom: 48px;
 					font-weight: 400;
@@ -113,17 +116,25 @@
 						margin-bottom: 28px;
 					}
 				}
-	
-				> p {
+
+				p {
+					strong {
+						font-weight: 400;
+						font-size: 20px;
+						line-height: 25px;
+					}
 					font-style: normal;
 					font-weight: 300;
 					font-size: 16px;
 					line-height: 22px;
 					color: #000000;
+					margin-bottom: 12px;
+					word-break: break-all;
 				}
-	
+
 				> div {
 					display: flex;
+					gap: 8px;
 					> div {
 						width: 50%;
 						h6 {

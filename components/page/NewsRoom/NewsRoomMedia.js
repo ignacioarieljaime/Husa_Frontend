@@ -24,8 +24,10 @@ const NewsRoomMedia = ({ data }) => {
 							)}
 						</div>
 						<div>
-							<Link href={structure?.list?.value[0]?.link?.value || '/'}>
-								<a>
+							<Link
+								target={structure?.list?.value[0]?.link?.target || '_self'}
+								href={structure?.list?.value[0]?.link?.value || '/'}>
+								<a target={structure?.list?.value[0]?.link?.target || '_self'}>
 									{structure?.list?.value[0]?.link?.title}
 									{structure?.list?.value[0]?.downloadImage?.src && (
 										<CustomImage
@@ -54,8 +56,12 @@ const NewsRoomMedia = ({ data }) => {
 						)}
 					</div>
 					<div>
-						<Link href={structure?.list?.value[1]?.link?.value || '/'}>
-							<a>{structure?.list?.value[1]?.link?.title}</a>
+						<Link
+							target={structure?.list?.value[1]?.link?.target || '_self'}
+							href={structure?.list?.value[1]?.link?.value || '/'}>
+							<a target={structure?.list?.value[1]?.link?.target || '_self'}>
+								{structure?.list?.value[1]?.link?.title}
+							</a>
 						</Link>
 					</div>
 				</div>

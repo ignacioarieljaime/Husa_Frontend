@@ -1,4 +1,5 @@
 import CustomImage from 'components/common/CustomImage'
+import moment from 'moment'
 import Link from 'next/link'
 import React from 'react'
 
@@ -9,9 +10,9 @@ const NewsRoomMainNewsItem = ({
 	title,
 	date,
 	image,
-	link
+	link,
+	target
 }) => {
-	console.log(title)
 	return (
 		<>
 			<div
@@ -28,12 +29,16 @@ const NewsRoomMainNewsItem = ({
 					<span className='subject'>{subject}</span>
 
 					<h2>
-						<Link href={link || '/'}>
-							<a>{title}ّ</a>
+						<Link href={link || '/'} target={target || '_self'}>
+							<a target={target || '_self'}>{title}</a>
 						</Link>
 					</h2>
 
-					<span className='date'>{date}</span>
+					<span className='date'>
+						{date && date.includes('T')
+							? moment(date).format('DD MMMM YYYY')
+							: date}
+					</span>
 				</div>
 			</div>
 		</>

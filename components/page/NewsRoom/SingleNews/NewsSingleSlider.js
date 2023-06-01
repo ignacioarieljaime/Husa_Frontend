@@ -42,12 +42,16 @@ const NewsSingleSlider = ({ data }) => {
 							/>
 							<div className='buttons'>
 								<button
+									className='n-btn outline-white'
 									onClick={() =>
 										setImageUrl(imageUrl ? null : item?.image?.src)
 									}>
 									{item?.EnlargeBtn?.value} <ResizeIcon />
 								</button>
-								<a download={true} href={item?.image?.src}>
+								<a
+									className='n-btn outline-white'
+									download={true}
+									href={item?.image?.src}>
 									{item?.downloadBtn?.title} <DownloadIconV2 />
 								</a>
 							</div>
