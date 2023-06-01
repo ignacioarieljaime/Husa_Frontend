@@ -15,7 +15,7 @@ function LaserHead({ data: { structure } }) {
 							<img
 								src={structure?.image?.src}
 								alt={structure?.image?.alt}
-								className='banner-logo mb-20'
+								className='banner-logo mb-8 mb-md-20'
 							/>
 						</h1>
 						<div>

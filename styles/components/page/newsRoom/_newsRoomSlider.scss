@@ -8,8 +8,8 @@
 		text-align: center;
 		color: #000000;
 		margin-bottom: 62px;
-		@include mq(768){
-			font-size:34px;
+		@include mq(768) {
+			font-size: 34px;
 			line-height: 42px;
 		}
 	}
@@ -22,7 +22,7 @@
 			.slider_item {
 				background-image: url('https://thumbs.dreamstime.com/b/nutural-sunset-grass-green-close-up-meadow-sunset-blurred-background-108156303.jpg');
 				height: 625.5px;
-				@include mq(768){
+				@include mq(768) {
 					height: 360px;
 				}
 				background-repeat: no-repeat;
@@ -64,7 +64,7 @@
 						text-align: center;
 						color: #ffffff;
 						margin-bottom: 32px;
-						@include mq(768){
+						@include mq(768) {
 							font-size: 34px;
 							line-height: 42px;
 						}
@@ -108,22 +108,34 @@
 				-moz-transition: all 0.3s;
 				-ms-transition: all 0.3s;
 				-o-transition: all 0.3s;
+				@include mq(768) {
+					width: 40px;
+				}
 			}
 			.swiper-pagination-bullet-active {
 				background: #00aaa6;
 				width: 210px;
+				@include mq(768) {
+					width: 70px;
+				}
 			}
 		}
 		.swiper-button-prev {
-			left: 19%;
-			@include mq(768){
-				left: 8%;
+			left: calc(200px + 9%);
+			@include mq(1920) {
+				left: calc(130px + 3%);
+			}
+			@include mq(1440) {
+				left: calc(30px + 6%);
 			}
 		}
 		.swiper-button-next {
-			right: 19%;
-			@include mq(768){
-				right: 8%;
+			right: calc(200px + 9%);
+			@include mq(1920) {
+				right: calc(130px + 3%);
+			}
+			@include mq(1440) {
+				right: calc(30px + 6%);
 			}
 		}
 		.swiper-button-prev,

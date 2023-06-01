@@ -710,6 +710,10 @@ input {
 }
 
 .text_editor {
+	a {
+		font-size: inherit !important;
+		line-height: inherit !important;
+	}
 	table {
 		border-collapse: collapse;
 		table-layout: fixed;

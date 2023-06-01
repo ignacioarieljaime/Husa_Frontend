@@ -22,7 +22,7 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				flex-wrap: nowrap;
+				flex-wrap: wrap;
 				@include mq(991){
 					flex-wrap: wrap;
 				}
