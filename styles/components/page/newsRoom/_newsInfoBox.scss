@@ -9,6 +9,7 @@
 		.media {
 			display: flex;
 			gap: 32px;
+			padding: 0 32px;
 			align-items: center;
 			margin-bottom: 30px;
 			> span {
@@ -90,6 +91,7 @@
 
 		.info {
 			display: flex;
+			padding: 0 50px 0 32px;
 			flex-wrap: nowrap;
 			justify-content: center;
 			align-items: flex-start;
@@ -125,8 +127,8 @@
 					}
 					font-style: normal;
 					font-weight: 300;
-					font-size: 16px;
-					line-height: 22px;
+					font-size: 16px !important;
+					line-height: 21.6px !important					;
 					color: #000000;
 					margin-bottom: 12px;
 					word-break: break-all;

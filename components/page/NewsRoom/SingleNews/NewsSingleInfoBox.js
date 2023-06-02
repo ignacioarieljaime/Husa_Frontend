@@ -7,6 +7,7 @@ import FacebookNewsRoomIcon from 'components/icons/FacebookNewsRoomIcon'
 import TwitterNewsRoomIcon from 'components/icons/TwitterNewsRoomIcon'
 import CopyNewsIcon from 'components/icons/CopyNewsIcon'
 import MailNewsIcon from 'components/icons/MailNewsIcon'
+import { toast } from 'react-toastify'
 
 const NewsSingleInfoBox = ({ data }) => {
 	const [aboutUs, setAboutUs] = useState()
@@ -48,7 +49,11 @@ const NewsSingleInfoBox = ({ data }) => {
 							</a>
 						</li>
 						<li>
-							<button onClick={() => navigator.clipboard.writeText(pageUrl)}>
+							<button
+								onClick={() => {
+									navigator.clipboard.writeText(pageUrl)
+									toast.success('URL copy to clipboard successfully')
+								}}>
 								<CopyNewsIcon />
 							</button>
 						</li>
@@ -58,7 +63,7 @@ const NewsSingleInfoBox = ({ data }) => {
 					<ul className='download_box'>
 						{structure?.downloads?.value?.map(item => (
 							<li>
-								<a download target='_blank' href={item?.file?.src}>
+								<a download href={item?.file?.src}>
 									{item?.file?.title} <DownloadIconV2 />
 								</a>
 							</li>
