@@ -78,7 +78,7 @@ const NewsSearchFilter = ({
 						</div>
 						<div className='select_box_custom product_select_box'>
 							<span>
-								{filters?.product || 'Product'}
+								{filters?.product || 'Product category'}
 								<AngleArrow />
 							</span>
 							<div>

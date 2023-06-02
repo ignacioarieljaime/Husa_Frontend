@@ -7,6 +7,7 @@ import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const NewsIntro = ({ data }) => {
 	let { structure } = data
@@ -46,7 +47,11 @@ const NewsIntro = ({ data }) => {
 							</a>
 						</li>
 						<li>
-							<button onClick={() => navigator.clipboard.writeText(pageUrl)}>
+							<button
+								onClick={() => {
+									navigator.clipboard.writeText(pageUrl)
+									toast.success('URL copy to clipboard successfully')
+								}}>
 								<CopyNewsIcon />
 							</button>
 						</li>
