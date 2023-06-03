@@ -69,7 +69,7 @@ const NewsPressArchive = ({ data }) => {
 													)?.content
 												}
 												wrapperWidth={width > 600 ? '370px' : '100%'}
-												wrapperHeight={width > 600 ? '100%' : '144px'}
+												wrapperHeight={'100%'}
 											/>
 										</div>
 										<div className='text_box'>
