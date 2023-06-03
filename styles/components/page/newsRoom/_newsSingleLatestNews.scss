@@ -42,6 +42,12 @@
 				margin-bottom: 64px;
 				& > div {
 					min-width: 290px;
+					@include mq(768) {
+						min-width: 340px;
+					}
+					@include mq(450) {
+						min-width: 290px;
+					}
 				}
 			}
 
