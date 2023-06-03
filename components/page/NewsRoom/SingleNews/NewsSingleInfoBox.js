@@ -64,7 +64,8 @@ const NewsSingleInfoBox = ({ data }) => {
 						{structure?.downloads?.value?.map(item => (
 							<li>
 								<a download href={item?.file?.src}>
-									{item?.file?.title} <DownloadIconV2 />
+									{item?.title?.value ? item?.title?.value : item?.file?.title}
+									<DownloadIconV2 />
 								</a>
 							</li>
 						))}

@@ -18,8 +18,15 @@ const NewsRoomMedia = ({ data }) => {
 								wrapperHeight={'244px'}
 							/>
 							{structure?.list?.value[0]?.title?.value && (
-								<span className='text'>
-									{structure?.list?.value[0]?.title?.value}
+								<span className='text d-flex flex-wrap w-100 justify-content-evenly align-items-center py-3 px-4'>
+									<CustomImage
+										src={structure?.list?.value[0]?.logo?.src}
+										className='col-6 col-lg-5'
+										wrapperMaxWidth={'100px'}
+									/>
+									<span className='col-12 col-lg-6 text-center text-lg-end'>
+										{structure?.list?.value[0]?.title?.value}
+									</span>
 								</span>
 							)}
 						</div>
