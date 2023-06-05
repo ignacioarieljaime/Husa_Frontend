@@ -11,7 +11,7 @@ const NewsRoomMedia = ({ data }) => {
 			<div>
 				{structure?.list?.value[0] && (
 					<div>
-						<div>
+						<div style={{ backgroundColor: '#006664' }}>
 							<CustomImage
 								src={structure?.list?.value[0]?.image?.src}
 								wrapperWidth={'100%'}
