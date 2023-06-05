@@ -49,6 +49,19 @@ const NewsPressArchive = ({ data }) => {
 					setFilters({ ...filters, [_key]: _value })
 				}
 				title={structure?.titleOne?.value}
+				yearTitle={
+					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
+				}
+				categoryTitle={
+					structure?.product_category?.value
+						? structure?.product_category?.value
+						: 'Product Category'
+				}
+				newsSearchTitle={
+					structure?.newsroom_search?.value
+						? structure?.newsroom_search?.value
+						: 'search newsroom'
+				}
 			/>
 			<div className='news_press_archive container'>
 				<div>
