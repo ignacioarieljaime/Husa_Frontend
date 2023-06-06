@@ -1,6 +1,11 @@
+const path = require('path')
+
 const moduleExports = {
 	reactStrictMode: true,
 	swcMinify: true,
+	sassOptions: {
+		includePaths: [path.join(__dirname, 'styles/components/modules')]
+	},
 	env: {
 		NEXT_PUBLIC_CXM_API_ROUTE:
 			process.env.CXM_API_ROUTE ||
@@ -24,7 +29,8 @@ const moduleExports = {
 		NEXT_PUBLIC_GTM_ID: process.env.GTM_ID || 'GTM-WBPC7RT',
 		NEXT_PUBLIC_GOOGLE_ANALYTICS: process.env.GOOGLE_ANALYTICS,
 		NEXT_PUBLIC_VELARO_ID: process.env.VELARO_ID || '20216',
-		NEXT_PUBLIC_APP_LOCATION: process.env.APP_LOCATION || 'stage',NEXT_PUBLIC_HAVC_TOKEN: process.env.HAVC_TOKEN || null,
+		NEXT_PUBLIC_APP_LOCATION: process.env.APP_LOCATION || 'stage',
+		NEXT_PUBLIC_HAVC_TOKEN: process.env.HAVC_TOKEN || null,
 		NEXT_PUBLIC_GOOGLE_MAP_API_KEY: process.env.GOOGLE_MAP_API_KEY || null,
 		NEXT_PUBLIC_HAVC_TOKEN: process.env.HAVC_TOKEN || null,
 		NEXT_PUBLIC_CHANNEL_ADVISOR_TOKEN:

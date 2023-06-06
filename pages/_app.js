@@ -7,6 +7,11 @@ import { store } from 'redux/store'
 
 // style
 import 'styles/App.scss'
+import 'styles/components/page/ULEDX/css/1.css'
+import 'styles/components/page/ULEDX/css/2.css'
+import 'styles/components/page/ULEDX/css/3.css'
+import 'styles/components/page/ULEDX/css/4.css'
+import 'styles/components/page/ULEDX/global.scss'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 

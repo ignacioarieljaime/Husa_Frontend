@@ -1,0 +1,76 @@
+@import '../../page/ULEDX/settings';
+
+.techFeatures {
+	color: $grayLight;
+	padding-bottom: rem-calc(110);
+
+	@include media-breakpoint-up(md) {
+		padding-bottom: rem-calc(140);
+	}
+
+	h2 {
+		@include headingStyle('xlarge');
+		margin-bottom: rem-calc(35);
+		position: relative;
+
+		&:after {
+			background-image: url('/assets/uledx-assets/images/icons/mini-led-iconx@3x.webp');
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			height: rem-calc(66);
+			position: absolute;
+			right: 0;
+			top: rem-calc(-20);
+			width: rem-calc(98);
+
+			@include media-breakpoint-up(lg) {
+				height: rem-calc(143);
+				width: rem-calc(155);
+			}
+		}
+	}
+
+	.intro {
+		position: relative;
+		z-index: 2;
+
+		&Copy {
+			font-size: rem-calc(24);
+
+			@include media-breakpoint-up(md) {
+				font-size: rem-calc(24);
+				text-align: center;
+			}
+		}
+	}
+
+	.snowflake {
+		&ImageMobile {
+			margin: 0 auto;
+		}
+
+		&Wrapper {
+			@include media-breakpoint-up(lg) {
+				margin-top: rem-calc(-320);
+			}
+		}
+	}
+
+	.cardWrapper {
+		margin-top: rem-calc(50);
+		position: relative;
+		text-align: center;
+		z-index: 2;
+
+		@include media-breakpoint-up(lg) {
+			margin-top: rem-calc(100);
+		}
+
+		> div {
+			@include media-breakpoint-up(md) {
+				margin-top: rem-calc(40);
+			}
+		}
+	}
+}

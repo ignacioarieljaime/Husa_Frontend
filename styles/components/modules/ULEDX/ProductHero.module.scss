@@ -1,0 +1,156 @@
+@import '../../page/ULEDX/settings';
+
+.hero {
+	height: rem-calc(500);
+
+	@include media-breakpoint-up(md) {
+		height: 90vh;
+	}
+
+	&Wrapper {
+		padding-top: rem-calc(50);
+		position: relative;
+		width: 100%;
+
+		@include media-breakpoint-up(md) {
+			left: 50%;
+			padding-top: 0;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+
+	.animations {
+		position: relative;
+		text-align: center;
+
+		.graphic {
+			margin: 0 auto;
+			max-width: rem-calc(360);
+			width: 100%;
+
+			@include media-breakpoint-up(md) {
+				max-width: rem-calc(720);
+			}
+		}
+
+		.tv {
+			bottom: 0;
+			left: 0;
+			margin: auto;
+			max-width: rem-calc(360);
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 100%;
+
+			@include media-breakpoint-up(md) {
+				max-width: rem-calc(720);
+			}
+		}
+	}
+
+	&Content {
+		align-items: center;
+		color: $white;
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		text-align: center;
+		top: rem-calc(100);
+		width: 100%;
+
+		@include media-breakpoint-up(md) {
+			top: rem-calc(65);
+		}
+
+		img {
+			display: block;
+			margin: rem-calc(0 0 20);
+
+			&.logo {
+				max-width: rem-calc(73);
+				width: 100%;
+
+				@include media-breakpoint-up(md) {
+					max-width: rem-calc(150);
+				}
+			}
+
+			&.uled {
+				max-width: rem-calc(200);
+				width: 100%;
+
+				@include media-breakpoint-up(md) {
+					max-width: rem-calc(352);
+				}
+			}
+		}
+
+		p {
+			color: $gray;
+			font-size: rem-calc(16);
+			font-weight: 300;
+			letter-spacing: rem-calc(4);
+			text-transform: uppercase;
+
+			@include media-breakpoint-up(md) {
+				font-size: rem-calc(24);
+				letter-spacing: rem-calc(6);
+			}
+
+			&.decorative {
+				@include textGradient(#e6d97d, #e6d97d, #b48d15, 180deg);
+				font-size: rem-calc(60);
+				font-weight: lighter;
+				letter-spacing: normal;
+				line-height: normal;
+
+				@include media-breakpoint-only(md) {
+					font-size: rem-calc(80);
+				}
+			}
+		}
+	}
+
+	.fakeCta {
+		@include buttonGradient(#e6d97d, #b48d15, $black);
+		font-size: rem-calc(16);
+		letter-spacing: rem-calc(4);
+		line-height: 2.06;
+		margin-top: rem-calc(60);
+		padding: rem-calc(2 40);
+		width: rem-calc(242);
+
+		@include media-breakpoint-up(md) {
+			font-size: rem-calc(20);
+			letter-spacing: rem-calc(6);
+			line-height: 2.08;
+			margin-top: 0;
+			width: rem-calc(330);
+		}
+	}
+}
+
+.line {
+	border: 2px solid $orange;
+	display: inline;
+	height: rem-calc(200);
+	left: 50%;
+	margin-top: rem-calc(-75);
+	position: absolute;
+	right: 50%;
+	width: rem-calc(9);
+	z-index: 2;
+
+	@include media-breakpoint-up(md) {
+		height: rem-calc(300);
+		margin-top: rem-calc(-150);
+	}
+
+	@include media-breakpoint-up(lg) {
+		height: rem-calc(400);
+		margin-top: rem-calc(-300);
+	}
+}
