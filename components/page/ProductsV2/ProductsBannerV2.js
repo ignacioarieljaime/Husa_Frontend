@@ -9,7 +9,7 @@ const ProductsBannerV2 = ({ data }) => {
 
 	return (
 		<section>
-			<div className='heading'>
+			<div className='heading product_banner_v2'>
 				<CustomImage
 					src={content?.image?.src}
 					alt={content?.image?.alt}
@@ -21,10 +21,10 @@ const ProductsBannerV2 = ({ data }) => {
 					<article className='large_article grid_banner'>
 						<div
 							dangerouslySetInnerHTML={{ __html: content?.title?.value }}
-							className='fw-normal text-white px-3'></div>
+							className='fw-normal text-white px-3 title'></div>
 						<div
 							dangerouslySetInnerHTML={{ __html: content?.subtitle?.value }}
-							className='fw-normal text-white px-3'></div>
+							className='fw-normal text-white px-3 text'></div>
 					</article>
 				</div>
 			</div>
