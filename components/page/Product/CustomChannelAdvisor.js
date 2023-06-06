@@ -158,7 +158,7 @@ const CustomChannelAdvisor = ({
 												event: 'view_product',
 												eventData: {
 													retailer: item?.name,
-													productType: productData?.category?.name,
+													productType: productData?.category?.name || productData?.Category?.name,
 													productTitle: productData?.name,
 													modal: productData?.model,
 													size: productData?.customFields?.find(

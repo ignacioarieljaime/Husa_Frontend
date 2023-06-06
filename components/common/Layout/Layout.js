@@ -123,7 +123,7 @@ function Layout({ children, meta, title, header }) {
 						)
 					)}
 			</Head>
-			<section className={`layout ${title} ${header ? '' : 'no_header'}`}>
+			<section className={`layout ${title}-page ${header ? '' : 'no_header'}`}>
 				<ToastContainer />
 
 				<> {children}</>

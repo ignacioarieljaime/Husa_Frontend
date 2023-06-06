@@ -44,7 +44,7 @@ const NewsSingleLatestNews = ({ data }) => {
 									image={item?.image?.src}
 									title={item?.title?.value}
 									date={item?.date?.value}
-									subject={item?.tagLink?.value}
+									subject={item?.tagLink?.title}
 									link={item?.link?.value}
 									isThree={true}
 								/>

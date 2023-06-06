@@ -13,6 +13,9 @@ for (let year = new Date().getFullYear(); year >= 1980; year--) {
 const NewsSearchFilter = ({
 	title = 'Featured News',
 	filters,
+	yearTitle,
+	categoryTitle,
+	newsSearchTitle,
 	filterHandler
 }) => {
 	const [openFilter, setOpenFilter] = useState(false)
@@ -57,7 +60,7 @@ const NewsSearchFilter = ({
 						}}>
 						<div className='select_box_custom'>
 							<span>
-								{filters?.year || 'Year'} <AngleArrow />
+								{filters?.year || yearTitle} <AngleArrow />
 							</span>
 							<div>
 								<ul>
@@ -78,7 +81,7 @@ const NewsSearchFilter = ({
 						</div>
 						<div className='select_box_custom product_select_box'>
 							<span>
-								{filters?.product || 'Product'}
+								{filters?.product || categoryTitle}
 								<AngleArrow />
 							</span>
 							<div>
@@ -99,7 +102,7 @@ const NewsSearchFilter = ({
 							</div>
 						</div>
 						<div className='custom_input_box'>
-							<input onInput={inputChanged} placeholder='search newsroom' />
+							<input onInput={inputChanged} placeholder={newsSearchTitle} />
 							<MagnifierIcon />
 						</div>
 						<button>Reset Filter</button>
