@@ -33,6 +33,9 @@
 			@include media-breakpoint-up(md) {
 				max-width: rem-calc(720);
 			}
+			@include media-breakpoint-down(md) {
+				height: auto !important;
+			}
 		}
 
 		.tv {
@@ -44,6 +47,9 @@
 			right: 0;
 			top: 0;
 			width: 100%;
+			@include media-breakpoint-down(md) {
+				height: auto !important;
+			}
 
 			@include media-breakpoint-up(md) {
 				max-width: rem-calc(720);
@@ -82,6 +88,9 @@
 				max-width: rem-calc(200);
 				width: 100%;
 
+				@include media-breakpoint-down(md) {
+					height: 43px;
+				}
 				@include media-breakpoint-up(md) {
 					max-width: rem-calc(352);
 				}

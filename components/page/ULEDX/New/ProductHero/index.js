@@ -44,7 +44,7 @@ const ProductHero = () => {
 	return (
 		<>
 			<section className={clsx(styles.hero)} ref={main}>
-				<div className={clsx('container')}>
+				<div className={clsx('container mt-8 mt-md-0')}>
 					<div className={clsx('row')}>
 						<div className={clsx('col', styles.heroWrapper)}>
 							{/* background images */}
