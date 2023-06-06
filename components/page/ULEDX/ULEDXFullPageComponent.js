@@ -38,7 +38,6 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 
 	return (
 		<ParallaxProvider isDisabled={userPrefersReducedMotion}>
-			<PlaceholderHeader />
 			<main className='uled-wrapper'>
 				<ProductHeader pin={scrollPosY > 64} />
 				<ProductHero />
@@ -63,7 +62,6 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 				<CinemaQuality />
 				<CineStageX />
 			</main>
-			<PlaceholderFooter />
 		</ParallaxProvider>
 	)
 }
