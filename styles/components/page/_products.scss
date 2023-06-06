@@ -259,6 +259,29 @@
 	}
 }
 
+.product_banner_v2 {
+	.heading-text {
+		.title {
+			.ql-size-large {
+				font-size: 67.5px !important;
+				line-height: 75px !important;
+				@include mq(1920) {
+					font-size: 56px !important;
+					line-height: 64px !important;
+				}
+				@include mq(768) {
+					font-size: 42px !important;
+					line-height: 52px !important;
+				}
+			}
+		}
+		.text {
+			max-width: 760px;
+			margin: 0 auto;
+		}
+	}
+}
+
 @media (max-width: 1400px) {
 	.category-products {
 		.products-container {

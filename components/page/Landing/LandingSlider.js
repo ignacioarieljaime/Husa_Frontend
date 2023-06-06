@@ -39,7 +39,9 @@ function LandingSlider({ data }) {
 												? item?.tablet?.src
 												: item?.desktop?.src
 										})`
-									}}></a>
+									}}>
+									{item?.url?.title && <button>{item?.url?.title}</button>}
+								</a>
 							</Link>
 						</div>
 					</SwiperSlide>
