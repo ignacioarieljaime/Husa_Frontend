@@ -128,6 +128,9 @@
 			@include mq(1440) {
 				left: calc(30px + 6%);
 			}
+			@include mq(768) {
+				left: calc(12px + 3%);
+			}
 		}
 		.swiper-button-next {
 			right: calc(200px + 9%);
@@ -137,11 +140,18 @@
 			@include mq(1440) {
 				right: calc(30px + 6%);
 			}
+			@include mq(768) {
+				right: calc(12px + 3%);
+			}
 		}
 		.swiper-button-prev,
 		.swiper-button-next {
-			width: 75px;
+			@include mq(768) {
+				width: 48px;
+				height: 48px;
+			}
 			top: 44%;
+			width: 75px;
 			height: 75px;
 			background: #00aaa6;
 			border-radius: 100%;
@@ -153,6 +163,9 @@
 				color: #ffffff;
 				font-size: 32px;
 				font-weight: 900;
+				@include mq(768) {
+					font-size: 16px;
+				}
 			}
 		}
 	}

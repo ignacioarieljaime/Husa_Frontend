@@ -6,11 +6,19 @@
 		border-radius: 25px;
 		padding: 64px 32px;
 		border: 1px solid #c7c7c9;
+		@include mq(768) {
+			padding: 32px 12px;
+		}
 		.media {
 			display: flex;
 			gap: 32px;
+			padding: 0 32px;
 			align-items: center;
 			margin-bottom: 30px;
+			@include mq(768) {
+				flex-wrap: wrap;
+				padding: 0;
+			}
 			> span {
 				font-weight: 400;
 				font-size: 16px;
@@ -55,6 +63,9 @@
 			gap: 16px;
 			margin-bottom: 48px;
 			flex-wrap: wrap;
+			@include mq(575) {
+				padding: 32px 16px;
+			}
 			li {
 				width: calc(50% - 16px);
 				@include mq(575) {
@@ -71,10 +82,12 @@
 					border-radius: 1000px;
 					font-style: normal;
 					font-weight: 400;
-					font-size: 14px;
+					font-size: 14px !important;
 					line-height: 19px;
 					color: #ffffff;
-
+					@include mq(575) {
+						font-size: 12px !important;
+					}
 					svg {
 						path {
 							stroke: #fff;
@@ -90,15 +103,20 @@
 
 		.info {
 			display: flex;
+			padding: 0 50px 0 32px;
 			flex-wrap: nowrap;
 			justify-content: center;
 			align-items: flex-start;
 			@include mq(768) {
 				flex-wrap: wrap;
+				padding: 0;
 			}
 
 			> div {
 				width: 50%;
+				@include mq(768) {
+					width: 100%;
+				}
 				@include mq(768) {
 					&:first-child {
 						margin-bottom: 50px;
@@ -125,8 +143,8 @@
 					}
 					font-style: normal;
 					font-weight: 300;
-					font-size: 16px;
-					line-height: 22px;
+					font-size: 16px !important;
+					line-height: 21.6px !important					;
 					color: #000000;
 					margin-bottom: 12px;
 					word-break: break-all;
@@ -134,9 +152,15 @@
 
 				> div {
 					display: flex;
+					@include mq(575) {
+						flex-wrap: wrap;
+					}
 					gap: 8px;
 					> div {
 						width: 50%;
+						@include mq(575) {
+							width: 100% !important;
+						}
 						h6 {
 							font-weight: 400;
 							font-size: 20px;

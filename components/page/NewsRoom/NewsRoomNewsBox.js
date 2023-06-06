@@ -51,6 +51,19 @@ const NewsRoomNewsBox = ({ data }) => {
 					setFilters({ ...filters, [_key]: _value })
 				}
 				title={structure?.title?.value}
+				yearTitle={
+					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
+				}
+				categoryTitle={
+					structure?.product_category?.value
+						? structure?.product_category?.value
+						: 'Product Category'
+				}
+				newsSearchTitle={
+					structure?.newsroom_search?.value
+						? structure?.newsroom_search?.value
+						: 'search newsroom'
+				}
 			/>
 			<div className='container items '>
 				{/* {news === 'loading' ? (
