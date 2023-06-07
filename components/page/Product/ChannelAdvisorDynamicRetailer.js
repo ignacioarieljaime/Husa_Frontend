@@ -32,7 +32,6 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 			console.log(error)
 		}
 	}
-
 	return (
 		<div className='custom_channel_advisor'>
 			{data === 'loading' ? (
@@ -111,7 +110,9 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 														event: 'view_product',
 														eventData: {
 															retailer: item?.Name,
-															productType: productData?.category?.name,
+															productType:
+																productData?.category?.name ||
+																productData?.Category?.name,
 															productTitle: productData?.name,
 															modal: productData?.model,
 															subcategory: productData?.series || 'Unknown',
