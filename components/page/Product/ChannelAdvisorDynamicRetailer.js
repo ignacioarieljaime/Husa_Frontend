@@ -114,6 +114,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 															productType: productData?.category?.name,
 															productTitle: productData?.name,
 															modal: productData?.model,
+															subcategory: productData?.series || 'Unknown',
 															size: productData?.customFields?.find(
 																item => item.type_name === 'TV filters'
 															)
