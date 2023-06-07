@@ -160,6 +160,7 @@ const CustomChannelAdvisor = ({
 													retailer: item?.name,
 													productType: productData?.category?.name || productData?.Category?.name,
 													productTitle: productData?.name,
+													subcategory: productData?.series || 'Unknown',
 													modal: productData?.model,
 													size: productData?.customFields?.find(
 														item => item.type_name === 'TV filters'
