@@ -44,17 +44,17 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 				<FullWidthVideo
 					heading='<span>Marks</span>  <span>the spot</span>'
 					ariaLabel='X marks the spot'
-					videoSrc='/videos/peak-brightness.mp4#t=2,4'
+					videoSrc='/assets/uledx-assets/videos/peak-brightness.mp4'
 					variant='MarksTheSpot'
-					poster='/videos/peak-brightness-poster@3x.webp'
+					poster='/assets/uledx-assets/videos/peak-brightness-poster@3x.webp'
 				/>
 				<MiniLED />
 				<TechFeatures />
 				<FullWidthVideo
 					heading='The power of ‘X’'
 					hasAnimation={true}
-					videoSrc='/videos/HiView.mp4'
-					poster='/videos/HiView-poster@3x.webp'
+					videoSrc='/assets/uledx-assets/videos/HiView.mp4'
+					poster='/assets/uledx-assets/videos/HiView-poster@3x.webp'
 				/>
 				<EngineX />
 				<DynamicDisplay />

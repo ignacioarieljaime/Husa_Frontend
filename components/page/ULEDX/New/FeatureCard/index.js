@@ -57,10 +57,10 @@ const FeatureCard = ({ background, title, copy, video }) => {
 					<p className={clsx(styles.copy)}>{copy}</p>
 
 					{/* does this open a modal... ? */}
-					<button
+					{/* <button
 						className={clsx(styles.button, 'spin')}
 						aria-label='Open'
-						style={{ marginBottom: !copy ? '16px' : null }}></button>
+						style={{ marginBottom: !copy ? '16px' : null }}></button> */}
 				</div>
 			</div>
 		</div>
