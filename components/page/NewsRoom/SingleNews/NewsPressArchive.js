@@ -87,6 +87,7 @@ const NewsPressArchive = ({ data }) => {
 										</div>
 										<div className='text_box'>
 											<span className='subject'>{item?.tags.join(' ')}</span>
+
 											<h5>
 												<Link href={item?.route || '/'}>
 													<a>{item?.title}</a>
