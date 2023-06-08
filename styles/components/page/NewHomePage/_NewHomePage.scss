@@ -372,10 +372,13 @@
 .new-home-page-appliances {
 	.title {
 		font-weight: 400;
-		line-height: 120%;
 		letter-spacing: -0.02em;
 		color: #221f20;
 		padding-left: 160px;
+		* {
+			line-height: 120%;
+			font-size: 60px;
+		}
 	}
 
 	.appliances-slider {
@@ -451,6 +454,11 @@
 	gap: 24px;
 	max-width: 1200px;
 	margin: 0 auto;
+	> .title {
+		* {
+			font-size: 60px !important;
+		}
+	}
 
 	.boxes {
 		display: flex;
