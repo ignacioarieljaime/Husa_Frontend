@@ -108,11 +108,13 @@
 				padding: 32px;
 			}
 			h2 {
+				font-size: unset;
+				line-height: unset;
 				a {
 					font-style: normal;
 					font-weight: 400;
-					font-size: 34px;
-					line-height: 42px;
+					font-size: 34px !important;
+					line-height: 42px !important;
 					color: #000000;
 					text-decoration: none;
 				}
@@ -139,12 +141,14 @@
 				padding: 32px;
 			}
 			h2 {
+				font-size: unset;
+				line-height: unset;
 				margin: 41px 0;
 				a {
 					font-style: normal;
 					font-weight: 400;
-					font-size: 24px;
-					line-height: 30px;
+					font-size: 24px !important;
+					line-height: 30px !important;
 					color: #000000;
 					text-decoration: none;
 				}
@@ -177,10 +181,12 @@
 			}
 			h2 {
 				margin: 14px 0;
+				font-size: unset;
+				line-height: unset;
 				a {
 					font-weight: 400;
-					font-size: 16px;
-					line-height: 22px;
+					font-size: 16px !important;
+					line-height: 22px !important;
 					color: #000000;
 					text-decoration: none;
 				}

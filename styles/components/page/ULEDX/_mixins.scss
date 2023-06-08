@@ -1,0 +1,142 @@
+@use "sass:math";
+@import "./bootstrap";
+
+$rem-base: 16px;
+
+@function strip-unit($num) {
+	@return math.div($num, $num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $rem-base) {
+	$value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
+	@if ($value == 0rem) {
+		$value: 0; // Turn 0rem into 0
+	}
+	@return $value;
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+	$max: length($values);
+	@if $max == 1 {
+		@return convert-to-rem(nth($values, 1), $base-value);
+	}
+	$remValues: ();
+	@for $i from 1 through $max {
+		$remValues: append(
+			$remValues,
+			convert-to-rem(nth($values, $i), $base-value)
+		);
+	}
+	@return $remValues;
+}
+
+@function tracking($target) {
+	@return ($target / 1000) * 1em;
+}
+
+@mixin letter-spacing($target) {
+	letter-spacing: tracking($target);
+}
+
+@mixin zeplin-letter-spacing($px, $fontSize) {
+	letter-spacing: ($px / $fontSize * 1em);
+}
+
+@mixin headingStyle($size, $color: $white) {
+	color: $color;
+	font-family: $font-hisense;
+	font-weight: normal;
+
+	@if $size == "tiny" {
+		font-size: rem-calc(11);
+		line-height: rem-calc(40);
+	} @else if $size == "small" {
+		font-size: rem-calc(24);
+		line-height: rem-calc(26);
+	} @else if $size == "medium" {
+		font-size: rem-calc(49);
+		font-family: inherit;
+		letter-spacing: -1.47px;
+		line-height: rem-calc(49);
+		font-weight: 400;
+	} @else if $size == "large" {
+		font-size: rem-calc(45);
+		font-family: inherit;
+		letter-spacing: -2.25px;
+		line-height: 1;
+		font-weight: 500;
+
+		@include media-breakpoint-up(lg) {
+			font-size: rem-calc(60);
+			letter-spacing: -0.6px;
+			line-height: 1.1;
+		}
+	} @else if $size == "xlarge" {
+		font-size: rem-calc(45);
+		font-family: inherit;
+		font-weight: 500;
+		letter-spacing: rem-calc(-2.25);
+		line-height: 1;
+
+		@include media-breakpoint-up(lg) {
+			font-size: rem-calc(80);
+			letter-spacing: rem-calc(-4);
+			line-height: 1.16;
+		}
+	} @else if $size == "xxlarge" {
+		font-size: rem-calc(45);
+		font-family: inherit;
+        font-weight: 500;
+		letter-spacing: rem-calc(-1.44);
+		line-height: 1.15;
+
+		@include media-breakpoint-up(sm) {
+			font-size: rem-calc(80);
+			letter-spacing: rem-calc(-3.5);
+			line-height: 1.2;
+		}
+
+		@include media-breakpoint-up(md) {
+			font-size: rem-calc(100);
+			line-height: 1.27;
+		}
+	}
+}
+
+@mixin textGradient($startColor, $centerColor, $endColor, $degree: 90deg) {
+	background-color: $white; // Fallback
+	background-image: linear-gradient(
+		$degree,
+		$startColor,
+		$centerColor,
+		$endColor
+	);
+	background-size: 100%;
+	background-repeat: repeat;
+	-moz-background-clip: text;
+	-moz-text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@mixin buttonGradient($bgStart, $bgEnd, $fontColor) {
+	background-image: linear-gradient(
+		90deg,
+		$bgStart 0%,
+		$bgEnd 51%,
+		$bgEnd 100%
+	);
+	background-size: 200% auto;
+	border-radius: rem-calc(25);
+	color: $fontColor;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+
+	&:hover,
+	&:focus {
+		background-position: right center;
+		color: $fontColor;
+		text-decoration: none;
+	}
+}

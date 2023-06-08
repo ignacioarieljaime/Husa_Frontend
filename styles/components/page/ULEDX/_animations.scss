@@ -1,0 +1,49 @@
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.fadeIn {
+	animation: fadeIn 3s forwards;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(80deg);
+	}
+}
+
+.spin {
+	transition-duration: 0.25s;
+	transition-property: transform;
+
+	&:hover {
+		transform: rotate(90deg);
+	}
+}
+
+@keyframes pulse {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	50% {
+		transform: scale3d(1.05, 1.05, 1.05);
+	}
+
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.pulse {
+	animation: pulse 4s infinite;
+}

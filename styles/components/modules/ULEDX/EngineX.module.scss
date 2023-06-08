@@ -1,0 +1,42 @@
+@import '../../page/ULEDX/settings';
+
+.engineX {
+	background-image: url('/assets/uledx-assets/images/backgrounds/hi-view-mobile@3x.webp');
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	color: $white;
+	padding-bottom: rem-calc(360);
+	padding-top: rem-calc(40);
+
+	@include media-breakpoint-up(sm) {
+		background-size: cover;
+		padding-bottom: rem-calc(400);
+	}
+
+	@include media-breakpoint-up(md) {
+		background-image: url('/assets/uledx-assets/images/backgrounds/hi-view-desktop@3x.webp');
+		background-position: center;
+		background-size: cover;
+		padding-bottom: rem-calc(145);
+		padding-top: rem-calc(90);
+	}
+
+	h2 {
+		@include headingStyle('xlarge');
+		margin-bottom: rem-calc(30);
+	}
+
+	.copy {
+		margin-bottom: rem-calc(15);
+
+		@include media-breakpoint-up(md) {
+			margin-bottom: rem-calc(35);
+		}
+	}
+
+	.cardWrapper {
+		display: flex;
+		flex-direction: row;
+	}
+}

@@ -10,5 +10,9 @@ module.exports.ULEDXComponents = [
 	{
 		name: 'ULEDXGetNotified',
 		path: 'components/page/ULEDX/ULEDXGetNotified'
+	},
+	{
+		name: 'ULEDXFullPageComponent',
+		path: 'components/page/ULEDX/ULEDXFullPageComponent'
 	}
 ]

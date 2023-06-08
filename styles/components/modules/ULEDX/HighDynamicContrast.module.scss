@@ -1,0 +1,90 @@
+@import '../../page/ULEDX/settings';
+
+.highDynamicContrast {
+	color: $white;
+	padding-top: rem-calc(30);
+
+	@include media-breakpoint-up(md) {
+		padding-top: rem-calc(150);
+		padding-bottom: rem-calc(30);
+	}
+
+	@include media-breakpoint-up(lg) {
+		padding-top: rem-calc(85);
+		padding-bottom: rem-calc(30);
+	}
+
+	h2 {
+		@include headingStyle('xxlarge');
+		color: $grayHeading;
+		line-height: 1 !important;
+		padding-bottom: rem-calc(20);
+		position: relative;
+
+		@include media-breakpoint-up(md) {
+			font-size: rem-calc(60);
+			padding-top: 0;
+		}
+
+		@include media-breakpoint-up(lg) {
+			@include headingStyle('xxlarge');
+			padding-bottom: rem-calc(55);
+		}
+
+		&:after {
+			@include media-breakpoint-up(lg) {
+				content: '';
+				background-image: url('/assets/uledx-assets/images/icons/dynamic-contrast-icons@3x.webp');
+				display: block;
+				width: rem-calc(439);
+				height: rem-calc(100);
+				background-size: contain;
+				background-repeat: no-repeat;
+				position: absolute;
+				right: rem-calc(50);
+				bottom: 0;
+			}
+
+			@include media-breakpoint-up(xl) {
+				right: rem-calc(300);
+				bottom: rem-calc(10);
+			}
+		}
+
+		.high {
+			@include textGradient(#e577b1, #e577b1, #c576c4, 180deg);
+		}
+
+		.dynamic {
+			@include textGradient(#c576c4, #c576c4, #a374da, 180deg);
+		}
+
+		.range {
+			@include textGradient(#a374da, #a374da, #7c73f3, 180deg);
+		}
+	}
+
+	.slider {
+		&Wrapper {
+			margin: rem-calc(50 0);
+			position: relative;
+
+			@include media-breakpoint-up(md) {
+				margin: rem-calc(50 0 80);
+			}
+		}
+
+		&Frame {
+			pointer-events: none;
+			position: absolute;
+			top: 0;
+		}
+	}
+
+	.copy {
+		p {
+			color: $grayLight;
+			font-weight: 300;
+		}
+	}
+}

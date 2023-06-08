@@ -1,0 +1,112 @@
+@import '../../page/ULEDX/settings';
+
+.product {
+	&Wrapper {
+		margin: rem-calc(20 0 0);
+		position: relative;
+
+		@include media-breakpoint-up(lg) {
+			align-items: center;
+			color: $white;
+			display: flex;
+			justify-content: space-evenly;
+			margin: 0;
+		}
+	}
+
+	&Img {
+		margin: 0 auto;
+		max-height: 100%;
+		max-width: rem-calc(350);
+
+		@include media-breakpoint-up(md) {
+			max-width: rem-calc(550);
+		}
+
+		@include media-breakpoint-up(xl) {
+			max-width: rem-calc(750);
+		}
+
+		&Wrapper {
+			&:before,
+			&:after {
+				background-color: $peach;
+				content: '';
+				display: block;
+				height: 100px;
+				margin: 0 auto;
+				position: relative;
+				width: 1px;
+				z-index: 2;
+
+				@include media-breakpoint-up(lg) {
+					height: 0;
+					width: 0;
+				}
+			}
+
+			&:before {
+				margin-bottom: rem-calc(-48);
+			}
+
+			&:after {
+				margin-bottom: rem-calc(100);
+				margin-top: rem-calc(-89);
+			}
+		}
+	}
+}
+
+.feature {
+	@include media-breakpoint-up(lg) {
+		padding: rem-calc(0 50 30 0);
+		position: relative;
+		z-index: 2;
+	}
+
+	&:last-of-type {
+		@include media-breakpoint-down(lg) {
+			bottom: rem-calc(35);
+			position: absolute;
+			width: 100%;
+		}
+
+		@include media-breakpoint-up(lg) {
+			padding-left: rem-calc(50);
+		}
+	}
+
+	p {
+		margin-bottom: 0;
+		text-align: center;
+
+		@include media-breakpoint-up(lg) {
+			padding: rem-calc(13 0);
+			text-align: left;
+		}
+	}
+
+	&Title {
+		color: $white;
+		font-size: rem-calc(18);
+
+		@include media-breakpoint-up(lg) {
+			border-bottom: 1px solid rgba($white, 0.4);
+			margin-bottom: rem-calc(8);
+		}
+	}
+
+	&Copy {
+		color: $grayLight;
+		font-size: rem-calc(14);
+	}
+
+	&Wrapper {
+		@include media-breakpoint-up(lg) {
+			margin-bottom: rem-calc(75);
+			margin-right: rem-calc(-124);
+			position: relative;
+			width: 100%;
+		}
+	}
+}
