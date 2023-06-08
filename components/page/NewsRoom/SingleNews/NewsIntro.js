@@ -50,7 +50,7 @@ const NewsIntro = ({ data }) => {
 							<button
 								onClick={() => {
 									navigator.clipboard.writeText(pageUrl)
-									toast.success('URL copy to clipboard successfully')
+									toast.success('URL link copied successfully')
 								}}>
 								<CopyNewsIcon />
 							</button>

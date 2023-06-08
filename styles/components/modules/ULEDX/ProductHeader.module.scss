@@ -1,0 +1,91 @@
+@import '../../page/ULEDX/settings';
+
+.productHeader {
+	padding: 11px 0;
+	background-color: $charcoal;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	transition: padding 500ms ease;
+
+	&Fixed {
+		position: fixed;
+		top: 0;
+		padding: 18px 0;
+	}
+
+	&Nav {
+		ul {
+			display: flex;
+			flex-flow: row;
+			align-items: center;
+			padding: 0;
+			margin: 0;
+		}
+
+		li {
+			margin-left: 39px;
+			display: flex;
+		}
+
+		&Item {
+			a {
+				color: $white;
+				font-size: rem-calc(14px);
+				text-transform: uppercase;
+				font-weight: 500;
+				@include zeplin-letter-spacing(2.8, 14);
+				text-decoration: none;
+				position: relative;
+				overflow: hidden;
+				display: inline-block;
+				padding-bottom: 2px;
+				padding-top: 2px;
+
+				&::before {
+					background-color: $teal;
+					bottom: 0;
+					content: '';
+					height: 2px;
+					left: -100%;
+					position: absolute;
+					transition: left 200ms ease 300ms;
+					width: calc(100% - 2px);
+				}
+
+				&:hover {
+					&::before {
+						left: 0;
+					}
+				}
+			}
+		}
+	}
+
+	&Cta {
+		button {
+			background-color: $teal;
+			color: $white;
+			border-radius: 14px;
+			border: none;
+			padding: 5px 30px 3px;
+			margin-left: -19px;
+
+			@include media-breakpoint-down(sm) {
+				font-size: rem-calc(10);
+				padding: 7px 30px 5px;
+			}
+
+			&::before {
+				display: none;
+			}
+
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: $tealHover;
+			}
+		}
+	}
+}

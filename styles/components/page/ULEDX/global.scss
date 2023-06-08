@@ -1,0 +1,54 @@
+// only used for a few overrides to fix any conflicts from "hisense css"
+@import './settings';
+@import './animations';
+
+.uled-wrapper {
+	background: $black;
+	overflow-x: hidden;
+	position: relative;
+
+	.container {
+		max-width: rem-calc(1200);
+	}
+}
+
+p,
+.p {
+	color: inherit;
+	font-size: rem-calc(24);
+	font-weight: normal;
+
+	&--tiny {
+		font-size: rem-calc(14);
+		line-height: 0.23;
+	}
+
+	&--small {
+		font-size: rem-calc(16);
+		line-height: rem-calc(27);
+	}
+
+	&--large {
+		color: inherit;
+		font-size: rem-calc(24);
+
+		@include media-breakpoint-up(lg) {
+			font-size: rem-calc(40);
+		}
+	}
+}
+
+.preheader {
+	color: inherit;
+	font-size: rem-calc(18);
+	letter-spacing: rem-calc(4.5);
+	line-height: 1.69;
+	margin-bottom: rem-calc(10);
+	text-transform: uppercase;
+
+	@include media-breakpoint-up(md) {
+		font-size: rem-calc(22);
+		line-height: normal;
+		margin-bottom: rem-calc(25);
+	}
+}

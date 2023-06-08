@@ -1,0 +1,78 @@
+@import '../../page/ULEDX/settings';
+
+.featureCard {
+	background-color: $grayDark;
+	border-radius: rem-calc(30);
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 1px solid $grayDark;
+	color: $white;
+	display: inline-block;
+	height: rem-calc(352);
+	margin-bottom: rem-calc(20);
+	margin-right: rem-calc(16);
+	padding: rem-calc(30 30 15);
+	position: relative;
+	text-align: left;
+	width: 100%;
+
+	@include media-breakpoint-up(md) {
+		margin-bottom: 0;
+		width: rem-calc(352);
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		justify-content: space-between;
+		position: relative;
+
+		&Bottom {
+			align-items: center;
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+
+		&Heading {
+			@include headingStyle('medium');
+		}
+	}
+
+	.copy {
+		display: inline-block;
+		font-weight: 300;
+		line-height: 1;
+		width: 60%;
+	}
+
+	.button {
+		background-image: url('/assets/uledx-assets/images/icons/circle-plus.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		display: inline-block;
+		background-color: transparent;
+		border: none;
+		height: rem-calc(54);
+		width: rem-calc(54);
+	}
+
+	.video {
+		border-radius: rem-calc(30);
+		display: block;
+		height: 100%;
+		left: 0;
+		object-fit: cover;
+		position: absolute !important;
+		right: 0;
+		top: 0;
+		width: 100%;
+
+		video {
+			object-fit: cover;
+		}
+	}
+}
