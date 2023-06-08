@@ -30,38 +30,53 @@ const FirmwareBanner = ({ data }) => {
 	}, [])
 
 	useEffect(() => {
-		if (model?.model?.title) getPageUrl(model?.model?.title)
+		if (model?.model?.title) getPageUrl(model?.model?.pid)
 	}, [model])
-
 	const getPageUrl = async _value => {
-		// this method called after getModel method 
+		// this method called after getModel method
 		// this method send request to cxm to getting product url by product model
 		// because this method get us list of products we should find the specific model in the response
 		// and redirect to the final destination
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&status[]=7&status[]=3&status[]=1&string=${_value}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/page/support/route/${_value}`
 			)
+			if (response?.data?.route) {
+				router.push(
+					{
+						pathname: response?.data?.route,
 
-			if (response?.data?.data && response?.data?.data.length > 0) {
-				response?.data?.data.forEach(
-					item =>
-						item.product.model === _value &&
-						router.push(
-							{
-								pathname: item.route,
-								query: { model: JSON.stringify(model?.files) }
-							},
-							item.route
-						)
+						query: {
+							model: JSON.stringify(model?.files),
+							serialNumber: searchTerm
+						}
+					},
+					response?.data?.route
 				)
 			}
+			setLoading(false)
+
+			// if (response?.data?.data && response?.data?.data.length > 0) {
+			// 	// response?.data?.data.forEach(
+			// 	// 	item =>
+			// 	// 		item.product.model === _value &&
+			// 	// 		router.push(
+			// 	// 			{
+			// 	// 				pathname: item.route,
+			// 	// 				query: { model: JSON.stringify(model?.files) }
+			// 	// 			},
+			// 	// 			item.route
+			// 	// 		)
+			// 	// )
+			// }
 		} catch (error) {
 			console.log(error)
+			setLoading(false)
 		}
 	}
 
-	const getModel = async _searchTerm => {
+	const getModel = async (e, _searchTerm) => {
+		e.preventDefault()
 		if (_searchTerm === '') {
 			toast.error('Please enter your product serial number')
 		} else {
@@ -69,7 +84,6 @@ const FirmwareBanner = ({ data }) => {
 			try {
 				const response = await getFirmWareModels(_searchTerm)
 				setModel(response?.data)
-				setLoading(false)
 			} catch (e) {
 				toast.error(
 					e?.response?.data?.message
@@ -96,7 +110,7 @@ const FirmwareBanner = ({ data }) => {
 					<h2
 						className='title'
 						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
-					<div className={`search_container`}>
+					<form className={`search_container`}>
 						<input
 							onChange={e => setSearchTerm(e.target.value)}
 							value={searchTerm}
@@ -104,11 +118,11 @@ const FirmwareBanner = ({ data }) => {
 							placeholder='Enter your product serial number'
 						/>
 						<button
-							onClick={() => getModel(searchTerm)}
+							onClick={e => getModel(e, searchTerm)}
 							className='n-btn outline-white transparent py-4 px-6'>
 							{loading ? <Spinner size={20} /> : 'Search'}
 						</button>
-					</div>
+					</form>
 					<button
 						className='n-btn white-text fs-8 border-0 text-decoration-underline transparent mt-4 p-4'
 						type='button'
@@ -118,7 +132,7 @@ const FirmwareBanner = ({ data }) => {
 							size='lg'
 							className='me-2'
 						/>
-						Where do I find my model number?
+						Where do I find my serial number?
 					</button>
 				</div>
 			</div>
