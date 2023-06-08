@@ -39,7 +39,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 	return (
 		<ParallaxProvider isDisabled={userPrefersReducedMotion}>
 			<main className='uled-wrapper'>
-				<ProductHeader pin={scrollPosY > 64} />
+				<ProductHeader pin={scrollPosY > 64} pim={pim} />
 				<ProductHero />
 				<FullWidthVideo
 					heading='<span>Marks</span>  <span>the spot</span>'

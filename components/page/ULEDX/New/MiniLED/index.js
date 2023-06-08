@@ -12,7 +12,7 @@ const MiniLED = () => {
 	})
 
 	return (
-		<section className={clsx(styles.miniLed)}>
+		<section id='MiniLED' className={clsx(styles.miniLed)}>
 			<ParallaxBanner
 				layers={[
 					{
