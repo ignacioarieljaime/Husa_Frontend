@@ -37,7 +37,7 @@ const ProductHeader = ({ pin = false, pim }) => {
 										styles.productHeaderNavItem,
 										'd-none d-sm-flex'
 									)}>
-									<a href='#L9GProductDetailsBox3'>Specs</a>
+									<a href='#L9GProductDetailsBox0'>Specs</a>
 								</li>
 								<li
 									onClick={() => setChanelAdviserHandler(true)}
