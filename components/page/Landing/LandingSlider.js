@@ -40,7 +40,12 @@ function LandingSlider({ data }) {
 												: item?.desktop?.src
 										})`
 									}}>
-									{item?.url?.title && <button>{item?.url?.title}</button>}
+									{/* {item?.url?.title && */}
+									 <button>
+									 aaa
+									 {/* {item?.url?.title} */}
+									 </button>
+									 {/* } */}
 								</a>
 							</Link>
 						</div>

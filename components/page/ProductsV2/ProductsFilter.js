@@ -9,7 +9,9 @@ const ProductsFilter = ({
 	checkBoxCondition,
 	setCheckBoxCondition,
 	filters,
-	setFilters
+	setFilters,
+	total,
+	category
 }) => {
 	let router = useRouter()
 	const [filterListData, setFilterListData] = useState([])
@@ -146,6 +148,8 @@ const ProductsFilter = ({
 											checkBoxCondition={checkBoxCondition}
 											setFilterResponsiveStatus={setFilterResponsiveStatus}
 											filterResponsiveStatus={filterResponsiveStatus}
+											total={total}
+											category={category}
 										/>
 									)
 							)}

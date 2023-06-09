@@ -12,7 +12,9 @@ const ProductFiltersGroup = ({
 	checkBoxCondition,
 	index,
 	setResponsiveCollapseStatus,
-	responsiveCollapseStatus
+	responsiveCollapseStatus,
+	total,
+	category
 }) => {
 	const checkboxWrapper = useRef()
 	const buttonGroup = useRef()
@@ -97,7 +99,9 @@ const ProductFiltersGroup = ({
 									passedFilter={passedFilter}
 									filterParentId={filter.content_record_id}
 									filterType={filter.content_type}
+									total={total}
 									key={`filter-${item.title}-${index}`}
+									category={category}
 								/>
 							)
 					)}
