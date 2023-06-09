@@ -25,29 +25,26 @@ function LandingSlider({ data }) {
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
 						<div className='carousel-item-wrapper'>
-							<Link
-								target={item?.url?.target ? item?.url?.target : '_self'}
-								href={item?.url?.value ? item?.url?.value : ''}>
-								<a
+							<div
+								className='w-100 h-100 '
+								style={{
+									background: `url(${
+										size[0] < 768
+											? item?.mobile?.src
+											: size[0] > 768 && size[0] < 1027
+											? item?.tablet?.src
+											: item?.desktop?.src
+									})`
+								}}>
+								{/* {item?.url?.title && */}
+								<Link
 									target={item?.url?.target ? item?.url?.target : '_self'}
-									className='w-100 h-100 '
-									style={{
-										background: `url(${
-											size[0] < 768
-												? item?.mobile?.src
-												: size[0] > 768 && size[0] < 1027
-												? item?.tablet?.src
-												: item?.desktop?.src
-										})`
-									}}>
-									{/* {item?.url?.title && */}
-									 <button>
-									 aaa
-									 {/* {item?.url?.title} */}
-									 </button>
-									 {/* } */}
-								</a>
-							</Link>
+									href={item?.url?.value ? item?.url?.value : ''}>
+									<a>{item?.url?.title}</a>
+								</Link>
+
+								{/* } */}
+							</div>
 						</div>
 					</SwiperSlide>
 				))}

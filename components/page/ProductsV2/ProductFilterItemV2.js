@@ -55,9 +55,9 @@ function ProductFilterItemV2({
 				/>
 				<label htmlFor='filter' className='filter-label'>
 					{data.title}
-					{checkBoxCondition && (
+					{/* {checkBoxCondition && (
 						<span style={{ marginLeft: '5px' }}>{showTotalCount()}</span>
-					)}
+					)} */}
 				</label>
 			</div>
 		</li>
