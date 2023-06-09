@@ -7,7 +7,9 @@ function ProductFilterItemV2({
 	data,
 	filterParentId,
 	passedFilter,
-	filterType
+	filterType,
+	category,
+	total
 }) {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	useEffect(() => {
@@ -26,6 +28,16 @@ function ProductFilterItemV2({
 		}
 	}, [])
 
+	const showTotalCount = () => {
+		if (passedFilter.length) {
+			let { items, value } = category
+			return items.find(item => item.id === value)?.name === 'Refrigeration'
+				? total
+				: null
+		}
+		return null
+	}
+
 	return (
 		<li>
 			<div className='d-flex'>
@@ -43,6 +55,9 @@ function ProductFilterItemV2({
 				/>
 				<label htmlFor='filter' className='filter-label'>
 					{data.title}
+					{checkBoxCondition && (
+						<span style={{ marginLeft: '5px' }}>{showTotalCount()}</span>
+					)}
 				</label>
 			</div>
 		</li>
