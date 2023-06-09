@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ProductHeader from './New/ProductHeader'
 import { useCallback } from 'react'
 import { useEffect } from 'react'
@@ -18,6 +18,7 @@ import PlaceholderFooter from './New/PlaceholderFooter'
 import L9GProductDetailsBox from '../L9G/L9GProductDetailsBox'
 
 const ULEDXFullPageComponent = ({ data, pim }) => {
+	const productHeroContent = useRef()
 	const [scrollPosY, setScrollPosY] = useState(0)
 	const userPrefersReducedMotion = useMediaQuery({
 		query: '(prefers-reduced-motion)'
@@ -40,8 +41,11 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 	return (
 		<>
 			<ParallaxProvider isDisabled={userPrefersReducedMotion}>
-				<main className='uled-wrapper'>
-					<ProductHeader pin={scrollPosY > 64} pim={pim} />
+				<main ref={productHeroContent} className='uled-wrapper'>
+					<ProductHeader
+						pin={scrollPosY > productHeroContent.current?.offsetTop}
+						pim={pim}
+					/>
 					<ProductHero />
 					<FullWidthVideo
 						heading='<span>Marks</span>  <span>the spot</span>'

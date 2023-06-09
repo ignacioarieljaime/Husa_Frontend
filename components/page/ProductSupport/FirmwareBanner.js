@@ -118,7 +118,7 @@ const FirmwareBanner = ({ data }) => {
 							size='lg'
 							className='me-2'
 						/>
-						Where do I find my model number?
+						Where to find serial number?
 					</button>
 				</div>
 			</div>
