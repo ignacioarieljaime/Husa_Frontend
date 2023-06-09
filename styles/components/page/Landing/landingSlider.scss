@@ -23,7 +23,6 @@
 					-moz-transform: translateX(50%);
 					-ms-transform: translateX(50%);
 					-o-transform: translateX(50%);
-					background: white;
 					height: 62px;
 					display: flex;
 					align-items: center;
@@ -38,16 +37,19 @@
 					-moz-border-radius: 1000px;
 					-ms-border-radius: 1000px;
 					-o-border-radius: 1000px;
+					color: #000000;
+					background-color: transparent;
+					border: 1px solid #000000;
+
 
 					@include mq(768) {
 						font-weight: 400;
 						font-size: 14px;
 						line-height: 19px;
 						text-align: center;
-						color: #000000;
 						height: 51px;
 						padding: 0 36px;
-						bottom: 60px;
+						bottom: 160px;
 					}
 				}
 

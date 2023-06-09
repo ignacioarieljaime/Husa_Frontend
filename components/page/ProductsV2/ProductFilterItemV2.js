@@ -32,7 +32,7 @@ function ProductFilterItemV2({
 		if (passedFilter.length) {
 			let { items, value } = category
 			return items.find(item => item.id === value)?.name === 'Refrigeration'
-				? total
+				? <>({total})</>
 				: null
 		}
 		return null
