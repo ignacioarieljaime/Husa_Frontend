@@ -36,14 +36,13 @@ function LandingSlider({ data }) {
 											: item?.desktop?.src
 									})`
 								}}>
-								{/* {item?.url?.title && */}
-								<Link
-									target={item?.url?.target ? item?.url?.target : '_self'}
-									href={item?.url?.value ? item?.url?.value : ''}>
-									<a>{item?.url?.title}</a>
-								</Link>
-
-								{/* } */}
+								{item?.url?.value && (
+									<Link
+										target={item?.url?.target ? item?.url?.target : '_self'}
+										href={item?.url?.value ? item?.url?.value : ''}>
+										<a>{item?.url?.title}</a>
+									</Link>
+								)}
 							</div>
 						</div>
 					</SwiperSlide>
