@@ -79,6 +79,7 @@ const ProductsGridV2 = ({ data }) => {
 		}
 
 		try {
+			setTotalCount()
 			let response = await GetProductsListNewApi(
 				router,
 				structure?.category.value,
