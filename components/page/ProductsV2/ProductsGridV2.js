@@ -16,6 +16,7 @@ const ProductsGridV2 = ({ data }) => {
 	const [filterList, setFilterList] = useState()
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [text, setText] = useState(null)
+	const [totalCount, setTotalCount] = useState(0)
 	const router = useRouter()
 	const controller = new AbortController()
 	const options = [
@@ -40,13 +41,12 @@ const ProductsGridV2 = ({ data }) => {
 	}, [sortingMethod])
 
 	const getProductHandler = async _filter => {
-
 		await requestController()
 		await getProducts(_filter)
 	}
 	const requestController = () => {
 		if (products?.length && products === 'loading') {
-			window.stop() 
+			window.stop()
 		}
 	}
 
@@ -79,6 +79,7 @@ const ProductsGridV2 = ({ data }) => {
 		}
 
 		try {
+			setTotalCount()
 			let response = await GetProductsListNewApi(
 				router,
 				structure?.category.value,
@@ -89,6 +90,7 @@ const ProductsGridV2 = ({ data }) => {
 
 			setProducts(response.data.data)
 			getFilters(response.data.filterTypes)
+			setTotalCount(response.data.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -131,6 +133,8 @@ const ProductsGridV2 = ({ data }) => {
 								setCheckBoxCondition={setCheckBoxCondition}
 								filters={filters}
 								setFilters={setFilters}
+								total={totalCount}
+								category={structure?.category}
 							/>
 						</div>
 					) : null}
