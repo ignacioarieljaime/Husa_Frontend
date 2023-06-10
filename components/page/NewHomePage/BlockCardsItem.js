@@ -41,14 +41,14 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 						/>
 					)}
 
-					<h4 className='mb-3 mb-md-6 fs-4 fs-md-2'>{title?.value}</h4>
+					<h4 className='mb-3 mb-md-6 box_title'>{title?.value}</h4>
 					{link?.title && link?.value ? (
 						<Link
 							target={link?.target ? link?.target : '_self'}
 							href={link?.value ? link?.value : '/'}>
 							<a
 								target={link?.target ? link?.target : '_self'}
-								className='n-btn outline-white transparent d-block w-fit'>
+								className='n-btn outline-white transparent d-block w-fit py-4'>
 								{link?.title}
 								{link?.target === '_blank' && (
 									<img
