@@ -8,11 +8,11 @@ function SponsorshipTitleBox({ data }) {
 	}, [])
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='container py-12 py-md-18 border-bottom sponsor-ship-border-light'>
+			<div className='sponsor_container py-12 py-md-18 border-bottom sponsor-ship-border-light'>
 				<div className='row'>
 					<div
 						dangerouslySetInnerHTML={{ __html: text }}
-						className='col-12 text-white fs-2tx mb-0'></div>
+						className='col-12 text-white title_box mb-0'></div>
 				</div>
 			</div>
 		</section>

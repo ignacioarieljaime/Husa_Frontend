@@ -457,6 +457,7 @@
 	> .title {
 		* {
 			font-size: 60px !important;
+			line-height: 1 !important;
 		}
 	}
 
@@ -523,6 +524,22 @@
 
 				img {
 					max-width: 300px;
+				}
+				.box_title {
+					font-weight: 400;
+					font-size: 34px;
+					line-height: 42px;
+					letter-spacing: -0.02em;
+					color: #ffffff;
+					@include mq(991) {
+						font-size: 28px;
+					}
+					@include mq(768) {
+						font-size: 34px;
+					}
+					@include mq(475) {
+						font-size: 28px;
+					}
 				}
 			}
 

@@ -5,7 +5,7 @@ function SponsorshipImagesWithButton({ data }) {
 	let { structure } = data
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='container py-20 text-center gradient-texts'>
+			<div className='sponsor_container py-20 text-center gradient-texts'>
 				<div>
 					<img
 						src={structure?.image?.src}
