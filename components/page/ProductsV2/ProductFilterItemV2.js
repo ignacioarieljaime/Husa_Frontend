@@ -9,6 +9,7 @@ function ProductFilterItemV2({
 	passedFilter,
 	filterType,
 	category,
+	showAvailabilityNumber,
 	total
 }) {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
@@ -31,9 +32,7 @@ function ProductFilterItemV2({
 	const showTotalCount = () => {
 		if (passedFilter.length) {
 			let { items, value } = category
-			return items.find(item => item.id === value)?.name === 'Refrigeration'
-				? <>({total})</>
-				: null
+			return items.find(item => item.id === value) ? <>({total})</> : null
 		}
 		return null
 	}
@@ -55,7 +54,7 @@ function ProductFilterItemV2({
 				/>
 				<label htmlFor='filter' className='filter-label'>
 					{data.title}
-					{checkBoxCondition && (
+					{checkBoxCondition && showAvailabilityNumber && (
 						<span style={{ marginLeft: '5px' }}>{showTotalCount()}</span>
 					)}
 				</label>
