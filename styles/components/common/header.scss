@@ -102,7 +102,7 @@ header.blog {
     -moz-transform: unset !important;
     -ms-transform: unset !important;
     -o-transform: unset !important;
-}
+  }
 }
 
 .top-nav {
@@ -255,6 +255,7 @@ header.blog {
   }
   .nav-item .nav-link,
   .dropdown-item {
+    &.hover,
     &:hover {
       .underline-on-hover::after {
         width: 100%;
@@ -605,6 +606,7 @@ header.blog {
     align-items: center;
     transition: all 0.3s ease-in-out;
 
+    &.hover,
     &:hover {
       background: #000;
       color: rgb(255, 255, 255, 1);
