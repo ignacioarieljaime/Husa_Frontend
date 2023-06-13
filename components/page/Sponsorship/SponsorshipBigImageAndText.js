@@ -8,7 +8,7 @@ function SponsorshipBigImageAndText({ data }) {
 	}, [])
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='sponsor_container pt-17'>
+			<div className='sponsor_container pt-4 pb-10'>
 				<div className='header-secondary'>
 					<img
 						src={structure?.image?.src}
