@@ -8,8 +8,7 @@ function ProductFilterItemV2({
 	filterParentId,
 	passedFilter,
 	filterType,
-	category,
-	total
+	category
 }) {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	useEffect(() => {
