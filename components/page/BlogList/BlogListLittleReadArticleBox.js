@@ -77,18 +77,25 @@ function BlogListLittleReadArticleBoxContainer({
 							</div>
 							<figcaption>
 								<div className='row justify-content-between align-items-center mt-5'>
-									{/* <div className='col-12 text-start mb-3'>
-										<Link
+									<div className='col-12 text-start mb-3'>
+										{smallPost?.value?.tag?.value?.map(item => (
+											<>
+												{' '}
+												{/* <Link
 											href={
-												smallPost?.value?.tagLink?.value
-													? smallPost?.value?.tagLink?.value
+												smallPost?.value?.tag?.value
+													? smallPost?.value?.tag?.value
 													: '/'
-											}>
-											<a className='text-primary-dark text-decoration-none'>
-												{smallPost?.value?.tagLink?.title}
-											</a>
-										</Link>
-									</div> */}
+											}> */}
+												<a
+													style={{ marginRight: '10px' }}
+													className='text-primary-dark text-decoration-none'>
+													{item}
+												</a>
+												{/* </Link> */}
+											</>
+										))}
+									</div>
 									<div className='col-12 mb-8'>
 										<h3 className='fs-3 mb-0'>
 											{smallPost?.value?.title?.value}
@@ -160,18 +167,25 @@ function BlogListLittleReadArticleBoxContainer({
 							</div>
 							<figcaption>
 								<div className='row justify-content-between align-items-center mt-5'>
-									{/* <div className='col-12 text-start mb-3'>
-										<Link
+									<div className='col-12 text-start mb-3'>
+										{largePost?.value?.tag?.value?.map(item => (
+											<>
+												{' '}
+												{/* <Link
 											href={
-												largePost?.value?.tagLink?.value
-													? largePost?.value?.tagLink?.value
+												smallPost?.value?.tag?.value
+													? smallPost?.value?.tag?.value
 													: '/'
-											}>
-											<a className='text-primary-dark text-decoration-none'>
-												{largePost?.value?.tagLink?.title}
-											</a>
-										</Link>
-									</div> */}
+											}> */}
+												<a
+													style={{ marginRight: '10px' }}
+													className='text-primary-dark text-decoration-none'>
+													{item}
+												</a>
+												{/* </Link> */}
+											</>
+										))}
+									</div>
 									<div className='col-12 mb-8'>
 										<h3 className='fs-3 mb-0'>
 											{largePost?.value?.title?.value}
