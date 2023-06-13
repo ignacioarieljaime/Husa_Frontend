@@ -8,9 +8,7 @@ function ProductFilterItemV2({
 	filterParentId,
 	passedFilter,
 	filterType,
-	category,
-	showAvailabilityNumber,
-	total
+	category
 }) {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	useEffect(() => {
@@ -32,7 +30,9 @@ function ProductFilterItemV2({
 	const showTotalCount = () => {
 		if (passedFilter.length) {
 			let { items, value } = category
-			return items.find(item => item.id === value) ? <>({total})</> : null
+			return items.find(item => item.id === value) ? (
+				<>( {data?.total} )</>
+			) : null
 		}
 		return null
 	}
