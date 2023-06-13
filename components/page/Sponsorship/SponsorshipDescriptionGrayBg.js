@@ -8,10 +8,10 @@ function SponsorshipDescriptionGrayBg({ data }) {
 	}, [])
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='container py-20'>
+			<div className='sponsor_container py-20'>
 				<div
 					dangerouslySetInnerHTML={{ __html: text }}
-					className='fs-4 text-white'></div>
+					className='description_box text-white'></div>
 			</div>
 		</section>
 	)

@@ -6,8 +6,8 @@ function SponsorImageAndText({ data }) {
 	}, [])
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='container pt-20'>
-				<div className='row position-relative'>
+			<div className='sponsor_container pt-20 pb-10'>
+				<div className='row position-relative sponsor_floating_box'>
 					<div className='col-12 col-md-6'>
 						<img
 							src={content?.image?.src}
@@ -15,10 +15,10 @@ function SponsorImageAndText({ data }) {
 							width='100%'
 						/>
 					</div>
-					<div className='col-12 col-md-6 mt-14 mt-md-0 position-relative'>
+					<div className='col-12 col-md-6 mt-14 mt-md-0 position-relative ps-md-6'>
 						<div
 							dangerouslySetInnerHTML={{ __html: content?.text?.value }}
-							className='fs-5 text-white mb-14'></div>
+							className='text-white mb-8 mb-md-14 fs-base'></div>
 						<div className='floating-text'>
 							<p
 								dangerouslySetInnerHTML={{
