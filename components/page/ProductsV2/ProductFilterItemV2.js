@@ -31,9 +31,9 @@ function ProductFilterItemV2({
 	const showTotalCount = () => {
 		if (passedFilter.length) {
 			let { items, value } = category
-			return items.find(item => item.id === value)?.name === 'Refrigeration'
-				? <>({total})</>
-				: null
+			return items.find(item => item.id === value) ? (
+				<>( {data?.total} )</>
+			) : null
 		}
 		return null
 	}
