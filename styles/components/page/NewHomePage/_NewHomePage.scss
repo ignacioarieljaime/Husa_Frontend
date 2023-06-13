@@ -451,8 +451,8 @@
 }
 
 .new-home-page-boxes {
-	gap: 24px;
-	max-width: 1200px;
+	gap: 16px !important;
+	max-width: 100px;
 	margin: 0 auto;
 	> .title {
 		* {
@@ -464,11 +464,11 @@
 	.boxes {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 24px;
+		gap: 16px !important;
 		justify-content: center;
 
 		.box {
-			width: calc(50% - 48px);
+			width: calc(50% - 8px) !important;
 			position: relative;
 			height: 0;
 			padding-top: 50%;
@@ -508,7 +508,10 @@
 				// max-height: 665px;
 				top: 0;
 				left: 0;
-				padding: 40px;
+				padding: 30px 56px !important;
+				@include mq(575) {
+					padding: 24px !important;
+				}
 				width: 100%;
 				height: 100%;
 				text-align: start;
@@ -546,15 +549,6 @@
 						font-size: 28px;
 					}
 				}
-			}
-
-			.box-background-shade {
-				background: rgba(34, 31, 32, 0.3);
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%;
-				height: 100%;
 			}
 
 			&.full-size {
@@ -732,8 +726,6 @@
 		}
 	}
 	.new-home-page-boxes {
-		gap: 16px;
-
 		.boxes {
 			.box {
 				width: 100%;

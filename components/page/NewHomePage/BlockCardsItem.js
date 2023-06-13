@@ -17,7 +17,6 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 					wrapperHeight='100%'
 					wrapperWidth='100%'
 				/>
-				<div className='box-background-shade'></div>
 			</div>
 			<div className='box-content'>
 				<div></div>
