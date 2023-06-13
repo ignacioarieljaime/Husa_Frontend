@@ -48,13 +48,19 @@ function BlogListSoundBardItemContainer({ data }) {
 						</div>
 					</div>
 					<figcaption className='col-12 col-md-8'>
-						{/* <div className='text-start mb-3'>
-							<Link href={data?.tagLink?.value ? data?.tagLink?.value : '/'}>
-								<a className='text-primary-dark text-decoration-none'>
-									{data?.tagLink?.title}
-								</a>
-							</Link>
-						</div> */}
+						<div className='text-start mb-3'>
+							{data?.tag?.value?.map(item => (
+								<>
+									{/* <Link href={data?.tagLink?.value ? data?.tagLink?.value : '/'}> */}
+									<a
+										style={{ marginRight: '20px' }}
+										className='text-primary-dark text-decoration-none'>
+										{item}
+									</a>
+									{/* </Link> */}
+								</>
+							))}
+						</div>
 						<div className='mb-8 mb-md-0'>
 							<h3 className='fs-3 mb-0'>{data?.title?.value}</h3>
 						</div>
