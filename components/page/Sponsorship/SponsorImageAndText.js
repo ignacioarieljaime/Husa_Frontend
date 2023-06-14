@@ -15,7 +15,7 @@ function SponsorImageAndText({ data }) {
 							width='100%'
 						/>
 					</div>
-					<div className='col-12 col-md-6 mt-14 mt-md-0 position-relative ps-md-6'>
+					<div className='col-12 col-md-6 mt-14 mt-md-0 position-relative ps-md-9'>
 						<div
 							dangerouslySetInnerHTML={{ __html: content?.text?.value }}
 							className='text-white mb-8 mb-md-14 fs-base'></div>
