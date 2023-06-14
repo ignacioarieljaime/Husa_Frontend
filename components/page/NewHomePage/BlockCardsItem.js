@@ -17,27 +17,27 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 					wrapperHeight='100%'
 					wrapperWidth='100%'
 				/>
-				<div className='box-background-shade'></div>
 			</div>
 			<div className='box-content'>
+				<div></div>
+
 				<div>
 					{topImage?.src && (
-						<img
+						<CustomImage
 							src={topImage?.src}
 							alt={topImage?.alt}
 							width='100%'
-							className='mb-5 mb-md-7'
+							wrapperWidth={'100%'}
+							WrapperMaxWidth={'190px'}
+							wrapperClass='mb-4 top_image'
 						/>
 					)}
-				</div>
-
-				<div>
 					{bottomImage?.src && (
 						<img
 							src={bottomImage?.src}
 							alt={bottomImage?.alt}
 							width='100%'
-							className='mb-5 mb-md-7'
+							className='mb-6'
 						/>
 					)}
 
