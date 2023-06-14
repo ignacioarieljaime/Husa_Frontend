@@ -15,9 +15,14 @@ const TelevisionsBlockBanner = ({ data }) => {
 					className='image'
 				/>
 				<div className='content'>
-					<div
-						className='title mb-3 mb-md-7'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
+					<div className='title mb-3 mb-md-7'>
+						<h1>
+							<strong class='ql-size-large'>
+								We have a big family We put the{' '}
+							</strong>
+							<strong class='ql-size-large'>"C" In Comfort</strong>
+						</h1>
+					</div>
 					<div
 						className='subtitle mb-3 mb-md-7'
 						dangerouslySetInnerHTML={{
