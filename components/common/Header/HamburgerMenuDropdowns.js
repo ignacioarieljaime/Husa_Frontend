@@ -93,20 +93,16 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 										<ul className='header_dropdown_sublist py-1'>
 											{colum.childs.map(col => (
 												<li className='ps-4'>
-													<Link href={col.header.value ? col.header.value : ''}>
+													<Link href={col.url ? col.url : ''}>
 														<a
-															target={
-																col.header?.target
-																	? col.header?.target
-																	: '_self'
-															}
+															target={col?.target ? col?.target : '_self'}
 															onClick={() => asideHandler(false)}
 															className='dropdown-item p-0 py-1'>
 															<span className='underline-on-hover'>
-																{col.header.title}
+																{col.name}
 															</span>
 															{/* <FontAwesomeIcon icon={faChevronLeft} size='sm' /> */}
-															{col.header?.target === '_blank' && (
+															{col?.target === '_blank' && (
 																<img
 																	style={{ marginLeft: '10px' }}
 																	src={OpenPageOnNewTab.src}

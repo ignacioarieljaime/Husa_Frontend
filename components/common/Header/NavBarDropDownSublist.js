@@ -33,18 +33,13 @@ function NavBarDropDownSublist({ data }) {
 									{child.childs.map((item, _index) => (
 										<li key={`colum-${_index}`} className='py-0'>
 											<Link
-												target={
-													item.header?.target ? item.header?.target : '_self'
-												}
-												href={item.header.value ? item.header.value : ''}>
-												<a
-													target={
-														item.header?.target ? item.header?.target : '_self'
-													}>
+												target={item?.target ? item?.target : '_self'}
+												href={item.url ? item.url : ''}>
+												<a target={item?.target ? item?.target : '_self'}>
 													<span className='underline-on-hover'>
-														{item.header.title}
+														{item.name}
 													</span>
-													{item.header?.target === '_blank' && (
+													{item?.target === '_blank' && (
 														<img
 															style={{ marginLeft: '10px' }}
 															src={OpenPageOnNewTab.src}
