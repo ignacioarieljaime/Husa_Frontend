@@ -5,7 +5,7 @@ import HamburgerMenuDropdowns from './HamburgerMenuDropdowns'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function HamburgerMenu({ data: { widgets }, asideMenu, asideHandler }) {
-	let menus = [...widgets.centerOption, ...widgets.rightOption]
+	let menus = [...widgets.center.childs, ...widgets.right.childs]
 	return (
 		<nav
 			className={`navbar navbar-expand-xxxl navbar-bg side-nav fixed-top ${

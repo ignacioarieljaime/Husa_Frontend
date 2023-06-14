@@ -44,8 +44,12 @@ function Layout({ children, meta, title, header }) {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
 			)
-			let headerData = response.data.data.find(item => item.title === 'header')
-			let footerData = response.data.data.find(item => item.title === 'footer')
+			let headerData = response.data.data.find(
+				item => item.title === 'header-menu'
+			)
+			let footerData = response.data.data.find(
+				item => item.title === 'footer-menu'
+			)
 
 			sessionStorage.setItem('headerData', JSON.stringify(headerData))
 			sessionStorage.setItem('footerData', JSON.stringify(footerData))
