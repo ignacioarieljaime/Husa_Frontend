@@ -70,8 +70,10 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 											target={
 												colum.header?.target ? colum.header?.target : '_self'
 											}
-											onMouseEnter={() => setShowSub(index)}
-											onClick={() => asideHandler(false)}
+											onClick={() => {
+												if (colum.childs.length > 0) setShowSub(index)
+												else asideHandler(false)
+											}}
 											className={`dropdown-item ${
 												showSub === index ? 'hover' : ''
 											}`}>
@@ -87,30 +89,34 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 											)}
 										</a>
 									</Link>
-									{showSub === index && (
-										<div style={{ transform: 'translateX(24px)' }}>
+									{showSub === index && colum.childs.length > 0 && (
+										<ul className='header_dropdown_sublist py-1'>
 											{colum.childs.map(col => (
-												<Link href={col.header.value ? col.header.value : ''}>
-													<a
-														target={
-															col.header?.target ? col.header?.target : '_self'
-														}
-														onClick={() => asideHandler(false)}
-														className='dropdown-item'>
-														<span className='underline-on-hover'>
-															{col.header.title}
-														</span>
-														{/* <FontAwesomeIcon icon={faChevronLeft} size='sm' /> */}
-														{col.header?.target === '_blank' && (
-															<img
-																style={{ marginLeft: '10px' }}
-																src={OpenPageOnNewTab.src}
-															/>
-														)}
-													</a>
-												</Link>
+												<li className='ps-4'>
+													<Link href={col.header.value ? col.header.value : ''}>
+														<a
+															target={
+																col.header?.target
+																	? col.header?.target
+																	: '_self'
+															}
+															onClick={() => asideHandler(false)}
+															className='dropdown-item p-0 py-1'>
+															<span className='underline-on-hover'>
+																{col.header.title}
+															</span>
+															{/* <FontAwesomeIcon icon={faChevronLeft} size='sm' /> */}
+															{col.header?.target === '_blank' && (
+																<img
+																	style={{ marginLeft: '10px' }}
+																	src={OpenPageOnNewTab.src}
+																/>
+															)}
+														</a>
+													</Link>
+												</li>
 											))}
-										</div>
+										</ul>
 									)}
 								</>
 							)

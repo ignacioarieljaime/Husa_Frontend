@@ -105,6 +105,29 @@ header.blog {
   }
 }
 
+.header_dropdown_sublist {
+  position: relative;
+  left: 16px;
+  padding: 12px 0 !important;
+  list-style: none !important;
+  li {
+    padding: 0;
+    a {
+      span {
+        font-size: 10px !important;
+        font-weight: 400;
+        line-height: 25px;
+        transition: all 300ms ease-in;
+        color: #ababb0;
+      }
+    }
+    &:hover {
+      span {
+        color: #fff !important;
+      }
+    }
+  }
+}
 .top-nav {
   .navbar-brand {
     position: relative;
@@ -433,7 +456,8 @@ header.blog {
     &:hover {
       .nav-dropdown-list {
         opacity: 1;
-        height: 500px;
+        height: 500px !important;
+        overflow-y: auto;
         padding: 80px 40px 40px 40px;
 
         > * {
