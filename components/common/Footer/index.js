@@ -14,6 +14,7 @@ function Footer({ data }) {
 	const { footerData: footerReduxData } = useSelector(state => state.layoutData)
 
 	useEffect(() => {
+		console.log(JSON.parse(sessionStorage.getItem('footerData')))
 		if (sessionStorage.getItem('footerData')) {
 			setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
 		}
@@ -110,9 +111,9 @@ function Footer({ data }) {
 					</div>
 					<div className='line'></div>
 					<div className='body'>
-						{footerData?.widgets?.columns.map((list, index) => (
+						{footerData?.widgets?.main?.childs.map((list, index) => (
 							<div key={index} className='px-3'>
-								{list.map((item, index) => (
+								{list?.childs.map((item, index) => (
 									<FooterBodyList
 										data={item}
 										key={index}
