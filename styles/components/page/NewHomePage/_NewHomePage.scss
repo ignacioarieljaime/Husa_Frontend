@@ -469,6 +469,9 @@
 
 		.box {
 			width: calc(50% - 8px) !important;
+			@include mq(768) {
+				width: 100% !important;
+			}
 			position: relative;
 			height: 0;
 			padding-top: 50%;
@@ -539,13 +542,18 @@
 					line-height: 42px;
 					letter-spacing: -0.02em;
 					color: #ffffff;
+					padding-right: 20%;
+					width: 100%;
 					@include mq(991) {
 						font-size: 28px;
+						padding-right: 8%;
 					}
 					@include mq(768) {
 						font-size: 34px;
+						padding-right: 10%;
 					}
 					@include mq(475) {
+						padding-right: 0;
 						font-size: 28px;
 					}
 				}

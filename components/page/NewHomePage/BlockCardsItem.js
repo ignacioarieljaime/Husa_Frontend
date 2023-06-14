@@ -21,7 +21,7 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 			<div className='box-content'>
 				<div></div>
 
-				<div>
+				<div className='w-100'>
 					{topImage?.src && (
 						<CustomImage
 							src={topImage?.src}
