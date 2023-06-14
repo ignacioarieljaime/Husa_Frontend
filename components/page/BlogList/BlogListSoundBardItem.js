@@ -7,14 +7,14 @@ import {
 	ParallaxProvider
 } from 'react-scroll-parallax'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
-const BlogListSoundBardItem = ({ data }) => {
+const BlogListSoundBardItem = ({ data, getBlogs }) => {
 	return (
 		<ParallaxProvider>
-			<BlogListSoundBardItemContainer data={data} />
+			<BlogListSoundBardItemContainer data={data} getBlogs={getBlogs} />
 		</ParallaxProvider>
 	)
 }
-function BlogListSoundBardItemContainer({ data }) {
+function BlogListSoundBardItemContainer({ data, getBlogs }) {
 	const parallaxController = useParallaxController()
 
 	const imageRef = useParallax({
@@ -52,11 +52,16 @@ function BlogListSoundBardItemContainer({ data }) {
 							{data?.tag?.value?.map(item => (
 								<>
 									{/* <Link href={data?.tagLink?.value ? data?.tagLink?.value : '/'}> */}
-									<a
-										style={{ marginRight: '20px' }}
+									<button
+										onClick={() => getBlogs(item)}
+										style={{
+											marginRight: '20px',
+											border: 'none',
+											background: 'transparent'
+										}}
 										className='text-primary-dark text-decoration-none'>
 										{item}
-									</a>
+									</button>
 									{/* </Link> */}
 								</>
 							))}

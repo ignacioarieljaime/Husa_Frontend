@@ -6,6 +6,30 @@ import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
 function ProductResourceBox({ pim, data }) {
 	let { structure } = data
 	const router = useRouter()
+	console.log(pim);
+
+	const findWarranty = () => {
+		let customFiled = pim?.features?.find(item =>
+			item?.custom_field_type_name?.includes('Warranty')
+		)?.custom_fields
+		if (customFiled) {
+			let warranty = customFiled?.find(item => item?.name === 'Title')
+
+			console.log(warranty)
+			return (
+				<li>
+					<Link href={`/`}>
+						<a>
+							<span className='underline-on-hover text-uppercase'>
+								{warranty?.value}
+							</span>
+						</a>
+					</Link>
+				</li>
+			)
+		}
+	}
+
 	return (
 		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
 			<article className='article'>
@@ -58,6 +82,7 @@ function ProductResourceBox({ pim, data }) {
 						</a>
 					</Link>
 				</li>
+				{findWarranty()}
 				{structure?.installationUrl?.value &&
 				!structure?.installationUrl?.value === 'null' ? (
 					<li>
