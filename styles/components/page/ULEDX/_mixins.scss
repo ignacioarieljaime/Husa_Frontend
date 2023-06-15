@@ -54,11 +54,11 @@ $rem-base: 16px;
 		font-size: rem-calc(24);
 		line-height: rem-calc(26);
 	} @else if $size == "medium" {
-		font-size: rem-calc(49);
+		font-size: rem-calc(48);
 		font-family: inherit;
-		letter-spacing: -1.47px;
-		line-height: rem-calc(49);
-		font-weight: 400;
+		letter-spacing: -1.2px;
+		line-height: 1.08;
+		font-weight: 500;
 	} @else if $size == "large" {
 		font-size: rem-calc(45);
 		font-family: inherit;

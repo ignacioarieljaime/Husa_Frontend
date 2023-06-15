@@ -30,7 +30,8 @@ const MiniLED = () => {
 								The King of Mini-Led
 							</p>
 							<h2>
-								More than your everyday <br /> MINI-LED TV
+								More than <br className={clsx('d-md-none')} />
+								your everyday <br /> MINI-LED TV
 							</h2>
 						</div>
 						<div className={clsx('col', 'col-12', 'col-lg-9')}>
@@ -54,7 +55,7 @@ const MiniLED = () => {
 							chipset & our{' '}
 							<span
 								className={inView ? styles.textAnimate : null}
-								style={{ animationDelay: '1s' }}>
+								style={{ animationDelay: '.15s' }}>
 								MINI-LED X
 							</span>{' '}
 							technology, the new ULED X brings together outrageous performance,
@@ -62,7 +63,7 @@ const MiniLED = () => {
 							accuracy into the{' '}
 							<span
 								className={inView ? styles.textAnimate : null}
-								style={{ animationDelay: '2s' }}>
+								style={{ animationDelay: '.3s' }}>
 								ultimate MINI-LED home entertainment solution
 							</span>
 							.

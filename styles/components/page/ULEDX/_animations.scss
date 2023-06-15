@@ -16,6 +16,7 @@
 	from {
 		transform: rotate(0deg);
 	}
+
 	to {
 		transform: rotate(80deg);
 	}
@@ -45,5 +46,5 @@
 }
 
 .pulse {
-	animation: pulse 4s infinite;
+	animation: pulse 4s forwards;
 }

@@ -56,14 +56,14 @@ const CinemaQuality = ({}) => {
 									'col-12 col-md-8 col-lg-6',
 									styles.featureWrapper
 								)}>
-								{features.map(feature => {
+								{features.map((feature, index) => {
 									return (
 										<div key={feature.copy} className={clsx(styles.feature)}>
 											<img
 												src={feature.icon.src}
 												alt={feature.iconAlt}
 												width={181}
-												height={101}
+												height={index > 0 ? 101 : 60}
 											/>
 											<p className='p--small'> {feature.copy}</p>
 										</div>
