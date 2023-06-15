@@ -18,6 +18,10 @@
 	}
 
 	@include media-breakpoint-up(xl) {
+		padding-bottom: rem-calc(100);
+	}
+
+	@include media-breakpoint-up(xxl) {
 		padding-bottom: rem-calc(200);
 	}
 

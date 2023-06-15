@@ -36,19 +36,20 @@ function ProductInfoAndSliderBox({ pim, data }) {
 									? 'text-primary-new serie mb-5'
 									: 'text-black fs-2hx mb-1'
 							} `}>
-							{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-								? pim?.custom_fields.find(item => item.title === 'h2 Title')
-										?.value
-								: pim?.custom_fields?.find(
-										item => item.title === 'Product Type'
-								  )?.value}
+							{
+								pim?.custom_fields.find(item => item.title === 'span Title')
+									?.value
+							}
 						</h2>
 						<article className='article'>
 							<h3 className='my-3 text-uppercase fw-bold extra_title'>
-								{
-									pim?.custom_fields.find(item => item.title === 'span Title')
-										?.value
-								}
+								{pim?.custom_fields.find(item => item.title === 'h2 Title')
+									?.value
+									? pim?.custom_fields.find(item => item.title === 'h2 Title')
+											?.value
+									: pim?.custom_fields?.find(
+											item => item.title === 'Product Type'
+									  )?.value}
 							</h3>
 							<h1 className='mb-5 mt-0'>{pim?.name}</h1>
 						</article>

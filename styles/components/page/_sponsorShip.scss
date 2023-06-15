@@ -1,5 +1,67 @@
 .sponsor-ship-bg {
-	background: #161613;
+	background: #000 !important;
+
+	.title_box {
+		* {
+			font-size: 56px;
+			line-height: 1;
+			font-weight: 500;
+			@include mq(768) {
+				font-size: 32px;
+			}
+		}
+	}
+
+	.video_text_box {
+		p {
+			font-size: 16px !important;
+			font-weight: 400 !important;
+			line-height: 24px !important;
+		}
+	}
+
+	.image_and_text {
+		p {
+			font-size: 24px !important;
+			line-height: 32px !important;
+			@include mq(468) {
+				font-size: 16px !important;
+				line-height: 24px !important;
+			}
+			.ql-size-small {
+				line-height: 24px !important;
+				font-size: 16px !important;
+			}
+		}
+	}
+
+	.sponsor_floating_box {
+		.fs-base {
+			* {
+				font-size: 16px !important;
+				font-weight: 400 !important;
+				line-height: 2 !important;
+			}
+		}
+	}
+	.description_box {
+		* {
+			font-size: 24px !important;
+			line-height: 32px !important;
+			@include mq(468) {
+				font-size: 16px !important;
+				line-height: 24px !important;
+			}
+		}
+	}
+
+	.sponsor_container {
+		max-width: 1200px;
+		margin: 0 auto;
+		width: 100%;
+		padding-right: 32px;
+		padding-left: 32px;
+	}
 	.text-secondary {
 		color: #00aaa6 !important;
 	}
@@ -14,16 +76,39 @@
 		}
 	}
 	.floating-text {
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 20px;
 		/* top: 30%; */
 		margin-left: -125px;
 		width: 120%;
 		left: -20%;
+		p {
+			font-size: 24px !important;
+			line-height: 32px !important;
+			@include mq(468) {
+				font-size: 16px !important;
+				line-height: 24px !important;
+			}
+			.ql-size-small {
+				line-height: 24px !important;
+				font-size: 16px !important;
+			}
+		}
+		@include mq(768) {
+			left: 0 !important;
+			top: 0 !important;
+			padding: 0;
+			margin-left: 0 !important;
+			width: 100% !important;
+		}
 	}
 	.floating-line {
 		border: 1px solid rgba(255, 255, 255, 0.3);
-		width: 50%;
+		width: 70% !important;
 		position: absolute;
 		top: 20%;
+		left: 28px;
+		transform: translateX(-80%);
 		z-index: 0;
 		+ * {
 			position: relative;
@@ -32,9 +117,6 @@
 	}
 }
 .gradient-texts {
-	width: 80%;
-	font-weight: 700;
-	font-size: 80px;
 	> div {
 		background-size: 100%;
 		background-repeat: repeat;
@@ -42,6 +124,19 @@
 		-webkit-text-fill-color: transparent;
 		-moz-background-clip: text;
 		-moz-text-fill-color: transparent;
+		font-weight: 500;
+		font-size: 96px;
+		line-height: 1;
+		border-top: 1px solid #505050;
+		@include mq(768) {
+			font-size: 56px;
+		}
+		@include mq(468) {
+			font-size: 46px;
+		}
+		&:last-child {
+			border-bottom: 1px solid #505050;
+		}
 	}
 
 	.first-text {
@@ -51,7 +146,7 @@
 		background-image: linear-gradient(45deg, #b4d881, #02a7a6);
 	}
 	.third-text {
-		background-image: linear-gradient(45deg, #02a7a6,#984bb5, #b6bfc1);
+		background-image: linear-gradient(45deg, #02a7a6, #984bb5, #b6bfc1);
 	}
 }
 

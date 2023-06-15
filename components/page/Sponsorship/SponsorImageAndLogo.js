@@ -8,20 +8,20 @@ function SponsorImageAndLogo({ data }) {
 
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='container pt-20 position-relative'>
-				<div className='floating-line d-none d-md-block'></div>
+			<div className='sponsor_container pt-4 pb-20 '>
 				<div className='row align-items-center z-index-1'>
-					<div className='col-12 col-md-5 text-center mb-8 mb-md-0'>
+					<div className='col-12 col-md-4 order-2 order-md-1 text-center mb-8 mb-md-0'>
 						<img
 							src={structure?.logo?.src}
 							alt={structure?.logo?.alt}
-							style={{ maxWidth: '140px' }}
+							style={{ maxWidth: '240px' }}
 							width='100%'
 						/>
 					</div>
-					<div className='col-12 col-md-7'>
+					<div className='col-12 col-md-8 order-1 order-md-2 position-relative mb-10 mb-md-0'>
+						<div className='floating-line d-none d-md-block'></div>
 						<img
-							style={{ maxWidth: '640px' }}
+							width='100%'
 							src={structure?.image?.src}
 							alt={structure?.image?.alt}
 						/>

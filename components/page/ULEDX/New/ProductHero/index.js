@@ -24,7 +24,7 @@ const ProductHero = () => {
 				end: isMobile ? '100px' : '70%',
 				scrub: 4,
 				pin: true
-				// markers: true
+				//markers: true
 			}
 		})
 
@@ -43,10 +43,7 @@ const ProductHero = () => {
 
 	return (
 		<>
-			<section
-				style={{ position: 'relative' }}
-				className={clsx(styles.hero)}
-				ref={main}>
+			<section className={clsx(styles.hero)} ref={main}>
 				<div className={clsx('container mt-8 mt-md-0')}>
 					<div className={clsx('row')}>
 						<div className={clsx('col', styles.heroWrapper)}>
@@ -57,7 +54,7 @@ const ProductHero = () => {
 									width={720}
 									height={435}
 									alt=''
-									className={clsx('graphic', styles.graphic)}
+									className={clsx('graphic fadeIn', styles.graphic)}
 								/>
 								<img
 									src={productImage.src}
@@ -69,7 +66,7 @@ const ProductHero = () => {
 							</div>
 
 							{/* content */}
-							<div className={styles.heroContent}>
+							<div className={clsx('fadeIn', styles.heroContent)}>
 								<img
 									src={hisenseLogo.src}
 									width={150}

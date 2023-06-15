@@ -1,0 +1,44 @@
+@import '../../page/ULEDX/settings';
+
+.compareLineup {
+	padding-bottom: rem-calc(50);
+	padding-top: rem-calc(50);
+
+	@include media-breakpoint-up(md) {
+		padding-bottom: rem-calc(170);
+		padding-top: rem-calc(85);
+	}
+
+	.content {
+		color: $white;
+		text-align: center;
+
+		h3 {
+			@include headingStyle('medium');
+			@include textGradient($gold, #ff9f9d, #ff849c);
+		}
+
+		.preHeader {
+			font-size: rem-calc(18);
+			font-weight: 400;
+			letter-spacing: 4.5px;
+			line-height: 1.69;
+			margin-bottom: rem-calc(30);
+		}
+
+		.subText {
+			font-size: rem-calc(24);
+			font-weight: 500;
+			margin-top: rem-calc(30);
+		}
+	}
+
+	.cardWrapper {
+		@include media-breakpoint-up(sm) {
+			display: flex;
+			justify-content: center;
+			padding-left: rem-calc(12);
+			padding-right: rem-calc(12);
+		}
+	}
+}

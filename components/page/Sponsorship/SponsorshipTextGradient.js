@@ -7,16 +7,16 @@ function SponsorshipTextGradient({ data }) {
 	}, [])
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='container gradient-texts pb-7'>
+			<div className='sponsor_container gradient-texts pb-7 px-0 px-xl-8'>
 				<div
 					dangerouslySetInnerHTML={{ __html: content?.text1?.value }}
-					className='text-start first-text pb-7 mb-7 pb-md-11 mb-md-11 border-bottom border-light'></div>
+					className=' px-8 px-xl-0 text-start first-text py-4 mb-1'></div>
 				<div
 					dangerouslySetInnerHTML={{ __html: content?.text2?.value }}
-					className='text-end second-text pb-7 mb-7 pb-md-11 mb-md-11 border-bottom border-light'></div>
+					className=' px-8 px-xl-0 text-end second-text py-4 mb-1'></div>
 				<div
 					dangerouslySetInnerHTML={{ __html: content?.text3?.value }}
-					className='text-start pb-7 third-text  pb-md-11 mb-md-11 border-bottom border-light'></div>
+					className=' px-8 px-xl-0 text-start py-4 third-text pb-5'></div>
 			</div>
 		</section>
 	)

@@ -10,7 +10,9 @@ const Card = ({ icon, copy, index }) => {
 	return (
 		<div
 			className={clsx(styles.cardWrapper, inView ? 'fadeIn' : null)}
-			style={{ animationDelay: index == 1 ? '1s' : index == 2 ? '2s' : null }}
+			style={{
+				animationDelay: index == 1 ? '.25s' : index == 2 ? '.5s' : null
+			}}
 			ref={ref}>
 			<img src={icon} width={97} height={97} alt='' />
 			<p>{copy}</p>
