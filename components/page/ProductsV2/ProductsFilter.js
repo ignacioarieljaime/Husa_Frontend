@@ -149,7 +149,6 @@ const ProductsFilter = ({
 											checkBoxCondition={checkBoxCondition}
 											setFilterResponsiveStatus={setFilterResponsiveStatus}
 											filterResponsiveStatus={filterResponsiveStatus}
-											showAvailabilityNumber={showAvailabilityNumber}
 											total={total}
 											category={category}
 											showProductFilterCount={showProductFilterCount}
