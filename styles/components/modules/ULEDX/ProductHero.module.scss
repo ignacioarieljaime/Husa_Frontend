@@ -109,7 +109,7 @@
 			text-transform: uppercase;
 
 			@include media-breakpoint-up(md) {
-				font-size: rem-calc(24);
+				font-size: rem-calc(16);
 				letter-spacing: 4.75px;
 			}
 

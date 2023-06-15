@@ -10,7 +10,7 @@ import DayAndNight from './Modals/DayAndNight'
 import DayAndNightBackground from 'public/assets/uledx-assets/images/modals/day-and-night@3x.webp'
 import DayAndNightBackgroundMobile from 'public/assets/uledx-assets/images/modals/day-and-night-mobile@3x.webp'
 
-const TechFeatures = ({}) => {
+const TechFeatures = ({ button }) => {
 	const [ref, inView] = useInView()
 
 	const cards = [
@@ -97,6 +97,7 @@ const TechFeatures = ({}) => {
 									background={card.background}
 									title={card.title}
 									copy={card.copy}
+									button={button}
 									video={card.video}
 									modal={card.modal}
 								/>
