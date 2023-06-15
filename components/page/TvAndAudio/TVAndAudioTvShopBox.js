@@ -15,7 +15,7 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 								<TVAndAudioTvShopItem data={item} key={index} />
 							))}
 						</div>
-						{structure?.link?.title && (
+						{structure?.link?.value && (
 							<div>
 								<Link
 									target={
