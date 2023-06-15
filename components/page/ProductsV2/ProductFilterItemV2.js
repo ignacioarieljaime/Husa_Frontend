@@ -54,7 +54,7 @@ function ProductFilterItemV2({
 				<label htmlFor='filter' className='filter-label'>
 					{data.title}
 					{showProductFilterCount && (
-					<span style={{ marginLeft: '5px' }}>{showTotalCount()}</span>
+						<span style={{ marginLeft: '5px' }}>{showTotalCount()}</span>
 					)}
 				</label>
 			</div>
