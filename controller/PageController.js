@@ -2,6 +2,17 @@ const fs = require('fs')
 
 module.exports = async (page, content) => {
 	let route = ''
+
+	if (page.route === '/download-firmware') {
+		await fs.mkdirSync(`./pages/${page.route}`, { recursive: true })
+		fs.writeFile(`./pages/${page.route}/[productId].js`, content, err => {
+			if (err) {
+				console.error(err)
+			}
+		})
+		return
+	}
+
 	if (page?.route.includes('/index')) {
 		route = page.route.replace('/index', '')
 	} else {

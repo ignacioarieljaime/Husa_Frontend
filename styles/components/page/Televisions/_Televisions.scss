@@ -41,10 +41,15 @@
 	.content {
 		text-align: start;
 		position: absolute;
-		left: 25%;
+		left: calc(3% + 32px) !important;
+		@include mq(991) {
+			left: 24px !important;
+			transform: translate(0, -50%) !important;
+		}
 		top: 50%;
-		transform: translate(-50%, -50%);
+		transform: translate(24px, -50%) !important;
 		width: fit-content;
+		max-width: 800px;
 		.title * {
 			font-weight: 400;
 			font-size: 48px;
@@ -406,6 +411,16 @@
 	.televisions-banner {
 		.content {
 			transform: translate(-30%, -50%);
+			.title * {
+				font-size: 24px !important;
+			}
+
+			.subtitle * {
+				font-size: 16px !important;
+			}
+			a {
+				font-size: 14px !important;
+			}
 		}
 	}
 	.televisions-cards {
@@ -462,16 +477,6 @@
 			left: calc(12px + 25%);
 			top: 40%;
 			transform: translate(-30%, -50%);
-			.title * {
-				font-size: 24px;
-			}
-
-			.subtitle * {
-				font-size: 16px;
-			}
-			a {
-				font-size: 14px;
-			}
 		}
 	}
 	.televisions-cards {
