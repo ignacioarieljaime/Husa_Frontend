@@ -20,8 +20,8 @@ const ProductHero = () => {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: main.current,
-				start: 0,
-				end: isMobile ? '100px' : '25%',
+				start: 'top',
+				end: isMobile ? '100px' : '70%',
 				scrub: 4,
 				pin: true
 				//markers: true
@@ -43,10 +43,7 @@ const ProductHero = () => {
 
 	return (
 		<>
-			<section
-				style={{ position: 'relative' }}
-				className={clsx(styles.hero)}
-				ref={main}>
+			<section className={clsx(styles.hero)} ref={main}>
 				<div className={clsx('container mt-8 mt-md-0')}>
 					<div className={clsx('row')}>
 						<div className={clsx('col', styles.heroWrapper)}>
