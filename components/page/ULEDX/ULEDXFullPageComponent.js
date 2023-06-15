@@ -16,6 +16,7 @@ import { ParallaxProvider } from 'react-scroll-parallax'
 import L9GProductDetailsBox from '../L9G/L9GProductDetailsBox'
 import TechnicalSpecs from './New/TechnicalSpecs'
 import CompareLineup from './New/CompareLineup'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const ULEDXFullPageComponent = ({ data, pim }) => {
 	const { structure } = data
@@ -58,7 +59,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 								poster='/assets/uledx-assets/videos/peak-brightness-poster@3x.webp'
 							/>
 							<MiniLED />
-							<TechFeatures />
+							<TechFeatures button={structure.template.value === 'v2'} />
 							<FullWidthVideo
 								heading='The power of ‘X’'
 								hasAnimation={true}
@@ -86,7 +87,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 								poster='/assets/uledx-assets/videos/peak-brightness-poster@3x.webp'
 							/>
 							<MiniLED />
-							<TechFeatures />
+							<TechFeatures button={structure.template.value === 'v2'} />
 							<FullWidthVideo
 								heading='The power of ‘X’'
 								hasAnimation={true}

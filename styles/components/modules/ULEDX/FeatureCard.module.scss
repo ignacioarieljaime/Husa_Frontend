@@ -66,8 +66,10 @@
 	}
 
 	.button {
-		background-image: url('/public/assets/uledx-assets/images/icons/circle-plus.svg');
+		background-image: url('/assets/uledx-assets/images/icons/circle-plus.svg');
 		background-position: center;
+		background-color: transparent;
+		border: none;
 		background-repeat: no-repeat;
 		background-size: contain;
 		display: inline-block;
@@ -80,7 +82,7 @@
 
 		&:hover,
 		&:focus {
-			background-image: url('/public/assets/uledx-assets/images/icons/circle-plus-icon-solid.svg');
+			background-image: url('/assets/uledx-assets/images/icons/circle-plus-icon-solid.svg');
 		}
 	}
 

@@ -58,10 +58,12 @@
 	}
 
 	&CloseButton {
-		background-image: url('/public/assets/uledx-assets/images/modals/close-button.svg');
+		background-image: url('/assets/uledx-assets/images/modals/close-button.svg');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: contain;
+		background-color: transparent;
+		border: none;
 		height: rem-calc(40);
 		position: absolute;
 		right: rem-calc(15);

@@ -6,19 +6,19 @@ import Image from 'next/image'
 const DayAndNight = () => {
 	const icons = [
 		{
-			src: '/images/logos/dobly-vision-iq@3x.webp',
+			src: '/assets/uledx-assets/images/logos/dobly-vision-iq@3x.webp',
 			width: 81,
 			height: 29,
 			alt: 'Dolby Vision IQ'
 		},
 		{
-			src: '/images/logos/hdr@3x.webp',
+			src: '/assets/uledx-assets/images/logos/hdr@3x.webp',
 			width: 106,
 			height: 31,
 			alt: 'HDR Adaptive'
 		},
 		{
-			src: '/images/logos/adaptive-light@3x.webp',
+			src: '/assets/uledx-assets/images/logos/adaptive-light@3x.webp',
 			width: 117,
 			height: 25,
 			alt: 'Adaptive Light Sensor'

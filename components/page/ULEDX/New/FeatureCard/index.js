@@ -4,7 +4,15 @@ import styles from 'styles/components/modules/ULEDX/FeatureCard.module.scss'
 import { useInView } from 'react-intersection-observer'
 import ModalWrapper from '../ModalWrapper'
 
-const FeatureCard = ({ background, title, titleAlt, copy, video, modal }) => {
+const FeatureCard = ({
+	background,
+	title,
+	titleAlt,
+	copy,
+	video,
+	modal,
+	button
+}) => {
 	const videoRef = useRef(null)
 	const [visible, setVisible] = useState(false)
 	const handleClose = () => setVisible(false)
@@ -65,13 +73,13 @@ const FeatureCard = ({ background, title, titleAlt, copy, video, modal }) => {
 					<div className={clsx(styles.contentBottom)}>
 						<p className={clsx(styles.copy)}>{copy}</p>
 
-						{/* {modal && (
+						{modal && button && (
 							<button
 								className={clsx(styles.button, 'spin')}
 								aria-label='Open'
 								style={{ marginBottom: !copy ? '16px' : null }}
 								onClick={() => handleShow()}></button>
-						)} */}
+						)}
 					</div>
 				</div>
 			</div>
