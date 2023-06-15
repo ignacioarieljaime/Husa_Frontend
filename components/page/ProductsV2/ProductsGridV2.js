@@ -135,6 +135,7 @@ const ProductsGridV2 = ({ data }) => {
 								setFilters={setFilters}
 								total={totalCount}
 								category={structure?.category}
+								showProductFilterCount={structure?.availabilityNumber?.value}
 							/>
 						</div>
 					) : null}
