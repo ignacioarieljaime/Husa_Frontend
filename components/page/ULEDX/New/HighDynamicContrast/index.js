@@ -16,7 +16,7 @@ const HighDynamicContrast = () => {
 				<div className={clsx('container')}>
 					<div className={clsx('row')}>
 						<div className={clsx('col', styles.intro)}>
-							<p className={'preheader'}>CINEMATIC EXPERIENCE</p>
+							<p className={'preheader'}>Superior Cinematic Experience</p>
 							<h2>
 								<span className={styles.high}>High</span> brightness
 								<br /> <span className={styles.dynamic}>Dynamic</span> contrast
@@ -58,21 +58,25 @@ const HighDynamicContrast = () => {
 					<div className={clsx('row', styles.content)}>
 						<div className={clsx('col-12 col-md-6', styles.copy)}>
 							<p className='p--small'>
+								See all the content you love in dazzling detail. Hisense TVs
+								support all major formats of HDR, including Dolby Vision, HDR10,
+								HDR10+, and HLG. Never worry about subpar video quality or
+								compatibility again.
+							</p>
+
+							<p className='p--small'>
+								Simply choose and play whatever content you want, knowing you're
+								experiencing it in perfect detail, enhanced colors, and deeper
+								blacks, thanks to the wide range of HDR formats.
+							</p>
+						</div>
+						<div className={clsx('col-12 col-md-6', styles.copy)}>
+							<p className='p--small'>
 								The ULED X adds HDR10+ Adaptive and Dolby Vision IQ to its
 								already long list of supported HDR formats. These new formats
 								consider environment lighting making HDR more accurate at
 								depicting how dark or bright the lighting is within the room
 								your ULED X is in.
-							</p>
-						</div>
-						<div className={clsx('col-12 col-md-6', styles.copy)}>
-							<p className='p--small'>
-								<strong>Dolby Vision™ HDR, HDR10 & HDR10+</strong>
-								<br />
-								<br />
-								The image technology from cinemas, now brought directly to your
-								home, provides amazing realism that you’ll experience like never
-								before.
 							</p>
 						</div>
 					</div>

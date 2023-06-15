@@ -15,14 +15,18 @@ const DynamicDisplay = () => {
 
 	const cards = [
 		{
-			background: 'assets/uledx-assets/images/cards/billions-of-colors@3x.webp',
-			title: 'Color us crazy.',
+			background:
+				'/assets/uledx-assets/images/cards/billions-of-colors@3x.webp',
+			title: 'Quantum color.',
 			copy: 'A billion plus colors to fawn over.'
 		},
 		{
-			background: 'assets/uledx-assets/images/cards/scene-by-scene@3x.webp',
+			background: '/assets/uledx-assets/images/cards/scene-by-scene@3x.webp',
 			title: 'Scene-by-scene PQ',
-			copy: 'Intuitively optimizing PQ every scene'
+			copy: 'Intuitively optimizing PQ every scene',
+			video: {
+				src: '/assets/uledx-assets/videos/succession-pq.mp4'
+			}
 		}
 	]
 
@@ -53,9 +57,11 @@ const DynamicDisplay = () => {
 						</div>
 						<div className={clsx('col-12 col-lg-10 col-xl-7', styles.intro)}>
 							<p style={{ color: '#c9c8c8', fontWeight: 300 }}>
-								Always keep a cinema-level experience on hand with Hisense’s
-								Dynamic X-Display. A symphony of picture enhancing features that
-								deliver the perfect picture any time, any place.
+								Packed with technology that brings an undeniable level of
+								vibrance, color, and detail — the Dynamic X Display on the ULED
+								X delivers dreamy image quality at any angle and under any light
+								condition. A symphony of picture enhancing features that deliver
+								the perfect picture any time, any place.
 							</p>
 						</div>
 					</div>
@@ -67,15 +73,57 @@ const DynamicDisplay = () => {
 					<div className={clsx('row')}>
 						<div
 							className={clsx('col-12 col-xl-10', styles.gradientCopyWrapper)}>
-							<p
-								ref={ref}
-								className={clsx(styles.gradientCopy, inView ? 'fadeIn' : null)}>
-								4k <br />
-								Billions
-								<br /> of colors <br />
-								Anti-glare <br />
-								Wide viewing <br />
-								Intuitive auto PQ
+							<p ref={ref} className={clsx(styles.gradientCopy)}>
+								<span
+									className={clsx(
+										styles.gradientCopyOne,
+										inView ? 'fadeIn' : null
+									)}
+									style={{ animationDelay: '.25s' }}>
+									4k
+								</span>
+								<br />
+
+								<span
+									className={clsx(
+										styles.gradientCopyTwo,
+										inView ? 'fadeIn' : null
+									)}
+									style={{ animationDelay: '.50s' }}>
+									Billions
+									<br />
+									of colors
+								</span>
+								<br />
+
+								<span
+									className={clsx(
+										styles.gradientCopyThree,
+										inView ? 'fadeIn' : null
+									)}
+									style={{ animationDelay: '.75s' }}>
+									Anti-glare
+								</span>
+								<br />
+
+								<span
+									className={clsx(
+										styles.gradientCopyFour,
+										inView ? 'fadeIn' : null
+									)}
+									style={{ animationDelay: '1s' }}>
+									Wide viewing
+								</span>
+								<br />
+
+								<span
+									className={clsx(
+										styles.gradientCopyFive,
+										inView ? 'fadeIn' : null
+									)}
+									style={{ animationDelay: '1.25s' }}>
+									Intuitive auto PQ
+								</span>
 							</p>
 						</div>
 					</div>
@@ -90,13 +138,17 @@ const DynamicDisplay = () => {
 										background={card.background}
 										title={card.title}
 										copy={card.copy}
+										video={card.video}
+										titleAlt={index === 0}
 									/>
 								) : (
 									<Parallax speed={index ? 10 : -10} key={card.copy}>
 										<FeatureCard
 											background={card.background}
 											title={card.title}
-											copy={card.title}
+											copy={card.copy}
+											video={card.video}
+											titleAlt={index === 0}
 										/>
 									</Parallax>
 								)
