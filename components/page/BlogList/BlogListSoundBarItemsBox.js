@@ -72,7 +72,9 @@ function BlogListSoundBarItemsBox({ data: { structure } }) {
 										value: item?.route
 									},
 									image: {
-										src: item?.image
+										src: item?.meta?.find(
+											item => item.name === 'property="og:image"'
+										)?.content
 									},
 									title: {
 										value: item?.title
