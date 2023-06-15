@@ -9,17 +9,17 @@ const CompareLineup = ({}) => {
 		{
 			productImage: '/assets/uledx-assets/images/product/U6@3x.webp',
 			title: '<span>U6</span> Series',
-			link: '/'
+			link: 'https://www.hisense-usa.com/televisions/75-u6-series-mini-led-uled-google-tv'
 		},
 		{
 			productImage: '/assets/uledx-assets/images/product/U7@3x.webp',
 			title: '<span>U7</span> Series',
-			link: '/'
+			link: 'https://www.hisense-usa.com/televisions/75-u7-series-mini-led-uled-hisense-google-tv'
 		},
 		{
 			productImage: '/assets/uledx-assets/images/product/U8@3x.webp',
 			title: '<span>U8</span> Series',
-			link: '/'
+			link: 'https://www.hisense-usa.com/televisions/hisense-75-mini-led-uled-4k-smart-google-tv'
 		}
 	]
 

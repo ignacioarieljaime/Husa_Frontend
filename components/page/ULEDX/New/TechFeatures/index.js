@@ -72,7 +72,7 @@ const TechFeatures = ({ button }) => {
 							src={snowflakeMobile.src}
 							alt=''
 							width={375}
-							height={300}
+							height={200}
 							className={styles.snowflakeImageMobile}
 						/>
 					</div>
