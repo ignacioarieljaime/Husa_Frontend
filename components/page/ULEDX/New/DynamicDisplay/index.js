@@ -15,16 +15,17 @@ const DynamicDisplay = () => {
 
 	const cards = [
 		{
-			background: 'assets/uledx-assets/images/cards/billions-of-colors@3x.webp',
+			background:
+				'/assets/uledx-assets/images/cards/billions-of-colors@3x.webp',
 			title: 'Quantum color.',
 			copy: 'A billion plus colors to fawn over.'
 		},
 		{
-			background: 'assets/uledx-assets/images/cards/scene-by-scene@3x.webp',
+			background: '/assets/uledx-assets/images/cards/scene-by-scene@3x.webp',
 			title: 'Scene-by-scene PQ',
 			copy: 'Intuitively optimizing PQ every scene',
 			video: {
-				src: 'assets/uledx-assets/videos/succession-pq.mp4'
+				src: '/assets/uledx-assets/videos/succession-pq.mp4'
 			}
 		}
 	]
