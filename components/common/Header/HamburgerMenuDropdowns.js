@@ -33,7 +33,9 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 
 			{columns.childs.length !== 0 && (
 				<div
-					className={`dropdown-menu ps-6 pe-4 ${show ? 'd-block' : 'd-none'}`}
+					className={`dropdown-menu py-1 ps-6 pe-4 ${
+						show ? 'd-block' : 'd-none'
+					}`}
 					aria-labelledby='tv-audio-dropdown'>
 					{columns.childs.map((colum, index) => {
 						if (Array.isArray(colum))
@@ -90,14 +92,14 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 										</a>
 									</Link>
 									{showSub === index && colum.childs.length > 0 && (
-										<ul className='header_dropdown_sublist py-1'>
+										<ul className='header_dropdown_sublist sublist hamburger'>
 											{colum.childs.map(col => (
-												<li className='ps-4'>
+												<li className='item ps-4'>
 													<Link href={col.url ? col.url : ''}>
 														<a
 															target={col?.target ? col?.target : '_self'}
 															onClick={() => asideHandler(false)}
-															className='dropdown-item p-0 py-1'>
+															className='dropdown-item'>
 															<span className='underline-on-hover'>
 																{col.name}
 															</span>
