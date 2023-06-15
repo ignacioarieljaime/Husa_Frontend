@@ -1,19 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import { useWindowSize } from 'hooks/useWindowSize'
 const TelevisionsBlockBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const window = useWindowSize()
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
 	return (
 		<section>
 			<div className='televisions-banner'>
-				<img
-					src={content?.image?.src}
-					alt={content?.image?.alt}
-					className='image'
-				/>
+				{window[0] > 575 ? (
+					<img
+						src={content?.image?.src}
+						alt={content?.image?.alt}
+						className='image'
+					/>
+				) : (
+					<img
+						src={content?.mobile?.src}
+						alt={content?.mobile?.alt}
+						className='image'
+					/>
+				)}
 				<div className='content'>
 					<div
 						className='title mb-3 mb-md-7'
