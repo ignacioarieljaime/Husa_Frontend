@@ -68,12 +68,16 @@
 		width: 100%;
 
 		@include media-breakpoint-up(md) {
-			top: rem-calc(65);
+			top: rem-calc(80);
+		}
+
+		@include media-breakpoint-up(lg) {
+			top: rem-calc(135);
 		}
 
 		img {
 			display: block;
-			margin: rem-calc(0 0 20);
+			margin: rem-calc(0 0 15);
 
 			&.logo {
 				max-width: rem-calc(73);
@@ -106,7 +110,7 @@
 
 			@include media-breakpoint-up(md) {
 				font-size: rem-calc(24);
-				letter-spacing: rem-calc(6);
+				letter-spacing: 4.75px;
 			}
 
 			&.decorative {
@@ -129,20 +133,21 @@
 		letter-spacing: rem-calc(4);
 		line-height: 2.06;
 		margin-top: rem-calc(60);
-		padding: rem-calc(2 40);
+		padding: rem-calc(0 40);
 		width: rem-calc(242);
 
 		@include media-breakpoint-up(md) {
-			font-size: rem-calc(20);
+			font-size: rem-calc(17);
 			letter-spacing: rem-calc(6);
-			line-height: 2.08;
+			line-height: 1.8;
 			margin-top: 0;
-			width: rem-calc(330);
+			width: rem-calc(250);
 		}
 	}
 }
 
 .line {
+	animation: changeBorder 15s forwards;
 	border: 2px solid $orange;
 	display: inline;
 	height: rem-calc(200);
@@ -154,12 +159,21 @@
 	z-index: 2;
 
 	@include media-breakpoint-up(md) {
-		height: rem-calc(300);
 		margin-top: rem-calc(-150);
 	}
 
 	@include media-breakpoint-up(lg) {
-		height: rem-calc(400);
-		margin-top: rem-calc(-300);
+		height: rem-calc(300);
+		margin-top: rem-calc(-220);
+	}
+}
+
+@keyframes changeBorder {
+	from {
+		border-color: transparent;
+	}
+
+	to {
+		border-color: $orange;
 	}
 }

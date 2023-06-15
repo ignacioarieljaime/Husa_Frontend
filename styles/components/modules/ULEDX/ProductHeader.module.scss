@@ -6,14 +6,13 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	z-index: 997;
+	z-index: 999;
 	transition: padding 500ms ease;
 
 	&Fixed {
 		position: fixed;
 		top: 0;
 		padding: 18px 0;
-		z-index: 999;
 	}
 
 	&Nav {
@@ -33,7 +32,7 @@
 		&Item {
 			a {
 				color: $white;
-				font-size: rem-calc(14px);
+				font-size: rem-calc(13px);
 				text-transform: uppercase;
 				font-weight: 500;
 				@include zeplin-letter-spacing(2.8, 14);
@@ -69,9 +68,9 @@
 			background-color: $teal;
 			color: $white;
 			border-radius: 14px;
-			border: none;
 			padding: 5px 30px 3px;
 			margin-left: -19px;
+			border: none;
 
 			@include media-breakpoint-down(sm) {
 				font-size: rem-calc(10);

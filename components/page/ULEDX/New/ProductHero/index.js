@@ -20,11 +20,11 @@ const ProductHero = () => {
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: main.current,
-				start: 'top',
-				end: isMobile ? '100px' : '70%',
+				start: 0,
+				end: isMobile ? '100px' : '25%',
 				scrub: 4,
 				pin: true
-				// markers: true
+				//markers: true
 			}
 		})
 
@@ -57,7 +57,7 @@ const ProductHero = () => {
 									width={720}
 									height={435}
 									alt=''
-									className={clsx('graphic', styles.graphic)}
+									className={clsx('graphic fadeIn', styles.graphic)}
 								/>
 								<img
 									src={productImage.src}
@@ -69,7 +69,7 @@ const ProductHero = () => {
 							</div>
 
 							{/* content */}
-							<div className={styles.heroContent}>
+							<div className={clsx('fadeIn', styles.heroContent)}>
 								<img
 									src={hisenseLogo.src}
 									width={150}

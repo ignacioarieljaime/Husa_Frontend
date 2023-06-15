@@ -1,0 +1,65 @@
+@import '../../page/ULEDX/settings';
+
+.techCard {
+	background-color: $charcoal;
+	border-radius: rem-calc(20);
+	color: $white;
+	margin-top: rem-calc(25);
+	padding: rem-calc(40 30);
+	text-align: center;
+	width: 100%;
+
+	@include media-breakpoint-up(sm) {
+		margin-right: rem-calc(16);
+		margin-top: rem-calc(35);
+		max-width: rem-calc(350);
+	}
+
+	@include media-breakpoint-up(lg) {
+		padding: rem-calc(40 65);
+	}
+
+	&:last-of-type {
+		margin-right: 0;
+	}
+
+	.preHeader {
+		color: $gold;
+		font-size: rem-calc(16);
+		font-weight: 400;
+	}
+
+	.subText {
+		color: $grayLight;
+		font-size: rem-calc(18);
+		letter-spacing: -0.18px;
+	}
+
+	h3 {
+		font-size: rem-calc(30);
+		font-weight: 400;
+		letter-spacing: 0.75px;
+		margin: rem-calc(30 0 20);
+
+		@include media-breakpoint-up(sm) {
+			font-size: rem-calc(20);
+		}
+
+		@include media-breakpoint-up(md) {
+			font-size: rem-calc(30);
+		}
+
+		span {
+			color: $gold;
+		}
+	}
+
+	img {
+		margin-top: rem-calc(20);
+		margin: 0 auto;
+
+		@include media-breakpoint-up(md) {
+			margin-top: 0;
+		}
+	}
+}
