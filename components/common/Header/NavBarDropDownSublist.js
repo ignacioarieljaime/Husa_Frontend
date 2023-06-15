@@ -29,9 +29,9 @@ function NavBarDropDownSublist({ data }) {
 								</a>
 							</Link>
 							{show === index && child.childs.length > 0 && (
-								<ul className='header_dropdown_sublist'>
+								<ul className='header_dropdown_sublist sublist'>
 									{child.childs.map((item, _index) => (
-										<li key={`colum-${_index}`} className='py-0'>
+										<li key={`colum-${_index}`} className='py-0 item'>
 											<Link
 												target={item?.target ? item?.target : '_self'}
 												href={item.url ? item.url : ''}>
