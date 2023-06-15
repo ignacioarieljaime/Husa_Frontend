@@ -36,7 +36,7 @@ export async function GetBlogsByTagApi(tag) {
 
 export async function getBlogsByIdApi(ids) {
 	let response = await axios.get(
-		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPostTags?postsIds=${ids}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPostTags?postIds=${ids}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 	)
 	return response
 }

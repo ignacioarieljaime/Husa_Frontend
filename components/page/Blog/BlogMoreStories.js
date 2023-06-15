@@ -1,18 +1,51 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import BlogListLittleReadArticleBox from './../BlogList/BlogListLittleReadArticleBox'
-import { GetBlogsByTagApi } from 'services/cxm'
+import { GetBlogsByTagApi, getBlogsByIdApi } from 'services/cxm'
 import { useState } from 'react'
 import { ConvertBlogData } from 'utils/convertBlogData'
 import Spinner from 'components/common/Spinner'
 
 function BlogMoreStories({ data: { structure } }) {
 	const [blogsList, setBlogsList] = useState()
+	const [blogs, setBlogs] = useState()
+
+	useEffect(() => {
+		getAllPosts()
+	}, [])
+
+	const getAllPosts = async () => {
+		setBlogsList('loading')
+		try {
+			let response = await getBlogsByIdApi(
+				encodeURIComponent(JSON.stringify(getItemsId()))
+			)
+			setBlogs(handleItemToShow(response?.data?.data))
+			setBlogsList()
+		} catch (error) {
+			setBlogsList()
+			console.log(error)
+		}
+	}
+
+	const getItemsId = () => {
+		let ids = []
+		structure?.list?.value.forEach(element => {
+			ids.push(
+				element?.largePost?.value?.id?.value,
+				element?.smallPost?.value?.id?.value
+			)
+		})
+
+		return ids
+	}
+
 	const getPosts = async tag => {
 		setBlogsList('loading')
 		try {
 			let response = await GetBlogsByTagApi(tag)
-			handleItemToShow(response?.data?.data)
+
+			setBlogsList(handleItemToShow(response?.data?.data))
 		} catch (error) {
 			setBlogsList()
 			console.log(error)
@@ -50,7 +83,8 @@ function BlogMoreStories({ data: { structure } }) {
 				})
 			}
 		})
-		setBlogsList(result)
+
+		return result
 	}
 
 	const divideArray = (arr, size) => {
@@ -91,7 +125,7 @@ function BlogMoreStories({ data: { structure } }) {
 					</>
 				) : (
 					<>
-						{structure?.list?.value.map((item, index) => (
+						{blogs?.map((item, index) => (
 							<BlogListLittleReadArticleBox
 								getTag={getPosts}
 								key={index}

@@ -7,18 +7,24 @@ import { ConvertBlogData } from 'utils/convertBlogData'
 
 function BlogListSoundBarItemsBox({ data: { structure } }) {
 	const [blogsList, setBlogsList] = useState()
-	// useEffect(() => {
-	// 	getAllPosts()
-	// }, [])
-	
+	const [blogs, setBlogs] = useState()
+	useEffect(() => {
+		getAllPosts()
+	}, [])
 
 	const getAllPosts = async () => {
-		console.log(structure?.list?.value);
-		// try {
-		// 	let response = await getBlogsByIdApi()
-		// } catch (error) {
-		// 	console.log(error)
-		// }
+		setBlogsList('loading')
+		let productsIds = structure?.list?.value?.map(item => item?.id?.value)
+		try {
+			let response = await getBlogsByIdApi(
+				encodeURIComponent(JSON.stringify(productsIds))
+			)
+			setBlogs(response?.data?.data)
+			setBlogsList()
+		} catch (error) {
+			setBlogsList()
+			console.log(error)
+		}
 	}
 
 	const getPosts = async tag => {
@@ -53,11 +59,25 @@ function BlogListSoundBarItemsBox({ data: { structure } }) {
 					</>
 				) : (
 					<>
-						{structure?.list?.value.map((item, index) => (
+						{blogs?.map((item, index) => (
 							<BlogListSoundBardItem
 								getBlogs={getPosts}
 								key={index}
-								data={item}
+								data={{
+									tag: {
+										value: item?.tags
+									},
+									link: {
+										title: 'READ ARTICLE',
+										value: item?.route
+									},
+									image: {
+										src: item?.image
+									},
+									title: {
+										value: item?.title
+									}
+								}}
 							/>
 						))}
 					</>
