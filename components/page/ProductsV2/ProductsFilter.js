@@ -12,7 +12,7 @@ const ProductsFilter = ({
 	setFilters,
 	total,
 	category,
-	showAvailabilityNumber
+	showProductFilterCount
 }) => {
 	let router = useRouter()
 	const [filterListData, setFilterListData] = useState([])
@@ -152,6 +152,7 @@ const ProductsFilter = ({
 											showAvailabilityNumber={showAvailabilityNumber}
 											total={total}
 											category={category}
+											showProductFilterCount={showProductFilterCount}
 										/>
 									)
 							)}
