@@ -44,7 +44,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 		<>
 			<ParallaxProvider isDisabled={userPrefersReducedMotion}>
 				<main ref={productHeroContent} className='uled-wrapper'>
-					{structure.template.value === 'v1' ? (
+					{structure?.template?.value === 'v1' ? (
 						<>
 							<ProductHeader
 								pin={scrollPosY > productHeroContent.current?.offsetTop}
@@ -87,7 +87,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 								poster='/assets/uledx-assets/videos/peak-brightness-poster@3x.webp'
 							/>
 							<MiniLED />
-							<TechFeatures button={structure.template.value === 'v2'} />
+							<TechFeatures button={structure?.template?.value === 'v2'} />
 							<FullWidthVideo
 								heading='The power of ‘X’'
 								hasAnimation={true}
