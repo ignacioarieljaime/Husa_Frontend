@@ -20,7 +20,7 @@ const TechFeatures = ({ button }) => {
 		},
 		{
 			background: '/assets/uledx-assets/images/cards/dimming-zones@3x.webp',
-			title: '5000+ Local Dimming Zones',
+			title: '5000<sup>+</sup> Local Dimming Zones',
 			copy: 'Unmatched backlight control',
 			video: {
 				src: '/assets/uledx-assets/videos/dimming-zones.mp4',
