@@ -1,0 +1,65 @@
+@import '../../page/ULEDX/settings';
+
+.content {
+	position: relative;
+	padding-bottom: rem-calc(350);
+
+	@include media-breakpoint-up(sm) {
+		padding-bottom: rem-calc(10);
+		padding-top: rem-calc(300);
+	}
+
+	@include media-breakpoint-up(xl) {
+		padding-top: rem-calc(450);
+	}
+
+	.header {
+		@include media-breakpoint-up(xl) {
+			align-items: center;
+			display: flex;
+		}
+	}
+
+	.icons {
+		display: flex;
+		margin-bottom: rem-calc(20);
+
+		@include media-breakpoint-up(xl) {
+			margin-bottom: 0;
+			margin-left: rem-calc(20);
+			margin-top: rem-calc(55);
+		}
+	}
+
+	h2 {
+		color: $white;
+		letter-spacing: -0.88px;
+
+		@include media-breakpoint-up(md) {
+			font-size: rem-calc(50);
+			letter-spacing: -1.25px;
+			line-height: rem-calc(45);
+			margin-bottom: 0;
+		}
+
+		span {
+			@include textGradient(#f7aa5e, #fff8e9, #fff8e9);
+			display: block;
+			font-size: rem-calc(35);
+			line-height: rem-calc(36);
+			margin-bottom: rem-calc(20);
+
+			@include media-breakpoint-up(md) {
+				@include headingStyle('xlarge');
+				line-height: 1;
+			}
+		}
+	}
+
+	p {
+		@include media-breakpoint-down(sm) {
+			font-size: rem-calc(16);
+			line-height: 1.25;
+		}
+	}
+}

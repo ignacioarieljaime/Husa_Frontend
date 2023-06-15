@@ -7,7 +7,7 @@
 	background-size: contain;
 	color: $white;
 	padding-bottom: rem-calc(360);
-	padding-top: rem-calc(40);
+	padding-top: rem-calc(90);
 
 	@include media-breakpoint-up(sm) {
 		background-size: cover;
@@ -19,7 +19,7 @@
 		background-position: center;
 		background-size: cover;
 		padding-bottom: rem-calc(145);
-		padding-top: rem-calc(90);
+		padding-top: rem-calc(140);
 	}
 
 	h2 {

@@ -9,10 +9,10 @@
 	border: 1px solid $grayDark;
 	color: $white;
 	display: inline-block;
-	height: rem-calc(352);
+	height: rem-calc(389);
 	margin-bottom: rem-calc(20);
 	margin-right: rem-calc(16);
-	padding: rem-calc(30 30 15);
+	padding: rem-calc(30 25 15);
 	position: relative;
 	text-align: left;
 	width: 100%;
@@ -30,34 +30,58 @@
 		position: relative;
 
 		&Bottom {
-			align-items: center;
+			align-items: flex-end;
 			display: flex;
 			justify-content: space-between;
 			width: 100%;
 		}
 
 		&Heading {
-			@include headingStyle('medium');
+			@include textGradient(#e3cb93, #c5a25b, #aa7d29, 180deg);
+			font-size: rem-calc(45);
+			font-weight: 400;
+			letter-spacing: -1.65px;
+			line-height: 1;
+
+			@include media-breakpoint-up(md) {
+				font-size: rem-calc(55);
+				font-weight: 400;
+				line-height: 1.02;
+			}
+
+			sup {
+				@include textGradient(#e3cb93, #c5a25b, #aa7d29, 180deg);
+				font-size: rem-calc(22);
+				vertical-align: middle;
+			}
 		}
 	}
 
 	.copy {
 		display: inline-block;
-		font-weight: 300;
+		font-size: rem-calc(33);
+		font-weight: 400;
 		line-height: 1;
-		width: 60%;
+		width: 90%;
 	}
 
 	.button {
-		background-image: url('/assets/uledx-assets/images/icons/circle-plus.svg');
+		background-image: url('/public/assets/uledx-assets/images/icons/circle-plus.svg');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: contain;
 		display: inline-block;
-		background-color: transparent;
-		border: none;
 		height: rem-calc(54);
 		width: rem-calc(54);
+
+		@include media-breakpoint-up(lg) {
+			margin-right: rem-calc(-15);
+		}
+
+		&:hover,
+		&:focus {
+			background-image: url('/public/assets/uledx-assets/images/icons/circle-plus-icon-solid.svg');
+		}
 	}
 
 	.video {

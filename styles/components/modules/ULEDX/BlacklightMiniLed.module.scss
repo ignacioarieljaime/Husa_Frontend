@@ -1,0 +1,86 @@
+@import '../../page/ULEDX/settings';
+
+.content {
+	position: relative;
+
+	h2 {
+		@include textGradient($goldLight, $goldDark, $goldDark);
+		font-size: rem-calc(35);
+		margin-bottom: rem-calc(20);
+
+		@include media-breakpoint-up(md) {
+			@include headingStyle('medium');
+		}
+	}
+
+	.stats {
+		display: inline-block;
+		margin: rem-calc(0 15);
+
+		@include media-breakpoint-up(md) {
+			margin-right: rem-calc(40);
+		}
+
+		@include media-breakpoint-up(lg) {
+			margin-right: rem-calc(70);
+		}
+
+		p {
+			@include media-breakpoint-down(sm) {
+				font-size: rem-calc(14);
+			}
+		}
+
+		&Wrapper {
+			@include textGradient($goldDark, $goldDark, $goldLight);
+			text-align: center;
+
+			@include media-breakpoint-up(md) {
+				display: flex;
+				text-align: left;
+			}
+
+			@include media-breakpoint-up(md) {
+				margin-bottom: rem-calc(230);
+			}
+
+			@include media-breakpoint-up(lg) {
+				margin-bottom: rem-calc(430);
+			}
+
+			span {
+				display: block;
+				font-size: rem-calc(40);
+
+				@include media-breakpoint-up(lg) {
+					@include headingStyle('medium');
+				}
+			}
+		}
+	}
+
+	.disclaimer {
+		color: $grayLight;
+		font-size: rem-calc(16);
+		line-height: 1.5;
+		margin-bottom: rem-calc(60);
+		margin-top: rem-calc(10);
+		text-align: center;
+
+		@include media-breakpoint-up(sm) {
+			margin-bottom: rem-calc(170);
+		}
+
+		@include media-breakpoint-up(md) {
+			margin: 0;
+			position: absolute;
+			right: 0;
+			text-align: left;
+		}
+
+		@include media-breakpoint-up(lg) {
+			margin-top: rem-calc(15);
+			right: rem-calc(-50);
+		}
+	}
+}

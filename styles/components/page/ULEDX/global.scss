@@ -5,6 +5,7 @@
 .uled-wrapper {
 	background: $black;
 	overflow-x: hidden;
+	// padding-top: 114px; // both headers (64 + 50)
 	position: relative;
 
 	.container {
@@ -26,6 +27,11 @@ p,
 	&--small {
 		font-size: rem-calc(16);
 		line-height: rem-calc(27);
+	}
+
+	&--med {
+		font-size: rem-calc(18);
+		line-height: 1.33;
 	}
 
 	&--large {
@@ -50,5 +56,37 @@ p,
 		font-size: rem-calc(22);
 		line-height: normal;
 		margin-bottom: rem-calc(25);
+	}
+}
+
+.button {
+	&--rounded {
+		border-radius: rem-calc(20);
+		border: 2px solid $white;
+		color: $white;
+		display: inline-block;
+		font-size: rem-calc(14);
+		font-weight: 500;
+		letter-spacing: -0.35px;
+		margin-top: rem-calc(15);
+		padding: rem-calc(8 40);
+		text-align: center;
+		text-decoration: none;
+		transition: background-color 0.25s ease-out, color 0.25s ease-out;
+
+		@include media-breakpoint-up(md) {
+			margin-top: rem-calc(25);
+		}
+
+		&:hover,
+		&:focus {
+			background-color: $gold;
+			border-color: $gold;
+			color: $almostBlack;
+		}
+
+		&-xl {
+			border-radius: rem-calc(40);
+		}
 	}
 }
