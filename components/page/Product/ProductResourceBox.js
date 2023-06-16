@@ -6,28 +6,41 @@ import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
 function ProductResourceBox({ pim, data }) {
 	let { structure } = data
 	const router = useRouter()
-	console.log(pim);
 
-	const findWarranty = () => {
-		let customFiled = pim?.features?.find(item =>
-			item?.custom_field_type_name?.includes('Warranty')
+	const warrantyHandler = () => {
+		const categoryFields = pim?.Category?.customFields
+		let customFiled = findDataInArray(
+			pim?.features,
+			'custom_field_type_name',
+			'Televisions Warranty Length'
 		)?.custom_fields
-		if (customFiled) {
-			let warranty = customFiled?.find(item => item?.name === 'Title')
+		let warrantyTime = findDataInArray(
+			customFiled,
+			'name',
+			'Warranty Period'
+		)?.value
+		let customLink = findDataInArray(customFiled, 'name', 'Link')?.value
+		let warrantyResult = categoryFields?.find(item =>
+			item?.custom_field?.name?.includes(warrantyTime?.split(' ')[0])
+		)
 
-			console.log(warranty)
+		if (warrantyTime)
 			return (
 				<li>
-					<Link href={`/`}>
-						<a>
-							<span className='underline-on-hover text-uppercase'>
-								{warranty?.value}
-							</span>
-						</a>
-					</Link>
+					<a
+						target='_blank'
+						download={true}
+						href={customLink || warrantyResult?.media?.external_url}>
+						<span className='underline-on-hover text-uppercase'>
+							{findDataInArray(customFiled, 'name', 'Title')?.value}
+						</span>
+					</a>
 				</li>
 			)
-		}
+	}
+
+	const findDataInArray = (_array, _selector, _label) => {
+		return _array?.find(item => item[_selector] === _label)
 	}
 
 	return (
@@ -70,6 +83,7 @@ function ProductResourceBox({ pim, data }) {
 							</>
 						)
 				)}
+				{warrantyHandler()}
 				<li>
 					<Link
 						href={`/support/${
@@ -82,7 +96,6 @@ function ProductResourceBox({ pim, data }) {
 						</a>
 					</Link>
 				</li>
-				{findWarranty()}
 				{structure?.installationUrl?.value &&
 				!structure?.installationUrl?.value === 'null' ? (
 					<li>
