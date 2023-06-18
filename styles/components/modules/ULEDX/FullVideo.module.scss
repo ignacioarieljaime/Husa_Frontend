@@ -1,6 +1,8 @@
 @import '../../page/ULEDX/settings';
 
 .videoWrapper {
+	background-position: center;
+	background-size: cover;
 	padding: rem-calc(166 15);
 	position: relative;
 
@@ -14,6 +16,10 @@
 		position: relative;
 		text-align: center;
 		width: 100%;
+
+		&Opacity {
+			opacity: 0;
+		}
 
 		span {
 			&:first-of-type {
@@ -42,6 +48,39 @@
 		}
 	}
 
+	.preheader {
+		color: $gold;
+		line-height: rem-calc(24);
+		margin-bottom: rem-calc(20);
+		opacity: 0;
+		text-align: center;
+	}
+
+	.subText {
+		color: $white;
+		font-size: rem-calc(24);
+		line-height: 1;
+		margin-top: rem-calc(20);
+		opacity: 0;
+		text-align: center;
+	}
+
+	.logoWrapper {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		opacity: 0;
+
+		.logo {
+			margin: rem-calc(25 10 0);
+
+			@include media-breakpoint-up(md) {
+				margin: rem-calc(25 15);
+				opacity: 0.5;
+			}
+		}
+	}
+
 	.content {
 		align-items: center;
 		display: flex;
@@ -49,6 +88,10 @@
 		justify-content: center;
 		position: relative;
 		z-index: 1;
+
+		&Wrapper {
+			position: relative;
+		}
 
 		&Mark {
 			&::before {
@@ -111,10 +154,20 @@
 	}
 }
 
-.paddingLarge {
-	padding: rem-calc(220 15);
+.padding {
+	&Large {
+		padding: rem-calc(220 15);
 
-	@include media-breakpoint-up(md) {
-		padding: rem-calc(340 0);
+		@include media-breakpoint-up(md) {
+			padding: rem-calc(340 0);
+		}
+	}
+
+	&Small {
+		padding: rem-calc(55 16);
+
+		@include media-breakpoint-up(md) {
+			padding: rem-calc(205 0);
+		}
 	}
 }

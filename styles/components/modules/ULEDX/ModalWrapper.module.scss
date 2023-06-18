@@ -1,0 +1,152 @@
+@import '../../page/ULEDX/settings';
+
+.modal {
+	&Wrapper {
+		background-color: $black;
+		color: $white;
+		height: 100%;
+		left: 50%;
+		margin: 0;
+		overflow-y: scroll;
+		position: absolute;
+		width: 100%;
+
+		@include media-breakpoint-up(sm) {
+			height: auto;
+		}
+
+		@include media-breakpoint-up(md) {
+			max-width: rem-calc(1200);
+			overflow: auto;
+		}
+
+		@include media-breakpoint-up(xl) {
+			height: fit-content;
+		}
+	}
+
+	&Overlay {
+		background-color: rgba($black, 0.75);
+		bottom: 0;
+		left: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
+		z-index: 999;
+
+		@include media-breakpoint-up(md) {
+			background-color: rgba($black, 0.9);
+		}
+	}
+
+	&Content {
+		background-position: bottom;
+		background-repeat: no-repeat;
+		background-size: cover;
+		padding-bottom: rem-calc(90);
+		padding: rem-calc(50 20);
+		position: relative;
+
+		@include media-breakpoint-up(sm) {
+			padding: rem-calc(65 40);
+		}
+
+		@include media-breakpoint-up(lg) {
+			background-position: center;
+			padding: rem-calc(70);
+		}
+	}
+
+	&CloseButton {
+		background-image: url('/assets/uledx-assets/images/modals/close-button.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-color: transparent;
+		border: none;
+		height: rem-calc(40);
+		position: absolute;
+		right: rem-calc(15);
+		top: rem-calc(15);
+		width: rem-calc(40);
+
+		@include media-breakpoint-up(sm) {
+			right: rem-calc(10);
+		}
+
+		@include media-breakpoint-up(md) {
+			right: rem-calc(20);
+			top: rem-calc(20);
+		}
+	}
+}
+
+@keyframes slideInUpHalf {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 50%;
+		opacity: 1;
+		transform: translate(-50%, 50%);
+	}
+}
+
+@keyframes slideInUp {
+	from {
+		bottom: 0;
+		opacity: 0;
+	}
+	to {
+		bottom: 100%;
+		opacity: 1;
+		transform: translate(-50%, 100%);
+	}
+}
+
+.slideInUp {
+	animation: slideInUp 0.75s ease;
+	bottom: 100%;
+	transform: translate(-50%, 100%);
+
+	@include media-breakpoint-up(sm) {
+		animation: slideInUpHalf 0.75s ease;
+		bottom: 50%;
+		transform: translate(-50%, 50%);
+	}
+}
+
+@keyframes slideOutDownHalf {
+	from {
+		bottom: 50%;
+		opacity: 1;
+		transform: translate(-50%, 50%);
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+		transform: translate(-50%, 50%);
+	}
+}
+
+@keyframes slideOutDown {
+	from {
+		bottom: 100%;
+		opacity: 1;
+		transform: translate(-50%, 100%);
+	}
+	to {
+		bottom: 0;
+		opacity: 0;
+		transform: translate(-50%, 100%);
+	}
+}
+
+.slideOutDown {
+	animation: slideOutDown 0.75s ease;
+
+	@include media-breakpoint-up(sm) {
+		animation: slideOutDownHalf 0.75s ease;
+	}
+}

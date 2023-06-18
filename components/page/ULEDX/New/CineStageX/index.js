@@ -13,6 +13,8 @@ import SpecCard from '../SpecCard'
 
 const CineStageX = ({}) => {
 	const [ref, inView] = useInView()
+	const [line, lineView] = useInView()
+	const [lineMobile, lineMobileView] = useInView()
 	const isMobileTablet = useMediaQuery({ query: '(max-width: 768px)' })
 
 	const cardsLeft = [
@@ -46,18 +48,18 @@ const CineStageX = ({}) => {
 				<div className={clsx('row justify-content-between')}>
 					<div className={clsx('col-12 col-md-7 col-xl-6', styles.intro)}>
 						<p className={'preheader'} style={{ color: '#d5b879' }}>
-							CINEMA-LEVEL SURROUND AUDIO
+							CINEMA-LEVEL AUDIO
 						</p>
 						<h2>
 							CineStage X <br /> Surround
 						</h2>
 
 						<p style={{ color: '#c9c8c8', fontWeight: 300 }}>
-							With multi-channel surround and WiSA Ready, UX offers a cinematic
-							experience that serves both your ears and your eyes. UX actives
-							all your senses and unleashes your audiovisual experience to the
-							fullest. You can hear the explosion of the rock as vivid as you
-							are right in the scene.
+							The ULED X features a 4.1.2 Multi-Channel Surround Sound system
+							and over 80 watts of total power. With 7 speakers, including a
+							built-in subwoofer, and Dolby Atmos, ULED X delivers an immersive,
+							powerful, and cinematic audio experience that puts you in the
+							center of the action for movies, sports, gaming, and concerts.
 						</p>
 					</div>
 
@@ -122,6 +124,14 @@ const CineStageX = ({}) => {
 								)
 							})}
 						</Parallax>
+						<div
+							className={clsx(
+								'd-none d-md-block',
+								styles.line,
+								lineView ? styles.animateLine : null
+							)}
+							ref={line}
+						/>
 					</div>
 
 					<div className={clsx(styles.cardInner, styles.cardInnerRight)}>
@@ -142,6 +152,15 @@ const CineStageX = ({}) => {
 					</div>
 				</div>
 			</div>
+
+			<div
+				className={clsx(
+					'd-md-none',
+					styles.line,
+					lineMobileView ? styles.animateLine : null
+				)}
+				ref={lineMobile}
+			/>
 		</section>
 	)
 }
