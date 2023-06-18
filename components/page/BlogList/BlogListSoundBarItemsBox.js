@@ -11,6 +11,13 @@ function BlogListSoundBarItemsBox({ data: { structure } }) {
 	useEffect(() => {
 		getAllPosts()
 	}, [])
+	useEffect(() => {
+		if (Array.isArray(blogsList)) {
+			window.document.body.style.overflow = 'hidden'
+		} else {
+			window.document.body.style.overflow = 'unset'
+		}
+	}, [blogsList])
 
 	const getAllPosts = async () => {
 		setBlogsList('loading')
@@ -40,51 +47,62 @@ function BlogListSoundBarItemsBox({ data: { structure } }) {
 
 	return (
 		<section>
-			<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
-				{blogsList ? (
-					<>
-						{blogsList === 'loading' ? (
-							<Spinner />
-						) : (
-							<>
-								{blogsList?.map((item, index) => (
-									<BlogListSoundBardItem
-										getBlogs={getPosts}
-										key={index}
-										data={ConvertBlogData(item)}
-									/>
-								))}
-							</>
-						)}
-					</>
-				) : (
-					<>
-						{blogs?.map((item, index) => (
-							<BlogListSoundBardItem
-								getBlogs={getPosts}
-								key={index}
-								data={{
-									tag: {
-										value: item?.tags
-									},
-									link: {
-										title: 'READ ARTICLE',
-										value: item?.route
-									},
-									image: {
-										src: item?.meta?.find(
-											item => item.name === 'property="og:image"'
-										)?.content
-									},
-									title: {
-										value: item?.title
-									}
-								}}
-							/>
-						))}
-					</>
-				)}
-			</div>
+			{blogsList ? (
+				<div
+					style={{
+						position: 'fixed',
+						width: '100%',
+						height: '100vh',
+						zIndex: '99999999999999',
+						top: '0',
+						left: '0',
+						background: '#fff',
+						overflow: 'auto',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center'
+					}}>
+					{blogsList === 'loading' ? (
+						<Spinner />
+					) : (
+						<div className='blog_text_container'>
+							{blogsList?.map((item, index) => (
+								<BlogListSoundBardItem
+									getBlogs={getPosts}
+									key={index}
+									data={ConvertBlogData(item)}
+								/>
+							))}
+						</div>
+					)}
+				</div>
+			) : (
+				<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
+					{blogs?.map((item, index) => (
+						<BlogListSoundBardItem
+							getBlogs={getPosts}
+							key={index}
+							data={{
+								tag: {
+									value: item?.tags
+								},
+								link: {
+									title: 'READ ARTICLE',
+									value: item?.route
+								},
+								image: {
+									src: item?.meta?.find(
+										item => item.name === 'property="og:image"'
+									)?.content
+								},
+								title: {
+									value: item?.title
+								}
+							}}
+						/>
+					))}
+				</div>
+			)}
 		</section>
 	)
 }
