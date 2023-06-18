@@ -15,7 +15,7 @@ import {
 } from 'react-share'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
-function BlogHead({ data: { structure } }) {
+function BlogHead({ data: { structure }, pim }) {
 	const [location, setLocation] = useState('')
 	const [text, setText] = useState(null)
 	const socialMedia = {
@@ -71,7 +71,12 @@ function BlogHead({ data: { structure } }) {
 		<section>
 			<div className='blog-header overflow-hidden mt-20'>
 				<div className='px-3 mb-13'>
-					<Link
+					{pim?.tags?.map(item => (
+						<span className='text-primary-dark fs-5 fw-normal mb-10 d-block text-decoration-none'>
+							{item}
+						</span>
+					))}
+					{/* <Link
 						target={
 							structure?.tagLink?.target ? structure?.tagLink?.target : '_self'
 						}
@@ -91,7 +96,7 @@ function BlogHead({ data: { structure } }) {
 								/>
 							)}
 						</a>
-					</Link>
+					</Link> */}
 					<div
 						className='header-text header-gradient-text mb-12'
 						dangerouslySetInnerHTML={{ __html: text }}></div>
