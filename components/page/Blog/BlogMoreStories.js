@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { ConvertBlogData } from 'utils/convertBlogData'
 import Spinner from 'components/common/Spinner'
 import BlogListSoundBardItem from '../BlogList/BlogListSoundBardItem'
+import BlogListTagsContent from '../BlogList/BlogListTagsContent'
 
 function BlogMoreStories({ data: { structure } }) {
 	const [blogsList, setBlogsList] = useState()
@@ -114,34 +115,11 @@ function BlogMoreStories({ data: { structure } }) {
 					</h2>
 				)}
 				{blogsList ? (
-					<div
-						style={{
-							position: 'fixed',
-							width: '100%',
-							height: '100vh',
-							zIndex: '99999999999999',
-							top: '0',
-							left: '0',
-							background: '#fff',
-							overflow: 'auto',
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center'
-						}}>
-						{blogsList === 'loading' ? (
-							<Spinner />
-						) : (
-							<div className='blog_text_container'>
-								{blogsList?.map((item, index) => (
-									<BlogListSoundBardItem
-										getBlogs={getPosts}
-										key={index}
-										data={ConvertBlogData(item)}
-									/>
-								))}
-							</div>
-						)}
-					</div>
+					<BlogListTagsContent
+						data={blogsList}
+						getPosts={getPosts}
+						backHandler={() => setBlogsList()}
+					/>
 				) : (
 					<>
 						{blogs?.map((item, index) => (

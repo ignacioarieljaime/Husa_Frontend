@@ -61,7 +61,7 @@ function Header({ data: { structure }, notification }) {
 							</Link>
 						</div>
 						<ul className='navbar-nav col-xl-4 d-none d-lg-flex justify-content-center p-0'>
-							{headerData?.widgets?.centerOption.map((item, index) => (
+							{headerData?.widgets?.centerOption?.map((item, index) => (
 								<NavBarDropDown
 									status={dropDown}
 									handler={setDropDown}
@@ -71,7 +71,7 @@ function Header({ data: { structure }, notification }) {
 							))}
 						</ul>
 						<ul className='navbar-nav align-items-center justify-content-end p-0 col-4'>
-							{headerData?.widgets?.rightOption.map((item, index) => (
+							{headerData?.widgets?.rightOption?.map((item, index) => (
 								<NavBarDropDown
 									status={dropDown}
 									handler={setDropDown}
