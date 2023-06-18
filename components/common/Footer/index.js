@@ -14,7 +14,7 @@ function Footer({ data }) {
 	const { footerData: footerReduxData } = useSelector(state => state.layoutData)
 
 	useEffect(() => {
-		console.log(JSON.parse(sessionStorage.getItem('footerData')))
+		sessionStorage.setItem('footer', JSON.stringify(data))
 		if (sessionStorage.getItem('footerData')) {
 			setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
 		}
