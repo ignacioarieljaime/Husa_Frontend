@@ -5,14 +5,23 @@ import { GetBlogsByTagApi, getBlogsByIdApi } from 'services/cxm'
 import { useState } from 'react'
 import { ConvertBlogData } from 'utils/convertBlogData'
 import Spinner from 'components/common/Spinner'
+import BlogListSoundBardItem from '../BlogList/BlogListSoundBardItem'
+import BlogListTagsContent from '../BlogList/BlogListTagsContent'
 
 function BlogMoreStories({ data: { structure } }) {
 	const [blogsList, setBlogsList] = useState()
 	const [blogs, setBlogs] = useState()
-
 	useEffect(() => {
 		getAllPosts()
 	}, [])
+
+	useEffect(() => {
+		if (Array.isArray(blogsList)) {
+			window.document.body.style.overflow = 'hidden'
+		} else {
+			window.document.body.style.overflow = 'unset'
+		}
+	}, [blogsList])
 
 	const getAllPosts = async () => {
 		setBlogsList('loading')
@@ -36,7 +45,6 @@ function BlogMoreStories({ data: { structure } }) {
 				element?.smallPost?.value?.id?.value
 			)
 		})
-
 		return ids
 	}
 
@@ -45,7 +53,7 @@ function BlogMoreStories({ data: { structure } }) {
 		try {
 			let response = await GetBlogsByTagApi(tag)
 
-			setBlogsList(handleItemToShow(response?.data?.data))
+			setBlogsList(response?.data?.data)
 		} catch (error) {
 			setBlogsList()
 			console.log(error)
@@ -98,7 +106,6 @@ function BlogMoreStories({ data: { structure } }) {
 			return acc
 		}, [])
 	}
-
 	return (
 		<section>
 			<div className='blog_text_container mt-0 mt-md-20 pt-5'>
@@ -108,21 +115,11 @@ function BlogMoreStories({ data: { structure } }) {
 					</h2>
 				)}
 				{blogsList ? (
-					<>
-						{blogsList === 'loading' ? (
-							<Spinner />
-						) : (
-							<>
-								{blogsList?.map((item, index) => (
-									<BlogListLittleReadArticleBox
-										getTag={getPosts}
-										key={index}
-										data={item}
-									/>
-								))}
-							</>
-						)}
-					</>
+					<BlogListTagsContent
+						data={blogsList}
+						getPosts={getPosts}
+						backHandler={() => setBlogsList()}
+					/>
 				) : (
 					<>
 						{blogs?.map((item, index) => (

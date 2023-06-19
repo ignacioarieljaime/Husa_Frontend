@@ -4,6 +4,10 @@ import { useState } from 'react'
 import { GetBlogsByTagApi, getBlogsByIdApi } from 'services/cxm'
 import Spinner from 'components/common/Spinner'
 import { ConvertBlogData } from 'utils/convertBlogData'
+import Header from 'components/common/Header/Header'
+import Footer from 'components/common/Footer'
+import AngleArrow from 'components/icons/AngleArrow'
+import BlogListTagsContent from './BlogListTagsContent'
 
 function BlogListSoundBarItemsBox({ data: { structure } }) {
 	const [blogsList, setBlogsList] = useState()
@@ -11,6 +15,13 @@ function BlogListSoundBarItemsBox({ data: { structure } }) {
 	useEffect(() => {
 		getAllPosts()
 	}, [])
+	useEffect(() => {
+		if (Array.isArray(blogsList)) {
+			window.document.body.style.overflow = 'hidden'
+		} else {
+			window.document.body.style.overflow = 'unset'
+		}
+	}, [blogsList])
 
 	const getAllPosts = async () => {
 		setBlogsList('loading')
@@ -40,51 +51,39 @@ function BlogListSoundBarItemsBox({ data: { structure } }) {
 
 	return (
 		<section>
-			<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
-				{blogsList ? (
-					<>
-						{blogsList === 'loading' ? (
-							<Spinner />
-						) : (
-							<>
-								{blogsList?.map((item, index) => (
-									<BlogListSoundBardItem
-										getBlogs={getPosts}
-										key={index}
-										data={ConvertBlogData(item)}
-									/>
-								))}
-							</>
-						)}
-					</>
-				) : (
-					<>
-						{blogs?.map((item, index) => (
-							<BlogListSoundBardItem
-								getBlogs={getPosts}
-								key={index}
-								data={{
-									tag: {
-										value: item?.tags
-									},
-									link: {
-										title: 'READ ARTICLE',
-										value: item?.route
-									},
-									image: {
-										src: item?.meta?.find(
-											item => item.name === 'property="og:image"'
-										)?.content
-									},
-									title: {
-										value: item?.title
-									}
-								}}
-							/>
-						))}
-					</>
-				)}
-			</div>
+			{blogsList ? (
+				<BlogListTagsContent
+					data={blogsList}
+					getPosts={getPosts}
+					backHandler={() => setBlogsList()}
+				/>
+			) : (
+				<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
+					{blogs?.map((item, index) => (
+						<BlogListSoundBardItem
+							getBlogs={getPosts}
+							key={index}
+							data={{
+								tag: {
+									value: item?.tags
+								},
+								link: {
+									title: 'READ ARTICLE',
+									value: item?.route
+								},
+								image: {
+									src: item?.meta?.find(
+										item => item.name === 'property="og:image"'
+									)?.content
+								},
+								title: {
+									value: item?.title
+								}
+							}}
+						/>
+					))}
+				</div>
+			)}
 		</section>
 	)
 }
