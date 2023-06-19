@@ -31,7 +31,7 @@ const BlogListTagsContent = ({ data, backHandler, getPosts }) => {
 				<Spinner />
 			) : (
 				<>
-					<button
+					{/* <button
 						style={{
 							background: '#000',
 							color: '#fff',
@@ -45,7 +45,7 @@ const BlogListTagsContent = ({ data, backHandler, getPosts }) => {
 							<AngleArrow />
 						</span>
 						<span style={{paddingTop:"1px"}}>BACK</span>
-					</button>
+					</button> */}
 					<div className='blog_text_container'>
 						{data?.map((item, index) => (
 							<BlogListSoundBardItem
