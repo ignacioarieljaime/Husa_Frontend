@@ -14,7 +14,7 @@
 		padding-bottom: rem-calc(30);
 
 		@include media-breakpoint-up(md) {
-			background-color: $almostBlack;
+			background-color: $black;
 			padding: rem-calc(140 15);
 		}
 
