@@ -54,7 +54,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 							<FullWidthVideo
 								heading='<span>Marks</span>  <span>the spot</span>'
 								ariaLabel='X marks the spot'
-								videoSrc='/assets/uledx-assets/videos/peak-brightness.mp4'
+								videoSrc='/assets/uledx-assets/videos/x-marks-the-spot.mp4'
 								variant='MarksTheSpot'
 								poster='/assets/uledx-assets/videos/peak-brightness-poster@3x.webp'
 							/>
@@ -82,7 +82,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 							<FullWidthVideo
 								heading='<span>Marks</span>  <span>the spot</span>'
 								ariaLabel='X marks the spot'
-								videoSrc='/assets/uledx-assets/videos/peak-brightness.mp4'
+								videoSrc='/assets/uledx-assets/videos/x-marks-the-spot.mp4'
 								variant='MarksTheSpot'
 								poster='/assets/uledx-assets/videos/peak-brightness-poster@3x.webp'
 							/>
