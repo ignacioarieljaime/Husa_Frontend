@@ -58,9 +58,8 @@ function Subscribe() {
 			<div className='container'>
 				<div className='row py-lg-8'>
 					<h2 className='col-12 col-md-6 mb-13 my-md-auto px-0'>
-						Stay up to date with emails
-						<br />
-						about new products & other news
+						Sign up for special deals, news,
+						<br /> and important product information.
 					</h2>
 					<div className='col-12 col-md-6 mx-0 my-0 my-md-auto px-0'>
 						<form onSubmit={sendEmail}>
