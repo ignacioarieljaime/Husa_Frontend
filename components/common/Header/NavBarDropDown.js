@@ -30,7 +30,7 @@ function NavBarDropDown({ data, handler }) {
 			{data.childs.length !== 0 && (
 				<div className='nav-dropdown-list'>
 					<div className='container-fluid'>
-						<div className='row align-items-center'>
+						<div className='row align-items-stretch'>
 							<div className='col-5'>
 								<h3>{data.header.title}</h3>
 								<div className='row'>
@@ -82,7 +82,9 @@ function NavBarDropDown({ data, handler }) {
 								</div>
 							</div>
 							{data.products.length !== 0 && (
-								<div className='col-7'>
+								<div
+									className='col-7 mb-auto mt-6'
+									style={{ height: 'fit-content' }}>
 									<div className='row align-items-stretch '>
 										{data.products.map((product, index) => (
 											<Link
