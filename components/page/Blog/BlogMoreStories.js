@@ -114,6 +114,9 @@ function BlogMoreStories({ data: { structure } }) {
 						{structure?.title?.value}
 					</h2>
 				)}
+				{structure?.list?.value.map((item, index) => (
+					<BlogListLittleReadArticleBox key={index} data={item} />
+				))}
 				{/* {blogsList ? (
 					<BlogListTagsContent
 						data={blogsList}
@@ -131,9 +134,9 @@ function BlogMoreStories({ data: { structure } }) {
 						))}
 					</>
 				)} */}
-				{structure?.list?.value.map((item, index) => (
+				{/* {structure?.list?.value.map((item, index) => (
 					<BlogListLittleReadArticleBox key={index} data={item} />
-				))}
+				))} */}
 			</div>
 		</section>
 	)
