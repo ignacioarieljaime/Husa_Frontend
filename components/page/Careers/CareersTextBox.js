@@ -6,7 +6,11 @@ const CareersBanner = ({ data: { structure } }) => {
 	useEffect(() => {
 		setText(structure?.title?.value)
 	}, [])
-	return <section></section>
+	return <section>
+		<div className="careers_textbox">
+			{structure?.template?.value}
+		</div>
+	</section>
 }
 
 export default CareersBanner
