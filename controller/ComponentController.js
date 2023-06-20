@@ -25,8 +25,12 @@ import componentGenerator from 'hooks/componentGenerator';
 import CustomImage from "components/common/CustomImage";
 import Logo from "components/icons/Logo";
 import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse'
+import  {  useEffect } from 'react'
 
 function Index${_page.id}({pim,data}) {
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	}, [])
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>
       	<section>
