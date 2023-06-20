@@ -25,7 +25,7 @@ const HomeApplianceTextBoxWithImage = ({ data: { structure } }) => {
 								__html: text
 							}}></p>
 					</article>
-					{structure?.link && (
+					{structure?.link?.value && (
 						<Link
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'

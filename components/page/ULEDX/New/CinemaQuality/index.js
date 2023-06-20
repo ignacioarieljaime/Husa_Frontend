@@ -17,12 +17,12 @@ const CinemaQuality = ({}) => {
 		{
 			icon: imaxIcon,
 			iconAlt: 'IMAX Enhanced',
-			copy: 'The U6H generates up to 600-nits peak brightness. What the heck does that mean?  Well, we won’t try to explain what a “nit” is here, but for reference...the average TV is around 250-350 nits. The U6H can give you almost double the brightness.'
+			copy: 'IMAX Enhanced offers the most immersive viewing experience outside of a theatre by bringing together best-in-class certified devices, remastered content and elevated streaming. Get more of what you love about IMAX on the biggest streaming platforms worldwide.'
 		},
 		{
 			icon: filmIcon,
 			iconAlt: 'Filmmaker Mode',
-			copy: 'The U6 series has brightness control across up-to-48 local dimming zones. Local dimming, in combination with peak brightness are critical to correctly reproducing HDR content.'
+			copy: 'By disabling all post-processing (e.g. motion smoothing) and preserving the correct aspect ratios, colors and frame rates, Filmmaker Mode enables your TV to display the movie or television show’s content precisely as it was intended by the filmmaker.'
 		}
 	]
 
@@ -56,14 +56,14 @@ const CinemaQuality = ({}) => {
 									'col-12 col-md-8 col-lg-6',
 									styles.featureWrapper
 								)}>
-								{features.map(feature => {
+								{features.map((feature, index) => {
 									return (
 										<div key={feature.copy} className={clsx(styles.feature)}>
 											<img
 												src={feature.icon.src}
 												alt={feature.iconAlt}
 												width={181}
-												height={101}
+												height={index > 0 ? 101 : 60}
 											/>
 											<p className='p--small'> {feature.copy}</p>
 										</div>

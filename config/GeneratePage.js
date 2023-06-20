@@ -7,14 +7,14 @@ const {
 	FindComponent,
 	GenerateComponentStructure,
 	GenerateNotFoundPage,
-	GenerateDynamicPageComponents
+	GenerateDynamicPageComponents,
+	generateFirmwarePage
 } = require('../controller/ComponentController')
 const UrlController = require('../controller/UrlController')
 
 const controlPagesAndGenerate = (_pages, _condition) => {
 	UrlController(_pages)
 	_pages.forEach(page => {
-		page.id === 1801 && console.log(page)
 		if (!page.route.includes(' ')) {
 			let pageComponents = FindComponent(page.widgets)
 
@@ -35,6 +35,8 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 			}
 		}
 	})
+
+	PageController({ route: '/download-firmware' }, generateFirmwarePage())
 }
 
 const requestHandler = (async () => {
@@ -42,7 +44,7 @@ const requestHandler = (async () => {
 	try {
 		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`)
 		console.log('get pages')
-		controlPagesAndGenerate(response.data.data, 'pages')
+		controlPagesAndGenerate(response?.data?.data, 'pages')
 		// controlPagesAndGenerate(allPages.data, 'pages')
 	} catch (error) {
 		console.log(error)

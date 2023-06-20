@@ -1,8 +1,17 @@
 @import '../../page/ULEDX/settings';
 
 .cineStageX {
+	padding-bottom: rem-calc(100);
+	padding-top: rem-calc(90);
+	position: relative;
+
 	@include media-breakpoint-up(lg) {
 		padding-bottom: rem-calc(75);
+		padding-top: rem-calc(100);
+	}
+
+	@include media-breakpoint-up(xl) {
+		padding-top: rem-calc(165);
 	}
 
 	h2 {
@@ -14,7 +23,7 @@
 			@include media-breakpoint-down(md) {
 				content: '';
 				background: transparent
-					url('/public/assets/uledx-assets/images/icons/sounds-waves@3x.webp')
+					url('/assets/uledx-assets/images/icons/sounds-waves@3x.webp')
 					no-repeat center center scroll;
 				-webkit-background-size: contain;
 				background-size: contain;
@@ -50,7 +59,6 @@
 			flex-wrap: wrap;
 			justify-content: center;
 			margin: rem-calc(60) auto 0;
-			overflow: hidden;
 			padding-bottom: rem-calc(100);
 			padding-top: 0;
 			width: calc(720px + 6.2%);
@@ -61,6 +69,7 @@
 		display: flex;
 		flex-flow: column;
 		margin: auto;
+		position: relative;
 		text-align: center;
 
 		@include media-breakpoint-up(md) {
@@ -108,5 +117,39 @@
 				}
 			}
 		}
+	}
+
+	.line {
+		border: 2px solid $orange;
+		display: inline;
+		left: 50%;
+		position: absolute;
+		width: rem-calc(8);
+
+		@include media-breakpoint-up(md) {
+			top: 96%;
+		}
+	}
+
+	.animateLine {
+		--lineHeight: 120px;
+		animation: lineForward 1s forwards;
+
+		@include media-breakpoint-up(md) {
+			--lineHeight: 250px;
+			animation: lineForward 1s forwards;
+		}
+	}
+}
+
+@keyframes lineForward {
+	from {
+		border-color: transparent;
+		height: 0;
+	}
+
+	to {
+		border-color: $orange;
+		height: var(--lineHeight);
 	}
 }

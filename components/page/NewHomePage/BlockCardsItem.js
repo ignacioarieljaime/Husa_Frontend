@@ -17,38 +17,38 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 					wrapperHeight='100%'
 					wrapperWidth='100%'
 				/>
-				<div className='box-background-shade'></div>
 			</div>
 			<div className='box-content'>
-				<div>
+				<div></div>
+
+				<div className='w-100'>
 					{topImage?.src && (
-						<img
+						<CustomImage
 							src={topImage?.src}
 							alt={topImage?.alt}
 							width='100%'
-							className='mb-5 mb-md-7'
+							wrapperWidth={'100%'}
+							WrapperMaxWidth={'190px'}
+							wrapperClass='mb-4 top_image'
 						/>
 					)}
-				</div>
-
-				<div>
 					{bottomImage?.src && (
 						<img
 							src={bottomImage?.src}
 							alt={bottomImage?.alt}
 							width='100%'
-							className='mb-5 mb-md-7'
+							className='mb-6'
 						/>
 					)}
 
-					<h4 className='mb-3 mb-md-6 fs-4 fs-md-2'>{title?.value}</h4>
+					<h4 className='mb-3 mb-md-6 box_title'>{title?.value}</h4>
 					{link?.title && link?.value ? (
 						<Link
 							target={link?.target ? link?.target : '_self'}
 							href={link?.value ? link?.value : '/'}>
 							<a
 								target={link?.target ? link?.target : '_self'}
-								className='n-btn outline-white transparent d-block w-fit'>
+								className='n-btn outline-white transparent d-block w-fit py-4'>
 								{link?.title}
 								{link?.target === '_blank' && (
 									<img
