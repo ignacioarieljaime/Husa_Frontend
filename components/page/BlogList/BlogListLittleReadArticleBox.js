@@ -84,16 +84,15 @@ function BlogListLittleReadArticleBoxContainer({
 									<figcaption>
 										<div className='row justify-content-between align-items-center mt-5'>
 											<div className='col-12 text-start mb-3'>
-												{smallPost?.value?.tag?.value?.map(item => (
-													<>
-														{' '}
-														{/* <Link
+												{/* {smallPost?.value?.tag?.value?.map(item => (
+													<> */}{' '}
+												{/* <Link
 											href={
 												smallPost?.value?.tag?.value
 													? smallPost?.value?.tag?.value
 													: '/'
 											}> */}
-														<button
+												{/* <button
 															onClick={() => getTag(item)}
 															style={{
 																marginRight: '10px',
@@ -102,10 +101,10 @@ function BlogListLittleReadArticleBoxContainer({
 															}}
 															className='text-primary-dark text-decoration-none'>
 															{item}
-														</button>
-														{/* </Link> */}
-													</>
-												))}
+														</button> */}
+												{/* </Link> */}
+												{/* </>
+												))} */}
 											</div>
 											<div className='col-12 mb-8'>
 												<h3 className='fs-3 mb-0'>
@@ -188,16 +187,15 @@ function BlogListLittleReadArticleBoxContainer({
 									<figcaption>
 										<div className='row justify-content-between align-items-center mt-5'>
 											<div className='col-12 text-start mb-3'>
-												{largePost?.value?.tag?.value?.map(item => (
-													<>
-														{' '}
-														{/* <Link
+												{/* {largePost?.value?.tag?.value?.map(item => (
+													<> */}{' '}
+												{/* <Link
 											href={
 												smallPost?.value?.tag?.value
 													? smallPost?.value?.tag?.value
 													: '/'
 											}> */}
-														<button
+												{/* <button
 															onClick={() => getTag(item)}
 															style={{
 																marginRight: '10px',
@@ -206,10 +204,10 @@ function BlogListLittleReadArticleBoxContainer({
 															}}
 															className='text-primary-dark text-decoration-none'>
 															{item}
-														</button>
-														{/* </Link> */}
-													</>
-												))}
+														</button> */}
+												{/* </Link> */}
+												{/* </>
+												))} */}
 											</div>
 											<div className='col-12 mb-8'>
 												<h3 className='fs-3 mb-0'>
