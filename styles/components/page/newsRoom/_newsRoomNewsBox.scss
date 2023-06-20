@@ -323,6 +323,11 @@
 				@include mq(980) {
 					margin-bottom: 32px;
 				}
+				&.title {
+					@include mq(768) {
+						font-size: 14px;
+					}
+				}
 			}
 
 			> div {

@@ -81,7 +81,7 @@ function ProductSupportNewHead({ pim }) {
 					</div>
 					<div className='col-12 col-lg-6 ps-lg-10'>
 						<div className='d-flex flex-column justify-content-center align-items-start h-100'>
-							<h2 className='fs-2 fw-bold mb-8'>{pim?.name}</h2>
+							<h1 className='fs-2 fw-bold mb-8'>{pim?.name}</h1>
 							<p className='text-primary-new mb-10'>Model: {pim?.model}</p>
 							<p className='fs-base fw-normal mb-0'>Document Downloads</p>
 							<div className='row align-items-stretch w-100'>
