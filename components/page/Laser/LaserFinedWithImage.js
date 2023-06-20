@@ -6,15 +6,16 @@ function LaserFinedWithImage({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
+			
 				<div className='container px-6 px-md-8 pt-20 pb-12'>
 					<article className='article text-center'>
-						<h2 className='text-white mb-7' style={{ fontSize: '38px' }}>
+						<h5 className='text-white mb-7' style={{ fontSize: '38px' }}>
 							{structure?.title?.value}
 							<span className='text-primary'>
 								{' '}
 								{structure?.coloredTitle?.value}
 							</span>
-						</h2>
+						</h5>
 						<div>
 							<p className='fw-normal mw-md-50 text-white m-auto'>
 								{structure.description.value}

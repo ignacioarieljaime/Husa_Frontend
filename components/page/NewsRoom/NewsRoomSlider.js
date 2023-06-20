@@ -11,6 +11,7 @@ import 'swiper/css/navigation'
 // import required modules
 import { Pagination, Navigation } from 'swiper'
 import Link from 'next/link'
+import CustomImage from 'components/common/CustomImage'
 
 const NewsRoomSlider = ({ data }) => {
 	let { structure } = data
@@ -30,9 +31,18 @@ const NewsRoomSlider = ({ data }) => {
 				{structure?.list?.value?.map((item, index) => (
 					<SwiperSlide key={'slider-item-' + index}>
 						<div
-							style={{ backgroundImage: `url(${item?.image?.src})` }}
+							// style={{ backgroundImage: `url(${item?.image?.src})` }}
 							className='slider_item'>
-							<div>
+							<div className='slider_bg'>
+								<CustomImage
+									src={item?.image?.src}
+									alt={item?.image?.alt}
+									wrapperWidth={'100%'}
+									wrapperHeight={'100%'}
+									wrapperClass={'bg'}
+								/>
+							</div>
+							<div className='slider_content'>
 								<h5>{item?.title?.value}</h5>
 								<h6>{item?.subtitle?.value}</h6>
 								<Link
@@ -44,6 +54,7 @@ const NewsRoomSlider = ({ data }) => {
 								</Link>
 							</div>
 						</div>
+						<h3 className='subheading'>{item?.subheading?.value}</h3>
 					</SwiperSlide>
 				))}
 			</Swiper>
