@@ -9,103 +9,103 @@ import BlogListSoundBardItem from '../BlogList/BlogListSoundBardItem'
 import BlogListTagsContent from '../BlogList/BlogListTagsContent'
 
 function BlogMoreStories({ data: { structure } }) {
-	const [blogsList, setBlogsList] = useState()
-	const [blogs, setBlogs] = useState()
-	useEffect(() => {
-		getAllPosts()
-	}, [])
+	// const [blogsList, setBlogsList] = useState()
+	// const [blogs, setBlogs] = useState()
+	// useEffect(() => {
+	// 	getAllPosts()
+	// }, [])
 
-	useEffect(() => {
-		if (Array.isArray(blogsList)) {
-			window.document.body.style.overflow = 'hidden'
-		} else {
-			window.document.body.style.overflow = 'unset'
-		}
-	}, [blogsList])
+	// useEffect(() => {
+	// 	if (Array.isArray(blogsList)) {
+	// 		window.document.body.style.overflow = 'hidden'
+	// 	} else {
+	// 		window.document.body.style.overflow = 'unset'
+	// 	}
+	// }, [blogsList])
 
-	const getAllPosts = async () => {
-		setBlogsList('loading')
-		try {
-			let response = await getBlogsByIdApi(
-				encodeURIComponent(JSON.stringify(getItemsId()))
-			)
-			setBlogs(handleItemToShow(response?.data?.data))
-			setBlogsList()
-		} catch (error) {
-			setBlogsList()
-			console.log(error)
-		}
-	}
+	// const getAllPosts = async () => {
+	// 	setBlogsList('loading')
+	// 	try {
+	// 		let response = await getBlogsByIdApi(
+	// 			encodeURIComponent(JSON.stringify(getItemsId()))
+	// 		)
+	// 		setBlogs(handleItemToShow(response?.data?.data))
+	// 		setBlogsList()
+	// 	} catch (error) {
+	// 		setBlogsList()
+	// 		console.log(error)
+	// 	}
+	// }
 
-	const getItemsId = () => {
-		let ids = []
-		structure?.list?.value.forEach(element => {
-			ids.push(
-				element?.largePost?.value?.id?.value,
-				element?.smallPost?.value?.id?.value
-			)
-		})
-		return ids
-	}
+	// const getItemsId = () => {
+	// 	let ids = []
+	// 	structure?.list?.value.forEach(element => {
+	// 		ids.push(
+	// 			element?.largePost?.value?.id?.value,
+	// 			element?.smallPost?.value?.id?.value
+	// 		)
+	// 	})
+	// 	return ids
+	// }
 
-	const getPosts = async tag => {
-		setBlogsList('loading')
-		try {
-			let response = await GetBlogsByTagApi(tag)
+	// const getPosts = async tag => {
+	// 	setBlogsList('loading')
+	// 	try {
+	// 		let response = await GetBlogsByTagApi(tag)
 
-			setBlogsList(response?.data?.data)
-		} catch (error) {
-			setBlogsList()
-			console.log(error)
-		}
-	}
+	// 		setBlogsList(response?.data?.data)
+	// 	} catch (error) {
+	// 		setBlogsList()
+	// 		console.log(error)
+	// 	}
+	// }
 
-	const handleItemToShow = _items => {
-		let items = divideArray(_items, Math.round(_items?.length / 2))
-		let result = []
+	// const handleItemToShow = _items => {
+	// 	let items = divideArray(_items, Math.round(_items?.length / 2))
+	// 	let result = []
 
-		items.forEach(element => {
-			if (element?.length === 2) {
-				result.push({
-					largePost: {
-						id: 1,
-						type: 'object',
-						title: 'Large Post',
-						value: ConvertBlogData(element[0])
-					},
-					smallPost: {
-						id: 1,
-						type: 'object',
-						title: 'Small Post',
-						value: ConvertBlogData(element[1])
-					}
-				})
-			} else {
-				result.push({
-					largePost: {
-						id: 1,
-						type: 'object',
-						title: 'Large Post',
-						value: ConvertBlogData(element[0])
-					}
-				})
-			}
-		})
+	// 	items.forEach(element => {
+	// 		if (element?.length === 2) {
+	// 			result.push({
+	// 				largePost: {
+	// 					id: 1,
+	// 					type: 'object',
+	// 					title: 'Large Post',
+	// 					value: ConvertBlogData(element[0])
+	// 				},
+	// 				smallPost: {
+	// 					id: 1,
+	// 					type: 'object',
+	// 					title: 'Small Post',
+	// 					value: ConvertBlogData(element[1])
+	// 				}
+	// 			})
+	// 		} else {
+	// 			result.push({
+	// 				largePost: {
+	// 					id: 1,
+	// 					type: 'object',
+	// 					title: 'Large Post',
+	// 					value: ConvertBlogData(element[0])
+	// 				}
+	// 			})
+	// 		}
+	// 	})
 
-		return result
-	}
+	// 	return result
+	// }
 
-	const divideArray = (arr, size) => {
-		return arr.reduce((acc, val, ind) => {
-			const subIndex = ind % size
-			if (!Array.isArray(acc[subIndex])) {
-				acc[subIndex] = [val]
-			} else {
-				acc[subIndex].push(val)
-			}
-			return acc
-		}, [])
-	}
+	// const divideArray = (arr, size) => {
+	// 	return arr.reduce((acc, val, ind) => {
+	// 		const subIndex = ind % size
+	// 		if (!Array.isArray(acc[subIndex])) {
+	// 			acc[subIndex] = [val]
+	// 		} else {
+	// 			acc[subIndex].push(val)
+	// 		}
+	// 		return acc
+	// 	}, [])
+	// }
 	return (
 		<section>
 			<div className='blog_text_container mt-0 mt-md-20 pt-5'>
@@ -114,7 +114,7 @@ function BlogMoreStories({ data: { structure } }) {
 						{structure?.title?.value}
 					</h2>
 				)}
-				{blogsList ? (
+				{/* {blogsList ? (
 					<BlogListTagsContent
 						data={blogsList}
 						getPosts={getPosts}
@@ -130,7 +130,10 @@ function BlogMoreStories({ data: { structure } }) {
 							/>
 						))}
 					</>
-				)}
+				)} */}
+				{structure?.list?.value.map((item, index) => (
+					<BlogListLittleReadArticleBox key={index} data={item} />
+				))}
 			</div>
 		</section>
 	)
