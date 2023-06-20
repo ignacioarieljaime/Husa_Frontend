@@ -39,13 +39,29 @@ const BlockCategories = ({ data: { structure } }) => {
 					className='appliances-slider px-0'>
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item'>
-							<CustomImage
+							<Link
+								target={item?.link?.target ? item?.link?.target : '_self'}
+								href={item?.link?.value ? item?.link?.value : '/'}>
+								<a
+									target={item?.link?.target ? item?.link?.target : '_self'}
+									className='d-block my-auto w-100 '>
+									<CustomImage
+										src={item?.image?.src}
+										alt={item?.image?.alt}
+										imageClass={'slider-image my-auto'}
+										wrapperHeight={'236px'}
+										wrapperWidth={'100%'}
+									/>
+								</a>
+							</Link>
+							{/* <CustomImage
 								src={item?.image?.src}
 								alt={item?.image?.alt}
 								className={'slider-image my-auto'}
 								wrapperHeight={'236px'}
 								wrapperWidth={'100%'}
-							/>
+							/> */}
+
 							<Link
 								target={item?.link?.target ? item?.link?.target : '_self'}
 								href={item?.link?.value ? item?.link?.value : '/'}>
