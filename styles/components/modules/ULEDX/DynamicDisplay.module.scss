@@ -11,15 +11,16 @@
 	.wrapper {
 		margin: 0 auto;
 		max-width: 98vw;
+		padding-bottom: rem-calc(30);
 
-		@include media-breakpoint-up(lg) {
-			background-color: $almostBlack;
+		@include media-breakpoint-up(md) {
+			background-color: $black;
 			padding: rem-calc(140 15);
 		}
 
 		@include media-breakpoint-up(xxl) {
 			max-width: 90vw;
-			padding: rem-calc(140);
+			padding: rem-calc(160);
 		}
 	}
 
@@ -65,9 +66,32 @@
 
 	.gradientCopy {
 		@include headingStyle('xxlarge');
-		@include textGradient(#ffce9f, #ff9f9d, #ff849c, 180deg);
 		line-height: 1 !important;
 		padding-bottom: rem-calc(20);
+
+		span {
+			opacity: 0;
+		}
+
+		&One {
+			@include textGradient(#ffce9f, #ffc69f, #ffc69f, 90deg);
+		}
+
+		&Two {
+			@include textGradient(#ffba9e, #ffad9e, #ffad9e, 90deg);
+		}
+
+		&Three {
+			@include textGradient(#ffa19d, #ff9f9d, #ff9f9d, 90deg);
+		}
+
+		&Four {
+			@include textGradient(#ff959d, #ff959d, #ff939c, 90deg);
+		}
+
+		&Five {
+			@include textGradient(#ff879c, #ff879c, #ff859c, 90deg);
+		}
 
 		@include media-breakpoint-up(md) {
 			padding-bottom: rem-calc(55);

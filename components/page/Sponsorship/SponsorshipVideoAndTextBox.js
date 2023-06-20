@@ -17,7 +17,7 @@ function SponsorshipVideoAndTextBox({ data }) {
 	}
 	return (
 		<section className='sponsor-ship-bg'>
-			<div className='container pt-20'>
+			<div className='pt-20'>
 				<div className='video-container rounded-0'>
 					{content?.video?.value?.includes('vimeo') ? (
 						<iframe src={content?.video?.value}></iframe>
@@ -32,8 +32,7 @@ function SponsorshipVideoAndTextBox({ data }) {
 						</video>
 					)}
 
-					{!playVideo &&
-					!content?.video?.value?.includes('vimeo') ? (
+					{!playVideo && !content?.video?.value?.includes('vimeo') ? (
 						<button
 							onClick={() => videoHandler(true)}
 							id='video-play-btn'
@@ -42,16 +41,18 @@ function SponsorshipVideoAndTextBox({ data }) {
 						</button>
 					) : null}
 				</div>
-				<div className='row mt-20 text-white'>
-					<div className='col-12 col-md-6'>
-						<div
-							dangerouslySetInnerHTML={{ __html: content?.leftText?.value }}
-							className='text-white fs-5'></div>
-					</div>
-					<div className='col-12 col-md-6'>
-						<div
-							dangerouslySetInnerHTML={{ __html: content?.rightText?.value }}
-							className='text-white fs-5'></div>
+				<div className='sponsor_container video_text_box'>
+					<div className='row mt-20 text-white'>
+						<div className='col-12 col-md-6 pe-md-10'>
+							<div
+								dangerouslySetInnerHTML={{ __html: content?.leftText?.value }}
+								className='text-white fs-base'></div>
+						</div>
+						<div className='col-12 col-md-6 ps-md-10'>
+							<div
+								dangerouslySetInnerHTML={{ __html: content?.rightText?.value }}
+								className='text-white fs-base'></div>
+						</div>
 					</div>
 				</div>
 			</div>

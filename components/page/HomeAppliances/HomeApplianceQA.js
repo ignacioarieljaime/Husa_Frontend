@@ -23,25 +23,29 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 								dangerouslySetInnerHTML={{
 									__html: text
 								}}></p>
-							<Link
-								target={
-									structure?.link?.target ? structure?.link?.target : '_self'
-								}
-								href={structure?.link?.value}>
-								<a
+							{structure?.link?.value && (
+								<Link
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='text-decoration-none text-primary-new fs-8 text-uppercase d-block w-fit mx-auto mb-8'>
-									{structure?.link?.title}
-									{structure?.link?.target === '_blank' && (
-										<img
-											style={{ marginLeft: '10px' }}
-											src={OpenPageOnNewTab.src}
-										/>
-									)}
-								</a>
-							</Link>
+									href={structure?.link?.value}>
+									<a
+										target={
+											structure?.link?.target
+												? structure?.link?.target
+												: '_self'
+										}
+										className='text-decoration-none text-primary-new fs-8 text-uppercase d-block w-fit mx-auto mb-8'>
+										{structure?.link?.title}
+										{structure?.link?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
+									</a>
+								</Link>
+							)}
 							<img
 								src={structure?.image.src}
 								alt={structure?.image.alt}

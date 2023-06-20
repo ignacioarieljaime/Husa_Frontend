@@ -26,3 +26,17 @@ export async function GetNewsApi(filters, count) {
 	)
 	return response
 }
+
+export async function GetBlogsByTagApi(tag) {
+	let response = await axios.get(
+		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=blog&tag=${tag}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
+	return response
+}
+
+export async function getBlogsByIdApi(ids) {
+	let response = await axios.get(
+		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPostTags?postIds=${ids}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+	)
+	return response
+}

@@ -29,12 +29,10 @@ const EngineX = () => {
 						</p>
 						<h2>HI-VIEW Engine X</h2>
 						<p style={{ color: '#c9c8c8', fontWeight: 300 }}>
-							Hisense’s state-of-the-art proprietary Hi-View Engine X simulates
-							human brain patters to take full control of your TV for a
-							stress-free experience that will remain relevant for years to come
-							with the future in mind. Its 16-bit computing power allows it to
-							output up to 65,536 brightness levels with breathtaking visual
-							quality for a truly optimized viewing experience.
+							Elevate your viewing experience to new heights with Hisense's
+							proprietary Hi-View Engine X — a 16-bit AI neural chipset that
+							provides unmatched visual processing that can articulate up to
+							65,536 brightness levels.
 						</p>
 					</div>
 				</div>

@@ -1,0 +1,33 @@
+@import '../../page/ULEDX/settings';
+
+.technicalSpecs {
+	background-color: $charcoal;
+	padding-bottom: rem-calc(65);
+	padding-top: rem-calc(65);
+
+	.content {
+		padding-left: rem-calc(40);
+		text-align: center;
+
+		@include media-breakpoint-up(md) {
+			text-align: left;
+		}
+
+		h2 {
+			@include headingStyle('medium');
+			@include textGradient(#ffce9f, #ff9f9d, #ff849c);
+			margin-top: rem-calc(35);
+
+			@include media-breakpoint-up(md) {
+				margin-top: 0;
+			}
+		}
+
+		button,
+		a {
+			color: $white;
+			font-size: rem-calc(24);
+			font-weight: 500;
+		}
+	}
+}

@@ -13,18 +13,25 @@ const HomeApplianceFeatures = ({ data: { structure } }) => {
 						{structure?.mainTitleColored?.value}
 					</span>
 				</h2>
-				<Link
-					target={structure?.link?.target ? structure?.link?.target : '_self'}
-					href={structure?.link?.value}>
-					<a
+				{structure?.link?.value && (
+					<Link
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
-						className='link fs-8'>
-						{structure?.link?.title}{' '}
-						{structure?.link?.target === '_blank' && (
-							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
-						)}
-					</a>
-				</Link>
+						href={structure?.link?.value}>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							className='link fs-8'>
+							{structure?.link?.title}{' '}
+							{structure?.link?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
+						</a>
+					</Link>
+				)}
 				<div className='cool-features-container'>
 					{structure?.list?.value.map((item, index) => (
 						<HomeApplianceFeaturesitem key={index} data={item} />

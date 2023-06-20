@@ -52,7 +52,7 @@ const NewsSearchFilter = ({
 		<div className='news_room_search_filter'>
 			<div className='container'>
 				<div className='content'>
-					<span>{title}</span>
+					<span className='title'>{title}</span>
 
 					<div
 						style={{

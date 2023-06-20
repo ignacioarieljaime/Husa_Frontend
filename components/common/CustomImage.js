@@ -11,6 +11,7 @@ function CustomImage({
 	wrapperWidth,
 	wrapperHeight,
 	wrapperClass,
+	imageClass,
 	WrapperMaxWidth,
 	WrapperMaxHeight,
 	onLoad = () => {}
@@ -49,7 +50,7 @@ function CustomImage({
 					alt={alt}
 					title={title}
 					style={{ position: 'relative' }}
-					className={className}
+					className={`${className} ${imageClass}`}
 				/>
 			</div>
 		)

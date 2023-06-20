@@ -57,11 +57,10 @@ function Subscribe() {
 		<div className='email-form px-6 py-10 py-md-20 px-xl-12'>
 			<div className='container'>
 				<div className='row py-lg-8'>
-					<h4 className='col-12 col-md-6 mb-13 my-md-auto px-0'>
-						Stay up to date with emails
-						<br />
-						about new products & other news
-					</h4>
+					<h2 className='col-12 col-md-6 mb-13 my-md-auto px-0'>
+						Sign up for special deals, news,
+						<br /> and important product information.
+					</h2>
 					<div className='col-12 col-md-6 mx-0 my-0 my-md-auto px-0'>
 						<form onSubmit={sendEmail}>
 							<input
