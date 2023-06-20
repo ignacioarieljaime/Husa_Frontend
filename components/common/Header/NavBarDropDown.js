@@ -31,7 +31,7 @@ function NavBarDropDown({ data, handler }) {
 				<div className='nav-dropdown-list'>
 					<div className='container-fluid'>
 						<div className='row align-items-stretch'>
-							<div className='col-5'>
+							<div className='col-3'>
 								<h3>{data.header.title}</h3>
 								<div className='row'>
 									{Array.isArray(data.childs[0]) ? (
@@ -83,7 +83,7 @@ function NavBarDropDown({ data, handler }) {
 							</div>
 							{data.products.length !== 0 && (
 								<div
-									className='col-7 mb-auto mt-6'
+									className='col-7 mb-auto mt-6 mx-auto'
 									style={{ height: 'fit-content' }}>
 									<div className='row align-items-stretch '>
 										{data.products.map((product, index) => (
@@ -92,7 +92,8 @@ function NavBarDropDown({ data, handler }) {
 												href={product.url ? product.url : ''}>
 												<a
 													target={product?.target ? product?.target : '_self'}
-													className={`col-${12 / data.products.length}`}>
+													className={`col-${12 / data.products.length}`}
+													style={{ padding: '0 6px' }}>
 													<CustomImage
 														src={product.image}
 														alt='featured image'
