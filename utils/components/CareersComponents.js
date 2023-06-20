@@ -4,7 +4,11 @@ module.exports.CareersComponents = [
 		path: 'components/page/Careers/CareersBanner'
 	},
 	{
-		name: 'AuthorizedRetailersFeatures',
-		path: 'components/page/Careers/AuthorizedRetailersFeatures'
+		name: 'CareersAccordion',
+		path: 'components/page/Careers/CareersAccordion'
+	},
+	{
+		name: 'CareersTextBox',
+		path: 'components/page/Careers/CareersTextBox'
 	}
 ]
