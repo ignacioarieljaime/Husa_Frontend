@@ -1882,6 +1882,9 @@ header {
 		text-align: center;
 		margin-bottom: 18px;
 		.image {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			position: absolute !important;
 			left: 0;
 			top: 0;
@@ -1890,6 +1893,12 @@ header {
 			height: 100%;
 			img {
 				width: auto !important;
+				left: 50%;
+				transform: translateX(-50%);
+				-webkit-transform: translateX(-50%);
+				-moz-transform: translateX(-50%);
+				-ms-transform: translateX(-50%);
+				-o-transform: translateX(-50%);
 			}
 		}
 	}
