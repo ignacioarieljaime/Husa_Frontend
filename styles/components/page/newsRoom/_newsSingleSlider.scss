@@ -116,6 +116,9 @@
 		.swiper-pagination-bullet {
 			width: 98px;
 			height: 5px;
+			@include mq(768) {
+				width: 40px;
+			}
 			pointer-events: none;
 			background: #8c8f8f;
 			border-radius: 1000px;
@@ -128,28 +131,36 @@
 		.swiper-pagination-bullet-active {
 			background: #00aaa6;
 			width: 210px;
+			@include mq(768) {
+				width: 100px;
+			}
 		}
 	}
 	.swiper-button-prev {
 		left: 127px;
 		@include mq(768) {
-			left: 8%;
+			left: 7%;
 		}
 	}
 	.swiper-button-next {
 		right: 127px;
 		@include mq(768) {
-			right: 8%;
+			right: 7%;
 		}
 	}
 	.swiper-button-prev,
 	.swiper-button-next {
-		width: 75px;
-		height: 75px;
-		@include mq(768) {
-			width: 55px;
-			height: 55px;
-		}
+		// width: 75px;
+		// height: 75px;
+		// @include mq(768) {
+		// 	width: 55px;
+		// 	height: 55px;
+		// }
+		width: 50px;
+		z-index: 11;
+		height: 50px;
+		top: unset;
+		bottom: 45px;
 		background: #00aaa6;
 		border-radius: 100%;
 		-webkit-border-radius: 100%;
@@ -158,7 +169,7 @@
 		-o-border-radius: 100%;
 		&::after {
 			color: #ffffff;
-			font-size: 32px;
+			font-size: 22px;
 			font-weight: 900;
 		}
 	}
