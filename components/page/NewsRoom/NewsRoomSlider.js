@@ -17,7 +17,7 @@ const NewsRoomSlider = ({ data }) => {
 	let { structure } = data
 	return (
 		<div className='news_room_slider'>
-			<h3>{structure?.title?.value}</h3>
+			{/* <h3>{structure?.title?.value}</h3> */}
 			<Swiper
 				slidesPerView={'auto'}
 				spaceBetween={30}

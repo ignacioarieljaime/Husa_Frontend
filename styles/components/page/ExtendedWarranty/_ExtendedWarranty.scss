@@ -250,12 +250,15 @@
 						}
 					}
 
-					.faq-accordion-answer {
+					.faq-accordion-answer * {
 						font-weight: 300;
 						line-height: 120%;
 						max-width: 700px;
+						font-size: 16px;
+						line-height: 22px;
 						@include mqm(1920) {
 							font-size: 20px;
+							line-height: 28px;
 						}
 					}
 
