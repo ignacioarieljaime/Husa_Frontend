@@ -10,56 +10,59 @@ import AngleArrow from 'components/icons/AngleArrow'
 import BlogListTagsContent from './BlogListTagsContent'
 
 function BlogListSoundBarItemsBox({ data: { structure } }) {
-	const [blogsList, setBlogsList] = useState()
-	const [blogs, setBlogs] = useState()
-	useEffect(() => {
-		getAllPosts()
-	}, [])
-	useEffect(() => {
-		if (Array.isArray(blogsList)) {
-			window.document.body.style.overflow = 'hidden'
-		} else {
-			window.document.body.style.overflow = 'unset'
-		}
-	}, [blogsList])
+	// const [blogsList, setBlogsList] = useState()
+	// const [blogs, setBlogs] = useState()
+	// useEffect(() => {
+	// 	getAllPosts()
+	// }, [])
+	// useEffect(() => {
+	// 	if (Array.isArray(blogsList)) {
+	// 		window.document.body.style.overflow = 'hidden'
+	// 	} else {
+	// 		window.document.body.style.overflow = 'unset'
+	// 	}
+	// }, [blogsList])
 
-	const getAllPosts = async () => {
-		setBlogsList('loading')
-		let productsIds = structure?.list?.value?.map(item => item?.id?.value)
-		try {
-			let response = await getBlogsByIdApi(
-				encodeURIComponent(JSON.stringify(productsIds))
-			)
-			setBlogs(response?.data?.data)
-			setBlogsList()
-		} catch (error) {
-			setBlogsList()
-			console.log(error)
-		}
-	}
+	// const getAllPosts = async () => {
+	// 	setBlogsList('loading')
+	// 	let productsIds = structure?.list?.value?.map(item => item?.id?.value)
+	// 	try {
+	// 		let response = await getBlogsByIdApi(
+	// 			encodeURIComponent(JSON.stringify(productsIds))
+	// 		)
+	// 		setBlogs(response?.data?.data)
+	// 		setBlogsList()
+	// 	} catch (error) {
+	// 		setBlogsList()
+	// 		console.log(error)
+	// 	}
+	// }
 
-	const getPosts = async tag => {
-		setBlogsList('loading')
-		try {
-			let response = await GetBlogsByTagApi(tag)
-			setBlogsList(response?.data?.data)
-		} catch (error) {
-			setBlogsList()
-			console.log(error)
-		}
-	}
+	// const getPosts = async tag => {
+	// 	setBlogsList('loading')
+	// 	try {
+	// 		let response = await GetBlogsByTagApi(tag)
+	// 		setBlogsList(response?.data?.data)
+	// 	} catch (error) {
+	// 		setBlogsList()
+	// 		console.log(error)
+	// 	}
+	// }
 
 	return (
 		<section>
-			{blogsList ? (
+			{/* {blogsList ? (
 				<BlogListTagsContent
 					data={blogsList}
 					getPosts={getPosts}
 					backHandler={() => setBlogsList()}
 				/>
-			) : (
-				<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
-					{blogs?.map((item, index) => (
+			) : ( */}
+			<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
+				{structure?.list?.value.map((item, index) => (
+					<BlogListSoundBardItem key={index} data={item} />
+				))}
+				{/* {blogs?.map((item, index) => (
 						<BlogListSoundBardItem
 							getBlogs={getPosts}
 							key={index}
@@ -81,9 +84,9 @@ function BlogListSoundBarItemsBox({ data: { structure } }) {
 								}
 							}}
 						/>
-					))}
-				</div>
-			)}
+					))} */}
+			</div>
+			{/* )} */}
 		</section>
 	)
 }
