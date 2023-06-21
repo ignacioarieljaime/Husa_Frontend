@@ -56,18 +56,19 @@ function BlogListReadArticleBoxContainer({ structure }) {
 									<div className='col-12 col-md-9 order-2 order-md-1 mb-8'>
 										<h3 className='fs-3 mb-0'>{structure?.title?.value}</h3>
 									</div>
-									{/* <div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
-										<Link
+									<div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
+									
+										{/* <Link
 											href={
 												structure?.tagLink?.value
 													? structure?.tagLink?.value
 													: '/'
-											}>
+											}> */}
 											<a className='text-primary-dark text-decoration-none'>
-												{structure?.tagLink?.title}
+												{structure?.tag?.value}
 											</a>
-										</Link>
-									</div> */}
+										{/* </Link> */}
+									</div>
 									<div className='col-12 order-3 text-start'>
 										<Link
 											target={

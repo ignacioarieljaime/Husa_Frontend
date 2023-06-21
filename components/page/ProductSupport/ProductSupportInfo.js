@@ -4,7 +4,7 @@ function ProductSupportInfo({ pim, data: { structure } }) {
 	return (
 		<section className='product_support_support_box'>
 			<div className='mb-17'>
-				<h2 className='my-15 text-center'>{structure.title.value}</h2>
+				<h1 className='my-15 text-center'>{structure.title.value}</h1>
 				<div className='mx-auto support-time'>
 					<p className='fs-5 text-uppercase mb-1 fw-bold'>
 						{structure?.subtitle?.value}

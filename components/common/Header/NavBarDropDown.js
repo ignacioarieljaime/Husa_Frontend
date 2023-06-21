@@ -1,76 +1,90 @@
 import Link from 'next/link'
 import React from 'react'
 import CustomImage from '../CustomImage'
-import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import NavBarDropDownSublist from './NavBarDropDownSublist'
 function NavBarDropDown({ data, handler }) {
 	return (
 		<li
 			onMouseEnter={() => handler(data.name)}
 			onMouseLeave={() => handler(null)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
-			{!data.url || data.url === '' ? (
+			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
-					<span className='underline-on-hover'>{data.name}</span>
+					<span className='underline-on-hover'>{data.header.title}</span>
 				</a>
 			) : (
 				<Link
-					target={data?.target ? data?.target : '_self'}
-					href={data.url ? data.url : ''}>
+					target={data.header?.target ? data.header?.target : '_self'}
+					href={data.header.value ? data.header.value : ''}>
 					<a
-						target={data?.target ? data?.target : '_self'}
+						target={data.header?.target ? data.header?.target : '_self'}
 						className='nav-link'>
-						<span className='underline-on-hover'>{data.name}</span>
-						{data?.target === '_blank' && (
+						<span className='underline-on-hover'>{data.header.title}</span>
+						{data.header?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
 						)}
 					</a>
 				</Link>
 			)}
 
-			{data.columns.length !== 0 && (
+			{data.childs.length !== 0 && (
 				<div className='nav-dropdown-list'>
 					<div className='container-fluid'>
-						<div className='row align-items-center'>
-							<div className='col-5'>
-								<h3>{data.name}</h3>
+						<div className='row align-items-stretch'>
+							<div className='col-3'>
+								<h3>{data.header.title}</h3>
 								<div className='row'>
-									{data.columns.map((columns, index) => (
-										<div className='col-6'>
-											{/* <h4>
-											<a href='#'>
-												<span className='underline-on-hover'>TELEVISIONS</span>
-											</a>
-										</h4> */}
-											<ul>
-												{columns.map((colum, index) => (
-													<li key={`colum-${index}`}>
-														<Link
-															target={colum?.target ? colum?.target : '_self'}
-															href={colum.url ? colum.url : ''}>
-															<a
+									{Array.isArray(data.childs[0]) ? (
+										data.childs.map((child, index) => (
+											<div className='col-6'>
+												{/* <h4>
+												<a href='#'>
+													<span className='underline-on-hover'>TELEVISIONS</span>
+												</a>
+											</h4> */}
+												<ul>
+													{child.map((colum, index) => (
+														<li key={`colum-${index}`}>
+															<Link
 																target={
-																	colum?.target ? colum?.target : '_self'
+																	colum.header?.target
+																		? colum.header?.target
+																		: '_self'
+																}
+																href={
+																	colum.header.value ? colum.header.value : ''
 																}>
-																<span className='underline-on-hover'>
-																	{colum.name}
-																</span>
-																{colum?.target === '_blank' && (
-																	<img
-																		style={{ marginLeft: '10px' }}
-																		src={OpenPageOnNewTab.src}
-																	/>
-																)}
-															</a>
-														</Link>
-													</li>
-												))}
-											</ul>
-										</div>
-									))}
+																<a
+																	target={
+																		colum.header?.target
+																			? colum.header?.target
+																			: '_self'
+																	}>
+																	<span className='underline-on-hover'>
+																		{colum.header.title}
+																	</span>
+																	{colum.header?.target === '_blank' && (
+																		<img
+																			style={{ marginLeft: '10px' }}
+																			src={OpenPageOnNewTab.src}
+																		/>
+																	)}
+																</a>
+															</Link>
+														</li>
+													))}
+												</ul>
+											</div>
+										))
+									) : (
+										<NavBarDropDownSublist data={data} />
+									)}
 								</div>
 							</div>
 							{data.products.length !== 0 && (
-								<div className='col-7'>
+								<div
+									className='col-7 mb-auto mt-6 mx-auto'
+									style={{ height: 'fit-content' }}>
 									<div className='row align-items-stretch '>
 										{data.products.map((product, index) => (
 											<Link
@@ -78,7 +92,8 @@ function NavBarDropDown({ data, handler }) {
 												href={product.url ? product.url : ''}>
 												<a
 													target={product?.target ? product?.target : '_self'}
-													className={`col-${12 / data.products.length}`}>
+													className={`col-${12 / data.products.length}`}
+													style={{ padding: '0 6px' }}>
 													<CustomImage
 														src={product.image}
 														alt='featured image'

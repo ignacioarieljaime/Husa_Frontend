@@ -9,6 +9,7 @@ import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const BlogListLittleReadArticleBox = ({
 	index,
+	getTag,
 	data: { largePost, smallPost }
 }) => {
 	return (
@@ -17,6 +18,7 @@ const BlogListLittleReadArticleBox = ({
 				index={index}
 				largePost={largePost}
 				smallPost={smallPost}
+				getTag={getTag}
 			/>
 		</ParallaxProvider>
 	)
@@ -24,7 +26,8 @@ const BlogListLittleReadArticleBox = ({
 function BlogListLittleReadArticleBoxContainer({
 	largePost,
 	smallPost,
-	index
+	index,
+	getTag
 }) {
 	const parallaxController = useParallaxController()
 
@@ -46,55 +49,10 @@ function BlogListLittleReadArticleBoxContainer({
 					}`}>
 					<div className='article_container col-12 col-md-4 mb-0 mb-md-10'>
 						<figure className='blog-article-box' ref={card1Ref.ref}>
-							<div className='image-box'>
-								<Link
-									target={
-										smallPost?.value?.link?.target
-											? smallPost?.value?.link?.target
-											: '_self'
-									}
-									href={
-										smallPost?.value?.link?.value
-											? smallPost?.value?.link?.value
-											: '/'
-									}>
-									<a
-										target={
-											smallPost?.value?.link?.target
-												? smallPost?.value?.link?.target
-												: '_self'
-										}>
-										<img
-											src={smallPost?.value?.image?.src}
-											alt={smallPost?.value?.image?.alt}
-											width='100%'
-											height='100%'
-											style={{ objectFit: 'cover' }}
-											onLoad={() => parallaxController.update()}
-										/>
-									</a>
-								</Link>
-							</div>
-							<figcaption>
-								<div className='row justify-content-between align-items-center mt-5'>
-									{/* <div className='col-12 text-start mb-3'>
-										<Link
-											href={
-												smallPost?.value?.tagLink?.value
-													? smallPost?.value?.tagLink?.value
-													: '/'
-											}>
-											<a className='text-primary-dark text-decoration-none'>
-												{smallPost?.value?.tagLink?.title}
-											</a>
-										</Link>
-									</div> */}
-									<div className='col-12 mb-8'>
-										<h3 className='fs-3 mb-0'>
-											{smallPost?.value?.title?.value}
-										</h3>
-									</div>
-									<div className='col-12 order-3 text-start'>
+							{smallPost?.value && (
+								<>
+									{' '}
+									<div className='image-box'>
 										<Link
 											target={
 												smallPost?.value?.link?.target
@@ -111,73 +69,93 @@ function BlogListLittleReadArticleBoxContainer({
 													smallPost?.value?.link?.target
 														? smallPost?.value?.link?.target
 														: '_self'
-												}
-												className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
-												{smallPost?.value?.link?.title}
-												{smallPost?.value?.link?.target === '_blank' && (
-													<img
-														style={{ marginLeft: '10px', objectFit: 'cover' }}
-														src={OpenPageOnNewTab.src}
-													/>
-												)}
+												}>
+												<img
+													src={smallPost?.value?.image?.src}
+													alt={smallPost?.value?.image?.alt}
+													width='100%'
+													height='100%'
+													style={{ objectFit: 'cover' }}
+													onLoad={() => parallaxController.update()}
+												/>
 											</a>
 										</Link>
 									</div>
-								</div>
-							</figcaption>
+									<figcaption>
+										<div className='row justify-content-between align-items-center mt-5'>
+											<div className='col-12 text-start mb-3'>
+												{/* {smallPost?.value?.tag?.value?.map(item => (
+													<> */}{' '}
+												{/* <Link
+											href={
+												smallPost?.value?.tag?.value
+													? smallPost?.value?.tag?.value
+													: '/'
+											}> */}
+												{/* <button
+															onClick={() => getTag(item)}
+															style={{
+																marginRight: '10px',
+																border: 'none',
+																background: 'transparent'
+															}}
+															className='text-primary-dark text-decoration-none'>
+															{item}
+														</button> */}
+												{/* </Link> */}
+												{/* </>
+												))} */}
+											</div>
+											<div className='col-12 mb-8'>
+												<h3 className='fs-3 mb-0'>
+													{smallPost?.value?.title?.value}
+												</h3>
+											</div>
+											<div className='col-12 order-3 text-start'>
+												<Link
+													target={
+														smallPost?.value?.link?.target
+															? smallPost?.value?.link?.target
+															: '_self'
+													}
+													href={
+														smallPost?.value?.link?.value
+															? smallPost?.value?.link?.value
+															: '/'
+													}>
+													<a
+														target={
+															smallPost?.value?.link?.target
+																? smallPost?.value?.link?.target
+																: '_self'
+														}
+														className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
+														{smallPost?.value?.link?.title}
+														{smallPost?.value?.link?.target === '_blank' && (
+															<img
+																style={{
+																	marginLeft: '10px',
+																	objectFit: 'cover'
+																}}
+																src={OpenPageOnNewTab.src}
+															/>
+														)}
+													</a>
+												</Link>
+											</div>
+										</div>
+									</figcaption>
+								</>
+							)}
 						</figure>
 					</div>
+
 					<div className='article_container col-12 col-md-6 mb-0 mb-md-10'>
 						<figure className='blog-article-box' ref={card2Ref.ref}>
-							<div className='image-box'>
-								<Link
-									target={
-										largePost?.value?.link?.target
-											? largePost?.value?.link?.target
-											: '_self'
-									}
-									href={
-										largePost?.value?.link?.value
-											? largePost?.value?.link?.value
-											: '/'
-									}>
-									<a
-										target={
-											largePost?.value?.link?.target
-												? largePost?.value?.link?.target
-												: '_self'
-										}>
-										<img
-											src={largePost?.value?.image?.src}
-											alt={largePost?.value?.image?.alt}
-											style={{ objectFit: 'cover' }}
-											width='100%'
-											height='100%'
-											onLoad={() => parallaxController.update()}
-										/>
-									</a>
-								</Link>
-							</div>
-							<figcaption>
-								<div className='row justify-content-between align-items-center mt-5'>
-									{/* <div className='col-12 text-start mb-3'>
-										<Link
-											href={
-												largePost?.value?.tagLink?.value
-													? largePost?.value?.tagLink?.value
-													: '/'
-											}>
-											<a className='text-primary-dark text-decoration-none'>
-												{largePost?.value?.tagLink?.title}
-											</a>
-										</Link>
-									</div> */}
-									<div className='col-12 mb-8'>
-										<h3 className='fs-3 mb-0'>
-											{largePost?.value?.title?.value}
-										</h3>
-									</div>
-									<div className='col-12 order-3 text-start'>
+							{largePost?.value && (
+								<>
+									{' '}
+									<div className='image-box'>
 										<Link
 											target={
 												largePost?.value?.link?.target
@@ -194,20 +172,84 @@ function BlogListLittleReadArticleBoxContainer({
 													largePost?.value?.link?.target
 														? largePost?.value?.link?.target
 														: '_self'
-												}
-												className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
-												{largePost?.value?.link?.title}
-												{largePost?.value?.link?.target === '_blank' && (
-													<img
-														style={{ marginLeft: '10px', objectFit: 'cover' }}
-														src={OpenPageOnNewTab.src}
-													/>
-												)}
+												}>
+												<img
+													src={largePost?.value?.image?.src}
+													alt={largePost?.value?.image?.alt}
+													style={{ objectFit: 'cover' }}
+													width='100%'
+													height='100%'
+													onLoad={() => parallaxController.update()}
+												/>
 											</a>
 										</Link>
 									</div>
-								</div>
-							</figcaption>
+									<figcaption>
+										<div className='row justify-content-between align-items-center mt-5'>
+											<div className='col-12 text-start mb-3'>
+												{/* {largePost?.value?.tag?.value?.map(item => (
+													<> */}{' '}
+												{/* <Link
+											href={
+												smallPost?.value?.tag?.value
+													? smallPost?.value?.tag?.value
+													: '/'
+											}> */}
+												{/* <button
+															onClick={() => getTag(item)}
+															style={{
+																marginRight: '10px',
+																border: 'none',
+																background: 'transparent'
+															}}
+															className='text-primary-dark text-decoration-none'>
+															{item}
+														</button> */}
+												{/* </Link> */}
+												{/* </>
+												))} */}
+											</div>
+											<div className='col-12 mb-8'>
+												<h3 className='fs-3 mb-0'>
+													{largePost?.value?.title?.value}
+												</h3>
+											</div>
+											<div className='col-12 order-3 text-start'>
+												<Link
+													target={
+														largePost?.value?.link?.target
+															? largePost?.value?.link?.target
+															: '_self'
+													}
+													href={
+														largePost?.value?.link?.value
+															? largePost?.value?.link?.value
+															: '/'
+													}>
+													<a
+														target={
+															largePost?.value?.link?.target
+																? largePost?.value?.link?.target
+																: '_self'
+														}
+														className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
+														{largePost?.value?.link?.title}
+														{largePost?.value?.link?.target === '_blank' && (
+															<img
+																style={{
+																	marginLeft: '10px',
+																	objectFit: 'cover'
+																}}
+																src={OpenPageOnNewTab.src}
+															/>
+														)}
+													</a>
+												</Link>
+											</div>
+										</div>
+									</figcaption>
+								</>
+							)}
 						</figure>
 					</div>
 				</div>
