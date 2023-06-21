@@ -14,8 +14,8 @@ const CesTexBlock2 = ({ data }) => {
 			<div className='ces_cards text_block_2'>
 				<div className='custom_container text-center'>
 					<div className='title large' style={{ marginBottom: '150px' }}>
-						<h2
-							dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+						<div
+							dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 					</div>
 					<div className='row align-items-start flex-wrap flex-md-nowrap'>
 						<div className='col-12 col-md-7 text-start mb-10 mb-md-0'>

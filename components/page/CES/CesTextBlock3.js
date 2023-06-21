@@ -13,8 +13,8 @@ const CesTexBlock3 = ({ data }) => {
 			<div className='ces_cards'>
 				<div className='custom_container small'>
 					<div className='title large text-center'>
-						<h2
-							dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+						<div
+							dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 					</div>
 					<div className='text-center'>
 						<div

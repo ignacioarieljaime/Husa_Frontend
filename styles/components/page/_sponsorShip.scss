@@ -7,8 +7,11 @@
 			line-height: 1;
 			font-weight: 500;
 			@include mq(768) {
-				font-size: 32px;
+				font-size: 36px;
 			}
+		}
+		& > * {
+			margin: 32px 0 0;
 		}
 	}
 
@@ -16,7 +19,7 @@
 		p {
 			font-size: 16px !important;
 			font-weight: 400 !important;
-			line-height: 24px !important;
+			line-height: 32px !important;
 		}
 	}
 

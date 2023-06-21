@@ -40,8 +40,8 @@ const FooterBodyList = ({ data, theme }) => {
 			</h6>
 			{!collapsed && (
 				<ul>
-					{data?.columns &&
-						data?.columns.map((listItem, index) => (
+					{data?.childs &&
+						data?.childs.map((listItem, index) => (
 							<li key={index}>
 								<Link href={listItem?.url ? listItem?.url : ''}>
 									<a target={listItem?.target ? listItem?.target : '_self'}>
