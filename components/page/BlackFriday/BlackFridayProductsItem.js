@@ -153,7 +153,7 @@ const BlackFridayProductsItem = ({ data, products }) => {
 									<div className='old_price'>
 										Reg:{' '}
 										<span className='text-decoration-line-through dir-rtl'>
-											${parseFloat(activeSerie?.price)}
+											${activeSerie?.price}
 										</span>
 									</div>
 								)}
