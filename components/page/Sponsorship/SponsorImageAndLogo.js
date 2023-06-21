@@ -19,7 +19,7 @@ function SponsorImageAndLogo({ data }) {
 						/>
 					</div>
 					<div className='col-12 col-md-8 order-1 order-md-2 position-relative mb-10 mb-md-0'>
-						<div className='floating-line d-none d-md-block'></div>
+						{/* <div className='floating-line d-none d-md-block'></div> */}
 						<img
 							width='100%'
 							src={structure?.image?.src}

@@ -7,14 +7,14 @@ import {
 	ParallaxProvider
 } from 'react-scroll-parallax'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
-const BlogListSoundBardItem = ({ data }) => {
+const BlogListSoundBardItem = ({ data, getBlogs }) => {
 	return (
 		<ParallaxProvider>
-			<BlogListSoundBardItemContainer data={data} />
+			<BlogListSoundBardItemContainer data={data} getBlogs={getBlogs} />
 		</ParallaxProvider>
 	)
 }
-function BlogListSoundBardItemContainer({ data }) {
+function BlogListSoundBardItemContainer({ data, getBlogs }) {
 	const parallaxController = useParallaxController()
 
 	const imageRef = useParallax({
@@ -48,13 +48,24 @@ function BlogListSoundBardItemContainer({ data }) {
 						</div>
 					</div>
 					<figcaption className='col-12 col-md-8'>
-						{/* <div className='text-start mb-3'>
-							<Link href={data?.tagLink?.value ? data?.tagLink?.value : '/'}>
-								<a className='text-primary-dark text-decoration-none'>
-									{data?.tagLink?.title}
-								</a>
-							</Link>
-						</div> */}
+						<div className='text-start mb-3'>
+							{/* {data?.tag?.value?.map(item => (
+								<> */}
+							{/* <Link href={data?.tagLink?.value ? data?.tagLink?.value : '/'}> */}
+							{/* <button
+										onClick={() => getBlogs(item)}
+										style={{
+											marginRight: '20px',
+											border: 'none',
+											background: 'transparent'
+										}}
+										className='text-primary-dark text-decoration-none'>
+										{item}
+									</button> */}
+							{/* </Link> */}
+							{/* </>
+							))} */}
+						</div>
 						<div className='mb-8 mb-md-0'>
 							<h3 className='fs-3 mb-0'>{data?.title?.value}</h3>
 						</div>

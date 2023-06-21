@@ -6,6 +6,43 @@ import OpenNewPageIcon from 'public/assets/images/OpenNewPageIcon.png'
 function ProductResourceBox({ pim, data }) {
 	let { structure } = data
 	const router = useRouter()
+
+	const warrantyHandler = () => {
+		const categoryFields = pim?.Category?.customFields
+		let customFiled = findDataInArray(
+			pim?.features,
+			'custom_field_type_name',
+			'Televisions Warranty Length'
+		)?.custom_fields
+		let warrantyTime = findDataInArray(
+			customFiled,
+			'name',
+			'Warranty Period'
+		)?.value
+		let customLink = findDataInArray(customFiled, 'name', 'Link')?.value
+		let warrantyResult = categoryFields?.find(item =>
+			item?.custom_field?.name?.includes(warrantyTime?.split(' ')[0])
+		)
+
+		if (warrantyTime)
+			return (
+				<li>
+					<a
+						target='_blank'
+						download={true}
+						href={customLink || warrantyResult?.media?.external_url}>
+						<span className='underline-on-hover text-uppercase'>
+							{findDataInArray(customFiled, 'name', 'Title')?.value}
+						</span>
+					</a>
+				</li>
+			)
+	}
+
+	const findDataInArray = (_array, _selector, _label) => {
+		return _array?.find(item => item[_selector] === _label)
+	}
+
 	return (
 		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
 			<article className='article'>
@@ -46,6 +83,7 @@ function ProductResourceBox({ pim, data }) {
 							</>
 						)
 				)}
+				{warrantyHandler()}
 				<li>
 					<Link
 						href={`/support/${

@@ -11,9 +11,9 @@ function AuthorizedRetailersBadge({ data }) {
 					alt={structure?.image?.alt}
 					class='me-2'
 				/>
-				<span class='fs-1'>
+				<h1 class='fs-1'>
 					<b>{structure?.title?.value}</b>
-				</span>
+				</h1>
 			</figure>
 		</section>
 	)
