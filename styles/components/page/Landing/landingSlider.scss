@@ -1,124 +1,164 @@
 .home-header-carousel {
 	overflow: hidden;
-	height: calc(100vh - 80px) !important;
+	// height: calc(100vh - 80px) !important;
+	// height: 100% !important;
+	&.lower-main {
+		position: relative !important;
+		height: 0 !important;
+		@include mq(1200) {
+			// padding-top: 58%;
+			// padding-top: 0 !important;
+			// height: calc(100vh - 80px) !important;
+		}
+		// @include mq(991) {
+		// 	// padding-top: 58% !important;
+		// 	// padding-top: 0 !important;
+		// 	height: calc(100vh - 80px) !important;
+		// }
+		// @include mq(550) {
+		// 	// padding-top: 58% !important;
+		// 	// padding-top: 0 !important;
+		// 	height: 0 !important;
+		// }
+	}
 	.swiper-wrapper {
+		position: absolute !important;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 		display: flex;
 		height: 100%;
+		// @include mq(991) {
+		// 	position: relative !important;
+		// }
+		// @include mq(550) {
+		// 	position: absolute !important;
+		// }
 		.swiper-slide {
-			.carousel-item-wrapper {
-				display: flex;
+			// .carousel-item-wrapper {
+			// 	display: flex;
+			// 	height: 100%;
+			// 	position: relative;
+			// 	div {
+			// 		background-position: center !important;
+			// 		background-size: cover !important;
+			// 		background-repeat: no-repeat !important;
+			// 	}
+			.background {
 				height: 100%;
-				position: relative;
-				div {
-					background-position: center !important;
-					background-size: cover !important;
-					background-repeat: no-repeat !important;
-				}
-				a {
-					transition: all 0.3s;
-					text-decoration: none;
-					-webkit-transition: all 0.3s;
-					-moz-transition: all 0.3s;
-					-ms-transition: all 0.3s;
-					-o-transition: all 0.3s;
-					position: absolute;
-					right: 50%;
-					bottom: 55px;
-					transform: translateX(50%);
-					-webkit-transform: translateX(50%);
-					-moz-transform: translateX(50%);
-					-ms-transform: translateX(50%);
-					-o-transform: translateX(50%);
-					height: 62px;
-					display: flex;
-					align-items: center;
-					padding: 0 41px;
-					border: unset;
-					border-radius: 1000px;
-					-webkit-border-radius: 1000px;
-					font-weight: 400;
-					font-size: 24px;
-					line-height: 30px;
-					padding-top: 4px;
-					-moz-border-radius: 1000px;
-					-ms-border-radius: 1000px;
-					-o-border-radius: 1000px;
-					color: #000000;
-					background-color: transparent;
-					border: 1px solid #000000;
 
-					@include mq(768) {
-						font-weight: 400;
-						font-size: 14px;
-						line-height: 19px;
-						text-align: center;
-						height: 51px;
-						padding: 0 36px;
-						bottom: 9%;
-					}
-					@include mq(600) {
-						font-weight: 400;
-						font-size: 10px;
-						line-height: 19px;
-						text-align: center;
-						height: 44px;
-						padding: 3px 21px 0;
-						bottom: 7%;
-					}
-					&:hover {
-						background-color: #000000 !important;
-						color: #fff !important;
-					}
-				}
-
-				.main-img {
-					display: block;
-					object-fit: contain;
-					width: 100%;
-				}
-				.responsive-img {
-					display: none;
-				}
-				.text-box {
-					position: absolute;
-					top: 0;
-					left: 0;
-					width: 100%;
-					height: 100%;
-					padding: 48px 72px;
-					> div {
-						position: relative;
-						top: 50%;
-						transform: translateY(-50%);
-						width: 50%;
-						> * {
-							color: #fff;
-							display: block;
-						}
-					}
-
-					.headline {
-						font-size: 60px;
-						font-weight: 700;
-						line-height: 1.125;
-					}
-					.seconde-line {
-						font-size: 32px;
-						font-weight: 700;
-						line-height: 1.125;
-					}
-					.btn {
-						width: fit-content;
-						border-radius: 37px;
-						margin-top: 24px;
-
-						&:hover {
-							background-color: var(--primary-color);
-							border-color: var(--primary-color);
-						}
+				.bg {
+					img {
+						object-fit: cover;
 					}
 				}
 			}
+			a {
+				transition: all 0.3s;
+				text-decoration: none;
+				-webkit-transition: all 0.3s;
+				-moz-transition: all 0.3s;
+				-ms-transition: all 0.3s;
+				-o-transition: all 0.3s;
+				position: absolute;
+				right: 50%;
+				bottom: 55px;
+				transform: translateX(50%);
+				-webkit-transform: translateX(50%);
+				-moz-transform: translateX(50%);
+				-ms-transform: translateX(50%);
+				-o-transform: translateX(50%);
+				height: 62px;
+				display: flex;
+				align-items: center;
+				padding: 0 41px;
+				border: unset;
+				border-radius: 1000px;
+				-webkit-border-radius: 1000px;
+				font-weight: 400;
+				font-size: 24px;
+				line-height: 30px;
+				padding-top: 4px;
+				-moz-border-radius: 1000px;
+				-ms-border-radius: 1000px;
+				-o-border-radius: 1000px;
+				color: #000000;
+				background-color: transparent;
+				border: 1px solid #000000;
+
+				@include mq(768) {
+					font-weight: 400;
+					font-size: 14px;
+					line-height: 19px;
+					text-align: center;
+					height: 51px;
+					padding: 0 36px;
+					bottom: 9%;
+				}
+				@include mq(600) {
+					font-weight: 400;
+					font-size: 10px;
+					line-height: 19px;
+					text-align: center;
+					height: 44px;
+					padding: 3px 21px 0;
+					bottom: 7%;
+				}
+				&:hover {
+					background-color: #000000 !important;
+					color: #fff !important;
+				}
+			}
+
+			.main-img {
+				display: block;
+				object-fit: contain;
+				width: 100%;
+			}
+			.responsive-img {
+				display: none;
+			}
+			.text-box {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				padding: 48px 72px;
+				> div {
+					position: relative;
+					top: 50%;
+					transform: translateY(-50%);
+					width: 50%;
+					> * {
+						color: #fff;
+						display: block;
+					}
+				}
+
+				.headline {
+					font-size: 60px;
+					font-weight: 700;
+					line-height: 1.125;
+				}
+				.seconde-line {
+					font-size: 32px;
+					font-weight: 700;
+					line-height: 1.125;
+				}
+				.btn {
+					width: fit-content;
+					border-radius: 37px;
+					margin-top: 24px;
+
+					&:hover {
+						background-color: var(--primary-color);
+						border-color: var(--primary-color);
+					}
+				}
+			}
+			// }
 		}
 	}
 	.swiper-button-prev,
