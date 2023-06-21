@@ -71,6 +71,7 @@ function LandingSlider({ data }) {
 									wrapperWidth='100%'
 									wrapperHeight='100%'
 									wrapperClass='bg'
+									imageClass='h-100'
 								/>
 							)}
 							{item?.url?.value && (
