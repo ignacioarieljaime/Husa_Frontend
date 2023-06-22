@@ -50,10 +50,8 @@ function LandingSlider({ data }) {
 							? aspectRatioTablet > 1
 								? (aspectRatioTablet * 100).toFixed(2) + '%'
 								: ''
-							: size[0] > 991 && size[0] < 1400
-							? '58%'
-							: size[0] > 1200 && size[0] < 1670
-							? (aspectRatioDesktop * 100).toFixed(2) + '%'
+							: size[0] > 991 && size[0] < 1300
+							? '57%'
 							: aspectRatioDesktop < 1
 							? (aspectRatioDesktop * 100).toFixed(2) - 9 + '%'
 							: '57%'
