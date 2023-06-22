@@ -20,31 +20,45 @@ const BlackFridayProductsItem = ({ data, products }) => {
 	const [url, setUrl] = useState(null)
 	const router = useRouter()
 
-	const getProduct = async _id => {
-		const response = await GetSingleProduct(router, _id)
-		setProduct(response?.data?.data)
-	}
 	useEffect(() => {
-		setSortedData({
-			...data,
-			series: data?.series.sort(
-				(a, b) =>
-					parseFloat(b.title.slice(0, -1)) - parseFloat(a.title.slice(0, -1))
-			)
-		})
-	}, [data])
+		if (checkValid()) setValid(true)
+		setUrl(RouteHandler(activeSerie?.id, 'product'))
+	}, [activeSerie])
 
 	useEffect(() => {
-		if (sortedData?.series && sortedData?.series.length > 0) {
-			for (let element of sortedData?.series) {
+		if (data && products) sortData()
+	}, [data, products])
+
+	const sortData = () => {
+		if (Number(parseFloat(data?.series[0]?.title?.slice(0, -1)))) {
+			selectProduct({
+				...data,
+				series: data?.series.sort(
+					(a, b) =>
+						parseFloat(b.title.slice(0, -1)) - parseFloat(a.title.slice(0, -1))
+				)
+			})
+		} else {
+			selectProduct(data)
+		}
+	}
+
+	const selectProduct = _data => {
+		setSortedData(_data)
+		const _product = {}
+		if (_data?.series && _data?.series.length > 0) {
+			for (let element of _data?.series) {
 				if (element?.price) {
 					if (products?.series?.length) {
 						products?.series[0]?.values?.forEach(item => {
-							item?.productsList[0]?.id === element?.id &&
-								setProduct(item?.productsList[0])
+							if (item?.productsList[0]?.id === element?.id)
+								_product = item?.productsList[0]
 						})
 					} else {
-						setProduct(products)
+						if (_data?.id === 824) {
+							console.log(products)
+						}
+						_product = products
 					}
 
 					setActiveSerie(element)
@@ -52,7 +66,8 @@ const BlackFridayProductsItem = ({ data, products }) => {
 				}
 			}
 		}
-	}, [sortedData])
+		setProduct(_product)
+	}
 
 	const checkValid = () => {
 		let isValid = false
@@ -63,11 +78,6 @@ const BlackFridayProductsItem = ({ data, products }) => {
 			})
 		return isValid
 	}
-
-	useEffect(() => {
-		if (checkValid()) setValid(true)
-		setUrl(RouteHandler(activeSerie?.id, 'product'))
-	}, [activeSerie])
 
 	const changeTvSizeHandler = _size => {
 		products?.series[0]?.values?.forEach(item => {
@@ -173,7 +183,9 @@ const BlackFridayProductsItem = ({ data, products }) => {
 									</a>
 								</Link>
 								<button
-									onClick={() => setShowDialog(true)}
+									onClick={() => {
+										setShowDialog(true)
+									}}
 									className={`n-btn primary-text`}>
 									Where To Buy
 									<span>
