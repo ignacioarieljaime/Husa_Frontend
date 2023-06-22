@@ -1,8 +1,15 @@
 .careers_accordion {
 	padding: 64px 12px 48px !important;
-	.faq-accordion-button {
-		@include mq(768) {
-			padding: 24px !important;
+	.faq-accordion-item {
+		border-radius: 25px !important;
+		.faq-accordion-button {
+			padding: 37px 40px 30px !important;
+			span svg path {
+				fill: #00aaa6 !important;
+			}
+			@include mq(768) {
+				padding: 24px !important;
+			}
 		}
 	}
 	.careers_accordion_content {
@@ -28,7 +35,7 @@
 		.faq-accordion-answer {
 			* {
 				margin-bottom: 0 !important;
-				font-weight: 400 !important;
+				font-weight: 500 !important;
 				font-size: 16px !important;
 				line-height: 22px !important;
 				color: #383838 !important;

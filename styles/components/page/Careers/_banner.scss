@@ -6,6 +6,20 @@
 		height: 400px;
 		padding: 0 !important;
 	}
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		z-index: 1;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background: linear-gradient(
+			180deg,
+			rgba(34, 31, 32, 0) 0%,
+			rgba(34, 31, 32, 0.9) 100%
+		);
+	}
 	.background {
 		position: absolute;
 		left: 0;
@@ -17,6 +31,7 @@
 		}
 	}
 	.content {
+		z-index: 2;
 		position: absolute;
 		top: 50%;
 		left: 50%;
