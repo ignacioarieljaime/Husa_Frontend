@@ -3,6 +3,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faChevronCircleDown,
+	faChevronCircleUp,
 	faCircleXmark
 } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
@@ -38,7 +39,7 @@ const CareersAccordionItem = ({ data }) => {
 				{data?.title?.value}
 				<span>
 					<FontAwesomeIcon
-						icon={faChevronCircleDown}
+						icon={faChevronCircleUp}
 						size={'xl'}
 						className='ms-2'
 					/>

@@ -1,7 +1,10 @@
 .careers_banner {
 	position: relative;
 	height: 0;
-	padding-top: 50%;
+	padding-top: 34.8%;
+	@include mq(1200) {
+		padding-top: 49%;
+	}
 	@include mq(768) {
 		height: 400px;
 		padding: 0 !important;
