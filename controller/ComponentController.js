@@ -29,7 +29,9 @@ import  {  useEffect } from 'react'
 
 function Index${_page.id}({pim,data}) {
 	useEffect(() => {
-		window.scrollTo(0, 0)
+		setTimeout(() => {
+			window.scrollTo(0, 0)
+		}, 500)
 	}, [])
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>

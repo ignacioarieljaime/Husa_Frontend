@@ -250,15 +250,12 @@
 						}
 					}
 
-					.faq-accordion-answer * {
-						font-weight: 300;
-						line-height: 120%;
+					.faq-accordion-answer {
 						max-width: 700px;
-						font-size: 16px;
-						line-height: 22px;
-						@include mqm(1920) {
-							font-size: 20px;
-							line-height: 28px;
+						p {
+							font-weight: 300 !important;
+							line-height: 120% !important;
+							font-size: 16px !important;
 						}
 					}
 
@@ -1063,7 +1060,8 @@
 						padding: 16px;
 
 						.faq-accordion-answer {
-							font-size: 14px;
+							font-size: 14px !important;
+							font-weight: 300 !important;
 						}
 					}
 				}
