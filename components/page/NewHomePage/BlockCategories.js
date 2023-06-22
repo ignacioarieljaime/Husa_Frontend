@@ -49,7 +49,7 @@ const BlockCategories = ({ data: { structure } }) => {
 										src={item?.image?.src}
 										alt={item?.image?.alt}
 										imageClass={'slider-image my-auto'}
-										wrapperHeight={'236px'}
+										wrapperHeight={'300px'}
 										wrapperWidth={'100%'}
 									/>
 								</a>
