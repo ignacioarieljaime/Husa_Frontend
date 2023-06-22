@@ -55,9 +55,6 @@ const BlackFridayProductsItem = ({ data, products }) => {
 								_product = item?.productsList[0]
 						})
 					} else {
-						if (_data?.id === 824) {
-							console.log(products)
-						}
 						_product = products
 					}
 
