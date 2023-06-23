@@ -28,6 +28,17 @@ const ProductPackageHeader = ({ pim, data }) => {
 		)
 	}
 
+	const dataLayerHandler = () => {
+		setChanelAdviserHandler(!chanelAdviserHandler)
+		window.dataLayer.push({
+			event: 'view_product',
+			eventData: {
+				product_id: pim?.model,
+				category: pim?.Category?.name
+			}
+		})
+	}
+
 	return (
 		<section
 			id={data.name + data.id}
@@ -63,7 +74,7 @@ const ProductPackageHeader = ({ pim, data }) => {
 							onClick={() =>
 								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
-									? setChanelAdviserHandler(!chanelAdviserHandler)
+									? dataLayerHandler()
 									: {}
 							}>
 							{pim?.buy_status === 'ChannelAdvisor' ||
