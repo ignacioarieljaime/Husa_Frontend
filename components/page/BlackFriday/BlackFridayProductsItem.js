@@ -10,6 +10,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { RouteHandler } from 'utils/routeHandler'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
+import { ProductsComponents } from 'utils/components/ProductsComponents'
 
 const BlackFridayProductsItem = ({ data, products }) => {
 	const [sortedData, setSortedData] = useState({})
@@ -80,6 +81,17 @@ const BlackFridayProductsItem = ({ data, products }) => {
 		products?.series[0]?.values?.forEach(item => {
 			item?.productsList[0]?.id === _size?.id &&
 				setProduct(item?.productsList[0])
+		})
+	}
+
+	const dataLayerHandler = () => {
+		setShowDialog(true)
+		window.dataLayer.push({
+			event: 'view_product',
+			eventData: {
+				product_id: product?.model,
+				category: products?.Category?.name
+			}
 		})
 	}
 
@@ -180,9 +192,7 @@ const BlackFridayProductsItem = ({ data, products }) => {
 									</a>
 								</Link>
 								<button
-									onClick={() => {
-										setShowDialog(true)
-									}}
+									onClick={() => dataLayerHandler()}
 									className={`n-btn primary-text`}>
 									Where To Buy
 									<span>
