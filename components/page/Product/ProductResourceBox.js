@@ -19,7 +19,7 @@ function ProductResourceBox({ pim, data }) {
 		if (_warrantyName) return warranty?.title
 		
 		const warrantyFileUrl = categoryFields?.find(item =>
-			item?.custom_field?.name.includes(warranty?.value?.split('-')[0])
+			item?.custom_field?.name.includes(warranty?.value)
 		)?.media?.external_url
 		const customWarrantyFile = pim?.assets?.find(
 			item => item?.content_type === 'Warrenty'
