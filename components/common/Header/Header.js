@@ -126,7 +126,7 @@ function Header({ data: { structure }, notification }) {
 			<div className={`header_background_layout ${dropDown && 'active'}`}></div>
 
 			{notification && (
-				<div className={'position-fixed w-100'} style={{ zIndex: 999 }}>
+				<div className={'position-fixed w-100'} style={{ zIndex: 997 }}>
 					{notification.map(item => (
 						<HeaderNotification data={item} />
 					))}
