@@ -48,6 +48,13 @@ function RegisterForm({ data }) {
 
 	useEffect(() => {
 		!router.query?.ProductCategory && getCategories()
+
+		if (router.query?.type)
+			dataSchemaHandler('product_category', router.query?.type)
+		if (router.query?.model)
+			dataSchemaHandler('product_model', router.query?.model)
+		if (router.query?.serialNumber)
+			dataSchemaHandler('product_serial_number', router.query?.serialNumber)
 	}, [])
 
 	const dataSchemaHandler = (_key, _value) => {
@@ -69,6 +76,10 @@ function RegisterForm({ data }) {
 			if (response.status === 200) {
 				setCategories(response.data.data)
 			}
+			if (router.query?.type)
+				getSeriesModels(
+					response.data.data.find(item => item.name === router.query?.type)?.id
+				)
 		} catch (error) {
 			setCategories([])
 			console.log(error)
@@ -253,7 +264,7 @@ function RegisterForm({ data }) {
 					) : (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								title={'PLEASE SELECT YOUR PRODUCT'}
+								title={router.query?.type || 'PLEASE SELECT YOUR PRODUCT'}
 								required={true}
 								options={categories}
 								onChange={_value => {
@@ -289,13 +300,13 @@ function RegisterForm({ data }) {
 								placeholder={'SERIAL NUMBER'}
 								required={true}
 								disabled={dataSchema?.product_model}
-								value={dataSchema?.product_model}
+								value={router.query?.serialNumber || dataSchema?.product_model}
 							/>
 						</div>
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								title={'PLEASE SELECT YOUR MODEL'}
+								title={router.query?.model || 'PLEASE SELECT YOUR MODEL'}
 								required={true}
 								options={models}
 								onChange={_value => dataSchemaHandler('product_model', _value)}
@@ -311,7 +322,7 @@ function RegisterForm({ data }) {
 							placeholder={'SERIAL NUMBER'}
 							required={true}
 							disabled={router.query?.SerialNumber}
-							value={router.query?.SerialNumber}
+							value={router.query?.serialNumber || router.query?.SerialNumber}
 							onChange={_value =>
 								dataSchemaHandler('product_serial_number', _value)
 							}
