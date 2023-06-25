@@ -27,7 +27,7 @@ function HeaderNotification({ data }) {
 			<button onClick={() => serNotificationDismiss(false)}>
 				<span
 					style={{ color: data?.text_color }}
-					className={'me-3 mt-1 d-none d-md-block'}>
+					className={'me-3 d-none d-md-block'}>
 					Dismiss
 				</span>
 				<DismissIcon
