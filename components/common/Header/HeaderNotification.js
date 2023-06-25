@@ -16,7 +16,7 @@ function HeaderNotification({ data }) {
 				href={data?.link ? data?.link : '/'}>
 				<a
 					target={data?.target ? data?.target : '_self'}
-					style={{ color: data?.text_color }}>
+					style={{ color: data?.text_color, paddingTop: '2px' }}>
 					{data?.text}
 
 					{data?.target === '_blank' && (
