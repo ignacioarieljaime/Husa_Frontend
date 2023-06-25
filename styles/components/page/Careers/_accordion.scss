@@ -2,6 +2,12 @@
 	padding: 64px 12px 48px !important;
 	.faq-accordion-item {
 		border-radius: 25px !important;
+
+		> button {
+			@include mq(500) {
+				text-align: left;
+			}
+		}
 		&.collapsed {
 			.faq-accordion-button span svg path {
 				transform: rotate(180deg);
