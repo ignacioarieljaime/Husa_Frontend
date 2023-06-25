@@ -14,6 +14,7 @@ import { useRouter } from 'next/router'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import { getFirmWareModels } from 'services/servicePortal'
 
 function RegisterForm({ data }) {
 	let { structure } = data
@@ -35,8 +36,8 @@ function RegisterForm({ data }) {
 		email: null,
 		phone_number: null,
 		postal_code: null,
-		product_category: router.query?.ProductCategory,
-		product_model: router.query?.InternalModelNumber,
+		product_category: router.query?.type || router.query?.ProductCategory,
+		product_model: router.query?.model || router.query?.InternalModelNumber,
 		product_serial_number: router.query?.SerialNumber,
 		purchased_from: null,
 		date_of_purchase: null,
@@ -48,9 +49,22 @@ function RegisterForm({ data }) {
 
 	useEffect(() => {
 		!router.query?.ProductCategory && getCategories()
+
+		if (router.query?.SerialNumber) {
+			getModelsBySerialNumber()
+		}
 	}, [])
 
 	const dataSchemaHandler = (_key, _value) => {
+		if (router.query.SerialNumber) {
+			setDataSchema({
+				...dataSchema,
+				product_model: _value?.name
+				// series: _value?.series?.length ? _value?.series[0]?.name : null
+			})
+			return
+		}
+
 		if (_key === 'product_model') {
 			setDataSchema({
 				...dataSchema,
@@ -71,6 +85,17 @@ function RegisterForm({ data }) {
 			}
 		} catch (error) {
 			setCategories([])
+			console.log(error)
+		}
+	}
+
+	const getModelsBySerialNumber = async () => {
+		try {
+			let response = await getFirmWareModels(router.query?.SerialNumber)
+			if (response.status === 200) {
+				setModels([{ ...response.data.model, name: response.data.model.title }])
+			}
+		} catch (error) {
 			console.log(error)
 		}
 	}
@@ -182,8 +207,8 @@ function RegisterForm({ data }) {
 			email: null,
 			phone_number: null,
 			postal_code: null,
-			product_category: router.query?.ProductCategory,
-			product_model: router.query?.InternalModelNumber,
+			product_category: router.query?.type || router.query?.ProductCategory,
+			product_model: router.query?.model || router.query?.InternalModelNumber,
 			product_serial_number: router.query?.SerialNumber,
 			purchased_from: null,
 			date_of_purchase: null,
@@ -229,7 +254,6 @@ function RegisterForm({ data }) {
 			}
 		}
 	}
-
 	return (
 		<section>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
@@ -253,7 +277,7 @@ function RegisterForm({ data }) {
 					) : (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								title={'PLEASE SELECT YOUR PRODUCT'}
+								title={router.query?.type || 'PLEASE SELECT YOUR PRODUCT'}
 								required={true}
 								options={categories}
 								onChange={_value => {
@@ -295,7 +319,7 @@ function RegisterForm({ data }) {
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								title={'PLEASE SELECT YOUR MODEL'}
+								title={router.query?.model || 'PLEASE SELECT YOUR MODEL'}
 								required={true}
 								options={models}
 								onChange={_value => dataSchemaHandler('product_model', _value)}
