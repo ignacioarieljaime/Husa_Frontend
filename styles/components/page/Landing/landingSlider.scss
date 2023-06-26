@@ -4,11 +4,15 @@
 	// height: 100% !important;
 	&.lower-main {
 		position: relative !important;
-		height: 0 !important;
-		@include mq(1200) {
+		height: 79vh !important;
+		@include mq(1440) {
+			height: 77vh !important;
 			// padding-top: 58%;
 			// padding-top: 0 !important;
 			// height: calc(100vh - 80px) !important;
+		}
+		@include mq(1380) {
+			height: 70vh !important;
 		}
 		// @include mq(991) {
 		// 	// padding-top: 58% !important;
