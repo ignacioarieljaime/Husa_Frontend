@@ -1,6 +1,30 @@
 .home-header-carousel {
 	overflow: hidden;
-	height: calc(100vh - 80px) !important;
+	// height: calc(100vh - 80px) !important;
+	// height: 100% !important;
+	&.lower-main {
+		position: relative !important;
+		height: 79vh !important;
+		@include mq(1440) {
+			height: 77vh !important;
+			// padding-top: 58%;
+			// padding-top: 0 !important;
+			// height: calc(100vh - 80px) !important;
+		}
+		@include mq(1380) {
+			height: 70vh !important;
+		}
+		// @include mq(991) {
+		// 	// padding-top: 58% !important;
+		// 	// padding-top: 0 !important;
+		// 	height: calc(100vh - 80px) !important;
+		// }
+		// @include mq(550) {
+		// 	// padding-top: 58% !important;
+		// 	// padding-top: 0 !important;
+		// 	height: 0 !important;
+		// }
+	}
 	.swiper-wrapper {
 		display: flex;
 		height: 100%;
