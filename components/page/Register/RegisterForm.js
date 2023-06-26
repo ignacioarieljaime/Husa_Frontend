@@ -460,7 +460,8 @@ function RegisterForm({ data }) {
 								id='form-checkbox-input'
 								className='d-none'
 							/>
-							Sign me up for future news
+							Sign up for special deals, news, and important product
+							information.
 						</label>
 					</div>
 					<div className='col-12 text-center my-12'>
