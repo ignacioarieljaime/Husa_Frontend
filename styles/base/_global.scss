@@ -1,5 +1,13 @@
 /* #region global */
 
+html,
+body {
+	scroll-behavior: unset !important;
+}
+#__next {
+	scroll-behavior: unset !important;
+}
+
 :root {
 	--toastify-color-success: #00aaa6 !important;
 }
