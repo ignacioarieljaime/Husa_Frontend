@@ -7,6 +7,17 @@ const ModalChanelAdviser = dynamic(() =>
 const WhereToBuy = ({ pim, data }) => {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 
+	const dataLayerHandler = () => {
+		setChanelAdviserHandler(!chanelAdviserHandler)
+		window.dataLayer.push({
+			event: 'view_product',
+			eventData: {
+				product_id: pim?.model,
+				category: pim?.Category?.name
+			}
+		})
+	}
+
 	return (
 		<div className='vertical-where-to-buy d-none d-md-block'>
 			<button
@@ -17,7 +28,7 @@ const WhereToBuy = ({ pim, data }) => {
 				}`}
 				onClick={() =>
 					pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
-						? setChanelAdviserHandler(!chanelAdviserHandler)
+						? dataLayerHandler()
 						: {}
 				}>
 				{pim?.buy_status === 'ChannelAdvisor' || pim?.buy_status === 'Internal'
