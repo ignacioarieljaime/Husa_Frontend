@@ -16,7 +16,7 @@ function HeaderNotification({ data }) {
 				href={data?.link ? data?.link : '/'}>
 				<a
 					target={data?.target ? data?.target : '_self'}
-					style={{ color: data?.text_color }}>
+					style={{ color: data?.text_color, paddingTop: '2px' }}>
 					{data?.text}
 
 					{data?.target === '_blank' && (
@@ -27,7 +27,7 @@ function HeaderNotification({ data }) {
 			<button onClick={() => serNotificationDismiss(false)}>
 				<span
 					style={{ color: data?.text_color }}
-					className={'me-3 mt-1 d-none d-md-block'}>
+					className={'me-3 d-none d-md-block'}>
 					Dismiss
 				</span>
 				<DismissIcon
