@@ -10,10 +10,10 @@ function ProductBigContent({ data }) {
 		<div
 			id={data.name + data.id}
 			className='tiny-banner big_content_box p-md-4'>
-			<div className='container px-6 px-md-8 py-12'>
+			<div className='container px-6 px-md-8'>
 				<article className='article text-center'>
-					<h2
-						className={`text-black mb-12 d-flex  ${
+					<h4
+						className={`text-black  d-flex  ${
 							structure?.flex?.value === 'column'
 								? 'flex-column'
 								: 'justify-content-center gap-2'
@@ -32,10 +32,10 @@ function ProductBigContent({ data }) {
 						<span className='d-flex justify-content-center align-items-center lh-base text-primary text-md-nowrap'>
 							{structure?.coloredTitle?.value}
 						</span>
-					</h2>
+					</h4>
 					<div>
 						{structure?.smallTitle?.value && (
-							<p className='fs-5 fw-normal mb-12'>
+							<p className='fs-5 fw-normal'>
 								{structure?.smallTitle?.value}
 							</p>
 						)}
