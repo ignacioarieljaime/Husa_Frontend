@@ -12,6 +12,10 @@ function CustomInput({
 	onFocus,
 	onBlur
 }) {
+	const convertData = _date => {
+		let array = _date.split('-')
+		return `${array[1]}-${array[2]}-${array[0]}`
+	}
 	if (type === 'date') {
 		return (
 			<div className='position-relative'>
@@ -31,7 +35,7 @@ function CustomInput({
 					onFocus={onFocus}
 					onBlur={onBlur}
 					onChange={e => {
-						onChange(e.target.value?.split('-').reverse().join('-'))
+						onChange(convertData(e.target.value))
 					}}
 					className={`form-container-inner-input ${className}`}
 					placeholder={placeholder}
