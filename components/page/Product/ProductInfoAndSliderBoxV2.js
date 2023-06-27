@@ -11,6 +11,16 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 	let { structure } = data
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 
+	const dataLayerHandler = () => {
+		setChanelAdviserHandler(!chanelAdviserHandler)
+		window.dataLayer.push({
+			event: 'view_product',
+			eventData: {
+				product_id: pim?.model,
+				category: pim?.Category?.name
+			}
+		})
+	}
 	return (
 		<section
 			id={data.name + data.id}
@@ -89,7 +99,7 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							onClick={() =>
 								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
-									? setChanelAdviserHandler(!chanelAdviserHandler)
+									? dataLayerHandler()
 									: {}
 							}>
 							{pim?.buy_status === 'ChannelAdvisor' ||

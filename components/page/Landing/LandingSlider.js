@@ -21,6 +21,24 @@ function LandingSlider({ data }) {
 				navigation={true}
 				pagination={true}
 				modules={[Navigation, Pagination]}
+				// style={{
+				// 	paddingTop:
+				// 		size[0] < 550
+				// 			? aspectRatioMobile > 1
+				// 				? (aspectRatioMobile * 100).toFixed(2) + '%'
+				// 				: ''
+				// 			: size[0] > 550 && size[0] < 991
+				// 			? aspectRatioTablet > 1
+				// 				? (aspectRatioTablet * 100).toFixed(2) + '%'
+				// 				: ''
+				// 			: size[0] > 991 && size[0] < 1400
+				// 			? (aspectRatioDesktop * 100).toFixed(2) - 7 + '%'
+				// 			: // : size[0] > 1200 && size[0] < 1670
+				// 			// ? (aspectRatioDesktop * 100).toFixed(2) - 7 + '%'
+				// 			aspectRatioDesktop < 1
+				// 			? (aspectRatioDesktop * 100).toFixed(2) - 9 + '%'
+				// 			: '57%'
+				// }}
 				className='home-header-carousel lower-main'>
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>

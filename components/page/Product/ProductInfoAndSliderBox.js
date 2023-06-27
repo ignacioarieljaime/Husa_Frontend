@@ -19,6 +19,17 @@ function ProductInfoAndSliderBox({ pim, data }) {
 			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
 		}
 	}, [])
+
+	const dataLayerHandler = () => {
+		setChanelAdviserHandler(!chanelAdviserHandler)
+		window.dataLayer.push({
+			event: 'view_product',
+			eventData: {
+				product_id: pim?.model,
+				category: pim?.Category?.name
+			}
+		})
+	}
 	return (
 		<section id={data.name + data.id} className='product single-product'>
 			<div className='' style={{ paddingTop: '4%' }}>
@@ -77,7 +88,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 							onClick={() =>
 								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
-									? setChanelAdviserHandler(!chanelAdviserHandler)
+									? dataLayerHandler()
 									: {}
 							}>
 							{pim?.buy_status === 'ChannelAdvisor' ||

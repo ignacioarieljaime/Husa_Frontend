@@ -35,6 +35,18 @@ const ProductItemV2 = ({ data }) => {
 	useEffect(() => {
 		setUrl(RouteHandler(currentItem.id, 'product'))
 	}, [currentItem])
+
+	const dataLayerHandler = () => {
+		console.log(currentItem);
+		setChanelAdviserHandler(!chanelAdviserHandler)
+		window.dataLayer.push({
+			event: 'view_product',
+			eventData: {
+				product_id: currentItem?.model,
+				category: currentItem?.category?.name
+			}
+		})
+	}
 	return (
 		<>
 			{' '}
@@ -47,7 +59,11 @@ const ProductItemV2 = ({ data }) => {
 								wrapperWidth={'100%'}
 								wrapperHeight={'182px'}
 								style={{ maxHeight: '182px' }}
-								src={currentItem?.image ? currentItem?.image : currentItem?.media?.url }
+								src={
+									currentItem?.image
+										? currentItem?.image
+										: currentItem?.media?.url
+								}
 								alt={
 									currentItem?.media?.caption
 										? currentItem?.media?.caption
@@ -56,7 +72,6 @@ const ProductItemV2 = ({ data }) => {
 							/>
 						</a>
 					</Link>
-					
 				</div>
 				<div className='product-item-v2-content flex-grow-1 d-flex flex-column justify-content-between'>
 					<div>
@@ -99,7 +114,7 @@ const ProductItemV2 = ({ data }) => {
 								onClick={() =>
 									currentItem?.buy_status === 'ChannelAdvisor' ||
 									currentItem?.buy_status === 'Internal'
-										? setChanelAdviserHandler(!chanelAdviserHandler)
+										? dataLayerHandler()
 										: {}
 								}
 								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
