@@ -36,9 +36,9 @@ function RegisterForm({ data }) {
 		email: null,
 		phone_number: null,
 		postal_code: null,
-		product_category: router.query?.type || router.query?.ProductCategory,
-		product_model: router.query?.model || router.query?.InternalModelNumber,
-		product_serial_number: router.query?.SerialNumber,
+		product_category: null,
+		product_model: null,
+		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
 		receipt_image: null,
@@ -49,6 +49,12 @@ function RegisterForm({ data }) {
 
 	useEffect(() => {
 		!router.query?.ProductCategory && getCategories()
+		setDataSchema({
+			...dataSchema,
+			product_category: router.query?.type || router.query?.ProductCategory,
+			product_model: router.query?.model || router.query?.InternalModelNumber,
+			product_serial_number: router.query?.SerialNumber
+		})
 
 		if (router.query?.SerialNumber) {
 			getModelsBySerialNumber()
@@ -56,7 +62,7 @@ function RegisterForm({ data }) {
 	}, [])
 
 	const dataSchemaHandler = (_key, _value) => {
-		if (router.query.SerialNumber) {
+		if (router.query.SerialNumber && _key === 'product_model') {
 			setDataSchema({
 				...dataSchema,
 				product_model: _value?.name
@@ -93,7 +99,11 @@ function RegisterForm({ data }) {
 		try {
 			let response = await getFirmWareModels(router.query?.SerialNumber)
 			if (response.status === 200) {
-				setModels([{ ...response.data.model, name: response.data.model.title }])
+				let result = response?.data?.model?.alias.map(item => ({
+					...item,
+					name: item?.title
+				}))
+				setModels(result)
 			}
 		} catch (error) {
 			console.log(error)
