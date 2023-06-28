@@ -17,7 +17,7 @@ function CustomInput({
 		if (_reverse) {
 			return `${array[1]}-${array[2]}-${array[0]}`
 		}
-		return `${array[2]}-${array[1]}-${array[0]}`
+		return `${array[2]}-${array[0]}-${array[1]}`
 	}
 	if (type === 'date') {
 		return (
