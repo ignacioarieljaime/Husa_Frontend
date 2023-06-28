@@ -38,7 +38,7 @@ const ProductsGridV2 = ({ data }) => {
 		} else {
 			getProductHandler()
 		}
-	}, [sortingMethod])
+	}, [sortingMethod, router?.query?.filter])
 
 	const getProductHandler = async _filter => {
 		await requestController()

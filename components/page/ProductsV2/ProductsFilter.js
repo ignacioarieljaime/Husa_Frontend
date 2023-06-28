@@ -25,6 +25,8 @@ const ProductsFilter = ({
 	useEffect(() => {
 		if (router.query.filter) {
 			filterCounterHandler(JSON.parse(decodeURIComponent(router.query.filter)))
+		} else {
+			setFilterCounter(0)
 		}
 		setFilters(
 			router.query.filter
