@@ -38,7 +38,7 @@ function CustomInput({
 					onFocus={onFocus}
 					onBlur={onBlur}
 					onChange={e => {
-						onChange(convertData(e.target.value), 'revers')
+						onChange(convertData(e.target.value, 'revers'))
 					}}
 					className={`form-container-inner-input ${className}`}
 					placeholder={placeholder}
