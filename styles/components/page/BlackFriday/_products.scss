@@ -63,7 +63,7 @@
 				}
 				.types_list {
 					display: flex;
-					flex-flow: row nowrap;
+					flex-flow: row wrap !important;
 					justify-content: center;
 					align-items: center;
 					align-self: center;
@@ -78,7 +78,7 @@
 						min-width: 40px;
 						line-height: 40px;
 						border-radius: 4px;
-						margin: 12px;
+						margin: 12px 6px !important;
 						text-align: center;
 						color: #202020;
 						background-color: #fff;
