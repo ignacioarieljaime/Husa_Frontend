@@ -12,9 +12,12 @@ function CustomInput({
 	onFocus,
 	onBlur
 }) {
-	const convertData = _date => {
+	const convertData = (_date, _reverse) => {
 		let array = _date.split('-')
-		return `${array[1]}-${array[2]}-${array[0]}`
+		if (_reverse) {
+			return `${array[1]}-${array[2]}-${array[0]}`
+		}
+		return `${array[2]}-${array[1]}-${array[0]}`
 	}
 	if (type === 'date') {
 		return (
@@ -35,13 +38,13 @@ function CustomInput({
 					onFocus={onFocus}
 					onBlur={onBlur}
 					onChange={e => {
-						onChange(convertData(e.target.value))
+						onChange(convertData(e.target.value), 'revers')
 					}}
 					className={`form-container-inner-input ${className}`}
 					placeholder={placeholder}
 					required={required}
 					defaultValue={defaultValue && defaultValue}
-					value={value && value}
+					value={value && convertData(value)}
 				/>
 				{required && (
 					<span className='input-error'>This field is required.</span>
