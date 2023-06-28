@@ -143,7 +143,7 @@ function RegisterForm({ data }) {
 				  )
 				: await axios.post(
 						`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
-						{ ...dataSchema }
+						{ ...dataSchema, future_news: activeCheckBox ? '1' : '0' }
 				  )
 
 			if (response.status === 200) {
@@ -206,6 +206,7 @@ function RegisterForm({ data }) {
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
 			if (response.status === 200) {
+				console.log(activeCheckBox)
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
 				dataSchemaHandler('receipt_image', response.data.view_link)
 			}
