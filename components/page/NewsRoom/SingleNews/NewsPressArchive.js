@@ -24,15 +24,26 @@ const NewsPressArchive = ({ data }) => {
 		search: '',
 		page: 1
 	})
-
 	useEffect(() => {
 		getNews()
 	}, [filters])
 
+	const getPostId = () => {
+		let ids = structure?.exclude_news?.value?.map(
+			item => `&exclude[]=${item.id}`
+		)
+		return ids.join(',').replaceAll(',', '')
+	}
+
 	const getNews = async () => {
 		setNews('loading')
+
 		try {
-			let response = await GetNewsApi(filters, structure?.count?.value)
+			let response = await GetNewsApi(
+				filters,
+				structure?.count?.value,
+				getPostId()
+			)
 
 			setNews(response.data.data)
 			setPagination(response.data.meta)
