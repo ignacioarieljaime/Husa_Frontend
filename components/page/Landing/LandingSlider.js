@@ -16,22 +16,6 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 function LandingSlider({ data }) {
 	let { structure } = data
 	const size = useWindowSize()
-	
-	const aspectRatioMobile = useAspectRatio(
-		structure?.list?.value[0]?.mobile?.src
-	)
-	const aspectRatioTablet = useAspectRatio(
-		structure?.list?.value[0]?.tablet?.src
-	)
-	const aspectRatioDesktop = useAspectRatio(
-		structure?.list?.value[0]?.desktop?.src
-	)
-
-	useEffect(() => {
-		if (size[0] < 768) console.log(aspectRatioMobile)
-		else if (size[0] > 768 && size[0] < 991) console.log(aspectRatioTablet)
-		else console.log(aspectRatioDesktop)
-	}, [size])
 
 	return (
 		<>
@@ -76,7 +60,12 @@ function LandingSlider({ data }) {
 									<Link
 										target={item?.url?.target ? item?.url?.target : '_self'}
 										href={item?.url?.value ? item?.url?.value : ''}>
-										<a>{item?.url?.title}</a>
+										<a
+											className={
+												structure?.theme?.value !== 'dark' && 'white_button'
+											}>
+											{item?.url?.title}
+										</a>
 									</Link>
 								)}
 							</div>
