@@ -2,8 +2,10 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import DismissIcon from '../../icons/DismissIcon'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 function HeaderNotification({ data }) {
+	const [width] = useWindowSize()
 	const [notificationDismiss, serNotificationDismiss] = useState(true)
 	return (
 		<div
@@ -16,7 +18,12 @@ function HeaderNotification({ data }) {
 				href={data?.link ? data?.link : '/'}>
 				<a
 					target={data?.target ? data?.target : '_self'}
-					style={{ color: data?.text_color, paddingTop: '2px' }}>
+					style={{
+						color: data?.text_color,
+						paddingTop: '2px',
+						paddingLeft: width <= 768 ? '30px' : '0px',
+						paddingRight: width <= 768 ? '30px' : '0px'
+					}}>
 					{data?.text}
 
 					{data?.target === '_blank' && (

@@ -15,6 +15,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 function LandingSlider({ data }) {
 	let { structure } = data
 	const size = useWindowSize()
+
 	return (
 		<>
 			<Swiper
@@ -58,7 +59,12 @@ function LandingSlider({ data }) {
 									<Link
 										target={item?.url?.target ? item?.url?.target : '_self'}
 										href={item?.url?.value ? item?.url?.value : ''}>
-										<a>{item?.url?.title}</a>
+										<a
+											className={
+												structure?.theme?.value !== 'dark' && 'white_button'
+											}>
+											{item?.url?.title}
+										</a>
 									</Link>
 								)}
 							</div>

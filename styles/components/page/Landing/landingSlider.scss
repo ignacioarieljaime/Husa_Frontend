@@ -95,6 +95,16 @@
 					}
 				}
 
+				.white_button {
+					border-color: #fff !important;
+					color: #fff !important;
+
+					&:hover {
+						background-color: #fff !important;
+						color: #000 !important;
+					}
+				}
+
 				.main-img {
 					display: block;
 					object-fit: contain;

@@ -41,7 +41,7 @@ function Header({ data: { structure }, notification }) {
 	}, [searchInputCondition])
 
 	return (
-		<header >
+		<header>
 			<nav
 				className={`navbar navbar-expand justify-content-center  
 					theme-${structure.theme.value}
@@ -128,7 +128,7 @@ function Header({ data: { structure }, notification }) {
 			{notification && (
 				<div
 					className={'position-fixed w-100'}
-					style={{ zIndex: 997, top: '64px' }}>
+					style={{ zIndex: 997, top: width <= 768 ? '72px' : '64px' }}>
 					{notification.map(item => (
 						<HeaderNotification data={item} />
 					))}
