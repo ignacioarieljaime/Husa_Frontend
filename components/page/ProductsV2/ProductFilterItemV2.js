@@ -15,7 +15,6 @@ function ProductFilterItemV2({
 	useEffect(() => {
 		setCheckBoxCondition(false)
 	}, [checkboxConditionRender])
-
 	useEffect(() => {
 		if (passedFilter.length > 0) {
 			passedFilter.forEach(item => {
@@ -26,7 +25,7 @@ function ProductFilterItemV2({
 				}
 			})
 		}
-	}, [])
+	}, [passedFilter])
 
 	const showTotalCount = () => {
 		// if (passedFilter.length) {
