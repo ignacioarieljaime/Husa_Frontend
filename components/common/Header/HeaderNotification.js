@@ -20,9 +20,9 @@ function HeaderNotification({ data }) {
 					target={data?.target ? data?.target : '_self'}
 					style={{
 						color: data?.text_color,
-						paddingTop: '2px',
-						paddingLeft: width <= 768 ? '30px' : '0px',
-						paddingRight: width <= 768 ? '30px' : '0px'
+						paddingTop: '3px',
+						marginLeft: width <= 768 ? '30px' : '0px',
+						marginRight: width <= 768 ? '30px' : '0px'
 					}}>
 					{data?.text}
 
@@ -33,7 +33,7 @@ function HeaderNotification({ data }) {
 			</Link>
 			<button onClick={() => serNotificationDismiss(false)}>
 				<span
-					style={{ color: data?.text_color }}
+					style={{ color: data?.text_color, marginTop: '2px' }}
 					className={'me-3 d-none d-md-block'}>
 					Dismiss
 				</span>
