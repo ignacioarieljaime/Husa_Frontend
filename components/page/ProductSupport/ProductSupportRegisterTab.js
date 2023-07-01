@@ -32,8 +32,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
-		receipt_image: null,
-		future_news: acceptRole ? '0' : '1'
+		receipt_image: null
 	})
 	const [imageLoading, setImageLoading] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -53,7 +52,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		try {
 			let response = await axios.post(
 				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
-				{ ...dataSchema }
+				{ ...dataSchema, future_news: acceptRole ? '1' : '0' }
 			)
 			if (response.status === 200) {
 				toast.success('Registered Successfully', {
@@ -99,7 +98,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 			purchased_from: null,
 			date_of_purchase: null,
 			receipt_image: null,
-			future_news: acceptRole ? '0' : '1'
+			future_news: '0'
 		})
 	}
 
@@ -274,6 +273,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								onChange={_value =>
 									dataSchemaHandler('date_of_purchase', _value)
 								}
+								value={dataSchema.date_of_purchase}
 								required={true}
 								placeholder={'PURCHASED FROM'}
 							/>
