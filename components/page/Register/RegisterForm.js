@@ -103,7 +103,14 @@ function RegisterForm({ data }) {
 					...item,
 					name: item?.title
 				}))
-				setModels(result)
+				setModels([
+					...result,
+					{
+						id: response?.data?.model?.id,
+						title: response?.data?.model?.title,
+						name: response?.data?.model?.title
+					}
+				])
 			}
 		} catch (error) {
 			console.log(error)
