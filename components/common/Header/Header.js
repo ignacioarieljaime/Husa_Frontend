@@ -51,7 +51,7 @@ function Header({ data: { structure }, notification }) {
 				style={asideMenu || searchInputCondition ? { zIndex: 1000 } : null}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
-						<div className='m-0 col-xl-4 py-1'>
+						<div className={`m-0  ${width > 1230 && 'col-xl-4'} py-1`}>
 							<Link href='/'>
 								<a className='navbar-brand m-0 text-start'>
 									<Logo
