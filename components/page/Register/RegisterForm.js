@@ -248,7 +248,6 @@ function RegisterForm({ data }) {
 				headers: { 'Content-Type': 'multipart/form-data' }
 			})
 			if (response.status === 200) {
-				console.log(activeCheckBox)
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
 				dataSchemaHandler('receipt_image', response.data.view_link)
 			}
@@ -295,7 +294,12 @@ function RegisterForm({ data }) {
 					) : (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								title={router.query?.type || 'PLEASE SELECT YOUR PRODUCT'}
+								title={
+									router.query?.type
+										? router.query?.type || 'PLEASE SELECT YOUR PRODUCT'
+										: dataSchema?.product_category ||
+										  'PLEASE SELECT YOUR PRODUCT'
+								}
 								required={true}
 								options={categories}
 								onChange={_value => {
@@ -337,7 +341,11 @@ function RegisterForm({ data }) {
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								title={router.query?.model || 'PLEASE SELECT YOUR MODEL'}
+								title={
+									router.query?.model
+										? router.query?.model || 'PLEASE SELECT YOUR MODEL'
+										: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
+								}
 								required={true}
 								options={models}
 								onChange={_value => dataSchemaHandler('product_model', _value)}

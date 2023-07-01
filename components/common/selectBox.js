@@ -1,6 +1,7 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 
 function CustomSelectBox({
 	required = false,
@@ -9,7 +10,11 @@ function CustomSelectBox({
 	onChange,
 	className = ''
 }) {
-	const [value, setValue] = useState(title)
+	const [value, setValue] = useState()
+	useEffect(() => {
+		setValue(title)
+	}, [title])
+
 	return (
 		<div className={`custom-select-box ${className}`}>
 			<div
