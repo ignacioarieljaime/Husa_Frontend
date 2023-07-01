@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CustomCheckBox from 'components/common/CustomCheckBox'
+import { useRouter } from 'next/router'
 
 function ProductFilterItemV2({
 	checkboxConditionRender,
@@ -11,6 +12,7 @@ function ProductFilterItemV2({
 	category,
 	showProductFilterCount
 }) {
+	const router = useRouter()
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	useEffect(() => {
 		setCheckBoxCondition(false)
@@ -24,8 +26,10 @@ function ProductFilterItemV2({
 					)
 				}
 			})
+		}else{
+			setCheckBoxCondition(false)
 		}
-	}, [passedFilter])
+	}, [passedFilter, router.query])
 
 	const showTotalCount = () => {
 		// if (passedFilter.length) {
