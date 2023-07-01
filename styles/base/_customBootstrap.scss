@@ -1,5 +1,7 @@
-* {
-	white-space: pre-line !important;
+.layout {
+	* {
+		white-space: pre-line !important;
+	}
 }
 
 .primary-text {
@@ -1030,7 +1032,7 @@
 	}
 
 	a {
-		margin: 0;
+		margin: 4px 0 0;
 		font-size: 16px;
 		line-height: 24px;
 		color: #ffffff;
@@ -1052,7 +1054,6 @@
 			order: 2;
 		}
 		button {
-			position: relative;
 			right: 0;
 			order: 1;
 		}
