@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -11,6 +11,7 @@ import 'swiper/css/pagination'
 import { Navigation, Pagination } from 'swiper'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
+import { useAspectRatio } from 'hooks/useAspectRatio'
 
 function LandingSlider({ data }) {
 	let { structure } = data

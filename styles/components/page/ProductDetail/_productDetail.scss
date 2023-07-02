@@ -80,7 +80,7 @@
 	max-width: 860px;
 	margin: 0 auto;
 	@include mq(768) {
-		padding: 60px 40px !important;
+		padding: 24px 16px 16px !important;
 		h4 {
 			font-size: 32px !important;
 			line-height: 42px !important;
@@ -90,7 +90,7 @@
 		font-weight: 700;
 		font-size: 33px;
 		line-height: 32px;
-		margin-bottom: 17px;
+		margin-bottom: 16px;
 		color: #000000;
 	}
 	p {
@@ -100,3 +100,4 @@
 		color: #000000;
 	}
 }
+

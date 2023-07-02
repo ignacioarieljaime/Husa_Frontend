@@ -2189,20 +2189,30 @@ header {
 }
 
 .big_content_box {
-	@include mqm(1200) {
-		h2 {
+	padding: 24px 0 16px;
+	.container {
+		padding: 0 16px;
+	}
+	h4 {
+		margin-bottom: 16px;
+		font-weight: 700;
+		@include mqm(1200) {
 			font-size: 52px !important;
 		}
-	}
-	@include mq(1200) {
-		h2 {
+		@include mq(1200) {
 			display: flex;
 			flex-direction: column !important;
+		}
+		@include mq(768) {
+			font-size: 32px !important;
 		}
 	}
 
 	p {
 		color: #292929 !important;
+		> p {
+			margin-bottom: 0;
+		}
 	}
 }
 
@@ -2221,6 +2231,7 @@ header {
 	p {
 		line-height: 30px !important;
 		color: #292929 !important;
+		margin-bottom: 0 !important;
 	}
 }
 

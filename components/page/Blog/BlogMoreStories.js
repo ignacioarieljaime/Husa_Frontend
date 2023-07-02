@@ -134,6 +134,9 @@ function BlogMoreStories({ data: { structure } }) {
 						))}
 					</>
 				)} */}
+				{/* {structure?.list?.value.map((item, index) => (
+					<BlogListLittleReadArticleBox key={index} data={item} />
+				))} */}
 			</div>
 		</section>
 	)

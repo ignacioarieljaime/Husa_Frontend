@@ -7,32 +7,33 @@ function ProductResourceBox({ pim, data }) {
 	let { structure } = data
 	const router = useRouter()
 
-	const warrantyHandler = () => {
+	const warrantyHandler = _warrantyName => {
 		const categoryFields = pim?.Category?.customFields
-		let customFiled = findDataInArray(
-			pim?.features,
-			'custom_field_type_name',
-			'Televisions Warranty Length'
-		)?.custom_fields
-		let warrantyTime = findDataInArray(
-			customFiled,
-			'name',
-			'Warranty Period'
-		)?.value
-		let customLink = findDataInArray(customFiled, 'name', 'Link')?.value
-		let warrantyResult = categoryFields?.find(item =>
-			item?.custom_field?.name?.includes(warrantyTime?.split(' ')[0])
-		)
+		const properties = findDataInArray(
+			pim?.properties,
+			'title',
+			'Accessories'
+		)?.items
+		const warranty = findDataInArray(properties, 'title', 'Warranty')
 
-		if (warrantyTime)
+		if (_warrantyName) return warranty?.title
+		
+		const warrantyFileUrl = categoryFields?.find(item =>
+			item?.custom_field?.name.includes(warranty?.value)
+		)?.media?.external_url
+		const customWarrantyFile = pim?.assets?.find(
+			item => item?.content_type === 'Warrenty'
+		)?.url
+
+		if (!customWarrantyFile && warrantyFileUrl)
 			return (
 				<li>
 					<a
 						target='_blank'
-						download={true}
-						href={customLink || warrantyResult?.media?.external_url}>
+						href={customWarrantyFile || warrantyFileUrl}
+						download={true}>
 						<span className='underline-on-hover text-uppercase'>
-							{findDataInArray(customFiled, 'name', 'Title')?.value}
+							{warranty?.title}
 						</span>
 					</a>
 				</li>
@@ -75,7 +76,11 @@ function ProductResourceBox({ pim, data }) {
 									<li key={index}>
 										<a href={item.url ? item.url : ''} download>
 											<span className='underline-on-hover text-uppercase'>
-												{item.caption ? item.caption : item.title}
+												{item?.content_type === 'Warrenty'
+													? warrantyHandler(true)
+													: item.caption
+													? item.caption
+													: item.title}
 											</span>
 										</a>
 									</li>

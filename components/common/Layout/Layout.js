@@ -35,7 +35,6 @@ function Layout({ children, meta, title, header }) {
 	}, [])
 
 	useEffect(() => {
-		window.scrollTo(0, 0)
 		getMenu()
 	}, [router.pathname])
 

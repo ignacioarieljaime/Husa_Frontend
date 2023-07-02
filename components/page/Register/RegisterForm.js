@@ -48,18 +48,25 @@ function RegisterForm({ data }) {
 	const [tickedSended, setTickedSended] = useState(null)
 
 	useEffect(() => {
-		!router.query?.ProductCategory && getCategories()
 		setDataSchema({
 			...dataSchema,
 			product_category: router.query?.type || router.query?.ProductCategory,
-			product_model: router.query?.model || router.query?.InternalModelNumber,
+			product_model:
+				router.query?.model || router.query?.InternalModelNumber || null,
 			product_serial_number: router.query?.SerialNumber
 		})
+
+		!router.query?.ProductCategory && getCategories()
 
 		if (router.query?.SerialNumber) {
 			getModelsBySerialNumber()
 		}
 	}, [])
+	useEffect(() => {
+		if (models?.length === 1) {
+			setDataSchema({ ...dataSchema, product_model: models[0]?.name })
+		}
+	}, [models])
 
 	const dataSchemaHandler = (_key, _value) => {
 		if (router.query.SerialNumber && _key === 'product_model') {
@@ -103,14 +110,13 @@ function RegisterForm({ data }) {
 					...item,
 					name: item?.title
 				}))
-				setModels([
-					...result,
-					{
-						id: response?.data?.model?.id,
-						title: response?.data?.model?.title,
-						name: response?.data?.model?.title
-					}
-				])
+				result.push({
+					id: response?.data?.model?.id,
+					title: response?.data?.model?.title,
+					name: response?.data?.model?.title
+				})
+
+				setModels(result)
 			}
 		} catch (error) {
 			console.log(error)
@@ -342,8 +348,10 @@ function RegisterForm({ data }) {
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={
-									router.query?.model
-										? router.query?.model || 'PLEASE SELECT YOUR MODEL'
+									router.query?.SerialNumber
+										? models.length === 1
+											? models[0].name
+											: 'PLEASE SELECT YOUR MODEL'
 										: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
 								}
 								required={true}
