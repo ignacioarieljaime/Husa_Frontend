@@ -137,13 +137,17 @@
 		}
 	}
 	.swiper-button-prev {
-		left: 127px;
+		left: 164px;
+		padding-right: 6px;
+		padding-top: 4px;
 		@include mq(768) {
 			left: 7%;
 		}
 	}
 	.swiper-button-next {
-		right: 127px;
+		right: 164px;
+		padding-left: 6px;
+		padding-top: 4px;
 		@include mq(768) {
 			right: 7%;
 		}
@@ -156,11 +160,10 @@
 		// 	width: 55px;
 		// 	height: 55px;
 		// }
-		width: 50px;
+		transform: translateY(-50%);
+		width: 75px;
 		z-index: 11;
-		height: 50px;
-		top: unset;
-		bottom: 45px;
+		height: 75px;
 		background: #00aaa6;
 		border-radius: 100%;
 		-webkit-border-radius: 100%;
@@ -169,7 +172,7 @@
 		-o-border-radius: 100%;
 		&::after {
 			color: #ffffff;
-			font-size: 22px;
+			font-size: 30px;
 			font-weight: 900;
 		}
 	}
