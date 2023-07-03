@@ -2267,8 +2267,9 @@ header {
 		}
 		@include mq(1280) {
 			h6 {
-				font-size: 14px !important;
-				line-height: 24px !important;
+				font-size: 12px !important;
+				font-weight: 400 !important;
+				line-height: 16px !important;
 			}
 		}
 		h6 {
