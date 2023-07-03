@@ -2,9 +2,9 @@
 	max-width: 1090px !important;
 	margin-top: 62px;
 	margin-bottom: 96px;
-	padding: 0 60px;
+	padding: 0 64px !important;
 	@include mq(768) {
-		padding: 0 12px;
+		padding: 0 12px !important;
 	}
 	h5 {
 		max-width: 559px;
@@ -16,7 +16,7 @@
 		margin-bottom: 32px;
 	}
 	p {
-		max-width: 838px;
+		max-width: 834px;
 		font-weight: 300;
 		font-size: 16px;
 		line-height: 22px;

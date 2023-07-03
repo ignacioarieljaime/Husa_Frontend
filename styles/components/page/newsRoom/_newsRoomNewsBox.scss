@@ -180,14 +180,14 @@
 				font-size: 10px;
 			}
 			h2 {
-				margin: 14px 0;
+				margin: 10px 0 6px;
 				font-size: unset;
 				line-height: unset;
 				a {
 					font-weight: 400;
 					font-size: 16px !important;
-					line-height: 22px !important;
 					color: #000000;
+					line-height: 21.6px !important;
 					text-decoration: none;
 				}
 				@include mq(768) {
@@ -201,6 +201,7 @@
 
 			.date {
 				font-size: 12px;
+				font-weight: 300;
 			}
 		}
 	}
@@ -297,7 +298,8 @@
 	background: #232323;
 
 	> div {
-		max-width: 1090px;
+		max-width: 1340px;
+		padding: 0;
 		> div {
 			display: flex;
 			align-items: center;
@@ -316,9 +318,10 @@
 			> span {
 				font-style: normal;
 				font-weight: 400;
-				font-size: 16px;
+				font-size: 24px;
 				line-height: 22px;
 				color: #00aaa6;
+				margin-top: 10px;
 
 				@include mq(980) {
 					margin-bottom: 32px;
@@ -356,10 +359,11 @@
 
 					> span {
 						font-weight: 400;
+
 						font-size: 16px;
 						line-height: 22px;
 						color: #ffffff;
-						padding: 16px;
+						padding: 18px 16px 14px;
 						gap: 32px;
 						min-width: 117.08px;
 						height: 54px;
@@ -369,9 +373,10 @@
 						line-height: 0;
 						border: 1px solid #ffffff;
 						border-radius: 1000px;
+						font-size: 14px;
 
-						@include mq(980) {
-							font-size: 14px;
+						svg{
+							margin-top: -2px;
 						}
 					}
 					> div {
@@ -456,13 +461,17 @@
 						height: 52px;
 						border: 1px solid #ffffff;
 						border-radius: 1000px;
-						padding: 0 50px 0 16px;
+						padding: 2px 50px 0 16px;
 						background-color: transparent;
 						color: #8c8f8f;
+						font-size: 14px;
+
+						&::placeholder {
+							font-size: 14px;
+						}
 
 						@include mq(980) {
 							width: 220px;
-							font-size: 14px;
 						}
 
 						&:focus {

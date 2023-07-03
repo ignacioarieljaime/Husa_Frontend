@@ -1,7 +1,10 @@
 .single_news_latest_news {
 	background: #006664;
 	> div {
-		max-width: 1090px;
+		max-width: 1115px;
+		@include mqm(992){
+			padding: 0;
+		}
 		> div {
 			padding: 80px 0 60px;
 
@@ -41,7 +44,8 @@
 				gap: 16px;
 				margin-bottom: 64px;
 				& > div {
-					min-width: 290px;
+					min-width: 361px;
+					height: 361px;
 					@include mq(768) {
 						min-width: 340px;
 					}
