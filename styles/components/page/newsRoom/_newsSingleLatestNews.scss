@@ -2,7 +2,7 @@
 	background: #006664;
 	> div {
 		max-width: 1115px;
-		@include mqm(992){
+		@include mqm(992) {
 			padding: 0;
 		}
 		> div {
@@ -45,7 +45,9 @@
 				margin-bottom: 64px;
 				& > div {
 					min-width: 361px;
-					height: 361px;
+					@include mqm(768) {
+						height: 361px;
+					}
 					@include mq(768) {
 						min-width: 340px;
 					}
