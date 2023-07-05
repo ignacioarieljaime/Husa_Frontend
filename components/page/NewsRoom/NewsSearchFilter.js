@@ -1,6 +1,7 @@
 import axios from 'axios'
 import AngleArrow from 'components/icons/AngleArrow'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
+import SelectBoxAngleArrow from 'components/icons/SelectBoxAngleArrow'
 import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useEffect, useState } from 'react'
 
@@ -72,7 +73,7 @@ const NewsSearchFilter = ({
 							<label>Model year</label>
 							<div>
 								<span>
-									{filters?.year || yearTitle} <AngleArrow />
+									{filters?.year || yearTitle} <SelectBoxAngleArrow   />
 								</span>
 								<div>
 									<ul>
@@ -97,7 +98,7 @@ const NewsSearchFilter = ({
 							<div>
 								<span>
 									{filters?.product || categoryTitle}
-									<AngleArrow />
+									<SelectBoxAngleArrow />
 								</span>
 								<div>
 									<ul>

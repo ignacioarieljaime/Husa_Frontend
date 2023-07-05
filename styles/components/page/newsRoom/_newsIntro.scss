@@ -2,6 +2,10 @@
 	padding: 164px 12px 118px;
 	max-width: 1090px !important;
 
+	@include mq(980) {
+		padding: 164px 16px 118px;
+	}
+
 	> div {
 		h6 {
 			font-weight: 400;
@@ -40,7 +44,7 @@
 			gap: 32px;
 			align-items: center;
 			> span {
-				font-weight: 400;
+				font-weight: 500;
 				font-size: 16px;
 				line-height: 22px;
 				color: #000000;

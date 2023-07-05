@@ -1,5 +1,9 @@
 .news_single_info_box {
 	padding: 12px;
+
+	@include mq(980) {
+		padding: 12px 16px;
+	}
 	.content {
 		margin: 0 auto 62px;
 		max-width: 1090px;

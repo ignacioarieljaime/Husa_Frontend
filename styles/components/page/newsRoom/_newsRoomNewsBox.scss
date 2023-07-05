@@ -78,7 +78,6 @@
 
 .news_room_main_news_item {
 	background: #f0f2f2;
-	box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
 	border-radius: 50px;
 	overflow: hidden;
 	.image {
@@ -87,7 +86,8 @@
 	&.horizontal {
 		width: 100%;
 		height: 622px;
-		display: flex;
+	box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
+	display: flex;
 		@include mq(768) {
 			flex-direction: column;
 			width: calc(50% - 16px);
@@ -405,13 +405,12 @@
 						text-transform: uppercase;
 						text-align: center;
 						margin-bottom: 16px;
-width: 100%;
-						@include mqm(980){
+						width: 100%;
+						@include mqm(980) {
 							display: none;
 						}
 					}
 					@include mq(980) {
-
 						width: 100%;
 					}
 
@@ -433,9 +432,12 @@ width: 100%;
 							border: 1px solid #ffffff;
 							border-radius: 1000px;
 							font-size: 14px;
+							@include mq(980) {
+								padding: 14px 16px 14px;
+							}
 
 							svg {
-								margin-top: -2px;
+								margin-top: 4px;
 							}
 						}
 						> div {
@@ -512,8 +514,8 @@ width: 100%;
 						text-transform: uppercase;
 						text-align: center;
 						margin-bottom: 16px;
-width: 100%;
-						@include mqm(980){
+						width: 100%;
+						@include mqm(980) {
 							display: none;
 						}
 					}
@@ -522,7 +524,6 @@ width: 100%;
 					}
 					> div {
 						position: relative;
-					
 
 						svg {
 							position: absolute;
@@ -547,11 +548,15 @@ width: 100%;
 							color: #8c8f8f;
 							font-size: 14px;
 
+						
+
 							&::placeholder {
 								font-size: 14px;
 							}
 
 							@include mq(980) {
+							padding: 2px 50px 3px 16px;
+
 								width: 100%;
 							}
 
