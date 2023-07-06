@@ -335,6 +335,7 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
+					{console.log(dataSchema?.product_category === 'Air Products')}
 					{router.query?.InternalModelNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
@@ -347,6 +348,7 @@ function RegisterForm({ data }) {
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
+								rightText={dataSchema?.product_category === 'Air Products' && "(Outdoor Model for split system)"}
 								title={
 									router.query?.SerialNumber
 										? models.length === 1
@@ -545,6 +547,7 @@ function RegisterForm({ data }) {
 				<RoleModal
 					data={structure?.modelText?.value}
 					modalHandler={setModalCondition}
+					greenText={dataSchema?.product_category === 'Air Products'}
 				/>
 			)}
 		</section>

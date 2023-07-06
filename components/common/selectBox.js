@@ -8,7 +8,8 @@ function CustomSelectBox({
 	title,
 	options,
 	onChange,
-	className = ''
+	className = '',
+	rightText
 }) {
 	const [value, setValue] = useState()
 	useEffect(() => {
@@ -30,13 +31,18 @@ function CustomSelectBox({
 						checked='checked'
 						disabled
 					/>
-					<p
+					<div
 						className={`input-text d-flex align-items-center justify-content-between ${className}`}>
 						{options === 'loading' ? (
 							'loading ...'
 						) : (
 							<>
-								{value}
+								<p>
+									{value}
+									{value?.includes('SELECT') && rightText ? (
+										<span>{rightText}</span>
+									) : null}
+								</p>
 								<FontAwesomeIcon
 									style={{ width: '10px' }}
 									icon={faChevronDown}
@@ -44,7 +50,7 @@ function CustomSelectBox({
 								/>
 							</>
 						)}
-					</p>
+					</div>
 				</div>
 			</div>
 			<ul className='select-box-list top-100 w-100'>
