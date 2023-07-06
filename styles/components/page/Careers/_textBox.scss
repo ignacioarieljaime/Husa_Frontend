@@ -1,5 +1,9 @@
 .careers_textbox {
 	padding: 64px 12px;
+
+	@include mq(992){
+		padding: 64px 16px;
+	}
 	.v1 {
 		max-width: 600px;
 		margin: 0 auto;
