@@ -1,14 +1,19 @@
 import CustomImage from 'components/common/CustomImage'
 import React from 'react'
 
-function ProductNewsItem({ itemCount, data, divider }) {
+function ProductNewsItem({ itemCount, data, divider, index }) {
 	let { image, note, title, smallTitle, littleImage } = data
 	return (
 		<div
 			style={{ width: `${100 / itemCount}%` }}
 			className={` mb-8 mb-md-0 product_news_box_item`}>
 			<article className='small_article text-start product_new_item'>
-				<CustomImage src={image?.src} alt={image?.alt} wrapperWidth={'100%'} />
+				<CustomImage
+					src={image?.src}
+					alt={image?.alt}
+					className='product_news_box_item_image'
+					wrapperWidth={'100%'}
+				/>
 
 				{littleImage?.value?.image?.src && littleImage?.value?.text?.value ? (
 					<div className='little_image'>
@@ -18,15 +23,19 @@ function ProductNewsItem({ itemCount, data, divider }) {
 				) : null}
 
 				<div
-					className={`px-4 ${
-						divider ? 'divider-border position-relative' : ''
+					className={`px-4 pt-13 ${
+						index !== 0 && divider ? 'divider-border position-relative' : ''
 					}`}>
-					{smallTitle?.value ? (
-						<h6 className='mb-3 product_news_item_small_title   mt-13'>
+					{title?.value && (
+						<h3 style={{ marginBottom: '20px' }}>{title?.value}</h3>
+					)}
+
+					{smallTitle?.value && (
+						<h6
+							style={{ marginBottom: '20px' }}
+							className=' product_news_item_small_title '>
 							{smallTitle?.value}
 						</h6>
-					) : (
-						<h3 className=' mb-3 mt-13'>{title?.value}</h3>
 					)}
 
 					<p
