@@ -6,7 +6,7 @@
 	> div {
 		.items_box {
 			> h5 {
-				margin: 126px 0 94px;
+				margin: 98px 0 64px;
 				font-weight: 400;
 				font-size: 48px;
 				text-align: center;
@@ -14,7 +14,7 @@
 				color: #000000;
 
 				@include mq(600) {
-					margin: 48px 0;
+					margin: 48px 0 64px;
 					font-size: 24px;
 				}
 			}
@@ -41,13 +41,15 @@
 					}
 
 					.text_box {
-						padding: 25px 32px;
+						padding: 32px 32px 28px;
 						display: flex;
 						flex-direction: column;
 						justify-content: space-between;
 						height: 100%;
 						@include mq(600) {
 							width: 100% !important;
+						padding: 15px 32px 15px;
+
 						}
 						.subject {
 							font-weight: 400;
@@ -70,14 +72,17 @@
 								color: #000000;
 							}
 							@include mq(600) {
+								margin-bottom: 15px;
+
 								a {
+									font-weight: 300;
 									line-height: 19px;
 									font-size: 14px;
 								}
 							}
 						}
 						.date {
-							font-weight: 400;
+							font-weight: 300;
 							font-size: 12px;
 							line-height: 16px;
 							color: #ababb0;

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import AngleArrow from 'components/icons/AngleArrow'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
+import SelectBoxAngleArrow from 'components/icons/SelectBoxAngleArrow'
 import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useEffect, useState } from 'react'
 
@@ -50,69 +51,82 @@ const NewsSearchFilter = ({
 
 	return (
 		<div className='news_room_search_filter'>
-			<div className='container'>
+			<div className=''>
 				<div className='content'>
-					<span className='title'>{title}</span>
+					<div className='filter_title'>
+						<span className='title'>{title}</span>
+						<button
+							className={!openFilter && 'close_button'}
+							onClick={() => setOpenFilter(state => !state)}>
+							Filters
+							<AngleArrow />
+						</button>
+					</div>
 
 					<div
+						className='filter_options'
 						style={{
-							height: width > 980 ? 'fit-content' : openFilter ? '300px' : '0'
+							height: width > 980 ? 'fit-content' : openFilter ? '412px' : '0',
+							marginTop: width > 980 ? '0' : openFilter ? '32px' : '0'
 						}}>
 						<div className='select_box_custom'>
-							<span>
-								{filters?.year || yearTitle} <AngleArrow />
-							</span>
+							<label>Model year</label>
 							<div>
-								<ul>
-									<li>
-										<button onClick={() => filterHandler('year', null)}>
-											clear
-										</button>
-									</li>
-									{filterData?.years?.map(item => (
+								<span>
+									{filters?.year || yearTitle} <SelectBoxAngleArrow   />
+								</span>
+								<div>
+									<ul>
 										<li>
-											<button onClick={() => filterHandler('year', item)}>
-												{item}
+											<button onClick={() => filterHandler('year', null)}>
+												clear
 											</button>
 										</li>
-									))}
-								</ul>
+										{filterData?.years?.map(item => (
+											<li>
+												<button onClick={() => filterHandler('year', item)}>
+													{item}
+												</button>
+											</li>
+										))}
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div className='select_box_custom product_select_box'>
-							<span>
-								{filters?.product || categoryTitle}
-								<AngleArrow />
-							</span>
+							<label>Product select</label>
 							<div>
-								<ul>
-									<li>
-										<button onClick={() => filterHandler('product', null)}>
-											clear
-										</button>
-									</li>
-									{filterData?.tags?.map(item => (
+								<span>
+									{filters?.product || categoryTitle}
+									<SelectBoxAngleArrow />
+								</span>
+								<div>
+									<ul>
 										<li>
-											<button onClick={() => filterHandler('product', item)}>
-												{item}
+											<button onClick={() => filterHandler('product', null)}>
+												clear
 											</button>
 										</li>
-									))}
-								</ul>
+										{filterData?.tags?.map(item => (
+											<li>
+												<button onClick={() => filterHandler('product', item)}>
+													{item}
+												</button>
+											</li>
+										))}
+									</ul>
+								</div>
 							</div>
 						</div>
 						<div className='custom_input_box'>
-							<input onInput={inputChanged} placeholder={newsSearchTitle} />
-							<MagnifierIcon />
+							<label >search archive</label>
+							<div>
+								<input onInput={inputChanged} placeholder={newsSearchTitle} />
+								<MagnifierIcon />
+							</div>
 						</div>
 						<button>Reset Filter</button>
 					</div>
-					<button
-						className={!openFilter && 'close_button'}
-						onClick={() => setOpenFilter(state => !state)}>
-						Filters
-						<AngleArrow />
-					</button>
 				</div>
 			</div>
 		</div>
