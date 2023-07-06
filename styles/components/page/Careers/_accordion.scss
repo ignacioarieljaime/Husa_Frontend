@@ -16,10 +16,24 @@
 		.faq-accordion-button {
 			padding: 37px 40px 30px !important;
 			span {
-				svg path {
-					transition: all 0.5s 0.3s ease;
-					transform-origin: center center;
-					fill: #00aaa6 !important;
+				width: 50px;
+				height: 50px;
+				display: flex;
+				background: #00aaa6;
+				border-radius: 100%;
+				-webkit-border-radius: 100%;
+				-moz-border-radius: 100%;
+				-ms-border-radius: 100%;
+				-o-border-radius: 100%;
+				justify-content: center;
+				align-items: center;
+				svg {
+					background-color: transparent !important;
+					path {
+						transition: all 0.5s 0.3s ease;
+						transform-origin: center center;
+						fill: #fff !important;
+					}
 				}
 			}
 			@include mq(768) {
@@ -36,6 +50,10 @@
 		&:last-child,
 		&:last-of-type {
 			border-bottom: none;
+		}
+		> a{
+
+			margin-top: 25px;
 		}
 		@include mq(768) {
 			padding: 24px !important;
