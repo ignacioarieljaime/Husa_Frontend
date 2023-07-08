@@ -103,6 +103,7 @@
 
 		img {
 			margin: 0 auto;
+			height: auto;
 
 			@include media-breakpoint-up(lg) {
 				margin: initial;

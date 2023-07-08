@@ -1,0 +1,89 @@
+@import '../../page/ULEDX/settings';
+
+.buyNow {
+	height: rem-calc(500);
+
+	@include media-breakpoint-up(md) {
+		height: rem-calc(700);
+	}
+
+	.container {
+		background-image: url('/assets/uledx-assets/images/backgrounds/large-wave@3x.webp');
+		background-size: 165%;
+		background-repeat: no-repeat;
+		background-position: center;
+		padding-bottom: rem-calc(130);
+		padding-top: rem-calc(150);
+
+		@include media-breakpoint-up(md) {
+			background-size: 120%;
+			background-position: top;
+			padding-bottom: rem-calc(280);
+			padding-top: rem-calc(280);
+		}
+	}
+
+	&Content {
+		align-items: center;
+		color: $white;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		width: 100%;
+
+		img {
+			display: block;
+			margin: rem-calc(0 0 20);
+			height: auto;
+
+			&.logo {
+				max-width: rem-calc(120);
+				width: 100%;
+
+				@include media-breakpoint-up(md) {
+					max-width: rem-calc(202);
+				}
+			}
+
+			&.uled {
+				max-width: rem-calc(240);
+				width: 100%;
+
+				@include media-breakpoint-up(md) {
+					max-width: rem-calc(409);
+				}
+			}
+		}
+
+		p {
+			@include textGradient(#ddcfaf, #aa7e46, #aa7e46, 180deg);
+			font-size: rem-calc(19);
+			font-weight: 300;
+			line-height: 1.6;
+			letter-spacing: 4.75px;
+			text-transform: uppercase;
+
+			@include media-breakpoint-up(md) {
+				letter-spacing: 4.75px;
+			}
+		}
+	}
+
+	.cta {
+		background-color: $teal;
+		border-radius: rem-calc(15);
+		border: none;
+		display: inline;
+		height: 40px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $white;
+		font-size: rem-calc(17);
+		line-height: 2.94;
+		letter-spacing: 5.95px;
+		padding: rem-calc(5 70);
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+}
