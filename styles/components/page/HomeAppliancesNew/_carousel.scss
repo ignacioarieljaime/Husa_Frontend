@@ -1,0 +1,62 @@
+.ha_carousel {
+	padding: 100px 0 80px;
+	background: #181818;
+	> .title {
+		max-width: 700px;
+		margin: 0 auto 60px;
+		* {
+			font-size: 60px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 68px;
+			color: #fff;
+			letter-spacing: -1.2px;
+			@include mq(768) {
+				line-height: 42px;
+				font-size: 34px;
+			}
+			u {
+				color: #00aaa6;
+				text-decoration: none;
+			}
+		}
+	}
+	.slider {
+		padding: 0 12px;
+		.slider_item {
+			max-width: 280px;
+			.slider_image_wrapper {
+				background-color: #2a2a2a;
+				border-radius: 20px;
+				padding: 24px;
+				margin-bottom: 16px;
+				.slider_image {
+				}
+			}
+			.title {
+				font-size: 24px;
+				font-style: normal;
+				font-weight: 400;
+				margin-bottom: 16px;
+				line-height: 32px;
+				letter-spacing: -0.4px;
+				color: #fff;
+			}
+			.subtitle {
+				font-size: 20px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 25px;
+				letter-spacing: -0.4px;
+				margin-bottom: 20px;
+				color: #00aaa6;
+			}
+		}
+	}
+	.bottom_button {
+		max-width: 500px;
+		padding: 52px 12px 0;
+		margin: 60px auto 0;
+		border-top: 1px solid #646464;
+	}
+}
