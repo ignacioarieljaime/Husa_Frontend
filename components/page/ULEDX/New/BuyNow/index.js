@@ -6,6 +6,7 @@ import hisenseLogo from 'public/assets/uledx-assets/images/hero/hisense.svg'
 import productLogo from 'public/assets/uledx-assets/images/hero/uled@3x.webp'
 import productImage from 'public/assets/uledx-assets/images/product/slide-tv-frame@3x.webp'
 import { useState } from 'react'
+import ModalChanelAdviser from 'components/page/Product/ModalChanelAdviser'
 
 const BuyNow = ({ pim }) => {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
