@@ -2,20 +2,16 @@ import Link from 'next/link'
 import React from 'react'
 
 const HomeAppliancesImageBox = ({ data }) => {
-	const structure = {}
+	const { structure } = data
 	return (
 		<section>
 			<div className='ha_image_box'>
 				<div className='content'>
-					<div
-						className='subtitle'
-						dangerouslySetInnerHTML={{
-							__html: '<p>Hisense Kitchen Packages</p>'
-						}}></div>
+					<p className='subtitle'>{structure?.subtitle?.value}</p>
 					<h2
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: '<p>Build your kitchen suite.</p>'
+							__html: structure?.title?.value
 						}}></h2>
 					<Link
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
@@ -26,8 +22,7 @@ const HomeAppliancesImageBox = ({ data }) => {
 							}
 							style={{ width: '150px' }}
 							className='black text-nowrap n-btn d-block mx-auto mb-14 '>
-							{/* {structure?.link?.title} */}
-							Shop now
+							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img
 									style={{ marginLeft: '10px' }}
@@ -37,8 +32,8 @@ const HomeAppliancesImageBox = ({ data }) => {
 						</a>
 					</Link>
 					<img
-						src='https://files.hisense-usa.com/storage/hisense/asset/images/6649b05ee00926.webp'
-						alt='s'
+						src={structure?.image?.src}
+						alt={structure?.image?.alt}
 						width={'100%'}
 						className='image'
 					/>

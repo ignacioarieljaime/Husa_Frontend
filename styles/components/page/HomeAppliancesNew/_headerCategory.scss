@@ -10,14 +10,14 @@
 		@include mq(768) {
 			flex-wrap: wrap;
 		}
-		.title {
+		.title * {
 			font-size: 34px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: 42px;
 			letter-spacing: -0.48px;
 			color: #000;
-			// width: 30%;
+			margin: 0;
 		}
 		.category {
 			padding: 0;
@@ -51,6 +51,7 @@
 				}
 				img {
 					width: 100px;
+					margin-bottom: 16px;
 					@include mq(768) {
 						width: 100%;
 					}

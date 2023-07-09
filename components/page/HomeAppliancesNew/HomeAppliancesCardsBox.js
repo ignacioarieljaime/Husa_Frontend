@@ -1,46 +1,68 @@
+import { useAspectRatio } from 'hooks/useAspectRatio'
 import Link from 'next/link'
 import React from 'react'
 
 const HomeAppliancesCardsBox = ({ data }) => {
-	const structure = {}
+	const { structure } = data
+
+	const ratio1 = useAspectRatio(structure?.block1?.value?.image?.src)
+	const ratio2 = useAspectRatio(structure?.block2?.value?.image?.src)
+
 	// theme
 	return (
 		<section>
 			<div className='ha_cards_box text-center'>
 				<div className='cards'>
-					<div className='item colorful'>
+					<div
+						className={`item colorful ${structure?.block1?.value?.theme?.value}`}>
 						<div className='content'>
-							<h4 className='title'>Dishwasher</h4>
+							<h4
+								className='title'
+								dangerouslySetInnerHTML={{
+									__html: structure?.block1?.value?.title?.value
+								}}></h4>
 							<img
-								src='https://files.hisense-usa.com/storage/hisense/pim/images/126390396d5fb40.png'
-								alt='s'
-								width={'50%'}
+								src={structure?.block1?.value?.image?.src}
+								alt={structure?.block1?.value?.image?.alt}
+								width={
+									ratio1 > 1
+										? ((ratio1 - 0.8) * 100).toFixed(2) + '%'
+										: ((ratio1 - 0.3) * 100).toFixed(2) + '%'
+								}
 								className='logo'
 							/>
 							<div>
 								<h5
 									className='subtitle'
 									dangerouslySetInnerHTML={{
-										__html:
-											'<p>Incredibly quiet and tough on <u> dirty dishes</u></p>'
+										__html: structure?.block1?.value?.text?.value
 									}}></h5>
 
 								<Link
 									target={
-										structure?.link?.target ? structure?.link?.target : '_self'
+										structure?.block1?.value?.link?.target
+											? structure?.block1?.value?.link?.target
+											: '_self'
 									}
-									href={structure?.link?.value ? structure?.link?.value : '/'}>
+									href={
+										structure?.block1?.value?.link?.value
+											? structure?.block1?.value?.link?.value
+											: '/'
+									}>
 									<a
 										target={
-											structure?.link?.target
-												? structure?.link?.target
+											structure?.block1?.value?.link?.target
+												? structure?.block1?.value?.link?.target
 												: '_self'
 										}
 										style={{ width: '150px' }}
-										className='black text-nowrap n-btn d-block mx-auto  '>
-										{/* {structure?.link?.title} */}
-										Shop now
-										{structure?.link?.target === '_blank' && (
+										className={`text-nowrap n-btn d-block mx-auto ${
+											structure?.block1?.value?.theme?.value === 'dark'
+												? 'black'
+												: ' white'
+										}`}>
+										{structure?.block1?.value?.link?.title}
+										{structure?.block1?.value?.link?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}
@@ -51,44 +73,60 @@ const HomeAppliancesCardsBox = ({ data }) => {
 							</div>
 						</div>
 					</div>
-					<div className='item'>
+					<div className={`item ${structure?.block2?.value?.theme?.value}`}>
 						<img
-							src='https://files.hisense-usa.com/storage/hisense/asset/images/6649b05ee00926.webp'
-							alt='s'
+							src={structure?.block2?.value?.backgroundImage?.src}
+							alt={structure?.block2?.value?.backgroundImage?.alt}
 							width={'100%'}
 							className='image'
 						/>
 						<div className='content'>
-							<h4 className='title'>Dishwasher</h4>
+							<h4
+								className='title'
+								dangerouslySetInnerHTML={{
+									__html: structure?.block2?.value?.title?.value
+								}}></h4>
 							<img
-								src='https://files.hisense-usa.com/storage/hisense/asset/images/6636b52ac784b0.webp'
-								alt='s'
-								width={'50%'}
+								src={structure?.block2?.value?.image?.src}
+								alt={structure?.block2?.value?.image?.alt}
+								width={
+									ratio2 > 1
+										? ((ratio2 - 0.8) * 100).toFixed(2) + '%'
+										: ((ratio2 - 0.3) * 100).toFixed(2) + '%'
+								}
 								className='logo'
 							/>
 							<div>
 								<h5
 									className='subtitle'
 									dangerouslySetInnerHTML={{
-										__html:
-											'<p>Incredibly quiet and tough on <u> dirty dishes</u></p>'
+										__html: structure?.block2?.value?.text?.value
 									}}></h5>
 								<Link
 									target={
-										structure?.link?.target ? structure?.link?.target : '_self'
+										structure?.block2?.value?.link?.target
+											? structure?.block2?.value?.link?.target
+											: '_self'
 									}
-									href={structure?.link?.value ? structure?.link?.value : '/'}>
+									href={
+										structure?.block2?.value?.link?.value
+											? structure?.block2?.value?.link?.value
+											: '/'
+									}>
 									<a
 										target={
-											structure?.link?.target
-												? structure?.link?.target
+											structure?.block2?.value?.link?.target
+												? structure?.block2?.value?.link?.target
 												: '_self'
 										}
 										style={{ width: '150px' }}
-										className='black text-nowrap n-btn d-block mx-auto  '>
-										{/* {structure?.link?.title} */}
-										Shop now
-										{structure?.link?.target === '_blank' && (
+										className={`text-nowrap n-btn d-block mx-auto ${
+											structure?.block2?.value?.theme?.value === 'dark'
+												? 'black'
+												: ' white'
+										}`}>
+										{structure?.block2?.value?.link?.title}
+										{structure?.block2?.value?.link?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}

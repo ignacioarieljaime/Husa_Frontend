@@ -2,15 +2,15 @@ import Link from 'next/link'
 import React from 'react'
 
 const HomeAppliancesSingleCardBanner = ({ data }) => {
-	const structure = {}
+	const { structure } = data
 
 	return (
 		<section>
 			<div className='ha_single_cards_box text-center'>
 				<div className='card text-center'>
 					<img
-						src='https://files.hisense-usa.com/storage/hisense/asset/images/6649b05ee00926.webp'
-						alt='s'
+						src={structure?.badge?.src}
+						alt={structure?.badge?.alt}
 						width={'160'}
 						height={'210'}
 						className='little_img'
@@ -18,13 +18,12 @@ const HomeAppliancesSingleCardBanner = ({ data }) => {
 					<h2
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html:
-								'<p>Buy with confidence with an industry leading <u>2-Year Warranty</u> on Parts & Labor*</p>'
+							__html: structure?.title?.value
 						}}></h2>
 				</div>
 				<img
-					src='https://files.hisense-usa.com/storage/hisense/pim/images/126390396d5fb40.png'
-					alt='s'
+					src={structure?.image?.src}
+					alt={structure?.image?.alt}
 					width={'90%'}
 					className='image'
 				/>
@@ -35,8 +34,7 @@ const HomeAppliancesSingleCardBanner = ({ data }) => {
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
 						style={{ width: '150px' }}
 						className='black text-nowrap n-btn d-block mx-auto link_btn'>
-						{/* {structure?.link?.title} */}
-						Shop now
+						{structure?.link?.title}
 						{structure?.link?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
 						)}

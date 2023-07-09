@@ -1,20 +1,23 @@
 import React from 'react'
 
 const HomeAppliancesHeaderCategory = ({ data }) => {
+	const { structure } = data
 	return (
 		<section>
 			<div className='ha_header_cat'>
 				<div className='content'>
-					<h4 className='title'>Home Appliances</h4>
+					<h4
+						className='title'
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h4>
 					<ul className='category'>
-						{[{}, {}, {}, {}].map((item, index) => (
-							<li>
+						{structure?.list?.value.map((item, index) => (
+							<li key={index}>
 								<img
-									src='https://files.hisense-usa.com/storage/hisense/asset/images/663d94b1fd4200.webp'
-									alt='sd'
+									src={item?.image?.src}
+									alt={item?.image?.alt}
 									height={'100%'}
 								/>
-								<h6>Dishwashers</h6>
+								<h6>{item?.title?.value}</h6>
 							</li>
 						))}
 					</ul>

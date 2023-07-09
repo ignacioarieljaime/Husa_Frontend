@@ -19,16 +19,13 @@
 	}
 	> .subtitle {
 		margin-bottom: 24px;
-		* {
-			font-style: normal;
-			font-weight: 400;
-			color: #00aaa6;
-			margin: 0;
-			letter-spacing: 3px;
-			text-transform: uppercase;
-			font-size: 16px;
-			line-height: 22px;
-		}
+		font-style: normal;
+		font-weight: 400;
+		color: #00aaa6;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		font-size: 16px;
+		line-height: 22px;
 	}
 	.cards {
 		max-width: 1460px;
@@ -45,6 +42,18 @@
 			position: relative;
 			border-radius: 30px;
 			overflow: hidden;
+			&.dark {
+				.content {
+					.title * {
+						color: #000;
+					}
+					.subtitle {
+						* {
+							color: #000;
+						}
+					}
+				}
+			}
 			&::after {
 				content: '';
 				position: absolute;
@@ -78,7 +87,7 @@
 				@include mq(991) {
 					padding: 52px 16px 40px;
 				}
-				.title {
+				.title * {
 					font-size: 34px;
 					line-height: 42px;
 					font-style: normal;
@@ -130,35 +139,6 @@
 .ha_cards_box {
 	padding: 140px 16px;
 	background-color: #e8e9ef;
-	> .title {
-		margin-bottom: 48px;
-		* {
-			font-size: 60px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 68px;
-			color: #000;
-			letter-spacing: -1.2px;
-			margin: 0;
-			@include mq(768) {
-				line-height: 58px;
-				font-size: 48px;
-			}
-		}
-	}
-	> .subtitle {
-		margin-bottom: 24px;
-		* {
-			font-style: normal;
-			font-weight: 400;
-			color: #00aaa6;
-			margin: 0;
-			letter-spacing: 3px;
-			text-transform: uppercase;
-			font-size: 16px;
-			line-height: 22px;
-		}
-	}
 	.cards {
 		max-width: 1460px;
 		margin: 0 auto;
@@ -169,6 +149,18 @@
 			grid-template-columns: 1fr;
 		}
 		.item {
+			&.dark {
+				.content {
+					.title * {
+						color: #000;
+					}
+					.subtitle {
+						* {
+							color: #000;
+						}
+					}
+				}
+			}
 			height: 0;
 			padding-top: 110%;
 			position: relative;
@@ -218,9 +210,10 @@
 				}
 				.logo {
 					max-width: 400px;
+					height: auto;
 					margin: 0 auto;
 				}
-				.title {
+				.title * {
 					font-size: 34px;
 					line-height: 42px;
 					font-style: normal;

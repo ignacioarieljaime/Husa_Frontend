@@ -7,26 +7,17 @@ import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 
 const HomeAppliancesCarousel = ({ data }) => {
-	// const { structure } = data
-	// background-color: #f4f5f7;
-	// theme
-	const structure = {}
+	const { structure } = data
 
 	const windowSize = useWindowSize()
 	return (
 		<section>
-			<div className='ha_carousel text-center'>
-				{
-					<div
-						className='subtitle'
-						dangerouslySetInnerHTML={{
-							__html: '<p>beautifully designed & incredibly spacious</p>'
-						}}></div>
-				}
+			<div className={`ha_carousel text-center ${structure?.theme?.value}`}>
+				{<div className='subtitle'>{structure?.subtitle?.value}</div>}
 				<h3
 					className='title'
 					dangerouslySetInnerHTML={{
-						__html: '<p>Find appliances <u>made with you in mind</u></p>'
+						__html: structure?.title?.value
 					}}></h3>
 				<Swiper
 					pagination={false}
@@ -40,38 +31,39 @@ const HomeAppliancesCarousel = ({ data }) => {
 							className='slider_item'
 							style={{ width: '200px' }}></SwiperSlide>
 					)}
-					{[{}, {}, {}, {}, {}, {}, {}, {}, {}].map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider_item'>
 							<div className='slider_image_wrapper mb-6'>
 								<CustomImage
-									src={
-										'https://files.hisense-usa.com/storage/hisense/asset/images/663d94b1fd4200.webp'
-									}
+									src={item?.image?.src}
 									alt={item?.image?.alt}
 									imageClass={'slider_image my-auto'}
 									wrapperHeight={'auto'}
 									wrapperWidth={'100%'}
 								/>
 							</div>
-							<h4 className='title'>Dishwashers</h4>
-							<p className='subtitle'>CLEAN & QUIET</p>
-							<Link
-								target={item?.link?.target ? item?.link?.target : '_self'}
-								href={item?.link?.value ? item?.link?.value : '/'}>
-								<a
+							<div>
+								<h4 className='title'>{item?.title?.value}</h4>
+								<p className='subtitle'>{item?.subtitle?.value}</p>
+								<Link
 									target={item?.link?.target ? item?.link?.target : '_self'}
-									style={{ width: '150px' }}
-									className={`text-nowrap n-btn d-block mx-auto white`}>
-									{/* {item?.link?.title} */}
-									Shop now
-									{item?.link?.target === '_blank' && (
-										<img
-											style={{ marginLeft: '10px' }}
-											src={OpenPageOnNewTab.src}
-										/>
-									)}
-								</a>
-							</Link>
+									href={item?.link?.value ? item?.link?.value : '/'}>
+									<a
+										target={item?.link?.target ? item?.link?.target : '_self'}
+										style={{ width: '150px' }}
+										className={`text-nowrap n-btn d-block mx-auto ${
+											structure?.theme?.value === 'dark' ? 'white' : 'black'
+										}`}>
+										{item?.link?.title}
+										{item?.link?.target === '_blank' && (
+											<img
+												style={{ marginLeft: '10px' }}
+												src={OpenPageOnNewTab.src}
+											/>
+										)}
+									</a>
+								</Link>
+							</div>
 						</SwiperSlide>
 					))}
 				</Swiper>
@@ -88,8 +80,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 								}
 								style={{ width: '150px' }}
 								className='primary text-nowrap n-btn d-block mx-auto '>
-								{/* {structure?.link?.title} */}
-								Shop now
+								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img
 										style={{ marginLeft: '10px' }}

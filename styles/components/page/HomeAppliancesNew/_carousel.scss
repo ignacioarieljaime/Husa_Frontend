@@ -1,10 +1,14 @@
 .ha_carousel {
 	padding: 100px 0 80px;
 	background: #181818;
-	&.dark {
+	&.light {
+		background: #f4f5f7;
 		> .title {
 			* {
-				color: #fff;
+				color: #000;
+				u {
+					color: #00aaa6;
+				}
 			}
 		}
 		.slider {
@@ -37,26 +41,36 @@
 	}
 	> .subtitle {
 		margin-bottom: 36px;
-		* {
-			font-style: normal;
-			font-weight: 400;
-			color: #00aaa6;
-			margin: 0;
-			letter-spacing: 3px;
-			text-transform: uppercase;
-			font-size: 16px;
-			line-height: 22px;
-		}
+		font-style: normal;
+		font-weight: 400;
+		color: #00aaa6;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		font-size: 16px;
+		line-height: 22px;
 	}
 	.slider {
 		padding: 0 12px;
+		.swiper-wrapper {
+			align-items: stretch;
+			height: 100%;
+		}
 		.slider_item {
+			height: 100%;
 			max-width: 280px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
 			.slider_image_wrapper {
 				background-color: #2a2a2a;
 				border-radius: 20px;
 				padding: 24px;
 				margin-bottom: 16px;
+				height: 280px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				.slider_image {
 				}
 			}

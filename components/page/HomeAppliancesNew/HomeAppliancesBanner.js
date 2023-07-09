@@ -2,9 +2,8 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 import React from 'react'
 
 const HomeAppliancesBanner = ({ data }) => {
-	const aspectRatio = useAspectRatio(
-		'https://files.hisense-usa.com/storage/hisense/asset/images/6649b05ee00926.webp'
-	)
+	const { structure } = data
+	const aspectRatio = useAspectRatio(structure?.image?.src)
 	return (
 		<section>
 			<div
@@ -14,20 +13,13 @@ const HomeAppliancesBanner = ({ data }) => {
 						? { paddingTop: (aspectRatio * 100).toFixed(2) + '%' }
 						: {}
 				}>
-				<img
-					src='https://files.hisense-usa.com/storage/hisense/asset/images/6649b05ee00926.webp'
-					alt='s'
-				/>
+				<img src={structure?.image?.src} alt={structure?.image?.alt} />
 				<div className='content'>
-					<h4
-						className='subtitle'
-						dangerouslySetInnerHTML={{
-							__html: '<p>HISENSE HOME APPLIANCES</p>'
-						}}></h4>
+					<h4 className='subtitle'>{structure?.subtitle?.value}</h4>
 					<h1
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: '<p>Dreamy appliances for your dream kitchen</p>'
+							__html: structure?.title?.value
 						}}></h1>
 				</div>
 			</div>
