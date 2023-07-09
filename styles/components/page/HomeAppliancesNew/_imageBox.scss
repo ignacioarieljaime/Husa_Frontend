@@ -1,0 +1,43 @@
+.ha_image_box {
+	padding: 100px 16px;
+	text-align: center;
+	background-color: #f4f5f7;
+	.content {
+		max-width: 1460px;
+		margin: 0 auto;
+
+		.title {
+			margin-bottom: 24px;
+			* {
+				font-size: 60px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 68px;
+				color: #000;
+				letter-spacing: -1.2px;
+				margin: 0;
+				@include mq(768) {
+					line-height: 58px;
+					font-size: 48px;
+				}
+			}
+		}
+		.subtitle {
+			margin-bottom: 24px;
+			* {
+				font-style: normal;
+				font-weight: 400;
+				color: #00aaa6;
+				margin: 0;
+				letter-spacing: 3px;
+				text-transform: uppercase;
+				font-size: 16px;
+				line-height: 22px;
+			}
+		}
+		.image {
+			border-radius: 30px;
+			object-fit: cover;
+		}
+	}
+}

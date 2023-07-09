@@ -8,17 +8,26 @@ import { useWindowSize } from 'hooks/useWindowSize'
 
 const HomeAppliancesCarousel = ({ data }) => {
 	// const { structure } = data
+	// background-color: #f4f5f7;
+	// theme
 	const structure = {}
 
 	const windowSize = useWindowSize()
 	return (
 		<section>
 			<div className='ha_carousel text-center'>
-				<h2
+				{
+					<div
+						className='subtitle'
+						dangerouslySetInnerHTML={{
+							__html: '<p>beautifully designed & incredibly spacious</p>'
+						}}></div>
+				}
+				<h3
 					className='title'
 					dangerouslySetInnerHTML={{
 						__html: '<p>Find appliances <u>made with you in mind</u></p>'
-					}}></h2>
+					}}></h3>
 				<Swiper
 					pagination={false}
 					slidesPerView={'auto'}
@@ -52,7 +61,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 								<a
 									target={item?.link?.target ? item?.link?.target : '_self'}
 									style={{ width: '150px' }}
-									className='white text-nowrap n-btn d-block mx-auto '>
+									className={`text-nowrap n-btn d-block mx-auto white`}>
 									{/* {item?.link?.title} */}
 									Shop now
 									{item?.link?.target === '_blank' && (
@@ -66,27 +75,31 @@ const HomeAppliancesCarousel = ({ data }) => {
 						</SwiperSlide>
 					))}
 				</Swiper>
-				<div className='bottom_button'>
-					<Link
-						target={structure?.link?.target ? structure?.link?.target : '_self'}
-						href={structure?.link?.value ? structure?.link?.value : '/'}>
-						<a
+				{structure?.link?.value && (
+					<div className='bottom_button'>
+						<Link
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							style={{ width: '150px' }}
-							className='primary text-nowrap n-btn d-block mx-auto '>
-							{/* {structure?.link?.title} */}
-							Shop now
-							{structure?.link?.target === '_blank' && (
-								<img
-									style={{ marginLeft: '10px' }}
-									src={OpenPageOnNewTab.src}
-								/>
-							)}
-						</a>
-					</Link>
-				</div>
+							href={structure?.link?.value ? structure?.link?.value : '/'}>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								style={{ width: '150px' }}
+								className='primary text-nowrap n-btn d-block mx-auto '>
+								{/* {structure?.link?.title} */}
+								Shop now
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
+							</a>
+						</Link>
+					</div>
+				)}
 			</div>
 		</section>
 	)

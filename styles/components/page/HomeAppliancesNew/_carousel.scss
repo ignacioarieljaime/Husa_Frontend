@@ -1,14 +1,28 @@
 .ha_carousel {
 	padding: 100px 0 80px;
 	background: #181818;
+	&.dark {
+		> .title {
+			* {
+				color: #fff;
+			}
+		}
+		.slider {
+			.slider_item {
+				.title {
+					color: #000;
+				}
+			}
+		}
+	}
 	> .title {
 		max-width: 700px;
 		margin: 0 auto 60px;
 		* {
-			font-size: 60px;
 			font-style: normal;
 			font-weight: 400;
-			line-height: 68px;
+			line-height: 58px;
+			font-size: 48px;
 			color: #fff;
 			letter-spacing: -1.2px;
 			@include mq(768) {
@@ -19,6 +33,19 @@
 				color: #00aaa6;
 				text-decoration: none;
 			}
+		}
+	}
+	> .subtitle {
+		margin-bottom: 36px;
+		* {
+			font-style: normal;
+			font-weight: 400;
+			color: #00aaa6;
+			margin: 0;
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			font-size: 16px;
+			line-height: 22px;
 		}
 	}
 	.slider {
@@ -43,13 +70,15 @@
 				color: #fff;
 			}
 			.subtitle {
-				font-size: 20px;
 				font-style: normal;
 				font-weight: 400;
-				line-height: 25px;
-				letter-spacing: -0.4px;
-				margin-bottom: 20px;
 				color: #00aaa6;
+				margin: 0;
+				letter-spacing: 2.4px;
+				text-transform: uppercase;
+				font-size: 14px;
+				line-height: 20px;
+				margin-bottom: 20px;
 			}
 		}
 	}
