@@ -20,8 +20,8 @@ const HomeAppliancesImageBox = ({ data }) => {
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							style={{ width: '150px' }}
-							className='black w-fit n-btn d-block mx-auto mb-14 px-5 py-3'>
+							style={{ width: '150px', marginBottom: '54px' }}
+							className='black w-fit n-btn d-block mx-auto px-5 py-3'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

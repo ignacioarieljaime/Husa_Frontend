@@ -1,9 +1,12 @@
 .ha_image_box {
-	padding: 100px 16px;
+	padding: 100px 16px 128px;
+	@include mq(768) {
+		padding: 80px 16px 96px;
+	}
 	text-align: center;
 	background-color: #f4f5f7;
 	.content {
-		max-width: 1460px;
+		max-width: 1340px;
 		margin: 0 auto;
 
 		.title {

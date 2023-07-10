@@ -14,7 +14,9 @@ const HomeAppliancesCarousel = ({ data }) => {
 	return (
 		<section>
 			<div className={`ha_carousel text-center ${structure?.theme?.value}`}>
-				{<div className='subtitle'>{structure?.subtitle?.value}</div>}
+				{structure?.subtitle?.value && (
+					<div className='subtitle'>{structure?.subtitle?.value}</div>
+				)}
 				<h3
 					className='title'
 					dangerouslySetInnerHTML={{
@@ -30,7 +32,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 					{windowSize[0] > 768 && (
 						<SwiperSlide
 							className='slider_item'
-							style={{ width: '200px' }}></SwiperSlide>
+							style={{ width: '260px' }}></SwiperSlide>
 					)}
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider_item'>
@@ -80,7 +82,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
 								style={{ width: '150px' }}
-								className='primary text-nowrap n-btn d-block mx-auto '>
+								className='primary text-nowrap n-btn d-block mx-auto w-fit px-5 py-3'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

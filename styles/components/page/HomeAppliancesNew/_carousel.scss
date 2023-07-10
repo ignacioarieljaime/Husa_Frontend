@@ -25,13 +25,13 @@
 		* {
 			font-style: normal;
 			font-weight: 400;
-			line-height: 58px;
-			font-size: 48px;
+			line-height: 78px;
+			font-size: 60px;
 			color: #fff;
 			letter-spacing: -1.2px;
 			@include mq(768) {
-				line-height: 42px;
-				font-size: 34px;
+				line-height: 32px;
+				font-size: 24px;
 			}
 			u {
 				color: #00aaa6;
@@ -64,7 +64,7 @@
 			align-items: center;
 			text-align: center;
 			.slider_image_box {
-				margin-bottom: 16px;
+				margin-bottom: 20px;
 				background-color: #2a2a2a;
 				border-radius: 20px;
 				padding: 24px;
@@ -92,11 +92,11 @@
 				}
 			}
 			.title {
-				font-size: 24px;
+				font-size: 18px;
 				font-style: normal;
 				font-weight: 400;
 				margin-bottom: 16px;
-				line-height: 32px;
+				line-height: 28px;
 				letter-spacing: -0.4px;
 				color: #fff;
 			}
