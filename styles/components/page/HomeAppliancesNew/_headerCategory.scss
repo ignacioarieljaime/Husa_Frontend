@@ -1,5 +1,5 @@
 .ha_header_cat {
-	background-color: #f4f5f7;
+	background-color: #fffffd;
 	padding: 32px 16px;
 	.content {
 		display: flex;
@@ -49,11 +49,16 @@
 				@include mq(575) {
 					width: 40%;
 				}
-				img {
-					width: 100px;
-					margin-bottom: 16px;
-					@include mq(768) {
-						width: 100%;
+				.image {
+					height: 0;
+					padding-top: 60%;
+					position: relative;
+					img {
+						width: 100px;
+						margin-bottom: 16px;
+						@include mq(768) {
+							width: 100%;
+						}
 					}
 				}
 				h6 {

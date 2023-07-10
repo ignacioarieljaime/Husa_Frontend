@@ -12,11 +12,13 @@ const HomeAppliancesHeaderCategory = ({ data }) => {
 					<ul className='category'>
 						{structure?.list?.value.map((item, index) => (
 							<li key={index}>
-								<img
-									src={item?.image?.src}
-									alt={item?.image?.alt}
-									height={'100%'}
-								/>
+								<div className='image'>
+									<img
+										src={item?.image?.src}
+										alt={item?.image?.alt}
+										height={'100%'}
+									/>
+								</div>
 								<h6>{item?.title?.value}</h6>
 							</li>
 						))}
