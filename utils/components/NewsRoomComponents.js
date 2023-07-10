@@ -34,5 +34,9 @@ module.exports.NewsRoomComponents = [
 	{
 		name: 'NewsPressArchive ',
 		path: 'components/page/NewsRoom/SingleNews/NewsPressArchive'
+	},
+	{
+		name: 'NewsRoomMainBox ',
+		path: 'components/page/NewsRoom/NewsRoomMainBox'
 	}
 ]

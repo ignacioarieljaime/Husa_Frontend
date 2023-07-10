@@ -46,13 +46,19 @@ const NewsSingleSlider = ({ data }) => {
 									onClick={() =>
 										setImageUrl(imageUrl ? null : item?.image?.src)
 									}>
-									{item?.EnlargeBtn?.value} <ResizeIcon />
+									<span style={{ paddingTop: '3px' }}>
+										{item?.EnlargeBtn?.value}{' '}
+									</span>
+									<ResizeIcon />
 								</button>
 								<a
 									className='n-btn outline-white'
 									download={true}
 									href={item?.image?.src}>
-									{item?.downloadBtn?.title} <DownloadIconV2 />
+									<span style={{ paddingTop: '3px' }}>
+										{item?.downloadBtn?.title}
+									</span>{' '}
+									<DownloadIconV2 />
 								</a>
 							</div>
 

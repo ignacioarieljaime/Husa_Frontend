@@ -97,7 +97,9 @@ const NewsPressArchive = ({ data }) => {
 											/>
 										</div>
 										<div className='text_box'>
-											<span className='subject'>{item?.tags.join(' ')}</span>
+											{item?.tags.map(item => (
+												<span className='subject'>{item}</span>
+											))}
 
 											<h5>
 												<Link href={item?.route || '/'}>

@@ -1,6 +1,11 @@
 .news_room_slider {
 	// padding-top: 87px;
-	padding-bottom: 124px;
+	height: 700px;
+	// padding-bottom: 124px;
+
+	@include mq(768) {
+		height: 390px;
+	}
 	h3 {
 		font-style: normal;
 		font-weight: 400;
@@ -14,10 +19,18 @@
 		}
 	}
 	.news_room_slider_box {
+		height: 700px;
+		@include mq(768) {
+			height: 390px;
+		}
 		.swiper-slide {
 			width: 100%;
 			// max-width: 1112px;
-			padding-bottom: 35px;
+			// padding-bottom: 35px;
+			height: 700px;
+			@include mq(768) {
+				height: 390px;
+			}
 
 			.slider_item {
 				height: 0px;
@@ -28,7 +41,7 @@
 				position: relative;
 				overflow: hidden;
 				position: relative;
-				padding-top: 49%;
+				height: 700px;
 				.slider_bg {
 					position: absolute;
 					left: 0;
@@ -142,7 +155,10 @@
 		}
 
 		.swiper-pagination {
-			bottom: 25px;
+			bottom: 79px;
+			@include mq(768) {
+				bottom: 32px;
+			}
 			.swiper-pagination-bullet {
 				width: 98px;
 				height: 5px;
@@ -168,6 +184,7 @@
 		}
 		.swiper-button-prev {
 			left: calc(200px + 9%);
+			padding-right: 7px;
 			@include mq(1920) {
 				left: calc(130px + 3%);
 			}
@@ -176,10 +193,12 @@
 			}
 			@include mq(768) {
 				left: calc(12px + 3%);
+				padding-right: 2px;
 			}
 		}
 		.swiper-button-next {
 			right: calc(200px + 9%);
+			padding-left: 7px;
 			@include mq(1920) {
 				right: calc(130px + 3%);
 			}
@@ -188,6 +207,8 @@
 			}
 			@include mq(768) {
 				right: calc(12px + 3%);
+				padding-left: 2px;
+
 			}
 		}
 		.swiper-button-prev,
@@ -196,10 +217,8 @@
 			// 	width: 32px;
 			// 	height: 32px;
 			// }
-			bottom: 10px;
-			top: unset !important;
-			width: 50px;
-			height: 50px;
+			width: 75px;
+			height: 75px;
 			z-index: 11;
 			background: #00aaa6;
 			border-radius: 100%;
@@ -207,13 +226,22 @@
 			-moz-border-radius: 100%;
 			-ms-border-radius: 100%;
 			-o-border-radius: 100%;
+			@include mqm(768) {
+				transform: translateY(-50%);
+			}
+			@include mq(768) {
+				width: 50px;
+				height: 50px;
+				top: unset !important;
+				bottom: 20px !important;
+			}
 			&::after {
 				color: #ffffff;
-				font-size: 22px;
+				font-size: 30px;
 				font-weight: 900;
-				// @include mq(768) {
-				// 	font-size: 16px;
-				// }
+				@include mq(768) {
+					font-size: 16px;
+				}
 			}
 		}
 	}
