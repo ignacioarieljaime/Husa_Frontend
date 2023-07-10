@@ -144,7 +144,7 @@ const NewsRoomMainBox = ({ data }) => {
 				{!news && (
 					<Link
 						target={structure?.link?.target || '_self'}
-						href={structure?.link?.value || '/ّ'}>
+						href={structure?.link?.value || '/'}>
 						<a
 							target={structure?.link?.target || '_self'}
 							className='view_archive'>
