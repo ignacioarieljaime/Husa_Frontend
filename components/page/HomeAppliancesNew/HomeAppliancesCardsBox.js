@@ -90,9 +90,7 @@ const HomeAppliancesCardsBox = ({ data }) => {
 								src={structure?.block2?.value?.image?.src}
 								alt={structure?.block2?.value?.image?.alt}
 								width={
-									ratio2 > 1
-										? ((ratio2 - 0.8) * 100).toFixed(2) + '%'
-										: ((ratio2 - 0.3) * 100).toFixed(2) + '%'
+									ratio2 >= 1 ? '40%' : ((ratio2 - 0.4) * 100).toFixed(2) + '%'
 								}
 								className='logo'
 							/>

@@ -1,5 +1,5 @@
 import { useAspectRatio } from 'hooks/useAspectRatio'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import CustomImage from 'components/common/CustomImage'
@@ -10,6 +10,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 
 	const windowSize = useWindowSize()
+
 	return (
 		<section>
 			<div className={`ha_carousel text-center ${structure?.theme?.value}`}>
@@ -33,14 +34,14 @@ const HomeAppliancesCarousel = ({ data }) => {
 					)}
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider_item'>
-							<div className='slider_image_wrapper mb-6'>
-								<CustomImage
-									src={item?.image?.src}
-									alt={item?.image?.alt}
-									imageClass={'slider_image my-auto'}
-									wrapperHeight={'auto'}
-									wrapperWidth={'100%'}
-								/>
+							<div className='slider_image_box'>
+								<div className='slider_image_wrapper'>
+									<img
+										src={item?.image?.src}
+										alt={item?.image?.alt}
+										className={'slider_image my-auto'}
+									/>
+								</div>
 							</div>
 							<div>
 								<h4 className='title'>{item?.title?.value}</h4>
