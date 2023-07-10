@@ -117,6 +117,15 @@ const ProductsGridV2 = ({ data }) => {
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: text }}></div>
 			</div>
+			{width < 768 && (
+				<ProductFilterResponsive
+					selectedFilter={filters}
+					allFilters={filterList}
+					filterRequest={getProductHandler}
+					setFilters={setFilters}
+				/>
+			)}
+
 			<div className='products-v2 mx-3 mx-md-13'>
 				<div className='products-sorting d-none d-md-block'>
 					<DropDownSelectBox
@@ -129,7 +138,7 @@ const ProductsGridV2 = ({ data }) => {
 				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					{filterList && filterList.length !== 0 ? (
 						<div className='products-filtering me-md-12'>
-							{width > 768 ? (
+							{width >= 768 && (
 								<ProductsFilter
 									filterRequest={getProductHandler}
 									filterList={filterList}
@@ -141,8 +150,6 @@ const ProductsGridV2 = ({ data }) => {
 									category={structure?.category}
 									showProductFilterCount={structure?.availabilityNumber?.value}
 								/>
-							) : (
-								<ProductFilterResponsive selectedFilter={filters} allFilters={filterList} />
 							)}
 						</div>
 					) : null}
