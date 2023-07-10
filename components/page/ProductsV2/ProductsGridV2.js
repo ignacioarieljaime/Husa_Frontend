@@ -7,9 +7,12 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { useRouter } from 'next/router'
 import { GetProductByFilterApi, GetProductsListNewApi } from 'services/Product'
+import { useWindowSize } from 'hooks/useWindowSize'
+import ProductFilterResponsive from './responsiveFilter/ProductFilterResponsive'
 
 const ProductsGridV2 = ({ data }) => {
 	let { structure } = data
+	const [width] = useWindowSize()
 	const [sortingMethod, setSortingMethod] = useState()
 	const [filters, setFilters] = useState([])
 	const [products, setProducts] = useState([])
@@ -126,17 +129,21 @@ const ProductsGridV2 = ({ data }) => {
 				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					{filterList && filterList.length !== 0 ? (
 						<div className='products-filtering me-md-12'>
-							<ProductsFilter
-								filterRequest={getProductHandler}
-								filterList={filterList}
-								checkBoxCondition={checkBoxCondition}
-								setCheckBoxCondition={setCheckBoxCondition}
-								filters={filters}
-								setFilters={setFilters}
-								total={totalCount}
-								category={structure?.category}
-								showProductFilterCount={structure?.availabilityNumber?.value}
-							/>
+							{width > 768 ? (
+								<ProductsFilter
+									filterRequest={getProductHandler}
+									filterList={filterList}
+									checkBoxCondition={checkBoxCondition}
+									setCheckBoxCondition={setCheckBoxCondition}
+									filters={filters}
+									setFilters={setFilters}
+									total={totalCount}
+									category={structure?.category}
+									showProductFilterCount={structure?.availabilityNumber?.value}
+								/>
+							) : (
+								<ProductFilterResponsive selectedFilter={filters} allFilters={filterList} />
+							)}
 						</div>
 					) : null}
 
