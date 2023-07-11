@@ -155,3 +155,211 @@
 		}
 	}
 }
+
+// ////////////////////////////////////////////////////////////////////////
+.new_product_info {
+	background: #fff;
+	.wrapper {
+		max-width: 1144px;
+		margin: 32px auto;
+		padding: 16px;
+		align-items: center;
+		justify-content: space-between;
+		gap: 64px;
+		@include mq(768) {
+			gap: 32px;
+			margin: 0 auto 16px;
+		}
+		.product_gallery {
+			width: calc(50% - 32px);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			gap: 32px;
+			height: 100%;
+			@include mq(768) {
+				gap: 16px;
+				width: 100%;
+				flex-wrap: wrap;
+			}
+			.main_frame {
+				width: 100%;
+				position: unset !important;
+				.image_wrapper {
+					width: 100%;
+					height: 0;
+					padding-top: 100%;
+					margin: 0;
+					.image {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+					.resize_btn {
+						position: absolute;
+						top: 32px;
+						right: 32px;
+						width: 32px;
+						height: 32px;
+						background: white;
+						border: none;
+						border-radius: 50%;
+					}
+				}
+				.swiper-button-prev,
+				.swiper-button-next {
+					background: #00aaa6;
+					width: 24px;
+					height: 24px;
+					top: unset;
+					bottom: -95px;
+					border-radius: 50%;
+					&::after {
+						font-size: 10px;
+						color: white;
+					}
+					@include mq(768) {
+						display: none;
+					}
+				}
+			}
+			.thumbs_gallery {
+				width: 100%;
+				.image_wrapper {
+					width: 100%;
+					height: 0;
+					padding-top: 100%;
+					margin: 0;
+					.image {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+			.resized_image_modal {
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 10000;
+				height: 100vh;
+				width: 100vw;
+				background: #00000071;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				.wrapper {
+					height: 40vw;
+					width: 40vw;
+					position: relative;
+					@include mq(1200) {
+						height: 60vw;
+						width: 60vw;
+					}
+					@include mq(600) {
+						height: 80vw;
+						width: 80vw;
+					}
+					.image {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+		.product_info {
+			width: calc(50% - 32px);
+			@include mq(768) {
+				width: 100%;
+			}
+			.serie {
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 21.6px;
+				letter-spacing: -0.32px;
+				color: #00aaa6;
+				margin-bottom: 32px;
+			}
+			.model {
+				font-size: 24px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 30px;
+				letter-spacing: -0.48px;
+				margin-bottom: 32px;
+			}
+			.title {
+				font-size: 34px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 42.5px;
+				letter-spacing: -0.68px;
+				margin-bottom: 32px;
+			}
+			.model_number {
+				font-size: 12px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 16.2px;
+				color: #00aaa6;
+				margin-bottom: 32px;
+			}
+			.sizes {
+				border-top: 1px solid #c7c7c9;
+				padding: 32px 0;
+
+				.sizes_text {
+					font-size: 16px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 21.6px;
+					letter-spacing: -0.32px;
+					margin-bottom: 16px;
+				}
+				.sizes_list {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 16px;
+					.sizes_item {
+						font-size: 10px !important;
+						font-style: normal !important;
+						padding: 16px 20px !important;
+						font-weight: 400 !important;
+						line-height: 120% !important;
+						border-radius: 50px !important;
+						border: 1px solid #000 !important;
+						background: transparent !important;
+						text-decoration: none !important;
+						color: #000 !important;
+						transition: all 300ms ease-in;
+						&:hover {
+							color: #fff !important;
+							background: #000 !important;
+						}
+					}
+				}
+			}
+			.wtb_btn {
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18.9px;
+				border-radius: 1000px;
+				padding: 16px;
+				border: 1px solid #00aaa6;
+				color: #fff !important;
+				background: #00aaa6;
+			}
+		}
+	}
+}
