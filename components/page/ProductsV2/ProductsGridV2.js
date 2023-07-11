@@ -107,6 +107,7 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
+
 	}
 
 	return (
@@ -123,6 +124,8 @@ const ProductsGridV2 = ({ data }) => {
 					allFilters={filterList}
 					filterRequest={getProductHandler}
 					setFilters={setFilters}
+					sortValue={sortingMethod}
+					sortOnChange={setSortingMethod}
 				/>
 			)}
 

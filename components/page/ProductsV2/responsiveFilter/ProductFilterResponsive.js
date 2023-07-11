@@ -1,18 +1,26 @@
 import ResponsiveFilterIcon from 'components/icons/ResponsiveFilterIcon'
 import XIcon from 'components/icons/XIcon'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import FilterDropDown from './FilterDropDown'
+import { useRouter } from 'next/router'
+import SortFilterDropDown from './SortFilterDropDown'
 
 const ProductFilterResponsive = ({
 	selectedFilter,
 	allFilters,
 	filterRequest,
-	setFilters
+	setFilters,
+	sortValue,
+	sortOnChange
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
+	const [filterCounter, setFilterCounter] = useState(0)
+	const router = useRouter()
 	const filterController = (e, _filter, _filterType) => {
 		setModalIsOpen(false)
-		let _filtersBox = selectedFilter
+		let _filtersBox = router?.query?.filter
+			? JSON?.parse(decodeURIComponent(router?.query?.filter))
+			: []
 		let filterWrapperExisted = _filtersBox.find(
 			item => item.id === _filter.filterId
 		)
@@ -58,19 +66,35 @@ const ProductFilterResponsive = ({
 				values: [_filter.title]
 			})
 		}
-		// filterCounterHandler(_filtersBox)
 		setFilters(_filtersBox)
 		filterRequest(_filtersBox)
 	}
 
-	const filterCounterHandler = _filters => {
-		let filtersItem = []
-		_filters.forEach(filterItem => {
-			filtersItem.push(...filterItem.values)
-		})
-		setFilterCounter(filtersItem.length)
+	const checkboxClearHandler = () => {
+		setModalIsOpen(false)
+		sortOnChange()
+		setFilters([])
+		filterRequest([])
 	}
-	console.log(allFilters)
+
+	useEffect(() => {
+		filterCountHandler()
+	}, [router?.query?.filter])
+
+	const filterCountHandler = () => {
+		if (router?.query?.filter) {
+			let filters = JSON.parse(decodeURIComponent(router.query.filter))
+			let filterItems = []
+			filters.forEach(element => {
+				filterItems.push(...element.values)
+			})
+			setFilterCounter(filterItems?.length)
+
+			return
+		}
+
+		setFilterCounter(0)
+	}
 
 	return (
 		<>
@@ -79,7 +103,9 @@ const ProductFilterResponsive = ({
 					<button onClick={() => setModalIsOpen(true)}>
 						All Filters <ResponsiveFilterIcon />
 					</button>
-					<button>Clear Filter ({selectedFilter.length})</button>
+					<button onClick={checkboxClearHandler}>
+						Clear Filter ({filterCounter})
+					</button>
 				</div>
 				<ul>
 					{allFilters?.map(filter => (
@@ -93,14 +119,27 @@ const ProductFilterResponsive = ({
 				style={{ left: modalIsOpen ? 0 : '-100%' }}
 				className='product_filter_responsive_modal'>
 				<div className='buttons'>
-					<button>Clear Filter ({selectedFilter.length})</button>
+					<button onClick={checkboxClearHandler}>
+						Clear Filter ({filterCounter})
+					</button>
 					<button onClick={() => setModalIsOpen(false)}>
 						<XIcon />
 					</button>
 				</div>
 				<div className='filters'>
+					<SortFilterDropDown
+						sortValue={sortValue}
+						sortOnChange={value => {
+							setModalIsOpen(false)
+							sortOnChange(value)
+						}}
+					/>
 					{allFilters?.map(filter => (
-						<FilterDropDown {...filter} filterController={filterController} />
+						<FilterDropDown
+							{...filter}
+							filterController={filterController}
+							allFilters={allFilters}
+						/>
 					))}
 				</div>
 			</div>

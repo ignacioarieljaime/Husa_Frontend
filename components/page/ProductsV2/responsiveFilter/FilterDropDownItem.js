@@ -4,15 +4,14 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 const FilterDropDownItem = props => {
-	let { title, filter_value, filterHandler, isChecked } = props
+	let { title, filter_value, filterHandler, allFilters,isChecked } = props
 	const router = useRouter()
-
 
 	return (
 		<li>
 			<div>
 				<input
-				 checked={isChecked}
+					checked={isChecked}
 					onChange={() => filterHandler(props)}
 					id={filter_value}
 					type='checkbox'

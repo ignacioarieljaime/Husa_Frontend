@@ -4,39 +4,46 @@ import FilterDropDownItem from './FilterDropDownItem'
 import { useRouter } from 'next/router'
 
 const FilterDropDown = props => {
-	let { name, id, filter_values, content_type, filterController } = props
+	let {
+		name,
+		content_record_id,
+		filter_values,
+		content_type,
+		filterController,
+		allFilters
+	} = props
 	const router = useRouter()
-
 	const dropdown = useRef()
 	const [dropdownStatus, setDropdownStatus] = useState(false)
 	const [filterList, setFilterList] = useState([])
-	
+
 	const filterHandler = _filterValue => {
-		filterController(null, { ..._filterValue, filterId: id }, content_type)
+		filterController(
+			null,
+			{ ..._filterValue, filterId: content_record_id },
+			content_type
+		)
 	}
 
 	useEffect(() => {
 		if (router?.query?.filter) {
 			let filter = JSON.parse(decodeURIComponent(router.query.filter))
-			if (filter.find(item => item.id === id)) setDropdownStatus(true)
-		}else{
+			if (filter.find(item => item.id === content_record_id))
+				return setDropdownStatus(true)
+			setDropdownStatus(false)
+		} else {
 			setDropdownStatus(false)
 		}
-	}, [router?.query?.filter])
+	}, [router?.query?.filter, filter_values, allFilters])
 
 	useEffect(() => {
-		if (
-		name === 'CHANNELS' &&
-			filter_values[1]?.title.includes(' CH')
-		) {
+		if (name === 'CHANNELS' && filter_values[1]?.title.includes(' CH')) {
 			let changeToNumber = filter_values.map(item => {
 				item.number = item?.title ? Number(item?.title?.split(' ')[0]) : null
 				return item
 			})
 			setFilterList(changeToNumber.sort((a, b) => b.number - a.number))
-		} else if (
-			!Number.isNaN(Number(filter_values[1]?.title?.split('"')[0]))
-		) {
+		} else if (!Number.isNaN(Number(filter_values[1]?.title?.split('"')[0]))) {
 			let changeToNumber = filter_values.map(item => {
 				item.number = item?.title ? Number(item?.title?.split('"')[0]) : null
 				return item
@@ -46,14 +53,14 @@ const FilterDropDown = props => {
 		} else {
 			setFilterList(filter_values)
 		}
-	}, [router?.query?.filter])
+	}, [router?.query?.filter, filter_values])
 
-	const checkBoxStatusHandler = _filterValue => {
+	const checkedHandler = _title => {
 		if (router?.query?.filter) {
-			let _allFilter = JSON.parse(decodeURIComponent(router.query.filter))
-			let currentValue = _allFilter.find(item => item.id === id)
-	
-			return currentValue?.values?.find(item => item === _filterValue) 
+			let filter = JSON.parse(decodeURIComponent(router.query.filter))
+			for (const item of filter) {
+				if (item.values.indexOf(_title) !== -1) return true
+			}
 		}
 		return false
 	}
@@ -62,7 +69,7 @@ const FilterDropDown = props => {
 		<div className='filter_drop_down'>
 			<div
 				onClick={() => setDropdownStatus(state => !state)}
-				className='name_button'>
+				className={`name_button ${dropdownStatus && "drop_down_is_open"}`}>
 				<h6>{name}</h6>
 				<AngleArrow />
 			</div>
@@ -72,13 +79,17 @@ const FilterDropDown = props => {
 				}}
 				className='filter_list'>
 				<ul ref={dropdown}>
-					{filterList?.map(filter => (
-						<FilterDropDownItem
-							{...filter}
-							filterHandler={filterHandler}
-							isChecked={checkBoxStatusHandler(filter?.title)}
-						/>
-					))}
+					{filterList?.map(
+						filter =>
+							filter?.title && (
+								<FilterDropDownItem
+									{...filter}
+									isChecked={checkedHandler(filter?.title)}
+									filterHandler={filterHandler}
+									allFilters={allFilters}
+								/>
+							)
+					)}
 				</ul>
 			</div>
 		</div>
