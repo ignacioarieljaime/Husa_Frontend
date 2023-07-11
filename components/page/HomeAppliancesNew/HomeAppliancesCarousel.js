@@ -1,11 +1,9 @@
-import { useAspectRatio } from 'hooks/useAspectRatio'
 import React, { useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
-
+import HomeAppliancesCarouselitem from './HomeAppliancesCarouselitem'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 
@@ -36,37 +34,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 					)}
 					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider_item'>
-							<div className='slider_image_box'>
-								<div className='slider_image_wrapper'>
-									<img
-										src={item?.image?.src}
-										alt={item?.image?.alt}
-										className={'slider_image my-auto'}
-									/>
-								</div>
-							</div>
-							<div>
-								<h4 className='title'>{item?.title?.value}</h4>
-								<p className='subtitle'>{item?.subtitle?.value}</p>
-								<Link
-									target={item?.link?.target ? item?.link?.target : '_self'}
-									href={item?.link?.value ? item?.link?.value : '/'}>
-									<a
-										target={item?.link?.target ? item?.link?.target : '_self'}
-										style={{ width: '150px' }}
-										className={`text-nowrap n-btn d-block mx-auto ${
-											structure?.theme?.value === 'dark' ? 'white' : 'black'
-										}`}>
-										{item?.link?.title}
-										{item?.link?.target === '_blank' && (
-											<img
-												style={{ marginLeft: '10px' }}
-												src={OpenPageOnNewTab.src}
-											/>
-										)}
-									</a>
-								</Link>
-							</div>
+							<HomeAppliancesCarouselitem data={item} structure={structure} />
 						</SwiperSlide>
 					))}
 				</Swiper>
