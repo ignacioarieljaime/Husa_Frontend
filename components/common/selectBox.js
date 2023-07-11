@@ -1,6 +1,6 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 
 function CustomSelectBox({
@@ -8,13 +8,55 @@ function CustomSelectBox({
 	title,
 	options,
 	onChange,
-	className = ''
+	className = '',
+	isSearchable,placeholder
 }) {
+	const optionBox = useRef()
+	const [searchList, setSearchList] = useState([])
+	const [inputSearch, setInputSearch] = useState()
 	const [value, setValue] = useState()
 	useEffect(() => {
 		setValue(title)
 	}, [title])
 
+	useEffect(() => {
+		const search = setTimeout(() => {
+			searchValue(inputSearch)
+			//Your search query and it will run the function after 3secs from user stops typing
+		}, 500)
+		return () => clearTimeout(search)
+	}, [inputSearch])
+
+	const searchValue = _text => {
+		let result = []
+		if (Array.isArray(options))
+			options?.forEach(item => item?.name?.includes(_text) && result.push(item))
+		setSearchList(result)
+	}
+
+	const listGenerator = _options => {
+		return _options && Array.isArray(_options) ? (
+			<>
+				{_options.length === 0 ? (
+					<li>empty</li>
+				) : (
+					_options.map((item, index) => (
+						<li
+							onClick={() => {
+								onChange(item)
+								setValue(item?.name)
+								isSearchable && setInputSearch(item?.name)
+							}}
+							key={index}>
+							<label className='option' htmlFor='tv' aria-hidden='aria-hidden'>
+								{item?.name}
+							</label>
+						</li>
+					))
+				)}
+			</>
+		) : null
+	}
 	return (
 		<div className={`custom-select-box ${className}`}>
 			<div
@@ -30,47 +72,48 @@ function CustomSelectBox({
 						checked='checked'
 						disabled
 					/>
-					<p
-						className={`input-text d-flex align-items-center justify-content-between ${className}`}>
-						{options === 'loading' ? (
-							'loading ...'
-						) : (
-							<>
-								{value}
-								<FontAwesomeIcon
-									style={{ width: '10px' }}
-									icon={faChevronDown}
-									size={'1x'}
-								/>
-							</>
-						)}
-					</p>
+					{isSearchable && options !== 'loading' ? (
+						<div className='search_box__arrow'>
+							<input
+								placeholder={placeholder}
+								onInput={e => setInputSearch(e.target.value)}
+								onBlur={() =>
+									setTimeout(() => {
+										optionBox.current.style.display = 'none'
+									}, 200)
+								}
+								value={inputSearch}
+								onFocus={() => (optionBox.current.style.display = 'contents')}
+							/>
+							<FontAwesomeIcon
+								style={{ width: '10px' }}
+								icon={faChevronDown}
+								size={'1x'}
+							/>
+						</div>
+					) : (
+						<p
+							className={`input-text d-flex align-items-center justify-content-between ${className}`}>
+							{options === 'loading' ? (
+								'loading ...'
+							) : (
+								<>
+									{value}
+									<FontAwesomeIcon
+										style={{ width: '10px' }}
+										icon={faChevronDown}
+										size={'1x'}
+									/>
+								</>
+							)}
+						</p>
+					)}
 				</div>
 			</div>
-			<ul className='select-box-list top-100 w-100'>
-				{options && Array.isArray(options) ? (
-					<>
-						{options.length === 0 ? (
-							<li>empty</li>
-						) : (
-							options.map((item, index) => (
-								<li
-									onClick={() => {
-										onChange(item)
-										setValue(item?.name)
-									}}
-									key={index}>
-									<label
-										className='option'
-										htmlFor='tv'
-										aria-hidden='aria-hidden'>
-										{item?.name}
-									</label>
-								</li>
-							))
-						)}
-					</>
-				) : null}
+			<ul ref={optionBox} className='select-box-list top-100 w-100'>
+				{isSearchable && inputSearch?.length
+					? listGenerator(searchList)
+					: listGenerator(options)}
 			</ul>
 			{required && <span className='input-error'>This field is required.</span>}
 		</div>

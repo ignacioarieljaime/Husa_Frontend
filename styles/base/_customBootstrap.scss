@@ -607,6 +607,24 @@
 	position: relative;
 	display: block;
 	margin: 0 auto;
+
+	.search_box__arrow {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		input {
+			border: none;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			font-size: 1.5rem;
+			font-weight: normal;
+			&::placeholder {
+				color: #000;
+			}
+		}
+	}
 }
 .select-container {
 	position: relative;
@@ -2286,11 +2304,11 @@ header {
 				line-height: 30px !important;
 			}
 		}
-			h6 {
-				font-size: 12px !important;
-				font-weight: 400 !important;
-				line-height: 16px !important;
-			}
+		h6 {
+			font-size: 12px !important;
+			font-weight: 400 !important;
+			line-height: 16px !important;
+		}
 	}
 	p,
 	.product_news_item_small_title {

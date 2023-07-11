@@ -347,12 +347,16 @@ function RegisterForm({ data }) {
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
+								isSearchable
+								placeholder={
+									router.query?.SerialNumber
+										? 'PLEASE SELECT YOUR MODEL'
+										: 'PLEASE SELECT YOUR MODEL'
+								}
 								title={
 									router.query?.SerialNumber
-										? models.length === 1
-											? models[0].name
-											: 'PLEASE SELECT YOUR MODEL'
-										: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
+										? models[0].name
+										: dataSchema?.product_model
 								}
 								required={true}
 								options={models}
