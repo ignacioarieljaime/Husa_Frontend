@@ -79,11 +79,16 @@ function CustomSelectBox({
 								onInput={e => setInputSearch(e.target.value)}
 								onBlur={() =>
 									setTimeout(() => {
-										optionBox.current.style.display = 'none'
+										optionBox.current.style.opacity = '0'
+									optionBox.current.style.animation = 'HideList'
 									}, 200)
 								}
 								value={inputSearch}
-								onFocus={() => (optionBox.current.style.display = 'contents')}
+								onFocus={() => {
+									optionBox.current.style.opacity = '1'
+									optionBox.current.style.animation = 'none'
+									
+								}}
 							/>
 							<FontAwesomeIcon
 								style={{ width: '10px' }}
