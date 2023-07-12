@@ -27,6 +27,8 @@ const HomeAppliancesCardsBox = ({ data }) => {
 								width={
 									ratio1 > 1
 										? ((ratio1 - 0.8) * 100).toFixed(2) + '%'
+										: ratio1 <= 1 && ratio1 > 0.6
+										? ((ratio1 - 0.5) * 100).toFixed(2) + '%'
 										: ((ratio1 - 0.3) * 100).toFixed(2) + '%'
 								}
 								className='logo'
