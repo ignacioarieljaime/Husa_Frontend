@@ -15,7 +15,7 @@ const TechCard = ({ productImage, title, link }) => {
 				height={141}
 			/>
 			<h3 dangerouslySetInnerHTML={{ __html: title }} />
-			<p className={styles.subText}>55" 65" 75" 85"</p>
+			<p className={styles.subText}>55" 65" 75"</p>
 			<a href={link} className='button--rounded'>
 				Explore
 			</a>
