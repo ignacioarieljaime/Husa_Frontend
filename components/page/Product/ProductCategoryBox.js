@@ -183,6 +183,10 @@ function ProductCategoryBox({ data, pim }) {
 						<li className='px-0'>
 							<button
 								className='wtb'
+								disabled={
+									pim?.buy_status !== 'ChannelAdvisor' &&
+									pim?.buy_status !== 'Internal'
+								}
 								onClick={() =>
 									pim?.buy_status === 'ChannelAdvisor' ||
 									pim?.buy_status === 'Internal'

@@ -361,6 +361,12 @@
 				border: 1px solid #00aaa6;
 				color: #fff !important;
 				background: #00aaa6;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				&:disabled {
+					color: #b3bac5 !important;
+				}
 			}
 		}
 	}

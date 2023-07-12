@@ -42,17 +42,17 @@ function ProductInfoAndSliderBox({ pim, data }) {
 				/>
 				<div className='product_info px-0 my-auto'>
 					<h2 className='serie'>
-						{
-							pim?.custom_fields.find(item => item.title === 'span Title')
-								?.value
-						}
-					</h2>
-					<h3 className='model'>
 						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
 							? pim?.custom_fields.find(item => item.title === 'h2 Title')
 									?.value
 							: pim?.custom_fields?.find(item => item.title === 'Product Type')
 									?.value}
+					</h2>
+					<h3 className='model'>
+						{
+							pim?.custom_fields.find(item => item.title === 'span Title')
+								?.value
+						}
 					</h3>
 					<h1 className='title'>{pim?.name}</h1>
 					<p className='model_number'>Model: {pim?.model}</p>
@@ -73,7 +73,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					</div>
 					<div className='text-center text-md-start'>
 						<button
-							className='wtb_btn'
+							className='wtb_btn mx-auto mx-md-0'
 							disabled={
 								pim?.buy_status !== 'ChannelAdvisor' &&
 								pim?.buy_status !== 'Internal'

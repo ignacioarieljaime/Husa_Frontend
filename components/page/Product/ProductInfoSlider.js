@@ -10,9 +10,7 @@ import 'swiper/css/navigation'
 
 // import required modules
 import { FreeMode, Thumbs, Navigation } from 'swiper'
-import { faExpandArrowsAlt } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import Expand from 'public/assets/images/expand.png'
 function ProductInfoSlider({ pim, firstImage, allData }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 	const [imageModal, setImageModal] = useState(false)
@@ -52,7 +50,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 										)
 									}
 									className='resize_btn'>
-									<FontAwesomeIcon icon={faExpandArrowsAlt} size={'sm'} />
+									<img src={Expand.src} width='16' />
 								</button>
 							</figure>
 						</SwiperSlide>
@@ -73,7 +71,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								<button
 									onClick={() => setImageModal(firstImage)}
 									className='resize_btn'>
-									<FontAwesomeIcon icon={faExpandArrowsAlt} size={'sm'} />
+									<img src={Expand.src} width='16' />
 								</button>
 							</figure>
 						</SwiperSlide>
@@ -92,12 +90,12 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 										<button
 											onClick={() => setImageModal(item?.url)}
 											className='resize_btn'>
-											<FontAwesomeIcon icon={faExpandArrowsAlt} size={'sm'} />
+											<img src={Expand.src} width='16' />
 										</button>
 									</figure>
-									<figcaption className='figure-caption'>
+									{/* <figcaption className='figure-caption'>
 										{item.title}
-									</figcaption>
+									</figcaption> */}
 								</SwiperSlide>
 							) : null
 						)}
