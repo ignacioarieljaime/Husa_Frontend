@@ -41,3 +41,18 @@
 		}
 	}
 }
+
+.ha_black_box {
+	&.V2 {
+		p {
+			margin: 0;
+			&.description_wrapper {
+				margin-bottom: 32px !important;
+			}
+		}
+		.n-btn.primary {
+			font-size: 14px !important;
+			line-height: 18px !important;
+		}
+	}
+}

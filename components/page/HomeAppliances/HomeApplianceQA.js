@@ -8,10 +8,17 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 	}, [])
 	return (
 		<section>
-			<div className='black-banner p-md-4'>
+			<div
+				className={`black-banner ha_black_box ${structure?.template?.value} p-md-4`}>
 				<div className='container px-6 px-md-8 py-20'>
-					<article className='article text-center'>
-						<h2 className='text-white fs-3x mb-12'>
+					<article
+						className={`text-center ${
+							structure?.template?.value === 'V2' ? 'large_article' : 'article'
+						}  `}>
+						<h2
+							className={`text-white ${
+								structure?.template?.value === 'V2' ? '' : 'fs-3x'
+							}  mb-12`}>
 							{structure?.title?.value}
 							<span className='text-primary-new ms-2'>
 								{structure?.coloredTitle?.value}
@@ -19,7 +26,7 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 						</h2>
 						<div>
 							<p
-								className='text-white fw-normal m-auto mb-4'
+								className='text-white fw-normal m-auto mb-4 description_wrapper'
 								dangerouslySetInnerHTML={{
 									__html: text
 								}}></p>
@@ -35,7 +42,11 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 												? structure?.link?.target
 												: '_self'
 										}
-										className='text-decoration-none text-primary-new fs-8 text-uppercase d-block w-fit mx-auto mb-8'>
+										className={`text-decoration-none ${
+											structure?.template?.value === 'V2'
+												? 'n-btn primary px-8 py-3 mb-10'
+												: 'text-primary-new fs-8 mb-8'
+										}  text-uppercase d-block w-fit mx-auto`}>
 										{structure?.link?.title}
 										{structure?.link?.target === '_blank' && (
 											<img
