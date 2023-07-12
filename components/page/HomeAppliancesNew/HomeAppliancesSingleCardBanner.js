@@ -33,7 +33,7 @@ const HomeAppliancesSingleCardBanner = ({ data }) => {
 					<a
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
 						style={{ width: '150px' }}
-						className='black text-nowrap n-btn d-block mx-auto link_btn'>
+						className='black text-nowrap n-btn d-block mx-auto link_btn py-3 px-8'>
 						{structure?.link?.title}
 						{structure?.link?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />

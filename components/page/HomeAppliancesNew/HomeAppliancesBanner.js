@@ -10,7 +10,12 @@ const HomeAppliancesBanner = ({ data }) => {
 				className='ha_banner'
 				style={
 					aspectRatio < 1
-						? { paddingTop: (aspectRatio * 100).toFixed(2) + '%' }
+						? {
+								paddingTop:
+									aspectRatio * 100 > 52
+										? '52%'
+										: (aspectRatio * 100).toFixed(2) + '%'
+						  }
 						: {}
 				}>
 				<img src={structure?.image?.src} alt={structure?.image?.alt} />

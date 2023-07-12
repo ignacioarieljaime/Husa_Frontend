@@ -17,7 +17,7 @@ const HomeAppliancesCardsBox = ({ data }) => {
 						className={`item colorful ${structure?.block1?.value?.theme?.value}`}>
 						<div className='content'>
 							<h4
-								className='title'
+								className='title mb-0'
 								dangerouslySetInnerHTML={{
 									__html: structure?.block1?.value?.title?.value
 								}}></h4>
@@ -28,7 +28,7 @@ const HomeAppliancesCardsBox = ({ data }) => {
 									ratio1 > 1
 										? ((ratio1 - 0.8) * 100).toFixed(2) + '%'
 										: ratio1 <= 1 && ratio1 > 0.6
-										? ((ratio1 - 0.5) * 100).toFixed(2) + '%'
+										? ((ratio1 - 0.45) * 100).toFixed(2) + '%'
 										: ((ratio1 - 0.3) * 100).toFixed(2) + '%'
 								}
 								className='logo'
