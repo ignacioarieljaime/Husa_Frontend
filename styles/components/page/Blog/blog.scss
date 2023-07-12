@@ -141,6 +141,16 @@
 		transform: translateY(-50%);
 	}
 }
+.blog_description_box {
+	p,
+	span {
+		color: #000 !important;
+	}
+	a {
+		color: rgb(0, 170, 166) !important;
+		text-decoration: none;
+	}
+}
 
 article.blog-article {
 	h1,
