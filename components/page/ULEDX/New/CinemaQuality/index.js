@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import styles from 'styles/components/modules/ULEDX/CinemaQuality.module.scss'
 import { Parallax } from 'react-scroll-parallax'
 import imaxIcon from 'public/assets/uledx-assets/images/icons/imax@3x.webp'
-import filmIcon from 'public/assets/uledx-assets/images/icons/filmmaker-mode@3x.webp'
+import filmIcon from 'public/assets/uledx-assets/images/icons/filmmakermode@3x.webp'
 import productImage from 'public/assets/uledx-assets/images/product/cinema-quality@3x.webp'
 import { ParallaxBanner, useParallax } from 'react-scroll-parallax'
 

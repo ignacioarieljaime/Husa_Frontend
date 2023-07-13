@@ -52,11 +52,13 @@
 			line-height: 30px;
 			color: #b3b3b3;
 			display: block;
+			word-wrap: break-word;
 		}
 		.d_desc {
 			font-size: 15px;
 			line-height: 30px;
 			color: #292929;
+			word-wrap: break-word;
 		}
 	}
 }
@@ -100,4 +102,3 @@
 		color: #000000;
 	}
 }
-

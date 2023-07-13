@@ -17,6 +17,7 @@ import L9GProductDetailsBox from '../L9G/L9GProductDetailsBox'
 import TechnicalSpecs from './New/TechnicalSpecs'
 import CompareLineup from './New/CompareLineup'
 import { useWindowSize } from 'hooks/useWindowSize'
+import BuyNow from './New/BuyNow'
 
 const ULEDXFullPageComponent = ({ data, pim }) => {
 	const { structure } = data
@@ -115,6 +116,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 							/>
 							<CineStageX />
 							<TechnicalSpecs />
+							<BuyNow pim={pim} />
 							<CompareLineup />
 						</>
 					)}

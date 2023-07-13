@@ -626,9 +626,14 @@ input[type='number']::-webkit-outer-spin-button {
 			padding: 0;
 			margin: 0;
 			font-size: 1.5rem;
+			z-index: 2;
+			background: transparent;
 			font-weight: normal;
 			&::placeholder {
 				color: #000;
+			}
+			&:focus{
+				background: transparent !important;
 			}
 		}
 		span {
@@ -638,6 +643,8 @@ input[type='number']::-webkit-outer-spin-button {
 			left: 43%;
 			display: inline-block;
 			position: absolute;
+			user-select: none; 
+			 
 			@include mq(768) {
 				display: none;
 			}
@@ -2307,13 +2314,13 @@ header {
 
 .product_news_box_wrapper {
 	@include mqm(992) {
-		padding: 0 56px !important;
+		padding: 64px 56px !important;
 	}
 }
 
 .product_news_box_item {
 	.product_news_box_item_image {
-		height: 280px;
+		// height: 280px;
 		img {
 			object-fit: cover;
 		}
