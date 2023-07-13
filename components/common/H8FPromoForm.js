@@ -179,6 +179,7 @@ function H8FPromoForm({ data }) {
 							<CustomInput
 								placeholder={'ZIP'}
 								required={true}
+								type='number'
 								onChange={_value => dataSchemaHandler('postal_code', _value)}
 							/>
 						</div>

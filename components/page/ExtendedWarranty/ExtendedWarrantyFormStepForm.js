@@ -136,8 +136,8 @@ const ExtendedWarrantyFormStepForm = ({
 							}}
 							value={date}
 							required
+							type='number'
 							placeholder='Postal code'
-							type='text'
 						/>
 					</div>
 					<div className='error_message'>

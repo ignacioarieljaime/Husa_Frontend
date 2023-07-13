@@ -427,6 +427,7 @@ function RegisterForm({ data }) {
 							placeholder={'POSTAL CODE/ZIP'}
 							onChange={_value => dataSchemaHandler('postal_code', _value)}
 							required={true}
+							type='number'
 							value={dataSchema.postal_code}
 						/>
 						<div className='input_error_message'>
