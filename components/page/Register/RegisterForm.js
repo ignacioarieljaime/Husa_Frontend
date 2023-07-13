@@ -348,10 +348,10 @@ function RegisterForm({ data }) {
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								rightText={
-									dataSchema?.product_category === 'Air Products' &&
-									'(Outdoor Model for split system)'
-								}
+								// rightText={
+								// 	dataSchema?.product_category === 'Air Products' &&
+								// 	'(Outdoor Model for split system)'
+								// }
 								placeholder={'PLEASE SELECT YOUR MODEL'}
 								isSearchable
 								required={true}
@@ -546,7 +546,7 @@ function RegisterForm({ data }) {
 				<RoleModal
 					data={structure?.modelText?.value}
 					modalHandler={setModalCondition}
-					greenText={dataSchema?.product_category === 'Air Products'}
+					// greenText={dataSchema?.product_category === 'Air Products'}
 				/>
 			)}
 		</section>
