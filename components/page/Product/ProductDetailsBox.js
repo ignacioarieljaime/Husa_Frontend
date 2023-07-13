@@ -64,11 +64,11 @@ function ProductDetailsBox({ pim, data }) {
 					className={`btn ${
 						structure?.theme?.value === 'light'
 							? 'btn-outline-dark bg-black text-white'
-							: 'btn-outline-light'
-					}  rounded-5 specs-btn`}
+							: 'n-btn outline-white p-4 fs-base'
+					}  rounded-5 `}
 					onClick={() => setShowMore(!showMore)}>
-					<span className=' '>
-						<span className='ms-2'>
+					<span className='d-block'>
+						<span className='me-8'>
 							{showMore ? '	Hide Specs' : 'Full  Specs'}
 						</span>
 						<FontAwesomeIcon
