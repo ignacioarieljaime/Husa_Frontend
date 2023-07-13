@@ -179,7 +179,8 @@ function RegisterForm({ data }) {
 						`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F63a195c3610ca`,
 						{
 							FirstName: dataSchema.first_name,
-							InternalModelNumber: router.query?.InternalModelNumber || dataSchema.product_model ,
+							InternalModelNumber:
+								router.query?.InternalModelNumber || dataSchema.product_model,
 							LastName: dataSchema.last_name,
 							ModelNumber: dataSchema.product_model,
 							PostalZipCode: dataSchema.postal_code,
@@ -335,7 +336,7 @@ function RegisterForm({ data }) {
 						</div>
 					)} */}
 
-					{models?.length === 1? (
+					{models?.length === 1 ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
 								placeholder={'SERIAL NUMBER'}
@@ -347,14 +348,12 @@ function RegisterForm({ data }) {
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								rightText={dataSchema?.product_category === 'Air Products' && "(Outdoor Model for split system)"}
-								title={
-									router.query?.SerialNumber
-										? models.length === 1
-											? models[0].name
-											: 'PLEASE SELECT YOUR MODEL'
-										: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
+								rightText={
+									dataSchema?.product_category === 'Air Products' &&
+									'(Outdoor Model for split system)'
 								}
+								placeholder={'PLEASE SELECT YOUR MODEL'}
+								isSearchable
 								required={true}
 								options={models}
 								onChange={_value => dataSchemaHandler('product_model', _value)}
@@ -428,6 +427,7 @@ function RegisterForm({ data }) {
 							placeholder={'POSTAL CODE/ZIP'}
 							onChange={_value => dataSchemaHandler('postal_code', _value)}
 							required={true}
+							type='number'
 							value={dataSchema.postal_code}
 						/>
 						<div className='input_error_message'>
@@ -546,6 +546,7 @@ function RegisterForm({ data }) {
 				<RoleModal
 					data={structure?.modelText?.value}
 					modalHandler={setModalCondition}
+					greenText={dataSchema?.product_category === 'Air Products'}
 				/>
 			)}
 		</section>
