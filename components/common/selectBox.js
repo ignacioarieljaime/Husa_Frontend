@@ -9,6 +9,8 @@ function CustomSelectBox({
 	options,
 	onChange,
 	className = '',
+	isSearchable,
+	placeholder,
 	rightText
 }) {
 	const [value, setValue] = useState()
@@ -31,26 +33,49 @@ function CustomSelectBox({
 						checked='checked'
 						disabled
 					/>
-					<div
-						className={`input-text d-flex align-items-center justify-content-between ${className}`}>
-						{options === 'loading' ? (
-							'loading ...'
-						) : (
-							<>
-								<p>
+					{isSearchable && options !== 'loading' ? (
+						<div className='search_box__arrow'>
+							<input
+								placeholder={placeholder}
+								onInput={e => setInputSearch(e.target.value)}
+								onBlur={() =>
+									setTimeout(() => {
+										optionBox.current.style.opacity = '0'
+										optionBox.current.style.animation = 'HideList'
+									}, 200)
+								}
+								value={inputSearch}
+								onFocus={() => {
+									optionBox.current.style.opacity = '1'
+									optionBox.current.style.animation = 'none'
+								}}
+							/>
+							{rightText && <span>{rightText}</span>}
+
+							<FontAwesomeIcon
+								style={{ width: '10px' }}
+								icon={faChevronDown}
+								size={'1x'}
+							/>
+						</div>
+					) : (
+						<p
+							className={`input-text d-flex align-items-center justify-content-between ${className}`}>
+							{options === 'loading' ? (
+								'loading ...'
+							) : (
+								<>
 									{value}
-									{value?.includes('SELECT') && rightText ? (
-										<span>{rightText}</span>
-									) : null}
-								</p>
-								<FontAwesomeIcon
-									style={{ width: '10px' }}
-									icon={faChevronDown}
-									size={'1x'}
-								/>
-							</>
-						)}
-					</div>
+									{rightText && <span>{rightText}</span>}
+									<FontAwesomeIcon
+										style={{ width: '10px' }}
+										icon={faChevronDown}
+										size={'1x'}
+									/>
+								</>
+							)}
+						</p>
+					)}
 				</div>
 			</div>
 			<ul className='select-box-list top-100 w-100'>

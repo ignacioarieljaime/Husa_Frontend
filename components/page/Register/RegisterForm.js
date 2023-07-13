@@ -356,6 +356,8 @@ function RegisterForm({ data }) {
 											: 'PLEASE SELECT YOUR MODEL'
 										: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
 								}
+								placeholder={'PLEASE SELECT YOUR MODEL'}
+								isSearchable={true}
 								required={true}
 								options={models}
 								onChange={_value => dataSchemaHandler('product_model', _value)}
