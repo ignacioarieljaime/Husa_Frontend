@@ -335,6 +335,7 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
+					{console.log(dataSchema?.product_category === 'Air Products')}
 					{router.query?.InternalModelNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
@@ -347,13 +348,14 @@ function RegisterForm({ data }) {
 					) : models?.length !== 0 ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
+								rightText={dataSchema?.product_category === 'Air Products' && "(Outdoor Model for split system)"}
+								isSearchable
 								title={
 									router.query?.SerialNumber
-										? models.length === 1
-											? models[0].name
-											: 'PLEASE SELECT YOUR MODEL'
-										: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
+										? models[0].name
+										: dataSchema?.product_model
 								}
+								placeholder={'PLEASE SELECT YOUR MODEL'}
 								required={true}
 								options={models}
 								onChange={_value => dataSchemaHandler('product_model', _value)}
@@ -545,6 +547,7 @@ function RegisterForm({ data }) {
 				<RoleModal
 					data={structure?.modelText?.value}
 					modalHandler={setModalCondition}
+					greenText={dataSchema?.product_category === 'Air Products'}
 				/>
 			)}
 		</section>
