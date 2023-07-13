@@ -812,7 +812,12 @@
 	transition-property: color;
 	border: 0;
 	background: transparent;
-	text-align: center;
+	text-decoration:none;
+	display: flex;
+}
+.form-container a.modal-btn {
+    margin-left: 34px;
+	text-align: left;
 }
 .form-container .modal-btn:hover {
 	color: var(--primary-color);

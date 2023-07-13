@@ -15,6 +15,7 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { getFirmWareModels } from 'services/servicePortal'
+// import PDFDownload from 'public/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
 
 function RegisterForm({ data }) {
 	let { structure } = data
@@ -375,7 +376,7 @@ function RegisterForm({ data }) {
 							}
 						/>
 					</div>
-					<div className='col-12 col-md-6 mb-10 d-flex'>
+					<div className='col-12 col-md-6 mb-10 d-grid gap-2 '>
 						<button
 							className='modal-btn'
 							type='button'
@@ -387,6 +388,11 @@ function RegisterForm({ data }) {
 							/>
 							<span className='ms-2'> Where do I find the serial number?</span>
 						</button>
+						{dataSchema?.product_category === 'Air Products' && (
+							<a className='modal-btn' download target='_blank' href={'/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'}>
+								How to identify HVAC model and serial number
+							</a>
+						)}
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
