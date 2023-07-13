@@ -334,7 +334,8 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
-					{/* {router.query?.InternalModelNumber ? (
+
+					{models?.length === 1? (
 						<div className='col-12  mb-10'>
 							<CustomInput
 								placeholder={'SERIAL NUMBER'}
@@ -343,25 +344,26 @@ function RegisterForm({ data }) {
 								value={dataSchema?.product_model}
 							/>
 						</div>
-					) : models?.length !== 0 ? ( */}
-					<div className='col-12 mb-10 custom-select-box'>
-						<CustomSelectBox
-							title={
-								router.query?.SerialNumber
-									? models.length === 1
-										? models[0].name
-										: 'PLEASE SELECT YOUR MODEL'
-									: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
-							}
-							required={true}
-							options={models}
-							onChange={_value => dataSchemaHandler('product_model', _value)}
-						/>
-						<div className='input_error_message'>
-							{errors?.product_model && errors?.product_model[0]}
+					) : models?.length !== 0 ? (
+						<div className='col-12 mb-10 custom-select-box'>
+							<CustomSelectBox
+								rightText={dataSchema?.product_category === 'Air Products' && "(Outdoor Model for split system)"}
+								title={
+									router.query?.SerialNumber
+										? models.length === 1
+											? models[0].name
+											: 'PLEASE SELECT YOUR MODEL'
+										: dataSchema?.product_model || 'PLEASE SELECT YOUR MODEL'
+								}
+								required={true}
+								options={models}
+								onChange={_value => dataSchemaHandler('product_model', _value)}
+							/>
+							<div className='input_error_message'>
+								{errors?.product_model && errors?.product_model[0]}
+							</div>
 						</div>
-					</div>
-					{/* ) : null} */}
+					) : null}
 
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
