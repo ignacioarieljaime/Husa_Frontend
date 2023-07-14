@@ -10,7 +10,6 @@ function ProductDetailsBox({ pim, data }) {
 	const [showMore, setShowMore] = useState(false)
 	const [specs, setSpecs] = useState()
 	const spaceContainer = useRef()
-
 	useEffect(() => {
 		if (pim?.properties)
 			setSpecs(
@@ -32,6 +31,18 @@ function ProductDetailsBox({ pim, data }) {
 			setShowMore(true)
 		}
 	}, [router.asPath])
+
+	const specOrderingHandler = _spec => {
+		let specOrdered = _spec.sort((first, second) => first.order - second.order)
+		return specOrdered?.map((item, childIndex) => (
+			<ProductDetailLstItem
+				theme={structure?.theme?.value}
+				key={`space-${_spec.id}-${childIndex}`}
+				title={item.title}
+				value={item.value}
+			/>
+		))
+	}
 	return (
 		<div
 			id={data?.name + data?.id}
@@ -53,16 +64,7 @@ function ProductDetailsBox({ pim, data }) {
 							}>
 							{item.title}
 						</h5>
-						<dl className='row m-0'>
-							{item.items.map((item, childIndex) => (
-								<ProductDetailLstItem
-									theme={structure?.theme?.value}
-									key={`space-${index}-${childIndex}`}
-									title={item.title}
-									value={item.value}
-								/>
-							))}
-						</dl>
+						<dl className='row m-0'>{specOrderingHandler(item?.items)}</dl>
 					</div>
 				))}
 			</div>
