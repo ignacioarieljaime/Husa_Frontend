@@ -8,7 +8,15 @@ function ProductDetailsBox({ pim, data }) {
 	let { structure } = data
 	let router = useRouter()
 	const [showMore, setShowMore] = useState(false)
+	const [specs, setSpecs] = useState()
 	const spaceContainer = useRef()
+	useEffect(() => {
+		if (pim?.properties)
+			setSpecs(
+				pim?.properties.sort((first, second) => first.order - second.order)
+			)
+	}, [])
+
 	useEffect(() => {
 		if (showMore) {
 			spaceContainer.current.style.maxHeight =
@@ -45,7 +53,7 @@ function ProductDetailsBox({ pim, data }) {
 				{data?.structure?.title?.value}
 			</h2> */}
 			<div ref={spaceContainer} className='specs-container'>
-				{pim?.properties.map((item, index) => (
+				{specs?.map((item, index) => (
 					<div key={`specs-${index}`} className='discription-list mb-10'>
 						<h5
 							style={{ fontSize: '28px' }}
