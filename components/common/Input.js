@@ -1,3 +1,4 @@
+import { string } from 'joi'
 import React, { useState } from 'react'
 
 function CustomInput({
@@ -22,8 +23,9 @@ function CustomInput({
 
 	const typeEnglishHandler = e => {
 		let value = e.target.value
-		if (isNaN(Number(value))) return 
-		onChange(value)
+		if (!isNaN(Number(value))) return onChange(value)
+
+		onChange('')
 	}
 
 	if (type === 'date') {

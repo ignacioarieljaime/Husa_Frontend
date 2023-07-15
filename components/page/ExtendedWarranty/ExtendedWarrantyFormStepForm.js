@@ -126,7 +126,9 @@ const ExtendedWarrantyFormStepForm = ({
 					<div className='extended-warranty-input'>
 						<input
 							onChange={e => {
-								if (isNaN(Number(e.target.value))) return
+								if (isNaN(Number(e.target.value))) return onChange('')
+
+								onChange('')
 								setDate(e.target.value)
 								onChange(prevState => ({
 									...prevState,
