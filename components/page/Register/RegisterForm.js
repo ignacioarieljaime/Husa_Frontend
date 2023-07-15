@@ -15,6 +15,8 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { getFirmWareModels } from 'services/servicePortal'
+import DownloadIcon from 'components/icons/DownloadIcon'
+import DownloadIconV2 from 'components/icons/DownloadIconV2'
 // import PDFDownload from 'public/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
 
 function RegisterForm({ data }) {
@@ -389,7 +391,16 @@ function RegisterForm({ data }) {
 							<span className='ms-2'> Where do I find the serial number?</span>
 						</button>
 						{dataSchema?.product_category === 'Air Products' && (
-							<a className='modal-btn' download target='_blank' href={'/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'}>
+							<a
+								className='modal-btn'
+								download
+								target='_blank'
+								href={
+									'/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
+								}>
+								<span style={{width:"20px"}}>
+									<DownloadIcon />
+								</span>
 								How to identify HVAC model and serial number
 							</a>
 						)}

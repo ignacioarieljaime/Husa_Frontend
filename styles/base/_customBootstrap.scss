@@ -812,12 +812,31 @@
 	transition-property: color;
 	border: 0;
 	background: transparent;
-	text-decoration:none;
+	text-decoration: none;
 	display: flex;
 }
 .form-container a.modal-btn {
-    margin-left: 34px;
 	text-align: left;
+	&:hover {
+		span {
+			path {
+				fill: var(--primary-color);
+				stroke: var(--primary-color);
+			}
+		}
+	}
+
+	span {
+		margin-left: 3px;
+		margin-right: 10px;
+		path {
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+			-o-transition: all 0.3s;
+		}
+	}
 }
 .form-container .modal-btn:hover {
 	color: var(--primary-color);
@@ -2291,11 +2310,11 @@ header {
 				line-height: 30px !important;
 			}
 		}
-			h6 {
-				font-size: 12px !important;
-				font-weight: 400 !important;
-				line-height: 16px !important;
-			}
+		h6 {
+			font-size: 12px !important;
+			font-weight: 400 !important;
+			line-height: 16px !important;
+		}
 	}
 	p,
 	.product_news_item_small_title {
