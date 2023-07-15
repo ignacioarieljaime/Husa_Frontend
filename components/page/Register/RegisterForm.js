@@ -132,13 +132,13 @@ function RegisterForm({ data }) {
 				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}&status[]=1&status[]=3`
 			)
 			if (response.status === 200) {
-				let data = response.data.modelSeries.map(item => ({
+				let data = response?.data?.modelSeries?.map(item => ({
 					...item,
 					name: item.model
 				}))
 
 				setModels(
-					data.sort((a, b) =>
+					data?.sort((a, b) =>
 						sortWorkHandler(a.name).localeCompare(sortWorkHandler(b.name))
 					)
 				)
@@ -335,7 +335,6 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
-					{console.log(dataSchema?.product_category === 'Air Products')}
 					{router.query?.InternalModelNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput

@@ -24,7 +24,7 @@ function CustomSelectBox({
 	useEffect(() => {
 		const search = setTimeout(() => {
 			searchValue(inputSearch)
-			//Your search query and it will run the function after 3secs from user stops typing
+			onChange('')
 		}, 500)
 		return () => clearTimeout(search)
 	}, [inputSearch])
@@ -32,7 +32,11 @@ function CustomSelectBox({
 	const searchValue = _text => {
 		let result = []
 		if (Array.isArray(options))
-			options?.forEach(item => item?.name.toLowerCase()?.includes(_text?.toLowerCase()) && result.push(item))
+			options?.forEach(
+				item =>
+					item?.name.toLowerCase()?.includes(_text?.toLowerCase()) &&
+					result.push(item)
+			)
 		setSearchList(result)
 	}
 
@@ -82,7 +86,7 @@ function CustomSelectBox({
 								onBlur={() =>
 									setTimeout(() => {
 										optionBox.current.style.opacity = '0'
-									optionBox.current.style.animation = 'HideList'
+										optionBox.current.style.animation = 'HideList'
 									}, 200)
 								}
 								value={inputSearch}
@@ -91,7 +95,9 @@ function CustomSelectBox({
 									optionBox.current.style.animation = 'none'
 								}}
 							/>
-							{rightText && <span>{rightText}</span>}
+							{!inputSearch && !value && rightText ? (
+								<span>{rightText}</span>
+							) : null}
 
 							<FontAwesomeIcon
 								style={{ width: '10px' }}
@@ -119,7 +125,10 @@ function CustomSelectBox({
 					)}
 				</div>
 			</div>
-			<ul ref={optionBox} className='select-box-list top-100 w-100'>
+			<ul
+				style={{ zIndex: 5 }}
+				ref={optionBox}
+				className='select-box-list top-100 w-100'>
 				{isSearchable && inputSearch?.length
 					? listGenerator(searchList)
 					: listGenerator(options)}
