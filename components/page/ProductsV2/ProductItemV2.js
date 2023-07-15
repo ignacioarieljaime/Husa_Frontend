@@ -37,7 +37,6 @@ const ProductItemV2 = ({ data }) => {
 	}, [currentItem])
 
 	const dataLayerHandler = () => {
-		console.log(currentItem)
 		setChanelAdviserHandler(!chanelAdviserHandler)
 		window.dataLayer.push({
 			event: 'view_product',
@@ -102,7 +101,9 @@ const ProductItemV2 = ({ data }) => {
 					<div>
 						<div className='d-flex flex-wrap justify-content-center  gap-2 align-items-center mb-10'>
 							<Link href={url ? url : '/'}>
-								<a style={{ height: '52px' }} className='n-btn d-flex justify-content-center align-items-center outline-black  '>
+								<a
+									style={{ height: '52px' }}
+									className='n-btn d-flex justify-content-center align-items-center outline-black  '>
 									View Product
 								</a>
 							</Link>
@@ -119,8 +120,12 @@ const ProductItemV2 = ({ data }) => {
 										? dataLayerHandler()
 										: {}
 								}
-								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
-								className={`n-btn ${
+								style={
+									currentItem?.retailer
+										? { cursor: 'pointer', height: '52px' }
+										: { height: '52px' }
+								}
+								className={`n-btn d-flex justify-content-center align-items-center ${
 									currentItem?.buy_status === 'ChannelAdvisor' ||
 									currentItem?.buy_status === 'Internal'
 										? 'primary-text '
