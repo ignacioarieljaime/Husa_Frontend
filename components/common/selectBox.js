@@ -32,7 +32,7 @@ function CustomSelectBox({
 	const searchValue = _text => {
 		let result = []
 		if (Array.isArray(options))
-			options?.forEach(item => item?.name?.includes(_text) && result.push(item))
+			options?.forEach(item => item?.name.toLowerCase()?.includes(_text?.toLowerCase()) && result.push(item))
 		setSearchList(result)
 	}
 
