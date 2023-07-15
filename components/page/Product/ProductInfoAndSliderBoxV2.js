@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 import React, { useState } from 'react'
+import ProductInfoSliderV2 from './ProductInfoSliderV2'
 // component
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 const ProductInfoSlider = dynamic(() => import('./ProductInfoSlider'))
@@ -30,7 +31,7 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 			className='product single-product single-product-v2 theme-light'>
 			<div className='container'>
 				<div className='row'>
-					<ProductInfoSlider
+					<ProductInfoSliderV2
 						firstImage={pim?.image}
 						pim={pim?.assets}
 						allData={pim}
