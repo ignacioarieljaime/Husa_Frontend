@@ -121,3 +121,51 @@
 		}
 	}
 }
+
+.uledx_textbox {
+	max-width: 1248px;
+	margin: 0 auto;
+	padding: 64px 16px;
+	@include mq(768) {
+		padding: 32px 16px;
+	}
+	.content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 32px;
+		@include mq(768) {
+			flex-wrap: wrap;
+			justify-content: flex-start;
+		}
+		.title {
+			min-width: 300px;
+			width: 80%;
+			font-size: 34px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 42.5px; /* 125% */
+			margin-bottom: 0;
+			letter-spacing: -0.68px;
+			@include mq(768) {
+				font-size: 20px;
+				line-height: 25px; /* 125% */
+				letter-spacing: -0.4px;
+			}
+		}
+		.text {
+			margin-bottom: 0;
+			* {
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 21.6px; /* 135% */
+				margin-bottom: 0;
+				@include mq(768) {
+					font-size: 14px;
+					line-height: 18.9px; /* 135% */
+				}
+			}
+		}
+	}
+}
