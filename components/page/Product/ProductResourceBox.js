@@ -31,7 +31,11 @@ function ProductResourceBox({ pim, data }) {
 					<a
 						target='_blank'
 						href={customWarrantyFile || warrantyFileUrl}
-						download={true}>
+						className='n-btn outline-white transparent d-block text-uppercase'
+						download={true}
+						style={{
+							padding: '15px 16px 14px'
+						}}>
 						<span className='underline-on-hover text-uppercase'>
 							{warranty?.title}
 						</span>
@@ -58,7 +62,11 @@ function ProductResourceBox({ pim, data }) {
 											target='_self'
 											href={'/televisions/laser-tv/installation-request'}>
 											<a className='text-decoration-none '>
-												<span className='n-btn outline-white transparent d-block text-uppercase'>
+												<span
+													className='n-btn outline-white transparent d-block text-uppercase'
+													style={{
+														padding: '15px 16px 14px'
+													}}>
 													{item.caption ? item.caption : item.title}
 												</span>
 												<img
@@ -74,7 +82,11 @@ function ProductResourceBox({ pim, data }) {
 											href={item.url ? item.url : ''}
 											download
 											className='text-decoration-none '>
-											<span className='n-btn outline-white transparent d-block text-uppercase'>
+											<span
+												className='n-btn outline-white transparent d-block text-uppercase'
+												style={{
+													padding: '15px 16px 14px'
+												}}>
 												{item?.content_type === 'Warrenty'
 													? warrantyHandler(true)
 													: item.caption
@@ -94,7 +106,11 @@ function ProductResourceBox({ pim, data }) {
 							router.pathname.split('/')[router.pathname.split('/').length - 1]
 						}`}>
 						<a className='text-decoration-none '>
-							<span className='n-btn outline-white transparent d-block text-uppercase'>
+							<span
+								className='n-btn outline-white transparent d-block text-uppercase'
+								style={{
+									padding: '15px 16px 14px'
+								}}>
 								PRODUCT SUPPORT
 							</span>
 						</a>
@@ -104,7 +120,11 @@ function ProductResourceBox({ pim, data }) {
 				!structure?.installationUrl?.value === 'null' ? (
 					<li>
 						<Link href={structure?.installationUrl?.value}>
-							<a>
+							<a
+								className='n-btn outline-white transparent d-block text-uppercase'
+								style={{
+									padding: '15px 16px 14px'
+								}}>
 								<span className='underline-on-hover text-uppercase'>
 									INSTALLATION REQUEST
 								</span>

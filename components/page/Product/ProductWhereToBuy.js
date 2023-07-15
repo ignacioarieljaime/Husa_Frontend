@@ -19,7 +19,10 @@ const ProductWhereToBuy = ({ pim, data }) => {
 							? false
 							: true
 					}
-					className='n-btn white'>
+					className='n-btn white'
+					style={{
+						padding: '14px 16px 15px'
+					}}>
 					{structure?.whereToBuy?.title}
 				</button>
 			</div>
