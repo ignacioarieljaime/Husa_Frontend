@@ -122,10 +122,19 @@
 	}
 }
 
+.grid_v2_top_box{
+	padding-left: 163px;
+
+	h2{
+		font-size: 48px;
+		font-weight: 400;
+	}
+}
+
 .products-v2 {
 	.products-sorting {
 		.dropdown-select-box {
-			background-color: #fbfbfb;
+			background-color: #F0F2F2;
 			border: none;
 			margin: 0 0 54px auto;
 		}
@@ -138,6 +147,13 @@
 
 		.products-filtering {
 			width: 270px;
+
+			.products-filtering-button{
+				height: 51px;
+				padding:  0 16px;
+				font-size: 14px;
+				font-weight: 400;
+			}
 
 			.filter-group-container {
 				.filter-group-wrapper {
@@ -215,7 +231,7 @@
 				border-radius: 50px;
 				box-shadow: none;
 				transition: all 0.3s ease-in;
-
+				padding: 30px 22px;
 				img {
 					object-fit: contain !important;
 				}

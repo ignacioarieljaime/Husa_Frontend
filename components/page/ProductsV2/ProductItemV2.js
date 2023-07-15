@@ -37,7 +37,7 @@ const ProductItemV2 = ({ data }) => {
 	}, [currentItem])
 
 	const dataLayerHandler = () => {
-		console.log(currentItem);
+		console.log(currentItem)
 		setChanelAdviserHandler(!chanelAdviserHandler)
 		window.dataLayer.push({
 			event: 'view_product',
@@ -50,7 +50,7 @@ const ProductItemV2 = ({ data }) => {
 	return (
 		<>
 			{' '}
-			<div className='product-item-v2 px-5 py-8'>
+			<div className='product-item-v2'>
 				<div className='text-center mb-10 w-100'>
 					<Link href={url ? url : '/'}>
 						<a>
@@ -102,7 +102,9 @@ const ProductItemV2 = ({ data }) => {
 					<div>
 						<div className='d-flex flex-wrap justify-content-center  gap-2 align-items-center mb-10'>
 							<Link href={url ? url : '/'}>
-								<a className='n-btn outline-black  '>View Product</a>
+								<a style={{ height: '52px' }} className='n-btn d-flex justify-content-center align-items-center outline-black  '>
+									View Product
+								</a>
 							</Link>
 							<button
 								disabled={

@@ -112,7 +112,7 @@ const ProductsGridV2 = ({ data }) => {
 
 	return (
 		<section>
-			<div className='container mt-7 mb-11 d-none d-md-block'>
+			<div className='container grid_v2_top_box mt-7 mb-11 d-none d-md-block'>
 				<div className='row justify-content-start align-items-center px-3 mb-15'>
 					<BreadCrumb />
 				</div>
