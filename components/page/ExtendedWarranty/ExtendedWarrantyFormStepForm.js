@@ -21,8 +21,6 @@ const ExtendedWarrantyFormStepForm = ({
 	const [label, setlabel] = useState(true)
 	const [date, setDate] = useState('')
 
-	
-
 	const formatDate = (_year, _month, _day) => {
 		if (_year && typeof _month === 'number' && _day) {
 			if (_month < 1) {
@@ -128,6 +126,7 @@ const ExtendedWarrantyFormStepForm = ({
 					<div className='extended-warranty-input'>
 						<input
 							onChange={e => {
+								if (isNaN(Number(e.target.value))) return
 								setDate(e.target.value)
 								onChange(prevState => ({
 									...prevState,
@@ -136,7 +135,7 @@ const ExtendedWarrantyFormStepForm = ({
 							}}
 							value={date}
 							required
-							type='number'
+							type='text'
 							placeholder='Postal code'
 						/>
 					</div>
