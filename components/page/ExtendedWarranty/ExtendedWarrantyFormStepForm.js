@@ -126,9 +126,12 @@ const ExtendedWarrantyFormStepForm = ({
 					<div className='extended-warranty-input'>
 						<input
 							onChange={e => {
-								if (isNaN(Number(e.target.value))) return onChange('')
+								if (isNaN(Number(e.target.value)))
+									return onChange({
+										...prevState,
+										postal_code: 'e.target.value'
+									})
 
-								onChange('')
 								setDate(e.target.value)
 								onChange(prevState => ({
 									...prevState,
@@ -169,7 +172,7 @@ const ExtendedWarrantyFormStepForm = ({
 				</div>
 				<div className='col-12 col-md-6'>
 					<div className='extended-warranty-input'>
-						{!formBody.product.purchase_date && (
+						{!formBody.product?.purchase_date && (
 							<label className='custom-label'>Purchase Date</label>
 						)}
 						<input
@@ -227,7 +230,7 @@ const ExtendedWarrantyFormStepForm = ({
 						label='Model Plate Sticker'
 						boxContent='Upload Your Products Serial Number Photo'
 						id={0}
-						value={formBody.product.model_plate_sticker}
+						value={formBody.product?.model_plate_sticker}
 						name='model_plate_sticker'
 						onChange={onUpload}
 						loading={loading}
@@ -239,7 +242,7 @@ const ExtendedWarrantyFormStepForm = ({
 					<ExtendedWarrantyFileInput
 						label='Receipt Photo'
 						id={1}
-						value={formBody.product.receipt_photo}
+						value={formBody.product?.receipt_photo}
 						name='receipt_photo'
 						onChange={onUpload}
 						loading={loading}
