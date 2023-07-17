@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export async function GetProducts(_categoryId, _model, _search) {
 	let response = await axios.get(
-		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/products`,
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/products`,
 		{
 			params: {
 				category_id: _categoryId,
@@ -17,7 +17,7 @@ export async function GetProducts(_categoryId, _model, _search) {
 
 export async function GetCategories() {
 	let response = await axios.get(
-		`https://imecom.dev-api.hisenseportal.com/api/v1/customer/categories`
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/categories`
 	)
 	return response
 }
