@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
 import React, { useRef, useState, useEffect } from 'react'
 
-function RoleModal({ modalHandler, data }) {
+function RoleModal({ modalHandler, data, greenText }) {
 	const modal = useRef()
 	const [text, setText] = useState(null)
 	useEffect(() => {
@@ -29,7 +29,19 @@ function RoleModal({ modalHandler, data }) {
 						aria-label='Close'>
 						<FontAwesomeIcon icon={faXmark} />
 					</button>
-					<div dangerouslySetInnerHTML={{ __html: text }}></div>
+					<div>
+						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+						{greenText && (
+							<p style={{ color: '#009c9b' }}>
+								<strong style={{ fontWeight: '500' }}>
+									Split AC & Heat Pump:
+								</strong>
+								<span style={{ marginLeft: '10px' }}>
+									Side of outdoor unit​
+								</span>
+							</p>
+						)}
+					</div>
 				</div>
 			</div>
 		</div>
