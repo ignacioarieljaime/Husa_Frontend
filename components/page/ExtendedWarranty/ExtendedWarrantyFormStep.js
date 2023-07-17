@@ -84,19 +84,19 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 	const submitFormData = async e => {
 		setError(null)
 		e.preventDefault()
-		if (!formBody.product.model_plate_sticker) {
+		if (!formBody.product?.model_plate_sticker) {
 			toast.error('please upload model plate sticker', {
 				toastId: 'model_plate_sticker'
 			})
-		} else if (!formBody.product.receipt_photo) {
+		} else if (!formBody.product?.receipt_photo) {
 			toast.error('please upload receipt photo', { toastId: 'receipt_photo' })
-		} else if (!formBody.product.retailer) {
+		} else if (!formBody.product?.retailer) {
 			toast.error('please select retailer', { toastId: 'retailer_id' })
 		} else {
 			setLoading('button')
 			try {
 				let response = await submitForm(formBody)
-				console.log(response);
+				console.log(response)
 				router.push(response?.data?.url)
 				// await redirectToPayment(response?.data?.invoice?.token)
 				// setLoading(null)

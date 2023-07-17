@@ -193,7 +193,7 @@ const PersonalInfoForm = ({ data, dispatch, errors }) => {
 						<input
 							onChange={e => inputChangeHandler(e)}
 							name='PostalZipCode'
-							type='text'
+							type='number'
 							required={true}
 							placeholder='ZIP Code'
 						/>
