@@ -345,7 +345,8 @@ function RegisterForm({ data }) {
 								value={dataSchema?.product_model}
 							/>
 						</div>
-					) : models?.length !== 0 ? (
+					) : models === 'loading' ||
+					  (Array.isArray(models) && models?.length !== 0) ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								// rightText={
