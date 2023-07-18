@@ -110,12 +110,16 @@ const ProductFilterResponsive = ({
 				<ul>
 					{allFilters && (
 						<li>
-							<button>{sortValue ? sortValue : 'sort'}</button>
+							<button onClick={() => setModalIsOpen(true)}>
+								{sortValue ? sortValue : 'sort'}
+							</button>
 						</li>
 					)}
 					{allFilters?.map(filter => (
 						<li>
-							<button>{filter?.name}</button>
+							<button onClick={() => setModalIsOpen(true)}>
+								{filter?.name}
+							</button>
 						</li>
 					))}
 				</ul>
