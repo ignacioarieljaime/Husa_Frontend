@@ -22,10 +22,8 @@ function CustomInput({
 	}
 
 	const typeEnglishHandler = e => {
-		let value = e.target.value
-		if (!isNaN(Number(value))) return onChange(value)
-
-		onChange('')
+		let _value = e.target.value
+		if (!isNaN(Number(_value))) return onChange(_value)
 	}
 
 	if (type === 'date') {
