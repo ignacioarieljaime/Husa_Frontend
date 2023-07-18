@@ -32,7 +32,11 @@ function CustomSelectBox({
 	const searchValue = _text => {
 		let result = []
 		if (Array.isArray(options))
-			options?.forEach(item => item?.name?.includes(_text) && result.push(item))
+			options?.forEach(
+				item =>
+					item?.name.toLowerCase()?.includes(_text?.toLowerCase()) &&
+					result.push(item)
+			)
 		setSearchList(result)
 	}
 
@@ -82,13 +86,13 @@ function CustomSelectBox({
 								onBlur={() =>
 									setTimeout(() => {
 										optionBox.current.style.opacity = '0'
-									optionBox.current.style.animation = 'HideList'
+										optionBox.current.style.animationName = 'HideList'
 									}, 200)
 								}
 								value={inputSearch}
 								onFocus={() => {
 									optionBox.current.style.opacity = '1'
-									optionBox.current.style.animation = 'none'
+									optionBox.current.style.animationName = 'none'
 								}}
 							/>
 							{rightText && <span>{rightText}</span>}
