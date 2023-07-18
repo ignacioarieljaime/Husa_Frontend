@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 
 const FilterDropDown = props => {
 	let {
+		id,
 		name,
 		content_record_id,
 		filter_values,
@@ -14,8 +15,8 @@ const FilterDropDown = props => {
 	} = props
 	const router = useRouter()
 	const dropdown = useRef()
-	const [dropdownStatus, setDropdownStatus] = useState(false)
 	const [filterList, setFilterList] = useState([])
+	const [collapse, setCollapsed] = useState(true)
 
 	const filterHandler = _filterValue => {
 		filterController(
@@ -29,10 +30,10 @@ const FilterDropDown = props => {
 		if (router?.query?.filter) {
 			let filter = JSON.parse(decodeURIComponent(router.query.filter))
 			if (filter.find(item => item.id === content_record_id))
-				return setDropdownStatus(true)
-			setDropdownStatus(false)
+				return setCollapsed(false)
+			setCollapsed(true)
 		} else {
-			setDropdownStatus(false)
+			setCollapsed(true)
 		}
 	}, [router?.query?.filter, filter_values, allFilters])
 
@@ -68,14 +69,14 @@ const FilterDropDown = props => {
 	return (
 		<div className='filter_drop_down'>
 			<div
-				onClick={() => setDropdownStatus(state => !state)}
-				className={`name_button ${dropdownStatus && "drop_down_is_open"}`}>
+				onClick={() => setCollapsed(state => !state)}
+				className={`name_button ${!collapse && 'drop_down_is_open'}`}>
 				<h6>{name}</h6>
 				<AngleArrow />
 			</div>
 			<div
 				style={{
-					height: dropdownStatus ? dropdown.current.offsetHeight + 'px' : 0
+					height: !collapse ? dropdown?.current?.offsetHeight + 'px' : 0
 				}}
 				className='filter_list'>
 				<ul ref={dropdown}>

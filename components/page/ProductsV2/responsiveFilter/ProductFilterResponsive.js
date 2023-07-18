@@ -15,6 +15,7 @@ const ProductFilterResponsive = ({
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [filterCounter, setFilterCounter] = useState(0)
+	const [dropdownStatus, setDropdownStatus] = useState(-1)
 	const router = useRouter()
 	const filterController = (e, _filter, _filterType) => {
 		setModalIsOpen(false)
@@ -100,7 +101,11 @@ const ProductFilterResponsive = ({
 		<>
 			<div className='product_filter_responsive'>
 				<div className='clear__all_filter_button'>
-					<button onClick={() => setModalIsOpen(true)}>
+					<button
+						onClick={() => {
+							setModalIsOpen(true)
+							setDropdownStatus(0)
+						}}>
 						All Filters <ResponsiveFilterIcon />
 					</button>
 					<button onClick={checkboxClearHandler}>
@@ -110,14 +115,22 @@ const ProductFilterResponsive = ({
 				<ul>
 					{allFilters && (
 						<li>
-							<button onClick={() => setModalIsOpen(true)}>
-								{sortValue ? sortValue : 'sort'}
+							<button
+								onClick={() => {
+									setModalIsOpen(true)
+									setDropdownStatus(1)
+								}}>
+								sort
 							</button>
 						</li>
 					)}
 					{allFilters?.map(filter => (
 						<li>
-							<button onClick={() => setModalIsOpen(true)}>
+							<button
+								onClick={() => {
+									setModalIsOpen(true)
+									setDropdownStatus(filter.id)
+								}}>
 								{filter?.name}
 							</button>
 						</li>
@@ -131,25 +144,37 @@ const ProductFilterResponsive = ({
 					<button onClick={checkboxClearHandler}>
 						Clear Filter ({filterCounter})
 					</button>
-					<button onClick={() => setModalIsOpen(false)}>
+					<button
+						onClick={() => {
+							setModalIsOpen(false)
+							setDropdownStatus(-1)
+						}}>
 						<XIcon />
 					</button>
 				</div>
 				<div className='filters'>
-					<SortFilterDropDown
-						sortValue={sortValue}
-						sortOnChange={value => {
-							setModalIsOpen(false)
-							sortOnChange(value.value)
-						}}
-					/>
-					{allFilters?.map(filter => (
-						<FilterDropDown
-							{...filter}
-							filterController={filterController}
-							allFilters={allFilters}
+					{dropdownStatus === 1 || dropdownStatus === 0 ? (
+						<SortFilterDropDown
+							sortValue={sortValue}
+							dropdownStatus={dropdownStatus}
+							setDropdownStatus={() => setDropdownStatus(1)}
+							sortOnChange={value => {
+								setModalIsOpen(false)
+								sortOnChange(value.value)
+							}}
 						/>
-					))}
+					) : null}
+					{allFilters?.map(filter =>
+						dropdownStatus === filter.id || dropdownStatus === 0 ? (
+							<FilterDropDown
+								{...filter}
+								dropdownStatus={dropdownStatus}
+								setDropdownStatus={() => setDropdownStatus(filter.id)}
+								filterController={filterController}
+								allFilters={allFilters}
+							/>
+						) : null
+					)}
 				</div>
 			</div>
 		</>
