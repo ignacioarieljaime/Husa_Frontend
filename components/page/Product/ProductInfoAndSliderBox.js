@@ -56,21 +56,25 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					</h3>
 					<h1 className='title'>{pim?.name}</h1>
 					<p className='model_number'>Model: {pim?.model}</p>
-					<div className='sizes'>
-						<p className='sizes_text'>Available Screen Sizes</p>
-						<div className='sizes_list'>
-							{screenSize.map(
-								(item, index) =>
-									item.title && (
-										<ProductSliderLinkButtonV3
-											key={index}
-											data={item}
-											pim={pim}
-										/>
-									)
-							)}
+					{screenSize && screenSize.length > 0 ? (
+						<div className='sizes'>
+							<p className='sizes_text'>Available Screen Sizes</p>
+							<div className='sizes_list'>
+								{screenSize.map(
+									(item, index) =>
+										item.title && (
+											<ProductSliderLinkButtonV3
+												key={index}
+												data={item}
+												pim={pim}
+											/>
+										)
+								)}
+							</div>
 						</div>
-					</div>
+					) : (
+						<div className='sizes pb-0'></div>
+					)}
 					<div className='text-center text-md-start'>
 						<button
 							className='wtb_btn mx-auto mx-md-0'
