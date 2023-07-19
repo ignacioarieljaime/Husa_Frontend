@@ -13,13 +13,18 @@ const options = [
 	}
 ]
 
-const SortFilterDropDown = ({ sortValue, sortOnChange }) => {
+const SortFilterDropDown = ({ sortValue, sortOnChange, dropdownStatus }) => {
 	const dropdown = useRef()
 	const [collapse, setCollapsed] = useState(false)
 
 	useEffect(() => {
 		setCollapsed(sortValue?.value || true)
 	}, [sortValue])
+
+	useEffect(() => {
+		if (dropdownStatus === 1) setTimeout(() => setCollapsed(false), 400)
+		return () => setCollapsed(true)
+	}, [dropdownStatus])
 
 	return (
 		<div className='filter_drop_down'>
@@ -38,8 +43,8 @@ const SortFilterDropDown = ({ sortValue, sortOnChange }) => {
 					{options?.map(filter => (
 						<SortFilterItem
 							name={filter?.name}
-							value={filter.value}
-							sortValue={sortValue}
+							value={filter}
+							isChecked={sortValue?.value === filter.value}
 							sortOnChange={sortOnChange}
 						/>
 					))}

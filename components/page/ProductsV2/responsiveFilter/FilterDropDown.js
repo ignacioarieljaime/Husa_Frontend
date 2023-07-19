@@ -11,7 +11,8 @@ const FilterDropDown = props => {
 		filter_values,
 		content_type,
 		filterController,
-		allFilters
+		allFilters,
+		dropdownStatus
 	} = props
 	const router = useRouter()
 	const dropdown = useRef()
@@ -36,6 +37,11 @@ const FilterDropDown = props => {
 			setCollapsed(true)
 		}
 	}, [router?.query?.filter, filter_values, allFilters])
+
+	useEffect(() => {
+		if (dropdownStatus === id) setTimeout(() => setCollapsed(false), 400)
+		return () => setCollapsed(true)
+	}, [dropdownStatus])
 
 	useEffect(() => {
 		if (name === 'CHANNELS' && filter_values[1]?.title.includes(' CH')) {

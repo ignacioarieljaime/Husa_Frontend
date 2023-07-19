@@ -2,13 +2,13 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
-const SortFilterItem = ({name,value,sortOnChange,sortValue}) => {
-  return (
+const SortFilterItem = ({ name, value, sortOnChange, isChecked }) => {
+	return (
 		<li>
 			<div>
 				<input
-                checked={sortValue?.value === value}
-                onChange={()=>sortOnChange({value,name})}
+					checked={isChecked}
+					onChange={() => sortOnChange({ value, name })}
 					id={name}
 					type='checkbox'
 				/>
@@ -18,7 +18,7 @@ const SortFilterItem = ({name,value,sortOnChange,sortValue}) => {
 
 			<label htmlFor={name}>{name}</label>
 		</li>
-  )
+	)
 }
 
 export default SortFilterItem
