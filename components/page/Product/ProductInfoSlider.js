@@ -117,11 +117,11 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 											className='video'></iframe>
 										<p>{item?.caption ? item?.caption : item?.title}</p>
 										<div className='btns'>
-											<button
+											{/* <button
 												// onClick={() => setImageModal(item?.url)}
 												className='resize_btn'>
 												<img src={Mute.src} width='16' />
-											</button>
+											</button> */}
 											<button
 												onClick={() => setImageModal(item?.url)}
 												className='resize_btn'>
