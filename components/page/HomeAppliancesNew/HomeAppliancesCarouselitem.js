@@ -32,21 +32,26 @@ const HomeAppliancesCarouselitem = ({ data, structure }) => {
 			<div>
 				<h4 className='title'>{data?.title?.value}</h4>
 				<p className='subtitle'>{data?.subtitle?.value}</p>
-				<Link
-					target={data?.link?.target ? data?.link?.target : '_self'}
-					href={data?.link?.value ? data?.link?.value : '/'}>
-					<a
+				{data?.link?.value && (
+					<Link
 						target={data?.link?.target ? data?.link?.target : '_self'}
-						style={{ width: '150px' }}
-						className={`text-nowrap n-btn d-block mx-auto ${
-							structure?.theme?.value === 'dark' ? 'white' : 'black'
-						}`}>
-						{data?.link?.title}
-						{data?.link?.target === '_blank' && (
-							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
-						)}
-					</a>
-				</Link>
+						href={data?.link?.value ? data?.link?.value : '/'}>
+						<a
+							target={data?.link?.target ? data?.link?.target : '_self'}
+							style={{ width: '150px' }}
+							className={`text-nowrap n-btn d-block mx-auto ${
+								structure?.theme?.value === 'dark' ? 'white' : 'black'
+							}`}>
+							{data?.link?.title}
+							{data?.link?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
+						</a>
+					</Link>
+				)}
 			</div>
 		</>
 	)

@@ -4,6 +4,9 @@ import 'swiper/css'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import HomeAppliancesCarouselitem from './HomeAppliancesCarouselitem'
+import 'swiper/css/navigation'
+
+import { Navigation } from 'swiper'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 
@@ -25,6 +28,8 @@ const HomeAppliancesCarousel = ({ data }) => {
 					slidesPerView={'auto'}
 					centeredSlides={false}
 					grabCursor={true}
+					module={[Navigation]}
+					navigation={true}
 					spaceBetween={24}
 					className='slider'>
 					{windowSize[0] > 768 && (
