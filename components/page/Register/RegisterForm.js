@@ -390,20 +390,6 @@ function RegisterForm({ data }) {
 							/>
 							<span className='ms-2'> Where do I find the serial number?</span>
 						</button>
-						{dataSchema?.product_category === 'Air Products' && (
-							<a
-								className='modal-btn'
-								download
-								target='_blank'
-								href={
-									'/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
-								}>
-								<span style={{width:"20px"}}>
-									<DownloadIcon />
-								</span>
-								How to identify HVAC model and serial number
-							</a>
-						)}
 					</div>
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
