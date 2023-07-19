@@ -98,11 +98,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 										{item.title}
 									</figcaption> */}
 								</SwiperSlide>
-							) : null
-						)}
-					{pim &&
-						pim.map((item, index) =>
-							item.type_id === 5 ? (
+							) : item.type_id === 5 ? (
 								<SwiperSlide key={index}>
 									<figure className='video_wrapper'>
 										{/* <video
@@ -179,11 +175,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 										/>
 									</figure>
 								</SwiperSlide>
-							) : null
-						)}
-					{pim &&
-						pim.map((item, index) =>
-							item.type_id === 5 ? (
+							) : item.type_id === 5 ? (
 								<SwiperSlide
 									aria-hidden='true'
 									tabIndex={'-1'}
