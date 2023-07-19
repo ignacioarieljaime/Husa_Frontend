@@ -24,7 +24,7 @@ const SortFilterDropDown = ({ sortValue, sortOnChange, dropdownStatus }) => {
 	useEffect(() => {
 		if (dropdownStatus === 1) setTimeout(() => setCollapsed(false), 400)
 		return () => setCollapsed(true)
-	}, [dropdownStatu, dropdown?.current?.offsetHeights])
+	}, [dropdownStatus, dropdown?.current?.offsetHeights])
 
 	return (
 		<div className='filter_drop_down'>
