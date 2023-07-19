@@ -39,9 +39,9 @@ const FilterDropDown = props => {
 	}, [router?.query?.filter, filter_values, allFilters])
 
 	useEffect(() => {
-		if (dropdownStatus === id) setTimeout(() => setCollapsed(false), 400)
+		if (dropdownStatus === id) setTimeout(() => setCollapsed(false), 600)
 		return () => setCollapsed(true)
-	}, [dropdownStatus])
+	}, [dropdownStatus, dropdown?.current?.offsetHeight])
 
 	useEffect(() => {
 		if (name === 'CHANNELS' && filter_values[1]?.title.includes(' CH')) {
