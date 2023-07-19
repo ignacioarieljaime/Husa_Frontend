@@ -17,9 +17,9 @@ const SortFilterDropDown = ({ sortValue, sortOnChange, dropdownStatus }) => {
 	const dropdown = useRef()
 	const [collapse, setCollapsed] = useState(false)
 
-	useEffect(() => {
-		setCollapsed(sortValue?.value || true)
-	}, [sortValue])
+	// useEffect(() => {
+	// 	setCollapsed(sortValue?.value || true)
+	// }, [sortValue])
 
 	useEffect(() => {
 		if (dropdownStatus === 1) setTimeout(() => setCollapsed(false), 400)

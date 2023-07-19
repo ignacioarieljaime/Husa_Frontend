@@ -18,7 +18,6 @@ const ProductFilterResponsive = ({
 	const [dropdownStatus, setDropdownStatus] = useState(-1)
 	const router = useRouter()
 	const filterController = (e, _filter, _filterType) => {
-		setModalIsOpen(false)
 		let _filtersBox = router?.query?.filter
 			? JSON?.parse(decodeURIComponent(router?.query?.filter))
 			: []
@@ -159,7 +158,6 @@ const ProductFilterResponsive = ({
 							dropdownStatus={dropdownStatus}
 							setDropdownStatus={() => setDropdownStatus(1)}
 							sortOnChange={value => {
-								setModalIsOpen(false)
 								sortOnChange(value.value)
 							}}
 						/>
