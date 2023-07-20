@@ -15,6 +15,9 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { getFirmWareModels } from 'services/servicePortal'
+import DownloadIcon from 'components/icons/DownloadIcon'
+import DownloadIconV2 from 'components/icons/DownloadIconV2'
+// import PDFDownload from 'public/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
 
 function RegisterForm({ data }) {
 	let { structure } = data
@@ -376,7 +379,7 @@ function RegisterForm({ data }) {
 							}
 						/>
 					</div>
-					<div className='col-12 col-md-6 mb-10 d-flex'>
+					<div className='col-12 col-md-6 mb-10 d-grid gap-2 '>
 						<button
 							className='modal-btn'
 							type='button'
