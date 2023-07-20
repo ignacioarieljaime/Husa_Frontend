@@ -632,7 +632,7 @@ input[type='number']::-webkit-outer-spin-button {
 			&::placeholder {
 				color: #000;
 			}
-			&:focus{
+			&:focus {
 				background: transparent !important;
 			}
 		}
@@ -643,8 +643,8 @@ input[type='number']::-webkit-outer-spin-button {
 			left: 43%;
 			display: inline-block;
 			position: absolute;
-			user-select: none; 
-			 
+			user-select: none;
+
 			@include mq(768) {
 				display: none;
 			}
@@ -877,6 +877,18 @@ input[type='number']::-webkit-outer-spin-button {
 	border: 0;
 	background: transparent;
 	text-align: center;
+}
+
+.form-container .right_text {
+	position: absolute;
+	left: 30%;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #009e91;
+	font-size: 14px;
+	@include mq(420) {
+		font-size: 12px;
+	}
 }
 
 .form-container .modal-btn:hover {

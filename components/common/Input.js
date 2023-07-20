@@ -10,7 +10,8 @@ function CustomInput({
 	onChange,
 	value,
 	onFocus,
-	onBlur
+	onBlur,
+	rightText
 }) {
 	const convertData = (_date, _reverse) => {
 		let array = _date.split('-')
@@ -66,6 +67,7 @@ function CustomInput({
 				defaultValue={defaultValue && defaultValue}
 				value={value && value}
 			/>
+			{rightText && <span className='right_text'>{rightText}</span>}{' '}
 			{required && <span className='input-error'>This field is required.</span>}
 		</div>
 	)
