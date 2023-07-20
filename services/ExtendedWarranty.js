@@ -15,6 +15,12 @@ export async function GetProducts(_categoryId, _model, _search) {
 	return response
 }
 
+export async function GetCategories() {
+	let response = await axios.get(
+		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/categories`
+	)
+	return response
+}
 export async function GetProductPlans(_price) {
 	let response = await axios.post(
 		`${process.env.NEXT_PUBLIC_ECOM_API_ROUTE}/customer/plans`,
