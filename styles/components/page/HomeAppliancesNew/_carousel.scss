@@ -141,6 +141,12 @@
 					}
 				}
 			}
+			.text_content {
+				.n-btn {
+					position: relative;
+					z-index: 50;
+				}
+			}
 			.title {
 				font-size: 18px;
 				font-style: normal;

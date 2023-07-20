@@ -29,7 +29,7 @@ const HomeAppliancesCarouselitem = ({ data, structure }) => {
 					/>
 				</div>
 			</div>
-			<div>
+			<div className='text_content'>
 				<h4 className='title'>{data?.title?.value}</h4>
 				<p className='subtitle'>{data?.subtitle?.value}</p>
 				{data?.link?.value && (
