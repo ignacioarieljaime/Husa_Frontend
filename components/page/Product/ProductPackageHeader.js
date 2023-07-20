@@ -57,7 +57,6 @@ const ProductPackageHeader = ({ pim, data }) => {
 							</h1>
 						</article>
 						<div className='package-details'>
-							<span>MPN :</span>
 							<ul>
 								{MPNData.map((item, index) => (
 									<li key={'mpn' + index}>{item.value}</li>
