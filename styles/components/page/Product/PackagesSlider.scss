@@ -391,6 +391,14 @@
 							color: #fff !important;
 							background: #000 !important;
 						}
+						&.white {
+							border: 1px solid #fff !important;
+							color: #fff !important;
+							&:hover {
+								color: #000 !important;
+								background: #fff !important;
+							}
+						}
 					}
 				}
 			}
