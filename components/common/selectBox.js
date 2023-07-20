@@ -92,7 +92,7 @@ function CustomSelectBox({
 								value={inputSearch}
 								onFocus={() => {
 									optionBox.current.style.opacity = '1'
-									optionBox.current.style.animation = 'none'
+									optionBox.current.style.animationName = 'none'
 								}}
 							/>
 							{!inputSearch && !value && rightText ? (

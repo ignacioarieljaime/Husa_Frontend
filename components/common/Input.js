@@ -1,3 +1,4 @@
+import { string } from 'joi'
 import React, { useState } from 'react'
 
 function CustomInput({
@@ -20,6 +21,14 @@ function CustomInput({
 		}
 		return `${array[2]}-${array[0]}-${array[1]}`
 	}
+
+	const typeEnglishHandler = e => {
+		let value = e.target.value
+		if (!isNaN(Number(value))) return onChange(value)
+
+		onChange('')
+	}
+
 	if (type === 'date') {
 		return (
 			<div className='position-relative'>
@@ -57,10 +66,12 @@ function CustomInput({
 		<div>
 			<input
 				disabled={disabled}
-				type={type}
+				type={type === 'number' ? 'text' : type}
 				onFocus={onFocus}
 				onBlur={onBlur}
-				onChange={e => onChange(e.target.value)}
+				onChange={e =>
+					type === 'number' ? typeEnglishHandler(e) : onChange(e.target.value)
+				}
 				className={`form-container-inner-input ${className}`}
 				placeholder={placeholder}
 				required={required}

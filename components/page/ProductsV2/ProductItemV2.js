@@ -37,7 +37,6 @@ const ProductItemV2 = ({ data }) => {
 	}, [currentItem])
 
 	const dataLayerHandler = () => {
-		console.log(currentItem);
 		setChanelAdviserHandler(!chanelAdviserHandler)
 		window.dataLayer.push({
 			event: 'view_product',
@@ -50,7 +49,7 @@ const ProductItemV2 = ({ data }) => {
 	return (
 		<>
 			{' '}
-			<div className='product-item-v2 px-5 py-8'>
+			<div className='product-item-v2'>
 				<div className='text-center mb-10 w-100'>
 					<Link href={url ? url : '/'}>
 						<a>
@@ -74,17 +73,18 @@ const ProductItemV2 = ({ data }) => {
 					</Link>
 				</div>
 				<div className='product-item-v2-content flex-grow-1 d-flex flex-column justify-content-between'>
-					<div>
+					<div style={{ padding: '0 9px' }}>
 						<div className='mb-3'>{currentItem?.model}</div>
-						<p className='mb-7'>{currentItem.name}</p>
+						<p className='mb-4'>{currentItem.name}</p>
 					</div>
 
 					{screenSize && (
-						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center mb-8'>
+						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center mb-4'>
 							{screenSize.map(
 								(item, index) =>
 									item.value && (
 										<button
+											style={{ height: '44px' }}
 											key={'type-item-' + index}
 											onClick={() => setCurrentItem(item.product)}
 											className={`n-btn outline-black ${
@@ -100,9 +100,13 @@ const ProductItemV2 = ({ data }) => {
 					)}
 
 					<div>
-						<div className='d-flex flex-wrap justify-content-center  gap-2 align-items-center mb-10'>
+						<div className='d-flex flex-wrap justify-content-center  gap-2 align-items-center mb-4'>
 							<Link href={url ? url : '/'}>
-								<a className='n-btn outline-black  '>View Product</a>
+								<a
+									style={{ height: '52px' }}
+									className='n-btn d-flex justify-content-center align-items-center outline-black  '>
+									View Product
+								</a>
 							</Link>
 							<button
 								disabled={
@@ -117,8 +121,12 @@ const ProductItemV2 = ({ data }) => {
 										? dataLayerHandler()
 										: {}
 								}
-								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
-								className={`n-btn ${
+								style={
+									currentItem?.retailer
+										? { cursor: 'pointer', height: '52px' }
+										: { height: '52px' }
+								}
+								className={`n-btn d-flex justify-content-center align-items-center ${
 									currentItem?.buy_status === 'ChannelAdvisor' ||
 									currentItem?.buy_status === 'Internal'
 										? 'primary-text '

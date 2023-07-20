@@ -373,6 +373,7 @@ function OfferClaimForm({ data }) {
 						<div className='col-6 col-md-6 mb-10'>
 							<CustomInput
 								placeholder={'ZIP'}
+								type='number'
 								required={true}
 								onChange={_value => dataSchemaHandler('postal_code', _value)}
 							/>
