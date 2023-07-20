@@ -164,6 +164,10 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomInput
+								rightText={
+									dataSchema?.product_category === 'Air Products' &&
+									'(Outdoor Model for split system)'
+								}
 								disabled={true}
 								placeholder={'PLEASE SELECT YOUR MODEL'}
 								defaultValue={pim?.model}
@@ -369,6 +373,10 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 
 				{modalCondition && (
 					<RoleModal
+						extra={
+							dataSchema?.product_category === 'Air Products' &&
+							`<p style="color: #009e91;"><strong>Split AC & Heat Pump:</strong></p><p style="color: #009e91;">Side of outdoor unit​</p>`
+						}
 						data={data?.modelText?.value}
 						modalHandler={() => setModalCondition(false)}
 					/>

@@ -632,7 +632,7 @@ input[type=number]::-webkit-outer-spin-button {
 			&::placeholder {
 				color: #000;
 			}
-			&:focus{
+			&:focus {
 				background: transparent !important;
 			}
 		}
@@ -643,8 +643,8 @@ input[type=number]::-webkit-outer-spin-button {
 			left: 43%;
 			display: inline-block;
 			position: absolute;
-			user-select: none; 
-			 
+			user-select: none;
+
 			@include mq(768) {
 				display: none;
 			}
@@ -876,7 +876,43 @@ input[type=number]::-webkit-outer-spin-button {
 	transition-property: color;
 	border: 0;
 	background: transparent;
-	text-align: center;
+	text-decoration: none;
+	display: flex;
+}
+.form-container a.modal-btn {
+	text-align: left;
+	&:hover {
+		span {
+			path {
+				fill: var(--primary-color);
+				stroke: var(--primary-color);
+			}
+		}
+	}
+
+	span {
+		margin-left: 3px;
+		margin-right: 10px;
+		path {
+			transition: all 0.3s;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			-ms-transition: all 0.3s;
+			-o-transition: all 0.3s;
+		}
+	}
+}
+
+.form-container .right_text {
+	position: absolute;
+	left: 30%;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #009e91;
+	font-size: 14px;
+	@include mq(420) {
+		font-size: 12px;
+	}
 }
 
 .form-container .modal-btn:hover {

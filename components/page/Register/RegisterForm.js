@@ -15,6 +15,9 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { getFirmWareModels } from 'services/servicePortal'
+import DownloadIcon from 'components/icons/DownloadIcon'
+import DownloadIconV2 from 'components/icons/DownloadIconV2'
+// import PDFDownload from 'public/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
 
 function RegisterForm({ data }) {
 	let { structure } = data
@@ -131,13 +134,13 @@ function RegisterForm({ data }) {
 				`category_id=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}&status[]=1&status[]=3`
 			)
 			if (response.status === 200) {
-				let data = response.data.modelSeries.map(item => ({
+				let data = response?.data?.modelSeries?.map(item => ({
 					...item,
 					name: item.model
 				}))
 
 				setModels(
-					data.sort((a, b) =>
+					data?.sort((a, b) =>
 						sortWorkHandler(a.name).localeCompare(sortWorkHandler(b.name))
 					)
 				)
@@ -335,8 +338,7 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
-
-					{models?.length === 1 ? (
+					{router.query?.InternalModelNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
 								placeholder={'SERIAL NUMBER'}
@@ -349,10 +351,10 @@ function RegisterForm({ data }) {
 					  (Array.isArray(models) && models?.length !== 0) ? (
 						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
-								// rightText={
-								// 	dataSchema?.product_category === 'Air Products' &&
-								// 	'(Outdoor Model for split system)'
-								// }
+								rightText={
+									dataSchema?.product_category === 'Air Products' &&
+									'(Outdoor Model for split system)'
+								}
 								placeholder={'PLEASE SELECT YOUR MODEL'}
 								isSearchable
 								required={true}
@@ -376,7 +378,7 @@ function RegisterForm({ data }) {
 							}
 						/>
 					</div>
-					<div className='col-12 col-md-6 mb-10 d-flex'>
+					<div className='col-12 col-md-6 mb-10 d-grid gap-2 '>
 						<button
 							className='modal-btn'
 							type='button'
@@ -547,7 +549,7 @@ function RegisterForm({ data }) {
 				<RoleModal
 					data={structure?.modelText?.value}
 					modalHandler={setModalCondition}
-					// greenText={dataSchema?.product_category === 'Air Products'}
+					greenText={dataSchema?.product_category === 'Air Products'}
 				/>
 			)}
 		</section>

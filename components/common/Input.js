@@ -11,7 +11,8 @@ function CustomInput({
 	onChange,
 	value,
 	onFocus,
-	onBlur
+	onBlur,
+	rightText
 }) {
 	const convertData = (_date, _reverse) => {
 		let array = _date.split('-')
@@ -22,10 +23,8 @@ function CustomInput({
 	}
 
 	const typeEnglishHandler = e => {
-		let value = e.target.value
-		if (!isNaN(Number(value))) return onChange(value)
-
-		onChange('')
+		let _value = e.target.value
+		if (!isNaN(Number(_value))) return onChange(_value)
 	}
 
 	if (type === 'date') {
@@ -77,6 +76,7 @@ function CustomInput({
 				defaultValue={defaultValue && defaultValue}
 				value={value && value}
 			/>
+			{rightText && <span className='right_text'>{rightText}</span>}{' '}
 			{required && <span className='input-error'>This field is required.</span>}
 		</div>
 	)
