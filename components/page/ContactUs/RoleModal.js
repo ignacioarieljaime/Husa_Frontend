@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
 import React, { useRef, useState, useEffect } from 'react'
 
-function RoleModal({ modalHandler, data, greenText }) {
+function RoleModal({ modalHandler, data, greenText, extra }) {
 	const modal = useRef()
 	const [text, setText] = useState(null)
 	useEffect(() => {
@@ -30,7 +30,10 @@ function RoleModal({ modalHandler, data, greenText }) {
 						<FontAwesomeIcon icon={faXmark} />
 					</button>
 					<div>
-						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+						<div
+							dangerouslySetInnerHTML={
+								extra ? { __html: text + extra } : { __html: text }
+							}></div>
 						{greenText && (
 							<p style={{ color: '#009c9b' }}>
 								<strong style={{ fontWeight: '500' }}>

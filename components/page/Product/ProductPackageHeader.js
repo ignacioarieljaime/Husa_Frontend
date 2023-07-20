@@ -6,6 +6,7 @@ const ProductInfoSlider = dynamic(() => import('./ProductInfoSlider'))
 const ProductSliderLinkButton = dynamic(() =>
 	import('./ProductSliderLinkButton')
 )
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon_white.png'
 
 const ProductPackageHeader = ({ pim, data }) => {
 	const [MPNData, setMPNData] = useState([])
@@ -40,36 +41,37 @@ const ProductPackageHeader = ({ pim, data }) => {
 	}
 
 	return (
-		<section
-			id={data.name + data.id}
-			className='product single-product package-product'>
-			<div className='container'>
-				<div className='row'>
-					<ProductInfoSlider firstImage={pim?.image} pim={pim?.assets} />
-					<div className='col-12 col-md-6 product-info my-auto'>
-						<article className='article'>
-							<h1 className='mb-8'>
-								{/* {
+		<section id={data.name + data.id} className='new_product_info'>
+			<div className='wrapper row'>
+				<ProductInfoSlider
+					firstImage={pim?.image}
+					pim={pim?.assets}
+					allData={pim}
+				/>
+				<div className='col-12 col-md-6 product_info my-auto'>
+					<h1 className='title'>
+						{/* {
 								pim?.custom_fields.find(item => item.title === 'span Title')
 									?.value
 							} */}
-								{pim?.name}
-							</h1>
-						</article>
-						<div className='package-details'>
-							<ul>
-								{MPNData.map((item, index) => (
-									<li key={'mpn' + index}>{item.value}</li>
-								))}
-							</ul>
-						</div>
+						{pim?.name}
+					</h1>
+					<div className='package-details'>
+						<ul>
+							{MPNData.map((item, index) => (
+								<li key={'mpn' + index}>{item.value}</li>
+							))}
+						</ul>
+					</div>
+					<div className='sizes pt-0'></div>
+
+					<div className='text-center text-md-start'>
 						<button
-							className={`${
-								pim?.buy_status === 'ChannelAdvisor' ||
-								pim?.buy_status === 'Internal'
-									? ''
-									: 'disabled'
-							} pdp_where_to_buy_btn rounded-0 px-6 py-3`}
+							className='wtb_btn mx-auto mx-md-0'
+							disabled={
+								pim?.buy_status !== 'ChannelAdvisor' &&
+								pim?.buy_status !== 'Internal'
+							}
 							onClick={() =>
 								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
@@ -80,6 +82,13 @@ const ProductPackageHeader = ({ pim, data }) => {
 							pim?.buy_status === 'Internal'
 								? 'Where To Buy'
 								: 'coming soon'}
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal' ? (
+								<img
+									style={{ marginLeft: '16px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							) : null}
 						</button>
 					</div>
 				</div>
