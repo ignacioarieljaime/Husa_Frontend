@@ -27,8 +27,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 					pagination={false}
 					slidesPerView={'auto'}
 					centeredSlides={false}
-					grabCursor={true}
-					module={[Navigation]}
+					modules={[Navigation]}
 					navigation={true}
 					spaceBetween={24}
 					className='slider'>
