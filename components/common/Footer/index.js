@@ -9,7 +9,8 @@ import FooterBodyList from './FooterBodyList'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function Footer({ data }) {
-	const { theme } = data?.structure
+	const { structure } = data
+	const [theme, setTheme] = useState('dark')
 	const [footerData, setFooterData] = useState()
 	const { footerData: footerReduxData } = useSelector(state => state.layoutData)
 
@@ -19,6 +20,10 @@ function Footer({ data }) {
 			setFooterData(JSON.parse(sessionStorage.getItem('footerData')))
 		}
 	}, [footerReduxData])
+
+	useEffect(() => {
+		if (structure?.theme?.value) setTheme(structure?.theme?.value)
+	}, [data])
 
 	return (
 		// <footer className='footer px-6 py-10 pt-md-16 px-md-6 pb-md-6'>
@@ -88,7 +93,7 @@ function Footer({ data }) {
 		// 	</div>
 		// </footer>
 		<footer>
-			<div className={`new_footer ${theme?.value}`}>
+			<div className={`new_footer ${theme}`}>
 				<div className='content'>
 					<div className='headline'>
 						<Logo color='#00AAA6' />
@@ -102,7 +107,7 @@ function Footer({ data }) {
 										className={`social_media_link socicon socicon-${item.name}`}
 										style={{
 											fontSize: '22px',
-											color: theme?.value === 'dark' ? '#ffffffb3' : '#000000b3'
+											color: theme === 'dark' ? '#ffffffb3' : '#000000b3'
 										}}></a>
 								))}
 							</div>
@@ -114,11 +119,7 @@ function Footer({ data }) {
 						{footerData?.widgets?.main?.childs.map((list, index) => (
 							<div key={index} className='px-3'>
 								{list?.childs.map((item, index) => (
-									<FooterBodyList
-										data={item}
-										key={index}
-										theme={theme?.value}
-									/>
+									<FooterBodyList data={item} key={index} theme={theme} />
 								))}
 							</div>
 						))}
