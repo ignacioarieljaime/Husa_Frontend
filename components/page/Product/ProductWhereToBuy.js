@@ -6,11 +6,11 @@ const ProductWhereToBuy = ({ pim, data }) => {
 	const { structure } = data
 	return (
 		<>
-			<div id={data.name + data.id} class='buy-green-banner'>
-				<article className='article'>
-					<h4 className='my-1'>{structure?.title?.value}</h4>
-					<h4 className='mt-1'>{structure?.littleTitle?.value}</h4>
-				</article>
+			<div id={data.name + data.id} className='product_wtb'>
+				<div className='box'>
+					<h4 className='title'>{structure?.title?.value}</h4>
+					<h4 className='subtitle'>{structure?.littleTitle?.value}</h4>
+				</div>
 				<button
 					onClick={() => setChanelAdviserHandler(true)}
 					disabled={
@@ -19,7 +19,10 @@ const ProductWhereToBuy = ({ pim, data }) => {
 							? false
 							: true
 					}
-					class='btn btn-turquoise'>
+					className='n-btn white'
+					style={{
+						padding: '14px 16px 15px'
+					}}>
 					{structure?.whereToBuy?.title}
 				</button>
 			</div>
