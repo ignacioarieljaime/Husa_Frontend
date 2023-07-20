@@ -119,6 +119,60 @@
 	}
 }
 
+// .product_feature_with_image {
+// 	display: flex;
+// 	justify-content: center;
+// 	align-items: stretch;
+// 	gap: 16px;
+// 	.image_wrapper {
+// 		width: calc(50% - 8px);
+// 		padding-top: 50%;
+// 		height: 0;
+// 		position: relative;
+// 		.image {
+// 			position: absolute;
+// 			left: 0;
+// 			top: 0;
+// 			width: 100%;
+// 			height: 100%;
+// 			object-fit: cover;
+// 		}
+// 	}
+// 	.content {
+// 		width: calc(50% - 8px);
+// 		padding: 64px 64px 64px 96px;
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: flex-start;
+// 		flex-direction: column;
+// 		gap: 64px;
+// 		.subtitle {
+// 			font-size: 10px;
+// 			font-style: normal;
+// 			font-weight: 400;
+// 			line-height: 13.5px; /* 135% */
+// 			margin: 0;
+// 			letter-spacing: 2px;
+// 			text-transform: uppercase;
+// 		}
+// 		.title {
+// 			font-size: 48px;
+// 			font-style: normal;
+// 			font-weight: 400;
+// 			line-height: 55.86px; /* 116.375% */
+// 			margin: 0;
+// 			letter-spacing: -0.96px;
+// 		}
+// 		.text {
+// 			font-size: 16px;
+// 			font-style: normal;
+// 			font-weight: 400;
+// 			line-height: 21.6px; /* 135% */
+// 			margin: 0;
+// 		}
+// 	}
+// }
+
 @media (max-width: 1050px) {
 	.package_types_slider {
 		.item {

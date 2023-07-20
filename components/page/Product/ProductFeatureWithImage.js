@@ -42,6 +42,26 @@ function ProductFeatureWithImage({ data }) {
 				/>
 			</div>
 		</section>
+		// 	<section>
+		// 	<div
+		// 		style={{ background: structure?.backgroundColor?.value }}
+		// 		className={`product_feature_with_image theme-${
+		// 			structure?.theme?.value
+		// 		} ${structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''}`}>
+		// 		<article className='content'>
+		// 			<h6 className='subtitle'>{structure?.littleTitle?.value}</h6>
+		// 			<h3 className='title'>{structure?.title?.value}</h3>
+		// 			<div className='text'>{structure?.description?.value}</div>
+		// 		</article>
+		// 		<div className='image_wrapper'>
+		// 			<img
+		// 				src={structure?.image?.src}
+		// 				alt={structure?.image?.alt}
+		// 				className='image'
+		// 			/>
+		// 		</div>
+		// 	</div>
+		// </section>
 	)
 }
 

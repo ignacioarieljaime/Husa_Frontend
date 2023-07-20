@@ -17,7 +17,7 @@ function ProductResourceBox({ pim, data }) {
 		const warranty = findDataInArray(properties, 'title', 'Warranty')
 
 		if (_warrantyName) return warranty?.title
-		
+
 		const warrantyFileUrl = categoryFields?.find(item =>
 			item?.custom_field?.name.includes(warranty?.value)
 		)?.media?.external_url
@@ -31,7 +31,11 @@ function ProductResourceBox({ pim, data }) {
 					<a
 						target='_blank'
 						href={customWarrantyFile || warrantyFileUrl}
-						download={true}>
+						className='n-btn outline-white transparent d-block text-uppercase'
+						download={true}
+						style={{
+							padding: '15px 16px 14px'
+						}}>
 						<span className='underline-on-hover text-uppercase'>
 							{warranty?.title}
 						</span>
@@ -45,12 +49,8 @@ function ProductResourceBox({ pim, data }) {
 	}
 
 	return (
-		<div id={data.name + data.id} className='resources py-7 py-sm-18'>
-			<article className='article'>
-				<h4 style={{ fontSize: '48px' }} className='my-10'>
-					Resources
-				</h4>
-			</article>
+		<div id={data.name + data.id} className='product_resources'>
+			<h4 className='title'>Resources</h4>
 			<ul>
 				{pim?.assets.map(
 					(item, index) =>
@@ -61,8 +61,12 @@ function ProductResourceBox({ pim, data }) {
 										<Link
 											target='_self'
 											href={'/televisions/laser-tv/installation-request'}>
-											<a>
-												<span className='underline-on-hover text-uppercase'>
+											<a className='text-decoration-none '>
+												<span
+													className='n-btn outline-white transparent d-block text-uppercase'
+													style={{
+														padding: '15px 16px 14px'
+													}}>
 													{item.caption ? item.caption : item.title}
 												</span>
 												<img
@@ -74,8 +78,15 @@ function ProductResourceBox({ pim, data }) {
 									</li>
 								) : (
 									<li key={index}>
-										<a href={item.url ? item.url : ''} download>
-											<span className='underline-on-hover text-uppercase'>
+										<a
+											href={item.url ? item.url : ''}
+											download
+											className='text-decoration-none '>
+											<span
+												className='n-btn outline-white transparent d-block text-uppercase'
+												style={{
+													padding: '15px 16px 14px'
+												}}>
 												{item?.content_type === 'Warrenty'
 													? warrantyHandler(true)
 													: item.caption
@@ -94,8 +105,12 @@ function ProductResourceBox({ pim, data }) {
 						href={`/support/${
 							router.pathname.split('/')[router.pathname.split('/').length - 1]
 						}`}>
-						<a>
-							<span className='underline-on-hover text-uppercase'>
+						<a className='text-decoration-none '>
+							<span
+								className='n-btn outline-white transparent d-block text-uppercase'
+								style={{
+									padding: '15px 16px 14px'
+								}}>
 								PRODUCT SUPPORT
 							</span>
 						</a>
@@ -105,7 +120,11 @@ function ProductResourceBox({ pim, data }) {
 				!structure?.installationUrl?.value === 'null' ? (
 					<li>
 						<Link href={structure?.installationUrl?.value}>
-							<a>
+							<a
+								className='n-btn outline-white transparent d-block text-uppercase'
+								style={{
+									padding: '15px 16px 14px'
+								}}>
 								<span className='underline-on-hover text-uppercase'>
 									INSTALLATION REQUEST
 								</span>
