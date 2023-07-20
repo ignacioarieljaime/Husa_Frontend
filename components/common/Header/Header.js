@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux'
 function Header({ data: { structure }, notification }) {
 	const { headerData: headerRedux } = useSelector(state => state.layoutData)
 	const [width] = useWindowSize()
+	const [theme, setTheme] = useState('dark')
 	const [headerData, setHeaderData] = useState()
 	const [asideMenu, setAsideMenu] = useState(false)
 	const [topNavCondition, setTopNavCondition] = useState(false)
@@ -40,11 +41,15 @@ function Header({ data: { structure }, notification }) {
 		}
 	}, [searchInputCondition])
 
+	useEffect(() => {
+		if (structure?.theme?.value) setTheme(structure?.theme?.value)
+	}, [structure])
+
 	return (
 		<header>
 			<nav
 				className={`navbar navbar-expand justify-content-center  
-					theme-${structure.theme.value}
+					theme-${theme}
 				 top-nav py-3 px-sm-4 fixed-top flex-wrap ${
 						!topNavCondition && 'search-mode'
 					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}
@@ -54,9 +59,7 @@ function Header({ data: { structure }, notification }) {
 						<div className={`m-0  ${width > 1230 && 'col-xl-4'} py-1`}>
 							<Link href='/'>
 								<a className='navbar-brand m-0 text-start'>
-									<Logo
-										color={structure.theme.value === 'light' ? '#000' : '#fff'}
-									/>
+									<Logo color={theme === 'light' ? '#000' : '#fff'} />
 								</a>
 							</Link>
 						</div>
@@ -87,9 +90,7 @@ function Header({ data: { structure }, notification }) {
 									}`}
 									onClick={() => setSearchInputCondition(!searchInputCondition)}
 									aria-label='search'>
-									<MagnifierIcon
-										stroke={structure.theme.value === 'light' ? '#000' : '#fff'}
-									/>
+									<MagnifierIcon stroke={theme === 'light' ? '#000' : '#fff'} />
 								</button>
 							</li>
 							{headerData?.widgets?.hamburger.length || width > 992 ? null : (
@@ -105,9 +106,7 @@ function Header({ data: { structure }, notification }) {
 										}
 										aria-label='hamburger menu toggler'>
 										<HamburgerMenuIcon
-											color={
-												structure.theme.value === 'light' ? '#000' : '#fff'
-											}
+											color={theme === 'light' ? '#000' : '#fff'}
 										/>
 									</button>
 								</li>
@@ -116,7 +115,7 @@ function Header({ data: { structure }, notification }) {
 					</div>
 				</div>
 				<HeaderSearchBox
-					theme={structure.theme.value}
+					theme={theme}
 					searchInputCondition={searchInputCondition}
 					setSearchInputCondition={setSearchInputCondition}
 				/>

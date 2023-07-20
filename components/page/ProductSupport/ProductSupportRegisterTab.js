@@ -233,6 +233,8 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 							<CustomInput
 								placeholder={'POSTAL CODE/ZIP'}
 								onChange={_value => dataSchemaHandler('postal_code', _value)}
+								value={dataSchema.postal_code}
+								type='number'
 								required={true}
 							/>
 							<div className='input_error_message'>

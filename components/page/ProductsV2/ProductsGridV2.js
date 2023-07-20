@@ -7,9 +7,12 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { useRouter } from 'next/router'
 import { GetProductByFilterApi, GetProductsListNewApi } from 'services/Product'
+import { useWindowSize } from 'hooks/useWindowSize'
+import ProductFilterResponsive from './responsiveFilter/ProductFilterResponsive'
 
 const ProductsGridV2 = ({ data }) => {
 	let { structure } = data
+	const [width] = useWindowSize()
 	const [sortingMethod, setSortingMethod] = useState()
 	const [filters, setFilters] = useState([])
 	const [products, setProducts] = useState([])
@@ -104,16 +107,28 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
+
 	}
 
 	return (
 		<section>
-			<div className='container mt-7 mb-11 d-none d-md-block'>
+			<div className='container grid_v2_top_box mt-7 mb-11 d-none d-md-block'>
 				<div className='row justify-content-start align-items-center px-3 mb-15'>
 					<BreadCrumb />
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: text }}></div>
 			</div>
+			{width < 768 && (
+				<ProductFilterResponsive
+					selectedFilter={filters}
+					allFilters={filterList}
+					filterRequest={getProductHandler}
+					setFilters={setFilters}
+					sortValue={sortingMethod}
+					sortOnChange={setSortingMethod}
+				/>
+			)}
+
 			<div className='products-v2 mx-3 mx-md-13'>
 				<div className='products-sorting d-none d-md-block'>
 					<DropDownSelectBox
@@ -126,17 +141,19 @@ const ProductsGridV2 = ({ data }) => {
 				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					{filterList && filterList.length !== 0 ? (
 						<div className='products-filtering me-md-12'>
-							<ProductsFilter
-								filterRequest={getProductHandler}
-								filterList={filterList}
-								checkBoxCondition={checkBoxCondition}
-								setCheckBoxCondition={setCheckBoxCondition}
-								filters={filters}
-								setFilters={setFilters}
-								total={totalCount}
-								category={structure?.category}
-								showProductFilterCount={structure?.availabilityNumber?.value}
-							/>
+							{width >= 768 && (
+								<ProductsFilter
+									filterRequest={getProductHandler}
+									filterList={filterList}
+									checkBoxCondition={checkBoxCondition}
+									setCheckBoxCondition={setCheckBoxCondition}
+									filters={filters}
+									setFilters={setFilters}
+									total={totalCount}
+									category={structure?.category}
+									showProductFilterCount={structure?.availabilityNumber?.value}
+								/>
+							)}
 						</div>
 					) : null}
 
