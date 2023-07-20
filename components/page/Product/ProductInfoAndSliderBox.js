@@ -1,10 +1,12 @@
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon_white.png'
+
 // component
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
 const ProductInfoSlider = dynamic(() => import('./ProductInfoSlider'))
-const ProductSliderLinkButton = dynamic(() =>
-	import('./ProductSliderLinkButton')
+const ProductSliderLinkButtonV3 = dynamic(() =>
+	import('./ProductSliderLinkButtonV3')
 )
 
 function ProductInfoAndSliderBox({ pim, data }) {
@@ -31,60 +33,55 @@ function ProductInfoAndSliderBox({ pim, data }) {
 		})
 	}
 	return (
-		<section id={data.name + data.id} className='product single-product'>
-			<div className='' style={{ paddingTop: '4%' }}>
-				<div className='row'>
-					<ProductInfoSlider
-						firstImage={pim?.image}
-						pim={pim?.assets}
-						allData={pim}
-					/>
-					<div className='col-12 col-md-6 product-info my-auto'>
-						<h2
-							className={`fw-normal ${
-								pim?.custom_fields.find(item => item.title === 'h2 Title')
+		<section id={data.name + data.id} className='new_product_info'>
+			<div className='wrapper row'>
+				<ProductInfoSlider
+					firstImage={pim?.image}
+					pim={pim?.assets}
+					allData={pim}
+				/>
+				<div className='product_info px-0 my-auto'>
+					<h2 className='serie'>
+						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+							? pim?.custom_fields.find(item => item.title === 'h2 Title')
 									?.value
-									? 'text-primary-new serie mb-5'
-									: 'text-black fs-2hx mb-1'
-							} `}>
-							{
-								pim?.custom_fields.find(item => item.title === 'span Title')
-									?.value
-							}
-						</h2>
-						<article className='article'>
-							<h3 className='my-3 text-uppercase fw-bold extra_title'>
-								{pim?.custom_fields.find(item => item.title === 'h2 Title')
-									?.value
-									? pim?.custom_fields.find(item => item.title === 'h2 Title')
-											?.value
-									: pim?.custom_fields?.find(
-											item => item.title === 'Product Type'
-									  )?.value}
-							</h3>
-							<h1 className='mb-5 mt-0'>{pim?.name}</h1>
-						</article>
-						<p className='text-primary-new mt-5'>Model: {pim?.model}</p>
-						<div className='model-toggle '>
-							{screenSize.map(
-								(item, index) =>
-									item.title && (
-										<ProductSliderLinkButton
-											key={index}
-											data={item}
-											pim={pim}
-										/>
-									)
-							)}
+							: pim?.custom_fields?.find(item => item.title === 'Product Type')
+									?.value}
+					</h2>
+					<h3 className='model'>
+						{
+							pim?.custom_fields.find(item => item.title === 'span Title')
+								?.value
+						}
+					</h3>
+					<h1 className='title'>{pim?.name}</h1>
+					<p className='model_number'>Model: {pim?.model}</p>
+					{screenSize && screenSize.length > 0 ? (
+						<div className='sizes'>
+							<p className='sizes_text'>Available Screen Sizes</p>
+							<div className='sizes_list'>
+								{screenSize.map(
+									(item, index) =>
+										item.title && (
+											<ProductSliderLinkButtonV3
+												key={index}
+												data={item}
+												pim={pim}
+											/>
+										)
+								)}
+							</div>
 						</div>
-						<div className='product-rating'></div>
+					) : (
+						<div className='sizes pb-0'></div>
+					)}
+					<div className='text-center text-md-start'>
 						<button
-							className={`pdp_where_to_buy_btn ${
-								pim?.buy_status === 'ChannelAdvisor' ||
-								pim?.buy_status === 'Internal'
-									? ''
-									: 'disabled'
-							} rounded-0 px-6 py-3`}
+							className='wtb_btn mx-auto mx-md-0'
+							disabled={
+								pim?.buy_status !== 'ChannelAdvisor' &&
+								pim?.buy_status !== 'Internal'
+							}
 							onClick={() =>
 								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
@@ -95,6 +92,13 @@ function ProductInfoAndSliderBox({ pim, data }) {
 							pim?.buy_status === 'Internal'
 								? 'Where To Buy'
 								: 'coming soon'}
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal' ? (
+								<img
+									style={{ marginLeft: '16px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							) : null}
 						</button>
 					</div>
 				</div>
