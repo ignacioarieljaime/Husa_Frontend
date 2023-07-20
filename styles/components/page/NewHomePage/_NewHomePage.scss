@@ -35,9 +35,9 @@
 }
 
 .news-slider {
-	margin: 85px 0;
+	margin: 70px 0;
 	@include mq(768) {
-		margin: 0px 0 85px;
+		margin: 44px 0 70px;
 	}
 
 	.swiper-wrapper {
