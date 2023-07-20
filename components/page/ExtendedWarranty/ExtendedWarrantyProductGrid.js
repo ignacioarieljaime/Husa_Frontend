@@ -3,7 +3,7 @@ import ExtendedWarrantyProduct from './ExtendedWarrantyProduct'
 import Spinner from 'components/common/Spinner'
 import ExtendedWarrantySearchProduct from './ExtendedWarrantySearchProduct'
 import { useRouter } from 'next/router'
-import { GetProducts } from 'services/ExtendedWarranty'
+import { GetCategories, GetProducts } from 'services/ExtendedWarranty'
 
 const ExtendedWarrantyProductGrid = ({ data }) => {
 	let { structure } = data
@@ -49,13 +49,30 @@ const ExtendedWarrantyProductGrid = ({ data }) => {
 		)
 	}, [modelNumber, searchTerm, router?.query])
 
+	useEffect(() => {
+		getCategories()
+	}, [])
+
 	const getProducts = async (category, modelNumber, searchTerm) => {
 		setProducts('loading')
 		try {
 			let response = await GetProducts(category, modelNumber, searchTerm)
 			setProducts(response?.data?.products)
-			!productCategories && setProductCategories(response?.data?.categories)
 			setModels(response?.data?.models)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const getCategories = async (category, modelNumber, searchTerm) => {
+		setProducts('loading')
+		try {
+			let response = await GetCategories()
+			const _cat = []
+			response?.data?.categories.forEach(c => {
+				if (c?.sub_categories.length > 0) _cat = [..._cat, ...c.sub_categories]
+			})
+			setProductCategories([...response?.data?.categories, ..._cat])
 		} catch (error) {
 			console.log(error)
 		}
