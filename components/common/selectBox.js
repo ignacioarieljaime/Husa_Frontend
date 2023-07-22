@@ -66,7 +66,9 @@ function CustomSelectBox({
 	return (
 		<div className={`custom-select-box ${className}`}>
 			<div
-				className={`form-container-inner-input select-container ${className}`}
+				className={`form-container-inner-input select-container ${className} ${
+					rightText ? 'taller_field' : ''
+				}`}
 				tabIndex='1'>
 				<div className={`select-box-item ${className}`}>
 					<input
