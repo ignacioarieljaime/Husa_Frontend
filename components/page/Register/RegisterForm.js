@@ -68,6 +68,12 @@ function RegisterForm({ data }) {
 		if (models?.length === 1) {
 			setDataSchema({ ...dataSchema, product_model: models[0]?.name })
 		}
+		// else if (models?.length > 1) {
+		// 	models.forEach(model => {
+		// 		if (model.name === router.query?.InternalModelNumber)
+		// 			setDataSchema({ ...dataSchema, product_model: model.name })
+		// 	})
+		// }
 	}, [models])
 
 	const dataSchemaHandler = (_key, _value) => {
@@ -338,7 +344,7 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
-					{router.query?.InternalModelNumber ? (
+					{router.query.InternalModelNumber && !router.query.SerialNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
 								placeholder={'SERIAL NUMBER'}
