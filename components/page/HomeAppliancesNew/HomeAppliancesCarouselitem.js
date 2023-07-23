@@ -16,11 +16,11 @@ const HomeAppliancesCarouselitem = ({ data, structure }) => {
 						className={'slider_image my-auto'}
 						style={{
 							width:
-								aspectRatio > 1
+								aspectRatio !== 1
 									? ((1 / aspectRatio) * 100).toFixed(2) + '%'
 									: '85%',
 							margin:
-								aspectRatio > 1
+								aspectRatio !== 1
 									? '0 ' +
 									  (100 - ((1 / aspectRatio) * 100).toFixed(2)) / 2 +
 									  '%'
