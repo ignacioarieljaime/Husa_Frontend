@@ -17,18 +17,21 @@ function CustomSelectBox({
 	const [searchList, setSearchList] = useState([])
 	const [inputSearch, setInputSearch] = useState()
 	const [value, setValue] = useState()
-	useEffect(() => {
-		setValue(title)
-	}, [title])
+	let timeout = null
 
 	useEffect(() => {
-		console.log(inputSearch)
-		const search = setTimeout(() => {
-			searchValue(inputSearch)
-			if (value !== inputSearch) onChange('')
+		if (title) setValue(title)
+	}, [title])
+
+	const searchHandler = _value => {
+		setInputSearch(_value)
+		clearTimeout(timeout)
+
+		// Make a new timeout set to go off in 1000ms (1 second)
+		timeout = setTimeout(function () {
+			searchValue(_value)
 		}, 500)
-		return () => clearTimeout(search)
-	}, [inputSearch])
+	}
 
 	const searchValue = _text => {
 		let result = []
@@ -52,7 +55,7 @@ function CustomSelectBox({
 							onClick={() => {
 								onChange(item)
 								setValue(item?.name)
-								isSearchable && setInputSearch(item?.name)
+								isSearchable && searchHandler(item?.name)
 							}}
 							key={index}>
 							<label className='option' htmlFor='tv' aria-hidden='aria-hidden'>
@@ -67,7 +70,9 @@ function CustomSelectBox({
 	return (
 		<div className={`custom-select-box ${className}`}>
 			<div
-				className={`form-container-inner-input select-container ${className}`}
+				className={`form-container-inner-input select-container ${className} ${
+					rightText ? 'taller_field' : ''
+				}`}
 				tabIndex='1'>
 				<div className={`select-box-item ${className}`}>
 					<input
@@ -83,7 +88,7 @@ function CustomSelectBox({
 						<div className='search_box__arrow'>
 							<input
 								placeholder={placeholder}
-								onInput={e => setInputSearch(e.target.value)}
+								onInput={e => searchHandler(e.target.value)}
 								onBlur={() =>
 									setTimeout(() => {
 										optionBox.current.style.opacity = '0'
