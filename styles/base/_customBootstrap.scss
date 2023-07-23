@@ -4,10 +4,10 @@
 	}
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 .primary-text {
@@ -2326,6 +2326,14 @@ header {
 }
 
 .big_content_box {
+	&.light {
+		h4 {
+			color: #fff !important;
+		}
+		p {
+			color: #fff !important;
+		}
+	}
 	padding: 24px 0 16px;
 	.container {
 		padding: 0 16px;
