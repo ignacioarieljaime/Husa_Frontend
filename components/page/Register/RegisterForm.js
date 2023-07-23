@@ -338,7 +338,7 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
-					{router.query?.InternalModelNumber ? (
+					{router.query?.InternalModelNumber && !router.query?.SerialNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
 								placeholder={'SERIAL NUMBER'}
