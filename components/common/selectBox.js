@@ -22,9 +22,10 @@ function CustomSelectBox({
 	}, [title])
 
 	useEffect(() => {
+		console.log(inputSearch)
 		const search = setTimeout(() => {
 			searchValue(inputSearch)
-			onChange('')
+			if (value !== inputSearch) onChange('')
 		}, 500)
 		return () => clearTimeout(search)
 	}, [inputSearch])

@@ -365,7 +365,12 @@ function RegisterForm({ data }) {
 								isSearchable
 								required={true}
 								options={models}
-								onChange={_value => dataSchemaHandler('product_model', _value)}
+								onChange={_value => {
+									// console.log(item)
+									console.log(_value)
+									console.log('**********************')
+									dataSchemaHandler('product_model', _value)
+								}}
 							/>
 							<div className='input_error_message'>
 								{errors?.product_model && errors?.product_model[0]}
