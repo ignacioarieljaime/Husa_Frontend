@@ -48,8 +48,7 @@ const ProductItemV2 = ({ data }) => {
 	}
 	return (
 		<>
-			{' '}
-			<div className='product-item-v2'>
+			{/* <div className='product-item-v2'>
 				<div className='text-center mb-10 w-100'>
 					<Link href={url ? url : '/'}>
 						<a>
@@ -152,6 +151,121 @@ const ProductItemV2 = ({ data }) => {
 								Add To Compare
 							</button>
 						</div>
+					</div>
+				</div>
+				<ModalChanelAdviser
+					product={currentItem}
+					productId={currentItem.id}
+					type={currentItem.buy_status}
+					condition={chanelAdviserHandler}
+					handler={setChanelAdviserHandler}
+					model={currentItem.model}
+				/>
+			</div> */}
+			<div className='product_item_v2'>
+				<div className='product_item_v2_content'>
+					<Link href={url ? url : '/'}>
+						<a className='image_wrapper'>
+							<img
+								width={'100%'}
+								className={'image'}
+								src={
+									currentItem?.image
+										? currentItem?.image
+										: currentItem?.media?.url
+								}
+								alt={
+									currentItem?.media?.caption
+										? currentItem?.media?.caption
+										: currentItem?.media?.title
+								}
+							/>
+						</a>
+					</Link>
+
+					<p className='model'>{currentItem?.model}</p>
+
+					<h6 className='title'>{currentItem.name}</h6>
+
+					<div>
+						<div className='d-flex flex-wrap justify-content-center gap-2 align-items-center px-4'>
+							<Link href={url ? url : '/'}>
+								<a className='n-btn d-flex justify-content-center align-items-center outline-black p-4 '>
+									View Product
+								</a>
+							</Link>
+							<button
+								disabled={
+									currentItem?.buy_status === 'ChannelAdvisor' ||
+									currentItem?.buy_status === 'Internal'
+										? false
+										: true
+								}
+								onClick={() =>
+									currentItem?.buy_status === 'ChannelAdvisor' ||
+									currentItem?.buy_status === 'Internal'
+										? dataLayerHandler()
+										: {}
+								}
+								style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
+								className={`n-btn d-flex justify-content-center align-items-center  ${
+									currentItem?.buy_status === 'ChannelAdvisor' ||
+									currentItem?.buy_status === 'Internal'
+										? 'primary-text py-2 px-4'
+										: 'disabled_btn p-4'
+								}`}>
+								{currentItem?.buy_status === 'ChannelAdvisor' ||
+								currentItem?.buy_status === 'Internal'
+									? 'Where To Buy'
+									: 'coming soon'}
+								<span>
+									<FontAwesomeIcon
+										icon={faChevronRight}
+										size={'sm'}
+										className='ms-2'
+									/>
+								</span>
+							</button>
+						</div>
+					</div>
+
+					{screenSize && (
+						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center mb-4'>
+							{screenSize.map(
+								(item, index) =>
+									item.value && (
+										<button
+											style={{ height: '44px' }}
+											key={'type-item-' + index}
+											onClick={() => setCurrentItem(item.product)}
+											className={`n-btn outline-black ${
+												item.product.id === currentItem.id
+													? ' product-mini-link-active'
+													: ''
+											}`}>
+											{item.value}
+										</button>
+									)
+							)}
+						</div>
+					)}
+
+					{currentItem.customFields.some(field => field.type_id === 11) && (
+						<ul className='description'>
+							{currentItem.customFields
+								.find(field => field.type_id === 11)
+								.custom_fields.map(item => (
+									<li>{item?.value}</li>
+								))}
+						</ul>
+					)}
+
+					<div className='text-center'>
+						<button
+							onClick={() => dispatch(addNewCompare(currentItem))}
+							className='n-btn grey-text compare-btn'>
+							Add To Compare
+						</button>
 					</div>
 				</div>
 				<ModalChanelAdviser
