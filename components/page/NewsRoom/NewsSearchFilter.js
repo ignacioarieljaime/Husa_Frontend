@@ -73,7 +73,8 @@ const NewsSearchFilter = ({
 							<label>Model year</label>
 							<div>
 								<span>
-									{filters?.year || yearTitle} <SelectBoxAngleArrow   />
+									<span>{filters?.year || yearTitle}</span>
+									<SelectBoxAngleArrow />
 								</span>
 								<div>
 									<ul>
@@ -97,7 +98,7 @@ const NewsSearchFilter = ({
 							<label>Product select</label>
 							<div>
 								<span>
-									{filters?.product || categoryTitle}
+									<span>{filters?.product || categoryTitle}</span>
 									<SelectBoxAngleArrow />
 								</span>
 								<div>
@@ -119,7 +120,7 @@ const NewsSearchFilter = ({
 							</div>
 						</div>
 						<div className='custom_input_box'>
-							<label >search archive</label>
+							<label>search archive</label>
 							<div>
 								<input onInput={inputChanged} placeholder={newsSearchTitle} />
 								<MagnifierIcon />
