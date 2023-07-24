@@ -90,8 +90,8 @@ const ProductsGridV2 = ({ data }) => {
 				sortingMethod ? `&sort=${sortingMethod.value}` : null,
 				controller.signal
 			)
-
-			setProducts(response.data.data)
+			const newData = orderProducts(response.data.data)
+			setProducts(newData)
 			getFilters(response.data.filterTypes)
 			setTotalCount(response.data.total)
 		} catch (error) {
@@ -107,7 +107,20 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
+	}
 
+	const orderProducts = _data => {
+		_data.sort((after, prev) => {
+			if (after.id !== 0 && prev.id !== 0)
+				return after.products[0].product.order - prev.products[0].product.order
+			else if (prev.id !== 0)
+				return after.products.product.order - prev.products[0].product.order
+			else if (after.id !== 0)
+				return after.products[0].product.order - prev.products.product.order
+			else return after.products.product.order - prev.products.product.order
+		})
+
+		return _data
 	}
 
 	return (

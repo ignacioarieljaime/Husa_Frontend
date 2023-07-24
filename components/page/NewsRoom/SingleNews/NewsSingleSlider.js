@@ -14,7 +14,7 @@ import CustomImage from 'components/common/CustomImage'
 import ResizeIcon from 'components/icons/ResizeIcon'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import { useAspectRatio } from 'hooks/useAspectRatio'
-
+import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 const NewsSingleSlider = ({ data }) => {
 	let { structure } = data
 	const [imageUrl, setImageUrl] = useState(null)
@@ -68,9 +68,12 @@ const NewsSingleSlider = ({ data }) => {
 				))}
 			</Swiper>
 			{imageUrl && (
-				<div
-					style={{ background: `url(${imageUrl})` }}
-					className='news_single_slider_resize_image'>
+				<div className='news_single_slider_resize_image'>
+					<TransformWrapper>
+						<TransformComponent>
+							<img src={imageUrl} alt='enlarged' />
+						</TransformComponent>
+					</TransformWrapper>
 					<button onClick={() => setImageUrl(null)}>
 						<ResizeIcon />
 					</button>

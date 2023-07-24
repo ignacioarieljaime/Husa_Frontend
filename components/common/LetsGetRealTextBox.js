@@ -7,8 +7,16 @@ function LetsGetRealTextBox({ data }) {
 		setText(structure?.title?.value)
 	}, [])
 
-	return (
+	return structure?.template?.value === 'v1' ? (
 		<div className='py-15' dangerouslySetInnerHTML={{ __html: text }}></div>
+	) : (
+		<section>
+			<div className={`lets_get_real_text_box ${structure?.theme?.value}`}>
+				<div
+					className='content'
+					dangerouslySetInnerHTML={{ __html: text }}></div>
+			</div>
+		</section>
 	)
 }
 
