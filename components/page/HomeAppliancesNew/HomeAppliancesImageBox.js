@@ -13,24 +13,28 @@ const HomeAppliancesImageBox = ({ data }) => {
 						dangerouslySetInnerHTML={{
 							__html: structure?.title?.value
 						}}></h2>
-					<Link
-						target={structure?.link?.target ? structure?.link?.target : '_self'}
-						href={structure?.link?.value ? structure?.link?.value : '/'}>
-						<a
+					{structure?.link?.value && (
+						<Link
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							style={{ width: '150px', marginBottom: '54px' }}
-							className='black w-fit n-btn d-block mx-auto px-5 py-3'>
-							{structure?.link?.title}
-							{structure?.link?.target === '_blank' && (
-								<img
-									style={{ marginLeft: '10px' }}
-									src={OpenPageOnNewTab.src}
-								/>
-							)}
-						</a>
-					</Link>
+							href={structure?.link?.value ? structure?.link?.value : '/'}>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								style={{ width: '150px', marginBottom: '54px' }}
+								className='black w-fit n-btn d-block mx-auto px-5 py-3'>
+								{structure?.link?.title}
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
+							</a>
+						</Link>
+					)}
 					<img
 						src={structure?.image?.src}
 						alt={structure?.image?.alt}
