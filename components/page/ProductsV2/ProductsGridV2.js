@@ -24,6 +24,10 @@ const ProductsGridV2 = ({ data }) => {
 	const controller = new AbortController()
 	const options = [
 		{
+			name: 'Featured',
+			value: 'featured'
+		},
+		{
 			name: 'Newest',
 			value: 'newest'
 		},
@@ -143,7 +147,9 @@ const ProductsGridV2 = ({ data }) => {
 			)}
 
 			<div className='products-v2 mx-3 mx-md-13'>
-				<div className='products-sorting d-none d-md-block'>
+				<div
+					className='products-sorting d-none d-md-block'
+					style={{ zIndex: '5' }}>
 					<DropDownSelectBox
 						options={options}
 						value={sortingMethod}
