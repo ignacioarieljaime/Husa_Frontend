@@ -91,7 +91,9 @@ const ProductsGridV2 = ({ data }) => {
 				router,
 				structure?.category.value,
 				_filter,
-				sortingMethod ? `&sort=${sortingMethod.value}` : null,
+				sortingMethod && sortingMethod?.value !== 'featured'
+					? `&sort=${sortingMethod.value}`
+					: null,
 				controller.signal
 			)
 			const newData = orderProducts(response.data.data)
