@@ -17,17 +17,21 @@ function CustomSelectBox({
 	const [searchList, setSearchList] = useState([])
 	const [inputSearch, setInputSearch] = useState()
 	const [value, setValue] = useState()
-	useEffect(() => {
-		setValue(title)
-	}, [title])
+	let timeout = null
 
 	useEffect(() => {
-		const search = setTimeout(() => {
-			searchValue(inputSearch)
-			onChange('')
+		if (title) setValue(title)
+	}, [title])
+
+	const searchHandler = _value => {
+		setInputSearch(_value)
+		clearTimeout(timeout)
+
+		// Make a new timeout set to go off in 1000ms (1 second)
+		timeout = setTimeout(function () {
+			searchValue(_value)
 		}, 500)
-		return () => clearTimeout(search)
-	}, [inputSearch])
+	}
 
 	const searchValue = _text => {
 		let result = []
@@ -51,7 +55,7 @@ function CustomSelectBox({
 							onClick={() => {
 								onChange(item)
 								setValue(item?.name)
-								isSearchable && setInputSearch(item?.name)
+								isSearchable && searchHandler(item?.name)
 							}}
 							key={index}>
 							<label className='option' htmlFor='tv' aria-hidden='aria-hidden'>
@@ -84,7 +88,7 @@ function CustomSelectBox({
 						<div className='search_box__arrow'>
 							<input
 								placeholder={placeholder}
-								onInput={e => setInputSearch(e.target.value)}
+								onInput={e => searchHandler(e.target.value)}
 								onBlur={() =>
 									setTimeout(() => {
 										optionBox.current.style.opacity = '0'
