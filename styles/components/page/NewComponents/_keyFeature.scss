@@ -1,0 +1,40 @@
+.key_feature {
+	background-color: #fff;
+	.content {
+		max-width: 1248px;
+		margin: 0 auto;
+		padding: 64px 0;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-wrap: wrap;
+		@include mq(768) {
+			width: 50%;
+		}
+		@include mq(480) {
+			width: 100%;
+		}
+		.item {
+			padding: 16px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: start;
+			gap: 32px;
+			.image_wrapper {
+				width: 100%;
+				height: 0;
+				position: relative;
+				padding-top: 100%;
+				.image {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+}
