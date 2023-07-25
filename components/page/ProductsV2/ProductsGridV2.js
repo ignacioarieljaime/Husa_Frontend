@@ -107,7 +107,6 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
-
 	}
 
 	return (
@@ -140,7 +139,7 @@ const ProductsGridV2 = ({ data }) => {
 				</div>
 				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					{filterList && filterList.length !== 0 ? (
-						<div className='products-filtering me-md-12'>
+						<div className='products-filtering'>
 							{width >= 768 && (
 								<ProductsFilter
 									filterRequest={getProductHandler}
@@ -162,7 +161,12 @@ const ProductsGridV2 = ({ data }) => {
 							<Spinner className={'mt-5'} size={80} />
 						</div>
 					) : (
-						<div className='products'>
+						<div
+							className={`products ${
+								filterList && filterList.length !== 0 && width >= 768
+									? 'filter_show'
+									: ''
+							}`}>
 							{products.map((item, index) => (
 								<ProductItemV2 key={index} data={item} />
 							))}

@@ -115,7 +115,7 @@ const ProductsFilter = ({
 		filterRequest([])
 	}
 	return (
-		<aside className='mobile-filter-line pb-4'>
+		<aside className='mobile-filter-line w-100 pb-4'>
 			<div>
 				<div className='d-flex justify-content-between align-items-center mb-4 mb-md-0'>
 					<div className='fw-normal fs-8 d-block d-md-none'>Filter</div>
