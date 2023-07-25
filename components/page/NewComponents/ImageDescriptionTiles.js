@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const KeyFeature = ({ data }) => {
+const ImageDescriptionTiles = ({ data }) => {
 	const { structure } = data
 	const [content, setContent] = useState(null)
 	useEffect(() => {
@@ -50,4 +50,4 @@ const KeyFeature = ({ data }) => {
 	)
 }
 
-export default KeyFeature
+export default ImageDescriptionTiles
