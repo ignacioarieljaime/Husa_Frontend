@@ -214,7 +214,7 @@ const ProductItemV2 = ({ data }) => {
 						<div className='w-100'>
 							<div
 								className='d-flex justify-content-evenly gap-2 align-items-center px-4 mx-auto'
-								style={{ width: '100%', maxWidth: '340px' }}>
+								style={{ width: '100%', maxWidth: '310px' }}>
 								<Link href={url ? url : '/'}>
 									<a className='n-btn d-flex justify-content-center align-items-center outline-black p-4 '>
 										View Product
