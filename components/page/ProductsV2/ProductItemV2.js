@@ -173,7 +173,7 @@ const ProductItemV2 = ({ data }) => {
 			</div> */}
 			<div className='product_item_v2'>
 				<div className='product_item_v2_content h-100'>
-					<div className='product_item_v2_content w-100'>
+					<div className='first_content w-100'>
 						<Link href={url ? url : '/'}>
 							<a className='image_wrapper'>
 								<img
@@ -198,31 +198,30 @@ const ProductItemV2 = ({ data }) => {
 						<h6 className='title'>{currentItem.name}</h6>
 					</div>
 
+					{screenSize && (
+						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center'>
+							{screenSize.map(
+								(item, index) =>
+									item.value && (
+										<button
+											key={'type-item-' + index}
+											onClick={() => setCurrentItem(item.product)}
+											className={`n-btn outline-black size_btn p-2 px-4 py-md-4 px-md-6 ${
+												item.product.id === currentItem.id
+													? ' product-mini-link-active'
+													: ''
+											}`}>
+											{item.value}
+										</button>
+									)
+							)}
+						</div>
+					)}
 					<div className='product_item_v2_content w-100'>
-						{screenSize && (
-							<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center'>
-								{screenSize.map(
-									(item, index) =>
-										item.value && (
-											<button
-												key={'type-item-' + index}
-												onClick={() => setCurrentItem(item.product)}
-												className={`n-btn outline-black size_btn p-2 px-4 py-md-4 px-md-6 ${
-													item.product.id === currentItem.id
-														? ' product-mini-link-active'
-														: ''
-												}`}>
-												{item.value}
-											</button>
-										)
-								)}
-							</div>
-						)}
-
 						<div className='w-100'>
-							<div className='btns_gp d-flex justify-content-evenly flex-wrap gap-2 align-items-center px-4 mx-auto'>
+							<div className='btns_gp d-flex justify-content-evenly justify-content-md-center flex-wrap gap-2 align-items-center px-4 px-md-0 mx-auto'>
 								<Link href={url ? url : '/'}>
-									<a className='n-btn d-flex justify-content-center align-items-center outline-black p-4 '>
+									<a className='n-btn d-flex justify-content-center align-items-center outline-black product_btn '>
 										View Product
 									</a>
 								</Link>
@@ -259,25 +258,25 @@ const ProductItemV2 = ({ data }) => {
 									</span>
 								</button>
 							</div>
+
+							{currentItem.customFields.some(field => field.type_id === 11) && (
+								<ul className='description'>
+									{currentItem.customFields
+										.find(field => field.type_id === 11)
+										.custom_fields.map(item => (
+											<li>{item?.value}</li>
+										))}
+								</ul>
+							)}
 						</div>
 
-						{currentItem.customFields.some(field => field.type_id === 11) && (
-							<ul className='description'>
-								{currentItem.customFields
-									.find(field => field.type_id === 11)
-									.custom_fields.map(item => (
-										<li>{item?.value}</li>
-									))}
-							</ul>
-						)}
-					</div>
-
-					<div className='text-center'>
-						<button
-							onClick={() => dispatch(addNewCompare(currentItem))}
-							className='n-btn grey-text compare-btn'>
-							Add To Compare
-						</button>
+						<div className='text-center'>
+							<button
+								onClick={() => dispatch(addNewCompare(currentItem))}
+								className='n-btn grey-text compare-btn'>
+								Add To Compare
+							</button>
+						</div>
 					</div>
 				</div>
 				<ModalChanelAdviser
