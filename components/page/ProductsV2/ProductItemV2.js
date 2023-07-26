@@ -218,7 +218,7 @@ const ProductItemV2 = ({ data }) => {
 						</div>
 					)}
 					<div className='product_item_v2_content w-100'>
-						<div className='w-100'>
+						<div className='w-100 product_item_v2_content'>
 							<div className='btns_gp d-flex justify-content-evenly justify-content-md-center flex-wrap gap-2 align-items-center px-4 px-md-0 mx-auto'>
 								<Link href={url ? url : '/'}>
 									<a className='n-btn d-flex justify-content-center align-items-center outline-black product_btn '>
