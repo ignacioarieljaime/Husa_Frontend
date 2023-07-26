@@ -5,7 +5,7 @@
 		margin: 0 auto;
 		padding: 64px 0;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: flex-start;
 		flex-wrap: wrap;
 		@include mq(768) {
@@ -22,7 +22,7 @@
 				width: 50% !important;
 				&:nth-child(2n-1) {
 					.content {
-						&::before {
+						&.divider::before {
 							display: none !important;
 						}
 					}
@@ -31,7 +31,7 @@
 			@include mq(575) {
 				width: 100% !important;
 				.content {
-					&::before {
+					&.divider::before {
 						display: none !important;
 					}
 				}
@@ -39,6 +39,18 @@
 			&.banner {
 				.image_wrapper {
 					padding-top: 66.66%;
+				}
+			}
+			&.small {
+				@include mq(991) {
+					width: 50% !important;
+					&:nth-child(2n-1) {
+						.content {
+							&.divider::before {
+								display: none !important;
+							}
+						}
+					}
 				}
 			}
 			&.hover_active {
@@ -55,7 +67,7 @@
 			}
 			&:first-child {
 				.content {
-					&::before {
+					&.divider::before {
 						display: none !important;
 					}
 				}
@@ -82,42 +94,52 @@
 				padding: 0 16px;
 				gap: 32px;
 				position: relative;
-				&::before {
+				&.divider::before {
 					content: '';
 					display: block;
 					position: absolute;
 					left: -16px;
 					top: 0px;
 					border-left: 1px solid #e2e2ed;
-					height: calc(100% - 32px);
+					height: 100%;
 				}
 				.title {
-					font-style: normal;
-					font-weight: 400;
-					letter-spacing: -0.48px;
-					color: #000;
 					margin: 0;
+					* {
+						font-style: normal;
+						font-weight: 400;
+						letter-spacing: -0.48px;
+						color: #000;
+						margin: 0;
+						@include mq(768) {
+							font-size: 24px !important;
+							line-height: 30px !important; /* 125% */
+						}
+					}
 					&.small {
-						font-size: 24px;
-						line-height: 30px; /* 125% */
+						* {
+							font-size: 24px;
+							line-height: 30px; /* 125% */
+						}
 					}
 					&.large {
-						font-size: 34px;
-						line-height: 42.5px; /* 125% */
-					}
-					@include mq(768) {
-						font-size: 24px !important;
-						line-height: 30px !important; /* 125% */
+						* {
+							font-size: 34px;
+							line-height: 42.5px; /* 125% */
+						}
 					}
 				}
 				.subtitle {
-					font-size: 16px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 21.6px; /* 135% */
-					letter-spacing: -0.32px;
 					margin: 0;
-					color: #000;
+					* {
+						font-size: 16px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 21.6px; /* 135% */
+						letter-spacing: -0.32px;
+						margin: 0;
+						color: #000;
+					}
 				}
 				.description {
 					* {
@@ -133,12 +155,15 @@
 					}
 				}
 				.disclaimer {
-					font-size: 12px;
-					font-style: normal;
-					font-weight: 400;
 					margin: 0;
-					color: #000;
-					line-height: 16.2px; /* 135% */
+					* {
+						font-size: 12px;
+						font-style: normal;
+						font-weight: 400;
+						margin: 0;
+						color: #000;
+						line-height: 16.2px; /* 135% */
+					}
 				}
 			}
 		}

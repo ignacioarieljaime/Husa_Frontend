@@ -15,8 +15,8 @@ const ImageDescriptionTiles = ({ data }) => {
 						<div
 							key={index}
 							className={`item ${
-								structure?.list?.value.length < 4 ? 'banner' : ''
-							} ${item?.hover?.value ? 'hover_active' : 'hover_active'}`}
+								structure?.list?.value.length < 4 ? 'banner' : 'small'
+							} ${structure?.shadow?.value ? 'hover_active' : ''}`}
 							style={{ width: 100 / structure?.list?.value.length + '%' }}>
 							<div className={`image_wrapper `}>
 								<img
@@ -27,20 +27,36 @@ const ImageDescriptionTiles = ({ data }) => {
 							</div>
 							<div
 								className={`content ${
-									item?.dvider?.value ? 'divider' : 'divider'
+									structure?.divider?.value ? 'divider' : ''
 								}`}>
 								{structure?.list?.value.length > 2 ? (
-									<h5 className='title small'>{item?.title?.value}</h5>
+									<h5
+										className='title small'
+										dangerouslySetInnerHTML={{
+											__html: item?.title?.value
+										}}></h5>
 								) : (
-									<h4 className='title large'>{item?.title?.value}</h4>
+									<h4
+										className='title large'
+										dangerouslySetInnerHTML={{
+											__html: item?.title?.value
+										}}></h4>
 								)}
-								<p className='subtitle'>{item?.subtitle?.value}dasdarwef</p>
+								<div
+									className='subtitle'
+									dangerouslySetInnerHTML={{
+										__html: item?.subtitle?.value
+									}}></div>
 								<div
 									className='description'
 									dangerouslySetInnerHTML={{
-										__html: item?.description?.value
+										__html: item?.text?.value
 									}}></div>
-								<p className='disclaimer'>{item?.subtitle?.value}asdas</p>
+								<div
+									className='disclaimer'
+									dangerouslySetInnerHTML={{
+										__html: item?.note?.value
+									}}></div>
 							</div>
 						</div>
 					))}
