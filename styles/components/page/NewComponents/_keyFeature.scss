@@ -169,17 +169,16 @@
 					display: flex;
 					justify-content: flex-start;
 					align-items: center;
-					gap: 8px;
+					margin: 16px auto 12px;
+					max-width: 192px;
+					gap: 12px;
 					p {
-						margin: 0;
-						font-size: 16px;
-						font-style: normal;
+						color: #292929;
+						font-size: 14px;
 						font-weight: 400;
-						line-height: 21.6px; /* 135% */
-						@include mq(768) {
-							font-size: 14px;
-							line-height: 18.9px; /* 135% */
-						}
+						margin-left: 12px;
+						line-height: 18px;
+						margin: 0;
 					}
 				}
 			}
