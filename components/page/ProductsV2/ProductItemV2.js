@@ -48,7 +48,7 @@ const ProductItemV2 = ({ data }) => {
 	}
 	return (
 		<>
-			<div className='product-item-v2'>
+			{/* <div className='product-item-v2'>
 				<div className='text-center mb-10 w-100'>
 					<Link href={url ? url : '/'}>
 						<a>
@@ -170,8 +170,8 @@ const ProductItemV2 = ({ data }) => {
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}
 				/>
-			</div>
-			{/* <div className='product_item_v2'>
+			</div> */}
+			<div className='product_item_v2'>
 				<div className='product_item_v2_content h-100'>
 					<div className='product_item_v2_content w-100'>
 						<Link href={url ? url : '/'}>
@@ -205,10 +205,9 @@ const ProductItemV2 = ({ data }) => {
 									(item, index) =>
 										item.value && (
 											<button
-												style={{ height: '44px' }}
 												key={'type-item-' + index}
 												onClick={() => setCurrentItem(item.product)}
-												className={`n-btn outline-black ${
+												className={`n-btn outline-black size_btn p-2 px-4 py-md-4 px-md-6 ${
 													item.product.id === currentItem.id
 														? ' product-mini-link-active'
 														: ''
@@ -221,9 +220,7 @@ const ProductItemV2 = ({ data }) => {
 						)}
 
 						<div className='w-100'>
-							<div
-								className='d-flex justify-content-evenly gap-2 align-items-center px-4 mx-auto'
-								style={{ width: '100%', maxWidth: '310px' }}>
+							<div className='btns_gp d-flex justify-content-evenly flex-wrap gap-2 align-items-center px-4 mx-auto'>
 								<Link href={url ? url : '/'}>
 									<a className='n-btn d-flex justify-content-center align-items-center outline-black p-4 '>
 										View Product
@@ -291,7 +288,7 @@ const ProductItemV2 = ({ data }) => {
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}
 				/>
-			</div> */}
+			</div>
 		</>
 	)
 }
