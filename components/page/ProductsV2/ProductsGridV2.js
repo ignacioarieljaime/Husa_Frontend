@@ -116,16 +116,19 @@ const ProductsGridV2 = ({ data }) => {
 	}
 
 	const orderProducts = _data => {
-		_data.sort((after, prev) => {
-			if (after.id !== 0 && prev.id !== 0)
-				return after.products[0].product.order - prev.products[0].product.order
-			else if (prev.id !== 0)
-				return after.products.product.order - prev.products[0].product.order
-			else if (after.id !== 0)
-				return after.products[0].product.order - prev.products.product.order
-			else return after.products.product.order - prev.products.product.order
-		})
-
+		if (sortingMethod && sortingMethod?.value === 'featured') {
+			_data.sort((after, prev) => {
+				if (after.id !== 0 && prev.id !== 0)
+					return (
+						after.products[0].product.order - prev.products[0].product.order
+					)
+				else if (prev.id !== 0)
+					return after.products.product.order - prev.products[0].product.order
+				else if (after.id !== 0)
+					return after.products[0].product.order - prev.products.product.order
+				else return after.products.product.order - prev.products.product.order
+			})
+		}
 		return _data
 	}
 
@@ -161,7 +164,7 @@ const ProductsGridV2 = ({ data }) => {
 				</div>
 				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					{filterList && filterList.length !== 0 ? (
-						<div className='products-filtering me-md-12'>
+						<div className='products-filtering'>
 							{width >= 768 && (
 								<ProductsFilter
 									filterRequest={getProductHandler}
@@ -183,7 +186,12 @@ const ProductsGridV2 = ({ data }) => {
 							<Spinner className={'mt-5'} size={80} />
 						</div>
 					) : (
-						<div className='products'>
+						<div
+							className={`products ${
+								filterList && filterList.length !== 0 && width >= 768
+									? 'filter_show'
+									: ''
+							}`}>
 							{products.map((item, index) => (
 								<ProductItemV2 key={index} data={item} />
 							))}
