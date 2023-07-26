@@ -165,6 +165,23 @@
 						line-height: 16.2px; /* 135% */
 					}
 				}
+				.small_image {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 8px;
+					p {
+						margin: 0;
+						font-size: 16px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 21.6px; /* 135% */
+						@include mq(768) {
+							font-size: 14px;
+							line-height: 18.9px; /* 135% */
+						}
+					}
+				}
 			}
 		}
 	}

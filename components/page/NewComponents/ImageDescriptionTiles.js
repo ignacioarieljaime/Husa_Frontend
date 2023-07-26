@@ -29,6 +29,20 @@ const ImageDescriptionTiles = ({ data }) => {
 								className={`content ${
 									structure?.divider?.value ? 'divider' : ''
 								}`}>
+								{item?.smallImage?.value && (
+									<div className='small_image'>
+										{item?.smallImage?.value?.image?.src && (
+											<img
+												src={item?.smallImage?.value?.image?.src}
+												alt={item?.smallImage?.value?.image?.alt}
+												width='48'
+											/>
+										)}
+										{item?.smallImage?.value?.text?.value && (
+											<p>{item?.smallImage?.value?.text?.value}</p>
+										)}
+									</div>
+								)}
 								{structure?.list?.value.length > 2 ? (
 									<h5
 										className='title small'
