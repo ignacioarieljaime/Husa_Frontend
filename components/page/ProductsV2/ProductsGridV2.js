@@ -96,7 +96,7 @@ const ProductsGridV2 = ({ data }) => {
 					: null,
 				controller.signal
 			)
-			const newData = orderProducts(response.data.data)
+			const newData = response.data.data
 			setProducts(newData)
 			getFilters(response.data.filterTypes)
 			setTotalCount(response.data.total)
@@ -115,22 +115,22 @@ const ProductsGridV2 = ({ data }) => {
 		}
 	}
 
-	const orderProducts = _data => {
-		if (sortingMethod && sortingMethod?.value === 'featured') {
-			_data.sort((after, prev) => {
-				if (after.id !== 0 && prev.id !== 0)
-					return (
-						after.products[0].product.order - prev.products[0].product.order
-					)
-				else if (prev.id !== 0)
-					return after.products.product.order - prev.products[0].product.order
-				else if (after.id !== 0)
-					return after.products[0].product.order - prev.products.product.order
-				else return after.products.product.order - prev.products.product.order
-			})
-		}
-		return _data
-	}
+	// const orderProducts = _data => {
+	// 	if (sortingMethod && sortingMethod?.value === 'featured') {
+	// 		_data.sort((after, prev) => {
+	// 			if (after.id !== 0 && prev.id !== 0)
+	// 				return (
+	// 					after.products[0].product.order - prev.products[0].product.order
+	// 				)
+	// 			else if (prev.id !== 0)
+	// 				return after.products.product.order - prev.products[0].product.order
+	// 			else if (after.id !== 0)
+	// 				return after.products[0].product.order - prev.products.product.order
+	// 			else return after.products.product.order - prev.products.product.order
+	// 		})
+	// 	}
+	// 	return _data
+	// }
 
 	return (
 		<section>
