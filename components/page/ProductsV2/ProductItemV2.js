@@ -48,7 +48,7 @@ const ProductItemV2 = ({ data }) => {
 	}
 	return (
 		<>
-			{/* <div className='product-item-v2'>
+			<div className='product-item-v2'>
 				<div className='text-center mb-10 w-100'>
 					<Link href={url ? url : '/'}>
 						<a>
@@ -144,6 +144,15 @@ const ProductItemV2 = ({ data }) => {
 								</span>
 							</button>
 						</div>
+						{currentItem.customFields.some(field => field.type_id === 11) && (
+							<ul className='description'>
+								{currentItem.customFields
+									.find(field => field.type_id === 11)
+									.custom_fields.map(item => (
+										<li>{item?.value}</li>
+									))}
+							</ul>
+						)}
 						<div className='text-center'>
 							<button
 								onClick={() => dispatch(addNewCompare(currentItem))}
@@ -161,8 +170,8 @@ const ProductItemV2 = ({ data }) => {
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}
 				/>
-			</div> */}
-			<div className='product_item_v2'>
+			</div>
+			{/* <div className='product_item_v2'>
 				<div className='product_item_v2_content h-100'>
 					<div className='product_item_v2_content w-100'>
 						<Link href={url ? url : '/'}>
@@ -282,7 +291,7 @@ const ProductItemV2 = ({ data }) => {
 					handler={setChanelAdviserHandler}
 					model={currentItem.model}
 				/>
-			</div>
+			</div> */}
 		</>
 	)
 }
