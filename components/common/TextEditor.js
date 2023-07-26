@@ -8,7 +8,10 @@ function TextEditor({ data }) {
 	}, [])
 	return (
 		<article
-			style={{ maxWidth: `${structure?.width?.value}px` }}
+			style={{
+				maxWidth: `${structure?.width?.value}px`,
+				backgroundColor: structure?.backgroundColor?.value
+			}}
 			className={'article text-editor text_editor mx-auto pt-5 px-6 pb-6'}
 			dangerouslySetInnerHTML={{
 				__html: text
