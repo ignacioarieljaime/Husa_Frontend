@@ -30,7 +30,13 @@ const HomeAppliancesCarousel = ({ data }) => {
 						perPage: 1,
 						perMove: 1,
 						gap: '1rem',
-						pagination: false
+						pagination: false,
+						classes: {
+							arrows:
+								structure?.list?.value.length > 4
+									? 'splide__arrows'
+									: 'splide__arrows hide'
+						}
 					}}
 					className='slider'>
 					{windowSize[0] > 768 && (

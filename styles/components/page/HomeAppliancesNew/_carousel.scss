@@ -51,55 +51,60 @@
 	}
 	.slider {
 		padding: 0 12px;
-		.splide__arrows .splide__arrow {
-			&.splide__arrow--prev {
-				left: calc(150px + 4%);
-				@include mq(1920) {
-					left: calc(90px + 3%);
-				}
-				@include mq(1440) {
-					left: calc(30px + 6%);
-				}
-				@include mq(768) {
-					left: calc(12px + 3%);
-				}
+		.splide__arrows {
+			&.hide {
+				display: none;
 			}
-			&.splide__arrow--next {
-				right: calc(150px + 4%);
-				@include mq(1920) {
-					right: calc(90px + 3%);
+			.splide__arrow {
+				&.splide__arrow--prev {
+					left: calc(150px + 4%);
+					@include mq(1920) {
+						left: calc(90px + 3%);
+					}
+					@include mq(1440) {
+						left: calc(30px + 6%);
+					}
+					@include mq(768) {
+						left: calc(12px + 3%);
+					}
 				}
-				@include mq(1440) {
-					right: calc(30px + 6%);
+				&.splide__arrow--next {
+					right: calc(150px + 4%);
+					@include mq(1920) {
+						right: calc(90px + 3%);
+					}
+					@include mq(1440) {
+						right: calc(30px + 6%);
+					}
+					@include mq(768) {
+						right: calc(12px + 3%);
+					}
 				}
-				@include mq(768) {
-					right: calc(12px + 3%);
-				}
-			}
-			&.splide__arrow--prev,
-			&.splide__arrow--next {
-				width: 45px;
-				height: 45px;
-				z-index: 11;
-				background: #00aaa6;
-				border-radius: 100%;
-				-webkit-border-radius: 100%;
-				-moz-border-radius: 100%;
-				-ms-border-radius: 100%;
-				-o-border-radius: 100%;
-				padding: 0 !important;
-				transform: translateY(-50%);
-				opacity: 1;
-				&:disabled {
-					background: #00aaa6 !important;
-					opacity: 0.35;
-				}
-				@include mq(768) {
-					display: none;
-				}
-				svg {
-					path {
-						fill: #ffffff;
+				&.splide__arrow--prev,
+				&.splide__arrow--next {
+					width: 45px;
+					height: 45px;
+					z-index: 11;
+					background: #00aaa6;
+					border-radius: 100%;
+					-webkit-border-radius: 100%;
+					-moz-border-radius: 100%;
+					-ms-border-radius: 100%;
+					-o-border-radius: 100%;
+					padding: 0 !important;
+					transform: translateY(-50%);
+					opacity: 1;
+					&:disabled {
+						background: #00aaa6 !important;
+						opacity: 0.35;
+					}
+					@include mq(768) {
+						display: none;
+					}
+					svg {
+						path {
+							fill: #ffffff;
+						}
 					}
 				}
 			}
