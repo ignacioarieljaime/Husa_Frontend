@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import HomeAppliancesCarouselitem from './HomeAppliancesCarouselitem'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import '@splidejs/react-splide/css'
+// import { Navigation } from 'swiper'
+// import { Swiper, SwiperSlide } from 'swiper/react'
+// import 'swiper/css/navigation'
+// import 'swiper/css'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 
@@ -20,11 +24,52 @@ const HomeAppliancesCarousel = ({ data }) => {
 					dangerouslySetInnerHTML={{
 						__html: structure?.title?.value
 					}}></h3>
-				<Swiper
+				<Splide
+					options={{
+						pagination: false,
+						perPage: 1,
+						perMove: 1,
+						gap: '1rem',
+						pagination: false
+						// breakpoints: {
+						// 	1200: {
+						// 		perPage: 4
+						// 	},
+						// 	991: {
+						// 		perPage: 3
+						// 	},
+						// 	800: {
+						// 		perPage: 4
+						// 	},
+						// 	700: {
+						// 		perPage: 3
+						// 	},
+						// 	680: {
+						// 		perPage: 2
+						// 	},
+						// 	500: {
+						// 		perPage: 1
+						// 	}
+						// }
+					}}
+					className='slider'>
+					{windowSize[0] > 768 && (
+						<SplideSlide
+							className='slider_item'
+							style={{ width: '260px' }}></SplideSlide>
+					)}
+					{structure?.list?.value.map((item, index) => (
+						<SplideSlide key={index} className='slider_item'>
+							<HomeAppliancesCarouselitem data={item} structure={structure} />
+						</SplideSlide>
+					))}
+				</Splide>
+				{/* <Swiper
 					pagination={false}
 					slidesPerView={'auto'}
 					centeredSlides={false}
-					grabCursor={true}
+					modules={[Navigation]}
+					navigation={true}
 					spaceBetween={24}
 					className='slider'>
 					{windowSize[0] > 768 && (
@@ -37,7 +82,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 							<HomeAppliancesCarouselitem data={item} structure={structure} />
 						</SwiperSlide>
 					))}
-				</Swiper>
+				</Swiper> */}
 				{structure?.link?.value && (
 					<div className='bottom_button'>
 						<Link

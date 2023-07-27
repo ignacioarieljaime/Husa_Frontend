@@ -87,11 +87,13 @@ const ProductsGridV2 = ({ data }) => {
 				router,
 				structure?.category.value,
 				_filter,
-				sortingMethod ? `&sort=${sortingMethod.value}` : null,
+				sortingMethod && sortingMethod?.value !== 'featured'
+					? `&sort=${sortingMethod.value}`
+					: null,
 				controller.signal
 			)
-
-			setProducts(response.data.data)
+			const newData = response.data.data
+			setProducts(newData)
 			getFilters(response.data.filterTypes)
 			setTotalCount(response.data.total)
 		} catch (error) {
@@ -107,7 +109,6 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
-	}
 
 	return (
 		<section>

@@ -33,24 +33,28 @@ const HomeAppliancesTitleAndCardsBox = ({ data }) => {
 										dangerouslySetInnerHTML={{
 											__html: item?.subtitle?.value
 										}}></h5>
-									<Link
-										target={item?.link?.target ? item?.link?.target : '_self'}
-										href={item?.link?.value ? item?.link?.value : '/'}>
-										<a
+									{item?.link?.value && (
+										<Link
 											target={item?.link?.target ? item?.link?.target : '_self'}
-											style={{ width: '150px' }}
-											className={` text-nowrap n-btn d-block mx-auto py-3 ${
-												item?.theme?.value === 'dark' ? 'black' : 'white'
-											}`}>
-											{item?.link?.title}
-											{item?.link?.target === '_blank' && (
-												<img
-													style={{ marginLeft: '10px' }}
-													src={OpenPageOnNewTab.src}
-												/>
-											)}
-										</a>
-									</Link>
+											href={item?.link?.value ? item?.link?.value : '/'}>
+											<a
+												target={
+													item?.link?.target ? item?.link?.target : '_self'
+												}
+												style={{ width: '150px' }}
+												className={` text-nowrap n-btn d-block mx-auto py-3 ${
+													item?.theme?.value === 'dark' ? 'black' : 'white'
+												}`}>
+												{item?.link?.title}
+												{item?.link?.target === '_blank' && (
+													<img
+														style={{ marginLeft: '10px' }}
+														src={OpenPageOnNewTab.src}
+													/>
+												)}
+											</a>
+										</Link>
+									)}
 								</div>
 							</div>
 						</div>

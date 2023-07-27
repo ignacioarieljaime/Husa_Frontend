@@ -119,7 +119,7 @@ const ProductFilterResponsive = ({
 									setModalIsOpen(true)
 									setDropdownStatus(1)
 								}}>
-								sort
+								SORT
 							</button>
 						</li>
 					)}
