@@ -87,10 +87,12 @@ const ProductsGridV2 = ({ data }) => {
 				router,
 				structure?.category.value,
 				_filter,
-				sortingMethod ? `&sort=${sortingMethod.value}` : null,
+				sortingMethod && sortingMethod?.value !== 'featured'
+					? `&sort=${sortingMethod.value}`
+					: null,
 				controller.signal
 			)
-			const newData = orderProducts(response.data.data)
+			const newData = response.data.data
 			setProducts(newData)
 			getFilters(response.data.filterTypes)
 			setTotalCount(response.data.total)
@@ -107,20 +109,6 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
-	}
-
-	const orderProducts = _data => {
-		_data.sort((after, prev) => {
-			if (after.id !== 0 && prev.id !== 0)
-				return after.products[0].product.order - prev.products[0].product.order
-			else if (prev.id !== 0)
-				return after.products.product.order - prev.products[0].product.order
-			else if (after.id !== 0)
-				return after.products[0].product.order - prev.products.product.order
-			else return after.products.product.order - prev.products.product.order
-		})
-
-		return _data
 	}
 
 	return (
@@ -153,7 +141,7 @@ const ProductsGridV2 = ({ data }) => {
 				</div>
 				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					{filterList && filterList.length !== 0 ? (
-						<div className='products-filtering me-md-12'>
+						<div className='products-filtering'>
 							{width >= 768 && (
 								<ProductsFilter
 									filterRequest={getProductHandler}
@@ -175,7 +163,12 @@ const ProductsGridV2 = ({ data }) => {
 							<Spinner className={'mt-5'} size={80} />
 						</div>
 					) : (
-						<div className='products'>
+						<div
+							className={`products ${
+								filterList && filterList.length !== 0 && width >= 768
+									? 'filter_show'
+									: ''
+							}`}>
 							{products.map((item, index) => (
 								<ProductItemV2 key={index} data={item} />
 							))}
