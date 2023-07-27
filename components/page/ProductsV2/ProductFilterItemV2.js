@@ -26,7 +26,7 @@ function ProductFilterItemV2({
 					)
 				}
 			})
-		}else{
+		} else {
 			setCheckBoxCondition(false)
 		}
 	}, [passedFilter, router.query])
@@ -41,10 +41,9 @@ function ProductFilterItemV2({
 
 	return (
 		<li>
-			<div className='d-flex'>
+			<div className='d-flex gap-4'>
 				<CustomCheckBox
 					checked={checkBoxCondition}
-					className='me-3'
 					onClick={e => {
 						setCheckBoxCondition(!checkBoxCondition)
 						filterController(
