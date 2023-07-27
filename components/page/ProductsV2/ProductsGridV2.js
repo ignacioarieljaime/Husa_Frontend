@@ -109,6 +109,7 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
+	}
 
 	return (
 		<section>
