@@ -30,27 +30,13 @@ const HomeAppliancesCarousel = ({ data }) => {
 						perPage: 1,
 						perMove: 1,
 						gap: '1rem',
-						pagination: false
-						// breakpoints: {
-						// 	1200: {
-						// 		perPage: 4
-						// 	},
-						// 	991: {
-						// 		perPage: 3
-						// 	},
-						// 	800: {
-						// 		perPage: 4
-						// 	},
-						// 	700: {
-						// 		perPage: 3
-						// 	},
-						// 	680: {
-						// 		perPage: 2
-						// 	},
-						// 	500: {
-						// 		perPage: 1
-						// 	}
-						// }
+						pagination: false,
+						classes: {
+							arrows:
+								structure?.list?.value.length > 4
+									? 'splide__arrows'
+									: 'splide__arrows hide'
+						}
 					}}
 					className='slider'>
 					{windowSize[0] > 768 && (
@@ -64,25 +50,6 @@ const HomeAppliancesCarousel = ({ data }) => {
 						</SplideSlide>
 					))}
 				</Splide>
-				{/* <Swiper
-					pagination={false}
-					slidesPerView={'auto'}
-					centeredSlides={false}
-					modules={[Navigation]}
-					navigation={true}
-					spaceBetween={24}
-					className='slider'>
-					{windowSize[0] > 768 && (
-						<SwiperSlide
-							className='slider_item'
-							style={{ width: '260px' }}></SwiperSlide>
-					)}
-					{structure?.list?.value.map((item, index) => (
-						<SwiperSlide key={index} className='slider_item'>
-							<HomeAppliancesCarouselitem data={item} structure={structure} />
-						</SwiperSlide>
-					))}
-				</Swiper> */}
 				{structure?.link?.value && (
 					<div className='bottom_button'>
 						<Link
