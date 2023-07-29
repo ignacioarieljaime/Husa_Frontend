@@ -83,29 +83,35 @@ const NewsRoomMainBox = ({ data }) => {
 									<div className='news_room_news_box_search_items'>
 										{news.map(item => (
 											<div>
-												<div style={{ width: width > 600 ? '370px' : '100%' }}>
-													<CustomImage
-														src={
-															item?.meta?.find(
-																element =>
-																	element?.name === 'property="og:image"'
-															)?.content
-														}
-														wrapperWidth={width > 600 ? '370px' : '100%'}
-														wrapperHeight={width > 600 ? '100%' : '144px'}
-													/>
-												</div>
-												<div className='text_box'>
-													<span className='subject'>{item?.tags[0]}</span>
-													<h5>
-														<Link href={item?.route || '/'}>
-															<a>{item?.title}</a>
-														</Link>
-													</h5>
-													<span className='date'>
-														{moment(item?.created_at).format('MMMM DD YYYY')}
-													</span>
-												</div>
+												<Link href={item?.route || '/'}>
+													<a style={{ width: width > 600 ? '370px' : '100%' }}>
+														<div>
+															<CustomImage
+																src={
+																	item?.meta?.find(
+																		element =>
+																			element?.name === 'property="og:image"'
+																	)?.content
+																}
+																wrapperWidth={width > 600 ? '370px' : '100%'}
+																wrapperHeight={width > 600 ? '100%' : '144px'}
+															/>
+														</div>
+														<div className='text_box'>
+															<span className='subject'>{item?.tags[0]}</span>
+															<h5>
+																<Link href={item?.route || '/'}>
+																	<a>{item?.title}</a>
+																</Link>
+															</h5>
+															<span className='date'>
+																{moment(item?.created_at).format(
+																	'MMMM DD YYYY'
+																)}
+															</span>
+														</div>
+													</a>
+												</Link>
 											</div>
 										))}
 									</div>
