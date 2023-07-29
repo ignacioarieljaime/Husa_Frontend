@@ -102,17 +102,25 @@
 		}
 
 		h6 {
+			position: absolute;
+			bottom: 32px;
+			left: 0;
+			width: 100%;
+			text-align: center;
 			font-weight: 300;
 			font-size: 12px;
-			position: relative;
 			z-index: 1;
 			line-height: 16px;
 			color: #ffffff;
+			margin: 0;
+			@include mq(768) {
+				bottom: 12px !important;
+			}
 		}
 	}
 
 	.swiper-pagination {
-		bottom: 60px !important;
+		bottom: 70px !important;
 		@include mq(768) {
 			bottom: 32px !important;
 		}

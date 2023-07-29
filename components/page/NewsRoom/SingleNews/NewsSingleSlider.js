@@ -30,7 +30,78 @@ const NewsSingleSlider = ({ data }) => {
 				}}
 				modules={[Pagination, Navigation]}
 				className='news_single_slider'>
-				{structure?.list?.value?.map(item => (
+				{[
+					{
+						link: {
+							id: 4,
+							type: 'url',
+							title: 'Link',
+							value: null,
+							target: '_self'
+						},
+						image: {
+							id: 2,
+							alt: null,
+							src: 'https://files.hisense-usa.com/storage/hisense/asset/images/664a83d7d9e96a.webp',
+							type: 'image',
+							title: 'Image'
+						},
+						subtitle: {
+							id: 1,
+							type: 'string',
+							title: 'Subtitle',
+							value: 'Image caption lorem ipsum.'
+						},
+						EnlargeBtn: {
+							id: 3,
+							type: 'string',
+							title: 'Enlarge Image Title',
+							value: 'Enlarge Image'
+						},
+						downloadBtn: {
+							id: 4,
+							type: 'url',
+							title: 'Download Image',
+							value: null,
+							target: '_self'
+						}
+					},
+					{
+						link: {
+							id: 4,
+							type: 'url',
+							title: 'Link',
+							value: null,
+							target: '_self'
+						},
+						image: {
+							id: 2,
+							alt: null,
+							src: 'https://files.hisense-usa.com/storage/hisense/asset/images/664a83d7d9e96a.webp',
+							type: 'image',
+							title: 'Image'
+						},
+						subtitle: {
+							id: 1,
+							type: 'string',
+							title: 'Subtitle',
+							value: 'Idasdas das dasd asd as fafsagf easga.'
+						},
+						EnlargeBtn: {
+							id: 3,
+							type: 'string',
+							title: 'Enlarge Image Title',
+							value: 'Enlarge Image'
+						},
+						downloadBtn: {
+							id: 4,
+							type: 'url',
+							title: 'Download Image',
+							value: null,
+							target: '_self'
+						}
+					}
+				].map(item => (
 					<SwiperSlide>
 						<div className={`slider_item`}>
 							<CustomImage
