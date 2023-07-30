@@ -42,6 +42,7 @@ export async function GetProductsListApi(navigate, _categoryId, _filter) {
 export async function GetProductsListNewApi(
 	navigate,
 	_categoryId,
+	_subCategoryId,
 	_filter,
 	_sort,
 	signal
@@ -52,9 +53,11 @@ export async function GetProductsListNewApi(
 			: ''
 
 	let response = await axios.get(
-		`${process.env.NEXT_PUBLIC_PIM_API_ROUTE}/productsIndex?category_id=${_categoryId}${filter}${
+		`${'https://impim.dev-api.hisenseportal.com/api/cms'}/productsIndex?category_id=${_categoryId}${filter}${
 			_sort ? _sort : ''
-		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+		}&brand_id=${
+			process.env.NEXT_PUBLIC_BRAND_ID
+		}&subcategory_id=${_subCategoryId}`,
 		{ signal }
 	)
 	return response
