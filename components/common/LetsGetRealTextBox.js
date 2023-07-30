@@ -14,6 +14,11 @@ function LetsGetRealTextBox({ data }) {
 			<div className={`lets_get_real_text_box ${structure?.theme?.value}`}>
 				<div
 					className='content'
+					style={
+						structure?.textColor?.value && {
+							color: structure?.textColor?.value
+						}
+					}
 					dangerouslySetInnerHTML={{ __html: text }}></div>
 			</div>
 		</section>

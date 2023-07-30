@@ -3028,17 +3028,13 @@ header {
 	&.dark {
 		background: #000;
 		.content {
-			* {
-				color: #fff;
-			}
+			color: #fff;
 		}
 	}
 	&.light {
 		background: #fff;
 		.content {
-			* {
-				color: #000;
-			}
+			color: #000;
 		}
 	}
 	.content {
@@ -3057,6 +3053,7 @@ header {
 			font-weight: 300;
 			line-height: 16.2px;
 			margin: 0;
+			color: inherit !important;
 		}
 	}
 }
