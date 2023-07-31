@@ -35,7 +35,7 @@ const SortFilterDropDown = ({ sortValue, sortOnChange, dropdownStatus }) => {
 			<div
 				onClick={() => setCollapsed(state => !state)}
 				className={`name_button ${!collapse ? 'drop_down_is_open' : ''}`}>
-				<h6>sort</h6>
+				<h6>SORT</h6>
 				<AngleArrow />
 			</div>
 			<div

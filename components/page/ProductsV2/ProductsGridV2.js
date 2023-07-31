@@ -115,6 +115,7 @@ const ProductsGridV2 = ({ data }) => {
 		}
 	}
 
+
 	// const orderProducts = _data => {
 	// 	if (sortingMethod && sortingMethod?.value === 'featured') {
 	// 		_data.sort((after, prev) => {
