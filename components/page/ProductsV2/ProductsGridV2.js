@@ -86,7 +86,7 @@ const ProductsGridV2 = ({ data }) => {
 			let response = await GetProductsListNewApi(
 				router,
 				structure?.category.value,
-				structure?.subcategory.value,
+				structure?.subcategory?.value,
 				_filter,
 				sortingMethod && sortingMethod?.value !== 'featured'
 					? `&sort=${sortingMethod.value}`
