@@ -7,12 +7,19 @@ function TextEditor({ data }) {
 		setText(structure?.text?.value ? structure?.text?.value : structure?.text)
 	}, [])
 	return (
-		<article
-			style={{ maxWidth: `${structure?.width?.value}px` }}
-			className={'article text-editor text_editor mx-auto pt-5 px-6 pb-6'}
-			dangerouslySetInnerHTML={{
-				__html: text
-			}}></article>
+		<section
+			style={{
+				backgroundColor: structure?.backgroundColor?.value
+			}}>
+			<article
+				style={{
+					maxWidth: `${structure?.width?.value}px`
+				}}
+				className={`${structure?.theme?.value} article text-editor text_editor mx-auto pt-5 px-6 pb-6`}
+				dangerouslySetInnerHTML={{
+					__html: text
+				}}></article>
+		</section>
 	)
 }
 
