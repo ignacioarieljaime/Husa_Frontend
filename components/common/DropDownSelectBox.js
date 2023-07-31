@@ -28,7 +28,9 @@ const DropDownSelectBox = ({
 		}
 	}
 	return (
-		<div className={`dropdown-select-box ${show ? 'show' : ''} ${className}`}>
+		<div
+			className={`dropdown-select-box ${show ? 'show' : ''} ${className}`}
+			style={{ zIndex: '5' }}>
 			<button
 				className='dropdown-select-box-button'
 				type='button'

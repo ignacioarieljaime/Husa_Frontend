@@ -24,6 +24,10 @@ const ProductsGridV2 = ({ data }) => {
 	const controller = new AbortController()
 	const options = [
 		{
+			name: 'Featured',
+			value: 'featured'
+		},
+		{
 			name: 'Newest',
 			value: 'newest'
 		},
@@ -111,6 +115,24 @@ const ProductsGridV2 = ({ data }) => {
 		}
 	}
 
+
+	// const orderProducts = _data => {
+	// 	if (sortingMethod && sortingMethod?.value === 'featured') {
+	// 		_data.sort((after, prev) => {
+	// 			if (after.id !== 0 && prev.id !== 0)
+	// 				return (
+	// 					after.products[0].product.order - prev.products[0].product.order
+	// 				)
+	// 			else if (prev.id !== 0)
+	// 				return after.products.product.order - prev.products[0].product.order
+	// 			else if (after.id !== 0)
+	// 				return after.products[0].product.order - prev.products.product.order
+	// 			else return after.products.product.order - prev.products.product.order
+	// 		})
+	// 	}
+	// 	return _data
+	// }
+
 	return (
 		<section>
 			<div className='container grid_v2_top_box mt-7 mb-11 d-none d-md-block'>
@@ -131,7 +153,9 @@ const ProductsGridV2 = ({ data }) => {
 			)}
 
 			<div className='products-v2 mx-3 mx-md-13'>
-				<div className='products-sorting d-none d-md-block'>
+				<div
+					className='products-sorting d-none d-md-block'
+					style={{ zIndex: '5' }}>
 					<DropDownSelectBox
 						options={options}
 						value={sortingMethod}

@@ -4,6 +4,10 @@ import SortFilterItem from './SortFilterItem'
 
 const options = [
 	{
+		name: 'Featured',
+		value: 'featured'
+	},
+	{
 		name: 'Newest',
 		value: 'newest'
 	},

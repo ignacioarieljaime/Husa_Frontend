@@ -30,30 +30,33 @@ const NewsRoomSlider = ({ data }) => {
 				className='news_room_slider_box'>
 				{structure?.list?.value?.map((item, index) => (
 					<SwiperSlide key={'slider-item-' + index}>
-						<div
+						<Link
+							href={item?.btn?.value || '/'}
 							// style={{ backgroundImage: `url(${item?.image?.src})` }}
-							className='slider_item'>
-							<div className='slider_bg'>
-								<CustomImage
-									src={item?.image?.src}
-									alt={item?.image?.alt}
-									wrapperWidth={'100%'}
-									wrapperHeight={'100%'}
-									wrapperClass={'bg'}
-								/>
-							</div>
-							<div className='slider_content'>
-								<h5>{item?.title?.value}</h5>
-								<h6>{item?.subtitle?.value}</h6>
-								<Link
-									target={item?.btn?.target || '_self'}
-									href={item?.btn?.value || '/'}>
-									<a target={item?.btn?.target || '_self'}>
-										{item?.btn?.title}
-									</a>
-								</Link>
-							</div>
-						</div>
+						>
+							<a className='slider_item d-block'>
+								<div className='slider_bg'>
+									<CustomImage
+										src={item?.image?.src}
+										alt={item?.image?.alt}
+										wrapperWidth={'100%'}
+										wrapperHeight={'100%'}
+										wrapperClass={'bg'}
+									/>
+								</div>
+								<div className='slider_content'>
+									<h5>{item?.title?.value}</h5>
+									<h6>{item?.subtitle?.value}</h6>
+									<Link
+										target={item?.btn?.target || '_self'}
+										href={item?.btn?.value || '/'}>
+										<a target={item?.btn?.target || '_self'}>
+											{item?.btn?.title}
+										</a>
+									</Link>
+								</div>
+							</a>
+						</Link>
 						<h3 className='subheading'>{item?.subheading?.value}</h3>
 					</SwiperSlide>
 				))}

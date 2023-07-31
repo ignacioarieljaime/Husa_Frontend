@@ -716,6 +716,17 @@ input {
 		}
 	}
 }
+.article.text-editor.text_editor {
+	&.light {
+		p,
+		li {
+			color: #fff;
+		}
+		span {
+			color: #fff !important;
+		}
+	}
+}
 
 .text_editor {
 	a {
