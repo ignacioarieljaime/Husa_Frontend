@@ -71,11 +71,13 @@ function BlogHead({ data: { structure }, pim }) {
 		<section>
 			<div className='blog-header overflow-hidden mt-20'>
 				<div className='px-3 mb-13'>
-					{pim?.tags?.map(item => (
-						<span className='text-primary-dark fs-5 fw-normal mb-10 d-block text-decoration-none'>
-							{item}
-						</span>
-					))}
+					<div className='d-flex align-items-center justify-content-start flex-wrap gap-2 gap-sm-4 mb-10'>
+						{pim?.tags?.map(item => (
+							<span className='text-primary-dark fs-5 fw-normal d-block text-decoration-none'>
+								{item}
+							</span>
+						))}
+					</div>
 					{/* <Link
 						target={
 							structure?.tagLink?.target ? structure?.tagLink?.target : '_self'
