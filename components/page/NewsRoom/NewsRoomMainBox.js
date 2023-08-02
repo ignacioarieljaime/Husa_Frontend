@@ -17,7 +17,6 @@ const NewsRoomMainBox = ({ data }) => {
 	let { structure } = data
 	const [news, setNews] = useState()
 	const [pagination, setPagination] = useState()
-	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
 	const [filters, setFilters] = useState({
 		year: '',
 		product: '',
@@ -31,19 +30,6 @@ const NewsRoomMainBox = ({ data }) => {
 			setNews(null)
 		}
 	}, [filters])
-
-	useEffect(() => {
-		let newOrder = []
-
-		for (let i = 1; i < 4; i++)
-			newOrder = [
-				...newOrder,
-				...new Array(structure['row-' + i]?.value).fill(
-					structure['row-' + i]?.value
-				)
-			]
-		setNewsItemOrder(newOrder)
-	}, [])
 
 	const getNews = async () => {
 		setNews('loading')
@@ -153,8 +139,8 @@ const NewsRoomMainBox = ({ data }) => {
 										image={item?.image?.src}
 										subject={item?.tag?.value}
 										title={item?.title?.value}
-										isFirst={newsItemOrder[index] === 1}
-										isThree={newsItemOrder[index] === 3}
+										isFirst={index === 0}
+										isThree={index > 2}
 									/>
 								)
 						)
