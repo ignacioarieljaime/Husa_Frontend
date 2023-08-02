@@ -34,6 +34,7 @@ const NewsRoomMainBox = ({ data }) => {
 
 	useEffect(() => {
 		let newOrder = []
+
 		for (let i = 1; i < 4; i++)
 			newOrder = [
 				...newOrder,
