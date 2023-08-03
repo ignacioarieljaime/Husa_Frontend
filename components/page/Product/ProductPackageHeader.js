@@ -43,12 +43,7 @@ const ProductPackageHeader = ({ pim, data }) => {
 	return (
 		<section id={data.name + data.id} className='new_product_info'>
 			<div className='wrapper row'>
-				<ProductInfoSlider
-					firstImage={pim?.image}
-					pim={pim?.assets}
-					allData={pim}
-				/>
-				<div className='col-12 col-md-6 product_info my-auto'>
+				<div className='col-12 d-block d-md-none product_info pt-3 my-auto'>
 					<h1 className='title'>
 						{/* {
 								pim?.custom_fields.find(item => item.title === 'span Title')
@@ -57,6 +52,27 @@ const ProductPackageHeader = ({ pim, data }) => {
 						{pim?.name}
 					</h1>
 					<div className='package-details'>
+						<ul className='mb-0'>
+							{MPNData.map((item, index) => (
+								<li key={'mpn' + index}>{item.value}</li>
+							))}
+						</ul>
+					</div>
+				</div>
+				<ProductInfoSlider
+					firstImage={pim?.image}
+					pim={pim?.assets}
+					allData={pim}
+				/>
+				<div className='col-12 col-md-6 product_info my-auto'>
+					<h1 className='title d-md-block d-none'>
+						{/* {
+								pim?.custom_fields.find(item => item.title === 'span Title')
+									?.value
+							} */}
+						{pim?.name}
+					</h1>
+					<div className='package-details d-md-block d-none'>
 						<ul>
 							{MPNData.map((item, index) => (
 								<li key={'mpn' + index}>{item.value}</li>
