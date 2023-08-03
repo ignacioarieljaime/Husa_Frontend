@@ -46,6 +46,7 @@ const { FlightNightComponents } = require('./components/FlightNightComponents')
 const { NbaComponents } = require('./components/NbaComponents')
 const { ULEDXComponents } = require('./components/ULEDXComponents')
 const { CareersComponents } = require('./components/CareersComponents')
+const { NewComponents } = require('./components/NewComponents')
 module.exports.ComponentList = [
 	...CommonComponents,
 	...AuthorizedRetailers,
@@ -91,6 +92,7 @@ module.exports.ComponentList = [
 	...NbaComponents,
 	...ULEDXComponents,
 	...CareersComponents,
+	...NewComponents,
 	{
 		name: 'Subscribe',
 		path: 'components/common/Subscribe'
