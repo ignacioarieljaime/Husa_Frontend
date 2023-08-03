@@ -93,50 +93,67 @@ const NewsRoomMainBox = ({ data }) => {
 								</div>
 							) : (
 								<>
-									<div className='news_room_news_box_search_items'>
-										{news.map(item => (
-											<div>
-												<Link href={item?.route || '/'}>
-													<a style={{ width: width > 600 ? '370px' : '100%' }}>
-														<div>
-															<CustomImage
-																src={
-																	item?.meta?.find(
-																		element =>
-																			element?.name === 'property="og:image"'
-																	)?.content
-																}
-																wrapperWidth={width > 600 ? '370px' : '100%'}
-																wrapperHeight={width > 600 ? '100%' : '144px'}
-															/>
-														</div>
-														<div className='text_box'>
-															<span className='subject'>{item?.tags[0]}</span>
-															<h5>
+									<div className='news_press_archive container'>
+										<div>
+											<div className='items_box'>
+												<div className='items mt-0'>
+													{news === 'loading' ? (
+														<Spinner />
+													) : Array.isArray(news) ? (
+														news.map(item => (
+															<div>
 																<Link href={item?.route || '/'}>
-																	<a>{item?.title}</a>
+																	<a
+																		className='d-block'
+																		style={{
+																			width: width > 600 ? '370px' : '100%'
+																		}}>
+																		<CustomImage
+																			src={
+																				item?.meta?.find(
+																					element =>
+																						element?.name ===
+																						'property="og:image"'
+																				)?.content
+																			}
+																			wrapperWidth={
+																				width > 600 ? '370px' : '100%'
+																			}
+																			wrapperHeight={'100%'}
+																		/>
+																	</a>
 																</Link>
-															</h5>
-															<span className='date'>
-																{moment(item?.created_at).format(
-																	'MMMM DD YYYY'
-																)}
-															</span>
-														</div>
-													</a>
-												</Link>
+																<div className='text_box'>
+																	{item?.tags.map(item => (
+																		<span className='subject'>{item}</span>
+																	))}
+
+																	<h5>
+																		<Link href={item?.route || '/'}>
+																			<a>{item?.title}</a>
+																		</Link>
+																	</h5>
+																	<span className='date'>
+																		{moment(item?.created_at).format(
+																			'MMMM DD YYYY'
+																		)}
+																	</span>
+																</div>
+															</div>
+														))
+													) : null}
+												</div>
+
+												{pagination && (
+													<NewsRoomPagination
+														handler={_page =>
+															setFilters({ ...filters, page: _page })
+														}
+														pagination={pagination}
+													/>
+												)}
 											</div>
-										))}
-									</div>
-									<div className='pagination'>
-										{pagination && (
-											<NewsRoomPagination
-												handler={_page =>
-													setFilters({ ...filters, page: _page })
-												}
-												pagination={pagination}
-											/>
-										)}
+										</div>
 									</div>
 								</>
 							)}
@@ -144,7 +161,7 @@ const NewsRoomMainBox = ({ data }) => {
 					) : (
 						structure?.list?.value.map(
 							(item, index) =>
-								index <= 5 && (
+								index < newsItemOrder.length && (
 									<NewsRoomMainNewsItem
 										link={item?.link?.value}
 										target={item?.link?.target}
