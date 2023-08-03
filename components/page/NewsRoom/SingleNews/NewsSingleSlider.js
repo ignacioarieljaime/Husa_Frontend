@@ -1,40 +1,32 @@
 import React, { useState } from 'react'
 
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-
-// import required modules
 import { Pagination, Navigation } from 'swiper'
 import CustomImage from 'components/common/CustomImage'
 import ResizeIcon from 'components/icons/ResizeIcon'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
-import { useAspectRatio } from 'hooks/useAspectRatio'
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 
 import Link from 'next/link'
-
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import '@splidejs/react-splide/css'
 const NewsSingleSlider = ({ data }) => {
 	let { structure } = data
 	const [imageUrl, setImageUrl] = useState(null)
 	return (
 		<>
-			<Swiper
-				spaceBetween={30}
-				loop
-				navigation={true}
-				centeredSlides={true}
-				pagination={{
-					clickable: true
+			<Splide
+				options={{
+					pagination: true,
+					perPage: 1,
+					perMove: 1,
+					gap: '1rem',
+					classes: {
+						arrows: 'splide__arrows '
+					}
 				}}
-				modules={[Pagination, Navigation]}
 				className='news_single_slider'>
-				{structure?.list?.value.map(item => (
-					<SwiperSlide>
+				{structure?.list?.value.map((item, index) => (
+					<SplideSlide key={'slider-item-' + index}>
 						<div className={`slider_item`}>
 							<CustomImage
 								src={item?.image?.src}
@@ -72,9 +64,9 @@ const NewsSingleSlider = ({ data }) => {
 
 							<h6>{item?.subtitle?.value}</h6>
 						</div>
-					</SwiperSlide>
+					</SplideSlide>
 				))}
-			</Swiper>
+			</Splide>
 			{imageUrl && (
 				<div className='news_single_slider_resize_image'>
 					<TransformWrapper>
