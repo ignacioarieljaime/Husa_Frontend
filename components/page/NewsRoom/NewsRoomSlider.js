@@ -16,7 +16,10 @@ const NewsRoomSlider = ({ data }) => {
 					perMove: 1,
 					gap: '1rem',
 					classes: {
-						arrows: 'splide__arrows '
+						arrows:
+							structure?.list?.value.length > 1
+								? 'splide__arrows'
+								: 'splide__arrows hide'
 					}
 				}}
 				className='news_room_slider_box'>

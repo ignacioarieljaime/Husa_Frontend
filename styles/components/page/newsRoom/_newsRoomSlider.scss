@@ -248,5 +248,10 @@
 				}
 			}
 		}
+		.splide__arrows {
+			&.hide {
+				display: none;
+			}
+		}
 	}
 }
