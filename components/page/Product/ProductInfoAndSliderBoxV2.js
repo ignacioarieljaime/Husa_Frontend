@@ -32,6 +32,126 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 			}}
 			className='theme-light new_product_info p-0'>
 			<div className='wrapper row'>
+				<div className='col-12 d-block d-md-none product_info my-auto'>
+					<h2
+						className={`serie ${
+							structure?.theme.value === 'light' && 'text-white'
+						}`}>
+						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+							? pim?.custom_fields.find(item => item.title === 'h2 Title')
+									?.value
+							: pim?.custom_fields?.find(item => item.title === 'Product Type')
+									?.value}
+					</h2>
+					<h3
+						className={`model ${
+							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+						}`}>
+						{
+							pim?.custom_fields.find(item => item.title === 'span Title')
+								?.value
+						}
+					</h3>
+					<h1
+						className={`title ${
+							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+						}`}>
+						{pim?.name}
+					</h1>
+					<p
+						className={`model_number ${
+							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+						}`}>
+						Model: {pim?.model}
+					</p>
+
+					{/* <h2
+						className={`title ${
+							pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+								? 'text-dark mb-5'
+								: 'text-dark fs-2hx mb-1'
+						} ${structure?.theme.value === 'light' && 'text-white'}`}>
+						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+							? pim?.custom_fields.find(item => item.title === 'h2 Title')
+									?.value
+							: pim?.custom_fields?.find(item => item.title === 'Product Type')
+									?.value}
+					</h2> */}
+					{/* <h1
+						className={`serie  mb-8 ${
+							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+						}`}>
+						{pim?.custom_fields.find(item => item.title === 'span Title')?.value
+							? pim?.custom_fields.find(item => item.title === 'span Title')
+									?.value
+							: pim?.name}
+					</h1> */}
+					<div
+						className={`mb-8 text-uppercase ${
+							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+						}`}>
+						{data?.structure?.description?.value}
+					</div>
+					{/* <p
+						className={`${
+							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+						}`}>
+						Model: {pim?.model}
+					</p> */}
+					{pim?.series[0]?.values && pim?.series[0]?.values.length > 0 ? (
+						<div className='sizes'>
+							<p
+								className={`sizes_text ${
+									structure?.theme.value === 'light'
+										? 'text-white'
+										: 'text-dark'
+								}`}>
+								Available Screen Sizes
+							</p>
+							<div className='sizes_list'>
+								{pim?.series[0]?.values.map(
+									(item, index) =>
+										item.title && (
+											<ProductSliderLinkButtonV3
+												key={index}
+												data={item}
+												theme={structure?.theme.value}
+												pim={pim}
+											/>
+										)
+								)}
+							</div>
+						</div>
+					) : (
+						<div className='sizes pb-0'></div>
+					)}
+					<div className='text-center text-md-start'>
+						<button
+							className='wtb_btn mx-auto mx-md-0'
+							disabled={
+								pim?.buy_status !== 'ChannelAdvisor' &&
+								pim?.buy_status !== 'Internal'
+							}
+							onClick={() =>
+								pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
+									? dataLayerHandler()
+									: {}
+							}>
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal'
+								? 'Where To Buy'
+								: 'coming soon'}
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal' ? (
+								<img
+									style={{ marginLeft: '16px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							) : null}
+						</button>
+					</div>
+				</div>
 				<ProductInfoSlider
 					firstImage={pim?.image}
 					pim={pim?.assets}

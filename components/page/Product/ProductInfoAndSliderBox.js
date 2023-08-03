@@ -35,12 +35,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 	return (
 		<section id={data.name + data.id} className='new_product_info'>
 			<div className='wrapper row'>
-				<ProductInfoSlider
-					firstImage={pim?.image}
-					pim={pim?.assets}
-					allData={pim}
-				/>
-				<div className='product_info px-0 my-auto'>
+				<div className='product_info px-0 my-auto pt-3 d-md-none d-block'>
 					<h2 className='serie'>
 						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
 							? pim?.custom_fields.find(item => item.title === 'h2 Title')
@@ -55,7 +50,29 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						}
 					</h3>
 					<h1 className='title'>{pim?.name}</h1>
-					<p className='model_number'>Model: {pim?.model}</p>
+					<p className='model_number mb-0'>Model: {pim?.model}</p>
+				</div>
+				<ProductInfoSlider
+					firstImage={pim?.image}
+					pim={pim?.assets}
+					allData={pim}
+				/>
+				<div className='product_info px-0 my-auto'>
+					<h2 className='serie d-none d-md-block'>
+						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+							? pim?.custom_fields.find(item => item.title === 'h2 Title')
+									?.value
+							: pim?.custom_fields?.find(item => item.title === 'Product Type')
+									?.value}
+					</h2>
+					<h3 className='model d-none d-md-block'>
+						{
+							pim?.custom_fields.find(item => item.title === 'span Title')
+								?.value
+						}
+					</h3>
+					<h1 className='title d-none d-md-block'>{pim?.name}</h1>
+					<p className='model_number d-none d-md-block'>Model: {pim?.model}</p>
 					{screenSize && screenSize.length > 0 ? (
 						<div className='sizes'>
 							<p className='sizes_text'>Available Screen Sizes</p>
