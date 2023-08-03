@@ -215,6 +215,11 @@
 			bottom: 0px !important;
 		}
 	}
+	.splide__arrows {
+		&.hide {
+			display: none;
+		}
+	}
 }
 
 .news_single_slider_resize_image {
