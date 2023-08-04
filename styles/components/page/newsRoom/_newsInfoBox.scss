@@ -1,27 +1,24 @@
 .news_single_info_box {
-	padding: 12px;
+	padding: 16px;
 
-	@include mq(980) {
-		padding: 12px 16px;
-	}
 	.content {
 		margin: 0 auto 62px;
-		max-width: 1090px;
+		max-width: 632px;
 		border-radius: 25px;
-		padding: 64px 32px;
+		padding: 32px;
 		border: 1px solid #c7c7c9;
 		@include mq(768) {
-			padding: 32px 12px;
+			padding: 32px 16px;
 		}
 		.media {
 			display: flex;
-			gap: 32px;
+			gap: 8px 32px;
 			padding: 0 32px;
 			align-items: center;
-			margin-bottom: 30px;
+			margin-bottom: 32px;
 			@include mq(768) {
 				flex-wrap: wrap;
-				padding: 0;
+				padding: 0 16px;
 			}
 			> span {
 				font-weight: 400;
@@ -71,10 +68,7 @@
 				padding: 32px 16px;
 			}
 			li {
-				width: calc(50% - 16px);
-				@include mq(575) {
-					width: 100%;
-				}
+				width: 100%;
 				a {
 					display: flex;
 					justify-content: space-between;
@@ -113,7 +107,7 @@
 			align-items: flex-start;
 			@include mq(768) {
 				flex-wrap: wrap;
-				padding: 0;
+				padding: 0 16px;
 			}
 
 			> div {
@@ -123,7 +117,7 @@
 				}
 				@include mq(768) {
 					&:first-child {
-						margin-bottom: 50px;
+						margin-bottom: 32px;
 					}
 					width: 100%;
 				}
@@ -135,29 +129,32 @@
 				}
 
 				> h5 {
-					margin-bottom: 48px;
+					margin-bottom: 32px;
 					font-weight: 400;
-					font-size: 20px;
-					line-height: 25px;
+					font-size: 16px;
+					line-height: 22px;
 					color: #000000;
 					@include mq(768) {
-						margin-bottom: 28px;
+						margin-bottom: 16px;
 					}
 				}
 
 				p {
 					strong {
 						font-weight: 400;
-						font-size: 20px;
-						line-height: 25px;
+						font-size: 16px;
+						line-height: 22px;
 					}
 					font-style: normal;
 					font-weight: 300;
-					font-size: 16px !important;
-					line-height: 21.6px !important					;
+					font-size: 12px !important;
+					line-height: 16px !important					;
 					color: #000000;
 					margin-bottom: 12px;
 					word-break: break-all;
+					&:last-child {
+						margin: 0 !important;
+					}
 				}
 
 				> div {
@@ -170,6 +167,9 @@
 						width: 50%;
 						@include mq(575) {
 							width: 100% !important;
+						}
+						&:first-child {
+							margin-bottom: 16px;
 						}
 						h6 {
 							font-weight: 400;

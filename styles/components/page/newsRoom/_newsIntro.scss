@@ -1,19 +1,25 @@
 .news_intro_box {
-	padding: 164px 12px 118px;
-	max-width: 1090px !important;
+	padding: 100px 16px 48px;
+	max-width: 1147px !important;
 
 	@include mq(980) {
-		padding: 164px 16px 118px;
+		padding: 56px 16px 24px;
 	}
 
 	> div {
+		padding: 64px 0;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 32px;
 		h6 {
 			font-weight: 400;
 			font-size: 10px;
 			line-height: 14px;
 			text-transform: uppercase;
 			color: #ababb0;
-			margin-bottom: 30px;
+			margin-bottom: 0px;
 			letter-spacing: 0.2em;
 		}
 		h3 {
@@ -22,7 +28,7 @@
 			line-height: 56px;
 			color: #000000;
 			max-width: 838px;
-			margin-bottom: 30px;
+			margin-bottom: 0px;
 			overflow: hidden;
 			word-wrap: break-word;
 			@include mq(768) {
@@ -36,7 +42,7 @@
 			line-height: 16px;
 			color: #ababb0;
 			display: block;
-			margin-bottom: 30px;
+			margin-bottom: 0px;
 		}
 
 		> div {
