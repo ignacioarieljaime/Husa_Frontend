@@ -16,7 +16,7 @@ export async function getSettingApi() {
 
 export async function GetNewsApi(filters, count, exclude) {
 	let response = await axios.get(
-		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=news${
+		`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts?type=news${
 			filters.year ? '&year=' + filters.year : ''
 		}${filters.product ? '&tag=' + filters.product : ''}${
 			filters.search ? '&title=' + filters.search : ''
@@ -29,7 +29,9 @@ export async function GetNewsApi(filters, count, exclude) {
 
 export async function GetBlogsByTagApi(tag) {
 	let response = await axios.get(
-		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=blog&tag=${tag}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+		`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts?type=blog${
+			tag ? `&tag=${tag}` : ''
+		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 	)
 	return response
 }
