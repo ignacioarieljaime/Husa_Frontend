@@ -40,38 +40,40 @@ const HomeAppliancesCardsBox = ({ data }) => {
 										__html: structure?.block1?.value?.text?.value
 									}}></h5>
 
-								<Link
-									target={
-										structure?.block1?.value?.link?.target
-											? structure?.block1?.value?.link?.target
-											: '_self'
-									}
-									href={
-										structure?.block1?.value?.link?.value
-											? structure?.block1?.value?.link?.value
-											: '/'
-									}>
-									<a
+								{structure?.block1?.value?.link?.value && (
+									<Link
 										target={
 											structure?.block1?.value?.link?.target
 												? structure?.block1?.value?.link?.target
 												: '_self'
 										}
-										style={{ width: '150px' }}
-										className={`text-nowrap n-btn d-block mx-auto ${
-											structure?.block1?.value?.theme?.value === 'dark'
-												? 'black'
-												: ' white'
-										}`}>
-										{structure?.block1?.value?.link?.title}
-										{structure?.block1?.value?.link?.target === '_blank' && (
-											<img
-												style={{ marginLeft: '10px' }}
-												src={OpenPageOnNewTab.src}
-											/>
-										)}
-									</a>
-								</Link>
+										href={
+											structure?.block1?.value?.link?.value
+												? structure?.block1?.value?.link?.value
+												: '/'
+										}>
+										<a
+											target={
+												structure?.block1?.value?.link?.target
+													? structure?.block1?.value?.link?.target
+													: '_self'
+											}
+											style={{ width: '150px' }}
+											className={`text-nowrap n-btn d-block mx-auto ${
+												structure?.block1?.value?.theme?.value === 'dark'
+													? 'black'
+													: ' white'
+											}`}>
+											{structure?.block1?.value?.link?.title}
+											{structure?.block1?.value?.link?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
+										</a>
+									</Link>
+								)}
 							</div>
 						</div>
 					</div>
@@ -102,38 +104,40 @@ const HomeAppliancesCardsBox = ({ data }) => {
 									dangerouslySetInnerHTML={{
 										__html: structure?.block2?.value?.text?.value
 									}}></h5>
-								<Link
-									target={
-										structure?.block2?.value?.link?.target
-											? structure?.block2?.value?.link?.target
-											: '_self'
-									}
-									href={
-										structure?.block2?.value?.link?.value
-											? structure?.block2?.value?.link?.value
-											: '/'
-									}>
-									<a
+								{structure?.block2?.value?.link?.value && (
+									<Link
 										target={
 											structure?.block2?.value?.link?.target
 												? structure?.block2?.value?.link?.target
 												: '_self'
 										}
-										style={{ width: '150px' }}
-										className={`text-nowrap n-btn d-block mx-auto ${
-											structure?.block2?.value?.theme?.value === 'dark'
-												? 'black'
-												: ' white'
-										}`}>
-										{structure?.block2?.value?.link?.title}
-										{structure?.block2?.value?.link?.target === '_blank' && (
-											<img
-												style={{ marginLeft: '10px' }}
-												src={OpenPageOnNewTab.src}
-											/>
-										)}
-									</a>
-								</Link>
+										href={
+											structure?.block2?.value?.link?.value
+												? structure?.block2?.value?.link?.value
+												: '/'
+										}>
+										<a
+											target={
+												structure?.block2?.value?.link?.target
+													? structure?.block2?.value?.link?.target
+													: '_self'
+											}
+											style={{ width: '150px' }}
+											className={`text-nowrap n-btn d-block mx-auto ${
+												structure?.block2?.value?.theme?.value === 'dark'
+													? 'black'
+													: ' white'
+											}`}>
+											{structure?.block2?.value?.link?.title}
+											{structure?.block2?.value?.link?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
+										</a>
+									</Link>
+								)}
 							</div>
 						</div>
 					</div>

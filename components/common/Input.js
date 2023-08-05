@@ -61,7 +61,7 @@ function CustomInput({
 		)
 	}
 	return (
-		<div>
+		<div className={`field ${rightText ? 'taller_field' : ''}`}>
 			<input
 				disabled={disabled}
 				type={type === 'number' ? 'text' : type}

@@ -85,17 +85,21 @@ const NewsPressArchive = ({ data }) => {
 							) : Array.isArray(news) ? (
 								news.map(item => (
 									<div>
-										<div style={{ width: width > 600 ? '370px' : '100%' }}>
-											<CustomImage
-												src={
-													item?.meta?.find(
-														element => element?.name === 'property="og:image"'
-													)?.content
-												}
-												wrapperWidth={width > 600 ? '370px' : '100%'}
-												wrapperHeight={'100%'}
-											/>
-										</div>
+										<Link href={item?.route || '/'}>
+											<a
+												className='d-block'
+												style={{ width: width > 600 ? '370px' : '100%' }}>
+												<CustomImage
+													src={
+														item?.meta?.find(
+															element => element?.name === 'property="og:image"'
+														)?.content
+													}
+													wrapperWidth={width > 600 ? '370px' : '100%'}
+													wrapperHeight={'100%'}
+												/>
+											</a>
+										</Link>
 										<div className='text_box'>
 											{item?.tags.map(item => (
 												<span className='subject'>{item}</span>

@@ -370,6 +370,8 @@
 						left: 0;
 						width: 100%;
 						height: 100%;
+						object-fit: contain;
+						// background-color: #fff;
 					}
 				}
 			}
@@ -471,6 +473,11 @@
 				align-items: center;
 				&:disabled {
 					color: #b3bac5 !important;
+				}
+			}
+			.package-details {
+				ul {
+					padding-left: 20px;
 				}
 			}
 		}

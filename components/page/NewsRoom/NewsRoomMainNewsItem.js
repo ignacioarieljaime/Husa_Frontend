@@ -19,12 +19,16 @@ const NewsRoomMainNewsItem = ({
 				className={`news_room_main_news_item ${isThree && 'three_item'} ${
 					isFirst ? 'horizontal' : 'vertical'
 				}`}>
-				<CustomImage
-					src={image}
-					className='image'
-					wrapperWidth={'100%'}
-					wrapperHeight={isThree ? '173px' : isFirst ? '100%' : '268px'}
-				/>
+				<Link href={link || '/'} target={target || '_self'}>
+					<a target={target || '_self'}>
+						<CustomImage
+							src={image}
+							className='image'
+							wrapperWidth={'100%'}
+							wrapperHeight={isThree ? '173px' : isFirst ? '100%' : '268px'}
+						/>
+					</a>
+				</Link>
 				<div className='text'>
 					<span className='subject'>{subject}</span>
 

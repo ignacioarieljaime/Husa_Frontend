@@ -24,6 +24,10 @@ const ProductsGridV2 = ({ data }) => {
 	const controller = new AbortController()
 	const options = [
 		{
+			name: 'Featured',
+			value: 'featured'
+		},
+		{
 			name: 'Newest',
 			value: 'newest'
 		},
@@ -87,11 +91,13 @@ const ProductsGridV2 = ({ data }) => {
 				router,
 				structure?.category.value,
 				_filter,
-				sortingMethod ? `&sort=${sortingMethod.value}` : null,
+				sortingMethod && sortingMethod?.value !== 'featured'
+					? `&sort=${sortingMethod.value}`
+					: null,
 				controller.signal
 			)
-
-			setProducts(response.data.data)
+			const newData = response.data.data
+			setProducts(newData)
 			getFilters(response.data.filterTypes)
 			setTotalCount(response.data.total)
 		} catch (error) {
@@ -107,8 +113,25 @@ const ProductsGridV2 = ({ data }) => {
 		} catch (error) {
 			console.log(error)
 		}
-
 	}
+
+
+	// const orderProducts = _data => {
+	// 	if (sortingMethod && sortingMethod?.value === 'featured') {
+	// 		_data.sort((after, prev) => {
+	// 			if (after.id !== 0 && prev.id !== 0)
+	// 				return (
+	// 					after.products[0].product.order - prev.products[0].product.order
+	// 				)
+	// 			else if (prev.id !== 0)
+	// 				return after.products.product.order - prev.products[0].product.order
+	// 			else if (after.id !== 0)
+	// 				return after.products[0].product.order - prev.products.product.order
+	// 			else return after.products.product.order - prev.products.product.order
+	// 		})
+	// 	}
+	// 	return _data
+	// }
 
 	return (
 		<section>
@@ -130,7 +153,9 @@ const ProductsGridV2 = ({ data }) => {
 			)}
 
 			<div className='products-v2 mx-3 mx-md-13'>
-				<div className='products-sorting d-none d-md-block'>
+				<div
+					className='products-sorting d-none d-md-block'
+					style={{ zIndex: '5' }}>
 					<DropDownSelectBox
 						options={options}
 						value={sortingMethod}
@@ -140,7 +165,7 @@ const ProductsGridV2 = ({ data }) => {
 				</div>
 				<div className='products-grid mt-4 mt-md-0 mb-4'>
 					{filterList && filterList.length !== 0 ? (
-						<div className='products-filtering me-md-12'>
+						<div className='products-filtering'>
 							{width >= 768 && (
 								<ProductsFilter
 									filterRequest={getProductHandler}
@@ -162,7 +187,12 @@ const ProductsGridV2 = ({ data }) => {
 							<Spinner className={'mt-5'} size={80} />
 						</div>
 					) : (
-						<div className='products'>
+						<div
+							className={`products ${
+								filterList && filterList.length !== 0 && width >= 768
+									? 'filter_show'
+									: ''
+							}`}>
 							{products.map((item, index) => (
 								<ProductItemV2 key={index} data={item} />
 							))}

@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import HomeAppliancesCarouselitem from './HomeAppliancesCarouselitem'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import '@splidejs/react-splide/css'
+// import { Navigation } from 'swiper'
+// import { Swiper, SwiperSlide } from 'swiper/react'
+// import 'swiper/css/navigation'
+// import 'swiper/css'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 
@@ -20,24 +24,32 @@ const HomeAppliancesCarousel = ({ data }) => {
 					dangerouslySetInnerHTML={{
 						__html: structure?.title?.value
 					}}></h3>
-				<Swiper
-					pagination={false}
-					slidesPerView={'auto'}
-					centeredSlides={false}
-					grabCursor={true}
-					spaceBetween={24}
+				<Splide
+					options={{
+						pagination: false,
+						perPage: 1,
+						perMove: 1,
+						gap: '1rem',
+						pagination: false,
+						classes: {
+							arrows:
+								structure?.list?.value.length > 4
+									? 'splide__arrows'
+									: 'splide__arrows hide'
+						}
+					}}
 					className='slider'>
 					{windowSize[0] > 768 && (
-						<SwiperSlide
+						<SplideSlide
 							className='slider_item'
-							style={{ width: '260px' }}></SwiperSlide>
+							style={{ width: '260px' }}></SplideSlide>
 					)}
 					{structure?.list?.value.map((item, index) => (
-						<SwiperSlide key={index} className='slider_item'>
+						<SplideSlide key={index} className='slider_item'>
 							<HomeAppliancesCarouselitem data={item} structure={structure} />
-						</SwiperSlide>
+						</SplideSlide>
 					))}
-				</Swiper>
+				</Splide>
 				{structure?.link?.value && (
 					<div className='bottom_button'>
 						<Link

@@ -66,14 +66,15 @@ const NewsSearchFilter = ({
 					<div
 						className='filter_options'
 						style={{
-							height: width > 980 ? 'fit-content' : openFilter ? '412px' : '0',
+							height: width > 980 ? 'fit-content' : openFilter ? '305px' : '0',
 							marginTop: width > 980 ? '0' : openFilter ? '32px' : '0'
 						}}>
 						<div className='select_box_custom'>
-							<label>Model year</label>
+							{/* <label>Model year</label> */}
 							<div>
 								<span>
-									{filters?.year || yearTitle} <SelectBoxAngleArrow   />
+									<span>{filters?.year || yearTitle}</span>
+									<SelectBoxAngleArrow />
 								</span>
 								<div>
 									<ul>
@@ -94,10 +95,10 @@ const NewsSearchFilter = ({
 							</div>
 						</div>
 						<div className='select_box_custom product_select_box'>
-							<label>Product select</label>
+							{/* <label>Product select</label> */}
 							<div>
 								<span>
-									{filters?.product || categoryTitle}
+									<span>{filters?.product || categoryTitle}</span>
 									<SelectBoxAngleArrow />
 								</span>
 								<div>
@@ -119,7 +120,7 @@ const NewsSearchFilter = ({
 							</div>
 						</div>
 						<div className='custom_input_box'>
-							<label >search archive</label>
+							{/* <label>search archive</label> */}
 							<div>
 								<input onInput={inputChanged} placeholder={newsSearchTitle} />
 								<MagnifierIcon />
