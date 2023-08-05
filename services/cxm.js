@@ -30,7 +30,7 @@ export async function GetNewsApi(filters, count, exclude) {
 export async function GetBlogsByTagApi(tag) {
 	let response = await axios.get(
 		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=blog${
-			tag && `&tag=${tag}`
+			tag ? `&tag=${tag}` : ''
 		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 	)
 	return response
