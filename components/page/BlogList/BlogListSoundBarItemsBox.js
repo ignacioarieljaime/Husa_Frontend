@@ -41,14 +41,15 @@ function BlogListSoundBarItemsBox({ data: { structure }, pim }) {
 
 	const selectData = data => {
 		let _data = data
-		if (structure?.selectby?.value === 'rel') {
+		if (structure?.selectby?.value === 'new') {
+			return _data.filter((_, index) => index < structure?.count?.value)
+		} else {
 			_data = data.filter(
 				item =>
 					item.id !== pim.id && item.tags.some(tag => pim.tags.includes(tag))
 			)
-			console.log(_data)
+			return _data.filter((_, index) => index < structure?.count?.value)
 		}
-		return _data.filter((_, index) => index < structure?.count?.value)
 	}
 
 	const getPosts = async tag => {
