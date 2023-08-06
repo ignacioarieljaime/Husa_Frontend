@@ -6,5 +6,9 @@ module.exports.NewComponents = [
 	{
 		name: 'TextProductDescription',
 		path: 'components/page/NewComponents/TextProductDescription.js'
+	},
+	{
+		name: 'VideoFeature',
+		path: 'components/page/NewComponents/VideoFeature.js'
 	}
 ]
