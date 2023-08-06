@@ -1,6 +1,6 @@
 import React from 'react'
 import Expand from 'public/assets/svgs/Expand.svg'
-import Mute from 'public/assets/svgs/Mute.svg'
+import Mute from 'public/assets/svgs/mute.svg'
 import Play from 'public/assets/svgs/play.svg'
 import { useRef } from 'react'
 import { useEffect } from 'react'
