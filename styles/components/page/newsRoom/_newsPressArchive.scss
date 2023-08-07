@@ -23,6 +23,9 @@
 				display: grid;
 				gap: 16px;
 				margin-bottom: 65px;
+				@include mq(600) {
+					gap: 8px;
+				}
 				> div {
 					height: 182px;
 					display: flex;
@@ -48,8 +51,7 @@
 						height: 100%;
 						@include mq(600) {
 							width: 100% !important;
-						padding: 15px 32px 15px;
-
+							padding: 15px 32px 15px;
 						}
 						.subject {
 							font-weight: 400;

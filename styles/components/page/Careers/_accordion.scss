@@ -1,5 +1,8 @@
 .careers_accordion {
-	padding: 64px 12px 48px !important;
+	padding: 64px 12px 0px !important;
+	@include mq(768) {
+		padding: 32px 12px 0px !important;
+	}
 	.faq-accordion-item {
 		border-radius: 25px !important;
 
@@ -15,9 +18,12 @@
 		}
 		.faq-accordion-button {
 			padding: 37px 40px 30px !important;
+			color: #000 !important;
+			gap: 16px;
 			span {
 				width: 50px;
 				height: 50px;
+				min-width: 50px;
 				display: flex;
 				background: #00aaa6;
 				border-radius: 100%;
@@ -27,6 +33,14 @@
 				-o-border-radius: 100%;
 				justify-content: center;
 				align-items: center;
+				@include mq(768) {
+					width: 32px;
+					height: 32px;
+					min-width: 32px;
+					svg {
+						width: 16px;
+					}
+				}
 				svg {
 					background-color: transparent !important;
 					path {
@@ -37,7 +51,7 @@
 				}
 			}
 			@include mq(768) {
-				padding: 24px !important;
+				padding: 16px !important;
 			}
 		}
 	}
@@ -51,9 +65,11 @@
 		&:last-of-type {
 			border-bottom: none;
 		}
-		> a{
-
+		> a {
 			margin-top: 25px;
+			@include mq(768) {
+				margin-top: 16px;
+			}
 		}
 		@include mq(768) {
 			padding: 24px !important;
@@ -63,7 +79,11 @@
 			font-weight: 400 !important;
 			font-size: 20px !important;
 			line-height: 25px !important;
-			color: #383838 !important;
+			color: #000 !important;
+			@include mq(768) {
+				font-size: 16px !important;
+				line-height: 21.6px !important;
+			}
 		}
 		.faq-accordion-answer {
 			* {
@@ -71,7 +91,11 @@
 				font-weight: 500 !important;
 				font-size: 16px !important;
 				line-height: 22px !important;
-				color: #383838 !important;
+				color: #000 !important;
+				@include mq(768) {
+					font-size: 14px !important;
+					line-height: 18.9px !important;
+				}
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 		@include mqm(992) {
 			padding: 0;
 		}
-		@include mq(992){
+		@include mq(992) {
 			padding: 0 16px;
 		}
 		> div {
@@ -55,7 +55,7 @@
 						min-width: 340px;
 					}
 					@include mq(450) {
-						min-width: 290px;
+						min-width: unset;
 					}
 				}
 			}

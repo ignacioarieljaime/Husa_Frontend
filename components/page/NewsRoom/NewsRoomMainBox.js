@@ -81,7 +81,7 @@ const NewsRoomMainBox = ({ data }) => {
 
 			<NewsRoomSlider data={{ structure: { list: structure?.slider } }} />
 			<div className='news_room_news_box'>
-				<div className='container items '>
+				<div className='container items px-4'>
 					{/* {news === 'loading' ? (
 					<Spinner />
 				) : Array.isArray(news) ? ( */}
