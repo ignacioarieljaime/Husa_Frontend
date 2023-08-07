@@ -12,11 +12,11 @@ function ProductBigContent({ data }) {
 				id={data.name + data.id}
 				style={{ background: structure?.backgroundColor?.value }}>
 				<div
-					className={`tiny-banner big_content_box p-md-4 ${structure?.theme?.value}`}>
-					<div className='container px-6 px-md-8'>
+					className={`big_content_box p-md-4 pb-md-0 pb-0 ${structure?.theme?.value}`}>
+					<div className='container pt-md-6'>
 						<article className='article text-center'>
 							<h4
-								className={`text-black  d-flex  ${
+								className={`text-black mb-0 d-flex  ${
 									structure?.flex?.value === 'column'
 										? 'flex-column'
 										: 'justify-content-center gap-2'
@@ -36,6 +36,13 @@ function ProductBigContent({ data }) {
 									{structure?.coloredTitle?.value}
 								</span>
 							</h4>
+						</article>
+					</div>
+				</div>
+				<div
+					className={`tiny-banner big_content_box p-md-4 ${structure?.theme?.value}`}>
+					<div className='container px-6 px-md-8'>
+						<article className='article text-center'>
 							<div>
 								{structure?.smallTitle?.value && (
 									<p className='fs-5 fw-normal'>
