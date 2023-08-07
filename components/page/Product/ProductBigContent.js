@@ -13,34 +13,34 @@ function ProductBigContent({ data }) {
 		)
 	}, [])
 
-	function themeHandler(rgb) {
-		let dark = 0
-		let light = 0
-		rgb.forEach(unit => {
-			if (unit >= 127) light++
-			else dark++
-		})
-		return light > dark ? 'dark' : 'light'
-	}
+	// function themeHandler(rgb) {
+	// 	let dark = 0
+	// 	let light = 0
+	// 	rgb.forEach(unit => {
+	// 		if (unit >= 127) light++
+	// 		else dark++
+	// 	})
+	// 	return light > dark ? 'dark' : 'light'
+	// }
 
-	function hexToRgb(hex) {
-		var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
-		hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-			return r + r + g + g + b + b
-		})
-		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-		setTheme(
-			themeHandler(
-				result
-					? [
-							parseInt(result[1], 16),
-							parseInt(result[2], 16),
-							parseInt(result[3], 16)
-					  ]
-					: [255, 255, 255]
-			)
-		)
-	}
+	// function hexToRgb(hex) {
+	// 	var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i
+	// 	hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+	// 		return r + r + g + g + b + b
+	// 	})
+	// 	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
+	// 	setTheme(
+	// 		themeHandler(
+	// 			result
+	// 				? [
+	// 						parseInt(result[1], 16),
+	// 						parseInt(result[2], 16),
+	// 						parseInt(result[3], 16)
+	// 				  ]
+	// 				: [255, 255, 255]
+	// 		)
+	// 	)
+	// }
 	return (
 		<section>
 			<div
