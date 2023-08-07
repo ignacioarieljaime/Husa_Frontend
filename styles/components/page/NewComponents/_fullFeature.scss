@@ -7,21 +7,41 @@
 		height: auto;
 	}
 	&.light {
-		.subtitle {
-			color: #fff;
-		}
-		.title {
-			* {
+		.content {
+			.subtitle {
 				color: #fff;
 			}
-		}
-		.text {
-			* {
+			.title {
+				* {
+					color: #fff;
+				}
+			}
+			.text {
+				* {
+					color: #fff;
+				}
+			}
+			.note {
 				color: #fff;
 			}
-		}
-		.note {
-			color: #fff;
+			@include mq(768) {
+				.subtitle {
+					color: #000;
+				}
+				.title {
+					* {
+						color: #000;
+					}
+				}
+				.text {
+					* {
+						color: #000;
+					}
+				}
+				.note {
+					color: #000;
+				}
+			}
 		}
 	}
 	.background {
@@ -83,6 +103,10 @@
 				line-height: 55.86px; /* 116.375% */
 				letter-spacing: -0.96px;
 				color: #000;
+				@include mq(1280) {
+					font-size: 36px;
+					line-height: 44px;
+				}
 				@include mq(768) {
 					font-size: 24px;
 					line-height: 30px; /* 125% */
