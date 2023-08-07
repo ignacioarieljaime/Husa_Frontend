@@ -5,7 +5,9 @@ const CareersAccordionItemSublist = ({ data, collapsed }) => {
 	return (
 		<div className='careers_accordion_content row mx-0'>
 			<div className='col-12 col-md-8 px-0'>
-				<h4 className='faq-accordion-question mb-8'>{data?.title?.value}</h4>
+				<h4 className='faq-accordion-question mb-4 mb-md-8'>
+					{data?.title?.value}
+				</h4>
 				<div
 					className='faq-accordion-answer'
 					dangerouslySetInnerHTML={{
