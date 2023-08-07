@@ -74,7 +74,7 @@ const NewsPressArchive = ({ data }) => {
 						: 'search newsroom'
 				}
 			/>
-			<div className='news_press_archive container'>
+			<div className='news_press_archive container px-4'>
 				<div>
 					<div className='items_box'>
 						<h5>{structure?.titleTwo?.value}</h5>

@@ -42,19 +42,25 @@ export async function GetProductsListApi(navigate, _categoryId, _filter) {
 export async function GetProductsListNewApi(
 	navigate,
 	_categoryId,
+	_subCategoryId,
 	_filter,
 	_sort,
 	signal
 ) {
+	console.log(_subCategoryId)
 	let filter =
 		_filter && _filter.length !== 0
 			? `&filters=${encodeURIComponent(JSON.stringify(_filter))}`
 			: ''
 
 	let response = await axios.get(
-		`${process.env.NEXT_PUBLIC_PIM_API_ROUTE}/productsIndex?category_id=${_categoryId}${filter}${
+		`${
+			process.env.NEXT_PUBLIC_PIM_API_ROUTE
+		}/productsIndex?category_id=${_categoryId}${filter}${
 			_sort ? _sort : ''
-		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}
+		${_subCategoryId ? `&subcategory_id=${_subCategoryId}` : ''}
+		`,
 		{ signal }
 	)
 	return response

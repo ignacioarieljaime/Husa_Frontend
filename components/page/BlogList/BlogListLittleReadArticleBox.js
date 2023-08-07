@@ -83,29 +83,44 @@ function BlogListLittleReadArticleBoxContainer({
 									</div>
 									<figcaption>
 										<div className='row justify-content-between align-items-center mt-5'>
-											<div className='col-12 text-start mb-3'>
-												{/* {smallPost?.value?.tag?.value?.map(item => (
-													<> */}{' '}
-												{/* <Link
-											href={
-												smallPost?.value?.tag?.value
-													? smallPost?.value?.tag?.value
-													: '/'
-											}> */}
-												{/* <button
-															onClick={() => getTag(item)}
-															style={{
-																marginRight: '10px',
-																border: 'none',
-																background: 'transparent'
-															}}
-															className='text-primary-dark text-decoration-none'>
-															{item}
-														</button> */}
-												{/* </Link> */}
-												{/* </>
-												))} */}
-											</div>
+											{smallPost?.value?.tag?.value &&
+												smallPost?.value?.tag?.value.length &&
+												!smallPost?.value?.tag?.value?.every(
+													item => item === null
+												) && (
+													<div className='col-12 text-start mb-3'>
+														{smallPost?.value?.tag?.value?.map(item => (
+															<>
+																<span
+																	style={{
+																		marginRight: '10px',
+																		border: 'none',
+																		background: 'transparent'
+																	}}
+																	className='text-primary-dark text-decoration-none'>
+																	{item}
+																</span>
+																{/* <Link
+															href={
+																smallPost?.value?.tag?.value
+																	? smallPost?.value?.tag?.value
+																	: '/'
+															}>
+															<button
+																onClick={() => getTag(item)}
+																style={{
+																	marginRight: '10px',
+																	border: 'none',
+																	background: 'transparent'
+																}}
+																className='text-primary-dark text-decoration-none'>
+																{item}
+															</button>
+														</Link> */}
+															</>
+														))}
+													</div>
+												)}
 											<div className='col-12 mb-8'>
 												<h3 className='fs-3 mb-0'>
 													{smallPost?.value?.title?.value}
@@ -187,16 +202,9 @@ function BlogListLittleReadArticleBoxContainer({
 									<figcaption>
 										<div className='row justify-content-between align-items-center mt-5'>
 											<div className='col-12 text-start mb-3'>
-												{/* {largePost?.value?.tag?.value?.map(item => (
-													<> */}{' '}
-												{/* <Link
-											href={
-												smallPost?.value?.tag?.value
-													? smallPost?.value?.tag?.value
-													: '/'
-											}> */}
-												{/* <button
-															onClick={() => getTag(item)}
+												{largePost?.value?.tag?.value?.map(item => (
+													<>
+														<span
 															style={{
 																marginRight: '10px',
 																border: 'none',
@@ -204,10 +212,26 @@ function BlogListLittleReadArticleBoxContainer({
 															}}
 															className='text-primary-dark text-decoration-none'>
 															{item}
-														</button> */}
-												{/* </Link> */}
-												{/* </>
-												))} */}
+														</span>
+														{/* <Link
+															href={
+																smallPost?.value?.tag?.value
+																	? smallPost?.value?.tag?.value
+																	: '/'
+															}>
+															<button
+																onClick={() => getTag(item)}
+																style={{
+																	marginRight: '10px',
+																	border: 'none',
+																	background: 'transparent'
+																}}
+																className='text-primary-dark text-decoration-none'>
+																{item}
+															</button>
+														</Link> */}
+													</>
+												))}
 											</div>
 											<div className='col-12 mb-8'>
 												<h3 className='fs-3 mb-0'>

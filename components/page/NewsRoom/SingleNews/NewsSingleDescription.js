@@ -10,7 +10,7 @@ const NewsSingleDescription = ({ data }) => {
 
 	return (
 		<div className='container news_single_description '>
-			<h5>{structure?.title?.value}</h5>
+			<h4>{structure?.title?.value}</h4>
 			<div dangerouslySetInnerHTML={{ __html: description }}></div>
 		</div>
 	)

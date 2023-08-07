@@ -5,6 +5,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 16px;
+		@include mq(768) {
+			gap: 8px;
+		}
 	}
 	.pagination {
 		margin-bottom: 20px;
@@ -90,7 +93,7 @@
 		display: flex;
 		@include mq(768) {
 			flex-direction: column;
-			width: calc(50% - 16px);
+			width: calc(50% - 4px);
 			height: auto;
 		}
 		@include mq(550) {
@@ -100,6 +103,11 @@
 			width: 50% !important;
 			@include mq(768) {
 				width: 100% !important;
+			}
+		}
+		.image {
+			@include mq(768) {
+				height: 268px !important;
 			}
 		}
 		.text {
@@ -119,10 +127,11 @@
 					text-decoration: none;
 				}
 				@include mq(768) {
-					margin: 41px 0;
+					margin: 16px 0;
+
 					a {
-						font-size: 24px;
-						line-height: 30px;
+						font-size: 16px !important;
+						line-height: 22px !important;
 					}
 				}
 			}
@@ -131,7 +140,10 @@
 	&.vertical {
 		display: flex;
 		flex-direction: column;
-		width: calc(50% - 16px);
+		width: calc(50% - 8px);
+		@include mq(768) {
+			width: calc(50% - 4px);
+		}
 		@include mq(550) {
 			width: 100% !important;
 		}
@@ -152,6 +164,13 @@
 					color: #000000;
 					text-decoration: none;
 				}
+				@include mq(768) {
+					margin: 16px 0;
+					a {
+						font-size: 16px !important;
+						line-height: 22px !important;
+					}
+				}
 			}
 		}
 	}
@@ -160,7 +179,7 @@
 		width: calc(33.3333% - 16px) !important;
 		@include mq(768) {
 			flex-direction: column;
-			width: calc(50% - 16px) !important;
+			width: calc(50% - 4px) !important;
 			height: auto;
 		}
 		@include mq(550) {
@@ -191,10 +210,10 @@
 					text-decoration: none;
 				}
 				@include mq(768) {
-					margin: 41px 0;
+					margin: 16px 0;
 					a {
-						font-size: 24px;
-						line-height: 30px;
+						font-size: 16px !important;
+						line-height: 22px !important;
 					}
 				}
 			}

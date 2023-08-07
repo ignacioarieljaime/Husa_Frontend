@@ -29,6 +29,7 @@ const ImageDescriptionTiles = ({ data }) => {
 								className={`content ${
 									structure?.divider?.value ? 'divider' : ''
 								}`}>
+
 								{(item?.smallImage?.value?.image?.src ||
 									item?.smallImage?.value?.text?.value) && (
 									<div className='small_image'>
