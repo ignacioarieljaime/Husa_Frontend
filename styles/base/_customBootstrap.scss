@@ -2372,8 +2372,12 @@ header {
 		h4 {
 			color: #fff !important;
 		}
-		p {
+		p,
+		span {
 			color: #fff !important;
+		}
+		.text-primary {
+			color: #00cccc !important;
 		}
 	}
 	padding: 24px 0 16px;
