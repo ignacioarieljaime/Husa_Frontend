@@ -6,11 +6,11 @@ function ProductBigContent({ data }) {
 	const [theme, setTheme] = useState('dark')
 	useEffect(() => {
 		setText(structure?.paragraph?.value)
-		hexToRgb(
-			structure?.backgroundColor?.value
-				? structure?.backgroundColor?.value
-				: '#fff'
-		)
+		// hexToRgb(
+		// 	structure?.backgroundColor?.value
+		// 		? structure?.backgroundColor?.value
+		// 		: '#fff'
+		// )
 	}, [])
 
 	// function themeHandler(rgb) {
