@@ -10,5 +10,9 @@ module.exports.NewComponents = [
 	{
 		name: 'VideoFeature',
 		path: 'components/page/NewComponents/VideoFeature.js'
+	},
+	{
+		name: 'FullFeature',
+		path: 'components/page/NewComponents/FullFeature.js'
 	}
 ]
