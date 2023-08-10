@@ -139,10 +139,12 @@ const CustomChannelAdvisor = ({
 							<div
 								key={index}
 								className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
-								<CustomImage
+								<img
 									src={item?.Media?.url}
 									alt={item?.name}
-									wrapperWidth={'100px'}
+									width={'100'}
+									height={'100'}
+									style={{ objectFit: 'contain' }}
 								/>
 								{/* <div>
 									<div className='check'>Check Retailer</div>

@@ -94,7 +94,12 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 										key={index}
 										className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
 										{/* <CustomImage src={item?.LogoUrl} wrapperWidth={'100px'} /> */}
-										<img src={item?.LogoUrl} width={'100px'} />
+										<img
+											src={item?.LogoUrl}
+											width={'100'}
+											height={'100'}
+											style={{ objectFit: 'contain' }}
+										/>
 										{/* <div>
 											<div className='check'>Check Retailer</div>
 											<div className='status'>Available</div>
