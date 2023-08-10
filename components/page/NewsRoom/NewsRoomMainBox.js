@@ -61,7 +61,7 @@ const NewsRoomMainBox = ({ data }) => {
 			<NewsSearchFilter
 				filter={filters}
 				filterHandler={(_key, _value) =>
-					setFilters({ ...filters, [_key]: _value })
+					setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.title?.value}
 				yearTitle={

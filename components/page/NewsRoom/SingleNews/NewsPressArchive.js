@@ -57,7 +57,7 @@ const NewsPressArchive = ({ data }) => {
 			<NewsSearchFilter
 				filters={filters}
 				filterHandler={(_key, _value) =>
-					setFilters({ ...filters, [_key]: _value })
+					setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.titleOne?.value}
 				yearTitle={
