@@ -100,7 +100,8 @@
 .product_nav {
 	background: #232323;
 	padding: 16px;
-	position: relative;
+	position: sticky;
+	top: 0;
 	.nav {
 		max-width: 1120px;
 		margin: 0 auto;
