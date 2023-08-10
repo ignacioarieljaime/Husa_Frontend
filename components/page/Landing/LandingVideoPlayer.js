@@ -1,5 +1,7 @@
 import React, { useRef, useState } from 'react'
-
+import Expand from 'public/assets/svgs/Expand.svg'
+import Mute from 'public/assets/svgs/mute.svg'
+import Play from 'public/assets/svgs/play.svg'
 function LandingVideoPlayer({ data }) {
 	const { structure } = data
 	const videoRef = useRef()
