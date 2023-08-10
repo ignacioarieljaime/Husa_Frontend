@@ -21,13 +21,15 @@ const CareersTextBox = ({ data: { structure } }) => {
 						<div
 							className='v1'
 							style={{ backgroundColor: structure?.backgroundColor?.value }}>
-							<CustomImage
-								src={structure?.image?.src}
-								alt={structure?.image?.alt}
-								wrapperWidth='100%'
-								WrapperMaxWidth='40px'
-								wrapperClass='mb-9 mx-auto'
-							/>
+							{structure?.image?.src && (
+								<CustomImage
+									src={structure?.image?.src}
+									alt={structure?.image?.alt}
+									wrapperWidth='100%'
+									WrapperMaxWidth='40px'
+									wrapperClass='mb-9 mx-auto'
+								/>
+							)}
 							<div
 								className='text'
 								dangerouslySetInnerHTML={{

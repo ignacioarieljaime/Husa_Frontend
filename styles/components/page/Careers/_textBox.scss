@@ -1,31 +1,43 @@
 .careers_textbox {
-	padding: 64px 12px;
-
-	@include mq(992){
-		padding: 64px 16px;
-	}
 	.v1 {
-		max-width: 600px;
+		padding: 64px 0px;
+
+		@include mq(992) {
+			padding: 60px 18px;
+		}
+		max-width: 745px;
 		margin: 0 auto;
 		.text * {
 			text-align: center;
 			font-weight: 400;
-			font-size: 20px;
-			line-height: 25px;
+			line-height: 30px;
+			font-size: 24px;
 			margin-bottom: 0;
 			color: #ffffff;
+			@include mq(992) {
+				font-size: 16px;
+				line-height: 22px;
+			}
 		}
 	}
 	.v2 {
-		max-width: 500px;
-		margin: 0 auto;
+		padding: 48px 44px;
+		margin: 0 auto 64px;
+
+		@include mq(992) {
+			padding: 32px;
+			margin: 0 auto 32px;
+		}
+		max-width: 795px;
 		.text {
-			margin-bottom: 32px;
+			margin-bottom: 0px;
 			* {
 				text-align: center;
 				font-weight: 300;
-				font-size: 16px;
-				line-height: 22px;
+				font-size: 12px;
+				line-height: 16px;
+				color: #000;
+				margin-bottom: 0px;
 			}
 		}
 	}
