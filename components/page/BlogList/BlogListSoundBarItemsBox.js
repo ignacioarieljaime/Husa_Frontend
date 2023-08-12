@@ -91,8 +91,18 @@ function BlogListSoundBarItemsBox({ data: { structure }, pim }) {
 							},
 							image: {
 								src: item?.meta?.find(
-									item => item.name === 'property="og:image"'
+									item =>
+										item.name === 'property="og:image:square"' &&
+										item?.content !== ''
 								)?.content
+									? item?.meta?.find(
+											item =>
+												item.name === 'property="og:image:square"' &&
+												item?.content !== ''
+									  )?.content
+									: item?.meta?.find(
+											item => item.name === 'property="og:image"'
+									  )?.content
 							},
 							title: {
 								value: item?.title

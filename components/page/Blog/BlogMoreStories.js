@@ -75,13 +75,13 @@ function BlogMoreStories({ data: { structure } }) {
 						id: 1,
 						type: 'object',
 						title: 'Large Post',
-						value: ConvertBlogData(element[0])
+						value: ConvertBlogData(element[0], 'vertical')
 					},
 					smallPost: {
 						id: 1,
 						type: 'object',
 						title: 'Small Post',
-						value: ConvertBlogData(element[1])
+						value: ConvertBlogData(element[1], 'vertical')
 					}
 				})
 			} else {
@@ -90,7 +90,7 @@ function BlogMoreStories({ data: { structure } }) {
 						id: 1,
 						type: 'object',
 						title: 'Large Post',
-						value: ConvertBlogData(element[0])
+						value: ConvertBlogData(element[0], 'vertical')
 					}
 				})
 			}
