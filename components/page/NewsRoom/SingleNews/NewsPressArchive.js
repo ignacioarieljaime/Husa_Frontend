@@ -87,7 +87,7 @@ const NewsPressArchive = ({ data }) => {
 									<div>
 										<Link href={item?.route || '/'}>
 											<a
-												className='d-block'
+												className='d-block h-100'
 												style={{ width: width > 600 ? '370px' : '100%' }}>
 												<CustomImage
 													src={
