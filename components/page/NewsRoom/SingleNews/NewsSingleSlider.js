@@ -51,7 +51,7 @@ const NewsSingleSlider = ({ data }) => {
 								</button>
 								<a
 									className='n-btn outline-white'
-									download={true}
+									download={item?.image?.src}
 									href={item?.image?.src}>
 									<span style={{ paddingTop: '3px' }}>
 										{item?.downloadBtn?.title}
