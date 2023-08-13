@@ -3,6 +3,12 @@
 	height: 0;
 	padding-top: 56.25%;
 	position: relative;
+	@include mq(1280) {
+		padding-top: 65.5%;
+	}
+	@include mq(991) {
+		padding-top: 78%;
+	}
 	@include mq(768) {
 		height: auto;
 	}
@@ -70,7 +76,7 @@
 		flex-direction: column;
 		@include mq(1280) {
 			max-width: 660px;
-			gap: 12px;
+			gap: 24px;
 		}
 		@include mq(768) {
 			padding: 32px 16px;
@@ -82,6 +88,7 @@
 			width: 150px;
 			height: 100px;
 			object-fit: contain;
+			object-position: left;
 		}
 		.subtitle {
 			font-size: 10px;
@@ -120,7 +127,7 @@
 				margin: 0;
 				font-size: 16px;
 				font-style: normal;
-				font-weight: 400;
+				font-weight: 300;
 				line-height: 21.6px; /* 135% */
 				color: #000;
 				@include mq(768) {
