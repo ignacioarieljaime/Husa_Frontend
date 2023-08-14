@@ -118,12 +118,13 @@ function Layout({ children, meta, title, header }) {
 								http-equiv={item.name}
 								content={item.content ? item.content : ''}
 							/>
-						) : (
+						) : item.name !== 'property="og:image:vertical"' &&
+						  item.name !== 'property="og:image:square"' ? (
 							<meta
 								property={item?.name?.split('=')[1]?.replace(/"/g, '')}
 								content={item.content ? item.content : ''}
 							/>
-						)
+						) : null
 					)}
 			</Head>
 			<section className={`layout ${title}-page ${header ? '' : 'no_header'}`}>
