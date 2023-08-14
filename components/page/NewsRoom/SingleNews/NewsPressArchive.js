@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react'
 import NewsSearchFilter from '../NewsSearchFilter'
 import CustomImage from 'components/common/CustomImage'
-import PaginationDabbleArrow from 'components/icons/PaginationDabbleArrow'
-import PaginationArrow from 'components/icons/PaginationArrow'
 import { useWindowSize } from 'hooks/useWindowSize'
-import NewsRoomMainNewsItem from '../NewsRoomMainNewsItem'
-import axios from 'axios'
 import { useState } from 'react'
 import Spinner from 'components/common/Spinner'
 import NewsRoomPagination from './NewsRoomPagination'
@@ -27,6 +23,10 @@ const NewsPressArchive = ({ data }) => {
 	useEffect(() => {
 		getNews()
 	}, [filters])
+
+	useEffect(() => {
+		window.scrollTo({ top: 0 })
+	}, [news])
 
 	const getPostId = () => {
 		let ids = structure?.exclude_news?.value?.map(

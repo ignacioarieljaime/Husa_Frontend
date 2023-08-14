@@ -80,7 +80,7 @@ const NewsSearchFilter = ({
 									<ul>
 										<li>
 											<button onClick={() => filterHandler('year', null)}>
-												clear
+												Clear
 											</button>
 										</li>
 										{filterData?.years?.map(item => (
@@ -105,7 +105,7 @@ const NewsSearchFilter = ({
 									<ul>
 										<li>
 											<button onClick={() => filterHandler('product', null)}>
-												clear
+												Clear
 											</button>
 										</li>
 										{filterData?.tags?.map(item => (
