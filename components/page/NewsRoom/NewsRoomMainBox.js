@@ -59,7 +59,7 @@ const NewsRoomMainBox = ({ data }) => {
 	return (
 		<>
 			<NewsSearchFilter
-				filter={filters}
+				filters={filters}
 				filterHandler={(_key, _value) =>
 					setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
