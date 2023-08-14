@@ -54,6 +54,11 @@ function ProductBigContent({ data }) {
 				<article className='content'>
 					<h3
 						className={`title ${
+							structure?.coloredTitle?.value &&
+							structure?.coloredTitle?.value.length > 0
+								? 'no_wrap'
+								: ''
+						} ${
 							structure?.flex?.value === 'column'
 								? 'flex-column'
 								: 'justify-content-center gap-2'
