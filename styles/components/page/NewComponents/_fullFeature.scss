@@ -93,7 +93,7 @@
 		.subtitle {
 			font-size: 10px;
 			font-style: normal;
-			font-weight: 400;
+			font-weight: 500;
 			line-height: 13.5px;
 			letter-spacing: 2px;
 			text-transform: uppercase;
@@ -143,6 +143,9 @@
 			gap: 16px;
 			@include mq(768) {
 				flex-wrap: wrap;
+				.image {
+					width: 136px;
+				}
 			}
 		}
 		.note {
