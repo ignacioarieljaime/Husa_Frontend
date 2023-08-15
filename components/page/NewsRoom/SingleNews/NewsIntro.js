@@ -8,8 +8,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
+import moment from 'moment'
 
-const NewsIntro = ({ data }) => {
+const NewsIntro = ({ data, pim }) => {
 	let { structure } = data
 	const [pageUrl, setPageUrl] = useState()
 
@@ -22,7 +23,7 @@ const NewsIntro = ({ data }) => {
 			<div>
 				<h6>{structure?.subject?.value}</h6>
 				<h3>{structure?.title?.value}</h3>
-				<span>{structure?.date?.value}</span>
+				<span> {moment(pim?.published_at).format('MMMM DD YYYY')}</span>
 				<div>
 					<span>Share Article</span>
 					<ul>

@@ -111,7 +111,7 @@ const NewsPressArchive = ({ data }) => {
 												</Link>
 											</h5>
 											<span className='date'>
-												{moment(item?.created_at).format('MMMM DD YYYY')}
+												{moment(item?.published_at).format('MMMM DD YYYY')}
 											</span>
 										</div>
 									</div>
