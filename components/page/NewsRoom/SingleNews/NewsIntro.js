@@ -23,7 +23,11 @@ const NewsIntro = ({ data, pim }) => {
 			<div>
 				<h6>{structure?.subject?.value}</h6>
 				<h3>{structure?.title?.value}</h3>
-				<span> {moment(pim?.published_at).format('MMMM DD YYYY')}</span>
+				<span>
+					{pim?.published_at
+						? moment(pim?.published_at).format('MMMM DD YYYY')
+						: structure?.data?.value}
+				</span>
 				<div>
 					<span>Share Article</span>
 					<ul>
