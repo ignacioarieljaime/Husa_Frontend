@@ -75,7 +75,7 @@
 				text-align: center;
 				letter-spacing: -0.02em;
 				color: #ffffff;
-				background-color: transparent;
+				background-color: rgba(0, 0, 0, 0.2) !important;
 				@include mq(768) {
 					font-size: 12px;
 					line-height: 12px;
@@ -91,6 +91,7 @@
 					}
 				}
 				&:hover {
+					background-color: #fff !important;
 					svg {
 						path {
 							stroke: #000;

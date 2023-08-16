@@ -9,9 +9,28 @@ import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch'
 import Link from 'next/link'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
+import axios from 'axios'
 const NewsSingleSlider = ({ data }) => {
 	let { structure } = data
 	const [imageUrl, setImageUrl] = useState(null)
+
+	// async function forceDownload(url, fileName) {
+	// 	var xhr = new XMLHttpRequest()
+	// 	xhr.open('GET', url, true)
+	// 	xhr.responseType = 'blob'
+	// 	xhr.onload = function () {
+	// 		var urlCreator = window.URL || window.webkitURL
+	// 		var imageUrl = urlCreator.createObjectURL(this.response)
+	// 		var tag = document.createElement('a')
+	// 		tag.href = imageUrl
+	// 		tag.download = fileName
+	// 		document.body.appendChild(tag)
+	// 		tag.click()
+	// 		document.body.removeChild(tag)
+	// 	}
+	// 	xhr.send()
+	// }
+
 	return (
 		<>
 			<Splide
@@ -51,8 +70,11 @@ const NewsSingleSlider = ({ data }) => {
 								</button>
 								<a
 									className='n-btn outline-white'
-									download={true}
-									href={item?.image?.src}>
+									href={
+										item?.image?.src.split('.com')[0] +
+										'.com/download/f' +
+										item?.image?.src.split('.com')[1]
+									}>
 									<span style={{ paddingTop: '3px' }}>
 										{item?.downloadBtn?.title}
 									</span>{' '}
