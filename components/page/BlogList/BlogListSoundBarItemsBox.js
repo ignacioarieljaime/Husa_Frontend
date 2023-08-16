@@ -42,13 +42,17 @@ function BlogListSoundBarItemsBox({ data: { structure }, pim }) {
 	const selectData = data => {
 		let _data = data
 		if (structure?.selectby?.value === 'new') {
-			return _data.filter((_, index) => index < structure?.count?.value)
+			return _data.filter(
+				(item, index) => item.id !== pim.id && index < structure?.count?.value
+			)
 		} else {
 			_data = data.filter(
 				item =>
 					item.id !== pim.id && item.tags.some(tag => pim.tags.includes(tag))
 			)
-			return _data.filter((_, index) => index < structure?.count?.value)
+			return _data.filter(
+				(item, index) => item.id !== pim.id && index < structure?.count?.value
+			)
 		}
 	}
 
@@ -73,43 +77,42 @@ function BlogListSoundBarItemsBox({ data: { structure }, pim }) {
 				/>
 			) : ( } */}
 			<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
-				{structure?.selectby?.value && structure?.selectby?.value !== ''
-					? blogs?.map((item, index) => (
-							<BlogListSoundBardItem
-								getBlogs={getPosts}
-								key={index}
-								data={{
-									tag: {
-										value: item?.tags
-									},
-									link: {
-										title: 'READ ARTICLE',
-										value: item?.route
-									},
-									image: {
-										src: item?.meta?.find(
+				{/* {structure?.list?.value.map((item, index) => (
+						<BlogListSoundBardItem key={index} data={item} />
+					))} */}
+				{blogs?.map((item, index) => (
+					<BlogListSoundBardItem
+						getBlogs={getPosts}
+						key={index}
+						data={{
+							tag: {
+								value: item?.tags
+							},
+							link: {
+								title: 'READ ARTICLE',
+								value: item?.route
+							},
+							image: {
+								src: item?.meta?.find(
+									item =>
+										item.name === 'property="og:image:square"' &&
+										item?.content !== ''
+								)?.content
+									? item?.meta?.find(
 											item =>
 												item.name === 'property="og:image:square"' &&
 												item?.content !== ''
-										)?.content
-											? item?.meta?.find(
-													item =>
-														item.name === 'property="og:image:square"' &&
-														item?.content !== ''
-											  )?.content
-											: item?.meta?.find(
-													item => item.name === 'property="og:image"'
-											  )?.content
-									},
-									title: {
-										value: item?.title
-									}
-								}}
-							/>
-					  ))
-					: structure?.list?.value.map((item, index) => (
-							<BlogListSoundBardItem key={index} data={item} />
-					  ))}
+									  )?.content
+									: item?.meta?.find(
+											item => item.name === 'property="og:image"'
+									  )?.content
+							},
+							title: {
+								value: item?.title
+							}
+						}}
+					/>
+				))}
 			</div>
 			{/* )} */}
 		</section>
