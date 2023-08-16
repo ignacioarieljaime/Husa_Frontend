@@ -83,13 +83,15 @@ const NewsSearchFilter = ({
 												Clear
 											</button>
 										</li>
-										{filterData?.years?.map(item => (
-											<li>
-												<button onClick={() => filterHandler('year', item)}>
-													{item}
-												</button>
-											</li>
-										))}
+										{filterData?.years
+											?.sort((a, b) => b - a)
+											?.map(item => (
+												<li>
+													<button onClick={() => filterHandler('year', item)}>
+														{item}
+													</button>
+												</li>
+											))}
 									</ul>
 								</div>
 							</div>
