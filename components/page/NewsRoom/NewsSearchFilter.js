@@ -41,7 +41,7 @@ const NewsSearchFilter = ({
 	const getNews = async () => {
 		try {
 			let response = await axios.get(
-				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts/meta?type=news`
+				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts/meta?type=news&brand_id=3`
 			)
 			setFilterData(response?.data)
 		} catch (error) {
@@ -80,7 +80,7 @@ const NewsSearchFilter = ({
 									<ul>
 										<li>
 											<button onClick={() => filterHandler('year', null)}>
-												clear
+												Clear
 											</button>
 										</li>
 										{filterData?.years?.map(item => (
@@ -105,7 +105,7 @@ const NewsSearchFilter = ({
 									<ul>
 										<li>
 											<button onClick={() => filterHandler('product', null)}>
-												clear
+												Clear
 											</button>
 										</li>
 										{filterData?.tags?.map(item => (

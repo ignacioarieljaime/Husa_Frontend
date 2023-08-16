@@ -59,9 +59,9 @@ const NewsRoomMainBox = ({ data }) => {
 	return (
 		<>
 			<NewsSearchFilter
-				filter={filters}
+				filters={filters}
 				filterHandler={(_key, _value) =>
-					setFilters({ ...filters, [_key]: _value })
+					setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.title?.value}
 				yearTitle={
@@ -134,9 +134,13 @@ const NewsRoomMainBox = ({ data }) => {
 																		</Link>
 																	</h5>
 																	<span className='date'>
-																		{moment(item?.created_at).format(
-																			'MMMM DD YYYY'
-																		)}
+																		{item?.published_at
+																			? moment(item?.published_at).format(
+																					'MMMM DD YYYY'
+																			  )
+																			: moment(item?.created_at).format(
+																					'MMMM DD YYYY'
+																			  )}
 																	</span>
 																</div>
 															</div>

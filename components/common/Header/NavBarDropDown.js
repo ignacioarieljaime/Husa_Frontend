@@ -2,6 +2,8 @@ import Link from 'next/link'
 import React from 'react'
 import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
+import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+
 function NavBarDropDown({ data, handler }) {
 	return (
 		<li
@@ -10,9 +12,7 @@ function NavBarDropDown({ data, handler }) {
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
-					<span className='underline-on-hover'>
-						{data.header.title}
-					</span>
+					<span className='underline-on-hover'>{data.header.title}</span>
 				</a>
 			) : (
 				<Link

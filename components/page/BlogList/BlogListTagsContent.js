@@ -51,7 +51,7 @@ const BlogListTagsContent = ({ data, backHandler, getPosts }) => {
 							<BlogListSoundBardItem
 								getBlogs={getPosts}
 								key={index}
-								data={ConvertBlogData(item)}
+								data={ConvertBlogData(item, 'square')}
 							/>
 						))}
 					</div>
