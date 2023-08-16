@@ -1,11 +1,7 @@
 import React, { useEffect } from 'react'
 import NewsSearchFilter from '../NewsSearchFilter'
 import CustomImage from 'components/common/CustomImage'
-import PaginationDabbleArrow from 'components/icons/PaginationDabbleArrow'
-import PaginationArrow from 'components/icons/PaginationArrow'
 import { useWindowSize } from 'hooks/useWindowSize'
-import NewsRoomMainNewsItem from '../NewsRoomMainNewsItem'
-import axios from 'axios'
 import { useState } from 'react'
 import Spinner from 'components/common/Spinner'
 import NewsRoomPagination from './NewsRoomPagination'
@@ -27,6 +23,10 @@ const NewsPressArchive = ({ data }) => {
 	useEffect(() => {
 		getNews()
 	}, [filters])
+
+	useEffect(() => {
+		window.scrollTo({ top: 0 })
+	}, [news])
 
 	const getPostId = () => {
 		let ids = structure?.exclude_news?.value?.map(
@@ -57,7 +57,7 @@ const NewsPressArchive = ({ data }) => {
 			<NewsSearchFilter
 				filters={filters}
 				filterHandler={(_key, _value) =>
-					setFilters({ ...filters, [_key]: _value })
+					setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.titleOne?.value}
 				yearTitle={
@@ -87,7 +87,7 @@ const NewsPressArchive = ({ data }) => {
 									<div>
 										<Link href={item?.route || '/'}>
 											<a
-												className='d-block'
+												className='d-block h-100'
 												style={{ width: width > 600 ? '370px' : '100%' }}>
 												<CustomImage
 													src={
@@ -111,7 +111,9 @@ const NewsPressArchive = ({ data }) => {
 												</Link>
 											</h5>
 											<span className='date'>
-												{moment(item?.created_at).format('MMMM DD YYYY')}
+												{item?.published_at
+													? moment(item?.published_at).format('MMMM DD YYYY')
+													: moment(item?.created_at).format('MMMM DD YYYY')}
 											</span>
 										</div>
 									</div>
