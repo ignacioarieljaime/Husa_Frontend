@@ -101,10 +101,11 @@
 
 		.info {
 			display: flex;
-			padding: 0 50px 0 32px;
+			padding: 0 24px;
 			flex-wrap: nowrap;
 			justify-content: center;
 			align-items: flex-start;
+			gap: 32px;
 			@include mq(768) {
 				flex-wrap: wrap;
 				padding: 0 16px;
@@ -114,18 +115,6 @@
 				width: 50%;
 				@include mq(768) {
 					width: 100%;
-				}
-				@include mq(768) {
-					&:first-child {
-						margin-bottom: 32px;
-					}
-					width: 100%;
-				}
-
-				&:nth-child(2) {
-					@include mqm(992) {
-						padding-left: 32px;
-					}
 				}
 
 				> h5 {
@@ -159,10 +148,11 @@
 
 				> div {
 					display: flex;
+					gap: 8px;
+					width: 100%;
 					@include mq(575) {
 						flex-wrap: wrap;
 					}
-					gap: 8px;
 					> div {
 						width: 50%;
 						@include mq(575) {
