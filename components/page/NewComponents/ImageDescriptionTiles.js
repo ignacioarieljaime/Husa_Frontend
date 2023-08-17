@@ -11,77 +11,68 @@ const ImageDescriptionTiles = ({ data }) => {
 		<section id={data.name + data.id}>
 			<div className='key_feature'>
 				<div className={'content'}>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							key={index}
 							className={`item ${
-								content?.list?.value.length < 4 ? 'banner' : 'small'
-							} ${content?.shadow?.value ? 'hover_active' : ''}`}
-							style={{ width: 100 / content?.list?.value.length + '%' }}>
+								structure?.list?.value.length < 4 ? 'banner' : 'small'
+							} ${structure?.shadow?.value ? 'hover_active' : ''}`}
+							style={{ width: 100 / structure?.list?.value.length + '%' }}>
 							<div className={`image_wrapper `}>
-								{item?.image?.src && (
-									<img
-										src={item?.image?.src}
-										alt={item?.image?.alt}
-										className='image'
-									/>
-								)}
+								<img
+									src={item?.image?.src}
+									alt={item?.image?.alt}
+									className='image'
+								/>
 							</div>
 							<div
 								className={`content ${
-									content?.divider?.value ? 'divider' : ''
+									structure?.divider?.value ? 'divider' : ''
 								}`}>
-								{item?.smallImage?.value?.image?.src &&
-									item?.smallImage?.value?.text?.value && (
-										<div className='small_image'>
-											{item?.smallImage?.value?.image?.src && (
-												<img
-													src={item?.smallImage?.value?.image?.src}
-													alt={item?.smallImage?.value?.image?.alt}
-													width='48'
-												/>
-											)}
-											{item?.smallImage?.value?.text?.value && (
-												<p>{item?.smallImage?.value?.text?.value}</p>
-											)}
-										</div>
-									)}
-								{item?.title?.value ? (
-									content?.list?.value.length > 2 ? (
-										<h5
-											className='title small'
-											dangerouslySetInnerHTML={{
-												__html: item?.title?.value
-											}}></h5>
-									) : (
-										<h4
-											className='title large'
-											dangerouslySetInnerHTML={{
-												__html: item?.title?.value
-											}}></h4>
-									)
-								) : null}
-								{item?.subtitle?.value && (
-									<div
-										className='subtitle'
-										dangerouslySetInnerHTML={{
-											__html: item?.subtitle?.value
-										}}></div>
+
+								{(item?.smallImage?.value?.image?.src ||
+									item?.smallImage?.value?.text?.value) && (
+									<div className='small_image'>
+										{item?.smallImage?.value?.image?.src && (
+											<img
+												src={item?.smallImage?.value?.image?.src}
+												alt={item?.smallImage?.value?.image?.alt}
+												width='48'
+											/>
+										)}
+										{item?.smallImage?.value?.text?.value && (
+											<p>{item?.smallImage?.value?.text?.value}</p>
+										)}
+									</div>
 								)}
-								{item?.text?.value && (
-									<div
-										className='description'
+								{structure?.list?.value.length > 2 ? (
+									<h5
+										className='title small'
 										dangerouslySetInnerHTML={{
-											__html: item?.text?.value
-										}}></div>
-								)}
-								{item?.note?.value && (
-									<div
-										className='disclaimer'
+											__html: item?.title?.value
+										}}></h5>
+								) : (
+									<h4
+										className='title large'
 										dangerouslySetInnerHTML={{
-											__html: item?.note?.value
-										}}></div>
+											__html: item?.title?.value
+										}}></h4>
 								)}
+								<div
+									className='subtitle'
+									dangerouslySetInnerHTML={{
+										__html: item?.subtitle?.value
+									}}></div>
+								<div
+									className='description'
+									dangerouslySetInnerHTML={{
+										__html: item?.text?.value
+									}}></div>
+								<div
+									className='disclaimer'
+									dangerouslySetInnerHTML={{
+										__html: item?.note?.value
+									}}></div>
 							</div>
 						</div>
 					))}
