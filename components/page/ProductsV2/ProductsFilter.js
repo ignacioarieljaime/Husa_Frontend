@@ -121,7 +121,9 @@ const ProductsFilter = ({
 					<div className='fw-normal fs-8 d-block d-md-none'>Filter</div>
 					{filterList.length !== 0 && filterList.length !== 0 ? (
 						<button
-							className='n-btn products-filtering-button outline-primary mb-md-8'
+							className={`n-btn products-filtering-button ${
+								filterCounter > 0 ? 'primary text-white' : 'outline-primary'
+							} mb-md-8`}
 							onClick={checkboxClearHandler}>
 							Clear Filters
 							{filterCounter > 0 ? (

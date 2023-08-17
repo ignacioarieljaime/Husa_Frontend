@@ -116,7 +116,6 @@ const ProductsGridV2 = ({ data }) => {
 		}
 	}
 
-
 	// const orderProducts = _data => {
 	// 	if (sortingMethod && sortingMethod?.value === 'featured') {
 	// 		_data.sort((after, prev) => {
@@ -136,8 +135,8 @@ const ProductsGridV2 = ({ data }) => {
 
 	return (
 		<section>
-			<div className='container grid_v2_top_box mt-7 mb-11 d-none d-md-block'>
-				<div className='row justify-content-start align-items-center px-3 mb-15'>
+			<div className='container-md grid_v2_top_box mt-md-7 mb-md-11 '>
+				<div className='row justify-content-start align-items-center px-3 mb-15 d-none d-md-block'>
 					<BreadCrumb />
 				</div>
 				<div dangerouslySetInnerHTML={{ __html: text }}></div>
