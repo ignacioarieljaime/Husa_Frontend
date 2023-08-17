@@ -86,7 +86,12 @@ const NewsSingleInfoBox = ({ data }) => {
 						<h5>{structure?.contact?.value?.title?.value}</h5>
 						<div>
 							{structure?.contact?.value?.list?.value.map(item => (
-								<NewsSingleInfoLittleBox data={item} />
+								<NewsSingleInfoLittleBox
+									width={
+										100 / structure?.contact?.value?.list?.value.length + '%'
+									}
+									data={item}
+								/>
 							))}
 						</div>
 					</div>
