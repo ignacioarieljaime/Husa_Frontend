@@ -124,10 +124,26 @@
 
 .grid_v2_top_box {
 	padding-left: 163px;
+	@include mq(768) {
+		padding: 32px 16px;
+	}
 
-	h2 {
+	h2,
+	u {
+		margin: 0;
+		color: #383838;
 		font-size: 48px;
+		font-style: normal;
 		font-weight: 400;
+		line-height: 55.86px; /* 116.375% */
+		letter-spacing: -0.96px;
+		@include mq(768) {
+			font-size: 34px;
+			line-height: 45.9px; /* 135% */
+		}
+	}
+	u {
+		color: #00aaa6 !important;
 	}
 }
 
@@ -158,7 +174,7 @@
 				font-size: 14px;
 				font-weight: 400;
 				border: 1px solid #00aaa6 !important;
-				color: #00aaa6 !important;
+				color: #00aaa6;
 				&:hover {
 					background-color: #00aaa6 !important;
 					color: #fff !important;
@@ -344,10 +360,10 @@
 						}
 					}
 					.model {
-						font-size: 14px;
+						font-size: 16px;
 						font-style: normal;
 						font-weight: 400;
-						line-height: 18.9px;
+						line-height: 22px;
 						letter-spacing: -0.28px;
 						color: #8c8f8f;
 						width: 100%;
@@ -356,7 +372,7 @@
 					.new_item {
 						font-size: 16px;
 						font-style: normal;
-						font-weight: 400;
+						font-weight: 500;
 						line-height: 21.6px;
 						letter-spacing: -0.32px;
 						color: #00aaa6;
@@ -388,6 +404,7 @@
 						}
 						.product_btn {
 							padding: 18px 16px 14px;
+							font-weight: 500 !important;
 						}
 					}
 					.n-btn.primary-text {
