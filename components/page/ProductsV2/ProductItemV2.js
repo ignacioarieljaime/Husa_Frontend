@@ -193,7 +193,10 @@ const ProductItemV2 = ({ data }) => {
 							</a>
 						</Link>
 
-						<p className='model'>{currentItem?.model}</p>
+						<div className='d-flex justify-content-between align-items-center w-100'>
+							<p className='model'>{currentItem?.model}</p>
+							{currentItem?.isNew ? <p className='new_item'>NEW</p> : null}
+						</div>
 
 						<h6 className='title'>{currentItem.name}</h6>
 					</div>
