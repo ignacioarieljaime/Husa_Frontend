@@ -141,14 +141,17 @@
 					color: #000000;
 					margin-bottom: 12px;
 					word-break: break-all;
+					margin-bottom: 6px;
 					&:last-child {
 						margin: 0 !important;
 					}
 				}
 
-				> div {
+				&:first-child > div {
 					display: flex;
 					gap: 8px;
+				}
+				> div {
 					width: 100%;
 					@include mq(575) {
 						flex-wrap: wrap;
