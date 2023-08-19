@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const getUploadLink = async body => {
 	console.log(body)
@@ -12,7 +13,11 @@ const getUploadLink = async body => {
 
 const uploadAsset = async (url, body) => {
 	console.log(body)
-	let response = await axios.put(url, body)
+	let response = await axios.put(url, body, {
+		headers: {
+			'Content-Type': 'application/octet-stream; charset=binary'
+		}
+	})
 
 	return response
 }
@@ -35,10 +40,8 @@ export const uploadToS3 = async asset => {
 		if (response.data.token && response.data.url) {
 			// step 2 - upload asset to s3 servers using the upload link that we got from previous step
 			const { url, token } = response.data
-			const formData = new FormData()
-			formData.append('file', asset)
 			try {
-				let response = await uploadAsset(url, formData)
+				let response = await uploadAsset(url, asset)
 				if (response.status === 200) {
 					// step 3 - verfiy our upload from our server using s3 verification token from step 1
 					try {
@@ -48,13 +51,16 @@ export const uploadToS3 = async asset => {
 						}
 					} catch (error) {
 						console.error(error)
+						toast.error('There was an error while uploading')
 					}
 				}
 			} catch (error) {
 				console.error(error)
+				toast.error(error?.response?.data?.message)
 			}
 		}
 	} catch (error) {
 		console.error(error)
+		toast.error(error?.response?.data?.message)
 	}
 }
