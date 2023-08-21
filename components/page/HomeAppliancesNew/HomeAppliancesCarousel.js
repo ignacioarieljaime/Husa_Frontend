@@ -15,7 +15,10 @@ const HomeAppliancesCarousel = ({ data }) => {
 
 	return (
 		<section>
-			<div className={`ha_carousel text-center ${structure?.theme?.value}`}>
+			<div
+				className={`ha_carousel text-center ${structure?.theme?.value} ${
+					structure?.list?.value.length > 4 ? 'extra_space_bottom' : ''
+				}`}>
 				{structure?.subtitle?.value && (
 					<div className='subtitle'>{structure?.subtitle?.value}</div>
 				)}
@@ -30,12 +33,19 @@ const HomeAppliancesCarousel = ({ data }) => {
 						perPage: 1,
 						perMove: 1,
 						gap: '1rem',
-						pagination: false,
+						pagination: {
+							items: {}
+						},
 						classes: {
 							arrows:
 								structure?.list?.value.length > 4
 									? 'splide__arrows'
-									: 'splide__arrows hide'
+									: 'splide__arrows hide',
+
+							pagination:
+								structure?.list?.value.length > 4
+									? 'splide__pagination'
+									: 'splide__pagination hide'
 						}
 					}}
 					className='slider'>
