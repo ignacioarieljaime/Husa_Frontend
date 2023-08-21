@@ -64,9 +64,12 @@ function RegisterForm({ data }) {
 			getModelsBySerialNumber()
 		}
 	}, [])
+
 	useEffect(() => {
-		if (models?.length === 1) {
+		if (router.query?.InternalModelNumber && models?.length === 1) {
 			setDataSchema({ ...dataSchema, product_model: models[0]?.name })
+		} else {
+			setDataSchema({ ...dataSchema, product_model: null })
 		}
 	}, [models])
 
@@ -81,6 +84,11 @@ function RegisterForm({ data }) {
 		}
 
 		if (_key === 'product_model') {
+			console.log({
+				...dataSchema,
+				product_model: _value?.model,
+				series: _value?.series?.length ? _value?.series[0]?.name : null
+			})
 			setDataSchema({
 				...dataSchema,
 				product_model: _value?.model,
@@ -138,7 +146,6 @@ function RegisterForm({ data }) {
 					...item,
 					name: item.model
 				}))
-
 				setModels(
 					data?.sort((a, b) =>
 						sortWorkHandler(a.name).localeCompare(sortWorkHandler(b.name))
@@ -276,9 +283,10 @@ function RegisterForm({ data }) {
 		for (const word of _data.split('')) {
 			if (/[a-zA-Z]/.test(word)) {
 				position = _data.split('').indexOf(word)
-				return _data.slice(position)
+				return _data.slice(position) ? _data.slice(position) : ''
 			}
 		}
+		return ''
 	}
 	return (
 		<section>
@@ -312,8 +320,8 @@ function RegisterForm({ data }) {
 								required={true}
 								options={categories}
 								onChange={_value => {
-									dataSchemaHandler('product_category', _value.name)
-									getSeriesModels(_value.id)
+									dataSchemaHandler('product_category', _value?.name)
+									getSeriesModels(_value?.id)
 								}}
 							/>
 							<div className='input_error_message'>
@@ -359,10 +367,17 @@ function RegisterForm({ data }) {
 								isSearchable
 								required={true}
 								options={models}
-								onChange={_value => dataSchemaHandler('product_model', _value)}
+								dataSchemaValue={dataSchema?.product_model}
+								onValueClear={dataSchema?.product_category}
+								onChange={_value => {
+									console.log(_value)
+									dataSchemaHandler('product_model', _value)
+								}}
 							/>
 							<div className='input_error_message'>
-								{errors?.product_model && errors?.product_model[0]}
+								{errors?.product_model &&
+									errors?.product_model[0] +
+										' Please make sure you have selected a product model from the list'}
 							</div>
 						</div>
 					) : null}
