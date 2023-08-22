@@ -22,6 +22,7 @@ const ProductFiltersGroup = ({
 	const [widthSize] = useWindowSize()
 	const [filterCollapse, setFilterCollapse] = useState(false)
 	const [filterList, setFilterList] = useState([])
+	const [sortedFilterList, setSortedFilterList] = useState([])
 	const elRect = useRect(buttonGroup)
 	useEffect(() => {
 		// if (
@@ -53,6 +54,24 @@ const ProductFiltersGroup = ({
 			setFilterList(filter.filter_values)
 		}
 	}, [filter, widthSize])
+
+	useEffect(() => {
+		if (category?.value === 5) {
+			if (filterList && filterList.length) {
+				let temp = filterList
+				temp.sort((a, b) => {
+					if (a.title && b.title)
+						return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+					else if (a.title && b.title)
+						return a.filter_value
+							.toLowerCase()
+							.localeCompare(b.filter_value.toLowerCase())
+					else return 0
+				})
+				setSortedFilterList(temp)
+			}
+		} else setSortedFilterList(filterList)
+	}, [filterList])
 
 	useEffect(() => {
 		if (widthSize < 768) setFilterCollapse(false)
@@ -100,7 +119,7 @@ const ProductFiltersGroup = ({
 					</span>
 				</button>
 				<ul ref={checkboxWrapper} className='filter-list'>
-					{filterList.map(
+					{sortedFilterList.map(
 						(item, index) =>
 							item.title && (
 								<ProductFilterItemV2
