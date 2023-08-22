@@ -29,13 +29,13 @@ const HomeAppliancesCarousel = ({ data }) => {
 					}}></h3>
 				<Splide
 					options={{
-						pagination: false,
 						perPage: 1,
 						perMove: 1,
 						gap: '1rem',
 						pagination: {
 							items: {}
 						},
+						focus: 'center',
 						classes: {
 							arrows:
 								structure?.list?.value.length > 4
@@ -49,11 +49,11 @@ const HomeAppliancesCarousel = ({ data }) => {
 						}
 					}}
 					className='slider'>
-					{windowSize[0] > 768 && (
+					{/* {windowSize[0] > 768 && (
 						<SplideSlide
 							className='slider_item'
 							style={{ width: '260px' }}></SplideSlide>
-					)}
+					)} */}
 					{structure?.list?.value.map((item, index) => (
 						<SplideSlide key={index} className='slider_item'>
 							<HomeAppliancesCarouselitem data={item} structure={structure} />
