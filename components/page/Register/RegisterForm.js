@@ -17,6 +17,7 @@ import axios from 'axios'
 import { getFirmWareModels } from 'services/servicePortal'
 import DownloadIcon from 'components/icons/DownloadIcon'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
+import RegisterFormSelectBox from './RegisterFormSelectBox'
 // import PDFDownload from 'public/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
 
 function RegisterForm({ data }) {
@@ -357,8 +358,8 @@ function RegisterForm({ data }) {
 						</div>
 					) : models === 'loading' ||
 					  (Array.isArray(models) && models?.length !== 0) ? (
-						<div className='col-12 mb-10 custom-select-box'>
-							<CustomSelectBox
+						<div className='col-12 mb-10'>
+							<RegisterFormSelectBox
 								rightText={
 									dataSchema?.product_category === 'Air Products' &&
 									'(Outdoor Model for split system)'
@@ -370,7 +371,6 @@ function RegisterForm({ data }) {
 								dataSchemaValue={dataSchema?.product_model}
 								onValueClear={dataSchema?.product_category}
 								onChange={_value => {
-									console.log(_value)
 									dataSchemaHandler('product_model', _value)
 								}}
 							/>

@@ -769,17 +769,45 @@ input[type='number']::-webkit-outer-spin-button {
 	-webkit-animation-timing-function: step-start;
 	animation-timing-function: step-start;
 }
-.select-box-list .option {
+.select-box-list-no-anime {
+	margin-top: 5px;
+	position: absolute;
+	width: calc(100% - 24px);
+	padding: 0;
+	background-color: #fff;
+	z-index: 10;
+	list-style: none;
+	height: fit-content;
+	max-height: 300px;
+	overflow-y: auto;
+	.input {
+		width: 100%;
+		border: none;
+		border-bottom: 1px solid #aaa;
+		padding: 16px 12px;
+	}
+}
+.select-box-list .option,
+.select-box-list-no-anime .option {
 	display: block;
 	padding: 24px 12px;
 	font-size: 15px;
 	line-height: 1;
 	background-color: #fff;
 	color: #202020;
-}
-.select-box-list .option:hover,
-.select-box-list .option:focus {
-	background-color: #f2f2f2;
+	cursor: pointer;
+	&.disabled {
+		cursor: default;
+		&:hover,
+		&:focus {
+			background-color: #fff;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		background-color: #f2f2f2;
+	}
 }
 
 @-webkit-keyframes HideList {
