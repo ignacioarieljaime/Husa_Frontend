@@ -1,17 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import HomeAppliancesCarouselitem from './HomeAppliancesCarouselitem'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
-// import { Navigation } from 'swiper'
+import { SwiperSlide, Swiper } from 'swiper/react'
+import { Navigation, Pagination } from 'swiper'
 // import { Swiper, SwiperSlide } from 'swiper/react'
-// import 'swiper/css/navigation'
-// import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css'
+
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
+	const [justify, setJustify] = useState('')
 
 	const windowSize = useWindowSize()
+
+	useEffect(() => {
+		if (windowSize[0] - structure?.list?.value.length * 296 - 40 > 16)
+			setJustify('justify_content_center')
+		else setJustify('')
+	}, [windowSize])
 
 	return (
 		<section>
@@ -27,14 +37,12 @@ const HomeAppliancesCarousel = ({ data }) => {
 					dangerouslySetInnerHTML={{
 						__html: structure?.title?.value
 					}}></h3>
-				<Splide
+				{/* <Splide
 					options={{
 						perPage: 7,
-						perMove: 3,
+						perMove: 4,
 						gap: '1rem',
-						pagination: {
-							items: {}
-						},
+						pagination: {},
 						start:
 							structure?.list?.value.length % 2 === 0
 								? structure?.list?.value.length / 2 - 1
@@ -54,7 +62,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 						breakpoints: {
 							1920: {
 								perPage: 4,
-								perMove: 4
+								perMove: 6
 							},
 							1440: {
 								perPage: 5,
@@ -88,7 +96,64 @@ const HomeAppliancesCarousel = ({ data }) => {
 							<HomeAppliancesCarouselitem data={item} structure={structure} />
 						</SplideSlide>
 					))}
-				</Splide>
+				</Splide> */}
+				<Swiper
+					grabCursor={true}
+					roundLengths={true}
+					slidesPerView={'auto'}
+					slidesPerGroup={1}
+					initialSlide={2}
+					spaceBetween={16}
+					centeredSlides={true}
+					centeredSlidesBounds={true}
+					navigation={true}
+					pagination={{
+						dynamicBullets: true
+					}}
+					breakpoints={{
+						2200: {
+							slidesPerView: 'auto',
+							slidesPerGroup: 6
+						},
+						1920: {
+							slidesPerView: 4,
+							slidesPerGroup: 6
+						},
+						1440: {
+							slidesPerView: 5,
+							slidesPerGroup: 3
+						},
+						1200: {
+							slidesPerView: 4,
+							slidesPerGroup: 3
+						},
+						1050: {
+							slidesPerView: 3,
+							slidesPerGroup: 3
+						},
+						991: {
+							slidesPerView: 3,
+							slidesPerGroup: 2
+						},
+						768: {
+							slidesPerView: 3,
+							slidesPerGroup: 2
+						},
+						550: {
+							slidesPerView: 1.8,
+							slidesPerGroup: 2
+						}
+					}}
+					className={`slider ${justify} ${
+						structure?.list?.value.length > 4 ? '' : 'hide_controls'
+					}`}
+					modules={[Pagination, Navigation]}>
+					{structure?.list?.value.map((item, index) => (
+						<SwiperSlide key={index} className='slider_item'>
+							<HomeAppliancesCarouselitem data={item} structure={structure} />
+						</SwiperSlide>
+					))}
+				</Swiper>
 				{structure?.link?.value && (
 					<div className='bottom_button'>
 						<Link
