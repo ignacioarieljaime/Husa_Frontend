@@ -33,7 +33,11 @@ const NewsRoomMedia = ({ data }) => {
 						<div>
 							<Link
 								target={structure?.list?.value[0]?.link?.target || '_self'}
-								href={structure?.list?.value[0]?.link?.value || '/'}>
+								href={
+									structure?.list?.value[0]?.link?.src ||
+									structure?.list?.value[0]?.link?.value ||
+									'/'
+								}>
 								<a target={structure?.list?.value[0]?.link?.target || '_self'}>
 									{structure?.list?.value[0]?.link?.title}
 									{structure?.list?.value[0]?.downloadImage?.src && (

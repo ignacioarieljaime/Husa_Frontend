@@ -47,8 +47,18 @@ const NewsRoomNewsBox = ({ data }) => {
 		<div className='news_room_news_box'>
 			<NewsSearchFilter
 				filter={filters}
-				filterHandler={(_key, _value) =>
-					setFilters({ ...filters, [_key]: _value })
+				filterHandler={(_key, _value, _a) =>
+					_a && Object.keys(_a).length > 0
+						? setFilters(_a)
+						: setFilters({ ...filters, [_key]: _value, page: 1 })
+				}
+				resetFilters={() =>
+					setFilters({
+						page: 1,
+						product: null,
+						search: '',
+						year: null
+					})
 				}
 				title={structure?.title?.value}
 				yearTitle={
