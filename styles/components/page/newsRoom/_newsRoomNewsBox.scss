@@ -5,9 +5,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 16px;
-		@include mq(768) {
-			gap: 8px;
-		}
 	}
 	.pagination {
 		margin-bottom: 20px;
@@ -100,6 +97,12 @@
 			width: 100% !important;
 		}
 		> div {
+			width: 50% !important;
+			@include mq(768) {
+				width: 100% !important;
+			}
+		}
+		.image_wrapper_link {
 			width: 50% !important;
 			@include mq(768) {
 				width: 100% !important;
@@ -461,7 +464,7 @@
 					> div {
 						> span {
 							font-weight: 400;
-
+							cursor: pointer;
 							font-size: 16px;
 							line-height: 22px;
 							color: #ffffff;
@@ -487,9 +490,9 @@
 							}
 						}
 						> div {
-							display: none;
+							display: inline-block !important;
 							padding-top: 10px;
-							z-index: 2;
+							z-index: 1001;
 							position: absolute;
 							top: 100%;
 							left: 0;
@@ -541,11 +544,6 @@
 										}
 									}
 								}
-							}
-						}
-						&:hover {
-							> div {
-								display: inline-block !important;
 							}
 						}
 					}
@@ -652,5 +650,13 @@
 		@include mqm(1050) {
 			display: block !important;
 		}
+	}
+	.news_selectbox_backdrop {
+		position: fixed !important;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		z-index: 1000;
 	}
 }

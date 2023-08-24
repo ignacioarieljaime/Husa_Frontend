@@ -7,6 +7,7 @@ import SelectBoxAngleArrow from 'components/icons/SelectBoxAngleArrow'
 import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
+import NewsSearchFilterItem from './NewsSearchFilterItem'
 
 let years = []
 
@@ -115,89 +116,23 @@ const NewsSearchFilter = ({
 							className='reset d-none d-lg_block'>
 							Reset Filters
 						</button>
-						<div className='select_box_custom'>
-							{/* <label>Model year</label> */}
-							<div>
-								<span>
-									<span>
-										{tempFilters?.year || (
-											<span className='label'>{yearTitle}</span>
-										)}
-									</span>
-									{tempFilters?.year ? (
-										<button
-											className='bg-transparent border-0 text-white'
-											onClick={() => filterChangeHandler('year', null)}>
-											<FontAwesomeIcon icon={faXmark} />
-										</button>
-									) : (
-										<SelectBoxAngleArrow />
-									)}
-								</span>
-								<div>
-									<ul>
-										<li>
-											<button
-												className='clear'
-												onClick={() => filterChangeHandler('year', null)}>
-												Clear
-												<FontAwesomeIcon icon={faXmark} size={'sm'} />
-											</button>
-										</li>
-										{filterData?.years
-											?.sort((a, b) => b - a)
-											?.map(item => (
-												<li>
-													<button
-														onClick={() => filterChangeHandler('year', item)}>
-														{item}
-													</button>
-												</li>
-											))}
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div className='select_box_custom product_select_box'>
-							{/* <label>Product select</label> */}
-							<div>
-								<span>
-									<span>
-										{tempFilters?.product || (
-											<span className='label'>{categoryTitle}</span>
-										)}
-									</span>
-									{tempFilters?.product ? (
-										<button
-											className='bg-transparent border-0 text-white'
-											onClick={() => filterChangeHandler('product', null)}>
-											<FontAwesomeIcon icon={faXmark} />
-										</button>
-									) : (
-										<SelectBoxAngleArrow />
-									)}
-								</span>
-								<div>
-									<ul>
-										<li>
-											<button
-												className='clear'
-												onClick={() => filterChangeHandler('product', null)}>
-												Clear <FontAwesomeIcon icon={faXmark} size={'sm'} />
-											</button>
-										</li>
-										{filterData?.tags?.map(item => (
-											<li>
-												<button
-													onClick={() => filterChangeHandler('product', item)}>
-													{item}
-												</button>
-											</li>
-										))}
-									</ul>
-								</div>
-							</div>
-						</div>
+
+						<NewsSearchFilterItem
+							filterChangeHandler={filterChangeHandler}
+							tempFilters={tempFilters?.year}
+							title={yearTitle}
+							data={filterData?.years}
+							dataKey='year'
+						/>
+						<NewsSearchFilterItem
+							filterChangeHandler={filterChangeHandler}
+							tempFilters={tempFilters?.product}
+							title={categoryTitle}
+							data={filterData?.tags}
+							dataKey='product'
+							className={'product_select_box'}
+						/>
+
 						<div className='custom_input_box'>
 							{/* <label>search archive</label> */}
 							<div>
