@@ -318,7 +318,11 @@
 
 	> div {
 		padding: 0 40px;
-		@include mq(998) {
+		@include mq(1150) {
+			padding: 0 32px;
+		}
+
+		@include mq(1050) {
 			padding: 0 25px;
 		}
 		> div {
@@ -326,18 +330,18 @@
 			align-items: center;
 			flex-direction: column;
 
-			@include mqm(980) {
+			@include mqm(1050) {
 				height: 86px;
 				justify-content: space-between;
 				flex-direction: row;
 			}
 
-			@include mq(980) {
+			@include mq(1050) {
 				padding: 40px 0 32px;
 			}
 
 			.filter_title {
-				@include mq(980) {
+				@include mq(1050) {
 					width: 100%;
 					display: flex;
 					align-items: center;
@@ -367,7 +371,7 @@
 					color: #ffffff;
 					gap: 10px;
 					padding: 0;
-					@include mqm(980) {
+					@include mqm(1050) {
 						display: none;
 					}
 
@@ -403,12 +407,33 @@
 				-moz-transition: all 0.3s;
 				-ms-transition: all 0.3s;
 				-o-transition: all 0.3s;
+				@include mq(1150) {
+					gap: 8px;
+				}
+				@include mq(1050) {
+					gap: 16px;
+				}
 
-				@include mq(980) {
+				@include mq(1050) {
 					flex-direction: column;
 					gap: 32px;
-					overflow: hidden;
+					// overflow: hidden;
 					width: 100%;
+				}
+				.reset {
+					font-size: 10px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 120%; /* 12px */
+					text-decoration-line: underline;
+					color: #fff;
+					background-color: transparent;
+					padding: 16px;
+					border: none;
+					@include mq(1150) {
+						padding: 12px;
+						white-space: nowrap !important;
+					}
 				}
 
 				.select_box_custom {
@@ -425,11 +450,11 @@
 						text-align: center;
 						margin-bottom: 16px;
 						width: 100%;
-						@include mqm(980) {
+						@include mqm(1050) {
 							display: none;
 						}
 					}
-					@include mq(980) {
+					@include mq(1050) {
 						width: 100%;
 					}
 
@@ -451,8 +476,14 @@
 							border: 1px solid #ffffff;
 							border-radius: 1000px;
 							font-size: 14px;
-							@include mq(980) {
+							font-weight: 400;
+
+							@include mq(1050) {
 								padding: 14px 16px 14px;
+							}
+							.label {
+								color: #8c8f8f;
+								font-weight: 300;
 							}
 						}
 						> div {
@@ -463,10 +494,11 @@
 							top: 100%;
 							left: 0;
 							width: 100%;
+							height: 100%;
 							ul {
 								padding: 0;
 								list-style: none;
-								background-color: #fff;
+								background-color: #232323;
 								border-radius: 10px;
 								-webkit-border-radius: 10px;
 								-moz-border-radius: 10px;
@@ -474,7 +506,7 @@
 								-o-border-radius: 10px;
 								overflow: auto;
 								box-shadow: 0 10px 15px rgba($color: #000000, $alpha: 0.3);
-								max-height: 200px;
+								max-height: 220px;
 
 								li {
 									button {
@@ -483,11 +515,18 @@
 										width: 100%;
 										text-align: left;
 										border: none;
+										color: #fff;
 										border-radius: 10px;
 										-webkit-border-radius: 10px;
 										-moz-border-radius: 10px;
 										-ms-border-radius: 10px;
 										-o-border-radius: 10px;
+
+										&.clear {
+											display: flex;
+											justify-content: space-between;
+											align-items: center;
+										}
 
 										&.active {
 											background-color: #00aaa6;
@@ -498,7 +537,7 @@
 										}
 
 										&:hover {
-											background-color: #f0f2f2;
+											background-color: #3b3b3b;
 										}
 									}
 								}
@@ -513,7 +552,7 @@
 				}
 				.product_select_box {
 					width: 300px;
-					@include mq(980) {
+					@include mq(1050) {
 						width: 100%;
 					}
 				}
@@ -530,11 +569,11 @@
 						text-align: center;
 						margin-bottom: 16px;
 						width: 100%;
-						@include mqm(980) {
+						@include mqm(1050) {
 							display: none;
 						}
 					}
-					@include mq(980) {
+					@include mq(1050) {
 						width: 100%;
 					}
 					> div {
@@ -560,14 +599,17 @@
 							border-radius: 1000px;
 							padding: 2px 50px 0 16px;
 							background-color: transparent;
-							color: #8c8f8f;
+							color: #fff;
 							font-size: 14px;
+							font-weight: 400;
 
 							&::placeholder {
 								font-size: 14px;
+								color: #8c8f8f;
+								font-weight: 300;
 							}
 
-							@include mq(980) {
+							@include mq(1050) {
 								padding: 2px 50px 3px 16px;
 
 								width: 100%;
@@ -593,11 +635,22 @@
 					font-size: 10px;
 					color: #ffffff;
 
-					@include mqm(980) {
+					@include mqm(1050) {
 						display: none;
 					}
 				}
 			}
+		}
+	}
+
+	.d-lg_none {
+		@include mqm(1050) {
+			display: none !important;
+		}
+	}
+	.d-lg_block {
+		@include mqm(1050) {
+			display: block !important;
 		}
 	}
 }
