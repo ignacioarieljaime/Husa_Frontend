@@ -20,7 +20,7 @@ const NewsRoomMainNewsItem = ({
 					isFirst ? 'horizontal' : 'vertical'
 				}`}>
 				<Link href={link || '/'} target={target || '_self'}>
-					<a target={target || '_self'}>
+					<a className='image_wrapper_link' target={target || '_self'}>
 						<CustomImage
 							src={image}
 							className='image'
