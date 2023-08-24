@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 const getUploadLink = async body => {
 	console.log(body)
 	let response = await axios.post(
-		`${process.env.NEXT_ASSETS_API_S3}/upload/s3/upload-link/sd64da0953d3ecb`,
+		`${process.env.NEXT_ASSETS_API_S3}/upload/s3/upload-link/${process.env.NEXT_S3_DIRECTORY_TOKEN}`,
 		body
 	)
 
