@@ -10,7 +10,6 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import LaserInstallationDropDownSelectBox from './LaserInstallationDropDownSelectBox'
-import { uploadToS3 } from 'services/s3'
 
 const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	const [sortingMethod, setSortingMethod] = useState()
@@ -112,15 +111,20 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 	const uploadFile = async e => {
 		setFile(e.target.files[0])
 		setImageLoading(true)
+		const formData = new FormData()
+		formData.append('attachment', e.target.files[0])
 		try {
-			const downlaodLink = await uploadToS3(e.target.files[0])
-
-			if (downlaodLink) {
+			let response = await axios.post(
+				process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
+				formData,
+				{ headers: { 'Content-Type': 'multipart/form-data' } }
+			)
+			if (response.status === 200) {
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
 				dispatch({
 					installation_location_photo: [
 						...data?.installation_location_photo,
-						downlaodLink
+						response.data.view_link
 					]
 				})
 				setFile(null)
