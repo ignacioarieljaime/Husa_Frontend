@@ -91,7 +91,9 @@ function ServiceSupportForm({ formHandler }) {
 				{ ...dataSchema }
 			)
 			if (response.status === 200) {
-				toast.success('ticket was sent successfully', { toastId: 'submit_success' })
+				toast.success('ticket was sent successfully', {
+					toastId: 'submit_success'
+				})
 				formHandler(true)
 				setDisabled(true)
 			}
@@ -106,18 +108,12 @@ function ServiceSupportForm({ formHandler }) {
 	const uploadFile = async _file => {
 		setImageLoading(true)
 		setFile(_file)
-		const formData = new FormData()
-		formData.append('attachment', _file)
 
 		try {
-			let response = await axios({
-				method: 'post',
-				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
-				data: formData,
-				headers: { 'Content-Type': 'multipart/form-data' }
-			})
-			if (response.status === 200) {
-				dataSchemaHandler('image', response.data.view_link)
+			const downlaodLink = await uploadToS3(_file)
+
+			if (downlaodLink) {
+				dataSchemaHandler('image', downlaodLink)
 				toast.success('image uploaded successfully')
 				setImageLoading(false)
 			}
@@ -196,7 +192,11 @@ function ServiceSupportForm({ formHandler }) {
 						data-toggle='modal'
 						onClick={() => setModalCondition(true)}
 						data-target='#serial-numbers'>
-						<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
+						<FontAwesomeIcon
+							icon={faCircleInfo}
+							style={{ width: '25px' }}
+							size={'xl'}
+						/>
 						<span className='ms-2'>Where do I find the serial number?</span>
 					</button>
 				</div>
@@ -221,7 +221,8 @@ function ServiceSupportForm({ formHandler }) {
 						onChange={e => dataSchemaHandler('text', e.target.value)}
 						required
 						placeholder='DESCRIPTION OF SUPPORT'
-						className='form-container-inner-input input_text_area_box'/>
+						className='form-container-inner-input input_text_area_box'
+					/>
 					<span className='fs-9'>
 						If television related, please include firmware version
 					</span>
