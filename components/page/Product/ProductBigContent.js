@@ -6,6 +6,7 @@ function ProductBigContent({ data }) {
 	const [theme, setTheme] = useState('dark')
 	useEffect(() => {
 		setText(structure?.paragraph?.value)
+		setTheme(structure?.theme?.value)
 		// hexToRgb(
 		// 	structure?.backgroundColor?.value
 		// 		? structure?.backgroundColor?.value
