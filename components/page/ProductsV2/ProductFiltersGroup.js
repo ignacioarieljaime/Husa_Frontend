@@ -5,6 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useRect } from 'hooks/useRect'
 
+const refrigeratorFiltersCustomSort = [
+	'French Door',
+	'Top Mount',
+	'Bottom Mount',
+	'Compact',
+	'Freezer',
+	'Wine & Beverage Cooler'
+]
+
 const ProductFiltersGroup = ({
 	filter,
 	passedFilter,
@@ -59,15 +68,17 @@ const ProductFiltersGroup = ({
 		if (category?.value === 5) {
 			if (filterList && filterList.length) {
 				let temp = filterList
-				temp.sort((a, b) => {
-					if (a.title && b.title)
-						return a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-					else if (a.title && b.title)
-						return a.filter_value
-							.toLowerCase()
-							.localeCompare(b.filter_value.toLowerCase())
-					else return 0
-				})
+					.map((_f, _i) => ({
+						..._f,
+						order: refrigeratorFiltersCustomSort.find(
+							item =>
+								_f?.title &&
+								item.toLowerCase().includes(_f?.title.toLowerCase())
+						)
+							? _i
+							: _i + filterList.length
+					}))
+					.sort((a, b) => a.order - b.order)
 				setSortedFilterList(temp)
 			}
 		} else setSortedFilterList(filterList)
@@ -121,16 +132,16 @@ const ProductFiltersGroup = ({
 				<ul ref={checkboxWrapper} className='filter-list'>
 					{sortedFilterList.map(
 						(item, index) =>
-							item.title && (
+							item?.title && (
 								<ProductFilterItemV2
 									checkboxConditionRender={checkBoxCondition}
 									filterController={filterController}
 									data={item}
 									passedFilter={passedFilter}
-									filterParentId={filter.content_record_id}
-									filterType={filter.content_type}
+									filterParentId={filter?.content_record_id}
+									filterType={filter?.content_type}
 									total={total}
-									key={`filter-${item.title}-${index}`}
+									key={`filter-${item?.title}-${index}`}
 									category={category}
 									showProductFilterCount={showProductFilterCount}
 								/>
