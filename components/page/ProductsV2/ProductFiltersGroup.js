@@ -68,16 +68,17 @@ const ProductFiltersGroup = ({
 		if (category?.value === 5) {
 			if (filterList && filterList.length) {
 				let temp = filterList
-					.map((_f, _i) => ({
-						..._f,
-						order: refrigeratorFiltersCustomSort.find(
+					.map((_f, _i) => {
+						let foundFilter = refrigeratorFiltersCustomSort.findIndex(
 							item =>
 								_f?.title &&
 								item.toLowerCase().includes(_f?.title.toLowerCase())
 						)
-							? _i
-							: _i + filterList.length
-					}))
+						return {
+							..._f,
+							order: foundFilter > -1 ? foundFilter : _i + filterList.length + 1
+						}
+					})
 					.sort((a, b) => a.order - b.order)
 				setSortedFilterList(temp)
 			}
