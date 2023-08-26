@@ -5,6 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useRect } from 'hooks/useRect'
 
+const refrigeratorFiltersCustomSort = [
+	'French Door',
+	'Top Mount',
+	'Bottom Mount',
+	'Compact',
+	'Freezer',
+	'Wine & Beverage Cooler'
+]
+
 const ProductFiltersGroup = ({
 	filter,
 	passedFilter,
@@ -22,6 +31,7 @@ const ProductFiltersGroup = ({
 	const [widthSize] = useWindowSize()
 	const [filterCollapse, setFilterCollapse] = useState(false)
 	const [filterList, setFilterList] = useState([])
+	const [sortedFilterList, setSortedFilterList] = useState([])
 	const elRect = useRect(buttonGroup)
 	useEffect(() => {
 		// if (
@@ -53,6 +63,26 @@ const ProductFiltersGroup = ({
 			setFilterList(filter.filter_values)
 		}
 	}, [filter, widthSize])
+
+	useEffect(() => {
+		if (category?.value === 5) {
+			if (filterList && filterList.length) {
+				let temp = filterList
+					.map((_f, _i) => ({
+						..._f,
+						order: refrigeratorFiltersCustomSort.find(
+							item =>
+								_f?.title &&
+								item.toLowerCase().includes(_f?.title.toLowerCase())
+						)
+							? _i
+							: _i + filterList.length
+					}))
+					.sort((a, b) => a.order - b.order)
+				setSortedFilterList(temp)
+			}
+		} else setSortedFilterList(filterList)
+	}, [filterList])
 
 	useEffect(() => {
 		if (widthSize < 768) setFilterCollapse(false)
@@ -100,18 +130,18 @@ const ProductFiltersGroup = ({
 					</span>
 				</button>
 				<ul ref={checkboxWrapper} className='filter-list'>
-					{filterList.map(
+					{sortedFilterList.map(
 						(item, index) =>
-							item.title && (
+							item?.title && (
 								<ProductFilterItemV2
 									checkboxConditionRender={checkBoxCondition}
 									filterController={filterController}
 									data={item}
 									passedFilter={passedFilter}
-									filterParentId={filter.content_record_id}
-									filterType={filter.content_type}
+									filterParentId={filter?.content_record_id}
+									filterType={filter?.content_type}
 									total={total}
-									key={`filter-${item.title}-${index}`}
+									key={`filter-${item?.title}-${index}`}
 									category={category}
 									showProductFilterCount={showProductFilterCount}
 								/>
