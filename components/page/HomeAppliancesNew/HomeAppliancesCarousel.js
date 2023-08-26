@@ -42,7 +42,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 					roundLengths={true}
 					slidesPerView={'auto'}
 					slidesPerGroup={1}
-					initialSlide={2}
+					initialSlide={windowSize[0] >= 1000 ? 2 : 1}
 					spaceBetween={16}
 					centeredSlides={true}
 					centeredSlidesBounds={true}
