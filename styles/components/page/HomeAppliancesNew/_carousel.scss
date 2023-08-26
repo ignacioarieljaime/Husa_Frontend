@@ -30,7 +30,9 @@
 	> .title {
 		max-width: 700px;
 		margin: 0 auto 60px;
+
 		* {
+			margin: 0;
 			font-style: normal;
 			font-weight: 400;
 			line-height: 78px;
@@ -38,8 +40,8 @@
 			color: #fff;
 			letter-spacing: -1.2px;
 			@include mq(768) {
-				line-height: 58px;
-				font-size: 48px;
+				line-height: 50px; /* 147.059% */
+				font-size: 34px;
 			}
 			u {
 				color: #00aaa6;
@@ -58,7 +60,7 @@
 		line-height: 22px;
 	}
 	.slider {
-		padding: 0 12px 50px;
+		padding: 0 12px 58px;
 		&.justify_content_center {
 			.swiper-wrapper {
 				justify-content: center;
@@ -152,6 +154,9 @@
 				height: 280px;
 				width: 100%;
 				text-align: center;
+				@include mq(768) {
+					margin-bottom: 4px;
+				}
 				@include mq(400) {
 					height: 100%;
 				}
