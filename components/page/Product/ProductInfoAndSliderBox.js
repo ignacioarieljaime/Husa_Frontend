@@ -14,10 +14,12 @@ function ProductInfoAndSliderBox({ pim, data }) {
 	const [screenSize, setScreenSize] = useState([])
 	useEffect(() => {
 		if (Array.isArray(pim?.series[0]?.values)) {
-			let addSizeToItem = pim?.series[0].values.map(item => ({
-				...item,
-				size: item?.title ? Number(item?.title?.replaceAll('"', '')) : 0
-			}))
+			let addSizeToItem = pim?.series[0].values
+				.filter(item => item?.title && item?.productsList[0]?.status_id === 1)
+				.map(item => ({
+					...item,
+					size: item?.title ? Number(item?.title?.replaceAll('"', '')) : 0
+				}))
 			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
 		}
 	}, [])
