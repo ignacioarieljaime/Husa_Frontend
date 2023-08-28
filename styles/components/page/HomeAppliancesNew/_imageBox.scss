@@ -11,6 +11,9 @@
 
 		.title {
 			margin-bottom: 24px;
+			@include mq(768) {
+				margin-bottom: 36px;
+			}
 			* {
 				font-size: 60px;
 				font-style: normal;
@@ -20,8 +23,8 @@
 				letter-spacing: -1.2px;
 				margin: 0;
 				@include mq(768) {
-					line-height: 58px;
-					font-size: 48px;
+					font-size: 34px;
+					line-height: 58px; /* 170.588% */
 				}
 			}
 		}
@@ -34,10 +37,21 @@
 			text-transform: uppercase;
 			font-size: 16px;
 			line-height: 22px;
+			@include mq(768) {
+				margin-bottom: 6px;
+				font-size: 14px;
+				line-height: 22px; /* 157.143% */
+				letter-spacing: 3px;
+			}
 		}
 		.image {
 			border-radius: 30px;
 			object-fit: cover;
+		}
+		.n-btn {
+			@include mq(768) {
+				margin-bottom: 37px !important;
+			}
 		}
 	}
 }
