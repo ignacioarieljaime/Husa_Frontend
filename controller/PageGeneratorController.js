@@ -80,6 +80,11 @@ export async function getServerSideProps(context) {
 			return null
 		})
 
+		if (data?.widgets || data?.widgets.length) {
+			return {
+				notFound: true
+			}
+		}
 	if (pim === 404) {
 		return {
 			notFound: true
