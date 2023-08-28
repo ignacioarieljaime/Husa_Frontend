@@ -50,15 +50,7 @@ function RegisterForm({ data }) {
 	})
 	const [errors, setErrors] = useState(null)
 	const [tickedSended, setTickedSended] = useState(null)
-
 	useEffect(() => {
-		setDataSchema({
-			...dataSchema,
-			product_category: router.query?.type || router.query?.ProductCategory,
-			product_model: router.query?.model || null,
-			product_serial_number: router.query?.SerialNumber
-		})
-
 		!router.query?.ProductCategory && getCategories()
 
 		if (router.query?.SerialNumber) {
@@ -68,9 +60,17 @@ function RegisterForm({ data }) {
 
 	useEffect(() => {
 		if (router.query?.InternalModelNumber && models?.length === 1) {
-			setDataSchema({ ...dataSchema, product_model: models[0]?.name })
+			setDataSchema({
+				...dataSchema,
+				product_model: models[0]?.name,
+				product_category: router.query?.ProductCategory,
+				product_serial_number: router.query?.SerialNumber
+			})
 		} else {
-			setDataSchema({ ...dataSchema, product_model: null })
+			setDataSchema({
+				...dataSchema,
+				product_model: null
+			})
 		}
 	}, [models])
 
@@ -241,7 +241,7 @@ function RegisterForm({ data }) {
 			email: null,
 			phone_number: null,
 			postal_code: null,
-			product_category: router.query?.type || router.query?.ProductCategory,
+			product_category: router.query?.ProductCategory,
 			product_model: router.query?.model || null,
 			product_serial_number: router.query?.SerialNumber,
 			purchased_from: null,
@@ -303,7 +303,7 @@ function RegisterForm({ data }) {
 					{router.query?.ProductCategory ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
-								placeholder={'SERIAL NUMBER'}
+								placeholder={'PRODUCT CATEGORY'}
 								required={true}
 								disabled={dataSchema?.product_category}
 								value={dataSchema?.product_category}
@@ -350,7 +350,7 @@ function RegisterForm({ data }) {
 					{router.query?.InternalModelNumber && !router.query?.SerialNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
-								placeholder={'SERIAL NUMBER'}
+								placeholder={'PLEASE SELECT YOUR MODEL'}
 								required={true}
 								disabled={dataSchema?.product_model}
 								value={dataSchema?.product_model}
