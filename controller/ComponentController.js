@@ -36,7 +36,7 @@ function Index${_page.id}({pim,data}) {
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>
       	<section>
-				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
+				{data?.widgets && data?.widgets.length ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
 					<>
 						<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
 							<div className='error_page'>
@@ -235,7 +235,7 @@ function Preview({pim,data}) {
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>
       	<section>
-				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
+				{data?.widgets && data?.widgets.length ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
 					<>
 						<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
 							<div className='error_page'>
@@ -366,7 +366,7 @@ return (
 			: JSON.stringify(_page.meta)
 	}}>
       	<section>
-				{data?.widgets ? data.widgets.map(block => componentGenerator(block, null , block.name === 'Header' ? data.notifications : null )) : 	<div
+				{data?.widgets && data?.widgets.length ? data.widgets.map(block => componentGenerator(block, null , block.name === 'Header' ? data.notifications : null )) : 	<div
 				style={{
 					height: '100vh',
 					display: 'flex',

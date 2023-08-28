@@ -17,7 +17,7 @@ ${ComponentList.map(
 function Index({data,pim}) {
 	const [components, setComponents] = useState([])
 	useEffect(() => {
-		let componentName =	data && data.widgets ? data.widgets.map(item => item.name) : []
+		let componentName =	data && data.widgets && data?.widgets.length ? data.widgets.map(item => item.name) : []
 		setComponents(componentName)
 	}, [])
 
