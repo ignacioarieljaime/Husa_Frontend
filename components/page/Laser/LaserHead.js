@@ -28,25 +28,27 @@ function LaserHead({ data: { structure } }) {
 								{structure?.paragraph?.value}
 							</p>
 						</div>
-						<Link
-							target={
-								structure?.link?.target ? structure?.link?.target : '_self'
-							}
-							href={structure?.link?.value}>
-							<a
+						{structure?.link?.value && (
+							<Link
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='btn btn-outline-light rounded-5 px-8 mt-12'>
-								{structure?.link?.title}
-								{structure?.link?.target === '_blank' && (
-									<img
-										style={{ marginLeft: '10px' }}
-										src={OpenPageOnNewTab.src}
-									/>
-								)}
-							</a>
-						</Link>
+								href={structure?.link?.value}>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='btn btn-outline-light rounded-5 px-8 mt-12'>
+									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
+								</a>
+							</Link>
+						)}
 					</article>
 				</div>
 			</div>
