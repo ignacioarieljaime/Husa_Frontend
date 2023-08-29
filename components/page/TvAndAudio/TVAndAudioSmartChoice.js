@@ -32,25 +32,27 @@ function TVAndAudioSmartChoice({ data: { structure } }) {
 								width='80%'
 							/>
 						</div>
-						<Link
-							target={
-								structure?.link?.target ? structure?.link?.target : '_self'
-							}
-							href={structure?.link?.value}>
-							<a
+						{structure?.link?.value && (
+							<Link
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='text-decoration-none text-primary-new d-block fs-8 text-uppercase mt-8'>
-								{structure?.link?.title}{' '}
-								{structure?.link?.target === '_blank' && (
-									<img
-										style={{ marginLeft: '10px' }}
-										src={OpenPageOnNewTab.src}
-									/>
-								)}
-							</a>
-						</Link>
+								href={structure?.link?.value}>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='text-decoration-none text-primary-new d-block fs-8 text-uppercase mt-8'>
+									{structure?.link?.title}{' '}
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
+								</a>
+							</Link>
+						)}
 					</article>
 				</div>
 			</div>

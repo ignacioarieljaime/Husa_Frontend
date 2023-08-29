@@ -24,11 +24,13 @@ function UHDIntro({ data: { structure } }) {
 							dangerouslySetInnerHTML={{
 								__html: text
 							}}></div>
-						<a
-							href={structure?.link?.value}
-							className='btn btn-outline-light rounded-5 px-8 mt-12'>
-							{structure?.link?.title}
-						</a>
+						{structure?.link?.value && (
+							<a
+								href={structure?.link?.value}
+								className='btn btn-outline-light rounded-5 px-8 mt-12'>
+								{structure?.link?.title}
+							</a>
+						)}
 					</article>
 				</div>
 			</div>
