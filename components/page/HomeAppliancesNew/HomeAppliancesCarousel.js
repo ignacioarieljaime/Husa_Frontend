@@ -55,34 +55,34 @@ const HomeAppliancesCarousel = ({ data }) => {
 							slidesPerView: 'auto',
 							slidesPerGroup: 6
 						},
-						1920: {
-							slidesPerView: 4,
-							slidesPerGroup: 6
-						},
-						1440: {
+						1300: {
 							slidesPerView: 5,
-							slidesPerGroup: 3
+							slidesPerGroup: 5
 						},
-						1200: {
+						1000: {
 							slidesPerView: 4,
-							slidesPerGroup: 3
+							slidesPerGroup: 4
 						},
-						1050: {
-							slidesPerView: 3,
-							slidesPerGroup: 3
-						},
-						991: {
+						730: {
 							slidesPerView: 3,
 							slidesPerGroup: 2
 						},
-						768: {
-							slidesPerView: 3,
-							slidesPerGroup: 2
-						},
-						550: {
-							slidesPerView: 1.8,
-							slidesPerGroup: 2
+						500: {
+							slidesPerView: 2,
+							slidesPerGroup: 1
 						}
+						// 991: {
+						// 	slidesPerView: 3,
+						// 	slidesPerGroup: 2
+						// },
+						// 768: {
+						// 	slidesPerView: 3,
+						// 	slidesPerGroup: 2
+						// },
+						// 550: {
+						// 	slidesPerView: 1.8,
+						// 	slidesPerGroup: 2
+						// }
 					}}
 					className={`slider ${justify} ${
 						structure?.list?.value.length > 4 ? '' : 'hide_controls'
