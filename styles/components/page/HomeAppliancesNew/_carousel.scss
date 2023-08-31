@@ -144,7 +144,7 @@
 			justify-content: space-between;
 			align-items: center;
 			text-align: center;
-			@include mq(400) {
+			@include mq(730) {
 				max-width: unset;
 			}
 			.slider_image_box {
@@ -155,10 +155,8 @@
 				height: 280px;
 				width: 100%;
 				text-align: center;
-				@include mq(768) {
+				@include mq(730) {
 					margin-bottom: 4px;
-				}
-				@include mq(400) {
 					height: 100%;
 				}
 				.slider_image_wrapper {

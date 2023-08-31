@@ -48,11 +48,16 @@ const HomeAppliancesCarousel = ({ data }) => {
 					centeredSlidesBounds={true}
 					navigation={true}
 					pagination={{
-						dynamicBullets: true
+						dynamicBullets: true,
+						clickable: true
 					}}
 					breakpoints={{
-						2200: {
+						2100: {
 							slidesPerView: 'auto',
+							slidesPerGroup: 7
+						},
+						1780: {
+							slidesPerView: 6,
 							slidesPerGroup: 6
 						},
 						1300: {
@@ -65,11 +70,12 @@ const HomeAppliancesCarousel = ({ data }) => {
 						},
 						730: {
 							slidesPerView: 3,
-							slidesPerGroup: 2
+							slidesPerGroup: 4
 						},
 						500: {
 							slidesPerView: 2,
-							slidesPerGroup: 1
+							slidesPerGroup: 2,
+							centeredSlides: false
 						}
 						// 991: {
 						// 	slidesPerView: 3,
