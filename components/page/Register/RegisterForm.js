@@ -60,13 +60,23 @@ function RegisterForm({ data }) {
 	}, [])
 
 	useEffect(() => {
-		if (router.query?.InternalModelNumber && models?.length === 1) {
+		if (router.query?.InternalModelNumber) {
 			setDataSchema({
 				...dataSchema,
-				product_model: models[0]?.name,
 				product_category: router.query?.ProductCategory,
 				product_serial_number: router.query?.SerialNumber
 			})
+			if (models?.length === 1) {
+				setDataSchema({
+					...dataSchema,
+					product_model: models[0]?.name
+				})
+			} else if (models?.length >= 1) {
+				setDataSchema({
+					...dataSchema,
+					product_model: null
+				})
+			}
 		} else {
 			setDataSchema({
 				...dataSchema,
