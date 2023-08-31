@@ -80,7 +80,7 @@ export async function getServerSideProps(context) {
 			return null
 		})
 
-		if (data?.widgets || data?.widgets.length) {
+		if (!data?.widgets || data?.widgets.length == 0) {
 			return {
 				notFound: true
 			}
