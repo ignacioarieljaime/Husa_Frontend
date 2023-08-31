@@ -124,7 +124,7 @@ ${
 						}
 					}
 
-					if (data?.widgets || data?.widgets.length) {
+					if (!data?.widgets || data?.widgets.length == 0) {
 						return {
 							notFound: true
 						}
@@ -186,6 +186,11 @@ ${
 						notFound: true
 					}
 				}
+				if (!data?.widgets || data?.widgets.length == 0) {
+					return {
+						notFound: true
+					}
+				}
 					if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 						return {
 							notFound: true
@@ -220,6 +225,11 @@ ${
 				   if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 					return {
 						notFound: true
+					}
+					if (!data?.widgets || data?.widgets.length == 0) {
+						return {
+							notFound: true
+						}
 					}
 				} else {
 					return { props: { data }} 
@@ -327,7 +337,7 @@ ${
 				return null
 			})
 	}
-	if (data?.widgets || data?.widgets.length) {
+	if (!data?.widgets || data?.widgets.length == 0) {
 		return {
 			notFound: true
 		}
