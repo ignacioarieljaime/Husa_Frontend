@@ -14,15 +14,17 @@
 				}
 			}
 		}
-		.slider {
-			.slider_item {
-				.title {
-					color: #000;
+		.slider_container {
+			.slider {
+				.slider_item {
+					.title {
+						color: #000;
+					}
 				}
-			}
-			.swiper-pagination {
-				.swiper-pagination-bullet {
-					background-color: #444;
+				.swiper-pagination {
+					.swiper-pagination-bullet {
+						background-color: #444;
+					}
 				}
 			}
 		}
