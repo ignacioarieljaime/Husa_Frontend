@@ -104,6 +104,7 @@
 
 		h6 {
 			position: absolute;
+			padding: 0 16px;
 			bottom: 32px;
 			left: 0;
 			width: 100%;
@@ -131,7 +132,7 @@
 			@include mq(768) {
 				width: 40px;
 			}
-			pointer-events: none;
+			// pointer-events: none;
 			background: #8c8f8f;
 			border-radius: 1000px;
 			transition: all 0.3s;

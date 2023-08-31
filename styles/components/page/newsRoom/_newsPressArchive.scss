@@ -23,9 +23,7 @@
 				display: grid;
 				gap: 16px;
 				margin-bottom: 65px;
-				@include mq(600) {
-					gap: 8px;
-				}
+
 				> div {
 					height: 182px;
 					display: flex;

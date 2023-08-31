@@ -49,9 +49,15 @@ function CompareProduct() {
 										</td>
 									))}
 							</tr>
-							{products?.customFields.map((item, index) => (
-								<CompareProductItem data={item} key={'compare-item-' + index} />
-							))}
+							{products?.customFields.map(
+								(item, index) =>
+									item.id !== 5 && (
+										<CompareProductItem
+											data={item}
+											key={'compare-item-' + index}
+										/>
+									)
+							)}
 							{products?.properties.map((item, index) => (
 								<CompareProductItem data={item} key={'compare-item-' + index} />
 							))}

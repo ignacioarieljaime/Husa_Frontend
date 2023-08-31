@@ -12,8 +12,8 @@
 			letter-spacing: -1.2px;
 			margin: 0;
 			@include mq(768) {
-				line-height: 58px;
-				font-size: 48px;
+				font-size: 34px;
+				line-height: 58px; /* 170.588% */
 			}
 		}
 	}
@@ -26,6 +26,12 @@
 		text-transform: uppercase;
 		font-size: 16px;
 		line-height: 22px;
+		@include mq(768) {
+			margin-bottom: 6px;
+			font-size: 14px;
+			line-height: 22px; /* 157.143% */
+			letter-spacing: 3px;
+		}
 	}
 	.cards {
 		max-width: 1340px;
@@ -336,8 +342,8 @@
 					text-decoration: underline;
 				}
 				@include mq(768) {
-					line-height: 52px;
-					font-size: 42px;
+					font-size: 28px;
+					line-height: 52px; /* 152.941% */
 				}
 			}
 		}
