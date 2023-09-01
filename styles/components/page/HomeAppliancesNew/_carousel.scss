@@ -21,11 +21,6 @@
 						color: #000;
 					}
 				}
-				.swiper-pagination {
-					.swiper-pagination-bullet {
-						background-color: #444;
-					}
-				}
 			}
 		}
 	}
@@ -131,7 +126,11 @@
 				bottom: 0;
 				width: 120px !important;
 				.swiper-pagination-bullet {
-					background-color: #eee;
+					background-color: #8c8f8f;
+					opacity: 1;
+					&.swiper-pagination-bullet-active {
+						background-color: #00aaa6;
+					}
 				}
 			}
 			.swiper-wrapper {
