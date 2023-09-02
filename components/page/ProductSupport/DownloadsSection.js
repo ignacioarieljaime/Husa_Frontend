@@ -19,16 +19,18 @@ const DownloadsSection = ({ data, pim }) => {
 				<div className='text_box'>
 					<h4
 						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h4>
+						dangerouslySetInnerHTML={{
+							__html: `<p>` + pim?.name + ` Downloads</p>`
+						}}></h4>
 					<div
 						className='subtitle'
 						dangerouslySetInnerHTML={{
-							__html: content?.subtitle?.value
+							__html: `<p>Find documentation for your Hisense product below.</p>`
 						}}></div>
 					<div
 						className='description'
 						dangerouslySetInnerHTML={{
-							__html: content?.description?.value
+							__html: `<p>The latest firmware and software is available here.</p>`
 						}}></div>
 				</div>
 				<div className='table_wrapper'>
