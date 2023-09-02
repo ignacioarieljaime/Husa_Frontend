@@ -951,3 +951,210 @@
 		}
 	}
 }
+
+.downloads_section {
+	padding: 64px 16px;
+	border-bottom: 1px solid #c7c7c9;
+	@include mq(768) {
+		padding: 32px 16px;
+	}
+	.text_box {
+		text-align: center;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-direction: column;
+		gap: 32px;
+		margin-bottom: 32px;
+		.title {
+			margin: 0;
+			* {
+				margin: 0;
+				font-size: 34px;
+				font-weight: 400;
+				line-height: 45.9px; /* 135% */
+				letter-spacing: -0.68px;
+				color: #000;
+				@include mq(768) {
+					font-size: 20px;
+					line-height: 25px; /* 125% */
+					letter-spacing: -0.4px;
+				}
+			}
+		}
+		.subtitle {
+			margin: 0;
+			* {
+				margin: 0;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 21.6px; /* 135% */
+				letter-spacing: -0.32px;
+				color: #000;
+				@include mq(768) {
+					font-size: 14px;
+					line-height: 18.9px; /* 135% */
+					letter-spacing: -0.28px;
+				}
+			}
+		}
+		.description {
+			margin: 0;
+			* {
+				margin: 0;
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 300;
+				line-height: 21.6px; /* 135% */
+				color: #000;
+				@include mq(768) {
+					font-size: 14px;
+					line-height: 18.9px; /* 135% */
+					letter-spacing: -0.28px;
+				}
+			}
+		}
+	}
+	.table_wrapper {
+		padding: 32px 0;
+		max-width: 840px;
+		width: 100%;
+		margin: 0 auto;
+		@include mq(768) {
+			padding: 0;
+		}
+		.files_table {
+			border: 1px solid #f0f2f2;
+			border-radius: 25px;
+			overflow: hidden;
+			@include mq(768) {
+				border-radius: 12px;
+			}
+			.table_row {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				grid-template-rows: repeat(auto-fill, 1fr);
+				justify-content: center;
+				align-items: center;
+				align-content: center;
+				gap: 8px;
+				padding: 32px;
+				border-bottom: 1px solid #f0f2f2;
+				&:last-child {
+					border-bottom: none;
+				}
+				@include mq(768) {
+					overflow: hidden;
+					display: block;
+					padding: 16px;
+					gap: 0;
+					transition: all 300ms ease-in;
+				}
+				&:first-child {
+					background: #f0f2f2;
+					padding: 32px;
+					@include mq(768) {
+						padding: 24px 16px;
+					}
+					* {
+						font-size: 16px !important;
+						font-weight: 400;
+						line-height: 21.6px !important; /* 135% */
+						letter-spacing: -0.32px !important;
+						color: #000;
+						@include mq(768) {
+							font-size: 14px;
+							line-height: 18.9px; /* 135% */
+							letter-spacing: -0.28px;
+						}
+					}
+				}
+				> *:nth-child(n + 2) {
+					text-align: center;
+				}
+				.file_title {
+					font-size: 20px;
+					font-weight: 400;
+					line-height: 25px; /* 125% */
+					letter-spacing: -0.4px;
+					color: #000;
+					@include mq(768) {
+						font-size: 14px;
+						line-height: 18.9px; /* 135% */
+						letter-spacing: -0.28px;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						margin-bottom: 24px;
+						gap: 8px;
+					}
+				}
+				.size {
+					font-size: 12px;
+					font-weight: 400;
+					line-height: 16.2px; /* 135% */
+					color: #000;
+				}
+				.file_type {
+					border-radius: 6px;
+					background: #50b7c0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 8px;
+					padding: 8px;
+					width: fit-content;
+					height: fit-content;
+					margin: auto;
+
+					span {
+						font-size: 12px;
+						font-weight: 400;
+						line-height: 16.2px; /* 135% */
+						color: #fff;
+					}
+
+					@include mq(768) {
+						margin-right: 0;
+					}
+				}
+				.info {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: 24px;
+					text-align: start;
+					gap: 8px;
+					.size_title {
+						font-size: 14px;
+						font-weight: 400;
+						line-height: 18.9px; /* 135% */
+						letter-spacing: -0.28px;
+						color: #000;
+					}
+				}
+				.download_item {
+					border-radius: 1000px;
+					border: 1px solid #000;
+					background: #000;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 16px;
+					max-width: 256px;
+					width: 100%;
+					margin: 0 auto;
+					text-decoration: none;
+					span {
+						text-align: start;
+						font-size: 14px;
+						font-weight: 400;
+						line-height: 18.9px; /* 135% */
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
