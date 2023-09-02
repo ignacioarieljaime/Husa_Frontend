@@ -38,9 +38,7 @@ const DownloadSectionResponsiveItem = ({ data, windowSize }) => {
 				<div className='info'>
 					<div>
 						<div className='size_title'>Size</div>
-						<div className='size'>
-							{data.caption ? data.caption : data.title}
-						</div>
+						<div className='size'>22 KB</div>
 					</div>
 					<div className='file_type'>
 						{data.type_id === 3 ? (

@@ -50,9 +50,7 @@ const DownloadsSection = ({ data, pim }) => {
 												<div className='file_title'>
 													{item.caption ? item.caption : item.title}
 												</div>
-												<div className='size'>
-													{item.caption ? item.caption : item.title}
-												</div>
+												<div className='size'>22 KB</div>
 												<div className='file_type'>
 													{item.type_id === 3 ? (
 														<>
