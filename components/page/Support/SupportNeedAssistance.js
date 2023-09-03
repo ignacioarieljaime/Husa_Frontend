@@ -1,22 +1,19 @@
 import React from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
-// image
-import ImageBg from 'public/assets/images/support/support-bg.jpg'
 import Link from 'next/link'
-import CustomImage from 'components/common/CustomImage'
 
 function SupportNeedAssistance({ data }) {
 	let { structure } = data
 	return (
 		<section id={data.name + data.id}>
-			<div className='heading support-heading'>
-				<CustomImage
+			<div className='support_contact'>
+				<img
 					src={structure?.image?.src}
 					alt={structure?.image?.alt}
-					wrapperWidth='100%'
+					className='background'
 				/>
-				<div className='heading-text'>
-					<h4 className='text-white fs-2qx mb-5' style={{ color: '#fff' }}>
+				<div className='content'>
+					<h4 className='title' style={{ color: '#fff' }}>
 						{structure?.title?.value}
 					</h4>
 					<Link
@@ -26,7 +23,7 @@ function SupportNeedAssistance({ data }) {
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							className='btn btn-light rounded-5 px-4 py-2'>
+							className='n-btn outline-white bg-transparent'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img
