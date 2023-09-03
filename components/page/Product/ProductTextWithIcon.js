@@ -14,6 +14,7 @@ const ProductTextWithIcon = ({ data }) => {
 						image={item.image}
 						title={item.title.value}
 						description={item.description.value}
+						textAlignment={structure?.textAlignment?.value}
 					/>
 				))}
 			</div>
