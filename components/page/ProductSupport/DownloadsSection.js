@@ -95,6 +95,7 @@ const DownloadsSection = ({ data, pim }) => {
 											<DownloadSectionResponsiveItem
 												key={index}
 												data={item}
+												openStatus={index === 0}
 												windowSize={windowSize}
 											/>
 										)

@@ -120,6 +120,7 @@ const FirmWareDownloadSection = ({ data, pim }) => {
 											<FirmWareDownloadSectionResponsiveItem
 												key={index}
 												data={item}
+												openStatus={index === 0}
 												windowSize={windowSize}
 											/>
 										))}

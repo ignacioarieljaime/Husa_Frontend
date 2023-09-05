@@ -323,6 +323,9 @@
 	position: relative;
 	width: 100%;
 	height: 400px;
+	@include mq(768) {
+		height: 320px;
+	}
 	.background {
 		position: absolute;
 		left: 0;
@@ -354,6 +357,7 @@
 				font-size: 34px;
 				line-height: 45.9px; /* 135% */
 				letter-spacing: -0.68px;
+				margin: 0;
 			}
 		}
 		.n-btn {

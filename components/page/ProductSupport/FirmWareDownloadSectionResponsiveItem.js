@@ -8,11 +8,19 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-const FirmWareDownloadSectionResponsiveItem = ({ data, windowSize }) => {
+const FirmWareDownloadSectionResponsiveItem = ({
+	data,
+	windowSize,
+	openStatus
+}) => {
 	const [open, setOpen] = useState(true)
 	const accordionItem = useRef()
 	const accordionItemHeight = useRef()
 	const accordionButtonHeight = useRef()
+
+	useEffect(() => {
+		setOpen(openStatus)
+	}, [])
 	useEffect(() => {
 		if (open) {
 			accordionItem.current.style.maxHeight =
@@ -28,7 +36,7 @@ const FirmWareDownloadSectionResponsiveItem = ({ data, windowSize }) => {
 	return (
 		<div className='table_row' ref={accordionItem}>
 			<div
-				className='button_row'
+				className={`button_row ${open ? 'open' : ''}`}
 				ref={accordionButtonHeight}
 				onClick={() => setOpen(prev => !prev)}>
 				<div
@@ -47,7 +55,12 @@ const FirmWareDownloadSectionResponsiveItem = ({ data, windowSize }) => {
 					)}
 				</div>
 				<div className='size'>U8H-v3.0</div>
-				<FontAwesomeIcon icon={faChevronCircleRight} size='lg' color={'#000'} />
+				<FontAwesomeIcon
+					className='icon'
+					icon={faChevronCircleRight}
+					size='lg'
+					color={'#000'}
+				/>
 			</div>
 
 			{/* <div

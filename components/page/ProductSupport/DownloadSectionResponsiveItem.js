@@ -8,11 +8,16 @@ import { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-const DownloadSectionResponsiveItem = ({ data, windowSize }) => {
+const DownloadSectionResponsiveItem = ({ data, windowSize, openStatus }) => {
 	const [open, setOpen] = useState(false)
 	const accordionItem = useRef()
 	const accordionItemHeight = useRef()
 	const accordionButtonHeight = useRef()
+
+	useEffect(() => {
+		setOpen(openStatus)
+	}, [])
+
 	useEffect(() => {
 		if (open) {
 			accordionItem.current.style.maxHeight =
@@ -26,13 +31,18 @@ const DownloadSectionResponsiveItem = ({ data, windowSize }) => {
 		}
 	}, [open, windowSize])
 	return (
-		<div className='table_row' ref={accordionItem}>
+		<div className={`table_row ${open ? 'open' : ''}`} ref={accordionItem}>
 			<div
 				className='file_title'
 				onClick={() => setOpen(prev => !prev)}
 				ref={accordionButtonHeight}>
 				{data.caption ? data.caption : data.title}
-				<FontAwesomeIcon icon={faChevronCircleRight} size='lg' color={'#000'} />
+				<FontAwesomeIcon
+					className='icon'
+					icon={faChevronCircleRight}
+					size='lg'
+					color={'#000'}
+				/>
 			</div>
 			<div ref={accordionItemHeight}>
 				<div className='info'>
