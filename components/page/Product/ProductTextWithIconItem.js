@@ -10,8 +10,8 @@ const ProductTextWithIconItem = ({
 	return (
 		<div
 			style={{
-				textAlign: textAlignment === 'ltr' ? 'start' : 'center',
-				alignItems: textAlignment === 'ltr' ? 'flex-start' : 'center'
+				textAlign: textAlignment === 'center' ? 'center' : 'start',
+				alignItems: textAlignment === 'center' ? 'center' : 'flex-start'
 			}}
 			className={`col-12 ${isRow ? 'col-md-6' : ''} text_content`}>
 			<img
@@ -19,8 +19,8 @@ const ProductTextWithIconItem = ({
 				alt={image.alt}
 				className='image'
 				style={{
-					margin: textAlignment === 'ltr' ? '0' : '0 auto',
-					maxWidth: textAlignment === 'ltr' ? '45px' : '200px'
+					margin: textAlignment === 'center' ? '0 auto' : '0',
+					maxWidth: textAlignment === 'center' ? '200px' : '45px'
 				}}
 			/>
 			<h3 className='title'>{title}</h3>
