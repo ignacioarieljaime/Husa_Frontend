@@ -7,17 +7,25 @@ function ProductStaticContent({ data }) {
 		setText(structure?.paragraph?.value)
 	}, [])
 	return (
-		<div id={data.name + data.id} className='product_static_content'>
-			<article className='article'>
-				<h4 style={{ fontSize: '48px', lineHeight: 'unset' }}>
-					{structure.title.value}
-				</h4>
-				<div
-					dangerouslySetInnerHTML={{
-						__html: text
-					}}></div>
-			</article>
-		</div>
+		<section>
+			<div id={data.name + data.id} className='product_static_content'>
+				<div className='content'>
+					{structure?.image?.src && (
+						<img
+							src={structure?.image?.src}
+							alt={structure?.image?.alt}
+							className='image'
+						/>
+					)}
+					<h4 className='title'>{structure.title.value}</h4>
+					<div
+						className='text'
+						dangerouslySetInnerHTML={{
+							__html: text
+						}}></div>
+				</div>
+			</div>
+		</section>
 	)
 }
 

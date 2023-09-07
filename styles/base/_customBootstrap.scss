@@ -2407,25 +2407,6 @@ header {
 	}
 }
 
-.product_static_content {
-	@include mqm(1200) {
-		h4 {
-			font-size: 42px;
-			margin-bottom: 34px;
-		}
-	}
-
-	h4 {
-		color: #292929 !important;
-	}
-
-	p {
-		line-height: 30px !important;
-		color: #292929 !important;
-		margin-bottom: 0 !important;
-	}
-}
-
 .feature_block_item {
 	h3 {
 		color: #000 !important;
