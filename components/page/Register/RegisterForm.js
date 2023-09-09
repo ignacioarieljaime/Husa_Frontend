@@ -379,9 +379,13 @@ function RegisterForm({ data }) {
 								}}
 							/>
 							<div className='input_error_message'>
-								{errors?.product_model &&
-									errors?.product_model[0] +
-										' Please make sure you have selected a product model from the list'}
+								{errors?.product_model
+									? errors?.product_model[0] +
+									  ' Please make sure you have selected a product model from the list'
+									: router.query?.ProductCategory &&
+									  errors?.ModelNumber &&
+									  errors?.ModelNumber[0] +
+											' Please make sure you have selected a product model from the list'}
 							</div>
 						</div>
 					) : null}
