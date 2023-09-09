@@ -44,32 +44,65 @@ function LandingSlider({ data }) {
 				className='home-header-carousel lower-main'>
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
-						<div className='carousel-item-wrapper'>
-							<div
-								className='w-100 h-100 '
-								style={{
-									background: `url(${
-										size[0] < 768
-											? item?.mobile?.src
-											: size[0] > 768 && size[0] < 1027
-											? item?.tablet?.src
-											: item?.desktop?.src
-									})`
-								}}>
-								{item?.url?.value && (
-									<Link
-										target={item?.url?.target ? item?.url?.target : '_self'}
-										href={item?.url?.value ? item?.url?.value : ''}>
-										<a
-											className={
-												structure?.theme?.value !== 'dark' && 'white_button'
-											}>
-											{item?.url?.title}
-										</a>
-									</Link>
-								)}
+						{item?.url?.value ? (
+							<Link
+								target={item?.url?.target ? item?.url?.target : '_self'}
+								href={item?.url?.value ? item?.url?.value : ''}>
+								<a className='carousel-item-wrapper'>
+									<div
+										className='w-100 h-100 '
+										style={{
+											background: `url(${
+												size[0] < 768
+													? item?.mobile?.src
+													: size[0] > 768 && size[0] < 1027
+													? item?.tablet?.src
+													: item?.desktop?.src
+											})`
+										}}>
+										{item?.url?.value && (
+											<Link
+												target={item?.url?.target ? item?.url?.target : '_self'}
+												href={item?.url?.value ? item?.url?.value : ''}>
+												<a
+													className={
+														structure?.theme?.value !== 'dark' && 'white_button'
+													}>
+													{item?.url?.title}
+												</a>
+											</Link>
+										)}
+									</div>
+								</a>
+							</Link>
+						) : (
+							<div className='carousel-item-wrapper'>
+								<div
+									className='w-100 h-100 '
+									style={{
+										background: `url(${
+											size[0] < 768
+												? item?.mobile?.src
+												: size[0] > 768 && size[0] < 1027
+												? item?.tablet?.src
+												: item?.desktop?.src
+										})`
+									}}>
+									{item?.url?.value && (
+										<Link
+											target={item?.url?.target ? item?.url?.target : '_self'}
+											href={item?.url?.value ? item?.url?.value : ''}>
+											<a
+												className={
+													structure?.theme?.value !== 'dark' && 'white_button'
+												}>
+												{item?.url?.title}
+											</a>
+										</Link>
+									)}
+								</div>
 							</div>
-						</div>
+						)}
 					</SwiperSlide>
 				))}
 			</Swiper>
