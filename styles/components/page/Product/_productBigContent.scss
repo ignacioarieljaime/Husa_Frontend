@@ -84,9 +84,13 @@
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
+		gap: 0;
+		@include mq(768) {
+			gap: 24px 0;
+		}
 		.text_content {
 			display: flex;
-			justify-content: center;
+			justify-content: flex-start;
 			align-items: center;
 			gap: 32px;
 			flex-direction: column;
