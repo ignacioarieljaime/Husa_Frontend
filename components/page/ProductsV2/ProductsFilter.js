@@ -56,7 +56,8 @@ const ProductsFilter = ({
 					{
 						id: filterWrapperExisted.id,
 						type: _filterType,
-						values: [...filterWrapperExisted.values, _filter.title]
+						values: [...filterWrapperExisted.values, _filter.title],
+						keys: [...filterWrapperExisted.values, _filter.value]
 					}
 				]
 			} else {
@@ -74,7 +75,8 @@ const ProductsFilter = ({
 						{
 							id: filterWrapperExisted.id,
 							type: _filterType,
-							values: removeExitItem
+							values: removeExitItem,
+							keys: removeExitItem
 						}
 					]
 				}
@@ -83,7 +85,8 @@ const ProductsFilter = ({
 			_filtersBox.push({
 				id: _filter.filterId,
 				type: _filterType,
-				values: [_filter.title]
+				values: [_filter.title],
+				keys: [_filter.filter_value]
 			})
 		}
 		filterCounterHandler(_filtersBox)
@@ -128,7 +131,7 @@ const ProductsFilter = ({
 							Clear Filters
 							{filterCounter > 0 ? (
 								<>
-									<span className='ms-2'>( {filterCounter} )</span>
+									<span className='ms-2'>{filterCounter}</span>
 								</>
 							) : (
 								''
@@ -166,7 +169,8 @@ const ProductsFilter = ({
 										sowMoreLimitation !== 4 ? 4 : filterListData.length
 									)
 								}
-								className='n-btn outline-black text-nowrap mx-2'>
+								style={{ height: '51px' }}
+								className='n-btn outline-black text-nowrap mx-2 p-4'>
 								{sowMoreLimitation === 4 ? 'Show More' : 'Show Less'}
 							</button>
 						) : null}

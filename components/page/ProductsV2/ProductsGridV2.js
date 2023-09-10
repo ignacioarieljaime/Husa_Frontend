@@ -20,6 +20,7 @@ const ProductsGridV2 = ({ data }) => {
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [text, setText] = useState(null)
 	const [totalCount, setTotalCount] = useState(0)
+	const [searchTerm, setSearchTerm] = useState('')
 	const router = useRouter()
 	const controller = new AbortController()
 	const options = [
@@ -45,7 +46,7 @@ const ProductsGridV2 = ({ data }) => {
 		} else {
 			getProductHandler()
 		}
-	}, [sortingMethod, router?.query?.filter])
+	}, [sortingMethod, router?.query?.filter, searchTerm])
 
 	const getProductHandler = async _filter => {
 		await requestController()
@@ -59,6 +60,19 @@ const ProductsGridV2 = ({ data }) => {
 
 	const getProducts = async _filter => {
 		setProducts('loading')
+		let newFilters = []
+		if (_filter && _filter.length !== 0)
+			newFilters = _filter.map(
+				_f =>
+					_f?.id &&
+					_f?.type &&
+					_f?.values && {
+						id: _f.id,
+						type: _f.type,
+						values: _f.values
+					}
+			)
+
 		if (_filter && _filter.length !== 0) {
 			router.replace(
 				{
@@ -91,10 +105,11 @@ const ProductsGridV2 = ({ data }) => {
 				router,
 				structure?.category.value,
 				structure?.subcategory?.value,
-				_filter,
+				newFilters,
 				sortingMethod && sortingMethod?.value !== 'featured'
 					? `&sort=${sortingMethod.value}`
 					: null,
+				searchTerm,
 				controller.signal
 			)
 			const newData = response.data.data
@@ -149,10 +164,14 @@ const ProductsGridV2 = ({ data }) => {
 					setFilters={setFilters}
 					sortValue={sortingMethod}
 					sortOnChange={setSortingMethod}
+					products={products}
+					categoryId={structure?.category.value}
+					searchTerm={searchTerm}
+					setSearchTerm={term => setSearchTerm(term)}
 				/>
 			)}
 
-			<div className='products-v2 mx-3 mx-md-13'>
+			<div id='products' className='products-v2 mx-3 mx-md-13'>
 				<div
 					className='products-sorting d-none d-md-block'
 					style={{ zIndex: '5' }}>

@@ -12,12 +12,13 @@ const FilterDropDown = props => {
 		content_type,
 		filterController,
 		allFilters,
-		dropdownStatus
+		selectedFilter
 	} = props
 	const router = useRouter()
 	const dropdown = useRef()
 	const [filterList, setFilterList] = useState([])
 	const [collapse, setCollapsed] = useState(true)
+	const [height, setHeight] = useState(0)
 
 	const filterHandler = _filterValue => {
 		filterController(
@@ -27,21 +28,16 @@ const FilterDropDown = props => {
 		)
 	}
 
-	useEffect(() => {
-		if (router?.query?.filter) {
-			let filter = JSON.parse(decodeURIComponent(router.query.filter))
-			if (filter.find(item => item.id === content_record_id))
-				return setCollapsed(false)
-			setCollapsed(true)
-		} else {
-			setCollapsed(true)
-		}
-	}, [router?.query?.filter, filter_values, allFilters])
-
-	useEffect(() => {
-		if (dropdownStatus === id) setTimeout(() => setCollapsed(false), 600)
-		return () => setCollapsed(true)
-	}, [dropdownStatus, dropdown?.current?.offsetHeight])
+	// useEffect(() => {
+	// 	if (router?.query?.filter) {
+	// 		let filter = JSON.parse(decodeURIComponent(router.query.filter))
+	// 		if (filter.find(item => item.id === content_record_id))
+	// 			return setCollapsed(false)
+	// 		setCollapsed(true)
+	// 	} else {
+	// 		setCollapsed(true)
+	// 	}
+	// }, [router?.query?.filter, filter_values, allFilters])
 
 	useEffect(() => {
 		if (name === 'CHANNELS' && filter_values[1]?.title.includes(' CH')) {
@@ -61,6 +57,15 @@ const FilterDropDown = props => {
 			setFilterList(filter_values)
 		}
 	}, [router?.query?.filter, filter_values])
+
+	useEffect(() => {
+		console.log(dropdown?.current?.offsetHeight)
+		if (!collapse) {
+			setHeight(dropdown?.current?.offsetHeight + 16)
+		} else {
+			setHeight(0)
+		}
+	}, [router?.query?.filter, allFilters, selectedFilter, collapse])
 
 	const checkedHandler = _title => {
 		if (router?.query?.filter) {
@@ -82,7 +87,7 @@ const FilterDropDown = props => {
 			</div>
 			<div
 				style={{
-					height: !collapse ? dropdown?.current?.offsetHeight + 'px' : 0
+					height: height + 'px'
 				}}
 				className='filter_list'>
 				<ul ref={dropdown}>
@@ -91,6 +96,7 @@ const FilterDropDown = props => {
 							filter?.title && (
 								<FilterDropDownItem
 									{...filter}
+									square
 									isChecked={checkedHandler(filter?.title)}
 									filterHandler={filterHandler}
 									allFilters={allFilters}

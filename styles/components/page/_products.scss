@@ -198,6 +198,18 @@
 							li {
 								padding: 8px 0;
 
+								.custom-checkbox {
+									border-radius: 3px;
+									border: 1px solid #383838;
+									display: flex;
+									justify-content: center;
+									align-items: center;
+									overflow: hidden;
+									&.square.checked {
+										border: none;
+										background-color: #00aaa6;
+									}
+								}
 								.filter-label {
 									font-size: 12px;
 									font-style: normal;
