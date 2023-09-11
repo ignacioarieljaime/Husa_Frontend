@@ -11,16 +11,35 @@ function CustomSelectBox({
 	className = '',
 	isSearchable,
 	placeholder,
-	rightText
+	rightText,
+	onValueClear,
+	dataSchemaValue
 }) {
 	const optionBox = useRef()
 	const [searchList, setSearchList] = useState([])
-	const [inputSearch, setInputSearch] = useState()
+	const [inputSearch, setInputSearch] = useState(null)
 	const [value, setValue] = useState()
 	let timeout = null
 
 	useEffect(() => {
-		if (title) setValue(title)
+		if (dataSchemaValue !== inputSearch) {
+			setValue(null)
+			onChange(null)
+		}
+	}, [inputSearch])
+	useEffect(() => {
+		setInputSearch(null)
+		if (title) {
+			setValue(title)
+		} else {
+			setValue(null)
+		}
+	}, [onValueClear])
+
+	useEffect(() => {
+		if (title) {
+			setValue(title)
+		}
 	}, [title])
 
 	const searchHandler = _value => {
@@ -93,12 +112,14 @@ function CustomSelectBox({
 									setTimeout(() => {
 										optionBox.current.style.opacity = '0'
 										optionBox.current.style.animation = 'HideList'
+										optionBox.current.style.zIndex = '-1'
 									}, 200)
 								}
 								value={inputSearch}
 								onFocus={() => {
 									optionBox.current.style.opacity = '1'
 									optionBox.current.style.animationName = 'none'
+									optionBox.current.style.zIndex = '5'
 								}}
 							/>
 							{!inputSearch && !value && rightText ? (
@@ -131,10 +152,7 @@ function CustomSelectBox({
 					)}
 				</div>
 			</div>
-			<ul
-				style={{ zIndex: 5 }}
-				ref={optionBox}
-				className='select-box-list top-100 w-100'>
+			<ul ref={optionBox} className='select-box-list top-100 w-100'>
 				{isSearchable && inputSearch?.length
 					? listGenerator(searchList)
 					: listGenerator(options)}
