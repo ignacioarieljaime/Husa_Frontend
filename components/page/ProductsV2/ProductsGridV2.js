@@ -41,16 +41,16 @@ const ProductsGridV2 = ({ data }) => {
 		setText(structure?.title?.value)
 	}, [])
 	useEffect(() => {
-		if (searchTerm && searchTerm.length) {
-			if (router.query.filter) {
-				getProductHandler(
-					JSON.parse(decodeURIComponent(router.query.filter), searchTerm)
-				)
-			} else {
-				getProductHandler()
-			}
+		if (router.query.filter) {
+			console.log('router second req')
+			getProductHandler(
+				JSON.parse(decodeURIComponent(router.query.filter)),
+				searchTerm
+			)
+		} else {
+			getProductHandler()
 		}
-	}, [sortingMethod, router?.query?.filter, searchTerm])
+	}, [sortingMethod, router?.query?.filter])
 
 	const getProductHandler = async (_filter, _term) => {
 		await requestController()
@@ -64,6 +64,8 @@ const ProductsGridV2 = ({ data }) => {
 
 	const getProducts = async (_filter, _term) => {
 		setProducts('loading')
+		console.log(_filter)
+		console.log(_term)
 		let newFilters = []
 
 		if (_filter && _filter.length !== 0) {

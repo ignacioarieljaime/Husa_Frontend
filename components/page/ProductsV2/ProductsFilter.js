@@ -125,6 +125,7 @@ const ProductsFilter = ({
 		setFilterCounter()
 		setCheckBoxCondition(!checkBoxCondition)
 		setSearchTerm('')
+		setFilters([])
 		filterRequest([], '')
 	}
 	return (

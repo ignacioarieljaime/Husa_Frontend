@@ -91,6 +91,7 @@ const ProductFilterResponsive = ({
 		setModalIsOpen(false)
 		sortOnChange()
 		setSearchTerm('')
+		setFilters([])
 		filterRequest([], '')
 	}
 
@@ -115,6 +116,11 @@ const ProductFilterResponsive = ({
 		}
 
 		setFilterCounter(searchTerm && searchTerm.length ? 1 : 0)
+	}
+
+	const searchControl = _term => {
+		filterRequest(selectedFilter, _term)
+		setSearchTerm(_term)
 	}
 
 	return (
@@ -184,7 +190,7 @@ const ProductFilterResponsive = ({
 								type='text'
 								name='search'
 								value={searchTerm}
-								onChange={e => setSearchTerm(e.target.value)}
+								onChange={e => searchControl(e.target.value)}
 							/>
 							<FontAwesomeIcon icon={faMagnifyingGlass} size='lg' />
 						</div>
