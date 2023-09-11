@@ -41,16 +41,20 @@ const ProductsGridV2 = ({ data }) => {
 		setText(structure?.title?.value)
 	}, [])
 	useEffect(() => {
-		if (router.query.filter) {
-			getProductHandler(JSON.parse(decodeURIComponent(router.query.filter)))
-		} else {
-			getProductHandler()
+		if (searchTerm && searchTerm.length) {
+			if (router.query.filter) {
+				getProductHandler(
+					JSON.parse(decodeURIComponent(router.query.filter), searchTerm)
+				)
+			} else {
+				getProductHandler()
+			}
 		}
 	}, [sortingMethod, router?.query?.filter, searchTerm])
 
-	const getProductHandler = async _filter => {
+	const getProductHandler = async (_filter, _term) => {
 		await requestController()
-		await getProducts(_filter)
+		await getProducts(_filter, _term)
 	}
 	const requestController = () => {
 		if (products?.length && products === 'loading') {
@@ -58,10 +62,11 @@ const ProductsGridV2 = ({ data }) => {
 		}
 	}
 
-	const getProducts = async _filter => {
+	const getProducts = async (_filter, _term) => {
 		setProducts('loading')
 		let newFilters = []
-		if (_filter && _filter.length !== 0)
+
+		if (_filter && _filter.length !== 0) {
 			newFilters = _filter.map(
 				_f =>
 					_f?.id &&
@@ -72,8 +77,6 @@ const ProductsGridV2 = ({ data }) => {
 						values: _f.values
 					}
 			)
-
-		if (_filter && _filter.length !== 0) {
 			router.replace(
 				{
 					query: {
@@ -109,7 +112,7 @@ const ProductsGridV2 = ({ data }) => {
 				sortingMethod && sortingMethod?.value !== 'featured'
 					? `&sort=${sortingMethod.value}`
 					: null,
-				searchTerm,
+				_term,
 				controller.signal
 			)
 			const newData = response.data.data
@@ -195,6 +198,8 @@ const ProductsGridV2 = ({ data }) => {
 									filters={filters}
 									setFilters={setFilters}
 									total={totalCount}
+									searchTerm={searchTerm}
+									setSearchTerm={term => setSearchTerm(term)}
 									category={structure?.category}
 									showProductFilterCount={structure?.availabilityNumber?.value}
 								/>

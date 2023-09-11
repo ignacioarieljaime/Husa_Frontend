@@ -12,7 +12,9 @@ const ProductsFilter = ({
 	setFilters,
 	total,
 	category,
-	showProductFilterCount
+	showProductFilterCount,
+	searchTerm,
+	setSearchTerm
 }) => {
 	let router = useRouter()
 	const [filterListData, setFilterListData] = useState([])
@@ -24,16 +26,20 @@ const ProductsFilter = ({
 
 	useEffect(() => {
 		if (router.query.filter) {
-			filterCounterHandler(JSON.parse(decodeURIComponent(router.query.filter)))
+			filterCounterHandler(
+				searchTerm && searchTerm.length
+					? JSON.parse(decodeURIComponent(router.query.filter)) + 1
+					: JSON.parse(decodeURIComponent(router.query.filter))
+			)
 		} else {
-			setFilterCounter(0)
+			setFilterCounter(searchTerm && searchTerm.length ? 1 : 0)
 		}
 		setFilters(
 			router.query.filter
 				? JSON.parse(decodeURIComponent(router.query.filter))
 				: []
 		)
-	}, [router.query.filter])
+	}, [router.query.filter, searchTerm])
 
 	useEffect(() => {
 		setFilterListData(filterList)
@@ -91,7 +97,7 @@ const ProductsFilter = ({
 		}
 		filterCounterHandler(_filtersBox)
 		setFilters(_filtersBox)
-		filterRequest(_filtersBox)
+		filterRequest(_filtersBox, searchTerm)
 
 		// if (_filtersBox.find(item => item.filter_name === _filter.title)) {
 		// _filtersBox = filters.filter(item => item.filter_name !== _filter.title)
@@ -108,14 +114,18 @@ const ProductsFilter = ({
 		_filters.forEach(filterItem => {
 			filtersItem.push(...filterItem.values)
 		})
-		setFilterCounter(filtersItem.length)
+		setFilterCounter(
+			searchTerm && searchTerm.length
+				? filtersItem.length + 1
+				: filtersItem.length
+		)
 	}
 
 	const checkboxClearHandler = () => {
 		setFilterCounter()
 		setCheckBoxCondition(!checkBoxCondition)
-		setFilters([])
-		filterRequest([])
+		setSearchTerm('')
+		filterRequest([], '')
 	}
 	return (
 		<aside className='mobile-filter-line w-100 pb-4'>

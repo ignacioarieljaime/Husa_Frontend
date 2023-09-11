@@ -84,19 +84,19 @@ const ProductFilterResponsive = ({
 			})
 		}
 		setFilters(_filtersBox)
-		filterRequest(_filtersBox)
+		filterRequest(_filtersBox, searchTerm)
 	}
 
 	const checkboxClearHandler = () => {
 		setModalIsOpen(false)
 		sortOnChange()
-		setFilters([])
-		filterRequest([])
+		setSearchTerm('')
+		filterRequest([], '')
 	}
 
 	useEffect(() => {
 		filterCountHandler()
-	}, [router?.query?.filter])
+	}, [router?.query?.filter, searchTerm])
 
 	const filterCountHandler = () => {
 		if (router?.query?.filter) {
@@ -105,12 +105,16 @@ const ProductFilterResponsive = ({
 			filters.forEach(element => {
 				filterItems.push(...element.values)
 			})
-			setFilterCounter(filterItems?.length)
+			setFilterCounter(
+				searchTerm && searchTerm.length
+					? filterItems.length + 1
+					: filterItems.length
+			)
 
 			return
 		}
 
-		setFilterCounter(0)
+		setFilterCounter(searchTerm && searchTerm.length ? 1 : 0)
 	}
 
 	return (
@@ -196,6 +200,7 @@ const ProductFilterResponsive = ({
 							<FilterDropDown
 								{...filter}
 								category={category}
+								filterCounter={filterCounter}
 								filterController={filterController}
 								selectedFilter={selectedFilter}
 								showProductFilterCount={showProductFilterCount}
@@ -213,7 +218,9 @@ const ProductFilterResponsive = ({
 									setModalIsOpen(true)
 								}}>
 								View
-								<span className='ms-2 text-white'>{products.length}</span>
+								<span className='ms-2 text-white fw-light'>
+									{products.length}
+								</span>
 							</a>
 						</Link>
 						<button
@@ -223,7 +230,7 @@ const ProductFilterResponsive = ({
 							Clear Filter
 							{filterCounter > 0 ? (
 								<>
-									<span className='ms-2'>{filterCounter}</span>
+									<span className='ms-2 fw-light'>{filterCounter}</span>
 								</>
 							) : (
 								''
@@ -239,7 +246,9 @@ const ProductFilterResponsive = ({
 								className='n-btn primary'
 								onClick={checkboxClearHandler}>
 								Clear Filter
-								<span className='ms-2 text-white'>{filterCounter}</span>
+								<span className='ms-2 text-white fw-light'>
+									{filterCounter}
+								</span>
 							</button>
 							{selectedFilter?.map(
 								filter =>

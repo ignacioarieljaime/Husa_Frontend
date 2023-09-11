@@ -13,6 +13,7 @@ const FilterDropDown = props => {
 		filterController,
 		allFilters,
 		selectedFilter,
+		filterCounter,
 		category,
 		showProductFilterCount
 	} = props
@@ -61,13 +62,20 @@ const FilterDropDown = props => {
 	}, [router?.query?.filter, filter_values])
 
 	useEffect(() => {
-		console.log(dropdown?.current?.offsetHeight)
 		if (!collapse) {
-			setHeight(dropdown?.current?.offsetHeight + 16)
+			setTimeout(() => {
+				setHeight(dropdown?.current?.offsetHeight + 16)
+			}, 200)
 		} else {
 			setHeight(0)
 		}
-	}, [router?.query?.filter, allFilters, selectedFilter, collapse])
+	}, [
+		router?.query?.filter,
+		allFilters,
+		selectedFilter,
+		collapse,
+		filterCounter
+	])
 
 	const checkedHandler = _title => {
 		if (router?.query?.filter) {
@@ -87,28 +95,30 @@ const FilterDropDown = props => {
 				<h6>{name}</h6>
 				<AngleArrow />
 			</div>
-			<div
-				style={{
-					height: height + 'px'
-				}}
-				className='filter_list'>
-				<ul ref={dropdown}>
-					{filterList?.map(
-						filter =>
-							filter?.title && (
-								<FilterDropDownItem
-									{...filter}
-									square
-									category={category}
-									isChecked={checkedHandler(filter?.title)}
-									filterHandler={filterHandler}
-									showProductFilterCount={showProductFilterCount}
-									allFilters={allFilters}
-								/>
-							)
-					)}
-				</ul>
-			</div>
+			{filterList && filterList.length ? (
+				<div
+					style={{
+						height: height + 'px'
+					}}
+					className='filter_list'>
+					<ul ref={dropdown}>
+						{filterList?.map(
+							filter =>
+								filter?.title && (
+									<FilterDropDownItem
+										{...filter}
+										square
+										category={category}
+										isChecked={checkedHandler(filter?.title)}
+										filterHandler={filterHandler}
+										showProductFilterCount={showProductFilterCount}
+										allFilters={allFilters}
+									/>
+								)
+						)}
+					</ul>
+				</div>
+			) : null}
 		</div>
 	)
 }
