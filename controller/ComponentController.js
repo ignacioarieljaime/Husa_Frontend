@@ -36,7 +36,7 @@ function Index${_page.id}({pim,data}) {
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>
       	<section>
-				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
+				{data?.widgets && data?.widgets.length ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
 					<>
 						<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
 							<div className='error_page'>
@@ -101,6 +101,38 @@ ${
 					   console.error('Error:', error)
 					   return null
 				   })	
+				   ${
+							_page.model_type === 'support'
+								? `
+				let template = undefined
+				if (!data || !data?.widgets || data?.widgets.length <= 0) {
+					console.log('send cxm support template request')
+					template = await axios
+						.get(
+							'https://imcxm.dev-api.hisenseportal.com/api/husa/getTemplates?status=3',
+							{
+								headers: {
+									CLIENT_ID: req.ip
+								}
+							}
+						)
+						.then(response => {
+							console.log('get cxm support template request')
+							return response.data
+						})
+						.catch(error => {
+							console.error('Error:', error)
+							return null
+						})
+				}
+
+				if(data && template && template?.widgets){
+					data.widgets = template.widgets
+				}
+				
+				`
+								: ''
+						}
 				console.log('send pim request')
 				 let pim = await axios
 						.get(
@@ -123,13 +155,22 @@ ${
 							notFound: true
 						}
 					}
-						if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
-							return {
-								notFound: true
-							}
-						} else {
-							return { props: { pim,data }}
+
+					if (!data?.widgets || data?.widgets.length == 0) {
+						return {
+							notFound: true
 						}
+					}
+
+					if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
+						
+						return {
+							notFound: true
+						}
+					} 
+					else {
+						return { props: { pim,data }}
+					}
 	 }`
 		: _page.model_type === 'post'
 		? `  export async function getServerSideProps({req,res}) {		
@@ -179,6 +220,11 @@ ${
 						notFound: true
 					}
 				}
+				if (!data?.widgets || data?.widgets.length == 0) {
+					return {
+						notFound: true
+					}
+				}
 					if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
 						return {
 							notFound: true
@@ -214,6 +260,11 @@ ${
 					return {
 						notFound: true
 					}
+					if (!data?.widgets || data?.widgets.length == 0) {
+						return {
+							notFound: true
+						}
+					}
 				} else {
 					return { props: { data }} 
 				}
@@ -235,7 +286,7 @@ function Preview({pim,data}) {
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>
       	<section>
-				{data?.widgets ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
+				{data?.widgets && data?.widgets.length ? data.widgets.map(block => componentGenerator(block, pim , block.name === 'Header' ? data.notifications : null )) : 
 					<>
 						<MouseParallaxContainer globalFactorX={1} globalFactorY={1}>
 							<div className='error_page'>
@@ -320,6 +371,11 @@ ${
 				return null
 			})
 	}
+	if (!data?.widgets || data?.widgets.length == 0) {
+		return {
+			notFound: true
+		}
+	}
 	return { props: { data, pim: pim ? pim : null } }
 }
 
@@ -366,7 +422,7 @@ return (
 			: JSON.stringify(_page.meta)
 	}}>
       	<section>
-				{data?.widgets ? data.widgets.map(block => componentGenerator(block, null , block.name === 'Header' ? data.notifications : null )) : 	<div
+				{data?.widgets && data?.widgets.length ? data.widgets.map(block => componentGenerator(block, null , block.name === 'Header' ? data.notifications : null )) : 	<div
 				style={{
 					height: '100vh',
 					display: 'flex',
