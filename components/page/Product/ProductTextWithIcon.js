@@ -6,7 +6,7 @@ const ProductTextWithIcon = ({ data }) => {
 	const { structure } = data
 	return (
 		<div id={data.name + data.id} className='product_text_icon'>
-			<div className='content row'>
+			<div className='content row align-items-stretch'>
 				{structure?.list?.value.map((item, index) => (
 					<ProductTextWithIconItem
 						key={index}
