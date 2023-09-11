@@ -247,7 +247,7 @@ const ProductItemV2 = ({ data }) => {
 										currentItem?.buy_status === 'ChannelAdvisor' ||
 										currentItem?.buy_status === 'Internal'
 											? 'primary-text py-2 px-4'
-											: 'disabled_btn p-4'
+											: 'disabled_btn'
 									}`}>
 									{currentItem?.buy_status === 'ChannelAdvisor' ||
 									currentItem?.buy_status === 'Internal'
@@ -277,7 +277,7 @@ const ProductItemV2 = ({ data }) => {
 						<div className='text-center'>
 							<button
 								onClick={() => dispatch(addNewCompare(currentItem))}
-								className='n-btn grey-text compare-btn'>
+								className='n-btn grey-text compare-btn text-uppercase'>
 								Add To Compare
 							</button>
 						</div>

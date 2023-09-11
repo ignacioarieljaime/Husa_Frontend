@@ -4,9 +4,26 @@ import { useRouter } from 'next/router'
 import React from 'react'
 
 const FilterDropDownItem = props => {
-	let { title, filter_value, filterHandler, allFilters, isChecked, square } =
-		props
+	let {
+		total,
+		title,
+		filter_value,
+		filterHandler,
+		allFilters,
+		isChecked,
+		square,
+		category,
+		showProductFilterCount
+	} = props
 	const router = useRouter()
+
+	const showTotalCount = () => {
+		// if (passedFilter.length) {
+		let { items, value } = category
+		return items.find(item => item.id === value) ? <>({total})</> : null
+		// }
+		// return null
+	}
 
 	return (
 		<li style={{ height: '40px' }}>
@@ -32,7 +49,12 @@ const FilterDropDownItem = props => {
 				</span>
 			</div>
 
-			<label htmlFor={filter_value}>{title}</label>
+			<label htmlFor={filter_value}>
+				{title}
+				{showProductFilterCount && (
+					<span style={{ marginLeft: '5px' }}>{showTotalCount()}</span>
+				)}
+			</label>
 		</li>
 	)
 }

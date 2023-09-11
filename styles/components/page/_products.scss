@@ -335,7 +335,7 @@
 				transition: all 0.3s ease-in;
 				text-align: start;
 				@include mq(768) {
-					padding: 16px;
+					padding: 16px 24px;
 				}
 				&:hover {
 					box-shadow: 0px 10px 16px rgba(20, 37, 63, 0.06);
@@ -364,9 +364,9 @@
 							top: 0;
 							width: 100%;
 							height: 100%;
-							padding: 16px;
+							padding: 0 8px;
 							@include mq(768) {
-								padding: 8px;
+								padding: 0px;
 							}
 							object-fit: contain;
 						}
@@ -415,8 +415,12 @@
 							max-width: 310px;
 						}
 						.product_btn {
-							padding: 18px 16px 14px;
+							padding: 10px 16px 5px !important;
+
 							font-weight: 500 !important;
+						}
+						.disabled_btn:disabled {
+							padding: 10px 16px 5px !important;
 						}
 					}
 					.n-btn.primary-text {
@@ -427,14 +431,10 @@
 					.n-btn.compare-btn {
 						font-size: 10px !important;
 						line-height: 120% !important;
-						padding: 8px 8px 8px 24px;
+						padding: 8px 8px 8px 26px;
 						font-weight: 500 !important;
 						letter-spacing: 0.125rem;
 						border-radius: 0;
-						@include mq(768) {
-							padding: 24px 0 0;
-							background-position: center top !important;
-						}
 					}
 					.size_btn {
 						font-size: 10px;

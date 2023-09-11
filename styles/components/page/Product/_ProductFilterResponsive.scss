@@ -29,10 +29,20 @@
 				line-height: 120%; /* 12px */
 			}
 		}
-		.outline-black:disabled {
-			border: 1px solid #ababb0 !important;
-			color: #ababb0 !important;
-			background-color: transparent !important;
+		.outline-black {
+			span {
+				transition: inherit;
+			}
+			&:hover {
+				span {
+					color: #fff;
+				}
+			}
+			&:disabled {
+				border: 1px solid #ababb0 !important;
+				color: #ababb0 !important;
+				background-color: transparent !important;
+			}
 		}
 	}
 	&.open {

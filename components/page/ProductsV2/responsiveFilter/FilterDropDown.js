@@ -12,7 +12,9 @@ const FilterDropDown = props => {
 		content_type,
 		filterController,
 		allFilters,
-		selectedFilter
+		selectedFilter,
+		category,
+		showProductFilterCount
 	} = props
 	const router = useRouter()
 	const dropdown = useRef()
@@ -97,8 +99,10 @@ const FilterDropDown = props => {
 								<FilterDropDownItem
 									{...filter}
 									square
+									category={category}
 									isChecked={checkedHandler(filter?.title)}
 									filterHandler={filterHandler}
+									showProductFilterCount={showProductFilterCount}
 									allFilters={allFilters}
 								/>
 							)

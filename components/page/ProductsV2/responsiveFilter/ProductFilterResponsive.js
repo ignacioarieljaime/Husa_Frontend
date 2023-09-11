@@ -22,13 +22,13 @@ const ProductFilterResponsive = ({
 	sortValue,
 	sortOnChange,
 	products,
-	categoryId,
+	category,
 	searchTerm,
-	setSearchTerm
+	setSearchTerm,
+	showProductFilterCount
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [filterCounter, setFilterCounter] = useState(0)
-	const [category, setCategory] = useState({})
 	const router = useRouter()
 	const filterController = (e, _filter, _filterType) => {
 		let _filtersBox = router?.query?.filter
@@ -93,14 +93,6 @@ const ProductFilterResponsive = ({
 		setFilters([])
 		filterRequest([])
 	}
-
-	// useEffect(() => {
-	// 	getCategories()
-	// }, [categoryId])
-
-	// getCategories(() => {
-	// 	axios.get()
-	// })
 
 	useEffect(() => {
 		filterCountHandler()
@@ -184,7 +176,7 @@ const ProductFilterResponsive = ({
 					<div className='p-4'>
 						<div className='search_field'>
 							<input
-								placeholder={'Search'}
+								placeholder={'Search ' + category?.title}
 								type='text'
 								name='search'
 								value={searchTerm}
@@ -203,8 +195,10 @@ const ProductFilterResponsive = ({
 						{allFilters?.map(filter => (
 							<FilterDropDown
 								{...filter}
+								category={category}
 								filterController={filterController}
 								selectedFilter={selectedFilter}
+								showProductFilterCount={showProductFilterCount}
 								allFilters={allFilters}
 							/>
 						))}
@@ -218,14 +212,22 @@ const ProductFilterResponsive = ({
 								onClick={() => {
 									setModalIsOpen(true)
 								}}>
-								View {products.length}
+								View
+								<span className='ms-2 text-white'>{products.length}</span>
 							</a>
 						</Link>
 						<button
 							disabled={filterCounter <= 0}
 							className='n-btn outline-black bg-transparent'
 							onClick={checkboxClearHandler}>
-							Clear Filter {filterCounter}
+							Clear Filter
+							{filterCounter > 0 ? (
+								<>
+									<span className='ms-2'>{filterCounter}</span>
+								</>
+							) : (
+								''
+							)}
 						</button>
 					</div>
 				)}
@@ -236,7 +238,8 @@ const ProductFilterResponsive = ({
 								disabled={filterCounter <= 0}
 								className='n-btn primary'
 								onClick={checkboxClearHandler}>
-								Clear Filter {filterCounter}
+								Clear Filter
+								<span className='ms-2 text-white'>{filterCounter}</span>
 							</button>
 							{selectedFilter?.map(
 								filter =>

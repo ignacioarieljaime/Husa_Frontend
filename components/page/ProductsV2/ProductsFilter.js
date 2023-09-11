@@ -128,7 +128,7 @@ const ProductsFilter = ({
 								filterCounter > 0 ? 'primary text-white' : 'outline-primary'
 							} mb-md-8`}
 							onClick={checkboxClearHandler}>
-							Clear Filters
+							Clear Filters{'   '}
 							{filterCounter > 0 ? (
 								<>
 									<span className='ms-2'>{filterCounter}</span>

@@ -165,9 +165,10 @@ const ProductsGridV2 = ({ data }) => {
 					sortValue={sortingMethod}
 					sortOnChange={setSortingMethod}
 					products={products}
-					categoryId={structure?.category.value}
+					category={structure?.category}
 					searchTerm={searchTerm}
 					setSearchTerm={term => setSearchTerm(term)}
+					showProductFilterCount={structure?.availabilityNumber?.value}
 				/>
 			)}
 
