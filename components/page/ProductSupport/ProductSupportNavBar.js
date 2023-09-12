@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import ellipsisMenu from 'public/assets/images/icon-ellipsis-vertical.png'
 import { useWindowSize } from 'hooks/useWindowSize'
+import NavbarExit from 'components/icons/NavbarExit'
 
 function ProductSupportNavBar({ pim, data }) {
 	let { structure } = data
@@ -29,7 +30,12 @@ function ProductSupportNavBar({ pim, data }) {
 				<nav className='container_nav'>
 					<ul className={`items mb-md-0 ${openList ? 'mb-9' : 'mb-0'}`}>
 						<li className='me-auto'>
-							<span className='model'>{pim?.model}</span>
+							<span className='model'>
+								{
+									pim?.custom_fields.find(item => item.title === 'span Title')
+										?.value
+								}
+							</span>
 						</li>
 
 						{windowSize[0] > 768
@@ -64,7 +70,7 @@ function ProductSupportNavBar({ pim, data }) {
 								<button
 									className='menu_btn'
 									onClick={() => setOpenList(prevState => !prevState)}>
-									<img src={ellipsisMenu.src} />
+									{!openList ? <img src={ellipsisMenu.src} /> : <NavbarExit />}
 								</button>
 							</li>
 						)}

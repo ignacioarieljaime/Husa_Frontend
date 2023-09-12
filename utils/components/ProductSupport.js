@@ -46,5 +46,9 @@ module.exports.ProductSupportComponents = [
 	{
 		name: 'DownloadsSection',
 		path: 'components/page/ProductSupport/DownloadsSection'
+	},
+	{
+		name: 'FirmwareDisclaimer',
+		path: 'components/page/ProductSupport/FirmwareDisclaimer'
 	}
 ]

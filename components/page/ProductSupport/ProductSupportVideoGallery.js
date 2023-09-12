@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import LandingVideoPlayer from '../Landing/LandingVideoPlayer'
-const ProductSupportVideoGallery = ({ data }) => {
+const ProductSupportVideoGallery = ({ data, pim }) => {
 	const { structure } = data
 	const [content, setContent] = useState(null)
 	useEffect(() => {
@@ -10,9 +10,7 @@ const ProductSupportVideoGallery = ({ data }) => {
 	return (
 		<section id={data?.name + data?.id}>
 			<div className='product_support_video_gallery'>
-				<h4
-					className='title'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h4>
+				<h4 className='title'>{pim?.name} Video</h4>
 
 				<div className='videos'>
 					{content?.list?.value.map((item, index) => (

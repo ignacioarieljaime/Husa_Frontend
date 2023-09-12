@@ -30,7 +30,7 @@ const DownloadsSection = ({ data, pim }) => {
 					<div
 						className='description'
 						dangerouslySetInnerHTML={{
-							__html: `<p>The latest firmware and software is available here.</p>`
+							__html: `<p>The latest firmware and software is available <u class="fw-light">here</u>.</p>`
 						}}></div>
 				</div>
 				<div className='table_wrapper'>

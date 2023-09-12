@@ -44,21 +44,26 @@ const FirmWareDownloadSection = ({ data, pim }) => {
 					</div>
 					<div className='guide_box'>
 						<h6 className='title'>Firmware & Software How-to Guide</h6>
-						<Link
-							target={structure?.list?.value[0]?.link?.target || '_self'}
-							href={structure?.list?.value[0]?.link?.value || '/'}>
-							<a
-								className='n-btn outline-white bg-transparent'
-								target={structure?.list?.value[0]?.link?.target || '_self'}>
-								Download Instructions
-								<div>
-									<AdobeAcrobat color='#fff' />
-									<span className='ms-3'>
-										<DownloadIconV2 color='#fff' />
-									</span>
-								</div>
-							</a>
-						</Link>
+						{firmwareData &&
+							firmwareData.length &&
+							firmwareData.find(item => item.type === 'instruction')
+								?.download_link && (
+								<Link
+									href={
+										firmwareData.find(item => item.type === 'instruction')
+											.download_link
+									}>
+									<a className='n-btn outline-white bg-transparent'>
+										Download Instructions
+										<div>
+											<AdobeAcrobat color='#fff' />
+											<span className='ms-3'>
+												<DownloadIconV2 color='#fff' />
+											</span>
+										</div>
+									</a>
+								</Link>
+							)}
 					</div>
 					<div className='table_wrapper'>
 						<div className='files_table'>

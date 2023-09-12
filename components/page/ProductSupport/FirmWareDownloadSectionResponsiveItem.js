@@ -69,7 +69,7 @@ const FirmWareDownloadSectionResponsiveItem = ({
 				>
 				{data.caption ? data.caption : data.title}
 			</div> */}
-			<div ref={accordionItemHeight}>
+			<div className='w-100' ref={accordionItemHeight}>
 				<div className='info'>
 					<div>
 						<div className='size_title'>Description</div>

@@ -40,7 +40,7 @@ const DownloadSectionResponsiveItem = ({ data, windowSize, openStatus }) => {
 				<FontAwesomeIcon
 					className='icon'
 					icon={faChevronCircleRight}
-					size='lg'
+					size='xl'
 					color={'#000'}
 				/>
 			</div>
