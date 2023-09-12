@@ -1,0 +1,12 @@
+.season_upgrade_header_banner {
+	background: #ea3968;
+	padding: 24px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 48px;
+	overflow: hidden;
+	@include mq(768) {
+		padding: 16px 0;
+	}
+}
