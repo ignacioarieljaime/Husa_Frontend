@@ -17,9 +17,7 @@ function CompareProductItem({ data }) {
 	return (
 		<tr>
 			<td>
-				{data.id === 5
-					? ''
-					: data.id === 6
+				{data.id === 6
 					? 'series'
 					: data.name === 'Dropbox Assets'
 					? 'Product type'
