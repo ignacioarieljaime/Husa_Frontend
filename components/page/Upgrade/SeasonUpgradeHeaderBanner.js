@@ -27,7 +27,7 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 
 	return (
 		<section>
-			<div className='season_upgrade_header_banner'>
+			<div id={data?.name + data?.id} className='season_upgrade_header_banner'>
 				{new Array(10)
 					.fill({})
 					.map(_ =>

@@ -15,7 +15,7 @@ const SeasonUpgradeHeader = ({ data }) => {
 
 	return (
 		<section>
-			<div className='season_upgrade_header'>
+			<div id={data?.name + data?.id} className='season_upgrade_header'>
 				<div>
 					<Logo color={'#fff'} />
 					<p className='gradient_text'>the ultimate sales event is here.</p>
