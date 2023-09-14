@@ -5,6 +5,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import DownloadSectionResponsiveItem from './DownloadSectionResponsiveItem'
+import Link from 'next/link'
 
 const DownloadsSection = ({ data, pim }) => {
 	let { structure } = data
@@ -27,11 +28,15 @@ const DownloadsSection = ({ data, pim }) => {
 						dangerouslySetInnerHTML={{
 							__html: `<p>Find documentation for your Hisense product below.</p>`
 						}}></div>
-					<div
-						className='description'
-						dangerouslySetInnerHTML={{
-							__html: `<p>The latest firmware and software is available <u class="fw-light">here</u>.</p>`
-						}}></div>
+					<div className='description'>
+						<p>
+							The latest firmware and software is available{' '}
+							<Link href='/support/firmware-download'>
+								<a className='fw-light'>here</a>
+							</Link>
+							.
+						</p>
+					</div>
 				</div>
 				<div className='table_wrapper'>
 					<div className='files_table'>
