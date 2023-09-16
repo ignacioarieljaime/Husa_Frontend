@@ -193,7 +193,7 @@ const BlackFridayProductsItem = ({ data, products }) => {
 								</Link>
 								<button
 									onClick={() => dataLayerHandler()}
-									className={`n-btn primary-text`}>
+									className={`n-btn primary-text medium`}>
 									Where To Buy
 									<span>
 										<FontAwesomeIcon

@@ -91,7 +91,7 @@ function BlogListSoundBardItemContainer({ data, getBlogs }) {
 						href={data?.link?.value ? data?.link?.value : '/'}>
 						<a
 							target={data?.link?.target ? data?.link?.target : '_self'}
-							className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
+							className='n-btn blog-primary medium rounded-5 text-uppercase'>
 							{data?.link?.title}
 							{data?.link?.target === '_blank' && (
 								<img

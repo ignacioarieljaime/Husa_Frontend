@@ -7,6 +7,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  text-align: center;
 
   &.outline-black {
     border-color: #000;
@@ -144,6 +145,26 @@
     &:hover {
       transform: scale(1) !important;
     }
+  }
+
+  &.small {
+    min-width: 56px !important;
+    padding: 10px 16px 6px !important;
+    font-size: 10px;
+    line-height: 10px;
+  }
+  &.medium {
+    min-width: 80px !important;
+    padding: 9.5px 16px 6.5px !important;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  &.large {
+    min-width: 118px !important;
+    padding: 14px 16px 10px !important;
+    // padding: 10px 16px 6px !important;
+    font-size: 24px;
+    line-height: 30px;
   }
 }
 

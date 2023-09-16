@@ -57,16 +57,15 @@ function BlogListReadArticleBoxContainer({ structure }) {
 										<h3 className='fs-3 mb-0'>{structure?.title?.value}</h3>
 									</div>
 									<div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
-									
 										{/* <Link
 											href={
 												structure?.tagLink?.value
 													? structure?.tagLink?.value
 													: '/'
 											}> */}
-											<a className='text-primary-dark text-decoration-none'>
-												{structure?.tag?.value}
-											</a>
+										<a className='text-primary-dark text-decoration-none'>
+											{structure?.tag?.value}
+										</a>
 										{/* </Link> */}
 									</div>
 									<div className='col-12 order-3 text-start'>
@@ -85,7 +84,7 @@ function BlogListReadArticleBoxContainer({ structure }) {
 														? structure?.link?.target
 														: '_self'
 												}
-												className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
+												className='n-btn blog-primary medium px-6 py-3 rounded-5 text-uppercase'>
 												{structure?.link?.title}
 												{structure?.link?.target === '_blank' && (
 													<img

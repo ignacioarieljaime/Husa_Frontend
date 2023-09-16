@@ -21,7 +21,13 @@ function BlogListWithBigTitleAndLittleItem({ data: { structure } }) {
 							}}></div>
 						<a
 							href={structure?.link?.value}
-							className='btn btn-outline-dark green-hover btn-primary-dark-hover px-6 py-3 rounded-5 text-uppercase'>
+							style={{
+								minWidth: ' 80px',
+								padding: ' 9.5px 16px 6.5px',
+								fontSize: ' 14px',
+								lineHeight: ' 17px'
+							}}
+							className='btn btn-outline-dark  green-hover btn-primary-dark-hover rounded-5 text-uppercase'>
 							{structure?.link?.title}
 						</a>
 					</div>
@@ -39,8 +45,14 @@ function BlogListWithBigTitleAndLittleItem({ data: { structure } }) {
 					{showCount !== structure?.list?.value.length + 1 && (
 						<div className='container text-center mb-20 pb-0 pb-md-20'>
 							<button
+								style={{
+									minWidth: ' 80px',
+									padding: ' 9.5px 16px 6.5px',
+									fontSize: ' 14px',
+									lineHeight: ' 17px'
+								}}
 								onClick={() => setChowCount(structure?.list?.value.length + 1)}
-								className='btn btn-outline-dark green-hover btn-primary-dark-hover px-6 py-3 rounded-5 text-uppercase'>
+								className='btn btn-outline-dark green-hover btn-primary-dark-hover rounded-5 text-uppercase'>
 								<span className='me-3'>{structure?.loadingLink?.title}</span>
 								<FontAwesomeIcon icon={faChevronDown} size={'sm'} />
 							</button>
