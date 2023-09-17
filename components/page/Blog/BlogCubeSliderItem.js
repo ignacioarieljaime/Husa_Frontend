@@ -17,7 +17,7 @@ const BlogCubeSliderItem = ({ data, modalHandler }) => {
 							data?.link?.value.includes('openChannelAdvisor') &&
 								modalHandler(data?.link?.value.split(':')[1])
 						}}
-						className='n-btn outline-black text-uppercase rounded-5 medium'>
+						className='n-btn outline-black text-uppercase transparent rounded-5 medium'>
 						{data?.link?.title}
 					</button>
 				</div>

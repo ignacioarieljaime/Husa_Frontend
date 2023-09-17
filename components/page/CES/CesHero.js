@@ -40,7 +40,7 @@ const CesHero = ({ data: { structure } }) => {
 												? structure?.link1?.target
 												: '_self'
 										}
-										className='n-btn outline-white transparent d-inline-block w-fit fs-md-4'>
+										className='n-btn outline-white medium transparent d-inline-block w-fit fs-md-4'>
 										{structure?.link1?.title}
 										{structure?.link1?.target === '_blank' && (
 											<img
@@ -67,7 +67,7 @@ const CesHero = ({ data: { structure } }) => {
 												? structure?.link2?.target
 												: '_self'
 										}
-										className='n-btn white-text ms-2 fs-8 fs-md-base'>
+										className='n-btn medium white-text ms-2 fs-8 fs-md-base'>
 										{structure?.link2?.title} {'>'}
 										{structure?.link2?.target === '_blank' && (
 											<img

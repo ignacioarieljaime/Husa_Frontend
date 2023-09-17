@@ -27,7 +27,7 @@ function UHDIntro({ data: { structure } }) {
 						{structure?.link?.value && (
 							<a
 								href={structure?.link?.value}
-								className='btn btn-outline-light rounded-5 px-8 mt-12'>
+								className='n-btn outline-white rounded-5 medium d-block mx-auto w-fit mt-12'>
 								{structure?.link?.title}
 							</a>
 						)}

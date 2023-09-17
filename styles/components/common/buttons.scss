@@ -118,6 +118,17 @@
     padding: 5px !important;
   }
 
+  &.outline-grey {
+    border-color: #a6a8ac;
+    color: #a6a8ac;
+    background-color: #fff;
+
+    &:hover {
+      color: #fff !important;
+      background-color: #a6a8ac !important;
+    }
+  }
+
   &.grey-text {
     color: #a6a8ac !important;
     background-color: transparent !important;

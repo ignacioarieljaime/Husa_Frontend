@@ -58,7 +58,7 @@ const CesCards = ({ data }) => {
 															? content?.block1?.value?.link?.target
 															: '_self'
 													}
-													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
+													className={`n-btn medium p-4 transparent text-nowrap d-block w-fit ${
 														content?.block1?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'
@@ -110,7 +110,7 @@ const CesCards = ({ data }) => {
 															? content?.block2?.value?.link?.target
 															: '_self'
 													}
-													className={`n-btn p-4 transparent text-nowrap d-block w-fit ms-auto ${
+													className={`n-btn medium p-4 transparent text-nowrap d-block w-fit ms-auto ${
 														content?.block2?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'
@@ -169,7 +169,7 @@ const CesCards = ({ data }) => {
 													target={
 														item?.link?.target ? item?.link?.target : '_self'
 													}
-													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
+													className={`n-btn medium p-4 transparent text-nowrap d-block w-fit ${
 														item?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'
@@ -229,7 +229,7 @@ const CesCards = ({ data }) => {
 															? content?.block3?.value?.link?.target
 															: '_self'
 													}
-													className={`n-btn p-4 transparent text-nowrap d-block w-fit ${
+													className={`n-btn medium p-4 transparent text-nowrap d-block w-fit ${
 														content?.block3?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'

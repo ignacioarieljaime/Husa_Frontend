@@ -181,7 +181,7 @@ const BlackFridayProductsItem = ({ data, products }) => {
 								<Link
 									// target={menu?.target ? menu?.target : '_self'}
 									href={url ? url : '/'}>
-									<a className='n-btn outline-black  '>
+									<a className='n-btn outline-black medium '>
 										View Product
 										{/* {menu?.target === '_blank' && (
 											<img

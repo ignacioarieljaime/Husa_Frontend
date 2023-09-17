@@ -34,7 +34,7 @@ function ULEDHead({ data: { structure } }) {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='btn btn-light text my-3 my-md-auto'>
+									className='n-btn white text medium d-block mx-auto w-fit my-3 my-md-auto'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (
 										<img

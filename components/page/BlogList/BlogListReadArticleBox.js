@@ -84,7 +84,8 @@ function BlogListReadArticleBoxContainer({ structure }) {
 														? structure?.link?.target
 														: '_self'
 												}
-												className='n-btn blog-primary medium px-6 py-3 rounded-5 text-uppercase'>
+												style={{ display: 'block' }}
+												className='n-btn blog-primary medium w-fit h-fit rounded-5 text-uppercase'>
 												{structure?.link?.title}
 												{structure?.link?.target === '_blank' && (
 													<img
