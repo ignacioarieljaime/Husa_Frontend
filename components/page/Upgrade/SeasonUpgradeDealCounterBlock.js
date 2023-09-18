@@ -83,7 +83,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							</h4>
 							<div>
 								<div className='off'>Save $600</div>
-								<div className='d-flex justify-content-start align-items-end gap-4'>
+								<div className='d-flex justify-content-start align-items-end gap-4 mb-n1'>
 									<h3 className='price'>$1099.99</h3>
 									<p className='old_price'>Was $1699.99</p>
 								</div>
