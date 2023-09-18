@@ -3,7 +3,6 @@ import RadioCheckBox from 'components/common/RadioCheckBox'
 import ExtendedWarrantyFileInput from './ExtendedWarrantyFileInput'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
 import Spinner from '../../common/Spinner'
-import CustomSelectBox from '../../common/selectBox'
 
 const ExtendedWarrantyFormStepForm = ({
 	onChange,
