@@ -84,13 +84,9 @@
 		justify-content: center;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 0;
-		@include mq(768) {
-			gap: 24px 0;
-		}
 		.text_content {
 			display: flex;
-			justify-content: flex-start;
+			justify-content: center;
 			align-items: center;
 			gap: 32px;
 			flex-direction: column;
@@ -111,7 +107,7 @@
 			.text {
 				font-size: 16px;
 				font-style: normal;
-				font-weight: 300;
+				font-weight: 400;
 				line-height: 21.6px; /* 135% */
 				color: #000;
 				margin: 0;

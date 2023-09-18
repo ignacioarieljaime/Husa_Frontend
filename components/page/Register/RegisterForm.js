@@ -17,7 +17,6 @@ import axios from 'axios'
 import { getFirmWareModels } from 'services/servicePortal'
 import DownloadIcon from 'components/icons/DownloadIcon'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
-import RegisterFormSelectBox from './RegisterFormSelectBox'
 import { uploadToS3 } from 'services/s3'
 // import PDFDownload from 'public/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
 
@@ -51,37 +50,24 @@ function RegisterForm({ data }) {
 	})
 	const [errors, setErrors] = useState(null)
 	const [tickedSended, setTickedSended] = useState(null)
+
 	useEffect(() => {
+		setDataSchema({
+			...dataSchema,
+			product_category: router.query?.type || router.query?.ProductCategory,
+			product_model: router.query?.model || null,
+			product_serial_number: router.query?.SerialNumber
+		})
+
 		!router.query?.ProductCategory && getCategories()
 
 		if (router.query?.SerialNumber) {
 			getModelsBySerialNumber()
 		}
 	}, [])
-
 	useEffect(() => {
-		if (router.query?.InternalModelNumber) {
-			setDataSchema({
-				...dataSchema,
-				product_category: router.query?.ProductCategory,
-				product_serial_number: router.query?.SerialNumber
-			})
-			if (models?.length === 1) {
-				setDataSchema({
-					...dataSchema,
-					product_model: models[0]?.name
-				})
-			} else if (models?.length >= 1) {
-				setDataSchema({
-					...dataSchema,
-					product_model: null
-				})
-			}
-		} else {
-			setDataSchema({
-				...dataSchema,
-				product_model: null
-			})
+		if (models?.length === 1) {
+			setDataSchema({ ...dataSchema, product_model: models[0]?.name })
 		}
 	}, [models])
 
@@ -96,11 +82,6 @@ function RegisterForm({ data }) {
 		}
 
 		if (_key === 'product_model') {
-			console.log({
-				...dataSchema,
-				product_model: _value?.model,
-				series: _value?.series?.length ? _value?.series[0]?.name : null
-			})
 			setDataSchema({
 				...dataSchema,
 				product_model: _value?.model,
@@ -158,6 +139,7 @@ function RegisterForm({ data }) {
 					...item,
 					name: item.model
 				}))
+
 				setModels(
 					data?.sort((a, b) =>
 						sortWorkHandler(a.name).localeCompare(sortWorkHandler(b.name))
@@ -252,7 +234,7 @@ function RegisterForm({ data }) {
 			email: null,
 			phone_number: null,
 			postal_code: null,
-			product_category: router.query?.ProductCategory,
+			product_category: router.query?.type || router.query?.ProductCategory,
 			product_model: router.query?.model || null,
 			product_serial_number: router.query?.SerialNumber,
 			purchased_from: null,
@@ -288,10 +270,9 @@ function RegisterForm({ data }) {
 		for (const word of _data.split('')) {
 			if (/[a-zA-Z]/.test(word)) {
 				position = _data.split('').indexOf(word)
-				return _data.slice(position) ? _data.slice(position) : ''
+				return _data.slice(position)
 			}
 		}
-		return ''
 	}
 	return (
 		<section>
@@ -307,7 +288,7 @@ function RegisterForm({ data }) {
 					{router.query?.ProductCategory ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
-								placeholder={'PRODUCT CATEGORY'}
+								placeholder={'SERIAL NUMBER'}
 								required={true}
 								disabled={dataSchema?.product_category}
 								value={dataSchema?.product_category}
@@ -325,8 +306,8 @@ function RegisterForm({ data }) {
 								required={true}
 								options={categories}
 								onChange={_value => {
-									dataSchemaHandler('product_category', _value?.name)
-									getSeriesModels(_value?.id)
+									dataSchemaHandler('product_category', _value.name)
+									getSeriesModels(_value.id)
 								}}
 							/>
 							<div className='input_error_message'>
@@ -354,7 +335,7 @@ function RegisterForm({ data }) {
 					{router.query?.InternalModelNumber && !router.query?.SerialNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
-								placeholder={'PLEASE SELECT YOUR MODEL'}
+								placeholder={'SERIAL NUMBER'}
 								required={true}
 								disabled={dataSchema?.product_model}
 								value={dataSchema?.product_model}
@@ -362,8 +343,8 @@ function RegisterForm({ data }) {
 						</div>
 					) : models === 'loading' ||
 					  (Array.isArray(models) && models?.length !== 0) ? (
-						<div className='col-12 mb-10'>
-							<RegisterFormSelectBox
+						<div className='col-12 mb-10 custom-select-box'>
+							<CustomSelectBox
 								rightText={
 									dataSchema?.product_category === 'Air Products' &&
 									'(Outdoor Model for split system)'
@@ -372,20 +353,10 @@ function RegisterForm({ data }) {
 								isSearchable
 								required={true}
 								options={models}
-								dataSchemaValue={dataSchema?.product_model}
-								onValueClear={dataSchema?.product_category}
-								onChange={_value => {
-									dataSchemaHandler('product_model', _value)
-								}}
+								onChange={_value => dataSchemaHandler('product_model', _value)}
 							/>
 							<div className='input_error_message'>
-								{errors?.product_model
-									? errors?.product_model[0] +
-									  ' Please make sure you have selected a product model from the list'
-									: router.query?.ProductCategory &&
-									  errors?.ModelNumber &&
-									  errors?.ModelNumber[0] +
-											' Please make sure you have selected a product model from the list'}
+								{errors?.product_model && errors?.product_model[0]}
 							</div>
 						</div>
 					) : null}
