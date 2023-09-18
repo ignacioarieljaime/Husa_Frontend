@@ -249,7 +249,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						<CustomSelectBox
 							options={warrantyOption}
 							onChange={_value =>
-								dataSchemaHandler('product_warranty', _value.value)
+								dataSchemaHandler('product_warranty', _value?.value)
 							}
 							title={'IS YOUR PRODUCT UNDER WARRANTY?'}
 						/>
@@ -261,7 +261,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						<CustomSelectBox
 							options={serviceTypeOption}
 							onChange={_value =>
-								dataSchemaHandler('service_type', _value.value)
+								dataSchemaHandler('service_type', _value?.value)
 							}
 							title={'TYPE OF SERVICE REQUEST'}
 						/>
