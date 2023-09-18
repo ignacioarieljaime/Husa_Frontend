@@ -5,7 +5,8 @@
 		height: auto;
 		object-fit: contain;
 		@include mq(768) {
-			width: 300px;
+			width: 100%;
+			max-width: 300px;
 		}
 	}
 	.weeks {
@@ -16,6 +17,11 @@
 		align-items: center;
 		list-style: none;
 		margin: 0;
+		@include mq(768) {
+			padding: 16px;
+			overflow: auto;
+			gap: 24px;
+		}
 		li {
 			position: relative;
 			color: #aef53b;
@@ -34,6 +40,9 @@
 				left: -5px;
 				top: -7px;
 			}
+			@include mq(768) {
+				min-width: 80px;
+			}
 		}
 	}
 	.product {
@@ -46,6 +55,7 @@
 		margin: 0 auto;
 		@include mq(768) {
 			flex-wrap: wrap;
+			padding: 16px 16px 32px;
 		}
 		.product_images {
 			width: 54%;
@@ -56,6 +66,7 @@
 			gap: 34px;
 			@include mq(768) {
 				width: 100%;
+				gap: 20px;
 			}
 			.product_top {
 				display: flex;
@@ -63,6 +74,9 @@
 				align-items: center;
 				width: 100%;
 				gap: 16px;
+				@include mq(768) {
+					justify-content: center;
+				}
 				.image {
 					max-width: 304px;
 					width: 100%;
@@ -70,7 +84,13 @@
 					object-fit: contain;
 					min-width: unset;
 					@include mq(991) {
-						width: 40%;
+						width: 50%;
+					}
+					@include mq(840) {
+						width: 30%;
+					}
+					@include mq(768) {
+						display: none;
 					}
 				}
 				.counter_label {
@@ -80,12 +100,18 @@
 					line-height: 16px;
 					letter-spacing: -0.32px;
 					margin-bottom: 4px;
+					@include mq(768) {
+						text-align: center;
+					}
 				}
 				.counter {
 					display: flex;
 					justify-content: flex-start;
 					align-items: center;
 					gap: 3px;
+					@include mq(768) {
+						justify-content: center;
+					}
 					> div {
 						padding: 8px;
 						flex-direction: column;
@@ -116,6 +142,9 @@
 			.image {
 				width: 100%;
 				object-fit: contain;
+				@include mq(768) {
+					padding: 0 16px;
+				}
 			}
 		}
 		.product_info {
@@ -140,6 +169,7 @@
 					font-size: 20px;
 					line-height: 25px; /* 125% */
 					letter-spacing: -0.4px;
+					margin-bottom: 18px;
 				}
 			}
 			.off {
@@ -179,6 +209,7 @@
 				padding: 16px;
 				@include mq(768) {
 					text-align: center;
+					padding: 18px 48px 14px;
 				}
 				p {
 					font-size: 16px;
@@ -194,7 +225,7 @@
 					}
 					@include mq(768) {
 						font-size: 14px;
-						line-height: 12px;
+						line-height: 16px;
 					}
 				}
 			}
@@ -219,6 +250,10 @@
 				transform: scale(1);
 				&:hover {
 					transform: scale(1.05);
+				}
+				@include mq(768) {
+					width: 100%;
+					text-align: center;
 				}
 			}
 		}
