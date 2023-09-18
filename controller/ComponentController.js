@@ -118,7 +118,10 @@ ${
 						)
 						.then(response => {
 							console.log('get cxm support template request')
-							return response.data
+							if(response.data.data && response.data.data.length > 0)
+								{
+									return response.data.data[0]
+								}
 						})
 						.catch(error => {
 							console.error('Error:', error)
@@ -126,7 +129,12 @@ ${
 						})
 				}
 
-				if(data && template && template?.widgets){
+				if(
+					data &&
+					(!data?.widgets || data?.widgets.length == 0) &&
+					template &&
+					template?.widgets
+				){
 					data.widgets = template.widgets
 				}
 				

@@ -13,7 +13,7 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import CareersAccordionItemSublist from './CareersAccordionItemSublist'
 
-const CareersAccordionItem = ({ data, template }) => {
+const CareersAccordionItem = ({ data, singleItem }) => {
 	const [collapsed, setCollapsed] = useState(true)
 	const windowSize = useWindowSize()
 	const accordionContent = useRef()
@@ -50,21 +50,14 @@ const CareersAccordionItem = ({ data, template }) => {
 			</button>
 			<div className='faq-accordion-content' ref={accordionContent}>
 				<div ref={accordionContentHeight}>
-					{template === 'v2' ? (
+					{data?.list?.value.map((item, index) => (
 						<CareersAccordionItemSublist
-							data={data}
-							template={template}
+							key={index}
+							data={item}
+							singleItem={singleItem}
 							collapsed={collapsed}
 						/>
-					) : (
-						data?.list?.value.map((item, index) => (
-							<CareersAccordionItemSublist
-								key={index}
-								data={item}
-								collapsed={collapsed}
-							/>
-						))
-					)}
+					))}
 				</div>
 			</div>
 		</div>
