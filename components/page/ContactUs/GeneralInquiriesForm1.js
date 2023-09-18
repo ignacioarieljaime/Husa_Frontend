@@ -64,7 +64,7 @@ function GeneralInquiriesForm({ btnClass, formHandler }) {
 			<div className='col-12 mb-10 '>
 				<CustomSelectBox
 					options={selectBoxOption}
-					onChange={_value => dataSchemaHandler('department', _value.value)}
+					onChange={_value => dataSchemaHandler('department', _value?.value)}
 					title={'WHAT IS YOUR INQUIRY RELATED TO?'}
 				/>
 				<div className='input_error_message'>

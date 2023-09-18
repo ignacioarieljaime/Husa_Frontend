@@ -202,15 +202,14 @@ const ProductItemV2 = ({ data }) => {
 					</div>
 
 					{screenSize && (
-						<div className='d-flex justify-content-center align-items-center w-100'>
+						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center'>
 							{screenSize.map(
 								(item, index) =>
 									item.value && (
 										<button
 											key={'type-item-' + index}
 											onClick={() => setCurrentItem(item.product)}
-											style={{ width: 100 / screenSize.length + '%' }}
-											className={`size_btn ${
+											className={`n-btn outline-black size_btn p-2 px-4 py-md-4 px-md-6 ${
 												item.product.id === currentItem.id
 													? ' product-mini-link-active'
 													: ''
