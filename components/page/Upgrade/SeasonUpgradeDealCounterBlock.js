@@ -79,23 +79,14 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 					<div className='product_info'>
 						<div className='main_info'>
 							<h4 className='title'>
-								Hisense Class U8 Series Mini-LED ULED 4K TV Google TV
+								75” Hisense Class U8 Series Mini-LED ULED 4K TV Google TV
 							</h4>
-							<div className='sizes_box'>
-								<ul className='sizes'>
-									<li>43”</li>
-									<li>50”</li>
-									<li>50”</li>
-									<li>65”</li>
-									<li>75”</li>
-									<li>85”</li>
-								</ul>
-								<span className='size_indicator'></span>
-							</div>
 							<div>
-								<span className='off'>Save $600</span>
-								<h3 className='price'>$1099.99</h3>
-								<p className='old_price'>Was $1699.99</p>
+								<div className='off'>Save $600</div>
+								<div className='d-flex justify-content-start align-items-end gap-4'>
+									<h3 className='price'>$1099.99</h3>
+									<p className='old_price'>Was $1699.99</p>
+								</div>
 							</div>
 						</div>
 						<div className='limited_offer'>
@@ -109,7 +100,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							<li>144Hz Game Mode Pro</li>
 						</ul>
 						<Link href={'/'}>
-							<a className='shop_btn'>Shop Deal</a>
+							<a className='n-btn medium shop_btn'>Shop Deal</a>
 						</Link>
 					</div>
 				</div>

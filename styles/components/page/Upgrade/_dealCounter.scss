@@ -44,6 +44,9 @@
 		padding: 48px 16px 56px;
 		max-width: 1120px;
 		margin: 0 auto;
+		@include mq(768) {
+			flex-wrap: wrap;
+		}
 		.product_images {
 			width: 73%;
 			display: flex;
@@ -55,6 +58,8 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				width: 100%;
+				gap: 16px;
 				.image {
 					width: 304px;
 					height: auto;
@@ -63,7 +68,7 @@
 				.counter_label {
 					color: #000;
 					font-size: 16px;
-					font-weight: 400;
+					font-weight: 900;
 					line-height: 16px;
 					letter-spacing: -0.32px;
 					margin-bottom: 4px;
@@ -106,6 +111,99 @@
 			}
 		}
 		.product_info {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: flex-start;
+			gap: 32px;
+			.title {
+				margin-bottom: 20px;
+				color: #000;
+				font-size: 34px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 41px; /* 135% */
+				letter-spacing: -0.68px;
+				@include mq(768) {
+					font-size: 20px;
+					line-height: 25px; /* 125% */
+					letter-spacing: -0.4px;
+				}
+			}
+			.off {
+				border-radius: 6px;
+				background: #e23717;
+				padding: 8px;
+				font-size: 12px;
+				font-weight: 400;
+				line-height: 8px; /* 135% */
+				color: #fff;
+				width: fit-content;
+				margin-bottom: 16px;
+			}
+			.price {
+				font-size: 48px;
+				font-weight: 500;
+				line-height: 45px; /* 116.375% */
+				letter-spacing: -0.96px;
+				color: #000;
+				margin: 0;
+				@include mq(768) {
+					font-size: 34px;
+					line-height: 34px; /* 135% */
+					letter-spacing: -0.68px;
+				}
+			}
+			.old_price {
+				color: #000;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 21.6px; /* 135% */
+				margin: 0;
+			}
+			.limited_offer {
+				border-radius: 12px;
+				background: #000;
+				padding: 16px;
+				@include mq(768) {
+					text-align: center;
+				}
+				p {
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 16px;
+					letter-spacing: -0.32px;
+					color: #fff;
+					margin: 0;
+					&:first-child {
+						line-height: 14px;
+						margin-bottom: 3px;
+						color: #aef53b;
+					}
+					@include mq(768) {
+						font-size: 14px;
+						line-height: 12px;
+					}
+				}
+			}
+			.product_specs {
+				margin: 0;
+				li {
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 16px;
+					color: #000;
+					margin-bottom: 8px;
+					&:last-child {
+						margin: 0;
+					}
+				}
+			}
+			.shop_btn {
+				border-radius: 1000px;
+				border: 1px solid #e23717;
+				background: #e23717;
+			}
 		}
 	}
 }
