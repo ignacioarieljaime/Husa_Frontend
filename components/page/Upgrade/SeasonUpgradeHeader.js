@@ -2,6 +2,7 @@ import Logo from 'components/icons/Logo'
 import MenuWhite from 'components/icons/MenuIcon'
 import SearchIcon from 'components/icons/SearchIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
+import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -22,10 +23,26 @@ const SeasonUpgradeHeader = ({ data }) => {
 				</div>
 				{windowSize[0] > 991 ? (
 					<ul className='nav'>
-						<li>DEAL OF THE WEEK</li>
-						<li>MORE DEALS</li>
-						<li>SWEEPSTAKES</li>
-						<li>NBA 2K24 OFFER</li>
+						<li>
+							<Link href='/'>
+								<a className='text-decoration-none'>DEAL OF THE WEEK</a>
+							</Link>
+						</li>
+						<li>
+							<Link href='/'>
+								<a className='text-decoration-none'>MORE DEALS</a>
+							</Link>
+						</li>
+						<li>
+							<Link href='/'>
+								<a className='text-decoration-none'>SWEEPSTAKES</a>
+							</Link>
+						</li>
+						<li>
+							<Link href='/'>
+								<a className='text-decoration-none'>NBA 2K24 OFFER</a>
+							</Link>
+						</li>
 					</ul>
 				) : (
 					<div className='buttons'>

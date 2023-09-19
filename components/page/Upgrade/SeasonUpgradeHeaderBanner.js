@@ -1,10 +1,11 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 
 import img1 from 'public/assets/images/lockup_NH.png'
 import img2 from 'public/assets/images/lockup_US.png'
-import '@splidejs/react-splide/css'
+import { SwiperSlide, Swiper } from 'swiper/react'
+import 'swiper/css'
+import { Autoplay } from 'swiper'
 
 const SeasonUpgradeHeaderBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
@@ -28,13 +29,27 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='season_upgrade_header_banner'>
-				{new Array(10)
-					.fill({})
-					.map(_ =>
+				<Swiper
+					autoplay={{
+						delay: -500,
+						disableOnInteraction: false
+					}}
+					loop={true}
+					speed={3000}
+					slidesPerView={'auto'}
+					slidesPerGroup={1}
+					spaceBetween={48}
+					grabCursor={false}
+					allowTouchMove={false}
+					modules={[Autoplay]}>
+					{new Array(10).fill({}).map(_ =>
 						sample.map((_item, index) => (
-							<img key={index} src={_item.image.src} alt='featured' />
+							<SwiperSlide key={index} className='w-fit'>
+								<img src={_item.image.src} alt='featured' />
+							</SwiperSlide>
 						))
 					)}
+				</Swiper>
 			</div>
 		</section>
 	)

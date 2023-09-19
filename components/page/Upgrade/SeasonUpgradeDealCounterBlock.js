@@ -100,7 +100,9 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							<li>144Hz Game Mode Pro</li>
 						</ul>
 						<Link href={'/'}>
-							<a className='n-btn medium shop_btn'>Shop Deal</a>
+							<a className='n-btn medium full_btn_md danger-upgrade'>
+								Shop Deal
+							</a>
 						</Link>
 					</div>
 				</div>

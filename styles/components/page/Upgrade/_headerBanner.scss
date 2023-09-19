@@ -4,9 +4,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 48px;
 	overflow: hidden;
+
 	@include mq(768) {
 		padding: 16px 0;
+	}
+	.swiper-wrapper {
+		transition-timing-function: linear;
 	}
 }
