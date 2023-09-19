@@ -1,4 +1,3 @@
-import Logo from 'components/icons/Logo'
 import MenuWhite from 'components/icons/MenuIcon'
 import SearchIcon from 'components/icons/SearchIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
@@ -18,31 +17,27 @@ const SeasonUpgradeHeader = ({ data }) => {
 		<section>
 			<div id={data?.name + data?.id} className='season_upgrade_header'>
 				<div>
-					<Logo color={'#fff'} />
-					<p className='gradient_text'>the ultimate sales event is here.</p>
+					<img
+						src={content?.image?.src}
+						alt={content?.image?.alt}
+						className='image'
+					/>
+					<p className='gradient_text'>{content?.title?.value}</p>
 				</div>
 				{windowSize[0] > 991 ? (
 					<ul className='nav'>
-						<li>
-							<Link href='/'>
-								<a className='text-decoration-none'>DEAL OF THE WEEK</a>
-							</Link>
-						</li>
-						<li>
-							<Link href='/'>
-								<a className='text-decoration-none'>MORE DEALS</a>
-							</Link>
-						</li>
-						<li>
-							<Link href='/'>
-								<a className='text-decoration-none'>SWEEPSTAKES</a>
-							</Link>
-						</li>
-						<li>
-							<Link href='/'>
-								<a className='text-decoration-none'>NBA 2K24 OFFER</a>
-							</Link>
-						</li>
+						{content?.list?.value.map(
+							(item, index) =>
+								item?.link?.value && (
+									<li key={index}>
+										<Link href={item?.link?.value}>
+											<a className='text-decoration-none'>
+												{item?.link?.title}
+											</a>
+										</Link>
+									</li>
+								)
+						)}
 					</ul>
 				) : (
 					<div className='buttons'>

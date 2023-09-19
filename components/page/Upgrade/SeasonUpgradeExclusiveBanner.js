@@ -13,26 +13,33 @@ const SeasonUpgradeExclusiveBanner = ({ data }) => {
 			<div
 				id={data?.name + data?.id}
 				style={{
-					backgroundImage: `url(${`https://files.hisense-usa.com/storage/hisense/asset/images/664b819600be5e.webp`})`
+					backgroundImage: `url(${content?.background?.src})`
 				}}
 				className='season_upgrade_exclusive_banner'>
 				<div className='content'>
 					<img
-						src='https://files.hisense-usa.com/storage/hisense/asset/images/663d94b1fd4200.webp'
-						alt='featured'
+						src={content?.image?.src}
+						alt={content?.image?.alt}
 						className='image'
 					/>
-					<p className='pretitle'>upgrade season exclusive</p>
-					<h3 className='title'>ENTER TO WIN A TRIP TO NBA ALL-STAR 2024*</h3>
-					<p className='text'>
-						Buy an eligible Hisense product for chance to win a trip for 2 to
-						NBA All-Star 2024 in Indiana, among other awesome prizes.
-					</p>
-					<Link href={'/'}>
-						<a className='n-btn large danger-upgrade full_btn_md'>
-							How to Enter
-						</a>
-					</Link>
+					<p className='pretitle'>{content?.subtitle?.value}</p>
+					<h3
+						className='title'
+						dangerouslySetInnerHTML={{
+							__html: content?.title?.value
+						}}></h3>
+					<p
+						className='text'
+						dangerouslySetInnerHTML={{
+							__html: content?.text?.value
+						}}></p>
+					{content?.link?.value && (
+						<Link href={content?.link?.value}>
+							<a className='n-btn large danger-upgrade full_btn_md'>
+								{content?.link?.title}
+							</a>
+						</Link>
+					)}
 				</div>
 			</div>
 		</section>

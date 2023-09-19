@@ -20,12 +20,16 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 		<section>
 			<div
 				id={data?.name + data?.id}
-				className={`season_upgrade_carousel ${data?.theme?.value}`}>
+				className={`season_upgrade_carousel ${content?.text?.value}`}>
 				<div className='text_content'>
-					<p className='pretitle'>Upgrade Season Deals</p>
+					<p className='pretitle'>{content?.subtitle?.value}</p>
 					<Link href={'/'}>
 						<a className='text-decoration-none'>
-							<h2 className='title'>Televisions</h2>
+							<h2
+								className='title'
+								dangerouslySetInnerHTML={{
+									__html: content?.title?.value
+								}}></h2>
 						</a>
 					</Link>
 				</div>
@@ -34,11 +38,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					slidesPerView={'auto'}
 					slidesPerGroup={1}
 					spaceBetween={16}
-					initialSlide={
-						data?.startFrom?.value === 'end'
-							? [{}, {}, {}, {}, {}, {}, {}].length - 2
-							: 1
-					}
+					initialSlide={content?.direction?.value === 'left' ? 5 : 1}
 					centeredSlides={true}
 					navigation={{
 						nextEl: '.swiper-button-next',

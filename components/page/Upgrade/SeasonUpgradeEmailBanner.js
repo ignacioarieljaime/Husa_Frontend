@@ -17,11 +17,17 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 			<div id={data?.name + data?.id} className='season_upgrade_email_banner'>
 				<div className='content'>
 					<div className='text_content'>
-						<p className='pretitle'>don’t miss out</p>
-						<h3 className='title'>sign up for upgrade alerts</h3>
-						<p className='text'>
-							Get all the up to date Upgrade Season Deal updates as they drop.
-						</p>
+						<p className='pretitle'>{content?.subtitle?.value}</p>
+						<h3
+							className='title'
+							dangerouslySetInnerHTML={{
+								__html: content?.title?.value
+							}}></h3>
+						<p
+							className='text'
+							dangerouslySetInnerHTML={{
+								__html: content?.text?.value
+							}}></p>
 					</div>
 					<form className='form_content'>
 						<input
@@ -43,9 +49,11 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 							</button>
 							<p>
 								I have read and understand the{' '}
-								<Link href={'/'}>
-									<a> Privacy Policy.</a>
-								</Link>
+								{content?.link?.value && (
+									<Link href={content?.link?.value}>
+										<a> Privacy Policy.</a>
+									</Link>
+								)}
 							</p>
 						</div>
 						<button className='n-btn medium danger-upgrade full_btn_md'>

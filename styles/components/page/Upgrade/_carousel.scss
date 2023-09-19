@@ -28,19 +28,22 @@
 			}
 		}
 		.title {
-			color: #000;
-			font-family: 'archivo-expanded';
-			font-size: 60px;
-			font-style: normal;
-			font-weight: 900;
-			line-height: 68.4px; /* 114% */
-			letter-spacing: -1.2px;
-			text-transform: uppercase;
 			margin: 0;
-			@include mq(768) {
-				font-size: 24px;
-				line-height: 30px; /* 125% */
-				letter-spacing: -0.48px;
+			* {
+				color: #000;
+				font-family: 'archivo-expanded';
+				font-size: 60px;
+				font-style: normal;
+				font-weight: 900;
+				line-height: 68.4px; /* 114% */
+				letter-spacing: -1.2px;
+				text-transform: uppercase;
+				margin: 0;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 30px; /* 125% */
+					letter-spacing: -0.48px;
+				}
 			}
 		}
 	}
@@ -295,7 +298,9 @@
 				color: #aef53b;
 			}
 			.title {
-				color: #fff;
+				* {
+					color: #fff;
+				}
 			}
 		}
 		@include mq(768) {

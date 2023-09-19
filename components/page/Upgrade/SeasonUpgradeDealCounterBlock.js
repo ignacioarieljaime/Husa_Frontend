@@ -3,6 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import DealOfTheWeek from 'public/assets/images/upgrade-season/Deal-of-the-Week.png'
+import Lockup from 'public/assets/images/upgrade-season/lockup.png'
 
 const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
@@ -25,18 +27,23 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 			<div id={data?.name + data?.id} className='season_upgrade_deal_counter'>
 				<div className='text-center py-4 px-2'>
 					<img
-						// src={content?.background?.src}
-						src='https://files.hisense-usa.com/storage/hisense/asset/images/6637383235bef2.webp'
+						src={DealOfTheWeek.src}
 						alt={content?.topImage?.alt}
 						className='top_image'
 					/>
 				</div>
 				<div>
 					<ul className='weeks'>
-						{weeks.map((item, index) => (
-							<li key={index} className={`${item.active ? 'active' : ''}`}>
-								{item.title}
-								{item.passed && <RedScratch />}
+						{content?.list?.value.map((item, index) => (
+							<li
+								key={index}
+								className={`${item?.object?.value?.status?.value}`}>
+								{item?.object?.value.title?.value}
+								{content?.list?.value.findIndex(
+									_item => _item?.object?.value?.status?.value === 'active'
+								) > index ? (
+									<RedScratch />
+								) : null}
 							</li>
 						))}
 					</ul>
@@ -45,7 +52,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 					<div className='product_images'>
 						<div className='product_top'>
 							<img
-								src='https://files.hisense-usa.com/storage/hisense/asset/images/6637383235bef2.webp'
+								src={Lockup.src}
 								alt={content?.topImage?.alt}
 								className='image'
 							/>

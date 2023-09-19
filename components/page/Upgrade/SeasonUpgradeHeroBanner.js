@@ -12,15 +12,12 @@ const SeasonUpgradeHeroBanner = ({ data }) => {
 		<section>
 			<div id={data?.name + data?.id} className='season_upgrade_hero_banner'>
 				<img
-					// src={content?.background?.src}
-					src='https://files.hisense-usa.com/storage/hisense/asset/images/664e4cd3ae897e.webp'
-					alt={content?.background?.alt}
+					src={content?.backgound?.src}
+					alt={content?.backgound?.alt}
 					className='background'
 				/>
 				<img
-					src='https://files.hisense-usa.com/storage/hisense/asset/images/664b16ff138258.webp'
-					//  src={content?.image?.src}
-
+					src={content?.image?.src}
 					alt={content?.image?.alt}
 					className='image'
 				/>

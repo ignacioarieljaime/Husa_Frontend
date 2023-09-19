@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 
-import img1 from 'public/assets/images/lockup_NH.png'
-import img2 from 'public/assets/images/lockup_US.png'
 import { SwiperSlide, Swiper } from 'swiper/react'
 import 'swiper/css'
 import { Autoplay } from 'swiper'
@@ -13,22 +11,12 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 		setContent(data?.structure)
 	}, [])
 
-	const sample = [
-		{
-			image: {
-				src: img1.src
-			}
-		},
-		{
-			image: {
-				src: img2.src
-			}
-		}
-	]
-
 	return (
 		<section>
-			<div id={data?.name + data?.id} className='season_upgrade_header_banner'>
+			<div
+				id={data?.name + data?.id}
+				className='season_upgrade_header_banner'
+				style={{ backgroundColor: content?.backgroundColor?.value }}>
 				<Swiper
 					autoplay={{
 						delay: -500,
@@ -36,14 +24,16 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 					}}
 					loop={true}
 					speed={3000}
-					slidesPerView={'auto'}
+					updateOnImagesReady
+					onImagesReady={swiper => swiper.autoplay.start()}
+					// slidesPerView={'auto'}
 					slidesPerGroup={1}
 					spaceBetween={48}
 					grabCursor={false}
 					allowTouchMove={false}
 					modules={[Autoplay]}>
 					{new Array(10).fill({}).map(_ =>
-						sample.map((_item, index) => (
+						content?.list?.value.map((_item, index) => (
 							<SwiperSlide key={index} className='w-fit'>
 								<img src={_item.image.src} alt='featured' />
 							</SwiperSlide>

@@ -1,5 +1,8 @@
 .season_upgrade_deal_counter {
-	background: linear-gradient(148deg, #aef53b 31.99%, #60e2b7 82.27%);
+	background-image: url('~/public/assets/images/upgrade-season/background.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
 	.top_image {
 		width: 500px;
 		height: auto;

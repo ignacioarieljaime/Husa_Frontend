@@ -13,28 +13,32 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 			<div
 				id={data?.name + data?.id}
 				style={{
-					backgroundImage: `url(${`https://files.hisense-usa.com/storage/hisense/asset/images/664b819600be5e.webp`})`
+					backgroundImage: `url(${content?.background?.src})`
 				}}
 				className='season_upgrade_limited_time_banner'>
 				<div className='text_content'>
-					<p className='pretitle'>Limited time offer</p>
-					<h4 className='title'>
-						GET NBA 2K24 WITH ELIGIBLE 2023 ULED TV PURCHASE*
-					</h4>
-					<p className='text'>
-						Claim a digital copy of NBA 2K24: BLACK MAMBA EDITION when you buy a
-						2023 Hisense U6K, U7K, or U8K ULED TV before Nov 12, 2023 or while
-						supplies last.*
-					</p>
-					<Link href={'/'}>
-						<a className='n-btn medium danger-upgrade full_btn_md'>
-							Shop Eligible Models
-						</a>
-					</Link>
+					<p className='pretitle'>{content?.subtitle?.value}</p>
+					<h4
+						className='title'
+						dangerouslySetInnerHTML={{
+							__html: content?.title?.value
+						}}></h4>
+					<p
+						className='text'
+						dangerouslySetInnerHTML={{
+							__html: content?.text?.value
+						}}></p>
+					{content?.link?.value && (
+						<Link href={content?.link?.value}>
+							<a className='n-btn medium danger-upgrade full_btn_md'>
+								{content?.link?.title}
+							</a>
+						</Link>
+					)}
 				</div>
 				<img
-					src='https://files.hisense-usa.com/storage/hisense/asset/images/663d94b1fd4200.webp'
-					alt='featured'
+					src={content?.image?.src}
+					alt={content?.image?.alt}
 					className='image'
 				/>
 			</div>
