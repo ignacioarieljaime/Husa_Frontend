@@ -553,7 +553,7 @@ function RegisterForm({ data }) {
 						<button
 							disabled={loading}
 							type='submit'
-							className='n-btn outline-black py-2 px-4 d-flex mx-auto align-items-center'>
+							className='n-btn outline-black medium d-flex mx-auto align-items-center'>
 							<span className='me-2 underline-on-hover'>
 								{' '}
 								{structure?.subtitle?.value}

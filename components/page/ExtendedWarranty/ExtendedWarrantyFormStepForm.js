@@ -259,7 +259,7 @@ const ExtendedWarrantyFormStepForm = ({
 			/>
 			<div className=' mt-15 text-center'>
 				<button
-					className='n-btn outline-black py-4 d-flex align-items-center mx-auto '
+					className='n-btn outline-black medium d-flex align-items-center mx-auto '
 					type='submit'
 					disabled={!acceptTerms || loading === 'button' ? true : false}>
 					Proceed to Payment

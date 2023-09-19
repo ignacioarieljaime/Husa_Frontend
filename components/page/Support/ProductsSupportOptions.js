@@ -30,7 +30,7 @@ function ProductsSupportOptions({ data }) {
 							href={item?.link?.value}>
 							<a
 								target={item?.link?.target ? item?.link?.target : '_self'}
-								className='btn btn-outline-dark px-4 py-3 rounded-5'>
+								className='n-btn outline-black medium d-block mx-auto w-fit rounded-5'>
 								{item?.linkTitle?.value}
 								{item?.link?.target === '_blank' && (
 									<img

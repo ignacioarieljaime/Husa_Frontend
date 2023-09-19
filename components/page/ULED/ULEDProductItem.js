@@ -28,7 +28,8 @@ function ULEDProductItem({ data, itemLength }) {
 				<div className=' align-items-center d-flex flex-wrap gap-2'>
 					{list?.value.map((item, index) => (
 						<div className={'discover-btn  '}>
-							{item?.link?.value.includes('openChannelAdvisor') ? (
+							{item?.link?.value &&
+							item?.link?.value.includes('openChannelAdvisor') ? (
 								<button
 									onClick={() => {
 										setChanelAdModelId(item?.link?.value.split(':')[1])
@@ -45,9 +46,15 @@ function ULEDProductItem({ data, itemLength }) {
 										target={item?.link?.target ? item?.link?.target : '_self'}
 										className={`btn ${
 											index === 0
-												? 'btn-light'
+												? 'btn-light px-4'
 												: 'where-to-buy-btn btn-outline-light'
-										} text-nowrap`}>
+										} text-nowrap`}
+										style={{
+											minWidth: ' 80px',
+											padding: ' 9.5px 16px 6.5px',
+											fontSize: ' 14px',
+											lineHeight: ' 17px'
+										}}>
 										{item?.link?.title}
 
 										{item?.link?.target === '_blank' && (
