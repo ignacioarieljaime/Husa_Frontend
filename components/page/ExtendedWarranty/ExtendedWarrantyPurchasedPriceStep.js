@@ -17,7 +17,15 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans, loading }) => {
 						<div className='product'>
 							<h6 className='model'>{product?.model}</h6>
 							<h5 className='title'>{product?.name}</h5>
-							<img src={product?.image ? product?.image : product?.Category?.media?.url} alt={product?.name} className='image' />
+							<img
+								src={
+									product?.image
+										? product?.image
+										: product?.Category?.media?.url
+								}
+								alt={product?.name}
+								className='image'
+							/>
 						</div>
 						<div className='box'>
 							<div className='title'>Purchased Price</div>
@@ -38,7 +46,7 @@ const ExtendedWarrantyPurchasedPriceStep = ({ product, getPlans, loading }) => {
 									<Dollar />
 								</div>
 								<button
-									className='n-btn black-outline d-flex align-items-center mx-auto transparent'
+									className='n-btn black-outline medium d-flex align-items-center mx-auto transparent'
 									onClick={() => getPlans(parseFloat(price))}
 									onSubmit={() => getPlans(parseFloat(price))}
 									disabled={loading}>

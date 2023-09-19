@@ -68,7 +68,7 @@ const TelevisionsTvHero = ({ data }) => {
 															? content?.fullSizeCard?.value?.link?.target
 															: '_self'
 													}
-													className={`n-btn transparent d-block w-fit ${
+													className={`n-btn transparent medium d-block w-fit ${
 														content?.fullSizeCard?.value?.theme?.value ===
 														'light'
 															? 'outline-white'
@@ -127,7 +127,7 @@ const TelevisionsTvHero = ({ data }) => {
 																	? item?.link?.target
 																	: '_self'
 															}
-															className={`n-btn transparent d-block w-fit ${
+															className={`n-btn transparent medium d-block w-fit ${
 																item?.theme?.value === 'light'
 																	? 'outline-white'
 																	: 'outline-black'
@@ -182,7 +182,7 @@ const TelevisionsTvHero = ({ data }) => {
 														? content?.noBgCard?.value?.link?.target
 														: '_self'
 												}
-												className='n-btn outline-white transparent d-block w-fit'>
+												className='n-btn outline-white transparent medium d-block w-fit'>
 												{content?.noBgCard?.value?.link?.title}
 												{content?.noBgCard?.value?.link?.target ===
 													'_blank' && (
@@ -247,7 +247,7 @@ const TelevisionsTvHero = ({ data }) => {
 															? content?.bottomCard?.value?.link?.target
 															: '_self'
 													}
-													className={`n-btn transparent d-block w-fit ${
+													className={`n-btn transparent medium d-block w-fit ${
 														content?.bottomCard?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'

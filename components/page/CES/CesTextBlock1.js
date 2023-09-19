@@ -36,7 +36,7 @@ const CesTexBlock1 = ({ data }) => {
 									target={
 										content?.link?.target ? content?.link?.target : '_self'
 									}
-									className='fw-bold'
+									className='fw-bold medium'
 									style={{ color: '#00aaa6', textDecoration: 'none' }}>
 									{content?.link?.title} {'>'}
 									{content?.link?.target === '_blank' && (
@@ -87,7 +87,7 @@ const CesTexBlock1 = ({ data }) => {
 												? content?.productLink?.target
 												: '_self'
 										}
-										className='fw-bolder-700 fs-6 mt-4'
+										className='fw-bolder-700 fs-6 mt-4 medium'
 										style={{ color: '#00aaa6', textDecoration: 'none' }}>
 										{content?.productLink?.title} {'>'}
 										{content?.productLink?.target === '_blank' && (

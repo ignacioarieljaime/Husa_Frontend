@@ -31,7 +31,7 @@ function ProductResourceBox({ pim, data }) {
 					<a
 						target='_blank'
 						href={customWarrantyFile || warrantyFileUrl}
-						className='n-btn outline-white transparent d-block text-uppercase'
+						className='n-btn outline-white transparent medium w-fit mx-auto d-block text-uppercase'
 						download={true}
 						style={{
 							padding: '15px 16px 14px'
@@ -63,7 +63,7 @@ function ProductResourceBox({ pim, data }) {
 											href={'/televisions/laser-tv/installation-request'}>
 											<a className='text-decoration-none '>
 												<span
-													className='n-btn outline-white transparent d-block text-uppercase'
+													className='n-btn outline-white transparent medium w-fit mx-auto d-block text-uppercase'
 													style={{
 														padding: '15px 16px 14px'
 													}}>
@@ -83,7 +83,7 @@ function ProductResourceBox({ pim, data }) {
 											download
 											className='text-decoration-none '>
 											<span
-												className='n-btn outline-white transparent d-block text-uppercase'
+												className='n-btn outline-white transparent medium w-fit mx-auto d-block text-uppercase'
 												style={{
 													padding: '15px 16px 14px'
 												}}>
@@ -107,7 +107,7 @@ function ProductResourceBox({ pim, data }) {
 						}`}>
 						<a className='text-decoration-none '>
 							<span
-								className='n-btn outline-white transparent d-block text-uppercase'
+								className='n-btn outline-white transparent medium w-fit mx-auto d-block text-uppercase'
 								style={{
 									padding: '15px 16px 14px'
 								}}>
@@ -121,7 +121,7 @@ function ProductResourceBox({ pim, data }) {
 					<li>
 						<Link href={structure?.installationUrl?.value}>
 							<a
-								className='n-btn outline-white transparent d-block text-uppercase'
+								className='n-btn outline-white transparent medium w-fit mx-auto d-block text-uppercase'
 								style={{
 									padding: '15px 16px 14px'
 								}}>

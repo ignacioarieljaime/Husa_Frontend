@@ -52,7 +52,7 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 													? structure?.link?.target
 													: '_self'
 											}
-											className='slider-title n-btn outline-black'>
+											className='slider-title n-btn outline-black medium'>
 											{
 												item?.category?.items.find(
 													catItem => item?.category?.value == catItem.id

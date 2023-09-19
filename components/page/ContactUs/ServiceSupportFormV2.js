@@ -314,7 +314,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 					<button
 						type='submit'
 						disabled={loading}
-						className={`d-flex mx-auto align-items-center btn btn-outline-dark fw-bold rounded-5 mb-20 py-3 px-4`}>
+						className={`d-flex mx-auto align-items-center n-btn outline-black medium fw-bold rounded-5 mb-20`}>
 						<span> SUBMIT</span>
 						{loading && <Spinner className={'ms-2'} size={25} />}
 					</button>

@@ -26,7 +26,7 @@ function SupportNeedAssistance({ data }) {
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							className='btn btn-light rounded-5 px-4 py-2'>
+							className='n-btn white rounded-5 medium d-block mx-auto w-fit'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

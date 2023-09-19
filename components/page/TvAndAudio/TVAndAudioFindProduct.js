@@ -27,7 +27,7 @@ function TVAndAudioFindProduct({ data: { structure } }) {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='btn btn-outline-dark text-muted text-uppercase rounded-5 px-10 mt-8 mb-6'>
+									className='n-btn outline-grey text-uppercase transparent rounded-5 medium d-block mx-auto w-fit mt-8 mb-6'>
 									{structure?.link.title}
 									{structure?.link?.target === '_blank' && (
 										<img

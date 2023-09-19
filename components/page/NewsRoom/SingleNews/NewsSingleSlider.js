@@ -59,26 +59,31 @@ const NewsSingleSlider = ({ data }) => {
 							/>
 							<div className='buttons'>
 								<button
-									className='n-btn outline-white'
+									className='n-btn outline-white medium'
+									style={{
+										fontSize: ' 14px',
+										lineHeight: ' 17px',
+										height: 'unset'
+									}}
 									onClick={() =>
 										setImageUrl(imageUrl ? null : item?.image?.src)
 									}>
-									<span style={{ paddingTop: '3px' }}>
-										{item?.EnlargeBtn?.value}{' '}
-									</span>
+									<span>{item?.EnlargeBtn?.value} </span>
 									<ResizeIcon />
 								</button>
 								<a
-									className='n-btn outline-white'
+									className='n-btn outline-white medium'
+									style={{
+										fontSize: ' 14px',
+										lineHeight: ' 17px',
+										height: 'unset'
+									}}
 									href={
 										item?.image?.src.split('.com')[0] +
 										'.com/download/f' +
 										item?.image?.src.split('.com')[1]
 									}>
-									<span style={{ paddingTop: '3px' }}>
-										{item?.downloadBtn?.title}
-									</span>{' '}
-									<DownloadIconV2 />
+									<span>{item?.downloadBtn?.title}</span> <DownloadIconV2 />
 								</a>
 							</div>
 							<Link href={item?.link?.value || '/'}>

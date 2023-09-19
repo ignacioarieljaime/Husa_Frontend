@@ -220,7 +220,7 @@ const ExtendedWarrantyPaymentStatus = ({
 									target={
 										content?.link?.target ? content?.link?.target : '_self'
 									}
-									className='n-btn outline-black py-4 mx-3 my-8 my-sm-4'>
+									className='n-btn outline-black medium d-inline-block mx-3 my-8 my-sm-4'>
 									{content?.link?.title}
 									{content?.link?.target === '_blank' && (
 										<img
@@ -235,7 +235,7 @@ const ExtendedWarrantyPaymentStatus = ({
 						router?.query?.stat !== 'ok' ||
 						!statusData?.invoice?.transaction ? (
 							<button
-								className='n-btn outline-black py-4 mx-3 my-8 my-sm-4'
+								className='n-btn outline-black medium mx-3 my-8 my-sm-4'
 								onClick={() => retryPayment(invoice)}>
 								Retry
 							</button>

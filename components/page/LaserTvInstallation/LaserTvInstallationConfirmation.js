@@ -50,7 +50,7 @@ const LaserTvInstallationConfirmation = ({ data }) => {
 									target={
 										content?.link?.target ? content?.link?.target : '_self'
 									}
-									className='n-btn outline-black py-3 px-5 mx-3 my-8 my-sm-4'>
+									className='n-btn outline-black medium mx-3 my-8 my-sm-4'>
 									{content?.link?.title}
 									{content?.link?.target === '_blank' && (
 										<img

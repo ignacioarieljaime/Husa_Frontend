@@ -57,7 +57,7 @@ const BlockFeatured = ({ data: { structure } }) => {
 									href={item?.link?.value ? item?.link?.value : '/'}>
 									<a
 										target={item?.link?.target ? item?.link?.target : '_self'}
-										className='n-btn outline-white transparent d-block w-fit mx-auto'>
+										className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
 										{item?.link?.title}
 										{item?.link?.target === '_blank' && (
 											<img

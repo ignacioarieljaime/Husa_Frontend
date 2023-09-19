@@ -32,7 +32,7 @@ function LandingProductItem({ data: { image, link, title } }) {
 						href={link.value}>
 						<a
 							target={link?.target ? link?.target : '_self'}
-							className='btn btn-outline-dark shop-btn'>
+							className='n-btn outline-black medium d-block shop-btn w-fit mx-auto'>
 							{link.title}
 							{link?.target === '_blank' && (
 								<img

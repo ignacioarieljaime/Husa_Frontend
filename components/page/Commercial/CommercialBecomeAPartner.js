@@ -11,7 +11,7 @@ function CommercialBecomeAPartner({ data }) {
 						Contact us at:{' '}
 						<a
 							href={`mailto:${structure?.email?.value}`}
-							className='text-primary-new'>
+							className='text-primary-new medium'>
 							{structure?.email?.value}
 						</a>
 					</div>

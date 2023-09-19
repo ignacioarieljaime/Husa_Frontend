@@ -70,7 +70,7 @@ const BlockKitchenContainer = ({ structure }) => {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='n-btn outline-white transparent d-block w-fit mb-5 mb-md-0'>
+									className='n-btn outline-white transparent medium w-fit d-block mb-5 mb-md-0'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (
 										<img

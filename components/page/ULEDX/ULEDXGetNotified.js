@@ -23,7 +23,7 @@ const ULEDXGetNotified = ({ data: { structure } }) => {
 								onChange={e => setEmail(e.target.value)}
 							/>
 						</div>
-						<button type='button' className='n-btn white px-6 py-4'>
+						<button type='button' className='n-btn medium white'>
 							Submit
 						</button>
 					</form>
