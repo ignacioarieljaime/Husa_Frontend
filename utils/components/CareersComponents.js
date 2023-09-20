@@ -10,5 +10,25 @@ module.exports.CareersComponents = [
 	{
 		name: 'CareersTextBox',
 		path: 'components/page/Careers/CareersTextBox'
+	},
+	{
+		name: 'CareersVideoBlock',
+		path: 'components/page/Careers/CareersVideoBlock'
+	},
+	{
+		name: 'CareersBlockCategories',
+		path: 'components/page/Careers/CareersBlockCategories'
+	},
+	{
+		name: 'CareersCycleSection',
+		path: 'components/page/Careers/CareersCycleSection'
+	},
+	{
+		name: 'CareersCycleSection',
+		path: 'components/page/Careers/CareersCycleSection'
+	},
+	{
+		name: 'CareersTextBlock',
+		path: 'components/page/Careers/CareersTextBlock'
 	}
 ]

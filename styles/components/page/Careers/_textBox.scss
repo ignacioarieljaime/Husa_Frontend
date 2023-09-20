@@ -42,3 +42,47 @@
 		}
 	}
 }
+
+.careers_text_block {
+	padding: 64px;
+	background-color: #fff;
+
+	@include mq(768) {
+		padding: 32px;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		gap: 32px;
+		max-width: 1290px;
+		margin: 0 auto;
+		.title {
+			margin: 0;
+			padding: 0 16px;
+			* {
+				font-size: 48px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 52px; /* 116.375% */
+				letter-spacing: -0.96px;
+				color: #000;
+				margin: 0;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 28px; /* 125% */
+					letter-spacing: -0.48px;
+				}
+			}
+		}
+		.n-btn {
+			@include mq(768) {
+				padding: 9.5px 16px 6.5px !important;
+				font-size: 14px;
+				line-height: 19px;
+			}
+		}
+	}
+}
