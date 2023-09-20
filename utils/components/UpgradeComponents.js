@@ -24,7 +24,7 @@ module.exports.UpgradeComponents = [
 		path: 'components/page/Upgrade/SeasonUpgradeHeroBanner'
 	},
 	{
-		name: 'UpgradeLSeasonUpgradeLimitedTimeOfferBanner9GForm',
+		name: 'SeasonUpgradeLimitedTimeOfferBanner',
 		path: 'components/page/Upgrade/SeasonUpgradeLimitedTimeOfferBanner'
 	},
 	{
