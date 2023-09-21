@@ -10,9 +10,14 @@ import {
 	faChevronLeft,
 	faChevronRight
 } from '@fortawesome/free-solid-svg-icons'
+import { useWindowSize } from 'hooks/useWindowSize'
+import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 
 const SeasonUpgradeProductsCarousel = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const [channelAdvisorData, setChannelAdvisorData] = useState(null)
+	const [showDialgo, setShowDialog] = useState(false)
+	const windowSize = useWindowSize()
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
@@ -38,7 +43,11 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					slidesPerView={'auto'}
 					slidesPerGroup={1}
 					spaceBetween={16}
-					initialSlide={content?.direction?.value === 'left' ? 5 : 1}
+					initialSlide={
+						windowSize >= 768
+							? Math.floor(content?.selected_products?.value.length / 2)
+							: 1
+					}
 					centeredSlides={true}
 					navigation={{
 						nextEl: '.swiper-button-next',
@@ -46,9 +55,13 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					}}
 					className={`carousel`}
 					modules={[Navigation]}>
-					{[{}, {}, {}, {}, {}, {}, {}].map((item, index) => (
-						<SwiperSlide key={index} className='w-fit'>
-							<SeasonUpgradeProductsCarouselItem data={item} />
+					{content?.selected_products?.value.map((item, index) => (
+						<SwiperSlide className='w-fit' key={index}>
+							<SeasonUpgradeProductsCarouselItem
+								data={item}
+								setChannelAdvisorData={setChannelAdvisorData}
+								setShowDialog={setShowDialog}
+							/>
 						</SwiperSlide>
 					))}
 					<button className='swiper-button-next'>
@@ -59,6 +72,13 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					</button>
 				</Swiper>
 			</div>
+			{channelAdvisorData?.product && (
+				<ModalChanelAdviser
+					condition={showDialgo}
+					handler={setShowDialog}
+					{...channelAdvisorData}
+				/>
+			)}
 		</section>
 	)
 }

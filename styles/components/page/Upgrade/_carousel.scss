@@ -49,8 +49,16 @@
 	}
 	.carousel {
 		padding: 64px 0;
+		position: unset;
 		@include mq(768) {
 			padding: 16px 0;
+		}
+		.swiper-wrapper {
+			position: unset;
+
+			.swiper-slide {
+				position: unset;
+			}
 		}
 		.item {
 			border-radius: 25px;
@@ -120,15 +128,18 @@
 				padding-left: 20px;
 				margin: 0;
 				li {
-					font-size: 16px;
-					font-style: normal;
-					font-weight: 400;
-					line-height: 21.6px; /* 135% */
-					color: #000;
 					margin-bottom: 4px;
-					@include mq(768) {
-						font-size: 14px;
-						line-height: 18.9px; /* 135% */
+					* {
+						margin: 0;
+						font-size: 16px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 21.6px; /* 135% */
+						color: #000;
+						@include mq(768) {
+							font-size: 14px;
+							line-height: 18.9px; /* 135% */
+						}
 					}
 					&:last-child {
 						margin: 0;

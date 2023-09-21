@@ -5,22 +5,14 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import DealOfTheWeek from 'public/assets/images/upgrade-season/Deal-of-the-Week.png'
 import Lockup from 'public/assets/images/upgrade-season/lockup.png'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const windowSize = useWindowSize()
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
-
-	const weeks = [
-		{ title: 'week 1', active: false, passed: true },
-		{ title: 'week 2', active: true, passed: false },
-		{ title: 'week 3', active: false, passed: false },
-		{ title: 'week 4', active: false, passed: false },
-		{ title: 'week 5', active: false, passed: false },
-		{ title: 'week 6', active: false, passed: false },
-		{ title: 'week 7', active: false, passed: false }
-	]
 
 	return (
 		<section>
@@ -37,13 +29,11 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 						{content?.list?.value.map((item, index) => (
 							<li
 								key={index}
-								className={`${item?.object?.value?.status?.value}`}>
-								{item?.object?.value.title?.value}
-								{content?.list?.value.findIndex(
-									_item => _item?.object?.value?.status?.value === 'active'
-								) > index ? (
-									<RedScratch />
-								) : null}
+								className={`${
+									index === content?.active?.value ? 'active' : ''
+								}`}>
+								{item?.title?.value}
+								{index < content?.active?.value && <RedScratch />}
 							</li>
 						))}
 					</ul>
@@ -80,31 +70,61 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 						</div>
 						<img
 							className='image'
-							src='https://files.hisense-usa.com/storage/hisense/asset/images/6642f24017c5f1.webp'
+							src={
+								windowSize[0] > 768
+									? content?.list?.value[0]?.product_image?.src
+									: content?.list?.value[0]?.product_image_responsive?.src
+							}
+							alt={
+								windowSize[0] > 768
+									? content?.list?.value[0]?.product_image?.alt
+									: content?.list?.value[0]?.product_image_responsive?.alt
+							}
 						/>
 					</div>
 					<div className='product_info'>
 						<div className='main_info'>
-							<h4 className='title'>
-								75” Hisense Class U8 Series Mini-LED ULED 4K TV Google TV
-							</h4>
+							<h4
+								className='title'
+								dangerouslySetInnerHTML={{
+									__html: content?.list?.value[0]?.product_title?.value
+								}}></h4>
 							<div>
-								<div className='off'>Save $600</div>
+								<div
+									className='off'
+									dangerouslySetInnerHTML={{
+										__html:
+											'<p>Save</p>' +
+											content?.list?.value[0]?.product_sale?.value
+									}}></div>
 								<div className='d-flex justify-content-start align-items-end gap-4 mb-n1'>
-									<h3 className='price'>$1099.99</h3>
-									<p className='old_price'>Was $1699.99</p>
+									<h3
+										className='price'
+										dangerouslySetInnerHTML={{
+											__html: content?.list?.value[0]?.price?.value
+										}}></h3>
+									<div
+										className='old_price'
+										dangerouslySetInnerHTML={{
+											__html: content?.list?.value[0]?.old_price?.value
+										}}></div>
 								</div>
 							</div>
 						</div>
-						<div className='limited_offer'>
-							<p>Plus Limited Time Offer!</p>
-							<p>Get NBA 2K24 when you buy this TV before 11/12/23</p>
-						</div>
+						<div
+							className='limited_offer'
+							dangerouslySetInnerHTML={{
+								__html: content?.list?.value[0]?.blackbox_text?.value
+							}}></div>
 						<ul className='product_specs'>
-							<li>4K ULED TV with 2 Year Warranty</li>
-							<li>Mini-LED Pro w/ Full Array Local Dimming</li>
-							<li>QLED | Quantum Dot Color</li>
-							<li>144Hz Game Mode Pro</li>
+							{content?.list?.value[0]?.product_specs?.value.map(
+								(item, index) => (
+									<li
+										dangerouslySetInnerHTML={{
+											__html: item?.text?.value
+										}}></li>
+								)
+							)}
 						</ul>
 						<Link href={'/'}>
 							<a className='n-btn medium full_btn_md danger-upgrade'>
