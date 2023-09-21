@@ -26,5 +26,9 @@ module.exports.CareersComponents = [
 	{
 		name: 'CareersTextBlock',
 		path: 'components/page/Careers/CareersTextBlock'
+	},
+	{
+		name: 'CareersContactUs',
+		path: 'components/page/Careers/CareersContactUs'
 	}
 ]

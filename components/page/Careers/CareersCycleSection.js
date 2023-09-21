@@ -12,7 +12,7 @@ const CareersCycleSection = ({ data }) => {
 			<div id={data?.name + data?.id} className='careers_cycle_section'>
 				<div className='content'>
 					<h3
-						className='title py-4 py-md-7'
+						className='title py-0 py-md-7'
 						dangerouslySetInnerHTML={{ __html: content?.title1?.value }}></h3>
 					<div className='list'>
 						{content?.list?.value.map((item, index) => (

@@ -37,7 +37,9 @@ const CareersVideoBlock = ({ data }) => {
 						src={content?.video?.value}
 						onClick={() => playVideo(true)}></video>
 				) : (
-					<iframe src={content?.video?.value}></iframe>
+					<iframe
+						allow='autoplay; mute; loop'
+						src={content?.video?.value + '?autoplay=1&mute=1&loop=1'}></iframe>
 				)}
 				{content?.videoType?.value === 'link' && !playingStatus && (
 					<button onClick={() => playVideo(playingStatus)}>

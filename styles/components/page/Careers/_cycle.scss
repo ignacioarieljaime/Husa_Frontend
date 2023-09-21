@@ -9,17 +9,21 @@
 		flex-direction: column;
 		gap: 32px;
 		@include mq(768) {
-			margin: 0 auto 24px;
+			margin: 0 auto;
 		}
 		.title {
 			margin: 0;
+			@include mq(768) {
+				text-align: center;
+				width: 100%;
+			}
 			* {
 				font-size: 48px;
 				font-weight: 500;
 				line-height: 50px; /* 116.375% */
 				letter-spacing: -0.96px;
 				color: #000000;
-				margin: 0;
+				margin: 0 0 -4px;
 				@include mq(768) {
 					font-size: 24px;
 					line-height: 28px; /* 125% */
@@ -41,15 +45,19 @@
 				gap: 32px;
 				width: 100%;
 				@include mq(768) {
+					gap: 48px;
 					flex-wrap: wrap;
+					justify-content: center;
 				}
 				.image_wrapper {
 					position: relative;
 					max-width: 242px;
+					height: 242px;
 					.image {
 						width: 100%;
-						object-fit: contain;
-						border-radius: 10000px;
+						height: 100%;
+						object-fit: cover;
+						border-radius: 100%;
 						box-shadow: 0px 10px 16px 0px rgba(20, 37, 63, 0.06);
 					}
 					.icon {
@@ -58,7 +66,8 @@
 						top: 50%;
 						transform: translate(-50%, -50%);
 						width: 80px;
-						height: auto;
+						height: 80px;
+						object-fit: contain;
 					}
 				}
 				.text_content {
@@ -68,8 +77,14 @@
 					@include mq(991) {
 						padding-right: 40px;
 					}
+					@include mq(768) {
+						padding-right: 0;
+					}
 					.title {
 						margin-bottom: 12px;
+						@include mq(768) {
+							margin-bottom: 32px;
+						}
 						* {
 							font-size: 34px;
 							font-weight: 500;
@@ -86,9 +101,11 @@
 					}
 					.text {
 						margin: 0;
+
 						* {
+							width: 100%;
 							font-size: 20px;
-							font-weight: 400;
+							font-weight: 500;
 							line-height: 25px; /* 125% */
 							letter-spacing: -0.4px;
 							color: #000000;
@@ -110,7 +127,6 @@
 			flex-direction: column;
 			gap: 64px;
 			@include mq(768) {
-				padding: 16px 0;
 				gap: 32px;
 			}
 		}
@@ -118,7 +134,7 @@
 			margin: 0;
 			* {
 				font-size: 24px;
-				font-weight: 400;
+				font-weight: 500;
 				line-height: 30px; /* 125% */
 				letter-spacing: -0.48px;
 				color: #000000;

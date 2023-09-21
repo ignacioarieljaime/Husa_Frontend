@@ -226,6 +226,7 @@ ${
 					return {
 						notFound: true
 					}
+					}
 					if (!data?.widgets || data?.widgets.length == 0) {
 						return {
 							notFound: true
