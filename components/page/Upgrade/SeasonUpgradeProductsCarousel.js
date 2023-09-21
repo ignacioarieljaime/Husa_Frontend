@@ -56,7 +56,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					className={`carousel`}
 					modules={[Navigation]}>
 					{content?.selected_products?.value.map((item, index) => (
-						<SwiperSlide className='w-fit' key={index}>
+						<SwiperSlide className='w-fit h-100' key={index}>
 							<SeasonUpgradeProductsCarouselItem
 								data={item}
 								setChannelAdvisorData={setChannelAdvisorData}

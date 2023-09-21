@@ -9,7 +9,8 @@
 	@include mq(768) {
 		padding: 16px 0;
 	}
-	.swiper-wrapper {
-		transition-timing-function: linear;
+
+	.splide__list {
+		width: 110vw;
 	}
 }

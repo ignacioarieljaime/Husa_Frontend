@@ -54,7 +54,7 @@
 			padding: 16px 0;
 		}
 		.swiper-wrapper {
-			position: unset;
+			height: 720px;
 
 			.swiper-slide {
 				position: unset;
@@ -66,7 +66,7 @@
 			background: #fff;
 			padding: 32px;
 			display: flex;
-			justify-content: start;
+			justify-content: space-between;
 			align-items: center;
 			flex-direction: column;
 			gap: 16px;
@@ -76,6 +76,14 @@
 			@include mq(768) {
 				max-width: 268px;
 				padding: 16px;
+			}
+			.column {
+				display: flex;
+				justify-content: center;
+				align-items: start;
+				flex-direction: column;
+				width: 100%;
+				gap: 16px;
 			}
 			&::after {
 				content: '';

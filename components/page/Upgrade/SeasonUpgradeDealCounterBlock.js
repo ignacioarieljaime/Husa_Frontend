@@ -6,13 +6,41 @@ import { useState } from 'react'
 import DealOfTheWeek from 'public/assets/images/upgrade-season/Deal-of-the-Week.png'
 import Lockup from 'public/assets/images/upgrade-season/lockup.png'
 import { useWindowSize } from 'hooks/useWindowSize'
+import ModalChanelAdviser from '../Product/ModalChanelAdviser'
+import { GetSingleProduct } from 'services/Product'
+import { useRouter } from 'next/router'
+import { useCountdown } from 'hooks/useCountdown'
 
 const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const windowSize = useWindowSize()
+	const [showDialgo, setShowDialog] = useState(false)
+	const [product, setProduct] = useState()
+
+	const [days, hours, minutes, seconds] = useCountdown(
+		content?.list?.value[content?.active?.value]?.end?.value
+	)
+
+	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
+
+	useEffect(() => {
+		getProduct()
+	}, [content])
+
+	async function getProduct() {
+		try {
+			let response = await GetSingleProduct(
+				router,
+				content?.list?.value[content?.active?.value]?.button?.value
+			)
+			setProduct(response?.data?.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<section>
@@ -50,19 +78,19 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 								<p className='counter_label'>DEAL EXPIRES IN</p>
 								<div className='counter'>
 									<div>
-										<div>06</div>
+										<div>{days}</div>
 										<div>DAYS</div>
 									</div>
 									<div>
-										<div>12</div>
+										<div>{hours}</div>
 										<div>HRS</div>
 									</div>
 									<div>
-										<div>34</div>
+										<div>{minutes}</div>
 										<div>MINS</div>
 									</div>
 									<div>
-										<div>57</div>
+										<div>{seconds}</div>
 										<div>SECS</div>
 									</div>
 								</div>
@@ -72,13 +100,17 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							className='image'
 							src={
 								windowSize[0] > 768
-									? content?.list?.value[0]?.product_image?.src
-									: content?.list?.value[0]?.product_image_responsive?.src
+									? content?.list?.value[content?.active?.value]?.product_image
+											?.src
+									: content?.list?.value[content?.active?.value]
+											?.product_image_responsive?.src
 							}
 							alt={
 								windowSize[0] > 768
-									? content?.list?.value[0]?.product_image?.alt
-									: content?.list?.value[0]?.product_image_responsive?.alt
+									? content?.list?.value[content?.active?.value]?.product_image
+											?.alt
+									: content?.list?.value[content?.active?.value]
+											?.product_image_responsive?.alt
 							}
 						/>
 					</div>
@@ -87,7 +119,9 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							<h4
 								className='title'
 								dangerouslySetInnerHTML={{
-									__html: content?.list?.value[0]?.product_title?.value
+									__html:
+										content?.list?.value[content?.active?.value]?.product_title
+											?.value
 								}}></h4>
 							<div>
 								<div
@@ -95,18 +129,23 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 									dangerouslySetInnerHTML={{
 										__html:
 											'<p>Save</p>' +
-											content?.list?.value[0]?.product_sale?.value
+											content?.list?.value[content?.active?.value]?.product_sale
+												?.value
 									}}></div>
-								<div className='d-flex justify-content-start align-items-end gap-4 mb-n1'>
+								<div className='d-flex justify-content-start align-items-end gap-4 mb-n2 mb-md-n3'>
 									<h3
 										className='price'
 										dangerouslySetInnerHTML={{
-											__html: content?.list?.value[0]?.price?.value
+											__html:
+												content?.list?.value[content?.active?.value]?.price
+													?.value
 										}}></h3>
 									<div
 										className='old_price'
 										dangerouslySetInnerHTML={{
-											__html: content?.list?.value[0]?.old_price?.value
+											__html:
+												content?.list?.value[content?.active?.value]?.old_price
+													?.value
 										}}></div>
 								</div>
 							</div>
@@ -114,26 +153,39 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 						<div
 							className='limited_offer'
 							dangerouslySetInnerHTML={{
-								__html: content?.list?.value[0]?.blackbox_text?.value
+								__html:
+									content?.list?.value[content?.active?.value]?.blackbox_text
+										?.value
 							}}></div>
 						<ul className='product_specs'>
-							{content?.list?.value[0]?.product_specs?.value.map(
-								(item, index) => (
-									<li
-										dangerouslySetInnerHTML={{
-											__html: item?.text?.value
-										}}></li>
-								)
-							)}
+							{content?.list?.value[
+								content?.active?.value
+							]?.product_specs?.value.map((item, index) => (
+								<li
+									key={index}
+									dangerouslySetInnerHTML={{
+										__html: item?.text?.value
+									}}></li>
+							))}
 						</ul>
-						<Link href={'/'}>
-							<a className='n-btn medium full_btn_md danger-upgrade'>
-								Shop Deal
-							</a>
-						</Link>
+						<button
+							onClick={() => setShowDialog(true)}
+							className='n-btn medium full_btn_md danger-upgrade'>
+							Shop Deal
+						</button>
 					</div>
 				</div>
 			</div>
+			{product && (
+				<ModalChanelAdviser
+					product={product}
+					productId={product.id}
+					type={product.buy_status}
+					condition={showDialgo}
+					handler={setShowDialog}
+					model={product?.model}
+				/>
+			)}
 		</section>
 	)
 }

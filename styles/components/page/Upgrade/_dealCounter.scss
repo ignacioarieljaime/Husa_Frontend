@@ -60,6 +60,7 @@
 		@include mq(768) {
 			flex-wrap: wrap;
 			padding: 16px 16px 32px;
+			gap: 24px;
 		}
 		.product_images {
 			width: 53%;
@@ -123,22 +124,23 @@
 						justify-content: center;
 						align-items: center;
 						display: flex;
-						gap: 2px;
+						gap: 5px;
+						width: 59px;
 						border-radius: 6px;
 						background: #000;
 						> * {
 							color: #fff;
+							font-family: 'archivo-expanded';
 							&:first-child {
 								font-size: 24px;
-								font-weight: 400;
-								line-height: 24px;
+								font-weight: 900;
+								line-height: 20px; /* 125% */
 								letter-spacing: -0.48px;
 							}
 							&:last-child {
 								font-size: 12px;
-								font-weight: 400;
-								line-height: 12px;
-								margin-bottom: -2px;
+								font-weight: 900;
+								line-height: 10px; /* 135% */
 							}
 						}
 					}
@@ -160,6 +162,7 @@
 			justify-content: flex-start;
 			gap: 32px;
 			@include mq(768) {
+				gap: 16px;
 				width: 100%;
 			}
 			.title {
@@ -179,9 +182,12 @@
 						margin-bottom: 18px;
 					}
 				}
+				@include mq(575) {
+					width: 90%;
+				}
 			}
 			.off {
-				margin-bottom: 16px;
+				margin-bottom: 20px;
 				background: #e23717;
 				border-radius: 6px;
 				padding: 8px;
@@ -193,9 +199,12 @@
 				* {
 					margin-bottom: 0;
 					font-size: 12px;
-					font-weight: 400;
+					font-weight: 300;
 					line-height: 8px; /* 135% */
 					color: #fff;
+				}
+				@include mq(768) {
+					margin-bottom: 18px;
 				}
 			}
 			.price {
@@ -230,7 +239,7 @@
 				padding: 16px;
 				@include mq(768) {
 					text-align: center;
-					padding: 18px 48px 14px;
+					padding: 16px 48px 14px;
 				}
 				p {
 					font-size: 16px;
@@ -245,14 +254,21 @@
 					}
 					@include mq(768) {
 						font-size: 14px;
-						line-height: 16px;
+						line-height: 18px;
 					}
 				}
 			}
 			.product_specs {
 				margin: 0;
 				padding-left: 0;
+				@include mq(768) {
+					padding-left: 26px;
+				}
 				li {
+					position: relative;
+					&::marker {
+						font-size: 10px;
+					}
 					margin-bottom: 8px;
 					* {
 						margin: 0;
@@ -260,6 +276,13 @@
 						font-weight: 400;
 						line-height: 16px;
 						color: #000;
+					}
+					@include mq(768) {
+						margin-bottom: 6px;
+						* {
+							font-size: 14px;
+							line-height: 18px; /* 135% */
+						}
 					}
 					&:last-child {
 						margin: 0;

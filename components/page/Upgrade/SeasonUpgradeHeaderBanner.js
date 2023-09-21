@@ -1,15 +1,25 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 
-import { SwiperSlide, Swiper } from 'swiper/react'
+import { SwiperSlide, Swiper, useSwiper } from 'swiper/react'
 import 'swiper/css'
 import { Autoplay } from 'swiper'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import '@splidejs/react-splide/css'
+import { useRef } from 'react'
 
 const SeasonUpgradeHeaderBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const splideRef = useRef()
+
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
+
+	useEffect(() => {
+		console.log(splideRef.current.splide.Components.Autoplay.play())
+		splideRef.current.splide.Components.Autoplay.play()
+	}, [content])
 
 	return (
 		<section>
@@ -17,29 +27,27 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 				id={data?.name + data?.id}
 				className='season_upgrade_header_banner'
 				style={{ backgroundColor: content?.backgroundColor?.value }}>
-				<Swiper
-					autoplay={{
-						delay: -500,
-						disableOnInteraction: false
-					}}
-					loop={true}
-					speed={3000}
-					updateOnImagesReady
-					onImagesReady={swiper => swiper.autoplay.start()}
-					// slidesPerView={'auto'}
-					slidesPerGroup={1}
-					spaceBetween={48}
-					grabCursor={false}
-					allowTouchMove={false}
-					modules={[Autoplay]}>
-					{new Array(10).fill({}).map(_ =>
-						content?.list?.value.map((_item, index) => (
-							<SwiperSlide key={index} className='w-fit'>
-								<img src={_item.image.src} alt='featured' />
-							</SwiperSlide>
-						))
-					)}
-				</Swiper>
+				<Splide
+					ref={splideRef}
+					options={{
+						type: 'loop',
+						autoplay: true,
+						arrows: false,
+						pagination: false,
+						clones: 8,
+						gap: '48px',
+						perPage: 1,
+						pauseOnHover: false,
+						speed: 1100,
+						interval: 700,
+						easing: 'linear'
+					}}>
+					{content?.list?.value.map((_item, index) => (
+						<SplideSlide key={index} className='w-fit'>
+							<img src={_item.image.src} alt='featured' />
+						</SplideSlide>
+					))}
+				</Splide>
 			</div>
 		</section>
 	)

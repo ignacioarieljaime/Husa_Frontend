@@ -29,7 +29,7 @@ const SeasonUpgradeExclusiveBanner = ({ data }) => {
 							__html: content?.title?.value
 						}}></h3>
 					<p
-						className='text'
+						className='text mb-n1'
 						dangerouslySetInnerHTML={{
 							__html: content?.text?.value
 						}}></p>

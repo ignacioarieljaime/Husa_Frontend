@@ -1,13 +1,31 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { GetSingleProduct } from 'services/Product'
 
 const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const [product, setProduct] = useState()
+	const [showDialgo, setShowDialog] = useState(false)
+	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
+
+	useEffect(() => {
+		getProduct()
+	}, [content])
+
+	async function getProduct() {
+		try {
+			let response = await GetSingleProduct(router, content?.link?.value)
+			setProduct(response?.data?.data)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 	return (
 		<section>
 			<div
@@ -16,7 +34,7 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 					backgroundImage: `url(${content?.background?.src})`
 				}}
 				className='season_upgrade_limited_time_banner'>
-				<div className='text_content'>
+				<div className='text_content pt-0 pt-md-4'>
 					<p className='pretitle'>{content?.subtitle?.value}</p>
 					<h4
 						className='title'
@@ -28,13 +46,11 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 						dangerouslySetInnerHTML={{
 							__html: content?.text?.value
 						}}></p>
-					{content?.link?.value && (
-						<Link href={content?.link?.value}>
-							<a className='n-btn medium danger-upgrade full_btn_md'>
-								{content?.link?.title}
-							</a>
-						</Link>
-					)}
+					<button
+						onClick={() => setShowDialog(true)}
+						className='n-btn medium danger-upgrade full_btn_md'>
+						Shop Eligible Models
+					</button>
 				</div>
 				<img
 					src={content?.image?.src}
@@ -42,6 +58,16 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 					className='image'
 				/>
 			</div>
+			{product && (
+				<ModalChanelAdviser
+					product={product}
+					productId={product.id}
+					type={product.buy_status}
+					condition={showDialgo}
+					handler={setShowDialog}
+					model={product?.model}
+				/>
+			)}
 		</section>
 	)
 }
