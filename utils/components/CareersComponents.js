@@ -24,10 +24,6 @@ module.exports.CareersComponents = [
 		path: 'components/page/Careers/CareersCycleSection'
 	},
 	{
-		name: 'CareersCycleSection',
-		path: 'components/page/Careers/CareersCycleSection'
-	},
-	{
 		name: 'CareersTextBlock',
 		path: 'components/page/Careers/CareersTextBlock'
 	}
