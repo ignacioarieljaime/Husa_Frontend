@@ -232,7 +232,7 @@ ${
 							notFound: true
 						}
 					}
-				} else {
+				 else {
 					return { props: { data }} 
 				}
 }`
