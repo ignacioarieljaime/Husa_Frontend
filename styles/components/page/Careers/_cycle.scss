@@ -1,7 +1,7 @@
 .careers_cycle_section {
 	.content {
 		max-width: 1307px;
-		margin: 0 auto 54px;
+		margin: 0 auto;
 		padding: 0 16px;
 		display: flex;
 		justify-content: center;
@@ -83,7 +83,7 @@
 					.title {
 						margin-bottom: 12px;
 						@include mq(768) {
-							margin-bottom: 32px;
+							margin-bottom: 28px;
 						}
 						* {
 							font-size: 34px;
@@ -93,8 +93,8 @@
 							color: #000000;
 							margin: 0;
 							@include mq(768) {
-								font-size: 20px;
-								line-height: 22px; /* 125% */
+								font-size: 24px;
+								line-height: 28px; /* 125% */
 								letter-spacing: -0.4px;
 							}
 						}
@@ -120,7 +120,7 @@
 			}
 		}
 		.second_article {
-			padding: 32px 0;
+			padding: 32px 0 28px;
 			display: flex;
 			justify-content: center;
 			align-items: start;
@@ -135,7 +135,7 @@
 			* {
 				font-size: 24px;
 				font-weight: 500;
-				line-height: 30px; /* 125% */
+				line-height: 28px; /* 125% */
 				letter-spacing: -0.48px;
 				color: #000000;
 				margin: 0;
