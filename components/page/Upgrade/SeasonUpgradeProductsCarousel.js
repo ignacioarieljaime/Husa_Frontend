@@ -12,14 +12,21 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { useWindowSize } from 'hooks/useWindowSize'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
+import { useRouter } from 'next/router'
 
 const SeasonUpgradeProductsCarousel = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const [channelAdvisorData, setChannelAdvisorData] = useState(null)
 	const [showDialgo, setShowDialog] = useState(false)
 	const windowSize = useWindowSize()
+	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
 	return (
 		<section>

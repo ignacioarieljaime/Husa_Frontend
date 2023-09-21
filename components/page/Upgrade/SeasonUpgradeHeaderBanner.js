@@ -7,13 +7,20 @@ import { Autoplay } from 'swiper'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import { useRef } from 'react'
+import { useRouter } from 'next/router'
 
 const SeasonUpgradeHeaderBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const splideRef = useRef()
+	const router = useRouter()
 
 	useEffect(() => {
 		setContent(data?.structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
 
 	useEffect(() => {

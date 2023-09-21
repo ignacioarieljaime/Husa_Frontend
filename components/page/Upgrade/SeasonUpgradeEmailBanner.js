@@ -1,17 +1,52 @@
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import axios from 'axios'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { Spinner } from 'react-bootstrap'
+import { toast } from 'react-toastify'
 
 const SeasonUpgradeEmailBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const [email, setEmail] = useState('')
 	const [checkbox, setCheckbox] = useState(false)
+	const [loading, setLoading] = useState(false)
+	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
+
+	async function submit(e) {
+		e.preventDefault()
+		setLoading(true)
+		try {
+			let response = await axios.post(
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.NEXT_PUBLIC_SEASON_UPGRADE_TOKEN}`,
+				{ email: email }
+			)
+
+			if (response.status === 200) {
+				toast.success('successful')
+				setEmail('')
+			} else {
+				toast.error('is not true')
+			}
+			setLoading(false)
+		} catch (error) {
+			setLoading(false)
+			toast.error('Submission Failed')
+			console.log(error)
+		}
+	}
+
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='season_upgrade_email_banner'>
@@ -29,12 +64,13 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 								__html: content?.text?.value
 							}}></p>
 					</div>
-					<form className='form_content'>
+					<form onSubmit={e => submit(e)} className='form_content'>
 						<input
 							value={email}
 							onChange={e => setEmail(e.target.value)}
 							placeholder='Enter Email Address'
 							className='input'
+							required
 							type='email'
 						/>
 						<div className='checkbox'>
@@ -56,8 +92,11 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 								)}
 							</p>
 						</div>
-						<button className='n-btn medium danger-upgrade full_btn_md'>
+						<button
+							disabled={!checkbox}
+							className='n-btn medium danger-upgrade full_btn_md'>
 							Sign Up
+							{loading && <Spinner className={'ms-2'} size={'sm'} />}
 						</button>
 					</form>
 				</div>

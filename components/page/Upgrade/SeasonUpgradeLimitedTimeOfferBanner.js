@@ -12,6 +12,11 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
 
 	useEffect(() => {

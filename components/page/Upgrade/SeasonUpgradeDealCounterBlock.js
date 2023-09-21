@@ -17,14 +17,19 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const windowSize = useWindowSize()
 	const [showDialgo, setShowDialog] = useState(false)
 	const [product, setProduct] = useState()
+	const router = useRouter()
 
 	const [days, hours, minutes, seconds] = useCountdown(
 		content?.list?.value[content?.active?.value]?.end?.value
 	)
 
-	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
 
 	useEffect(() => {
