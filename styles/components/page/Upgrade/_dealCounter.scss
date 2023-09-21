@@ -249,8 +249,21 @@
 					color: #fff;
 					margin: 0;
 					u {
-						color: #aef53b;
 						text-decoration: none;
+						color: #aef53b !important;
+						* {
+							color: #aef53b !important;
+						}
+					}
+					&:first-child {
+						margin-bottom: 3px;
+						color: #aef53b !important;
+						* {
+							color: #aef53b !important;
+						}
+					}
+					&:nth-child(n + 2) {
+						margin-bottom: -3px;
 					}
 					@include mq(768) {
 						font-size: 14px;

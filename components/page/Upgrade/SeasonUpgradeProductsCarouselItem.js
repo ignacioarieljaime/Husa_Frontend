@@ -80,14 +80,15 @@ const SeasonUpgradeProductsCarouselItem = ({
 					</div>
 				</div>
 				<div className='column'>
-					<div
-						className={`screen_size_selector ${showSizes ? 'show_sizes' : ''}`}>
-						<div className='content'>
-							<div className='sizes'>
-								<ul className='size_list'>
-									{screenSize &&
-										screenSize.length &&
-										screenSize.map((item, index) => (
+					{screenSize && screenSize.length ? (
+						<div
+							className={`screen_size_selector ${
+								showSizes ? 'show_sizes' : ''
+							}`}>
+							<div className='content'>
+								<div className='sizes'>
+									<ul className='size_list'>
+										{screenSize.map((item, index) => (
 											<li
 												key={index}
 												className={activeSizeIndex === index ? 'active' : ''}
@@ -99,24 +100,25 @@ const SeasonUpgradeProductsCarouselItem = ({
 												{item.title}
 											</li>
 										))}
-								</ul>
-								<span
-									style={{
-										width: 100 / screenSize.length + '%',
-										transform: 'translateX(' + activeSizeIndex * 100 + '%)'
-									}}
-									className='indicator'>
-									{screenSize[activeSizeIndex]?.title}
-								</span>
-							</div>
-							<div
-								onClick={() => setShowSizes(true)}
-								className='show_sizes_btn'>
-								<span className='label'>Select Screen Size</span>
-								<FontAwesomeIcon icon={faChevronDown} size='sm' />
+									</ul>
+									<span
+										style={{
+											width: 100 / screenSize.length + '%',
+											transform: 'translateX(' + activeSizeIndex * 100 + '%)'
+										}}
+										className='indicator'>
+										{screenSize[activeSizeIndex]?.title}
+									</span>
+								</div>
+								<div
+									onClick={() => setShowSizes(true)}
+									className='show_sizes_btn'>
+									<span className='label'>Select Screen Size</span>
+									<FontAwesomeIcon icon={faChevronDown} size='sm' />
+								</div>
 							</div>
 						</div>
-					</div>
+					) : null}
 					<ul className='specs'>
 						{data?.features?.value.map((item, index) => (
 							<li

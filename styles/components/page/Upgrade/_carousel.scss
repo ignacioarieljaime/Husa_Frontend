@@ -8,8 +8,10 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 32px;
+		gap: 26px;
 		flex-direction: column;
+		text-align: center;
+		padding: 0 16px;
 		@include mq(768) {
 			gap: 8px;
 		}
@@ -35,13 +37,13 @@
 				font-size: 60px;
 				font-style: normal;
 				font-weight: 900;
-				line-height: 68.4px; /* 114% */
+				line-height: 60px; /* 114% */
 				letter-spacing: -1.2px;
 				text-transform: uppercase;
 				margin: 0;
 				@include mq(768) {
 					font-size: 24px;
-					line-height: 30px; /* 125% */
+					line-height: 28px; /* 125% */
 					letter-spacing: -0.48px;
 				}
 			}
@@ -55,6 +57,9 @@
 		}
 		.swiper-wrapper {
 			height: 720px;
+			@include mq(768) {
+				height: 570px;
+			}
 
 			.swiper-slide {
 				position: unset;
@@ -117,7 +122,7 @@
 				font-size: 20px;
 				font-style: normal;
 				font-weight: 500;
-				line-height: 25px; /* 125% */
+				line-height: 24px; /* 125% */
 				letter-spacing: -0.4px;
 				color: #000;
 				max-width: 200px;
@@ -159,7 +164,7 @@
 				background: #e23717;
 				padding: 8px;
 				font-size: 12px;
-				font-weight: 400;
+				font-weight: 300;
 				line-height: 8px; /* 135% */
 				color: #fff;
 				width: fit-content;

@@ -25,7 +25,7 @@
 		text-align: center;
 		@include mq(768) {
 			padding: 16px;
-			gap: 16px;
+			gap: 12px;
 		}
 		.pretitle {
 			color: #60e2b7;
@@ -109,7 +109,7 @@
 		text-align: center;
 		@include mq(768) {
 			padding: 32px 16px;
-			gap: 16px;
+			gap: 12px;
 		}
 		.pretitle {
 			color: #aef53b;

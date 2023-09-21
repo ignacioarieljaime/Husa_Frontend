@@ -53,7 +53,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					initialSlide={
 						windowSize >= 768
 							? Math.floor(content?.selected_products?.value.length / 2)
-							: 1
+							: 0
 					}
 					centeredSlides={true}
 					navigation={{
