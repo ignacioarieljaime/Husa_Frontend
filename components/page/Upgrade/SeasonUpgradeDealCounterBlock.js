@@ -10,6 +10,7 @@ import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
 import { useCountdown } from 'hooks/useCountdown'
+import axios from 'axios'
 
 const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
@@ -32,11 +33,12 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 
 	async function getProduct() {
 		try {
-			let response = await GetSingleProduct(
-				router,
-				content?.list?.value[content?.active?.value]?.button?.value
+			let response = await axios.get(
+				`https://impim.dev-api.hisenseportal.com/api/cms/getProductsList?search=${
+					content?.list?.value[content?.active?.value]?.button?.value
+				}&brand_id=3`
 			)
-			setProduct(response?.data?.data)
+			if (response?.data?.data.length) setProduct(response?.data?.data[0])
 		} catch (error) {
 			console.log(error)
 		}
@@ -52,7 +54,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 						className='top_image'
 					/>
 				</div>
-				<div>
+				{/* <div>
 					<ul className='weeks'>
 						{content?.list?.value.map((item, index) => (
 							<li
@@ -65,7 +67,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							</li>
 						))}
 					</ul>
-				</div>
+				</div> */}
 				<div className='product'>
 					<div className='product_images'>
 						<div className='product_top'>
