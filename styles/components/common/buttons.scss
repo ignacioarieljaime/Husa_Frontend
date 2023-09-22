@@ -7,6 +7,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  text-align: center;
 
   &.outline-black {
     border-color: #000;
@@ -133,6 +134,17 @@
     padding: 5px !important;
   }
 
+  &.outline-grey {
+    border-color: #a6a8ac;
+    color: #a6a8ac;
+    background-color: #fff;
+
+    &:hover {
+      color: #fff !important;
+      background-color: #a6a8ac !important;
+    }
+  }
+
   &.grey-text {
     color: #a6a8ac !important;
     background-color: transparent !important;
@@ -161,6 +173,10 @@
       transform: scale(1) !important;
     }
   }
+
+
+
+
   &.small {
     min-width: 56px !important;
     padding: 10px 16px 6px !important;

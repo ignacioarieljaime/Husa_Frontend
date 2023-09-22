@@ -278,7 +278,11 @@ function OfferClaimForm({ data }) {
 								className='modal-btn'
 								type='button'
 								onClick={() => setModalCondition(true)}>
-								<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
+								<FontAwesomeIcon
+									icon={faCircleInfo}
+									style={{ width: '25px' }}
+									size={'xl'}
+								/>
 								<span className='ms-2'>Where do I find the model number?</span>
 							</button>
 						</div>
@@ -363,7 +367,7 @@ function OfferClaimForm({ data }) {
 								required={true}
 								options={selectBox}
 								onChange={_value => {
-									dataSchemaHandler('state', _value.name)
+									dataSchemaHandler('state', _value?.name)
 								}}
 							/>
 							<div className='input_error_message'>

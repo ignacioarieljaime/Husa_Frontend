@@ -14,7 +14,7 @@ const TelevisionsBlockSpotlightItem = ({ data }) => {
 						href={data?.link?.value}>
 						<a
 							target={data?.link?.target ? data?.link?.target : '_self'}
-							className='n-btn outline-white transparent d-block w-fit mx-auto'>
+							className='n-btn outline-white transparent medium d-block mx-auto w-fit'>
 							{data?.link?.title}
 							{data?.link?.target === '_blank' && (
 								<img

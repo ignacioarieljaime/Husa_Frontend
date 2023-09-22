@@ -41,7 +41,7 @@ const BannerWithImageOrVideo = ({ data }) => {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='n-btn white text-center d-block w-fit mx-auto p-4 link'>
+								className='n-btn white text-center d-block w-fit mx-auto medium link'>
 								{structure?.link?.title}
 
 								{structure?.link?.target === '_blank' && (

@@ -41,7 +41,7 @@ function SmartInfoBetterNewOrOldBox({ data }) {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='btn btn-dark fs-md-base fs-8'>
+									className='n-btn black medium d-block mx-auto w-fit'>
 									{structure?.link?.title}
 
 									{structure?.link?.target === '_blank' && (

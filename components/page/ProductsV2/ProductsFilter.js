@@ -121,7 +121,7 @@ const ProductsFilter = ({
 					<div className='fw-normal fs-8 d-block d-md-none'>Filter</div>
 					{filterList.length !== 0 && filterList.length !== 0 ? (
 						<button
-							className={`n-btn products-filtering-button ${
+							className={`n-btn medium products-filtering-button ${
 								filterCounter > 0 ? 'primary text-white' : 'outline-primary'
 							} mb-md-8`}
 							onClick={checkboxClearHandler}>
@@ -166,7 +166,7 @@ const ProductsFilter = ({
 										sowMoreLimitation !== 4 ? 4 : filterListData.length
 									)
 								}
-								className='n-btn outline-black text-nowrap mx-2'>
+								className='n-btn outline-black text-nowrap mx-2 medium'>
 								{sowMoreLimitation === 4 ? 'Show More' : 'Show Less'}
 							</button>
 						) : null}

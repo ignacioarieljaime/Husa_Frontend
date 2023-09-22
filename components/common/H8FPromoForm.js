@@ -58,7 +58,6 @@ function H8FPromoForm({ data }) {
 			}
 			setLoading(false)
 		} catch (error) {
-			
 			toast.error("ticket didn't send")
 			setLoading(false)
 			console.log(error)
@@ -108,7 +107,11 @@ function H8FPromoForm({ data }) {
 								className='modal-btn'
 								type='button'
 								onClick={() => setModalCondition(true)}>
-								<FontAwesomeIcon icon={faCircleInfo}  style={{width:"25px"}}  size={'xl'} />
+								<FontAwesomeIcon
+									icon={faCircleInfo}
+									style={{ width: '25px' }}
+									size={'xl'}
+								/>
 								<span className='ms-2'>Where do I find the model number?</span>
 							</button>
 						</div>
@@ -170,7 +173,7 @@ function H8FPromoForm({ data }) {
 								required={true}
 								options={categories}
 								onChange={_value => {
-									dataSchemaHandler('state', _value.name)
+									dataSchemaHandler('state', _value?.name)
 									getSeriesModels(_value.id)
 								}}
 							/>

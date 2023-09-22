@@ -35,9 +35,7 @@ const ProductInfoFormImageBox = ({
 					/>
 					<article className='d-flex justify-content-center align-items-center flex-wrap'>
 						<p>Drop files to attach, or</p>
-						<button className='n-btn outline-black ms-3 py-4 px-6'>
-							Browse
-						</button>
+						<button className='n-btn outline-black ms-3 medium'>Browse</button>
 					</article>
 				</>
 			)}

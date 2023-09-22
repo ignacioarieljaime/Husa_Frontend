@@ -1,0 +1,56 @@
+.aboutus_members_list {
+	padding: 48px 0 32px;
+	@include mq(768) {
+		padding: 28px 0 16px;
+	}
+	.slider {
+		.item {
+			width: 100%;
+			max-width: 240px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 14px;
+			text-align: center;
+			@include mq(768) {
+				max-width: 110px;
+			}
+			.image {
+				width: 100%;
+				height: 290px;
+				object-fit: cover;
+				border-radius: 6px;
+				@include mq(768) {
+					height: 132px;
+				}
+			}
+			.title,
+			.role {
+				margin: 0;
+				* {
+					margin: 0;
+					color: #000000;
+					font-size: 16px;
+					font-weight: 400;
+					line-height: 20px; /* 135% */
+					letter-spacing: -0.32px;
+					@include mq(768) {
+						font-size: 12px;
+						line-height: 16px; /* 135% */
+					}
+				}
+			}
+			.title {
+				* {
+					font-weight: 500;
+					@include mq(768) {
+						font-size: 14px;
+						line-height: 18px; /* 135% */
+						letter-spacing: -0.28px;
+					}
+				}
+			}
+		}
+	}
+}

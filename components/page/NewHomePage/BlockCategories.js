@@ -67,7 +67,7 @@ const BlockCategories = ({ data: { structure } }) => {
 								href={item?.link?.value ? item?.link?.value : '/'}>
 								<a
 									target={item?.link?.target ? item?.link?.target : '_self'}
-									className='slider-title text-nowrap n-btn outline-black transparent'>
+									className='slider-title text-nowrap n-btn outline-black medium transparent'>
 									{item?.link?.title}{' '}
 									{item?.link?.target === '_blank' && (
 										<img
