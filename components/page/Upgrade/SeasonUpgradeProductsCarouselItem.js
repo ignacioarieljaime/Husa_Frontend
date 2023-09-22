@@ -3,20 +3,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
-import ModalChanelAdviser from '../Product/ModalChanelAdviser'
-import { SwiperSlide } from 'swiper/react'
+import { useSwiper } from 'swiper/react'
 
 const SeasonUpgradeProductsCarouselItem = ({
 	data,
 	setChannelAdvisorData,
-	setShowDialog
+	setShowDialog,
+	length
 }) => {
 	const [showSizes, setShowSizes] = useState(false)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 	const [activeItem, setActiveItem] = useState(null)
+	const [screenSize, setScreenSize] = useState([])
 	const [product, setProduct] = useState()
 	const router = useRouter()
-	const [screenSize, setScreenSize] = useState([])
+	const swiper = useSwiper()
 	useEffect(() => {
 		if (Array.isArray(product?.series[0]?.values)) {
 			let addSizeToItem = product?.series[0].values
@@ -33,6 +34,12 @@ const SeasonUpgradeProductsCarouselItem = ({
 		setActiveItem(data?.id?.value)
 		getProduct()
 	}, [])
+
+	useEffect(() => {
+		swiper.slideTo(
+			window.innerWidth >= 768 ? (length % 2 === 0 ? length - 1 : length) : 0
+		)
+	}, [length])
 
 	useEffect(() => {
 		getProduct()
@@ -54,26 +61,30 @@ const SeasonUpgradeProductsCarouselItem = ({
 	}
 
 	async function getProduct() {
-		try {
-			let response = await GetSingleProduct(router, activeItem)
-			setProduct(response?.data?.data)
-			setActiveItem(response?.data?.data?.id)
-			// setActiveSizeIndex(
-			// 	response?.data?.data?.series[0].values.indexOf(
-			// 		response?.data?.data?.series[0].values.find(
-			// 			(item, index) => item?.products[0] === response?.data?.data?.id
-			// 		)
-			// 	)
-			// )
-		} catch (error) {
-			console.log(error)
+		if (activeItem) {
+			try {
+				let response = await GetSingleProduct(router, activeItem)
+				setProduct(response?.data?.data)
+				setActiveItem(response?.data?.data?.id)
+				// setActiveSizeIndex(
+				// 	response?.data?.data?.series[0].values.indexOf(
+				// 		response?.data?.data?.series[0].values.find(
+				// 			(item, index) => item?.products[0] === response?.data?.data?.id
+				// 		)
+				// 	)
+				// )
+			} catch (error) {
+				console.log(error)
+			}
 		}
 	}
 	return (
 		<>
 			<div className={'item h-100'}>
 				<div className='column'>
+					{/* <div className='image_wrapper'> */}
 					<img src={product?.image} alt='tv' className='image' />
+					{/* </div> */}
 					<div className='d-flex justify-content-between align-items-start gap-1'>
 						<h6 className='title'>{product?.name}</h6>
 						<span className='new_label'>{product?.isNew ? 'NEW' : ''}</span>

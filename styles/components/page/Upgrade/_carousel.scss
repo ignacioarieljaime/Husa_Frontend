@@ -51,18 +51,22 @@
 	}
 	.carousel {
 		padding: 64px 0;
-		position: unset;
 		@include mq(768) {
 			padding: 16px 0;
 		}
 		.swiper-wrapper {
-			height: 720px;
+			height: 640px;
+			// height: 100%;
 			@include mq(768) {
-				height: 570px;
+				height: 600px;
 			}
-
 			.swiper-slide {
-				position: unset;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+				flex-direction: column;
 			}
 		}
 		.item {
@@ -108,9 +112,19 @@
 			> * {
 				width: 100%;
 			}
+			// .image_wrapper {
+			// 	height: 0;
+			// 	padding-top: 70%;
+			// 	width: 100%;
+			// 	position: relative;
+			// }
 			.image {
-				padding: 16px;
+				// position: absolute;
+				// top: 0;
+				// left: 0;
+				// height: 100%;
 				width: 100%;
+				padding: 16px;
 				object-fit: contain;
 				@include mq(768) {
 					padding: 8px 0;

@@ -15,10 +15,10 @@ import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 import { useRouter } from 'next/router'
 
 const SeasonUpgradeProductsCarousel = ({ data }) => {
+	const windowSize = useWindowSize()
 	const [content, setContent] = useState(null)
 	const [channelAdvisorData, setChannelAdvisorData] = useState(null)
 	const [showDialgo, setShowDialog] = useState(false)
-	const windowSize = useWindowSize()
 	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
@@ -28,6 +28,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 			}, 1000)
 		}
 	}, [])
+
 	return (
 		<section>
 			<div
@@ -51,7 +52,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					slidesPerGroup={1}
 					spaceBetween={16}
 					initialSlide={
-						windowSize >= 768
+						windowSize[0] >= 768
 							? Math.floor(content?.selected_products?.value.length / 2)
 							: 0
 					}
@@ -66,6 +67,9 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 						<SwiperSlide className='w-fit h-100' key={index}>
 							<SeasonUpgradeProductsCarouselItem
 								data={item}
+								length={Math.floor(
+									content?.selected_products?.value.length / 2
+								)}
 								setChannelAdvisorData={setChannelAdvisorData}
 								setShowDialog={setShowDialog}
 							/>
