@@ -24,12 +24,11 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 	}, [])
 
 	useEffect(() => {
-		console.log(splideRef.current.splide.Components.Autoplay.play())
 		splideRef.current.splide.Components.Autoplay.play()
 	}, [content])
 
 	return (
-		<section>
+		<section className='season_upgrade_header_banner_sticky'>
 			<div
 				id={data?.name + data?.id}
 				className='season_upgrade_header_banner'

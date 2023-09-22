@@ -14,7 +14,7 @@ const SeasonUpgradeHeader = ({ data }) => {
 	const windowSize = useWindowSize()
 
 	return (
-		<section>
+		<section className='season_upgrade_header_sticky'>
 			<div id={data?.name + data?.id} className='season_upgrade_header'>
 				<div>
 					<img
@@ -25,7 +25,7 @@ const SeasonUpgradeHeader = ({ data }) => {
 					<p className='gradient_text'>{content?.title?.value}</p>
 				</div>
 				{windowSize[0] > 991 ? (
-					<ul className='nav'>
+					<ul className='nav flex-nowrap'>
 						{content?.list?.value.map(
 							(item, index) =>
 								item?.link?.value && (

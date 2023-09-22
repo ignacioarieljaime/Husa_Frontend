@@ -80,17 +80,15 @@ const SeasonUpgradeProductsCarouselItem = ({
 	}
 	return (
 		<>
-			<div className={'item h-100'}>
+			<div className={'item h-100 w-100'}>
 				<div className='column'>
-					{/* <div className='image_wrapper'> */}
-					<img src={product?.image} alt='tv' className='image' />
-					{/* </div> */}
-					<div className='d-flex justify-content-between align-items-start gap-1'>
+					<div className='image_wrapper'>
+						<img src={product?.image} alt='tv' className='image' />
+					</div>
+					<div className='d-flex justify-content-between align-items-start gap-1 w-100'>
 						<h6 className='title'>{product?.name}</h6>
 						<span className='new_label'>{product?.isNew ? 'NEW' : ''}</span>
 					</div>
-				</div>
-				<div className='column'>
 					{screenSize && screenSize.length ? (
 						<div
 							className={`screen_size_selector ${
@@ -129,8 +127,12 @@ const SeasonUpgradeProductsCarouselItem = ({
 								</div>
 							</div>
 						</div>
-					) : null}
-					<ul className='specs'>
+					) : (
+						<div style={{ height: '43px' }}></div>
+					)}
+				</div>
+				<div className='column'>
+					<ul className='specs w-100'>
 						{data?.features?.value.map((item, index) => (
 							<li
 								key={index}
@@ -138,9 +140,9 @@ const SeasonUpgradeProductsCarouselItem = ({
 						))}
 					</ul>
 					<div className='off'>Save {data?.discount_amount?.value}</div>
-					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1'>
+					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
 						<h4 className='price'>{data?.new_price?.value}</h4>
-						<p className='old_price'>{data?.old_price?.value}</p>
+						<p className='old_price '>{data?.old_price?.value}</p>
 					</div>
 					<button onClick={setData} className='n-btn medium black w-100'>
 						Shop Deal

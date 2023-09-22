@@ -1,11 +1,20 @@
+.season_upgrade_header_sticky {
+	position: sticky;
+	top: 0;
+	z-index: 999;
+}
 .season_upgrade_header {
 	background: #232323;
 	padding: 15px 58px 15px 51px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	@include mq(1110) {
+	height: 50px;
+	@include mq(1200) {
 		padding: 15px 42px 15px 36px;
+	}
+	@include mq(1100) {
+		padding: 15px 20px;
 	}
 	@include mq(991) {
 		padding: 15px 16px;
@@ -15,9 +24,13 @@
 		justify-content: flex-start;
 		align-items: center;
 		gap: 75px;
-		@include mq(1110) {
+		@include mq(1200) {
 			gap: 32px;
 		}
+		@include mq(1100) {
+			gap: 24px;
+		}
+
 		&:last-child {
 			justify-content: flex-end;
 		}
@@ -38,19 +51,26 @@
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 900;
-		line-height: 20.6px; /* 147.143% */
+		line-height: 18px; /* 147.143% */
 		letter-spacing: 1.12px;
 		text-transform: uppercase;
 		margin: 0;
 		font-family: 'archivo-expanded';
+		@include mq(1200) {
+			font-size: 12px;
+			line-height: 16px; /* 147.143% */
+		}
 		@include mq(991) {
 			display: none;
 		}
 	}
 	.nav {
 		gap: 32px;
-		@include mq(1110) {
+		@include mq(1200) {
 			gap: 16px;
+		}
+		@include mq(1110) {
+			gap: 8px;
 		}
 		li {
 			font-size: 14px;
@@ -58,6 +78,10 @@
 			font-weight: 400;
 			line-height: 18.9px; /* 135% */
 			text-transform: uppercase;
+			@include mq(1200) {
+				font-size: 12px;
+				line-height: 16px; /* 147.143% */
+			}
 			a {
 				color: #fff;
 				position: relative;
