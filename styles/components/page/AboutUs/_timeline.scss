@@ -71,9 +71,9 @@
 				* {
 					margin: 0;
 					color: #000;
-					font-size: 34px;
+					font-size: 28px;
 					font-weight: 500;
-					line-height: 40px; /* 125% */
+					line-height: 32px; /* 125% */
 					letter-spacing: -0.48px;
 					@include mq(768) {
 						font-size: 20px;
@@ -108,7 +108,7 @@
 						.icon_wrapper {
 							width: 48px;
 							height: 48px;
-							padding: 6px;
+							padding: 10px;
 							background-image: linear-gradient(0deg, #e0e0e0 0%, #fff 100%);
 							border-radius: 50%;
 							overflow: hidden;
@@ -118,6 +118,7 @@
 							@include mq(768) {
 								width: 42px;
 								height: 42px;
+								padding: 8px;
 							}
 							@include mq(575) {
 								width: 38px;
@@ -153,9 +154,9 @@
 						* {
 							margin: 0;
 							color: #444444;
-							font-size: 34px;
+							font-size: 28px;
 							font-weight: 500;
-							line-height: 40px; /* 125% */
+							line-height: 32px; /* 125% */
 							letter-spacing: -0.48px;
 							@include mq(768) {
 								font-size: 20px;
