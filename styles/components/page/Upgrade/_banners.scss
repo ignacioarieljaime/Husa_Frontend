@@ -1,0 +1,347 @@
+.season_upgrade_limited_time_banner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 32px;
+	padding: 48px 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	@include mq(768) {
+		padding: 16px 0;
+		gap: 16px;
+		flex-wrap: wrap;
+		flex-direction: column-reverse;
+	}
+	.text_content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 32px;
+		padding: 30px;
+		width: 100%;
+		max-width: 735px;
+		text-align: center;
+		@include mq(768) {
+			padding: 16px;
+			gap: 12px;
+		}
+		.pretitle {
+			color: #60e2b7;
+			font-family: 'archivo-expanded';
+			font-size: 16px;
+			font-weight: 900;
+			line-height: 21.6px; /* 135% */
+			text-transform: uppercase;
+			margin: 0;
+			@include mq(768) {
+				font-size: 14px;
+				line-height: 18.9px; /* 135% */
+				letter-spacing: -0.28px;
+			}
+		}
+		.title {
+			margin: 0;
+			* {
+				margin: 0;
+				color: #fff;
+				font-family: 'archivo-expanded';
+				font-size: 34px;
+				font-weight: 900;
+				line-height: 34px; /* 100% */
+				letter-spacing: -0.68px;
+				text-transform: uppercase;
+
+				@include mq(768) {
+					font-size: 20px;
+					line-height: 25px; /* 125% */
+					letter-spacing: -0.4px;
+				}
+			}
+		}
+		.text {
+			margin: 0 auto;
+			max-width: 465px;
+			* {
+				margin: 0;
+				color: #fff;
+				font-size: 16px;
+				font-weight: 300;
+				line-height: 21.6px; /* 135% */
+				@include mq(768) {
+					font-size: 14px;
+					line-height: 18.9px; /* 135% */
+				}
+			}
+		}
+	}
+	.image {
+		width: 30%;
+		max-width: 300px;
+		height: auto;
+		object-fit: contain;
+		@include mq(768) {
+			max-width: 150px;
+			width: 80%;
+		}
+	}
+}
+
+.season_upgrade_exclusive_banner {
+	padding: 64px 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	@include mq(768) {
+		padding: 0;
+	}
+	.content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 32px;
+		padding: 32px;
+		width: 100%;
+		max-width: 856px;
+		margin: 0 auto;
+		text-align: center;
+		@include mq(768) {
+			padding: 32px 16px;
+			gap: 12px;
+		}
+		.pretitle {
+			color: #aef53b;
+			font-family: 'archivo-expanded';
+			font-size: 16px;
+			font-weight: 900;
+			line-height: 21.6px; /* 135% */
+			text-transform: uppercase;
+			margin: 0;
+			@include mq(768) {
+				font-size: 14px;
+				line-height: 18.9px; /* 135% */
+				letter-spacing: -0.28px;
+			}
+		}
+		.title {
+			margin: 0;
+			* {
+				color: #fff;
+				font-family: 'archivo-expanded';
+				font-size: 48px;
+				font-weight: 900;
+				line-height: 48px; /* 100% */
+				letter-spacing: -0.96px;
+				text-transform: uppercase;
+				margin: 0;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 24px; /* 100% */
+					letter-spacing: -0.48px;
+				}
+			}
+		}
+		.text {
+			margin: 0 auto;
+			max-width: 500px;
+			* {
+				color: #fff;
+				font-size: 16px;
+				font-weight: 300;
+				line-height: 21.6px; /* 135% */
+				margin: 0;
+				@include mq(768) {
+					max-width: 260px;
+					font-size: 14px;
+					line-height: 18.9px; /* 135% */
+				}
+			}
+		}
+		.image {
+			width: 80%;
+			max-width: 275px;
+			height: auto;
+			object-fit: contain;
+			@include mq(768) {
+				max-width: 150px;
+			}
+		}
+		.n-btn {
+			color: #000;
+			background: linear-gradient(90deg, #aff63c 0%, #62e3b5 100%);
+			border: none;
+			font-weight: 500;
+			padding: 10px 24px 6px !important;
+			@include mq(768) {
+				padding: 10px 16px 6px !important;
+				font-size: 14px;
+				line-height: 19px; /* 135% */
+				&:hover {
+					transform: scale(1.02);
+				}
+			}
+		}
+	}
+}
+
+.season_upgrade_email_banner {
+	padding: 48px 0;
+	background: linear-gradient(90deg, #aef53b 25.83%, #60e2b7 100%);
+	@include mq(768) {
+		background: linear-gradient(143deg, #aef53b 25.83%, #60e2b7 100%);
+		padding: 0;
+	}
+	.content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 32px;
+		padding: 32px;
+		width: 100%;
+		max-width: 659px;
+		margin: 0 auto;
+		text-align: center;
+		@include mq(768) {
+			padding: 32px 16px;
+		}
+		.text_content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 24px;
+			@include mq(768) {
+				gap: 16px;
+			}
+			.pretitle {
+				color: #e23717;
+				font-family: 'archivo-expanded';
+				font-size: 16px;
+				font-weight: 900;
+				line-height: 21.6px; /* 135% */
+				text-transform: uppercase;
+				margin: 0;
+				@include mq(768) {
+					font-size: 14px;
+					line-height: 12px; /* 135% */
+					letter-spacing: -0.28px;
+				}
+			}
+			.title {
+				margin: 0;
+				* {
+					color: #000;
+					font-family: 'archivo-expanded';
+					font-size: 48px;
+					font-weight: 900;
+					line-height: 48px; /* 100% */
+					letter-spacing: -0.96px;
+					text-transform: uppercase;
+					margin: 0;
+					@include mq(768) {
+						font-size: 24px;
+						line-height: 24px; /* 100% */
+						letter-spacing: -0.48px;
+					}
+				}
+			}
+			.text {
+				margin: 0;
+				* {
+					color: #000;
+					font-size: 16px;
+					font-weight: 300;
+					line-height: 21.6px; /* 135% */
+					margin: 0;
+					@include mq(768) {
+						font-weight: 500;
+						font-size: 14px;
+						line-height: 18.9px; /* 135% */
+					}
+				}
+			}
+		}
+		.form_content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 8px;
+			width: 100%;
+			@include mq(768) {
+				gap: 16px;
+			}
+			.input {
+				border-radius: 12px;
+				background: rgba(0, 0, 0, 0.32);
+				border: none;
+				display: flex;
+				min-width: 80px;
+				width: 100%;
+				max-width: 375px;
+				padding: 17px 16px 15px;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 18px; /* 135% */
+				color: #fff;
+				&:focus,
+				&:focus-within {
+					border: none;
+					background: rgba(0, 0, 0, 0.32) !important;
+				}
+				&::placeholder {
+					font-size: 14px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 18.9px; /* 135% */
+					color: #fff;
+				}
+			}
+			.checkbox {
+				display: flex;
+				padding: 8px 0px;
+				justify-content: center;
+				align-items: center;
+				gap: 8px;
+				@include mq(768) {
+					margin: 0 auto;
+					align-items: start;
+				}
+				@include mq(360) {
+					max-width: 200px;
+				}
+
+				button {
+					border-radius: 3px;
+					border: 2px solid #000;
+					background: #000;
+					width: 15px;
+					height: 15px;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+				p {
+					color: #000;
+					font-size: 12px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 16.2px;
+					margin: 0;
+					text-align: start;
+					* {
+						color: #000;
+					}
+				}
+			}
+		}
+	}
+}

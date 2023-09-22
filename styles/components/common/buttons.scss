@@ -100,6 +100,22 @@
     }
   }
 
+  &.danger-upgrade {
+    border-radius: 1000px;
+    border: 1px solid #e23717;
+    background: #e23717;
+    color: #fff;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.05);
+    }
+    @include mq(768) {
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
   &.black-text {
     color: #221f20 !important;
     background-color: transparent !important;
@@ -157,6 +173,9 @@
       transform: scale(1) !important;
     }
   }
+
+
+
 
   &.small {
     min-width: 56px !important;

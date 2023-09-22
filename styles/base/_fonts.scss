@@ -1,80 +1,208 @@
 /* font configuration */
 /* gotham */
 @font-face {
-  font-family: 'gotham';
-  font-style: normal;
-  font-weight: normal;
-  src: url('./../../public/assets/fonts/gotham/GothamMedium.ttf');
+	font-family: 'gotham';
+	font-style: normal;
+	font-weight: normal;
+	src: url('./../../public/assets/fonts/gotham/GothamMedium.ttf');
 }
 
 @font-face {
-  font-family: 'gotham';
-  font-style: normal;
-  font-weight: bold;
-  src: url('./../../public/assets/fonts/gotham/GothamBold.ttf') format('TrueType'),
-  url('./../../public/assets/fonts/gotham/Gotham-Bold.otf') format('OpenType');
+	font-family: 'gotham';
+	font-style: normal;
+	font-weight: bold;
+	src: url('./../../public/assets/fonts/gotham/GothamBold.ttf')
+			format('TrueType'),
+		url('./../../public/assets/fonts/gotham/Gotham-Bold.otf') format('OpenType');
 }
 
 @font-face {
-  font-family: 'gotham';
-  font-style: normal;
-  font-weight: 300;
-  src: url('./../../public/assets/fonts/gotham/Gotham-Thin.otf');
+	font-family: 'gotham';
+	font-style: normal;
+	font-weight: 300;
+	src: url('./../../public/assets/fonts/gotham/Gotham-Thin.otf');
 }
-
 
 /* hisense */
 @font-face {
-  font-family: 'hisense';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Regular.otf') format('opentype')
+	font-family: 'hisense';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Regular.otf')
+		format('opentype');
 }
 @font-face {
-  font-family: 'hisense';
-  font-style: normal;
-  font-weight: 500;
-  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Medium.otf') format('opentype')
+	font-family: 'hisense';
+	font-style: normal;
+	font-weight: 500;
+	src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Medium.otf')
+		format('opentype');
 }
 @font-face {
-  font-family: 'hisense';
-  font-style: normal;
-  font-weight: 300;
-  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Light.otf') format('opentype')
+	font-family: 'hisense';
+	font-style: normal;
+	font-weight: 300;
+	src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Light.otf')
+		format('opentype');
 }
 @font-face {
-  font-family: 'hisense';
-  font-style: normal;
-  font-weight: 700;
-  src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Bold.otf') format('opentype')
+	font-family: 'hisense';
+	font-style: normal;
+	font-weight: 700;
+	src: url('./../../public/assets/fonts/HisenseAlfabet/HisenseAlfabet-Bold.otf')
+		format('opentype');
 }
-
 
 /* Neutra */
 @font-face {
-  font-family: 'Neutra';
-  font-style: normal;
-  font-weight: 700;
-  src: url('./../../public/assets/fonts/Neutra/NeutraText-Bold.otf') format('opentype')
+	font-family: 'Neutra';
+	font-style: normal;
+	font-weight: 700;
+	src: url('./../../public/assets/fonts/Neutra/NeutraText-Bold.otf')
+		format('opentype');
 }
 
 @font-face {
-  font-family: 'Neutra';
-  font-style: italic;
-  font-weight: 700;
-  src: url('./../../public/assets/fonts/Neutra/NeutraText-BoldItalic.otf') format('opentype')
+	font-family: 'Neutra';
+	font-style: italic;
+	font-weight: 700;
+	src: url('./../../public/assets/fonts/Neutra/NeutraText-BoldItalic.otf')
+		format('opentype');
 }
 
 @font-face {
-  font-family: 'Neutra';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./../../public/assets/fonts/Neutra/NeutraText-Book.otf') format('opentype')
+	font-family: 'Neutra';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./../../public/assets/fonts/Neutra/NeutraText-Book.otf')
+		format('opentype');
 }
 
 @font-face {
-  font-family: 'Neutra';
-  font-style: italic;
-  font-weight: 400;
-  src: url('./../../public/assets/fonts/Neutra/NeutraText-BookItalic.otf') format('opentype')
+	font-family: 'Neutra';
+	font-style: italic;
+	font-weight: 400;
+	src: url('./../../public/assets/fonts/Neutra/NeutraText-BookItalic.otf')
+		format('opentype');
+}
+
+// Archivo Expanded
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 100;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-Thin.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 100;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-ThinItalic.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 200;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-ExtraLight.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 200;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-ExtraLightItalic.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 300;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-Light.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 300;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-LightItalic.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 400;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-Regular.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 500;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-Medium.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 500;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-MediumItalic.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 600;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-SemiBold.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 600;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-SemiBoldItalic.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 700;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-Bold.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 700;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-BoldItalic.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 800;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-ExtraBold.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 800;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-ExtraBoldItalic.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: normal;
+	font-weight: 900;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-Black.ttf');
+}
+
+@font-face {
+	font-family: 'archivo-expanded';
+	font-style: italic;
+	font-weight: 900;
+	src: url('./../../public/assets/fonts/Archivo_Expanded/Archivo_Expanded-BlackItalic.ttf');
 }

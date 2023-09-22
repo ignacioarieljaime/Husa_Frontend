@@ -1,0 +1,29 @@
+.season_upgrade_hero_banner {
+	height: 512px;
+	width: 100%;
+	position: relative;
+	@include mq(768) {
+		height: 286px;
+	}
+	.background {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.image {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 568px;
+		height: 312px;
+		object-fit: contain;
+		@include mq(768) {
+			width: 230px;
+			height: 126px;
+		}
+	}
+}
