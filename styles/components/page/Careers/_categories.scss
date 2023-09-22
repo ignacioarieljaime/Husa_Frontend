@@ -18,6 +18,10 @@
 		}
 		.title {
 			margin: 0;
+			width: 100%;
+			@include mq(768) {
+				text-align: center;
+			}
 			* {
 				font-size: 48px;
 				font-weight: 500;
