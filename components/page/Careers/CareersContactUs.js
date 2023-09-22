@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import CustomInput from 'components/common/Input'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
-import { schema } from './ContactUsFormSchema'
+import { schema } from '../HVAC/ContactUsFormSchema'
 import axios from 'axios'
 
-const SimpleContactUs = ({ data }) => {
+const CareersContactUs = ({ data }) => {
 	const { structure } = data
 	const [text, setText] = useState(null)
 	const [loading, setLoading] = useState(false)
@@ -13,8 +13,8 @@ const SimpleContactUs = ({ data }) => {
 	const [body, setBody] = useState({
 		company: null,
 		first_name: null,
-		last_name: null,
-		phone_number: null,
+		LastName: null,
+		phone: null,
 		email: null,
 		message: null
 	})
@@ -33,7 +33,7 @@ const SimpleContactUs = ({ data }) => {
 		setErrors(null)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.NEXT_PUBLIC_HAVC_TOKEN}`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.NEXT_PUBLIC_CONTACTUS_TOKEN}`,
 				body
 			)
 			if (response.status === 200) {
@@ -88,23 +88,21 @@ const SimpleContactUs = ({ data }) => {
 						<div className='col-12 col-md-6 mb-7'>
 							<CustomInput
 								placeholder={'Last Name'}
-								onChange={_value => dataInsertionHandler('last_name', _value)}
+								onChange={_value => dataInsertionHandler('LastName', _value)}
 								required={true}
 							/>
 							<div className='input_error_message'>
-								{errors?.last_name && errors?.last_name[0]}
+								{errors?.LastName && errors?.LastName[0]}
 							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-7'>
 							<CustomInput
 								placeholder={'Phone number'}
-								onChange={_value =>
-									dataInsertionHandler('phone_number', _value)
-								}
+								onChange={_value => dataInsertionHandler('phone', _value)}
 								required={true}
 							/>
 							<div className='input_error_message'>
-								{errors?.phone_number && errors?.phone_number[0]}
+								{errors?.phone && errors?.phone[0]}
 							</div>
 						</div>
 						<div className='col-12 col-md-6 mb-7'>
@@ -145,4 +143,4 @@ const SimpleContactUs = ({ data }) => {
 	)
 }
 
-export default SimpleContactUs
+export default CareersContactUs

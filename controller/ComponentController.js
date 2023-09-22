@@ -226,12 +226,13 @@ ${
 					return {
 						notFound: true
 					}
+					}
 					if (!data?.widgets || data?.widgets.length == 0) {
 						return {
 							notFound: true
 						}
 					}
-				} else {
+				 else {
 					return { props: { data }} 
 				}
 }`

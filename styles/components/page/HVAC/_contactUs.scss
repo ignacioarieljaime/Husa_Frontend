@@ -1,24 +1,32 @@
 .hvac_contact_us {
 	background: #103a42;
-	padding: 60px 12px;
+	padding: 60px 30px;
+	@include mq(768) {
+		padding: 60px 16px;
+	}
 	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 30px;
 		max-width: 890px;
 		margin: 0 auto;
 		.title {
+			margin: 0;
 			font-size: 48px;
-			line-height: 56px;
+			line-height: 48px;
 			text-align: center;
 			letter-spacing: -0.02em;
 			color: #ffffff;
-			margin: 0 0 30px;
 			font-weight: 400;
 			@include mq(768) {
 				font-size: 24px;
-				line-height: 30px;
+				line-height: 26px;
 			}
 		}
 		.subtitle {
-			margin: 0 0 30px;
+			margin: 0;
 			* {
 				margin: 0;
 				font-weight: 400;
@@ -27,22 +35,44 @@
 				text-align: center;
 				letter-spacing: -0.02em;
 				color: #ffffff;
+				@include mq(768) {
+					font-size: 14px;
+					line-height: 18px;
+				}
 			}
 		}
 		.form-container {
+			textarea {
+				position: relative;
+				&::placeholder {
+					position: absolute;
+					top: -6px;
+				}
+			}
 			.form-container-inner-input {
 				border-color: #fff;
-                background: transparent;
-                color: #fff;
-                &::placeholder{
-                    color: #ffffffbd;
-                }
-                &:focus,
-                &:focus-visible,
-                &:focus-within{
-                    background: transparent !important;
-                    box-shadow: none !important;
-                }
+				background: transparent;
+				color: #fff;
+				padding: 16px;
+				@include mq(768) {
+					padding: 12px;
+
+					font-size: 14px;
+					line-height: 18px;
+				}
+				&::placeholder {
+					color: #fff;
+					@include mq(768) {
+						font-size: 14px;
+						line-height: 18px;
+					}
+				}
+				&:focus,
+				&:focus-visible,
+				&:focus-within {
+					background: transparent !important;
+					box-shadow: none !important;
+				}
 			}
 		}
 	}

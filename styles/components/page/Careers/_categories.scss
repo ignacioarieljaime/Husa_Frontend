@@ -1,0 +1,120 @@
+.careers_categories_block {
+	padding: 0 0 22px;
+	@include mq(768) {
+		padding: 0 0 12px;
+	}
+	.content {
+		max-width: 1228px;
+		padding: 50px 16px;
+		display: flex;
+		justify-content: center;
+		align-items: start;
+		flex-direction: column;
+		gap: 64px;
+		margin: 0 auto;
+		@include mq(768) {
+			gap: 32px;
+			padding: 32px 16px;
+		}
+		.title {
+			margin: 0;
+			width: 100%;
+			@include mq(768) {
+				text-align: center;
+			}
+			* {
+				font-size: 48px;
+				font-weight: 500;
+				line-height: 50px; /* 116.375% */
+				letter-spacing: -0.96px;
+				color: #000000;
+				margin: 0;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 28px; /* 125% */
+					letter-spacing: -0.48px;
+				}
+			}
+		}
+		.text {
+			margin: 0;
+			* {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 30px; /* 125% */
+				letter-spacing: -0.48px;
+				color: #000000;
+				margin: 0 0 -4px;
+				@include mq(768) {
+					font-size: 16px;
+					line-height: 20px; /* 135% */
+					letter-spacing: 0;
+				}
+			}
+		}
+	}
+	.slider {
+		padding: 40px 0 0;
+		@include mq(768) {
+			padding: 16px 0 0;
+		}
+		.item {
+			// height: 100%;
+			// width: 100% !important;
+			overflow: hidden;
+			border-radius: 50px;
+			max-width: 660px !important;
+			width: 100% !important;
+			@include mq(768) {
+				border-radius: 25px;
+				width: calc(55% - 16px) !important;
+			}
+			.image {
+				max-width: 660px;
+				max-height: 440px;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transform: scale(1);
+				transition: all 0.4s ease-in-out;
+				&:hover {
+					transform: scale(1.02);
+				}
+			}
+		}
+
+		.splide__pagination {
+			position: relative !important;
+			bottom: 0px !important;
+			margin: 90px auto 0 !important;
+			@include mq(768) {
+				margin: 34px auto 0 !important;
+			}
+			.splide__pagination__page {
+				width: 98px !important;
+				border-radius: 1000px !important;
+				height: 5px;
+				transition: all 0.3s ease-in-out !important;
+				background: #a6a8ac;
+				@include mq(768) {
+					width: 56px !important;
+				}
+
+				@include mq(575) {
+					width: 30px !important;
+				}
+				&.is-active {
+					width: 210px !important;
+					@include mq(768) {
+						width: 140px !important;
+					}
+					@include mq(575) {
+						width: 80px !important;
+					}
+					background-color: #00a29c;
+					transform: scale(1);
+				}
+			}
+		}
+	}
+}
