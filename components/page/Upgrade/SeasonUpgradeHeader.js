@@ -1,3 +1,5 @@
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import MenuWhite from 'components/icons/MenuIcon'
 import SearchIcon from 'components/icons/SearchIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
@@ -51,7 +53,11 @@ const SeasonUpgradeHeader = ({ data }) => {
 								<SearchIcon />
 							</button>
 							<button onClick={() => setOpenMenu(state => !state)}>
-								<MenuWhite />
+								{openMenu ? (
+									<FontAwesomeIcon icon={faXmark} size='xl' />
+								) : (
+									<MenuWhite />
+								)}
 							</button>
 						</div>
 					)}
