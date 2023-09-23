@@ -53,7 +53,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					spaceBetween={16}
 					initialSlide={
 						windowSize[0] >= 768
-							? Math.floor(content?.selected_products?.value.length / 2)
+							? content?.selected_products?.value.length / 2
 							: 0
 					}
 					centeredSlides={true}
@@ -67,9 +67,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 						<SwiperSlide className='w-fit h-100' key={index}>
 							<SeasonUpgradeProductsCarouselItem
 								data={item}
-								length={Math.floor(
-									content?.selected_products?.value.length / 2
-								)}
+								length={content?.selected_products?.value.length / 2}
 								setChannelAdvisorData={setChannelAdvisorData}
 								setShowDialog={setShowDialog}
 							/>
