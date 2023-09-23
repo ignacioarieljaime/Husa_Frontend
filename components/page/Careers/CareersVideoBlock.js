@@ -4,7 +4,7 @@ import { useRef } from 'react'
 
 const CareersVideoBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
-	const [iframe, setIframe] = useState('')
+	// const [iframe, setIframe] = useState('')
 	const videoRef = useRef()
 	const [playingStatus, setPlayingStatus] = useState(true)
 
@@ -14,24 +14,24 @@ const CareersVideoBlock = ({ data }) => {
 
 	useEffect(() => {
 		if (videoRef.current) videoRef.current.play()
-		if (content?.videoType?.value === 'iframe') {
-			if (content?.video?.value.includes('?')) {
-				if (content?.video?.value.includes('https://player.vimeo.com')) {
-					setIframe(
-						content?.video?.value.split('?')[0] +
-							'?' +
-							content?.video?.value.split('?')[1].split('&amp;')[0] +
-							'&autoplay=1&muted=1&loop=1'
-					)
-				} else {
-					setIframe(
-						content?.video?.value.split('?')[0] + '?autoplay=1&muted=1&loop=1'
-					)
-				}
-			} else {
-				setIframe(content?.video?.value + '?autoplay=1&muted=1&loop=1')
-			}
-		}
+		// if (content?.videoType?.value === 'iframe') {
+		// 	if (content?.video?.value.includes('?')) {
+		// 		if (content?.video?.value.includes('https://player.vimeo.com')) {
+		// 			setIframe(
+		// 				content?.video?.value.split('?')[0] +
+		// 					'?' +
+		// 					content?.video?.value.split('?')[1].split('&amp;')[0] +
+		// 					'&autoplay=1&muted=1&loop=1'
+		// 			)
+		// 		} else {
+		// 			setIframe(
+		// 				content?.video?.value.split('?')[0] + '?autoplay=1&muted=1&loop=1'
+		// 			)
+		// 		}
+		// 	} else {
+		// 		setIframe(content?.video?.value + '?autoplay=1&muted=1&loop=1')
+		// 	}
+		// }
 	}, [content?.video?.value])
 
 	const playVideo = _condition => {
@@ -56,7 +56,9 @@ const CareersVideoBlock = ({ data }) => {
 						src={content?.video?.value}
 						onClick={() => playVideo(true)}></video>
 				) : (
-					<iframe allow='autoplay; mute; loop' src={iframe}></iframe>
+					<iframe
+						allow='autoplay; mute; loop'
+						src={content?.video?.value}></iframe>
 				)}
 				{content?.videoType?.value === 'link' && !playingStatus && (
 					<button onClick={() => playVideo(playingStatus)}>
