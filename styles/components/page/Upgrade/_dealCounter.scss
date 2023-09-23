@@ -84,12 +84,12 @@
 				}
 				.image {
 					max-width: 304px;
-					width: 100%;
+					width: 54%;
 					height: auto;
 					object-fit: contain;
 					min-width: unset;
 					@include mq(991) {
-						width: 50%;
+						width: 42%;
 					}
 					@include mq(840) {
 						width: 30%;
