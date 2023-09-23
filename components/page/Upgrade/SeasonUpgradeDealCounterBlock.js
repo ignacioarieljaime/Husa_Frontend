@@ -101,6 +101,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 										<div>SECS</div>
 									</div>
 								</div>
+								<p className='time'>Eastern Standard Time</p>
 							</div>
 						</div>
 						<img

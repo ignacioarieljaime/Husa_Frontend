@@ -110,6 +110,20 @@
 						text-align: center;
 					}
 				}
+				.time {
+					color: #000;
+					font-family: 'archivo-expanded';
+					font-size: 8px;
+					font-weight: 900;
+					line-height: 10px; /* 270% */
+					letter-spacing: -0.16px;
+					text-transform: uppercase;
+					margin: 8px 0 0;
+					text-align: end;
+					@include mq(768) {
+						text-align: center;
+					}
+				}
 				.counter {
 					display: flex;
 					justify-content: flex-start;
