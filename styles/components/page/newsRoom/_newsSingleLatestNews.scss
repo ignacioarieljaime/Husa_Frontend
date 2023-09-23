@@ -65,16 +65,16 @@
 				width: fit-content;
 				margin: auto;
 				align-items: center;
-				padding: 0 16px;
-				height: 51px;
 				border: 1px solid #ffffff;
 				border-radius: 1000px;
 				font-style: normal;
 				font-weight: 400;
-				font-size: 14px;
-				line-height: 19px;
 				color: #ffffff;
 				text-decoration: none;
+				min-width: 80px !important;
+				padding: 9.5px 16px 6.5px !important;
+				font-size: 14px;
+				line-height: 17px;
 			}
 		}
 	}

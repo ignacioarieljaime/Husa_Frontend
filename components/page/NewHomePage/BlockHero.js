@@ -56,7 +56,7 @@ const BlockHero = ({ data: { structure } }) => {
 												? structure?.link?.target
 												: '_self'
 										}
-										className='n-btn white'
+										className='n-btn white medium w-fit mx-auto d-block'
 										data-aos='fade'
 										data-aos-duration='900'
 										data-aos-delay='2000'>

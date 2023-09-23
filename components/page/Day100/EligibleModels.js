@@ -74,7 +74,7 @@ const EligibleModels = ({ data }) => {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
+								className='n-btn primary rounded-5 medium mb-8'>
 								{structure?.link?.title}
 
 								{structure?.link?.target === '_blank' && (

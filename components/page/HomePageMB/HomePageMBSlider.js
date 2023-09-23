@@ -41,7 +41,7 @@ const HomePageMBSlider = ({ data }) => {
 								<h2 className='mb-0'>{item?.title?.value}</h2>
 								<a
 									href={item?.url?.value}
-									className='slider-link n-btn outline-white transparent'>
+									className='slider-link n-btn outline-white medium d-block w-fit mx-auto mt-5 transparent'>
 									{item?.url?.title}
 								</a>
 							</div>

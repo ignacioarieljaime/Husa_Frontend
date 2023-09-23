@@ -159,7 +159,7 @@ const NewsSearchFilter = ({
 								className='reset'>
 								Reset Filter
 							</button>
-							<button onClick={confirmChanges} className='n-btn white p-4'>
+							<button onClick={confirmChanges} className='n-btn white medium'>
 								Confirm
 							</button>
 						</div>

@@ -39,7 +39,7 @@ const LandingStaticBanner = ({ data }) => {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className={`n-btn py-3 px-6 transparent ${
+								className={`n-btn medium transparent d-block ${
 									structure?.theme?.value === 'dark'
 										? 'outline-black'
 										: 'outline-white'

@@ -173,7 +173,7 @@ const NbaFormHisense = ({
 						</FlightNightCustomCheckbox>
 					</div>
 					<div className='col-12 pt-12 text-center'>
-						<button className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
+						<button className='n-btn d-inline-flex gap-2 primary medium'>
 							{submitText}
 							{loading && <Spinner size={20} />}
 						</button>

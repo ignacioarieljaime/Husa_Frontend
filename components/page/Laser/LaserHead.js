@@ -38,7 +38,7 @@ function LaserHead({ data: { structure } }) {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='btn btn-outline-light rounded-5 px-8 mt-12'>
+									className='n-btn outline-white rounded-5 medium mt-12  d-block mx-auto w-fit'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (
 										<img

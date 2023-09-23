@@ -42,7 +42,7 @@ const HomeAppliancesTitleAndCardsBox = ({ data }) => {
 													item?.link?.target ? item?.link?.target : '_self'
 												}
 												style={{ width: '150px' }}
-												className={` text-nowrap n-btn d-block mx-auto py-3 ${
+												className={` text-nowrap n-btn d-block mx-auto medium ${
 													item?.theme?.value === 'dark' ? 'black' : 'white'
 												}`}>
 												{item?.link?.title}

@@ -90,7 +90,7 @@ const GoogleTvProducts = ({ data }) => {
 													? RouteHandler(item?.products[0]?.product?.id)
 													: '/'
 											}>
-											<a className='n-btn link'>
+											<a className='n-btn link medium'>
 												Explore the{' '}
 												{seriesTitle
 													? seriesTitle?.custom_fields.find(
@@ -106,7 +106,7 @@ const GoogleTvProducts = ({ data }) => {
 					)}
 				</div>
 				<Link href={structure?.link?.value ? structure?.link?.value : '/'}>
-					<a className='n-btn black d-block w-fit mx-auto py-4 px-8 mt-15'>
+					<a className='n-btn black d-block w-fit mx-auto medium mt-15'>
 						{structure?.link?.title}
 					</a>
 				</Link>

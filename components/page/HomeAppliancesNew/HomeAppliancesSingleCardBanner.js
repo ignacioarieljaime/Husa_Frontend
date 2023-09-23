@@ -36,7 +36,7 @@ const HomeAppliancesSingleCardBanner = ({ data }) => {
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
 							style={{ width: '150px' }}
-							className='black text-nowrap n-btn d-block mx-auto link_btn py-3 px-8'>
+							className='black text-nowrap n-btn d-block mx-auto link_btn medium'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

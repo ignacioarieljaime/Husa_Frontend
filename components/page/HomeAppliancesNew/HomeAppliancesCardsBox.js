@@ -59,7 +59,7 @@ const HomeAppliancesCardsBox = ({ data }) => {
 													: '_self'
 											}
 											style={{ width: '150px' }}
-											className={`text-nowrap n-btn d-block mx-auto ${
+											className={`text-nowrap n-btn d-block medium mx-auto ${
 												structure?.block1?.value?.theme?.value === 'dark'
 													? 'black'
 													: ' white'
@@ -123,7 +123,7 @@ const HomeAppliancesCardsBox = ({ data }) => {
 													: '_self'
 											}
 											style={{ width: '150px' }}
-											className={`text-nowrap n-btn d-block mx-auto ${
+											className={`text-nowrap n-btn d-block medium mx-auto ${
 												structure?.block2?.value?.theme?.value === 'dark'
 													? 'black'
 													: ' white'

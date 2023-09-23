@@ -1,22 +1,25 @@
 .careers_textbox {
 	.v1 {
-		padding: 64px 0px;
+		padding: 80px 14px;
 
-		@include mq(992) {
-			padding: 60px 18px;
+		@include mq(768) {
+			padding: 32px 14px;
 		}
-		max-width: 745px;
+		max-width: 890px;
 		margin: 0 auto;
-		.text * {
-			text-align: center;
-			font-weight: 400;
-			line-height: 30px;
-			font-size: 24px;
-			margin-bottom: 0;
-			color: #ffffff;
-			@include mq(992) {
-				font-size: 16px;
-				line-height: 22px;
+		.text {
+			margin-bottom: -2px;
+			* {
+				text-align: center;
+				font-weight: 400;
+				line-height: 30px;
+				font-size: 24px;
+				margin-bottom: 0;
+				color: #ffffff;
+				@include mq(768) {
+					font-size: 16px;
+					line-height: 22px;
+				}
 			}
 		}
 	}
@@ -38,6 +41,54 @@
 				line-height: 16px;
 				color: #000;
 				margin-bottom: 0px;
+			}
+		}
+	}
+}
+
+.careers_text_block {
+	padding: 64px;
+	background-color: #fff;
+
+	@include mq(768) {
+		padding: 64px 0;
+	}
+	.content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		gap: 32px;
+		max-width: 1290px;
+		margin: 0 auto;
+
+		.title {
+			margin: 0;
+			padding: 0 16px;
+			@include mq(768) {
+				padding: 0 6px;
+			}
+			* {
+				font-size: 48px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 52px; /* 116.375% */
+				letter-spacing: -0.96px;
+				color: #000;
+				margin: 0;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 28px; /* 125% */
+					letter-spacing: -0.48px;
+				}
+			}
+		}
+		.n-btn {
+			@include mq(768) {
+				padding: 9.5px 16px 6.5px !important;
+				font-size: 14px;
+				line-height: 19px;
 			}
 		}
 	}

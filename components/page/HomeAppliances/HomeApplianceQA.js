@@ -44,7 +44,7 @@ const HomeApplianceQA = ({ data: { structure } }) => {
 										}
 										className={`text-decoration-none ${
 											structure?.template?.value === 'V2'
-												? 'n-btn primary px-11 py-3 mb-10'
+												? 'n-btn primary medium mb-10'
 												: 'text-primary-new fs-8 mb-8'
 										}  text-uppercase d-block w-fit mx-auto`}>
 										{structure?.link?.title}

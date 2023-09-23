@@ -42,7 +42,7 @@ const GoogleTvBanner = ({ data: { structure } }) => {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='n-btn white text-center d-block w-fit mx-auto'>
+								className='n-btn white medium text-center d-block w-fit mx-auto'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

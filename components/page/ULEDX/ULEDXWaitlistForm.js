@@ -63,7 +63,7 @@ const ULEDXWaitlistForm = ({ data }) => {
 							onClick={() => setNotify(prevState => !prevState)}></button>
 						<p className='mb-0'>{data?.text?.value}</p>
 					</div>
-					<button type='button' className='n-btn black p-4'>
+					<button type='button' className='n-btn medium black'>
 						Get Notified
 					</button>
 				</form>

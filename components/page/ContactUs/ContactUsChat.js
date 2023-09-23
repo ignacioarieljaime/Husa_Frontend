@@ -27,7 +27,7 @@ function ContactUsChat({ data }) {
 					</div>
 					<button
 						onClick={chatHandler}
-						className='btn btn-outline-dark fw-bold rounded-5 py-3 px-4 mt-10 mt-md-0'>
+						className='n-btn outline-black medium fw-bold rounded-5 mt-10 mt-md-0'>
 						{structure?.link?.title}
 					</button>
 				</div>

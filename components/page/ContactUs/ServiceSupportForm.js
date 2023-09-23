@@ -164,15 +164,17 @@ function ServiceSupportForm({ formHandler }) {
 						options={categories}
 						title={'PLEASE SELECT YOUR PRODUCT'}
 						onChange={_value => {
-							dataSchemaHandler('product_category', _value.name)
-							getSeriesModels(_value.id)
+							dataSchemaHandler('product_category', _value?.name)
+							getSeriesModels(_value?.id)
 						}}
 					/>
 				</div>
 				<div className='col-12 mb-10 '>
 					<CustomSelectBox
 						options={models}
-						onChange={_value => dataSchemaHandler('product_model', _value.name)}
+						onChange={_value =>
+							dataSchemaHandler('product_model', _value?.name)
+						}
 						title={'PLEASE SELECT YOUR MODEL'}
 					/>
 				</div>
@@ -204,7 +206,7 @@ function ServiceSupportForm({ formHandler }) {
 					<CustomSelectBox
 						options={warrantyOption}
 						onChange={_value =>
-							dataSchemaHandler('product_warranty', _value.value)
+							dataSchemaHandler('product_warranty', _value?.value)
 						}
 						title={'IS YOUR PRODUCT UNDER WARRANTY?'}
 					/>
@@ -212,7 +214,9 @@ function ServiceSupportForm({ formHandler }) {
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomSelectBox
 						options={serviceTypeOption}
-						onChange={_value => dataSchemaHandler('service_type', _value.value)}
+						onChange={_value =>
+							dataSchemaHandler('service_type', _value?.value)
+						}
 						title={'TYPE OF SERVICE REQUEST'}
 					/>
 				</div>
