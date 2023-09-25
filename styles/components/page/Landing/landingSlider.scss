@@ -63,7 +63,7 @@
 					border-radius: 1000px;
 					-webkit-border-radius: 1000px;
 					font-weight: 400;
-					font-size: 24px;
+					font-size: 18px;
 					line-height: 15px;
 					-moz-border-radius: 1000px;
 					-ms-border-radius: 1000px;
@@ -80,10 +80,6 @@
 						bottom: 9%;
 					}
 					@include mq(600) {
-						min-width: 56px !important;
-						padding: 10px 16px 6px !important;
-						font-size: 10px;
-						line-height: 10px;
 						bottom: 7%;
 					}
 					&:hover {
