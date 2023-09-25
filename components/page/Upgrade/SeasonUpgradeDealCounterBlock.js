@@ -40,7 +40,9 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 		try {
 			let response = await axios.get(
 				`https://impim.dev-api.hisenseportal.com/api/cms/getProductsList?search=${
-					content?.list?.value[content?.active?.value]?.button?.value
+					content?.list?.value[content?.active?.value]?.button?.value.split(
+						':'
+					)[1]
 				}&brand_id=3`
 			)
 			if (response?.data?.data.length) setProduct(response?.data?.data[0])
@@ -101,6 +103,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 										<div>SECS</div>
 									</div>
 								</div>
+								<p className='time'>Eastern Standard Time</p>
 							</div>
 						</div>
 						<img

@@ -84,12 +84,12 @@
 				}
 				.image {
 					max-width: 304px;
-					width: 100%;
+					width: 54%;
 					height: auto;
 					object-fit: contain;
 					min-width: unset;
 					@include mq(991) {
-						width: 50%;
+						width: 42%;
 					}
 					@include mq(840) {
 						width: 30%;
@@ -106,6 +106,20 @@
 					line-height: 21.6px; /* 135% */
 					letter-spacing: -0.32px;
 					margin-bottom: 4px;
+					@include mq(768) {
+						text-align: center;
+					}
+				}
+				.time {
+					color: #000;
+					font-family: 'archivo-expanded';
+					font-size: 8px;
+					font-weight: 900;
+					line-height: 10px; /* 270% */
+					letter-spacing: -0.16px;
+					text-transform: uppercase;
+					margin: 8px 0 0;
+					text-align: end;
 					@include mq(768) {
 						text-align: center;
 					}
