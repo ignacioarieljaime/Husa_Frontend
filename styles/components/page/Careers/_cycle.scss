@@ -1,6 +1,6 @@
 .careers_cycle_section {
 	.content {
-		max-width: 1307px;
+		max-width: 1263px;
 		margin: 0 auto;
 		padding: 0 16px;
 		display: flex;
@@ -40,10 +40,13 @@
 			width: 100%;
 			.item {
 				display: flex;
-				justify-content: space-between;
+				justify-content: flex-start;
 				align-items: center;
-				gap: 32px;
+				gap: 124px;
 				width: 100%;
+				@include mq(991) {
+					gap: 64px;
+				}
 				@include mq(768) {
 					gap: 48px;
 					flex-wrap: wrap;
@@ -52,6 +55,7 @@
 				.image_wrapper {
 					position: relative;
 					max-width: 242px;
+					min-width: 242px;
 					height: 242px;
 					.image {
 						width: 100%;
@@ -71,15 +75,9 @@
 					}
 				}
 				.text_content {
-					max-width: 815px;
+					max-width: 880px;
 					width: 100%;
-					padding-right: 100px;
-					@include mq(991) {
-						padding-right: 40px;
-					}
-					@include mq(768) {
-						padding-right: 0;
-					}
+
 					.title {
 						margin-bottom: 12px;
 						@include mq(768) {
