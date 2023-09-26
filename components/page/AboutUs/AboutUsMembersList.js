@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 
 const AboutUsMembersList = ({ data }) => {
 	const [content, setContent] = useState(null)
-	const splideRef = useRef()
+	// const splideRef = useRef()
 	const router = useRouter()
 
 	useEffect(() => {
@@ -20,14 +20,45 @@ const AboutUsMembersList = ({ data }) => {
 		}
 	}, [])
 
-	useEffect(() => {
-		splideRef.current.splide.Components.Autoplay.play()
-	}, [content])
+	// useEffect(() => {
+	// 	splideRef.current.splide.Components.Autoplay.play()
+	// }, [content])
 
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='aboutus_members_list'>
-				<Splide
+				<div className='content'>
+					<h3
+						className='title'
+						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
+					<div
+						className='text'
+						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+				</div>
+				<div className='members'>
+					{content?.list?.value.map((_item, index) => (
+						<div key={index} className='item'>
+							<img
+								src={_item?.image?.src}
+								alt={_item?.image?.alt}
+								className='image'
+							/>
+							<div>
+								<div
+									className='title'
+									dangerouslySetInnerHTML={{
+										__html: _item?.title?.value
+									}}></div>
+								<div
+									className='role'
+									dangerouslySetInnerHTML={{
+										__html: _item?.role?.value
+									}}></div>
+							</div>
+						</div>
+					))}
+				</div>
+				{/* <Splide
 					ref={splideRef}
 					className='slider'
 					options={{
@@ -66,7 +97,7 @@ const AboutUsMembersList = ({ data }) => {
 							</div>
 						</SplideSlide>
 					))}
-				</Splide>
+				</Splide> */}
 			</div>
 		</section>
 	)
