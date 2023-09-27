@@ -64,7 +64,10 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					className={`carousel`}
 					modules={[Navigation]}>
 					{content?.selected_products?.value.map((item, index) => (
-						<SwiperSlide className='w-fit h-100' key={index}>
+						<SwiperSlide
+							style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
+							className='w-fit h-100'
+							key={index}>
 							<SeasonUpgradeProductsCarouselItem
 								data={item}
 								length={content?.selected_products?.value.length / 2}

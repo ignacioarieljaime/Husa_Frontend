@@ -4,6 +4,8 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
 import { useSwiper } from 'swiper/react'
+import Link from 'next/link'
+import { RouteHandler } from 'utils/routeHandler'
 
 const SeasonUpgradeProductsCarouselItem = ({
 	data,
@@ -81,13 +83,21 @@ const SeasonUpgradeProductsCarouselItem = ({
 			<div className={'item h-100 w-100'}>
 				<div className='column'>
 					<div className='image_wrapper'>
-						<img src={product?.image} alt='tv' className='image' />
+						{RouteHandler(activeItem?.id?.value, 'product') ? (
+							<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
+								<a className='d-block w-100 h-100'>
+									<img src={product?.image} alt='tv' className='image' />
+								</a>
+							</Link>
+						) : (
+							<img src={product?.image} alt='tv' className='image' />
+						)}
 					</div>
 					<div className='d-flex justify-content-between align-items-start gap-1 w-100'>
 						<h6 className='title'>{product?.name}</h6>
 						<span className='new_label'>{product?.isNew ? 'NEW' : ''}</span>
 					</div>
-					{series && series.length > 1 ? (
+					{series && series.length > 5 && (
 						<div
 							className={`screen_size_selector ${
 								showSizes ? 'show_sizes' : ''
@@ -125,8 +135,6 @@ const SeasonUpgradeProductsCarouselItem = ({
 								</div>
 							</div>
 						</div>
-					) : (
-						<div style={{ height: '43px' }}></div>
 					)}
 				</div>
 				<div className='column'>

@@ -61,7 +61,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 						className='top_image'
 					/>
 				</div>
-				{/* <div>
+				<div>
 					<ul className='weeks'>
 						{content?.list?.value.map((item, index) => (
 							<li
@@ -74,7 +74,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							</li>
 						))}
 					</ul>
-				</div> */}
+				</div>
 				<div className='product'>
 					<div className='product_images'>
 						<div className='product_top'>
