@@ -97,45 +97,89 @@ const SeasonUpgradeProductsCarouselItem = ({
 						<h6 className='title'>{product?.name}</h6>
 						<span className='new_label'>{product?.isNew ? 'NEW' : ''}</span>
 					</div>
-					{series && series.length > 5 && (
-						<div
-							className={`screen_size_selector ${
-								showSizes ? 'show_sizes' : ''
-							}`}>
-							<div className='content'>
-								<div className='sizes'>
-									<ul className='size_list'>
-										{series.map((item, index) => (
-											<li
-												key={index}
-												className={activeSizeIndex === index ? 'active' : ''}
-												onClick={() => {
-													setActiveItem(item)
-													setActiveSizeIndex(index)
+					{series && series.length > 1 ? (
+						series.length > 5 ? (
+							<div
+								className={`screen_size_selector dropdown ${
+									showSizes ? 'show_sizes' : ''
+								}`}>
+								<div className='content'>
+									<div
+										onClick={() => setShowSizes(state => !state)}
+										className='show_sizes_btn'>
+										<span className='label'>Select Screen Size</span>
+										<FontAwesomeIcon icon={faChevronDown} size='sm' />
+									</div>
+									{showSizes && (
+										<div className='sizes'>
+											<ul className='size_list'>
+												{series.map((item, index) => (
+													<li
+														key={index}
+														className={
+															activeSizeIndex === index ? 'active' : ''
+														}
+														onClick={() => {
+															setActiveItem(item)
+															setActiveSizeIndex(index)
+														}}>
+														{item?.name?.value}
+													</li>
+												))}
+											</ul>
+											<span
+												style={{
+													width: 100 / series.length + '%',
+													transform:
+														'translateX(' + activeSizeIndex * 100 + '%)'
 												}}
-												style={{ width: 100 / series.length + '%' }}>
-												{item?.name?.value}
-											</li>
-										))}
-									</ul>
-									<span
-										style={{
-											width: 100 / series.length + '%',
-											transform: 'translateX(' + activeSizeIndex * 100 + '%)'
-										}}
-										className='indicator'>
-										{activeItem?.name?.value}
-									</span>
-								</div>
-								<div
-									onClick={() => setShowSizes(true)}
-									className='show_sizes_btn'>
-									<span className='label'>Select Screen Size</span>
-									<FontAwesomeIcon icon={faChevronDown} size='sm' />
+												className='indicator'>
+												{activeItem?.name?.value}
+											</span>
+										</div>
+									)}
 								</div>
 							</div>
-						</div>
-					)}
+						) : (
+							<div
+								className={`screen_size_selector ${
+									showSizes ? 'show_sizes' : ''
+								}`}>
+								<div className='content'>
+									<div className='sizes'>
+										<ul className='size_list'>
+											{series.map((item, index) => (
+												<li
+													key={index}
+													className={activeSizeIndex === index ? 'active' : ''}
+													onClick={() => {
+														setActiveItem(item)
+														setActiveSizeIndex(index)
+													}}
+													style={{ width: 100 / series.length + '%' }}>
+													{item?.name?.value}
+												</li>
+											))}
+										</ul>
+										<span
+											style={{
+												width: 100 / series.length + '%',
+												transform: 'translateX(' + activeSizeIndex * 100 + '%)'
+											}}
+											className='indicator'>
+											{activeItem?.name?.value}
+										</span>
+									</div>
+									<div
+										onClick={() => setShowSizes(true)}
+										className='show_sizes_btn'>
+										<span className='label'>Select Screen Size</span>
+										<FontAwesomeIcon icon={faChevronDown} size='sm' />
+									</div>
+								</div>
+							</div>
+						)
+					) : null}
 				</div>
 				<div className='column'>
 					<ul className='specs w-100'>
