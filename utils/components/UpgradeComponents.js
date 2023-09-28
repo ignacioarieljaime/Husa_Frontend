@@ -48,6 +48,10 @@ module.exports.UpgradeComponents = [
 		path: 'components/page/Upgrade/SeasonUpgrade2KSweepstakes'
 	},
 	{
+		name: 'SeasonUpgrade2KEmailBanner',
+		path: 'components/page/Upgrade/SeasonUpgrade2KEmailBanner'
+	},
+	{
 		name: 'UpgradeL9GForm',
 		path: 'components/page/Upgrade/UpgradeL9GForm'
 	}

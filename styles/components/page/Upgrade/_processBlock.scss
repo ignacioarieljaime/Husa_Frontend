@@ -52,7 +52,7 @@
 				margin: 0;
 				color: #fff;
 				font-size: 20px;
-				font-weight: 500;
+				font-weight: 400;
 				line-height: 25px; /* 125% */
 				letter-spacing: -0.4px;
 				@include mq(768) {
@@ -79,7 +79,7 @@
 		}
 		.item {
 			display: flex;
-			justify-content: center;
+			justify-content: flex-start;
 			align-items: center;
 			flex-direction: column;
 			gap: 28px;

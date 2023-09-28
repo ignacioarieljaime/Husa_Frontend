@@ -95,7 +95,11 @@ const SeasonUpgradeProductsCarouselItem = ({
 						{RouteHandler(activeItem?.id?.value, 'product') ? (
 							<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
 								<a className='d-block w-100 h-100'>
-									<img src={product?.image} alt='tv' className='image' />
+									<img
+										src={data?.customImage?.src || product?.image}
+										alt='tv'
+										className='image'
+									/>
 								</a>
 							</Link>
 						) : (
