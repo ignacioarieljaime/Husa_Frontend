@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router'
 import React from 'react'
+import { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
 const SeasonUpgrade2KHeroBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
-	const route = useRouter()
+	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)

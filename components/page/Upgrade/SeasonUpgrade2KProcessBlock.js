@@ -6,10 +6,11 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import WhiteArrow from 'public/assets/images/white-arrow.png'
 import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
 const SeasonUpgrade2KProcessBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
-	const route = useRouter()
+	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
