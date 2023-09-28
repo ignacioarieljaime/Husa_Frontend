@@ -85,7 +85,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 	}
 	return (
 		<>
-			<div className={'item h-100 w-100'}>
+			<div className={`item ${product?.isNew ? 'new' : ''} h-100 w-100`}>
 				<div className='column'>
 					<div className='image_wrapper'>
 						{RouteHandler(activeItem?.id?.value, 'product') ? (

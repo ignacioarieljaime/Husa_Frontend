@@ -33,7 +33,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 		<section>
 			<div
 				id={data?.name + data?.id}
-				className={`season_upgrade_carousel ${content?.text?.value}`}>
+				className={`season_upgrade_carousel ${content?.text?.value} ${content?.template?.value}`}>
 				<div className='text_content'>
 					<p className='pretitle'>{content?.subtitle?.value}</p>
 					<Link href={'/'}>
@@ -83,6 +83,13 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 						<FontAwesomeIcon icon={faChevronLeft} size='2xl' />
 					</button>
 				</Swiper>
+				{content?.template?.value === 'v2' && (
+					<div
+						className='disclaimer'
+						dangerouslySetInnerHTML={{
+							__html: content?.disclaimer?.value
+						}}></div>
+				)}
 			</div>
 			{channelAdvisorData?.product && (
 				<ModalChanelAdviser

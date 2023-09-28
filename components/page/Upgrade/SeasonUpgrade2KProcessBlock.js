@@ -13,12 +13,12 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 	}, [])
 	return (
 		<section>
-			<div
-				id={data?.name + data?.id}
-				className='season_upgrade_2k_process'
-				style={{
-					backgroundImage: `url(${content?.background?.src})`
-				}}>
+			<div id={data?.name + data?.id} className='season_upgrade_2k_process'>
+				<img
+					src={content?.background?.src}
+					alt={content?.background?.alt}
+					className='fixed_bg'
+				/>
 				<div className='text_content'>
 					<h4
 						className='title'
