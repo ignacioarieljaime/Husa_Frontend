@@ -1,6 +1,6 @@
 import RedScratch from 'components/icons/ScratchVector'
 import Link from 'next/link'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import DealOfTheWeek from 'public/assets/images/upgrade-season/Deal-of-the-Week.png'
