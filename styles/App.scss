@@ -61,6 +61,7 @@
 @import './components/page/products';
 @import './components/page/Product/ProductFilterResponsive';
 @import './components/page/Product/productBigContent';
+@import './components/page/Product/productComponents';
 
 // smart
 @import './components/page/smartPage';
@@ -139,6 +140,9 @@
 @import './components/page/Upgrade/dealCounter';
 @import './components/page/Upgrade/banners';
 @import './components/page/Upgrade/carousel';
+@import './components/page/Upgrade/footer';
+@import './components/page/Upgrade/processBlock';
+@import './components/page/Upgrade/sweepstakes';
 
 // BeyondLaser
 @import './components/page/BeyondLaser/Banner';

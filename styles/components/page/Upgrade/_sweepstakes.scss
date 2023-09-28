@@ -1,0 +1,63 @@
+.season_upgrade_2k_sweepstakes {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	padding: 100px 16px 72px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 48px;
+	@include mq(768) {
+		padding: 64px 16px 48px;
+		gap: 32px;
+	}
+	.top_image {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		transform: translate(-50%, -45%);
+		object-fit: contain;
+		width: 100%;
+		max-width: 135px;
+		margin: 0 auto;
+		height: auto;
+		@include mq(768) {
+			max-width: 90px;
+		}
+	}
+	.title {
+		max-width: 870px;
+		margin: 0 auto;
+		text-align: center;
+		* {
+			font-family: 'archivo-expanded';
+			color: #fff;
+			font-size: 48px;
+			font-weight: 900;
+			line-height: 48px; /* 100% */
+			letter-spacing: -0.96px;
+			text-transform: uppercase;
+			margin: 0;
+		}
+		@include mq(768) {
+			max-width: 440px;
+
+			* {
+				font-size: 24px;
+				line-height: 24px; /* 100% */
+				letter-spacing: -0.48px;
+			}
+		}
+	}
+	.image {
+		width: 100%;
+		max-width: 350px;
+		margin: 0 auto;
+		height: auto;
+		@include mq(768) {
+			max-width: 200px;
+		}
+	}
+}

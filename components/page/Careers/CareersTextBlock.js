@@ -19,7 +19,11 @@ const CareersTextBlock = ({ data }) => {
 						<Link href={content?.link?.value}>
 							<a
 								className='n-btn large primary d-block w-fit mx-auto'
-								style={{ lineHeight: '15px' }}>
+								style={{
+									lineHeight: '15px',
+									fontSize: '22px',
+									fontWeight: 500
+								}}>
 								{content?.link?.title}
 							</a>
 						</Link>

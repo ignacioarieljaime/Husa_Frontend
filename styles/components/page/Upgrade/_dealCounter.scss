@@ -15,11 +15,14 @@
 	.weeks {
 		background: #000;
 		display: flex;
-		padding: 24px 100px;
+		padding: 22px 100px;
 		justify-content: space-between;
 		align-items: center;
 		list-style: none;
 		margin: 0;
+		@include mq(991) {
+			padding: 22px 48px;
+		}
 		@include mq(768) {
 			padding: 16px;
 			overflow: auto;
@@ -33,7 +36,7 @@
 			font-size: 16px;
 			font-style: normal;
 			font-weight: 900;
-			line-height: 21.6px; /* 135% */
+			line-height: 16px; /* 135% */
 			letter-spacing: -0.32px;
 			text-transform: uppercase;
 			&.active {
@@ -42,7 +45,7 @@
 			svg {
 				position: absolute;
 				left: -5px;
-				top: -7px;
+				top: -5px;
 			}
 			@include mq(768) {
 				min-width: 80px;
