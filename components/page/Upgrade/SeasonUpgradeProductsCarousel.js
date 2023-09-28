@@ -70,6 +70,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 							key={index}>
 							<SeasonUpgradeProductsCarouselItem
 								data={item}
+								version={content?.template?.value}
 								length={content?.selected_products?.value.length / 2}
 								setChannelAdvisorData={setChannelAdvisorData}
 								setShowDialog={setShowDialog}

@@ -9,6 +9,7 @@ import { RouteHandler } from 'utils/routeHandler'
 
 const SeasonUpgradeProductsCarouselItem = ({
 	data,
+	version,
 	setChannelAdvisorData,
 	setShowDialog,
 	length
@@ -85,7 +86,10 @@ const SeasonUpgradeProductsCarouselItem = ({
 	}
 	return (
 		<>
-			<div className={`item ${product?.isNew ? 'new' : ''} h-100 w-100`}>
+			<div
+				className={`item ${
+					product?.isNew || version === 'v2' ? 'new' : ''
+				} h-100 w-100`}>
 				<div className='column'>
 					<div className='image_wrapper'>
 						{RouteHandler(activeItem?.id?.value, 'product') ? (
@@ -100,7 +104,9 @@ const SeasonUpgradeProductsCarouselItem = ({
 					</div>
 					<div className='d-flex justify-content-between align-items-start gap-1 w-100'>
 						<h6 className='title'>{product?.name}</h6>
-						<span className='new_label'>{product?.isNew ? 'NEW' : ''}</span>
+						<span className='new_label'>
+							{product?.isNew || version === 'v2' ? 'NEW' : ''}
+						</span>
 					</div>
 					{series && series.length > 1 && (
 						<div
