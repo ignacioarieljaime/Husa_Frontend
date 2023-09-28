@@ -20,6 +20,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 	const [channelAdvisorData, setChannelAdvisorData] = useState(null)
 	const [showDialgo, setShowDialog] = useState(false)
 	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
@@ -33,7 +34,8 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 		<section>
 			<div
 				id={data?.name + data?.id}
-				className={`season_upgrade_carousel ${content?.text?.value}`}>
+				ref={ref}
+				className={`season_upgrade_carousel ${content?.text?.value} ${content?.template?.value}`}>
 				<div className='text_content'>
 					<p className='pretitle'>{content?.subtitle?.value}</p>
 					<Link href={'/'}>
@@ -64,9 +66,13 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					className={`carousel`}
 					modules={[Navigation]}>
 					{content?.selected_products?.value.map((item, index) => (
-						<SwiperSlide className='w-fit h-100' key={index}>
+						<SwiperSlide
+							style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
+							className='w-fit h-100'
+							key={index}>
 							<SeasonUpgradeProductsCarouselItem
 								data={item}
+								version={content?.template?.value}
 								length={content?.selected_products?.value.length / 2}
 								setChannelAdvisorData={setChannelAdvisorData}
 								setShowDialog={setShowDialog}
@@ -80,6 +86,13 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 						<FontAwesomeIcon icon={faChevronLeft} size='2xl' />
 					</button>
 				</Swiper>
+				{content?.template?.value === 'v2' && (
+					<div
+						className='disclaimer'
+						dangerouslySetInnerHTML={{
+							__html: content?.disclaimer?.value
+						}}></div>
+				)}
 			</div>
 			{channelAdvisorData?.product && (
 				<ModalChanelAdviser

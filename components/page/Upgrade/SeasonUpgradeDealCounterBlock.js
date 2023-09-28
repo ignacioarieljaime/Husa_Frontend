@@ -18,6 +18,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const [showDialgo, setShowDialog] = useState(false)
 	const [product, setProduct] = useState()
 	const router = useRouter()
+	const ref = useRef()
 
 	const [days, hours, minutes, seconds] = useCountdown(
 		content?.list?.value[content?.active?.value]?.end?.value
@@ -53,7 +54,10 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 
 	return (
 		<section>
-			<div id={data?.name + data?.id} className='season_upgrade_deal_counter'>
+			<div
+				id={data?.name + data?.id}
+				ref={ref}
+				className='season_upgrade_deal_counter'>
 				<div className='text-center py-4 px-2'>
 					<img
 						src={DealOfTheWeek.src}
@@ -61,7 +65,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 						className='top_image'
 					/>
 				</div>
-				{/* <div>
+				<div>
 					<ul className='weeks'>
 						{content?.list?.value.map((item, index) => (
 							<li
@@ -74,7 +78,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							</li>
 						))}
 					</ul>
-				</div> */}
+				</div>
 				<div className='product'>
 					<div className='product_images'>
 						<div className='product_top'>

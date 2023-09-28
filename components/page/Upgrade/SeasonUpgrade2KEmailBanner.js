@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useEffect } from 'react'
+import { useRef } from 'react'
 import { useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
@@ -30,7 +31,7 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 		setLoading(true)
 		try {
 			let response = await axios.post(
-				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.NEXT_PUBLIC_SEASON_UPGRADE_TOKEN}`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.NEXT_PUBLIC_SEASON_UPGRADE_NBA_2K_TOKEN}`,
 				{ email: email }
 			)
 

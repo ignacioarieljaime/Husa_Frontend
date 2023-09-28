@@ -3,9 +3,9 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
-const SeasonUpgradeHeroBanner = ({ data }) => {
+const SeasonUpgrade2KSweepstakes = ({ data }) => {
 	const [content, setContent] = useState(null)
-	const router = useRouter()
+	const route = useRouter()
 	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
@@ -15,26 +15,29 @@ const SeasonUpgradeHeroBanner = ({ data }) => {
 			}, 1000)
 		}
 	}, [])
-
 	return (
 		<section>
 			<div
 				id={data?.name + data?.id}
 				ref={ref}
-				className='season_upgrade_hero_banner'>
+				className='season_upgrade_2k_sweepstakes'
+				style={{ backgroundImage: `url(${content?.background?.src})` }}>
 				<img
-					src={content?.backgound?.src}
-					alt={content?.backgound?.alt}
-					className='background'
+					className='top_image'
+					src={content?.topImage?.src}
+					alt={content?.topImage?.alt}
 				/>
+				<h3
+					className='title'
+					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
 				<img
+					className='image'
 					src={content?.image?.src}
 					alt={content?.image?.alt}
-					className='image'
 				/>
 			</div>
 		</section>
 	)
 }
 
-export default SeasonUpgradeHeroBanner
+export default SeasonUpgrade2KSweepstakes

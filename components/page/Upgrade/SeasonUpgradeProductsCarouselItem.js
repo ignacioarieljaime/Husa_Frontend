@@ -4,9 +4,12 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
 import { useSwiper } from 'swiper/react'
+import Link from 'next/link'
+import { RouteHandler } from 'utils/routeHandler'
 
 const SeasonUpgradeProductsCarouselItem = ({
 	data,
+	version,
 	setChannelAdvisorData,
 	setShowDialog,
 	length
@@ -14,26 +17,34 @@ const SeasonUpgradeProductsCarouselItem = ({
 	const [showSizes, setShowSizes] = useState(false)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 	const [activeItem, setActiveItem] = useState(null)
-	const [screenSize, setScreenSize] = useState([])
+	const [series, setSeries] = useState([])
 	const [product, setProduct] = useState()
 	const router = useRouter()
 	const swiper = useSwiper()
-	useEffect(() => {
-		if (Array.isArray(product?.series[0]?.values)) {
-			let addSizeToItem = product?.series[0].values
-				.filter(item => item?.title && item?.productsList[0]?.status_id === 1)
-				.map(item => ({
-					...item,
-					size: item?.title ? Number(item?.title?.replaceAll('"', '')) : 0
-				}))
-			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
-		}
-	}, [product])
 
 	useEffect(() => {
-		setActiveItem(data?.id?.value)
-		getProduct()
-	}, [])
+		setSeries(
+			data?.series_products?.value.sort(
+				(a, b) =>
+					parseFloat(a?.name?.value.slice(0, -1)) -
+					parseFloat(b?.name?.value.slice(0, -1))
+			)
+		)
+	}, [data])
+
+	useEffect(() => {
+		if (series) {
+			setActiveItem(series.find(item => item?.id?.value == data?.id?.value))
+			setActiveSizeIndex(
+				series.findIndex(item => item?.id?.value == data?.id?.value)
+			)
+		}
+		if (series && series.length <= 5) {
+			setShowSizes(true)
+		} else {
+			setShowSizes(false)
+		}
+	}, [series])
 
 	useEffect(() => {
 		swiper.slideTo(
@@ -52,27 +63,22 @@ const SeasonUpgradeProductsCarouselItem = ({
 			type: 'static',
 
 			model: product?.model,
-			customizeRetailerId: data?.retailers?.value?.map(retailer => ({
-				id: retailer?.id?.value,
-				name: retailer?.name?.value
-			}))
+			customizeRetailerId: activeItem?.retailers?.value?.map(
+				retailer =>
+					retailer?.status?.value === 'active' && {
+						id: retailer?.id?.value,
+						name: retailer?.name?.value
+					}
+			)
 		})
 		setShowDialog(true)
 	}
 
 	async function getProduct() {
-		if (activeItem) {
+		if (activeItem?.id?.value) {
 			try {
-				let response = await GetSingleProduct(router, activeItem)
+				let response = await GetSingleProduct(router, activeItem?.id?.value)
 				setProduct(response?.data?.data)
-				setActiveItem(response?.data?.data?.id)
-				// setActiveSizeIndex(
-				// 	response?.data?.data?.series[0].values.indexOf(
-				// 		response?.data?.data?.series[0].values.find(
-				// 			(item, index) => item?.products[0] === response?.data?.data?.id
-				// 		)
-				// 	)
-				// )
 			} catch (error) {
 				console.log(error)
 			}
@@ -80,16 +86,33 @@ const SeasonUpgradeProductsCarouselItem = ({
 	}
 	return (
 		<>
-			<div className={'item h-100 w-100'}>
+			<div
+				className={`item ${
+					product?.isNew || version === 'v2' ? 'new' : ''
+				} h-100 w-100`}>
 				<div className='column'>
 					<div className='image_wrapper'>
-						<img src={product?.image} alt='tv' className='image' />
+						{RouteHandler(activeItem?.id?.value, 'product') ? (
+							<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
+								<a className='d-block w-100 h-100'>
+									<img
+										src={data?.customImage?.src || product?.image}
+										alt='tv'
+										className='image'
+									/>
+								</a>
+							</Link>
+						) : (
+							<img src={product?.image} alt='tv' className='image' />
+						)}
 					</div>
 					<div className='d-flex justify-content-between align-items-start gap-1 w-100'>
 						<h6 className='title'>{product?.name}</h6>
-						<span className='new_label'>{product?.isNew ? 'NEW' : ''}</span>
+						<span className='new_label'>
+							{product?.isNew || version === 'v2' ? 'NEW' : ''}
+						</span>
 					</div>
-					{screenSize && screenSize.length ? (
+					{series && series.length > 1 && (
 						<div
 							className={`screen_size_selector ${
 								showSizes ? 'show_sizes' : ''
@@ -97,26 +120,26 @@ const SeasonUpgradeProductsCarouselItem = ({
 							<div className='content'>
 								<div className='sizes'>
 									<ul className='size_list'>
-										{screenSize.map((item, index) => (
+										{series.map((item, index) => (
 											<li
 												key={index}
 												className={activeSizeIndex === index ? 'active' : ''}
 												onClick={() => {
-													setActiveItem(item?.products[0])
+													setActiveItem(item)
 													setActiveSizeIndex(index)
 												}}
-												style={{ width: 100 / screenSize.length + '%' }}>
-												{item.title}
+												style={{ width: 100 / series.length + '%' }}>
+												{item?.name?.value}
 											</li>
 										))}
 									</ul>
 									<span
 										style={{
-											width: 100 / screenSize.length + '%',
+											width: 100 / series.length + '%',
 											transform: 'translateX(' + activeSizeIndex * 100 + '%)'
 										}}
 										className='indicator'>
-										{screenSize[activeSizeIndex]?.title}
+										{activeItem?.name?.value}
 									</span>
 								</div>
 								<div
@@ -127,22 +150,20 @@ const SeasonUpgradeProductsCarouselItem = ({
 								</div>
 							</div>
 						</div>
-					) : (
-						<div style={{ height: '43px' }}></div>
 					)}
 				</div>
 				<div className='column'>
 					<ul className='specs w-100'>
-						{data?.features?.value.map((item, index) => (
+						{activeItem?.features?.value.map((item, index) => (
 							<li
 								key={index}
 								dangerouslySetInnerHTML={{ __html: item?.text?.value }}></li>
 						))}
 					</ul>
-					<div className='off'>Save {data?.discount_amount?.value}</div>
+					<div className='off'>Save {activeItem?.discount_amount?.value}</div>
 					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
-						<h4 className='price'>{data?.new_price?.value}</h4>
-						<p className='old_price '>{data?.old_price?.value}</p>
+						<h4 className='price'>{activeItem?.new_price?.value}</h4>
+						<p className='old_price '>{activeItem?.old_price?.value}</p>
 					</div>
 					<button onClick={setData} className='n-btn medium black w-100'>
 						Shop Deal

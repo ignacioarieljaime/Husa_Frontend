@@ -32,6 +32,26 @@ module.exports.UpgradeComponents = [
 		path: 'components/page/Upgrade/SeasonUpgradeProductsCarousel'
 	},
 	{
+		name: 'SeasonUpgradeFooter',
+		path: 'components/page/Upgrade/SeasonUpgradeFooter'
+	},
+	{
+		name: 'SeasonUpgrade2KHeroBanner',
+		path: 'components/page/Upgrade/SeasonUpgrade2KHeroBanner'
+	},
+	{
+		name: 'SeasonUpgrade2KProcessBlock',
+		path: 'components/page/Upgrade/SeasonUpgrade2KProcessBlock'
+	},
+	{
+		name: 'SeasonUpgrade2KSweepstakes',
+		path: 'components/page/Upgrade/SeasonUpgrade2KSweepstakes'
+	},
+	{
+		name: 'SeasonUpgrade2KEmailBanner',
+		path: 'components/page/Upgrade/SeasonUpgrade2KEmailBanner'
+	},
+	{
 		name: 'UpgradeL9GForm',
 		path: 'components/page/Upgrade/UpgradeL9GForm'
 	}
