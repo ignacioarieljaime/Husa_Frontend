@@ -15,6 +15,7 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 	const [checkbox, setCheckbox] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
@@ -49,7 +50,10 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 
 	return (
 		<section>
-			<div id={data?.name + data?.id} className='season_upgrade_email_banner'>
+			<div
+				id={data?.name + data?.id}
+				ref={ref}
+				className='season_upgrade_email_banner'>
 				<div className='content'>
 					<div className='text_content'>
 						<p className='pretitle'>{content?.subtitle?.value}</p>

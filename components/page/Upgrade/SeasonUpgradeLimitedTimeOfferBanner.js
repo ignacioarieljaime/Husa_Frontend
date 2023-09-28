@@ -10,6 +10,7 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 	const [product, setProduct] = useState()
 	const [showDialgo, setShowDialog] = useState(false)
 	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
@@ -35,6 +36,7 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 		<section>
 			<div
 				id={data?.name + data?.id}
+				ref={ref}
 				style={{
 					backgroundImage: `url(${content?.background?.src})`
 				}}

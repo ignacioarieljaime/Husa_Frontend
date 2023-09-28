@@ -5,15 +5,26 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import WhiteArrow from 'public/assets/images/white-arrow.png'
+import { useRouter } from 'next/router'
 
 const SeasonUpgrade2KProcessBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
+	const route = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
 	return (
 		<section>
-			<div id={data?.name + data?.id} className='season_upgrade_2k_process'>
+			<div
+				id={data?.name + data?.id}
+				ref={ref}
+				className='season_upgrade_2k_process'>
 				<img
 					src={content?.background?.src}
 					alt={content?.background?.alt}

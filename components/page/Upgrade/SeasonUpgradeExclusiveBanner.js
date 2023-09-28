@@ -7,6 +7,7 @@ import { useState } from 'react'
 const SeasonUpgradeExclusiveBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
@@ -19,6 +20,7 @@ const SeasonUpgradeExclusiveBanner = ({ data }) => {
 		<section>
 			<div
 				id={data?.name + data?.id}
+				ref={ref}
 				style={{
 					backgroundImage: `url(${content?.background?.src})`
 				}}

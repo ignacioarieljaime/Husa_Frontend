@@ -6,6 +6,7 @@ import { useState } from 'react'
 const SeasonUpgradeHeroBanner = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
@@ -17,7 +18,10 @@ const SeasonUpgradeHeroBanner = ({ data }) => {
 
 	return (
 		<section>
-			<div id={data?.name + data?.id} className='season_upgrade_hero_banner'>
+			<div
+				id={data?.name + data?.id}
+				ref={ref}
+				className='season_upgrade_hero_banner'>
 				<img
 					src={content?.backgound?.src}
 					alt={content?.backgound?.alt}

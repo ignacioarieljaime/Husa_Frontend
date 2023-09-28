@@ -20,6 +20,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 	const [channelAdvisorData, setChannelAdvisorData] = useState(null)
 	const [showDialgo, setShowDialog] = useState(false)
 	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
@@ -33,6 +34,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 		<section>
 			<div
 				id={data?.name + data?.id}
+				ref={ref}
 				className={`season_upgrade_carousel ${content?.text?.value} ${content?.template?.value}`}>
 				<div className='text_content'>
 					<p className='pretitle'>{content?.subtitle?.value}</p>
