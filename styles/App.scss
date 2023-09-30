@@ -61,6 +61,7 @@
 @import './components/page/products';
 @import './components/page/Product/ProductFilterResponsive';
 @import './components/page/Product/productBigContent';
+@import './components/page/Product/productComponents';
 
 // smart
 @import './components/page/smartPage';
@@ -133,6 +134,15 @@
 
 // Upgrade
 @import './components/page/Upgrade/UpgradeL9GForm';
+@import './components/page/Upgrade/header';
+@import './components/page/Upgrade/headerBanner';
+@import './components/page/Upgrade/heroBanner';
+@import './components/page/Upgrade/dealCounter';
+@import './components/page/Upgrade/banners';
+@import './components/page/Upgrade/carousel';
+@import './components/page/Upgrade/footer';
+@import './components/page/Upgrade/processBlock';
+@import './components/page/Upgrade/sweepstakes';
 
 // BeyondLaser
 @import './components/page/BeyondLaser/Banner';
@@ -212,6 +222,9 @@
 @import './components/page/Careers/banner';
 @import './components/page/Careers/accordion';
 @import './components/page/Careers/textBox';
+@import './components/page/Careers/video';
+@import './components/page/Careers/categories';
+@import './components/page/Careers/cycle';
 
 // HA - new
 @import './components/page/HomeAppliancesNew/headerCategory';
