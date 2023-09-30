@@ -28,7 +28,7 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 	}, [content])
 
 	return (
-		<section className='season_upgrade_header_banner_sticky'>
+		<section>
 			<div
 				id={data?.name + data?.id}
 				className='season_upgrade_header_banner'
@@ -44,8 +44,8 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 						gap: '48px',
 						perPage: 1,
 						pauseOnHover: false,
-						speed: 1100,
-						interval: 700,
+						speed: 1500,
+						interval: 1500,
 						easing: 'linear'
 					}}>
 					{content?.list?.value.map((_item, index) => (

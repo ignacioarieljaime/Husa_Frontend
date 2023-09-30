@@ -73,7 +73,6 @@
 		max-width: 1112px;
 		margin: 0 auto;
 		@include mq(768) {
-			grid-template-rows: auto;
 			grid-template-columns: 1fr;
 			gap: 100px;
 		}

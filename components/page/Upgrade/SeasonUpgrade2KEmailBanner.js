@@ -55,7 +55,7 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 				id={data?.name + data?.id}
 				ref={ref}
 				className='season_upgrade_email_banner'>
-				<div className='content'>
+				<div className='content' style={{ maxWidth: '980px' }}>
 					<div className='text_content'>
 						<p className='pretitle'>{content?.subtitle?.value}</p>
 						<h3
