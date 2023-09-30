@@ -34,7 +34,7 @@ function TVAndAudioIntro({ data: { structure } }) {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='btn btn-outline-secondary rounded-5 px-8 mt-12'>
+									className='n-btn outline-grey transparent medium d-block mx-auto w-fit rounded-5 px-8 mt-12'>
 									{structure?.link?.title}
 
 									{structure?.link?.target === '_blank' && (

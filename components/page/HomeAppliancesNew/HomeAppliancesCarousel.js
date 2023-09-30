@@ -111,7 +111,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
 								style={{ width: '150px' }}
-								className='primary text-nowrap n-btn d-block mx-auto w-fit px-5 py-3'>
+								className='primary text-nowrap n-btn medium d-block mx-auto w-fit px-5 py-3'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

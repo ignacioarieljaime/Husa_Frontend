@@ -38,9 +38,7 @@ function ContactUsNewForm({ data }) {
 								{structure?.form?.value?.title?.value}
 							</h2>
 							<GeneralInquiriesForm
-								btnClass={
-									'btn btn-outline-dark fw-bold rounded-5 mb-20 py-3 px-4'
-								}
+								btnClass={'n-btn outline-black medium fw-bold rounded-5 mb-20'}
 							/>
 						</>
 					) : (

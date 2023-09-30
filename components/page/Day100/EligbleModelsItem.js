@@ -33,7 +33,7 @@ const EligbleModelsItem = ({ data }) => {
 						href={data?.shopNow?.value}>
 						<a
 							target={data?.shopNow?.target ? data?.shopNow?.target : '_self'}
-							className='btn btn-primary rounded-5 px-5 py-2'>
+							className='n-btn primary rounded-5 medium'>
 							{data?.shopNow?.title}
 							{data?.shopNow?.target === '_blank' && (
 								<img

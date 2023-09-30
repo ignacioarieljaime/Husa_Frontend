@@ -25,7 +25,7 @@ function SponsorshipImagesWithButton({ data }) {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='btn btn-secondary text-white rounded-5  px-10 py-3'>
+								className='n-btn primary text-white rounded-5 medium d-block mx-auto w-fit'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

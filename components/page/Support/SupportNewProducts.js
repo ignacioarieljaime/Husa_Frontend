@@ -127,7 +127,7 @@ const SupportNewProducts = ({ data }) => {
 										searchActiveHandler(item?.category?.value)
 										setSearchValue('')
 									}}
-									className={`slider-title n-btn outline-black ${
+									className={`slider-title n-btn outline-black medium ${
 										item?.category?.value === categoryId && 'bg-dark text-white'
 									}`}>
 									{item?.link?.title}

@@ -102,7 +102,7 @@ const LaserTvInstallationForm = ({ data }) => {
 						errors={errors}
 					/>
 					<div className='text-center mb-0 mb-md-15 m-15'>
-						<button className='n-btn primary py-4 px-6 mb-7'>Submit</button>
+						<button className='n-btn primary medium mb-7'>Submit</button>
 						{errors ? (
 							<p className='submission_error'>
 								Error: Please check to make sure all the information has been

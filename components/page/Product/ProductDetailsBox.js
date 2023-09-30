@@ -70,10 +70,10 @@ function ProductDetailsBox({ pim, data }) {
 			</div>
 			<div className='text-center '>
 				<button
-					className={`btn ${
+					className={`n-btn medium ${
 						structure?.theme?.value === 'light'
-							? 'btn-outline-dark bg-black text-white'
-							: 'n-btn outline-white p-4 fs-base'
+							? 'outline-black'
+							: 'outline-white'
 					}  rounded-5 `}
 					onClick={() => setShowMore(!showMore)}>
 					<span className='d-block'>

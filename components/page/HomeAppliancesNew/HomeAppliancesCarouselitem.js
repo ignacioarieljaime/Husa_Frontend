@@ -39,7 +39,7 @@ const HomeAppliancesCarouselitem = ({ data, structure }) => {
 						<a
 							target={data?.link?.target ? data?.link?.target : '_self'}
 							style={{ width: '150px' }}
-							className={`text-nowrap n-btn d-block mx-auto ${
+							className={`text-nowrap medium n-btn d-block mx-auto ${
 								structure?.theme?.value === 'dark' ? 'white' : 'black'
 							}`}>
 							{data?.link?.title}

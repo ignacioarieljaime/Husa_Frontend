@@ -8,7 +8,6 @@ import {
 	faXmark
 } from '@fortawesome/free-solid-svg-icons'
 import ProductSupportRegisterModal from './ProductSupportRegisterModal'
-import CustomSelectBox from 'components/common/selectBox'
 import CustomInput from 'components/common/Input'
 import RoleModal from '../ContactUs/RoleModal'
 import axios from 'axios'

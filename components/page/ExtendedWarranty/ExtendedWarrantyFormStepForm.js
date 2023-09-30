@@ -3,7 +3,6 @@ import RadioCheckBox from 'components/common/RadioCheckBox'
 import ExtendedWarrantyFileInput from './ExtendedWarrantyFileInput'
 import ExtendedWarrantyModelNumberDialog from './ExtendedWarrantyModelNumberDialog'
 import Spinner from '../../common/Spinner'
-import CustomSelectBox from '../../common/selectBox'
 
 const ExtendedWarrantyFormStepForm = ({
 	onChange,
@@ -260,7 +259,7 @@ const ExtendedWarrantyFormStepForm = ({
 			/>
 			<div className=' mt-15 text-center'>
 				<button
-					className='n-btn outline-black py-4 d-flex align-items-center mx-auto '
+					className='n-btn outline-black medium d-flex align-items-center mx-auto '
 					type='submit'
 					disabled={!acceptTerms || loading === 'button' ? true : false}>
 					Proceed to Payment

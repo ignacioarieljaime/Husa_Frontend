@@ -133,7 +133,7 @@ const SimpleContactUs = ({ data }) => {
 							<button
 								type='submit'
 								disabled={loading}
-								className={`d-flex mx-auto align-items-center n-btn outline-white transparent px-6 py-4`}>
+								className={`d-flex mx-auto align-items-center n-btn outline-white transparent medium`}>
 								<span> SUBMIT</span>
 								{loading && <Spinner className={'ms-2'} size={25} />}
 							</button>

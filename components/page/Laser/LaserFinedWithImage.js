@@ -6,7 +6,6 @@ function LaserFinedWithImage({ data: { structure } }) {
 	return (
 		<section>
 			<div className='black-banner p-md-4'>
-			
 				<div className='container px-6 px-md-8 pt-20 pb-12'>
 					<article className='article text-center'>
 						<h5 className='text-white mb-7' style={{ fontSize: '38px' }}>
@@ -34,7 +33,7 @@ function LaserFinedWithImage({ data: { structure } }) {
 										? structure?.linkUrl?.target
 										: '_self'
 								}
-								className='btn btn-outline-light rounded-5 mt-12 px-8'>
+								className='n-btn outline-white rounded-5 mt-12 medium d-block mx-auto w-fit'>
 								{structure?.linkUrl?.title}
 								{structure?.linkUrl?.target === '_blank' && (
 									<img

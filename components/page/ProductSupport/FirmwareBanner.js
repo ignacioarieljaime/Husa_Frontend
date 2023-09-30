@@ -119,12 +119,12 @@ const FirmwareBanner = ({ data }) => {
 						/>
 						<button
 							onClick={e => getModel(e, searchTerm)}
-							className='n-btn outline-white transparent py-4 px-6'>
+							className='n-btn outline-white medium transparent'>
 							{loading ? <Spinner size={20} /> : 'Search'}
 						</button>
 					</form>
 					<button
-						className='n-btn white-text fs-8 border-0 text-decoration-underline transparent mt-4 p-4'
+						className='n-btn white-text medium fs-8 border-0 text-decoration-underline transparent mt-4 p-4'
 						type='button'
 						onClick={() => setShowModal(prevState => !prevState)}>
 						<FontAwesomeIcon

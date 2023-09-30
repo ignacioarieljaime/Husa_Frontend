@@ -324,12 +324,7 @@ const InstallationInfoForm = ({ data, dispatch, errors }) => {
 										/>
 										<article className='d-flex justify-content-center align-items-center flex-wrap'>
 											<p>Drop files to attach, or</p>
-											<button
-												className={`n-btn outline-black ms-3  px-6 ${
-													data?.installation_location_photo?.length % 2
-														? 'py-2'
-														: 'py-4'
-												}`}>
+											<button className={`n-btn outline-black ms-3 medium`}>
 												Browse
 											</button>
 										</article>
