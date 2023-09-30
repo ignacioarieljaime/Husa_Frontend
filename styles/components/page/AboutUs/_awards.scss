@@ -1,0 +1,123 @@
+.aboutus_awards {
+	padding: 64px;
+	@include mq(768) {
+		padding: 32px 0;
+	}
+	.content {
+		max-width: 716px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 24px;
+		text-align: center;
+		margin-bottom: 28px;
+		@include mq(768) {
+			padding: 0 16px;
+		}
+		.title {
+			margin: 0;
+			* {
+				font-size: 48px;
+				margin: 0;
+				font-weight: 500;
+				line-height: 50px; /* 116.375% */
+				letter-spacing: -0.96px;
+				color: #000;
+				@include mq(768) {
+					font-size: 24px;
+					line-height: 28px; /* 125% */
+					letter-spacing: -0.48px;
+				}
+			}
+		}
+		.text {
+			margin: 0;
+			* {
+				margin: 0;
+				font-size: 16px;
+				font-weight: 400;
+				line-height: 20px; /* 135% */
+				color: #000;
+			}
+		}
+	}
+	.list {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 16px;
+		max-width: 1115px;
+		margin: 0 auto;
+		@include mq(1100) {
+			flex-wrap: wrap;
+		}
+		@include mq(768) {
+			gap: 32px;
+			max-width: 560px;
+		}
+		.item {
+			width: 50%;
+			padding-top: 32.4%;
+			@include mq(1100) {
+				width: calc(50% - 16px);
+				padding-top: 48%;
+			}
+			@include mq(768) {
+				width: calc(100% - 36px);
+				padding-top: 92%;
+			}
+			height: 0;
+			position: relative;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			border-radius: 50px;
+			.item_content {
+				position: absolute;
+				left: 50%;
+				top: 54px;
+				transform: translateX(-50%);
+				width: 100%;
+				display: flex;
+				justify-content: start;
+				align-items: center;
+				flex-direction: column;
+				gap: 16px;
+				padding: 0 26px;
+				@include mq(768) {
+					top: 34px;
+				}
+				.title {
+					margin: 0;
+					* {
+						margin: 0;
+						color: #fff;
+						text-align: center;
+						font-size: 24px;
+						font-weight: 400;
+						line-height: 24px; /* 90% */
+						text-decoration-line: underline;
+						@include mq(768) {
+							font-size: 14px;
+							font-weight: 400;
+							line-height: 18px;
+						}
+					}
+				}
+				.text {
+					margin: 0;
+					* {
+						margin: 0;
+						color: #fff;
+						text-align: center;
+						font-size: 14px;
+						font-weight: 400;
+						line-height: 18px;
+					}
+				}
+			}
+		}
+	}
+}
