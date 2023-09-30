@@ -151,8 +151,6 @@ const SeasonUpgradeProductsCarouselItem = ({
 							</div>
 						</div>
 					)}
-				</div>
-				<div className='column'>
 					<ul className='specs w-100'>
 						{activeItem?.features?.value.map((item, index) => (
 							<li
@@ -160,6 +158,8 @@ const SeasonUpgradeProductsCarouselItem = ({
 								dangerouslySetInnerHTML={{ __html: item?.text?.value }}></li>
 						))}
 					</ul>
+				</div>
+				<div className='column'>
 					<div className='off'>Save {activeItem?.discount_amount?.value}</div>
 					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
 						<h4 className='price'>{activeItem?.new_price?.value}</h4>

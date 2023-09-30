@@ -79,12 +79,16 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 							/>
 						</SwiperSlide>
 					))}
-					<button className='swiper-button-next'>
-						<FontAwesomeIcon icon={faChevronRight} size='2xl' />
-					</button>
-					<button className='swiper-button-prev'>
-						<FontAwesomeIcon icon={faChevronLeft} size='2xl' />
-					</button>
+					{content?.selected_products?.value.length > 3 && (
+						<>
+							<button className='swiper-button-next'>
+								<FontAwesomeIcon icon={faChevronRight} size='2xl' />
+							</button>
+							<button className='swiper-button-prev'>
+								<FontAwesomeIcon icon={faChevronLeft} size='2xl' />
+							</button>
+						</>
+					)}
 				</Swiper>
 				{content?.template?.value === 'v2' && (
 					<div

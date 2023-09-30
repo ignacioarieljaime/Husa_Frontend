@@ -11,7 +11,9 @@ import { GetSingleProduct } from 'services/Product'
 import { useRouter } from 'next/router'
 import { useCountdown } from 'hooks/useCountdown'
 import axios from 'axios'
-
+import { SwiperSlide, Swiper } from 'swiper/react'
+import 'swiper/css'
+import SeasonUpgradeDealCounterBlockWeekItem from './SeasonUpgradeDealCounterBlockWeekItem'
 const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const windowSize = useWindowSize()
@@ -65,19 +67,27 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 						className='top_image'
 					/>
 				</div>
-				<div>
-					<ul className='weeks'>
+				<div className='weeks_wrapper'>
+					<Swiper
+						grabCursor={false}
+						slidesPerView={'auto'}
+						slidesPerGroup={1}
+						spaceBetween={24}
+						navigation={false}
+						className={`weeks`}>
 						{content?.list?.value.map((item, index) => (
-							<li
-								key={index}
-								className={`${
-									index === content?.active?.value ? 'active' : ''
-								}`}>
-								{item?.title?.value}
-								{index < content?.active?.value && <RedScratch />}
-							</li>
+							<SwiperSlide key={index} className='w-fit'>
+								<SeasonUpgradeDealCounterBlockWeekItem
+									key={index}
+									active={index === content?.active?.value}
+									title={item?.title?.value}
+									activeIndex={content?.active?.value}
+									scroll={content?.active?.value > 2}
+									past={index < content?.active?.value}
+								/>
+							</SwiperSlide>
 						))}
-					</ul>
+					</Swiper>
 				</div>
 				<div className='product'>
 					<div className='product_images'>
@@ -182,11 +192,26 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 									}}></li>
 							))}
 						</ul>
-						<button
-							onClick={() => setShowDialog(true)}
-							className='n-btn medium full_btn_md danger-upgrade'>
-							Shop Deal
-						</button>
+						{content?.list?.value[content?.active?.value]?.button?.value ? (
+							content?.list?.value[
+								content?.active?.value
+							]?.button?.value.includes('openChannelAdvisor:') ? (
+								<button
+									onClick={() => setShowDialog(true)}
+									className='n-btn medium full_btn_md danger-upgrade'>
+									Shop Deal
+								</button>
+							) : (
+								<Link
+									href={
+										content?.list?.value[content?.active?.value]?.button?.value
+									}>
+									<a className='n-btn medium full_btn_md danger-upgrade'>
+										Shop Deal
+									</a>
+								</Link>
+							)
+						) : null}
 					</div>
 				</div>
 			</div>

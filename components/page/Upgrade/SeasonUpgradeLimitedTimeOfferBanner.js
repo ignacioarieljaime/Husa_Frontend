@@ -53,11 +53,22 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 						dangerouslySetInnerHTML={{
 							__html: content?.text?.value
 						}}></p>
-					<button
-						onClick={() => setShowDialog(true)}
-						className='n-btn medium danger-upgrade full_btn_md'>
-						Shop Eligible Models
-					</button>
+
+					{content?.link?.value ? (
+						content?.link?.value.includes('openChannelAdvisor:') ? (
+							<button
+								onClick={() => setShowDialog(true)}
+								className='n-btn medium danger-upgrade full_btn_md'>
+								Shop Eligible Models
+							</button>
+						) : (
+							<Link href={content?.link?.value}>
+								<a className='n-btn medium danger-upgrade full_btn_md'>
+									Shop Eligible Models
+								</a>
+							</Link>
+						)
+					) : null}
 				</div>
 				<img
 					src={content?.image?.src}
