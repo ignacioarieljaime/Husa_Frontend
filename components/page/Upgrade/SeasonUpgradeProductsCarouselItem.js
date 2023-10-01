@@ -107,7 +107,15 @@ const SeasonUpgradeProductsCarouselItem = ({
 						)}
 					</div>
 					<div className='d-flex justify-content-between align-items-start gap-1 w-100'>
-						<h6 className='title'>{product?.name}</h6>
+						{activeItem?.customTitle?.value ? (
+							<h6
+								className='title'
+								dangerouslySetInnerHTML={{
+									__html: activeItem?.customTitle?.value
+								}}></h6>
+						) : (
+							<h6 className='title'>{product?.name}</h6>
+						)}
 						<span className='new_label'>
 							{product?.isNew || version === 'v2' ? 'NEW' : ''}
 						</span>
