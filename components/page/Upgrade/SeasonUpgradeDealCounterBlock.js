@@ -203,10 +203,24 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 								</button>
 							) : (
 								<Link
+									target={
+										content?.list?.value[content?.active?.value]?.button?.target
+											? content?.list?.value[content?.active?.value]?.button
+													?.target
+											: '_self'
+									}
 									href={
 										content?.list?.value[content?.active?.value]?.button?.value
 									}>
-									<a className='n-btn medium full_btn_md danger-upgrade'>
+									<a
+										target={
+											content?.list?.value[content?.active?.value]?.button
+												?.target
+												? content?.list?.value[content?.active?.value]?.button
+														?.target
+												: '_self'
+										}
+										className='n-btn medium full_btn_md danger-upgrade'>
 										Shop Deal
 									</a>
 								</Link>

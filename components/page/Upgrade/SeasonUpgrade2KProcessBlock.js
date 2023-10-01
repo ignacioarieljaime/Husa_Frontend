@@ -49,26 +49,58 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 							key={index}
 							className='item'
 							style={{ gridColumn: index + 1 + '/' + (index + 2) }}>
-							<div
-								className='ball'
-								style={{
-									width: 750 / content?.list?.value.length + 'px',
-									height: 750 / content?.list?.value.length + 'px'
-								}}>
-								<h5
-									className='title'
-									dangerouslySetInnerHTML={{
-										__html: item?.title?.value
-									}}></h5>
-							</div>
+							{item?.bubbleLink?.value ? (
+								<Link
+									href={item?.bubbleLink?.value}
+									target={
+										item?.bubbleLink?.target
+											? item?.bubbleLink?.target
+											: '_self'
+									}>
+									<a
+										target={
+											item?.bubbleLink?.target
+												? item?.bubbleLink?.target
+												: '_self'
+										}
+										className='ball'
+										style={{
+											width: 750 / content?.list?.value.length + 'px',
+											height: 750 / content?.list?.value.length + 'px'
+										}}>
+										<h5
+											className='title'
+											dangerouslySetInnerHTML={{
+												__html: item?.title?.value
+											}}></h5>
+									</a>
+								</Link>
+							) : (
+								<div
+									className='ball'
+									style={{
+										width: 750 / content?.list?.value.length + 'px',
+										height: 750 / content?.list?.value.length + 'px'
+									}}>
+									<h5
+										className='title'
+										dangerouslySetInnerHTML={{
+											__html: item?.title?.value
+										}}></h5>
+								</div>
+							)}
 							<div
 								className='text'
 								dangerouslySetInnerHTML={{
 									__html: item?.text?.value
 								}}></div>
 							{item?.link?.value && (
-								<Link href={item?.link?.value}>
-									<a className='n-btn medium primary-text'>
+								<Link
+									target={item?.link?.target ? item?.link?.target : '_self'}
+									href={item?.link?.value}>
+									<a
+										target={item?.link?.target ? item?.link?.target : '_self'}
+										className='n-btn medium primary-text'>
 										<span>{item?.link?.title}</span>
 										<svg
 											xmlns='http://www.w3.org/2000/svg'

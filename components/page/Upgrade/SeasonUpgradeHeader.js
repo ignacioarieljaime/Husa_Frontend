@@ -70,8 +70,14 @@ const SeasonUpgradeHeader = ({ data }) => {
 						(item, index) =>
 							item?.link?.value && (
 								<li key={index}>
-									<Link href={item?.link?.value}>
-										<a className='text-decoration-none'>{item?.link?.title}</a>
+									<Link
+										target={item?.link?.target ? item?.link?.target : '_self'}
+										href={item?.link?.value}>
+										<a
+											target={item?.link?.target ? item?.link?.target : '_self'}
+											className='text-decoration-none'>
+											{item?.link?.title}
+										</a>
 									</Link>
 								</li>
 							)
