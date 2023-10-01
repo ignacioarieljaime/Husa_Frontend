@@ -62,8 +62,14 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 								Shop Eligible Models
 							</button>
 						) : (
-							<Link href={content?.link?.value}>
-								<a className='n-btn medium danger-upgrade full_btn_md'>
+							<Link
+								target={content?.link?.target ? content?.link?.target : '_self'}
+								href={content?.link?.value}>
+								<a
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
+									className='n-btn medium danger-upgrade full_btn_md'>
 									Shop Eligible Models
 								</a>
 							</Link>

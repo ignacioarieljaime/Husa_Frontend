@@ -91,8 +91,17 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 							<p>
 								I have read and understand the{' '}
 								{content?.link?.value && (
-									<Link href={content?.link?.value}>
-										<a> Privacy Policy.</a>
+									<Link
+										target={
+											content?.link?.target ? content?.link?.target : '_self'
+										}
+										href={content?.link?.value}>
+										<a
+											target={
+												content?.link?.target ? content?.link?.target : '_self'
+											}>
+											Privacy Policy.
+										</a>
 									</Link>
 								)}
 							</p>
