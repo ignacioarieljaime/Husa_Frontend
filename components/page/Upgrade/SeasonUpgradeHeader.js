@@ -25,11 +25,35 @@ const SeasonUpgradeHeader = ({ data }) => {
 			<section className='season_upgrade_header_sticky'>
 				<div id={data?.name + data?.id} className='season_upgrade_header'>
 					<div>
-						<img
-							src={content?.image?.src}
-							alt={content?.image?.alt}
-							className='image'
-						/>
+						{content?.imageLink?.value ? (
+							<Link
+								target={
+									content?.imageLink?.target
+										? content?.imageLink?.target
+										: '_self'
+								}
+								href={content?.imageLink?.value}>
+								<a
+									target={
+										content?.imageLink?.target
+											? content?.imageLink?.target
+											: '_self'
+									}
+									className='d-block'>
+									<img
+										src={content?.image?.src}
+										alt={content?.image?.alt}
+										className='image'
+									/>
+								</a>
+							</Link>
+						) : (
+							<img
+								src={content?.image?.src}
+								alt={content?.image?.alt}
+								className='image'
+							/>
+						)}
 						<p className='gradient_text'>{content?.title?.value}</p>
 					</div>
 					{windowSize[0] > 991 ? (
