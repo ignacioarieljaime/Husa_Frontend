@@ -86,10 +86,7 @@
 		.splide__pagination {
 			position: relative !important;
 			bottom: 0px !important;
-			margin: 90px auto 0 !important;
-			@include mq(768) {
-				margin: 34px auto 0 !important;
-			}
+			margin: 30px auto 0 !important;
 			.splide__pagination__page {
 				width: 98px !important;
 				border-radius: 1000px !important;
