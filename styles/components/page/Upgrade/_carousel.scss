@@ -264,16 +264,18 @@
 					.sizes {
 						position: relative;
 						.size_list {
-							padding: 14px 0;
 							margin: 0;
 							display: flex;
 							justify-content: space-between;
 							align-items: center;
 							list-style: none;
+							padding: 0;
+
 							@include mq(768) {
 								padding: 13px 0;
 							}
 							li {
+								padding: 14px 0;
 								text-align: center;
 								font-size: 14px;
 								font-weight: 500;
