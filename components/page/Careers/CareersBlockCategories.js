@@ -21,7 +21,7 @@ const CareersBlockCategories = ({ data }) => {
 				</div>
 				<Splide
 					options={{
-						type: 'loop',
+						type: 'slide',
 						pagination: true,
 						perPage: 1,
 						perMove: 1,
