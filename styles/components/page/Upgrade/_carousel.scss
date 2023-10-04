@@ -270,10 +270,6 @@
 							align-items: center;
 							list-style: none;
 							padding: 0;
-
-							@include mq(768) {
-								padding: 13px 0;
-							}
 							li {
 								padding: 14px 0;
 								text-align: center;
@@ -285,6 +281,7 @@
 								cursor: pointer;
 								transition: all 0.25s 0s ease;
 								@include mq(768) {
+									padding: 13px 0;
 									font-size: 10px;
 									line-height: 10px;
 								}
