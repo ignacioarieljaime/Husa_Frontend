@@ -5,12 +5,10 @@ function ContactUsChat({ data }) {
 	let { structure } = data
 
 	const chatHandler = () => {
-		if (document.querySelector('.velaro-custom-launcher-frame iframe')) {
-			let iframe = document.querySelector(
-				'.velaro-custom-launcher-frame iframe'
-			)
+		if (document.querySelector('.rocketchat-container iframe')) {
+			let iframe = document.querySelector('.rocketchat-container iframe')
 			let innerDoc = iframe.contentWindow.document.querySelector(
-				'.velaro-custom-launcher'
+				'.chat-button-wrapper'
 			)
 			innerDoc.click()
 		}
