@@ -80,7 +80,6 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 							/>
 						</SwiperSlide>
 					))}
-
 					<button
 						className={`swiper-button-next ${
 							content?.selected_products?.value.length > 3 ? 'd-flex' : 'd-none'
