@@ -63,6 +63,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 						nextEl: '.swiper-button-next',
 						prevEl: '.swiper-button-prev'
 					}}
+					noSwipingSelector='ul'
 					className={`carousel`}
 					modules={[Navigation]}>
 					{content?.selected_products?.value.map((item, index) => (
@@ -79,7 +80,6 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 							/>
 						</SwiperSlide>
 					))}
-
 					<button
 						className={`swiper-button-next ${
 							content?.selected_products?.value.length > 3 ? 'd-flex' : 'd-none'
