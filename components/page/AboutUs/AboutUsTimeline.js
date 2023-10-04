@@ -38,7 +38,9 @@ const AboutUsTimeline = ({ data }) => {
 										<h5
 											className='description'
 											dangerouslySetInnerHTML={{
-												__html: _item?.description?.value
+												__html: _item?.description?.value.includes('&nbsp;')
+													? _item?.description?.value.split('&nbsp;').join(' ')
+													: _item?.description?.value
 											}}></h5>
 									</div>
 								))}
