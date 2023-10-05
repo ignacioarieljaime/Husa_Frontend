@@ -183,7 +183,7 @@ const ProductFilterResponsive = ({
 				</div>
 */}
 				<div className='product_filter_responsive_modal'>
-					<div className='p-4'>
+					<div className='d-flex flex-column justify-content-center align-items-center gap-4 p-4'>
 						<div className='search_field'>
 							<input
 								placeholder={'Search ' + category?.title}
@@ -194,6 +194,20 @@ const ProductFilterResponsive = ({
 							/>
 							<FontAwesomeIcon icon={faMagnifyingGlass} size='lg' />
 						</div>
+						<ul className='search_list'>
+							{products && products.length > 0 ? (
+								products.map((item, index) => (
+									<li key={index} className='search_item'>
+										<span></span>
+										<button className='search_radio'></button>
+									</li>
+								))
+							) : (
+								<li className='search_item'>
+									<span>No Results Found</span>
+								</li>
+							)}
+						</ul>
 					</div>
 					<div className='filters'>
 						<SortFilterDropDown
