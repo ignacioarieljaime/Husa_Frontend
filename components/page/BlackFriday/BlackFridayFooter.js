@@ -17,7 +17,9 @@ const BlackFridayFooter = ({ data: { structure } }) => {
 				<ul>
 					{structure?.list?.value.map((item, index) => (
 						<li
-							className={structure?.template?.value === 'v2' ? 'no_hover' : ''}
+							className={
+								structure?.hover?.value === 'deactive' ? 'no_hover' : ''
+							}
 							key={index}>
 							{item?.link?.value ? (
 								<Link
