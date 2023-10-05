@@ -25,7 +25,9 @@ const ProductFilterResponsive = ({
 	category,
 	searchTerm,
 	setSearchTerm,
-	showProductFilterCount
+	showProductFilterCount,
+	searchTermFilter,
+	setSearchTermFilter
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [filterCounter, setFilterCounter] = useState(0)
@@ -98,6 +100,10 @@ const ProductFilterResponsive = ({
 	useEffect(() => {
 		filterCountHandler()
 	}, [router?.query?.filter, searchTerm])
+
+	useEffect(() => {
+		setSearchTermFilter(0)
+	}, [searchTerm])
 
 	const filterCountHandler = () => {
 		if (router?.query?.filter) {
@@ -183,7 +189,7 @@ const ProductFilterResponsive = ({
 				</div>
 */}
 				<div className='product_filter_responsive_modal'>
-					<div className='d-flex flex-column justify-content-center align-items-center gap-4 p-4'>
+					<div className='d-flex flex-column justify-content-center align-items-center gap-3 p-4'>
 						<div className='search_field'>
 							<input
 								placeholder={'Search ' + category?.title}
@@ -194,20 +200,47 @@ const ProductFilterResponsive = ({
 							/>
 							<FontAwesomeIcon icon={faMagnifyingGlass} size='lg' />
 						</div>
-						<ul className='search_list'>
-							{products && products.length > 0 ? (
-								products.map((item, index) => (
-									<li key={index} className='search_item'>
-										<span></span>
-										<button className='search_radio'></button>
+						{searchTerm && searchTerm.length && (
+							<ul className='search_list'>
+								{products && Array.isArray(products) && products.length > 0 ? (
+									products.map((item, index) =>
+										Array.isArray(item?.products) ? (
+											item?.products.map((_item, _index) => (
+												<li key={_index} className='search_item'>
+													<button
+														onClick={() =>
+															setSearchTermFilter(_item?.product?.id)
+														}
+														className='search_radio'>
+														{_item?.product?.id === searchTermFilter && (
+															<div></div>
+														)}
+													</button>
+													<div>{_item?.product?.model}</div>
+												</li>
+											))
+										) : (
+											<li key={index} className='search_item'>
+												<button
+													onClick={() =>
+														setSearchTermFilter(item?.products?.product?.id)
+													}
+													className='search_radio'>
+													{item?.products?.product?.id === searchTermFilter && (
+														<div></div>
+													)}
+												</button>
+												<div>{item?.products?.product?.model}</div>
+											</li>
+										)
+									)
+								) : (
+									<li className='search_item justify-content-end'>
+										<div>No Results Found</div>
 									</li>
-								))
-							) : (
-								<li className='search_item'>
-									<span>No Results Found</span>
-								</li>
-							)}
-						</ul>
+								)}
+							</ul>
+						)}
 					</div>
 					<div className='filters'>
 						<SortFilterDropDown

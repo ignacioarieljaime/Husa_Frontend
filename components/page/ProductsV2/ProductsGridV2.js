@@ -16,11 +16,13 @@ const ProductsGridV2 = ({ data }) => {
 	const [sortingMethod, setSortingMethod] = useState()
 	const [filters, setFilters] = useState([])
 	const [products, setProducts] = useState([])
+	const [filteredProducts, setFilteredProducts] = useState([])
 	const [filterList, setFilterList] = useState()
 	const [checkBoxCondition, setCheckBoxCondition] = useState(false)
 	const [text, setText] = useState(null)
 	const [totalCount, setTotalCount] = useState(0)
 	const [searchTerm, setSearchTerm] = useState('')
+	const [searchTermFilter, setSearchTermFilter] = useState(0)
 	const router = useRouter()
 	const controller = new AbortController()
 	const options = [
@@ -64,8 +66,7 @@ const ProductsGridV2 = ({ data }) => {
 
 	const getProducts = async (_filter, _term) => {
 		setProducts('loading')
-		console.log(_filter)
-		console.log(_term)
+		setFilteredProducts('loading')
 		let newFilters = []
 
 		if (_filter && _filter.length !== 0) {
@@ -136,6 +137,29 @@ const ProductsGridV2 = ({ data }) => {
 		}
 	}
 
+	useEffect(() => {
+		if (products && Array.isArray(products)) {
+			console.log(
+				products.filter(p =>
+					searchTermFilter
+						? Array.isArray(p?.products)
+							? p?.products.some(_p => _p?.product?.id === searchTermFilter)
+							: p?.products?.product?.id === searchTermFilter
+						: true
+				)
+			)
+			setFilteredProducts(
+				products.filter(p =>
+					searchTermFilter
+						? Array.isArray(p?.products)
+							? p?.products.some(_p => _p?.product?.id === searchTermFilter)
+							: p?.products?.product?.id === searchTermFilter
+						: true
+				)
+			)
+		}
+	}, [products, searchTermFilter])
+
 	// const orderProducts = _data => {
 	// 	if (sortingMethod && sortingMethod?.value === 'featured') {
 	// 		_data.sort((after, prev) => {
@@ -169,10 +193,12 @@ const ProductsGridV2 = ({ data }) => {
 					setFilters={setFilters}
 					sortValue={sortingMethod}
 					sortOnChange={setSortingMethod}
-					products={products}
+					products={filteredProducts}
 					category={structure?.category}
 					searchTerm={searchTerm}
 					setSearchTerm={term => setSearchTerm(term)}
+					searchTermFilter={searchTermFilter}
+					setSearchTermFilter={setSearchTermFilter}
 					showProductFilterCount={structure?.availabilityNumber?.value}
 				/>
 			)}
@@ -209,7 +235,7 @@ const ProductsGridV2 = ({ data }) => {
 						</div>
 					) : null}
 
-					{!Array.isArray(products) ? (
+					{!Array.isArray(filteredProducts) ? (
 						<div className='w-100 d-flex justify-content-center'>
 							<Spinner className={'mt-5'} size={80} />
 						</div>
@@ -220,9 +246,10 @@ const ProductsGridV2 = ({ data }) => {
 									? 'filter_show'
 									: ''
 							}`}>
-							{products.map((item, index) => (
-								<ProductItemV2 key={index} data={item} />
-							))}
+							{filteredProducts.map((item, index) => {
+								console.log(item)
+								return <ProductItemV2 key={index} data={item} />
+							})}
 						</div>
 					)}
 				</div>
