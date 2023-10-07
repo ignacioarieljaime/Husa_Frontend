@@ -30,7 +30,13 @@ const ProductItemV2 = ({ data }) => {
 			}))
 			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
 		}
-	}, [])
+	}, [currentItem])
+
+	useEffect(() => {
+		setCurrentItem(
+			data.id === 0 ? data.products.product : data.products[0].product
+		)
+	}, [data])
 
 	useEffect(() => {
 		setUrl(RouteHandler(currentItem.id, 'product'))

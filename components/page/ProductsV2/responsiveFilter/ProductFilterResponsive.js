@@ -205,20 +205,17 @@ const ProductFilterResponsive = ({
 								{products && Array.isArray(products) && products.length > 0 ? (
 									products.map((item, index) =>
 										Array.isArray(item?.products) ? (
-											item?.products.map((_item, _index) => (
-												<li key={_index} className='search_item'>
-													<button
-														onClick={() =>
-															setSearchTermFilter(_item?.product?.id)
-														}
-														className='search_radio'>
-														{_item?.product?.id === searchTermFilter && (
-															<div></div>
-														)}
-													</button>
-													<div>{_item?.product?.model}</div>
-												</li>
-											))
+											<li key={index} className='search_item'>
+												<button
+													onClick={() =>
+														setSearchTermFilter(item?.products[0]?.product?.id)
+													}
+													className='search_radio'>
+													{item?.products[0]?.product?.id ===
+														searchTermFilter && <div></div>}
+												</button>
+												<div>{item?.name.split(' ')[0]}</div>
+											</li>
 										) : (
 											<li key={index} className='search_item'>
 												<button
@@ -267,6 +264,7 @@ const ProductFilterResponsive = ({
 						<Link href='#products'>
 							<a
 								className='n-btn primary'
+								style={{ padding: '11px 16px 9px' }}
 								onClick={() => {
 									setModalIsOpen(true)
 								}}>
@@ -279,6 +277,7 @@ const ProductFilterResponsive = ({
 						<button
 							disabled={filterCounter <= 0}
 							className='n-btn outline-black bg-transparent'
+							style={{ padding: '11px 16px 9px' }}
 							onClick={checkboxClearHandler}>
 							Clear Filter
 							{filterCounter > 0 ? (
@@ -297,6 +296,7 @@ const ProductFilterResponsive = ({
 							<button
 								disabled={filterCounter <= 0}
 								className='n-btn primary'
+								style={{ padding: '8px 16px 6px' }}
 								onClick={checkboxClearHandler}>
 								Clear Filter
 								<span className='ms-2 text-white fw-light'>
@@ -309,6 +309,7 @@ const ProductFilterResponsive = ({
 									Array.isArray(filter.values) &&
 									filter.values.map((_value, index) => (
 										<button
+											style={{ padding: '8px 16px 6px' }}
 											className='d-flex gap-2 n-btn outline-black bg-transparent'
 											onClick={() => {
 												console.log(filter)
@@ -323,8 +324,8 @@ const ProductFilterResponsive = ({
 													filter.type
 												)
 											}}>
-											<FontAwesomeIcon icon={faXmark} />
 											<span>{_value}</span>
+											<FontAwesomeIcon icon={faXmark} />
 										</button>
 									))
 							)}
