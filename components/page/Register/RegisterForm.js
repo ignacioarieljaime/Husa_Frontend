@@ -224,7 +224,7 @@ function RegisterForm({ data }) {
 				})
 				setTickedSended(true)
 			} else {
-				toast.error("Register wasn't Successfully", {
+				toast.error("Registeration wasn't Successful", {
 					toastId: 'ticket-error'
 				})
 				setTickedSended(false)
@@ -232,7 +232,9 @@ function RegisterForm({ data }) {
 			setLoading(false)
 		} catch (error) {
 			setTickedSended(false)
-			toast.error("Register wasn't Successfully", { toastId: 'ticket-error' })
+			toast.error("Registeration wasn't Successful", {
+				toastId: 'ticket-error'
+			})
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
@@ -381,11 +383,11 @@ function RegisterForm({ data }) {
 							<div className='input_error_message'>
 								{errors?.product_model
 									? errors?.product_model[0] +
-									  ' Please make sure you have selected a product model from the list'
+									  ' Please make sure you have selected a product model from the list.'
 									: router.query?.ProductCategory &&
 									  errors?.ModelNumber &&
 									  errors?.ModelNumber[0] +
-											' Please make sure you have selected a product model from the list'}
+											' Please make sure you have selected a product model from the list.'}
 							</div>
 						</div>
 					) : null}
@@ -561,9 +563,13 @@ function RegisterForm({ data }) {
 							{loading && <Spinner size={25} />}
 						</button>
 						{tickedSended === true ? (
-							<div style={{ color: 'green' }}>Registered Successfully</div>
+							<div className='mt-3' style={{ color: 'green' }}>
+								Registered Successfully
+							</div>
 						) : tickedSended === false ? (
-							<div style={{ color: 'red' }}>Register wasn't Successfully</div>
+							<div className='mt-3' style={{ color: 'red' }}>
+								Registeration wasn't Successful
+							</div>
 						) : null}
 					</div>
 				</form>
