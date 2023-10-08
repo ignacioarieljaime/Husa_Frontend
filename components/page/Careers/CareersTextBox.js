@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import CustomImage from 'components/common/CustomImage'
+import Link from 'next/link'
 
 const CareersTextBox = ({ data: { structure } }) => {
 	const [text, setText] = useState(null)
@@ -35,6 +36,21 @@ const CareersTextBox = ({ data: { structure } }) => {
 								dangerouslySetInnerHTML={{
 									__html: text
 								}}></div>
+							{structure?.link?.value && (
+								<Link
+									target={
+										structure?.target?.value ? structure?.target?.value : '/'
+									}
+									href={structure?.link?.value}>
+									<a
+										className='n-btn medium black mt-8 mt-md-12 d-block mx-auto w-fit'
+										target={
+											structure?.target?.value ? structure?.target?.value : '/'
+										}>
+										{structure?.link?.title}
+									</a>
+								</Link>
+							)}
 						</div>
 					</>
 				) : (
