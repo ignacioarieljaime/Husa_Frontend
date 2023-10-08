@@ -19,7 +19,7 @@ const options = [
 
 const SortFilterDropDown = ({ sortValue, sortOnChange, dropdownStatus }) => {
 	const dropdown = useRef()
-	const [collapse, setCollapsed] = useState(false)
+	const [collapse, setCollapsed] = useState(true)
 
 	// useEffect(() => {
 	// 	setCollapsed(sortValue?.value || true)
@@ -35,7 +35,7 @@ const SortFilterDropDown = ({ sortValue, sortOnChange, dropdownStatus }) => {
 			<div
 				onClick={() => setCollapsed(state => !state)}
 				className={`name_button ${!collapse ? 'drop_down_is_open' : ''}`}>
-				<h6>SORT</h6>
+				<h6>Sort</h6>
 				<AngleArrow />
 			</div>
 			<div

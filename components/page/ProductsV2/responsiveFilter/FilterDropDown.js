@@ -92,7 +92,7 @@ const FilterDropDown = props => {
 			<div
 				onClick={() => setCollapsed(state => !state)}
 				className={`name_button ${!collapse && 'drop_down_is_open'}`}>
-				<h6>{name}</h6>
+				<h6>{name.toLowerCase()}</h6>
 				<AngleArrow />
 			</div>
 			{filterList && filterList.length ? (

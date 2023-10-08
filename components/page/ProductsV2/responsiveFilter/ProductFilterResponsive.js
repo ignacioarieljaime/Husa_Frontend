@@ -195,10 +195,28 @@ const ProductFilterResponsive = ({
 								placeholder={'Search ' + category?.title}
 								type='text'
 								name='search'
+								autocomplete='off'
 								value={searchTerm}
 								onChange={e => searchControl(e.target.value)}
 							/>
-							<FontAwesomeIcon icon={faMagnifyingGlass} size='lg' />
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								width='16'
+								height='16'
+								viewBox='0 0 16 16'
+								fill='none'>
+								<g clipPath='url(#clip0_6631_1386)'>
+									<path
+										d='M15.8647 14.2173L12.8644 11.2244C13.709 10.0585 14.2082 8.62953 14.2082 7.08655C14.2059 3.17905 11.019 0 7.10411 0C3.18927 0 0 3.17905 0 7.08655C0 10.994 3.18694 14.1731 7.10411 14.1731C8.63225 14.1731 10.0484 13.6867 11.2079 12.8652L14.2152 15.865C14.2386 15.8883 14.2619 15.9069 14.2875 15.9255C14.3132 15.9418 14.3412 15.9558 14.3692 15.9674C14.4252 15.9907 14.4859 16.0023 14.5442 16.0023C14.6048 16.0023 14.6632 15.9907 14.7192 15.9674C14.7752 15.9441 14.8288 15.9116 14.8731 15.865L15.8624 14.8783C16.0443 14.6967 16.0443 14.4012 15.8624 14.2196L15.8647 14.2173ZM1.16652 7.08655C1.16652 3.82138 3.83085 1.16364 7.10411 1.16364C10.3774 1.16364 13.0417 3.82138 13.0417 7.08655C13.0417 10.3517 10.3774 13.0095 7.10411 13.0095C3.83085 13.0095 1.16652 10.3517 1.16652 7.08655Z'
+										fill='black'
+									/>
+								</g>
+								<defs>
+									<clipPath id='clip0_6631_1386'>
+										<rect width='16' height='16' fill='white' />
+									</clipPath>
+								</defs>
+							</svg>
 						</div>
 						{searchTerm && searchTerm.length && (
 							<ul className='search_list'>

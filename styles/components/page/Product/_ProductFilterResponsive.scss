@@ -11,7 +11,7 @@
 	span {
 		color: #000;
 		font-size: 16px;
-		font-weight: 400;
+		font-weight: 500;
 		line-height: 21.6px; /* 135% */
 		letter-spacing: -0.32px;
 	}
@@ -256,9 +256,10 @@
 						color: #000;
 						font-size: 14px;
 						font-style: normal;
-						font-weight: 400;
+						font-weight: 500;
 						line-height: 18.9px; /* 135% */
 						letter-spacing: -0.28px;
+						text-transform: capitalize;
 					}
 
 					svg {
