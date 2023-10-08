@@ -31,9 +31,21 @@ const DownloadsSection = ({ data, pim }) => {
 					<div className='description'>
 						<p>
 							The latest firmware and software is available{' '}
-							<Link href='/support/firmware-download'>
-								<a className='fw-light'>here</a>
-							</Link>
+							{content?.link?.value && (
+								<Link
+									target={
+										content?.link?.target ? content?.link?.target : '_self'
+									}
+									href={content?.link?.value}>
+									<a
+										target={
+											content?.link?.target ? content?.link?.target : '_self'
+										}
+										className='fw-light'>
+										{content?.link?.title}
+									</a>
+								</Link>
+							)}
 							.
 						</p>
 					</div>
