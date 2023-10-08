@@ -23,7 +23,7 @@ function SupportNeedMoreWithButton({ data }) {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='n-btn outline-white transparent d-block w-fit mx-auto'>
+								className='n-btn outline-white medium transparent d-block w-fit mx-auto'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img

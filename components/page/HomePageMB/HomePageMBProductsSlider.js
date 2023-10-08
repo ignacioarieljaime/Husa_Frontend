@@ -32,7 +32,7 @@ const HomePageMBProductsSlider = ({ data }) => {
 								/>
 								<a
 									href={item?.link.value}
-									className='slider-title text-nowrap n-btn outline-black'>
+									className='slider-title text-nowrap n-btn outline-black medium d-block w-fit text-nowrap'>
 									{item?.link.title}
 								</a>
 							</div>

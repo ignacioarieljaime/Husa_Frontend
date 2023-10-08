@@ -52,7 +52,7 @@ const CesImagesBlock1 = ({ data }) => {
 														? content?.link1?.target
 														: '_self'
 												}
-												className='outline-white n-btn text-nowrap transparent d-block w-fit '>
+												className='outline-white n-btn medium text-nowrap transparent d-block w-fit '>
 												{content?.link1?.title}
 												{content?.link1?.target === '_blank' && (
 													<img
@@ -96,7 +96,7 @@ const CesImagesBlock1 = ({ data }) => {
 														? content?.link2?.target
 														: '_self'
 												}
-												className='n-btn transparent text-nowrap d-block w-fit outline-white '>
+												className='n-btn transparent medium text-nowrap d-block w-fit outline-white '>
 												{content?.link2?.title}
 												{content?.link2?.target === '_blank' && (
 													<img

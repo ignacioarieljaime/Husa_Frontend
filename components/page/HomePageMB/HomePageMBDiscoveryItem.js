@@ -10,7 +10,7 @@ const HomePageMBDiscoveryItem = ({ image, title, paragraph, link, width }) => {
 			<img height={'100px'} src={image.src} alt={image.alt} className='mb-7' />
 			<h3 className='fs-base mb-7'>{title}</h3>
 			<p className='fs-base mb-9'>{paragraph}</p>
-			<a href={link.value} className='n-btn primary-text'>
+			<a href={link.value} className='n-btn primary-text medium'>
 				{link.title}
 				{link.value && (
 					<span>

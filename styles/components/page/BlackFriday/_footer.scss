@@ -43,11 +43,37 @@
 		position: relative;
 		right: 0;
 		top: 0;
-        padding-right: 4px;
+		padding-right: 4px;
 		line-height: 60px;
 		min-height: 60px;
 		font-size: 12px;
 		color: #999999;
 		font-weight: 500;
+	}
+
+	&.version_2 {
+		background-color: unset;
+		ul {
+			li {
+				a {
+					color: unset;
+				}
+				&.no_hover {
+					a {
+						span {
+							&::after {
+								display: none;
+							}
+						}
+					}
+					&:hover {
+						background-color: inherit;
+					}
+				}
+			}
+		}
+		span {
+			color: unset;
+		}
 	}
 }

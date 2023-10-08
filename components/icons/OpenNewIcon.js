@@ -9,7 +9,7 @@ const OpenNewIcon = () => {
 				stroke='none'
 				stroke-width='1'
 				fill='none'
-				fill-rule='evenodd'>
+				fillRule='evenodd'>
 				<g
 					id='out'
 					transform='translate(-838.000000, -29.000000)'

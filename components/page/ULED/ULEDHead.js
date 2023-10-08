@@ -24,25 +24,27 @@ function ULEDHead({ data: { structure } }) {
 							dangerouslySetInnerHTML={{
 								__html: text
 							}}></h1>
-						<Link
-							target={
-								structure?.link?.target ? structure?.link?.target : '_self'
-							}
-							href={structure?.link?.value}>
-							<a
+						{structure?.link?.value && (
+							<Link
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='btn btn-light text my-3 my-md-auto'>
-								{structure?.link?.title}
-								{structure?.link?.target === '_blank' && (
-									<img
-										style={{ marginLeft: '10px' }}
-										src={OpenPageOnNewTab.src}
-									/>
-								)}
-							</a>
-						</Link>
+								href={structure?.link?.value}>
+								<a
+									target={
+										structure?.link?.target ? structure?.link?.target : '_self'
+									}
+									className='n-btn white text medium d-block mx-auto w-fit my-3 my-md-auto'>
+									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
+								</a>
+							</Link>
+						)}
 					</article>
 				</div>
 			</div>

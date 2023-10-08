@@ -142,13 +142,13 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							pim?.buy_status === 'Internal'
 								? 'Where To Buy'
 								: 'coming soon'}
-							{pim?.buy_status === 'ChannelAdvisor' ||
+							{/* {pim?.buy_status === 'ChannelAdvisor' ||
 							pim?.buy_status === 'Internal' ? (
 								<img
 									style={{ marginLeft: '16px' }}
 									src={OpenPageOnNewTab.src}
 								/>
-							) : null}
+							) : null} */}
 						</button>
 					</div>
 				</div>
@@ -267,13 +267,13 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 							pim?.buy_status === 'Internal'
 								? 'Where To Buy'
 								: 'coming soon'}
-							{pim?.buy_status === 'ChannelAdvisor' ||
+							{/* {pim?.buy_status === 'ChannelAdvisor' ||
 							pim?.buy_status === 'Internal' ? (
 								<img
 									style={{ marginLeft: '16px' }}
 									src={OpenPageOnNewTab.src}
 								/>
-							) : null}
+							) : null} */}
 						</button>
 					</div>
 					{/* <div className='model-toggle '>

@@ -23,7 +23,7 @@ function SupportNeedAssistance({ data }) {
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							className='n-btn outline-white bg-transparent'>
+							className='n-btn outline-white bg-transparent rounded-5 medium d-block mx-auto w-fit'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

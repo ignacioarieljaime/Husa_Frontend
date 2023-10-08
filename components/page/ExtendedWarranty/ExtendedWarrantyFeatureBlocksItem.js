@@ -38,7 +38,7 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 				<a
 					onClick={chatHandler}
 					style={{ cursor: 'pointer' }}
-					className='n-btn primary-text'>
+					className='n-btn primary-text medium'>
 					{link?.title}
 					{link?.title && (
 						<span>
@@ -51,7 +51,7 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 					)}
 				</a>
 			) : (
-				<a href={link?.value} className='n-btn primary-text'>
+				<a href={link?.value} className='n-btn primary-text medium'>
 					{link?.title}
 					{link?.title && (
 						<span>

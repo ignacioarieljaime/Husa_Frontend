@@ -277,7 +277,7 @@ const FlightNightFormHisense = ({
 				<div className='col-12 col-md-6 pt-12 text-center'>
 					<button
 						disabled={!terms || loading ? true : false}
-						className='n-btn d-inline-flex gap-2 primary py-4 px-6 '>
+						className='n-btn d-inline-flex medium gap-2 primary py-4 px-6 '>
 						{submitText}
 						{loading && <Spinner size={20} />}
 					</button>

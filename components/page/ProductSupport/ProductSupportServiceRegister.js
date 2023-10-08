@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { GetCategoriesApi, GetSeriesModelsApi } from 'services/category'
 import RoleModal from '../ContactUs/RoleModal'
+import { uploadToS3 } from 'services/s3'
 
 let warrantyOption = [
 	{ name: 'UNKNOWN', value: 'unknown' },
@@ -99,21 +100,12 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 	const uploadFile = async _file => {
 		setImageLoading(true)
 		setFile(_file)
-		const formData = new FormData()
-		formData.append('attachment', _file)
 
 		try {
-			let response = await axios({
-				method: 'post',
-				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
-				data: formData,
-				headers: { 'Content-Type': 'multipart/form-data' }
-			})
-			if (response.status === 200) {
-				dataSchemaHandler('image', [
-					...dataSchema?.image,
-					response.data.view_link
-				])
+			const downlaodLink = await uploadToS3(_file)
+
+			if (downlaodLink) {
+				dataSchemaHandler('image', [...dataSchema?.image, downlaodLink])
 				toast.success('image uploaded successfully')
 				setImageLoading(false)
 			}
@@ -257,7 +249,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						<CustomSelectBox
 							options={warrantyOption}
 							onChange={_value =>
-								dataSchemaHandler('product_warranty', _value.value)
+								dataSchemaHandler('product_warranty', _value?.value)
 							}
 							title={'IS YOUR PRODUCT UNDER WARRANTY?'}
 						/>
@@ -269,7 +261,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 						<CustomSelectBox
 							options={serviceTypeOption}
 							onChange={_value =>
-								dataSchemaHandler('service_type', _value.value)
+								dataSchemaHandler('service_type', _value?.value)
 							}
 							title={'TYPE OF SERVICE REQUEST'}
 						/>

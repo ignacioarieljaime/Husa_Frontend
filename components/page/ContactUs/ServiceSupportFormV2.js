@@ -9,6 +9,7 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { GetCategoriesApi, GetSeriesModelsApi } from 'services/category'
 import RoleModal from './RoleModal'
+import { uploadToS3 } from 'services/s3'
 
 let warrantyOption = [
 	{ name: 'UNKNOWN', value: 'unknown' },
@@ -114,18 +115,12 @@ function ServiceSupportFormV2({ data, formHandler }) {
 	const uploadFile = async _file => {
 		setImageLoading(true)
 		setFile(_file)
-		const formData = new FormData()
-		formData.append('attachment', _file)
 
 		try {
-			let response = await axios({
-				method: 'post',
-				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
-				data: formData,
-				headers: { 'Content-Type': 'multipart/form-data' }
-			})
-			if (response.status === 200) {
-				dataSchemaHandler('image', response.data.view_link)
+			const downlaodLink = await uploadToS3(_file)
+
+			if (downlaodLink) {
+				dataSchemaHandler('image', downlaodLink)
 				toast.success('image uploaded successfully')
 				setImageLoading(false)
 			}
@@ -188,8 +183,8 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						options={categories}
 						title={'PLEASE SELECT YOUR PRODUCT'}
 						onChange={_value => {
-							dataSchemaHandler('product_category', _value.name)
-							getSeriesModels(_value.id)
+							dataSchemaHandler('product_category', _value?.name)
+							getSeriesModels(_value?.id)
 						}}
 					/>
 					<div className='input_error_message'>
@@ -201,7 +196,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 						<CustomSelectBox
 							options={models}
 							onChange={_value =>
-								dataSchemaHandler('product_model', _value.name)
+								dataSchemaHandler('product_model', _value?.name)
 							}
 							title={'PLEASE SELECT YOUR MODEL'}
 						/>
@@ -241,7 +236,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 					<CustomSelectBox
 						options={warrantyOption}
 						onChange={_value =>
-							dataSchemaHandler('product_warranty', _value.value)
+							dataSchemaHandler('product_warranty', _value?.value)
 						}
 						title={'IS YOUR PRODUCT UNDER WARRANTY?'}
 					/>
@@ -252,7 +247,9 @@ function ServiceSupportFormV2({ data, formHandler }) {
 				<div className='col-12 col-md-6 mb-10'>
 					<CustomSelectBox
 						options={serviceTypeOption}
-						onChange={_value => dataSchemaHandler('service_type', _value.value)}
+						onChange={_value =>
+							dataSchemaHandler('service_type', _value?.value)
+						}
 						title={'TYPE OF SERVICE REQUEST'}
 					/>
 					<div className='input_error_message'>
@@ -317,7 +314,7 @@ function ServiceSupportFormV2({ data, formHandler }) {
 					<button
 						type='submit'
 						disabled={loading}
-						className={`d-flex mx-auto align-items-center btn btn-outline-dark fw-bold rounded-5 mb-20 py-3 px-4`}>
+						className={`d-flex mx-auto align-items-center n-btn outline-black medium fw-bold rounded-5 mb-20`}>
 						<span> SUBMIT</span>
 						{loading && <Spinner className={'ms-2'} size={25} />}
 					</button>

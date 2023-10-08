@@ -170,15 +170,13 @@ ${
 						}
 					}
 
-					if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
-						
-						return {
-							notFound: true
+						if (data?.status?.name === 'Hidden' || data?.status_id === 2) {
+							return {
+								notFound: true
+							}
+						} else {
+							return { props: { pim,data }}
 						}
-					} 
-					else {
-						return { props: { pim,data }}
-					}
 	 }`
 		: _page.model_type === 'post'
 		? `  export async function getServerSideProps({req,res}) {		
@@ -268,12 +266,13 @@ ${
 					return {
 						notFound: true
 					}
+					}
 					if (!data?.widgets || data?.widgets.length == 0) {
 						return {
 							notFound: true
 						}
 					}
-				} else {
+				 else {
 					return { props: { data }} 
 				}
 }`

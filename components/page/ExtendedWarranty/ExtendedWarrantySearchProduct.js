@@ -100,14 +100,14 @@ const ExtendedWarrantySearchProduct = ({
 							</div>
 						</div>
 						<button
-							className='n-btn outline-white transparent'
+							className='n-btn outline-white medium transparent'
 							type='reset'
 							onClick={clear}>
 							Reset
 						</button>
 					</form>
 					<button
-						className='n-btn white-text d-block d-md-none uppercase mx-auto  mt-8 mt-md-0'
+						className='n-btn medium white-text d-block d-md-none uppercase mx-auto  mt-8 mt-md-0'
 						onClick={() => setShowMore(showMore => !showMore)}>
 						Filter
 						<FontAwesomeIcon

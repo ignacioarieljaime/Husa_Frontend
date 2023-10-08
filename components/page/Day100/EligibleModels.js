@@ -64,24 +64,28 @@ const EligibleModels = ({ data }) => {
 					</Swiper>
 				</div>
 				<div className='container text-center'>
-					<Link
-						target={structure?.link?.target ? structure?.link?.target : '_self'}
-						href={structure?.link?.value}>
-						<a
+					{structure?.link?.value && (
+						<Link
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							className='btn btn-primary rounded-5 py-4 px-6 mb-8'>
-							{structure?.link?.title}
+							href={structure?.link?.value}>
+							<a
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								className='n-btn primary rounded-5 medium mb-8'>
+								{structure?.link?.title}
 
-							{structure?.link?.target === '_blank' && (
-								<img
-									style={{ marginLeft: '10px' }}
-									src={OpenPageOnNewTab.src}
-								/>
-							)}
-						</a>
-					</Link>
+								{structure?.link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
+							</a>
+						</Link>
+					)}
 					{}
 					<div dangerouslySetInnerHTML={{ __html: text }}></div>
 				</div>

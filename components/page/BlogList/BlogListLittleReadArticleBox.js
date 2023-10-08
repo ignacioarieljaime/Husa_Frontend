@@ -144,7 +144,7 @@ function BlogListLittleReadArticleBoxContainer({
 																? smallPost?.value?.link?.target
 																: '_self'
 														}
-														className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
+														className='n-btn blog-primary medium d-block w-fit rounded-5 text-uppercase'>
 														{smallPost?.value?.link?.title}
 														{smallPost?.value?.link?.target === '_blank' && (
 															<img
@@ -256,7 +256,7 @@ function BlogListLittleReadArticleBoxContainer({
 																? largePost?.value?.link?.target
 																: '_self'
 														}
-														className='n-btn blog-primary px-6 py-3 rounded-5 text-uppercase'>
+														className='n-btn blog-primary medium d-block w-fit rounded-5 text-uppercase'>
 														{largePost?.value?.link?.title}
 														{largePost?.value?.link?.target === '_blank' && (
 															<img

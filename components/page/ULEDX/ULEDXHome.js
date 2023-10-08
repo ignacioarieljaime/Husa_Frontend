@@ -45,7 +45,7 @@ const ULEDXHome = ({ data: { structure } }) => {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='n-btn white'
+								className='n-btn white medium d-block mx-auto w-fit'
 								data-aos='fade'
 								data-aos-duration='900'
 								data-aos-delay='2000'>

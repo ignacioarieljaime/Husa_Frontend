@@ -45,7 +45,7 @@ const FlightNightConfirmationLaser = ({ data }) => {
 					href={structure?.link?.value ? structure?.link?.value : '/'}>
 					<a
 						target={structure?.link?.target ? structure?.link?.target : '_self'}
-						className='n-btn outline-white transparent d-block w-fit mx-auto mt-4 p-4'>
+						className='n-btn outline-white transparent d-block w-fit mx-auto mt-4 medium'>
 						{structure?.link?.title}
 						{structure?.link?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />

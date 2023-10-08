@@ -1,9 +1,13 @@
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import AngleArrow from 'components/icons/AngleArrow'
 import MagnifierIcon from 'components/icons/MagnifierIcon'
 import SelectBoxAngleArrow from 'components/icons/SelectBoxAngleArrow'
 import { useWindowSize } from 'hooks/useWindowSize'
-import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import React, { useEffect, useRef, useState } from 'react'
+import NewsSearchFilterItem from './NewsSearchFilterItem'
 
 let years = []
 
@@ -17,26 +21,35 @@ const NewsSearchFilter = ({
 	yearTitle,
 	categoryTitle,
 	newsSearchTitle,
-	filterHandler
+	filterHandler,
+	resetFilters
 }) => {
 	const [openFilter, setOpenFilter] = useState(false)
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
 	const [filterData, setFilterData] = useState()
+	const [searchTerm, setSearchTerm] = useState('')
+	const [tempFilters, setTempFilters] = useState({})
+	const windowSize = useWindowSize()
+	const target = useRef()
 
 	useEffect(() => {
 		getNews()
 	}, [])
 
-	const inputChanged = e => {
+	useEffect(() => {
+		setTempFilters(filters)
+	}, [filters])
+
+	useEffect(() => {
 		clearTimeout(timer)
 
 		const newTimer = setTimeout(() => {
-			filterHandler('search', e.target.value)
+			filterChangeHandler('search', searchTerm)
 		}, 500)
 
 		setTimer(newTimer)
-	}
+	}, [searchTerm])
 
 	const getNews = async () => {
 		try {
@@ -49,8 +62,26 @@ const NewsSearchFilter = ({
 		}
 	}
 
+	function filterChangeHandler(_key, _value) {
+		if (windowSize[0] < 1050) {
+			setTempFilters({ ...tempFilters, [_key]: _value })
+		} else {
+			filterHandler(_key, _value, false)
+		}
+	}
+
+	function confirmChanges() {
+		filterHandler('', '', { ...tempFilters, page: 1 })
+		setOpenFilter(false)
+		setTimeout(() => {
+			window.scrollTo({
+				top: target.current.scrollHeight + 250
+			})
+		}, 500)
+	}
+
 	return (
-		<div className='news_room_search_filter'>
+		<div ref={target} className='news_room_search_filter'>
 			<div className=''>
 				<div className='content'>
 					<div className='filter_title'>
@@ -66,69 +97,72 @@ const NewsSearchFilter = ({
 					<div
 						className='filter_options'
 						style={{
-							height: width > 980 ? 'fit-content' : openFilter ? '305px' : '0',
-							marginTop: width > 980 ? '0' : openFilter ? '32px' : '0'
+							height: width > 1050 ? 'fit-content' : openFilter ? '315px' : '0',
+							marginTop: width > 1050 ? '0' : openFilter ? '32px' : '0',
+							overflow:
+								width < 1050 ? (!openFilter ? 'hidden' : 'unset') : 'unset'
 						}}>
-						<div className='select_box_custom'>
-							{/* <label>Model year</label> */}
-							<div>
-								<span>
-									<span>{filters?.year || yearTitle}</span>
-									<SelectBoxAngleArrow />
-								</span>
-								<div>
-									<ul>
-										<li>
-											<button onClick={() => filterHandler('year', null)}>
-												Clear
-											</button>
-										</li>
-										{filterData?.years
-											?.sort((a, b) => b - a)
-											?.map(item => (
-												<li>
-													<button onClick={() => filterHandler('year', item)}>
-														{item}
-													</button>
-												</li>
-											))}
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div className='select_box_custom product_select_box'>
-							{/* <label>Product select</label> */}
-							<div>
-								<span>
-									<span>{filters?.product || categoryTitle}</span>
-									<SelectBoxAngleArrow />
-								</span>
-								<div>
-									<ul>
-										<li>
-											<button onClick={() => filterHandler('product', null)}>
-												Clear
-											</button>
-										</li>
-										{filterData?.tags?.map(item => (
-											<li>
-												<button onClick={() => filterHandler('product', item)}>
-													{item}
-												</button>
-											</li>
-										))}
-									</ul>
-								</div>
-							</div>
-						</div>
+						<button
+							onClick={() => {
+								resetFilters()
+								setTempFilters({
+									page: 1,
+									product: null,
+									search: '',
+									year: null
+								})
+								setSearchTerm('')
+							}}
+							className='reset d-none d-lg_block'>
+							Reset Filters
+						</button>
+
+						<NewsSearchFilterItem
+							filterChangeHandler={filterChangeHandler}
+							tempFilters={tempFilters?.year}
+							title={yearTitle}
+							data={filterData?.years}
+							dataKey='year'
+						/>
+						<NewsSearchFilterItem
+							filterChangeHandler={filterChangeHandler}
+							tempFilters={tempFilters?.product}
+							title={categoryTitle}
+							data={filterData?.tags}
+							dataKey='product'
+							className={'product_select_box'}
+						/>
+
 						<div className='custom_input_box'>
 							{/* <label>search archive</label> */}
 							<div>
-								<input onInput={inputChanged} placeholder={newsSearchTitle} />
+								<input
+									onChange={e => setSearchTerm(e.target.value)}
+									placeholder={newsSearchTitle}
+									value={searchTerm}
+								/>
 								<MagnifierIcon />
 							</div>
 						</div>
-						<button>Reset Filter</button>
+						<div className='d-flex d-lg_none justify-content-center align-items-center gap-10'>
+							<button
+								onClick={() => {
+									resetFilters()
+									setTempFilters({
+										page: 1,
+										product: null,
+										search: '',
+										year: null
+									})
+									setSearchTerm('')
+								}}
+								className='reset'>
+								Reset Filter
+							</button>
+							<button onClick={confirmChanges} className='n-btn white medium'>
+								Confirm
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>

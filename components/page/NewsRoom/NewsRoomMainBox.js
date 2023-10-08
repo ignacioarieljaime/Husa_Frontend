@@ -58,10 +58,21 @@ const NewsRoomMainBox = ({ data }) => {
 
 	return (
 		<>
+			<NewsRoomSlider data={{ structure: { list: structure?.slider } }} />
 			<NewsSearchFilter
 				filters={filters}
-				filterHandler={(_key, _value) =>
-					setFilters({ ...filters, [_key]: _value, page: 1 })
+				filterHandler={(_key, _value, _a) =>
+					_a && Object.keys(_a).length > 0
+						? setFilters(_a)
+						: setFilters({ ...filters, [_key]: _value, page: 1 })
+				}
+				resetFilters={() =>
+					setFilters({
+						page: 1,
+						product: null,
+						search: '',
+						year: null
+					})
 				}
 				title={structure?.title?.value}
 				yearTitle={
@@ -79,7 +90,6 @@ const NewsRoomMainBox = ({ data }) => {
 				}
 			/>
 
-			<NewsRoomSlider data={{ structure: { list: structure?.slider } }} />
 			<div className='news_room_news_box'>
 				<div className='container items px-4'>
 					{/* {news === 'loading' ? (

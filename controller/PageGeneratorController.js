@@ -17,7 +17,7 @@ ${ComponentList.map(
 function Index({data,pim}) {
 	const [components, setComponents] = useState([])
 	useEffect(() => {
-		let componentName =	data && data.widgets ? data.widgets.map(item => item.name) : []
+		let componentName =	data && data.widgets && data?.widgets.length ? data.widgets.map(item => item.name) : []
 		setComponents(componentName)
 	}, [])
 
@@ -80,6 +80,11 @@ export async function getServerSideProps(context) {
 			return null
 		})
 
+		if (!data?.widgets || data?.widgets.length == 0) {
+			return {
+				notFound: true
+			}
+		}
 	if (pim === 404) {
 		return {
 			notFound: true
