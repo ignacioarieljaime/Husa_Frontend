@@ -10,6 +10,9 @@ import UserCircleOutline from 'components/icons/UserCircleOutline'
 import CardLayout from './CardLayout'
 import RoleModal from '../ContactUs/RoleModal'
 import CustomInput from 'components/common/Input'
+import axios from 'axios'
+import { uploadToS3 } from 'services/s3'
+import { toast } from 'react-toastify'
 
 function ProductSupportRegister({ pim, data }) {
 	const { structure } = data
@@ -29,7 +32,8 @@ function ProductSupportRegister({ pim, data }) {
 		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
-		receipt_image: null
+		receipt_image: null,
+		state: null
 	})
 	const [imageLoading, setImageLoading] = useState(false)
 	const [loading, setLoading] = useState(false)
@@ -41,12 +45,12 @@ function ProductSupportRegister({ pim, data }) {
 
 	const formatPhoneNumber = () => {
 		if (!formattedPhoneNumber) {
-			setDataSchema({ phone_number: null })
+			setDataSchema({ ...dataSchema, phone_number: null })
 			return formattedPhoneNumber
 		}
 		const phoneNumber = formattedPhoneNumber.replace(/[^\d]/g, '')
 
-		setDataSchema({ phone_number: phoneNumber })
+		setDataSchema({ ...dataSchema, phone_number: phoneNumber })
 
 		const phoneNumberLength = phoneNumber.length
 
@@ -123,30 +127,31 @@ function ProductSupportRegister({ pim, data }) {
 			purchased_from: null,
 			date_of_purchase: null,
 			receipt_image: null,
-			future_news: '0'
+			future_news: '0',
+			state: null
 		})
 	}
 
-	const uploadFile = async _file => {
-		const formData = new FormData()
-		setFile(_file)
-		formData.append('attachment', _file)
+	const uploadFile = async e => {
+		setFile(e.target.files[0])
 		setImageLoading(true)
 
 		try {
-			let response = await axios({
-				method: 'post',
-				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
-				data: formData,
-				headers: { 'Content-Type': 'multipart/form-data' }
-			})
-			if (response.status === 200) {
-				toast.success('file uploaded')
-				dataSchemaHandler('receipt_image', response.data.view_link)
-				setImageLoading(false)
+			const downlaodLink = await uploadToS3(e.target.files[0])
+
+			if (downlaodLink) {
+				toast.success('file uploaded', { toastId: 'image-uploaded' })
+				dataSchemaHandler('receipt_image', downlaodLink)
+				// setFile(null)
 			}
-		} catch (error) {
 			setImageLoading(false)
+		} catch (error) {
+			setFile(null)
+			setImageLoading(false)
+
+			toast.error("The photo wasn't uploaded successfully ", {
+				toastId: 'image-failed'
+			})
 			console.log(error)
 		}
 	}
@@ -219,13 +224,16 @@ function ProductSupportRegister({ pim, data }) {
 								<div className='form_field'>
 									<div className='form_select_field z-3'>
 										<LaserInstallationDropDownSelectBox
-											// options={screenSizes}
-											options={[{}, {}, {}, {}]}
-											disabledOptions={[{ name: 'Product Name*' }]}
+											options={[
+												{ name: dataSchema.series, value: dataSchema.series }
+											]}
 											disabled
 											value={dataSchema.series}
 											placeholder='Product Name*'
-											onChange={newValue => dispatch({ series: newValue.name })}
+											disableDropdownArrow
+											onChange={newValue =>
+												dataSchemaHandler('series', newValue.name)
+											}
 										/>
 										{errors?.series ? (
 											<p className='error'>{errors?.series}</p>
@@ -235,14 +243,18 @@ function ProductSupportRegister({ pim, data }) {
 								<div className='form_field'>
 									<div className='form_select_field z-2'>
 										<LaserInstallationDropDownSelectBox
-											// options={models}
-											options={[{}, {}, {}, {}]}
-											disabledOptions={[{ name: 'Product Model*' }]}
+											options={[
+												{
+													name: dataSchema.product_model,
+													value: dataSchema.product_model
+												}
+											]}
 											disabled
+											disableDropdownArrow
 											value={dataSchema.product_model}
 											placeholder='Product Model*'
 											onChange={newValue =>
-												dispatch({ product_model: newValue.name })
+												dataSchemaHandler('product_model', newValue.name)
 											}
 										/>
 										{errors?.product_model ? (
@@ -254,7 +266,10 @@ function ProductSupportRegister({ pim, data }) {
 									<div className='form_text_field'>
 										<input
 											onChange={e =>
-												dispatch({ product_serial_number: e.target.value })
+												dataSchemaHandler(
+													'product_serial_number',
+													e.target.value
+												)
 											}
 											name='product_serial_number'
 											type='text'
@@ -289,7 +304,7 @@ function ProductSupportRegister({ pim, data }) {
 											value={dataSchema.purchased_from}
 											placeholder='Where did you purchase?'
 											onChange={newValue =>
-												dispatch({ purchased_from: newValue.name })
+												dataSchemaHandler('purchased_from', newValue.name)
 											}
 										/>
 										{errors?.purchased_from ? (
@@ -334,7 +349,7 @@ function ProductSupportRegister({ pim, data }) {
 											className='file-upload-box position-relative'>
 											{imageLoading ? (
 												<div className='image_loading'>
-													<Spinner size={35} />
+													<Spinner size={'lg'} />
 												</div>
 											) : file ? (
 												<>
@@ -386,7 +401,7 @@ function ProductSupportRegister({ pim, data }) {
 									<div className='form_text_field'>
 										<input
 											onChange={e =>
-												dataSchemaHandler({ first_name: e.target.value })
+												dataSchemaHandler('first_name', e.target.value)
 											}
 											name='first_name'
 											type='text'
@@ -402,7 +417,7 @@ function ProductSupportRegister({ pim, data }) {
 									<div className='form_text_field'>
 										<input
 											onChange={e =>
-												dataSchemaHandler({ last_name: e.target.value })
+												dataSchemaHandler('last_name', e.target.value)
 											}
 											name='last_name'
 											type='text'
@@ -422,7 +437,7 @@ function ProductSupportRegister({ pim, data }) {
 											}}
 											name='phone_number'
 											type='text'
-											// value={formattedPhoneNumber}
+											value={formattedPhoneNumber}
 											required={true}
 											placeholder='Phone number'
 										/>
@@ -434,9 +449,7 @@ function ProductSupportRegister({ pim, data }) {
 								<div className='form_field'>
 									<div className='form_text_field'>
 										<input
-											onChange={e =>
-												dataSchemaHandler({ email: e.target.value })
-											}
+											onChange={e => dataSchemaHandler('email', e.target.value)}
 											name='email'
 											type='email'
 											required={true}
@@ -455,7 +468,7 @@ function ProductSupportRegister({ pim, data }) {
 											value={dataSchema.state}
 											placeholder='State'
 											onChange={newValue =>
-												dataSchemaHandler({ state: newValue.name })
+												dataSchemaHandler('state', newValue.name)
 											}
 										/>
 										{errors?.state ? (
@@ -467,7 +480,7 @@ function ProductSupportRegister({ pim, data }) {
 									<div className='form_text_field'>
 										<input
 											onChange={e =>
-												dataSchemaHandler({ postal_code: e.target.value })
+												dataSchemaHandler('postal_code', e.target.value)
 											}
 											name='postal_code'
 											type='number'
@@ -491,7 +504,7 @@ function ProductSupportRegister({ pim, data }) {
 						</p>
 					</div>
 					<div>
-						<button className='n-btn primary submit_btn'>
+						<button className='n-btn primary submit_btn' onClick={submitData}>
 							<span className='mx-1'>Register</span>
 						</button>
 					</div>

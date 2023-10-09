@@ -150,31 +150,29 @@
 	}
 	.videos {
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
 		align-items: center;
 		gap: 32px 16px;
 		flex-wrap: wrap;
 		height: auto !important;
 		overflow: unset !important;
 		.video_wrapper {
-			&:first-child {
+			&.hold_1 {
 				width: 100%;
 				max-width: 800px;
+				margin: 0 auto;
 				@include mq(768) {
 					max-width: unset;
 				}
 			}
-			&:nth-child(2),
-			&:nth-child(3) {
+			&.hold_2 {
 				width: 100%;
 				max-width: calc(50% - 8px);
 				@include mq(768) {
 					max-width: unset;
 				}
 			}
-			&:nth-child(4),
-			&:nth-child(5),
-			&:nth-child(6) {
+			&.hold_3 {
 				width: 100%;
 				max-width: calc(33.33% - 11px);
 				@include mq(768) {

@@ -96,7 +96,7 @@ const FirmwareBanner = ({ data }) => {
 	}
 
 	return (
-		<section>
+		<section id={data?.name + data?.id}>
 			<div className='firmware_banner'>
 				<div className='background'>
 					<CustomImage

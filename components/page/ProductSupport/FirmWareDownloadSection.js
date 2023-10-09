@@ -19,7 +19,7 @@ const FirmWareDownloadSection = ({ data, pim }) => {
 		setContent(structure)
 	}, [])
 	return (
-		<section>
+		<section id={data?.name + data?.id}>
 			<div className='downloads_section firmware'>
 				<div className='text_box'>
 					<h4

@@ -14,7 +14,8 @@ const LaserInstallationDropDownSelectBox = ({
 	className,
 	prefixIcon,
 	placeholder,
-	disabled
+	disabled,
+	disableDropdownArrow
 }) => {
 	const [show, setShow] = useState(false)
 
@@ -50,6 +51,7 @@ const LaserInstallationDropDownSelectBox = ({
 				<button
 					className='dropdown-select-box-button'
 					type='button'
+					style={disabled ? { cursor: 'default' } : {}}
 					onClick={() => setShow(!show && !disabled)}>
 					{prefixIcon ? <span className='me-3'>{prefixIcon}</span> : null}
 					{title}
@@ -61,9 +63,11 @@ const LaserInstallationDropDownSelectBox = ({
 						: value?.name
 						? value.name
 						: ''}
-					<span className='arrow ms-auto'>
-						<FontAwesomeIcon icon={faChevronDown} />
-					</span>
+					{!disableDropdownArrow && (
+						<span className='arrow ms-auto'>
+							<FontAwesomeIcon icon={faChevronDown} />
+						</span>
+					)}
 				</button>
 				{show && (
 					<div className='dropdown-select-box-options'>

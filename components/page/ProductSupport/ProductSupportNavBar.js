@@ -78,7 +78,7 @@ function ProductSupportNavBar({ pim, data }) {
 					{windowSize[0] <= 768 && openList && (
 						<ul className='items vertical'>
 							{structure?.tags?.value.map((item, index) => (
-								<li>
+								<li onClick={() => setOpenList(false)}>
 									<Link
 										target={
 											item?.target?.target ? item?.target?.target : '_self'

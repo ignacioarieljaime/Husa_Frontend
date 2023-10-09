@@ -3,9 +3,33 @@ import LandingVideoPlayer from '../Landing/LandingVideoPlayer'
 const ProductSupportVideoGallery = ({ data, pim }) => {
 	const { structure } = data
 	const [content, setContent] = useState(null)
+	const [videos, setVideos] = useState(null)
+	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
+
 	useEffect(() => {
 		setContent(structure)
+
+		let newOrder = []
+		for (let i = 1; i < 4; i++)
+			newOrder = [
+				...newOrder,
+				...new Array(structure['row-' + i]?.value).fill(
+					structure['row-' + i]?.value
+				)
+			]
+		setNewsItemOrder(newOrder)
 	}, [])
+
+	useEffect(() => {
+		setVideos(
+			pim?.assets
+				.filter(video => video.type_id === 5)
+				.map((video, index) => ({
+					...video,
+					col: newsItemOrder.length > index ? newsItemOrder[index] : 3
+				}))
+		)
+	}, [newsItemOrder])
 
 	return (
 		<section id={data?.name + data?.id}>
@@ -13,21 +37,26 @@ const ProductSupportVideoGallery = ({ data, pim }) => {
 				<h4 className='title'>{pim?.name} Video</h4>
 
 				<div className='videos'>
-					{content?.list?.value.map((item, index) => (
-						<div className='video_wrapper'>
-							<LandingVideoPlayer
-								data={{
-									name: 'LandingVideoPlayer',
-									id: 0,
-									structure: { ...item, videoType: { value: 'link' } }
-								}}
-							/>
-							<div className='info'>
-								<p className='title'>video title</p>
-								<p className='caption'>Video description lorem ipsum.</p>
+					{videos &&
+						videos.length &&
+						videos.map((item, index) => (
+							<div key={index} className={`video_wrapper hold_${item?.col}`}>
+								<LandingVideoPlayer
+									data={{
+										name: 'LandingVideoPlayer',
+										id: 0,
+										structure: {
+											video: { value: item?.title },
+											videoType: { value: 'iframe' }
+										}
+									}}
+								/>
+								<div className='info'>
+									<p className='title'>{item?.title}</p>
+									<p className='caption'>{item?.caption}</p>
+								</div>
 							</div>
-						</div>
-					))}
+						))}
 				</div>
 			</div>
 		</section>
