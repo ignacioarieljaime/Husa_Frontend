@@ -30,12 +30,7 @@ function ProductSupportNavBar({ pim, data }) {
 				<nav className='container_nav'>
 					<ul className={`items mb-md-0 ${openList ? 'mb-9' : 'mb-0'}`}>
 						<li className='me-auto'>
-							<span className='model'>
-								{
-									pim?.custom_fields.find(item => item.title === 'span Title')
-										?.value
-								}
-							</span>
+							<span className='model'>{pim?.model}</span>
 						</li>
 
 						{windowSize[0] > 768
