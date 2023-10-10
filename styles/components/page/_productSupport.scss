@@ -1302,7 +1302,7 @@
 						}
 					}
 					.table_row {
-						grid-template-columns: repeat(5, 1fr);
+						grid-template-columns: repeat(3, 1fr);
 						align-items: flex-start;
 						gap: 8px;
 						@include mq(768) {

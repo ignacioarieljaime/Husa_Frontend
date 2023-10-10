@@ -54,7 +54,7 @@ const FirmWareDownloadSectionResponsiveItem = ({
 						'-'
 					)}
 				</div>
-				<div className='size'>U8H-v3.0</div>
+				<div className='size'>{data?.title.split('_').pop()}</div>
 				<FontAwesomeIcon
 					className='icon'
 					icon={faChevronCircleRight}
@@ -70,21 +70,6 @@ const FirmWareDownloadSectionResponsiveItem = ({
 				{data.caption ? data.caption : data.title}
 			</div> */}
 			<div className='w-100' ref={accordionItemHeight}>
-				<div className='info'>
-					<div>
-						<div className='size_title'>Description</div>
-						<div className='size'>
-							Fixes an issue where Apps would display incorrectly.
-							<br />
-							<br />
-							Recommended for all users.
-						</div>
-					</div>
-					<div>
-						<div className='size_title'>Released</div>
-						<div className='size'>5/5/2023</div>
-					</div>
-				</div>
 				<div>
 					{data.download_link ? (
 						<a

@@ -71,47 +71,46 @@ const FirmWareDownloadSection = ({ data, pim }) => {
 								<>
 									<div className='table_row'>
 										<div>Type</div>
-										<div>Description</div>
 										<div>Version</div>
-										<div>Released</div>
 										<div>Downlaod</div>
 									</div>
 									{firmwareData &&
 										firmwareData.length &&
-										firmwareData.map((item, index) => (
-											<div key={index} className='table_row'>
-												<div
-													className='file_type'
-													style={
-														item.type && {
-															backgroundColor:
-																item.type === 'firmware' ? '#76BECC' : '#F05B71'
-														}
-													}>
-													{item.type ? (
-														<>
-															<span>{item.type}</span>
-														</>
-													) : (
-														'-'
-													)}
-												</div>
-												<div className='size'>
-													Fixes an issue where Apps would display incorrectly.
-													<br />
-													Recommended for all users.
-												</div>
-												<div className='size'>U8H-v3.0</div>
-												<div className='size'>5/5/2023</div>
-												<div>
-													{item.download_link ? (
-														<a href={item.download_link} download={true}>
-															<DownloadIconV2 color='#00AAA6' />
-														</a>
-													) : null}
-												</div>
-											</div>
-										))}
+										firmwareData.map(
+											(item, index) =>
+												item.type === 'firmware' && (
+													<div key={index} className='table_row'>
+														<div
+															className='file_type'
+															style={
+																item.type && {
+																	backgroundColor:
+																		item.type === 'firmware'
+																			? '#76BECC'
+																			: '#F05B71'
+																}
+															}>
+															{item.type ? (
+																<>
+																	<span>{item.type}</span>
+																</>
+															) : (
+																'-'
+															)}
+														</div>
+														<div className='size'>
+															{item?.title.split('_').pop()}
+														</div>
+														<div>
+															{item.download_link ? (
+																<a href={item.download_link} download={true}>
+																	<DownloadIconV2 color='#00AAA6' />
+																</a>
+															) : null}
+														</div>
+													</div>
+												)
+										)}
 								</>
 							) : (
 								<>
@@ -121,14 +120,17 @@ const FirmWareDownloadSection = ({ data, pim }) => {
 									</div>
 									{firmwareData &&
 										firmwareData.length &&
-										firmwareData.map((item, index) => (
-											<FirmWareDownloadSectionResponsiveItem
-												key={index}
-												data={item}
-												openStatus={index === 0}
-												windowSize={windowSize}
-											/>
-										))}
+										firmwareData.map(
+											(item, index) =>
+												item.type === 'firmware' && (
+													<FirmWareDownloadSectionResponsiveItem
+														key={index}
+														data={item}
+														openStatus={index === 0}
+														windowSize={windowSize}
+													/>
+												)
+										)}
 								</>
 							)}
 						</div>
