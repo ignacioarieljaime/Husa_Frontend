@@ -47,13 +47,25 @@ function BlogHead({ data: { structure }, pim }) {
 		navigator.clipboard.writeText(window.location.href)
 	}
 
-	const buttonGenerator = (Component, icon, index) => {
+	const buttonGenerator = (Component, icon, index, val) => {
+		const dataLayer = {
+			link: 'Copy Link',
+			linkedin: 'Linkedin',
+			facebook: 'Facebook',
+			twitter: 'Twitter'
+		}
+
 		if (icon === faLink)
 			return (
 				<button
 					key={index}
 					className='text-primary-dark bg-transparent border-0 px-2 mx-1'
-					onClick={copyUrl}>
+					onClick={() => {
+						copyUrl()
+						window.dataLayer.push({
+							event: dataLayer[val]
+						})
+					}}>
 					<FontAwesomeIcon icon={icon} size={'xl'} />
 				</button>
 			)
@@ -61,6 +73,11 @@ function BlogHead({ data: { structure }, pim }) {
 			<Component
 				url={location}
 				key={index}
+				onClick={() => {
+					window.dataLayer.push({
+						event: dataLayer[val]
+					})
+				}}
 				className='text-primary-dark px-2 mx-1'>
 				<FontAwesomeIcon icon={icon} size={'xl'} />
 			</Component>
@@ -108,7 +125,8 @@ function BlogHead({ data: { structure }, pim }) {
 							buttonGenerator(
 								socialMedia[item?.socialMedia?.value].button,
 								socialMedia[item?.socialMedia?.value].icon,
-								index
+								index,
+								item?.socialMedia?.value
 							)
 						)}
 					</div>
