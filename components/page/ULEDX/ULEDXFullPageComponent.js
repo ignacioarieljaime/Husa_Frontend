@@ -48,7 +48,7 @@ const ULEDXFullPageComponent = ({ data, pim }) => {
 					{structure?.template?.value === 'v1' ? (
 						<>
 							<ProductHeader
-								pin={scrollPosY > productHeroContent.current?.offsetTop}
+								pin={productHeroContent.current?.offsetTop - scrollPosY > 60}
 								pim={pim}
 							/>
 							<ProductHero />

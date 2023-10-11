@@ -34,7 +34,7 @@ const FlightNightConfirmationDiscovery = ({ data }) => {
 								<a
 									target={'_blank'}
 									href={item?.link?.value ? item?.link?.value : '/'}
-									className='n-btn outline-black d-block w-fit mx-auto p-4'>
+									className='n-btn outline-black d-block w-fit mx-auto medium'>
 									{item?.link?.title}
 								</a>
 							</div>

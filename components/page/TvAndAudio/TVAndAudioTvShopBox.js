@@ -28,7 +28,7 @@ function TVAndAudioTvShopBox({ data: { structure } }) {
 												? structure?.link?.target
 												: '_self'
 										}
-										className='n-btn outline-white transparent text-uppercase py-4 px-9'>
+										className='n-btn outline-white transparent text-uppercase medium d-block mx-auto w-fit'>
 										{structure?.link?.title}
 										{structure?.link?.target === '_blank' && (
 											<img

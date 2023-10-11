@@ -7,6 +7,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
+  text-align: center;
 
   &.outline-black {
     border-color: #000;
@@ -99,6 +100,22 @@
     }
   }
 
+  &.danger-upgrade {
+    border-radius: 1000px;
+    border: 1px solid #e23717;
+    background: #e23717;
+    color: #fff;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.05);
+    }
+    @include mq(768) {
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
   &.black-text {
     color: #221f20 !important;
     background-color: transparent !important;
@@ -115,6 +132,17 @@
     font-size: 16px;
     border: none !important;
     padding: 5px !important;
+  }
+
+  &.outline-grey {
+    border-color: #a6a8ac;
+    color: #a6a8ac;
+    background-color: #fff;
+
+    &:hover {
+      color: #fff !important;
+      background-color: #a6a8ac !important;
+    }
   }
 
   &.grey-text {
@@ -144,6 +172,29 @@
     &:hover {
       transform: scale(1) !important;
     }
+  }
+
+
+
+
+  &.small {
+    min-width: 56px !important;
+    padding: 10px 16px 6px !important;
+    font-size: 10px;
+    line-height: 10px;
+  }
+  &.medium {
+    min-width: 80px !important;
+    padding: 9.5px 16px 6.5px !important;
+    font-size: 14px;
+    line-height: 17px;
+  }
+  &.large {
+    min-width: 118px !important;
+    padding: 14px 16px 10px !important;
+    // padding: 10px 16px 6px !important;
+    font-size: 24px;
+    line-height: 30px;
   }
 }
 

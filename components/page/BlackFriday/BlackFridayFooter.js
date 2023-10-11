@@ -5,15 +5,33 @@ import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const BlackFridayFooter = ({ data: { structure } }) => {
 	return (
 		<footer>
-			<div className='black_friday_footer'>
+			<div
+				className={`black_friday_footer ${
+					structure?.template?.value === 'v2' ? 'version_2' : ''
+				}`}
+				style={
+					structure?.template?.value === 'v2'
+						? { backgroundColor: structure?.background_color?.value }
+						: {}
+				}>
 				<ul>
 					{structure?.list?.value.map((item, index) => (
-						<li key={index}>
+						<li
+							className={
+								structure?.hover?.value === 'deactive' ? 'no_hover' : ''
+							}
+							key={index}>
 							{item?.link?.value ? (
 								<Link
 									target={item?.link?.target ? item?.link?.target : '_self'}
 									href={item?.link?.value}>
-									<a target={item?.link?.target ? item?.link?.target : '_self'}>
+									<a
+										style={
+											structure?.template?.value === 'v2'
+												? { color: structure?.text_color?.value }
+												: {}
+										}
+										target={item?.link?.target ? item?.link?.target : '_self'}>
 										<span className='underline-on-hover'>
 											{item?.link?.title}
 										</span>
@@ -29,7 +47,14 @@ const BlackFridayFooter = ({ data: { structure } }) => {
 						</li>
 					))}
 				</ul>
-				<span>{structure?.rightText?.value}</span>
+				<span
+					style={
+						structure?.template?.value === 'v2'
+							? { color: structure?.text_color?.value }
+							: {}
+					}>
+					{structure?.rightText?.value}
+				</span>
 			</div>
 		</footer>
 	)

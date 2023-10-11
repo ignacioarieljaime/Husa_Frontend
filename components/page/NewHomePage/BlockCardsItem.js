@@ -48,7 +48,7 @@ const HomePageMBTextedBoxesItem = ({ data, itemCount, index }) => {
 							href={link?.value ? link?.value : '/'}>
 							<a
 								target={link?.target ? link?.target : '_self'}
-								className='n-btn outline-white transparent d-block w-fit py-4'>
+								className='n-btn outline-white transparent d-block w-fit medium'>
 								{link?.title}
 								{link?.target === '_blank' && (
 									<img

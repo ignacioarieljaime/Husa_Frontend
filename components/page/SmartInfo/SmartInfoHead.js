@@ -26,7 +26,7 @@ function SmartInfoHead({ data }) {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
-									className='btn btn-light text'>
+									className='n-btn white medium d-block mx-auto w-fit'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (
 										<img

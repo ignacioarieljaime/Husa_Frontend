@@ -39,7 +39,7 @@ const TelevisionsBlockBanner = ({ data }) => {
 							href={content?.link?.value}>
 							<a
 								target={content?.link?.target ? content?.link?.target : '_self'}
-								className='n-btn outline-white transparent d-block w-fit'>
+								className='n-btn outline-white transparent medium d-block w-fit'>
 								{content?.link?.title}
 								{content?.link?.target === '_blank' && (
 									<img

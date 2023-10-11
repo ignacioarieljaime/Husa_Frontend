@@ -29,7 +29,7 @@ const ProductPackageItem = ({ data }) => {
 								href={data?.link?.value}>
 								<a
 									target={data?.link?.target ? data?.link?.target : '_self'}
-									className='btn btn-primary rounded-5 px-5 py-2'>
+									className='n-btn primary rounded-5 medium w-fit mx-auto d-block'>
 									{data?.link?.title}
 									{data?.link?.target === '_blank' && (
 										<img

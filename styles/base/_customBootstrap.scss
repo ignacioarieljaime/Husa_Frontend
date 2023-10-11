@@ -1309,7 +1309,10 @@ article:hover img.img-box-shadow-hover {
 /* jarg section */
 
 .jarg-section {
-	padding: 50px 0;
+	padding: 50px 0 100px;
+	@include mq(768) {
+		padding: 50px 0;
+	}
 	.jarg_container {
 		max-width: 1072px;
 		margin: 0 auto;

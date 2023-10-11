@@ -230,7 +230,7 @@ const ProductItemV2 = ({ data }) => {
 						<div className='w-100 product_item_v2_content'>
 							<div className='btns_gp d-flex justify-content-evenly justify-content-md-center flex-wrap gap-2 align-items-center px-4 px-md-0 mx-auto'>
 								<Link href={url ? url : '/'}>
-									<a className='n-btn d-flex justify-content-center align-items-center outline-black product_btn '>
+									<a className='n-btn medium d-flex justify-content-center align-items-center outline-black product_btn '>
 										View Product
 									</a>
 								</Link>
@@ -248,7 +248,7 @@ const ProductItemV2 = ({ data }) => {
 											: {}
 									}
 									style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
-									className={`n-btn d-flex justify-content-center align-items-center  ${
+									className={`n-btn d-flex justify-content-center align-items-center medium ${
 										currentItem?.buy_status === 'ChannelAdvisor' ||
 										currentItem?.buy_status === 'Internal'
 											? 'primary-text py-2 px-4'

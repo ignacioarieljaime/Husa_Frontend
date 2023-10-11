@@ -30,7 +30,7 @@ function L9GProductDetailsBox({ pim, data }) {
 			<h2 className='main-title mb-5'>{data?.structure?.title?.value}</h2>
 			<div className='text-center '>
 				<button
-					className='btn btn-outline-light rounded-5 specs-btn'
+					className='n-btn outline-white medium transparent rounded-5 specs-btn h-fit'
 					onClick={() => setShowMore(!showMore)}>
 					<span className='d-block '>
 						{showMore ? '	Hide Specs' : '		Full  Specs'}

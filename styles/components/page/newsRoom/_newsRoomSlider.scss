@@ -129,14 +129,16 @@
 						text-decoration: none;
 						width: fit-content;
 						border-radius: 1000px;
-						height: 51px;
 						padding: 0 16px;
 						display: flex;
 						align-items: center;
 						font-style: normal;
 						font-weight: 400;
-						font-size: 14px;
 						color: #ffffff;
+						min-width: 80px !important;
+						padding: 9.5px 16px 6.5px !important;
+						font-size: 14px;
+						line-height: 17px;
 					}
 				}
 			}

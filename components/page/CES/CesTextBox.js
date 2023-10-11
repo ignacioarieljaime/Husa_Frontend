@@ -22,7 +22,7 @@ const CesTextBox = ({ data: { structure } }) => {
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
-							className='n-btn outline-black d-block w-fit mx-auto'>
+							className='n-btn outline-black medium d-block w-fit mx-auto'>
 							{structure?.link?.title}
 							{structure?.link?.target === '_blank' && (
 								<img

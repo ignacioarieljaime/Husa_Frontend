@@ -48,7 +48,7 @@ const TelevisionsBlockCards = ({ data }) => {
 														? content?.supportBox?.value?.link?.target
 														: '_self'
 												}
-												className='n-btn outline-white transparent d-block w-fit'>
+												className='n-btn outline-white transparent medium d-block w-fit'>
 												{content?.supportBox?.value?.link?.title}
 												{content?.supportBox?.value?.link?.target ===
 													'_blank' && (
