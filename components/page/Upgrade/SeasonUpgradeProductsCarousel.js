@@ -63,7 +63,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 						nextEl: '.swiper-button-next',
 						prevEl: '.swiper-button-prev'
 					}}
-					noSwipingSelector='ul'
+					noSwipingSelector='.screen_size_selector'
 					className={`carousel`}
 					modules={[Navigation]}>
 					{content?.selected_products?.value.map((item, index) => (
