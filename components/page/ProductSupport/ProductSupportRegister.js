@@ -88,7 +88,6 @@ function ProductSupportRegister({ pim, data }) {
 					toastId: 'ticket-sended'
 				})
 				setTickedSended(true)
-				e.target.reset()
 				resetData()
 			} else {
 				setTickedSended(false)
@@ -114,16 +113,17 @@ function ProductSupportRegister({ pim, data }) {
 	const resetData = () => {
 		setAcceptRole(false)
 		setFile(null)
+		setFormattedPhoneNumber('')
 		setDataSchema({
-			first_name: null,
-			last_name: null,
-			email: null,
-			phone_number: null,
-			postal_code: null,
+			first_name: '',
+			last_name: '',
+			email: '',
+			phone_number: '',
+			postal_code: '',
 			product_category: pim?.Category?.name,
 			product_model: pim?.model,
 			series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
-			product_serial_number: null,
+			product_serial_number: '',
 			purchased_from: null,
 			date_of_purchase: null,
 			receipt_image: null,
@@ -208,6 +208,33 @@ function ProductSupportRegister({ pim, data }) {
 		{ name: 'Wisconsin', value: 'WI' },
 		{ name: 'Wyoming', value: 'WY' }
 	]
+
+	const retailers = [
+		{ name: 'Amazon', value: 'Amazon' },
+		{ name: 'Beach Camera', value: 'Beach Camera' },
+		{ name: 'Best Buy', value: 'Best Buy' },
+		{ name: 'BrandsMart ', value: 'BrandsMart ' },
+		{ name: 'B&H', value: 'B&H' },
+		{ name: 'BJ’s', value: 'BJ’s' },
+		{ name: 'Conns', value: 'Conns' },
+		{ name: 'Costco', value: 'Costco' },
+		{ name: 'Crutchfield', value: 'Crutchfield' },
+		{ name: 'Curacao', value: 'Curacao' },
+		{ name: 'Electronic Express', value: 'Electronic Express' },
+		{ name: 'Exchange', value: 'Exchange' },
+		{ name: 'Lowes', value: 'Lowes' },
+		{ name: 'Newegg', value: 'Newegg' },
+		{ name: 'PC Richard', value: 'PC Richard' },
+		{ name: 'Projector Screen', value: 'Projector Screen' },
+		{ name: 'RC Willey', value: 'RC Willey' },
+		{ name: 'Sam’s Club', value: 'Sam’s Club' },
+		{ name: 'Sky By Gramophone', value: 'Sky By Gramophone' },
+		{ name: 'Target', value: 'Target' },
+		{ name: 'Value Electronics', value: 'Value Electronics' },
+		{ name: 'Walts', value: 'Walts' },
+		{ name: 'Walmart', value: 'Walmart' },
+		{ name: 'World Wide Stereo', value: 'World Wide Stereo' }
+	]
 	return (
 		<section id={data.name + data.id} className={formDisplay && 'd-none'}>
 			<div className='product_support_register_form'>
@@ -271,6 +298,7 @@ function ProductSupportRegister({ pim, data }) {
 													e.target.value
 												)
 											}
+											value={dataSchema.product_serial_number}
 											name='product_serial_number'
 											type='text'
 											required={true}
@@ -297,9 +325,9 @@ function ProductSupportRegister({ pim, data }) {
 									</button>
 								</div>
 								<div className='form_field'>
-									<div className='form_select_field z-1'>
+									<div className='form_select_field z-2'>
 										<LaserInstallationDropDownSelectBox
-											options={[{}, {}, {}, {}]}
+											options={retailers}
 											disabledOptions={[{ name: 'Where did you purchase?' }]}
 											value={dataSchema.purchased_from}
 											placeholder='Where did you purchase?'
@@ -405,6 +433,7 @@ function ProductSupportRegister({ pim, data }) {
 											}
 											name='first_name'
 											type='text'
+											value={dataSchema.first_name}
 											required={true}
 											placeholder='First Name'
 										/>
@@ -419,6 +448,7 @@ function ProductSupportRegister({ pim, data }) {
 											onChange={e =>
 												dataSchemaHandler('last_name', e.target.value)
 											}
+											value={dataSchema.last_name}
 											name='last_name'
 											type='text'
 											required={true}
@@ -452,6 +482,7 @@ function ProductSupportRegister({ pim, data }) {
 											onChange={e => dataSchemaHandler('email', e.target.value)}
 											name='email'
 											type='email'
+											value={dataSchema.email}
 											required={true}
 											placeholder='Email'
 										/>
@@ -483,6 +514,7 @@ function ProductSupportRegister({ pim, data }) {
 												dataSchemaHandler('postal_code', e.target.value)
 											}
 											name='postal_code'
+											value={dataSchema.postal_code}
 											type='number'
 											required={true}
 											placeholder='ZIP Code'
