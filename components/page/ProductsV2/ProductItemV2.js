@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import {
+	faChevronDown,
+	faChevronRight
+} from '@fortawesome/free-solid-svg-icons'
 import { RouteHandler } from 'utils/routeHandler'
 import { useDispatch } from 'react-redux'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
@@ -22,6 +25,7 @@ const ProductItemV2 = ({ data }) => {
 						: 0
 			  }
 	)
+	const [showSizes, setShowSizes] = useState(false)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 	let seriesTitle = data?.products[0]?.product?.customFields
 		?.find(item => item.type_name === 'Top Titles')
@@ -40,6 +44,11 @@ const ProductItemV2 = ({ data }) => {
 			setActiveSizeIndex(
 				screenSize.findIndex(item => item?.id?.value == data?.id?.value)
 			)
+			if (screenSize.length <= 5) {
+				setShowSizes(true)
+			} else {
+				setShowSizes(false)
+			}
 		}
 	}, [screenSize])
 
@@ -115,7 +124,10 @@ const ProductItemV2 = ({ data }) => {
 					</div>
 
 					{screenSize && screenSize.length > 1 && (
-						<div className={`screen_size_selector `}>
+						<div
+							className={`screen_size_selector ${
+								showSizes ? 'show_sizes' : ''
+							}`}>
 							<div className='content'>
 								<div className='sizes'>
 									<ul className='size_list'>
@@ -140,6 +152,12 @@ const ProductItemV2 = ({ data }) => {
 										className='indicator'>
 										{currentItem?.value}
 									</span>
+								</div>
+								<div
+									onClick={() => setShowSizes(true)}
+									className='show_sizes_btn'>
+									<span className='label'>Select Screen Size</span>
+									<FontAwesomeIcon icon={faChevronDown} size='sm' />
 								</div>
 							</div>
 						</div>
