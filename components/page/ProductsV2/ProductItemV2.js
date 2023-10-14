@@ -76,7 +76,7 @@ const ProductItemV2 = ({ data }) => {
 	}, [data])
 
 	useEffect(() => {
-		setUrl(RouteHandler(currentItem.id, 'product'))
+		setUrl(RouteHandler(currentItem?.product?.id, 'product'))
 	}, [currentItem])
 
 	const dataLayerHandler = () => {
