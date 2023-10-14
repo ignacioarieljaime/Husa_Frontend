@@ -22,6 +22,7 @@ const ProductFilterResponsive = ({
 	sortValue,
 	sortOnChange,
 	products,
+	filteredProducts,
 	category,
 	searchTerm,
 	setSearchTerm,
@@ -102,7 +103,7 @@ const ProductFilterResponsive = ({
 	}, [router?.query?.filter, searchTerm])
 
 	useEffect(() => {
-		setSearchTermFilter(0)
+		if (searchTerm === '') setSearchTermFilter(0)
 	}, [searchTerm])
 
 	const filterCountHandler = () => {
@@ -149,45 +150,6 @@ const ProductFilterResponsive = ({
 						/>
 					</button>
 				</div>
-				{/* <div className='product_filter_responsive'>
-					<div className='clear__all_filter_button'>
-						<button
-							onClick={() => {
-								setModalIsOpen(true)
-								setDropdownStatus(0)
-							}}>
-							All Filters <ResponsiveFilterIcon />
-						</button>
-						<button onClick={checkboxClearHandler}>
-							Clear Filter ({filterCounter})
-						</button>
-					</div>
-					<ul>
-						{allFilters && (
-							<li>
-								<button
-									onClick={() => {
-										setModalIsOpen(true)
-										setDropdownStatus(1)
-									}}>
-									SORT
-								</button>
-							</li>
-						)}
-						{allFilters?.map(filter => (
-							<li>
-								<button
-									onClick={() => {
-										setModalIsOpen(true)
-										setDropdownStatus(filter.id)
-									}}>
-									{filter?.name}
-								</button>
-							</li>
-						))}
-					</ul>
-				</div>
-*/}
 				<div className='product_filter_responsive_modal'>
 					<div className='d-flex flex-column justify-content-center align-items-center gap-3 p-4'>
 						<div className='search_field'>
@@ -225,9 +187,10 @@ const ProductFilterResponsive = ({
 										Array.isArray(item?.products) ? (
 											<li key={index} className='search_item'>
 												<button
-													onClick={() =>
+													onClick={() => {
 														setSearchTermFilter(item?.products[0]?.product?.id)
-													}
+														searchControl(item?.name.split(' ')[0])
+													}}
 													className='search_radio'>
 													{item?.products[0]?.product?.id ===
 														searchTermFilter && <div></div>}
@@ -237,9 +200,10 @@ const ProductFilterResponsive = ({
 										) : (
 											<li key={index} className='search_item'>
 												<button
-													onClick={() =>
+													onClick={() => {
 														setSearchTermFilter(item?.products?.product?.id)
-													}
+														searchControl(item?.products?.product?.model)
+													}}
 													className='search_radio'>
 													{item?.products?.product?.id === searchTermFilter && (
 														<div></div>
@@ -260,6 +224,7 @@ const ProductFilterResponsive = ({
 					<div className='filters'>
 						<SortFilterDropDown
 							sortValue={sortValue}
+							modalIsOpen={modalIsOpen}
 							sortOnChange={value => {
 								sortOnChange(value.value)
 							}}
@@ -267,6 +232,7 @@ const ProductFilterResponsive = ({
 						{allFilters?.map(filter => (
 							<FilterDropDown
 								{...filter}
+								modalIsOpen={modalIsOpen}
 								category={category}
 								filterCounter={filterCounter}
 								filterController={filterController}
@@ -288,7 +254,7 @@ const ProductFilterResponsive = ({
 								}}>
 								View
 								<span className='ms-2 text-white fw-light'>
-									{products.length}
+									{filteredProducts.length}
 								</span>
 							</a>
 						</Link>

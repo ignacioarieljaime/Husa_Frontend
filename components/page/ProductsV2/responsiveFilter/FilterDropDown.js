@@ -15,7 +15,8 @@ const FilterDropDown = props => {
 		selectedFilter,
 		filterCounter,
 		category,
-		showProductFilterCount
+		showProductFilterCount,
+		modalIsOpen
 	} = props
 	const router = useRouter()
 	const dropdown = useRef()
@@ -30,6 +31,9 @@ const FilterDropDown = props => {
 			content_type
 		)
 	}
+	useEffect(() => {
+		if (!modalIsOpen) setCollapsed(true)
+	}, [modalIsOpen])
 
 	// useEffect(() => {
 	// 	if (router?.query?.filter) {

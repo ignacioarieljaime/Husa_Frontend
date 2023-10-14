@@ -45,12 +45,14 @@ const ProductsGridV2 = ({ data }) => {
 	useEffect(() => {
 		if (router.query.filter) {
 			console.log('router second req')
+			console.log(JSON.parse(decodeURIComponent(router.query.filter)))
 			getProductHandler(
 				JSON.parse(decodeURIComponent(router.query.filter)),
 				searchTerm
 			)
 		} else {
-			getProductHandler()
+			console.log('clean')
+			getProductHandler([], searchTerm)
 		}
 	}, [sortingMethod, router?.query?.filter])
 
@@ -193,7 +195,8 @@ const ProductsGridV2 = ({ data }) => {
 					setFilters={setFilters}
 					sortValue={sortingMethod}
 					sortOnChange={setSortingMethod}
-					products={filteredProducts}
+					products={products}
+					filteredProducts={filteredProducts}
 					category={structure?.category}
 					searchTerm={searchTerm}
 					setSearchTerm={term => setSearchTerm(term)}
@@ -247,7 +250,6 @@ const ProductsGridV2 = ({ data }) => {
 									: ''
 							}`}>
 							{filteredProducts.map((item, index) => {
-								console.log(item)
 								return <ProductItemV2 key={index} data={item} />
 							})}
 						</div>

@@ -17,13 +17,18 @@ const options = [
 	}
 ]
 
-const SortFilterDropDown = ({ sortValue, sortOnChange, dropdownStatus }) => {
+const SortFilterDropDown = ({
+	sortValue,
+	sortOnChange,
+	dropdownStatus,
+	modalIsOpen
+}) => {
 	const dropdown = useRef()
 	const [collapse, setCollapsed] = useState(true)
 
-	// useEffect(() => {
-	// 	setCollapsed(sortValue?.value || true)
-	// }, [sortValue])
+	useEffect(() => {
+		if (!modalIsOpen) setCollapsed(true)
+	}, [modalIsOpen])
 
 	useEffect(() => {
 		if (dropdownStatus === 1) setTimeout(() => setCollapsed(false), 400)
