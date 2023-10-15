@@ -208,7 +208,14 @@ function RegisterForm({ data }) {
 							PostalZipCode: dataSchema.postal_code,
 							ProductType: dataSchema.product_category,
 							SerialNumber: dataSchema.product_serial_number,
-							Email: dataSchema.email
+							Email: dataSchema.email,
+							phone_number: dataSchema.phone_number,
+							receipt_image: dataSchema.receipt_image,
+							future_news: dataSchema.future_news,
+							product_category: dataSchema.product_category,
+							date_of_purchase: dataSchema.date_of_purchase,
+							purchased_from: dataSchema.purchased_from,
+							series: dataSchema.series
 						}
 				  )
 				: await axios.post(
