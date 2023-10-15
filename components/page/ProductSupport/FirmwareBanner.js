@@ -34,13 +34,16 @@ const FirmwareBanner = ({ data }) => {
 	}, [model])
 	const getPageUrl = async _value => {
 		if (_value) {
-			router.push({
-				pathname: '/download-firmware/' + _value,
-				query: {
-					model: JSON.stringify(model?.files),
-					serialNumber: searchTerm
-				}
-			})
+			router.push(
+				{
+					pathname: '/download-firmware/' + _value,
+					query: {
+						model: JSON.stringify(model?.files),
+						serialNumber: searchTerm
+					}
+				},
+				'/download-firmware/' + _value
+			)
 		}
 		setLoading(false)
 	}
