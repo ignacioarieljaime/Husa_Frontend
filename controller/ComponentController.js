@@ -544,26 +544,45 @@ const generateFirmwarePage = () => {
 			'public, s-maxage=10, stale-while-revalidate=59'
 		)
 		console.log('send cxm request')
-		let data = await axios
-			.get(
-					"${process.env.CXM_API_ROUTE}/template/"+query?.productId+ "/"+query?.serialNumber
-			)
-			.then(response => {
-				console.log('get cxm data')
-	
-				return response.data
-			})
-			.catch(error => {
-				console.error('Error:', error)
-				return null
-			})
+	let data = await axios
+		.get(
+			'https://imcxm.dev-api.hisenseportal.com/api/husa/getTemplates?status=' +
+				7
+		)
+		.then(response => {
+			console.log('get cxm data')
 
-		return {
-			props: {
-				data: data?.data?.widgets,
-				pim: data?.data?.product
-			}
+			return response.data
+		})
+		.catch(error => {
+			console.error('Error:', error)
+			return null
+		})
+
+	console.log('send pim request')
+	pim = await axios
+		.get(
+			'https://imcxm.dev-api.hisenseportal.com/api/husa/template/' +
+				query?.productId +
+				'/' +
+				query?.serialNumber
+		)
+		.then(response => {
+			console.log('get pim data')
+
+			return response.data
+		})
+		.catch(error => {
+			console.error('Error:', error)
+			return null
+		})
+
+	return {
+		props: {
+			data: data?.data[0]?.widgets,
+			pim: pim?.data?.product
 		}
+	}
 	}
 	
 	export default DownloadFirmwate
