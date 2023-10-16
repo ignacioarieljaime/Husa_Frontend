@@ -131,21 +131,18 @@ const ProductItemV2 = ({ data }) => {
 							<div className='content'>
 								<div className='sizes'>
 									<ul className='size_list'>
-										{screenSize.map((item, index) => {
-											console.log(item)
-											return (
-												<li
-													key={index}
-													className={activeSizeIndex === index ? 'active' : ''}
-													onClick={() => {
-														setCurrentItem(item)
-														setActiveSizeIndex(index)
-													}}
-													style={{ width: 100 / screenSize.length + '%' }}>
-													{item?.value}
-												</li>
-											)
-										})}
+										{screenSize.map((item, index) => (
+											<li
+												key={index}
+												className={activeSizeIndex === index ? 'active' : ''}
+												onClick={() => {
+													setCurrentItem(item)
+													setActiveSizeIndex(index)
+												}}
+												style={{ width: 100 / screenSize.length + '%' }}>
+												{item?.value}
+											</li>
+										))}
 									</ul>
 									<span
 										style={{
