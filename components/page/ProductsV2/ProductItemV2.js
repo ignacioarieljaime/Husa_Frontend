@@ -131,18 +131,21 @@ const ProductItemV2 = ({ data }) => {
 							<div className='content'>
 								<div className='sizes'>
 									<ul className='size_list'>
-										{screenSize.map((item, index) => (
-											<li
-												key={index}
-												className={activeSizeIndex === index ? 'active' : ''}
-												onClick={() => {
-													setCurrentItem(item)
-													setActiveSizeIndex(index)
-												}}
-												style={{ width: 100 / screenSize.length + '%' }}>
-												{item?.value}
-											</li>
-										))}
+										{screenSize.map((item, index) => {
+											console.log(item)
+											return (
+												<li
+													key={index}
+													className={activeSizeIndex === index ? 'active' : ''}
+													onClick={() => {
+														setCurrentItem(item)
+														setActiveSizeIndex(index)
+													}}
+													style={{ width: 100 / screenSize.length + '%' }}>
+													{item?.value}
+												</li>
+											)
+										})}
 									</ul>
 									<span
 										style={{
@@ -226,7 +229,7 @@ const ProductItemV2 = ({ data }) => {
 
 							{currentItem?.product &&
 								currentItem?.product?.customFields &&
-								currentItem?.product?.customFields.length &&
+								currentItem?.product?.customFields.length > 0 &&
 								currentItem?.product?.customFields.some(
 									field => field.type_id === 11
 								) && (
