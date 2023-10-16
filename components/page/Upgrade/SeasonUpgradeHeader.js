@@ -107,8 +107,15 @@ const SeasonUpgradeHeader = ({ data }) => {
 										target={item?.link?.target ? item?.link?.target : '_self'}
 										href={item?.link?.value}>
 										<a
-											target={item?.link?.target ? item?.link?.target : '_self'}
-											className='text-decoration-none'>
+											className={`text-decoration-none ${
+												item?.link?.value &&
+												item?.link?.value === '#' + router.asPath.split('#')[1]
+													? 'active'
+													: ''
+											}`}
+											target={
+												item?.link?.target ? item?.link?.target : '_self'
+											}>
 											{item?.link?.title}
 										</a>
 									</Link>
