@@ -6,7 +6,7 @@
 	align-items: center;
 	gap: 24px;
 	@include mq(768) {
-		padding: 32px 0;
+		padding: 32px 0 0;
 		gap: 0;
 	}
 	// .slider {
@@ -54,7 +54,7 @@
 	.members {
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
 		grid-template-rows: auto;
 		justify-content: center;
 		align-items: start;
@@ -62,8 +62,8 @@
 		padding: 16px 50px;
 		gap: 16px 0;
 		@include mq(768) {
-			grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-			gap: 16px;
+			grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+			gap: 32px 18px;
 			padding: 28px 16px;
 		}
 		.item {
@@ -79,14 +79,42 @@
 			text-align: center;
 			@include mq(768) {
 				padding: 0;
+				gap: 10px;
 			}
 			.image {
 				width: 100%;
-				height: 290px;
-				object-fit: cover;
-				border-radius: 6px;
+				height: 355px;
+				overflow: hidden;
+				position: relative;
 				@include mq(768) {
-					height: 132px;
+					height: 158px;
+					max-width: 105px;
+					margin: 0 auto;
+				}
+				img {
+					object-fit: cover;
+				}
+				.image_resp_title {
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					height: fit-content;
+					display: none;
+					background: #383838;
+					padding: 4px 4px 1px;
+					margin: 0;
+					text-align: left;
+					* {
+						margin: 0;
+						color: #fff !important;
+						font-size: 8px;
+						font-weight: 400;
+						line-height: 8px;
+					}
+					@include mq(768) {
+						display: block;
+					}
 				}
 			}
 			.title,
@@ -100,18 +128,21 @@
 					line-height: 20px; /* 135% */
 					letter-spacing: -0.32px;
 					@include mq(768) {
-						font-size: 12px;
-						line-height: 16px; /* 135% */
+						font-size: 10px;
+						line-height: 12px; /* 0% */
 					}
 				}
 			}
 			.title {
+				margin-bottom: 8px;
+				@include mq(768) {
+					display: none;
+				}
 				* {
 					font-weight: 500;
 					@include mq(768) {
-						font-size: 14px;
-						line-height: 18px; /* 135% */
-						letter-spacing: -0.28px;
+						font-size: 10px;
+						line-height: 12px; /* 0% */
 					}
 				}
 			}

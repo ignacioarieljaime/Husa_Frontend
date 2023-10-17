@@ -27,22 +27,40 @@ const AboutUsMembersList = ({ data }) => {
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='aboutus_members_list'>
-				<div className='content'>
-					<h3
-						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
-					<div
-						className='text'
-						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
-				</div>
+				{(content?.title?.value || content?.text?.value) && (
+					<div className='content'>
+						{content?.title?.value && (
+							<h3
+								className='title'
+								dangerouslySetInnerHTML={{
+									__html: content?.title?.value
+								}}></h3>
+						)}
+						{content?.text?.value && (
+							<div
+								className='text'
+								dangerouslySetInnerHTML={{
+									__html: content?.text?.value
+								}}></div>
+						)}
+					</div>
+				)}
 				<div className='members'>
 					{content?.list?.value.map((_item, index) => (
 						<div key={index} className='item'>
-							<img
-								src={_item?.image?.src}
-								alt={_item?.image?.alt}
-								className='image'
-							/>
+							<div className='image'>
+								<img
+									src={_item?.image?.src}
+									alt={_item?.image?.alt}
+									width={'100%'}
+									height={'100%'}
+								/>
+								<div
+									className='image_resp_title'
+									dangerouslySetInnerHTML={{
+										__html: _item?.title?.value
+									}}></div>
+							</div>
 							<div>
 								<div
 									className='title'
