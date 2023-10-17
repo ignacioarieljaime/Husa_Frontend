@@ -1,0 +1,15 @@
+.season_upgrade_footer {
+	padding: 64px 0px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include mq(768) {
+		padding: 32px 0;
+	}
+	img {
+		width: 100%;
+		max-width: 200px;
+		margin: 0 auto;
+		object-fit: contain;
+	}
+}

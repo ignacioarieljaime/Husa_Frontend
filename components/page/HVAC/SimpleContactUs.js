@@ -65,7 +65,7 @@ const SimpleContactUs = ({ data }) => {
 						action=''
 						onSubmit={e => submitData(e)}
 						className='form-container form-container-inner-group active row'>
-						<div className='col-12 mb-10'>
+						<div className='col-12 mb-7'>
 							<CustomInput
 								placeholder={'Company'}
 								onChange={_value => dataInsertionHandler('company', _value)}
@@ -75,7 +75,7 @@ const SimpleContactUs = ({ data }) => {
 								{errors?.company && errors?.company[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-7'>
 							<CustomInput
 								placeholder={'First Name'}
 								onChange={_value => dataInsertionHandler('first_name', _value)}
@@ -85,7 +85,7 @@ const SimpleContactUs = ({ data }) => {
 								{errors?.first_name && errors?.first_name[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-7'>
 							<CustomInput
 								placeholder={'Last Name'}
 								onChange={_value => dataInsertionHandler('last_name', _value)}
@@ -95,7 +95,7 @@ const SimpleContactUs = ({ data }) => {
 								{errors?.last_name && errors?.last_name[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-7'>
 							<CustomInput
 								placeholder={'Phone number'}
 								onChange={_value =>
@@ -107,7 +107,7 @@ const SimpleContactUs = ({ data }) => {
 								{errors?.phone_number && errors?.phone_number[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-7'>
 							<CustomInput
 								placeholder={'Email'}
 								onChange={_value => dataInsertionHandler('email', _value)}
@@ -117,13 +117,13 @@ const SimpleContactUs = ({ data }) => {
 								{errors?.email && errors?.email[0]}
 							</div>
 						</div>
-						<div className='col-12 mb-10'>
+						<div className='col-12' style={{ marginBottom: '30px' }}>
 							<textarea
 								name=''
 								required
 								onChange={e => dataInsertionHandler('message', e.target.value)}
 								placeholder='Message'
-								className='form-container-inner-input'
+								className='form-container-inner-input pt-0'
 							/>
 							<div className='input_error_message'>
 								{errors?.message && errors?.message[0]}

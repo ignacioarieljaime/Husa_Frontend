@@ -226,12 +226,13 @@ ${
 					return {
 						notFound: true
 					}
+					}
 					if (!data?.widgets || data?.widgets.length == 0) {
 						return {
 							notFound: true
 						}
 					}
-				} else {
+				 else {
 					return { props: { data }} 
 				}
 }`
@@ -303,7 +304,7 @@ return (
 		.get(
 ${
 	_page.post
-		? `"${process.env.CXM_API_ROUTE}/getPostInfo/" + _page.post?.id`
+		? `"${process.env.CXM_API_ROUTE}/getPostInfo/" + ${_page.post?.id}`
 		: `"${process.env.CXM_API_ROUTE}/getPageInfo/" + query.pageid`
 }
 		,
@@ -323,11 +324,21 @@ ${
 			return null
 		})
 
-	if (data?.model_id && data?.model_id > 0) {
+	if(data?.model_type === 'post' && data?.post && data?.post?.id){
 		pim = await axios
-			.get("${
-				process.env.PIM_API_ROUTE
-			}/getProduct/" + data.model_id + "?status[]=1&status[]=2&status[]=3")
+			.get("${process.env.CXM_API_ROUTE}/getPostInfo/" + data?.post?.id)
+			.then(response => {
+				console.log('get pim data')
+				return response.data
+			})
+			.catch(error => {
+				console.error('Error:', error)
+				return null
+			})
+	}
+	else if (data?.model_id && data?.model_id > 0) {
+		pim = await axios
+			.get("${process.env.PIM_API_ROUTE}/getProduct/" + data.model_id)
 			.then(response => {
 				console.log('get pim data')
 				return response.data.data
@@ -336,7 +347,8 @@ ${
 				console.error('Error:', error)
 				return null
 			})
-	}
+	} 
+
 	if (!data?.widgets || data?.widgets.length == 0) {
 		return {
 			notFound: true

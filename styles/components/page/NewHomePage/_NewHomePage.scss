@@ -378,6 +378,9 @@
 		* {
 			line-height: 120%;
 			font-size: 60px;
+			@include mq(575) {
+				font-size: 48px;
+			}
 		}
 	}
 
@@ -458,6 +461,9 @@
 		* {
 			font-size: 60px !important;
 			line-height: 1 !important;
+			@include mq(575) {
+				font-size: 48px !important;
+			}
 		}
 	}
 
