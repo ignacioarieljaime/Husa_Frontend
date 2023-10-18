@@ -6,6 +6,7 @@ import BlackInfoIcon from 'components/icons/BlackInfoIcon'
 import AdobeAcrobat from 'components/icons/AdobeAcrobat'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
 const FirmWareDownloadSection = ({ data, pim }) => {
 	let { structure } = data
@@ -13,19 +14,26 @@ const FirmWareDownloadSection = ({ data, pim }) => {
 	const [content, setContent] = useState(null)
 	const windowSize = useWindowSize()
 	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
 		setContent(structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
+
 	return (
-		<section id={data?.name + data?.id}>
+		<section ref={ref} id={data?.name + data?.id}>
 			<div className='downloads_section firmware'>
 				<div className='text_box'>
 					<h4
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: `<p>` + pim?.name + ` Firmware & Software</p>`
+							__html: `<p>` + pim?.model + ` Firmware & Software</p>`
 						}}></h4>
 					<div
 						className='subtitle'

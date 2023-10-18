@@ -1,14 +1,24 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { useRef } from 'react'
 
 const CesHero2 = ({ data }) => {
 	const { structure } = data
 	const [content, setContent] = useState(null)
+	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
+
 	return (
-		<section>
+		<section ref={ref} id={data?.name + data?.id}>
 			{content?.template?.value === 'v2' ? (
 				<div className='ces_hero type_2 version_2'>
 					<div className='custom_container'>

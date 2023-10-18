@@ -1,11 +1,24 @@
 import React from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useRef } from 'react'
+import { useEffect } from 'react'
 
 function SupportNeedAssistance({ data }) {
 	let { structure } = data
+	const router = useRouter()
+	const ref = useRef()
+
+	useEffect(() => {
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
+	}, [])
 	return (
-		<section id={data.name + data.id}>
+		<section ref={ref} id={data.name + data.id}>
 			<div className='support_contact'>
 				<img
 					src={structure?.image?.src}

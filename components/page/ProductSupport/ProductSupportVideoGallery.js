@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import LandingVideoPlayer from '../Landing/LandingVideoPlayer'
+import { useRouter } from 'next/router'
+import { useRef } from 'react'
 const ProductSupportVideoGallery = ({ data, pim }) => {
 	const { structure } = data
 	const [content, setContent] = useState(null)
 	const [videos, setVideos] = useState(null)
 	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
-
+	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(structure)
 
@@ -18,6 +21,12 @@ const ProductSupportVideoGallery = ({ data, pim }) => {
 				)
 			]
 		setNewsItemOrder(newOrder)
+
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
 
 	useEffect(() => {
@@ -32,7 +41,7 @@ const ProductSupportVideoGallery = ({ data, pim }) => {
 	}, [newsItemOrder])
 
 	return (
-		<section id={data?.name + data?.id}>
+		<section ref={ref} id={data?.name + data?.id}>
 			<div className='product_support_video_gallery'>
 				<h4 className='title'>{pim?.name} Video</h4>
 

@@ -13,6 +13,8 @@ import CustomInput from 'components/common/Input'
 import axios from 'axios'
 import { uploadToS3 } from 'services/s3'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
 function ProductSupportRegister({ pim, data }) {
 	const { structure } = data
@@ -28,7 +30,7 @@ function ProductSupportRegister({ pim, data }) {
 		postal_code: null,
 		product_category: pim?.Category?.name,
 		product_model: pim?.model,
-		series: pim?.series[0]?.title,
+		series: pim?.series[0]?.title || pim?.name,
 		product_serial_number: null,
 		purchased_from: null,
 		date_of_purchase: null,
@@ -42,6 +44,17 @@ function ProductSupportRegister({ pim, data }) {
 	const [tickedSended, setTickedSended] = useState(null)
 	const [inputFocused, setInputFocused] = useState(false)
 	const [formattedPhoneNumber, setFormattedPhoneNumber] = useState()
+
+	const router = useRouter()
+	const ref = useRef()
+
+	useEffect(() => {
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
+	}, [])
 
 	const formatPhoneNumber = () => {
 		if (!formattedPhoneNumber) {
@@ -122,7 +135,7 @@ function ProductSupportRegister({ pim, data }) {
 			postal_code: '',
 			product_category: pim?.Category?.name,
 			product_model: pim?.model,
-			series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
+			series: pim?.series[0]?.title || pim?.name,
 			product_serial_number: '',
 			purchased_from: null,
 			date_of_purchase: null,
@@ -236,7 +249,10 @@ function ProductSupportRegister({ pim, data }) {
 		{ name: 'World Wide Stereo', value: 'World Wide Stereo' }
 	]
 	return (
-		<section id={data.name + data.id} className={formDisplay && 'd-none'}>
+		<section
+			ref={ref}
+			id={data.name + data.id}
+			className={formDisplay && 'd-none'}>
 			<div className='product_support_register_form'>
 				<div className='content'>
 					<div>

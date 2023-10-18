@@ -678,6 +678,11 @@
 							letter-spacing: -0.02em;
 							color: #000000;
 							background-color: #fff;
+							max-width: 100%;
+							width: 100%;
+							overflow: hidden;
+							white-space: nowrap !important;
+							text-overflow: ellipsis;
 						}
 						.dropdown-select-box-options {
 							background-color: #fff;

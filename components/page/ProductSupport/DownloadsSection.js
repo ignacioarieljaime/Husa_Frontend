@@ -6,22 +6,32 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import DownloadSectionResponsiveItem from './DownloadSectionResponsiveItem'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
 const DownloadsSection = ({ data, pim }) => {
 	let { structure } = data
 	const [content, setContent] = useState(null)
 	const windowSize = useWindowSize()
+	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
 		setContent(structure)
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
+
 	return (
-		<section id={data?.name + data?.id}>
+		<section ref={ref} id={data?.name + data?.id}>
 			<div className='downloads_section'>
 				<div className='text_box'>
 					<h4
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: `<p>` + pim?.name + ` Downloads</p>`
+							__html: `<p>` + pim?.model + ` Downloads</p>`
 						}}></h4>
 					<div
 						className='subtitle'
