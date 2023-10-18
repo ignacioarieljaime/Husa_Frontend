@@ -67,10 +67,15 @@ const SeasonUpgradeHeader = ({ data }) => {
 											<Link href={item?.link?.value}>
 												<a
 													className={`text-decoration-none ${
-														item?.link?.value &&
-														item?.link?.value ===
-															'#' + router.asPath.split('#')[1]
-															? 'active'
+														item?.link?.value
+															? router.asPath.split('#').length > 1
+																? item?.link?.value ===
+																  '#' + router.asPath.split('#')[1]
+																	? 'active'
+																	: ''
+																: item?.link?.value === router.asPath
+																? 'active'
+																: ''
 															: ''
 													}`}>
 													{item?.link?.title}
@@ -108,9 +113,15 @@ const SeasonUpgradeHeader = ({ data }) => {
 										href={item?.link?.value}>
 										<a
 											className={`text-decoration-none ${
-												item?.link?.value &&
-												item?.link?.value === '#' + router.asPath.split('#')[1]
-													? 'active'
+												item?.link?.value
+													? router.asPath.split('#').length > 1
+														? item?.link?.value ===
+														  '#' + router.asPath.split('#')[1]
+															? 'active'
+															: ''
+														: item?.link?.value === router.asPath
+														? 'active'
+														: ''
 													: ''
 											}`}
 											target={
