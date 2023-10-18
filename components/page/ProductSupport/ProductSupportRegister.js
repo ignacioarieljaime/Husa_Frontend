@@ -248,6 +248,7 @@ function ProductSupportRegister({ pim, data }) {
 		{ name: 'Walmart', value: 'Walmart' },
 		{ name: 'World Wide Stereo', value: 'World Wide Stereo' }
 	]
+
 	return (
 		<section
 			ref={ref}
@@ -536,7 +537,14 @@ function ProductSupportRegister({ pim, data }) {
 											placeholder='ZIP Code'
 										/>
 										{errors?.postal_code ? (
-											<p className='error'>{errors?.postal_code}</p>
+											<p className='error'>
+												{errors?.postal_code &&
+													errors?.postal_code.length &&
+													errors?.postal_code[0].replace(
+														'postal code',
+														'ZIP code'
+													)}
+											</p>
 										) : null}
 									</div>
 								</div>
