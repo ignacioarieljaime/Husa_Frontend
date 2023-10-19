@@ -12,7 +12,6 @@ const NewsRoomSlider = ({ data }) => {
 		<div className='news_room_slider'>
 			<Splide
 				options={{
-					type: windowSize[0] >= 768 ? 'slide' : 'loop',
 					pagination: true,
 					perPage: 1,
 					perMove: 1,
@@ -33,15 +32,23 @@ const NewsRoomSlider = ({ data }) => {
 						>
 							<a className='slider_item d-block'>
 								<div className='slider_bg'>
-									<img
-										src={item?.image?.src}
-										alt={item?.image?.alt}
-										className={'bg'}
-									/>
+									{windowSize[0] >= 768 ? (
+										<img
+											src={item?.image?.src}
+											alt={item?.image?.alt}
+											className={'bg'}
+										/>
+									) : (
+										<img
+											src={item?.mobileImage?.src}
+											alt={item?.mobileImage?.alt}
+											className={'bg'}
+										/>
+									)}
 								</div>
 								<div className='slider_content'>
-									<h5>{item?.title?.value}</h5>
-									<h6>{item?.subtitle?.value}</h6>
+									{item?.title?.value && <h5>{item?.title?.value}</h5>}
+									{item?.subtitle?.value && <h6>{item?.subtitle?.value}</h6>}
 									{item?.btn?.value && item?.btn?.title && (
 										<Link
 											target={item?.btn?.target || '_self'}

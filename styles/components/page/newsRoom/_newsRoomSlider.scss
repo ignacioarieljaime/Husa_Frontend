@@ -68,9 +68,10 @@
 					justify-content: center;
 					align-items: end;
 					// padding-bottom: 77px;
-					// @include mq(768) {
-					// 	padding-bottom: 32px;
-					// }
+					padding: 0 24px;
+					@include mq(768) {
+						padding: 0 60px;
+					}
 					* {
 						width: 100%;
 					}
@@ -108,23 +109,24 @@
 						line-height: 56px;
 						text-align: center;
 						color: #ffffff;
-						margin-bottom: 32px;
+						margin: 0;
 						@include mq(768) {
-							margin-bottom: 16px;
-							font-size: 34px;
-							line-height: 42px;
+							font-size: 24px;
+							line-height: 32px;
 						}
 					}
 					h6 {
 						font-style: normal;
 						font-weight: 300;
 						font-size: 16px;
-						line-height: 22px;
+						line-height: 20px;
 						text-align: center;
 						color: #ffffff;
-						margin-bottom: 32px;
+						margin-top: 32px;
 						@include mq(768) {
-							margin-bottom: 16px;
+							font-size: 14px;
+							line-height: 18px;
+							margin-top: 16px;
 						}
 					}
 					a {
@@ -143,6 +145,10 @@
 						padding: 9px 16px 6px !important;
 						font-size: 14px;
 						line-height: 17px;
+						margin-top: 64px;
+						@include mq(768) {
+							margin-top: 32px;
+						}
 					}
 				}
 			}
