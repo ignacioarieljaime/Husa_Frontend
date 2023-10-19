@@ -1,99 +1,71 @@
 import React, { useEffect, useState } from 'react'
-const ProductSupportVideoGallery = ({ data }) => {
-	const [grid, setGrid] = useState([])
+import LandingVideoPlayer from '../Landing/LandingVideoPlayer'
+import { useRouter } from 'next/router'
+import { useRef } from 'react'
+const ProductSupportVideoGallery = ({ data, pim }) => {
+	const { structure } = data
 	const [content, setContent] = useState(null)
+	const [videos, setVideos] = useState(null)
+	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
+	const router = useRouter()
+	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		setContent(structure)
+
+		let newOrder = []
+		for (let i = 1; i < 4; i++)
+			newOrder = [
+				...newOrder,
+				...new Array(structure['row-' + i]?.value).fill(
+					structure['row-' + i]?.value
+				)
+			]
+		setNewsItemOrder(newOrder)
+
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				ref.current.scrollIntoView()
+			}, 1000)
+		}
 	}, [])
+
 	useEffect(() => {
-		const collection = []
-		const items = []
-		content?.list?.value.forEach((item, index) => {
-			items.push(item)
-			// console.log(content?.list?.value.length - 1 === index)
-			if (index % 3 === 2) {
-				collection.push(items)
-				items = []
-			} else if (
-				content?.list?.value.length - 1 === index &&
-				items.length < 3
-			) {
-				items.map(iframe => collection.push(iframe))
-			}
-		})
-		setGrid(collection)
-	}, [content])
+		setVideos(
+			pim?.assets
+				.filter(video => video.type_id === 5)
+				.map((video, index) => ({
+					...video,
+					col: newsItemOrder.length > index ? newsItemOrder[index] : 3
+				}))
+		)
+	}, [newsItemOrder])
+
 	return (
-		<section id={data?.name + data?.id}>
-			<div className='product_support_video_gallery container'>
-				<h2
-					className='title'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
-				<div className='row align-items-stretch videos'>
-					{grid.length > 0 &&
-						grid?.map((item, index) => {
-							if (item.length === 3)
-								return (
-									<>
-										<div key={index} className='col-12 col-md-8 py-3'>
-											<div className='video_container'>
-												<iframe
-													width='100%'
-													height='100%'
-													src={item[0]?.video?.value}
-													title='YouTube video player'
-													frameBorder='0'
-													allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-													allowFullScreen></iframe>
-											</div>
-										</div>
-										<div className='col-12 col-md-4 py-3'>
-											<div className='pb-3'>
-												<div className='video_container half mb-0'>
-													<iframe
-														width='100%'
-														height='100%'
-														src={item[1]?.video?.value}
-														title='YouTube video player'
-														frameBorder='0'
-														allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-														allowFullScreen></iframe>
-												</div>
-											</div>
-											<div className='pt-3'>
-												<div className='video_container half mb-0'>
-													<iframe
-														width='100%'
-														height='100%'
-														src={item[2]?.video?.value}
-														title='YouTube video player'
-														frameBorder='0'
-														allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-														allowFullScreen></iframe>
-												</div>
-											</div>
-										</div>
-									</>
-								)
-							else
-								return (
-									<div key={index} className='col-12 py-3'>
-										<div className='video_container full_size mb-0'>
-											<iframe
-												width='100%'
-												height='100%'
-												src={item?.video?.value}
-												title='YouTube video player'
-												frameBorder='0'
-												allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-												allowFullScreen></iframe>
-										</div>
-									</div>
-								)
-						})}
-				</div>
-				<div className='text-end mt-5'>
-					<p>{content?.list?.value.length} videos</p>
+		<section ref={ref} id={data?.name + data?.id}>
+			<div className='product_support_video_gallery'>
+				<h4 className='title'>{pim?.name} Video</h4>
+
+				<div className='videos'>
+					{videos &&
+						videos.length &&
+						videos.map((item, index) => (
+							<div key={index} className={`video_wrapper hold_${item?.col}`}>
+								<LandingVideoPlayer
+									data={{
+										name: 'LandingVideoPlayer',
+										id: 0,
+										structure: {
+											video: { value: item?.title },
+											videoType: { value: 'iframe' }
+										}
+									}}
+								/>
+								<div className='info'>
+									<p className='title'>{item?.title}</p>
+									<p className='caption'>{item?.caption}</p>
+								</div>
+							</div>
+						))}
 				</div>
 			</div>
 		</section>
