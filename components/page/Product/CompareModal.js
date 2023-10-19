@@ -70,7 +70,13 @@ function CompareModal({ route }) {
 						</button>
 
 						{productsId.length < 2 ? (
-							<button className='compare_btn' disabled={productsId.length < 2}>
+							<button
+								className='n-btn medium primary'
+								style={{
+									fontSize: '14px',
+									lineHeight: '17px'
+								}}
+								disabled={productsId.length < 2}>
 								COMPARE
 							</button>
 						) : (
@@ -80,7 +86,14 @@ function CompareModal({ route }) {
 										? `?productsId=${JSON.stringify(productsId)}`
 										: ''
 								}`}>
-								<a className='compare_btn'>COMPARE</a>
+								<a
+									className='n-btn medium primary'
+									style={{
+										fontSize: '14px',
+										lineHeight: '17px'
+									}}>
+									COMPARE
+								</a>
 							</Link>
 						)}
 					</div>

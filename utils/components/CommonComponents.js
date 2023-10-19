@@ -47,10 +47,10 @@ module.exports.CommonComponents = [
 		name: 'PromoBanner',
 		path: 'components/common/PromoBanner'
 	},
-	{
-		name: 'VelaroChatBox',
-		path: 'components/common/VelaroChatBox'
-	},
+	// {
+	// 	name: 'VelaroChatBox',
+	// 	path: 'components/common/VelaroChatBox'
+	// },
 	{
 		name: 'VideoOverBanner',
 		path: 'components/common/VideoOverBanner'
