@@ -22,7 +22,7 @@ const BreadCrumb = () => {
 				<a className='breadcrumb-item'>home</a>
 			</Link>
 			{routs.map((item, index) => (
-				<Link href={generateRoute(index)}>
+				<Link key={index} href={generateRoute(index)}>
 					<a className='breadcrumb-item'>{item}</a>
 				</Link>
 			))}

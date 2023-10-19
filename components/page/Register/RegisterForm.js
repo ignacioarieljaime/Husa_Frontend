@@ -395,6 +395,7 @@ function RegisterForm({ data }) {
 									  errors?.ModelNumber &&
 									  errors?.ModelNumber[0] +
 											' Please make sure you have selected a product model from the list.'}
+
 							</div>
 						</div>
 					) : null}
