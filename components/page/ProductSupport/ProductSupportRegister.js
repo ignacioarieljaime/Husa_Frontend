@@ -104,14 +104,14 @@ function ProductSupportRegister({ pim, data }) {
 				resetData()
 			} else {
 				setTickedSended(false)
-				toast.error("Register wasn't Successfully", {
+				toast.error('Registration wasn’t successful', {
 					toastId: 'ticket-error'
 				})
 			}
 			setLoading(false)
 		} catch (error) {
 			setTickedSended(false)
-			toast.error("Register wasn't Successfully", { toastId: 'ticket-error' })
+			toast.error('Registration wasn’t successful', { toastId: 'ticket-error' })
 			setLoading(false)
 			if (error?.response?.status === 422) {
 				setErrors(error?.response?.data?.errors)
