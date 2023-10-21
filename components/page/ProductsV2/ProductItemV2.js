@@ -26,6 +26,7 @@ const ProductItemV2 = ({ data }) => {
 			  }
 	)
 	const [showSizes, setShowSizes] = useState(false)
+	const [labelOff, setLabelOff] = useState(false)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 	let seriesTitle = data?.products[0]?.product?.customFields
 		?.find(item => item.type_name === 'Top Titles')
@@ -127,39 +128,62 @@ const ProductItemV2 = ({ data }) => {
 						<div
 							className={`screen_size_selector ${
 								showSizes ? 'show_sizes' : ''
-							}`}>
-							<div className='content'>
-								<div className='sizes'>
-									<ul className='size_list'>
-										{screenSize.map((item, index) => (
-											<li
-												key={index}
-												className={activeSizeIndex === index ? 'active' : ''}
-												onClick={() => {
-													setCurrentItem(item)
-													setActiveSizeIndex(index)
-												}}
-												style={{ width: 100 / screenSize.length + '%' }}>
-												{item?.value}
-											</li>
-										))}
-									</ul>
-									<span
-										style={{
-											width: 100 / screenSize.length + '%',
-											transform: 'translateX(' + activeSizeIndex * 100 + '%)'
-										}}
-										className='indicator'>
-										{currentItem?.value}
-									</span>
+							} ${screenSize.length > 5 ? 'dropdown_active' : ''}`}>
+							{screenSize.length > 5 ? (
+								<div className='content'>
+									<div
+										onClick={() => setShowSizes(prev => !prev)}
+										className='show_sizes_btn'>
+										<span className={`label ${labelOff ? 'mx-auto' : ''}`}>
+											{labelOff ? currentItem?.value : 'Select Screen Size'}
+										</span>
+										<FontAwesomeIcon icon={faChevronDown} size='sm' />
+									</div>
+									<div className='sizes'>
+										<ul className='size_list'>
+											{screenSize.map((item, index) => (
+												<li
+													key={index}
+													className={activeSizeIndex === index ? 'active' : ''}
+													onClick={() => {
+														setCurrentItem(item)
+														setActiveSizeIndex(index)
+														setLabelOff(true)
+													}}>
+													{item?.value}
+												</li>
+											))}
+										</ul>
+									</div>
 								</div>
-								<div
-									onClick={() => setShowSizes(true)}
-									className='show_sizes_btn'>
-									<span className='label'>Select Screen Size</span>
-									<FontAwesomeIcon icon={faChevronDown} size='sm' />
+							) : (
+								<div className='content'>
+									<div className='sizes'>
+										<ul className='size_list'>
+											{screenSize.map((item, index) => (
+												<li
+													key={index}
+													className={activeSizeIndex === index ? 'active' : ''}
+													onClick={() => {
+														setCurrentItem(item)
+														setActiveSizeIndex(index)
+													}}
+													style={{ width: 100 / screenSize.length + '%' }}>
+													{item?.value}
+												</li>
+											))}
+										</ul>
+										<span
+											style={{
+												width: 100 / screenSize.length + '%',
+												transform: 'translateX(' + activeSizeIndex * 100 + '%)'
+											}}
+											className='indicator'>
+											{currentItem?.value}
+										</span>
+									</div>
 								</div>
-							</div>
+							)}
 						</div>
 					)}
 					<div className='product_item_v2_content w-100'>
