@@ -12,7 +12,9 @@ const ProductsFilter = ({
 	setFilters,
 	total,
 	category,
-	showProductFilterCount
+	showProductFilterCount,
+	searchTerm,
+	setSearchTerm
 }) => {
 	let router = useRouter()
 	const [filterListData, setFilterListData] = useState([])
@@ -24,16 +26,20 @@ const ProductsFilter = ({
 
 	useEffect(() => {
 		if (router.query.filter) {
-			filterCounterHandler(JSON.parse(decodeURIComponent(router.query.filter)))
+			filterCounterHandler(
+				searchTerm && searchTerm.length
+					? JSON.parse(decodeURIComponent(router.query.filter)) + 1
+					: JSON.parse(decodeURIComponent(router.query.filter))
+			)
 		} else {
-			setFilterCounter(0)
+			setFilterCounter(searchTerm && searchTerm.length ? 1 : 0)
 		}
 		setFilters(
 			router.query.filter
 				? JSON.parse(decodeURIComponent(router.query.filter))
 				: []
 		)
-	}, [router.query.filter])
+	}, [router.query.filter, searchTerm])
 
 	useEffect(() => {
 		setFilterListData(filterList)
@@ -56,7 +62,8 @@ const ProductsFilter = ({
 					{
 						id: filterWrapperExisted.id,
 						type: _filterType,
-						values: [...filterWrapperExisted.values, _filter.title]
+						values: [...filterWrapperExisted.values, _filter.title],
+						keys: [...filterWrapperExisted.values, _filter.value]
 					}
 				]
 			} else {
@@ -74,7 +81,8 @@ const ProductsFilter = ({
 						{
 							id: filterWrapperExisted.id,
 							type: _filterType,
-							values: removeExitItem
+							values: removeExitItem,
+							keys: removeExitItem
 						}
 					]
 				}
@@ -83,12 +91,13 @@ const ProductsFilter = ({
 			_filtersBox.push({
 				id: _filter.filterId,
 				type: _filterType,
-				values: [_filter.title]
+				values: [_filter.title],
+				keys: [_filter.filter_value]
 			})
 		}
 		filterCounterHandler(_filtersBox)
 		setFilters(_filtersBox)
-		filterRequest(_filtersBox)
+		filterRequest(_filtersBox, searchTerm)
 
 		// if (_filtersBox.find(item => item.filter_name === _filter.title)) {
 		// _filtersBox = filters.filter(item => item.filter_name !== _filter.title)
@@ -105,14 +114,19 @@ const ProductsFilter = ({
 		_filters.forEach(filterItem => {
 			filtersItem.push(...filterItem.values)
 		})
-		setFilterCounter(filtersItem.length)
+		setFilterCounter(
+			searchTerm && searchTerm.length
+				? filtersItem.length + 1
+				: filtersItem.length
+		)
 	}
 
 	const checkboxClearHandler = () => {
 		setFilterCounter()
 		setCheckBoxCondition(!checkBoxCondition)
+		setSearchTerm('')
 		setFilters([])
-		filterRequest([])
+		filterRequest([], '')
 	}
 	return (
 		<aside className='mobile-filter-line w-100 pb-4'>
@@ -125,10 +139,10 @@ const ProductsFilter = ({
 								filterCounter > 0 ? 'primary text-white' : 'outline-primary'
 							} mb-md-8`}
 							onClick={checkboxClearHandler}>
-							Clear Filters
+							Clear Filters{'   '}
 							{filterCounter > 0 ? (
 								<>
-									<span className='ms-2'>( {filterCounter} )</span>
+									<span className='ms-2'>{filterCounter}</span>
 								</>
 							) : (
 								''
