@@ -49,7 +49,7 @@ const NewsSingleSlider = ({ data }) => {
 				className='news_single_slider'>
 				{structure?.list?.value.map((item, index) => (
 					<SplideSlide key={'slider-item-' + index}>
-						<div className={`slider_item`}>
+						<div className={`slider_item `}>
 							<CustomImage
 								src={item?.image?.src}
 								alt={item?.image?.alt}
@@ -57,6 +57,10 @@ const NewsSingleSlider = ({ data }) => {
 								wrapperWidth={'100%'}
 								className='background'
 							/>
+							<div
+								onClick={() => setImageUrl(imageUrl ? null : item?.image?.src)}
+								className='d-block w-100 h-100 position-absolute left-0 top-0'
+								style={{ zIndex: '2' }}></div>
 							<div className='buttons'>
 								<button
 									className='n-btn outline-white medium'
@@ -86,11 +90,6 @@ const NewsSingleSlider = ({ data }) => {
 									<span>{item?.downloadBtn?.title}</span> <DownloadIconV2 />
 								</a>
 							</div>
-							<Link href={item?.link?.value || '/'}>
-								<a
-									className='d-block w-100 h-100 position-absolute left-0 top-0'
-									style={{ zIndex: '2' }}></a>
-							</Link>
 
 							<h6>{item?.subtitle?.value}</h6>
 						</div>
