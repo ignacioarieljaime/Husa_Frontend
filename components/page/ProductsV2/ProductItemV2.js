@@ -124,68 +124,85 @@ const ProductItemV2 = ({ data }) => {
 						<h6 className='title'>{currentItem?.product?.name}</h6>
 					</div>
 
-					{screenSize && screenSize.length > 1 && (
-						<div
-							className={`screen_size_selector ${
-								showSizes ? 'show_sizes' : ''
-							} ${screenSize.length > 5 ? 'dropdown_active' : ''}`}>
-							{screenSize.length > 5 ? (
-								<div className='content'>
-									<div
-										onClick={() => setShowSizes(prev => !prev)}
-										className='show_sizes_btn'>
-										<span className={`label ${labelOff ? 'mx-auto' : ''}`}>
-											{labelOff ? currentItem?.value : 'Select Screen Size'}
-										</span>
-										<FontAwesomeIcon icon={faChevronDown} size='sm' />
+					<div className='serie_selector'>
+						{screenSize && screenSize.length > 1 && (
+							<div
+								className={`screen_size_selector ${
+									showSizes ? 'show_sizes' : ''
+								} ${screenSize.length > 5 ? 'dropdown_active' : ''}`}>
+								{screenSize.length > 5 ? (
+									<div className='content'>
+										<div
+											onClick={() => setShowSizes(prev => !prev)}
+											className='show_sizes_btn'>
+											<span
+												className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
+												{labelOff ? currentItem?.value : 'Select Screen Size'}
+											</span>
+											<FontAwesomeIcon icon={faChevronDown} size='sm' />
+										</div>
 									</div>
-									<div className='sizes'>
-										<ul className='size_list'>
-											{screenSize.map((item, index) => (
-												<li
-													key={index}
-													className={activeSizeIndex === index ? 'active' : ''}
-													onClick={() => {
-														setCurrentItem(item)
-														setActiveSizeIndex(index)
-														setLabelOff(true)
-													}}>
-													{item?.value}
-												</li>
-											))}
-										</ul>
+								) : (
+									<div className='content'>
+										<div className='sizes'>
+											<ul className='size_list'>
+												{screenSize.map((item, index) => (
+													<li
+														key={index}
+														className={
+															activeSizeIndex === index ? 'active' : ''
+														}
+														onClick={() => {
+															setCurrentItem(item)
+															setActiveSizeIndex(index)
+														}}
+														style={{ width: 100 / screenSize.length + '%' }}>
+														{item?.value}
+													</li>
+												))}
+											</ul>
+											<span
+												style={{
+													width: 100 / screenSize.length + '%',
+													transform:
+														'translateX(' + activeSizeIndex * 100 + '%)'
+												}}
+												className='indicator'>
+												{currentItem?.value}
+											</span>
+										</div>
 									</div>
-								</div>
-							) : (
-								<div className='content'>
-									<div className='sizes'>
-										<ul className='size_list'>
-											{screenSize.map((item, index) => (
-												<li
-													key={index}
-													className={activeSizeIndex === index ? 'active' : ''}
-													onClick={() => {
-														setCurrentItem(item)
-														setActiveSizeIndex(index)
-													}}
-													style={{ width: 100 / screenSize.length + '%' }}>
-													{item?.value}
-												</li>
-											))}
-										</ul>
-										<span
-											style={{
-												width: 100 / screenSize.length + '%',
-												transform: 'translateX(' + activeSizeIndex * 100 + '%)'
-											}}
-											className='indicator'>
-											{currentItem?.value}
-										</span>
-									</div>
-								</div>
-							)}
-						</div>
-					)}
+								)}
+							</div>
+						)}
+						{screenSize && screenSize.length > 5 && showSizes && (
+							<div className='sizes_dropdown'>
+								<ul className='size_list'>
+									{screenSize.map((item, index) => (
+										<li
+											key={index}
+											className={activeSizeIndex === index ? 'active' : ''}
+											onClick={() => {
+												setCurrentItem(item)
+												setActiveSizeIndex(index)
+												setLabelOff(true)
+												setShowSizes(false)
+											}}>
+											{item?.value}
+										</li>
+									))}
+									<span
+										style={{
+											transform: 'translateY(' + activeSizeIndex * 100 + '%)'
+										}}
+										className='indicator'>
+										{currentItem?.value}
+									</span>
+								</ul>
+							</div>
+						)}
+					</div>
+
 					<div className='product_item_v2_content w-100'>
 						<div className='w-100 product_item_v2_content'>
 							<div className='btns_gp d-flex justify-content-evenly justify-content-md-center flex-wrap gap-2 align-items-center px-4 px-md-0 mx-auto'>
