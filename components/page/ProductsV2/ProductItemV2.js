@@ -2,18 +2,32 @@ import React, { useEffect, useState } from 'react'
 
 import Link from 'next/link'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import {
+	faChevronDown,
+	faChevronRight
+} from '@fortawesome/free-solid-svg-icons'
 import { RouteHandler } from 'utils/routeHandler'
 import { useDispatch } from 'react-redux'
 import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 import { addNewCompare } from 'redux/slices/compare'
 import CustomImage from 'components/common/CustomImage'
+import { Data } from '@react-google-maps/api'
 
 const ProductItemV2 = ({ data }) => {
 	let { media, name, model, id } = data
 	const [currentItem, setCurrentItem] = useState(
-		data.id === 0 ? data.products.product : data.products[0].product
+		data.id === 0
+			? data.products
+			: {
+					...data.products[0],
+					size: data.products[0]?.value
+						? Number(data.products[0]?.value.replaceAll('"', ''))
+						: 0
+			  }
 	)
+	const [showSizes, setShowSizes] = useState(false)
+	const [labelOff, setLabelOff] = useState(false)
+	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 	let seriesTitle = data?.products[0]?.product?.customFields
 		?.find(item => item.type_name === 'Top Titles')
 		?.custom_fields.find(item => item.name === 'h2 Title')
@@ -22,6 +36,23 @@ const ProductItemV2 = ({ data }) => {
 
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [screenSize, setScreenSize] = useState(null)
+
+	useEffect(() => {
+		if (screenSize && screenSize.length) {
+			setCurrentItem(
+				screenSize.find(item => item?.id?.value == data?.id?.value)
+			)
+			setActiveSizeIndex(
+				screenSize.findIndex(item => item?.id?.value == data?.id?.value)
+			)
+			if (screenSize.length <= 5) {
+				setShowSizes(true)
+			} else {
+				setShowSizes(false)
+			}
+		}
+	}, [screenSize])
+
 	useEffect(() => {
 		if (Array.isArray(data?.products)) {
 			let addSizeToItem = data?.products.map(item => ({
@@ -30,10 +61,23 @@ const ProductItemV2 = ({ data }) => {
 			}))
 			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
 		}
-	}, [])
+	}, [data])
 
 	useEffect(() => {
-		setUrl(RouteHandler(currentItem.id, 'product'))
+		setCurrentItem(
+			data.id === 0
+				? data.products
+				: {
+						...data.products[0],
+						size: data.products[0]?.value
+							? Number(data.products[0]?.value.replaceAll('"', ''))
+							: 0
+				  }
+		)
+	}, [data])
+
+	useEffect(() => {
+		setUrl(RouteHandler(currentItem?.product?.id, 'product'))
 	}, [currentItem])
 
 	const dataLayerHandler = () => {
@@ -48,129 +92,6 @@ const ProductItemV2 = ({ data }) => {
 	}
 	return (
 		<>
-			{/* <div className='product-item-v2'>
-				<div className='text-center mb-10 w-100'>
-					<Link href={url ? url : '/'}>
-						<a>
-							{' '}
-							<CustomImage
-								wrapperWidth={'100%'}
-								wrapperHeight={'182px'}
-								style={{ maxHeight: '182px' }}
-								src={
-									currentItem?.image
-										? currentItem?.image
-										: currentItem?.media?.url
-								}
-								alt={
-									currentItem?.media?.caption
-										? currentItem?.media?.caption
-										: currentItem?.media?.title
-								}
-							/>
-						</a>
-					</Link>
-				</div>
-				<div className='product-item-v2-content flex-grow-1 d-flex flex-column justify-content-between'>
-					<div style={{ padding: '0 9px' }}>
-						<div className='mb-3'>{currentItem?.model}</div>
-						<p className='mb-4'>{currentItem.name}</p>
-					</div>
-
-					{screenSize && (
-						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center mb-4'>
-							{screenSize.map(
-								(item, index) =>
-									item.value && (
-										<button
-											style={{ height: '44px' }}
-											key={'type-item-' + index}
-											onClick={() => setCurrentItem(item.product)}
-											className={`n-btn outline-black ${
-												item.product.id === currentItem.id
-													? ' product-mini-link-active'
-													: ''
-											}`}>
-											{item.value}
-										</button>
-									)
-							)}
-						</div>
-					)}
-
-					<div>
-						<div className='d-flex flex-wrap justify-content-center  gap-2 align-items-center mb-4'>
-							<Link href={url ? url : '/'}>
-								<a
-									style={{ height: '52px' }}
-									className='n-btn d-flex justify-content-center align-items-center outline-black  '>
-									View Product
-								</a>
-							</Link>
-							<button
-								disabled={
-									currentItem?.buy_status === 'ChannelAdvisor' ||
-									currentItem?.buy_status === 'Internal'
-										? false
-										: true
-								}
-								onClick={() =>
-									currentItem?.buy_status === 'ChannelAdvisor' ||
-									currentItem?.buy_status === 'Internal'
-										? dataLayerHandler()
-										: {}
-								}
-								style={
-									currentItem?.retailer
-										? { cursor: 'pointer', height: '52px' }
-										: { height: '52px' }
-								}
-								className={`n-btn d-flex justify-content-center align-items-center ${
-									currentItem?.buy_status === 'ChannelAdvisor' ||
-									currentItem?.buy_status === 'Internal'
-										? 'primary-text '
-										: 'disabled_btn'
-								}`}>
-								{currentItem?.buy_status === 'ChannelAdvisor' ||
-								currentItem?.buy_status === 'Internal'
-									? 'Where To Buy'
-									: 'coming soon'}
-								<span>
-									<FontAwesomeIcon
-										icon={faChevronRight}
-										size={'sm'}
-										className='ms-2'
-									/>
-								</span>
-							</button>
-						</div>
-						{currentItem.customFields.some(field => field.type_id === 11) && (
-							<ul className='description'>
-								{currentItem.customFields
-									.find(field => field.type_id === 11)
-									.custom_fields.map(item => (
-										<li>{item?.value}</li>
-									))}
-							</ul>
-						)}
-						<div className='text-center'>
-							<button
-								onClick={() => dispatch(addNewCompare(currentItem))}
-								className='n-btn grey-text compare-btn ps-6 rounded-0'>
-								Add To Compare
-							</button>
-						</div>
-					</div>
-				</div>
-				<ModalChanelAdviser
-					product={currentItem}
-					productId={currentItem.id}
-					type={currentItem.buy_status}
-					condition={chanelAdviserHandler}
-					handler={setChanelAdviserHandler}
-					model={currentItem.model}
-				/>
-			</div> */}
 			<div className='product_item_v2'>
 				<div className='product_item_v2_content h-100'>
 					<div className='first_content w-100'>
@@ -180,46 +101,108 @@ const ProductItemV2 = ({ data }) => {
 									width={'100%'}
 									className={'image'}
 									src={
-										currentItem?.image
-											? currentItem?.image
-											: currentItem?.media?.url
+										currentItem?.product?.image
+											? currentItem?.product?.image
+											: currentItem?.product?.media?.url
 									}
 									alt={
-										currentItem?.media?.caption
-											? currentItem?.media?.caption
-											: currentItem?.media?.title
+										currentItem?.product?.media?.caption
+											? currentItem?.product?.media?.caption
+											: currentItem?.product?.media?.title
 									}
 								/>
 							</a>
 						</Link>
 
 						<div className='d-flex justify-content-between align-items-center w-100'>
-							<p className='model'>{currentItem?.model}</p>
-							{currentItem?.isNew ? <p className='new_item'>NEW</p> : null}
+							<p className='model'>{currentItem?.product?.model}</p>
+							{currentItem?.product?.isNew ? (
+								<p className='new_item'>NEW</p>
+							) : null}
 						</div>
 
-						<h6 className='title'>{currentItem.name}</h6>
+						<h6 className='title'>{currentItem?.product?.name}</h6>
 					</div>
 
-					{screenSize && (
-						<div className='d-flex justify-content-center flex-wrap gap-2 align-items-center'>
-							{screenSize.map(
-								(item, index) =>
-									item.value && (
-										<button
-											key={'type-item-' + index}
-											onClick={() => setCurrentItem(item.product)}
-											className={`n-btn outline-black size_btn p-2 px-4 py-md-4 px-md-6 ${
-												item.product.id === currentItem.id
-													? ' product-mini-link-active'
-													: ''
-											}`}>
-											{item.value}
-										</button>
-									)
-							)}
-						</div>
-					)}
+					<div className='serie_selector'>
+						{screenSize && screenSize.length > 1 && (
+							<div
+								className={`screen_size_selector ${
+									showSizes ? 'show_sizes' : ''
+								} ${screenSize.length > 5 ? 'dropdown_active' : ''}`}>
+								{screenSize.length > 5 ? (
+									<div className='content'>
+										<div
+											onClick={() => setShowSizes(prev => !prev)}
+											className='show_sizes_btn'>
+											<span
+												className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
+												{labelOff ? currentItem?.value : 'Select Screen Size'}
+											</span>
+											<FontAwesomeIcon icon={faChevronDown} size='sm' />
+										</div>
+									</div>
+								) : (
+									<div className='content'>
+										<div className='sizes'>
+											<ul className='size_list'>
+												{screenSize.map((item, index) => (
+													<li
+														key={index}
+														className={
+															activeSizeIndex === index ? 'active' : ''
+														}
+														onClick={() => {
+															setCurrentItem(item)
+															setActiveSizeIndex(index)
+														}}
+														style={{ width: 100 / screenSize.length + '%' }}>
+														{item?.value}
+													</li>
+												))}
+											</ul>
+											<span
+												style={{
+													width: 100 / screenSize.length + '%',
+													transform:
+														'translateX(' + activeSizeIndex * 100 + '%)'
+												}}
+												className='indicator'>
+												{currentItem?.value}
+											</span>
+										</div>
+									</div>
+								)}
+							</div>
+						)}
+						{screenSize && screenSize.length > 5 && showSizes && (
+							<div className='sizes_dropdown'>
+								<ul className='size_list'>
+									{screenSize.map((item, index) => (
+										<li
+											key={index}
+											className={activeSizeIndex === index ? 'active' : ''}
+											onClick={() => {
+												setCurrentItem(item)
+												setActiveSizeIndex(index)
+												setLabelOff(true)
+												setShowSizes(false)
+											}}>
+											{item?.value}
+										</li>
+									))}
+									<span
+										style={{
+											transform: 'translateY(' + activeSizeIndex * 100 + '%)'
+										}}
+										className='indicator'>
+										{currentItem?.value}
+									</span>
+								</ul>
+							</div>
+						)}
+					</div>
+
 					<div className='product_item_v2_content w-100'>
 						<div className='w-100 product_item_v2_content'>
 							<div className='btns_gp d-flex justify-content-evenly justify-content-md-center flex-wrap gap-2 align-items-center px-4 px-md-0 mx-auto'>
@@ -230,26 +213,28 @@ const ProductItemV2 = ({ data }) => {
 								</Link>
 								<button
 									disabled={
-										currentItem?.buy_status === 'ChannelAdvisor' ||
-										currentItem?.buy_status === 'Internal'
+										currentItem?.product?.buy_status === 'ChannelAdvisor' ||
+										currentItem?.product?.buy_status === 'Internal'
 											? false
 											: true
 									}
 									onClick={() =>
-										currentItem?.buy_status === 'ChannelAdvisor' ||
-										currentItem?.buy_status === 'Internal'
+										currentItem?.product?.buy_status === 'ChannelAdvisor' ||
+										currentItem?.product?.buy_status === 'Internal'
 											? dataLayerHandler()
 											: {}
 									}
-									style={currentItem?.retailer ? { cursor: 'pointer' } : {}}
+									style={
+										currentItem?.product?.retailer ? { cursor: 'pointer' } : {}
+									}
 									className={`n-btn d-flex justify-content-center align-items-center medium ${
-										currentItem?.buy_status === 'ChannelAdvisor' ||
-										currentItem?.buy_status === 'Internal'
+										currentItem?.product?.buy_status === 'ChannelAdvisor' ||
+										currentItem?.product?.buy_status === 'Internal'
 											? 'primary-text py-2 px-4'
-											: 'disabled_btn p-4'
+											: 'disabled_btn'
 									}`}>
-									{currentItem?.buy_status === 'ChannelAdvisor' ||
-									currentItem?.buy_status === 'Internal'
+									{currentItem?.product?.buy_status === 'ChannelAdvisor' ||
+									currentItem?.product?.buy_status === 'Internal'
 										? 'Where To Buy'
 										: 'coming soon'}
 									<span>
@@ -262,33 +247,38 @@ const ProductItemV2 = ({ data }) => {
 								</button>
 							</div>
 
-							{currentItem.customFields.some(field => field.type_id === 11) && (
-								<ul className='description'>
-									{currentItem.customFields
-										.find(field => field.type_id === 11)
-										.custom_fields.map(item => (
-											<li>{item?.value}</li>
-										))}
-								</ul>
-							)}
+							{currentItem?.product &&
+								currentItem?.product?.customFields &&
+								currentItem?.product?.customFields.length > 0 &&
+								currentItem?.product?.customFields.some(
+									field => field.type_id === 11
+								) && (
+									<ul className='description'>
+										{currentItem?.product.customFields
+											.find(field => field.type_id === 11)
+											.custom_fields.map(item => (
+												<li>{item?.value}</li>
+											))}
+									</ul>
+								)}
 						</div>
 
 						<div className='text-center'>
 							<button
-								onClick={() => dispatch(addNewCompare(currentItem))}
-								className='n-btn grey-text compare-btn'>
+								onClick={() => dispatch(addNewCompare(currentItem?.product))}
+								className='n-btn grey-text compare-btn text-uppercase'>
 								Add To Compare
 							</button>
 						</div>
 					</div>
 				</div>
 				<ModalChanelAdviser
-					product={currentItem}
-					productId={currentItem.id}
-					type={currentItem.buy_status}
+					product={currentItem?.product}
+					productId={currentItem?.product.id}
+					type={currentItem?.product.buy_status}
 					condition={chanelAdviserHandler}
 					handler={setChanelAdviserHandler}
-					model={currentItem.model}
+					model={currentItem?.product.model}
 				/>
 			</div>
 		</>
