@@ -94,11 +94,17 @@
 					height: 2px;
 					width: 0;
 					display: block;
-					background-color: #aef53b;
+					background: linear-gradient(to right, #aef53b 0%, #60e2b7 100%);
 					transition: all 0.3s ease-in;
 				}
 				&:hover::after {
 					width: 100%;
+				}
+				&.active {
+					font-weight: 500;
+					&::after {
+						width: 100%;
+					}
 				}
 			}
 		}
@@ -174,11 +180,17 @@
 					height: 2px;
 					width: 0;
 					display: block;
-					background-color: #aef53b;
+					background: linear-gradient(to right, #aef53b 0%, #60e2b7 100%);
 					transition: all 0.3s ease-in;
 				}
 				&:hover::after {
 					width: 100%;
+				}
+				&.active {
+					font-weight: 500;
+					&::after {
+						width: 100%;
+					}
 				}
 			}
 		}
