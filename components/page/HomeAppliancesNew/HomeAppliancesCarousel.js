@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import HomeAppliancesCarouselitem from './HomeAppliancesCarouselitem'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
-import { SwiperSlide, Swiper } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper'
+// import { Navigation } from 'swiper'
 // import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css'
-
+// import 'swiper/css/navigation'
+// import 'swiper/css'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
-	const [justify, setJustify] = useState('')
 
 	const windowSize = useWindowSize()
 
@@ -25,10 +21,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 
 	return (
 		<section>
-			<div
-				className={`ha_carousel text-center ${structure?.theme?.value} ${
-					structure?.list?.value.length > 4 ? 'extra_space_bottom' : ''
-				}`}>
+			<div className={`ha_carousel text-center ${structure?.theme?.value}`}>
 				{structure?.subtitle?.value && (
 					<div className='subtitle'>{structure?.subtitle?.value}</div>
 				)}
