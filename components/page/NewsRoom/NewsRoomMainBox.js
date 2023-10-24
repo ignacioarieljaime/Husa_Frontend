@@ -66,14 +66,6 @@ const NewsRoomMainBox = ({ data }) => {
 						? setFilters(_a)
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
-				resetFilters={() =>
-					setFilters({
-						page: 1,
-						product: null,
-						search: '',
-						year: null
-					})
-				}
 				title={structure?.title?.value}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
@@ -81,12 +73,12 @@ const NewsRoomMainBox = ({ data }) => {
 				categoryTitle={
 					structure?.product_category?.value
 						? structure?.product_category?.value
-						: 'Product Category'
+						: 'Product'
 				}
 				newsSearchTitle={
 					structure?.newsroom_search?.value
 						? structure?.newsroom_search?.value
-						: 'search newsroom'
+						: 'search Newsroom'
 				}
 			/>
 

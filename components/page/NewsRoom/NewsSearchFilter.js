@@ -102,7 +102,7 @@ const NewsSearchFilter = ({
 							overflow:
 								width < 1050 ? (!openFilter ? 'hidden' : 'unset') : 'unset'
 						}}>
-						<button
+						{/* <button
 							onClick={() => {
 								resetFilters()
 								setTempFilters({
@@ -115,7 +115,7 @@ const NewsSearchFilter = ({
 							}}
 							className='reset d-none d-lg_block'>
 							Reset Filters
-						</button>
+						</button> */}
 
 						<NewsSearchFilterItem
 							filterChangeHandler={filterChangeHandler}
@@ -130,7 +130,6 @@ const NewsSearchFilter = ({
 							title={categoryTitle}
 							data={filterData?.tags}
 							dataKey='product'
-							className={'product_select_box'}
 						/>
 
 						<div className='custom_input_box'>
@@ -141,7 +140,7 @@ const NewsSearchFilter = ({
 									placeholder={newsSearchTitle}
 									value={searchTerm}
 								/>
-								<MagnifierIcon />
+								<MagnifierIcon stroke={'#8C8F8F'} />
 							</div>
 						</div>
 						<div className='d-flex d-lg_none justify-content-center align-items-center gap-10'>

@@ -25,49 +25,34 @@ const NewsSearchFilterItem = ({
 					onClick={() => outside && setOpenDropdown(false)}
 					className='news_selectbox_backdrop'></div>
 			)}
-			<div ref={wrapper} className={`select_box_custom ${className || ''}`}>
+			<div
+				ref={wrapper}
+				className={`select_box_custom ${className || ''} ${
+					openDropdown ? 'open' : ''
+				}`}>
 				{/* <label>Model year</label> */}
 				<div>
 					<span onClick={() => setOpenDropdown(true)}>
-						<span>{tempFilters || <span className='label'>{title}</span>}</span>
-						{tempFilters ? (
-							<button
-								className='bg-transparent border-0 text-white'
-								onClick={() => {
-									filterChangeHandler(dataKey, null)
-									setOpenDropdown(false)
-								}}>
-								<FontAwesomeIcon icon={faXmark} />
-							</button>
-						) : (
-							<SelectBoxAngleArrow />
-						)}
+						<div className={'w-100'}>
+							{tempFilters || <div className='label'>{title}</div>}
+						</div>
+						<SelectBoxAngleArrow />
 					</span>
 					{openDropdown && (
 						<div>
 							<ul>
-								<li>
-									<button
-										className='clear'
-										onClick={() => {
-											filterChangeHandler(dataKey, null)
-											setOpenDropdown(false)
-										}}>
-										Clear
-										<FontAwesomeIcon icon={faXmark} size={'sm'} />
-									</button>
-								</li>
 								{data
 									?.sort((a, b) => b - a)
 									?.map(item => (
 										<li>
 											<button
+												className='checkbox'
+												// data-checked={}
 												onClick={() => {
 													filterChangeHandler(dataKey, item)
 													setOpenDropdown(false)
-												}}>
-												{item}
-											</button>
+												}}></button>
+											<span>{item}</span>
 										</li>
 									))}
 							</ul>

@@ -335,7 +335,7 @@
 			flex-direction: column;
 
 			@include mqm(1050) {
-				height: 86px;
+				height: 72px;
 				justify-content: space-between;
 				flex-direction: row;
 			}
@@ -442,23 +442,37 @@
 
 				.select_box_custom {
 					position: relative;
-					label {
-						color: #fff;
-						/* Overline */
-						font-size: 10px;
-						font-style: normal;
-						font-weight: 600;
-						line-height: 13.5px;
-						letter-spacing: 2px;
-						text-transform: uppercase;
-						text-align: center;
-						margin-bottom: 16px;
+					width: 200px;
+					@include mq(1050) {
 						width: 100%;
-						@include mqm(1050) {
-							display: none;
+					}
+					&.open {
+						> div {
+							> span {
+								border-radius: 10px 10px 0 0;
+								-webkit-border-radius: 10px 10px 0 0;
+								-moz-border-radius: 10px 10px 0 0;
+								-ms-border-radius: 10px 10px 0 0;
+								-o-border-radius: 10px 10px 0 0;
+								border-bottom: none;
+								svg {
+									transform: rotate(180deg);
+									-webkit-transform: rotate(180deg);
+									-moz-transform: rotate(180deg);
+									-ms-transform: rotate(180deg);
+									-o-transform: rotate(180deg);
+								}
+							}
 						}
 					}
-					@include mq(1050) {
+					.label {
+						color: #fff;
+						/* Overline */
+						font-size: 14px;
+						font-style: normal;
+						font-weight: 400;
+						line-height: 14px;
+						text-align: start;
 						width: 100%;
 					}
 
@@ -469,10 +483,10 @@
 							font-size: 16px;
 							line-height: 22px;
 							color: #ffffff;
-							padding: 18px 16px 14px;
+							padding: 13px 16px 11px;
 							gap: 32px;
 							min-width: 117.08px;
-							height: 54px;
+							height: 40px;
 							display: flex;
 							align-items: center;
 							justify-content: space-between;
@@ -485,14 +499,12 @@
 							@include mq(1050) {
 								padding: 14px 16px 14px;
 							}
-							.label {
-								color: #8c8f8f;
-								font-weight: 300;
+							svg {
+								transition: all 0.2s ease-in;
 							}
 						}
 						> div {
 							display: inline-block !important;
-							padding-top: 10px;
 							z-index: 1001;
 							position: absolute;
 							top: 100%;
@@ -500,61 +512,50 @@
 							width: 100%;
 							height: 100%;
 							ul {
-								padding: 0;
-								list-style: none;
+								overflow: hidden;
 								background-color: #232323;
-								border-radius: 10px;
-								-webkit-border-radius: 10px;
-								-moz-border-radius: 10px;
-								-ms-border-radius: 10px;
-								-o-border-radius: 10px;
+								padding: 0 16px;
+								list-style: none;
 								overflow: auto;
-								box-shadow: 0 10px 15px rgba($color: #000000, $alpha: 0.3);
+								border: 1px solid #ffffff;
+								border-top: none;
+								border-radius: 0 0 10px 10px;
+								-webkit-border-radius: 0 0 10px 10px;
+								-moz-border-radius: 0 0 10px 10px;
+								-ms-border-radius: 0 0 10px 10px;
+								-o-border-radius: 0 0 10px 10px;
+								// box-shadow: 0 10px 15px rgba($color: #000000, $alpha: 0.3);
 								max-height: 220px;
 
 								li {
-									button {
-										padding: 15px 20px;
+									display: flex;
+									justify-content: space-between;
+									align-items: center;
+									padding: 12px 0;
+									.checkbox {
 										background-color: transparent;
-										width: 100%;
-										text-align: left;
-										border: none;
+										width: 13px;
+										height: 13px;
+										border: 1px solid #fff;
 										color: #fff;
-										border-radius: 10px;
-										-webkit-border-radius: 10px;
-										-moz-border-radius: 10px;
-										-ms-border-radius: 10px;
-										-o-border-radius: 10px;
-
-										&.clear {
-											display: flex;
-											justify-content: space-between;
-											align-items: center;
-										}
-
-										&.active {
-											background-color: #00aaa6;
-											color: #fff;
-											&:hover {
-												background-color: #00aaa6;
-											}
-										}
-
-										&:hover {
-											background-color: #3b3b3b;
-										}
+										border-radius: 3px;
+										-webkit-border-radius: 3px;
+										-moz-border-radius: 3px;
+										-ms-border-radius: 3px;
+										-o-border-radius: 3px;
+									}
+									span {
+										color: #fff;
+										font-size: 14px;
+										font-weight: 400;
+										line-height: 14px;
 									}
 								}
 							}
 						}
 					}
 				}
-				.product_select_box {
-					width: 300px;
-					@include mq(1050) {
-						width: 100%;
-					}
-				}
+
 				.custom_input_box {
 					label {
 						color: #fff;
@@ -587,13 +588,10 @@
 							-moz-transform: translateY(-50%);
 							-ms-transform: translateY(-50%);
 							-o-transform: translateY(-50%);
-							path {
-								stroke: #ffffff;
-							}
 						}
 						input {
 							width: 300px;
-							height: 52px;
+							height: 40px;
 							border: 1px solid #ffffff;
 							border-radius: 1000px;
 							padding: 2px 50px 0 16px;
@@ -604,7 +602,7 @@
 
 							&::placeholder {
 								font-size: 14px;
-								color: #8c8f8f;
+								color: #fff;
 								font-weight: 300;
 							}
 
