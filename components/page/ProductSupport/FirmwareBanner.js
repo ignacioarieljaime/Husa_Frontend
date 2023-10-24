@@ -33,46 +33,19 @@ const FirmwareBanner = ({ data }) => {
 		if (model?.model?.title) getPageUrl(model?.model?.pid)
 	}, [model])
 	const getPageUrl = async _value => {
-		// this method called after getModel method
-		// this method send request to cxm to getting product url by product model
-		// because this method get us list of products we should find the specific model in the response
-		// and redirect to the final destination
-		try {
-			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/page/support/route/${_value}`
+		if (_value) {
+			router.push(
+				{
+					pathname: '/download-firmware/' + _value,
+					query: {
+						model: JSON.stringify(model?.files),
+						serialNumber: searchTerm
+					}
+				},
+				'/download-firmware/' + _value
 			)
-			if (response?.data?.route) {
-				router.push(
-					{
-						pathname: response?.data?.route,
-
-						query: {
-							model: JSON.stringify(model?.files),
-							serialNumber: searchTerm
-						}
-					},
-					response?.data?.route
-				)
-			}
-			setLoading(false)
-
-			// if (response?.data?.data && response?.data?.data.length > 0) {
-			// 	// response?.data?.data.forEach(
-			// 	// 	item =>
-			// 	// 		item.product.model === _value &&
-			// 	// 		router.push(
-			// 	// 			{
-			// 	// 				pathname: item.route,
-			// 	// 				query: { model: JSON.stringify(model?.files) }
-			// 	// 			},
-			// 	// 			item.route
-			// 	// 		)
-			// 	// )
-			// }
-		} catch (error) {
-			console.log(error)
-			setLoading(false)
 		}
+		setLoading(false)
 	}
 
 	const getModel = async (e, _searchTerm) => {
@@ -96,7 +69,7 @@ const FirmwareBanner = ({ data }) => {
 	}
 
 	return (
-		<section>
+		<section id={data?.name + data?.id}>
 			<div className='firmware_banner'>
 				<div className='background'>
 					<CustomImage
