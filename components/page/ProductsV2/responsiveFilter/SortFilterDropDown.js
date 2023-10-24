@@ -45,7 +45,7 @@ const SortFilterDropDown = ({
 			</div>
 			<div
 				style={{
-					height: !collapse ? dropdown?.current?.offsetHeight + 'px' : 0
+					height: !collapse ? dropdown?.current?.offsetHeight + 4 + 'px' : 0
 				}}
 				className='filter_list'>
 				<ul ref={dropdown}>
