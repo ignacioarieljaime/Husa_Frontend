@@ -64,6 +64,14 @@
 		.filter_shorcuts {
 			overflow-x: auto;
 			padding-bottom: 12px;
+			.buttons {
+				width: fit-content;
+				padding: 0 12px;
+				button,
+				span {
+					white-space: nowrap !important;
+				}
+			}
 		}
 	}
 
