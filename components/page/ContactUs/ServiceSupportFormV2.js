@@ -9,7 +9,6 @@ import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { GetCategoriesApi, GetSeriesModelsApi } from 'services/category'
 import RoleModal from './RoleModal'
-import { uploadToS3 } from 'services/s3'
 
 let warrantyOption = [
 	{ name: 'UNKNOWN', value: 'unknown' },
@@ -115,12 +114,18 @@ function ServiceSupportFormV2({ data, formHandler }) {
 	const uploadFile = async _file => {
 		setImageLoading(true)
 		setFile(_file)
+		const formData = new FormData()
+		formData.append('attachment', _file)
 
 		try {
-			const downlaodLink = await uploadToS3(_file)
-
-			if (downlaodLink) {
-				dataSchemaHandler('image', downlaodLink)
+			let response = await axios({
+				method: 'post',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
+				data: formData,
+				headers: { 'Content-Type': 'multipart/form-data' }
+			})
+			if (response.status === 200) {
+				dataSchemaHandler('image', response.data.view_link)
 				toast.success('image uploaded successfully')
 				setImageLoading(false)
 			}

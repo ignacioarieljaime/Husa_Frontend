@@ -274,12 +274,19 @@ function RegisterForm({ data }) {
 	const uploadFile = async e => {
 		setFile(e.target.files[0])
 		setImageLoading(true)
+		const formData = new FormData()
+		formData.append('attachment', e.target.files[0])
 
 		try {
-			const downlaodLink = await uploadToS3(e.target.files[0])
-			if (downlaodLink) {
+			let response = await axios({
+				method: 'post',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
+				data: formData,
+				headers: { 'Content-Type': 'multipart/form-data' }
+			})
+			if (response.status === 200) {
 				toast.success('image uploaded', { toastId: 'image-uploaded' })
-				dataSchemaHandler('receipt_image', downlaodLink)
+				dataSchemaHandler('receipt_image', response.data.view_link)
 			}
 			setImageLoading(false)
 		} catch (error) {

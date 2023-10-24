@@ -14,7 +14,6 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 import CustomImage from 'components/common/CustomImage'
-import { uploadToS3 } from 'services/s3'
 
 const ProductSupportRegisterTab = ({ pim, data }) => {
 	let { structure } = data
@@ -103,17 +102,23 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 	}
 
 	const uploadFile = async _file => {
+		const formData = new FormData()
 		setFile(_file)
+		formData.append('attachment', _file)
 		setImageLoading(true)
 
 		try {
-			const downlaodLink = await uploadToS3(_file)
-
-			if (downlaodLink) {
+			let response = await axios({
+				method: 'post',
+				url: process.env.NEXT_PUBLIC_ASSETS_API_ROUTE,
+				data: formData,
+				headers: { 'Content-Type': 'multipart/form-data' }
+			})
+			if (response.status === 200) {
 				toast.success('file uploaded')
-				dataSchemaHandler('receipt_image', downlaodLink)
+				dataSchemaHandler('receipt_image', response.data.view_link)
+				setImageLoading(false)
 			}
-			setImageLoading(false)
 		} catch (error) {
 			setImageLoading(false)
 			console.log(error)
