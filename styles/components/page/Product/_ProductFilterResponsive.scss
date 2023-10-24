@@ -1,19 +1,28 @@
 .product_filter_responsive_wrapper {
 	background: #f0f2f2;
 	overflow: hidden;
-	position: relative;
-	height: 60px;
+	position: sticky;
+	top: 0;
+	z-index: 1001;
+	height: 72px;
 	transition: all 0.3s ease-in;
 	-webkit-transition: all 0.3s ease-in;
 	-moz-transition: all 0.3s ease-in;
 	-ms-transition: all 0.3s ease-in;
 	-o-transition: all 0.3s ease-in;
-	span {
-		color: #000;
-		font-size: 16px;
-		font-weight: 500;
-		line-height: 21.6px; /* 135% */
-		letter-spacing: -0.32px;
+	.filter_nav {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		background: #f0f2f2;
+		height: 72px;
+		span {
+			color: #000;
+			font-size: 16px;
+			font-weight: 500;
+			line-height: 21.6px; /* 135% */
+			letter-spacing: -0.32px;
+		}
 	}
 	.buttons {
 		.n-btn {
@@ -46,11 +55,11 @@
 		}
 	}
 	&.open {
-		height: calc(100vh - 72px);
+		height: 100vh;
 		border-radius: 0 0 12px 12px;
 	}
 	&.shortcut {
-		height: 104px;
+		height: 116px;
 		border-radius: 0 0 12px 12px;
 		.filter_shorcuts {
 			overflow-x: auto;
