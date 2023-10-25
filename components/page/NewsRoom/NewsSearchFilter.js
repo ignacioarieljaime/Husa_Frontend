@@ -8,6 +8,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import NewsSearchFilterItem from './NewsSearchFilterItem'
+import FilterResponsive from './responsiveFilter/FilterResponsive'
 
 let years = []
 
@@ -31,7 +32,6 @@ const NewsSearchFilter = ({
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
 	const [tempFilters, setTempFilters] = useState({})
-	const windowSize = useWindowSize()
 	const target = useRef()
 
 	useEffect(() => {
@@ -64,7 +64,7 @@ const NewsSearchFilter = ({
 	}
 
 	function filterChangeHandler(_key, _value) {
-		if (windowSize[0] < 1050) {
+		if (width < 1050) {
 			setTempFilters({ ...tempFilters, [_key]: _value })
 		} else {
 			filterHandler(_key, _value, false)
@@ -82,91 +82,75 @@ const NewsSearchFilter = ({
 	}
 
 	return (
-		<div ref={target} className='news_room_search_filter'>
-			<div className=''>
-				<div className='content'>
-					<div className='filter_title'>
-						<span className='title'>{title}</span>
-						<button
-							className={!openFilter && 'close_button'}
-							onClick={() => setOpenFilter(state => !state)}>
-							Filters
-							<AngleArrow />
-						</button>
-					</div>
-					{news && <div className='results'>{news.length} Results</div>}
-
-					<div
-						className='filter_options'
-						style={{
-							height: width > 1050 ? 'fit-content' : openFilter ? '315px' : '0',
-							marginTop: width > 1050 ? '0' : openFilter ? '32px' : '0',
-							overflow:
-								width < 1050 ? (!openFilter ? 'hidden' : 'unset') : 'unset'
-						}}>
-						{/* <button
-							onClick={() => {
-								resetFilters()
-								setTempFilters({
-									page: 1,
-									product: null,
-									search: '',
-									year: null
-								})
-								setSearchTerm('')
-							}}
-							className='reset d-none d-lg_block'>
-							Reset Filters
-						</button> */}
-
-						<NewsSearchFilterItem
-							filterChangeHandler={filterChangeHandler}
-							tempFilters={tempFilters?.year}
-							title={yearTitle}
-							data={filterData?.years}
-							dataKey='year'
-						/>
-						<NewsSearchFilterItem
-							filterChangeHandler={filterChangeHandler}
-							tempFilters={tempFilters?.product}
-							title={categoryTitle}
-							data={filterData?.tags}
-							dataKey='product'
-						/>
-
-						<div className='custom_input_box'>
-							{/* <label>search archive</label> */}
-							<div>
-								<input
-									onChange={e => setSearchTerm(e.target.value)}
-									placeholder={newsSearchTitle}
-									value={searchTerm}
-								/>
-								<MagnifierIcon stroke={'#8C8F8F'} />
-							</div>
-						</div>
-						<div className='d-flex d-lg_none justify-content-center align-items-center gap-10'>
+		<div className='newsroom_search'>
+			<div ref={target} className='news_room_search_filter'>
+				<div className=''>
+					<div className='content'>
+						<div className='filter_title'>
+							<span className='title'>{title}</span>
 							<button
-								onClick={() => {
-									resetFilters()
-									setTempFilters({
-										page: 1,
-										product: null,
-										search: '',
-										year: null
-									})
-									setSearchTerm('')
-								}}
-								className='reset'>
-								Reset Filter
-							</button>
-							<button onClick={confirmChanges} className='n-btn white medium'>
-								Confirm
+								className={!openFilter && 'close_button'}
+								onClick={() => setOpenFilter(state => !state)}>
+								Filters
+								<AngleArrow />
 							</button>
 						</div>
+						{news && <div className='results'>{news.length} Results</div>}
+
+						{width >= 768 && (
+							<div
+								className='filter_options'
+								style={{
+									height:
+										width > 1050 ? 'fit-content' : openFilter ? '315px' : '0',
+									marginTop: width > 1050 ? '0' : openFilter ? '32px' : '0',
+									overflow:
+										width < 1050 ? (!openFilter ? 'hidden' : 'unset') : 'unset'
+								}}>
+								<NewsSearchFilterItem
+									filterChangeHandler={filterChangeHandler}
+									tempFilters={tempFilters?.year}
+									title={yearTitle}
+									data={filterData?.years}
+									dataKey='year'
+								/>
+								<NewsSearchFilterItem
+									filterChangeHandler={filterChangeHandler}
+									tempFilters={tempFilters?.product}
+									title={categoryTitle}
+									data={filterData?.tags}
+									dataKey='product'
+								/>
+
+								<div className='custom_input_box'>
+									{/* <label>search archive</label> */}
+									<div>
+										<input
+											onChange={e => setSearchTerm(e.target.value)}
+											placeholder={newsSearchTitle}
+											value={searchTerm}
+										/>
+										<MagnifierIcon stroke={'#8C8F8F'} />
+									</div>
+								</div>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
+			{width < 768 && (
+				<FilterResponsive
+					filters={filters}
+					allFilters={filterData}
+					yearTitle={yearTitle}
+					categoryTitle={categoryTitle}
+					newsSearchTitle={newsSearchTitle}
+					filterHandler={filterHandler}
+					news={news}
+					onSearch={_v => setSearchTerm(_v)}
+					searchTerm={searchTerm}
+				/>
+			)}
 		</div>
 	)
 }

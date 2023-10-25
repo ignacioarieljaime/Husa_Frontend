@@ -19,8 +19,8 @@ const NewsRoomMainBox = ({ data }) => {
 	const [pagination, setPagination] = useState()
 	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
 	const [filters, setFilters] = useState({
-		year: '',
-		product: '',
+		year: [],
+		product: [],
 		search: '',
 		page: 1
 	})
