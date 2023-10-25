@@ -1,8 +1,8 @@
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SelectBoxAngleArrow from 'components/icons/SelectBoxAngleArrow'
 import useOutsideClick from 'hooks/useOutsideClick'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
 
@@ -15,8 +15,23 @@ const NewsSearchFilterItem = ({
 	className
 }) => {
 	const [openDropdown, setOpenDropdown] = useState(false)
+	const [filter, setFilter] = useState([])
 	const wrapper = useRef()
 	const outside = useOutsideClick(wrapper)
+
+	function onFilterChange(_item) {
+		let temp = filter
+		if (filter && filter.includes(_item)) {
+			temp.splice(temp.indexOf(_item), 1)
+		} else {
+			temp.push(_item)
+		}
+		setFilter(temp)
+	}
+
+	useEffect(() => {
+		filterChangeHandler(dataKey, filter)
+	}, [filter])
 
 	return (
 		<>
@@ -33,8 +48,9 @@ const NewsSearchFilterItem = ({
 				{/* <label>Model year</label> */}
 				<div>
 					<span onClick={() => setOpenDropdown(true)}>
-						<div className={'w-100'}>
-							{tempFilters || <div className='label'>{title}</div>}
+						<div className='dropdown_label'>
+							{(tempFilters && tempFilters.length && tempFilters.join(', ')) ||
+								title}
 						</div>
 						<SelectBoxAngleArrow />
 					</span>
@@ -43,15 +59,20 @@ const NewsSearchFilterItem = ({
 							<ul>
 								{data
 									?.sort((a, b) => b - a)
-									?.map(item => (
-										<li>
+									?.map((item, index) => (
+										<li key={index}>
 											<button
-												className='checkbox'
-												// data-checked={}
+												className={`checkbox ${
+													filter.includes(item) ? 'checked' : ''
+												}`}
 												onClick={() => {
-													filterChangeHandler(dataKey, item)
+													onFilterChange(item)
 													setOpenDropdown(false)
-												}}></button>
+												}}>
+												{filter.includes(item) && (
+													<FontAwesomeIcon icon={faCheck} size='2xs' />
+												)}
+											</button>
 											<span>{item}</span>
 										</li>
 									))}

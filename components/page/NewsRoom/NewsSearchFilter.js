@@ -22,7 +22,8 @@ const NewsSearchFilter = ({
 	categoryTitle,
 	newsSearchTitle,
 	filterHandler,
-	resetFilters
+	resetFilters,
+	news
 }) => {
 	const [openFilter, setOpenFilter] = useState(false)
 	const [width] = useWindowSize()
@@ -93,6 +94,7 @@ const NewsSearchFilter = ({
 							<AngleArrow />
 						</button>
 					</div>
+					{news && <div className='results'>{news.length} Results</div>}
 
 					<div
 						className='filter_options'

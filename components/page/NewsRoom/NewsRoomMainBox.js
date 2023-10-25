@@ -25,7 +25,7 @@ const NewsRoomMainBox = ({ data }) => {
 		page: 1
 	})
 	useEffect(() => {
-		if (filters?.product || filters?.search || filters?.year) {
+		if (filters?.product.length || filters?.search || filters?.year.length) {
 			getNews()
 		} else {
 			setNews(null)
@@ -80,6 +80,7 @@ const NewsRoomMainBox = ({ data }) => {
 						? structure?.newsroom_search?.value
 						: 'search Newsroom'
 				}
+				news={news}
 			/>
 
 			<div className='news_room_news_box'>
