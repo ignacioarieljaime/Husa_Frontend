@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
-const useOutsideClick = ref => {
+const useOutsideClick = (ref, callbackFn) => {
 	const [isClickedOutside, setIsClickedOutside] = useState(false)
 	useEffect(() => {
 		const handleClickOutside = event => {
 			if (ref.current && !ref.current.contains(event.target)) {
+				callbackFn && callbackFn()
 				setIsClickedOutside(true)
 			}
 		}
@@ -16,11 +17,13 @@ const useOutsideClick = ref => {
 }
 
 useOutsideClick.propTypes = {
-	ref: PropTypes.func
+	ref: PropTypes.func,
+	callbackFn: PropTypes.func
 }
 
 useOutsideClick.defaultProps = {
-	ref: () => {}
+	ref: () => {},
+	callbackFn: () => {}
 }
 
 export default useOutsideClick
