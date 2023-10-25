@@ -35,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');`
 					}}></script>
 			</Head>
-			<body>
+			<body id='main_body'>
 				{' '}
 				<Main />
 				<NextScript />
