@@ -12,12 +12,17 @@ const FilterDropDown = props => {
 		content_type,
 		filterController,
 		allFilters,
-		dropdownStatus
+		selectedFilter,
+		filterCounter,
+		category,
+		showProductFilterCount,
+		modalIsOpen
 	} = props
 	const router = useRouter()
 	const dropdown = useRef()
 	const [filterList, setFilterList] = useState([])
 	const [collapse, setCollapsed] = useState(true)
+	const [height, setHeight] = useState(0)
 
 	const filterHandler = _filterValue => {
 		filterController(
@@ -26,22 +31,20 @@ const FilterDropDown = props => {
 			content_type
 		)
 	}
-
 	useEffect(() => {
-		if (router?.query?.filter) {
-			let filter = JSON.parse(decodeURIComponent(router.query.filter))
-			if (filter.find(item => item.id === content_record_id))
-				return setCollapsed(false)
-			setCollapsed(true)
-		} else {
-			setCollapsed(true)
-		}
-	}, [router?.query?.filter, filter_values, allFilters])
+		if (!modalIsOpen) setCollapsed(true)
+	}, [modalIsOpen])
 
-	useEffect(() => {
-		if (dropdownStatus === id) setTimeout(() => setCollapsed(false), 600)
-		return () => setCollapsed(true)
-	}, [dropdownStatus, dropdown?.current?.offsetHeight])
+	// useEffect(() => {
+	// 	if (router?.query?.filter) {
+	// 		let filter = JSON.parse(decodeURIComponent(router.query.filter))
+	// 		if (filter.find(item => item.id === content_record_id))
+	// 			return setCollapsed(false)
+	// 		setCollapsed(true)
+	// 	} else {
+	// 		setCollapsed(true)
+	// 	}
+	// }, [router?.query?.filter, filter_values, allFilters])
 
 	useEffect(() => {
 		if (name === 'CHANNELS' && filter_values[1]?.title.includes(' CH')) {
@@ -62,6 +65,22 @@ const FilterDropDown = props => {
 		}
 	}, [router?.query?.filter, filter_values])
 
+	useEffect(() => {
+		if (!collapse) {
+			setTimeout(() => {
+				setHeight(dropdown?.current?.offsetHeight + 16)
+			}, 200)
+		} else {
+			setHeight(0)
+		}
+	}, [
+		router?.query?.filter,
+		allFilters,
+		selectedFilter,
+		collapse,
+		filterCounter
+	])
+
 	const checkedHandler = _title => {
 		if (router?.query?.filter) {
 			let filter = JSON.parse(decodeURIComponent(router.query.filter))
@@ -77,28 +96,33 @@ const FilterDropDown = props => {
 			<div
 				onClick={() => setCollapsed(state => !state)}
 				className={`name_button ${!collapse && 'drop_down_is_open'}`}>
-				<h6>{name}</h6>
+				<h6>{name.toLowerCase()}</h6>
 				<AngleArrow />
 			</div>
-			<div
-				style={{
-					height: !collapse ? dropdown?.current?.offsetHeight + 'px' : 0
-				}}
-				className='filter_list'>
-				<ul ref={dropdown}>
-					{filterList?.map(
-						filter =>
-							filter?.title && (
-								<FilterDropDownItem
-									{...filter}
-									isChecked={checkedHandler(filter?.title)}
-									filterHandler={filterHandler}
-									allFilters={allFilters}
-								/>
-							)
-					)}
-				</ul>
-			</div>
+			{filterList && filterList.length ? (
+				<div
+					style={{
+						height: height + 'px'
+					}}
+					className='filter_list'>
+					<ul ref={dropdown}>
+						{filterList?.map(
+							filter =>
+								filter?.title && (
+									<FilterDropDownItem
+										{...filter}
+										square
+										category={category}
+										isChecked={checkedHandler(filter?.title)}
+										filterHandler={filterHandler}
+										showProductFilterCount={showProductFilterCount}
+										allFilters={allFilters}
+									/>
+								)
+						)}
+					</ul>
+				</div>
+			) : null}
 		</div>
 	)
 }

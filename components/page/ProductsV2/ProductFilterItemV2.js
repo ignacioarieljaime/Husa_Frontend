@@ -43,6 +43,7 @@ function ProductFilterItemV2({
 		<li>
 			<div className='d-flex gap-4'>
 				<CustomCheckBox
+					square
 					checked={checkBoxCondition}
 					onClick={e => {
 						setCheckBoxCondition(!checkBoxCondition)

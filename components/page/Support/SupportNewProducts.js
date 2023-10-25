@@ -97,7 +97,7 @@ const SupportNewProducts = ({ data }) => {
 		}
 	}
 	return (
-		<section>
+		<section id={data.name + data.id}>
 			<div className='support-products'>
 				<h3 className='section-title container-fluid'>
 					Select a product category to get started.

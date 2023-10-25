@@ -54,7 +54,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`
 					}}></noscript>
 				{/* <!-- Start of CicadaChat Livechat Script --> */}
-				<script
+				{/* <script
 					type='text/javascript'
 					dangerouslySetInnerHTML={{
 						__html: `
@@ -70,7 +70,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe>`
 					h.parentNode.insertBefore(j, h);
 				  })(window, document, 'script', 'https://hisense.livechat.prod.cicadaspeech.net/install', getSourceId());
 					`
-					}}></script>
+					}}></script> */}
 			</body>
 		</Html>
 	)

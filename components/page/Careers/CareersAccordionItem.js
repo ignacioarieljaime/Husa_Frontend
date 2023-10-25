@@ -13,7 +13,7 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import CareersAccordionItemSublist from './CareersAccordionItemSublist'
 
-const CareersAccordionItem = ({ data }) => {
+const CareersAccordionItem = ({ data, singleItem }) => {
 	const [collapsed, setCollapsed] = useState(true)
 	const windowSize = useWindowSize()
 	const accordionContent = useRef()
@@ -54,6 +54,7 @@ const CareersAccordionItem = ({ data }) => {
 						<CareersAccordionItemSublist
 							key={index}
 							data={item}
+							singleItem={singleItem}
 							collapsed={collapsed}
 						/>
 					))}

@@ -45,9 +45,9 @@ export async function GetProductsListNewApi(
 	_subCategoryId,
 	_filter,
 	_sort,
+	_search,
 	signal
 ) {
-	console.log(_subCategoryId)
 	let filter =
 		_filter && _filter.length !== 0
 			? `&filters=${encodeURIComponent(JSON.stringify(_filter))}`
@@ -59,6 +59,7 @@ export async function GetProductsListNewApi(
 		}/productsIndex?category_id=${_categoryId}${filter}${
 			_sort ? _sort : ''
 		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}
+		${_search ? `&search=${_search}` : ''}
 		${_subCategoryId ? `&subcategory_id=${_subCategoryId}` : ''}
 		`,
 		{ signal }

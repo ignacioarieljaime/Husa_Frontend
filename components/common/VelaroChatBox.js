@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react'
 
 export default function VelaroChatBox() {
 	return (
-		<>
-			<Script id='chat-script' strategy='afterInteractive'>
-				{`function getSourceId() {
+		<Script id='chat-script' strategy='afterInteractive'>
+			{`function getSourceId() {
 						var sourceId = 'SID20230811P001'
 						return sourceId
 					}
@@ -32,7 +31,6 @@ export default function VelaroChatBox() {
 						'https://hisense.livechat.prod.cicadaspeech.net/install',
 						getSourceId()
 					)`}
-			</Script>
-		</>
+		</Script>
 	)
 }
