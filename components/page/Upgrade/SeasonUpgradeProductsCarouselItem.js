@@ -127,6 +127,16 @@ const SeasonUpgradeProductsCarouselItem = ({
 							{product?.isNew || version === 'v2' ? 'NEW' : ''}
 						</span>
 					</div>
+					{showSizes && series && series.length > 5 && (
+						<div
+							onClick={() => outSide && setShowSizes(false)}
+							className='dropdown-select-box-backdrop'
+							style={{
+								transform: 'translate(-50%,-50%)',
+								width: '200vw',
+								height: '200vh'
+							}}></div>
+					)}
 					<div ref={boxRef} className='serie_selector'>
 						{series && series.length > 1 && (
 							<div
