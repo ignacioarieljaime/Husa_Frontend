@@ -164,7 +164,6 @@ const FilterResponsive = ({
 									(_k === 'search'
 										? filters[_k].length && (
 												<button
-													key={index}
 													style={{ padding: '8px 16px 6px' }}
 													className='d-flex gap-2 n-btn outline-black bg-transparent'
 													onClick={() => {

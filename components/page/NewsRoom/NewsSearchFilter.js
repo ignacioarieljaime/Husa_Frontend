@@ -23,7 +23,6 @@ const NewsSearchFilter = ({
 	categoryTitle,
 	newsSearchTitle,
 	filterHandler,
-	resetFilters,
 	news
 }) => {
 	const [openFilter, setOpenFilter] = useState(false)
@@ -31,7 +30,6 @@ const NewsSearchFilter = ({
 	const [timer, setTimer] = useState(null)
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
-	const [tempFilters, setTempFilters] = useState({})
 	const target = useRef()
 
 	useEffect(() => {
@@ -39,14 +37,10 @@ const NewsSearchFilter = ({
 	}, [])
 
 	useEffect(() => {
-		setTempFilters(filters)
-	}, [filters])
-
-	useEffect(() => {
 		clearTimeout(timer)
 
 		const newTimer = setTimeout(() => {
-			filterChangeHandler('search', searchTerm)
+			filterHandler('search', searchTerm, false)
 		}, 500)
 
 		setTimer(newTimer)
@@ -63,23 +57,15 @@ const NewsSearchFilter = ({
 		}
 	}
 
-	function filterChangeHandler(_key, _value) {
-		if (width < 1050) {
-			setTempFilters({ ...tempFilters, [_key]: _value })
-		} else {
-			filterHandler(_key, _value, false)
-		}
-	}
-
-	function confirmChanges() {
-		filterHandler('', '', { ...tempFilters, page: 1 })
-		setOpenFilter(false)
-		setTimeout(() => {
-			window.scrollTo({
-				top: target.current.scrollHeight + 250
-			})
-		}, 500)
-	}
+	// function confirmChanges() {
+	// 	filterHandler('', '', { ...tempFilters, page: 1 })
+	// 	setOpenFilter(false)
+	// 	setTimeout(() => {
+	// 		window.scrollTo({
+	// 			top: target.current.scrollHeight + 250
+	// 		})
+	// 	}, 500)
+	// }
 
 	return (
 		<div className='newsroom_search'>
@@ -88,35 +74,21 @@ const NewsSearchFilter = ({
 					<div className='content'>
 						<div className='filter_title'>
 							<span className='title'>{title}</span>
-							<button
-								className={!openFilter && 'close_button'}
-								onClick={() => setOpenFilter(state => !state)}>
-								Filters
-								<AngleArrow />
-							</button>
 						</div>
 						{news && <div className='results'>{news.length} Results</div>}
 
 						{width >= 768 && (
-							<div
-								className='filter_options'
-								style={{
-									height:
-										width > 1050 ? 'fit-content' : openFilter ? '315px' : '0',
-									marginTop: width > 1050 ? '0' : openFilter ? '32px' : '0',
-									overflow:
-										width < 1050 ? (!openFilter ? 'hidden' : 'unset') : 'unset'
-								}}>
+							<div className='filter_options'>
 								<NewsSearchFilterItem
-									filterChangeHandler={filterChangeHandler}
-									tempFilters={tempFilters?.year}
+									filterChangeHandler={filterHandler}
+									filters={filters?.year}
 									title={yearTitle}
 									data={filterData?.years}
 									dataKey='year'
 								/>
 								<NewsSearchFilterItem
-									filterChangeHandler={filterChangeHandler}
-									tempFilters={tempFilters?.product}
+									filterChangeHandler={filterHandler}
+									filters={filters?.product}
 									title={categoryTitle}
 									data={filterData?.tags}
 									dataKey='product'

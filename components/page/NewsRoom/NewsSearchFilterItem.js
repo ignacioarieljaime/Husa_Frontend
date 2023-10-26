@@ -7,7 +7,7 @@ import { useRef } from 'react'
 import { useState } from 'react'
 
 const NewsSearchFilterItem = ({
-	tempFilters,
+	filters,
 	title,
 	filterChangeHandler,
 	data,
@@ -15,22 +15,20 @@ const NewsSearchFilterItem = ({
 	className
 }) => {
 	const [openDropdown, setOpenDropdown] = useState(false)
-	const [filter, setFilter] = useState([])
+	const [filter, setFilter] = useState(filters)
 	const wrapper = useRef()
 	const outside = useOutsideClick(wrapper)
 
-	function onFilterChange(_item) {
-		let temp = filter
-		if (filter && filter.includes(_item)) {
+	const onFilterChange = _item => {
+		let temp = [...filter]
+		if (temp && temp.length && temp.includes(_item))
 			temp.splice(temp.indexOf(_item), 1)
-		} else {
-			temp.push(_item)
-		}
+		else temp.push(_item)
 		setFilter(temp)
 	}
 
 	useEffect(() => {
-		filterChangeHandler(dataKey, filter)
+		filterChangeHandler(dataKey, filter, false)
 	}, [filter])
 
 	return (
@@ -49,8 +47,7 @@ const NewsSearchFilterItem = ({
 				<div>
 					<span onClick={() => setOpenDropdown(true)}>
 						<div className='dropdown_label'>
-							{(tempFilters && tempFilters.length && tempFilters.join(', ')) ||
-								title}
+							{(filters && filters.length && filters.join(', ')) || title}
 						</div>
 						<SelectBoxAngleArrow />
 					</span>
@@ -63,15 +60,20 @@ const NewsSearchFilterItem = ({
 										<li key={index}>
 											<button
 												className={`checkbox ${
-													filter.includes(item) ? 'checked' : ''
+													filter && filter.length
+														? filter.includes(item)
+															? 'checked'
+															: ''
+														: null
 												}`}
 												onClick={() => {
 													onFilterChange(item)
-													setOpenDropdown(false)
 												}}>
-												{filter.includes(item) && (
-													<FontAwesomeIcon icon={faCheck} size='2xs' />
-												)}
+												{filter && filter.length
+													? filter.includes(item) && (
+															<FontAwesomeIcon icon={faCheck} size='2xs' />
+													  )
+													: null}
 											</button>
 											<span>{item}</span>
 										</li>

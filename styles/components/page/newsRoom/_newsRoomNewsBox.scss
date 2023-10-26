@@ -331,26 +331,16 @@
 			}
 			> div {
 				display: flex;
+				height: 72px;
 				align-items: center;
-				flex-direction: column;
-
-				@include mqm(1050) {
-					height: 72px;
-					justify-content: space-between;
-					flex-direction: row;
-				}
+				justify-content: space-between;
+				flex-direction: row;
 
 				@include mq(1050) {
 					padding: 40px 0 32px;
 				}
 
 				.filter_title {
-					@include mq(1050) {
-						width: 100%;
-						display: flex;
-						align-items: center;
-						justify-content: space-between;
-					}
 					> span {
 						font-style: normal;
 						font-weight: 400;
@@ -375,9 +365,6 @@
 						color: #ffffff;
 						gap: 10px;
 						padding: 0;
-						@include mqm(1050) {
-							display: none;
-						}
 
 						&.close_button {
 							margin: 0;
@@ -412,6 +399,9 @@
 					margin: 0 auto 0 16px;
 				}
 				.filter_options {
+					height: fit-content;
+					margin-top: 0;
+					overflow: unset;
 					display: flex;
 					align-items: center;
 					gap: 16px;
@@ -422,16 +412,6 @@
 					-o-transition: all 0.3s;
 					@include mq(1150) {
 						gap: 8px;
-					}
-					@include mq(1050) {
-						gap: 16px;
-					}
-
-					@include mq(1050) {
-						flex-direction: column;
-						gap: 32px;
-						// overflow: hidden;
-						width: 100%;
 					}
 					.reset {
 						font-size: 10px;
@@ -452,8 +432,8 @@
 					.select_box_custom {
 						position: relative;
 						width: 200px;
-						@include mq(1050) {
-							width: 100%;
+						@include mq(991) {
+							width: 150px;
 						}
 						&.open {
 							> div {
@@ -578,13 +558,8 @@
 							text-align: center;
 							margin-bottom: 16px;
 							width: 100%;
-							@include mqm(1050) {
-								display: none;
-							}
 						}
-						@include mq(1050) {
-							width: 100%;
-						}
+
 						> div {
 							position: relative;
 
@@ -615,14 +590,11 @@
 									font-weight: 300;
 								}
 
-								@include mq(1050) {
-									padding: 2px 50px 3px 16px;
-
-									width: 100%;
-								}
-
 								&:focus {
 									background-color: transparent !important;
+								}
+								@include mq(991) {
+									width: 200px;
 								}
 							}
 						}
@@ -640,10 +612,6 @@
 						font-weight: 400;
 						font-size: 10px;
 						color: #ffffff;
-
-						@include mqm(1050) {
-							display: none;
-						}
 					}
 				}
 			}
