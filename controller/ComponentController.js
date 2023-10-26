@@ -32,6 +32,17 @@ function Index${_page.id}({pim,data}) {
 		setTimeout(() => {
 			window.scrollTo(0, 0)
 		}, 500)
+		if (
+			data?.widgets &&
+			!data?.widgets.some(c => c.name === 'VelaroChatBox') &&
+			document.getElementsByClassName('rocketchat-widget').length
+		) {
+			document
+				.getElementsByClassName('rocketchat-widget')[0]
+				.parentNode.removeChild(
+					document.getElementsByClassName('rocketchat-widget')[0]
+				)
+		}
 	}, [])
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>
@@ -288,8 +299,27 @@ import componentGenerator from 'hooks/componentGenerator';
 import CustomImage from "components/common/CustomImage";
 import Logo from "components/icons/Logo";
 import { MouseParallaxChild, MouseParallaxContainer } from 'react-parallax-mouse'
+import  {  useEffect } from 'react'
 
 function Preview({pim,data}) {
+
+	useEffect(() => {
+		setTimeout(() => {
+			window.scrollTo(0, 0)
+		}, 500)
+		if (
+			data?.widgets &&
+			!data?.widgets.some(c => c.name === 'VelaroChatBox') &&
+			document.getElementsByClassName('rocketchat-widget').length
+		) {
+			document
+				.getElementsByClassName('rocketchat-widget')[0]
+				.parentNode.removeChild(
+					document.getElementsByClassName('rocketchat-widget')[0]
+				)
+		}
+	}, [])
+
 return (
 	<Layout header={data?.widgets && data?.widgets[0]?.name === "Header"} title={data?.title} meta={data?.meta}>
       	<section>
@@ -413,6 +443,17 @@ function Error() {
 	const [data, setData] = useState(null)
 	useEffect(() => {
 		getData()
+			if (
+				data?.widgets &&
+				!data?.widgets.some(c => c.name === 'VelaroChatBox') &&
+				document.getElementsByClassName('rocketchat-widget').length
+			) {
+				document
+					.getElementsByClassName('rocketchat-widget')[0]
+					.parentNode.removeChild(
+						document.getElementsByClassName('rocketchat-widget')[0]
+					)
+			}
 	}, [])
 	const getData = async () => {
 		let data = await axios
