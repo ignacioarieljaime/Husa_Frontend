@@ -317,6 +317,9 @@
 	}
 }
 .newsroom_search {
+	position: sticky;
+	top: -72px;
+	z-index: 1001;
 	.news_room_search_filter {
 		background: #232323;
 
@@ -397,6 +400,9 @@
 					letter-spacing: -0.32px;
 					color: #8c8f8f;
 					margin: 0 auto 0 16px;
+					@include mq(768) {
+						margin: 0 0 0 auto;
+					}
 				}
 				.filter_options {
 					height: fit-content;
@@ -433,7 +439,7 @@
 						position: relative;
 						width: 200px;
 						@include mq(991) {
-							width: 150px;
+							width: 140px;
 						}
 						&.open {
 							> div {
@@ -594,7 +600,7 @@
 									background-color: transparent !important;
 								}
 								@include mq(991) {
-									width: 200px;
+									width: 180px;
 								}
 							}
 						}

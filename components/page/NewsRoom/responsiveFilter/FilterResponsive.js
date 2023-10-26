@@ -25,15 +25,19 @@ const FilterResponsive = ({
 	useEffect(() => {
 		let filterCount = 0
 		Object.keys(filters)?.forEach(_k => {
-			if (_k !== 'page') filterCount += filters[_k].length
+			if (_k !== 'page') {
+				if (_k === 'search') filterCount += filters[_k].length > 0 ? 1 : 0
+				else filterCount += filters[_k].length
+			}
 		})
 		setFilterCounter(filterCount)
 	}, [filters])
 
 	const checkboxClearHandler = () => {
 		setModalIsOpen(false)
-		sortOnChange()
+		setFilterCounter(0)
 		onSearch('')
+		filterHandler('', '', { page: 1, search: '', product: [], year: [] })
 	}
 
 	function onFilterChange(_item, _k) {
@@ -161,30 +165,32 @@ const FilterResponsive = ({
 							{Object.keys(filters)?.map(
 								_k =>
 									_k !== 'page' &&
-									(_k === 'search'
-										? filters[_k].length && (
-												<button
-													style={{ padding: '8px 16px 6px' }}
-													className='d-flex gap-2 n-btn outline-black bg-transparent'
-													onClick={() => {
-														onSearch('')
-													}}>
-													<span>{filters[_k]}</span>
-													<FontAwesomeIcon icon={faXmark} />
-												</button>
-										  )
-										: filters[_k].map((_filter, index) => (
-												<button
-													key={index}
-													style={{ padding: '8px 16px 6px' }}
-													className='d-flex gap-2 n-btn outline-black bg-transparent'
-													onClick={() => {
-														onFilterChange(_filter, _k)
-													}}>
-													<span>{_filter}</span>
-													<FontAwesomeIcon icon={faXmark} />
-												</button>
-										  )))
+									(_k === 'search' ? (
+										filters[_k].length ? (
+											<button
+												style={{ padding: '8px 16px 6px' }}
+												className='d-flex gap-2 n-btn outline-black bg-transparent'
+												onClick={() => {
+													onSearch('')
+												}}>
+												<span>{filters[_k]}</span>
+												<FontAwesomeIcon icon={faXmark} />
+											</button>
+										) : null
+									) : (
+										filters[_k].map((_filter, index) => (
+											<button
+												key={index}
+												style={{ padding: '8px 16px 6px' }}
+												className='d-flex gap-2 n-btn outline-black bg-transparent'
+												onClick={() => {
+													onFilterChange(_filter, _k)
+												}}>
+												<span>{_filter}</span>
+												<FontAwesomeIcon icon={faXmark} />
+											</button>
+										))
+									))
 							)}
 						</div>
 					</div>

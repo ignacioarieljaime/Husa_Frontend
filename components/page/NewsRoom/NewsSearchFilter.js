@@ -25,7 +25,6 @@ const NewsSearchFilter = ({
 	filterHandler,
 	news
 }) => {
-	const [openFilter, setOpenFilter] = useState(false)
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
 	const [filterData, setFilterData] = useState()
@@ -75,7 +74,12 @@ const NewsSearchFilter = ({
 						<div className='filter_title'>
 							<span className='title'>{title}</span>
 						</div>
-						{news && <div className='results'>{news.length} Results</div>}
+						{news &&
+							(filters.search.length > 0 ||
+								filters.year.length > 0 ||
+								filters.product.length > 0) && (
+								<div className='results'>{news.length} Results</div>
+							)}
 
 						{width >= 768 && (
 							<div className='filter_options'>

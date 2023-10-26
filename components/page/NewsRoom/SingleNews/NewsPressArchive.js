@@ -15,8 +15,8 @@ const NewsPressArchive = ({ data }) => {
 	const [news, setNews] = useState()
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
-		year: '',
-		product: '',
+		year: [],
+		product: [],
 		search: '',
 		page: 1
 	})
@@ -61,14 +61,6 @@ const NewsPressArchive = ({ data }) => {
 						? setFilters(_a)
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
-				resetFilters={() =>
-					setFilters({
-						page: 1,
-						product: null,
-						search: '',
-						year: null
-					})
-				}
 				title={structure?.titleOne?.value}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
@@ -83,6 +75,7 @@ const NewsPressArchive = ({ data }) => {
 						? structure?.newsroom_search?.value
 						: 'search newsroom'
 				}
+				news={news}
 			/>
 			<div className='news_press_archive container px-4'>
 				<div>
