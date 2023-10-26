@@ -63,31 +63,32 @@ const NewsSingleSlider = ({ data }) => {
 								style={{ zIndex: '2' }}></div>
 							<div className='buttons'>
 								<button
-									className='n-btn outline-white medium'
-									style={{
-										fontSize: ' 14px',
-										lineHeight: ' 17px',
-										height: 'unset'
-									}}
+									className='n-btn white medium'
 									onClick={() =>
 										setImageUrl(imageUrl ? null : item?.image?.src)
 									}>
 									<span>{item?.EnlargeBtn?.value} </span>
-									<ResizeIcon />
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										width='10'
+										height='10'
+										viewBox='0 0 10 10'
+										fill='none'>
+										<path
+											d='M0 10V6.66667H1.11111V8.11111L2.83333 6.38889L3.61111 7.16667L1.88889 8.88889H3.33333V10H0ZM6.66667 10V8.88889H8.11111L6.38889 7.16667L7.16667 6.38889L8.88889 8.11111V6.66667H10V10H6.66667ZM2.83333 3.61111L1.11111 1.88889V3.33333H0V0H3.33333V1.11111H1.88889L3.61111 2.83333L2.83333 3.61111ZM7.16667 3.61111L6.38889 2.83333L8.11111 1.11111H6.66667V0H10V3.33333H8.88889V1.88889L7.16667 3.61111Z'
+											fill='black'
+										/>
+									</svg>
 								</button>
 								<a
-									className='n-btn outline-white medium'
-									style={{
-										fontSize: ' 14px',
-										lineHeight: ' 17px',
-										height: 'unset'
-									}}
+									className='n-btn white medium'
 									href={
 										item?.image?.src.split('.com')[0] +
 										'.com/download/f' +
 										item?.image?.src.split('.com')[1]
 									}>
-									<span>{item?.downloadBtn?.title}</span> <DownloadIconV2 />
+									<span>{item?.downloadBtn?.title}</span>{' '}
+									<DownloadIconV2 width='16' height='15' />
 								</a>
 							</div>
 

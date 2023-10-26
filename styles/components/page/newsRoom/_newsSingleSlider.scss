@@ -53,13 +53,16 @@
 			display: flex;
 			align-items: center;
 			position: absolute;
-			right: 75px;
-			top: 65px;
-			gap: 26px;
+			right: 50px;
+			top: 40px;
+			gap: 16px;
 			z-index: 55;
 			@include mq(768) {
-				right: 15px;
-				top: 25px;
+				top: 30px;
+				right: 50%;
+				transform: translateX(50%);
+				width: 300px;
+				justify-content: center;
 			}
 
 			a,
@@ -69,40 +72,34 @@
 				display: flex;
 				align-items: center;
 				text-decoration: none;
-				padding: 0 16px;
-				gap: 16px;
-				height: 52px;
-				border: 1px solid #ffffff;
 				border-radius: 1000px;
 				font-style: normal;
-				font-weight: 400;
-				font-size: 16px;
-				line-height: 22px;
+				font-weight: 500;
+				font-size: 14px;
+				line-height: 17px;
 				text-align: center;
-				letter-spacing: -0.02em;
-				color: #ffffff;
-				background-color: rgba(0, 0, 0, 0.2) !important;
+				gap: 8px;
+				padding: 9px 16px 7px !important;
+				height: 34px;
 				@include mq(768) {
-					font-size: 12px;
-					line-height: 12px;
-					padding: 12px !important;
-					gap: 8px;
+					font-size: 10px !important;
+					line-height: 10px !important;
+					padding: 8px 16px 6px !important;
+					height: 28px;
 				}
 				svg {
 					transition: inherit;
 					path {
 						transition: inherit;
-						stroke: #fff;
-						fill: #fff;
+						fill: #000;
 					}
 				}
-				&:hover {
-					background-color: #fff !important;
-					svg {
-						path {
-							stroke: #000;
-							fill: #000;
-						}
+			}
+			a {
+				svg {
+					path {
+						stroke: #000;
+						stroke-width: 0.3;
 					}
 				}
 			}
