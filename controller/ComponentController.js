@@ -101,46 +101,6 @@ ${
 					   console.error('Error:', error)
 					   return null
 				   })	
-				   ${
-							_page.model_type === 'support'
-								? `
-				let template = undefined
-				if (!data || !data?.widgets || data?.widgets.length <= 0) {
-					console.log('send cxm support template request')
-					template = await axios
-						.get(
-							'https://imcxm.dev-api.hisenseportal.com/api/husa/getTemplates?status=3',
-							{
-								headers: {
-									CLIENT_ID: req.ip
-								}
-							}
-						)
-						.then(response => {
-							console.log('get cxm support template request')
-							if(response.data.data && response.data.data.length > 0)
-								{
-									return response.data.data[0]
-								}
-						})
-						.catch(error => {
-							console.error('Error:', error)
-							return null
-						})
-				}
-
-				if(
-					data &&
-					(!data?.widgets || data?.widgets.length == 0) &&
-					template &&
-					template?.widgets
-				){
-					data.widgets = template.widgets
-				}
-				
-				`
-								: ''
-						}
 				console.log('send pim request')
 				 let pim = await axios
 						.get(
@@ -555,45 +515,26 @@ const generateFirmwarePage = () => {
 			'public, s-maxage=10, stale-while-revalidate=59'
 		)
 		console.log('send cxm request')
-	let data = await axios
-		.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/getTemplates?status=' +
-				7
-		)
-		.then(response => {
-			console.log('get cxm data')
+		let data = await axios
+			.get(
+					"${process.env.CXM_API_ROUTE}/template/"+query?.productId+ "/"+query?.serialNumber
+			)
+			.then(response => {
+				console.log('get cxm data')
+	
+				return response.data
+			})
+			.catch(error => {
+				console.error('Error:', error)
+				return null
+			})
 
-			return response.data
-		})
-		.catch(error => {
-			console.error('Error:', error)
-			return null
-		})
-
-	console.log('send pim request')
-	pim = await axios
-		.get(
-			'https://imcxm.dev-api.hisenseportal.com/api/husa/template/' +
-				query?.productId +
-				'/' +
-				query?.serialNumber
-		)
-		.then(response => {
-			console.log('get pim data')
-
-			return response.data
-		})
-		.catch(error => {
-			console.error('Error:', error)
-			return null
-		})
-
-	return {
-		props: {
-			data: data?.data[0]?.widgets,
-			pim: pim?.data?.product
+		return {
+			props: {
+				data: data?.data?.widgets,
+				pim: data?.data?.product
+			}
 		}
-	}
 	}
 	
 	export default DownloadFirmwate

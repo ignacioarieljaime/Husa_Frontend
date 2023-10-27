@@ -2,7 +2,7 @@ import React from 'react'
 
 function SupportNewHeadV2({ data }) {
 	return (
-		<section id={data.name + data.id}>
+		<section>
 			<div className='heading support-heading support-new-heading'>
 				<img src={structure.image.src} alt={structure.image.alt} width='100%' />
 				<div className='heading-text'>

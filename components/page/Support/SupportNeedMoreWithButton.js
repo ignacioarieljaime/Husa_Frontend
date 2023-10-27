@@ -5,7 +5,7 @@ import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 function SupportNeedMoreWithButton({ data }) {
 	let { structure } = data
 	return (
-		<section id={data.name + data.id}>
+		<section>
 			<div className='heading support-heading support-new-heading need_more_help_banner'>
 				<div className='heading-text'>
 					<h4
