@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import Script from 'next/script'
 import React, { useState, useEffect } from 'react'
 
 export default function VelaroChatBox() {
