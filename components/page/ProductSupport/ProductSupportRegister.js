@@ -87,14 +87,14 @@ function ProductSupportRegister({ pim, data }) {
 		setDataSchema({ ...dataSchema, [_title]: _value })
 	}
 
-	const submitData = async () => {
+	const submitData = async e => {
+		e.preventDefault()
 		setLoading(true)
 		setErrors(null)
-
 		try {
 			let response = await axios.post(
 				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
-				{ ...dataSchema, future_news: formCondition ? '1' : '0' }
+				{ ...dataSchema, future_news: acceptRole ? '1' : '0' }
 			)
 			if (response.status === 200) {
 				toast.success('Registered Successfully', {
@@ -125,7 +125,6 @@ function ProductSupportRegister({ pim, data }) {
 
 	const resetData = () => {
 		setAcceptRole(false)
-		setFormCondition(false)
 		setFile(null)
 		setFormattedPhoneNumber('')
 		setDataSchema({
