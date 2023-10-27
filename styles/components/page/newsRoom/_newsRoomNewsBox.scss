@@ -318,8 +318,13 @@
 }
 .newsroom_search {
 	position: sticky;
-	top: -72px;
+	top: 0;
 	z-index: 1001;
+
+	@include mq(768) {
+		top: -72px;
+	}
+
 	.news_room_search_filter {
 		background: #232323;
 
