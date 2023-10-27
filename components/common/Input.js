@@ -31,6 +31,7 @@ function CustomInput({
 		return (
 			<div className='position-relative'>
 				<span
+					className='value'
 					style={{
 						position: 'absolute',
 						left: 0,
