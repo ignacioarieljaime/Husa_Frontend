@@ -3,48 +3,6 @@
 	@include mq(768) {
 		padding: 32px 12px 0px !important;
 	}
-	&.version_2 {
-		padding: 64px 16px !important;
-		max-width: 920px;
-		@include mq(768) {
-			padding: 32px 16px !important;
-		}
-		.faq-accordion-item {
-			.faq-accordion-button {
-				padding: 34px 41px 33px 30px !important;
-				line-height: 24px !important;
-				@include mq(768) {
-					padding: 16px !important;
-					line-height: 1 !important;
-				}
-			}
-		}
-		.careers_accordion_content {
-			@include mq(768) {
-				padding: 32px !important;
-			}
-			.faq-accordion-question {
-				font-weight: 500 !important;
-				font-size: 20px !important;
-				line-height: 1 !important;
-				@include mq(768) {
-					font-size: 20px !important;
-					line-height: 1 !important;
-				}
-			}
-			.faq-accordion-answer {
-				* {
-					font-weight: 400 !important;
-					font-size: 20px !important;
-					line-height: 1 !important;
-					@include mq(768) {
-						font-size: 20px !important;
-						line-height: 1 !important;
-					}
-				}
-			}
-		}
-	}
 	.faq-accordion-item {
 		border-radius: 25px !important;
 
