@@ -137,9 +137,7 @@ const ProductFilterResponsive = ({
 					modalIsOpen ? 'open' : ''
 				} ${!modalIsOpen && filterCounter > 0 ? 'shortcut' : ''}`}>
 				<div
-					className={`d-flex justify-content-between align-items-center p-4 w-100 ${
-						modalIsOpen ? '' : ''
-					}`}>
+					className={`d-flex justify-content-between align-items-center p-4 w-100 filter_nav `}>
 					<span>Filters</span>
 					<button
 						onClick={() => setModalIsOpen(prev => !prev)}
@@ -250,7 +248,7 @@ const ProductFilterResponsive = ({
 								className='n-btn primary'
 								style={{ padding: '11px 16px 9px' }}
 								onClick={() => {
-									setModalIsOpen(true)
+									setModalIsOpen(false)
 								}}>
 								View
 								<span className='ms-2 text-white fw-light'>
