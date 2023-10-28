@@ -32,16 +32,20 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 					className='fixed_bg'
 				/>
 				<div className='text_content'>
-					<h4
-						className='title'
-						dangerouslySetInnerHTML={{
-							__html: content?.title?.value
-						}}></h4>
-					<h6
-						className='text'
-						dangerouslySetInnerHTML={{
-							__html: content?.text?.value
-						}}></h6>
+					{content?.title?.value && (
+						<h4
+							className='title'
+							dangerouslySetInnerHTML={{
+								__html: content?.title?.value
+							}}></h4>
+					)}
+					{content?.text?.value && (
+						<h6
+							className='text'
+							dangerouslySetInnerHTML={{
+								__html: content?.text?.value
+							}}></h6>
+					)}
 				</div>
 				<div className='process'>
 					{content?.list?.value.map((item, index) => (
@@ -68,6 +72,7 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 											width: 750 / content?.list?.value.length + 'px',
 											height: 750 / content?.list?.value.length + 'px'
 										}}>
+										<div className='number'>{index + 1}</div>
 										<h5
 											className='title'
 											dangerouslySetInnerHTML={{
@@ -82,6 +87,7 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 										width: 750 / content?.list?.value.length + 'px',
 										height: 750 / content?.list?.value.length + 'px'
 									}}>
+									<div className='number'>{index + 1}</div>
 									<h5
 										className='title'
 										dangerouslySetInnerHTML={{

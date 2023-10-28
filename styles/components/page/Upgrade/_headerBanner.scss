@@ -5,15 +5,10 @@
 // }
 .season_upgrade_header_banner {
 	background: #ea3968;
-	padding: 24px 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
-
-	@include mq(768) {
-		padding: 16px 0;
-	}
 
 	.splide__list {
 		width: 110vw;
