@@ -10,6 +10,7 @@ import {
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { GetProductRetailersApi } from '../../../services/Product'
+import { uploadToS3 } from 'services/s3'
 
 const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 	const router = useRouter()
@@ -65,19 +66,6 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 			temp.push(_asset)
 			setAssets(temp)
 			submitFormAssets(name, _asset)
-		}
-	}
-
-	const submitAssets = async asset => {
-		const formData = new FormData()
-		formData.append('attachment', asset)
-		try {
-			let response = await postFormAssets(formData)
-			if (response.status === 200) {
-				return response?.data?.view_link
-			}
-		} catch (err) {
-			toast.error(err.response.data.message, { toastId: 'upload file' })
 		}
 	}
 
@@ -143,15 +131,17 @@ const ExtendedWarrantyFormStep = ({ product, plan, terms }) => {
 		}
 
 		try {
-			let link = await submitAssets(_asset.asset)
-			setFormBody(prevState => ({
-				...prevState,
-				product: {
-					...prevState.product,
-					[_asset.name]: link
-				}
-			}))
-			toast.success(_asset.name.replace(/_+/g, ' ') + ' uploaded successfuly')
+			const downlaodLink = await uploadToS3(_asset.asset)
+			if (downlaodLink) {
+				setFormBody(prevState => ({
+					...prevState,
+					product: {
+						...prevState.product,
+						[_asset.name]: downlaodLink
+					}
+				}))
+				toast.success(_asset.name.replace(/_+/g, ' ') + ' uploaded successfuly')
+			}
 			setLoading(null)
 		} catch (error) {
 			setLoading(null)

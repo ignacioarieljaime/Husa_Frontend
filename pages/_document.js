@@ -35,7 +35,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');`
 					}}></script>
 			</Head>
-			<body>
+			<body id='main_body'>
 				{' '}
 				<Main />
 				<NextScript />
@@ -53,6 +53,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`
 					}}></noscript>
+				{/* <!-- Start of CicadaChat Livechat Script --> */}
+				{/* <script
+					type='text/javascript'
+					dangerouslySetInnerHTML={{
+						__html: `
+					function getSourceId() {
+						var sourceId = "SID20230811P001";
+						return sourceId;
+					  }
+				  (function(w, d, s, u, i) {
+					w.CicadaChat = function(c) { w.CicadaChat._.push(c) }; w.CicadaChat._ = []; w.CicadaChat.url = u;
+					var h = d.getElementsByTagName(s)[0], j = d.createElement(s);
+					j.async = true; j.src = 'https://hisense.livechat.prod.cicadaspeech.net/livechat/livechat.min.js?_=' + Math.random();
+					CicadaChat(function() {this.setSourceId({id: i});});
+					h.parentNode.insertBefore(j, h);
+				  })(window, document, 'script', 'https://hisense.livechat.prod.cicadaspeech.net/install', getSourceId());
+					`
+					}}></script> */}
 			</body>
 		</Html>
 	)
