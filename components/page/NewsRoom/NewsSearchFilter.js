@@ -105,6 +105,14 @@ const NewsSearchFilter = ({
 											onChange={e => setSearchTerm(e.target.value)}
 											placeholder={newsSearchTitle}
 											value={searchTerm}
+											onKeyUp={e => {
+												if (e.key === 'Enter')
+													document
+														.getElementById('main_news_box')
+														.scrollIntoView({
+															behavior: 'smooth'
+														})
+											}}
 										/>
 										<MagnifierIcon stroke={'#8C8F8F'} />
 									</div>

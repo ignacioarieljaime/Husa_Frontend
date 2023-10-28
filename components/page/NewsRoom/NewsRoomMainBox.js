@@ -83,7 +83,7 @@ const NewsRoomMainBox = ({ data }) => {
 				news={news}
 			/>
 
-			<div className='news_room_news_box'>
+			<div id='main_news_box' className='news_room_news_box'>
 				<div className='container items px-4'>
 					{/* {news === 'loading' ? (
 					<Spinner />

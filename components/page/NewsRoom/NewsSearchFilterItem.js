@@ -35,7 +35,14 @@ const NewsSearchFilterItem = ({
 		<>
 			{openDropdown && (
 				<div
-					onClick={() => outside && setOpenDropdown(false)}
+					onClick={() => {
+						if (outside) {
+							setOpenDropdown(false)
+							document.getElementById('main_news_box').scrollIntoView({
+								behavior: 'smooth'
+							})
+						}
+					}}
 					className='news_selectbox_backdrop'></div>
 			)}
 			<div
