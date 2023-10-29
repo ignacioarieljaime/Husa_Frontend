@@ -26,6 +26,15 @@ const SeasonUpgradeProductsCarouselItem = ({
 	const swiper = useSwiper()
 
 	useEffect(() => {
+		swiper.onAny((eventName) => {
+			if(eventName === "touchStart") {
+				console.log("event")
+				setShowSizes(false)
+			}
+		})
+	}, [swiper])
+
+	useEffect(() => {
 		setSeries(
 			data?.series_products?.value.sort(
 				(a, b) =>
@@ -134,7 +143,9 @@ const SeasonUpgradeProductsCarouselItem = ({
 							style={{
 								transform: 'translate(-50%,-50%)',
 								width: '200vw',
-								height: '200vh'
+								height: '200vh',
+								zIndex: '1000',
+								pointerEvents: 'all'
 							}}></div>
 					)}
 					<div ref={boxRef} className='serie_selector'>

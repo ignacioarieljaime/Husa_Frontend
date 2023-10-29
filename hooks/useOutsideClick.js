@@ -10,8 +10,8 @@ const useOutsideClick = (ref, callbackFn) => {
 				setIsClickedOutside(true)
 			}
 		}
-		document.addEventListener('click', handleClickOutside)
-		return () => document.removeEventListener('click', handleClickOutside)
+		document.addEventListener('mouseup', handleClickOutside)
+		return () => document.removeEventListener('mouseup', handleClickOutside)
 	}, [ref])
 	return isClickedOutside
 }
