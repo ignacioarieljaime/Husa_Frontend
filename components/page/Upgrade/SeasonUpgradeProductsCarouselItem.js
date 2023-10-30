@@ -24,15 +24,12 @@ const SeasonUpgradeProductsCarouselItem = ({
 	const [product, setProduct] = useState()
 	const router = useRouter()
 	const swiper = useSwiper()
+	const boxRef = useRef()
+	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))
 
 	useEffect(() => {
-		swiper.onAny((eventName) => {
-			if(eventName === "touchStart") {
-				console.log("event")
-				setShowSizes(false)
-			}
-		})
-	}, [swiper])
+		swiper.allowTouchMove = !showSizes
+	}, [showSizes])
 
 	useEffect(() => {
 		setSeries(
@@ -73,7 +70,6 @@ const SeasonUpgradeProductsCarouselItem = ({
 			product: product,
 			productId: product?.id,
 			type: 'static',
-
 			model: product?.model,
 			customizeRetailerId: activeItem?.retailers?.value?.map(
 				retailer =>
@@ -96,9 +92,6 @@ const SeasonUpgradeProductsCarouselItem = ({
 			}
 		}
 	}
-
-	const boxRef = useRef()
-	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))
 
 	return (
 		<>
@@ -157,7 +150,9 @@ const SeasonUpgradeProductsCarouselItem = ({
 								{series.length > 5 ? (
 									<div className='content'>
 										<div
-											onClick={() => setShowSizes(prev => !prev)}
+											onClick={() => {
+												setShowSizes(prev => !prev)
+											}}
 											className='show_sizes_btn'>
 											<span
 												className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
@@ -207,7 +202,9 @@ const SeasonUpgradeProductsCarouselItem = ({
 									{series.map((item, index) => (
 										<li
 											key={index}
-											className={activeSizeIndex === index ? 'active' : ''}
+											className={`no_e ${
+												activeSizeIndex === index ? 'active' : ''
+											}`}
 											onClick={() => {
 												setActiveItem(item)
 												setActiveSizeIndex(index)
@@ -221,7 +218,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 										style={{
 											transform: 'translateY(' + activeSizeIndex * 100 + '%)'
 										}}
-										className='indicator'>
+										className='no_e indicator'>
 										{activeItem?.name?.value}
 									</span>
 								</ul>

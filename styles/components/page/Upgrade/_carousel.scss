@@ -224,6 +224,7 @@
 			}
 			.serie_selector {
 				position: relative;
+				z-index: 1001;
 				width: 100%;
 				.screen_size_selector {
 					border-radius: 1000px;
