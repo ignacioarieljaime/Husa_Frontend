@@ -12,7 +12,8 @@ const NewsSearchFilterItem = ({
 	filterChangeHandler,
 	data,
 	dataKey,
-	className
+	className,
+	onClose
 }) => {
 	const [openDropdown, setOpenDropdown] = useState(false)
 	const [filter, setFilter] = useState(filters)
@@ -38,9 +39,7 @@ const NewsSearchFilterItem = ({
 					onClick={() => {
 						if (outside) {
 							setOpenDropdown(false)
-							document.getElementById('main_news_box').scrollIntoView({
-								behavior: 'smooth'
-							})
+							onClose()
 						}
 					}}
 					className='news_selectbox_backdrop'></div>

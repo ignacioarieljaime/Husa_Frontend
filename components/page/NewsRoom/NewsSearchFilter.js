@@ -9,6 +9,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import NewsSearchFilterItem from './NewsSearchFilterItem'
 import FilterResponsive from './responsiveFilter/FilterResponsive'
+import { useRouter } from 'next/router'
 
 let years = []
 
@@ -23,13 +24,15 @@ const NewsSearchFilter = ({
 	categoryTitle,
 	newsSearchTitle,
 	filterHandler,
-	news
+	news,
+	targetRoute
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
 	const target = useRef()
+	const router = useRouter()
 
 	useEffect(() => {
 		getNews()
@@ -88,6 +91,7 @@ const NewsSearchFilter = ({
 									filters={filters?.year}
 									title={yearTitle}
 									data={filterData?.years}
+									onClose={() => router.push(targetRoute)}
 									dataKey='year'
 								/>
 								<NewsSearchFilterItem
@@ -95,6 +99,7 @@ const NewsSearchFilter = ({
 									filters={filters?.product}
 									title={categoryTitle}
 									data={filterData?.tags}
+									onClose={() => router.push(targetRoute)}
 									dataKey='product'
 								/>
 
@@ -106,12 +111,7 @@ const NewsSearchFilter = ({
 											placeholder={newsSearchTitle}
 											value={searchTerm}
 											onKeyUp={e => {
-												if (e.key === 'Enter')
-													document
-														.getElementById('main_news_box')
-														.scrollIntoView({
-															behavior: 'smooth'
-														})
+												if (e.key === 'Enter') router.push(targetRoute)
 											}}
 										/>
 										<MagnifierIcon stroke={'#8C8F8F'} />
@@ -133,6 +133,7 @@ const NewsSearchFilter = ({
 					news={news}
 					onSearch={_v => setSearchTerm(_v)}
 					searchTerm={searchTerm}
+					onClose={router.push(targetRoute)}
 				/>
 			)}
 		</div>

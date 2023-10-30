@@ -17,7 +17,8 @@ const FilterResponsive = ({
 	allFilters,
 	news,
 	onSearch,
-	searchTerm
+	searchTerm,
+	onClose
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [filterCounter, setFilterCounter] = useState(0)
@@ -78,6 +79,9 @@ const FilterResponsive = ({
 								autocomplete='off'
 								value={searchTerm}
 								onChange={e => onSearch(e.target.value)}
+								onKeyUp={e => {
+									if (e.key === 'Enter') onClose()
+								}}
 							/>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'

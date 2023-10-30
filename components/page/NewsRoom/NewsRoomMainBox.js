@@ -81,6 +81,7 @@ const NewsRoomMainBox = ({ data }) => {
 						: 'search Newsroom'
 				}
 				news={news}
+				targetRoute={structure?.link?.value}
 			/>
 
 			<div id='main_news_box' className='news_room_news_box'>
