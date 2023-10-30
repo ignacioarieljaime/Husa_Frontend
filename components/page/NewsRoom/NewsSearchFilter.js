@@ -25,7 +25,8 @@ const NewsSearchFilter = ({
 	newsSearchTitle,
 	filterHandler,
 	news,
-	targetRoute
+	targetRoute,
+	results
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -37,6 +38,10 @@ const NewsSearchFilter = ({
 	useEffect(() => {
 		getNews()
 	}, [])
+
+	useEffect(() => {
+		setSearchTerm(filters?.search)
+	}, [filters])
 
 	useEffect(() => {
 		clearTimeout(timer)
@@ -57,6 +62,18 @@ const NewsSearchFilter = ({
 		} catch (error) {
 			console.log(error)
 		}
+	}
+
+	function redirectToResultsPage() {
+		router.push(
+			{
+				pathname: targetRoute,
+				query: {
+					filters: JSON.stringify(filters)
+				}
+			},
+			targetRoute
+		)
 	}
 
 	// function confirmChanges() {
@@ -91,7 +108,7 @@ const NewsSearchFilter = ({
 									filters={filters?.year}
 									title={yearTitle}
 									data={filterData?.years}
-									onClose={() => router.push(targetRoute)}
+									onClose={() => !results && redirectToResultsPage()}
 									dataKey='year'
 								/>
 								<NewsSearchFilterItem
@@ -99,7 +116,7 @@ const NewsSearchFilter = ({
 									filters={filters?.product}
 									title={categoryTitle}
 									data={filterData?.tags}
-									onClose={() => router.push(targetRoute)}
+									onClose={() => !results && redirectToResultsPage()}
 									dataKey='product'
 								/>
 
@@ -111,8 +128,10 @@ const NewsSearchFilter = ({
 											placeholder={newsSearchTitle}
 											value={searchTerm}
 											onKeyUp={e => {
-												if (e.key === 'Enter') router.push(targetRoute)
+												if (e.key === 'Enter' && !results)
+													redirectToResultsPage()
 											}}
+											onBlur={() => !results && redirectToResultsPage()}
 										/>
 										<MagnifierIcon stroke={'#8C8F8F'} />
 									</div>
@@ -133,7 +152,7 @@ const NewsSearchFilter = ({
 					news={news}
 					onSearch={_v => setSearchTerm(_v)}
 					searchTerm={searchTerm}
-					onClose={router.push(targetRoute)}
+					onClose={() => !results && redirectToResultsPage()}
 				/>
 			)}
 		</div>

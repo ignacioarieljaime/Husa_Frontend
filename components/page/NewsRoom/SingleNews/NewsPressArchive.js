@@ -8,6 +8,7 @@ import NewsRoomPagination from './NewsRoomPagination'
 import moment from 'moment/moment'
 import { GetNewsApi } from 'services/cxm'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
@@ -20,6 +21,17 @@ const NewsPressArchive = ({ data }) => {
 		search: '',
 		page: 1
 	})
+	const router = useRouter()
+
+	useEffect(() => {
+		const to = setTimeout(() => {
+			if (router && router?.query && router?.query?.filters) {
+				setFilters({ ...JSON.parse(router?.query?.filters) })
+			}
+		}, 700)
+		return () => clearTimeout(to)
+	}, [router])
+
 	useEffect(() => {
 		getNews()
 	}, [filters])
@@ -76,6 +88,7 @@ const NewsPressArchive = ({ data }) => {
 						: 'search newsroom'
 				}
 				news={news}
+				results
 			/>
 			<div className='news_press_archive container px-4'>
 				<div>

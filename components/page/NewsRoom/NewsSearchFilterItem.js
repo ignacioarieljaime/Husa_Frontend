@@ -29,6 +29,10 @@ const NewsSearchFilterItem = ({
 	}
 
 	useEffect(() => {
+		setFilter(filters)
+	}, [filters])
+
+	useEffect(() => {
 		filterChangeHandler(dataKey, filter, false)
 	}, [filter])
 
