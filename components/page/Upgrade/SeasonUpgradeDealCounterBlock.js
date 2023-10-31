@@ -121,28 +121,68 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 								<p className='time'>Eastern Standard Time</p>
 							</div>
 						</div>
-						{RouteHandler(product?.id, 'product') ? (
-							<Link href={RouteHandler(product?.id, 'product')}>
-								<a>
-									<img
-										className='image'
-										src={
-											windowSize[0] > 768
-												? content?.list?.value[content?.active?.value]
-														?.product_image?.src
-												: content?.list?.value[content?.active?.value]
-														?.product_image_responsive?.src
-										}
-										alt={
-											windowSize[0] > 768
-												? content?.list?.value[content?.active?.value]
-														?.product_image?.alt
-												: content?.list?.value[content?.active?.value]
-														?.product_image_responsive?.alt
-										}
-									/>
-								</a>
-							</Link>
+						{content?.list?.value[content?.active?.value]?.button?.value ? (
+							content?.list?.value[
+								content?.active?.value
+							]?.button?.value.includes('openChannelAdvisor:') ? (
+								<img
+									onClick={() => setShowDialog(true)}
+									className='image'
+									style={{ cursor: 'pointer' }}
+									src={
+										windowSize[0] > 768
+											? content?.list?.value[content?.active?.value]
+													?.product_image?.src
+											: content?.list?.value[content?.active?.value]
+													?.product_image_responsive?.src
+									}
+									alt={
+										windowSize[0] > 768
+											? content?.list?.value[content?.active?.value]
+													?.product_image?.alt
+											: content?.list?.value[content?.active?.value]
+													?.product_image_responsive?.alt
+									}
+								/>
+							) : (
+								<Link
+									target={
+										content?.list?.value[content?.active?.value]?.button?.target
+											? content?.list?.value[content?.active?.value]?.button
+													?.target
+											: '_self'
+									}
+									href={
+										content?.list?.value[content?.active?.value]?.button?.value
+									}>
+									<a
+										target={
+											content?.list?.value[content?.active?.value]?.button
+												?.target
+												? content?.list?.value[content?.active?.value]?.button
+														?.target
+												: '_self'
+										}>
+										<img
+											className='image'
+											src={
+												windowSize[0] > 768
+													? content?.list?.value[content?.active?.value]
+															?.product_image?.src
+													: content?.list?.value[content?.active?.value]
+															?.product_image_responsive?.src
+											}
+											alt={
+												windowSize[0] > 768
+													? content?.list?.value[content?.active?.value]
+															?.product_image?.alt
+													: content?.list?.value[content?.active?.value]
+															?.product_image_responsive?.alt
+											}
+										/>
+									</a>
+								</Link>
+							)
 						) : (
 							<img
 								className='image'
