@@ -1,26 +1,29 @@
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 
-const useOutsideClick = ref => {
+const useOutsideClick = (ref, callbackFn) => {
 	const [isClickedOutside, setIsClickedOutside] = useState(false)
 	useEffect(() => {
 		const handleClickOutside = event => {
 			if (ref.current && !ref.current.contains(event.target)) {
+				callbackFn && callbackFn()
 				setIsClickedOutside(true)
 			}
 		}
-		document.addEventListener('mousedown', handleClickOutside)
-		return () => document.removeEventListener('mousedown', handleClickOutside)
+		document.addEventListener('mouseup', handleClickOutside)
+		return () => document.removeEventListener('mouseup', handleClickOutside)
 	}, [ref])
 	return isClickedOutside
 }
 
 useOutsideClick.propTypes = {
-	ref: PropTypes.func
+	ref: PropTypes.func,
+	callbackFn: PropTypes.func
 }
 
 useOutsideClick.defaultProps = {
-	ref: () => {}
+	ref: () => {},
+	callbackFn: () => {}
 }
 
 export default useOutsideClick

@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import { useSwiper } from 'swiper/react'
 import Link from 'next/link'
 import { RouteHandler } from 'utils/routeHandler'
+import useOutsideClick from 'hooks/useOutsideClick'
+import { useRef } from 'react'
 
 const SeasonUpgradeProductsCarouselItem = ({
 	data,
@@ -16,11 +18,18 @@ const SeasonUpgradeProductsCarouselItem = ({
 }) => {
 	const [showSizes, setShowSizes] = useState(false)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
+	const [labelOff, setLabelOff] = useState(false)
 	const [activeItem, setActiveItem] = useState(null)
 	const [series, setSeries] = useState([])
 	const [product, setProduct] = useState()
 	const router = useRouter()
 	const swiper = useSwiper()
+	const boxRef = useRef()
+	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))
+
+	useEffect(() => {
+		swiper.allowTouchMove = !showSizes
+	}, [showSizes])
 
 	useEffect(() => {
 		setSeries(
@@ -61,7 +70,6 @@ const SeasonUpgradeProductsCarouselItem = ({
 			product: product,
 			productId: product?.id,
 			type: 'static',
-
 			model: product?.model,
 			customizeRetailerId: activeItem?.retailers?.value?.map(
 				retailer =>
@@ -84,6 +92,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 			}
 		}
 	}
+
 	return (
 		<>
 			<div
@@ -120,7 +129,103 @@ const SeasonUpgradeProductsCarouselItem = ({
 							{product?.isNew || version === 'v2' ? 'NEW' : ''}
 						</span>
 					</div>
-					{series && series.length > 1 && (
+					{showSizes && series && series.length > 5 && (
+						<div
+							onClick={() => outSide && setShowSizes(false)}
+							className='dropdown-select-box-backdrop'
+							style={{
+								transform: 'translate(-50%,-50%)',
+								width: '200vw',
+								height: '200vh',
+								zIndex: '1000',
+								pointerEvents: 'all'
+							}}></div>
+					)}
+					<div ref={boxRef} className='serie_selector'>
+						{series && series.length > 1 && (
+							<div
+								className={`screen_size_selector ${
+									showSizes ? 'show_sizes' : ''
+								} ${series.length > 5 ? 'dropdown_active' : ''}`}>
+								{series.length > 5 ? (
+									<div className='content'>
+										<div
+											onClick={() => {
+												setShowSizes(prev => !prev)
+											}}
+											className='show_sizes_btn'>
+											<span
+												className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
+												{labelOff
+													? activeItem?.name?.value
+													: 'Select Screen Size'}
+											</span>
+											<FontAwesomeIcon icon={faChevronDown} size='sm' />
+										</div>
+									</div>
+								) : (
+									<div className='content'>
+										<div className='sizes'>
+											<ul className='size_list'>
+												{series.map((item, index) => (
+													<li
+														key={index}
+														className={
+															activeSizeIndex === index ? 'active' : ''
+														}
+														onClick={() => {
+															setActiveItem(item)
+															setActiveSizeIndex(index)
+														}}
+														style={{ width: 100 / series.length + '%' }}>
+														{item?.name?.value}
+													</li>
+												))}
+											</ul>
+											<span
+												style={{
+													width: 100 / series.length + '%',
+													transform:
+														'translateX(' + activeSizeIndex * 100 + '%)'
+												}}
+												className='indicator'>
+												{activeItem?.name?.value}
+											</span>
+										</div>
+									</div>
+								)}
+							</div>
+						)}
+						{series && series.length > 5 && showSizes && (
+							<div className='sizes_dropdown'>
+								<ul className='size_list'>
+									{series.map((item, index) => (
+										<li
+											key={index}
+											className={`no_e ${
+												activeSizeIndex === index ? 'active' : ''
+											}`}
+											onClick={() => {
+												setActiveItem(item)
+												setActiveSizeIndex(index)
+												setLabelOff(true)
+												setShowSizes(false)
+											}}>
+											{item?.name?.value}
+										</li>
+									))}
+									<span
+										style={{
+											transform: 'translateY(' + activeSizeIndex * 100 + '%)'
+										}}
+										className='no_e indicator'>
+										{activeItem?.name?.value}
+									</span>
+								</ul>
+							</div>
+						)}
+					</div>
+					{/* {series && series.length > 1 && (
 						<div
 							className={`screen_size_selector ${
 								showSizes ? 'show_sizes' : ''
@@ -158,7 +263,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 								</div>
 							</div>
 						</div>
-					)}
+					)} */}
 					<ul className='specs w-100'>
 						{activeItem?.features?.value.map((item, index) => (
 							<li
