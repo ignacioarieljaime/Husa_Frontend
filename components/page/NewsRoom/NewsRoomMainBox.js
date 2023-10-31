@@ -58,7 +58,6 @@ const NewsRoomMainBox = ({ data }) => {
 
 	return (
 		<>
-			<NewsRoomSlider data={{ structure: { list: structure?.slider } }} />
 			<NewsSearchFilter
 				filters={filters}
 				filterHandler={(_key, _value, _a) =>
@@ -89,6 +88,7 @@ const NewsRoomMainBox = ({ data }) => {
 						: 'search newsroom'
 				}
 			/>
+			<NewsRoomSlider data={{ structure: { list: structure?.slider } }} />
 
 			<div className='news_room_news_box'>
 				<div className='container items px-4'>
