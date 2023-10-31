@@ -14,7 +14,6 @@ import axios from 'axios'
 import { SwiperSlide, Swiper } from 'swiper/react'
 import 'swiper/css'
 import SeasonUpgradeDealCounterBlockWeekItem from './SeasonUpgradeDealCounterBlockWeekItem'
-import { RouteHandler } from 'utils/routeHandler'
 const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const windowSize = useWindowSize()
@@ -121,47 +120,23 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 								<p className='time'>Eastern Standard Time</p>
 							</div>
 						</div>
-						{RouteHandler(product?.id, 'product') ? (
-							<Link href={RouteHandler(product?.id, 'product')}>
-								<a>
-									<img
-										className='image'
-										src={
-											windowSize[0] > 768
-												? content?.list?.value[content?.active?.value]
-														?.product_image?.src
-												: content?.list?.value[content?.active?.value]
-														?.product_image_responsive?.src
-										}
-										alt={
-											windowSize[0] > 768
-												? content?.list?.value[content?.active?.value]
-														?.product_image?.alt
-												: content?.list?.value[content?.active?.value]
-														?.product_image_responsive?.alt
-										}
-									/>
-								</a>
-							</Link>
-						) : (
-							<img
-								className='image'
-								src={
-									windowSize[0] > 768
-										? content?.list?.value[content?.active?.value]
-												?.product_image?.src
-										: content?.list?.value[content?.active?.value]
-												?.product_image_responsive?.src
-								}
-								alt={
-									windowSize[0] > 768
-										? content?.list?.value[content?.active?.value]
-												?.product_image?.alt
-										: content?.list?.value[content?.active?.value]
-												?.product_image_responsive?.alt
-								}
-							/>
-						)}
+						<img
+							className='image'
+							src={
+								windowSize[0] > 768
+									? content?.list?.value[content?.active?.value]?.product_image
+											?.src
+									: content?.list?.value[content?.active?.value]
+											?.product_image_responsive?.src
+							}
+							alt={
+								windowSize[0] > 768
+									? content?.list?.value[content?.active?.value]?.product_image
+											?.alt
+									: content?.list?.value[content?.active?.value]
+											?.product_image_responsive?.alt
+							}
+						/>
 					</div>
 					<div className='product_info'>
 						<div className='main_info'>

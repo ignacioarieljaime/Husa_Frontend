@@ -26,16 +26,11 @@ const SeasonUpgrade2KHeroBanner = ({ data }) => {
 				<div
 					className='content_wrapper'
 					style={{ backgroundImage: `url(${content?.background?.src})` }}>
-					<div className='content top'>
-						{content?.subtitle?.value && (
-							<p className='pretitle'>{content?.subtitle?.value}</p>
-						)}
-						<h4
-							className='title'
-							dangerouslySetInnerHTML={{
-								__html: content?.title?.value
-							}}></h4>
-					</div>
+					<img
+						className='top_image'
+						src={content?.image?.src}
+						alt={content?.image?.alt}
+					/>
 					<div className='background_wrapper'>
 						<img
 							className='background'
@@ -45,16 +40,18 @@ const SeasonUpgrade2KHeroBanner = ({ data }) => {
 					</div>
 					<div className='dummy'></div>
 					<div className='content'>
+						<p className='pretitle'>{content?.subtitle?.value}</p>
+						<h4
+							className='title'
+							dangerouslySetInnerHTML={{
+								__html: content?.title?.value
+							}}></h4>
 						<div className='awards'>
 							{content?.list?.value.map((item, index) => (
 								<img
 									key={index}
 									src={item?.image?.src}
 									alt={item?.image?.alt}
-									style={{
-										width:
-											'calc(' + 100 / content?.list?.value.length + '% - 24px)'
-									}}
 								/>
 							))}
 						</div>

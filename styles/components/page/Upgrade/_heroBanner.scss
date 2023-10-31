@@ -29,13 +29,13 @@
 }
 
 .season_upgrade_2k_hero {
-	padding: 80px 16px 40px;
+	padding: 70px 16px 40px;
 	overflow: hidden;
 	@include mq(768) {
 		padding: 50px 16px 20px;
 	}
 	.content_wrapper {
-		background-position: center 0vw;
+		background-position: center -3vw;
 		background-repeat: no-repeat;
 		background-size: contain;
 		text-align: center;
@@ -44,15 +44,23 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-
+		@include mq(1340) {
+			background-position: center -1vw;
+		}
 		@include mq(1240) {
 			background-position: center 1vw;
 		}
-		@include mq(910) {
+		@include mq(1140) {
 			background-position: center 3vw;
 		}
+		@include mq(1010) {
+			background-position: center 5.2vw;
+		}
+		@include mq(910) {
+			background-position: center 8vw;
+		}
 		@include mq(840) {
-			background-position: center 5vw;
+			background-position: center 9.5vw;
 		}
 		@include mq(768) {
 			background-image: none !important;
@@ -73,11 +81,11 @@
 		.background_wrapper {
 			position: relative;
 			height: 0;
-			padding-top: 40%;
+			padding-top: 50%;
 			width: 100%;
 			z-index: 1;
 			display: none;
-			transform: scale(1.8) translateY(6%);
+			transform: scale(1.48) translateY(10%);
 			@include mq(768) {
 				display: block;
 			}
@@ -104,7 +112,7 @@
 			position: relative;
 			z-index: 2;
 			width: 100%;
-			max-width: 470px;
+			max-width: 800px;
 			margin: 0 auto;
 			display: flex;
 			padding: 30px;
@@ -118,9 +126,6 @@
 			}
 			@include mq(575) {
 				gap: 20px;
-			}
-			&.top {
-				max-width: 800px;
 			}
 			.pretitle {
 				margin: 0;
@@ -162,7 +167,6 @@
 				justify-content: center;
 				align-items: flex-start;
 				gap: 32px;
-				width: 100%;
 				@include mq(575) {
 					gap: 16px;
 				}
