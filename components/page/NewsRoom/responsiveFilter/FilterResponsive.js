@@ -79,9 +79,6 @@ const FilterResponsive = ({
 								autocomplete='off'
 								value={searchTerm}
 								onChange={e => onSearch(e.target.value)}
-								onKeyUp={e => {
-									if (e.key === 'Enter') onClose()
-								}}
 							/>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -131,7 +128,7 @@ const FilterResponsive = ({
 								className='n-btn primary'
 								style={{ padding: '11px 16px 9px' }}
 								onClick={() => {
-									setModalIsOpen(false)
+									onClose()
 								}}>
 								View
 								<span className='ms-2 text-white fw-light'>{news?.length}</span>
