@@ -58,11 +58,11 @@ const NewsSingleSlider = ({ data }) => {
 								className='background'
 							/>
 							<div
-								onClick={() => setImageUrl(imageUrl ? null : item?.image?.src)}
+								// onClick={() => setImageUrl(imageUrl ? null : item?.image?.src)}
 								className='d-block w-100 h-100 position-absolute left-0 top-0'
 								style={{ zIndex: '2' }}></div>
 							<div className='buttons'>
-								<button
+								{/* <button
 									className='n-btn white medium'
 									onClick={() =>
 										setImageUrl(imageUrl ? null : item?.image?.src)
@@ -79,7 +79,7 @@ const NewsSingleSlider = ({ data }) => {
 											fill='black'
 										/>
 									</svg>
-								</button>
+								</button> */}
 								<a
 									className='n-btn white medium'
 									href={
