@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
 import { useRef } from 'react'
@@ -36,6 +37,26 @@ const SeasonUpgrade2KSweepstakes = ({ data }) => {
 					src={content?.image?.src}
 					alt={content?.image?.alt}
 				/>
+				<div>
+					<div
+						className='subtitle'
+						dangerouslySetInnerHTML={{
+							__html: content?.subtitle?.value
+						}}></div>
+					{content?.link?.value && (
+						<Link
+							href={content?.link?.value}
+							target={content?.link?.target ? content?.link?.target : '_self'}>
+							<a
+								className='n-btn black medium d-block w-fit mx-auto'
+								target={
+									content?.link?.target ? content?.link?.target : '_self'
+								}>
+								{content?.link?.title}
+							</a>
+						</Link>
+					)}
+				</div>
 			</div>
 		</section>
 	)
