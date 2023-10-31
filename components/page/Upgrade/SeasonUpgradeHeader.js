@@ -4,6 +4,7 @@ import MenuWhite from 'components/icons/MenuIcon'
 import SearchIcon from 'components/icons/SearchIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -11,6 +12,7 @@ import { useState } from 'react'
 const SeasonUpgradeHeader = ({ data }) => {
 	const [content, setContent] = useState(null)
 	const [openMenu, setOpenMenu] = useState(false)
+	const router = useRouter()
 	useEffect(() => {
 		setContent(data?.structure)
 	}, [])
@@ -39,7 +41,7 @@ const SeasonUpgradeHeader = ({ data }) => {
 											? content?.imageLink?.target
 											: '_self'
 									}
-									className='d-block'>
+									className={`d-block`}>
 									<img
 										src={content?.image?.src}
 										alt={content?.image?.alt}
@@ -63,7 +65,19 @@ const SeasonUpgradeHeader = ({ data }) => {
 									item?.link?.value && (
 										<li key={index}>
 											<Link href={item?.link?.value}>
-												<a className='text-decoration-none'>
+												<a
+													className={`text-decoration-none ${
+														item?.link?.value
+															? router.asPath.split('#').length > 1
+																? item?.link?.value ===
+																  '#' + router.asPath.split('#')[1]
+																	? 'active'
+																	: ''
+																: item?.link?.value === router.asPath
+																? 'active'
+																: ''
+															: ''
+													}`}>
 													{item?.link?.title}
 												</a>
 											</Link>
@@ -98,8 +112,21 @@ const SeasonUpgradeHeader = ({ data }) => {
 										target={item?.link?.target ? item?.link?.target : '_self'}
 										href={item?.link?.value}>
 										<a
-											target={item?.link?.target ? item?.link?.target : '_self'}
-											className='text-decoration-none'>
+											className={`text-decoration-none ${
+												item?.link?.value
+													? router.asPath.split('#').length > 1
+														? item?.link?.value ===
+														  '#' + router.asPath.split('#')[1]
+															? 'active'
+															: ''
+														: item?.link?.value === router.asPath
+														? 'active'
+														: ''
+													: ''
+											}`}
+											target={
+												item?.link?.target ? item?.link?.target : '_self'
+											}>
 											{item?.link?.title}
 										</a>
 									</Link>

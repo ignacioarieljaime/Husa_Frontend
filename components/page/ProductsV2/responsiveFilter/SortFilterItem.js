@@ -12,8 +12,14 @@ const SortFilterItem = ({ name, value, sortOnChange, isChecked }) => {
 					id={name}
 					type='checkbox'
 				/>
-				<span></span>
-				<FontAwesomeIcon icon={faCircleCheck} color={'#00A29C'} size={'13px'} />
+				<span className='hidden'></span>
+				<span className='svg'>
+					<FontAwesomeIcon
+						icon={faCircleCheck}
+						color={'#00A29C'}
+						size={'13px'}
+					/>
+				</span>
 			</div>
 
 			<label htmlFor={name}>{name}</label>
