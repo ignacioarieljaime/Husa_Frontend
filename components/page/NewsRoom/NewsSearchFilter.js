@@ -8,6 +8,8 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import NewsSearchFilterItem from './NewsSearchFilterItem'
+import FilterResponsive from './responsiveFilter/FilterResponsive'
+import { useRouter } from 'next/router'
 
 let years = []
 
@@ -22,30 +24,30 @@ const NewsSearchFilter = ({
 	categoryTitle,
 	newsSearchTitle,
 	filterHandler,
-	resetFilters
+	news,
+	targetRoute,
+	results
 }) => {
-	const [openFilter, setOpenFilter] = useState(false)
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
-	const [tempFilters, setTempFilters] = useState({})
-	const windowSize = useWindowSize()
 	const target = useRef()
+	const router = useRouter()
 
 	useEffect(() => {
 		getNews()
 	}, [])
 
 	useEffect(() => {
-		setTempFilters(filters)
+		setSearchTerm(filters?.search)
 	}, [filters])
 
 	useEffect(() => {
 		clearTimeout(timer)
 
 		const newTimer = setTimeout(() => {
-			filterChangeHandler('search', searchTerm)
+			filterHandler('search', searchTerm, false)
 		}, 500)
 
 		setTimer(newTimer)
@@ -62,110 +64,97 @@ const NewsSearchFilter = ({
 		}
 	}
 
-	function filterChangeHandler(_key, _value) {
-		if (windowSize[0] < 1050) {
-			setTempFilters({ ...tempFilters, [_key]: _value })
-		} else {
-			filterHandler(_key, _value, false)
-		}
+	function redirectToResultsPage() {
+		router.push(
+			{
+				pathname: targetRoute,
+				query: {
+					filters: JSON.stringify(filters)
+				}
+			},
+			targetRoute
+		)
 	}
 
-	function confirmChanges() {
-		filterHandler('', '', { ...tempFilters, page: 1 })
-		setOpenFilter(false)
-		setTimeout(() => {
-			window.scrollTo({
-				top: target.current.scrollHeight + 250
-			})
-		}, 500)
-	}
+	// function confirmChanges() {
+	// 	filterHandler('', '', { ...tempFilters, page: 1 })
+	// 	setOpenFilter(false)
+	// 	setTimeout(() => {
+	// 		window.scrollTo({
+	// 			top: target.current.scrollHeight + 250
+	// 		})
+	// 	}, 500)
+	// }
 
 	return (
-		<div ref={target} className='news_room_search_filter'>
-			<div className=''>
-				<div className='content'>
-					<div className='filter_title'>
-						<span className='title'>{title}</span>
-						<button
-							className={!openFilter && 'close_button'}
-							onClick={() => setOpenFilter(state => !state)}>
-							Filters
-							<AngleArrow />
-						</button>
-					</div>
+		<div className='newsroom_search'>
+			<div ref={target} className='news_room_search_filter'>
+				<div className=''>
+					<div className='content'>
+						<div className='filter_title'>
+							<span className='title'>{title}</span>
+						</div>
+						{news &&
+							(filters.search.length > 0 ||
+								filters.year.length > 0 ||
+								filters.product.length > 0) && (
+								<div className='results'>{news.length} Results</div>
+							)}
 
-					<div
-						className='filter_options'
-						style={{
-							height: width > 1050 ? 'fit-content' : openFilter ? '315px' : '0',
-							marginTop: width > 1050 ? '0' : openFilter ? '32px' : '0',
-							overflow:
-								width < 1050 ? (!openFilter ? 'hidden' : 'unset') : 'unset'
-						}}>
-						<button
-							onClick={() => {
-								resetFilters()
-								setTempFilters({
-									page: 1,
-									product: null,
-									search: '',
-									year: null
-								})
-								setSearchTerm('')
-							}}
-							className='reset d-none d-lg_block'>
-							Reset Filters
-						</button>
-
-						<NewsSearchFilterItem
-							filterChangeHandler={filterChangeHandler}
-							tempFilters={tempFilters?.year}
-							title={yearTitle}
-							data={filterData?.years}
-							dataKey='year'
-						/>
-						<NewsSearchFilterItem
-							filterChangeHandler={filterChangeHandler}
-							tempFilters={tempFilters?.product}
-							title={categoryTitle}
-							data={filterData?.tags}
-							dataKey='product'
-							className={'product_select_box'}
-						/>
-
-						<div className='custom_input_box'>
-							{/* <label>search archive</label> */}
-							<div>
-								<input
-									onChange={e => setSearchTerm(e.target.value)}
-									placeholder={newsSearchTitle}
-									value={searchTerm}
+						{width >= 768 && (
+							<div className='filter_options'>
+								<NewsSearchFilterItem
+									filterChangeHandler={filterHandler}
+									filters={filters?.year}
+									title={yearTitle}
+									data={filterData?.years}
+									onClose={() => !results && redirectToResultsPage()}
+									dataKey='year'
 								/>
-								<MagnifierIcon />
+								<NewsSearchFilterItem
+									filterChangeHandler={filterHandler}
+									filters={filters?.product}
+									title={categoryTitle}
+									data={filterData?.tags}
+									onClose={() => !results && redirectToResultsPage()}
+									dataKey='product'
+								/>
+
+								<div className='custom_input_box'>
+									{/* <label>search archive</label> */}
+									<div>
+										<input
+											onChange={e => setSearchTerm(e.target.value)}
+											placeholder={newsSearchTitle}
+											value={searchTerm}
+											onKeyUp={e => {
+												if (e.key === 'Enter' && !results)
+													redirectToResultsPage()
+											}}
+											onBlur={() => !results && redirectToResultsPage()}
+										/>
+										<MagnifierIcon stroke={'#8C8F8F'} />
+									</div>
+								</div>
 							</div>
-						</div>
-						<div className='d-flex d-lg_none justify-content-center align-items-center gap-10'>
-							<button
-								onClick={() => {
-									resetFilters()
-									setTempFilters({
-										page: 1,
-										product: null,
-										search: '',
-										year: null
-									})
-									setSearchTerm('')
-								}}
-								className='reset'>
-								Reset Filter
-							</button>
-							<button onClick={confirmChanges} className='n-btn white medium'>
-								Confirm
-							</button>
-						</div>
+						)}
 					</div>
 				</div>
 			</div>
+			{width < 768 && (
+				<FilterResponsive
+					filters={filters}
+					allFilters={filterData}
+					yearTitle={yearTitle}
+					categoryTitle={categoryTitle}
+					newsSearchTitle={newsSearchTitle}
+					filterHandler={filterHandler}
+					news={news}
+					onSearch={_v => setSearchTerm(_v)}
+					searchTerm={searchTerm}
+					onClose={() => !results && redirectToResultsPage()}
+				/>
+			)}
 		</div>
 	)
 }

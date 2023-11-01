@@ -19,13 +19,13 @@ const NewsRoomMainBox = ({ data }) => {
 	const [pagination, setPagination] = useState()
 	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
 	const [filters, setFilters] = useState({
-		year: '',
-		product: '',
+		year: [],
+		product: [],
 		search: '',
 		page: 1
 	})
 	useEffect(() => {
-		if (filters?.product || filters?.search || filters?.year) {
+		if (filters?.product.length || filters?.search || filters?.year.length) {
 			getNews()
 		} else {
 			setNews(null)
@@ -65,14 +65,6 @@ const NewsRoomMainBox = ({ data }) => {
 						? setFilters(_a)
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
-				resetFilters={() =>
-					setFilters({
-						page: 1,
-						product: null,
-						search: '',
-						year: null
-					})
-				}
 				title={structure?.title?.value}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
@@ -80,17 +72,19 @@ const NewsRoomMainBox = ({ data }) => {
 				categoryTitle={
 					structure?.product_category?.value
 						? structure?.product_category?.value
-						: 'Product Category'
+						: 'Product'
 				}
 				newsSearchTitle={
 					structure?.newsroom_search?.value
 						? structure?.newsroom_search?.value
-						: 'search newsroom'
+						: 'search Newsroom'
 				}
+				news={news}
+				targetRoute={structure?.link?.value}
 			/>
 			<NewsRoomSlider data={{ structure: { list: structure?.slider } }} />
 
-			<div className='news_room_news_box'>
+			<div id='main_news_box' className='news_room_news_box'>
 				<div className='container items px-4'>
 					{/* {news === 'loading' ? (
 					<Spinner />

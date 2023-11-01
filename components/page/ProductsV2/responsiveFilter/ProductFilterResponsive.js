@@ -145,6 +145,7 @@ const ProductFilterResponsive = ({
 						<FontAwesomeIcon
 							icon={modalIsOpen ? faCircleXmark : faChevronCircleRight}
 							size={'xl'}
+							color='#000'
 						/>
 					</button>
 				</div>
