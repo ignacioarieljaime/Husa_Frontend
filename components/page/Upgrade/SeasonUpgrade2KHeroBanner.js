@@ -64,6 +64,7 @@ const SeasonUpgrade2KHeroBanner = ({ data }) => {
 							/>
 						</div>
 					)}
+
 					{content?.link?.value ? (
 						<Link
 							href={content?.link?.value}
