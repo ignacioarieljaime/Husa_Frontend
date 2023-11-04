@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
-	const [news, setNews] = useState()
+	const [news, setNews] = useState([])
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: [],
@@ -22,17 +22,19 @@ const NewsPressArchive = ({ data }) => {
 		page: 1
 	})
 	const router = useRouter()
+	const controller = new AbortController()
 
 	useEffect(() => {
 		const to = setTimeout(() => {
 			if (router && router?.query && router?.query?.filters) {
 				setFilters({ ...JSON.parse(router?.query?.filters) })
 			}
-		}, 700)
+		}, 1500)
 		return () => clearTimeout(to)
 	}, [router])
 
 	useEffect(() => {
+		if (news?.length && news === 'loading') controller.abort()
 		getNews()
 	}, [filters])
 
@@ -48,13 +50,13 @@ const NewsPressArchive = ({ data }) => {
 	}
 
 	const getNews = async () => {
-		setNews('loading')
-
 		try {
+			setNews('loading')
 			let response = await GetNewsApi(
 				filters,
 				structure?.count?.value,
-				getPostId()
+				getPostId(),
+				controller
 			)
 
 			setNews(response.data.data)
