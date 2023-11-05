@@ -15,14 +15,19 @@ export async function getSettingApi() {
 }
 
 export async function GetNewsApi(filters, count, exclude) {
+	console.log(filters.product)
 	let response = await axios.get(
 		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=news${
-			filters.year ? '&year=' + filters.year : ''
-		}${filters.product ? '&tag=' + filters.product : ''}${
-			filters.search ? '&title=' + filters.search : ''
-		}${exclude || ''}&page=${filters.page}&perPage=${count || 10}&brand_id=${
-			process.env.NEXT_PUBLIC_BRAND_ID
-		}`
+			filters.year.length
+				? filters.year.map(_f => `&year[]=${_f}`).join('')
+				: ''
+		}${
+			filters.product.length
+				? filters.product.map(_f => `&tag[]=${_f}`).join('')
+				: ''
+		}${filters.search ? '&title=' + filters.search : ''}${exclude || ''}&page=${
+			filters.page
+		}&perPage=${count || 10}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 	)
 	return response
 }
