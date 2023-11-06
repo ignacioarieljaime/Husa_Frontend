@@ -98,25 +98,29 @@ const ProductFilterResponsive = ({
 		filterRequest([], '')
 	}
 
+	// console.log("SECTION FINDER")
+	// console.log(document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overscroll-y-auto"));
+	// console.log(document.querySelector("section").closest(".product_filter_responsive_wrapper"))
 	/////////////
 	useEffect(() => {
+		const parentSection = document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentNode;
 		if (modalIsOpen) {
 			document.body.classList.add("overflow-y-clip");
-			document.querySelector('.all-tv-section').classList.add("overscroll-y-auto");
-			document.querySelector('.all-tv-section').classList.add("overflow-y-clip");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overscroll-y-auto");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper').classList.add("overflow-y-clip");
 		} else {
 
 			document.body.classList.remove("overflow-y-clip");
-			document.querySelector('.all-tv-section').classList.remove("overscroll-y-auto");
-			document.querySelector('.all-tv-section').classList.remove("overflow-y-clip");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper').classList.remove("overflow-y-clip");
 		}
 	
 		return () => {
 			document.body.classList.remove("overflow-y-clip");
-			document.querySelector('.all-tv-section').classList.remove("overscroll-y-auto");
-			document.querySelector('.all-tv-section').classList.remove("overflow-y-clip");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper').classList.remove("overflow-y-clip");
 		};
 	}, [modalIsOpen]);
