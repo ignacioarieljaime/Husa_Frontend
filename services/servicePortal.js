@@ -5,7 +5,7 @@ export async function getFirmWareModels(_param) {
 		`${process.env.NEXT_PUBLIC_SERVICE_PORTAL_API_ROUTE}/model?sn=${_param}`,
 		{
 			headers: {
-				Brandid: process.env.NEXT_PUBLIC_BRAND_ID
+				BrandId: process.env.NEXT_PUBLIC_BRAND_ID
 			}
 		}
 	)
