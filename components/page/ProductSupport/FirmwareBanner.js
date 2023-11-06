@@ -32,6 +32,7 @@ const FirmwareBanner = ({ data }) => {
 	useEffect(() => {
 		if (model?.model?.title) getPageUrl(model?.model?.pid)
 	}, [model])
+
 	const getPageUrl = async _value => {
 		// this method called after getModel method
 		// this method send request to cxm to getting product url by product model
