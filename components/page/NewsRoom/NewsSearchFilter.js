@@ -70,12 +70,12 @@ const NewsSearchFilter = ({
 				{
 					pathname: targetRoute,
 					query: {
-						filters: JSON.stringify(filters)
+						filters: JSON.stringify({ ...filters, search: searchTerm })
 					}
 				},
 				targetRoute
 			)
-		}, 700)
+		}, 1000)
 	}
 
 	// function confirmChanges() {
