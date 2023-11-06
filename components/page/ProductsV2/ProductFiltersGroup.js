@@ -68,7 +68,10 @@ const ProductFiltersGroup = ({
 		if (category?.value === 5) {
 			if (filterList && filterList.length) {
 				let temp = filterList
-				if (filter?.id === 26) {
+				if (
+					filter?.id === 30 ||
+					filter?.name.toLowerCase().includes('capacity')
+				) {
 					temp = filterList.sort(
 						(a, b) =>
 							parseFloat(a.title.split(' ')[0]) -
