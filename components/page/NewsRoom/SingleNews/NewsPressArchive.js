@@ -56,7 +56,6 @@ const NewsPressArchive = ({ data }) => {
 				structure?.count?.value,
 				getPostId()
 			)
-
 			setNews(response.data.data)
 			setPagination(response.data.meta)
 		} catch (error) {
@@ -74,6 +73,7 @@ const NewsPressArchive = ({ data }) => {
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.titleOne?.value}
+				link={structure?.titleOneLink}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
 				}
