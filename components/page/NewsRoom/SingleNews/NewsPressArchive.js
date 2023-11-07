@@ -14,6 +14,7 @@ const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
+	const [newsLength, setNewsLength] = useState()
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: [],
@@ -60,6 +61,7 @@ const NewsPressArchive = ({ data }) => {
 			)
 			setNews(response.data.data)
 			setPagination(response.data.meta)
+			setNewsLength(response.data?.meta?.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -91,6 +93,7 @@ const NewsPressArchive = ({ data }) => {
 				}
 				news={news}
 				results
+				newsLength={newsLength}
 			/>
 			<div className='news_press_archive container px-4'>
 				<div>
