@@ -99,6 +99,29 @@ const ProductFilterResponsive = ({
 	}
 
 	useEffect(() => {
+		if (modalIsOpen) {
+			document.querySelector(".product_filter_responsive_wrapper")?.scrollIntoView({behavior: "smooth"});
+			document.body.classList.add("overflow-y-clip");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overscroll-y-auto");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overflow-y-clip");
+			document.querySelector('.product_filter_responsive_wrapper')?.classList.add("overflow-y-clip");
+		} else {
+
+			document.body.classList.remove("overflow-y-clip");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
+			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
+		}
+	
+		return () => {
+			document.body.classList.remove("overflow-y-clip");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
+			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
+			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
+		};
+	}, [modalIsOpen]);
+
+	useEffect(() => {
 		filterCountHandler()
 	}, [router?.query?.filter, searchTerm])
 
