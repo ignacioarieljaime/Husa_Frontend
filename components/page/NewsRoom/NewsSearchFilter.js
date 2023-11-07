@@ -26,7 +26,8 @@ const NewsSearchFilter = ({
 	filterHandler,
 	news,
 	targetRoute,
-	results
+	results,
+	newsLength
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -98,7 +99,7 @@ const NewsSearchFilter = ({
 							(filters.search.length > 0 ||
 								filters.year.length > 0 ||
 								filters.product.length > 0) && (
-								<div className='results'>{news.length} Results</div>
+								<div className='results'>{newsLength} Results</div>
 							)}
 
 						{width >= 768 && (

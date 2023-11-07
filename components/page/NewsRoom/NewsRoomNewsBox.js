@@ -16,6 +16,7 @@ const NewsRoomNewsBox = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
+	const [newsLength, setNewsLength] = useState()
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: '',
@@ -38,6 +39,7 @@ const NewsRoomNewsBox = ({ data }) => {
 
 			setNews(response.data.data)
 			setPagination(response.data.meta)
+			setNewsLength(response.data?.meta?.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -74,6 +76,7 @@ const NewsRoomNewsBox = ({ data }) => {
 						? structure?.newsroom_search?.value
 						: 'search newsroom'
 				}
+				newsLength={newsLength}
 			/>
 			<div className='container items '>
 				{/* {news === 'loading' ? (
