@@ -349,13 +349,14 @@
 				}
 
 				.filter_title {
-					> span {
+					> span,
+					> a {
 						font-style: normal;
 						font-weight: 400;
 						font-size: 24px;
 						line-height: 22px;
 						color: #00aaa6;
-
+						text-decoration: none;
 						&.title {
 							@include mq(768) {
 								font-size: 20px;

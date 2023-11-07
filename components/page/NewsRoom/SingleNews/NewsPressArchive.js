@@ -14,6 +14,7 @@ const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
+	const [newsLength, setNewsLength] = useState()
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: [],
@@ -22,17 +23,19 @@ const NewsPressArchive = ({ data }) => {
 		page: 1
 	})
 	const router = useRouter()
+	const controller = new AbortController()
 
 	useEffect(() => {
 		const to = setTimeout(() => {
 			if (router && router?.query && router?.query?.filters) {
 				setFilters({ ...JSON.parse(router?.query?.filters) })
 			}
-		}, 700)
+		}, 1500)
 		return () => clearTimeout(to)
 	}, [router])
 
 	useEffect(() => {
+		if (news?.length && news === 'loading') controller.abort()
 		getNews()
 	}, [filters])
 
@@ -48,17 +51,17 @@ const NewsPressArchive = ({ data }) => {
 	}
 
 	const getNews = async () => {
-		setNews('loading')
-
 		try {
+			setNews('loading')
 			let response = await GetNewsApi(
 				filters,
 				structure?.count?.value,
-				getPostId()
+				getPostId(),
+				controller
 			)
-
 			setNews(response.data.data)
 			setPagination(response.data.meta)
+			setNewsLength(response.data?.meta?.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -74,6 +77,7 @@ const NewsPressArchive = ({ data }) => {
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.titleOne?.value}
+				link={structure?.titleOneLink}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
 				}
@@ -89,6 +93,7 @@ const NewsPressArchive = ({ data }) => {
 				}
 				news={news}
 				results
+				newsLength={newsLength}
 			/>
 			<div className='news_press_archive container px-4'>
 				<div>
