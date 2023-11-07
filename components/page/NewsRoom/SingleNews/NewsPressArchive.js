@@ -14,6 +14,7 @@ const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
+	const [newsLength, setNewsLength] = useState()
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: [],
@@ -56,7 +57,9 @@ const NewsPressArchive = ({ data }) => {
 				structure?.count?.value,
 				getPostId()
 			)
+			let lengthResponse = await GetNewsApi(filters, 100, getPostId())
 
+			setNewsLength(lengthResponse?.data?.data)
 			setNews(response.data.data)
 			setPagination(response.data.meta)
 		} catch (error) {
@@ -74,6 +77,7 @@ const NewsPressArchive = ({ data }) => {
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.titleOne?.value}
+				link={structure?.titleOneLink}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
 				}
@@ -87,6 +91,7 @@ const NewsPressArchive = ({ data }) => {
 						? structure?.newsroom_search?.value
 						: 'search newsroom'
 				}
+				newsLength={newsLength}
 				news={news}
 				results
 			/>

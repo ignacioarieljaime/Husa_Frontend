@@ -16,10 +16,11 @@ const NewsRoomNewsBox = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
+	const [newsLength, setNewsLength] = useState()
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
-		year: '',
-		product: '',
+		year: [],
+		product: [],
 		search: '',
 		page: 1
 	})
@@ -35,7 +36,9 @@ const NewsRoomNewsBox = ({ data }) => {
 		setNews('loading')
 		try {
 			let response = await GetNewsApi(filters, 15)
+			let lengthResponse = await GetNewsApi(filters, 100)
 
+			setNewsLength(lengthResponse?.data?.data)
 			setNews(response.data.data)
 			setPagination(response.data.meta)
 		} catch (error) {
@@ -46,34 +49,29 @@ const NewsRoomNewsBox = ({ data }) => {
 	return (
 		<div className='news_room_news_box'>
 			<NewsSearchFilter
-				filter={filters}
+				filters={filters}
 				filterHandler={(_key, _value, _a) =>
 					_a && Object.keys(_a).length > 0
 						? setFilters(_a)
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
-				resetFilters={() =>
-					setFilters({
-						page: 1,
-						product: null,
-						search: '',
-						year: null
-					})
-				}
 				title={structure?.title?.value}
+				link={structure?.titleLink}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
 				}
 				categoryTitle={
 					structure?.product_category?.value
 						? structure?.product_category?.value
-						: 'Product Category'
+						: 'Product'
 				}
 				newsSearchTitle={
 					structure?.newsroom_search?.value
 						? structure?.newsroom_search?.value
-						: 'search newsroom'
+						: 'search Newsroom'
 				}
+				news={news}
+				newsLength={newsLength}
 			/>
 			<div className='container items '>
 				{/* {news === 'loading' ? (
