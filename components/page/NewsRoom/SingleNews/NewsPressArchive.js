@@ -13,8 +13,7 @@ import { useRouter } from 'next/router'
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
-	const [news, setNews] = useState([])
-	const [newsLength, setNewsLength] = useState()
+	const [news, setNews] = useState()
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: [],
@@ -59,9 +58,6 @@ const NewsPressArchive = ({ data }) => {
 				getPostId(),
 				controller
 			)
-			let lengthResponse = await GetNewsApi(filters, 100, getPostId())
-
-			setNewsLength(lengthResponse?.data?.data)
 			setNews(response.data.data)
 			setPagination(response.data.meta)
 		} catch (error) {
@@ -93,7 +89,6 @@ const NewsPressArchive = ({ data }) => {
 						? structure?.newsroom_search?.value
 						: 'search newsroom'
 				}
-				newsLength={newsLength}
 				news={news}
 				results
 			/>
