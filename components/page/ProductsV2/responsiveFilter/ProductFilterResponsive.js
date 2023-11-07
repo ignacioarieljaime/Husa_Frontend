@@ -100,7 +100,7 @@ const ProductFilterResponsive = ({
 
 	useEffect(() => {
 		if (modalIsOpen) {
-			document.querySelector(".product_filter_responsive_wrapper")?.scrollIntoView();
+			document.querySelector(".product_filter_responsive_wrapper")?.scrollIntoView({behavior: "smooth"});
 			document.body.classList.add("overflow-y-clip");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overscroll-y-auto");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overflow-y-clip");
