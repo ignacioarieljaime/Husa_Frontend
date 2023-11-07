@@ -26,8 +26,7 @@ const NewsSearchFilter = ({
 	filterHandler,
 	news,
 	targetRoute,
-	results,
-	link
+	results
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -93,19 +92,7 @@ const NewsSearchFilter = ({
 				<div className=''>
 					<div className='content'>
 						<div className='filter_title'>
-							{link?.value ? (
-								<Link
-									href={link?.value}
-									target={link?.target ? link?.target : '_self'}>
-									<a
-										target={link?.target ? link?.target : '_self'}
-										className='title'>
-										{title}
-									</a>
-								</Link>
-							) : (
-								<span className='title'>{title}</span>
-							)}
+							<span className='title'>{title}</span>
 						</div>
 						{news &&
 							(filters.search.length > 0 ||
