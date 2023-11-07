@@ -34,17 +34,19 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 	}
 
 	function sortNews(_news, method) {
+		const filteredNews = _news.filter(news => news?.id !== pim?.id)
+
 		if (method === 'rel') {
 			setNews(
-				_news.filter(_item => {
+				filteredNews.filter(_item => {
 					return _item.tags.some(_tag => pim?.tags.includes(_tag))
 				})
 			)
 		} else {
-			_news.sort((a, b) => {
+			filteredNews.sort((a, b) => {
 				return new Date(b.published_at) - new Date(a.published_at)
 			})
-			setNews(_news)
+			setNews(filteredNews)
 		}
 	}
 
