@@ -21,6 +21,9 @@ const NewsSingleInfoBox = ({ data }) => {
 		setMediaContent(structure?.about?.value?.text?.value)
 	}, [])
 
+	console.log("Structure is")
+	console.log(structure)
+
 	return (
 		<div className='container news_single_info_box'>
 			<div className='content'>
@@ -43,7 +46,7 @@ const NewsSingleInfoBox = ({ data }) => {
 						</li>{' '}
 						<li>
 							<a
-								target='_blank'
+								target='_self'
 								href={`mailto:user@example.com?subject=Subject&body=${pageUrl}`}>
 								<MailNewsIcon />
 							</a>
