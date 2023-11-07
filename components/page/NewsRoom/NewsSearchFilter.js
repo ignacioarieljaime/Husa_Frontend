@@ -28,8 +28,7 @@ const NewsSearchFilter = ({
 	targetRoute,
 	results,
 	link,
-	news,
-	Length
+	newsLength
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
