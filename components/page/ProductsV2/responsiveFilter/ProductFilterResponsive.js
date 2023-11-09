@@ -14,6 +14,7 @@ import {
 import axios from 'axios'
 import Link from 'next/link'
 
+
 const ProductFilterResponsive = ({
 	selectedFilter,
 	allFilters,
@@ -98,26 +99,32 @@ const ProductFilterResponsive = ({
 		filterRequest([], '')
 	}
 
+
 	useEffect(() => {
+
+
 		if (modalIsOpen) {
 			document.querySelector(".product_filter_responsive_wrapper")?.scrollIntoView({behavior: "smooth"});
-			document.body.classList.add("overflow-y-clip");
+
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overscroll-y-auto");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.add("overflow-y-clip");
+			document.querySelector('.product_filter_responsive_wrapper')?.classList.add("overscroll-contain");
+
 		} else {
 
-			document.body.classList.remove("overflow-y-clip");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
+			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overscroll-contain");
 		}
 	
 		return () => {
-			document.body.classList.remove("overflow-y-clip");
+
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
+			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overscroll-contain");
 		};
 	}, [modalIsOpen]);
 
@@ -158,7 +165,12 @@ const ProductFilterResponsive = ({
 			<div
 				className={`product_filter_responsive_wrapper ${
 					modalIsOpen ? 'open' : ''
-				} ${!modalIsOpen && filterCounter > 0 ? 'shortcut' : ''}`}>
+				} ${!modalIsOpen && filterCounter > 0 ? 'shortcut' : ''}`}
+				onTransitionEnd={() => {
+					if (modalIsOpen) document.body.classList.add("overflow-hidden");
+					if (!modalIsOpen) document.body.classList.remove("overflow-hidden");
+				}}
+				>
 				<div
 					className={`d-flex justify-content-between align-items-center p-4 w-100 filter_nav `}>
 					<span>Filters</span>
