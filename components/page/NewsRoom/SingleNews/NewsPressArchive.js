@@ -14,6 +14,7 @@ const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState([])
+	const [initLoading, setInitLoading] = useState(false)
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: [],
@@ -25,17 +26,25 @@ const NewsPressArchive = ({ data }) => {
 	const controller = new AbortController()
 
 	useEffect(() => {
+		setInitLoading(true)
+		setNews('loading')
+		const toLoading = setTimeout(() => {
+			setInitLoading(false)
+		}, 2400)
 		const to = setTimeout(() => {
 			if (router && router?.query && router?.query?.filters) {
 				setFilters({ ...JSON.parse(router?.query?.filters) })
 			}
 		}, 1500)
-		return () => clearTimeout(to)
-	}, [router])
+		return () => {
+			clearTimeout(toLoading)
+			clearTimeout(to)
+		}
+	}, [])
 
 	useEffect(() => {
 		if (news?.length && news === 'loading') controller.abort()
-		getNews()
+		else getNews()
 	}, [filters])
 
 	useEffect(() => {
@@ -98,7 +107,7 @@ const NewsPressArchive = ({ data }) => {
 						<h5>{structure?.titleTwo?.value}</h5>
 
 						<div className='items'>
-							{news === 'loading' ? (
+							{news === 'loading' || initLoading ? (
 								<Spinner />
 							) : Array.isArray(news) ? (
 								news.map(item => (
