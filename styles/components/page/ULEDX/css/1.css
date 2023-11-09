@@ -6778,6 +6778,9 @@ fieldset:disabled .btn {
 .overscroll-y-auto {
 	overscroll-behavior-y: auto !important;
 }
+.overscroll-contain {
+	overscroll-behavior: contain !important;
+}
 .overflow-y-clip {
 	overflow-y: clip !important;
 }
