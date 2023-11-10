@@ -7880,6 +7880,13 @@ fieldset:disabled .btn {
 	border-bottom: 0 !important;
 }
 
+.webkitHeightFix {
+	@supports (-webkit-touch-callout: none) {
+		height: 100vh !important;
+		height: calc(var(--vh, 1vh) * 100) !important;
+	}
+}
+
 .border-start {
 	border-left: var(--bs-border-width) var(--bs-border-style)
 		var(--bs-border-color) !important;
