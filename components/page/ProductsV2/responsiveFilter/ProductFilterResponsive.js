@@ -102,31 +102,45 @@ const ProductFilterResponsive = ({
 
 	useEffect(() => {
 
-
+		const vh = window.innerHeight * 0.01;
+		
 		if (modalIsOpen) {
+
+			// Smooth scroll into view
 			document.querySelector(".product_filter_responsive_wrapper")?.scrollIntoView({behavior: "smooth"});
 
+			// Mobile and iOS Safari double body background scroll fix
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overscroll-y-auto");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.add("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.add("overscroll-contain");
+			
+			// iOS Safari bottom element cutoff fix
+			document.querySelector('.product_filter_responsive_modal')?.classList.add("webkitHeightFix");
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
 			document.querySelector('.product_filter_responsive_modal')?.classList.add("paddingFix");
 
 		} else {
 
+			// Class cleanup
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overscroll-contain");
+			document.querySelector('.product_filter_responsive_modal')?.classList.remove("webkitHeightFix");
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
 			document.querySelector('.product_filter_responsive_modal')?.classList.remove("paddingFix");
 		}
 	
 		return () => {
-
+			
+			// Class cleanup
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overscroll-y-auto");
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overscroll-contain");
+			document.querySelector('.product_filter_responsive_modal')?.classList.remove("webkitHeightFix");
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
 			document.querySelector('.product_filter_responsive_modal')?.classList.remove("paddingFix");
 		};
 	}, [modalIsOpen]);
