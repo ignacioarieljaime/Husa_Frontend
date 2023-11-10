@@ -110,6 +110,7 @@ const ProductFilterResponsive = ({
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.add("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.add("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.add("overscroll-contain");
+			document.querySelector('.product_filter_responsive_modal')?.classList.add("paddingFix");
 
 		} else {
 
@@ -117,6 +118,7 @@ const ProductFilterResponsive = ({
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overscroll-contain");
+			document.querySelector('.product_filter_responsive_modal')?.classList.remove("paddingFix");
 		}
 	
 		return () => {
@@ -125,6 +127,7 @@ const ProductFilterResponsive = ({
 			document.querySelector(".product_filter_responsive_wrapper")?.parentNode?.parentElement.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overflow-y-clip");
 			document.querySelector('.product_filter_responsive_wrapper')?.classList.remove("overscroll-contain");
+			document.querySelector('.product_filter_responsive_modal')?.classList.remove("paddingFix");
 		};
 	}, [modalIsOpen]);
 
@@ -278,7 +281,7 @@ const ProductFilterResponsive = ({
 					</div>
 				</div>
 				{modalIsOpen && (
-					<div className='d-flex justify-content-center align-items-center gap-4 buttons p-4'>
+					<div className='d-flex justify-content-center align-items-center gap-4 buttons px-4 pt-4 pb-20 iosFix'>
 						<Link href='#products'>
 							<a
 								className='n-btn primary'
