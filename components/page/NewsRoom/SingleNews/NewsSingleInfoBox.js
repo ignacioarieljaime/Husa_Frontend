@@ -87,7 +87,7 @@ const NewsSingleInfoBox = ({ data }) => {
 						{structure?.downloads?.value?.map(item => (
 							<li>
 								<a
-									target='_blank'
+									target='_self'
 									download={
 										item?.file?.src
 											? item?.file?.src.split('/')[
