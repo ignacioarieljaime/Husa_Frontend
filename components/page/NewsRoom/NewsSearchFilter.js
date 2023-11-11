@@ -66,15 +66,17 @@ const NewsSearchFilter = ({
 	}
 
 	function redirectToResultsPage() {
-		router.push(
-			{
-				pathname: targetRoute,
-				query: {
-					filters: JSON.stringify(filters)
-				}
-			},
-			targetRoute
-		)
+		setTimeout(() => {
+			router.push(
+				{
+					pathname: targetRoute,
+					query: {
+						filters: JSON.stringify({ ...filters, search: searchTerm })
+					}
+				},
+				targetRoute
+			)
+		}, 1000)
 	}
 
 	// function confirmChanges() {
