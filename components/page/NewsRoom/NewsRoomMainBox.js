@@ -16,6 +16,7 @@ const NewsRoomMainBox = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
+	const [newsLength, setNewsLength] = useState()
 	const [pagination, setPagination] = useState()
 	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
 	const [filters, setFilters] = useState({
@@ -50,6 +51,7 @@ const NewsRoomMainBox = ({ data }) => {
 			let response = await GetNewsApi(filters, 15)
 			setNews(response.data.data)
 			setPagination(response.data.meta)
+			setNewsLength(response.data?.meta?.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -81,6 +83,7 @@ const NewsRoomMainBox = ({ data }) => {
 				}
 				news={news}
 				targetRoute={structure?.link?.value}
+				newsLength={newsLength}
 			/>
 			<NewsRoomSlider data={{ structure: { list: structure?.slider } }} />
 

@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
+	const [newsLength, setNewsLength] = useState()
 	const [news, setNews] = useState([])
 	const [initLoading, setInitLoading] = useState(false)
 	const [pagination, setPagination] = useState()
@@ -69,6 +70,7 @@ const NewsPressArchive = ({ data }) => {
 			)
 			setNews(response.data.data)
 			setPagination(response.data.meta)
+			setNewsLength(response.data?.meta?.total)
 		} catch (error) {
 			console.log(error)
 		}
@@ -100,6 +102,7 @@ const NewsPressArchive = ({ data }) => {
 				}
 				news={news}
 				results
+				newsLength={newsLength}
 			/>
 			<div className='news_press_archive container px-4'>
 				<div>
