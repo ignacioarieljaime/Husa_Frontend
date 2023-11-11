@@ -47,7 +47,7 @@ const NewsIntro = ({ data, pim }) => {
 						</li>{' '}
 						<li>
 							<a
-								href={`mailto:user@example.com?subject=Subject&body=${pageUrl}`}>
+								href={`mailto:?subject=${structure?.title?.value}&body=${pageUrl}`}>
 								<MailNewsIcon />
 							</a>
 						</li>

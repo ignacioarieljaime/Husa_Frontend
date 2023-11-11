@@ -35,7 +35,6 @@ const NewsRoomNewsBox = ({ data }) => {
 		setNews('loading')
 		try {
 			let response = await GetNewsApi(filters, 15)
-
 			setNews(response.data.data)
 			setPagination(response.data.meta)
 		} catch (error) {
@@ -61,6 +60,7 @@ const NewsRoomNewsBox = ({ data }) => {
 					})
 				}
 				title={structure?.title?.value}
+				link={structure?.titleLink}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
 				}
@@ -74,6 +74,7 @@ const NewsRoomNewsBox = ({ data }) => {
 						? structure?.newsroom_search?.value
 						: 'search newsroom'
 				}
+				news={news}
 			/>
 			<div className='container items '>
 				{/* {news === 'loading' ? (
