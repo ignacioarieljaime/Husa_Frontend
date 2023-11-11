@@ -13,8 +13,8 @@ import { useRouter } from 'next/router'
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
-	const [news, setNews] = useState()
 	const [newsLength, setNewsLength] = useState()
+	const [news, setNews] = useState([])
 	const [initLoading, setInitLoading] = useState(false)
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({

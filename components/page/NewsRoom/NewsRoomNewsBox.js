@@ -76,8 +76,8 @@ const NewsRoomNewsBox = ({ data }) => {
 						? structure?.newsroom_search?.value
 						: 'search newsroom'
 				}
-				news={news}
 				newsLength={newsLength}
+				news={news}
 			/>
 			<div className='container items '>
 				{/* {news === 'loading' ? (
