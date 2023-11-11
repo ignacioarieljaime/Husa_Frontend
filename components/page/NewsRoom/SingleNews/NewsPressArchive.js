@@ -13,8 +13,9 @@ import { useRouter } from 'next/router'
 const NewsPressArchive = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
-	const [news, setNews] = useState()
 	const [newsLength, setNewsLength] = useState()
+	const [news, setNews] = useState([])
+	const [initLoading, setInitLoading] = useState(false)
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
 		year: [],
@@ -23,18 +24,28 @@ const NewsPressArchive = ({ data }) => {
 		page: 1
 	})
 	const router = useRouter()
+	const controller = new AbortController()
 
 	useEffect(() => {
+		setInitLoading(true)
+		setNews('loading')
+		const toLoading = setTimeout(() => {
+			setInitLoading(false)
+		}, 2400)
 		const to = setTimeout(() => {
 			if (router && router?.query && router?.query?.filters) {
 				setFilters({ ...JSON.parse(router?.query?.filters) })
 			}
-		}, 700)
-		return () => clearTimeout(to)
-	}, [router])
+		}, 1500)
+		return () => {
+			clearTimeout(toLoading)
+			clearTimeout(to)
+		}
+	}, [])
 
 	useEffect(() => {
-		getNews()
+		if (news?.length && news === 'loading') controller.abort()
+		else getNews()
 	}, [filters])
 
 	useEffect(() => {
@@ -49,15 +60,14 @@ const NewsPressArchive = ({ data }) => {
 	}
 
 	const getNews = async () => {
-		setNews('loading')
-
 		try {
+			setNews('loading')
 			let response = await GetNewsApi(
 				filters,
 				structure?.count?.value,
-				getPostId()
+				getPostId(),
+				controller
 			)
-
 			setNews(response.data.data)
 			setPagination(response.data.meta)
 			setNewsLength(response.data?.meta?.total)
@@ -76,6 +86,7 @@ const NewsPressArchive = ({ data }) => {
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}
 				title={structure?.titleOne?.value}
+				link={structure?.titleOneLink}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
 				}
@@ -99,7 +110,7 @@ const NewsPressArchive = ({ data }) => {
 						<h5>{structure?.titleTwo?.value}</h5>
 
 						<div className='items'>
-							{news === 'loading' ? (
+							{news === 'loading' || initLoading ? (
 								<Spinner />
 							) : Array.isArray(news) ? (
 								news.map(item => (

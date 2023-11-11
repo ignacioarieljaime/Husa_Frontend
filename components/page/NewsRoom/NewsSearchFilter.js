@@ -28,6 +28,7 @@ const NewsSearchFilter = ({
 	targetRoute,
 	results,
 	newsLength
+	link
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -66,15 +67,17 @@ const NewsSearchFilter = ({
 	}
 
 	function redirectToResultsPage() {
-		router.push(
-			{
-				pathname: targetRoute,
-				query: {
-					filters: JSON.stringify(filters)
-				}
-			},
-			targetRoute
-		)
+		setTimeout(() => {
+			router.push(
+				{
+					pathname: targetRoute,
+					query: {
+						filters: JSON.stringify({ ...filters, search: searchTerm })
+					}
+				},
+				targetRoute
+			)
+		}, 1000)
 	}
 
 	// function confirmChanges() {
@@ -93,7 +96,19 @@ const NewsSearchFilter = ({
 				<div className=''>
 					<div className='content'>
 						<div className='filter_title'>
-							<span className='title'>{title}</span>
+							{link?.value ? (
+								<Link
+									href={link?.value}
+									target={link?.target ? link?.target : '_self'}>
+									<a
+										target={link?.target ? link?.target : '_self'}
+										className='title'>
+										{title}
+									</a>
+								</Link>
+							) : (
+								<span className='title'>{title}</span>
+							)}
 						</div>
 						{news &&
 							(filters.search.length > 0 ||
