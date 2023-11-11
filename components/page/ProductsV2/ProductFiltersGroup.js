@@ -68,18 +68,31 @@ const ProductFiltersGroup = ({
 		if (category?.value === 5) {
 			if (filterList && filterList.length) {
 				let temp = filterList
-					.map((_f, _i) => {
-						let foundFilter = refrigeratorFiltersCustomSort.findIndex(
-							item =>
-								_f?.title &&
-								item.toLowerCase().includes(_f?.title.toLowerCase())
-						)
-						return {
-							..._f,
-							order: foundFilter > -1 ? foundFilter : _i + filterList.length + 1
-						}
-					})
-					.sort((a, b) => a.order - b.order)
+				if (
+					filter?.id === 30 ||
+					filter?.name.toLowerCase().includes('capacity')
+				) {
+					temp = filterList.sort(
+						(a, b) =>
+							parseFloat(a.title.split(' ')[0]) -
+							parseFloat(b.title.split(' ')[0])
+					)
+				} else {
+					temp = filterList
+						.map((_f, _i) => {
+							let foundFilter = refrigeratorFiltersCustomSort.findIndex(
+								item =>
+									_f?.title &&
+									item.toLowerCase().includes(_f?.title.toLowerCase())
+							)
+							return {
+								..._f,
+								order:
+									foundFilter > -1 ? foundFilter : _i + filterList.length + 1
+							}
+						})
+						.sort((a, b) => a.order - b.order)
+				}
 				setSortedFilterList(temp)
 			}
 		} else setSortedFilterList(filterList)

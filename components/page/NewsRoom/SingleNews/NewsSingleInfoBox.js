@@ -21,6 +21,29 @@ const NewsSingleInfoBox = ({ data }) => {
 		setMediaContent(structure?.about?.value?.text?.value)
 	}, [])
 
+	function formatUrl(url) {
+
+		if (!url) return url;
+
+		const index = url?.lastIndexOf('/');
+		const urlString = url?.substring(index + 1);
+
+		if (!urlString) return urlString;
+
+		const wordList = urlString.split('-');
+
+		for (var i = 0; i < wordList.length; i++) {
+			wordList[i] = wordList[i].charAt(0).toUpperCase() + wordList[i].slice(1).toLowerCase();
+		}
+
+		const result = wordList.join(' ');
+
+		return result;
+	}
+
+	const mailSubject = formatUrl(pageUrl);
+	console.log(mailSubject);
+
 	return (
 		<div className='container news_single_info_box'>
 			<div className='content'>
@@ -43,8 +66,8 @@ const NewsSingleInfoBox = ({ data }) => {
 						</li>{' '}
 						<li>
 							<a
-								target='_self'
-								href={`mailto:user@example.com?subject=Subject&body=${pageUrl}`}>
+								target='_blank'
+								href={`mailto:?subject=${mailSubject}&body=${pageUrl}`}>
 								<MailNewsIcon />
 							</a>
 						</li>

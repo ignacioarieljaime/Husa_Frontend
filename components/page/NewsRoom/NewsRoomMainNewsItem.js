@@ -11,7 +11,8 @@ const NewsRoomMainNewsItem = ({
 	date,
 	image,
 	link,
-	target
+	target,
+	fetched
 }) => {
 	return (
 		<>
@@ -30,7 +31,9 @@ const NewsRoomMainNewsItem = ({
 					</a>
 				</Link>
 				<div className='text'>
-					<span className='subject'>{subject}</span>
+					<span className='subject'>
+						{Array.isArray(subject) ? subject.join(' ') : subject}
+					</span>
 
 					<h2>
 						<Link href={link || '/'} target={target || '_self'}>
@@ -39,7 +42,7 @@ const NewsRoomMainNewsItem = ({
 					</h2>
 
 					<span className='date'>
-						{date && date.includes('T')
+						{date && (fetched || date.includes('T'))
 							? moment(date).format('DD MMMM YYYY')
 							: date}
 					</span>
