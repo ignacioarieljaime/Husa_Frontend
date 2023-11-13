@@ -26,7 +26,12 @@ function BlogListSearchBox({ data: { structure } }) {
 		setBlogList('loading')
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchPost?string=${_searchValue}`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchPost?string=${_searchValue}`,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 			setBlogList(response.data.data)
 		} catch (error) {

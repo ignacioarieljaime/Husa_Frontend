@@ -17,7 +17,12 @@ function ProductsCategoriesWithSearch({ data }) {
 			setSearchProductsList('loading')
 			try {
 				let response = await axios.get(
-					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&category_id=${categoryId}&string=${_value}`
+					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?type=support&category_id=${categoryId}&string=${_value}`,
+					{
+						headers: {
+							BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+						}
+					}
 				)
 				setSearchProductsList(response.data.data)
 			} catch (error) {

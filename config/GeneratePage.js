@@ -42,7 +42,11 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 const requestHandler = (async () => {
 	console.log('send pages request')
 	try {
-		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`)
+		let response = await Axios.get(`${process.env.CXM_API_ROUTE}/getPages`, {
+			headers: {
+				BrandId: process.env.BRAND_ID
+			}
+		})
 		console.log('get pages')
 		controlPagesAndGenerate(response?.data?.data, 'pages')
 		// controlPagesAndGenerate(allPages.data, 'pages')

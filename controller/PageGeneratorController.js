@@ -39,7 +39,12 @@ export async function getServerSideProps(context) {
 		!_page.model_id && _page.model_id === 0
 			? `	let data = await axios
 		.get(
-			'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+			'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
+			{
+				headers: {
+					BrandId: ${process.env.BRAND_ID}
+				}
+			}
 		)
 		.then(response => {
 			console.log('get ssr data')
@@ -54,7 +59,12 @@ export async function getServerSideProps(context) {
 			: `
 			let productId = context?.query?.param[0]
 			let data = await axios.get(
-			'${process.env.CXM_API_ROUTE}/getDynamicPages/' + productId
+			'${process.env.CXM_API_ROUTE}/getDynamicPages/' + productId,
+			{
+				headers: {
+					BrandId: ${process.env.BRAND_ID}
+				}
+			}
 		)
 		.then(response => {
 			console.log('get ssr data')

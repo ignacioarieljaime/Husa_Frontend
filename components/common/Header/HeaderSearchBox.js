@@ -29,7 +29,12 @@ function HeaderSearchBox({
 		setResult('loading')
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchPage/${_value}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchPage/${_value}?brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 			setResult(response.data)
 		} catch (error) {

@@ -100,7 +100,8 @@ ${
 					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
 					   {
 						   headers: {
-							   'CLIENT_ID': req.ip
+							   'CLIENT_ID': req.ip,
+							   BrandId: ${process.env.BRAND_ID},
 						   }
 					   }
 				   )
@@ -161,8 +162,9 @@ ${
 				   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
 				   {
 					   headers: {
-						   'CLIENT_ID': req.ip
-					   }
+						   'CLIENT_ID': req.ip,
+						   BrandId: ${process.env.BRAND_ID},
+						}
 				   }
 			   )
 			   .then(response => {
@@ -176,7 +178,12 @@ ${
 			console.log('send pim request')
 			 let pim = await axios
 					.get(
-						'${process.env.CXM_API_ROUTE}/getPostInfo/${_page.post?.id}'
+						'${process.env.CXM_API_ROUTE}/getPostInfo/${_page.post?.id}',
+						{
+							headers: {
+								BrandId: ${process.env.BRAND_ID},
+							 }
+						}
 					)
 					.then(response => {
 						console.log('get pim data')
@@ -221,7 +228,8 @@ ${
 					   '${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
 					   {
 						   headers: {
-							   'CLIENT_ID': req.ip
+							   'CLIENT_ID': req.ip,
+								BrandId: ${process.env.BRAND_ID},
 						   }
 					   }
 				   )
@@ -340,7 +348,8 @@ ${
 		,
 			{
 				headers: {
-					CLIENT_ID: req.ip
+					CLIENT_ID: req.ip,
+					BrandId: ${process.env.BRAND_ID},
 				}
 			}
 		)
@@ -356,7 +365,13 @@ ${
 
 	if(data?.model_type === 'post' && data?.post && data?.post?.id){
 		pim = await axios
-			.get("${process.env.CXM_API_ROUTE}/getPostInfo/" + data?.post?.id)
+			.get("${process.env.CXM_API_ROUTE}/getPostInfo/" + data?.post?.id,
+				{
+					headers: {
+						BrandId: ${process.env.BRAND_ID},
+					}
+				}
+			)
 			.then(response => {
 				console.log('get pim data')
 				return response.data
@@ -418,7 +433,12 @@ function Error() {
 	const getData = async () => {
 		let data = await axios
 		.get(
-			'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}'
+			'${process.env.CXM_API_ROUTE}/getPageInfo/${_page.id}',
+			{
+				headers: {
+					BrandId: ${process.env.BRAND_ID},
+				}
+			}
 		)
 			.then(response => {
 				console.log('get cxm data')
@@ -558,7 +578,12 @@ const generateFirmwarePage = () => {
 		console.log('send cxm request')
 		let data = await axios
 			.get(
-					"${process.env.CXM_API_ROUTE}/template/"+query?.productId+ "/"+query?.serialNumber
+					"${process.env.CXM_API_ROUTE}/template/"+query?.productId+ "/"+query?.serialNumber,
+					{
+						headers: {
+							BrandId: ${process.env.BRAND_ID},
+						}
+					}
 			)
 			.then(response => {
 				console.log('get cxm data')

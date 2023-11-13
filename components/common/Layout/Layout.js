@@ -41,7 +41,12 @@ function Layout({ children, meta, title, header }) {
 	const getMenu = async () => {
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getMenus`,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 			let headerData = response.data.data.find(
 				item => item.title === 'header-menu'
