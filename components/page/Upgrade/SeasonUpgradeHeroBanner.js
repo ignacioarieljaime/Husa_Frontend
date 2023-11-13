@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useRef } from 'react'
 import { useEffect } from 'react'
@@ -27,11 +28,24 @@ const SeasonUpgradeHeroBanner = ({ data }) => {
 					alt={content?.backgound?.alt}
 					className='background'
 				/>
-				<img
-					src={content?.image?.src}
-					alt={content?.image?.alt}
-					className='image'
-				/>
+				{content?.image?.src && (
+					<img
+						src={content?.image?.src}
+						alt={content?.image?.alt}
+						className='image'
+					/>
+				)}
+				{content?.link?.value && (
+					<Link
+						target={content?.link?.target ? content?.link?.target : '_self'}
+						href={content?.link?.value}>
+						<a
+							target={content?.link?.target ? content?.link?.target : '_self'}
+							className='link'>
+							{content?.link?.title}
+						</a>
+					</Link>
+				)}
 			</div>
 		</section>
 	)
