@@ -12,5 +12,11 @@
 
 	.splide__list {
 		width: 110vw;
+		.item {
+			width: fit-content !important;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 }

@@ -57,7 +57,7 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 									easing: 'linear'
 								}}>
 								{content?.list?.value.map((_item, index) => (
-									<SplideSlide key={index} className='w-fit'>
+									<SplideSlide key={index} className='item'>
 										<img src={_item.image.src} alt='featured' />
 									</SplideSlide>
 								))}
@@ -82,7 +82,7 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 								easing: 'linear'
 							}}>
 							{content?.list?.value.map((_item, index) => (
-								<SplideSlide key={index} className='w-fit'>
+								<SplideSlide key={index} className='item'>
 									<img src={_item.image.src} alt='featured' />
 								</SplideSlide>
 							))}

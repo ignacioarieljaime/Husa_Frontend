@@ -60,67 +60,88 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 			<div
 				id={data?.name + data?.id}
 				ref={ref}
-				className='season_upgrade_deal_counter'>
-				<div className='text-center py-4 px-2'>
-					<img
-						src={DealOfTheWeek.src}
-						alt={content?.topImage?.alt}
-						className='top_image'
-					/>
-				</div>
-				<div className='weeks_wrapper'>
-					<Swiper
-						grabCursor={false}
-						slidesPerView={'auto'}
-						slidesPerGroup={1}
-						spaceBetween={24}
-						navigation={false}
-						className={`weeks`}>
-						{content?.list?.value.map((item, index) => (
-							<SwiperSlide key={index} className='w-fit'>
-								<SeasonUpgradeDealCounterBlockWeekItem
-									key={index}
-									active={index === content?.active?.value}
-									title={item?.title?.value}
-									activeIndex={content?.active?.value}
-									scroll={content?.active?.value > 2}
-									past={index < content?.active?.value}
-								/>
-							</SwiperSlide>
-						))}
-					</Swiper>
-				</div>
-				<div className='product'>
-					<div className='product_images'>
-						<div className='product_top'>
+				className={`season_upgrade_deal_counter ${
+					content?.template?.value === 'BlackFriday' ? 'black_friday' : ''
+				}`}>
+				{content?.template?.value !== 'BlackFriday' && (
+					<>
+						<div className='text-center py-4 px-2'>
 							<img
-								src={Lockup.src}
+								src={DealOfTheWeek.src}
 								alt={content?.topImage?.alt}
-								className='image'
+								className='top_image'
 							/>
-							<div>
-								<p className='counter_label'>DEAL EXPIRES IN</p>
-								<div className='counter'>
-									<div>
-										<div>{days}</div>
-										<div>DAYS</div>
-									</div>
-									<div>
-										<div>{hours}</div>
-										<div>HRS</div>
-									</div>
-									<div>
-										<div>{minutes}</div>
-										<div>MINS</div>
-									</div>
-									<div>
-										<div>{seconds}</div>
-										<div>SECS</div>
-									</div>
-								</div>
-								<p className='time'>Eastern Standard Time</p>
-							</div>
 						</div>
+						<div className='weeks_wrapper'>
+							<Swiper
+								grabCursor={false}
+								slidesPerView={'auto'}
+								slidesPerGroup={1}
+								spaceBetween={24}
+								navigation={false}
+								className={`weeks`}>
+								{content?.list?.value.map((item, index) => (
+									<SwiperSlide key={index} className='w-fit'>
+										<SeasonUpgradeDealCounterBlockWeekItem
+											key={index}
+											active={index === content?.active?.value}
+											title={item?.title?.value}
+											activeIndex={content?.active?.value}
+											scroll={content?.active?.value > 2}
+											past={index < content?.active?.value}
+										/>
+									</SwiperSlide>
+								))}
+							</Swiper>
+						</div>
+					</>
+				)}
+				<div className='product'>
+					<div
+						className={`product_images ${
+							content?.template?.value !== 'BlackFriday'
+								? ''
+								: 'justify-content-end gap-0'
+						}`}>
+						{content?.template?.value !== 'BlackFriday' ? (
+							<div className='product_top'>
+								<img
+									src={Lockup.src}
+									alt={content?.topImage?.alt}
+									className='image'
+								/>
+								<div>
+									<p className='counter_label'>DEAL EXPIRES IN</p>
+									<div className='counter'>
+										<div>
+											<div>{days}</div>
+											<div>DAYS</div>
+										</div>
+										<div>
+											<div>{hours}</div>
+											<div>HRS</div>
+										</div>
+										<div>
+											<div>{minutes}</div>
+											<div>MINS</div>
+										</div>
+										<div>
+											<div>{seconds}</div>
+											<div>SECS</div>
+										</div>
+									</div>
+									<p className='time'>Eastern Standard Time</p>
+								</div>
+							</div>
+						) : (
+							<h4
+								className='title mb-0'
+								dangerouslySetInnerHTML={{
+									__html:
+										content?.list?.value[content?.active?.value]?.product_title
+											?.value
+								}}></h4>
+						)}
 						{content?.list?.value[content?.active?.value]?.button?.value ? (
 							content?.list?.value[
 								content?.active?.value
@@ -205,13 +226,15 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 					</div>
 					<div className='product_info'>
 						<div className='main_info'>
-							<h4
-								className='title'
-								dangerouslySetInnerHTML={{
-									__html:
-										content?.list?.value[content?.active?.value]?.product_title
-											?.value
-								}}></h4>
+							{content?.template?.value !== 'BlackFriday' && (
+								<h4
+									className='title'
+									dangerouslySetInnerHTML={{
+										__html:
+											content?.list?.value[content?.active?.value]
+												?.product_title?.value
+									}}></h4>
+							)}
 							<div>
 								<div
 									className='off'
@@ -221,7 +244,12 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 											content?.list?.value[content?.active?.value]?.product_sale
 												?.value
 									}}></div>
-								<div className='d-flex justify-content-start align-items-end gap-4 mb-n2 mb-md-n3'>
+								<div
+									className={`d-flex  mb-n2 mb-md-n3 ${
+										content?.template?.value === 'BlackFriday'
+											? ' gap-3 flex-column justify-content-start align-items-start'
+											: ' gap-4 justify-content-start align-items-end'
+									}`}>
 									<h3
 										className='price'
 										dangerouslySetInnerHTML={{
@@ -239,13 +267,15 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 								</div>
 							</div>
 						</div>
-						<div
-							className='limited_offer'
-							dangerouslySetInnerHTML={{
-								__html:
-									content?.list?.value[content?.active?.value]?.blackbox_text
-										?.value
-							}}></div>
+						{content?.template?.value !== 'BlackFriday' && (
+							<div
+								className='limited_offer'
+								dangerouslySetInnerHTML={{
+									__html:
+										content?.list?.value[content?.active?.value]?.blackbox_text
+											?.value
+								}}></div>
+						)}
 						<ul className='product_specs'>
 							{content?.list?.value[
 								content?.active?.value
