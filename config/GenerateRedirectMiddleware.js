@@ -6,7 +6,14 @@ const RedirectsController = require('../controller/RedirectController.js')
 const getRedirects = (async () => {
 	console.log('send redirect request')
 	try {
-		let response = await axios.get(`${process.env.CXM_API_ROUTE}/getRedirects`)
+		let response = await axios.get(
+			`${process.env.CXM_API_ROUTE}/getRedirects`,
+			{
+				headers: {
+					BrandId: process.env.BRAND_ID
+				}
+			}
+		)
 		RedirectsController(response.data.data)
 		generateMiddleware(response.data.data)
 	} catch (error) {

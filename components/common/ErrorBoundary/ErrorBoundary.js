@@ -37,7 +37,12 @@ class ErrorBoundary extends Component {
 		try {
 			let response = await axios.post(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/addError`,
-				message
+				message,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 		} catch (error) {
 			console.log(error)

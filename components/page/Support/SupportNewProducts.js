@@ -39,7 +39,12 @@ const SupportNewProducts = ({ data }) => {
 		setSearchProductsList('loading')
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${searchValue}&type=support&status[]=3&status[]=1`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${categoryId}&string=${searchValue}&type=support&status[]=3&status[]=1`,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 			let data = response.data.data.map(item => ({
 				route: item.route,
@@ -69,7 +74,12 @@ const SupportNewProducts = ({ data }) => {
 
 			try {
 				let response = await axios.get(
-					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${_categoryId}&type=support&status[]=3&status[]=1`
+					`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?category_id=${_categoryId}&type=support&status[]=3&status[]=1`,
+					{
+						headers: {
+							BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+						}
+					}
 				)
 				let data = response.data.data.map(item => ({
 					route: item.route,
