@@ -5,7 +5,7 @@
 	background-size: cover;
 	&.black_friday {
 		.product {
-			padding: 120px 16px 56px;
+			padding: 56px 16px 56px;
 			align-items: center;
 			@include mq(768) {
 				padding: 40px 16px 32px;
