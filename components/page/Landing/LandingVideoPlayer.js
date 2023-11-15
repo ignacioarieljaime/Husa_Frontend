@@ -10,6 +10,8 @@ function LandingVideoPlayer({ data }) {
 	const [fullSize, setFullSize] = useState(false)
 	const [mute, setMuted] = useState(false)
 
+	const uniqeID = (Math.random() * Math.random() * 100).toFixed()
+
 	useEffect(() => {
 		const to = setTimeout(
 			() => setVideo(structure?.video?.value),
@@ -30,16 +32,16 @@ function LandingVideoPlayer({ data }) {
 	}
 
 	return (
-		<section id={data?.name + data?.id}>
+		<section id={data?.name + data?.id + uniqeID}>
 			<div className='video_feature'>
 				{video && structure?.videoType?.value === 'link' ? (
 					<video ref={videoRef} muted={mute} src={video}></video>
 				) : (
 					<iframe
-						id={'LandingVideoIframe' + video + data?.id}
+						id={'LandingVideoIframe' + uniqeID + data?.id}
 						src={video}
 						alt={
-							'LandingVideoIframe' + video + data?.id + structure?.video?.alt
+							'LandingVideoIframe' + uniqeID + data?.id + structure?.video?.alt
 						}
 						title={'LandingVideoIframe' + data?.id + structure?.video?.title}
 						width='100%'
