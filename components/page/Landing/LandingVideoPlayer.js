@@ -1,13 +1,23 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Expand from 'public/assets/svgs/Expand.svg'
 import Mute from 'public/assets/svgs/mute.svg'
 import Play from 'public/assets/svgs/play.svg'
 function LandingVideoPlayer({ data }) {
 	const { structure } = data
 	const videoRef = useRef()
+	const [video, setVideo] = useState(null)
 	const [playingStatus, setPlayingStatus] = useState(false)
 	const [fullSize, setFullSize] = useState(false)
 	const [mute, setMuted] = useState(false)
+
+	useEffect(() => {
+		const to = setTimeout(
+			() => setVideo(structure?.video?.value),
+			parseInt(data?.id) * 100
+		)
+
+		return () => clearTimeout(to)
+	}, [structure])
 
 	const playVideo = _condition => {
 		if (_condition) {
@@ -22,16 +32,16 @@ function LandingVideoPlayer({ data }) {
 	return (
 		<section id={data?.name + data?.id}>
 			<div className='video_feature'>
-				{structure?.videoType?.value === 'link' ? (
-					<video
-						ref={videoRef}
-						muted={mute}
-						src={structure?.video?.value}></video>
+				{video && structure?.videoType?.value === 'link' ? (
+					<video ref={videoRef} muted={mute} src={video}></video>
 				) : (
 					<iframe
-						src={structure?.video?.value}
-						alt={structure?.video?.alt}
-						title={structure?.video?.title}
+						id={'LandingVideoIframe' + video + data?.id}
+						src={video}
+						alt={
+							'LandingVideoIframe' + video + data?.id + structure?.video?.alt
+						}
+						title={'LandingVideoIframe' + data?.id + structure?.video?.title}
 						width='100%'
 						height='100%'
 						allow='autoplay; fullscreen'
