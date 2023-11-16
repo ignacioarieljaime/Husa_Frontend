@@ -44,10 +44,7 @@ function HeaderSearchBox({
 			console.log(error)
 		}
 	}
-
-
-	console.log("search")
-	console.log(searchInputCondition)
+	
 	return (
 		<div className='container-fluid header_search_box'>
 			<form
