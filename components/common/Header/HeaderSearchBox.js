@@ -5,7 +5,7 @@ import MagnifierIcon from 'components/icons/MagnifierIcon'
 import SupportIcon from 'components/icons/SupportIcon'
 import TelevisionSearchIcon from 'components/icons/TelevisionSearchIcon'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import Spinner from '../Spinner'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
@@ -19,10 +19,18 @@ function HeaderSearchBox({
 	const [result, setResult] = useState()
 	const [input, setInput] = useState()
 
+	const searchRef = useRef();
+
 	useEffect(() => {
 		setResult()
 		setInput('')
 	}, [searchInputCondition])
+
+	useEffect(() => {
+		if (searchInputCondition) {
+			searchRef.current.focus();
+		}
+	}, [searchInputCondition]);
 
 	const searchHandler = async _value => {
 		setInput(_value)
@@ -36,6 +44,10 @@ function HeaderSearchBox({
 			console.log(error)
 		}
 	}
+
+
+	console.log("search")
+	console.log(searchInputCondition)
 	return (
 		<div className='container-fluid header_search_box'>
 			<form
@@ -55,6 +67,8 @@ function HeaderSearchBox({
 						value={input}
 						className='search_field'
 						type='text'
+						ref={searchRef}
+						onTransitionEnd={() => searchInputCondition ? searchRef.current.focus() : null}
 					/>
 					<button
 						onClick={() => setSearchInputCondition(false)}
