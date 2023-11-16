@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Expand from 'public/assets/svgs/Expand.svg'
 import Mute from 'public/assets/svgs/mute.svg'
 import Play from 'public/assets/svgs/play.svg'
+import { useInView } from 'react-intersection-observer'
 function LandingVideoPlayer({ data }) {
 	const { structure } = data
 	const videoRef = useRef()
@@ -9,17 +10,17 @@ function LandingVideoPlayer({ data }) {
 	const [playingStatus, setPlayingStatus] = useState(false)
 	const [fullSize, setFullSize] = useState(false)
 	const [mute, setMuted] = useState(false)
+	const { ref, inView } = useInView({
+		threshold: 0
+	})
 
 	const uniqeID = (Math.random() * Math.random() * 100).toFixed()
 
 	useEffect(() => {
-		const to = setTimeout(
-			() => setVideo(structure?.video?.value),
-			parseInt(data?.id) * 100
-		)
-
-		return () => clearTimeout(to)
-	}, [structure])
+		if (inView && !video) {
+			setVideo(structure?.video?.value)
+		}
+	}, [inView])
 
 	const playVideo = _condition => {
 		if (_condition) {
@@ -32,12 +33,13 @@ function LandingVideoPlayer({ data }) {
 	}
 
 	return (
-		<section id={data?.name + data?.id + uniqeID}>
+		<section id={data?.name + data?.id}>
 			<div className='video_feature'>
 				{video && structure?.videoType?.value === 'link' ? (
 					<video ref={videoRef} muted={mute} src={video}></video>
 				) : (
 					<iframe
+						ref={ref}
 						id={'LandingVideoIframe' + uniqeID + data?.id}
 						src={video}
 						alt={
