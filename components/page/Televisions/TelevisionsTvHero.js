@@ -29,65 +29,77 @@ const TelevisionsTvHero = ({ data }) => {
 					<div className='row justify-content-center align-items-center'>
 						{content?.fullSizeCard?.value?.backgroundImage?.src ? (
 							<div className='col-12 py-3'>
+								<Link
+									target={
+										content?.fullSizeCard?.value?.link?.target
+											? content?.fullSizeCard?.value?.link?.target
+											: '_self'
+									}
+									href={content?.fullSizeCard?.value?.link?.value}>
+									<a className='box-group-link'>
 								<div
 									className='tv-item full-size'
 									style={{
 										backgroundImage: `url(${content?.fullSizeCard?.value?.backgroundImage?.src})`
 									}}>
-									<img
-										src={content?.fullSizeCard?.value?.badge?.src}
-										alt={content?.fullSizeCard?.value?.badge?.alt}
-										className='badge'
-									/>
-									<div className='content'>
-										<img
-											src={content?.fullSizeCard?.value?.titleImage?.src}
-											alt={content?.fullSizeCard?.value?.titleImage?.alt}
-											className='image'
-										/>
-										<div
-											className={`title ${
-												content?.fullSizeCard?.value?.theme?.value === 'light'
-													? 'text-white'
-													: ''
-											}`}
-											dangerouslySetInnerHTML={{
-												__html: content?.fullSizeCard?.value?.title?.value
-											}}></div>
-										{content?.fullSizeCard?.value?.link?.value ? (
-											<Link
-												target={
-													content?.fullSizeCard?.value?.link?.target
-														? content?.fullSizeCard?.value?.link?.target
-														: '_self'
-												}
-												href={content?.fullSizeCard?.value?.link?.value}>
-												<a
-													target={
-														content?.fullSizeCard?.value?.link?.target
-															? content?.fullSizeCard?.value?.link?.target
-															: '_self'
-													}
-													className={`n-btn transparent medium d-block w-fit ${
-														content?.fullSizeCard?.value?.theme?.value ===
-														'light'
-															? 'outline-white'
-															: 'outline-black'
-													}`}>
-													{content?.fullSizeCard?.value?.link?.title}
 
-													{content?.fullSizeCard?.value?.link?.target ===
-														'_blank' && (
-														<img
-															style={{ marginLeft: '10px' }}
-															src={OpenPageOnNewTab.src}
-														/>
-													)}
-												</a>
-											</Link>
-										) : null}
-									</div>
+												<img
+													src={content?.fullSizeCard?.value?.badge?.src}
+													alt={content?.fullSizeCard?.value?.badge?.alt}
+													className='badge'
+												/>
+											<div className='content'>
+												<img
+													src={content?.fullSizeCard?.value?.titleImage?.src}
+													alt={content?.fullSizeCard?.value?.titleImage?.alt}
+													className='image'
+												/>
+												<div
+													className={`title ${
+														content?.fullSizeCard?.value?.theme?.value === 'light'
+															? 'text-white'
+															: ''
+													}`}
+													dangerouslySetInnerHTML={{
+														__html: content?.fullSizeCard?.value?.title?.value
+													}}></div>
+												{content?.fullSizeCard?.value?.link?.value ? (
+													<Link
+														target={
+															content?.fullSizeCard?.value?.link?.target
+																? content?.fullSizeCard?.value?.link?.target
+																: '_self'
+														}
+														href={content?.fullSizeCard?.value?.link?.value}>
+														<a
+															target={
+																content?.fullSizeCard?.value?.link?.target
+																	? content?.fullSizeCard?.value?.link?.target
+																	: '_self'
+															}
+															className={`n-btn transparent medium d-block w-fit ${
+																content?.fullSizeCard?.value?.theme?.value ===
+																'light'
+																	? 'outline-white'
+																	: 'outline-black'
+															}`}>
+															{content?.fullSizeCard?.value?.link?.title}
+
+															{content?.fullSizeCard?.value?.link?.target ===
+																'_blank' && (
+																<img
+																	style={{ marginLeft: '10px' }}
+																	src={OpenPageOnNewTab.src}
+																/>
+															)}
+														</a>
+													</Link>
+												) : null}
+											</div>
+
 								</div>
+								</a>
+								</Link>
 							</div>
 						) : null}
 						{content?.coloredCardsList?.value.map((item, index) =>
@@ -101,49 +113,57 @@ const TelevisionsTvHero = ({ data }) => {
 										style={{
 											backgroundColor: item?.backgroundColor?.value
 										}}>
-										<div className='content'>
-											<img
-												src={item?.image?.src}
-												alt={item?.image?.alt}
-												className='image'
-											/>
-											<div>
-												<div
-													className={`title ${
-														item?.theme?.value === 'light' ? 'text-white' : ''
-													}`}
-													dangerouslySetInnerHTML={{
-														__html: item?.title?.value
-													}}></div>
-												{item?.link?.value ? (
-													<Link
-														target={
-															item?.link?.target ? item?.link?.target : '_self'
-														}
-														href={item?.link?.value}>
-														<a
-															target={
-																item?.link?.target
-																	? item?.link?.target
-																	: '_self'
-															}
-															className={`n-btn transparent medium d-block w-fit ${
-																item?.theme?.value === 'light'
-																	? 'outline-white'
-																	: 'outline-black'
-															}`}>
-															{item?.link?.title}
-															{item?.link?.target === '_blank' && (
-																<img
-																	style={{ marginLeft: '10px' }}
-																	src={OpenPageOnNewTab.src}
-																/>
-															)}
-														</a>
-													</Link>
-												) : null}
-											</div>
-										</div>
+											<Link
+												target={
+													item?.link?.target ? item?.link?.target : '_self'
+												}
+												href={item?.link?.value}>
+												<a className='box-group-link'>
+												<div className='content'>
+													<img
+														src={item?.image?.src}
+														alt={item?.image?.alt}
+														className='image'
+													/>
+													<div>
+														<div
+															className={`title ${
+																item?.theme?.value === 'light' ? 'text-white' : ''
+															}`}
+															dangerouslySetInnerHTML={{
+																__html: item?.title?.value
+															}}></div>
+														{item?.link?.value ? (
+															<Link
+																target={
+																	item?.link?.target ? item?.link?.target : '_self'
+																}
+																href={item?.link?.value}>
+																<a
+																	target={
+																		item?.link?.target
+																			? item?.link?.target
+																			: '_self'
+																	}
+																	className={`n-btn transparent medium d-block w-fit ${
+																		item?.theme?.value === 'light'
+																			? 'outline-white'
+																			: 'outline-black'
+																	}`}>
+																	{item?.link?.title}
+																	{item?.link?.target === '_blank' && (
+																		<img
+																			style={{ marginLeft: '10px' }}
+																			src={OpenPageOnNewTab.src}
+																		/>
+																	)}
+																</a>
+															</Link>
+														) : null}
+													</div>
+												</div>
+												</a>
+											</Link>
 									</div>
 								</div>
 							) : null
@@ -208,66 +228,79 @@ const TelevisionsTvHero = ({ data }) => {
 						) : null}
 						{content?.bottomCard?.value?.backgroundImage?.src ? (
 							<div className='col-12 py-3'>
+								<Link
+									target={
+										content?.bottomCard?.value?.link?.target
+											? content?.bottomCard?.value?.link?.target
+											: '_self'
+									}
+									href={content?.bottomCard?.value?.link?.value}>
+								<a className='box-group-link'>
 								<div
 									className='tv-item full-size'
 									style={{
 										backgroundImage: `url(${content?.bottomCard?.value?.backgroundImage?.src})`
 									}}>
-									<img
-										src={content?.bottomCard?.value?.badge?.src}
-										alt={content?.bottomCard?.value?.badge?.alt}
-										className='badge'
-									/>
-									<div className='content'>
+
 										<img
-											src={content?.bottomCard?.value?.titleImage?.src}
-											alt={content?.bottomCard?.value?.titleImage?.alt}
-											className='image'
+											src={content?.bottomCard?.value?.badge?.src}
+											alt={content?.bottomCard?.value?.badge?.alt}
+											className='badge'
 										/>
-										<div
-											className={`title ${
-												content?.bottomCard?.value?.theme?.value === 'light'
-													? 'text-white'
-													: ''
-											}`}
-											dangerouslySetInnerHTML={{
-												__html: content?.bottomCard?.value?.title?.value
-											}}></div>
-										{content?.bottomCard?.value?.link?.value ? (
-											<Link
-												target={
-													content?.bottomCard?.value?.link?.target
-														? content?.bottomCard?.value?.link?.target
-														: '_self'
-												}
-												href={content?.bottomCard?.value?.link?.value}>
-												<a
+										<div className='content'>
+											<img
+												src={content?.bottomCard?.value?.titleImage?.src}
+												alt={content?.bottomCard?.value?.titleImage?.alt}
+												className='image'
+											/>
+											<div
+												className={`title ${
+													content?.bottomCard?.value?.theme?.value === 'light'
+														? 'text-white'
+														: ''
+												}`}
+												dangerouslySetInnerHTML={{
+													__html: content?.bottomCard?.value?.title?.value
+												}}></div>
+											{content?.bottomCard?.value?.link?.value ? (
+												<Link
 													target={
 														content?.bottomCard?.value?.link?.target
 															? content?.bottomCard?.value?.link?.target
 															: '_self'
 													}
-													className={`n-btn transparent medium d-block w-fit ${
-														content?.bottomCard?.value?.theme?.value === 'light'
-															? 'outline-white'
-															: 'outline-black'
-													}`}>
-													{content?.bottomCard?.value?.link?.title}
+													href={content?.bottomCard?.value?.link?.value}>
+													<a
+														target={
+															content?.bottomCard?.value?.link?.target
+																? content?.bottomCard?.value?.link?.target
+																: '_self'
+														}
+														className={`n-btn transparent medium d-block w-fit ${
+															content?.bottomCard?.value?.theme?.value === 'light'
+																? 'outline-white'
+																: 'outline-black'
+														}`}>
+														{content?.bottomCard?.value?.link?.title}
 
-													{content?.bottomCard?.value?.link?.target ===
-														'_blank' && (
-														<img
-															style={{ marginLeft: '10px' }}
-															src={OpenPageOnNewTab.src}
-														/>
-													)}
-												</a>
-											</Link>
-										) : null}
-									</div>
+														{content?.bottomCard?.value?.link?.target ===
+															'_blank' && (
+															<img
+																style={{ marginLeft: '10px' }}
+																src={OpenPageOnNewTab.src}
+															/>
+														)}
+													</a>
+												</Link>
+											) : null}
+										</div>
+
 								</div>
+								</a>
+								</Link>
 							</div>
 						) : null}
+						
 					</div>
 				</div>
 			</div>

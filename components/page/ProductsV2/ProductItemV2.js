@@ -92,7 +92,10 @@ const ProductItemV2 = ({ data }) => {
 	}
 	return (
 		<>
-			<div className='product_item_v2'>
+		<div className='product_item_v2'>
+			<Link href={url ? url : '/'}>
+			<a className='box-group-link'>
+				<div className='product-group-content'>
 				<div className='product_item_v2_content h-100'>
 					<div className='first_content w-100'>
 						<Link href={url ? url : '/'}>
@@ -218,16 +221,19 @@ const ProductItemV2 = ({ data }) => {
 											? false
 											: true
 									}
-									onClick={() =>
+									onClick={(e) => {
+										e.stopPropagation()
+										e.preventDefault()
 										currentItem?.product?.buy_status === 'ChannelAdvisor' ||
 										currentItem?.product?.buy_status === 'Internal'
 											? dataLayerHandler()
 											: {}
+										}
 									}
 									style={
 										currentItem?.product?.retailer ? { cursor: 'pointer' } : {}
 									}
-									className={`n-btn d-flex justify-content-center align-items-center medium ${
+									className={`n-btn d-flex justify-content-center align-items-center medium pointer-event-auto ${
 										currentItem?.product?.buy_status === 'ChannelAdvisor' ||
 										currentItem?.product?.buy_status === 'Internal'
 											? 'primary-text py-2 px-4'
@@ -265,13 +271,20 @@ const ProductItemV2 = ({ data }) => {
 
 						<div className='text-center'>
 							<button
-								onClick={() => dispatch(addNewCompare(currentItem?.product))}
+								onClick={(e) => {
+									e.stopPropagation()
+									e.preventDefault()
+									dispatch(addNewCompare(currentItem?.product))
+								}}
 								className='n-btn grey-text compare-btn text-uppercase'>
 								Add To Compare
 							</button>
 						</div>
 					</div>
 				</div>
+				</div>
+				</a>
+			</Link>
 				<ModalChanelAdviser
 					product={currentItem?.product}
 					productId={currentItem?.product.id}
@@ -280,7 +293,7 @@ const ProductItemV2 = ({ data }) => {
 					handler={setChanelAdviserHandler}
 					model={currentItem?.product.model}
 				/>
-			</div>
+		</div>
 		</>
 	)
 }
