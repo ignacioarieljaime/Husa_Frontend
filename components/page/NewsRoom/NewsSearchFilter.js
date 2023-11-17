@@ -76,6 +76,21 @@ const NewsSearchFilter = ({
 		)
 	}
 
+	function redirectToNewsroomPage() {
+		router.push(
+			{
+				pathname: '/newsroom',
+			},
+		)
+	}
+
+
+	const resetSearch = () => {
+		filterHandler('year', '', false);
+		filterHandler('product', '', false);
+		filterHandler('search', '', false);
+		redirectToNewsroomPage();
+	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
 	// 	setOpenFilter(false)
@@ -136,6 +151,17 @@ const NewsSearchFilter = ({
 										<MagnifierIcon stroke={'#8C8F8F'} />
 									</div>
 								</div>
+
+								{news &&
+									<div className='reset-container'>
+										<button className='reset-button'
+											onClick={() => resetSearch()}
+										>
+											Reset
+										</button>
+									</div>
+								}
+
 							</div>
 						)}
 					</div>
