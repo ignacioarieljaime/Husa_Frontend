@@ -15,10 +15,12 @@ const NewsRoomMainNewsItem = ({
 }) => {
 	return (
 		<>
-			<div
-				className={`news_room_main_news_item ${isThree && 'three_item'} ${
-					isFirst ? 'horizontal' : 'vertical'
-				}`}>
+		<Link href={link || '/'} target={target || '_self'}>
+			<a
+				className={`news_room_main_news_item box-group-link ${isThree && 'three_item'} ${
+				isFirst ? 'horizontal' : 'vertical'
+			}`}>
+			<div>
 				<Link href={link || '/'} target={target || '_self'}>
 					<a className='image_wrapper_link' target={target || '_self'}>
 						<CustomImage
@@ -45,6 +47,8 @@ const NewsRoomMainNewsItem = ({
 					</span>
 				</div>
 			</div>
+			</a>
+			</Link>
 		</>
 	)
 }
