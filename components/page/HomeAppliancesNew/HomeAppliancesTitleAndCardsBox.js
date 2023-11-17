@@ -16,7 +16,11 @@ const HomeAppliancesTitleAndCardsBox = ({ data }) => {
 					}}></h2>
 				<div className='cards'>
 					{structure?.list?.value.map((item, index) => (
-						<div className={`item ${item?.theme?.value}`} key={index}>
+						<Link
+						target={item?.link?.target ? item?.link?.target : '_self'}
+						href={item?.link?.value ? item?.link?.value : '/'}>
+						<a className={`item ${item?.theme?.value} box-group-link`} key={index}>
+						<div>
 							<img
 								src={item?.image?.src}
 								alt={item?.image?.alt}
@@ -58,6 +62,8 @@ const HomeAppliancesTitleAndCardsBox = ({ data }) => {
 								</div>
 							</div>
 						</div>
+						</a>
+						</Link>
 					))}
 				</div>
 			</div>
