@@ -24,6 +24,8 @@
 				gap: 16px;
 				margin-bottom: 65px;
 
+
+
 				> div {
 					height: 182px;
 					display: flex;
@@ -39,6 +41,13 @@
 
 					img {
 						object-fit: cover;
+					}
+
+					.box-group-link {
+						height: 100%;
+						width: 100%;
+						text-decoration: none !important;
+						cursor: pointer;
 					}
 
 					.text_box {
@@ -58,6 +67,9 @@
 							color: #ababb0;
 							letter-spacing: 0.2em;
 							font-size: 10px;
+							span {
+								text-decoration: none !important;
+							}
 						}
 
 						h5 {
@@ -137,3 +149,4 @@
 		}
 	}
 }
+
