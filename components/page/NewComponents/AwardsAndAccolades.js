@@ -5,8 +5,9 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useEffect, useRef, useState } from 'react'
-import { Navigation } from 'swiper'
+import { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import AwardsAndAccoladesItems from './AwardsAndAccoladesItems'
 
 function AwardsAndAccolades({ data, pim }) {
 	const ref = useRef(null)
@@ -15,6 +16,7 @@ function AwardsAndAccolades({ data, pim }) {
 	const [content, setContent] = useState({})
 	const navigationPrevRef = useRef(null)
 	const navigationNextRef = useRef(null)
+
 	useEffect(() => {
 		setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
@@ -23,6 +25,12 @@ function AwardsAndAccolades({ data, pim }) {
 			}, 1000)
 		}
 	}, [])
+
+	const itemSizes = {
+		3: '350px',
+		2: '660px',
+		1: '100%'
+	}
 
 	return (
 		<section>
@@ -33,112 +41,121 @@ function AwardsAndAccolades({ data, pim }) {
 				<h3
 					className='awards_and_accolades__title'
 					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
-				{(content?.list?.value && content?.list?.value.length === 1) ||
-				(content?.list?.value.length <= 4 && windowSize[0] > 768) ? (
-					<div className='awards_and_accolades__cards_wrapper'>
-						{content?.list?.value.map((item, index) => (
-							<div
-								className={`awards_and_accolades__cards_wrapper__card item__${
-									content?.list?.value.length <= 2
-										? content?.list?.value.length
-										: 3
-								}`}
-								key={index}>
-								<img
-									src={item?.image?.src}
-									alt={item?.title?.value}
-									className='awards_and_accolades__cards_wrapper__card__image'
-								/>
-								<div className='awards_and_accolades__cards_wrapper__card__content'>
-									<div className='awards_and_accolades__cards_wrapper__card__content__texts'>
-										<h4
-											className='awards_and_accolades__cards_wrapper__card__content__texts__title'
-											dangerouslySetInnerHTML={{
-												__html: item?.title?.value
-											}}></h4>
-										<h6
-											className='awards_and_accolades__cards_wrapper__card__content__texts__subtilte'
-											dangerouslySetInnerHTML={{
-												__html: item?.subtitle?.value
-											}}></h6>
-									</div>
-									{item?.link?.value && (
-										<Link
-											href={item?.link?.value}
-											target={item?.link?.target ? item.link?.target : '_self'}>
-											<a
-												className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
+				{content?.list?.value && content?.list?.value.length && (
+					<>
+						<div
+							className={`awards_and_accolades__cards_wrapper custom_container_${
+								content?.list?.value.length
+							} ${
+								(content?.list?.value.length < 3 && windowSize[0] <= 768) ||
+								(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
+								content?.list?.value.length >= 4
+									? 'd-none'
+									: ''
+							}`}
+							style={{
+								gridTemplateColumns: `repeat(
+									${content?.list?.value.length},
+									minmax(calc(${100 / content?.list?.value?.length}% - 24px), ${
+									itemSizes[content?.list?.value.length]
+								})
+								)`
+							}}>
+							{content?.list?.value.map((item, index) => (
+								<div
+									style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
+									className={`awards_and_accolades__cards_wrapper__card item__${
+										content?.list?.value.length <= 2
+											? content?.list?.value.length
+											: 3
+									}`}
+									key={index}>
+									<img
+										src={item?.image?.src}
+										alt={item?.title?.value}
+										className='awards_and_accolades__cards_wrapper__card__image'
+									/>
+									<div className='awards_and_accolades__cards_wrapper__card__content'>
+										<div className='awards_and_accolades__cards_wrapper__card__content__texts'>
+											<h4
+												className='awards_and_accolades__cards_wrapper__card__content__texts__title'
+												dangerouslySetInnerHTML={{
+													__html: item?.title?.value
+												}}></h4>
+											<h6
+												className='awards_and_accolades__cards_wrapper__card__content__texts__subtilte'
+												dangerouslySetInnerHTML={{
+													__html: item?.subtitle?.value
+												}}></h6>
+										</div>
+										{item?.link?.value && (
+											<Link
+												href={item?.link?.value}
 												target={
 													item?.link?.target ? item.link?.target : '_self'
 												}>
-												{item?.link?.title}
-												<FontAwesomeIcon icon={faChevronRight} />
-											</a>
-										</Link>
-									)}
+												<a
+													className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
+													target={
+														item?.link?.target ? item.link?.target : '_self'
+													}>
+													{item?.link?.title}
+													<FontAwesomeIcon icon={faChevronRight} />
+												</a>
+											</Link>
+										)}
+									</div>
 								</div>
+							))}
+						</div>
+						<Swiper
+							slidesPerView={'auto'}
+							navigation={{
+								enabled: true,
+								prevEl: navigationPrevRef.current,
+								nextEl: navigationNextRef.current
+							}}
+							pagination={{
+								clickable: true
+							}}
+							initialSlide={
+								windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
+							}
+							grabCursor={true}
+							spaceBetween={windowSize[0] < 768 ? 16 : 20}
+							centeredSlides={true}
+							modules={[Navigation, Pagination]}
+							className={`w-100 ${
+								(content?.list?.value.length < 3 && windowSize[0] <= 768) ||
+								(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
+								content?.list?.value.length >= 4
+									? ''
+									: 'd-none'
+							}`}
+							style={{
+								gridTemplateColumns: `repeat(${content?.list?.value.length}, ${
+									windowSize[0] <= 768 ? '260px' : '350px'
+								})`
+							}}>
+							{content?.list?.value.map((item, index) => (
+								<SwiperSlide
+									style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
+									className={` w-fit`}
+									key={index}>
+									<AwardsAndAccoladesItems
+										data={item}
+										length={content?.list?.value.length / 2}
+									/>
+								</SwiperSlide>
+							))}
+							<div className='swiper-button-prev' ref={navigationPrevRef}>
+								<AwardsNavIcon />
 							</div>
-						))}
-					</div>
-				) : (
-					<Swiper
-						navigation={{
-							enabled: true,
-							prevEl: navigationPrevRef.current,
-							nextEl: navigationNextRef.current
-						}}
-						slidesPerView={'auto'}
-						grabCursor={true}
-						spaceBetween={windowSize[0] < 768 ? 16 : 40}
-						centeredSlides={windowSize[0] < 768 ? false : true}
-						modules={[Navigation]}
-						className='awards_and_accolades__cards_wrapper'>
-						{content?.list?.value.map((item, index) => (
-							<SwiperSlide
-								className={`awards_and_accolades__cards_wrapper__card item__3`}
-								key={index}>
-								<img
-									src={item?.image?.src}
-									alt={item?.title?.value}
-									className='awards_and_accolades__cards_wrapper__card__image'
-								/>
-								<div className='awards_and_accolades__cards_wrapper__card__content'>
-									<div className='awards_and_accolades__cards_wrapper__card__content__texts'>
-										<h4
-											className='awards_and_accolades__cards_wrapper__card__content__texts__title'
-											dangerouslySetInnerHTML={{
-												__html: item?.title?.value
-											}}></h4>
-										<h6
-											className='awards_and_accolades__cards_wrapper__card__content__texts__subtilte'
-											dangerouslySetInnerHTML={{
-												__html: item?.subtitle?.value
-											}}></h6>
-									</div>
-									{item?.link?.value && (
-										<Link
-											href={item?.link?.value}
-											target={item?.link?.target ? item.link?.target : '_self'}>
-											<a
-												className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
-												target={
-													item?.link?.target ? item.link?.target : '_self'
-												}>
-												{item?.link?.title}
-												<FontAwesomeIcon icon={faChevronRight} />
-											</a>
-										</Link>
-									)}
-								</div>
-							</SwiperSlide>
-						))}
-						<div className='swiper-button-prev' ref={navigationPrevRef}>
-							<AwardsNavIcon />
-						</div>
-						<div className='swiper-button-next' ref={navigationNextRef}>
-							<AwardsNavIcon />
-						</div>
-					</Swiper>
+							<div className='swiper-button-next' ref={navigationNextRef}>
+								<AwardsNavIcon />
+							</div>
+						</Swiper>
+					</>
 				)}
 			</div>
 		</section>
