@@ -41,7 +41,9 @@ function LandingVideoPlayer({ data }) {
 					<iframe
 						ref={ref}
 						id={'LandingVideoIframe' + uniqeID + data?.id}
-						src={video}
+						src={
+							video + `${video && video.includes('?') ? '&' : '?'}autopause=0`
+						}
 						alt={
 							'LandingVideoIframe' + uniqeID + data?.id + structure?.video?.alt
 						}
