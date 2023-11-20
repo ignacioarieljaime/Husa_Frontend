@@ -1,14 +1,74 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
-function NavBarDropDown({ data, handler }) {
+
+function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
+
+	const timeoutRef = useRef(null);
+
+
+	const handleMouseEnter = (milliseconds) => {
+
+		if (timer) {
+			clearTimeout(timeoutRef.current);
+
+			timeoutRef.current = setTimeout(() => {
+
+				setTimerCheck(prevState => {
+					const newState = [...prevState];
+					newState[itemIndex] = true;
+					return newState;
+				});
+			}, milliseconds);
+		}
+
+		if (!timer) {
+			clearTimeout(timeoutRef.current);
+
+			setTimerCheck(prevState => {
+				const newState = [...prevState];
+				newState[itemIndex] = true;
+				return newState;
+			});
+		}
+
+		handler(data.name);
+	};
+
+	const handleMouseLeave = (milliseconds) => {
+
+		if (timer) {
+
+			setTimerCheck(prevState => {
+				const newState = [...prevState];
+				newState[itemIndex] = false;
+				return newState;
+			});
+
+		}
+
+		if (!timer) {
+			timeoutRef.current = setTimeout(() => {
+
+				setTimerCheck(prevState => {
+					const newState = [...prevState];
+					newState[itemIndex] = false;
+					return newState;
+				});
+			}, milliseconds);
+
+		}
+
+		handler(null);
+	};
+
 	return (
 		<li
-			onMouseEnter={() => handler(data.name)}
-			onMouseLeave={() => handler(null)}
+			onMouseEnter={() => handleMouseEnter(1000)}
+			onMouseLeave={() => handleMouseLeave(1000)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
@@ -30,7 +90,7 @@ function NavBarDropDown({ data, handler }) {
 			)}
 
 			{data.childs.length !== 0 && (
-				<div className='nav-dropdown-list'>
+				<div className={`${timer ? 'unhovered-list' : 'nav-dropdown-list'}`}>
 					<div className='container-fluid'>
 						<div className='row align-items-stretch'>
 							<div className='col-3'>
