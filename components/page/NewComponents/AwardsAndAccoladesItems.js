@@ -20,7 +20,6 @@ const AwardsAndAccoladesItems = ({ data, length }) => {
 		<div className='awards_and_accolades__cards_wrapper__card item__3'>
 			<img
 				src={data?.image?.src}
-				alt={data?.title?.value}
 				className='awards_and_accolades__cards_wrapper__card__image'
 			/>
 			<div className='awards_and_accolades__cards_wrapper__card__content'>

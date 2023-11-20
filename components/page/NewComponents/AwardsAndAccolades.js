@@ -72,7 +72,6 @@ function AwardsAndAccolades({ data, pim }) {
 									key={index}>
 									<img
 										src={item?.image?.src}
-										alt={item?.title?.value}
 										className='awards_and_accolades__cards_wrapper__card__image'
 									/>
 									<div className='awards_and_accolades__cards_wrapper__card__content'>
