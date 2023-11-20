@@ -3,6 +3,72 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
+	&.black_friday {
+		.product {
+			padding: 56px 16px 56px;
+			align-items: center;
+			@include mq(768) {
+				padding: 40px 16px 32px;
+			}
+			.title {
+				* {
+					@include mq(768) {
+						margin-bottom: 0;
+					}
+				}
+			}
+			.product_info {
+				.price {
+					margin: 0;
+					* {
+						font-size: 48px;
+						font-weight: 500;
+						line-height: 45px; /* 116.375% */
+						letter-spacing: -0.96px;
+						color: #000;
+						margin: 0;
+						@include mq(768) {
+							font-size: 34px;
+							line-height: 34px; /* 135% */
+							letter-spacing: -0.68px;
+						}
+					}
+				}
+				.old_price {
+					margin: 0;
+					* {
+						color: #000;
+						font-size: 16px;
+						font-weight: 400;
+						line-height: 21.6px; /* 135% */
+						margin: 0;
+					}
+				}
+				.product_specs {
+					border-top: 1px solid #8d8d8d;
+					padding-top: 28px;
+					padding-left: 16px;
+					@include mq(768) {
+						padding-left: 16px;
+					}
+					li {
+						padding-left: 16px;
+						* {
+							font-size: 18px;
+							line-height: 18px;
+						}
+					}
+				}
+				.full_btn_md.danger-upgrade {
+					min-width: 118px !important;
+					padding: 14px 40px 10px !important;
+					// padding: 10px 16px 6px !important;
+					font-size: 18px;
+					line-height: 22px;
+				}
+			}
+		}
+	}
 	.top_image {
 		width: 500px;
 		height: auto;
@@ -74,6 +140,27 @@
 			flex-wrap: wrap;
 			padding: 16px 16px 32px;
 			gap: 24px;
+		}
+		.title {
+			margin-bottom: 20px;
+			* {
+				margin-bottom: 0;
+				color: #000;
+				font-size: 34px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 41px; /* 135% */
+				letter-spacing: -0.68px;
+				@include mq(768) {
+					font-size: 20px;
+					line-height: 25px; /* 125% */
+					letter-spacing: -0.4px;
+					margin-bottom: 18px;
+				}
+			}
+			@include mq(575) {
+				width: 90%;
+			}
 		}
 		.product_images {
 			width: 53%;
@@ -192,27 +279,7 @@
 				gap: 16px;
 				width: 100%;
 			}
-			.title {
-				margin-bottom: 20px;
-				* {
-					margin-bottom: 0;
-					color: #000;
-					font-size: 34px;
-					font-style: normal;
-					font-weight: 500;
-					line-height: 41px; /* 135% */
-					letter-spacing: -0.68px;
-					@include mq(768) {
-						font-size: 20px;
-						line-height: 25px; /* 125% */
-						letter-spacing: -0.4px;
-						margin-bottom: 18px;
-					}
-				}
-				@include mq(575) {
-					width: 90%;
-				}
-			}
+
 			.off {
 				margin-bottom: 20px;
 				background: #e23717;

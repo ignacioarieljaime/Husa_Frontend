@@ -26,6 +26,31 @@
 			height: 126px;
 		}
 	}
+	.link {
+		position: absolute;
+		left: 50%;
+		top: 85%;
+		transform: translate(-50%, -50%);
+		min-width: 240px !important;
+		padding: 14px 48px 10px !important;
+		font-size: 19px;
+		line-height: 26px;
+		font-family: 'archivo-expanded';
+		text-align: center;
+		text-transform: uppercase;
+		color: #000;
+		text-decoration: none;
+		border-radius: 100px;
+		font-weight: 900;
+		background-color: rgb(73, 243, 57);
+		object-fit: contain;
+		@include mq(768) {
+			min-width: 200px !important;
+			padding: 14px 24px 10px !important;
+			font-size: 16px;
+			line-height: 22px;
+		}
+	}
 }
 
 .season_upgrade_2k_hero {
