@@ -43,6 +43,8 @@ const NewsSearchFilter = ({
 	}, [])
 
 	useEffect(() => {
+		if (window.scrollY < 61) setFix(true);
+		if (window.scrollY >= 60) setFix(false);
 		window.addEventListener('scroll', () => {
 			if (target?.current?.offsetTop >= window.scrollY + 60) {
 				setFix(true)
