@@ -386,6 +386,17 @@ ul.header_dropdown_sublist.sublist {
       }
     }
   }
+  .unhovered-list {
+    position: absolute;
+    z-index: 2;
+    top: 45px;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background-color: #000;
+    opacity: 0;
+    overflow: hidden;
+  }
   .nav-dropdown-list {
     position: absolute;
     z-index: 2;
