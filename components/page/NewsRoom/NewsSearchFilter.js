@@ -98,12 +98,8 @@ const NewsSearchFilter = ({
 		}, 1000)
 	}
 
-	function redirectToNewsroomPage() {
-		router.push(
-			{
-				pathname: '/newsroom',
-			},
-		)
+	function reloadPage() {
+		router.reload();
 	}
 
 
@@ -111,7 +107,7 @@ const NewsSearchFilter = ({
 		filterHandler('year', '', false);
 		filterHandler('product', '', false);
 		filterHandler('search', '', false);
-		redirectToNewsroomPage();
+		reloadPage();
 	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
