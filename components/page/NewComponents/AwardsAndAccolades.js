@@ -108,53 +108,51 @@ function AwardsAndAccolades({ data, pim }) {
 								</div>
 							))}
 						</div>
-						<Swiper
-							slidesPerView={'auto'}
-							navigation={{
-								enabled: true,
-								prevEl: navigationPrevRef.current,
-								nextEl: navigationNextRef.current
-							}}
-							pagination={{
-								clickable: true
-							}}
-							initialSlide={
-								windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
-							}
-							grabCursor={true}
-							spaceBetween={windowSize[0] < 768 ? 16 : 20}
-							centeredSlides={true}
-							modules={[Navigation, Pagination]}
-							className={`w-100 ${
-								(content?.list?.value.length < 3 && windowSize[0] <= 768) ||
-								(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
-								content?.list?.value.length >= 4
-									? ''
-									: 'd-none'
-							}`}
-							style={{
-								gridTemplateColumns: `repeat(${content?.list?.value.length}, ${
-									windowSize[0] <= 768 ? '260px' : '350px'
-								})`
-							}}>
-							{content?.list?.value.map((item, index) => (
-								<SwiperSlide
-									style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
-									className={` w-fit`}
-									key={index}>
-									<AwardsAndAccoladesItems
-										data={item}
-										length={content?.list?.value.length / 2}
-									/>
-								</SwiperSlide>
-							))}
-							<div className='swiper-button-prev' ref={navigationPrevRef}>
-								<AwardsNavIcon />
-							</div>
-							<div className='swiper-button-next' ref={navigationNextRef}>
-								<AwardsNavIcon />
-							</div>
-						</Swiper>
+						{(content?.list?.value.length < 3 && windowSize[0] <= 768) ||
+						(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
+						content?.list?.value.length >= 4 ? (
+							<Swiper
+								slidesPerView={'auto'}
+								navigation={{
+									enabled: true,
+									prevEl: navigationPrevRef.current,
+									nextEl: navigationNextRef.current
+								}}
+								pagination={{
+									clickable: true
+								}}
+								initialSlide={
+									windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
+								}
+								grabCursor={true}
+								spaceBetween={windowSize[0] < 768 ? 16 : 20}
+								centeredSlides={true}
+								modules={[Navigation, Pagination]}
+								className={`w-100`}
+								style={{
+									gridTemplateColumns: `repeat(${
+										content?.list?.value.length
+									}, ${windowSize[0] <= 768 ? '260px' : '350px'})`
+								}}>
+								{content?.list?.value.map((item, index) => (
+									<SwiperSlide
+										style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
+										className={` w-fit`}
+										key={index}>
+										<AwardsAndAccoladesItems
+											data={item}
+											length={content?.list?.value.length / 2}
+										/>
+									</SwiperSlide>
+								))}
+								<div className='swiper-button-prev' ref={navigationPrevRef}>
+									<AwardsNavIcon />
+								</div>
+								<div className='swiper-button-next' ref={navigationNextRef}>
+									<AwardsNavIcon />
+								</div>
+							</Swiper>
+						) : null}
 					</>
 				)}
 			</div>

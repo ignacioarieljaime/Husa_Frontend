@@ -9,7 +9,6 @@ const AwardsAndAccoladesItems = ({ data, length }) => {
 	const swiper = useSwiper()
 
 	useEffect(() => {
-		console.log(swiper)
 		if (swiper)
 			swiper.slideTo(
 				window.innerWidth >= 768 ? (length % 2 === 0 ? length - 1 : length) : 0,
