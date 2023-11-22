@@ -40,7 +40,12 @@ const FirmwareBanner = ({ data }) => {
 		// and redirect to the final destination
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/page/support/route/${_value}`
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/page/support/route/${_value}`,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 			if (response?.data?.route) {
 				router.push(

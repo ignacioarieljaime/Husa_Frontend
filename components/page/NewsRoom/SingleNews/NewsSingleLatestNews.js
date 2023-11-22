@@ -24,7 +24,12 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 					process.env.NEXT_PUBLIC_CXM_API_ROUTE
 				}/getPosts?type=news&page=${1}&brand_id=${
 					process.env.NEXT_PUBLIC_BRAND_ID
-				}`
+				}`,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 
 			sortNews(response.data.data, structure?.selectby?.value)

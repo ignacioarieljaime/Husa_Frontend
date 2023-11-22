@@ -58,7 +58,12 @@ const NewsSearchFilter = ({
 	const getNews = async () => {
 		try {
 			let response = await axios.get(
-				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts/meta?type=news&brand_id=3`
+				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts/meta?type=news&brand_id=3`,
+				{
+					headers: {
+						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
+					}
+				}
 			)
 			setFilterData(response?.data)
 		} catch (error) {
