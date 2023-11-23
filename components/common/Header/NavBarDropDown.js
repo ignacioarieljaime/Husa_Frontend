@@ -8,6 +8,27 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 	const timeoutRef = useRef(null);
 
+	const handleTimerChangeTimeout = (trueOrFalse) => {
+
+		const boolean = trueOrFalse;
+
+		setTimerCheck(prevState => {
+			const newState = [...prevState];
+			const countTrueValues = array => array.filter(item => item === true).length;
+			const trueCount = countTrueValues(newState);
+
+			if (trueCount > 1 && !boolean) newState[itemIndex] = boolean;
+			if (trueCount > 1 && boolean) {
+				const newArray = newState.map((item, index) => (index === itemIndex ? true : false));
+				newState = newArray;
+			}
+			if (trueCount <= 1) newState[itemIndex] = boolean;
+
+
+			return newState;
+		});
+
+	}
 
 	const handleMouseEnter = (milliseconds) => {
 
@@ -16,22 +37,16 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 			timeoutRef.current = setTimeout(() => {
 
-				setTimerCheck(prevState => {
-					const newState = [...prevState];
-					newState[itemIndex] = true;
-					return newState;
-				});
+				handleTimerChangeTimeout(true);
+
 			}, milliseconds);
 		}
 
 		if (!timer) {
 			clearTimeout(timeoutRef.current);
 
-			setTimerCheck(prevState => {
-				const newState = [...prevState];
-				newState[itemIndex] = true;
-				return newState;
-			});
+			handleTimerChangeTimeout(true);
+
 		}
 
 		handler(data.name);
@@ -41,22 +56,18 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 		if (timer) {
 
-			setTimerCheck(prevState => {
-				const newState = [...prevState];
-				newState[itemIndex] = false;
-				return newState;
-			});
+			clearTimeout(timeoutRef.current);
+
+			handleTimerChangeTimeout(false);
 
 		}
 
 		if (!timer) {
+
 			timeoutRef.current = setTimeout(() => {
 
-				setTimerCheck(prevState => {
-					const newState = [...prevState];
-					newState[itemIndex] = false;
-					return newState;
-				});
+				handleTimerChangeTimeout(false);
+
 			}, milliseconds);
 
 		}
