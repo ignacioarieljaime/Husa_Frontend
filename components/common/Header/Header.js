@@ -27,6 +27,9 @@ function Header({ data: { structure }, notification }) {
 	const [dropDown, setDropDown] = useState(null)
 	const [dropDownTimer, setDropDownTimer] = useState(true)
 	const [dropDownTimerCheck, setDropDownTimerCheck] = useState([]);
+
+	const defaultDropDownCondition = Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false);
+
 	useEffect(() => {
 		if (sessionStorage.getItem('headerData')) {
 			setHeaderData({ ...JSON.parse(sessionStorage.getItem('headerData')) })
@@ -49,13 +52,13 @@ function Header({ data: { structure }, notification }) {
 
 	useEffect(() => {
 		if (headerData && dropDownTimerCheck.length === 0) {
-			setDropDownTimerCheck(Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false));
+			setDropDownTimerCheck(defaultDropDownCondition);
 		}
 	}, [headerData])
 
 	useEffect(() => {
 
-		const newDropDownTimerCheck = Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false);
+		const newDropDownTimerCheck = defaultDropDownCondition;
 
 		if (JSON.stringify(dropDownTimerCheck) === JSON.stringify(newDropDownTimerCheck)) {
 			setDropDownTimer(true);
