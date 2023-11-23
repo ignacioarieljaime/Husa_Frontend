@@ -87,6 +87,11 @@ const NewsSearchFilter = ({
 		filterHandler('search', '', false);
 		reloadPage();
 	}
+
+	const resetVisible = () => {
+		if (filters.year.length === 0 && filters.product.length === 0 && filters.search.length === 0) return false
+		return true; 
+	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
 	// 	setOpenFilter(false)
@@ -96,7 +101,7 @@ const NewsSearchFilter = ({
 	// 		})
 	// 	}, 500)
 	// }
-
+	console.log(filters)
 	return (
 		<div className='newsroom_search'>
 			<div ref={target} className='news_room_search_filter'>
@@ -148,7 +153,7 @@ const NewsSearchFilter = ({
 									</div>
 								</div>
 
-								{news &&
+								{resetVisible() &&
 									<div className='reset-container'>
 										<button className='reset-button'
 											onClick={() => resetSearch()}
