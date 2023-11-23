@@ -101,7 +101,6 @@ const NewsSearchFilter = ({
 	// 		})
 	// 	}, 500)
 	// }
-	console.log(filters)
 	return (
 		<div className='newsroom_search'>
 			<div ref={target} className='news_room_search_filter'>
