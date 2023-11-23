@@ -54,8 +54,10 @@ function LandingVideoPlayer({ data }) {
 						title={'LandingVideoIframe' + data?.id + structure?.video?.title}
 						width='100%'
 						height='100%'
-						allow='autoplay; fullscreen'
-						allowFullScreen=''
+						allow='autoplay; fullscreen; picture-in-picture'
+						mozallowfullscreen
+						webkitallowfullscreen
+						allowfullscreen
 						dataready={true}></iframe>
 				)}
 				{structure?.videoType?.value === 'link' && (
