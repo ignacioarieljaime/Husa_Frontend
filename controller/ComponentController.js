@@ -341,8 +341,8 @@ return (
 	let data = await axios
 		.get(
 ${
-	_page.post
-		? `"${process.env.CXM_API_ROUTE}/getPostInfo/" + ${_page.post?.id}`
+	_page?.post
+		? `"${process.env.CXM_API_ROUTE}/getPostInfo/" + ${_page?.post?.id}`
 		: `"${process.env.CXM_API_ROUTE}/getPageInfo/" + query.pageid`
 }
 		,
