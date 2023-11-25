@@ -18,24 +18,17 @@ const controlPagesAndGenerate = (_pages, _condition) => {
 		if (!page.route.includes(' ')) {
 			let pageComponents = FindComponent(page.widgets)
 
-			if (page.route === '/preview/[pageid]') {
-				if (process.env.APP_LOCATION !== 'production') {
-					PageController(
-						page,
-						GenerateDynamicPageComponents(page, pageComponents, _condition)
-					)
-				}
-			} else {
-				PageController(
-					page,
-					page.route === '/404'
-						? GenerateNotFoundPage(page, pageComponents, _condition)
-						: GenerateComponentStructure(page, pageComponents, _condition)
-				)
-			}
+			PageController(
+				page,
+				page.route === '/404'
+					? GenerateNotFoundPage(page, pageComponents, _condition)
+					: GenerateComponentStructure(page, pageComponents, _condition)
+			)
 		}
 	})
-
+	if (process.env.APP_LOCATION !== 'production') {
+		PageController({ route: '/preview' }, GenerateDynamicPageComponents())
+	}
 	PageController({ route: '/download-firmware' }, generateFirmwarePage())
 }
 
