@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import BreadCrumb from '../../common/BreadCrumb'
 import ProductItemV2 from './ProductItemV2'
@@ -25,6 +25,8 @@ const ProductsGridV2 = ({ data }) => {
 	const [searchTermFilter, setSearchTermFilter] = useState(0)
 	const router = useRouter()
 	const controller = new AbortController()
+	const wrapperRef = useRef()
+
 	const options = [
 		{
 			name: 'Featured',
@@ -179,6 +181,12 @@ const ProductsGridV2 = ({ data }) => {
 	// 	return _data
 	// }
 
+	function justifyViewPort() {
+		if (wrapperRef?.current) {
+			wrapperRef?.current.scrollIntoView()
+		}
+	}
+
 	return (
 		<section>
 			<div className='container-md grid_v2_top_box mt-md-7 mb-md-11 '>
@@ -189,6 +197,7 @@ const ProductsGridV2 = ({ data }) => {
 			</div>
 			{width < 768 && (
 				<ProductFilterResponsive
+					justifyViewPort={justifyViewPort}
 					selectedFilter={filters}
 					allFilters={filterList}
 					filterRequest={getProductHandler}
@@ -206,7 +215,7 @@ const ProductsGridV2 = ({ data }) => {
 				/>
 			)}
 
-			<div id='products' className='products-v2 mx-3 mx-md-13'>
+			<div ref={wrapperRef} id='products' className='products-v2 mx-3 mx-md-13'>
 				<div
 					className='products-sorting d-none d-md-block'
 					style={{ zIndex: '5' }}>
@@ -239,7 +248,7 @@ const ProductsGridV2 = ({ data }) => {
 					) : null}
 
 					{!Array.isArray(filteredProducts) ? (
-						<div className='w-100 d-flex justify-content-center'>
+						<div className='w-100 d-flex justify-content-center spinner_height'>
 							<Spinner className={'mt-5'} size={80} />
 						</div>
 					) : (

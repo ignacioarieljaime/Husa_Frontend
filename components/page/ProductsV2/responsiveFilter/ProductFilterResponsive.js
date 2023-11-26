@@ -1,6 +1,6 @@
 import ResponsiveFilterIcon from 'components/icons/ResponsiveFilterIcon'
 import XIcon from 'components/icons/XIcon'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import FilterDropDown from './FilterDropDown'
 import { useRouter } from 'next/router'
 import SortFilterDropDown from './SortFilterDropDown'
@@ -28,7 +28,8 @@ const ProductFilterResponsive = ({
 	setSearchTerm,
 	showProductFilterCount,
 	searchTermFilter,
-	setSearchTermFilter
+	setSearchTermFilter,
+	justifyViewPort
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [filterCounter, setFilterCounter] = useState(0)
@@ -224,8 +225,10 @@ const ProductFilterResponsive = ({
 						<SortFilterDropDown
 							sortValue={sortValue}
 							modalIsOpen={modalIsOpen}
+							justifyViewPort={justifyViewPort}
 							sortOnChange={value => {
 								sortOnChange(value.value)
+								justifyViewPort()
 							}}
 						/>
 						{allFilters?.map(filter => (
@@ -233,6 +236,7 @@ const ProductFilterResponsive = ({
 								{...filter}
 								modalIsOpen={modalIsOpen}
 								category={category}
+								justifyViewPort={justifyViewPort}
 								filterCounter={filterCounter}
 								filterController={filterController}
 								selectedFilter={selectedFilter}
