@@ -156,6 +156,13 @@
 		}
 	}
 
+	.spinner_height {
+		height: 70vh;
+		@include mq(768) {
+			height: 100vh;
+		}
+	}
+
 	.products-grid {
 		display: flex;
 		justify-content: center;
@@ -322,13 +329,13 @@
 					text-decoration: none;
 				}
 			}
-			
+
 			.box-group-link {
 				text-decoration: none;
 				cursor: pointer;
 
 				&:hover {
-					.n-btn.medium.outline-black  {
+					.n-btn.medium.outline-black {
 						color: #fff !important;
 						background-color: #000 !important;
 					}
