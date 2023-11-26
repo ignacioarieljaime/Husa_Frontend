@@ -57,8 +57,11 @@ const CareersVideoBlock = ({ data }) => {
 						onClick={() => playVideo(true)}></video>
 				) : (
 					<iframe
-						allow='autoplay; mute; loop'
-						src={content?.video?.value}></iframe>
+						allow='autoplay; mute; loop; fullscreen; picture-in-picture'
+						src={content?.video?.value}
+						mozallowfullscreen
+						webkitallowfullscreen
+						allowfullscreen></iframe>
 				)}
 				{content?.videoType?.value === 'link' && !playingStatus && (
 					<button onClick={() => playVideo(playingStatus)}>
