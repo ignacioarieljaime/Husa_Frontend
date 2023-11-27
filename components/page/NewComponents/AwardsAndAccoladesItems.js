@@ -16,7 +16,7 @@ const AwardsAndAccoladesItems = ({ data, length }) => {
 			)
 	}, [length, swiper])
 	return (
-		<div className='awards_and_accolades__cards_wrapper__card item__3'>
+		<div className={`awards_and_accolades__cards_wrapper__card item__3 ${data?.link?.value && '_has_link'}`}>
 			<img
 				src={data?.image?.src}
 				className='awards_and_accolades__cards_wrapper__card__image'
