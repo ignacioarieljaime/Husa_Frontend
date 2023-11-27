@@ -43,8 +43,8 @@ const NewsSearchFilter = ({
 	}, [])
 
 	useEffect(() => {
-		if (window.scrollY < 61) setFix(true);
-		if (window.scrollY >= 60) setFix(false);
+		if (window.scrollY < 61) setFix(true)
+		if (window.scrollY >= 60) setFix(false)
 		window.addEventListener('scroll', () => {
 			if (target?.current?.offsetTop >= window.scrollY + 60) {
 				setFix(true)
@@ -85,17 +85,22 @@ const NewsSearchFilter = ({
 	}
 
 	function redirectToResultsPage() {
-		setTimeout(() => {
-			router.push(
-				{
-					pathname: targetRoute,
-					query: {
-						filters: JSON.stringify({ ...filters, search: searchTerm })
-					}
-				},
-				targetRoute
+		if (
+			Object.keys(filters).some(
+				key => key !== 'page' && filters[key].length > 0
 			)
-		}, 1000)
+		)
+			setTimeout(() => {
+				router.push(
+					{
+						pathname: targetRoute,
+						query: {
+							filters: JSON.stringify({ ...filters, search: searchTerm })
+						}
+					},
+					targetRoute
+				)
+			}, 1000)
 	}
 
 	// function confirmChanges() {
