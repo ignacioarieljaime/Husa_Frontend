@@ -68,7 +68,7 @@ function AwardsAndAccolades({ data, pim }) {
 										content?.list?.value.length <= 2
 											? content?.list?.value.length
 											: 3
-									}`}
+									} ${item?.link?.value ? '_has_link' : ''}`}
 									key={index}>
 									<img
 										src={item?.image?.src}
@@ -87,7 +87,7 @@ function AwardsAndAccolades({ data, pim }) {
 													__html: item?.subtitle?.value
 												}}></h6>
 										</div>
-										{item?.link?.value && (
+										{item?.link?.value && content?.list?.value.length < 3 && (
 											<Link
 												href={item?.link?.value}
 												target={
@@ -104,6 +104,22 @@ function AwardsAndAccolades({ data, pim }) {
 											</Link>
 										)}
 									</div>
+									{item?.link?.value && content?.list?.value.length >= 3 && (
+										<Link
+											href={item?.link?.value}
+											target={
+												item?.link?.target ? item.link?.target : '_self'
+											}>
+											<a
+												className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
+												target={
+													item?.link?.target ? item.link?.target : '_self'
+												}>
+												{item?.link?.title}
+												<FontAwesomeIcon icon={faChevronRight} />
+											</a>
+										</Link>
+									)}
 								</div>
 							))}
 						</div>
