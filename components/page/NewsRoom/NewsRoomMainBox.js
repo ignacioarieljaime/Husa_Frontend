@@ -25,13 +25,6 @@ const NewsRoomMainBox = ({ data }) => {
 		search: '',
 		page: 1
 	})
-	useEffect(() => {
-		if (filters?.product.length || filters?.search || filters?.year.length) {
-			getNews()
-		} else {
-			setNews(null)
-		}
-	}, [filters])
 
 	useEffect(() => {
 		let newOrder = []
@@ -44,18 +37,6 @@ const NewsRoomMainBox = ({ data }) => {
 			]
 		setNewsItemOrder(newOrder)
 	}, [])
-
-	const getNews = async () => {
-		setNews('loading')
-		try {
-			let response = await GetNewsApi(filters, 15)
-			setNews(response.data.data)
-			setPagination(response.data.meta)
-			setNewsLength(response.data?.meta?.total)
-		} catch (error) {
-			console.log(error)
-		}
-	}
 
 	return (
 		<>
