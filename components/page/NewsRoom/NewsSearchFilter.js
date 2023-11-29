@@ -34,11 +34,24 @@ const NewsSearchFilter = ({
 	const [timer, setTimer] = useState(null)
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
+	const [fix, setFix] = useState(false)
 	const target = useRef()
 	const router = useRouter()
 
 	useEffect(() => {
 		getNews()
+	}, [])
+
+	useEffect(() => {
+		if (window.scrollY < 61) setFix(true);
+		if (window.scrollY >= 60) setFix(false);
+		window.addEventListener('scroll', () => {
+			if (target?.current?.offsetTop >= window.scrollY + 60) {
+				setFix(true)
+			} else {
+				setFix(false)
+			}
+		})
 	}, [])
 
 	useEffect(() => {
@@ -96,8 +109,13 @@ const NewsSearchFilter = ({
 	// }
 
 	return (
-		<div className='newsroom_search'>
-			<div ref={target} className='news_room_search_filter'>
+		<div
+			ref={target}
+			style={{
+				zIndex: !fix ? 1001 : 997
+			}}
+			className='newsroom_search'>
+			<div className='news_room_search_filter'>
 				<div className=''>
 					<div className='content'>
 						<div className='filter_title'>

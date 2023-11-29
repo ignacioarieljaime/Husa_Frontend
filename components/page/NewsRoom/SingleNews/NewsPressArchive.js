@@ -114,7 +114,9 @@ const NewsPressArchive = ({ data }) => {
 								<Spinner />
 							) : Array.isArray(news) ? (
 								news.map(item => (
+
 									<div>
+
 										<Link href={item?.route || '/'}>
 											<a
 												className='d-block h-100'
@@ -130,6 +132,9 @@ const NewsPressArchive = ({ data }) => {
 												/>
 											</a>
 										</Link>
+										<Link href={item?.route || '/'}>
+										<a className='box-group-link'>
+
 										<div className='text_box'>
 											{item?.tags.map(item => (
 												<span className='subject'>{item}</span>
@@ -146,7 +151,11 @@ const NewsPressArchive = ({ data }) => {
 													: moment(item?.created_at).format('MMMM DD YYYY')}
 											</span>
 										</div>
+										</a>
+										</Link>
+
 									</div>
+
 								))
 							) : null}
 						</div>
