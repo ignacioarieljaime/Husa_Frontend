@@ -96,5 +96,9 @@ module.exports.CesComponents = [
 	{
 		name: 'CesPeople',
 		path: 'components/page/CES/CesPeople'
+	},
+	{
+		name: 'CESArticles',
+		path: 'components/page/CES/CESArticles'
 	}
 ]
