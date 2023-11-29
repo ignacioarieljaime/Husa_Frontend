@@ -496,6 +496,28 @@ ul.header_dropdown_sublist.sublist {
           display: block;
         }
       }
+      .dropdown-mouse-exit-top,
+      .dropdown-mouse-exit-bottom {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1rem;
+        margin-right: auto;
+        margin-left: auto;
+        width: 100%;
+        background-color: red;
+        opacity: 0%;
+      }
+      .dropdown-mouse-exit-top {
+        z-index: 1000;
+        height: 1rem;
+        top: 0;
+      }
+      .dropdown-mouse-exit-bottom {
+        bottom: 0;
+        height: 1rem;
+      }
     }
   }
 }

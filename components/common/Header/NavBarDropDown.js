@@ -9,6 +9,15 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 	const timeoutRef = useRef(null);
 
+	const timerCheckHandler = (boolean, index) => {
+
+		setTimerCheck(prevState => {
+			const newState = [...prevState];
+			newState[index] = boolean;
+
+			return newState;
+		});
+	}
 
 	const handleMouseEnter = (milliseconds) => {
 
@@ -16,23 +25,13 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 			clearTimeout(timeoutRef.current);
 
 			timeoutRef.current = setTimeout(() => {
-
-				setTimerCheck(prevState => {
-					const newState = [...prevState];
-					newState[itemIndex] = true;
-					return newState;
-				});
+				timerCheckHandler(true, itemIndex);
 			}, milliseconds);
 		}
 
 		if (!timer) {
 			clearTimeout(timeoutRef.current);
-
-			setTimerCheck(prevState => {
-				const newState = [...prevState];
-				newState[itemIndex] = true;
-				return newState;
-			});
+			timerCheckHandler(true, itemIndex);
 		}
 
 		handler(data.name);
@@ -41,23 +40,30 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 	const handleMouseLeave = (milliseconds) => {
 
 		if (timer) {
-
+			clearTimeout(timeoutRef.current);
 			setTimerCheck(prevState => {
 				const newState = [...prevState];
 				newState[itemIndex] = false;
+	
+				if (JSON.stringify(prevState) === JSON.stringify(newState)) newState = Array.from({ length: prevState.length }, () => false);
+	
 				return newState;
 			});
-
 		}
 
 		if (!timer) {
+
 			timeoutRef.current = setTimeout(() => {
 
 				setTimerCheck(prevState => {
 					const newState = [...prevState];
 					newState[itemIndex] = false;
+
+					if (JSON.stringify(prevState) === JSON.stringify(newState)) newState = Array.from({ length: prevState.length }, () => false);
+		
 					return newState;
 				});
+
 			}, milliseconds);
 
 		}
@@ -68,7 +74,7 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 	return (
 		<li
 			onMouseEnter={() => handleMouseEnter(1000)}
-			onMouseLeave={() => handleMouseLeave(1000)}
+			onMouseLeave={() => handleMouseLeave(40)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
@@ -91,6 +97,7 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 			{data.childs.length !== 0 && (
 				<div className={`${timer ? 'unhovered-list' : 'nav-dropdown-list'}`}>
+					<>
 					<div className='container-fluid'>
 						<div className='row align-items-stretch'>
 							<div className='col-3'>
@@ -168,6 +175,11 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 							)}
 						</div>
 					</div>
+
+					<div className='dropdown-mouse-exit-bottom'
+						onMouseOut={() => timerCheckHandler(false, itemIndex)}
+					/>
+					</>
 				</div>
 			)}
 		</li>
