@@ -33,41 +33,43 @@ const BlockFeatured = ({ data: { structure } }) => {
 					<SwiperSlide key={index} className='slider-item'>
 						<h3 className='slider-title fs-2'>{item?.title?.value}</h3>
 						<div className='slider-body'>
-							{item?.image ? (
+							{item?.video?.value ? (
+								<div className='slider-video'>
+									<video autoPlay={true} muted={true} loop={true}>
+										<source src={item?.video?.value} />
+										{item?.image?.alt}
+									</video>
+								</div>
+							) : (
 								<CustomImage
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									className='slider-image'
 									wrapperWidth={'100%'}
 								/>
-							) : (
-								<div className='slider-video'>
-									<video autoPlay={true} muted={true} loop={true}>
-										<source src={item?.video?.src} />
-										{item?.image?.alt}
-									</video>
-								</div>
 							)}
 							<div className='slider-content'>
 								<h5 className='description d-none d-md-block'>
 									{item?.description?.value}
 								</h5>
-								<Link
-									target={item?.link?.target ? item?.link?.target : '_self'}
-									href={item?.link?.value ? item?.link?.value : '/'}>
-									<a
+								{item?.link?.value && (
+									<Link
 										target={item?.link?.target ? item?.link?.target : '_self'}
-										className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
-										{item?.link?.title}
-										{item?.link?.target === '_blank' && (
-											<img
-												style={{ marginLeft: '10px' }}
-												src={OpenPageOnNewTab.src}
-											/>
-										)}
-									</a>
-								</Link>
-								{item?.video && (
+										href={item?.link?.value ? item?.link?.value : '/'}>
+										<a
+											target={item?.link?.target ? item?.link?.target : '_self'}
+											className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
+											{item?.link?.title}
+											{item?.link?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
+										</a>
+									</Link>
+								)}
+								{item?.video?.value && (
 									<span className='play'>
 										<FontAwesomeIcon
 											icon={faPlayCircle}
