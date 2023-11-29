@@ -68,11 +68,10 @@ function AwardsAndAccolades({ data, pim }) {
 										content?.list?.value.length <= 2
 											? content?.list?.value.length
 											: 3
-									}`}
+									} ${item?.link?.value ? '_has_link' : ''}`}
 									key={index}>
 									<img
 										src={item?.image?.src}
-										alt={item?.title?.value}
 										className='awards_and_accolades__cards_wrapper__card__image'
 									/>
 									<div className='awards_and_accolades__cards_wrapper__card__content'>
@@ -88,7 +87,7 @@ function AwardsAndAccolades({ data, pim }) {
 													__html: item?.subtitle?.value
 												}}></h6>
 										</div>
-										{item?.link?.value && (
+										{item?.link?.value && content?.list?.value.length < 3 && (
 											<Link
 												href={item?.link?.value}
 												target={
@@ -105,56 +104,70 @@ function AwardsAndAccolades({ data, pim }) {
 											</Link>
 										)}
 									</div>
+									{item?.link?.value && content?.list?.value.length >= 3 && (
+										<Link
+											href={item?.link?.value}
+											target={
+												item?.link?.target ? item.link?.target : '_self'
+											}>
+											<a
+												className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
+												target={
+													item?.link?.target ? item.link?.target : '_self'
+												}>
+												{item?.link?.title}
+												<FontAwesomeIcon icon={faChevronRight} />
+											</a>
+										</Link>
+									)}
 								</div>
 							))}
 						</div>
-						<Swiper
-							slidesPerView={'auto'}
-							navigation={{
-								enabled: true,
-								prevEl: navigationPrevRef.current,
-								nextEl: navigationNextRef.current
-							}}
-							pagination={{
-								clickable: true
-							}}
-							initialSlide={
-								windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
-							}
-							grabCursor={true}
-							spaceBetween={windowSize[0] < 768 ? 16 : 20}
-							centeredSlides={true}
-							modules={[Navigation, Pagination]}
-							className={`w-100 ${
-								(content?.list?.value.length < 3 && windowSize[0] <= 768) ||
-								(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
-								content?.list?.value.length >= 4
-									? ''
-									: 'd-none'
-							}`}
-							style={{
-								gridTemplateColumns: `repeat(${content?.list?.value.length}, ${
-									windowSize[0] <= 768 ? '260px' : '350px'
-								})`
-							}}>
-							{content?.list?.value.map((item, index) => (
-								<SwiperSlide
-									style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
-									className={` w-fit`}
-									key={index}>
-									<AwardsAndAccoladesItems
-										data={item}
-										length={content?.list?.value.length / 2}
-									/>
-								</SwiperSlide>
-							))}
-							<div className='swiper-button-prev' ref={navigationPrevRef}>
-								<AwardsNavIcon />
-							</div>
-							<div className='swiper-button-next' ref={navigationNextRef}>
-								<AwardsNavIcon />
-							</div>
-						</Swiper>
+						{(content?.list?.value.length < 3 && windowSize[0] <= 768) ||
+						(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
+						content?.list?.value.length >= 4 ? (
+							<Swiper
+								slidesPerView={'auto'}
+								navigation={{
+									enabled: true,
+									prevEl: navigationPrevRef.current,
+									nextEl: navigationNextRef.current
+								}}
+								pagination={{
+									clickable: true
+								}}
+								initialSlide={
+									windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
+								}
+								grabCursor={true}
+								spaceBetween={windowSize[0] < 768 ? 16 : 20}
+								centeredSlides={true}
+								modules={[Navigation, Pagination]}
+								className={`w-100`}
+								style={{
+									gridTemplateColumns: `repeat(${
+										content?.list?.value.length
+									}, ${windowSize[0] <= 768 ? '260px' : '350px'})`
+								}}>
+								{content?.list?.value.map((item, index) => (
+									<SwiperSlide
+										style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
+										className={` w-fit`}
+										key={index}>
+										<AwardsAndAccoladesItems
+											data={item}
+											length={content?.list?.value.length / 2}
+										/>
+									</SwiperSlide>
+								))}
+								<div className='swiper-button-prev' ref={navigationPrevRef}>
+									<AwardsNavIcon />
+								</div>
+								<div className='swiper-button-next' ref={navigationNextRef}>
+									<AwardsNavIcon />
+								</div>
+							</Swiper>
+						) : null}
 					</>
 				)}
 			</div>

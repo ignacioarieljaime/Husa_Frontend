@@ -4,7 +4,6 @@ import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
-
 function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 	const timeoutRef = useRef(null);

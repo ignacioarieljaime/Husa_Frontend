@@ -3,12 +3,14 @@ import Expand from 'public/assets/svgs/Expand.svg'
 import Mute from 'public/assets/svgs/mute.svg'
 import Play from 'public/assets/svgs/play.svg'
 import { useInView } from 'react-intersection-observer'
+import Spinner from 'components/common/Spinner'
 function LandingVideoPlayer({ data }) {
 	const { structure } = data
 	const videoRef = useRef()
 	const [video, setVideo] = useState(null)
 	const [playingStatus, setPlayingStatus] = useState(false)
 	const [fullSize, setFullSize] = useState(false)
+	const [loading, setLoading] = useState(true)
 	const [mute, setMuted] = useState(false)
 	const { ref, inView } = useInView({
 		threshold: 0
@@ -17,7 +19,8 @@ function LandingVideoPlayer({ data }) {
 	const uniqeID = (Math.random() * Math.random() * 100).toFixed()
 
 	useEffect(() => {
-		if (inView && !video) {
+		if (inView && loading) {
+			setLoading(false)
 			setVideo(structure?.video?.value)
 		}
 	}, [inView])
@@ -34,22 +37,27 @@ function LandingVideoPlayer({ data }) {
 
 	return (
 		<section id={data?.name + data?.id}>
-			<div className='video_feature'>
-				{video && structure?.videoType?.value === 'link' ? (
+			<div ref={ref} className='video_feature'>
+				{loading && !video ? (
+					<Spinner />
+				) : structure?.videoType?.value === 'link' ? (
 					<video ref={videoRef} muted={mute} src={video}></video>
 				) : (
 					<iframe
-						ref={ref}
 						id={'LandingVideoIframe' + uniqeID + data?.id}
-						src={video}
+						src={
+							video + `${video && video.includes('?') ? '&' : '?'}autopause=0`
+						}
 						alt={
 							'LandingVideoIframe' + uniqeID + data?.id + structure?.video?.alt
 						}
 						title={'LandingVideoIframe' + data?.id + structure?.video?.title}
 						width='100%'
 						height='100%'
-						allow='autoplay; fullscreen'
-						allowFullScreen=''
+						allow='autoplay; fullscreen; picture-in-picture'
+						mozallowfullscreen
+						webkitallowfullscreen
+						allowfullscreen
 						dataready={true}></iframe>
 				)}
 				{structure?.videoType?.value === 'link' && (

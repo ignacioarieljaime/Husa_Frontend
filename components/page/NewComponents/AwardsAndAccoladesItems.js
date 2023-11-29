@@ -9,7 +9,6 @@ const AwardsAndAccoladesItems = ({ data, length }) => {
 	const swiper = useSwiper()
 
 	useEffect(() => {
-		console.log(swiper)
 		if (swiper)
 			swiper.slideTo(
 				window.innerWidth >= 768 ? (length % 2 === 0 ? length - 1 : length) : 0,
@@ -17,10 +16,9 @@ const AwardsAndAccoladesItems = ({ data, length }) => {
 			)
 	}, [length, swiper])
 	return (
-		<div className='awards_and_accolades__cards_wrapper__card item__3'>
+		<div className={`awards_and_accolades__cards_wrapper__card item__3 ${data?.link?.value && '_has_link'}`}>
 			<img
 				src={data?.image?.src}
-				alt={data?.title?.value}
 				className='awards_and_accolades__cards_wrapper__card__image'
 			/>
 			<div className='awards_and_accolades__cards_wrapper__card__content'>

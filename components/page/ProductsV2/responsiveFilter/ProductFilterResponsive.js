@@ -1,6 +1,6 @@
 import ResponsiveFilterIcon from 'components/icons/ResponsiveFilterIcon'
 import XIcon from 'components/icons/XIcon'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import FilterDropDown from './FilterDropDown'
 import { useRouter } from 'next/router'
 import SortFilterDropDown from './SortFilterDropDown'
@@ -29,7 +29,8 @@ const ProductFilterResponsive = ({
 	setSearchTerm,
 	showProductFilterCount,
 	searchTermFilter,
-	setSearchTermFilter
+	setSearchTermFilter,
+	wrapperRef
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [filterCounter, setFilterCounter] = useState(0)
@@ -189,6 +190,7 @@ const ProductFilterResponsive = ({
 				}}
 				>
 				<div
+					ref={wrapperRef}
 					className={`d-flex justify-content-between align-items-center p-4 w-100 filter_nav `}>
 					<span>Filters</span>
 					<button

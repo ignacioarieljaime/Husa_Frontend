@@ -43,6 +43,8 @@ const NewsSearchFilter = ({
 	}, [])
 
 	useEffect(() => {
+		if (window.scrollY < 61) setFix(true)
+		if (window.scrollY >= 60) setFix(false)
 		window.addEventListener('scroll', () => {
 			if (target?.current?.offsetTop >= window.scrollY + 60) {
 				setFix(true)
@@ -83,25 +85,26 @@ const NewsSearchFilter = ({
 	}
 
 	function redirectToResultsPage() {
-		setTimeout(() => {
-			router.push(
-				{
-					pathname: targetRoute,
-					query: {
-						filters: JSON.stringify({ ...filters, search: searchTerm })
-					}
-				},
-				targetRoute
+		if (
+			Object.keys(filters).some(
+				key => key !== 'page' && filters[key].length > 0
 			)
-		}, 1000)
+		)
+			setTimeout(() => {
+				router.push(
+					{
+						pathname: targetRoute,
+						query: {
+							filters: JSON.stringify({ ...filters, search: searchTerm })
+						}
+					},
+					targetRoute
+				)
+			}, 1000)
 	}
 
-	function redirectToNewsroomPage() {
-		router.push(
-			{
-				pathname: '/newsroom',
-			},
-		)
+	function reloadPage() {
+		router.reload();
 	}
 
 
@@ -109,7 +112,12 @@ const NewsSearchFilter = ({
 		filterHandler('year', '', false);
 		filterHandler('product', '', false);
 		filterHandler('search', '', false);
-		redirectToNewsroomPage();
+		reloadPage();
+	}
+
+	const resetVisible = () => {
+		if (filters.year.length === 0 && filters.product.length === 0 && filters.search.length === 0) return false
+		return true; 
 	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
@@ -120,7 +128,6 @@ const NewsSearchFilter = ({
 	// 		})
 	// 	}, 500)
 	// }
-
 	return (
 		<div
 			ref={target}
@@ -189,7 +196,7 @@ const NewsSearchFilter = ({
 									</div>
 								</div>
 
-								{news &&
+								{resetVisible() &&
 									<div className='reset-container'>
 										<button className='reset-button'
 											onClick={() => resetSearch()}
