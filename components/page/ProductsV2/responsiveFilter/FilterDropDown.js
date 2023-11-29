@@ -16,8 +16,7 @@ const FilterDropDown = props => {
 		filterCounter,
 		category,
 		showProductFilterCount,
-		modalIsOpen,
-		justifyViewPort
+		modalIsOpen
 	} = props
 	const router = useRouter()
 	const dropdown = useRef()
@@ -26,7 +25,6 @@ const FilterDropDown = props => {
 	const [height, setHeight] = useState(0)
 
 	const filterHandler = _filterValue => {
-		justifyViewPort()
 		filterController(
 			null,
 			{ ..._filterValue, filterId: content_record_id },
