@@ -30,7 +30,7 @@ const ProductFilterResponsive = ({
 	showProductFilterCount,
 	searchTermFilter,
 	setSearchTermFilter,
-	justifyViewPort
+	wrapperRef
 }) => {
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 	const [filterCounter, setFilterCounter] = useState(0)
@@ -190,6 +190,7 @@ const ProductFilterResponsive = ({
 				}}
 				>
 				<div
+					ref={wrapperRef}
 					className={`d-flex justify-content-between align-items-center p-4 w-100 filter_nav `}>
 					<span>Filters</span>
 					<button
@@ -207,10 +208,8 @@ const ProductFilterResponsive = ({
 						<SortFilterDropDown
 							sortValue={sortValue}
 							modalIsOpen={modalIsOpen}
-							justifyViewPort={justifyViewPort}
 							sortOnChange={value => {
 								sortOnChange(value.value)
-								justifyViewPort()
 							}}
 						/>
 						{allFilters?.map(filter => (
@@ -218,7 +217,6 @@ const ProductFilterResponsive = ({
 								{...filter}
 								modalIsOpen={modalIsOpen}
 								category={category}
-								justifyViewPort={justifyViewPort}
 								filterCounter={filterCounter}
 								filterController={filterController}
 								selectedFilter={selectedFilter}
