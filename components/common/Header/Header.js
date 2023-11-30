@@ -64,7 +64,7 @@ function Header({ data: { structure }, notification }) {
 		} else {
 			setDropDownTimer(false);
 		}
-	}, [dropDownTimerCheck])
+	}, [dropDownTimerCheck, dropDownTimer])
 
 	return (
 		<header>
