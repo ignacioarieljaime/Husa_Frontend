@@ -6,7 +6,7 @@
 	align-items: center;
 	gap: 40px;
 	@include mq(768) {
-		padding: 64px 16px;
+		padding: 64px 0px;
 	}
 	&__title {
 		margin: 0;
