@@ -74,7 +74,7 @@ const LightBoxModal = ({
 					</div>
 					<div className='px-4 px-md-8'>
 						<div className='lightbox___wrapper'>
-							{video ? (
+							{video?.value ? (
 								<iframe
 									id={'LightBox' + id + video?.title}
 									src={

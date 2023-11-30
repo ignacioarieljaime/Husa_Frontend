@@ -12,7 +12,8 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 		topImage,
 		link,
 		gradient,
-		lightbox
+		lightbox,
+		lightboxObject
 	} = data
 
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
@@ -58,30 +59,22 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 					)}
 
 					<h4 className='mb-3 mb-md-6 box_title'>{title?.value}</h4>
-					{link?.title ? (
-						lightbox?.value ? (
-							<button
-								onClick={() => setLightBoxStatus(true)}
+					{link?.title && link?.value ? (
+						<Link
+							target={link?.target ? link?.target : '_self'}
+							href={link?.value ? link?.value : '/'}>
+							<a
+								target={link?.target ? link?.target : '_self'}
 								className='n-btn outline-white transparent d-block w-fit medium'>
 								{link?.title}
-							</button>
-						) : link?.value ? (
-							<Link
-								target={link?.target ? link?.target : '_self'}
-								href={link?.value ? link?.value : '/'}>
-								<a
-									target={link?.target ? link?.target : '_self'}
-									className='n-btn outline-white transparent d-block w-fit medium'>
-									{link?.title}
-									{link?.target === '_blank' && (
-										<img
-											style={{ marginLeft: '10px' }}
-											src={OpenPageOnNewTab.src}
-										/>
-									)}
-								</a>
-							</Link>
-						) : null
+								{link?.target === '_blank' && (
+									<img
+										style={{ marginLeft: '10px' }}
+										src={OpenPageOnNewTab.src}
+									/>
+								)}
+							</a>
+						</Link>
 					) : null}
 				</div>
 			</div>
@@ -112,7 +105,7 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 							className={`box-background ${
 								typeof gradient === 'undefined'
 									? 'gradient'
-									: gradient
+									: gradient?.value
 									? 'gradient'
 									: ''
 							}`}>
@@ -125,7 +118,6 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 						</div>
 						<div className='box-content'>
 							<div></div>
-
 							<div className='w-100'>
 								{topImage?.src && (
 									<CustomImage
@@ -145,32 +137,13 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 										className='mb-6'
 									/>
 								)}
-
 								<h4 className='mb-3 mb-md-6 box_title'>{title?.value}</h4>
-								{link?.title ? (
-									lightbox?.value ? (
-										<button
-											onClick={() => setLightBoxStatus(true)}
-											className='n-btn outline-white transparent d-block w-fit medium'>
-											{link?.title}
-										</button>
-									) : link?.value ? (
-										<Link
-											target={link?.target ? link?.target : '_self'}
-											href={link?.value ? link?.value : '/'}>
-											<a
-												target={link?.target ? link?.target : '_self'}
-												className='n-btn outline-white transparent d-block w-fit medium'>
-												{link?.title}
-												{link?.target === '_blank' && (
-													<img
-														style={{ marginLeft: '10px' }}
-														src={OpenPageOnNewTab.src}
-													/>
-												)}
-											</a>
-										</Link>
-									) : null
+								{link?.title && lightbox?.value ? (
+									<button
+										className='n-btn outline-white transparent d-block w-fit medium position-relative'
+										style={{ zIndex: 10000 }}>
+										{link?.title}
+									</button>
 								) : null}
 							</div>
 						</div>
@@ -180,10 +153,10 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 			{lightbox?.value && (
 				<LightBoxModal
 					id={data?.id}
-					caption={lightbox?.value?.caption}
-					video={lightbox?.value?.video}
-					image={lightbox?.value?.image}
-					link={lightbox?.value?.link}
+					caption={lightboxObject?.value?.caption}
+					video={lightboxObject?.value?.video}
+					image={lightboxObject?.value?.image}
+					link={lightboxObject?.value?.link}
 					isVisible={lightBoxStatus}
 					visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
 				/>
