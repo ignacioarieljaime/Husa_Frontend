@@ -238,7 +238,7 @@
 				flex-direction: column;
 				justify-content: flex-start;
 				@include mq(768) {
-					width: 260px !important;
+					width: 300px !important;
 					padding: 20px;
 				}
 				&._has_link {

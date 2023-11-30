@@ -147,7 +147,7 @@ function AwardsAndAccolades({ data, pim }) {
 								style={{
 									gridTemplateColumns: `repeat(${
 										content?.list?.value.length
-									}, ${windowSize[0] <= 768 ? '260px' : '350px'})`
+									}, ${windowSize[0] <= 768 ? '300px' : '350px'})`
 								}}>
 								{content?.list?.value.map((item, index) => (
 									<SwiperSlide
