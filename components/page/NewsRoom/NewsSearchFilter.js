@@ -98,6 +98,22 @@ const NewsSearchFilter = ({
 		}, 1000)
 	}
 
+	function reloadPage() {
+		router.reload();
+	}
+
+
+	const resetSearch = () => {
+		filterHandler('year', '', false);
+		filterHandler('product', '', false);
+		filterHandler('search', '', false);
+		reloadPage();
+	}
+
+	const resetVisible = () => {
+		if (filters.year.length === 0 && filters.product.length === 0 && filters.search.length === 0) return false
+		return true; 
+	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
 	// 	setOpenFilter(false)
@@ -107,7 +123,6 @@ const NewsSearchFilter = ({
 	// 		})
 	// 	}, 500)
 	// }
-
 	return (
 		<div
 			ref={target}
@@ -175,6 +190,17 @@ const NewsSearchFilter = ({
 										<MagnifierIcon stroke={'#8C8F8F'} />
 									</div>
 								</div>
+
+								{resetVisible() &&
+									<div className='reset-container'>
+										<button className='reset-button'
+											onClick={() => resetSearch()}
+										>
+											Reset
+										</button>
+									</div>
+								}
+
 							</div>
 						)}
 					</div>
