@@ -719,6 +719,7 @@ input {
 		}
 	}
 }
+//
 .article.text-editor.text_editor {
 	&.light {
 		p,
@@ -728,6 +729,16 @@ input {
 		span {
 			color: #fff !important;
 		}
+	}
+	p {
+		span {
+			font-weight: 300;
+		}
+		// strong {
+		// 	span {
+		// 		font-weight: 600;
+		// 	}
+		// }
 	}
 }
 
