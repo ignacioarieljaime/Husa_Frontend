@@ -13,6 +13,7 @@ import {
 	TwitterShareButton,
 	LinkedinShareButton
 } from 'react-share'
+import XTwitterIcon from 'components/icons/XTwitterIcon'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function BlogHead({ data: { structure }, pim }) {
@@ -68,6 +69,20 @@ function BlogHead({ data: { structure }, pim }) {
 					}}>
 					<FontAwesomeIcon icon={icon} size={'xl'} />
 				</button>
+			)
+		if (icon === faTwitter)
+			return (
+				<Component
+					url={location}
+					key={index}
+					onClick={() => {
+						window.dataLayer.push({
+							event: dataLayer[val]
+						})
+					}}
+					className='fill-primary-dark px-2 mx-1'>
+					<XTwitterIcon />
+				</Component>
 			)
 		return (
 			<Component
