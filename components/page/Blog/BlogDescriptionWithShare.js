@@ -12,6 +12,7 @@ import {
 	TwitterShareButton,
 	LinkedinShareButton
 } from 'react-share'
+import XTwitterIcon from 'components/icons/XTwitterIcon'
 function BlogDescriptionWithShare({ data: { structure } }) {
 	const [text, setText] = useState(null)
 	const [location, setLocation] = useState('')
@@ -53,6 +54,15 @@ function BlogDescriptionWithShare({ data: { structure } }) {
 					onClick={copyUrl}>
 					<FontAwesomeIcon icon={icon} size={'xl'} />
 				</button>
+			)
+		if (icon === faTwitter)
+				return (
+					<Component
+					url={location}
+					key={index}
+					className='fill-primary-dark px-2 mx-1'>
+					<XTwitterIcon />
+				</Component>
 			)
 		return (
 			<Component
