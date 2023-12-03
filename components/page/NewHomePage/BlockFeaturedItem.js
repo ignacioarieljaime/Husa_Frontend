@@ -13,21 +13,21 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 				className='slider-body'
 				style={{ cursor: 'pointer' }}
 				onClick={() => isLightBoxValid && activateLightBox()}>
-				{data?.image ? (
-					<CustomImage
-						src={data?.image?.src}
-						alt={data?.image?.alt}
-						className='slider-image'
-						wrapperWidth={'100%'}
-					/>
-				) : (
+				{data?.video?.value ? (
 					<div className='slider-video'>
 						<video autoPlay={true} muted={true} loop={true}>
 							<source src={data?.video?.src} />
 							{data?.image?.alt}
 						</video>
 					</div>
-				)}
+				) : data?.image?.src ? (
+					<CustomImage
+						src={data?.image?.src}
+						alt={data?.image?.alt}
+						className='slider-image'
+						wrapperWidth={'100%'}
+					/>
+				) : null}
 				<div className='slider-content'>
 					<h5 className='description d-none d-md-block'>
 						{data?.description?.value}
