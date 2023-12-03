@@ -49,7 +49,7 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 							</a>
 						</Link>
 					)}
-					{data?.video && (
+					{data?.video?.value && (
 						<span className='play'>
 							<FontAwesomeIcon
 								icon={faPlayCircle}
