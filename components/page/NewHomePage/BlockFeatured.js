@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-import Link from 'next/link'
 import { Pagination, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
-import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import CustomImage from '../../common/CustomImage'
+import BlockFeaturedItem from './BlockFeaturedItem'
+import LightBoxModal from '../NewComponents/LightBoxModal'
 
-const BlockFeatured = ({ data: { structure } }) => {
+const BlockFeatured = ({ data }) => {
+	const { structure } = data
+	const [content, setContent] = useState()
+	const [lightBoxStatus, setLightBoxStatus] = useState(false)
+	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
+	useEffect(() => {
+		setContent(structure)
+	}, [])
+
 	return (
 		<section>
 			<Swiper
@@ -21,7 +27,7 @@ const BlockFeatured = ({ data: { structure } }) => {
 				spaceBetween={8}
 				slidesPerView={'auto'}
 				grabCursor={true}
-				loop={true}
+				loop={content?.list?.value.length > 2 ? true : false}
 				modules={[Pagination, Navigation]}
 				breakpoints={{
 					768: {
@@ -29,58 +35,43 @@ const BlockFeatured = ({ data: { structure } }) => {
 					}
 				}}
 				className='news-slider'>
-				{structure?.list?.value.map((item, index) => (
-					<SwiperSlide key={index} className='slider-item'>
-						<h3 className='slider-title fs-2'>{item?.title?.value}</h3>
-						<div className='slider-body'>
-							{item?.image ? (
-								<CustomImage
-									src={item?.image?.src}
-									alt={item?.image?.alt}
-									className='slider-image'
-									wrapperWidth={'100%'}
-								/>
-							) : (
-								<div className='slider-video'>
-									<video autoPlay={true} muted={true} loop={true}>
-										<source src={item?.video?.src} />
-										{item?.image?.alt}
-									</video>
-								</div>
-							)}
-							<div className='slider-content'>
-								<h5 className='description d-none d-md-block'>
-									{item?.description?.value}
-								</h5>
-								<Link
-									target={item?.link?.target ? item?.link?.target : '_self'}
-									href={item?.link?.value ? item?.link?.value : '/'}>
-									<a
-										target={item?.link?.target ? item?.link?.target : '_self'}
-										className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
-										{item?.link?.title}
-										{item?.link?.target === '_blank' && (
-											<img
-												style={{ marginLeft: '10px' }}
-												src={OpenPageOnNewTab.src}
-											/>
-										)}
-									</a>
-								</Link>
-								{item?.video && (
-									<span className='play'>
-										<FontAwesomeIcon
-											icon={faPlayCircle}
-											size={'xl'}
-											className='ms-2'
-										/>
-									</span>
-								)}
-							</div>
-						</div>
+				{content?.list?.value.map((item, index) => (
+					<SwiperSlide className='slider-item'>
+						<BlockFeaturedItem
+							data={item}
+							key={index}
+							isLightBoxValid={true}
+							activateLightBox={() => {
+								setLightBoxStatus(content?.lightbox?.value)
+								setLightBoxActiveIndex(index)
+							}}
+						/>
 					</SwiperSlide>
 				))}
 			</Swiper>
+			{content?.lightbox?.value && (
+				<LightBoxModal
+					id={data?.id}
+					caption={
+						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+							?.caption
+					}
+					video={
+						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+							?.video
+					}
+					image={
+						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+							?.image
+					}
+					link={
+						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+							?.link
+					}
+					isVisible={lightBoxStatus}
+					visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+				/>
+			)}
 		</section>
 	)
 }
