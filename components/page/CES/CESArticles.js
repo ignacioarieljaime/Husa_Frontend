@@ -53,8 +53,8 @@ const CESArticles = ({ data }) => {
 
 						<div className='items'>
 							{articles?.length
-								? articles.map(item => (
-										<div>
+								? articles.map((item, index) => (
+										<div key={index}>
 											<Link href={item?.link?.value || '/'}>
 												<a
 													className='d-block h-100'
@@ -77,7 +77,15 @@ const CESArticles = ({ data }) => {
 																<a>{item?.title?.value}</a>
 															</Link>
 														</h5>
-														<span className='date'>{item?.data?.value}</span>
+														<span className='date'>
+															{item?.published_at
+																? moment(item?.published_at).format(
+																		'MMMM DD YYYY'
+																  )
+																: moment(item?.created_at).format(
+																		'MMMM DD YYYY'
+																  )}
+														</span>
 													</div>
 												</a>
 											</Link>
