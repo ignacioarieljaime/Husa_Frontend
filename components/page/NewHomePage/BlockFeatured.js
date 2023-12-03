@@ -39,16 +39,16 @@ const BlockFeatured = ({ data }) => {
 					<SwiperSlide key={index} className='slider-item'>
 						<BlockFeaturedItem
 							data={item}
-							isLightBoxValid={true}
+							isLightBoxValid={content?.list?.value[index]?.lightbox?.value}
 							activateLightBox={() => {
-								setLightBoxStatus(content?.lightbox?.value)
+								setLightBoxStatus(true)
 								setLightBoxActiveIndex(index)
 							}}
 						/>
 					</SwiperSlide>
 				))}
 			</Swiper>
-			{content?.lightbox?.value && (
+			{content?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
 				<LightBoxModal
 					id={data?.id}
 					caption={

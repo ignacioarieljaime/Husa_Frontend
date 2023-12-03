@@ -77,12 +77,7 @@ const LightBoxModal = ({
 							{video?.value ? (
 								<iframe
 									id={'LightBox' + id + video?.title}
-									src={
-										video?.value +
-										`${
-											video?.value && video?.value.includes('?') ? '&' : '?'
-										}autopause=0`
-									}
+									src={video?.value}
 									alt={'LightBox' + id + video?.title}
 									title={'LightBox' + id + video?.title}
 									width='100%'
