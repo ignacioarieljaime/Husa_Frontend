@@ -11,12 +11,27 @@
 	transform: translate(-50%, -50%);
 	background: #fff;
 	border-radius: 25px;
+	@include mq(768) {
+		width: 100vw;
+		height: 100vh;
+		border-radius: 0;
+		padding: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
 	&___top_bar {
 		display: flex;
 		justify-content: end;
 		align-items: center;
 		gap: 40px;
 		padding: 0 16px 16px;
+		@include mq(768) {
+			padding: 16px 20px;
+			width: 100%;
+			justify-content: space-between;
+		}
 		.n-btn.outline-black {
 			svg path {
 				stroke: #000;
@@ -28,6 +43,16 @@
 				stroke: #fff;
 				transition: all 0.3s ease-in-out;
 			}
+			@include mq(768) {
+				min-width: 56px !important;
+				padding: 9px 16px 7px !important;
+				font-size: 10px;
+				line-height: 10px;
+				svg {
+					width: 11px;
+					height: 11px;
+				}
+			}
 		}
 		&___close {
 			background-color: transparent;
@@ -37,15 +62,22 @@
 			width: fit-content;
 			height: fit-content;
 			@include mq(768) {
-				width: 24px;
-				height: 24px;
+				display: none;
 			}
-			svg {
-				@include mq(768) {
-					width: 24px;
-					height: 24px;
-				}
-			}
+		}
+		&___back {
+			background: transparent;
+			border: none;
+			display: flex;
+			padding: 12px 13px;
+			justify-content: center;
+			align-items: center;
+			gap: 4px;
+			font-size: 10px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 100%; /* 10px */
+			color: #00aaa6;
 		}
 	}
 	&___wrapper {
