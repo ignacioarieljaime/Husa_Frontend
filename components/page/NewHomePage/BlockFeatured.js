@@ -36,10 +36,9 @@ const BlockFeatured = ({ data }) => {
 				}}
 				className='news-slider'>
 				{content?.list?.value.map((item, index) => (
-					<SwiperSlide className='slider-item'>
+					<SwiperSlide key={index} className='slider-item'>
 						<BlockFeaturedItem
 							data={item}
-							key={index}
 							isLightBoxValid={true}
 							activateLightBox={() => {
 								setLightBoxStatus(content?.lightbox?.value)
