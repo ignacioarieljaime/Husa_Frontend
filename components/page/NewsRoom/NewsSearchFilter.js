@@ -1,4 +1,4 @@
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import AngleArrow from 'components/icons/AngleArrow'
@@ -43,8 +43,8 @@ const NewsSearchFilter = ({
 	}, [])
 
 	useEffect(() => {
-		if (window.scrollY < 61) setFix(true);
-		if (window.scrollY >= 60) setFix(false);
+		if (window.scrollY < 61) setFix(true)
+		if (window.scrollY >= 60) setFix(false)
 		window.addEventListener('scroll', () => {
 			if (target?.current?.offsetTop >= window.scrollY + 60) {
 				setFix(true)
@@ -85,19 +85,42 @@ const NewsSearchFilter = ({
 	}
 
 	function redirectToResultsPage() {
-		setTimeout(() => {
-			router.push(
-				{
-					pathname: targetRoute,
-					query: {
-						filters: JSON.stringify({ ...filters, search: searchTerm })
-					}
-				},
-				targetRoute
+		if (
+			Object.keys(filters).some(
+				key => key !== 'page' && filters[key].length > 0
 			)
-		}, 1000)
+		)
+			setTimeout(() => {
+				router.push(
+					{
+						pathname: targetRoute,
+						query: {
+							filters: JSON.stringify({ ...filters, search: searchTerm })
+						}
+					},
+					targetRoute
+				)
+			}, 1000)
 	}
 
+	function reloadPage() {
+		router.reload();
+	}
+
+
+	const resetSearch = (year, product, search, reload) => {
+
+		if (year) filterHandler('year', '', false);
+		if (product) filterHandler('product', '', false);
+		if (search) filterHandler('search', '', false);
+		if (reload) reloadPage();
+		
+	}
+
+	const resetVisible = () => {
+		if (filters.year.length === 0 && filters.product.length === 0 && filters.search.length === 0) return false
+		return true;
+	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
 	// 	setOpenFilter(false)
@@ -107,7 +130,6 @@ const NewsSearchFilter = ({
 	// 		})
 	// 	}, 500)
 	// }
-
 	return (
 		<div
 			ref={target}
@@ -172,9 +194,32 @@ const NewsSearchFilter = ({
 											}}
 											onBlur={() => !results && redirectToResultsPage()}
 										/>
-										<MagnifierIcon stroke={'#8C8F8F'} />
+										{resetVisible() ?
+											<FontAwesomeIcon
+											icon={faClose}
+											size='md'
+											className='search-close p-1'
+											onMouseDown={(e) => {
+												e.preventDefault();
+												resetSearch(false, false, true, false);
+											}}
+											/>
+											:
+											<MagnifierIcon stroke={'#8C8F8F'} />
+										}
 									</div>
 								</div>
+
+								{resetVisible() &&
+									<div className='reset-container'>
+										<button className='reset-button'
+											onClick={() => resetSearch(true, true, true, true)}
+										>
+											Reset
+										</button>
+									</div>
+								}
+
 							</div>
 						)}
 					</div>

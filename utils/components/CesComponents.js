@@ -96,5 +96,13 @@ module.exports.CesComponents = [
 	{
 		name: 'CesPeople',
 		path: 'components/page/CES/CesPeople'
+	},
+	{
+		name: 'CESNavBar',
+		path: 'components/page/CES/CESNavBar'
+	},
+	{
+		name: 'CESArticles',
+		path: 'components/page/CES/CESArticles'
 	}
 ]

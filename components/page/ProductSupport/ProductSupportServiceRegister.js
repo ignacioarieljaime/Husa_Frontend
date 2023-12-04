@@ -248,6 +248,7 @@ function ProductSupportServiceRegister({ data, formHandler, pim }) {
 					<div className='col-12 col-md-6 mb-10'>
 						<CustomSelectBox
 							options={warrantyOption}
+							className='h-auto'
 							onChange={_value =>
 								dataSchemaHandler('product_warranty', _value?.value)
 							}
