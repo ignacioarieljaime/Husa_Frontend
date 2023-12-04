@@ -1,79 +1,15 @@
 import Link from 'next/link'
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
-function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
-
-	const timeoutRef = useRef(null);
-
-	const timerCheckHandler = (boolean, index) => {
-
-		setTimerCheck(prevState => {
-			const newState = [...prevState];
-			newState[index] = boolean;
-
-			return newState;
-		});
-	}
-
-	const handleMouseEnter = (milliseconds) => {
-
-		if (timer) {
-			clearTimeout(timeoutRef.current);
-
-			timeoutRef.current = setTimeout(() => {
-				timerCheckHandler(true, itemIndex);
-			}, milliseconds);
-		}
-
-		if (!timer) {
-			clearTimeout(timeoutRef.current);
-			timerCheckHandler(true, itemIndex);
-		}
-
-		handler(data.name);
-	};
-
-	const handleMouseLeave = (milliseconds) => {
-
-		if (timer) {
-			clearTimeout(timeoutRef.current);
-			setTimerCheck(prevState => {
-				const newState = [...prevState];
-				newState[itemIndex] = false;
-	
-				if (JSON.stringify(prevState) === JSON.stringify(newState)) newState = Array.from({ length: prevState.length }, () => false);
-	
-				return newState;
-			});
-		}
-
-		if (!timer) {
-
-			timeoutRef.current = setTimeout(() => {
-
-				setTimerCheck(prevState => {
-					const newState = [...prevState];
-					newState[itemIndex] = false;
-
-					if (JSON.stringify(prevState) === JSON.stringify(newState)) newState = Array.from({ length: prevState.length }, () => false);
-		
-					return newState;
-				});
-
-			}, milliseconds);
-
-		}
-
-		handler(null);
-	};
+function NavBarDropDown({ data, handler }) {
 
 	return (
 		<li
-			onMouseEnter={() => handleMouseEnter(1000)}
-			onMouseLeave={() => handleMouseLeave(40)}
+			onMouseEnter={() => handler(data.name)}
+			onMouseLeave={() => handler(null)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
