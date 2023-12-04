@@ -13,6 +13,16 @@ module.exports = async (page, content) => {
 		return
 	}
 
+	if (page.route === '/preview') {
+		await fs.mkdirSync(`./pages/${page.route}`, { recursive: true })
+		fs.writeFile(`./pages/${page.route}/[pageid].js`, content, err => {
+			if (err) {
+				console.error(err)
+			}
+		})
+		return
+	}
+
 	if (page?.route.includes('/index')) {
 		route = page.route.replace('/index', '')
 	} else {

@@ -32,6 +32,7 @@ function NavBarDropDown({ data, handler }) {
 
 			{data.childs.length !== 0 && (
 				<div className={`${timer ? 'unhovered-list' : 'nav-dropdown-list'}`}>
+					<>
 					<div className='container-fluid'>
 						<div className='row align-items-stretch'>
 							<div className='col-3'>
@@ -109,6 +110,11 @@ function NavBarDropDown({ data, handler }) {
 							)}
 						</div>
 					</div>
+
+					<div className='dropdown-mouse-exit-bottom'
+						onMouseOut={() => timerCheckHandler(false, itemIndex)}
+					/>
+					</>
 				</div>
 			)}
 		</li>

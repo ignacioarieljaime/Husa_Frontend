@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DropDownSelectBox from 'components/common/DropDownSelectBox'
 import BreadCrumb from '../../common/BreadCrumb'
 import ProductItemV2 from './ProductItemV2'
@@ -25,6 +25,8 @@ const ProductsGridV2 = ({ data }) => {
 	const [searchTermFilter, setSearchTermFilter] = useState(0)
 	const router = useRouter()
 	const controller = new AbortController()
+	const wrapperRef = useRef()
+
 	const options = [
 		{
 			name: 'Featured',
@@ -44,14 +46,11 @@ const ProductsGridV2 = ({ data }) => {
 	}, [])
 	useEffect(() => {
 		if (router.query.filter) {
-			console.log('router second req')
-			console.log(JSON.parse(decodeURIComponent(router.query.filter)))
 			getProductHandler(
 				JSON.parse(decodeURIComponent(router.query.filter)),
 				searchTerm
 			)
 		} else {
-			console.log('clean')
 			getProductHandler([], searchTerm)
 		}
 	}, [sortingMethod, router?.query?.filter])
@@ -69,6 +68,7 @@ const ProductsGridV2 = ({ data }) => {
 	const getProducts = async (_filter, _term) => {
 		setProducts('loading')
 		setFilteredProducts('loading')
+		justifyViewPort()
 		let newFilters = []
 
 		if (_filter && _filter.length !== 0) {
@@ -141,15 +141,6 @@ const ProductsGridV2 = ({ data }) => {
 
 	useEffect(() => {
 		if (products && Array.isArray(products)) {
-			console.log(
-				products.filter(p =>
-					searchTermFilter
-						? Array.isArray(p?.products)
-							? p?.products.some(_p => _p?.product?.id === searchTermFilter)
-							: p?.products?.product?.id === searchTermFilter
-						: true
-				)
-			)
 			setFilteredProducts(
 				products.filter(p =>
 					searchTermFilter
@@ -159,6 +150,7 @@ const ProductsGridV2 = ({ data }) => {
 						: true
 				)
 			)
+			justifyViewPort()
 		}
 	}, [products, searchTermFilter])
 
@@ -179,9 +171,17 @@ const ProductsGridV2 = ({ data }) => {
 	// 	return _data
 	// }
 
+	function justifyViewPort() {
+		if (wrapperRef?.current) {
+			wrapperRef?.current.scrollIntoView()
+		}
+	}
+
 	return (
 		<section>
-			<div className='container-md grid_v2_top_box mt-md-7 mb-md-11 '>
+			<div
+				// ref={wrapperRef}
+				className='container-md grid_v2_top_box mt-md-7 mb-md-11 '>
 				<div className='row justify-content-start align-items-center px-3 mb-15 d-none d-md-block'>
 					<BreadCrumb />
 				</div>
@@ -189,6 +189,8 @@ const ProductsGridV2 = ({ data }) => {
 			</div>
 			{width < 768 && (
 				<ProductFilterResponsive
+					wrapperRef={wrapperRef}
+					justifyViewPort={justifyViewPort}
 					selectedFilter={filters}
 					allFilters={filterList}
 					filterRequest={getProductHandler}
@@ -239,7 +241,7 @@ const ProductsGridV2 = ({ data }) => {
 					) : null}
 
 					{!Array.isArray(filteredProducts) ? (
-						<div className='w-100 d-flex justify-content-center'>
+						<div className='w-100 d-flex justify-content-center spinner_height'>
 							<Spinner className={'mt-5'} size={80} />
 						</div>
 					) : (
