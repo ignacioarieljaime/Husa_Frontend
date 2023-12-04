@@ -25,10 +25,6 @@ function Header({ data: { structure }, notification }) {
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
 	const [dropDown, setDropDown] = useState(null)
-	const [dropDownTimer, setDropDownTimer] = useState(true)
-	const [dropDownTimerCheck, setDropDownTimerCheck] = useState([]);
-
-	const defaultDropDownCondition = Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false);
 
 	useEffect(() => {
 		if (sessionStorage.getItem('headerData')) {
@@ -49,23 +45,6 @@ function Header({ data: { structure }, notification }) {
 	useEffect(() => {
 		if (structure?.theme?.value) setTheme(structure?.theme?.value)
 	}, [structure])
-
-	useEffect(() => {
-		if (headerData && dropDownTimerCheck.length === 0) {
-			setDropDownTimerCheck(defaultDropDownCondition);
-		}
-	}, [headerData])
-
-	useEffect(() => {
-
-		const newDropDownTimerCheck = defaultDropDownCondition;
-
-		if (JSON.stringify(dropDownTimerCheck) === JSON.stringify(newDropDownTimerCheck)) {
-			setDropDownTimer(true);
-		} else {
-			setDropDownTimer(false);
-		}
-	}, [dropDownTimerCheck])
 
 	return (
 		<header>
@@ -92,9 +71,6 @@ function Header({ data: { structure }, notification }) {
 									handler={setDropDown}
 									key={`right-${index}`}
 									data={item}
-									timer={dropDownTimer}
-									itemIndex={index}
-									setTimerCheck={setDropDownTimerCheck}
 								/>
 							))}
 						</ul>
@@ -105,9 +81,6 @@ function Header({ data: { structure }, notification }) {
 									handler={setDropDown}
 									key={`right-${index}`}
 									data={item}
-									timer={dropDownTimer}
-									itemIndex={index}
-									setTimerCheck={setDropDownTimerCheck}
 								/>
 							))}
 

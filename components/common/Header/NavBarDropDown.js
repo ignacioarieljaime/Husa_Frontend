@@ -1,84 +1,15 @@
 import Link from 'next/link'
-import React, { useState, useRef } from 'react'
+import React from 'react'
 import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
-function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
-
-	const timeoutRef = useRef(null);
-
-	const handleTimerChangeTimeout = (trueOrFalse) => {
-
-		const boolean = trueOrFalse;
-
-		setTimerCheck(prevState => {
-			const newState = [...prevState];
-			const countTrueValues = array => array.filter(item => item === true).length;
-			const trueCount = countTrueValues(newState);
-
-			if (trueCount > 1 && !boolean) newState[itemIndex] = boolean;
-			if (trueCount > 1 && boolean) {
-				const newArray = newState.map((item, index) => (index === itemIndex ? true : false));
-				newState = newArray;
-			}
-			if (trueCount <= 1) newState[itemIndex] = boolean;
-
-
-			return newState;
-		});
-
-	}
-
-	const handleMouseEnter = (milliseconds) => {
-
-		if (timer) {
-			clearTimeout(timeoutRef.current);
-
-			timeoutRef.current = setTimeout(() => {
-
-				handleTimerChangeTimeout(true);
-
-			}, milliseconds);
-		}
-
-		if (!timer) {
-			clearTimeout(timeoutRef.current);
-
-			handleTimerChangeTimeout(true);
-
-		}
-
-		handler(data.name);
-	};
-
-	const handleMouseLeave = (milliseconds) => {
-
-		if (timer) {
-
-			clearTimeout(timeoutRef.current);
-
-			handleTimerChangeTimeout(false);
-
-		}
-
-		if (!timer) {
-
-			timeoutRef.current = setTimeout(() => {
-
-				handleTimerChangeTimeout(false);
-
-			}, milliseconds);
-
-		}
-
-		handler(null);
-	};
+function NavBarDropDown({ data, handler }) {
 
 	return (
 		<li
-			onMouseEnter={() => handleMouseEnter(1000)}
-			onMouseLeave={() => handleMouseLeave(1000)}
+			onMouseEnter={() => handler(data.name)}
+			onMouseLeave={() => handler(null)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
