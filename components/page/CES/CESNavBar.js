@@ -40,7 +40,12 @@ const CESNavBar = ({ data }) => {
 				style={{
 					backgroundColor: content?.backgroundColor?.value || '#fff'
 				}}>
-				<ul className='ces_navbar___items_wrapper'>
+				<ul
+					className='ces_navbar___items_wrapper'
+					style={{
+						justifyContent:
+							content?.list?.value?.length > 1 ? 'space-between' : 'center'
+					}}>
 					{content?.list?.value.map((item, index) =>
 						content?.version?.value === 'primary' ? (
 							item?.lightBox?.value ? (
@@ -53,7 +58,7 @@ const CESNavBar = ({ data }) => {
 										}}>
 										{item?.link?.title}
 									</span>
-									{index === 0 ? (
+									{index === 0 && content?.list?.value?.length > 1 ? (
 										<span
 											onClick={() => setMenuStatus(prev => !prev)}
 											className='ces_navbar___items_wrapper___link___menu_btn'>
@@ -81,7 +86,7 @@ const CESNavBar = ({ data }) => {
 											)}
 										</a>
 									</Link>
-									{index === 0 ? (
+									{index === 0 && content?.list?.value?.length > 1 ? (
 										<span
 											onClick={() => setMenuStatus(prev => !prev)}
 											className='ces_navbar___items_wrapper___link___menu_btn'>
