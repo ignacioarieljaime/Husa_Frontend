@@ -1,6 +1,10 @@
 import dynamic from 'next/dynamic'
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon_white.png'
+import { RouteHandler } from 'utils/routeHandler'
 
 // component
 const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
@@ -12,6 +16,10 @@ const ProductSliderLinkButtonV3 = dynamic(() =>
 function ProductInfoAndSliderBox({ pim, data }) {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	const [screenSize, setScreenSize] = useState([])
+	const [showSizes, setShowSizes] = useState(false)
+	const [labelOff, setLabelOff] = useState(false)
+	const [currentItem, setCurrentItem] = useState(null)
+	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 	useEffect(() => {
 		if (Array.isArray(pim?.series[0]?.values)) {
 			let addSizeToItem = pim?.series[0].values
@@ -34,6 +42,11 @@ function ProductInfoAndSliderBox({ pim, data }) {
 			}
 		})
 	}
+
+	const handleScreenSizeDropdown = () => {
+		setShowSizes(prev => !prev)
+	}
+	
 	return (
 		<section id={data.name + data.id} className='new_product_info'>
 			<div className='wrapper row'>
@@ -75,7 +88,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					</h3>
 					<h1 className='title d-none d-md-block'>{pim?.name}</h1>
 					<p className='model_number d-none d-md-block'>Model: {pim?.model}</p>
-					{screenSize && screenSize.length > 0 ? (
+					{screenSize && screenSize.length <= 5 ? (
 						<div className='sizes'>
 							<p className='sizes_text'>Available Screen Sizes</p>
 							<div className='sizes_list'>
@@ -91,7 +104,55 @@ function ProductInfoAndSliderBox({ pim, data }) {
 								)}
 							</div>
 						</div>
-					) : (
+					) :
+					screenSize.length > 5 ? (
+						<div className='serie_selector'>
+							<div className={`screen_size_selector ${showSizes ? 'show_sizes' : ''} dropdown_active`}>
+								<div className='content'>
+									<div
+										onClick={() => handleScreenSizeDropdown()}
+										className='show_sizes_btn'>
+										<span
+											className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
+											{labelOff ? currentItem?.title : 'Select Screen Size'}
+										</span>
+										<FontAwesomeIcon icon={faChevronDown} size='sm' />
+									</div>
+								</div>
+							</div>
+							{screenSize && screenSize.length >= 5 && showSizes && (
+								<div className='sizes_dropdown'>
+									<ul className='size_list'>
+										{screenSize.map((item, index) => (
+											<Link href={RouteHandler(item.products[0], 'product')}>
+												<li
+													key={index}
+													className={activeSizeIndex === index ? 'active' : ''}
+													onClick={() => {
+														setCurrentItem(item)
+														setActiveSizeIndex(index)
+														setLabelOff(true)
+														setShowSizes(false)
+
+													}}>
+													{item?.title}
+												</li>
+											</Link>
+
+										))}
+										<span
+											style={{
+												transform: 'translateY(' + activeSizeIndex * 100 + '%)'
+											}}
+											className='indicator'>
+											{currentItem?.title}
+										</span>
+									</ul>
+								</div>
+							)}
+						</div>
+					) :
+					(
 						<div className='sizes pb-0'></div>
 					)}
 					<div className='text-center text-md-start'>
