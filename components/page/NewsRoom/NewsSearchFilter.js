@@ -35,6 +35,7 @@ const NewsSearchFilter = ({
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
 	const [fix, setFix] = useState(false)
+	const [searchFocus, setSearchFocus] = useState(false)
 	const target = useRef()
 	const router = useRouter()
 
@@ -188,8 +189,9 @@ const NewsSearchFilter = ({
 													redirectToResultsPage()
 											}}
 											onBlur={() => !results && redirectToResultsPage()}
+											onFocus={() => setSearchFocus(prev => !prev)}
 										/>
-										{resetVisible() ?
+										{searchFocus ?
 											<FontAwesomeIcon
 											icon={faClose}
 											size='md'
