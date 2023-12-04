@@ -74,10 +74,19 @@
 			align-items: center;
 			gap: 4px;
 			font-size: 10px;
-			font-style: normal;
 			font-weight: 400;
 			line-height: 100%; /* 10px */
 			color: #00aaa6;
+			span {
+				font-size: 10px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 11px; /* 10px */
+				color: #00aaa6;
+			}
+			@include mqm(768) {
+				display: none;
+			}
 		}
 	}
 	&___wrapper {
