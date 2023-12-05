@@ -96,5 +96,9 @@ module.exports.CesComponents = [
 	{
 		name: 'CesPeople',
 		path: 'components/page/CES/CesPeople'
+	},
+	{
+		name: 'CESCountdownTimerBlock',
+		path: 'components/page/CES/CESCountdownTimerBlock'
 	}
 ]
