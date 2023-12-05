@@ -39,7 +39,7 @@ const AwardsAndAccoladesItems = ({ data, length }) => {
 						href={data?.link?.value}
 						target={data?.link?.target ? data.link?.target : '_self'}>
 						<a
-							className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
+							className='n-btn small primary-text btn-outline awards_and_accolades__cards_wrapper__card__content__link'
 							target={data?.link?.target ? data.link?.target : '_self'}>
 							{data?.link?.title}
 							<FontAwesomeIcon icon={faChevronRight} />
