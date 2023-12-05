@@ -94,7 +94,7 @@ function AwardsAndAccolades({ data, pim }) {
 													item?.link?.target ? item.link?.target : '_self'
 												}>
 												<a
-													className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
+													className='n-btn small primary-text btn-outline awards_and_accolades__cards_wrapper__card__content__link'
 													target={
 														item?.link?.target ? item.link?.target : '_self'
 													}>
@@ -111,7 +111,7 @@ function AwardsAndAccolades({ data, pim }) {
 												item?.link?.target ? item.link?.target : '_self'
 											}>
 											<a
-												className='n-btn small primary-text awards_and_accolades__cards_wrapper__card__content__link'
+												className='n-btn small primary-text btn-outline awards_and_accolades__cards_wrapper__card__content__link'
 												target={
 													item?.link?.target ? item.link?.target : '_self'
 												}>

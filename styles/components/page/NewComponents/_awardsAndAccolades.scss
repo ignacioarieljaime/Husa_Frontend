@@ -51,12 +51,12 @@
 		}
 		&__card {
 			height: 100%;
-			padding: 50px 70px;
+			padding: 40px;
 			display: flex;
 			flex: 1 1 none;
 			justify-content: center;
 			align-items: center;
-			gap: 118px;
+			gap: 100px;
 			border-radius: 25px;
 			background: #f0f2f2;
 			@include mq(991) {
@@ -71,10 +71,10 @@
 			&__image {
 				width: 100%;
 				height: 100%;
-				min-width: 250px;
-				min-height: 250px;
-				max-width: 250px;
-				max-height: 250px;
+				min-width: 300px;
+				min-height: 200px;
+				max-width: 300px;
+				max-height: 200px;
 				object-fit: cover;
 				@include mq(768) {
 					min-width: 220px;
@@ -145,10 +145,11 @@
 					gap: 10px;
 					font-size: 14px !important;
 					line-height: 14px !important;
+					// border: solid 1px #00aaa6 !important
 				}
 			}
 			&.item__2 {
-				padding: 50px 40px;
+				padding: 28px 20px;
 				gap: 32px;
 				@include mq(991) {
 					padding: 27px 20px;
@@ -162,10 +163,10 @@
 				}
 				.awards_and_accolades__cards_wrapper__card__image {
 					@include mq(1200) {
-						min-width: 150px;
-						min-height: 150px;
-						max-width: 150px;
-						max-height: 150px;
+						min-width: 300px;
+						min-height: 200px;
+						max-width: 300px;
+						max-height: 200px;
 					}
 					@include mq(991) {
 						min-width: 250px;
@@ -181,7 +182,7 @@
 					}
 				}
 				.awards_and_accolades__cards_wrapper__card__content {
-					padding: 30px 12px;
+					padding: 0px;
 					gap: 20px;
 					@include mq(1200) {
 						padding: 12px 6px;
@@ -233,7 +234,7 @@
 			}
 			&.item__3 {
 				position: relative;
-				padding: 27px 20px 47px 20px;
+				padding: 30px 20px;
 				gap: 32px;
 				flex-direction: column;
 				justify-content: flex-start;
@@ -246,12 +247,22 @@
 						padding: 27px 20px 47px 20px !important;
 					}
 				}
+				.awards_and_accolades__cards_wrapper__card__image {
+					min-width: 300px;
+					min-height: 200px;
+					max-width: 300px;
+					max-height: 200px;
+					@include mq(768) {
+						padding: 0px 20px;
+					}
+				}
 				.awards_and_accolades__cards_wrapper__card__content {
-					padding: 10px 12px;
+					padding: 0px 12px 63px 12px;
 					gap: 20px;
 					align-items: center;
 					&__texts {
 						gap: 20px;
+						text-align: center;
 						&__title {
 							* {
 								font-size: 20px;
@@ -260,6 +271,7 @@
 							}
 						}
 						&__subtilte {
+							align-self: center;
 							* {
 								font-size: 16px;
 								line-height: 18px; /* 125% */
@@ -275,8 +287,12 @@
 					}
 					&__link {
 						position: absolute;
-						bottom: 17px;
-						left: 20px;
+						margin-left: auto;
+						margin-right: auto;
+						width: fit-content;
+						bottom: 30px;
+						left: 0px;
+						right: 0px;
 					}
 				}
 			}
@@ -355,5 +371,9 @@
 				}
 			}
 		}
+	}
+	.btn-outline {
+		padding: 12px 16px !important;
+		border: solid 1px #00aaa6 !important;
 	}
 }
