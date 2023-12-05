@@ -188,7 +188,10 @@ const NewsSearchFilter = ({
 												if (e.key === 'Enter' && !results)
 													redirectToResultsPage()
 											}}
-											onBlur={() => !results && redirectToResultsPage()}
+											onBlur={() => {
+												setSearchFocus(prev => !prev)
+												!results && redirectToResultsPage()
+											}}
 											onFocus={() => setSearchFocus(prev => !prev)}
 										/>
 										{searchFocus ?
