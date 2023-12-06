@@ -16,7 +16,7 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 				{data?.video?.value ? (
 					<div className='slider-video'>
 						<video autoPlay={true} muted={true} loop={true}>
-							<source src={data?.video?.src} />
+							<source src={data?.video?.value} />
 							{data?.image?.alt}
 						</video>
 					</div>
