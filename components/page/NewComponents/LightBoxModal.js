@@ -3,8 +3,6 @@ import Link from 'next/link'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 const LightBoxModal = ({
 	id,
@@ -27,16 +25,14 @@ const LightBoxModal = ({
 					className='dropdown-select-box-backdrop light_box_backdrop'></div>
 				<div ref={boxRef} className='lightbox'>
 					<div className='lightbox___top_bar'>
-						<button
-							className='lightbox___top_bar___back'
-							onClick={visibleHandler}>
-							<FontAwesomeIcon icon={faChevronLeft} size='sm' />
-							<span>Back</span>
-						</button>
 						{link?.value && (
 							<Link
 								target={link?.target ? link?.target : '_self'}
-								href={link?.value}>
+								href={
+									link?.value.split('.com')[0] +
+									'.com/download/f' +
+									link?.value.split('.com')[1]
+								}>
 								<a
 									target={link?.target ? link?.target : '_self'}
 									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
@@ -80,12 +76,17 @@ const LightBoxModal = ({
 							</svg>
 						</button>
 					</div>
-					<div className='px-0 px-md-8 my-auto my-md-0 w-100'>
+					<div className='px-4 px-md-8'>
 						<div className='lightbox___wrapper'>
 							{video?.value ? (
 								<iframe
 									id={'LightBox' + id + video?.title}
-									src={video?.value}
+									src={
+										video?.value +
+										`${
+											video?.value && video?.value.includes('?') ? '&' : '?'
+										}autopause=0`
+									}
 									alt={'LightBox' + id + video?.title}
 									title={'LightBox' + id + video?.title}
 									width='100%'
@@ -99,10 +100,10 @@ const LightBoxModal = ({
 								<img src={image?.src} alt={image?.alt} />
 							) : null}
 						</div>
-						<div
-							className='lightbox___caption'
-							dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
 					</div>
+					<div
+						className='lightbox___caption'
+						dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
 				</div>
 			</>
 		)
