@@ -17,6 +17,12 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
+	function validateCaptions(_caption) {
+		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
+		if (temp?.length > 100) temp = temp?.substring(0, 100) + '...'
+		return temp
+	}
+
 	return (
 		isVisible && (
 			<>
@@ -103,7 +109,9 @@ const LightBoxModal = ({
 					</div>
 					<div
 						className='lightbox___caption'
-						dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
+						dangerouslySetInnerHTML={{
+							__html: validateCaptions(caption?.value)
+						}}></div>
 				</div>
 			</>
 		)
