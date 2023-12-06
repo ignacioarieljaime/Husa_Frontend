@@ -344,12 +344,14 @@
 				font-size: 14px;
 				font-weight: 400;
 				line-height: 15px; /* 135% */
+				color: black;
 				cursor: pointer;
 				@include mq(768) {
 					font-weight: 400;
 				}
 				&.active {
 					z-index: 10;
+					color: white;
 				}
 			}
 		}
