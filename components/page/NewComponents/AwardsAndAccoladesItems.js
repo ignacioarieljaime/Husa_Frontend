@@ -1,5 +1,3 @@
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import React from 'react'
 import { useEffect } from 'react'
@@ -42,7 +40,6 @@ const AwardsAndAccoladesItems = ({ data, length }) => {
 							className='n-btn small primary-text btn-outline awards_and_accolades__cards_wrapper__card__content__link'
 							target={data?.link?.target ? data.link?.target : '_self'}>
 							{data?.link?.title}
-							<FontAwesomeIcon icon={faChevronRight} />
 						</a>
 					</Link>
 				)}

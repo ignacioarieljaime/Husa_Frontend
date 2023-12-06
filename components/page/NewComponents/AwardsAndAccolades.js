@@ -1,5 +1,3 @@
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import AwardsNavIcon from 'components/icons/AwardsNavIcon'
 import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
@@ -99,7 +97,6 @@ function AwardsAndAccolades({ data, pim }) {
 														item?.link?.target ? item.link?.target : '_self'
 													}>
 													{item?.link?.title}
-													<FontAwesomeIcon icon={faChevronRight} />
 												</a>
 											</Link>
 										)}
@@ -116,7 +113,6 @@ function AwardsAndAccolades({ data, pim }) {
 													item?.link?.target ? item.link?.target : '_self'
 												}>
 												{item?.link?.title}
-												<FontAwesomeIcon icon={faChevronRight} />
 											</a>
 										</Link>
 									)}
