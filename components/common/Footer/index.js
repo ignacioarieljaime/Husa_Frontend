@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import FooterBodyList from './FooterBodyList'
 // import { setFooterData } from 'redux/slices/layout'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import XTwitterIcon from 'components/icons/XTwitterIcon'
 
 function Footer({ data }) {
 	const { structure } = data
@@ -100,6 +101,7 @@ function Footer({ data }) {
 						<div className='social_media'>
 							<div className='d-flex justify-content-between align-items-center'>
 								{footerData?.widgets?.socials.map((item, index) => (
+									item.name !== "twitter" ?
 									<a
 										key={index}
 										target={item?.target ? item?.target : '_self'}
@@ -107,8 +109,21 @@ function Footer({ data }) {
 										className={`social_media_link socicon socicon-${item.name}`}
 										style={{
 											fontSize: '22px',
-											color: theme === 'dark' ? '#ffffffb3' : '#000000b3'
-										}}></a>
+											color: theme === 'dark' ? '#ffffffb3' : '#000000b3',
+										}}></a> :
+										<a
+										key={index}
+										target={item?.target ? item?.target : '_self'}
+										href={item.url ? item.url : ''}
+										className={`social_media_link socicon`}
+										style={{
+											position: 'relative',
+											fontSize: '22px',
+											fill: theme === 'dark' ? 'rgba(255, 255, 255, 0.7)' : '#000000b3',
+											top: '-2px'
+										}}>
+											<XTwitterIcon/>
+										</a>
 								))}
 							</div>
 							<p className='social_media_id'>@Hisense_USA</p>
