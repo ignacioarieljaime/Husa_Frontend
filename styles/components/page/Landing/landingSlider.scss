@@ -191,12 +191,15 @@
 			justify-content: center;
 			align-items: center;
 			gap: 10px;
-			font-size: 14px;
-			color: #fff;
-			font-weight: 400;
-			line-height: 11px; /* 142.857% */
 			background-color: transparent;
 			border: 0;
+			p {
+				font-size: 14px;
+				color: #fff;
+				font-weight: 400;
+				line-height: 11px; /* 142.857% */
+				margin: 0 0 -2px;
+			}
 		}
 		.broadcast_sign {
 			width: fit-content;
@@ -214,7 +217,9 @@
 				min-height: 10px;
 				background: #f00;
 				border-radius: 50%;
-				animation: blinking infinite 1.6s ease;
+				&.animate {
+					animation: blinking infinite 1.6s ease;
+				}
 			}
 			&___text {
 				color: #f00;
@@ -223,6 +228,7 @@
 				font-style: normal;
 				font-weight: 400;
 				line-height: 11px; /* 142.857% */
+				margin: 0 0 -3px;
 			}
 		}
 	}
