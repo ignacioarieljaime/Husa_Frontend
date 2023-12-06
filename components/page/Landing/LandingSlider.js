@@ -99,7 +99,7 @@ function LandingSlider({ data }) {
 													setLightBoxStatus(true)
 												}}
 												className='light_box_button'>
-												{item?.lightboxTitle?.value}
+												<p>{item?.lightboxTitle?.value}</p>
 												<svg
 													xmlns='http://www.w3.org/2000/svg'
 													width='22'
@@ -113,8 +113,13 @@ function LandingSlider({ data }) {
 												</svg>
 											</button>
 											<div className='broadcast_sign'>
-												<span className='broadcast_sign___blinking_dot'></span>
-												<span className='broadcast_sign___text'>Live</span>
+												<span
+													className={`broadcast_sign___blinking_dot ${
+														item?.lightbox_live_animation?.value
+															? 'animate'
+															: ''
+													}`}></span>
+												<p className='broadcast_sign___text'>Live</p>
 											</div>
 										</div>
 									) : item?.url?.value ? (
