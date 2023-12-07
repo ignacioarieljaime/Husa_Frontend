@@ -91,7 +91,7 @@ function LandingSlider({ data }) {
 												: item?.desktop?.src
 										})`
 									}}>
-									{item?.lightbox?.value ? (
+									{item?.lightbox?.value && item?.lightboxTitle?.value ? (
 										<div className='light_box_wrapper'>
 											<button
 												onClick={() => {
@@ -112,7 +112,7 @@ function LandingSlider({ data }) {
 													/>
 												</svg>
 											</button>
-											<div className='broadcast_sign'>
+											{/* <div className='broadcast_sign'>
 												<span
 													className={`broadcast_sign___blinking_dot ${
 														item?.lightbox_live_animation?.value
@@ -120,7 +120,7 @@ function LandingSlider({ data }) {
 															: ''
 													}`}></span>
 												<p className='broadcast_sign___text'>Live</p>
-											</div>
+											</div> */}
 										</div>
 									) : item?.url?.value ? (
 										<Link
