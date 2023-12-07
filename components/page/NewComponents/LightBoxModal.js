@@ -17,6 +17,12 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
+	function validateCaptions(_caption) {
+		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
+		if (temp?.length > 100) temp = temp?.substring(0, 100) + '...'
+		return temp
+	}
+
 	return (
 		isVisible && (
 			<>
@@ -28,7 +34,11 @@ const LightBoxModal = ({
 						{link?.value && (
 							<Link
 								target={link?.target ? link?.target : '_self'}
-								href={link?.value}>
+								href={
+									link?.value.split('.com')[0] +
+									'.com/download/f' +
+									link?.value.split('.com')[1]
+								}>
 								<a
 									target={link?.target ? link?.target : '_self'}
 									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
@@ -94,7 +104,9 @@ const LightBoxModal = ({
 					</div>
 					<div
 						className='lightbox___caption'
-						dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
+						dangerouslySetInnerHTML={{
+							__html: validateCaptions(caption?.value)
+						}}></div>
 				</div>
 			</>
 		)
