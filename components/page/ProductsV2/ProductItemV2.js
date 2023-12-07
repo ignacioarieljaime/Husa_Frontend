@@ -192,7 +192,8 @@ const ProductItemV2 = ({ data }) => {
 										<li
 											key={index}
 											className={activeSizeIndex === index ? 'active' : ''}
-											onClick={() => {
+											onClick={(e) => {
+												e.preventDefault()
 												setCurrentItem(item)
 												setActiveSizeIndex(index)
 												setLabelOff(true)
