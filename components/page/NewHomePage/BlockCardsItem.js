@@ -127,13 +127,14 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 									/>
 								)}
 								<h4 className='mb-3 mb-md-6 box_title'>{title?.value}</h4>
-								{/* {link?.title && lightbox?.value ? (
+								{link?.title && lightbox?.value ? (
 									<button
+										onClick={() => setLightBoxStatus(prevState => !prevState)}
 										className='n-btn outline-white transparent d-block w-fit medium position-relative'
 										style={{ zIndex: 10000 }}>
 										{link?.title}
 									</button>
-								) : null} */}
+								) : null}
 							</div>
 						</div>
 					</div>
