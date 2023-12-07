@@ -9,10 +9,7 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 	return (
 		<>
 			<h3 className='slider-title fs-2'>{data?.title?.value}</h3>
-			<div
-				className='slider-body'
-				style={{ cursor: 'pointer' }}
-				onClick={() => isLightBoxValid && activateLightBox()}>
+			<div className='slider-body'>
 				{data?.video?.value ? (
 					<div className='slider-video'>
 						<video autoPlay={true} muted={true} loop={true}>
@@ -32,23 +29,31 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 					<h5 className='description d-none d-md-block'>
 						{data?.description?.value}
 					</h5>
-					{data?.link?.value && (
-						<Link
-							target={data?.link?.target ? data?.link?.target : '_self'}
-							href={data?.link?.value}>
-							<a
+					{data?.link?.title ? (
+						data?.link?.value ? (
+							<Link
 								target={data?.link?.target ? data?.link?.target : '_self'}
+								href={data?.link?.value}>
+								<a
+									target={data?.link?.target ? data?.link?.target : '_self'}
+									className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
+									{data?.link?.title}
+									{data?.link?.target === '_blank' && (
+										<img
+											style={{ marginLeft: '10px' }}
+											src={OpenPageOnNewTab.src}
+										/>
+									)}
+								</a>
+							</Link>
+						) : isLightBoxValid ? (
+							<button
+								onClick={() => activateLightBox()}
 								className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
 								{data?.link?.title}
-								{data?.link?.target === '_blank' && (
-									<img
-										style={{ marginLeft: '10px' }}
-										src={OpenPageOnNewTab.src}
-									/>
-								)}
-							</a>
-						</Link>
-					)}
+							</button>
+						) : null
+					) : null}
 					{data?.video?.value && (
 						<span className='play'>
 							<FontAwesomeIcon
