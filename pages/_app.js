@@ -15,11 +15,9 @@ import 'styles/App.scss'
 
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }) {
 	const [comp, setComp] = useState(<></>)
-	const router = useRouter()
 
 	useEffect(() => {
 		const load = async () => {
@@ -29,8 +27,6 @@ function MyApp({ Component, pageProps }) {
 		}
 
 		load()
-
-		router.events.on('routeChangeComplete', window.loadHash)
 	}, [])
 
 	// if (typeof window === 'undefined') {
