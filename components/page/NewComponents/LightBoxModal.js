@@ -19,6 +19,12 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
+	function validateCaptions(_caption) {
+		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
+		if (temp?.length > 100) temp = temp?.substring(0, 100) + '...'
+		return temp
+	}
+
 	return (
 		isVisible && (
 			<>
@@ -30,13 +36,23 @@ const LightBoxModal = ({
 						<button
 							className='lightbox___top_bar___back'
 							onClick={visibleHandler}>
-							<FontAwesomeIcon icon={faChevronLeft} size='sm' />
+							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
-						{link?.value && (
+						{(link?.value || image?.src) && link?.title && (
 							<Link
 								target={link?.target ? link?.target : '_self'}
-								href={link?.value}>
+								href={
+									link?.value
+										? link?.value.split('.com')[0] +
+										  '.com/download/f' +
+										  link?.value.split('.com')[1]
+										: image?.src
+										? image?.src.split('.com')[0] +
+										  '.com/download/f' +
+										  image?.src.split('.com')[1]
+										: '#'
+								}>
 								<a
 									target={link?.target ? link?.target : '_self'}
 									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
@@ -80,28 +96,34 @@ const LightBoxModal = ({
 							</svg>
 						</button>
 					</div>
-					<div className='px-0 px-md-8 my-auto my-md-0 w-100'>
-						<div className='lightbox___wrapper'>
-							{video?.value ? (
-								<iframe
-									id={'LightBox' + id + video?.title}
-									src={video?.value}
-									alt={'LightBox' + id + video?.title}
-									title={'LightBox' + id + video?.title}
-									width='100%'
-									height='100%'
-									allow='autoplay; fullscreen; picture-in-picture'
-									mozallowfullscreen
-									webkitallowfullscreen
-									allowfullscreen
-									dataready={true}></iframe>
-							) : image?.src ? (
-								<img src={image?.src} alt={image?.alt} />
-							) : null}
+					<div className='w-100 my-auto my-md-0'>
+						<div className='px-md-10 w-100'>
+							<div className='lightbox___wrapper'>
+								{video?.value ? (
+									<iframe
+										id={'LightBox' + id + video?.title}
+										src={video?.value}
+										alt={'LightBox' + id + video?.title}
+										title={'LightBox' + id + video?.title}
+										width='100%'
+										height='100%'
+										allow='autoplay; fullscreen; picture-in-picture'
+										mozallowfullscreen
+										webkitallowfullscreen
+										allowfullscreen
+										dataready={true}></iframe>
+								) : image?.src ? (
+									<img src={image?.src} alt={image?.alt} />
+								) : null}
+							</div>
 						</div>
-						<div
-							className='lightbox___caption'
-							dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
+						{caption?.value && caption?.value.length && (
+							<div
+								className='lightbox___caption'
+								dangerouslySetInnerHTML={{
+									__html: validateCaptions(caption?.value)
+								}}></div>
+						)}
 					</div>
 				</div>
 			</>

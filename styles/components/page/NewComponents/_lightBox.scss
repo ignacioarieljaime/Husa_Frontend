@@ -2,7 +2,7 @@
 	padding: 20px 0 30px;
 	width: calc(100% - 32px);
 	height: 100%;
-	max-width: 1360px;
+	max-width: 1000px;
 	height: fit-content;
 	position: fixed;
 	z-index: 99999999;
@@ -72,12 +72,22 @@
 			padding: 12px 13px;
 			justify-content: center;
 			align-items: center;
-			gap: 4px;
+			gap: 6px;
 			font-size: 10px;
-			font-style: normal;
 			font-weight: 400;
 			line-height: 100%; /* 10px */
 			color: #00aaa6;
+			span {
+				font-size: 10px;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 11px; /* 10px */
+				color: #00aaa6;
+				height: 7px;
+			}
+			@include mqm(768) {
+				display: none;
+			}
 		}
 	}
 	&___wrapper {
@@ -99,6 +109,7 @@
 		padding: 12px 40px 0;
 		text-align: center;
 		margin: 0;
+		width: 100%;
 		@include mq(768) {
 			padding: 12px 16px 0;
 		}
