@@ -82,6 +82,9 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 				link={data?.mediaList?.value[lightBoxActiveIndex]?.link}
 				isVisible={lightBoxStatus}
 				visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+				activateSwiper
+				dataList={data?.mediaList?.value}
+				activeItemIndex={lightBoxActiveIndex}
 			/>
 		</>
 	)
