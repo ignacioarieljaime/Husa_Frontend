@@ -3,10 +3,8 @@ import Link from 'next/link'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
-import { Controller, Navigation, Thumbs } from 'swiper'
 import { useEffect } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
-import { useWindowSize } from 'hooks/useWindowSize'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -22,7 +20,6 @@ const LightBoxModal = ({
 	dataList,
 	activeItemIndex
 }) => {
-	const windowSize = useWindowSize()
 	const mainSwiper = useRef(null)
 	const thumbsSwiper = useRef(null)
 
@@ -63,8 +60,6 @@ const LightBoxModal = ({
 		// perPage: 5,
 		// perMove: 1,
 		pagination: false,
-		fixedWidth: windowSize[0] > 768 ? 110 : 60,
-		fixedHeight: windowSize[0] > 768 ? 61.875 : 33.75,
 		cover: true,
 		focus: 'center',
 		isNavigation: true

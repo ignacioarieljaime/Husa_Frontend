@@ -135,6 +135,14 @@
 			@include mq(768) {
 				max-width: 300px;
 			}
+			.splide__slide {
+				width: 110px !important;
+				height: 61.875px !important;
+				@include mq(768) {
+					width: 60px !important;
+					height: 33.75px !important;
+				}
+			}
 			.splide__arrows {
 				@include mq(768) {
 					width: 100%;
