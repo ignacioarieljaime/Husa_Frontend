@@ -9,7 +9,9 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 	return (
 		<>
 			<h3 className='slider-title fs-2'>{data?.title?.value}</h3>
-			<div className='slider-body'>
+			<div
+				onClick={() => isLightBoxValid && activateLightBox()}
+				className={`slider-body ${isLightBoxValid ? 'cursor-pointer' : ''}`}>
 				{data?.video?.value ? (
 					<div className='slider-video'>
 						<video autoPlay={true} muted={true} loop={true}>
@@ -30,7 +32,13 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 						{data?.description?.value}
 					</h5>
 					{data?.link?.title ? (
-						data?.link?.value ? (
+						isLightBoxValid ? (
+							<button
+								onClick={() => activateLightBox()}
+								className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
+								{data?.link?.title}
+							</button>
+						) : data?.link?.value ? (
 							<Link
 								target={data?.link?.target ? data?.link?.target : '_self'}
 								href={data?.link?.value}>
@@ -46,12 +54,6 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 									)}
 								</a>
 							</Link>
-						) : isLightBoxValid ? (
-							<button
-								onClick={() => activateLightBox()}
-								className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
-								{data?.link?.title}
-							</button>
 						) : null
 					) : null}
 					{data?.video?.value && (
