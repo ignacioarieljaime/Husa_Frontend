@@ -125,31 +125,6 @@ const LightBoxModal = ({
 								}}></div>
 						)}
 					</div>
-					<div className='px-4 px-md-8'>
-						<div className='lightbox___wrapper'>
-							{video?.value ? (
-								<iframe
-									id={'LightBox' + id + video?.title}
-									src={video?.value}
-									alt={'LightBox' + id + video?.title}
-									title={'LightBox' + id + video?.title}
-									width='100%'
-									height='100%'
-									allow='autoplay; fullscreen; picture-in-picture'
-									mozallowfullscreen
-									webkitallowfullscreen
-									allowfullscreen
-									dataready={true}></iframe>
-							) : image?.src ? (
-								<img src={image?.src} alt={image?.alt} />
-							) : null}
-						</div>
-					</div>
-					<div
-						className='lightbox___caption'
-						dangerouslySetInnerHTML={{
-							__html: validateCaptions(caption?.value)
-						}}></div>
 				</div>
 			</>
 		)
