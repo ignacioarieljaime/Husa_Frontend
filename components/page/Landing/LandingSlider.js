@@ -112,15 +112,13 @@ function LandingSlider({ data }) {
 													/>
 												</svg>
 											</button>
-											{/* <div className='broadcast_sign'>
-												<span
-													className={`broadcast_sign___blinking_dot ${
-														item?.lightbox_live_animation?.value
-															? 'animate'
-															: ''
-													}`}></span>
-												<p className='broadcast_sign___text'>Live</p>
-											</div> */}
+											{item?.lightbox_live_animation?.value && (
+												<div className='broadcast_sign'>
+													<span
+														className={`broadcast_sign___blinking_dot animate`}></span>
+													<p className='broadcast_sign___text'>Live</p>
+												</div>
+											)}
 										</div>
 									) : item?.url?.value ? (
 										<Link
