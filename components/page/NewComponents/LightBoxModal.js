@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Controller, Navigation, Thumbs } from 'swiper'
+import { useEffect } from 'react'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import { useWindowSize } from 'hooks/useWindowSize'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 const LightBoxModal = ({
 	id,
@@ -11,20 +18,74 @@ const LightBoxModal = ({
 	image,
 	link,
 	isVisible,
-	visibleHandler
+	visibleHandler,
+	activateSwiper,
+	dataList,
+	activeItemIndex
 }) => {
+	const windowSize = useWindowSize()
+	const mainSwiper = useRef(null)
+	const thumbsSwiper = useRef(null)
+
 	const boxRef = useRef()
 
 	const outSide = useOutsideClick(boxRef)
+
+	useEffect(() => {
+		if (
+			mainSwiper.current &&
+			thumbsSwiper.current &&
+			thumbsSwiper.current.splide
+		) {
+			mainSwiper.current.sync(thumbsSwiper.current.splide)
+		}
+	}, [])
+
+	const mainOptions = {
+		type: 'loop',
+		perPage: 1,
+		perMove: 1,
+		gap: '1rem',
+		pagination: false,
+		arrows: false,
+		height: '100%'
+	}
+
+	const thumbsOptions = {
+		type: 'slide',
+		rewind: false,
+		gap: '0px',
+		// perPage: 5,
+		// perMove: 1,
+		pagination: false,
+		fixedWidth: windowSize[0] > 768 ? 110 : 60,
+		fixedHeight: windowSize[0] > 768 ? 61.875 : 33.75,
+		cover: true,
+		focus: 'center',
+		isNavigation: true
+	}
 
 	return (
 		isVisible && (
 			<>
 				<div
-					onClick={() => outSide && visibleHandler()}
+					onClick={() => {
+						if (outSide) {
+							visibleHandler()
+						}
+					}}
 					className='dropdown-select-box-backdrop light_box_backdrop'></div>
-				<div ref={boxRef} className='lightbox'>
+				<div
+					ref={boxRef}
+					className='lightbox'
+					style={activateSwiper ? { maxWidth: '880px' } : {}}>
 					<div className='lightbox___top_bar'>
+						<button
+							className='lightbox___top_bar___back'
+							onClick={visibleHandler}>
+							<FontAwesomeIcon icon={faChevronLeft} />
+							<span>Back</span>
+						</button>
 						{link?.value && (
 							<Link
 								target={link?.target ? link?.target : '_self'}
@@ -43,7 +104,11 @@ const LightBoxModal = ({
 						)}
 						<button
 							className='lightbox___top_bar___close'
-							onClick={visibleHandler}>
+							onClick={() => {
+								visibleHandler()
+								setMainSwiper(null)
+								setThumbsSwiper(null)
+							}}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='32'
@@ -76,34 +141,81 @@ const LightBoxModal = ({
 							</svg>
 						</button>
 					</div>
-					<div className='px-4 px-md-8'>
-						<div className='lightbox___wrapper'>
-							{video?.value ? (
-								<iframe
-									id={'LightBox' + id + video?.title}
-									src={
-										video?.value +
-										`${
-											video?.value && video?.value.includes('?') ? '&' : '?'
-										}autopause=0`
-									}
-									alt={'LightBox' + id + video?.title}
-									title={'LightBox' + id + video?.title}
-									width='100%'
-									height='100%'
-									allow='autoplay; fullscreen; picture-in-picture'
-									mozallowfullscreen
-									webkitallowfullscreen
-									allowfullscreen
-									dataready={true}></iframe>
-							) : image?.src ? (
-								<img src={image?.src} alt={image?.alt} />
-							) : null}
-						</div>
-					</div>
-					<div
-						className='lightbox___caption'
-						dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
+					{!activateSwiper ? (
+						<>
+							<div className='px-4 px-md-10'>
+								<div className='lightbox___wrapper'>
+									{video?.value ? (
+										<iframe
+											id={'LightBox' + id + video?.title}
+											src={
+												video?.value +
+												`${
+													video?.value && video?.value.includes('?') ? '&' : '?'
+												}autopause=0`
+											}
+											alt={'LightBox' + id + video?.title}
+											title={'LightBox' + id + video?.title}
+											width='100%'
+											height='100%'
+											allow='autoplay; fullscreen; picture-in-picture'
+											mozallowfullscreen
+											webkitallowfullscreen
+											allowfullscreen
+											dataready={true}></iframe>
+									) : image?.src ? (
+										<img src={image?.src} alt={image?.alt} />
+									) : null}
+								</div>
+							</div>
+							<div
+								className='lightbox___caption'
+								dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
+						</>
+					) : (
+						dataList &&
+						dataList.length > 0 && (
+							<>
+								<div className='w-100 my-md-0 my-auto'>
+									<div className='px-4 px-md-10'>
+										<div className='lightbox___wrapper'>
+											<div className='lightbox___wrapper___main_carousel'>
+												<Splide options={mainOptions} ref={mainSwiper}>
+													{dataList.map((item, index) => (
+														<SplideSlide key={index}>
+															<img
+																src={item?.image?.src}
+																alt={item?.image?.alt}
+																width='100%'
+															/>
+															<div
+																className='lightbox___caption'
+																dangerouslySetInnerHTML={{
+																	__html: item?.caption?.value
+																}}></div>
+														</SplideSlide>
+													))}
+												</Splide>
+											</div>
+										</div>
+										<div className='lightbox___wrapper___thumbnails_carousel'>
+											<Splide options={thumbsOptions} ref={thumbsSwiper}>
+												{dataList.map((item, index) => (
+													<SplideSlide key={index}>
+														<img
+															src={item?.image?.src}
+															alt={item?.image?.alt}
+															width='100%'
+														/>
+													</SplideSlide>
+												))}
+											</Splide>
+										</div>
+									</div>
+								</div>
+							</>
+						)
+					)}
 				</div>
 			</>
 		)
