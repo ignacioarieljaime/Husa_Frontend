@@ -3,7 +3,6 @@ import Link from 'next/link'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { Controller, Navigation, Thumbs } from 'swiper'
 import { useEffect } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
@@ -30,6 +29,12 @@ const LightBoxModal = ({
 	const boxRef = useRef()
 
 	const outSide = useOutsideClick(boxRef)
+
+	function validateCaptions(_caption) {
+		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
+		if (temp?.length > 100) temp = temp?.substring(0, 100) + '...'
+		return temp
+	}
 
 	useEffect(() => {
 		if (
@@ -86,13 +91,19 @@ const LightBoxModal = ({
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
-						{link?.value && (
+						{(link?.value || image?.src) && link?.title && (
 							<Link
 								target={link?.target ? link?.target : '_self'}
 								href={
-									link?.value.split('.com')[0] +
-									'.com/download/f' +
-									link?.value.split('.com')[1]
+									link?.value
+										? link?.value.split('.com')[0] +
+										  '.com/download/f' +
+										  link?.value.split('.com')[1]
+										: image?.src
+										? image?.src.split('.com')[0] +
+										  '.com/download/f' +
+										  image?.src.split('.com')[1]
+										: '#'
 								}>
 								<a
 									target={link?.target ? link?.target : '_self'}
@@ -106,8 +117,6 @@ const LightBoxModal = ({
 							className='lightbox___top_bar___close'
 							onClick={() => {
 								visibleHandler()
-								setMainSwiper(null)
-								setThumbsSwiper(null)
 							}}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -168,9 +177,13 @@ const LightBoxModal = ({
 									) : null}
 								</div>
 							</div>
-							<div
-								className='lightbox___caption'
-								dangerouslySetInnerHTML={{ __html: caption?.value }}></div>
+							{caption?.value && (
+								<div
+									className='lightbox___caption'
+									dangerouslySetInnerHTML={{
+										__html: validateCaptions(caption?.value)
+									}}></div>
+							)}
 						</>
 					) : (
 						dataList &&
@@ -188,11 +201,15 @@ const LightBoxModal = ({
 																alt={item?.image?.alt}
 																width='100%'
 															/>
-															<div
-																className='lightbox___caption'
-																dangerouslySetInnerHTML={{
-																	__html: item?.caption?.value
-																}}></div>
+															{item?.caption?.value && (
+																<div
+																	className='lightbox___caption'
+																	dangerouslySetInnerHTML={{
+																		__html: validateCaptions(
+																			item?.caption?.value
+																		)
+																	}}></div>
+															)}
 														</SplideSlide>
 													))}
 												</Splide>
