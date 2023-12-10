@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import useOutsideClick from 'hooks/useOutsideClick'
@@ -20,8 +20,8 @@ const LightBoxModal = ({
 	dataList,
 	activeItemIndex
 }) => {
-	const mainSwiper = useRef(null)
-	const thumbsSwiper = useRef(null)
+	const mainSwiperRef = useRef(null)
+	const thumbsSwiperRef = useRef(null)
 
 	const boxRef = useRef()
 
@@ -29,40 +29,74 @@ const LightBoxModal = ({
 
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
-		if (temp?.length > 100) temp = temp?.substring(0, 100) + '...'
+		if (temp?.length > 100) temp = '<p>' + temp?.substring(0, 100) + '...</p>'
 		return temp
 	}
 
 	useEffect(() => {
-		if (
-			mainSwiper.current &&
-			thumbsSwiper.current &&
-			thumbsSwiper.current.splide
-		) {
-			mainSwiper.current.sync(thumbsSwiper.current.splide)
+		if (mainSwiperRef.current && thumbsSwiperRef.current) {
+			mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
 		}
-	}, [])
+	}, [mainSwiperRef, thumbsSwiperRef])
+
+	function renderChidren(_data, _index, _caption, style) {
+		return (
+			<>
+				{_data?.video?.value ? (
+					<iframe
+						id={'LightBox' + _index + _data?.video?.title}
+						src={
+							_data?.video?.value +
+							`${
+								_data?.video?.value && _data?.video?.value.includes('?')
+									? '&'
+									: '?'
+							}autopause=0`
+						}
+						alt={'LightBox' + id + video?.title}
+						title={'LightBox' + id + video?.title}
+						width='100%'
+						height='100%'
+						allow='autoplay; fullscreen; picture-in-picture'
+						mozallowfullscreen='true'
+						webkitallowfullscreen='true'
+						allowFullScreen
+						dataready={true}
+						style={style}></iframe>
+				) : (
+					<img src={_data?.image?.src} alt={_data?.image?.alt} />
+				)}
+				{_caption && _data?.caption?.value && (
+					<div
+						className='lightbox___caption'
+						dangerouslySetInnerHTML={{
+							__html: validateCaptions(_data?.caption?.value)
+						}}></div>
+				)}
+			</>
+		)
+	}
 
 	const mainOptions = {
-		type: 'loop',
+		type: 'slide',
 		perPage: 1,
 		perMove: 1,
 		gap: '1rem',
 		pagination: false,
 		arrows: false,
-		height: '100%'
+		height: '100%',
+		start: activeItemIndex
 	}
 
 	const thumbsOptions = {
 		type: 'slide',
 		rewind: false,
 		gap: '0px',
-		// perPage: 5,
-		// perMove: 1,
 		pagination: false,
 		cover: true,
 		focus: 'center',
-		isNavigation: true
+		isNavigation: true,
+		start: activeItemIndex
 	}
 
 	return (
@@ -188,37 +222,22 @@ const LightBoxModal = ({
 									<div className='px-4 px-md-10'>
 										<div className='lightbox___wrapper'>
 											<div className='lightbox___wrapper___main_carousel'>
-												<Splide options={mainOptions} ref={mainSwiper}>
+												<Splide options={mainOptions} ref={mainSwiperRef}>
 													{dataList.map((item, index) => (
 														<SplideSlide key={index}>
-															<img
-																src={item?.image?.src}
-																alt={item?.image?.alt}
-																width='100%'
-															/>
-															{item?.caption?.value && (
-																<div
-																	className='lightbox___caption'
-																	dangerouslySetInnerHTML={{
-																		__html: validateCaptions(
-																			item?.caption?.value
-																		)
-																	}}></div>
-															)}
+															{renderChidren(item, index, true)}
 														</SplideSlide>
 													))}
 												</Splide>
 											</div>
 										</div>
 										<div className='lightbox___wrapper___thumbnails_carousel'>
-											<Splide options={thumbsOptions} ref={thumbsSwiper}>
+											<Splide options={thumbsOptions} ref={thumbsSwiperRef}>
 												{dataList.map((item, index) => (
 													<SplideSlide key={index}>
-														<img
-															src={item?.image?.src}
-															alt={item?.image?.alt}
-															width='100%'
-														/>
+														{renderChidren(item, index, false, {
+															pointerEvents: 'none'
+														})}
 													</SplideSlide>
 												))}
 											</Splide>
