@@ -29,7 +29,7 @@ const LightBoxModal = ({
 
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
-		if (temp?.length > 100) temp = temp?.substring(0, 100) + '...'
+		if (temp?.length > 100) temp = '<p>' + temp?.substring(0, 100) + '...</p>'
 		return temp
 	}
 
@@ -44,13 +44,14 @@ const LightBoxModal = ({
 	}, [])
 
 	const mainOptions = {
-		type: 'loop',
+		type: 'slide',
 		perPage: 1,
 		perMove: 1,
 		gap: '1rem',
 		pagination: false,
 		arrows: false,
-		height: '100%'
+		height: '100%',
+		start: activeItemIndex
 	}
 
 	const thumbsOptions = {
@@ -62,7 +63,8 @@ const LightBoxModal = ({
 		pagination: false,
 		cover: true,
 		focus: 'center',
-		isNavigation: true
+		isNavigation: true,
+		start: activeItemIndex
 	}
 
 	return (
@@ -191,11 +193,33 @@ const LightBoxModal = ({
 												<Splide options={mainOptions} ref={mainSwiper}>
 													{dataList.map((item, index) => (
 														<SplideSlide key={index}>
-															<img
-																src={item?.image?.src}
-																alt={item?.image?.alt}
-																width='100%'
-															/>
+															{item?.video?.value ? (
+																<iframe
+																	id={'LightBox' + index + item?.video?.title}
+																	src={
+																		item?.video?.value +
+																		`${
+																			item?.video?.value &&
+																			item?.video?.value.includes('?')
+																				? '&'
+																				: '?'
+																		}autopause=0`
+																	}
+																	alt={'LightBox' + id + video?.title}
+																	title={'LightBox' + id + video?.title}
+																	width='100%'
+																	height='100%'
+																	allow='autoplay; fullscreen; picture-in-picture'
+																	mozallowfullscreen
+																	webkitallowfullscreen
+																	allowfullscreen
+																	dataready={true}></iframe>
+															) : (
+																<img
+																	src={item?.image?.src}
+																	alt={item?.image?.alt}
+																/>
+															)}
 															{item?.caption?.value && (
 																<div
 																	className='lightbox___caption'
@@ -214,11 +238,34 @@ const LightBoxModal = ({
 											<Splide options={thumbsOptions} ref={thumbsSwiper}>
 												{dataList.map((item, index) => (
 													<SplideSlide key={index}>
-														<img
-															src={item?.image?.src}
-															alt={item?.image?.alt}
-															width='100%'
-														/>
+														{item?.video?.value ? (
+															<iframe
+																id={'LightBox' + index + item?.video?.title}
+																src={
+																	item?.video?.value +
+																	`${
+																		item?.video?.value &&
+																		item?.video?.value.includes('?')
+																			? '&'
+																			: '?'
+																	}autopause=0`
+																}
+																alt={'LightBox' + id + video?.title}
+																title={'LightBox' + id + video?.title}
+																width='100%'
+																height='100%'
+																allow='autoplay; fullscreen; picture-in-picture'
+																mozallowfullscreen
+																webkitallowfullscreen
+																style={{ pointerEvents: 'none' }}
+																allowfullscreen
+																dataready={true}></iframe>
+														) : (
+															<img
+																src={item?.image?.src}
+																alt={item?.image?.alt}
+															/>
+														)}
 													</SplideSlide>
 												))}
 											</Splide>

@@ -3,11 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { useState } from 'react'
 import LightBoxModal from '../NewComponents/LightBoxModal'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const CesCollageItem = ({ data, wrapperRef }) => {
 	const [collapsed, setCollapsed] = useState(true)
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
+	const windowSize = useWindowSize()
 
 	return (
 		<>
@@ -15,7 +17,15 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 				<h5
 					className='ces_collage___collage_wrapper___title'
 					dangerouslySetInnerHTML={{ __html: data?.title?.value }}></h5>
-				<div className='ces_collage___collage_wrapper___media_list'>
+				<div
+					className='ces_collage___collage_wrapper___media_list'
+					style={{
+						gridTemplateColumns: `repeat(${
+							windowSize[0] >= 900
+								? data?.desktopColumns?.value
+								: data?.mobileColumns?.value
+						},1fr)`
+					}}>
 					{data?.mediaList?.value && data?.mediaList?.value.length && (
 						<>
 							{data?.mediaList?.value.map((cItem, cIndex) =>
