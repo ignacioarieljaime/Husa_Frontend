@@ -4,8 +4,11 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import { useCountdown } from 'hooks/useCountdown'
 
 const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
+	const [days, hours, minutes, seconds] = useCountdown(data?.date?.value)
+
 	return (
 		<>
 			<h3 className='slider-title fs-2'>{data?.title?.value}</h3>
@@ -28,6 +31,26 @@ const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
 					/>
 				) : null}
 				<div className='slider-content'>
+					{data?.activate_date?.value && (
+						<div className='countdown_timer'>
+							<div>
+								<div>{days}</div>
+								<div>DAYS</div>
+							</div>
+							<div>
+								<div>{hours}</div>
+								<div>HRS</div>
+							</div>
+							<div>
+								<div>{minutes}</div>
+								<div>MIN</div>
+							</div>
+							<div>
+								<div>{seconds}</div>
+								<div>SEC</div>
+							</div>
+						</div>
+					)}
 					<h5 className='description d-none d-md-block'>
 						{data?.description?.value}
 					</h5>
