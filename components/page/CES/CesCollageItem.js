@@ -84,18 +84,20 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 					<FontAwesomeIcon icon={faChevronDown} size='sm' color='#fff' />
 				</button>
 			</div>
-			<LightBoxModal
-				id={data?.id}
-				caption={data?.mediaList?.value[lightBoxActiveIndex]?.caption}
-				video={data?.mediaList?.value[lightBoxActiveIndex]?.video}
-				image={data?.mediaList?.value[lightBoxActiveIndex]?.image}
-				link={data?.mediaList?.value[lightBoxActiveIndex]?.link}
-				isVisible={lightBoxStatus}
-				visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
-				activateSwiper
-				dataList={data?.mediaList?.value}
-				activeItemIndex={lightBoxActiveIndex}
-			/>
+			{lightBoxStatus && (
+				<LightBoxModal
+					id={data?.id}
+					caption={data?.mediaList?.value[lightBoxActiveIndex]?.caption}
+					video={data?.mediaList?.value[lightBoxActiveIndex]?.video}
+					image={data?.mediaList?.value[lightBoxActiveIndex]?.image}
+					link={data?.mediaList?.value[lightBoxActiveIndex]?.link}
+					isVisible={lightBoxStatus}
+					visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+					activateSwiper
+					dataList={data?.mediaList?.value}
+					activeItemIndex={lightBoxActiveIndex}
+				/>
+			)}
 		</>
 	)
 }
