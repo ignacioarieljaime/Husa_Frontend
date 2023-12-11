@@ -136,6 +136,10 @@
 			max-width: 555px;
 			margin: 24px auto 0;
 			@include mq(768) {
+				position: absolute;
+				bottom: 75px;
+				left: 0;
+				right: 0;
 				max-width: 304px;
 			}
 			.splide__list {
@@ -194,9 +198,17 @@
 					}
 					&.splide__arrow--prev {
 						left: -46px;
+						@include mq(768) {
+							width: 40px !important;
+							height: 40px !important;
+						}
 					}
 					&.splide__arrow--next {
 						right: -46px;
+						@include mq(768) {
+							width: 40px !important;
+							height: 40px !important;
+						}
 					}
 				}
 			}
