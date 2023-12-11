@@ -146,6 +146,11 @@
 	span {
 		color: #000 !important;
 	}
+	p {
+		span {
+			font-weight: 300 !important;
+		}
+	}
 	a {
 		color: rgb(0, 170, 166) !important;
 		text-decoration: none;
