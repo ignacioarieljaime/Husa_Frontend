@@ -80,7 +80,7 @@ function BlogHead({ data: { structure }, pim }) {
 							event: dataLayer[val]
 						})
 					}}
-					className='fill-primary-dark px-2 mx-1'>
+					className='fill-primary-dark-important px-2 mx-1'>
 					<XTwitterIcon />
 				</Component>
 			)
