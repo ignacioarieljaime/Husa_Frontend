@@ -93,7 +93,9 @@ function CustomSelectBox({
 					rightText ? 'taller_field' : ''
 				}`}
 				tabIndex='1'>
-				<div className={`select-box-item ${className}`}>
+				<div className={`select-box-item ${className} ${
+					className === 'h-auto' ? 'mt-1 mb-1' : ''
+				}`}>
 					<input
 						className='input'
 						type='radio'
