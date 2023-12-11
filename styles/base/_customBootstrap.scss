@@ -40,6 +40,14 @@ input[type='number']::-webkit-outer-spin-button {
 	color: #43898a !important;
 	transition: all 0.2s ease-in;
 }
+.fill-primary-dark {
+	fill: #43898a !important;
+	transition: all 0.2s ease-in;
+}
+.fill-primary-dark-important {
+	fill: #43898a !important;
+	transition: all 0.2s ease-in;
+}
 .text-hover-primary:hover {
 	color: var(--primary-color) !important;
 }
