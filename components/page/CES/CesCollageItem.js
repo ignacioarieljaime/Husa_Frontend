@@ -11,6 +11,11 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	const windowSize = useWindowSize()
 
+	const collageScreenSizeHandler = (cIndex) => {
+		if (windowSize[0] >= 900) return cIndex < (data?.desktopColumns?.value * 2);
+		if (windowSize[0] < 900) return cIndex < (data?.mobileColumns?.value * 2);
+	}
+
 	return (
 		<>
 			<div className='ces_collage___collage_wrapper'>
@@ -30,7 +35,7 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 						<>
 							{data?.mediaList?.value.map((cItem, cIndex) =>
 								cItem?.video?.value ||
-								(cItem?.image?.src && (collapsed ? cIndex < 10 : true)) ? (
+								(cItem?.image?.src && (collapsed ? collageScreenSizeHandler(cIndex) : true)) ? (
 									<div
 										key={cIndex}
 										className='ces_collage___collage_wrapper___media_list___item'>
