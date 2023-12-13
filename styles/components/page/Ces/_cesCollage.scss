@@ -65,6 +65,10 @@
 					height: 14px;
 				}
 			}
+			@include mq(768) {
+				margin: 0 auto;
+				width: fit-content;
+			}
 		}
 		&___media_list {
 			display: grid;
