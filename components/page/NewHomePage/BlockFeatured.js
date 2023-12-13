@@ -39,6 +39,7 @@ const BlockFeatured = ({ data }) => {
 					<SwiperSlide key={index} className='slider-item'>
 						<BlockFeaturedItem
 							data={item}
+							length={content?.list?.value.length}
 							isLightBoxValid={content?.list?.value[index]?.lightbox?.value}
 							activateLightBox={() => {
 								setLightBoxStatus(true)
