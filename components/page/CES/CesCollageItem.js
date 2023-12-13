@@ -11,6 +11,8 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	const windowSize = useWindowSize()
 
+	console.log({desktop: data.desktopColumns, mobile: data.mobileColumns})
+
 	return (
 		<>
 			<div className='ces_collage___collage_wrapper'>
