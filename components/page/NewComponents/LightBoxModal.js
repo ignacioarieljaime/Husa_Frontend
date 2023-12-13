@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const LightBoxModal = ({
 	id,
@@ -23,6 +24,7 @@ const LightBoxModal = ({
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex);
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
+	const windowSize = useWindowSize()
 
 	const boxRef = useRef()
 
@@ -32,10 +34,10 @@ const LightBoxModal = ({
 		setCurrentIndex(indexUpdate)
 	}
 
-	function listMovementHandler(rowAmount, rowTotal) {
+	function listMovementHandler(rowAmount, rowTotal, percent) {
 		
 		const numberOfIntervals = Math.floor(rowTotal / rowAmount);
-		const pageMovePercent = 94.67;
+		const pageMovePercent = percent;
 		
 		for (let i = 0; i < numberOfIntervals; i++) {
 			const lowerBound = i * rowAmount;
@@ -60,7 +62,9 @@ const LightBoxModal = ({
 	}, [mainSwiperRef, thumbsSwiperRef])
 
 	useEffect(() => {
-		listMovementHandler(5, dataList?.length)
+		if (windowSize[0] <= 768) listMovementHandler(5, dataList?.length, 94.67)
+		if (windowSize[0] > 768) listMovementHandler(5, dataList?.length, 99.5)
+		
 	  }, [currentIndex]);
 
 
@@ -116,7 +120,7 @@ const LightBoxModal = ({
 				)}
 				{_caption && _data?.caption?.value && (
 					<div
-						className='lightbox___caption'
+						className={`lightbox___caption${_data?.video?.value ? ' video-caption' : ''}`}
 						dangerouslySetInnerHTML={{
 							__html: validateCaptions(_data?.caption?.value)
 						}}></div>
