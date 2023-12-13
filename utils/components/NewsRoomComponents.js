@@ -38,5 +38,9 @@ module.exports.NewsRoomComponents = [
 	{
 		name: 'NewsRoomMainBox ',
 		path: 'components/page/NewsRoom/NewsRoomMainBox'
+	},
+	{
+		name: 'NewsRoomNavbar ',
+		path: 'components/page/NewsRoom/NewsRoomNavbar'
 	}
 ]
