@@ -106,7 +106,10 @@
 		}
 		.lightbox_iframe_container {
 			@include mq(768) {
-				padding-top: 33%;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-60%);
+				width: 100%;
 			}
 		}
 		&___main_carousel {

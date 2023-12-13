@@ -32,6 +32,21 @@ const LightBoxModal = ({
 		setCurrentIndex(indexUpdate)
 	}
 
+	function listMovementHandler(rowAmount, rowTotal) {
+		
+		const numberOfIntervals = Math.floor(rowTotal / rowAmount);
+		const pageMovePercent = 94.67;
+		
+		for (let i = 0; i < numberOfIntervals; i++) {
+			const lowerBound = i * rowAmount;
+			const upperBound = (i + 1) * rowAmount;
+
+			if (currentIndex >= lowerBound && currentIndex < upperBound) {
+				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${pageMovePercent * i}%)`
+			}
+		}
+	}
+
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
 		if (temp?.length > 100) temp = '<p>' + temp?.substring(0, 100) + '...</p>'
@@ -43,6 +58,10 @@ const LightBoxModal = ({
 			mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
 		}
 	}, [mainSwiperRef, thumbsSwiperRef])
+
+	useEffect(() => {
+		listMovementHandler(5, dataList?.length)
+	  }, [currentIndex]);
 
 
 	function renderChidren(main, _data, _index, _caption, style) {
@@ -114,22 +133,23 @@ const LightBoxModal = ({
 		pagination: false,
 		arrows: false,
 		height: '100%',
-		start: activeItemIndex
-	}
-
-	const thumbsOptions = {
-		type: 'slide',
-		rewind: false,
-		gap: '0px',
-		pagination: false,
-		cover: true,
-		focus: 5,
-		isNavigation: true,
 		start: activeItemIndex,
-		perMove: 5,
+		waitForTransition: true,
 	}
 
 	const thumbPageHandler = (thumbIndex) => {
+
+		const thumbsOptions = {
+			type: 'slide',
+			rewind: false,
+			gap: '0px',
+			pagination: false,
+			cover: true,
+			focus: currentIndex,
+			isNavigation: true,
+			start: activeItemIndex,
+			perMove: 5,
+		}
 
 		const thumbsOptionsTransition = {
 			type: 'slide',
@@ -145,7 +165,9 @@ const LightBoxModal = ({
 
 		if ((thumbIndex) !== 0 && (thumbIndex) % 5 === 0) {
 			return thumbsOptionsTransition;
-		} else return thumbsOptions
+		} else {
+			return thumbsOptions
+		}
 	}
 
 	return (
@@ -272,7 +294,7 @@ const LightBoxModal = ({
 										<div className='lightbox___wrapper h-100'>
 											<div className='lightbox___wrapper___main_carousel'>
 												<Splide options={mainOptions} ref={mainSwiperRef}
-												onMove={(newIndex, prevIndex, destIndex) => newIndexHandler(prevIndex)}
+												onMove={(slide, newIndex, prevIndex, destIndex) => newIndexHandler(newIndex)}
 												>
 													{dataList.map((item, index) => (
 														<SplideSlide key={index}>
@@ -284,9 +306,7 @@ const LightBoxModal = ({
 										</div>
 										<div className='lightbox___wrapper___thumbnails_carousel'>
 											<Splide options={thumbPageHandler(currentIndex)} ref={thumbsSwiperRef}
-											onMove={(newIndex, prevIndex, destIndex) => newIndexHandler(prevIndex)}
-											// onArrowsUpdated={() => console.log("arrowUpdate")}
-											// onClick={() => {}}
+											onMove={(slide, newIndex, prevIndex, destIndex) => newIndexHandler(newIndex)}
 											>
 												{dataList.map((item, index) => (
 													<SplideSlide key={index}>
