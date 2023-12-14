@@ -86,7 +86,7 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 					<a
 						target={data.header?.target ? data.header?.target : '_self'}
 						className='nav-link'>
-						<span className={timer ? 'first-underline-on-hover' : 'underline-on-hover'}>{data.header.title}</span>
+						<span className={'underline-on-hover'}>{data.header.title}</span>
 						{data.header?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
 						)}
