@@ -1,4 +1,4 @@
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import AngleArrow from 'components/icons/AngleArrow'
@@ -35,6 +35,7 @@ const NewsSearchFilter = ({
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
 	const [fix, setFix] = useState(false)
+	const [searchFocus, setSearchFocus] = useState(false)
 	const target = useRef()
 	const router = useRouter()
 
@@ -108,16 +109,18 @@ const NewsSearchFilter = ({
 	}
 
 
-	const resetSearch = () => {
-		filterHandler('year', '', false);
-		filterHandler('product', '', false);
-		filterHandler('search', '', false);
-		reloadPage();
+	const resetSearch = (year, product, search, reload) => {
+
+		if (year) filterHandler('year', '', false);
+		if (product) filterHandler('product', '', false);
+		if (search) filterHandler('search', '', false);
+		if (reload) reloadPage();
+		
 	}
 
 	const resetVisible = () => {
 		if (filters.year.length === 0 && filters.product.length === 0 && filters.search.length === 0) return false
-		return true; 
+		return true;
 	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
@@ -190,16 +193,32 @@ const NewsSearchFilter = ({
 												if (e.key === 'Enter' && !results)
 													redirectToResultsPage()
 											}}
-											onBlur={() => !results && redirectToResultsPage()}
+											onBlur={() => {
+												setSearchFocus(prev => !prev)
+												!results && redirectToResultsPage()
+											}}
+											onFocus={() => setSearchFocus(prev => !prev)}
 										/>
-										<MagnifierIcon stroke={'#8C8F8F'} />
+										{searchFocus ?
+											<FontAwesomeIcon
+											icon={faClose}
+											size='md'
+											className='search-close p-1'
+											onMouseDown={(e) => {
+												e.preventDefault();
+												resetSearch(false, false, true, false);
+											}}
+											/>
+											:
+											<MagnifierIcon stroke={'#8C8F8F'} />
+										}
 									</div>
 								</div>
 
 								{resetVisible() &&
 									<div className='reset-container'>
 										<button className='reset-button'
-											onClick={() => resetSearch()}
+											onClick={() => resetSearch(true, true, true, true)}
 										>
 											Reset
 										</button>
