@@ -1,13 +1,25 @@
 import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import { useCountdown } from 'hooks/useCountdown'
+import { useSwiper } from 'swiper/react'
 
-const BlockFeaturedItem = ({ data, activateLightBox, isLightBoxValid }) => {
+const BlockFeaturedItem = ({
+	data,
+	activateLightBox,
+	isLightBoxValid,
+	length
+}) => {
 	const [days, hours, minutes, seconds] = useCountdown(data?.date?.value)
+
+	const swiper = useSwiper()
+
+	useEffect(() => {
+		swiper.slideTo(length > 2 ? 1 : 0)
+	}, [length])
 
 	return (
 		<>
