@@ -88,7 +88,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					</h3>
 					<h1 className='title d-none d-md-block'>{pim?.name}</h1>
 					<p className='model_number d-none d-md-block'>Model: {pim?.model}</p>
-					{screenSize && screenSize.length <= 5 ? (
+					{screenSize && screenSize.length <= 5 && screenSize.length > 0 ? (
 						<div className='sizes'>
 							<p className='sizes_text'>Available Screen Sizes</p>
 							<div className='sizes_list'>
