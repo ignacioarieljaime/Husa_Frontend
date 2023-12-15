@@ -22,6 +22,7 @@ const LightBoxModal = ({
 	activeItemIndex
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex);
+	const [hasInteracted, setHasInteracted] = useState(false);
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
 	const windowSize = useWindowSize()
@@ -34,18 +35,19 @@ const LightBoxModal = ({
 		setCurrentIndex(indexUpdate)
 	}
 
-	function listMovementHandler(rowAmount, rowTotal, percent) {
+	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
 		
 		const numberOfIntervals = Math.floor(rowTotal / rowAmount);
 		const pageMovePercent = percent;
+		const beforeLastRowHighestIndex = (rowAmount * numberOfIntervals) - 1;
 		
 		for (let i = 0; i < numberOfIntervals; i++) {
 			const lowerBound = i * rowAmount;
 			const upperBound = (i + 1) * rowAmount;
 
-			if (currentIndex >= lowerBound && currentIndex < upperBound) {
-				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${pageMovePercent * i}%)`
-			}
+			if (currentIndex >= lowerBound && currentIndex < upperBound) thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${pageMovePercent * i}%)`
+
+			if (firstOpen && currentIndex > beforeLastRowHighestIndex) thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${pageMovePercent * i * 2}%)`
 		}
 	}
 
@@ -62,11 +64,15 @@ const LightBoxModal = ({
 	}, [mainSwiperRef, thumbsSwiperRef])
 
 	useEffect(() => {
-		if (windowSize[0] <= 768) listMovementHandler(5, dataList?.length, 94.67)
-		if (windowSize[0] > 768) listMovementHandler(5, dataList?.length, 99.5)
+		if (windowSize[0] <= 768) listMovementHandler(5,  Math.ceil(dataList?.length / 5) * 5, 94.67)
+		if (windowSize[0] > 768) listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.5)
 		
-	  }, [currentIndex]);
+	}, [currentIndex]);
 
+	useEffect(() => {
+		initialPlacement();
+	}, [windowSize])
+	
 
 	function renderChidren(main, _data, _index, _caption, style) {
 		return (
@@ -174,6 +180,20 @@ const LightBoxModal = ({
 		}
 	}
 
+	const initialPlacement = () => {
+		if (!hasInteracted) {
+			if (windowSize[0] <= 768) {
+				listMovementHandler(5, dataList?.length, 94.67, true)
+				setHasInteracted(true);
+			}
+			if (windowSize[0] > 768) {
+				listMovementHandler(5, dataList?.length, 99.5, true)
+				setHasInteracted(true);
+			}
+		}
+	}
+
+
 	return (
 		isVisible && (
 			<>
@@ -195,20 +215,17 @@ const LightBoxModal = ({
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
-						{(link?.value || image?.src) && link?.title && (
+						{(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
 							<Link
-								target={link?.target ? link?.target : '_self'}
+								target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
 								href={
-									link?.value
-										? link?.value.split('.com')[0] +
-										  '.com/download/f' +
-										  link?.value.split('.com')[1]
-										: image?.src
-										? image?.src.split('.com')[0] +
-										  '.com/download/f' +
-										  image?.src.split('.com')[1]
-										: '#'
-								}>
+									dataList[currentIndex]?.link?.value ?
+									dataList[currentIndex]?.link?.value :
+									dataList[currentIndex]?.image?.src ?
+									dataList[currentIndex]?.image?.src
+									: '#'
+								}
+								>
 								<a
 									target={link?.target ? link?.target : '_self'}
 									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
