@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useRef } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
@@ -13,12 +13,24 @@ const CESNavBar = ({ data }) => {
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	const [menuStatus, setMenuStatus] = useState(false)
+	const [fix, setFix] = useState(false)
+	const menu = useRef()
+
 	useEffect(() => {
 		setContent(structure)
+
+		window.addEventListener('scroll', () => {
+			if (menu?.current?.offsetTop <= window.scrollY + 64) {
+				setFix(true)
+			} else {
+				setFix(false)
+			}
+		})
 	}, [])
 
 	return (
 		<section
+			ref={menu}
 			style={
 				content?.version?.value === 'primary'
 					? {
@@ -37,9 +49,16 @@ const CESNavBar = ({ data }) => {
 							: 'closed'
 						: ''
 				}`}
-				style={{
-					backgroundColor: content?.backgroundColor?.value || '#fff'
-				}}>
+				style={
+					fix
+						? {
+								backgroundColor: content?.backgroundColor?.value || '#fff',
+								padding: '3px 40px'
+						  }
+						: {
+								backgroundColor: content?.backgroundColor?.value || '#fff'
+						  }
+				}>
 				<ul
 					className='ces_navbar___items_wrapper'
 					style={{
