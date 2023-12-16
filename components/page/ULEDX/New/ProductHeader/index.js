@@ -21,7 +21,7 @@ const ProductHeader = ({ pin = false, pim }) => {
 					<div>
 						<img src={productLogo.src} width={178} alt='ULED X 85UX' />
 					</div>
-
+					<h1 style={{ display: 'none' }}>Hisense ULEDX 85UX</h1>
 					<div>
 						<nav className={styles.productHeaderNav}>
 							<ul>
