@@ -252,6 +252,43 @@ const LightBoxModal = ({
 									</a>
 								</Link>
 						)}
+						{/* {!dataList ?
+							<Link
+								target={link?.target ? link?.target : '_self'}
+								href={
+									link?.value ?
+									link?.value :
+									image?.src ?
+									image?.src
+									: '#'
+								}
+								>
+								<a
+									target={link?.target ? link?.target : '_self'}
+									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+									{link?.title}
+									<DownloadIconV2 color='#000' width='16' height='16' />
+								</a>
+							</Link> :
+							(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
+								<Link
+									target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
+									href={
+										dataList[currentIndex]?.link?.value ?
+										dataList[currentIndex]?.link?.value :
+										dataList[currentIndex]?.image?.src ?
+										dataList[currentIndex]?.image?.src
+										: '#'
+									}
+									>
+									<a
+										target={link?.target ? link?.target : '_self'}
+										className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+										{link?.title}
+										<DownloadIconV2 color='#000' width='16' height='16' />
+									</a>
+								</Link>
+						)} */}
 						<button
 							className='lightbox___top_bar___close'
 							onClick={() => {
