@@ -13,9 +13,19 @@ import moment from 'moment'
 const NewsIntro = ({ data, pim }) => {
 	let { structure } = data
 	const [pageUrl, setPageUrl] = useState()
+	const [customData, setCustomDate] = useState('')
 
 	useEffect(() => {
 		setPageUrl(window.location.href)
+		if (pim?.published_at)
+			setCustomDate(
+				moment(pim?.published_at).format('MMMM DD YYYY').split(' ')[0] +
+					' ' +
+					moment(pim?.published_at).format('MMMM DD YYYY').split(' ')[1] +
+					', ' +
+					moment(pim?.published_at).format('MMMM DD YYYY').split(' ')[2]
+			)
+		else setCustomDate(structure?.data?.value)
 	}, [])
 
 	return (
@@ -23,11 +33,7 @@ const NewsIntro = ({ data, pim }) => {
 			<div>
 				<h6>{structure?.subject?.value}</h6>
 				<h3>{structure?.title?.value}</h3>
-				<span>
-					{pim?.published_at
-						? moment(pim?.published_at).format('MMMM DD YYYY')
-						: structure?.data?.value}
-				</span>
+				<span>{customData}</span>
 				<div>
 					<span>Share Article</span>
 					<ul>

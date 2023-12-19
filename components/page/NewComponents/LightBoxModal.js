@@ -217,7 +217,7 @@ const LightBoxModal = ({
 						</button>
 						{!dataList ?
 							<Link
-								target={link?.target ? link?.target : '_self'}
+								target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
 								href={
 									link?.value ?
 									link?.value :
