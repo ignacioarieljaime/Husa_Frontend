@@ -1,7 +1,7 @@
 import CustomImage from 'components/common/CustomImage'
 import moment from 'moment'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const NewsRoomMainNewsItem = ({
 	isFirst,
@@ -14,6 +14,19 @@ const NewsRoomMainNewsItem = ({
 	target,
 	fetched
 }) => {
+	const [customData, setCustomDate] = useState('')
+	useEffect(() => {
+		if (date && (fetched || date.includes('T')))
+			setCustomDate(
+				moment(date).format('DD MMMM YYYY').split(' ')[0] +
+					' ' +
+					moment(date).format('DD MMMM YYYY').split(' ')[1] +
+					', ' +
+					moment(date).format('DD MMMM YYYY').split(' ')[2]
+			)
+		else setCustomDate(date)
+	}, [date])
+
 	return (
 		<>
 			<Link href={link || '/'} target={target || '_self'}>
@@ -43,11 +56,7 @@ const NewsRoomMainNewsItem = ({
 								</Link>
 							</h2>
 
-							<span className='date'>
-								{date && (fetched || date.includes('T'))
-									? moment(date).format('MMMM DD YYYY')
-									: date}
-							</span>
+							<span className='date'>{customData}</span>
 						</div>
 					</div>
 				</a>
