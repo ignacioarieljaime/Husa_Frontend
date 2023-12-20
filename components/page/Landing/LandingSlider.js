@@ -8,7 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 // import required modules
-import { Navigation, Pagination } from 'swiper'
+import { Autoplay, Navigation, Pagination } from 'swiper'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useAspectRatio } from 'hooks/useAspectRatio'
@@ -20,9 +20,14 @@ function LandingSlider({ data }) {
 	return (
 		<>
 			<Swiper
+				loop={true}
 				navigation={true}
 				pagination={true}
-				modules={[Navigation, Pagination]}
+				autoplay={{
+					delay: 5000,
+					disableOnInteraction: false
+				}}
+				modules={[Navigation, Pagination, Autoplay]}
 				// style={{
 				// 	paddingTop:
 				// 		size[0] < 550
