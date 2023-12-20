@@ -12,6 +12,7 @@ import { Navigation, Pagination } from 'swiper'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useAspectRatio } from 'hooks/useAspectRatio'
+import CustomButton from 'components/common/CustomButton'
 
 function LandingSlider({ data }) {
 	let { structure } = data
@@ -61,16 +62,15 @@ function LandingSlider({ data }) {
 											})`
 										}}>
 										{item?.url?.value && (
-											<Link
+											<CustomButton
 												target={item?.url?.target ? item?.url?.target : '_self'}
-												href={item?.url?.value ? item?.url?.value : ''}>
-												<a
-													className={
-														structure?.theme?.value !== 'dark' && 'white_button'
-													}>
-													{item?.url?.title}
-												</a>
-											</Link>
+												href={item?.url?.value ? item?.url?.value : ''}
+												// className={
+												// 	structure?.theme?.value !== 'dark' && 'white_button'
+												// }
+												cxmStyles={item?.buttonStyle?.value}>
+												{item?.url?.title}
+											</CustomButton>
 										)}
 									</div>
 								</a>
@@ -89,16 +89,15 @@ function LandingSlider({ data }) {
 										})`
 									}}>
 									{item?.url?.value && (
-										<Link
+										<CustomButton
 											target={item?.url?.target ? item?.url?.target : '_self'}
-											href={item?.url?.value ? item?.url?.value : ''}>
-											<a
-												className={
-													structure?.theme?.value !== 'dark' && 'white_button'
-												}>
-												{item?.url?.title}
-											</a>
-										</Link>
+											href={item?.url?.value ? item?.url?.value : ''}
+											// className={
+											// 	structure?.theme?.value !== 'dark' && 'white_button'
+											// }
+											cxmStyles={item?.buttonStyle?.value}>
+											{item?.url?.title}
+										</CustomButton>
 									)}
 								</div>
 							</div>
