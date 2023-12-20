@@ -60,7 +60,9 @@ const CESNavBar = ({ data }) => {
 						  }
 				}>
 				<ul
-					className='ces_navbar___items_wrapper'
+					className={`ces_navbar___items_wrapper  ${
+						content?.list?.value.length >= 3 ? 'stack' : ''
+					}`}
 					style={{
 						justifyContent:
 							content?.list?.value?.length > 1 ? 'space-between' : 'center'
@@ -91,7 +93,49 @@ const CESNavBar = ({ data }) => {
 										) : null}
 									</li>
 								) : (
-									<li className='ces_navbar___items_wrapper___link' key={index}>
+									item?.link?.value && (
+										<li
+											className='ces_navbar___items_wrapper___link'
+											key={index}>
+											<Link
+												target={
+													item?.link?.target ? item?.link?.target : '_self'
+												}
+												key='index'
+												href={item?.link?.value}>
+												<a
+													style={{ color: content?.fontColor?.value || '#000' }}
+													target={
+														item?.link?.target ? item?.link?.target : '_self'
+													}>
+													{item?.link?.title}
+													{item?.link?.target === '_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
+												</a>
+											</Link>
+											{index === 0 && content?.list?.value?.length > 1 ? (
+												<span
+													onClick={() => setMenuStatus(prev => !prev)}
+													className='ces_navbar___items_wrapper___link___menu_btn'>
+													{menuStatus ? (
+														<CESCloseIcon />
+													) : (
+														<CESHamburgerMenuIcon />
+													)}
+												</span>
+											) : null}
+										</li>
+									)
+								)
+							) : (
+								item?.link?.value && (
+									<li
+										className={`ces_navbar___items_wrapper___link`}
+										key={index}>
 										<Link
 											target={item?.link?.target ? item?.link?.target : '_self'}
 											key='index'
@@ -110,40 +154,8 @@ const CESNavBar = ({ data }) => {
 												)}
 											</a>
 										</Link>
-										{index === 0 && content?.list?.value?.length > 1 ? (
-											<span
-												onClick={() => setMenuStatus(prev => !prev)}
-												className='ces_navbar___items_wrapper___link___menu_btn'>
-												{menuStatus ? (
-													<CESCloseIcon />
-												) : (
-													<CESHamburgerMenuIcon />
-												)}
-											</span>
-										) : null}
 									</li>
 								)
-							) : (
-								<li className='ces_navbar___items_wrapper___link' key={index}>
-									<Link
-										target={item?.link?.target ? item?.link?.target : '_self'}
-										key='index'
-										href={item?.link?.value}>
-										<a
-											style={{ color: content?.fontColor?.value || '#000' }}
-											target={
-												item?.link?.target ? item?.link?.target : '_self'
-											}>
-											{item?.link?.title}
-											{item?.link?.target === '_blank' && (
-												<img
-													style={{ marginLeft: '10px' }}
-													src={OpenPageOnNewTab.src}
-												/>
-											)}
-										</a>
-									</Link>
-								</li>
 							)
 						) : null
 					)}
