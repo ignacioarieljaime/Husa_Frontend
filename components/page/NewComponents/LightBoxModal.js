@@ -21,8 +21,8 @@ const LightBoxModal = ({
 	dataList,
 	activeItemIndex
 }) => {
-	const [currentIndex, setCurrentIndex] = useState(activeItemIndex);
-	const [hasInteracted, setHasInteracted] = useState(false);
+	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
+	const [hasInteracted, setHasInteracted] = useState(false)
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
 	const windowSize = useWindowSize()
@@ -31,23 +31,28 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
-	const newIndexHandler = (indexUpdate) => {
+	const newIndexHandler = indexUpdate => {
 		setCurrentIndex(indexUpdate)
 	}
 
 	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
-		
-		const numberOfIntervals = Math.floor(rowTotal / rowAmount);
-		const pageMovePercent = percent;
-		const beforeLastRowHighestIndex = (rowAmount * numberOfIntervals) - 1;
-		
+		const numberOfIntervals = Math.floor(rowTotal / rowAmount)
+		const pageMovePercent = percent
+		const beforeLastRowHighestIndex = rowAmount * numberOfIntervals - 1
+
 		for (let i = 0; i < numberOfIntervals; i++) {
-			const lowerBound = i * rowAmount;
-			const upperBound = (i + 1) * rowAmount;
+			const lowerBound = i * rowAmount
+			const upperBound = (i + 1) * rowAmount
 
-			if (currentIndex >= lowerBound && currentIndex < upperBound) thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${pageMovePercent * i}%)`
+			if (currentIndex >= lowerBound && currentIndex < upperBound)
+				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
+					pageMovePercent * i
+				}%)`
 
-			if (firstOpen && currentIndex > beforeLastRowHighestIndex) thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${pageMovePercent * i * 2}%)`
+			if (firstOpen && currentIndex > beforeLastRowHighestIndex)
+				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
+					pageMovePercent * i * 2
+				}%)`
 		}
 	}
 
@@ -64,69 +69,73 @@ const LightBoxModal = ({
 	}, [mainSwiperRef, thumbsSwiperRef])
 
 	useEffect(() => {
-		if (windowSize[0] <= 768) listMovementHandler(5,  Math.ceil(dataList?.length / 5) * 5, 94.67)
-		if (windowSize[0] > 768) listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.5)
-		
-	}, [currentIndex]);
+		if (windowSize[0] <= 768)
+			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 94.67)
+		if (windowSize[0] > 768)
+			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.5)
+	}, [currentIndex])
 
 	useEffect(() => {
-		initialPlacement();
+		initialPlacement()
 	}, [windowSize])
-	
 
 	function renderChidren(main, _data, _index, _caption, style) {
 		return (
 			<>
 				{_data?.video?.value ? (
-					main ?
-					<div className='lightbox_iframe_container'>
+					main ? (
+						<div className='lightbox_iframe_container'>
+							<iframe
+								id={'LightBox' + _index + _data?.video?.title}
+								src={
+									_data?.video?.value +
+									`${
+										_data?.video?.value && _data?.video?.value.includes('?')
+											? '&'
+											: '?'
+									}autopause=0`
+								}
+								alt={'LightBox' + id + video?.title}
+								title={'LightBox' + id + video?.title}
+								width='100%'
+								height='100%'
+								allow='autoplay; fullscreen; picture-in-picture'
+								mozallowfullscreen='true'
+								webkitallowfullscreen='true'
+								allowFullScreen
+								dataready={true}
+								style={style}></iframe>
+						</div>
+					) : (
 						<iframe
-						id={'LightBox' + _index + _data?.video?.title}
-						src={
-							_data?.video?.value +
-							`${
-								_data?.video?.value && _data?.video?.value.includes('?')
-									? '&'
-									: '?'
-							}autopause=0`
-						}
-						alt={'LightBox' + id + video?.title}
-						title={'LightBox' + id + video?.title}
-						width='100%'
-						height='100%'
-						allow='autoplay; fullscreen; picture-in-picture'
-						mozallowfullscreen='true'
-						webkitallowfullscreen='true'
-						allowFullScreen
-						dataready={true}
-						style={style}></iframe>
-					</div> :
-					<iframe
-						id={'LightBox' + _index + _data?.video?.title}
-						src={
-							_data?.video?.value +
-							`${
-								_data?.video?.value && _data?.video?.value.includes('?')
-									? '&'
-									: '?'
-							}autopause=0`
-						}
-						alt={'LightBox' + id + video?.title}
-						title={'LightBox' + id + video?.title}
-						width='100%'
-						height='100%'
-						allow='autoplay; fullscreen; picture-in-picture'
-						mozallowfullscreen='true'
-						webkitallowfullscreen='true'
-						allowFullScreen
-						dataready={true}
-						style={style}></iframe>
+							id={'LightBox' + _index + _data?.video?.title}
+							src={
+								_data?.video?.value +
+								`${
+									_data?.video?.value && _data?.video?.value.includes('?')
+										? '&'
+										: '?'
+								}autopause=0`
+							}
+							alt={'LightBox' + id + video?.title}
+							title={'LightBox' + id + video?.title}
+							width='100%'
+							height='100%'
+							allow='autoplay; fullscreen; picture-in-picture'
+							mozallowfullscreen='true'
+							webkitallowfullscreen='true'
+							allowFullScreen
+							dataready={true}
+							style={style}></iframe>
+					)
 				) : (
 					<img src={_data?.image?.src} alt={_data?.image?.alt} />
 				)}
 				{_caption && _data?.caption?.value && (
 					<div
-						className={`lightbox___caption${_data?.video?.value ? ' video-caption' : ''}`}
+						className={`lightbox___caption${
+							_data?.video?.value ? ' video-caption' : ''
+						}`}
 						dangerouslySetInnerHTML={{
 							__html: validateCaptions(_data?.caption?.value)
 						}}></div>
@@ -144,11 +153,10 @@ const LightBoxModal = ({
 		arrows: false,
 		height: '100%',
 		start: activeItemIndex,
-		waitForTransition: true,
+		waitForTransition: true
 	}
 
-	const thumbPageHandler = (thumbIndex) => {
-
+	const thumbPageHandler = thumbIndex => {
 		const thumbsOptions = {
 			type: 'slide',
 			rewind: false,
@@ -158,7 +166,7 @@ const LightBoxModal = ({
 			focus: currentIndex,
 			isNavigation: true,
 			start: activeItemIndex,
-			perMove: 5,
+			perMove: 5
 		}
 
 		const thumbsOptionsTransition = {
@@ -170,11 +178,11 @@ const LightBoxModal = ({
 			focus: 'left',
 			isNavigation: true,
 			start: activeItemIndex,
-			perMove: 5,
+			perMove: 5
 		}
 
-		if ((thumbIndex) !== 0 && (thumbIndex) % 5 === 0) {
-			return thumbsOptionsTransition;
+		if (thumbIndex !== 0 && thumbIndex % 5 === 0) {
+			return thumbsOptionsTransition
 		} else {
 			return thumbsOptions
 		}
@@ -184,15 +192,14 @@ const LightBoxModal = ({
 		if (!hasInteracted) {
 			if (windowSize[0] <= 768) {
 				listMovementHandler(5, dataList?.length, 94.67, true)
-				setHasInteracted(true);
+				setHasInteracted(true)
 			}
 			if (windowSize[0] > 768) {
 				listMovementHandler(5, dataList?.length, 99.5, true)
-				setHasInteracted(true);
+				setHasInteracted(true)
 			}
 		}
 	}
-
 
 	return (
 		isVisible && (
@@ -215,14 +222,53 @@ const LightBoxModal = ({
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
-						{(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
+						{!dataList ? (
 							<Link
-								target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
+								target={link?.target ? link?.target : '_self'}
 								href={
-									dataList[currentIndex]?.link?.value ?
-									dataList[currentIndex]?.link?.value :
-									dataList[currentIndex]?.image?.src ?
-									dataList[currentIndex]?.image?.src
+									link?.value ? link?.value : image?.src ? image?.src : '#'
+								}>
+								<a
+									target={link?.target ? link?.target : '_self'}
+									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+									{link?.title}
+									<DownloadIconV2 color='#000' width='16' height='16' />
+								</a>
+							</Link>
+						) : (
+							(dataList[currentIndex]?.link?.value ||
+								dataList[currentIndex]?.image?.src) &&
+							dataList[currentIndex]?.link?.title && (
+								<Link
+									target={
+										dataList[currentIndex]?.link?.target
+											? dataList[currentIndex]?.link?.target
+											: '_self'
+									}
+									href={
+										dataList[currentIndex]?.link?.value
+											? dataList[currentIndex]?.link?.value
+											: dataList[currentIndex]?.image?.src
+											? dataList[currentIndex]?.image?.src
+											: '#'
+									}>
+									<a
+										target={link?.target ? link?.target : '_self'}
+										className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+										{link?.title}
+										<DownloadIconV2 color='#000' width='16' height='16' />
+									</a>
+								</Link>
+							)
+						)}
+						{/* {!dataList ?
+							<Link
+								target={link?.target ? link?.target : '_self'}
+								href={
+									link?.value ?
+									link?.value :
+									image?.src ?
+									image?.src
 									: '#'
 								}
 								>
@@ -232,8 +278,26 @@ const LightBoxModal = ({
 									{link?.title}
 									<DownloadIconV2 color='#000' width='16' height='16' />
 								</a>
-							</Link>
-						)}
+							</Link> :
+							(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
+								<Link
+									target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
+									href={
+										dataList[currentIndex]?.link?.value ?
+										dataList[currentIndex]?.link?.value :
+										dataList[currentIndex]?.image?.src ?
+										dataList[currentIndex]?.image?.src
+										: '#'
+									}
+									>
+									<a
+										target={link?.target ? link?.target : '_self'}
+										className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+										{link?.title}
+										<DownloadIconV2 color='#000' width='16' height='16' />
+									</a>
+								</Link>
+						)} */}
 						<button
 							className='lightbox___top_bar___close'
 							onClick={() => {
@@ -273,38 +337,42 @@ const LightBoxModal = ({
 					</div>
 					{!activateSwiper ? (
 						<>
-							<div className='px-4 px-md-10'>
-								<div className='lightbox___wrapper'>
-									{video?.value ? (
-										<iframe
-											id={'LightBox' + id + video?.title}
-											src={
-												video?.value +
-												`${
-													video?.value && video?.value.includes('?') ? '&' : '?'
-												}autopause=0`
-											}
-											alt={'LightBox' + id + video?.title}
-											title={'LightBox' + id + video?.title}
-											width='100%'
-											height='100%'
-											allow='autoplay; fullscreen; picture-in-picture'
-											mozallowfullscreen
-											webkitallowfullscreen
-											allowfullscreen
-											dataready={true}></iframe>
-									) : image?.src ? (
-										<img src={image?.src} alt={image?.alt} />
-									) : null}
+							<div className='w-100 my-md-0 my-auto h-75'>
+								<div className='px-4 px-md-10 h-100'>
+									<div className='lightbox___wrapper h-100'>
+										{video?.value ? (
+											<iframe
+												id={'LightBox' + id + video?.title}
+												src={
+													video?.value +
+													`${
+														video?.value && video?.value.includes('?')
+															? '&'
+															: '?'
+													}autopause=0`
+												}
+												alt={'LightBox' + id + video?.title}
+												title={'LightBox' + id + video?.title}
+												width='100%'
+												height='100%'
+												allow='autoplay; fullscreen; picture-in-picture'
+												mozallowfullscreen
+												webkitallowfullscreen
+												allowfullscreen
+												dataready={true}></iframe>
+										) : image?.src ? (
+											<img src={image?.src} alt={image?.alt} />
+										) : null}
+									</div>
 								</div>
+								{caption?.value && (
+									<div
+										className='lightbox___caption'
+										dangerouslySetInnerHTML={{
+											__html: validateCaptions(caption?.value)
+										}}></div>
+								)}
 							</div>
-							{caption?.value && (
-								<div
-									className='lightbox___caption'
-									dangerouslySetInnerHTML={{
-										__html: validateCaptions(caption?.value)
-									}}></div>
-							)}
 						</>
 					) : (
 						dataList &&
@@ -314,9 +382,12 @@ const LightBoxModal = ({
 									<div className='px-4 px-md-10 h-100'>
 										<div className='lightbox___wrapper h-100'>
 											<div className='lightbox___wrapper___main_carousel'>
-												<Splide options={mainOptions} ref={mainSwiperRef}
-												onMove={(slide, newIndex, prevIndex, destIndex) => newIndexHandler(newIndex)}
-												>
+												<Splide
+													options={mainOptions}
+													ref={mainSwiperRef}
+													onMove={(slide, newIndex, prevIndex, destIndex) =>
+														newIndexHandler(newIndex)
+													}>
 													{dataList.map((item, index) => (
 														<SplideSlide key={index}>
 															{renderChidren(true, item, index, true)}
@@ -326,9 +397,12 @@ const LightBoxModal = ({
 											</div>
 										</div>
 										<div className='lightbox___wrapper___thumbnails_carousel'>
-											<Splide options={thumbPageHandler(currentIndex)} ref={thumbsSwiperRef}
-											onMove={(slide, newIndex, prevIndex, destIndex) => newIndexHandler(newIndex)}
-											>
+											<Splide
+												options={thumbPageHandler(currentIndex)}
+												ref={thumbsSwiperRef}
+												onMove={(slide, newIndex, prevIndex, destIndex) =>
+													newIndexHandler(newIndex)
+												}>
 												{dataList.map((item, index) => (
 													<SplideSlide key={index}>
 														{renderChidren(false, item, index, false, {
