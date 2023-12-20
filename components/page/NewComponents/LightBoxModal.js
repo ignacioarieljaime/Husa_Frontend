@@ -215,14 +215,14 @@ const LightBoxModal = ({
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
-						{(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
+						{!dataList ?
 							<Link
 								target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
 								href={
-									dataList[currentIndex]?.link?.value ?
-									dataList[currentIndex]?.link?.value :
-									dataList[currentIndex]?.image?.src ?
-									dataList[currentIndex]?.image?.src
+									link?.value ?
+									link?.value :
+									image?.src ?
+									image?.src
 									: '#'
 								}
 								>
@@ -232,8 +232,63 @@ const LightBoxModal = ({
 									{link?.title}
 									<DownloadIconV2 color='#000' width='16' height='16' />
 								</a>
-							</Link>
+							</Link> :
+							(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
+								<Link
+									target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
+									href={
+										dataList[currentIndex]?.link?.value ?
+										dataList[currentIndex]?.link?.value :
+										dataList[currentIndex]?.image?.src ?
+										dataList[currentIndex]?.image?.src
+										: '#'
+									}
+									>
+									<a
+										target={link?.target ? link?.target : '_self'}
+										className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+										{link?.title}
+										<DownloadIconV2 color='#000' width='16' height='16' />
+									</a>
+								</Link>
 						)}
+						{/* {!dataList ?
+							<Link
+								target={link?.target ? link?.target : '_self'}
+								href={
+									link?.value ?
+									link?.value :
+									image?.src ?
+									image?.src
+									: '#'
+								}
+								>
+								<a
+									target={link?.target ? link?.target : '_self'}
+									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+									{link?.title}
+									<DownloadIconV2 color='#000' width='16' height='16' />
+								</a>
+							</Link> :
+							(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
+								<Link
+									target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
+									href={
+										dataList[currentIndex]?.link?.value ?
+										dataList[currentIndex]?.link?.value :
+										dataList[currentIndex]?.image?.src ?
+										dataList[currentIndex]?.image?.src
+										: '#'
+									}
+									>
+									<a
+										target={link?.target ? link?.target : '_self'}
+										className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+										{link?.title}
+										<DownloadIconV2 color='#000' width='16' height='16' />
+									</a>
+								</Link>
+						)} */}
 						<button
 							className='lightbox___top_bar___close'
 							onClick={() => {
@@ -273,38 +328,40 @@ const LightBoxModal = ({
 					</div>
 					{!activateSwiper ? (
 						<>
-							<div className='px-4 px-md-10'>
-								<div className='lightbox___wrapper'>
-									{video?.value ? (
-										<iframe
-											id={'LightBox' + id + video?.title}
-											src={
-												video?.value +
-												`${
-													video?.value && video?.value.includes('?') ? '&' : '?'
-												}autopause=0`
-											}
-											alt={'LightBox' + id + video?.title}
-											title={'LightBox' + id + video?.title}
-											width='100%'
-											height='100%'
-											allow='autoplay; fullscreen; picture-in-picture'
-											mozallowfullscreen
-											webkitallowfullscreen
-											allowfullscreen
-											dataready={true}></iframe>
-									) : image?.src ? (
-										<img src={image?.src} alt={image?.alt} />
-									) : null}
+							<div className='w-100 my-md-0 my-auto h-75'>
+								<div className='px-4 px-md-10 h-100'>
+									<div className='lightbox___wrapper h-100'>
+										{video?.value ? (
+											<iframe
+												id={'LightBox' + id + video?.title}
+												src={
+													video?.value +
+													`${
+														video?.value && video?.value.includes('?') ? '&' : '?'
+													}autopause=0`
+												}
+												alt={'LightBox' + id + video?.title}
+												title={'LightBox' + id + video?.title}
+												width='100%'
+												height='100%'
+												allow='autoplay; fullscreen; picture-in-picture'
+												mozallowfullscreen
+												webkitallowfullscreen
+												allowfullscreen
+												dataready={true}></iframe>
+										) : image?.src ? (
+											<img src={image?.src} alt={image?.alt} />
+										) : null}
+									</div>
 								</div>
+								{caption?.value && (
+									<div
+										className='lightbox___caption'
+										dangerouslySetInnerHTML={{
+											__html: validateCaptions(caption?.value)
+										}}></div>
+								)}
 							</div>
-							{caption?.value && (
-								<div
-									className='lightbox___caption'
-									dangerouslySetInnerHTML={{
-										__html: validateCaptions(caption?.value)
-									}}></div>
-							)}
 						</>
 					) : (
 						dataList &&
