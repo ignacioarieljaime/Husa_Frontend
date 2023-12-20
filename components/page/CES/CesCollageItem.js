@@ -29,8 +29,14 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 					{data?.mediaList?.value && data?.mediaList?.value.length && (
 						<>
 							{data?.mediaList?.value.map((cItem, cIndex) =>
-								cItem?.video?.value ||
-								(cItem?.image?.src && (collapsed ? cIndex < 10 : true)) ? (
+								(cItem?.video?.value || cItem?.image?.src) &&
+								(windowSize[0] >= 900
+									? collapsed
+										? cIndex < data?.desktopColumns?.value
+										: true
+									: collapsed
+									? cIndex < data?.mobileColumns?.value
+									: true) ? (
 									<div
 										key={cIndex}
 										className='ces_collage___collage_wrapper___media_list___item'>
@@ -69,20 +75,25 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 						</>
 					)}
 				</div>
-				<button
-					onClick={() => {
-						setCollapsed(prev => !prev)
-						!collapsed &&
-							setTimeout(() => {
-								wrapperRef.current.scrollIntoView({ behavior: 'smooth' })
-							}, 0)
-					}}
-					className={`ces_collage___collage_wrapper___button ${
-						collapsed ? '' : 'rotate'
-					}`}>
-					<span>{collapsed ? 'View More' : 'View Less'}</span>
-					<FontAwesomeIcon icon={faChevronDown} size='sm' color='#fff' />
-				</button>
+				{(windowSize[0] >= 900 &&
+					data?.desktopColumns?.value < data?.mediaList?.value.length) ||
+				(windowSize[0] < 900 &&
+					data?.mobileColumns?.value < data?.mediaList?.value.length) ? (
+					<button
+						onClick={() => {
+							setCollapsed(prev => !prev)
+							!collapsed &&
+								setTimeout(() => {
+									wrapperRef.current.scrollIntoView({ behavior: 'smooth' })
+								}, 0)
+						}}
+						className={`ces_collage___collage_wrapper___button ${
+							collapsed ? '' : 'rotate'
+						}`}>
+						<span>{collapsed ? 'View More' : 'View Less'}</span>
+						<FontAwesomeIcon icon={faChevronDown} size='sm' color='#fff' />
+					</button>
+				) : null}
 			</div>
 			{lightBoxStatus && (
 				<LightBoxModal
