@@ -64,14 +64,15 @@
 		}
 		.ces_navbar___items_wrapper {
 			@include mq(768) {
-				flex-direction: column;
-				justify-content: center;
-				align-items: start;
-				&___link {
-					width: 100%;
-
-					& > * {
+				&.stack {
+					flex-direction: column;
+					justify-content: center;
+					align-items: start;
+					&___link {
 						width: 100%;
+						& > * {
+							width: 100%;
+						}
 					}
 				}
 			}
