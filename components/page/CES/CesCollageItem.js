@@ -13,7 +13,7 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 
 	const collageScreenSizeHandler = cIndex => {
 		if (windowSize[0] >= 900) return cIndex < data?.desktopColumns?.value * 2
-		if (windowSize[0] < 900) return cIndex < data?.mobileColumns?.value * 2
+		else return cIndex < data?.mobileColumns?.value * 2
 	}
 
 	return (
@@ -34,9 +34,8 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 					{data?.mediaList?.value && data?.mediaList?.value.length && (
 						<>
 							{data?.mediaList?.value.map((cItem, cIndex) =>
-								cItem?.video?.value ||
-								(cItem?.image?.src &&
-									(collapsed ? collageScreenSizeHandler(cIndex) : true)) ? (
+								(cItem?.video?.value || cItem?.image?.src) &&
+								(collapsed ? collageScreenSizeHandler(cIndex) : true) ? (
 									<div
 										key={cIndex}
 										className='ces_collage___collage_wrapper___media_list___item'>
@@ -76,9 +75,9 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 					)}
 				</div>
 				{(windowSize[0] >= 900 &&
-					data?.desktopColumns?.value < data?.mediaList?.value.length) ||
+					data?.desktopColumns?.value * 2 < data?.mediaList?.value.length) ||
 				(windowSize[0] < 900 &&
-					data?.mobileColumns?.value < data?.mediaList?.value.length) ? (
+					data?.mobileColumns?.value * 2 < data?.mediaList?.value.length) ? (
 					<button
 						onClick={() => {
 							setCollapsed(prev => !prev)
