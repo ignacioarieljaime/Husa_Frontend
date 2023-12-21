@@ -9,6 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { useWindowSize } from 'hooks/useWindowSize'
 
+import '@splidejs/react-splide/css'
+
 const LightBoxModal = ({
 	id,
 	caption,
