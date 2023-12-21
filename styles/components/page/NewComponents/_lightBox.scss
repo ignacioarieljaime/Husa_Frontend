@@ -5,15 +5,19 @@
 	max-width: 1000px;
 	height: fit-content;
 	position: fixed;
-	z-index: 99999999;
+	z-index: 9999;
 	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
+	bottom: 50%;
+	transform: translate(-50%, 50%);
 	background: #fff;
 	border-radius: 25px;
+
 	@include mq(768) {
+		z-index: 997;
 		width: 100vw;
-		height: 100vh;
+		height: calc(100vh - 72px);
+		bottom: 0;
+		transform: translate(-50%, 0);
 		border-radius: 0;
 		padding: 0;
 		display: flex;
@@ -285,5 +289,9 @@
 
 .dropdown-select-box-backdrop.light_box_backdrop {
 	background: #00000070;
-	z-index: 999999;
+	z-index: 9999;
+
+	@include mq(768) {
+		z-index: 997;
+	}
 }
