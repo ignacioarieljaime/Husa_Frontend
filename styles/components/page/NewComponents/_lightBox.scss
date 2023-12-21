@@ -13,7 +13,7 @@
 	border-radius: 25px;
 
 	@include mq(768) {
-		z-index: 997;
+		z-index: 99998;
 		width: 100vw;
 		height: calc(100vh - 72px);
 		bottom: 0;
