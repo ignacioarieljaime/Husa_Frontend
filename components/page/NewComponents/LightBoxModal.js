@@ -8,6 +8,8 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
+import '@splidejs/react-splide/css'
+
 const LightBoxModal = ({
 	id,
 	caption,
