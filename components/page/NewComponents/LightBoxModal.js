@@ -405,7 +405,11 @@ const LightBoxModal = ({
 												ref={thumbsSwiperRef}
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
-												}>
+												}
+												onArrowsUpdated={(slide, newIndex, prevIndex, destIndex) =>
+                                                    newIndexHandler(newIndex)
+                                                }
+												>
 												{dataList.map((item, index) => (
 													<SplideSlide key={index}>
 														{renderChidren(false, item, index, false, {
