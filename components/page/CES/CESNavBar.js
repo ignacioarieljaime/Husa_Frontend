@@ -6,6 +6,7 @@ import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 import LightBoxModal from '../NewComponents/LightBoxModal'
 import CESCloseIcon from 'components/icons/CESCloseIcon'
 import CESHamburgerMenuIcon from 'components/icons/CESHamburgerMenuIcon'
+import { useWindowSize } from 'hooks/useWindowSize'
 
 const CESNavBar = ({ data }) => {
 	const { structure } = data
@@ -15,6 +16,7 @@ const CESNavBar = ({ data }) => {
 	const [menuStatus, setMenuStatus] = useState(false)
 	const [fix, setFix] = useState(false)
 	const menu = useRef()
+	const windowSize = useWindowSize()
 
 	useEffect(() => {
 		setContent(structure)
@@ -27,6 +29,12 @@ const CESNavBar = ({ data }) => {
 			}
 		})
 	}, [])
+
+	useEffect(() => {
+		if (windowSize[0] >= 768) {
+			setMenuStatus(false)
+		}
+	}, [windowSize])
 
 	return (
 		<section
@@ -52,8 +60,7 @@ const CESNavBar = ({ data }) => {
 				style={
 					fix
 						? {
-								backgroundColor: content?.backgroundColor?.value || '#fff',
-								padding: '3px 40px'
+								backgroundColor: content?.backgroundColor?.value || '#fff'
 						  }
 						: {
 								backgroundColor: content?.backgroundColor?.value || '#fff'
@@ -92,50 +99,8 @@ const CESNavBar = ({ data }) => {
 											</span>
 										) : null}
 									</li>
-								) : (
-									item?.link?.value && (
-										<li
-											className='ces_navbar___items_wrapper___link'
-											key={index}>
-											<Link
-												target={
-													item?.link?.target ? item?.link?.target : '_self'
-												}
-												key='index'
-												href={item?.link?.value}>
-												<a
-													style={{ color: content?.fontColor?.value || '#000' }}
-													target={
-														item?.link?.target ? item?.link?.target : '_self'
-													}>
-													{item?.link?.title}
-													{item?.link?.target === '_blank' && (
-														<img
-															style={{ marginLeft: '10px' }}
-															src={OpenPageOnNewTab.src}
-														/>
-													)}
-												</a>
-											</Link>
-											{index === 0 && content?.list?.value?.length > 1 ? (
-												<span
-													onClick={() => setMenuStatus(prev => !prev)}
-													className='ces_navbar___items_wrapper___link___menu_btn'>
-													{menuStatus ? (
-														<CESCloseIcon />
-													) : (
-														<CESHamburgerMenuIcon />
-													)}
-												</span>
-											) : null}
-										</li>
-									)
-								)
-							) : (
-								item?.link?.value && (
-									<li
-										className={`ces_navbar___items_wrapper___link`}
-										key={index}>
+								) : item?.link?.value ? (
+									<li className='ces_navbar___items_wrapper___link' key={index}>
 										<Link
 											target={item?.link?.target ? item?.link?.target : '_self'}
 											key='index'
@@ -154,8 +119,70 @@ const CESNavBar = ({ data }) => {
 												)}
 											</a>
 										</Link>
+										{index === 0 && content?.list?.value?.length > 1 ? (
+											<span
+												onClick={() => setMenuStatus(prev => !prev)}
+												className='ces_navbar___items_wrapper___link___menu_btn'>
+												{menuStatus ? (
+													<CESCloseIcon />
+												) : (
+													<CESHamburgerMenuIcon />
+												)}
+											</span>
+										) : null}
+									</li>
+								) : (
+									<li className='ces_navbar___items_wrapper___link' key={index}>
+										<span
+											style={{
+												color: content?.fontColor?.value || '#000',
+												cursor: 'auto'
+											}}>
+											{item?.link?.title}
+										</span>
+										{index === 0 && content?.list?.value?.length > 1 ? (
+											<span
+												onClick={() => setMenuStatus(prev => !prev)}
+												className='ces_navbar___items_wrapper___link___menu_btn'>
+												{menuStatus ? (
+													<CESCloseIcon />
+												) : (
+													<CESHamburgerMenuIcon />
+												)}
+											</span>
+										) : null}
 									</li>
 								)
+							) : item?.link?.value ? (
+								<li className={`ces_navbar___items_wrapper___link`} key={index}>
+									<Link
+										target={item?.link?.target ? item?.link?.target : '_self'}
+										href={item?.link?.value}>
+										<a
+											style={{ color: content?.fontColor?.value || '#000' }}
+											target={
+												item?.link?.target ? item?.link?.target : '_self'
+											}>
+											{item?.link?.title}
+											{item?.link?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
+										</a>
+									</Link>
+								</li>
+							) : (
+								<li className={`ces_navbar___items_wrapper___link`} key={index}>
+									<span
+										style={{
+											color: content?.fontColor?.value || '#000',
+											cursor: 'auto'
+										}}>
+										{item?.link?.title}
+									</span>
+								</li>
 							)
 						) : null
 					)}
