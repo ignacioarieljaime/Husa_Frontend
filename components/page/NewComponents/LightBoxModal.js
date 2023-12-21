@@ -32,16 +32,8 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
-	function isLastPage(pageLength, totalLength, index) {
-		return index >= totalLength - pageLength;
-	}
-
 	const newIndexHandler = indexUpdate => {
-		const lastPage = isLastPage(5, dataList?.length, indexUpdate);
 		setCurrentIndex(indexUpdate)
-		if (lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = true;
-		if (!lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = true;
-
 	}
 
 	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
@@ -248,7 +240,11 @@ const LightBoxModal = ({
 					<div className='lightbox___top_bar'>
 						<button
 							className='lightbox___top_bar___back'
-							onClick={() => visibleHandler()}>
+							onClick={() => {
+								visibleHandler()
+								document.getElementById('main_body').style.overflow = 'unset'
+								document.getElementById('main_body').style.marginRight = '0px'
+							}}>
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
