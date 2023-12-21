@@ -110,6 +110,14 @@ const LightBoxModal = ({
 								dataready={true}
 								style={style}></iframe>
 						</div>
+					) : _data?.thumbnail_image?.src ? (
+						<img
+							src={_data?.thumbnail_image?.src}
+							alt={_data?.thumbnail_image?.alt}
+							className='ces_collage___collage_wrapper___media_list___item___thumbnail'
+							width='100%'
+							height='100%'
+						/>
 					) : (
 						<iframe
 							id={'LightBox' + _index + _data?.video?.title}
