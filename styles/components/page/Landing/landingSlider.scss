@@ -234,9 +234,6 @@
 			justify-content: center;
 			align-items: center;
 			gap: 4px;
-			@include mq(768) {
-				display: none;
-			}
 			&___blinking_dot {
 				width: 10px;
 				height: 10px;
