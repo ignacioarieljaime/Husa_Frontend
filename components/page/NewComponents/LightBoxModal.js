@@ -32,8 +32,16 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
+	function isLastPage(pageLength, totalLength, index) {
+		return index >= totalLength - pageLength;
+	}
+
 	const newIndexHandler = indexUpdate => {
+		const lastPage = isLastPage(5, dataList?.length, indexUpdate);
 		setCurrentIndex(indexUpdate)
+		if (lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = true;
+		if (!lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = true;
+
 	}
 
 	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
@@ -240,7 +248,7 @@ const LightBoxModal = ({
 					<div className='lightbox___top_bar'>
 						<button
 							className='lightbox___top_bar___back'
-							onClick={visibleHandler}>
+							onClick={() => visibleHandler()}>
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
@@ -293,43 +301,6 @@ const LightBoxModal = ({
 								)
 							)
 						) : null}
-						{/* {!dataList ?
-							<Link
-								target={link?.target ? link?.target : '_self'}
-								href={
-									link?.value ?
-									link?.value :
-									image?.src ?
-									image?.src
-									: '#'
-								}
-								>
-								<a
-									target={link?.target ? link?.target : '_self'}
-									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
-									{link?.title}
-									<DownloadIconV2 color='#000' width='16' height='16' />
-								</a>
-							</Link> :
-							(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
-								<Link
-									target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
-									href={
-										dataList[currentIndex]?.link?.value ?
-										dataList[currentIndex]?.link?.value :
-										dataList[currentIndex]?.image?.src ?
-										dataList[currentIndex]?.image?.src
-										: '#'
-									}
-									>
-									<a
-										target={link?.target ? link?.target : '_self'}
-										className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
-										{link?.title}
-										<DownloadIconV2 color='#000' width='16' height='16' />
-									</a>
-								</Link>
-						)} */}
 						<button
 							className='lightbox___top_bar___close'
 							onClick={() => {
