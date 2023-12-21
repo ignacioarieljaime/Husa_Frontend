@@ -210,6 +210,19 @@ const LightBoxModal = ({
 		}
 	}
 
+	useEffect(() => {
+		if (isVisible) {
+			document.getElementById('main_body').style.marginRight =
+				window.innerWidth -
+				document.getElementById('main_body').offsetWidth +
+				'px'
+			document.getElementById('main_body').style.overflow = 'hidden'
+		} else {
+			document.getElementById('main_body').style.overflow = 'unset'
+			document.getElementById('main_body').style.marginRight = '0px'
+		}
+	}, [isVisible])
+
 	return (
 		isVisible && (
 			<>
@@ -231,34 +244,17 @@ const LightBoxModal = ({
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
-						{!dataList ? (
-							<Link
-								target={link?.target ? link?.target : '_self'}
-								href={
-									link?.value ? link?.value : image?.src ? image?.src : '#'
-								}>
-								<a
-									target={link?.target ? link?.target : '_self'}
-									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
-									{link?.title}
-									<DownloadIconV2 color='#000' width='16' height='16' />
-								</a>
-							</Link>
-						) : (
-							(dataList[currentIndex]?.link?.value ||
-								dataList[currentIndex]?.image?.src) &&
-							dataList[currentIndex]?.link?.title && (
+						{link?.title && (link?.value || image?.src) ? (
+							!dataList ? (
 								<Link
-									target={
-										dataList[currentIndex]?.link?.target
-											? dataList[currentIndex]?.link?.target
-											: '_self'
-									}
+									target={link?.target ? link?.target : '_self'}
 									href={
-										dataList[currentIndex]?.link?.value
-											? dataList[currentIndex]?.link?.value
-											: dataList[currentIndex]?.image?.src
-											? dataList[currentIndex]?.image?.src
+										image?.src
+											? image?.src.split('.com')[0] +
+											  '.com/download/f' +
+											  image?.src.split('.com')[1]
+											: link?.value
+											? link?.value
 											: '#'
 									}>
 									<a
@@ -268,8 +264,35 @@ const LightBoxModal = ({
 										<DownloadIconV2 color='#000' width='16' height='16' />
 									</a>
 								</Link>
+							) : (
+								(dataList[currentIndex]?.link?.value ||
+									dataList[currentIndex]?.image?.src) &&
+								dataList[currentIndex]?.link?.title && (
+									<Link
+										target={
+											dataList[currentIndex]?.link?.target
+												? dataList[currentIndex]?.link?.target
+												: '_self'
+										}
+										href={
+											dataList[currentIndex]?.image?.src
+												? dataList[currentIndex]?.image?.src.split('.com')[0] +
+												  '.com/download/f' +
+												  dataList[currentIndex]?.image?.src.split('.com')[1]
+												: link?.value
+												? link?.value
+												: '#'
+										}>
+										<a
+											target={link?.target ? link?.target : '_self'}
+											className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
+											{link?.title}
+											<DownloadIconV2 color='#000' width='16' height='16' />
+										</a>
+									</Link>
+								)
 							)
-						)}
+						) : null}
 						{/* {!dataList ?
 							<Link
 								target={link?.target ? link?.target : '_self'}
