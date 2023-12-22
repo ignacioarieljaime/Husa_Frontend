@@ -20,7 +20,8 @@ const LightBoxModal = ({
 	visibleHandler,
 	activateSwiper,
 	dataList,
-	activeItemIndex
+    activeItemIndex,
+    zIndex
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
 	const [hasInteracted, setHasInteracted] = useState(false)
@@ -245,7 +246,7 @@ const LightBoxModal = ({
 				<div
 					ref={boxRef}
 					className='lightbox'
-					style={activateSwiper ? { maxWidth: '880px' } : {}}>
+					style={activateSwiper ? { maxWidth: '880px', zIndex: `${zIndex}` } : { zIndex: `${zIndex}` }}>
 					<div className='lightbox___top_bar'>
 						<button
 							className='lightbox___top_bar___back'
