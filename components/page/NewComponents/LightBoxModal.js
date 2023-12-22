@@ -32,9 +32,16 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
-	const newIndexHandler = indexUpdate => {
-		setCurrentIndex(indexUpdate)
-	}
+    function isLastPage(pageLength, totalLength, index) {
+        return index >= totalLength - pageLength;
+    }
+
+    const newIndexHandler = indexUpdate => {
+        const lastPage = isLastPage(5, dataList?.length, indexUpdate);
+        setCurrentIndex(indexUpdate)
+        if (lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = true;
+        if (!lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = false;
+    }
 
 	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
 		const numberOfIntervals = Math.floor(rowTotal / rowAmount)
