@@ -18,11 +18,11 @@ const NewsRoomMainNewsItem = ({
 	useEffect(() => {
 		if (date && (fetched || date.includes('T')))
 			setCustomDate(
-				moment(date).format('DD MMMM YYYY').split(' ')[0] +
+				moment(date).format('MMMM DD YYYY').split(' ')[0] +
 					' ' +
-					moment(date).format('DD MMMM YYYY').split(' ')[1] +
+					moment(date).format('MMMM DD YYYY').split(' ')[1] +
 					', ' +
-					moment(date).format('DD MMMM YYYY').split(' ')[2]
+					moment(date).format('MMMM DD YYYY').split(' ')[2]
 			)
 		else setCustomDate(date)
 	}, [date])

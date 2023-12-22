@@ -46,9 +46,6 @@ const NewsRoomMainBox = ({ data }) => {
 					_a && Object.keys(_a).length > 0
 						? setFilters(_a)
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
-					console.log('KEY:' + _key)
-					console.log('VALUE:' + _value)
-					console.log('A:' + _a)
 				}}
 				title={structure?.title?.value}
 				link={structure?.titleLink}
