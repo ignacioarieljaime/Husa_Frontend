@@ -230,6 +230,8 @@ const LightBoxModal = ({
 					onClick={() => {
 						if (outSide) {
 							visibleHandler()
+							document.getElementById('main_body').style.overflow = 'unset'
+                            document.getElementById('main_body').style.marginRight = '0px'
 						}
 					}}
 					className='dropdown-select-box-backdrop light_box_backdrop'></div>
