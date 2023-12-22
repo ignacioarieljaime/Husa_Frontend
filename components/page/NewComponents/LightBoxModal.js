@@ -33,7 +33,7 @@ const LightBoxModal = ({
 	const outSide = useOutsideClick(boxRef)
 
     function isLastPage(pageLength, totalLength, index) {
-        return index >= totalLength - pageLength;
+        return index > totalLength - pageLength;
     }
 
     const newIndexHandler = indexUpdate => {
@@ -43,26 +43,26 @@ const LightBoxModal = ({
         if (!lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = false;
     }
 
-	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
-		const numberOfIntervals = Math.floor(rowTotal / rowAmount)
-		const pageMovePercent = percent
-		const beforeLastRowHighestIndex = rowAmount * numberOfIntervals - 1
+    function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
+        const numberOfIntervals = Math.floor(rowTotal / rowAmount)
+        const pageMovePercent = percent
+        const beforeLastRowHighestIndex = rowAmount * numberOfIntervals - 1
 
-		for (let i = 0; i < numberOfIntervals; i++) {
-			const lowerBound = i * rowAmount
-			const upperBound = (i + 1) * rowAmount
+        for (let i = 0; i <= numberOfIntervals; i++) {
+            const lowerBound = i * rowAmount
+            const upperBound = (i + 1) * rowAmount
 
-			if (currentIndex >= lowerBound && currentIndex < upperBound)
-				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
-					pageMovePercent * i
-				}%)`
+            if (currentIndex >= lowerBound && currentIndex < upperBound)
+                thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
+                    pageMovePercent * i
+                }%)`
 
-			if (firstOpen && currentIndex > beforeLastRowHighestIndex)
-				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
-					pageMovePercent * i * 2
-				}%)`
-		}
-	}
+            if (firstOpen && currentIndex > beforeLastRowHighestIndex)
+                thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
+                    pageMovePercent * i
+                }%)`
+        }
+    }
 
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
