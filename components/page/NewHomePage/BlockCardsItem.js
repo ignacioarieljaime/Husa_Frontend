@@ -217,6 +217,7 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 			)}
 			{lightbox?.value && (
 				<LightBoxModal
+					zIndex={10001}
 					id={data?.id}
 					caption={lightboxObject?.value?.caption}
 					video={lightboxObject?.value?.video}
