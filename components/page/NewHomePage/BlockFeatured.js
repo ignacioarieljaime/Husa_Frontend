@@ -51,6 +51,7 @@ const BlockFeatured = ({ data }) => {
 			</Swiper>
 			{content?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
 				<LightBoxModal
+					zIndex={99999}
 					id={data?.id}
 					caption={
 						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
