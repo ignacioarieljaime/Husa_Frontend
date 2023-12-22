@@ -157,6 +157,13 @@
 						}
 						.lightbox___caption {
 							padding: 12px 16px 0;
+							@include mq(768) {
+								position: absolute;
+								bottom: 5%;
+								left: 0;
+								right: 0;
+								padding: 0;
+							}
 						}
 					}
 				}

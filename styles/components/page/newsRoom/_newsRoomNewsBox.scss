@@ -77,8 +77,6 @@
 	}
 }
 
-
-
 .news_room_main_news_item {
 	background: #f0f2f2;
 	border-radius: 50px;
@@ -148,7 +146,7 @@
 		flex-direction: column;
 		width: calc(50% - 8px);
 		@include mq(768) {
-			width: calc(50% - 4px);
+			width: calc(50% - 8px);
 		}
 		@include mq(550) {
 			width: 100% !important;
@@ -456,7 +454,7 @@
 						font-size: 14px;
 						font-weight: 400px;
 						line-height: 14px;
-						color: #00AAA6;
+						color: #00aaa6;
 						background-color: none;
 						background: none;
 						border: none;
@@ -633,6 +631,9 @@
 								@include mq(991) {
 									width: 180px;
 								}
+							}
+							.search-close {
+								color: #8c8f8f;
 							}
 						}
 					}

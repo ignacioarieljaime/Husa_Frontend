@@ -90,6 +90,12 @@ const ProductItemV2 = ({ data }) => {
 			}
 		})
 	}
+
+	const handleScreenSizeDropdown = (e) => {
+		e.preventDefault();
+		setShowSizes(prev => !prev)
+	}
+	  
 	return (
 		<>
 		<div className='product_item_v2'>
@@ -136,7 +142,7 @@ const ProductItemV2 = ({ data }) => {
 								{screenSize.length > 5 ? (
 									<div className='content'>
 										<div
-											onClick={() => setShowSizes(prev => !prev)}
+											onClick={(e) => handleScreenSizeDropdown(e)}
 											className='show_sizes_btn'>
 											<span
 												className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
@@ -155,7 +161,8 @@ const ProductItemV2 = ({ data }) => {
 														className={
 															activeSizeIndex === index ? 'active' : ''
 														}
-														onClick={() => {
+														onClick={(e) => {
+															e.preventDefault()
 															setCurrentItem(item)
 															setActiveSizeIndex(index)
 														}}
@@ -185,7 +192,8 @@ const ProductItemV2 = ({ data }) => {
 										<li
 											key={index}
 											className={activeSizeIndex === index ? 'active' : ''}
-											onClick={() => {
+											onClick={(e) => {
+												e.preventDefault()
 												setCurrentItem(item)
 												setActiveSizeIndex(index)
 												setLabelOff(true)

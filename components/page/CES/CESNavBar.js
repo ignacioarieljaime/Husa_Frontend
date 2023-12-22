@@ -43,7 +43,7 @@ const CESNavBar = ({ data }) => {
 				content?.version?.value === 'primary'
 					? {
 							position: ' sticky',
-							zIndex: ' 99999',
+							zIndex: `${lightBoxStatus ? ' 99999' : ' 99998'}`,
 							top: ' 0'
 					  }
 					: {}

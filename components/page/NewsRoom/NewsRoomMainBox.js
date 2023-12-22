@@ -25,13 +25,6 @@ const NewsRoomMainBox = ({ data }) => {
 		search: '',
 		page: 1
 	})
-	useEffect(() => {
-		if (filters?.product.length || filters?.search || filters?.year.length) {
-			getNews()
-		} else {
-			setNews(null)
-		}
-	}, [filters])
 
 	useEffect(() => {
 		let newOrder = []
@@ -45,31 +38,15 @@ const NewsRoomMainBox = ({ data }) => {
 		setNewsItemOrder(newOrder)
 	}, [])
 
-	const getNews = async () => {
-		setNews('loading')
-		try {
-			let response = await GetNewsApi(filters, 15)
-			setNews(response.data.data)
-			setPagination(response.data.meta)
-			setNewsLength(response.data?.meta?.total)
-		} catch (error) {
-			console.log(error)
-		}
-	}
-
 	return (
 		<>
 			<NewsSearchFilter
 				filters={filters}
-				filterHandler={(_key, _value, _a) =>{
+				filterHandler={(_key, _value, _a) => {
 					_a && Object.keys(_a).length > 0
 						? setFilters(_a)
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
-					console.log("KEY:" + _key)
-					console.log("VALUE:" + _value)
-					console.log("A:" + _a)
-					}
-				}
+				}}
 				title={structure?.title?.value}
 				link={structure?.titleLink}
 				yearTitle={
@@ -180,12 +157,13 @@ const NewsRoomMainBox = ({ data }) => {
 									<NewsRoomMainNewsItem
 										link={item?.link?.value}
 										target={item?.link?.target}
-										date={item?.created_at}
+										date={item?.published_at}
 										image={item?.image?.src}
 										subject={item?.tag?.value}
 										title={item?.title?.value}
 										isFirst={newsItemOrder[index] === 1}
 										isThree={newsItemOrder[index] === 3}
+										fetched
 									/>
 								)
 						)
