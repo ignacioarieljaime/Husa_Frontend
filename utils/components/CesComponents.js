@@ -104,5 +104,9 @@ module.exports.CesComponents = [
 	{
 		name: 'CesCollage',
 		path: 'components/page/CES/CesCollage'
-	}
+  },
+  {
+		name: 'CESNavBar',
+		path: 'components/page/CES/CESNavBar'
+	},
 ]

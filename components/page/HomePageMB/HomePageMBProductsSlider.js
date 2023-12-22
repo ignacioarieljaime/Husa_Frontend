@@ -19,7 +19,7 @@ const HomePageMBProductsSlider = ({ data }) => {
 					centeredSlides={true}
 					grabCursor={true}
 					className='home-page-mb-products-slider'>
-					{structure.list.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index} className='slider-item'>
 							<div>
 								<img
