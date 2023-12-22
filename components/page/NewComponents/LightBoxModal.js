@@ -404,8 +404,8 @@ const LightBoxModal = ({
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
 												}
-												onArrowsUpdated={(slide, newIndex, prevIndex, destIndex) =>
-                                                    newIndexHandler(newIndex)
+												onArrowsUpdated={(slide) =>
+                                                    newIndexHandler(slide.index)
                                                 }
 												>
 												{dataList.map((item, index) => (
