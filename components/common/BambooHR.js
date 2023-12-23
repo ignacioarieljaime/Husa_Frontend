@@ -9,11 +9,11 @@ const BambooHR = () => {
 				data-domain='hisenseusacorporation.bamboohr.com'
 				data-version='1.0.0'
 				data-departmentId=''></div>
-			<script
+			<Script
 				src='https://hisenseusacorporation.bamboohr.com/js/embed.js'
 				type='text/javascript'
 				async
-				defer></script>
+				defer></Script>
 		</>
 	)
 }
