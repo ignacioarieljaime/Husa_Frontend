@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import Spinner from 'components/common/Spinner'
 
-const NewsSingleLatestNews = ({ data, pim }) => {
+const NewsSingleLatestNews = ({ data, pim, pageId }) => {
 	let { structure } = data
 	const [news, setNews] = useState()
 	const [title, setTitle] = useState()
@@ -26,7 +26,7 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 					structure?.selectby?.value === 'rel'
 						? pim?.tags.map(item => '&tag[]=' + item)
 						: ''
-				}&exclude[]=${pim?.id}&page=${1}&brand_id=${
+				}&exclude[]=${pageId}&page=${1}&brand_id=${
 					process.env.NEXT_PUBLIC_BRAND_ID
 				}`,
 				{
