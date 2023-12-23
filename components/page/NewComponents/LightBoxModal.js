@@ -20,8 +20,8 @@ const LightBoxModal = ({
 	visibleHandler,
 	activateSwiper,
 	dataList,
-    activeItemIndex,
-    zIndex
+	activeItemIndex,
+	zIndex
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
 	const [hasInteracted, setHasInteracted] = useState(false)
@@ -33,37 +33,39 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
-    function isLastPage(pageLength, totalLength, index) {
-        return index > totalLength - pageLength;
-    }
+	function isLastPage(pageLength, totalLength, index) {
+		return index > totalLength - pageLength
+	}
 
-    const newIndexHandler = indexUpdate => {
-        const lastPage = isLastPage(5, dataList?.length, indexUpdate);
-        setCurrentIndex(indexUpdate)
-        if (lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = true;
-        if (!lastPage) document.getElementsByClassName('splide__arrow--next')[0].disabled = false;
-    }
+	const newIndexHandler = indexUpdate => {
+		const lastPage = isLastPage(5, dataList?.length, indexUpdate)
+		setCurrentIndex(indexUpdate)
+		if (lastPage)
+			document.getElementsByClassName('splide__arrow--next')[0].disabled = true
+		if (!lastPage)
+			document.getElementsByClassName('splide__arrow--next')[0].disabled = false
+	}
 
-    function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
-        const numberOfIntervals = Math.floor(rowTotal / rowAmount)
-        const pageMovePercent = percent
-        const beforeLastRowHighestIndex = rowAmount * numberOfIntervals - 1
+	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
+		const numberOfIntervals = Math.floor(rowTotal / rowAmount)
+		const pageMovePercent = percent
+		const beforeLastRowHighestIndex = rowAmount * numberOfIntervals - 1
 
-        for (let i = 0; i <= numberOfIntervals; i++) {
-            const lowerBound = i * rowAmount
-            const upperBound = (i + 1) * rowAmount
+		for (let i = 0; i <= numberOfIntervals; i++) {
+			const lowerBound = i * rowAmount
+			const upperBound = (i + 1) * rowAmount
 
-            if (currentIndex >= lowerBound && currentIndex < upperBound)
-                thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
-                    pageMovePercent * i
-                }%)`
+			if (currentIndex >= lowerBound && currentIndex < upperBound)
+				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
+					pageMovePercent * i
+				}%)`
 
-            if (firstOpen && currentIndex > beforeLastRowHighestIndex)
-                thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
-                    pageMovePercent * i
-                }%)`
-        }
-    }
+			if (firstOpen && currentIndex > beforeLastRowHighestIndex)
+				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
+					pageMovePercent * i
+				}%)`
+		}
+	}
 
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
@@ -238,15 +240,23 @@ const LightBoxModal = ({
 					onClick={() => {
 						if (outSide) {
 							visibleHandler()
-							document.getElementById('main_body').style.overflow = 'unset'
-                            document.getElementById('main_body').style.marginRight = '0px'
 						}
 					}}
 					className='dropdown-select-box-backdrop light_box_backdrop'></div>
 				<div
 					ref={boxRef}
 					className='lightbox'
-					style={activateSwiper ? { maxWidth: '880px', zIndex: `${zIndex}` } : { zIndex: `${zIndex}` }}>
+					style={
+						activateSwiper
+							? { maxWidth: '880px', zIndex: `${zIndex}` }
+							: {
+									maxWidth:
+										windowSize[1] < 800
+											? 1.3 * windowSize[1] - 32 + 'px'
+											: '1000px',
+									zIndex: `${zIndex}`
+							  }
+					}>
 					<div className='lightbox___top_bar'>
 						<button
 							className='lightbox___top_bar___back'
@@ -350,7 +360,7 @@ const LightBoxModal = ({
 						<>
 							<div className='w-100 my-md-0 my-auto h-75'>
 								<div className='px-4 px-md-10 h-100'>
-									<div className='lightbox___wrapper h-100'>
+									<div className='lightbox___wrapper'>
 										{video?.value ? (
 											<iframe
 												id={'LightBox' + id + video?.title}
@@ -414,10 +424,7 @@ const LightBoxModal = ({
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
 												}
-												onArrowsUpdated={(slide) =>
-                                                    newIndexHandler(slide.index)
-                                                }
-												>
+												onArrowsUpdated={slide => newIndexHandler(slide.index)}>
 												{dataList.map((item, index) => (
 													<SplideSlide key={index}>
 														{renderChidren(false, item, index, false, {
