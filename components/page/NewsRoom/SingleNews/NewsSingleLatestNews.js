@@ -21,7 +21,7 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 		try {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=news&perPage=${
-					structure?.count?.value
+					(structure?.count?.value + 1)
 				}${
 					structure?.selectby?.value === 'rel'
 						? pim?.tags.map(item => '&tag[]=' + item)
@@ -36,7 +36,9 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 				}
 			)
 
-			setNews(response.data.data)
+			const sameArticleRemoved = response.data.data.slice(1)
+
+			setNews(sameArticleRemoved)
 		} catch (error) {
 			console.log(error)
 		}
