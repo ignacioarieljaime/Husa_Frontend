@@ -20,7 +20,8 @@ const LightBoxModal = ({
 	visibleHandler,
 	activateSwiper,
 	dataList,
-	activeItemIndex
+	activeItemIndex,
+	zIndex
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
 	const [hasInteracted, setHasInteracted] = useState(false)
@@ -32,8 +33,17 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
+	function isLastPage(pageLength, totalLength, index) {
+		return index > totalLength - pageLength
+	}
+
 	const newIndexHandler = indexUpdate => {
+		const lastPage = isLastPage(5, dataList?.length, indexUpdate)
 		setCurrentIndex(indexUpdate)
+		if (lastPage)
+			document.getElementsByClassName('splide__arrow--next')[0].disabled = true
+		if (!lastPage)
+			document.getElementsByClassName('splide__arrow--next')[0].disabled = false
 	}
 
 	function listMovementHandler(rowAmount, rowTotal, percent, firstOpen) {
@@ -41,7 +51,7 @@ const LightBoxModal = ({
 		const pageMovePercent = percent
 		const beforeLastRowHighestIndex = rowAmount * numberOfIntervals - 1
 
-		for (let i = 0; i < numberOfIntervals; i++) {
+		for (let i = 0; i <= numberOfIntervals; i++) {
 			const lowerBound = i * rowAmount
 			const upperBound = (i + 1) * rowAmount
 
@@ -52,7 +62,7 @@ const LightBoxModal = ({
 
 			if (firstOpen && currentIndex > beforeLastRowHighestIndex)
 				thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform = `translateX(-${
-					pageMovePercent * i * 2
+					pageMovePercent * i
 				}%)`
 		}
 	}
@@ -230,17 +240,33 @@ const LightBoxModal = ({
 					onClick={() => {
 						if (outSide) {
 							visibleHandler()
+							document.getElementById('main_body').style.overflow = 'unset'
+							document.getElementById('main_body').style.marginRight = '0px'
 						}
 					}}
 					className='dropdown-select-box-backdrop light_box_backdrop'></div>
 				<div
 					ref={boxRef}
 					className='lightbox'
-					style={activateSwiper ? { maxWidth: '880px' } : {}}>
+					style={
+						activateSwiper
+							? { maxWidth: '880px', zIndex: `${zIndex}` }
+							: {
+									maxWidth:
+										windowSize[1] < 800
+											? 1.3 * windowSize[1] - 32 + 'px'
+											: '1000px',
+									zIndex: `${zIndex}`
+							  }
+					}>
 					<div className='lightbox___top_bar'>
 						<button
 							className='lightbox___top_bar___back'
-							onClick={visibleHandler}>
+							onClick={() => {
+								visibleHandler()
+								document.getElementById('main_body').style.overflow = 'unset'
+								document.getElementById('main_body').style.marginRight = '0px'
+							}}>
 							<FontAwesomeIcon icon={faChevronLeft} />
 							<span>Back</span>
 						</button>
@@ -293,47 +319,12 @@ const LightBoxModal = ({
 								)
 							)
 						) : null}
-						{/* {!dataList ?
-							<Link
-								target={link?.target ? link?.target : '_self'}
-								href={
-									link?.value ?
-									link?.value :
-									image?.src ?
-									image?.src
-									: '#'
-								}
-								>
-								<a
-									target={link?.target ? link?.target : '_self'}
-									className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
-									{link?.title}
-									<DownloadIconV2 color='#000' width='16' height='16' />
-								</a>
-							</Link> :
-							(dataList[currentIndex]?.link?.value || dataList[currentIndex]?.image?.src) && dataList[currentIndex]?.link?.title && (
-								<Link
-									target={dataList[currentIndex]?.link?.target ? dataList[currentIndex]?.link?.target : '_self'}
-									href={
-										dataList[currentIndex]?.link?.value ?
-										dataList[currentIndex]?.link?.value :
-										dataList[currentIndex]?.image?.src ?
-										dataList[currentIndex]?.image?.src
-										: '#'
-									}
-									>
-									<a
-										target={link?.target ? link?.target : '_self'}
-										className='n-btn outline-black transparent d-flex gap-2 align-items-center w-fit medium'>
-										{link?.title}
-										<DownloadIconV2 color='#000' width='16' height='16' />
-									</a>
-								</Link>
-						)} */}
 						<button
 							className='lightbox___top_bar___close'
 							onClick={() => {
 								visibleHandler()
+								document.getElementById('main_body').style.overflow = 'unset'
+								document.getElementById('main_body').style.marginRight = '0px'
 							}}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
@@ -371,7 +362,7 @@ const LightBoxModal = ({
 						<>
 							<div className='w-100 my-md-0 my-auto h-75'>
 								<div className='px-4 px-md-10 h-100'>
-									<div className='lightbox___wrapper h-100'>
+									<div className='lightbox___wrapper'>
 										{video?.value ? (
 											<iframe
 												id={'LightBox' + id + video?.title}
@@ -434,7 +425,8 @@ const LightBoxModal = ({
 												ref={thumbsSwiperRef}
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
-												}>
+												}
+												onArrowsUpdated={slide => newIndexHandler(slide.index)}>
 												{dataList.map((item, index) => (
 													<SplideSlide key={index}>
 														{renderChidren(false, item, index, false, {

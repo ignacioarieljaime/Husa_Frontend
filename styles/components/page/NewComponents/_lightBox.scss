@@ -13,7 +13,7 @@
 	border-radius: 25px;
 
 	@include mq(768) {
-		z-index: 997;
+		z-index: 99998;
 		width: 100vw;
 		height: calc(100vh - 72px);
 		bottom: 0;
@@ -144,6 +144,16 @@
 						}
 						iframe {
 							aspect-ratio: 16 / 9;
+						}
+						.lightbox___caption {
+							padding: 12px 16px 0;
+							@include mq(768) {
+								position: absolute;
+								bottom: 5%;
+								left: 0;
+								right: 0;
+								padding: 0;
+							}
 						}
 						.lightbox___caption {
 							padding: 12px 16px 0;
