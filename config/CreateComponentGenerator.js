@@ -7,7 +7,9 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 
-${ComponentList.map(item => `const ${item.name} = dynamic(() => import('${item.path}'))`).join(
+${ComponentList.map(
+	item => `const ${item.name} = dynamic(() => import('${item.path}'))`
+).join(
 	`;
 `
 )}
@@ -17,13 +19,14 @@ const Components = {
 `)}
 }
 
-export default (block, pim , notification) => {
+export default (block, pim , notification, pageId) => {
     if (typeof Components[block.name] !== 'undefined') {
         return React.createElement(Components[block.name], {
             key: block.id,
             data: block,
             pim: pim,
-            notification: notification
+            notification: notification,
+            pageId
         })
     }
     // return React.createElement(
