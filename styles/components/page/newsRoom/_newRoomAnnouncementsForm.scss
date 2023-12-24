@@ -105,6 +105,9 @@
 							text-align: center;
 						}
 					}
+					@include mq(768) {
+						text-align: center;
+					}
 				}
 			}
 		}
