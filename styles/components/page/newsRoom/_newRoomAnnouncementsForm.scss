@@ -101,6 +101,9 @@
 						font-weight: 500;
 						line-height: 11px; /* 135% */
 					}
+					@include mq(768) {
+						text-align: center;
+					}
 				}
 			}
 		}
