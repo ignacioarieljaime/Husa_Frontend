@@ -35,7 +35,7 @@ function ProductSupportRegister({ pim, data }) {
 					/>
 				) : (
 					<ProductSupportRegisterTab
-						data={structure}
+						data={{ ...structure, id: data?.id }}
 						pim={pim}
 						formHandler={setFormDisplay}
 					/>

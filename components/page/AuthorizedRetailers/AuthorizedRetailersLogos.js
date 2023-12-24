@@ -4,8 +4,8 @@ function AuthorizedRetailersLogos({ data }) {
 	let { structure } = data
 	return (
 		<section>
-			<div class='container mb-5'>
-				<div class='grid-container'>
+			<div className='container mb-5'>
+				<div className='grid-container'>
 					{structure?.list?.value.map((item, index) => (
 						<div
 							key={'retailer-' + index}

@@ -39,7 +39,7 @@ const LightRejection = ({ data }) => {
 				<div className='position-relative'>
 					<div className='tabs-container mt-2 mt-md-4'>
 						{content?.tabs?.value.map((tab, index) => (
-							<div className='m-1 m-sm-3' key={index}>
+							<div key={index} className='m-1 m-sm-3' key={index}>
 								<button
 									className={`btn text-white tab-btn ${
 										activeTab === index ? 'active' : ''
@@ -53,7 +53,9 @@ const LightRejection = ({ data }) => {
 						))}
 					</div>
 					{content?.tabs?.value.map((tab, index) => (
-						<div className={`tab-image ${activeTab === index ? 'active' : ''}`}>
+						<div
+							key={index}
+							className={`tab-image ${activeTab === index ? 'active' : ''}`}>
 							<CustomImage src={tab?.image?.src} alt={tab?.image?.alt} />
 							<div
 								className='fs-9 fs-md-3 fw-light'
@@ -63,7 +65,7 @@ const LightRejection = ({ data }) => {
 				</div>
 				<div className='d-flex justify-content-between  flex-wrap flex-sm-nowrap'>
 					{content?.specs?.value.map((spec, index) => (
-						<div className='d-flex flex-column '>
+						<div key={index} className='d-flex flex-column '>
 							<div className='px-4 px-md-20 py-4 py-md-15 flex-grow-1 d-flex flex-column'>
 								<div
 									className='fs-sm-2 fs-md-2x fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
@@ -80,7 +82,9 @@ const LightRejection = ({ data }) => {
 							</div>
 							<div className='row justify-content-between align-items-start flex-md-nowrap mx-0 px-0 px-md-20 '>
 								{spec?.features?.value.map((feature, index) => (
-									<div className='feature mb-5 mb-md-0 px-4 px-md-0 mx-1'>
+									<div
+										key={index}
+										className='feature mb-5 mb-md-0 px-4 px-md-0 mx-1'>
 										<div
 											className='color-bar active'
 											data-aos='size-animation'
