@@ -104,8 +104,10 @@ function BlogHead({ data: { structure }, pim }) {
 			<div className='blog-header overflow-hidden mt-20'>
 				<div className='px-3 mb-13'>
 					<div className='d-flex align-items-center justify-content-start flex-wrap gap-2 gap-sm-4 mb-10'>
-						{pim?.tags?.map(item => (
-							<span className='text-primary-dark fs-5 fw-normal d-block text-decoration-none'>
+						{pim?.tags?.map((item, index) => (
+							<span
+								key={index}
+								className='text-primary-dark fs-5 fw-normal d-block text-decoration-none'>
 								{item}
 							</span>
 						))}

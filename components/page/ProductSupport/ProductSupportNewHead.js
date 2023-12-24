@@ -86,9 +86,9 @@ function ProductSupportNewHead({ pim }) {
 							<p className='fs-base fw-normal mb-0'>Document Downloads</p>
 							<div className='row align-items-stretch w-100'>
 								{pim?.assets.map(
-									item =>
+									(item, index) =>
 										item.type_id === 3 && (
-											<div className='col-12 col-sm-6 py-3'>
+											<div key={index} className='col-12 col-sm-6 py-3'>
 												{item.caption === 'Installation Request' ? (
 													<Link
 														target='_self'
@@ -145,7 +145,7 @@ function ProductSupportNewHead({ pim }) {
 													<DownloadIcon color='#00AAA6' />
 													<input
 														onClick={() => downloadFile(item.download_link)}
-														class='xhr success'
+														className='xhr success'
 														type='button'
 														name='xhr'
 														value='Click to start XHR (success)'

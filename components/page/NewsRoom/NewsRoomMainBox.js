@@ -155,6 +155,7 @@ const NewsRoomMainBox = ({ data }) => {
 							(item, index) =>
 								index < newsItemOrder.length && (
 									<NewsRoomMainNewsItem
+										key={index}
 										link={item?.link?.value}
 										target={item?.link?.target}
 										date={item?.published_at}

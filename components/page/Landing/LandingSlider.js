@@ -15,10 +15,12 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 import { useState } from 'react'
 import LightBoxModal from '../NewComponents/LightBoxModal'
 import CustomButton from 'components/common/CustomButton'
+import { useRouter } from 'next/router'
 
 function LandingSlider({ data }) {
 	let { structure } = data
 	const size = useWindowSize()
+	const router = useRouter()
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	return (
@@ -54,21 +56,29 @@ function LandingSlider({ data }) {
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
 						{item?.url?.value && !item?.lightbox?.value ? (
-							<Link
-								target={item?.url?.target ? item?.url?.target : '_self'}
-								href={item?.url?.value ? item?.url?.value : ''}>
-								<a className='carousel-item-wrapper'>
-									<div
-										className='w-100 h-100 '
-										style={{
-											background: `url(${
-												size[0] < 768
-													? item?.mobile?.src
-													: size[0] > 768 && size[0] < 1027
-													? item?.tablet?.src
-													: item?.desktop?.src
-											})`
-										}}>
+							// <Link
+							// 	target={item?.url?.target ? item?.url?.target : '_self'}
+							// 	href={item?.url?.value ? item?.url?.value : ''}>
+							<div
+								onClick={() =>
+									item?.url?.value && router.push(item?.url?.value)
+								}
+								className='carousel-item-wrapper'
+								style={{
+									cursor: 'pointer'
+								}}>
+								<div
+									className='w-100 h-100 '
+									style={{
+										background: `url(${
+											size[0] < 768
+												? item?.mobile?.src
+												: size[0] > 768 && size[0] < 1027
+												? item?.tablet?.src
+												: item?.desktop?.src
+										})`
+									}}>
+									<div>
 										{item?.url?.value && (
 											<CustomButton
 												target={item?.url?.target ? item?.url?.target : '_self'}
@@ -81,8 +91,8 @@ function LandingSlider({ data }) {
 											</CustomButton>
 										)}
 									</div>
-								</a>
-							</Link>
+								</div>
+							</div>
 						) : (
 							<div className='carousel-item-wrapper'>
 								<div

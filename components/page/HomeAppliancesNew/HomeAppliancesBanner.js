@@ -1,9 +1,15 @@
 import { useAspectRatio } from 'hooks/useAspectRatio'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const HomeAppliancesBanner = ({ data }) => {
 	const { structure } = data
+	const [content, setContent] = useState(null)
 	const aspectRatio = useAspectRatio(structure?.image?.src)
+
+	useEffect(() => {
+		setContent(structure)
+	}, [])
+
 	return (
 		<section>
 			<div
@@ -18,13 +24,13 @@ const HomeAppliancesBanner = ({ data }) => {
 						  }
 						: {}
 				}>
-				<img src={structure?.image?.src} alt={structure?.image?.alt} />
+				<img src={content?.image?.src} alt={content?.image?.alt} />
 				<div className='content'>
-					<h4 className='subtitle'>{structure?.subtitle?.value}</h4>
+					<h4 className='subtitle'>{content?.subtitle?.value}</h4>
 					<h1
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: structure?.title?.value
+							__html: content?.title?.value
 						}}></h1>
 				</div>
 			</div>
