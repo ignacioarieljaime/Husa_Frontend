@@ -39,7 +39,7 @@ const LightRejection = ({ data }) => {
 				<div className='position-relative'>
 					<div className='tabs-container mt-2 mt-md-4'>
 						{content?.tabs?.value.map((tab, index) => (
-							<div key={index} className='m-1 m-sm-3' key={index}>
+							<div key={index} className='m-1 m-sm-3'>
 								<button
 									className={`btn text-white tab-btn ${
 										activeTab === index ? 'active' : ''
