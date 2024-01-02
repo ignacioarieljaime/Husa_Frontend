@@ -82,7 +82,7 @@ function ProductDetailsBox({ pim, data }) {
 						</span>
 						<FontAwesomeIcon
 							icon={showMore ? faChevronUp : faChevronDown}
-							size={`fa-2xs `}
+							size={`xs`}
 						/>
 					</span>
 				</button>

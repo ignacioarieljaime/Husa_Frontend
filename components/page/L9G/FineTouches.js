@@ -22,7 +22,7 @@ const FineTouches = ({ data: { structure } }) => {
 				<div className='bg-black position-relative pb-2 pb-md-15'>
 					<div className='tabs-container mt-4'>
 						{list.map((tab, index) => (
-							<div className='m-3'>
+							<div key={index} className='m-3'>
 								<button
 									className={`btn text-white tab-btn ${
 										activeTab === index ? 'active' : ''

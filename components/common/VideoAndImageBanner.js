@@ -6,12 +6,13 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 
 const VideoAndImageBanner = ({ data }) => {
 	const { structure } = data
-	const [text, setText] = useState(null)
+	const [content, setContent] = useState(null)
 	const aspectRatio = useAspectRatio(structure?.['backgroundImage ']?.src)
 
 	useEffect(() => {
-		setText(structure?.subtitle?.value)
+		setContent(structure)
 	}, [])
+
 	return (
 		<section>
 			<div className='video_and_image_banner'>
@@ -23,8 +24,8 @@ const VideoAndImageBanner = ({ data }) => {
 							: {}
 					}>
 					<CustomImage
-						src={structure?.['backgroundImage ']?.src}
-						alt={structure?.['backgroundImage ']?.alt}
+						src={content?.['backgroundImage ']?.src}
+						alt={content?.['backgroundImage ']?.alt}
 						WrapperMaxHeight={'100%'}
 						WrapperMaxWidth={'100%'}
 						wrapperWidth={'100%'}
@@ -33,8 +34,8 @@ const VideoAndImageBanner = ({ data }) => {
 				</div>
 				<div className='content'>
 					<CustomImage
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
+						src={content?.image?.src}
+						alt={content?.image?.alt}
 						WrapperMaxHeight={'100%'}
 						WrapperMaxWidth={'40%'}
 						wrapperWidth={'100%'}
@@ -51,8 +52,11 @@ const VideoAndImageBanner = ({ data }) => {
 							loop={true}
 							autoplay={true}
 							muted={true}
-							src={structure?.video?.value}></video>
-						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+							src={content?.video?.value}></video>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: content?.subtitle?.value
+							}}></div>
 					</div>
 				</div>
 			</div>

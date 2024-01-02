@@ -49,8 +49,9 @@ function BlogListSoundBardItemContainer({ data, getBlogs }) {
 					</div>
 					<figcaption className='col-12 col-md-8'>
 						<div className='text-start mb-3'>
-							{data?.tag?.value?.map(item => (
+							{data?.tag?.value?.map((item, index) => (
 								<span
+									key={index}
 									style={{
 										marginRight: '20px',
 										border: 'none',

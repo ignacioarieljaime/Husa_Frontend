@@ -81,14 +81,14 @@ function ProductSupportNewHead({ pim }) {
 					</div>
 					<div className='col-12 col-lg-6 ps-lg-10'>
 						<div className='d-flex flex-column justify-content-center align-items-start h-100'>
-							<h1 className='fs-2 fw-bold mb-8'>{pim?.name}</h1>
+							<h1 className='fs-2 fw-bold mb-8'>{pim?.name} Downloads</h1>
 							<p className='text-primary-new mb-10'>Model: {pim?.model}</p>
 							<p className='fs-base fw-normal mb-0'>Document Downloads</p>
 							<div className='row align-items-stretch w-100'>
 								{pim?.assets.map(
-									item =>
+									(item, index) =>
 										item.type_id === 3 && (
-											<div className='col-12 col-sm-6 py-3'>
+											<div key={index} className='col-12 col-sm-6 py-3'>
 												{item.caption === 'Installation Request' ? (
 													<Link
 														target='_self'
@@ -125,7 +125,9 @@ function ProductSupportNewHead({ pim }) {
 									<p className='fs-base fw-normal mb-0 mt-7'>
 										Firmware and Software
 									</p>
-									<p className='d-flex align-items-start' style={{ fontSize: '14px', color: '#ff0000' }}>
+									<p
+										className='d-flex align-items-start'
+										style={{ fontSize: '14px', color: '#ff0000' }}>
 										<ExclamationMarkIcon />
 										This firmware is intended only for the model that is listed
 									</p>
@@ -143,7 +145,7 @@ function ProductSupportNewHead({ pim }) {
 													<DownloadIcon color='#00AAA6' />
 													<input
 														onClick={() => downloadFile(item.download_link)}
-														class='xhr success'
+														className='xhr success'
 														type='button'
 														name='xhr'
 														value='Click to start XHR (success)'

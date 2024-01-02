@@ -50,7 +50,7 @@ const generateContent = _redirects => {
 				).redirect_url,
 				request.url
 			)
-			return NextResponse.redirect(url)
+			return NextResponse.redirect(url, { status: 307 })
 		}
 	}
 	`

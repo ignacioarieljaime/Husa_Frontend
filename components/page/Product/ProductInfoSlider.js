@@ -161,6 +161,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						pim.map((item, index) =>
 							item.type_id === 1 && item.url !== firstImage ? (
 								<SwiperSlide
+									key={index}
 									aria-hidden='true'
 									tabIndex={'-1'}
 									aria-label={`slide-${index + 1}`}>
@@ -177,6 +178,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								</SwiperSlide>
 							) : item.type_id === 5 ? (
 								<SwiperSlide
+									key={index}
 									aria-hidden='true'
 									tabIndex={'-1'}
 									aria-label={`slide-${index + 1}`}>

@@ -1,5 +1,4 @@
-import Script from 'next/script'
-import React, { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 export default function VelaroChatBox() {
 	useEffect(() => {

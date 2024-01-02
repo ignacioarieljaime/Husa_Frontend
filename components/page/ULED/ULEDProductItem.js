@@ -27,7 +27,7 @@ function ULEDProductItem({ data, itemLength }) {
 				</div>
 				<div className=' align-items-center d-flex flex-wrap gap-2'>
 					{list?.value.map((item, index) => (
-						<div className={'discover-btn  '}>
+						<div key={index} className={'discover-btn  '}>
 							{item?.link?.value &&
 							item?.link?.value.includes('openChannelAdvisor') ? (
 								<button
