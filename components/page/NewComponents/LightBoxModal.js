@@ -10,18 +10,6 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { useWindowSize } from 'hooks/useWindowSize'
 import '@splidejs/react-splide/css'
 
-import React from 'react'
-import Link from 'next/link'
-import DownloadIconV2 from 'components/icons/DownloadIconV2'
-import useOutsideClick from 'hooks/useOutsideClick'
-import { useRef } from 'react'
-import { useState, useEffect } from 'react'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { useWindowSize } from 'hooks/useWindowSize'
-import '@splidejs/react-splide/css'
-
 const LightBoxModal = ({
     id,
     caption,
