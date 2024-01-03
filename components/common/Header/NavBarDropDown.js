@@ -66,7 +66,7 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 	return (
 		<li
-			onMouseEnter={() => handleMouseEnter(1000)}
+			onMouseEnter={() => handleMouseEnter(500)}
 			onMouseLeave={() => handleMouseLeave(40)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
