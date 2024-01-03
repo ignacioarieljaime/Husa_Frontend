@@ -73,9 +73,7 @@ const CESArticles = ({ data }) => {
 														<span className='subject'>{item?.tag?.value}</span>
 
 														<h5>
-															<Link href={item?.link?.value || '/'}>
-																<a>{item?.title?.value}</a>
-															</Link>
+															{item?.title?.value}
 														</h5>
 														<span className='date'>
 															{item?.published_at
