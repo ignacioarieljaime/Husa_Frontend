@@ -313,6 +313,8 @@ const LightBoxModal = ({
 							className='lightbox___top_bar___close'
 							onClick={() => {
 								visibleHandler()
+								document.getElementById('main_body').style.overflow = 'unset'
+								document.getElementById('main_body').style.marginRight = '0px'
 							}}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
