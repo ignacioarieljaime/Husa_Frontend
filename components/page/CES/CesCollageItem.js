@@ -4,12 +4,18 @@ import React from 'react'
 import { useState } from 'react'
 import LightBoxModal from '../NewComponents/LightBoxModal'
 import { useWindowSize } from 'hooks/useWindowSize'
+import CesPlayIcon from 'public/assets/images/ces_play_icon.png'
 
 const CesCollageItem = ({ data, wrapperRef }) => {
 	const [collapsed, setCollapsed] = useState(true)
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	const windowSize = useWindowSize()
+
+	const collageScreenSizeHandler = cIndex => {
+		if (windowSize[0] >= 900) return cIndex < data?.desktopColumns?.value * 2
+		else return cIndex < data?.mobileColumns?.value * 2
+	}
 
 	return (
 		<>
@@ -30,45 +36,79 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 						<>
 							{data?.mediaList?.value.map((cItem, cIndex) =>
 								(cItem?.video?.value || cItem?.image?.src) &&
-								(windowSize[0] >= 900
-									? collapsed
-										? cIndex < data?.desktopColumns?.value
-										: true
-									: collapsed
-									? cIndex < data?.mobileColumns?.value
-									: true) ? (
+								(collapsed ? collageScreenSizeHandler(cIndex) : true) ? (
 									<div
 										key={cIndex}
 										className='ces_collage___collage_wrapper___media_list___item'>
 										{cItem?.video?.value ? (
-											<iframe
-												id={'LandingVideoIframe' + cIndex}
-												src={cItem?.video?.value}
-												alt={'LandingVideoIframe' + cIndex + cItem?.video?.alt}
-												title={
-													'LandingVideoIframe' + cIndex + cItem?.video?.title
-												}
-												width='100%'
-												height='100%'
-												allow='fullscreen; picture-in-picture'
-												mozallowfullscreen
-												webkitallowfullscreen
-												allowfullscreen
-												dataready={true}></iframe>
+											cItem?.thumbnail_image?.src ? (
+												<>
+													<img
+														src={cItem?.thumbnail_image?.src}
+														alt={cItem?.thumbnail_image?.alt}
+														className='ces_collage___collage_wrapper___media_list___item___thumbnail'
+														width='100%'
+														height='100%'
+													/>
+													<div
+														className='ces_collage___collage_wrapper___media_list___item___thumbnail_overlay'
+														onClick={() => {
+															setLightBoxStatus(true)
+															setLightBoxActiveIndex(cIndex)
+														}}>
+														<div className='ces_collage___collage_wrapper___media_list___item___thumbnail_overlay___content'>
+															<img src={CesPlayIcon.src} alt='play icon' />
+															<h6>Watch Video</h6>
+														</div>
+													</div>
+												</>
+											) : (
+												<>
+													<iframe
+														id={'LandingVideoIframe' + cIndex}
+														src={cItem?.video?.value}
+														alt={
+															'LandingVideoIframe' + cIndex + cItem?.video?.alt
+														}
+														title={
+															'LandingVideoIframe' +
+															cIndex +
+															cItem?.video?.title
+														}
+														width='100%'
+														height='100%'
+														allow='fullscreen; picture-in-picture'
+														mozallowfullscreen
+														webkitallowfullscreen
+														allowfullscreen
+														dataready={true}></iframe>
+													<div
+														className='ces_collage___collage_wrapper___media_list___item___overlay'
+														onClick={() => {
+															setLightBoxStatus(true)
+															setLightBoxActiveIndex(cIndex)
+														}}></div>
+												</>
+											)
 										) : (
 											<img
 												src={cItem?.image?.src}
 												alt={cItem?.image?.alt}
+												className='ces_collage___collage_wrapper___media_list___item___image'
 												width='100%'
 												height='100%'
+												onClick={() => {
+													setLightBoxStatus(true)
+													setLightBoxActiveIndex(cIndex)
+												}}
 											/>
 										)}
-										<div
+										{/* <div
 											className='ces_collage___collage_wrapper___media_list___item___overlay'
 											onClick={() => {
 												setLightBoxStatus(true)
 												setLightBoxActiveIndex(cIndex)
-											}}></div>
+											}}></div> */}
 									</div>
 								) : null
 							)}
@@ -76,9 +116,9 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 					)}
 				</div>
 				{(windowSize[0] >= 900 &&
-					data?.desktopColumns?.value < data?.mediaList?.value.length) ||
+					data?.desktopColumns?.value * 2 < data?.mediaList?.value.length) ||
 				(windowSize[0] < 900 &&
-					data?.mobileColumns?.value < data?.mediaList?.value.length) ? (
+					data?.mobileColumns?.value * 2 < data?.mediaList?.value.length) ? (
 					<button
 						onClick={() => {
 							setCollapsed(prev => !prev)
