@@ -3,6 +3,8 @@ import Link from 'next/link'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
+import { useEffect } from 'react'
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,25 +15,104 @@ const LightBoxModal = ({
 	image,
 	link,
 	isVisible,
-	visibleHandler
+	visibleHandler,
+	activateSwiper,
+	dataList,
+	activeItemIndex
 }) => {
+	const mainSwiperRef = useRef(null)
+	const thumbsSwiperRef = useRef(null)
+
 	const boxRef = useRef()
 
 	const outSide = useOutsideClick(boxRef)
 
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
-		if (temp?.length > 100) temp = temp?.substring(0, 100) + '...'
+		if (temp?.length > 100) temp = '<p>' + temp?.substring(0, 100) + '...</p>'
 		return temp
+	}
+
+	useEffect(() => {
+		if (mainSwiperRef.current && thumbsSwiperRef.current) {
+			mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
+		}
+	}, [mainSwiperRef, thumbsSwiperRef])
+
+	function renderChidren(_data, _index, _caption, style) {
+		return (
+			<>
+				{_data?.video?.value ? (
+					<iframe
+						id={'LightBox' + _index + _data?.video?.title}
+						src={
+							_data?.video?.value +
+							`${
+								_data?.video?.value && _data?.video?.value.includes('?')
+									? '&'
+									: '?'
+							}autopause=0`
+						}
+						alt={'LightBox' + id + video?.title}
+						title={'LightBox' + id + video?.title}
+						width='100%'
+						height='100%'
+						allow='autoplay; fullscreen; picture-in-picture'
+						mozallowfullscreen='true'
+						webkitallowfullscreen='true'
+						allowFullScreen
+						dataready={true}
+						style={style}></iframe>
+				) : (
+					<img src={_data?.image?.src} alt={_data?.image?.alt} />
+				)}
+				{_caption && _data?.caption?.value && (
+					<div
+						className='lightbox___caption'
+						dangerouslySetInnerHTML={{
+							__html: validateCaptions(_data?.caption?.value)
+						}}></div>
+				)}
+			</>
+		)
+	}
+
+	const mainOptions = {
+		type: 'slide',
+		perPage: 1,
+		perMove: 1,
+		gap: '1rem',
+		pagination: false,
+		arrows: false,
+		height: '100%',
+		start: activeItemIndex
+	}
+
+	const thumbsOptions = {
+		type: 'slide',
+		rewind: false,
+		gap: '0px',
+		pagination: false,
+		cover: true,
+		focus: 'center',
+		isNavigation: true,
+		start: activeItemIndex
 	}
 
 	return (
 		isVisible && (
 			<>
 				<div
-					onClick={() => outSide && visibleHandler()}
+					onClick={() => {
+						if (outSide) {
+							visibleHandler()
+						}
+					}}
 					className='dropdown-select-box-backdrop light_box_backdrop'></div>
-				<div ref={boxRef} className='lightbox'>
+				<div
+					ref={boxRef}
+					className='lightbox'
+					style={activateSwiper ? { maxWidth: '880px' } : {}}>
 					<div className='lightbox___top_bar'>
 						<button
 							className='lightbox___top_bar___back'
@@ -63,7 +144,9 @@ const LightBoxModal = ({
 						)}
 						<button
 							className='lightbox___top_bar___close'
-							onClick={visibleHandler}>
+							onClick={() => {
+								visibleHandler()
+							}}>
 							<svg
 								xmlns='http://www.w3.org/2000/svg'
 								width='32'
@@ -96,35 +179,74 @@ const LightBoxModal = ({
 							</svg>
 						</button>
 					</div>
-					<div className='w-100 my-auto my-md-0'>
-						<div className='px-md-10 w-100'>
-							<div className='lightbox___wrapper'>
-								{video?.value ? (
-									<iframe
-										id={'LightBox' + id + video?.title}
-										src={video?.value}
-										alt={'LightBox' + id + video?.title}
-										title={'LightBox' + id + video?.title}
-										width='100%'
-										height='100%'
-										allow='autoplay; fullscreen; picture-in-picture'
-										mozallowfullscreen
-										webkitallowfullscreen
-										allowfullscreen
-										dataready={true}></iframe>
-								) : image?.src ? (
-									<img src={image?.src} alt={image?.alt} />
-								) : null}
+					{!activateSwiper ? (
+						<>
+							<div className='px-4 px-md-10'>
+								<div className='lightbox___wrapper'>
+									{video?.value ? (
+										<iframe
+											id={'LightBox' + id + video?.title}
+											src={
+												video?.value +
+												`${
+													video?.value && video?.value.includes('?') ? '&' : '?'
+												}autopause=0`
+											}
+											alt={'LightBox' + id + video?.title}
+											title={'LightBox' + id + video?.title}
+											width='100%'
+											height='100%'
+											allow='autoplay; fullscreen; picture-in-picture'
+											mozallowfullscreen
+											webkitallowfullscreen
+											allowfullscreen
+											dataready={true}></iframe>
+									) : image?.src ? (
+										<img src={image?.src} alt={image?.alt} />
+									) : null}
+								</div>
 							</div>
-						</div>
-						{caption?.value && caption?.value.length && (
-							<div
-								className='lightbox___caption'
-								dangerouslySetInnerHTML={{
-									__html: validateCaptions(caption?.value)
-								}}></div>
-						)}
-					</div>
+							{caption?.value && (
+								<div
+									className='lightbox___caption'
+									dangerouslySetInnerHTML={{
+										__html: validateCaptions(caption?.value)
+									}}></div>
+							)}
+						</>
+					) : (
+						dataList &&
+						dataList.length > 0 && (
+							<>
+								<div className='w-100 my-md-0 my-auto'>
+									<div className='px-4 px-md-10'>
+										<div className='lightbox___wrapper'>
+											<div className='lightbox___wrapper___main_carousel'>
+												<Splide options={mainOptions} ref={mainSwiperRef}>
+													{dataList.map((item, index) => (
+														<SplideSlide key={index}>
+															{renderChidren(item, index, true)}
+														</SplideSlide>
+													))}
+												</Splide>
+											</div>
+										</div>
+										<div className='lightbox___wrapper___thumbnails_carousel'>
+											<Splide options={thumbsOptions} ref={thumbsSwiperRef}>
+												{dataList.map((item, index) => (
+													<SplideSlide key={index}>
+														{renderChidren(item, index, false, {
+															pointerEvents: 'none'
+														})}
+													</SplideSlide>
+												))}
+											</Splide>
+										</div>
+									</div>
+								</div>
+							</>
+						)
+					)}
 				</div>
 			</>
 		)

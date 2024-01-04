@@ -92,17 +92,114 @@
 	}
 	&___wrapper {
 		position: relative;
-		padding-top: 56.25%;
+		padding-top: calc(56.25% + 32px);
 		width: 100%;
 		height: 0;
-		iframe,
-		img {
+		& > iframe,
+		& > img {
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+		}
+		&___main_carousel {
+			position: absolute !important;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			.splide {
+				width: 100%;
+				height: 100%;
+				.splide__track {
+					width: 100%;
+					height: 100%;
+					.splide__slide {
+						border: 1px solid #fff;
+						iframe,
+						img {
+							width: 100%;
+							height: calc(100% - 32px);
+							object-fit: cover;
+						}
+						.lightbox___caption {
+							padding: 12px 16px 0;
+						}
+					}
+				}
+			}
+		}
+		&___thumbnails_carousel {
+			width: 100%;
+			max-width: 555px;
+			margin: 24px auto 0;
+			@include mq(768) {
+				max-width: 304px;
+			}
+			.splide__list {
+				align-items: end;
+				.splide__slide {
+					width: 110px !important;
+					height: 61.875px !important;
+					transition: all 0.2s ease-in-out;
+					@include mq(768) {
+						width: 60px !important;
+						height: 33.75px !important;
+					}
+					&.is-active {
+						border: none !important;
+						width: 124px !important;
+						height: 69.75px !important;
+						@include mq(768) {
+							width: 68px !important;
+							height: 38.25px !important;
+						}
+					}
+				}
+			}
+			.splide__arrows {
+				@include mq(768) {
+					width: 100%;
+					max-width: 200px;
+					position: relative;
+					bottom: -48px;
+					left: 50%;
+					transform: translateX(-50%);
+				}
+				@include mq(360) {
+					max-width: 100px;
+				}
+				.splide__arrow {
+					background-color: #00aaa6;
+					opacity: 1;
+					@include mq(768) {
+						top: 0;
+						transform: translate(0);
+					}
+					svg {
+						width: 16px;
+						height: 16px;
+						path {
+							fill: #fff;
+						}
+					}
+					&:hover {
+						opacity: 1;
+					}
+					&:disabled {
+						opacity: 0.225;
+						background-color: #00aaa6 !important;
+					}
+					&.splide__arrow--prev {
+						left: -46px;
+					}
+					&.splide__arrow--next {
+						right: -46px;
+					}
+				}
+			}
 		}
 	}
 	&___caption {
