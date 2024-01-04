@@ -15,7 +15,14 @@ const BlockFeatured = ({ data }) => {
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	useEffect(() => {
-		setContent(structure)
+		if (structure && structure?.list?.value.length > 0) {
+			let temp = structure?.list?.value.sort(
+				(a, b) =>
+					parseInt(b?.itemCenter?.value) - parseInt(a?.itemCenter?.value)
+			)
+			temp.unshift(temp.pop())
+			setContent(temp)
+		}
 	}, [])
 
 	return (
@@ -27,7 +34,7 @@ const BlockFeatured = ({ data }) => {
 				spaceBetween={8}
 				slidesPerView={'auto'}
 				grabCursor={true}
-				loop={content?.list?.value.length > 2 ? true : false}
+				loop={content && content.length > 2 ? true : false}
 				modules={[Pagination, Navigation]}
 				breakpoints={{
 					768: {
@@ -35,43 +42,37 @@ const BlockFeatured = ({ data }) => {
 					}
 				}}
 				className='news-slider'>
-				{content?.list?.value.map((item, index) => (
-					<SwiperSlide key={index} className='slider-item'>
-						<BlockFeaturedItem
-							data={item}
-							length={content?.list?.value.length}
-							isLightBoxValid={content?.list?.value[index]?.lightbox?.value}
-							activateLightBox={() => {
-								setLightBoxStatus(true)
-								setLightBoxActiveIndex(index)
-							}}
-						/>
-					</SwiperSlide>
-				))}
+				{content &&
+					content.length > 0 &&
+					content.map((item, index) => (
+						<SwiperSlide key={index} className='slider-item'>
+							<BlockFeaturedItem
+								data={item}
+								length={content.length}
+								isLightBoxValid={content[index]?.lightbox?.value}
+								activateLightBox={() => {
+									setLightBoxStatus(true)
+									setLightBoxActiveIndex(index)
+								}}
+							/>
+						</SwiperSlide>
+					))}
 			</Swiper>
-			{content?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
-				<LightBoxModal
-					id={data?.id}
-					caption={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.caption
-					}
-					video={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.video
-					}
-					image={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.image
-					}
-					link={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.link
-					}
-					isVisible={lightBoxStatus}
-					visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
-				/>
-			)}
+			{content &&
+				content.length > 0 &&
+				content[lightBoxActiveIndex]?.lightbox?.value && (
+					<LightBoxModal
+						id={data?.id}
+						caption={
+							content[lightBoxActiveIndex]?.lightboxObject?.value?.caption
+						}
+						video={content[lightBoxActiveIndex]?.lightboxObject?.value?.video}
+						image={content[lightBoxActiveIndex]?.lightboxObject?.value?.image}
+						link={content[lightBoxActiveIndex]?.lightboxObject?.value?.link}
+						isVisible={lightBoxStatus}
+						visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+					/>
+				)}
 		</section>
 	)
 }
