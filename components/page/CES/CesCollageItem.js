@@ -137,6 +137,7 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 			</div>
 			{lightBoxStatus && (
 				<LightBoxModal
+					zIndex={99997}
 					id={data?.id}
 					caption={data?.mediaList?.value[lightBoxActiveIndex]?.caption}
 					video={data?.mediaList?.value[lightBoxActiveIndex]?.video}
