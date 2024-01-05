@@ -150,6 +150,7 @@ function LandingSlider({ data }) {
 			</Swiper>
 			{structure?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
 				<LightBoxModal
+					zIndex='99999999'
 					id={data?.id}
 					caption={
 						structure?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
