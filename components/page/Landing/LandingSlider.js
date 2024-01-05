@@ -14,7 +14,6 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import { useAspectRatio } from 'hooks/useAspectRatio'
 import { useState } from 'react'
 import LightBoxModal from '../NewComponents/LightBoxModal'
-import CustomButton from 'components/common/CustomButton'
 import { useRouter } from 'next/router'
 
 function LandingSlider({ data }) {
