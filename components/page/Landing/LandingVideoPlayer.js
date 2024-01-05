@@ -4,9 +4,11 @@ import Mute from 'public/assets/svgs/mute.svg'
 import Play from 'public/assets/svgs/play.svg'
 import { useInView } from 'react-intersection-observer'
 import Spinner from 'components/common/Spinner'
+import { useRouter } from 'next/router'
 function LandingVideoPlayer({ data }) {
 	const { structure } = data
 	const videoRef = useRef()
+	const wrapperRef = useRef()
 	const [video, setVideo] = useState(null)
 	const [playingStatus, setPlayingStatus] = useState(false)
 	const [fullSize, setFullSize] = useState(false)
@@ -17,6 +19,16 @@ function LandingVideoPlayer({ data }) {
 	})
 
 	const uniqeID = (Math.random() * Math.random() * 100).toFixed()
+
+	const router = useRouter()
+
+	useEffect(() => {
+		if (router.asPath.includes(data?.name + data?.id)) {
+			setTimeout(() => {
+				wrapperRef.current.scrollIntoView()
+			}, 1000)
+		}
+	}, [])
 
 	useEffect(() => {
 		if (inView && loading) {
@@ -36,7 +48,7 @@ function LandingVideoPlayer({ data }) {
 	}
 
 	return (
-		<section id={data?.name + data?.id}>
+		<section ref={wrapperRef} id={data?.name + data?.id}>
 			<div ref={ref} className='video_feature'>
 				{loading && !video ? (
 					<Spinner />
@@ -55,10 +67,10 @@ function LandingVideoPlayer({ data }) {
 						width='100%'
 						height='100%'
 						allow='autoplay; fullscreen; picture-in-picture'
-						mozallowfullscreen
-						webkitallowfullscreen
-						allowfullscreen
-						dataready={true}></iframe>
+						mozallowfullscreen='true'
+						webkitallowfullscreen='true'
+						allowFullScreen={true}
+						dataready='true'></iframe>
 				)}
 				{structure?.videoType?.value === 'link' && (
 					<div className='button_group'>

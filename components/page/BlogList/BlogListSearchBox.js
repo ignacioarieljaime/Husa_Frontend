@@ -15,7 +15,7 @@ function BlogListSearchBox({ data: { structure } }) {
 	const [dropDownCondition, setDropDownCondition] = useState(false)
 	const [blogList, setBlogList] = useState(null)
 	const [blogListCondition, setBlogListCondition] = useState(false)
-	const [inputValue, setInputValue] = useState(null)
+	const [inputValue, setInputValue] = useState('')
 	const [text, setText] = useState(null)
 	useEffect(() => {
 		setText(structure?.text?.value)

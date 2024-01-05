@@ -14,11 +14,16 @@ import 'swiper/css'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 	const [justify, setJustify] = useState('')
+	const [content, setContent] = useState(null)
 
 	const windowSize = useWindowSize()
 
 	useEffect(() => {
-		if (windowSize[0] - structure?.list?.value.length * 296 - 40 - 256 > 16)
+		setContent(structure)
+	}, [])
+
+	useEffect(() => {
+		if (windowSize[0] - content?.list?.value.length * 296 - 40 - 256 > 16)
 			setJustify('justify_content_center')
 		else setJustify('')
 	}, [windowSize])
@@ -26,16 +31,16 @@ const HomeAppliancesCarousel = ({ data }) => {
 	return (
 		<section>
 			<div
-				className={`ha_carousel text-center ${structure?.theme?.value} ${
-					structure?.list?.value.length > 4 ? 'extra_space_bottom' : ''
+				className={`ha_carousel text-center ${content?.theme?.value} ${
+					content?.list?.value.length > 4 ? 'extra_space_bottom' : ''
 				}`}>
-				{structure?.subtitle?.value && (
-					<div className='subtitle'>{structure?.subtitle?.value}</div>
+				{content?.subtitle?.value && (
+					<div className='subtitle'>{content?.subtitle?.value}</div>
 				)}
 				<h3
 					className='title'
 					dangerouslySetInnerHTML={{
-						__html: structure?.title?.value
+						__html: content?.title?.value
 					}}></h3>
 				<div className='slider_container'>
 					<Swiper
@@ -96,31 +101,27 @@ const HomeAppliancesCarousel = ({ data }) => {
 							// }
 						}}
 						className={`slider ${justify} ${
-							structure?.list?.value.length > 4 ? '' : 'hide_controls'
+							content?.list?.value.length > 4 ? '' : 'hide_controls'
 						}`}
 						modules={[Pagination, Navigation]}>
-						{structure?.list?.value.map((item, index) => (
+						{content?.list?.value.map((item, index) => (
 							<SwiperSlide key={index} className='slider_item'>
-								<HomeAppliancesCarouselitem data={item} structure={structure} />
+								<HomeAppliancesCarouselitem data={item} structure={content} />
 							</SwiperSlide>
 						))}
 					</Swiper>
 				</div>
-				{structure?.link?.value && (
+				{content?.link?.value && (
 					<div className='bottom_button'>
 						<Link
-							target={
-								structure?.link?.target ? structure?.link?.target : '_self'
-							}
-							href={structure?.link?.value ? structure?.link?.value : '/'}>
+							target={content?.link?.target ? content?.link?.target : '_self'}
+							href={content?.link?.value ? content?.link?.value : '/'}>
 							<a
-								target={
-									structure?.link?.target ? structure?.link?.target : '_self'
-								}
+								target={content?.link?.target ? content?.link?.target : '_self'}
 								style={{ width: '150px' }}
 								className='primary text-nowrap n-btn medium d-block mx-auto w-fit px-5 py-3'>
-								{structure?.link?.title}
-								{structure?.link?.target === '_blank' && (
+								{content?.link?.title}
+								{content?.link?.target === '_blank' && (
 									<img
 										style={{ marginLeft: '10px' }}
 										src={OpenPageOnNewTab.src}

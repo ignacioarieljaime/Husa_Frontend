@@ -10,6 +10,8 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import { useWindowSize } from 'hooks/useWindowSize'
 import '@splidejs/react-splide/css'
 
+import '@splidejs/react-splide/css'
+
 const LightBoxModal = ({
     id,
     caption,
@@ -70,6 +72,7 @@ const LightBoxModal = ({
                 }px)`
             }
         }
+
 
         for (let i = 0; i <= numberOfIntervals; i++) {
             const lowerBound = i * rowAmount

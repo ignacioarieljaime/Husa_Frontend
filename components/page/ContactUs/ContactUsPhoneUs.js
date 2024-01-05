@@ -17,10 +17,10 @@ function ContactUsPhoneUs({ data }) {
 						</h4>
 						<div className='align-self-md-start'>
 							{structure?.contact?.value?.list?.value?.map((item, index) => (
-								<>
+								<React.Fragment key={index}>
 									<p className='fw-bold mb-1'>{item?.title?.value}</p>
 									<p className='fw-light mb-5'>{item?.subtitle?.value}</p>
-								</>
+								</React.Fragment>
 							))}
 						</div>
 					</div>

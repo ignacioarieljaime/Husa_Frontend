@@ -7676,6 +7676,22 @@ fieldset:disabled .btn {
 	overflow: scroll !important;
 }
 
+.overscroll-y-auto {
+	overscroll-behavior-y: auto !important;
+}
+
+.overflow-y-clip {
+	overflow-y: clip !important;
+}
+
+.overflow-y-scroll {
+	overflow-y: scroll !important;
+}
+
+.overscroll-contain {
+	overscroll-behavior: contain !important;
+}
+
 .d-inline {
 	display: inline !important;
 }
@@ -7862,6 +7878,13 @@ fieldset:disabled .btn {
 
 .border-bottom-0 {
 	border-bottom: 0 !important;
+}
+
+.webkitHeightFix {
+	@supports (-webkit-touch-callout: none) {
+		height: 100vh !important;
+		height: calc(var(--vh, 1vh) * 100) !important;
+	}
 }
 
 .border-start {

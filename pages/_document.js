@@ -34,12 +34,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');`
 					}}></script>
+				<script src='/assets/js/ancher-fix.js'></script>
 			</Head>
 			<body id='main_body'>
 				{' '}
 				<Main />
 				<NextScript />
-				{/* <script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script> */}
+				<script src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
 				{/* <Script
 					security='lazyOnload'
 					src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></Script>

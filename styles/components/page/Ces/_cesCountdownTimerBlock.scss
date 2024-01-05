@@ -1,0 +1,220 @@
+.ces_countdown_timer {
+	padding: 136px 16px 137px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	@include mq(991) {
+		padding: 115px 16px;
+	}
+	@include mq(768) {
+		padding: 60px 16px;
+	}
+	&___background {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	}
+	&___content {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 90px;
+		width: 100%;
+		max-width: 1232px;
+		margin: 0 auto;
+		@include mq(768) {
+			gap: 60px;
+		}
+		&___top {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 12px;
+			width: 100%;
+			&___image_wrapper {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 20px;
+				width: 100%;
+				&___left_image {
+					width: 218px;
+					height: auto;
+					object-fit: contain;
+					@include mq(768) {
+						width: 190px;
+					}
+				}
+				&___divider {
+					width: 1px;
+					height: 40px;
+					background: #c7c7c9;
+					@include mq(768) {
+						height: 30px;
+					}
+				}
+				&___right_image {
+					width: 115px;
+					height: auto;
+					object-fit: contain;
+					@include mq(768) {
+						width: 102px;
+					}
+				}
+			}
+			&___subtitle {
+				margin: 0;
+				* {
+					font-size: 34px;
+					font-weight: 500;
+					line-height: 24px; /* 135% */
+					letter-spacing: -0.68px;
+					color: #fff;
+					margin: 0;
+					@include mq(768) {
+						font-weight: 400;
+						font-size: 20px;
+						line-height: 14px; /* 125% */
+					}
+				}
+			}
+		}
+		&___body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 80px;
+			@include mq(768) {
+				gap: 76px;
+			}
+			&___title {
+				margin: 0;
+				text-align: center;
+				* {
+					margin: 0;
+					color: #fff;
+					font-size: 96px;
+					font-weight: 500;
+					line-height: 90px; /* 114% */
+					letter-spacing: -1.92px;
+					@include mq(768) {
+						font-size: 60px;
+						line-height: 68px; /* 114% */
+					}
+				}
+			}
+			&___timer {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 40px;
+				@include mq(768) {
+					gap: 20px;
+				}
+				& > div {
+					width: fit-content;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					flex-direction: column;
+					width: 70px;
+					gap: 20px;
+					@include mq(768) {
+						width: 42px;
+					}
+					& > div:first-child {
+						font-size: 60px;
+						font-weight: 500;
+						line-height: 43px; /* 114% */
+						letter-spacing: -1.2px;
+						color: #00aaa6;
+						margin-bottom: -5px;
+						@include mq(768) {
+							font-size: 34px;
+							line-height: 24px; /* 135% */
+						}
+					}
+					& > div:last-child {
+						font-size: 24px;
+						font-weight: 500;
+						line-height: 17px; /* 125% */
+						letter-spacing: -0.48px;
+						color: #00aaa6;
+						margin-bottom: -4px;
+						@include mq(768) {
+							font-size: 20px;
+							font-weight: 400;
+							line-height: 14px; /* 125% */
+						}
+					}
+				}
+			}
+			&___texts {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				gap: 20px;
+				width: 100%;
+				@include mq(768) {
+					gap: 0px;
+				}
+				&___upper_text {
+					margin: 0;
+					text-align: center;
+					* {
+						color: #fff;
+						margin: 0;
+						font-size: 34px;
+						font-weight: 500;
+						line-height: 34px; /* 135% */
+						letter-spacing: -0.68px;
+						@include mq(768) {
+							font-size: 20px;
+							line-height: 25px; /* 125% */
+							font-weight: 400;
+						}
+					}
+				}
+				&___lower_text {
+					margin: 0;
+					text-align: center;
+					* {
+						color: #fff;
+						margin: 0;
+						font-size: 24px;
+						font-weight: 500;
+						line-height: 24px; /* 125% */
+						letter-spacing: -0.48px;
+						@include mq(768) {
+							font-size: 20px;
+							line-height: 25px; /* 125% */
+							font-weight: 400;
+						}
+					}
+				}
+			}
+		}
+	}
+}

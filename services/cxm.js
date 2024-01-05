@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export async function getProductsWithCategoryApi(_categoryId) {
 	let response = await axios.get(
-		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?categoryId=${_categoryId}`,
+		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/searchProduct?categoryId=${_categoryId}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 		{
 			headers: {
 				BrandId: process.env.NEXT_PUBLIC_BRAND_ID
