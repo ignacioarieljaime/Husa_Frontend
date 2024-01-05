@@ -81,11 +81,12 @@ const FilterDropDown = props => {
 		filterCounter
 	])
 
-	const checkedHandler = _title => {
+	const checkedHandler = (_title, _id) => {
 		if (router?.query?.filter) {
 			let filter = JSON.parse(decodeURIComponent(router.query.filter))
 			for (const item of filter) {
-				if (item.values.indexOf(_title) !== -1) return true
+				if (item.values.indexOf(_title) !== -1 && content_record_id == item?.id)
+					return true
 			}
 		}
 		return false
@@ -113,7 +114,7 @@ const FilterDropDown = props => {
 										{...filter}
 										square
 										category={category}
-										isChecked={checkedHandler(filter?.title)}
+										isChecked={checkedHandler(filter?.title, filter?.id)}
 										filterHandler={filterHandler}
 										showProductFilterCount={showProductFilterCount}
 										allFilters={allFilters}

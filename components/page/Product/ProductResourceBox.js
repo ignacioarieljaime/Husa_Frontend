@@ -55,7 +55,7 @@ function ProductResourceBox({ pim, data }) {
 				{pim?.assets.map(
 					(item, index) =>
 						item.type_id === 3 && (
-							<>
+							<React.Fragment key={index}>
 								{item.caption === 'Installation Request' ? (
 									<li key={index}>
 										<Link
@@ -96,7 +96,7 @@ function ProductResourceBox({ pim, data }) {
 										</a>
 									</li>
 								)}
-							</>
+							</React.Fragment>
 						)
 				)}
 				{warrantyHandler()}

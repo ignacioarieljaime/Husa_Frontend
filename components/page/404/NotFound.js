@@ -4,9 +4,9 @@ import Link from 'next/link'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const NotFound = ({ data: { structure } }) => {
-	const [text, setText] = useState(null)
+	const [content, setContent] = useState(null)
 	useEffect(() => {
-		setText(structure?.text?.value)
+		setContent(structure?.text?.value)
 	}, [])
 
 	return (
@@ -14,31 +14,29 @@ const NotFound = ({ data: { structure } }) => {
 			<div className='not_found'>
 				<div className='background'>
 					<CustomImage
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
+						src={content?.image?.src}
+						alt={content?.image?.alt}
 						className={'image'}
 						wrapperWidth={'100%'}
 						wrapperHeight={'100%'}
 					/>
 				</div>
 				<div className='content'>
-					<h1 class='title'>{structure?.title?.value}</h1>
+					<h1 className='title'>{content?.title?.value}</h1>
 					<article className='article'>
 						<div
 							className='mb-12'
-							dangerouslySetInnerHTML={{ __html: text }}></div>
+							dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
 						<div className='button_group'>
-							{structure?.link1?.value ? (
-								<Link href={structure?.link1?.value}>
+							{content?.link1?.value ? (
+								<Link href={content?.link1?.value}>
 									<a
 										target={
-											structure?.link1?.target
-												? structure?.link1?.target
-												: '_self'
+											content?.link1?.target ? content?.link1?.target : '_self'
 										}
 										className='link'>
-										{structure?.link1?.title}
-										{structure?.link1?.target === '_blank' && (
+										{content?.link1?.title}
+										{content?.link1?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}
@@ -48,17 +46,15 @@ const NotFound = ({ data: { structure } }) => {
 								</Link>
 							) : null}{' '}
 							<p className='mx-6 mb-0'>OR</p>
-							{structure?.link2?.value ? (
-								<Link href={structure?.link2?.value}>
+							{content?.link2?.value ? (
+								<Link href={content?.link2?.value}>
 									<a
 										target={
-											structure?.link2?.target
-												? structure?.link2?.target
-												: '_self'
+											content?.link2?.target ? content?.link2?.target : '_self'
 										}
 										className='link'>
-										{structure?.link2?.title}
-										{structure?.link2?.target === '_blank' && (
+										{content?.link2?.title}
+										{content?.link2?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}

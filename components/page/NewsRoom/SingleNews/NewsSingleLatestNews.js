@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import Spinner from 'components/common/Spinner'
 
-const NewsSingleLatestNews = ({ data, pim }) => {
+const NewsSingleLatestNews = ({ data, pim, pageId }) => {
 	let { structure } = data
 	const [news, setNews] = useState()
 	const [title, setTitle] = useState()
@@ -20,9 +20,13 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 		setNews('loading')
 		try {
 			let response = await axios.get(
-				`${
-					process.env.NEXT_PUBLIC_CXM_API_ROUTE
-				}/getPosts?type=news&page=${1}&brand_id=${
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=news&perPage=${
+					structure?.count?.value + 1
+				}${
+					structure?.selectby?.value === 'rel'
+						? pim?.tags.map(item => '&tag[]=' + item)
+						: ''
+				}&exclude[]=${pageId}&page=${1}&brand_id=${
 					process.env.NEXT_PUBLIC_BRAND_ID
 				}`,
 				{
@@ -32,28 +36,32 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 				}
 			)
 
-			sortNews(response.data.data, structure?.selectby?.value)
+			const sameArticleRemoved = response.data.data.slice(1)
+
+			setNews(sameArticleRemoved)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
-	function sortNews(_news, method) {
-		const filteredNews = _news.filter(news => news?.id !== pim?.id)
+	// function sortNews(_news, method) {
+	// 	const filteredNews = _news.filter(news => news?.id !== pim?.id)
 
-		if (method === 'rel') {
-			setNews(
-				filteredNews.filter(_item => {
-					return _item.tags.some(_tag => pim?.tags.includes(_tag))
-				})
-			)
-		} else {
-			filteredNews.sort((a, b) => {
-				return new Date(b.published_at) - new Date(a.published_at)
-			})
-			setNews(filteredNews)
-		}
-	}
+	// 	if (method === 'rel') {
+	// 		setNews(
+	// 			filteredNews.filter(_item => {
+	// 				console.log(_item.tags)
+	// 				console.log(pim?.tags)
+	// 				return _item.tags.some(_tag => pim?.tags.includes(_tag))
+	// 			})
+	// 		)
+	// 	} else {
+	// 		filteredNews.sort((a, b) => {
+	// 			return new Date(b.published_at) - new Date(a.published_at)
+	// 		})
+	// 		setNews(filteredNews)
+	// 	}
+	// }
 
 	return (
 		<div className='single_news_latest_news'>
@@ -70,7 +78,7 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 							news.map(
 								(item, index) =>
 									index < structure?.count?.value && (
-										<>
+										<React.Fragment key={index}>
 											<NewsRoomMainNewsItem
 												image={
 													item?.meta.find(
@@ -84,12 +92,12 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 												fetched
 												isThree={true}
 											/>
-										</>
+										</React.Fragment>
 									)
 							)
 						) : (
 							structure?.list?.value?.map((item, index) => (
-								<>
+								<React.Fragment key={index}>
 									<NewsRoomMainNewsItem
 										image={item?.image?.src}
 										title={item?.title?.value}
@@ -98,7 +106,7 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 										link={item?.link?.value}
 										isThree={true}
 									/>
-								</>
+								</React.Fragment>
 							))
 						)}
 					</div>

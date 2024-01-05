@@ -58,5 +58,9 @@ module.exports.CommonComponents = [
 	{
 		name: 'VideoAndImageBanner',
 		path: 'components/common/VideoAndImageBanner'
+	},
+	{
+		name: 'BambooHR',
+		path: 'components/common/BambooHR'
 	}
 ]

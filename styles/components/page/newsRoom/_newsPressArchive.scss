@@ -24,8 +24,6 @@
 				gap: 16px;
 				margin-bottom: 65px;
 
-
-
 				> div {
 					height: 182px;
 					display: flex;
@@ -75,22 +73,18 @@
 						h5 {
 							margin: 10px 0;
 							max-width: 596px;
-							a {
-								font-style: normal;
-								font-weight: 400;
-								font-size: 20px;
-								line-height: 25px;
-								text-decoration: none;
-								color: #000000;
-							}
+							font-style: normal;
+							font-weight: 400;
+							font-size: 20px;
+							line-height: 25px;
+							text-decoration: none;
+							color: #000000;
 							@include mq(600) {
 								margin-bottom: 15px;
 
-								a {
-									font-weight: 300;
-									line-height: 19px;
-									font-size: 14px;
-								}
+								font-weight: 300;
+								line-height: 19px;
+								font-size: 14px;
 							}
 						}
 						.date {
@@ -149,4 +143,3 @@
 		}
 	}
 }
-

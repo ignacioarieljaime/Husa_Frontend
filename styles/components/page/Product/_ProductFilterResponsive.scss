@@ -24,6 +24,18 @@
 			letter-spacing: -0.32px;
 		}
 	}
+	.iosFix {
+		@supports (-webkit-touch-callout: none) {
+			position: relative;
+			bottom: 9rem;
+			background-color: #F0F2F2;
+		}
+	}
+	.paddingFix {
+		@supports (-webkit-touch-callout: none) {
+			padding-bottom: 9rem;
+		}
+	}
 	.buttons {
 		.n-btn {
 			font-size: 10px;
@@ -142,8 +154,6 @@
 	.product_filter_responsive_modal {
 		width: 100%;
 		height: calc(100% - 130px);
-		// position: absolute;
-		// top: ;
 		overflow: auto;
 		background: #fff;
 		transition: all 0.3s;
@@ -151,6 +161,12 @@
 		-moz-transition: all 0.3s;
 		-ms-transition: all 0.3s;
 		-o-transition: all 0.3s;
+		.webkitHeightFix {
+			@supports (-webkit-touch-callout: none) {
+				height: 100vh !important;
+				height: calc(var(--vh, 1vh) * 100) !important;
+			}
+		}
 		.search_field {
 			width: 100%;
 			border-radius: 1000px;

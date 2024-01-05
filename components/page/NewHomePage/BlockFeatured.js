@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-import Link from 'next/link'
 import { Pagination, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlayCircle } from '@fortawesome/free-solid-svg-icons'
-import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import CustomImage from '../../common/CustomImage'
+import BlockFeaturedItem from './BlockFeaturedItem'
+import LightBoxModal from '../NewComponents/LightBoxModal'
 
-const BlockFeatured = ({ data: { structure } }) => {
+const BlockFeatured = ({ data }) => {
+	const { structure } = data
+	const [content, setContent] = useState()
+	const [lightBoxStatus, setLightBoxStatus] = useState(false)
+	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
+	useEffect(() => {
+		if (structure && structure?.list?.value.length > 0) {
+			let temp = structure?.list?.value.sort(
+				(a, b) =>
+					parseInt(b?.itemCenter?.value) - parseInt(a?.itemCenter?.value)
+			)
+			temp.unshift(temp.pop())
+			setContent(temp)
+		}
+	}, [])
+
 	return (
 		<section>
 			<Swiper
@@ -21,7 +34,6 @@ const BlockFeatured = ({ data: { structure } }) => {
 				spaceBetween={8}
 				slidesPerView={'auto'}
 				grabCursor={true}
-				loop={true}
 				modules={[Pagination, Navigation]}
 				breakpoints={{
 					768: {
@@ -29,58 +41,37 @@ const BlockFeatured = ({ data: { structure } }) => {
 					}
 				}}
 				className='news-slider'>
-				{structure?.list?.value.map((item, index) => (
-					<SwiperSlide key={index} className='slider-item'>
-						<h3 className='slider-title fs-2'>{item?.title?.value}</h3>
-						<div className='slider-body'>
-							{item?.image ? (
-								<CustomImage
-									src={item?.image?.src}
-									alt={item?.image?.alt}
-									className='slider-image'
-									wrapperWidth={'100%'}
-								/>
-							) : (
-								<div className='slider-video'>
-									<video autoPlay={true} muted={true} loop={true}>
-										<source src={item?.video?.src} />
-										{item?.image?.alt}
-									</video>
-								</div>
-							)}
-							<div className='slider-content'>
-								<h5 className='description d-none d-md-block'>
-									{item?.description?.value}
-								</h5>
-								<Link
-									target={item?.link?.target ? item?.link?.target : '_self'}
-									href={item?.link?.value ? item?.link?.value : '/'}>
-									<a
-										target={item?.link?.target ? item?.link?.target : '_self'}
-										className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
-										{item?.link?.title}
-										{item?.link?.target === '_blank' && (
-											<img
-												style={{ marginLeft: '10px' }}
-												src={OpenPageOnNewTab.src}
-											/>
-										)}
-									</a>
-								</Link>
-								{item?.video && (
-									<span className='play'>
-										<FontAwesomeIcon
-											icon={faPlayCircle}
-											size={'xl'}
-											className='ms-2'
-										/>
-									</span>
-								)}
-							</div>
-						</div>
-					</SwiperSlide>
-				))}
+				{content &&
+					content.length > 0 &&
+					content.map((item, index) => (
+						<SwiperSlide key={index} className='slider-item'>
+							<BlockFeaturedItem
+								data={item}
+								length={content.length}
+								isLightBoxValid={content[index]?.lightbox?.value}
+								activateLightBox={() => {
+									setLightBoxStatus(true)
+									setLightBoxActiveIndex(index)
+								}}
+							/>
+						</SwiperSlide>
+					))}
 			</Swiper>
+			{content &&
+				content.length > 0 &&
+				content[lightBoxActiveIndex]?.lightbox?.value && (
+					<LightBoxModal
+						id={data?.id}
+						caption={
+							content[lightBoxActiveIndex]?.lightboxObject?.value?.caption
+						}
+						video={content[lightBoxActiveIndex]?.lightboxObject?.value?.video}
+						image={content[lightBoxActiveIndex]?.lightboxObject?.value?.image}
+						link={content[lightBoxActiveIndex]?.lightboxObject?.value?.link}
+						isVisible={lightBoxStatus}
+						visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+					/>
+				)}
 		</section>
 	)
 }
