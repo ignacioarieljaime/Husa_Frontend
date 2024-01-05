@@ -3,6 +3,7 @@ import React from 'react'
 import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import { useRef } from 'react'
 
 function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 	const timeoutRef = useRef(null)
