@@ -138,9 +138,7 @@ const NewsPressArchive = ({ data }) => {
 													))}
 
 													<h5>
-														<Link href={item?.route || '/'}>
-															<a>{item?.title}</a>
-														</Link>
+														{item?.title}
 													</h5>
 													<span className='date'>
 														{item?.published_at
