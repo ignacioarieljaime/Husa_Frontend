@@ -22,27 +22,26 @@ const NewsSingleInfoBox = ({ data }) => {
 	}, [])
 
 	function formatUrl(url) {
+		if (!url) return url
 
-		if (!url) return url;
+		const index = url?.lastIndexOf('/')
+		const urlString = url?.substring(index + 1)
 
-		const index = url?.lastIndexOf('/');
-		const urlString = url?.substring(index + 1);
+		if (!urlString) return urlString
 
-		if (!urlString) return urlString;
-
-		const wordList = urlString.split('-');
+		const wordList = urlString.split('-')
 
 		for (var i = 0; i < wordList.length; i++) {
-			wordList[i] = wordList[i].charAt(0).toUpperCase() + wordList[i].slice(1).toLowerCase();
+			wordList[i] =
+				wordList[i].charAt(0).toUpperCase() + wordList[i].slice(1).toLowerCase()
 		}
 
-		const result = wordList.join(' ');
+		const result = wordList.join(' ')
 
-		return result;
+		return result
 	}
 
-	const mailSubject = formatUrl(pageUrl);
-	console.log(mailSubject);
+	const mailSubject = formatUrl(pageUrl)
 
 	return (
 		<div className='container news_single_info_box'>
@@ -84,8 +83,8 @@ const NewsSingleInfoBox = ({ data }) => {
 				</div>
 				{structure?.downloads?.value?.length !== 0 && (
 					<ul className='download_box'>
-						{structure?.downloads?.value?.map(item => (
-							<li>
+						{structure?.downloads?.value?.map((item, index) => (
+							<li key={index}>
 								<a
 									target='_self'
 									download={
@@ -108,8 +107,9 @@ const NewsSingleInfoBox = ({ data }) => {
 					<div>
 						<h5>{structure?.contact?.value?.title?.value}</h5>
 						<div>
-							{structure?.contact?.value?.list?.value.map(item => (
+							{structure?.contact?.value?.list?.value.map((item, index) => (
 								<NewsSingleInfoLittleBox
+									key={index}
 									width={
 										100 / structure?.contact?.value?.list?.value.length + '%'
 									}

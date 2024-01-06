@@ -21,7 +21,7 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 		try {
 			let response = await axios.get(
 				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=news&perPage=${
-					structure?.count?.value
+					structure?.count?.value + 1
 				}${
 					structure?.selectby?.value === 'rel'
 						? pim?.tags.map(item => '&tag[]=' + item)
@@ -76,7 +76,7 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 							news.map(
 								(item, index) =>
 									index < structure?.count?.value && (
-										<>
+										<React.Fragment key={index}>
 											<NewsRoomMainNewsItem
 												image={
 													item?.meta.find(
@@ -90,12 +90,12 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 												fetched
 												isThree={true}
 											/>
-										</>
+										</React.Fragment>
 									)
 							)
 						) : (
 							structure?.list?.value?.map((item, index) => (
-								<>
+								<React.Fragment key={index}>
 									<NewsRoomMainNewsItem
 										image={item?.image?.src}
 										title={item?.title?.value}
@@ -104,7 +104,7 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 										link={item?.link?.value}
 										isThree={true}
 									/>
-								</>
+								</React.Fragment>
 							))
 						)}
 					</div>

@@ -6,7 +6,7 @@ const ExtendedWarrantyProduct = ({
 	link
 }) => {
 	return (
-		<Link href={`/${link}?productId=${id}`}>
+		<Link href={`${link}?productId=${id}`}>
 			<a className='text-decoration-none'>
 				<div className='product-item-v2 h-100 px-5 py-8'>
 					<div className='image'>

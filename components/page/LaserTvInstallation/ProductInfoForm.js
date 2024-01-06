@@ -275,7 +275,7 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 											style={{ zIndex: 1 }}
 											id='contact-file-input'
 											accept='.jpg, .png, .jpeg'
-											multiple='multiple'
+											multiple={true}
 											onChange={uploadFile}
 										/>
 										<article className='d-flex justify-content-center align-items-center flex-wrap'>

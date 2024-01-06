@@ -5,12 +5,12 @@ function ProductFeatureWithImageWithBTN({ data }) {
 	let { structure } = data
 	return (
 		<section id={data?.name + data?.id}>
-			<div class='p-0 mx-md-9 mx-4 '>
+			<div className='p-0 mx-md-9 mx-4 '>
 				<div
-					class={`row description-blocks bg-black align-items-stretch ${
+					className={`row description-blocks bg-black align-items-stretch ${
 						structure?.direction?.value === 'rtl' ? 'flex-row-reverse' : ''
 					}`}>
-					<article class='introduction article text-white col-12 col-md-6 order-2 order-md-1'>
+					<article className='introduction article text-white col-12 col-md-6 order-2 order-md-1'>
 						<h2> {structure?.title?.value}</h2>
 						<p>{structure?.paragraphOne?.value}</p>
 						<p>{structure?.paragraphTwo?.value}</p>
@@ -64,7 +64,7 @@ function ProductFeatureWithImageWithBTN({ data }) {
 					<img
 						src={structure?.image?.src}
 						alt={structure?.image?.alt}
-						class='p-0 col-12 col-md-6 order-1 order-md-2'
+						className='p-0 col-12 col-md-6 order-1 order-md-2'
 					/>
 				</div>
 			</div>

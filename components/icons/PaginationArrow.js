@@ -11,9 +11,9 @@ const PaginationArrow = () => {
 			<path
 				d='M1.25 1.5L8.75 9L1.25 16.5'
 				stroke='black'
-				stroke-width='1.5'
-				stroke-linecap='round'
-				stroke-linejoin='round'
+				strokeWidth='1.5'
+				strokeLinecap='round'
+				strokeLinejoin='round'
 			/>
 		</svg>
 	)

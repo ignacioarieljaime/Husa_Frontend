@@ -574,7 +574,7 @@
 				}
 				&::after {
 					content: '';
-					display: block;
+					display: none;
 					position: absolute;
 					left: 0;
 					top: 0;
@@ -585,6 +585,11 @@
 						rgba(34, 31, 32, 0) 59.24%,
 						rgba(34, 31, 32, 0.7) 94.19%
 					) !important;
+				}
+				&.gradient {
+					&::after {
+						display: block;
+					}
 				}
 			}
 

@@ -31,7 +31,7 @@ function ProductSupportNavBar({ pim, data }) {
 						<span className='text-secondary'>{pim?.model}</span>
 					</li>
 					{structure?.tags?.value.map((item, index) => (
-						<li>
+						<li key={index}>
 							<Link
 								target={item?.target?.target ? item?.target?.target : '_self'}
 								href={item?.target?.value ? item?.target?.value : '/'}>
