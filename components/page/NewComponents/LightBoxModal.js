@@ -71,6 +71,7 @@ const LightBoxModal = ({
             }
         }
 
+
         for (let i = 0; i <= numberOfIntervals; i++) {
             const lowerBound = i * rowAmount
             const upperBound = (i + 1) * rowAmount
