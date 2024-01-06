@@ -80,6 +80,10 @@
                 font-weight: 400;
                 line-height: 21.6px; /* 135% */
                 text-decoration: none;
+                transition: color 0.2s ease-in;
+                &:hover {
+                  color: #00aaa6;
+                }
               }
               .BambooHR-ATS-Location {
                 color: #8c8f8f;
