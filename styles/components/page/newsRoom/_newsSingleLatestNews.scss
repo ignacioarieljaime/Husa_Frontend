@@ -37,15 +37,25 @@
 			}
 
 			.items {
-				display: flex;
+				display: grid;
 				justify-content: center;
 				align-items: center;
-				flex-wrap: wrap;
 				@include mq(991) {
-					flex-wrap: wrap;
+					grid-template-columns: repeat(2, 1fr) !important;
+				}
+				@include mq(650) {
+					grid-template-columns: repeat(1, 1fr) !important;
 				}
 				gap: 16px;
 				margin-bottom: 64px;
+				.news_room_main_news_item.three_item {
+					width: 100% !important;
+					height: 100%;
+					& > div {
+						width: 100% !important;
+						height: 100%;
+					}
+				}
 				& > div {
 					min-width: 361px;
 					@include mqm(768) {
