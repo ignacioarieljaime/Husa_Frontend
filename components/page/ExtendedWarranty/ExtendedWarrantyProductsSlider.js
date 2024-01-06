@@ -45,7 +45,7 @@ const ExtendedWarrantyProductsSlider = ({ data: { structure } }) => {
 												? structure?.link?.target
 												: '_self'
 										}
-										href={`/${structure?.link?.value}?category_id=${item?.category?.value}`}>
+										href={`${structure?.link?.value}?category_id=${item?.category?.value}`}>
 										<a
 											target={
 												structure?.link?.target

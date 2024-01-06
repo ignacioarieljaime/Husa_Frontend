@@ -115,17 +115,19 @@ function Layout({ children, meta, title, header }) {
 				<meta name='apple-touch-fullscreen' content='yes' />
 				<meta name='apple-mobile-web-app-capable' content='yes' />
 				{meta &&
-					meta.map(item =>
+					meta.map((item, index) =>
 						item.rel === 'blank' ? (
-							<meta name={item.name} content={item.content} />
+							<meta key={index} name={item.name} content={item.content} />
 						) : item.rel === 'http-equiv' ? (
 							<meta
+								key={index}
 								http-equiv={item.name}
 								content={item.content ? item.content : ''}
 							/>
 						) : item.name !== 'property="og:image:vertical"' &&
 						  item.name !== 'property="og:image:square"' ? (
 							<meta
+								key={index}
 								property={item?.name?.split('=')[1]?.replace(/"/g, '')}
 								content={item.content ? item.content : ''}
 							/>

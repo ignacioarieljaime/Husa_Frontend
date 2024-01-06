@@ -27,7 +27,6 @@ const BlockFeatured = ({ data }) => {
 				spaceBetween={8}
 				slidesPerView={'auto'}
 				grabCursor={true}
-				loop={content?.list?.value.length > 2 ? true : false}
 				modules={[Pagination, Navigation]}
 				breakpoints={{
 					768: {
@@ -51,6 +50,7 @@ const BlockFeatured = ({ data }) => {
 			</Swiper>
 			{content?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
 				<LightBoxModal
+					zIndex={99999}
 					id={data?.id}
 					caption={
 						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value

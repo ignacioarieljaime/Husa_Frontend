@@ -10,7 +10,8 @@ function NavBarDropDownSublist({ data }) {
 				<ul>
 					{data.childs.map((child, index) => (
 						<li
-						// onMouseEnter={() => setShow(index)} key={`colum-${index}`}
+							key={index}
+							// onMouseEnter={() => setShow(index)} key={`colum-${index}`}
 						>
 							<Link
 								target={child.header?.target ? child.header?.target : '_self'}
