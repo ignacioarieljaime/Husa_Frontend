@@ -65,66 +65,6 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 		handler(null)
 	}
 
-function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
-	const timeoutRef = useRef(null)
-
-	const timerCheckHandler = (boolean, index) => {
-		setTimerCheck(prevState => {
-			const newState = [...prevState]
-			newState[index] = boolean
-
-			return newState
-		})
-	}
-
-	const handleMouseEnter = milliseconds => {
-		if (timer) {
-			clearTimeout(timeoutRef.current)
-
-			timeoutRef.current = setTimeout(() => {
-				timerCheckHandler(true, itemIndex)
-			}, milliseconds)
-		}
-
-		if (!timer) {
-			clearTimeout(timeoutRef.current)
-			timerCheckHandler(true, itemIndex)
-		}
-
-		handler(data.name)
-	}
-
-	const handleMouseLeave = milliseconds => {
-		if (timer) {
-			clearTimeout(timeoutRef.current)
-			setTimerCheck(prevState => {
-				const newState = [...prevState]
-				newState[itemIndex] = false
-
-				if (JSON.stringify(prevState) === JSON.stringify(newState))
-					newState = Array.from({ length: prevState.length }, () => false)
-
-				return newState
-			})
-		}
-
-		if (!timer) {
-			timeoutRef.current = setTimeout(() => {
-				setTimerCheck(prevState => {
-					const newState = [...prevState]
-					newState[itemIndex] = false
-
-					if (JSON.stringify(prevState) === JSON.stringify(newState))
-						newState = Array.from({ length: prevState.length }, () => false)
-
-					return newState
-				})
-			}, milliseconds)
-		}
-
-		handler(null)
-	}
-
 	return (
 		<li
 			onMouseEnter={() => handleMouseEnter(500)}
