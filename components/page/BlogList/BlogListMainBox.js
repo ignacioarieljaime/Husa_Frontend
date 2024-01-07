@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react'
-
-import BlogListLittleReadArticleBox from './../BlogList/BlogListLittleReadArticleBox'
-import { GetBlogsByTagApi, getBlogsByIdApi } from 'services/cxm'
+import BlogListSoundBardItem from './BlogListSoundBardItem'
 import { useState } from 'react'
-import { ConvertBlogData } from 'utils/convertBlogData'
+import { GetBlogsByTagApi } from 'services/cxm'
 
-function BlogMoreStories({ data: { structure } }) {
+function BlogListMainBox({ data: { structure }, pim }) {
 	const [blogsList, setBlogsList] = useState()
 	const [blogs, setBlogs] = useState()
 	useEffect(() => {
 		getAllPosts()
 	}, [])
-
 	useEffect(() => {
 		if (Array.isArray(blogsList)) {
 			window.document.body.style.overflow = 'hidden'
@@ -24,11 +21,39 @@ function BlogMoreStories({ data: { structure } }) {
 		setBlogsList('loading')
 		try {
 			let response = await GetBlogsByTagApi()
-			setBlogs(handleItemToShow(response?.data?.data))
+			setBlogs([
+				...handleItemToShow(
+					response?.data?.data.filter(
+						(_, index) => index < structure?.count?.value
+					)
+				),
+				...selectData(
+					response?.data?.data.filter(
+						(_, index) => index >= structure?.count?.value
+					)
+				)
+			])
 			setBlogsList()
 		} catch (error) {
 			setBlogsList()
 			console.log(error)
+		}
+	}
+
+	const selectData = data => {
+		let _data = data
+		if (structure?.selectby?.value === 'new') {
+			return _data.filter(
+				(item, index) => item.id !== pim.id && index < structure?.count?.value
+			)
+		} else {
+			_data = data.filter(
+				item =>
+					item.id !== pim.id && item.tags.some(tag => pim.tags.includes(tag))
+			)
+			return _data.filter(
+				(item, index) => item.id !== pim.id && index < structure?.count?.value
+			)
 		}
 	}
 
@@ -82,6 +107,17 @@ function BlogMoreStories({ data: { structure } }) {
 		}, [])
 	}
 
+	const getPosts = async tag => {
+		setBlogsList('loading')
+		try {
+			let response = await GetBlogsByTagApi(tag)
+			setBlogsList(response?.data?.data)
+		} catch (error) {
+			setBlogsList()
+			console.log(error)
+		}
+	}
+
 	return (
 		<section>
 			<div className='blog_text_container mt-0 mt-md-20 pt-5'>
@@ -94,29 +130,44 @@ function BlogMoreStories({ data: { structure } }) {
 					blogs.map((item, index) => (
 						<BlogListLittleReadArticleBox key={index} data={item} />
 					))}
-				{/* {blogsList ? (
-					<BlogListTagsContent
-						data={blogsList}
-						getPosts={getPosts}
-						backHandler={() => setBlogsList()}
+			</div>
+			<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
+				{blogs?.map((item, index) => (
+					<BlogListSoundBardItem
+						getBlogs={getPosts}
+						key={index}
+						data={{
+							tag: {
+								value: item?.tags
+							},
+							link: {
+								title: 'READ ARTICLE',
+								value: item?.route
+							},
+							image: {
+								src: item?.meta?.find(
+									item =>
+										item.name === 'property="og:image:square"' &&
+										item?.content !== ''
+								)?.content
+									? item?.meta?.find(
+											item =>
+												item.name === 'property="og:image:square"' &&
+												item?.content !== ''
+									  )?.content
+									: item?.meta?.find(
+											item => item.name === 'property="og:image"'
+									  )?.content
+							},
+							title: {
+								value: item?.title
+							}
+						}}
 					/>
-				) : (
-					<>
-						{blogs?.map((item, index) => (
-							<BlogListLittleReadArticleBox
-								getTag={getPosts}
-								key={index}
-								data={item}
-							/>
-						))}
-					</>
-				)} */}
-				{/* {structure?.list?.value.map((item, index) => (
-					<BlogListLittleReadArticleBox key={index} data={item} />
-				))} */}
+				))}
 			</div>
 		</section>
 	)
 }
 
-export default BlogMoreStories
+export default BlogListMainBox
