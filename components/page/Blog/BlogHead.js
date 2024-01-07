@@ -133,9 +133,9 @@ function BlogHead({ data: { structure }, pim }) {
 							)}
 						</a>
 					</Link> */}
-					<div
+					<h1
 						className='header-text header-gradient-text mb-12'
-						dangerouslySetInnerHTML={{ __html: text }}></div>
+						dangerouslySetInnerHTML={{ __html: text }}></h1>
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
 						{structure?.list?.value.map((item, index) =>

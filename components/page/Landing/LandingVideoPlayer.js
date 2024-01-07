@@ -25,8 +25,9 @@ function LandingVideoPlayer({ data }) {
 	useEffect(() => {
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
-				wrapperRef.current.scrollIntoView()
-			}, 1000)
+				location.href = location.hash
+				// wrapperRef.current.scrollIntoView({ behavior: 'smooth' })
+			}, 1300)
 		}
 	}, [])
 

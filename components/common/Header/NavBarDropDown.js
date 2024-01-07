@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
@@ -67,8 +67,8 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 	return (
 		<li
-			onMouseEnter={() => handler(data.name)}
-			onMouseLeave={() => handler(null)}
+			onMouseEnter={() => handleMouseEnter(500)}
+			onMouseLeave={() => handleMouseLeave(40)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>
@@ -81,7 +81,7 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 					<a
 						target={data.header?.target ? data.header?.target : '_self'}
 						className='nav-link'>
-						<span className='underline-on-hover'>{data.header.title}</span>
+						<span className={'underline-on-hover'}>{data.header.title}</span>
 						{data.header?.target === '_blank' && (
 							<img style={{ marginLeft: '10px' }} src={OpenPageOnNewTab.src} />
 						)}
