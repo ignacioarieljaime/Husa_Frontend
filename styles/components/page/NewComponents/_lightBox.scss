@@ -1,5 +1,5 @@
 .lightbox {
-	padding: 20px 0 30px;
+	padding: 20px 0 54px;
 	width: calc(100% - 32px);
 	height: 100%;
 	max-width: 1000px;
@@ -182,7 +182,6 @@
 			}
 			.splide__list {
 				align-items: end;
-
 				.splide__slide {
 					width: 110px !important;
 					height: 61.875px !important;
@@ -276,6 +275,27 @@
 
 				.rightHeightFix {
 					right: -37px !important;
+				}
+			}
+			.splide__pagination {
+				bottom: -30px;
+				li {
+					margin: 4px !important;
+					transform: translate(0) !important;
+					.splide__pagination__page {
+						width: 10px !important;
+						height: 10px !important;
+						opacity: 0.7;
+						background: #c7c7c9;
+						transition: all 0.3s ease;
+						margin: 0 !important;
+						transform: scale(1);
+						&.is-active {
+							opacity: 1;
+							background: #525454;
+							transform: scale(1.5);
+						}
+					}
 				}
 			}
 		}
