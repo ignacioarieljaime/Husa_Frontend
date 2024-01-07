@@ -25,9 +25,6 @@ function Header({ data: { structure }, notification }) {
 	const [topNavCondition, setTopNavCondition] = useState(false)
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
 	const [dropDown, setDropDown] = useState(null)
-	const [dropDownTimer, setDropDownTimer] = useState(true)
-	const [dropDownTimerCheck, setDropDownTimerCheck] = useState([]);
-
 	useEffect(() => {
 		if (sessionStorage.getItem('headerData')) {
 			setHeaderData({ ...JSON.parse(sessionStorage.getItem('headerData')) })
@@ -48,24 +45,6 @@ function Header({ data: { structure }, notification }) {
 		if (structure?.theme?.value) setTheme(structure?.theme?.value)
 	}, [structure])
 
-
-	useEffect(() => {
-		if (headerData && dropDownTimerCheck.length === 0) {
-			setDropDownTimerCheck(Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false));
-		}
-	}, [headerData])
-
-	useEffect(() => {
-
-		const newDropDownTimerCheck = Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false);
-
-		if (JSON.stringify(dropDownTimerCheck) === JSON.stringify(newDropDownTimerCheck)) {
-			setDropDownTimer(true);
-		} else {
-			setDropDownTimer(false);
-		}
-	}, [dropDownTimerCheck, dropDownTimer])
-
 	return (
 		<header>
 			<nav
@@ -74,9 +53,7 @@ function Header({ data: { structure }, notification }) {
 				 top-nav py-3 px-sm-4 fixed-top flex-wrap ${
 						!topNavCondition && 'search-mode'
 					} ${asideMenu || searchInputCondition ? 'hidden' : ''}`}
-				style={
-					asideMenu || searchInputCondition ? { zIndex: 999999999999999 } : null
-				}>
+				style={asideMenu || searchInputCondition ? { zIndex: 1000 } : null}>
 				<div className='container-fluid'>
 					<div className='row justify-content-between align-items-center w-100 m-auto'>
 						<div className={`m-0  ${width > 1230 && 'col-xl-4'} py-1`}>
@@ -93,9 +70,6 @@ function Header({ data: { structure }, notification }) {
 									handler={setDropDown}
 									key={`right-${index}`}
 									data={item}
-									timer={dropDownTimer}
-									itemIndex={index}
-									setTimerCheck={setDropDownTimerCheck}
 								/>
 							))}
 						</ul>
@@ -106,9 +80,6 @@ function Header({ data: { structure }, notification }) {
 									handler={setDropDown}
 									key={`right-${index}`}
 									data={item}
-									timer={dropDownTimer}
-									itemIndex={index}
-									setTimerCheck={setDropDownTimerCheck}
 								/>
 							))}
 

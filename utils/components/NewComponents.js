@@ -14,9 +14,5 @@ module.exports.NewComponents = [
 	{
 		name: 'FullFeature',
 		path: 'components/page/NewComponents/FullFeature.js'
-	},
-	{
-		name: 'AwardsAndAccolades',
-		path: 'components/page/NewComponents/AwardsAndAccolades.js'
 	}
 ]

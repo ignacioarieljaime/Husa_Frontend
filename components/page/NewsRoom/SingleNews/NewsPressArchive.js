@@ -133,13 +133,13 @@ const NewsPressArchive = ({ data }) => {
 										<Link href={item?.route || '/'}>
 											<a className='box-group-link'>
 												<div className='text_box'>
-													{item?.tags.map((item, _index) => (
-														<span key={_index} className='subject'>
-															{item}
-														</span>
+													{item?.tags.map(item => (
+														<span className='subject'>{item}</span>
 													))}
 
-													<h5>{item?.title}</h5>
+													<h5>
+														{item?.title}
+													</h5>
 													<span className='date'>
 														{item?.published_at
 															? moment(item?.published_at)

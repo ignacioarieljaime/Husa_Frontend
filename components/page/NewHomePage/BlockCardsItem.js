@@ -18,17 +18,16 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 
-	const gradientHandler = () => {
-		if (typeof gradient === 'undefined') return '';
-		if (gradient.value === true) return 'gradient'
-		if (gradient.value === false) return ''
-		return ''
-	}
-
 	const content = (
 		<div>
 			<div
-				className={`box-background ${gradientHandler()}`}>
+				className={`box-background ${
+					typeof gradient === 'undefined'
+						? 'gradient'
+						: gradient
+						? 'gradient'
+						: ''
+				}`}>
 				<CustomImage
 					src={backgroundImage?.src}
 					alt={backgroundImage?.alt}
@@ -92,7 +91,13 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 					}`}>
 					<div>
 						<div
-							className={`box-background ${gradientHandler()}`}>
+							className={`box-background ${
+								typeof gradient === 'undefined'
+									? 'gradient'
+									: gradient?.value
+									? 'gradient'
+									: ''
+							}`}>
 							<CustomImage
 								src={backgroundImage?.src}
 								alt={backgroundImage?.alt}
@@ -152,7 +157,13 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 					style={{ cursor: 'auto' }}>
 					<div>
 						<div
-							className={`box-background ${gradientHandler()}`}>
+							className={`box-background ${
+								typeof gradient === 'undefined'
+									? 'gradient'
+									: gradient?.value
+									? 'gradient'
+									: ''
+							}`}>
 							<CustomImage
 								src={backgroundImage?.src}
 								alt={backgroundImage?.alt}
@@ -206,7 +217,6 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 			)}
 			{lightbox?.value && (
 				<LightBoxModal
-					zIndex={99999}
 					id={data?.id}
 					caption={lightboxObject?.value?.caption}
 					video={lightboxObject?.value?.video}

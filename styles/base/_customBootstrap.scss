@@ -177,8 +177,7 @@ input[type='number']::-webkit-outer-spin-button {
 	}
 }
 /* underline on hover */
-.underline-on-hover,
-.first-underline-on-hover {
+.underline-on-hover {
 	position: relative;
 }
 .underline-on-hover::after {
@@ -190,18 +189,7 @@ input[type='number']::-webkit-outer-spin-button {
 	width: 0;
 	height: 2px;
 	background: var(--primary-color);
-	transition: .5s 300ms ease;
-}
-.first-underline-on-hover::after {
-	content: '';
-	display: inline-block;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 0;
-	height: 2px;
-	background: var(--primary-color);
-	transition: 0.2s 1s ease;
+	transition: 0.2s 300ms ease;
 }
 /* article */
 

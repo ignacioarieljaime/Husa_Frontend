@@ -25,6 +25,7 @@ export async function getSettingApi() {
 }
 
 export async function GetNewsApi(filters, count, exclude, controller) {
+	console.log(filters.product)
 	let response = await axios.get(
 		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=news${
 			filters.year.length

@@ -40,11 +40,11 @@ module.exports.NewsRoomComponents = [
 		path: 'components/page/NewsRoom/NewsRoomMainBox'
 	},
 	{
-		name: 'NewsRoomAnnouncementsForm',
-		path: 'components/page/NewsRoom/NewsRoomAnnouncementsForm'
-	},
-	{
 		name: 'NewsRoomNavbar ',
 		path: 'components/page/NewsRoom/NewsRoomNavbar'
+	},
+	{
+		name: 'NewsRoomAnnouncementsForm',
+		path: 'components/page/NewsRoom/NewsRoomAnnouncementsForm'
 	}
 ]

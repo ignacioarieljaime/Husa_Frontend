@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import Spinner from 'components/common/Spinner'
 
-const NewsSingleLatestNews = ({ data, pim, pageId }) => {
+const NewsSingleLatestNews = ({ data, pim }) => {
 	let { structure } = data
 	const [news, setNews] = useState()
 	const [title, setTitle] = useState()
@@ -26,7 +26,7 @@ const NewsSingleLatestNews = ({ data, pim, pageId }) => {
 					structure?.selectby?.value === 'rel'
 						? pim?.tags.map(item => '&tag[]=' + item)
 						: ''
-				}&exclude[]=${pageId}&page=${1}&brand_id=${
+				}&exclude[]=${pim?.id}&page=${1}&brand_id=${
 					process.env.NEXT_PUBLIC_BRAND_ID
 				}`,
 				{
@@ -36,24 +36,37 @@ const NewsSingleLatestNews = ({ data, pim, pageId }) => {
 				}
 			)
 
-			const sameArticleRemoved = response.data.data.slice(1)
-
-			setNews(sameArticleRemoved)
+			setNews(response.data.data)
 		} catch (error) {
 			console.log(error)
 		}
 	}
+
+	// function sortNews(_news, method) {
+	// 	const filteredNews = _news.filter(news => news?.id !== pim?.id)
+
+	// 	if (method === 'rel') {
+	// 		setNews(
+	// 			filteredNews.filter(_item => {
+	// 				console.log(_item.tags)
+	// 				console.log(pim?.tags)
+	// 				return _item.tags.some(_tag => pim?.tags.includes(_tag))
+	// 			})
+	// 		)
+	// 	} else {
+	// 		filteredNews.sort((a, b) => {
+	// 			return new Date(b.published_at) - new Date(a.published_at)
+	// 		})
+	// 		setNews(filteredNews)
+	// 	}
+	// }
 
 	return (
 		<div className='single_news_latest_news'>
 			<div className='container'>
 				<div>
 					<h5 dangerouslySetInnerHTML={{ __html: title }}></h5>
-					<div
-						className='items'
-						style={{
-							gridTemplateColumns: `repeat(${structure?.count?.value}, 1fr)`
-						}}>
+					<div className='items'>
 						{news === 'loading' ? (
 							<Spinner />
 						) : structure?.selectby?.value &&

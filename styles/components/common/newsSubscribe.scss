@@ -4,7 +4,7 @@
   .container {
     max-width: 1250px;
     margin: 0 auto;
-    h5 {
+    h2 {
       font-weight: 500;
       line-height: 48px;
       font-size: 26px;
@@ -48,7 +48,7 @@
 @media (max-width: 768px) {
   .email-form {
     .container {
-      h5 {
+      h2 {
         font-size: 18px;
         line-height: 28px;
       }

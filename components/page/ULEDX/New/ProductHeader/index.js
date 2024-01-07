@@ -21,6 +21,7 @@ const ProductHeader = ({ pin = false, pim }) => {
 					<div>
 						<img src={productLogo.src} width={178} alt='ULED X 85UX' />
 					</div>
+
 					<div>
 						<nav className={styles.productHeaderNav}>
 							<ul>
