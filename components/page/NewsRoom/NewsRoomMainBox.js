@@ -11,14 +11,12 @@ import Link from 'next/link'
 import NewsRoomPagination from './SingleNews/NewsRoomPagination'
 import NewsRoomMainNewsItem from './NewsRoomMainNewsItem'
 import moment from 'moment'
-import axios from 'axios'
 
 const NewsRoomMainBox = ({ data }) => {
 	const [width] = useWindowSize()
 	let { structure } = data
 	const [news, setNews] = useState()
 	const [newsLength, setNewsLength] = useState()
-	const [selectedNews, setSelectedNews] = useState([])
 	const [pagination, setPagination] = useState()
 	const [newsItemOrder, setNewsItemOrder] = useState([1, 2, 2, 3, 3, 3])
 	const [filters, setFilters] = useState({
@@ -27,22 +25,6 @@ const NewsRoomMainBox = ({ data }) => {
 		search: '',
 		page: 1
 	})
-
-	async function getSelectedNews(_id) {
-		try {
-			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPostInfo/${_id}`,
-				{
-					headers: {
-						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
-					}
-				}
-			)
-			setSelectedNews(prevState => [...prevState, response?.data])
-		} catch (error) {
-			console.log(error)
-		}
-	}
 
 	useEffect(() => {
 		let newOrder = []
@@ -54,10 +36,6 @@ const NewsRoomMainBox = ({ data }) => {
 				)
 			]
 		setNewsItemOrder(newOrder)
-		setSelectedNews([])
-		structure?.list?.value.forEach(element => {
-			getSelectedNews(element?.postId?.value)
-		})
 	}, [])
 
 	return (
@@ -180,7 +158,7 @@ const NewsRoomMainBox = ({ data }) => {
 										key={index}
 										link={item?.link?.value}
 										target={item?.link?.target}
-										date={selectedNews[index]?.published_at}
+										date={item?.published_at}
 										image={item?.image?.src}
 										subject={item?.tag?.value}
 										title={item?.title?.value}
