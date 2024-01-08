@@ -18,16 +18,18 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 
+	const gradientHandler = () => {
+		if (!gradient) return '';
+		if (typeof gradient === 'undefined') return '';
+		if (gradient.value === true) return 'gradient'
+		if (gradient.value === false) return ''
+		return ''
+	}
+
 	const content = (
 		<div>
 			<div
-				className={`box-background ${
-					typeof gradient === 'undefined'
-						? 'gradient'
-						: gradient
-						? 'gradient'
-						: ''
-				}`}>
+				className={`box-background ${gradientHandler()}`}>
 				<CustomImage
 					src={backgroundImage?.src}
 					alt={backgroundImage?.alt}
@@ -91,13 +93,7 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 					}`}>
 					<div>
 						<div
-							className={`box-background ${
-								typeof gradient === 'undefined'
-									? 'gradient'
-									: gradient?.value
-									? 'gradient'
-									: ''
-							}`}>
+							className={`box-background ${gradientHandler()}`}>
 							<CustomImage
 								src={backgroundImage?.src}
 								alt={backgroundImage?.alt}
@@ -130,7 +126,7 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 								{link?.title && lightbox?.value ? (
 									<button
 										className='n-btn outline-white transparent d-block w-fit medium position-relative'
-										style={{ zIndex: 10000 }}>
+										style={{ zIndex: 10 }}>
 										{link?.title}
 									</button>
 								) : null}
@@ -157,13 +153,7 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 					style={{ cursor: 'auto' }}>
 					<div>
 						<div
-							className={`box-background ${
-								typeof gradient === 'undefined'
-									? 'gradient'
-									: gradient?.value
-									? 'gradient'
-									: ''
-							}`}>
+							className={`box-background ${gradientHandler()}`}>
 							<CustomImage
 								src={backgroundImage?.src}
 								alt={backgroundImage?.alt}
@@ -217,6 +207,7 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 			)}
 			{lightbox?.value && (
 				<LightBoxModal
+					zIndex={99999}
 					id={data?.id}
 					caption={lightboxObject?.value?.caption}
 					video={lightboxObject?.value?.video}
