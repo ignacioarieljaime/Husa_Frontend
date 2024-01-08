@@ -2,12 +2,8 @@
 	background: #006664;
 	> div {
 		max-width: 1115px;
-		@include mqm(992) {
-			padding: 0;
-		}
-		@include mq(992) {
-			padding: 0 16px;
-		}
+
+		padding: 0 16px;
 		> div {
 			padding: 80px 0 60px;
 
