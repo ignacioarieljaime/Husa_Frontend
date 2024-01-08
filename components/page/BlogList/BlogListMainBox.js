@@ -2,10 +2,13 @@ import React, { useEffect } from 'react'
 import BlogListSoundBardItem from './BlogListSoundBardItem'
 import { useState } from 'react'
 import { GetBlogsByTagApi } from 'services/cxm'
+import BlogListLittleReadArticleBox from './BlogListLittleReadArticleBox'
+import { ConvertBlogData } from 'utils/convertBlogData'
 
 function BlogListMainBox({ data: { structure }, pim }) {
 	const [blogsList, setBlogsList] = useState()
-	const [blogs, setBlogs] = useState()
+	const [rowBlogs, setRowBlogs] = useState()
+	const [gridBlogs, setGridBlogs] = useState()
 	useEffect(() => {
 		getAllPosts()
 	}, [])
@@ -21,18 +24,22 @@ function BlogListMainBox({ data: { structure }, pim }) {
 		setBlogsList('loading')
 		try {
 			let response = await GetBlogsByTagApi()
-			setBlogs([
-				...handleItemToShow(
+			setGridBlogs(
+				handleItemToShow(
 					response?.data?.data.filter(
-						(_, index) => index < structure?.count?.value
-					)
-				),
-				...selectData(
-					response?.data?.data.filter(
-						(_, index) => index >= structure?.count?.value
+						(_, index) => index < parseInt(structure['grid-count']?.value)
 					)
 				)
-			])
+			)
+			setRowBlogs(
+				response?.data?.data.filter(
+					(_, index) =>
+						index >= parseInt(structure['grid-count']?.value) &&
+						index <
+							parseInt(structure['grid-count']?.value) +
+								parseInt(structure['row-count']?.value)
+				)
+			)
 			setBlogsList()
 		} catch (error) {
 			setBlogsList()
@@ -40,28 +47,8 @@ function BlogListMainBox({ data: { structure }, pim }) {
 		}
 	}
 
-	const selectData = data => {
-		let _data = data
-		if (structure?.selectby?.value === 'new') {
-			return _data.filter(
-				(item, index) => item.id !== pim.id && index < structure?.count?.value
-			)
-		} else {
-			_data = data.filter(
-				item =>
-					item.id !== pim.id && item.tags.some(tag => pim.tags.includes(tag))
-			)
-			return _data.filter(
-				(item, index) => item.id !== pim.id && index < structure?.count?.value
-			)
-		}
-	}
-
 	const handleItemToShow = _items => {
-		let trimmedItems = _items.filter(
-			(_, index) => index < structure?.count?.value
-		)
-		let items = divideArray(trimmedItems, Math.round(trimmedItems?.length / 2))
+		let items = divideArray(_items, Math.round(_items?.length / 2))
 		let result = []
 
 		items.forEach(element => {
@@ -126,45 +113,46 @@ function BlogListMainBox({ data: { structure }, pim }) {
 						{structure?.title?.value}
 					</h2>
 				)}
-				{blogs &&
-					blogs.map((item, index) => (
+				{gridBlogs &&
+					gridBlogs.map((item, index) => (
 						<BlogListLittleReadArticleBox key={index} data={item} />
 					))}
 			</div>
 			<div className='blog_text_container mb-6 mb-md-20 pb-0 pb-md-10'>
-				{blogs?.map((item, index) => (
-					<BlogListSoundBardItem
-						getBlogs={getPosts}
-						key={index}
-						data={{
-							tag: {
-								value: item?.tags
-							},
-							link: {
-								title: 'READ ARTICLE',
-								value: item?.route
-							},
-							image: {
-								src: item?.meta?.find(
-									item =>
-										item.name === 'property="og:image:square"' &&
-										item?.content !== ''
-								)?.content
-									? item?.meta?.find(
-											item =>
-												item.name === 'property="og:image:square"' &&
-												item?.content !== ''
-									  )?.content
-									: item?.meta?.find(
-											item => item.name === 'property="og:image"'
-									  )?.content
-							},
-							title: {
-								value: item?.title
-							}
-						}}
-					/>
-				))}
+				{rowBlogs &&
+					rowBlogs?.map((item, index) => (
+						<BlogListSoundBardItem
+							getBlogs={getPosts}
+							key={index}
+							data={{
+								tag: {
+									value: item?.tags
+								},
+								link: {
+									title: 'READ ARTICLE',
+									value: item?.route
+								},
+								image: {
+									src: item?.meta?.find(
+										item =>
+											item.name === 'property="og:image:square"' &&
+											item?.content !== ''
+									)?.content
+										? item?.meta?.find(
+												item =>
+													item.name === 'property="og:image:square"' &&
+													item?.content !== ''
+										  )?.content
+										: item?.meta?.find(
+												item => item.name === 'property="og:image"'
+										  )?.content
+								},
+								title: {
+									value: item?.title
+								}
+							}}
+						/>
+					))}
 			</div>
 		</section>
 	)
