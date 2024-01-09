@@ -735,6 +735,14 @@ input {
 	a {
 		font-size: inherit !important;
 		line-height: inherit !important;
+		font-weight: inherit !important;
+	}
+	p {
+		font-weight: 300 !important;
+	}
+	h5,
+	h6 {
+		font-weight: 500 !important;
 	}
 	table {
 		border-collapse: collapse;
