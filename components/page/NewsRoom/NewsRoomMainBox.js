@@ -158,7 +158,7 @@ const NewsRoomMainBox = ({ data }) => {
 										key={index}
 										link={item?.link?.value}
 										target={item?.link?.target}
-										date={selectedNews[index]?.published_at}
+										date={item?.published_at}
 										image={item?.image?.src}
 										subject={item?.tag?.value}
 										title={item?.title?.value}
