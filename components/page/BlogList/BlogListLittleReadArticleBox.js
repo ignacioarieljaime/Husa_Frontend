@@ -89,18 +89,19 @@ function BlogListLittleReadArticleBoxContainer({
 													item => item === null
 												) && (
 													<div className='col-12 text-start mb-3'>
-														{smallPost?.value?.tag?.value?.map(item => (
-															<>
-																<span
-																	style={{
-																		marginRight: '10px',
-																		border: 'none',
-																		background: 'transparent'
-																	}}
-																	className='text-primary-dark text-decoration-none'>
-																	{item}
-																</span>
-																{/* <Link
+														{smallPost?.value?.tag?.value?.map(
+															(item, index) => (
+																<React.Fragment key={index}>
+																	<span
+																		style={{
+																			marginRight: '10px',
+																			border: 'none',
+																			background: 'transparent'
+																		}}
+																		className='text-primary-dark text-decoration-none'>
+																		{item}
+																	</span>
+																	{/* <Link
 															href={
 																smallPost?.value?.tag?.value
 																	? smallPost?.value?.tag?.value
@@ -117,8 +118,9 @@ function BlogListLittleReadArticleBoxContainer({
 																{item}
 															</button>
 														</Link> */}
-															</>
-														))}
+																</React.Fragment>
+															)
+														)}
 													</div>
 												)}
 											<div className='col-12 mb-8'>
@@ -202,8 +204,8 @@ function BlogListLittleReadArticleBoxContainer({
 									<figcaption>
 										<div className='row justify-content-between align-items-center mt-5'>
 											<div className='col-12 text-start mb-3'>
-												{largePost?.value?.tag?.value?.map(item => (
-													<>
+												{largePost?.value?.tag?.value?.map((item, index) => (
+													<React.Fragment key={index}>
 														<span
 															style={{
 																marginRight: '10px',
@@ -230,7 +232,7 @@ function BlogListLittleReadArticleBoxContainer({
 																{item}
 															</button>
 														</Link> */}
-													</>
+													</React.Fragment>
 												))}
 											</div>
 											<div className='col-12 mb-8'>

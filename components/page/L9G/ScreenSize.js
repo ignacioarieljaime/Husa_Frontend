@@ -36,7 +36,9 @@ const ScreenSize = ({ data: { structure } }) => {
 						))}
 					</div>
 					{list.map((tab, index) => (
-						<div className={`tab-image ${activeTab === index ? 'active' : ''}`}>
+						<div
+							key={index}
+							className={`tab-image ${activeTab === index ? 'active' : ''}`}>
 							<CustomImage src={tab?.image?.src} alt={tab?.image?.alt} />
 							<div
 								className='fs-9 fs-md-3 fw-light'

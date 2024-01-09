@@ -35,18 +35,18 @@ function RegisterForm({ data }) {
 	const [file, setFile] = useState(null)
 	const [imageLoading, setImageLoading] = useState(null)
 	const [dataSchema, setDataSchema] = useState({
-		first_name: null,
-		last_name: null,
-		series: null,
-		email: null,
-		phone_number: null,
-		postal_code: null,
-		product_category: null,
-		product_model: null,
-		product_serial_number: null,
-		purchased_from: null,
-		date_of_purchase: null,
-		receipt_image: null,
+		first_name: '',
+		last_name: '',
+		series: '',
+		email: '',
+		phone_number: '',
+		postal_code: '',
+		product_category: '',
+		product_model: '',
+		product_serial_number: '',
+		purchased_from: '',
+		date_of_purchase: '',
+		receipt_image: '',
 		future_news: '0'
 	})
 	const [errors, setErrors] = useState(null)
@@ -525,7 +525,7 @@ function RegisterForm({ data }) {
 										style={{ zIndex: 1 }}
 										id='contact-file-input'
 										accept='.jpg, .png, .jpeg'
-										multiple='multiple'
+										multiple={true}
 										onChange={uploadFile}
 									/>
 									<div>Drag & Drop a File Here</div>

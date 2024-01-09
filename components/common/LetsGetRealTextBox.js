@@ -2,24 +2,26 @@ import React, { useEffect, useState } from 'react'
 
 function LetsGetRealTextBox({ data }) {
 	let { structure } = data
-	const [text, setText] = useState(null)
+	const [content, setContent] = useState(null)
 	useEffect(() => {
-		setText(structure?.title?.value)
+		setContent(structure)
 	}, [])
 
-	return structure?.template?.value === 'v1' ? (
-		<div className='py-15' dangerouslySetInnerHTML={{ __html: text }}></div>
+	return content?.template?.value === 'v1' ? (
+		<div
+			className='py-15'
+			dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 	) : (
 		<section>
-			<div className={`lets_get_real_text_box ${structure?.theme?.value}`}>
+			<div className={`lets_get_real_text_box ${content?.theme?.value}`}>
 				<div
 					className='content'
 					style={
-						structure?.textColor?.value && {
-							color: structure?.textColor?.value
+						content?.textColor?.value && {
+							color: content?.textColor?.value
 						}
 					}
-					dangerouslySetInnerHTML={{ __html: text }}></div>
+					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
 			</div>
 		</section>
 	)

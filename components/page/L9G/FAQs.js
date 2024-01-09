@@ -17,6 +17,7 @@ const FAQs = ({ data: { structure } }) => {
 					<div className='col-12 col-md-6'>
 						{structure?.leftFAQ?.value.map((item, index) => (
 							<FAQsItem
+								key={index}
 								question={item?.question?.value}
 								answer={item?.answer?.value}
 							/>
@@ -25,6 +26,7 @@ const FAQs = ({ data: { structure } }) => {
 					<div className='col-12 col-md-6'>
 						{structure?.rightFAQ?.value.map((item, index) => (
 							<FAQsItem
+								key={index}
 								question={item?.question?.value}
 								answer={item?.answer?.value}
 							/>

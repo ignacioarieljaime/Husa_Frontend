@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 function CESHomeNavBar() {
+	const [fix, setFix] = useState(false)
+	const menu = useRef()
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			if (menu?.current?.offsetTop <= window.scrollY + 64) {
+				setFix(true)
+			} else {
+				setFix(false)
+			}
+		})
+	}, [])
+
 	return (
-		<div className='catalog-navbar bg-white'>
+		<div
+			style={fix ? { height: '64px' } : {}}
+			ref={menu}
+			className='catalog-navbar bg-white'>
 			<nav className=''>
 				<ul className='row justify-content-evenly justify-content-md-end align-items-center p-0 m-0'>
 					<li className='me-md-auto'>
