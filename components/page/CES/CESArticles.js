@@ -71,11 +71,8 @@ const CESArticles = ({ data }) => {
 												<a className='box-group-link'>
 													<div className='text_box'>
 														<span className='subject'>{item?.tag?.value}</span>
-
 														<h5>
-															<Link href={item?.link?.value || '/'}>
-																<a>{item?.title?.value}</a>
-															</Link>
+															<a>{item?.title?.value}</a>
 														</h5>
 														<span className='date'>
 															{item?.published_at
