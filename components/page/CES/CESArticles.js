@@ -77,10 +77,10 @@ const CESArticles = ({ data }) => {
 														<span className='date'>
 															{item?.published_at
 																? moment(item?.published_at).format(
-																		'MMMM DD YYYY'
+																		'MMMM DD, YYYY'
 																  )
 																: moment(item?.created_at).format(
-																		'MMMM DD YYYY'
+																		'MMMM DD, YYYY'
 																  )}
 														</span>
 													</div>
