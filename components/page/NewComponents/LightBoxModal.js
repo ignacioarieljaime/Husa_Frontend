@@ -35,6 +35,14 @@ const LightBoxModal = ({
 
     const outSide = useOutsideClick(boxRef)
 
+    function currentPagination(pageLength, totalLength, index) {
+        if (totalLength <= pageLength) return 1;
+
+        for (let i = 0; i <= Math.floor((totalLength - 1) / pageLength); i++) {
+            if (index < (pageLength * (i + 1)) && index >= ((pageLength * (i + 1)) - pageLength)) return pageLength * (i + 1) / pageLength;
+        }
+    }
+
     function isLastPage(pageLength, totalLength, index) {
         const result = index > totalLength - pageLength;
         const isOnlyOnePage = (totalLength - pageLength) === 0
@@ -47,10 +55,11 @@ const LightBoxModal = ({
     const newIndexHandler = indexUpdate => {
         const displayPerPage = 5
         const lastPage = isLastPage(displayPerPage, dataList?.length, indexUpdate)
-
+        console.log({"IU": indexUpdate})
         setCurrentIndex(indexUpdate)
 
         if (lastPage) {
+            console.log("LP")
             document.getElementsByClassName('splide__arrow--next')[0].disabled = true
             document.getElementsByClassName('splide__arrow--prev')[0].disabled = false
             if (indexUpdate < displayPerPage) document.getElementsByClassName('splide__arrow--prev')[0].disabled = true
@@ -516,9 +525,10 @@ const LightBoxModal = ({
                                                 <Splide
                                                     options={mainOptions}
                                                     ref={mainSwiperRef}
-                                                    onMove={(slide, newIndex, prevIndex, destIndex) =>
+                                                    onMove={(slide, newIndex, prevIndex, destIndex) => {
+                                                        console.log("main")
                                                         newIndexHandler(newIndex)
-                                                    }>
+                                                    }}>
                                                     {dataList.map((item, index) => (
                                                         <SplideSlide key={index}>
                                                             {renderChidren(true, item, index, true)}
@@ -531,10 +541,18 @@ const LightBoxModal = ({
                                             <Splide
                                                 options={thumbPageHandler(currentIndex)}
                                                 ref={thumbsSwiperRef}
-                                                onMove={(slide, newIndex, prevIndex, destIndex) =>
+                                                onMove={(slide, newIndex, prevIndex, destIndex) => {
+                                                    console.log("thumb")
                                                     newIndexHandler(newIndex)
-                                                }
-                                                onArrowsUpdated={slide => newIndexHandler(slide.index)}>
+                                                }}
+                                                onArrowsUpdated={slide => {
+                                                    // THIS IS CAUSING THE PAGINATION TO NOT UPDATE
+                                                    // NOT SURE HOW TO FIX YET, WHEN COMMENTING OUT ARROWS STILL WORK BUT
+                                                    // ARROWS DONT DISABLE/RE-ENABLE PROPERLY ON PAGES
+                                                    // ALSO PLACEMENT OF THUMBNAIL DOESNT WORK WHEN USING PAGINATION TO UPDATE INDEX
+                                                    newIndexHandler(slide.index)
+                                                }}
+                                                >
                                                 {dataList.map((item, index) => (
                                                     <SplideSlide key={index}>
                                                         {renderChidren(false, item, index, false, {
@@ -543,6 +561,17 @@ const LightBoxModal = ({
                                                     </SplideSlide>
                                                 ))}
                                             </Splide>
+                                        </div>
+                                        <div className='lightbox-pagination-container'>
+                                            {Array.from({ length: Math.ceil(dataList.length / 5) }).map((_, index) => (
+                                                <div className='lightbox-pagination-sub-container' key={`page-${index}`}
+                                                onClick={() => {
+                                                    newIndexHandler(index * 5)
+                                                }}
+                                                >
+                                                    <div className={`lightbox-pagination-${currentPagination(5, dataList?.length, currentIndex) === index + 1 ? 'selected' : 'regular'}`} />
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
