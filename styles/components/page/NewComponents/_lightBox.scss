@@ -189,7 +189,10 @@
                     // margin-left: 1%;
                     // margin-right: 1%;
                     border: none !important;
-                    background-size: 90% 100% !important;
+                    background-size: cover !important;
+                    padding-left: 1%;
+                    padding-right: 1%;
+                    background-clip: content-box !important;
                     text-align: center;
                     @include mq(768) {
                         width: 19% !important;
