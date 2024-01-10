@@ -12,210 +12,212 @@
 	background: #fff;
 	border-radius: 25px;
 
-	@include mq(768) {
-		z-index: 99998;
-		width: 100vw;
-		height: calc(100vh - 72px);
-		bottom: 0;
-		transform: translate(-50%, 0);
-		border-radius: 0;
-		padding: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
-	&___top_bar {
-		display: flex;
-		justify-content: end;
-		align-items: center;
-		gap: 40px;
-		padding: 0 16px 16px;
-		@include mq(768) {
-			padding: 16px 20px;
-			width: 100%;
-			justify-content: space-between;
-		}
-		.n-btn.outline-black {
-			svg path {
-				stroke: #000;
-				stroke-width: 0.5px;
-				stroke-linejoin: round;
-			}
-			&:hover svg path {
-				fill: #fff;
-				stroke: #fff;
-				transition: all 0.3s ease-in-out;
-			}
-			@include mq(768) {
-				min-width: 56px !important;
-				padding: 9px 16px 7px !important;
-				font-size: 10px;
-				line-height: 10px;
-				svg {
-					width: 11px;
-					height: 11px;
-				}
-			}
-		}
-		&___close {
-			background-color: transparent;
-			border: 0;
-			outline: 0;
-			padding: 0;
-			width: fit-content;
-			height: fit-content;
-			@include mq(768) {
-				display: none;
-			}
-		}
-		&___back {
-			background: transparent;
-			border: none;
-			display: flex;
-			padding: 12px 13px;
-			justify-content: center;
-			align-items: center;
-			gap: 6px;
-			font-size: 10px;
-			font-weight: 400;
-			line-height: 100%; /* 10px */
-			color: #00aaa6;
-			span {
-				font-size: 10px;
-				font-style: normal;
-				font-weight: 500;
-				line-height: 11px; /* 10px */
-				color: #00aaa6;
-				height: 7px;
-			}
-			@include mqm(768) {
-				display: none;
-			}
-		}
-	}
-	&___wrapper {
-		position: relative;
-		padding-top: calc(56.25% + 32px);
-		width: 100%;
-		height: 0;
-		& > iframe,
-		& > img {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
-		.lightbox_iframe_container {
-			@include mq(768) {
-				position: absolute;
-				top: 50%;
-				transform: translateY(-60%);
-				width: 100%;
-			}
-		}
-		&___main_carousel {
-			position: absolute !important;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			@include mq(768) {
-				top: -10%;
-			}
-			.splide {
-				width: 100%;
-				height: 100%;
-				.splide__track {
-					width: 100%;
-					height: 100%;
-					.splide__slide {
-						border: 1px solid #fff;
-						iframe,
-						img {
-							width: 100%;
-							height: calc(100% - 32px);
-							object-fit: scale-down;
-							@include mq(768) {
-								height: calc(100% - 62px);
-							}
-						}
-						iframe {
-							aspect-ratio: 16 / 9;
-						}
-						.lightbox___caption {
-							padding: 12px 16px 0;
-							@include mq(768) {
-								position: absolute;
-								bottom: 5%;
-								left: 0;
-								right: 0;
-								padding: 0;
-							}
-						}
-						.lightbox___caption {
-							padding: 12px 16px 0;
-							@include mq(768) {
-								position: absolute;
-								bottom: 5%;
-								left: 0;
-								right: 0;
-								padding: 0;
-							}
-						}
-					}
-				}
-			}
-		}
-		&___thumbnails_carousel {
-			width: 100%;
-			max-width: 555px;
-			margin: 24px auto 0;
-			@include mq(768) {
-				position: absolute;
-				bottom: 75px;
-				left: 0;
-				right: 0;
-				max-width: 100%;
-			}
-			.splide__list {
-				align-items: end;
-				.splide__slide {
-					width: 110px !important;
-					height: 61.875px !important;
-					transition: all 0.2s ease-in-out;
-					// margin-left: 1%;
-					// margin-right: 1%;
-					border: none !important;
-					background-size: 90% 100% !important;
-					text-align: center;
-					@include mq(768) {
-						width: 19% !important;
-						height: 34px !important;
-						aspect-ratio: 6 / 4;
-						align-self: end;
-					}
-					&.is-active {
-						border: none !important;
-						width: 124px !important;
-						height: 69.75px !important;
-						@include mq(768) {
-							width: 24% !important;
-							height: 38.25px !important;
-							aspect-ratio: 6 / 4;
-						}
-						&.slide-active-height-fix {
-							width: 100px !important;
-							height: 50px !important;
-						}
-					}
-					iframe {
-						width: 90%;
-					}
-				}
-
+    @include mq(768) {
+        z-index: 99998;
+        width: 100vw;
+        height: calc(100vh - 72px);
+        bottom: 0;
+        transform: translate(-50%, 0);
+        border-radius: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    &___top_bar {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        gap: 40px;
+        padding: 0 16px 16px;
+        @include mq(768) {
+            padding: 16px 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        .n-btn.outline-black {
+            svg path {
+                stroke: #000;
+                stroke-width: 0.5px;
+                stroke-linejoin: round;
+            }
+            &:hover svg path {
+                fill: #fff;
+                stroke: #fff;
+                transition: all 0.3s ease-in-out;
+            }
+            @include mq(768) {
+                min-width: 56px !important;
+                padding: 9px 16px 7px !important;
+                font-size: 10px;
+                line-height: 10px;
+                svg {
+                    width: 11px;
+                    height: 11px;
+                }
+            }
+        }
+        &___close {
+            background-color: transparent;
+            border: 0;
+            outline: 0;
+            padding: 0;
+            width: fit-content;
+            height: fit-content;
+            @include mq(768) {
+                display: none;
+            }
+        }
+        &___back {
+            background: transparent;
+            border: none;
+            display: flex;
+            padding: 12px 13px;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 400;
+            line-height: 100%; /* 10px */
+            color: #00aaa6;
+            span {
+                font-size: 10px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 11px; /* 10px */
+                color: #00aaa6;
+                height: 7px;
+            }
+            @include mqm(768) {
+                display: none;
+            }
+        }
+    }
+    &___wrapper {
+        position: relative;
+        padding-top: calc(56.25% + 32px);
+        width: 100%;
+        height: 0;
+        & > iframe,
+        & > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .lightbox_iframe_container {
+            @include mq(768) {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-60%);
+                width: 100%;
+            }
+        }
+        &___main_carousel {
+            position: absolute !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            @include mq(768) {
+                top: -10%;
+            }
+            .splide {
+                width: 100%;
+                height: 100%;
+                .splide__track {
+                    width: 100%;
+                    height: 100%;
+                    .splide__slide {
+                        border: 1px solid #fff;
+                        iframe,
+                        img {
+                            width: 100%;
+                            height: calc(100% - 32px);
+                            object-fit: scale-down;
+                            @include mq(768) {
+                                height: calc(100% - 62px);
+                            }
+                        }
+                        iframe {
+                            aspect-ratio: 16 / 9;
+                        }
+                        .lightbox___caption {
+                            padding: 12px 16px 0;
+                            @include mq(768) {
+                                position: absolute;
+                                bottom: 5%;
+                                left: 0;
+                                right: 0;
+                                padding: 0;
+                            }
+                        }
+                        .lightbox___caption {
+                            padding: 12px 16px 0;
+                            @include mq(768) {
+                                position: absolute;
+                                bottom: 5%;
+                                left: 0;
+                                right: 0;
+                                padding: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &___thumbnails_carousel {
+            width: 100%;
+            max-width: 555px;
+            margin: 24px auto 0;
+            @include mq(768) {
+                position: absolute;
+                bottom: 75px;
+                left: 0;
+                right: 0;
+                max-width: 100%;
+            }
+            .splide__list {
+                align-items: end;
+                .splide__slide {
+                    width: 110px !important;
+                    height: 61.875px !important;
+                    transition: all 0.2s ease-in-out;
+                    // margin-left: 1%;
+                    // margin-right: 1%;
+                    border: none !important;
+                    background-size: cover !important;
+                    padding-left: 1%;
+                    padding-right: 1%;
+                    background-clip: content-box !important;
+                    text-align: center;
+                    @include mq(768) {
+                        width: 19% !important;
+                        height: 34px !important;
+                        aspect-ratio: 6 / 4;
+                        align-self: end;
+                    }
+                    &.is-active {
+                        border: none !important;
+                        width: 124px !important;
+                        height: 69.75px !important;
+                        @include mq(768) {
+                            width: 24% !important;
+                            height: 38.25px !important;
+                            aspect-ratio: 6 / 4;
+                        }
+                        &.slide-active-height-fix {
+                            width: 100px !important;
+                            height: 50px !important;
+                        }
+                    }
+                    iframe {
+                        width: 90%;
+                    }
+                }
 				.slide-normal-height-fix {
 					width: 56px !important;
 					height: 44px !important;
