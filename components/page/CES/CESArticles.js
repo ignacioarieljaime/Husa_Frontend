@@ -72,7 +72,7 @@ const CESArticles = ({ data }) => {
 													<div className='text_box'>
 														<span className='subject'>{item?.tag?.value}</span>
 														<h5>
-															<a>{item?.title?.value}</a>
+															{item?.title?.value}
 														</h5>
 														<span className='date'>
 															{item?.published_at
