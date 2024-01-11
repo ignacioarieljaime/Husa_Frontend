@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import CustomImage from '../CustomImage'
 import NavBarDropDownSublist from './NavBarDropDownSublist'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
-import { useRef } from 'react'
 
 function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 	const timeoutRef = useRef(null)
@@ -67,8 +66,8 @@ function NavBarDropDown({ data, handler, timer, itemIndex, setTimerCheck }) {
 
 	return (
 		<li
-			onMouseEnter={() => handler(data.name)}
-			onMouseLeave={() => handler(null)}
+			onMouseEnter={() => handleMouseEnter(100)}
+			onMouseLeave={() => handleMouseLeave(40)}
 			className='nav-item dropdown-list-toggle ps-4 ps-xl-6'>
 			{!data.header.value || data.header.value === '' ? (
 				<a style={{ cursor: 'default' }} className='nav-link'>

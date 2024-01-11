@@ -13,17 +13,17 @@ import '@splidejs/react-splide/css'
 import '@splidejs/react-splide/css'
 
 const LightBoxModal = ({
-    id,
-    caption,
-    video,
-    image,
-    link,
-    isVisible,
-    visibleHandler,
-    activateSwiper,
-    dataList,
-    activeItemIndex,
-    zIndex
+	id,
+	caption,
+	video,
+	image,
+	link,
+	isVisible,
+	visibleHandler,
+	activateSwiper,
+	dataList,
+	activeItemIndex,
+	zIndex
 }) => {
     const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
     const [hasInteracted, setHasInteracted] = useState(false)
