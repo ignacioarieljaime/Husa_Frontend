@@ -77,10 +77,10 @@
 				max-height: 200px;
 				object-fit: cover;
 				@include mq(768) {
-					min-width: 220px;
-					min-height: 220px;
-					max-width: 220px;
-					max-height: 220px;
+					min-width: 248px;
+					min-height: 165px;
+					max-width: 248px;
+					max-height: 165px;
 				}
 			}
 			&__content {
@@ -263,7 +263,7 @@
 				}
 				&._has_link {
 					@include mq(768) {
-						padding: 27px 20px 47px 20px !important;
+						padding: 20px 20px 20px 20px !important;
 					}
 				}
 				.awards_and_accolades__cards_wrapper__card__image {
@@ -272,7 +272,7 @@
 					max-width: 248px;
 					max-height: 165px;
 					@include mq(768) {
-						padding: 0px 20px;
+						padding: 0px 0px;
 					}
 				}
 				.awards_and_accolades__cards_wrapper__card__content {
@@ -288,6 +288,9 @@
                             left: -8px;
                             text-align: center;
                             color: #525454;
+                            @include mq(768) {
+                                left: -24px;
+                            }
                         }
 						&__title {
                             padding-top: 10px;
@@ -298,6 +301,10 @@
                                 font-weight: 500;
                                 line-height: 18.9px;
 							}
+                            @include mq(768) {
+                                padding-left: 0px;
+                                padding-right: 0px;
+                            }
 						}
 						&__subtilte {
 							align-self: center;
@@ -322,6 +329,9 @@
 						left: 0px;
 						right: 0px;
 					}
+                    @include mq(768) {
+                        padding: 0px 8px 63px 8px;
+                    }
 				}
 			}
 		}
