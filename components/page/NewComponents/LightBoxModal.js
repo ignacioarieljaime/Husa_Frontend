@@ -115,7 +115,8 @@ const LightBoxModal = ({
 	}
 
 	useEffect(() => {
-		setPagination(new Array(Math.ceil(dataList?.length / 5)).fill({}))
+		if (dataList && dataList.length > 0)
+			setPagination(new Array(Math.ceil(dataList?.length / 5)).fill({}))
 	}, [])
 
 	useEffect(() => {
