@@ -61,7 +61,6 @@ const LightBoxModal = ({
 	const newIndexHandler = indexUpdate => {
 		const displayPerPage = 5
 		const lastPage = isLastPage(displayPerPage, dataList?.length, indexUpdate)
-		console.log({ IU: indexUpdate })
 		setCurrentIndex(indexUpdate)
 
 		if (lastPage) {
@@ -131,12 +130,12 @@ const LightBoxModal = ({
 			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 86)
 		} else if (windowSize[0] <= 768) {
 			// Standard mobile size handling
-			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 94.67)
+			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 94.95)
 		}
 
 		// Standard desktop size handling
 		if (windowSize[1] > 651 && windowSize[0] > 768)
-			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.5)
+			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.25)
 	}, [currentIndex])
 
 	// Helper function for desktopShortHeightFix function
@@ -168,8 +167,8 @@ const LightBoxModal = ({
 			'lightbox___wrapper___thumbnails_carousel'
 		)[0]
 		let carouselContainer = document.getElementsByClassName(
-			'splide is-initialized splide--slide splide--ltr splide--draggable splide--nav is-active'
-		)[0]
+			'splide is-overflow is-initialized splide--slide splide--ltr splide--draggable is-active'
+		)[1]
 		// let splideTrack = document.getElementById('splide02-track') MIGHT NEED, might control the container of slides height?
 		let splideList = document.getElementsByClassName('splide__list')[1]
 
@@ -378,7 +377,7 @@ const LightBoxModal = ({
 										windowSize[1] < 651
 											? 1 * windowSize[1] - 32 + 'px'
 											: windowSize[1] < 800
-											? 1.3 * windowSize[1] - 32 + 'px'
+											? 1.15 * windowSize[1] - 32 + 'px'
 											: '880px',
 									zIndex: windowSize[1] < 651 ? `${zIndex + 10}` : `${zIndex}`
 							  }
@@ -560,7 +559,9 @@ const LightBoxModal = ({
 												}
 												onArrowsUpdated={slide => newIndexHandler(slide.index)}>
 												{dataList.map((item, index) => (
-													<SplideSlide key={index}>
+													<SplideSlide key={index}
+													onClick={() => splideInstance && splideInstance.go(index)}
+													>
 														{renderChidren(false, item, index, false, {
 															pointerEvents: 'none'
 														})}
