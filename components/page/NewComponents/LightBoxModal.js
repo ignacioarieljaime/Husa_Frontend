@@ -27,6 +27,8 @@ const LightBoxModal = ({
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
 	const [hasInteracted, setHasInteracted] = useState(false)
+	const [pagination, setPagination] = useState([])
+	const [splideInstance, setSplideInstance] = useState(null)
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
 	const windowSize = useWindowSize()
@@ -98,6 +100,10 @@ const LightBoxModal = ({
 		if (temp?.length > 100) temp = '<p>' + temp?.substring(0, 100) + '...</p>'
 		return temp
 	}
+
+	useEffect(() => {
+		setPagination(new Array(Math.ceil(dataList?.length / 5)).fill({}))
+	}, [])
 
 	useEffect(() => {
 		if (mainSwiperRef.current && thumbsSwiperRef.current) {
@@ -281,7 +287,7 @@ const LightBoxModal = ({
 			focus: currentIndex,
 			// isNavigation: true,
 			start: activeItemIndex,
-			pagination: true,
+			pagination: false,
 			perMove: 5,
 			perPage: 5
 		}
@@ -294,7 +300,7 @@ const LightBoxModal = ({
 			focus: 'left',
 			// isNavigation: true,
 			start: activeItemIndex,
-			pagination: true,
+			pagination: false,
 			perMove: 5,
 			perPage: 5
 		}
@@ -534,6 +540,7 @@ const LightBoxModal = ({
 											<Splide
 												options={thumbPageHandler(currentIndex)}
 												ref={thumbsSwiperRef}
+												onMounted={splide => setSplideInstance(splide)}
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
 												}
@@ -546,6 +553,23 @@ const LightBoxModal = ({
 													</SplideSlide>
 												))}
 											</Splide>
+										</div>
+										<div className='lightbox___wrapper___splide_pagination'>
+											<ul className='lightbox___wrapper___splide_pagination___wrapper'>
+												{pagination.map((_, index) => (
+													<li
+														key={index}
+														onClick={() => {
+															splideInstance.go(index * 5)
+														}}
+														className={`lightbox___wrapper___splide_pagination___wrapper___item ${
+															index * 5 <= currentIndex &&
+															currentIndex < (index + 1) * 5
+																? 'is_active'
+																: ''
+														}`}></li>
+												))}
+											</ul>
 										</div>
 									</div>
 								</div>
