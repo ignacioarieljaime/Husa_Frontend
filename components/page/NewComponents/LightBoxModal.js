@@ -52,7 +52,7 @@ const LightBoxModal = ({
         return result
     }
 
-    const newIndexHandler = indexUpdate => {
+    const newIndexHandler = (indexUpdate) => {
         const displayPerPage = 5
         const lastPage = isLastPage(displayPerPage, dataList?.length, indexUpdate)
         console.log({"IU": indexUpdate})
@@ -546,12 +546,15 @@ const LightBoxModal = ({
                                                     newIndexHandler(newIndex)
                                                 }}
                                                 onArrowsUpdated={slide => {
+                                                    console.log("arrows")
                                                     // THIS IS CAUSING THE PAGINATION TO NOT UPDATE
                                                     // NOT SURE HOW TO FIX YET, WHEN COMMENTING OUT ARROWS STILL WORK BUT
                                                     // ARROWS DONT DISABLE/RE-ENABLE PROPERLY ON PAGES
                                                     // ALSO PLACEMENT OF THUMBNAIL DOESNT WORK WHEN USING PAGINATION TO UPDATE INDEX
-                                                    newIndexHandler(slide.index)
+                                                    if (currentIndex !== slide.index) newIndexHandler(slide.index)
+                                                    // newIndexHandler(slide.index)
                                                 }}
+                                                onRefresh={() => console.log("REFRESH")}
                                                 >
                                                 {dataList.map((item, index) => (
                                                     <SplideSlide key={index}>
