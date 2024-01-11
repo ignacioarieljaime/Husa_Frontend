@@ -37,6 +37,18 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
+	function currentPagination(pageLength, totalLength, index) {
+		if (totalLength <= pageLength) return 1
+
+		for (let i = 0; i <= Math.floor((totalLength - 1) / pageLength); i++) {
+			if (
+				index < pageLength * (i + 1) &&
+				index >= pageLength * (i + 1) - pageLength
+			)
+				return (pageLength * (i + 1)) / pageLength
+		}
+	}
+
 	function isLastPage(pageLength, totalLength, index) {
 		const result = index > totalLength - pageLength
 		const isOnlyOnePage = totalLength - pageLength === 0
@@ -52,6 +64,7 @@ const LightBoxModal = ({
 		setCurrentIndex(indexUpdate)
 
 		if (lastPage) {
+			console.log('LP')
 			document.getElementsByClassName('splide__arrow--next')[0].disabled = true
 			document.getElementsByClassName('splide__arrow--prev')[0].disabled = false
 			if (indexUpdate < displayPerPage)

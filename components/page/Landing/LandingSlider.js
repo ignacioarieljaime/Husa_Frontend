@@ -8,7 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 // import required modules
-import { Navigation, Pagination } from 'swiper'
+import { Autoplay, Navigation, Pagination } from 'swiper'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useAspectRatio } from 'hooks/useAspectRatio'
@@ -25,9 +25,14 @@ function LandingSlider({ data }) {
 	return (
 		<>
 			<Swiper
+				loop={true}
 				navigation={true}
 				pagination={true}
-				modules={[Navigation, Pagination]}
+				autoplay={{
+					delay: 5000,
+					disableOnInteraction: false
+				}}
+				modules={[Navigation, Pagination, Autoplay]}
 				// style={{
 				// 	paddingTop:
 				// 		size[0] < 550
@@ -112,8 +117,8 @@ function LandingSlider({ data }) {
 												<p>{item?.lightboxTitle?.value}</p>
 												<svg
 													xmlns='http://www.w3.org/2000/svg'
-													width='22'
-													height='22'
+													width='28'
+													height='28'
 													viewBox='0 0 22 22'
 													fill='none'>
 													<path
