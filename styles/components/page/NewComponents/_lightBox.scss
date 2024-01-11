@@ -1,5 +1,5 @@
 .lightbox {
-	padding: 20px 0 54px;
+	padding: 20px 0 20px;
 	width: calc(100% - 32px);
 	height: 100%;
 	max-width: 1000px;
@@ -191,6 +191,7 @@
 					border: none !important;
 					background-size: 90% 100% !important;
 					text-align: center;
+					cursor: pointer;
 					@include mq(768) {
 						width: 19% !important;
 						height: 34px !important;
