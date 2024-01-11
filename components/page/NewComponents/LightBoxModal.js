@@ -560,7 +560,7 @@ const LightBoxModal = ({
 													<li
 														key={index}
 														onClick={() => {
-															splideInstance.go(index * 5)
+															splideInstance && splideInstance.go(index * 5)
 														}}
 														className={`lightbox___wrapper___splide_pagination___wrapper___item ${
 															index * 5 <= currentIndex &&
