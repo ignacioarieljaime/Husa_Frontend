@@ -27,6 +27,8 @@ const LightBoxModal = ({
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
 	const [hasInteracted, setHasInteracted] = useState(false)
+	const [pagination, setPagination] = useState([])
+	const [splideInstance, setSplideInstance] = useState(null)
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
 	const windowSize = useWindowSize()
@@ -34,6 +36,18 @@ const LightBoxModal = ({
 	const boxRef = useRef()
 
 	const outSide = useOutsideClick(boxRef)
+
+	function currentPagination(pageLength, totalLength, index) {
+		if (totalLength <= pageLength) return 1
+
+		for (let i = 0; i <= Math.floor((totalLength - 1) / pageLength); i++) {
+			if (
+				index < pageLength * (i + 1) &&
+				index >= pageLength * (i + 1) - pageLength
+			)
+				return (pageLength * (i + 1)) / pageLength
+		}
+	}
 
 	function isLastPage(pageLength, totalLength, index) {
 		const result = index > totalLength - pageLength
@@ -47,10 +61,10 @@ const LightBoxModal = ({
 	const newIndexHandler = indexUpdate => {
 		const displayPerPage = 5
 		const lastPage = isLastPage(displayPerPage, dataList?.length, indexUpdate)
-
 		setCurrentIndex(indexUpdate)
 
 		if (lastPage) {
+			console.log('LP')
 			document.getElementsByClassName('splide__arrow--next')[0].disabled = true
 			document.getElementsByClassName('splide__arrow--prev')[0].disabled = false
 			if (indexUpdate < displayPerPage)
@@ -100,6 +114,11 @@ const LightBoxModal = ({
 	}
 
 	useEffect(() => {
+		if (dataList && dataList.length > 0)
+			setPagination(new Array(Math.ceil(dataList?.length / 5)).fill({}))
+	}, [])
+
+	useEffect(() => {
 		if (mainSwiperRef.current && thumbsSwiperRef.current) {
 			mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
 		}
@@ -111,12 +130,12 @@ const LightBoxModal = ({
 			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 86)
 		} else if (windowSize[0] <= 768) {
 			// Standard mobile size handling
-			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 94.67)
+			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 94.95)
 		}
 
 		// Standard desktop size handling
 		if (windowSize[1] > 651 && windowSize[0] > 768)
-			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.5)
+			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.25)
 	}, [currentIndex])
 
 	// Helper function for desktopShortHeightFix function
@@ -148,8 +167,8 @@ const LightBoxModal = ({
 			'lightbox___wrapper___thumbnails_carousel'
 		)[0]
 		let carouselContainer = document.getElementsByClassName(
-			'splide is-initialized splide--slide splide--ltr splide--draggable splide--nav is-active'
-		)[0]
+			'splide is-overflow is-initialized splide--slide splide--ltr splide--draggable is-active'
+		)[1]
 		// let splideTrack = document.getElementById('splide02-track') MIGHT NEED, might control the container of slides height?
 		let splideList = document.getElementsByClassName('splide__list')[1]
 
@@ -281,7 +300,7 @@ const LightBoxModal = ({
 			focus: currentIndex,
 			// isNavigation: true,
 			start: activeItemIndex,
-			pagination: true,
+			pagination: false,
 			perMove: 5,
 			perPage: 5
 		}
@@ -294,7 +313,7 @@ const LightBoxModal = ({
 			focus: 'left',
 			// isNavigation: true,
 			start: activeItemIndex,
-			pagination: true,
+			pagination: false,
 			perMove: 5,
 			perPage: 5
 		}
@@ -358,7 +377,7 @@ const LightBoxModal = ({
 										windowSize[1] < 651
 											? 1 * windowSize[1] - 32 + 'px'
 											: windowSize[1] < 800
-											? 1.3 * windowSize[1] - 32 + 'px'
+											? 1.15 * windowSize[1] - 32 + 'px'
 											: '880px',
 									zIndex: windowSize[1] < 651 ? `${zIndex + 10}` : `${zIndex}`
 							  }
@@ -534,18 +553,38 @@ const LightBoxModal = ({
 											<Splide
 												options={thumbPageHandler(currentIndex)}
 												ref={thumbsSwiperRef}
+												onMounted={splide => setSplideInstance(splide)}
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
 												}
 												onArrowsUpdated={slide => newIndexHandler(slide.index)}>
 												{dataList.map((item, index) => (
-													<SplideSlide key={index}>
+													<SplideSlide key={index}
+													onClick={() => splideInstance && splideInstance.go(index)}
+													>
 														{renderChidren(false, item, index, false, {
 															pointerEvents: 'none'
 														})}
 													</SplideSlide>
 												))}
 											</Splide>
+										</div>
+										<div className='lightbox___wrapper___splide_pagination'>
+											<ul className='lightbox___wrapper___splide_pagination___wrapper'>
+												{pagination.map((_, index) => (
+													<li
+														key={index}
+														onClick={() => {
+															splideInstance && splideInstance.go(index * 5)
+														}}
+														className={`lightbox___wrapper___splide_pagination___wrapper___item ${
+															index * 5 <= currentIndex &&
+															currentIndex < (index + 1) * 5
+																? 'is_active'
+																: ''
+														}`}></li>
+												))}
+											</ul>
 										</div>
 									</div>
 								</div>
