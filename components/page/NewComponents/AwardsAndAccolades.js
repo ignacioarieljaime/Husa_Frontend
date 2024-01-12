@@ -56,15 +56,20 @@ function AwardsAndAccolades({ data, pim }) {
     function swiperSizeHandler(boolean, ref) {
 
         const firstChild = ref?.current?.firstChild;
+		const swiper = ref?.current?.swiper;
+		const passedParams = ref?.current?.swiper?.passedParams;
 
-        if (firstChild && boolean === true) {
-          firstChild.classList.add('centerSlides');
-          ref.current.classList.add('hide-gradient');
+        if (firstChild && swiper && boolean === true) {
+			firstChild.classList.add('centerSlides');
+			ref.current.classList.add('hide-gradient');
+			swiper.allowTouchMove = false;
         }
 
-        if (firstChild && boolean === false) {
-            firstChild.classList.remove('centerSlides');
-            ref.current.classList.remove('hide-gradient');
+        if (firstChild && passedParams && boolean === false) {
+			firstChild.classList.remove('centerSlides');
+			ref.current.classList.remove('hide-gradient');
+			swiper.allowTouchMove = true;
+			if (windowSize[0] >= 768 && swiper.activeIndex === 0 && content?.list?.value) swiper.activeIndex = (content.list.value.length / 2) - 1;
         }
 
     }
@@ -77,6 +82,8 @@ function AwardsAndAccolades({ data, pim }) {
             swiperSizeHandler(false, swiperRef)
         }
 	}, [swiperTooBig])
+
+	if (swiperRef?.current) console.log(swiperRef)
 
 	return (
 		<section>
@@ -192,8 +199,8 @@ function AwardsAndAccolades({ data, pim }) {
 								grabCursor={swiperTooBig === true ? true : false}
                                 allowTouchMove={swiperTooBig === true ? true : false}
 								spaceBetween={windowSize[0] < 768 ? 16 : 20}
-								centeredSlides={swiperTooBig === true ? false : false}
-								modules={swiperTooBig === true ? [Navigation, Pagination] : []}
+								centeredSlides={swiperTooBig === true ? true : false}
+								modules={[Navigation, Pagination]}
 								className={`w-100`}
 								style={{
 									gridTemplateColumns: `repeat(${
