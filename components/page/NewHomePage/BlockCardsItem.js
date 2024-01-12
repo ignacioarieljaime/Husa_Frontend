@@ -126,7 +126,7 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 								{link?.title && lightbox?.value ? (
 									<button
 										className='n-btn outline-white transparent d-block w-fit medium position-relative'
-										style={{ zIndex: 10000 }}>
+										style={{ zIndex: 10 }}>
 										{link?.title}
 									</button>
 								) : null}
