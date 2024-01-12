@@ -71,17 +71,16 @@ const CESArticles = ({ data }) => {
 												<a className='box-group-link'>
 													<div className='text_box'>
 														<span className='subject'>{item?.tag?.value}</span>
-
 														<h5>
 															{item?.title?.value}
 														</h5>
 														<span className='date'>
 															{item?.published_at
 																? moment(item?.published_at).format(
-																		'MMMM DD YYYY'
+																		'MMMM DD, YYYY'
 																  )
 																: moment(item?.created_at).format(
-																		'MMMM DD YYYY'
+																		'MMMM DD, YYYY'
 																  )}
 														</span>
 													</div>
