@@ -429,3 +429,19 @@
 .gapFix {
     gap: 20px !important
 }
+
+.hidden {
+    display: none !important;
+}
+
+.centerSlides {
+    justify-content: center !important
+}
+
+.swiper.hide-gradient::before {
+    display: none;
+}
+
+.swiper.hide-gradient::after {
+    display: none;
+}

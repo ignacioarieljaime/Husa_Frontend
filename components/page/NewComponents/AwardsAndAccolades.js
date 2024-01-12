@@ -10,9 +10,11 @@ import QuoteIcon from 'components/icons/QuoteIcon'
 
 function AwardsAndAccolades({ data, pim }) {
 	const ref = useRef(null)
+    const swiperRef = useRef(null)
 	const router = useRouter()
 	const windowSize = useWindowSize()
 	const [content, setContent] = useState({})
+    const [swiperTooBig, setSwiperTooBig] = useState(undefined)
 	const navigationPrevRef = useRef(null)
 	const navigationNextRef = useRef(null)
 
@@ -30,6 +32,51 @@ function AwardsAndAccolades({ data, pim }) {
 		2: '660px',
 		1: '100%'
 	}
+
+    function sizeCheck(ref) {
+        
+        if (ref?.current?.firstChild?.children) {
+            let width = 0;
+
+            for (let i=0; i < ref?.current?.firstChild?.children.length; i++) {
+                width = width + ref?.current?.firstChild?.children[i]?.clientWidth
+            }
+
+            if ((width + 200) >= windowSize[0]) setSwiperTooBig(true)
+            else if ((width + 200) < windowSize[0]) setSwiperTooBig(false)
+
+        }
+    }
+
+    useEffect(() => {
+        if (swiperRef?.current?.firstChild?.children) sizeCheck(swiperRef);
+	}, [windowSize[0]])
+
+    // Helper function for useEffect
+    function swiperSizeHandler(boolean, ref) {
+
+        const firstChild = ref?.current?.firstChild;
+
+        if (firstChild && boolean === true) {
+          firstChild.classList.add('centerSlides');
+          ref.current.classList.add('hide-gradient');
+        }
+
+        if (firstChild && boolean === false) {
+            firstChild.classList.remove('centerSlides');
+            ref.current.classList.remove('hide-gradient');
+        }
+
+    }
+
+    useEffect(() => {
+        if (swiperTooBig === false && swiperRef?.current) {
+            swiperSizeHandler(true, swiperRef)
+        }
+        if (swiperTooBig === true && swiperRef?.current) {
+            swiperSizeHandler(false, swiperRef)
+        }
+	}, [swiperTooBig])
 
 	return (
 		<section>
@@ -129,9 +176,10 @@ function AwardsAndAccolades({ data, pim }) {
 						(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
 						content?.list?.value.length >= 4 ? (
 							<Swiper
+                                ref={swiperRef}
 								slidesPerView={'auto'}
 								navigation={{
-									enabled: true,
+									enabled: swiperTooBig === true ? true : false,
 									prevEl: navigationPrevRef.current,
 									nextEl: navigationNextRef.current
 								}}
@@ -141,10 +189,11 @@ function AwardsAndAccolades({ data, pim }) {
 								initialSlide={
 									windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
 								}
-								grabCursor={true}
+								grabCursor={swiperTooBig === true ? true : false}
+                                allowTouchMove={swiperTooBig === true ? true : false}
 								spaceBetween={windowSize[0] < 768 ? 16 : 20}
-								centeredSlides={true}
-								modules={[Navigation, Pagination]}
+								centeredSlides={swiperTooBig === true ? false : false}
+								modules={swiperTooBig === true ? [Navigation, Pagination] : []}
 								className={`w-100`}
 								style={{
 									gridTemplateColumns: `repeat(${
@@ -162,12 +211,17 @@ function AwardsAndAccolades({ data, pim }) {
 										/>
 									</SwiperSlide>
 								))}
-								<div className='swiper-button-prev' ref={navigationPrevRef}>
-									<AwardsNavIcon />
-								</div>
-								<div className='swiper-button-next' ref={navigationNextRef}>
-									<AwardsNavIcon />
-								</div>
+                                {swiperTooBig &&
+                                    <>
+                                        <div className='swiper-button-prev' ref={navigationPrevRef}>
+                                            <AwardsNavIcon />
+                                        </div>
+                                        <div className='swiper-button-next' ref={navigationNextRef}>
+                                            <AwardsNavIcon />
+                                        </div>
+                                    </>
+                                }
+
 							</Swiper>
 						) : null}
 					</>
