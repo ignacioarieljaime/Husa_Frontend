@@ -24,15 +24,18 @@ function BlogListMainBox({ data: { structure }, pim }) {
 		setBlogsList('loading')
 		try {
 			let response = await GetBlogsByTagApi()
+			const filterdByOffset = response?.data?.data.filter(
+				(_, index) => index >= parseInt(structure['start-offset']?.value)
+			)
 			setGridBlogs(
 				handleItemToShow(
-					response?.data?.data.filter(
+					filterdByOffset.filter(
 						(_, index) => index < parseInt(structure['grid-count']?.value)
 					)
 				)
 			)
 			setRowBlogs(
-				response?.data?.data.filter(
+				filterdByOffset.filter(
 					(_, index) =>
 						index >= parseInt(structure['grid-count']?.value) &&
 						index <
