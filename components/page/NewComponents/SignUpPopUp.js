@@ -2,6 +2,7 @@ import React, { useEffect, useReducer, useRef, useState } from 'react'
 import { Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import XIcon from 'components/icons/XIcon'
+import axios from 'axios'
 
 const SignUpPopUp = ({ data }) => {
 	const { structure } = data
@@ -25,32 +26,30 @@ const SignUpPopUp = ({ data }) => {
 		// I dont know how our API works so this code will need to be modified by you
 		// The email needs to get added to the HiSense Lead list in the CXM
 
-		// setLoading(true)
-		// try {
-		// 	let response = await axios.post(
-		// 		`${process.env.I_DONT_KNOW_THE_API_ENVS}/${process.env.I_DONT_KNOW_THE_API_TOKENS}`,
-		// 		formBody
-		// 	)
+		setLoading(true)
+		try {
+			let response = await axios.post(
+				// `${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/${process.env.NEWS_SIGNUP_FORM_TOKEN}`,
+				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F276979a74645p`,
+				{
+					email
+				}
+			)
 
-		// 	if (response.status === 200 && response.data?.userForm) {
-		// 		toast.success('Submission is successful')
-		// 		dispatch({
-		// 			email: ''
-		// 		})
-		// 	} else {
-		// 		setLoading(false)
-		// 		toast.error('Submission Failed')
-		// 	}
-		// 	setLoading(false)
-		// } catch (error) {
-		// 	setLoading(false)
-		// 	toast.error('Submission Failed')
-		// 	console.log(error)
-		// }
-
-		// Closes modal
-		setHasClosed(true)
-		setIsOpen(false)
+			if (response.status === 200 && response.data?.userForm) {
+				toast.success('Submission is successful')
+				setEmail('')
+				setHasClosed(true)
+				setIsOpen(false)
+			} else {
+				toast.error('Submission Failed')
+			}
+		} catch (error) {
+			toast.error('Submission Failed')
+			console.log(error)
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	const handleScroll = () => {
