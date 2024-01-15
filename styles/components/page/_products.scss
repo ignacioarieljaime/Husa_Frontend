@@ -506,12 +506,12 @@
 							justify-content: center;
 							align-items: center;
 							border-radius: 1000px;
-							border: 1px solid #00aaa6;
+							border: 1px solid #008885;
 							background: #fff;
 							text-decoration: none;
 							transition: all 0.3s ease;
 							span {
-								color: #00aaa6;
+								color: #008885;
 								font-size: 14px;
 								line-height: 100%; /* 14px */
 								margin-bottom: -3px;
@@ -525,8 +525,8 @@
 								}
 							}
 							&:active {
-								border-color: #00aaa6;
-								background: #00aaa6;
+								border-color: #008885;
+								background: #008885;
 								span {
 									color: #fff;
 								}
@@ -539,8 +539,8 @@
 							justify-content: center;
 							align-items: center;
 							border-radius: 1000px;
-							border: 1px solid #00aaa6;
-							background: #00aaa6;
+							border: 1px solid #008885;
+							background: #008885;
 							transition: all 0.3s ease;
 							div {
 								color: #fff;
