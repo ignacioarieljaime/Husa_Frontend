@@ -180,9 +180,9 @@ const ProductItemV2 = ({ data }) => {
 
 								<div className='product_item_v2_content w-100'>
 									<div className='w-100 product_item_v2_content'>
-										<div className='btns_gp d-flex justify-content-evenly justify-content-md-center flex-wrap gap-1 align-items-center'>
+										<div className='btns_gp d-flex justify-content-evenly justify-content-md-center no_wrap flex-row gap-1 align-items-center'>
 											<Link href={url ? url : '/'}>
-												<a className='view_product_button'>
+												<a className='view_product_button w-100'>
 													<span>View Product</span>
 												</a>
 											</Link>
@@ -208,7 +208,7 @@ const ProductItemV2 = ({ data }) => {
 														? { cursor: 'pointer' }
 														: {}
 												}
-												className={`channel_advisor_button ${
+												className={`channel_advisor_button w-100 ${
 													currentItem?.product?.buy_status ===
 														'ChannelAdvisor' ||
 													currentItem?.product?.buy_status === 'Internal'
