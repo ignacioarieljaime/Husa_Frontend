@@ -46,51 +46,24 @@ function ProductInfoAndSliderBox({ pim, data }) {
 	const handleScreenSizeDropdown = () => {
 		setShowSizes(prev => !prev)
 	}
-	
+
 	return (
 		<section id={data.name + data.id} className='new_product_info'>
-			<div className='wrapper row'>
-				<div className='product_info px-0 my-auto pt-3 d-md-none d-block'>
-					<h2 className='serie'>
-						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-							? pim?.custom_fields.find(item => item.title === 'h2 Title')
-									?.value
-							: pim?.custom_fields?.find(item => item.title === 'Product Type')
-									?.value}
-					</h2>
-					<h3 className='model'>
-						{
-							pim?.custom_fields.find(item => item.title === 'span Title')
-								?.value
-						}
-					</h3>
-					<h1 className='title'>{pim?.name}</h1>
-					<p className='model_number mb-0'>Model: {pim?.model}</p>
+			<div className='wrapper'>
+				<div className='product_info d-block d-md-none'>
+					<h4 className='title'>{pim?.name}</h4>
 				</div>
 				<ProductInfoSlider
 					firstImage={pim?.image}
 					pim={pim?.assets}
 					allData={pim}
 				/>
-				<div className='product_info px-0 my-auto'>
-					<h2 className='serie d-none d-md-block'>
-						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-							? pim?.custom_fields.find(item => item.title === 'h2 Title')
-									?.value
-							: pim?.custom_fields?.find(item => item.title === 'Product Type')
-									?.value}
-					</h2>
-					<h3 className='model d-none d-md-block'>
-						{
-							pim?.custom_fields.find(item => item.title === 'span Title')
-								?.value
-						}
-					</h3>
-					<h1 className='title d-none d-md-block'>{pim?.name}</h1>
-					<p className='model_number d-none d-md-block'>Model: {pim?.model}</p>
+				<div className='product_info'>
+					<h5 className='model d-none d-md-block'>{pim?.model}</h5>
+					<h4 className='title d-none d-md-block'>{pim?.name}</h4>
 					{screenSize && screenSize.length <= 5 && screenSize.length > 0 ? (
 						<div className='sizes'>
-							<p className='sizes_text'>Available Screen Sizes</p>
+							<p className='sizes_text'>Sizes:</p>
 							<div className='sizes_list'>
 								{screenSize.map(
 									(item, index) =>
@@ -104,16 +77,17 @@ function ProductInfoAndSliderBox({ pim, data }) {
 								)}
 							</div>
 						</div>
-					) :
-					screenSize.length > 5 ? (
+					) : screenSize.length > 5 ? (
 						<div className='serie_selector'>
-							<div className={`screen_size_selector ${showSizes ? 'show_sizes' : ''} dropdown_active`}>
+							<div
+								className={`screen_size_selector ${
+									showSizes ? 'show_sizes' : ''
+								} dropdown_active`}>
 								<div className='content'>
 									<div
 										onClick={() => handleScreenSizeDropdown()}
 										className='show_sizes_btn'>
-										<span
-											className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
+										<span className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
 											{labelOff ? currentItem?.title : 'Select Screen Size'}
 										</span>
 										<FontAwesomeIcon icon={faChevronDown} size='sm' />
@@ -133,12 +107,10 @@ function ProductInfoAndSliderBox({ pim, data }) {
 														setActiveSizeIndex(index)
 														setLabelOff(true)
 														setShowSizes(false)
-
 													}}>
 													{item?.title}
 												</li>
 											</Link>
-
 										))}
 										<span
 											style={{
@@ -151,8 +123,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 								</div>
 							)}
 						</div>
-					) :
-					(
+					) : (
 						<div className='sizes pb-0'></div>
 					)}
 					<div className='text-center text-md-start'>
@@ -168,10 +139,12 @@ function ProductInfoAndSliderBox({ pim, data }) {
 									? dataLayerHandler()
 									: {}
 							}>
-							{pim?.buy_status === 'ChannelAdvisor' ||
-							pim?.buy_status === 'Internal'
-								? 'Where To Buy'
-								: 'coming soon'}
+							<span>
+								{pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
+									? 'Where To Buy'
+									: 'coming soon'}
+							</span>
 							{/* {pim?.buy_status === 'ChannelAdvisor' ||
 							pim?.buy_status === 'Internal' ? (
 								<img
