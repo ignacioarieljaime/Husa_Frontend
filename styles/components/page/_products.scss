@@ -439,7 +439,7 @@
 						.title {
 							font-size: 20px;
 							font-style: normal;
-							font-weight: 400;
+							font-weight: 500; // Changed to 500 because FIGMA 400 font-weight tends to look like 500 font-weight in reality
 							margin: 0;
 							width: 100%;
 							line-height: 25px; /* 125% */
@@ -502,7 +502,7 @@
 						.view_product_button {
 							display: flex;
 							min-width: 80px;
-							padding: 11.5px 16px 9.5px;
+							padding: 9px 16px 9.5px;
 							justify-content: center;
 							align-items: center;
 							border-radius: 1000px;
@@ -535,7 +535,7 @@
 						.channel_advisor_button {
 							display: flex;
 							min-width: 80px;
-							padding: 11.5px 16px 9.5px;
+							padding: 9px 16px 9.5px;
 							justify-content: center;
 							align-items: center;
 							border-radius: 1000px;
@@ -588,11 +588,11 @@
 							&___item {
 								display: flex;
 								width: fit-content;
-								padding: 11.5px 12px 9.5px;
+								padding: 9px 12px 9.5px;
 								justify-content: center;
 								align-items: center;
 								border: 1px solid #c7c7c9;
-								background: #f0f2f2;
+								background: white;
 								transition: all 0.3s ease;
 								border-radius: 8px;
 								box-shadow: none;
