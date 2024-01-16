@@ -3,6 +3,7 @@ import { Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 import XIcon from 'components/icons/XIcon'
 import axios from 'axios'
+import useOutsideClick from 'hooks/useOutsideClick'
 
 const SignUpPopUp = ({ data }) => {
 	const { structure } = data
@@ -11,6 +12,9 @@ const SignUpPopUp = ({ data }) => {
 	const [loading, setLoading] = useState(false)
 	const [isOpen, setIsOpen] = useState(false)
 	const [email, setEmail] = useState('')
+
+	const popupRef = useRef()
+	const outSide = useOutsideClick(popupRef)
 
 	const timeoutNumber = Number(content?.timeout?.value * 1000)
 	const scrollNumber = Number(content?.distance?.value)
@@ -22,9 +26,6 @@ const SignUpPopUp = ({ data }) => {
 	async function submitHandler(e) {
 		e.preventDefault()
 		console.log({ EMAIL: email })
-		// NOTE FROM BEN:
-		// I dont know how our API works so this code will need to be modified by you
-		// The email needs to get added to the HiSense Lead list in the CXM
 
 		setLoading(true)
 		try {
@@ -83,8 +84,15 @@ const SignUpPopUp = ({ data }) => {
 	return (
 		isOpen &&
 		!hasClosed && (
-			<div className='signup_popup'>
-				<div className='signup_popup___container'>
+			<div className='signup_popup'
+				onClick={() => {
+					if (outSide) {
+						closeHandler()
+					}
+				}
+			}
+			>
+				<div className='signup_popup___container' ref={popupRef}>
 					<div className='signup_popup___container___content'>
 						<div className='signup_popup___container___content___image'>
 							<img
