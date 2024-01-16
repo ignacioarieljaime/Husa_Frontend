@@ -83,8 +83,6 @@ function AwardsAndAccolades({ data, pim }) {
         }
 	}, [swiperTooBig])
 
-	if (swiperRef?.current) console.log(swiperRef)
-
 	return (
 		<section>
 			<div
@@ -185,12 +183,14 @@ function AwardsAndAccolades({ data, pim }) {
 							<Swiper
                                 ref={swiperRef}
 								slidesPerView={'auto'}
+                                slidesPerGroup={3}
 								navigation={{
 									enabled: swiperTooBig === true ? true : false,
 									prevEl: navigationPrevRef.current,
 									nextEl: navigationNextRef.current
 								}}
 								pagination={{
+                                    dynamicBullets: true,
 									clickable: true
 								}}
 								initialSlide={
@@ -200,6 +200,7 @@ function AwardsAndAccolades({ data, pim }) {
                                 allowTouchMove={swiperTooBig === true ? true : false}
 								spaceBetween={windowSize[0] < 768 ? 16 : 20}
 								centeredSlides={swiperTooBig === true ? true : false}
+                                centeredSlidesBounds={true}
 								modules={[Navigation, Pagination]}
 								className={`w-100`}
 								style={{
