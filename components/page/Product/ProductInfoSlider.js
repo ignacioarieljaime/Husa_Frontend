@@ -24,7 +24,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				onSwiper={setThumbsSwiper}
 				direction={width >= 768 ? 'vertical' : 'horizontal'}
 				spaceBetween={4}
-				slidesPerView={4.45}
+				slidesPerView={width >= 768 ? 'auto' : 4.45}
 				freeMode={true}
 				watchSlidesProgress={true}
 				navigation={width >= 768 ? true : false}

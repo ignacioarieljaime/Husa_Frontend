@@ -377,6 +377,7 @@
 		}
 		.swiper-button-next,
 		.swiper-button-prev {
+            display: none !important;
 			z-index: 11;
 			width: 75px;
 			height: 75px;
