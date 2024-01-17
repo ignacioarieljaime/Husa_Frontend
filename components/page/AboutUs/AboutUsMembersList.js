@@ -7,12 +7,13 @@ import { useRef } from 'react'
 import { useRouter } from 'next/router'
 
 const AboutUsMembersList = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	// const splideRef = useRef()
 	const router = useRouter()
 
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -27,26 +28,26 @@ const AboutUsMembersList = ({ data }) => {
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='aboutus_members_list'>
-				{(content?.title?.value || content?.text?.value) && (
+				{(structure?.title?.value || structure?.text?.value) && (
 					<div className='content'>
-						{content?.title?.value && (
+						{structure?.title?.value && (
 							<h3
 								className='title'
 								dangerouslySetInnerHTML={{
-									__html: content?.title?.value
+									__html: structure?.title?.value
 								}}></h3>
 						)}
-						{content?.text?.value && (
+						{structure?.text?.value && (
 							<div
 								className='text'
 								dangerouslySetInnerHTML={{
-									__html: content?.text?.value
+									__html: structure?.text?.value
 								}}></div>
 						)}
 					</div>
 				)}
 				<div className='members'>
-					{content?.list?.value.map((_item, index) => (
+					{structure?.list?.value.map((_item, index) => (
 						<div key={index} className='item'>
 							<div className='image'>
 								<img
@@ -92,7 +93,7 @@ const AboutUsMembersList = ({ data }) => {
 						interval: 1300,
 						easing: 'linear'
 					}}>
-					{content?.list?.value.map((_item, index) => (
+					{structure?.list?.value.map((_item, index) => (
 						<SplideSlide key={index} className='w-fit'>
 							<div className='item'>
 								<img

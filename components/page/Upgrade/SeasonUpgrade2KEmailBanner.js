@@ -11,14 +11,15 @@ import { Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
 const SeasonUpgradeEmailBanner = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const [email, setEmail] = useState('')
 	const [checkbox, setCheckbox] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -57,16 +58,16 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 				className='season_upgrade_email_banner'>
 				<div className='content' style={{ maxWidth: '980px' }}>
 					<div className='text_content'>
-						<p className='pretitle'>{content?.subtitle?.value}</p>
+						<p className='pretitle'>{structure?.subtitle?.value}</p>
 						<h3
 							className='title'
 							dangerouslySetInnerHTML={{
-								__html: content?.title?.value
+								__html: structure?.title?.value
 							}}></h3>
 						<p
 							className='text'
 							dangerouslySetInnerHTML={{
-								__html: content?.text?.value
+								__html: structure?.text?.value
 							}}></p>
 					</div>
 					<form onSubmit={e => submit(e)} className='form_content'>
@@ -90,15 +91,19 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 							</button>
 							<p>
 								I have read and understand the{' '}
-								{content?.link?.value && (
+								{structure?.link?.value && (
 									<Link
 										target={
-											content?.link?.target ? content?.link?.target : '_self'
+											structure?.link?.target
+												? structure?.link?.target
+												: '_self'
 										}
-										href={content?.link?.value}>
+										href={structure?.link?.value}>
 										<a
 											target={
-												content?.link?.target ? content?.link?.target : '_self'
+												structure?.link?.target
+													? structure?.link?.target
+													: '_self'
 											}>
 											Privacy Policy.
 										</a>

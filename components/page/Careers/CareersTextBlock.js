@@ -4,19 +4,20 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const CareersTextBlock = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='careers_text_block'>
 				<div className='content'>
 					<h3
 						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
-					{content?.link?.value && (
-						<Link href={content?.link?.value}>
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
+					{structure?.link?.value && (
+						<Link href={structure?.link?.value}>
 							<a
 								className='n-btn large primary d-block w-fit mx-auto'
 								style={{
@@ -24,7 +25,7 @@ const CareersTextBlock = ({ data }) => {
 									fontSize: '22px',
 									fontWeight: 500
 								}}>
-								{content?.link?.title}
+								{structure?.link?.title}
 							</a>
 						</Link>
 					)}

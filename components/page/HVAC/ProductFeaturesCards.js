@@ -3,18 +3,18 @@ import React, { useState, useEffect } from 'react'
 
 const ProductFeaturesCards = ({ data }) => {
 	const { structure } = data
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(structure)
-	})
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// })
 	return (
 		<section>
 			<div className='hvac_features'>
 				<h2
 					className='title'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
 				<div className='cards'>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							className={`cards_item row mx-0 ${item?.order?.value}`}
 							key={index}>

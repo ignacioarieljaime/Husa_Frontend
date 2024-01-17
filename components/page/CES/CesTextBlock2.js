@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesTexBlock2 = ({ data }) => {
-	const [content, setContent] = useState({ data })
+	const { structure } = data
 
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section>
@@ -15,31 +16,37 @@ const CesTexBlock2 = ({ data }) => {
 				<div className='custom_container text-center'>
 					<div className='title large' style={{ marginBottom: '150px' }}>
 						<div
-							dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
+							dangerouslySetInnerHTML={{
+								__html: structure?.title?.value
+							}}></div>
 					</div>
 					<div className='row align-items-start flex-wrap flex-md-nowrap'>
 						<div className='col-12 col-md-7 text-start mb-10 mb-md-0'>
 							<h3 className='fw-bolder-700 text-white mb-13	'>
-								<span className='fs-2hx '>{content?.subtitle?.value}</span>
+								<span className='fs-2hx '>{structure?.subtitle?.value}</span>
 							</h3>
 							<div
 								className='description mb-10'
 								dangerouslySetInnerHTML={{
-									__html: content?.description?.value
+									__html: structure?.description?.value
 								}}></div>
-							{content?.link2?.value ? (
+							{structure?.link2?.value ? (
 								<Link
 									target={
-										content?.link2?.target ? content?.link2?.target : '_self'
+										structure?.link2?.target
+											? structure?.link2?.target
+											: '_self'
 									}
-									href={content?.link2?.value}>
+									href={structure?.link2?.value}>
 									<a
 										target={
-											content?.link2?.target ? content?.link2?.target : '_self'
+											structure?.link2?.target
+												? structure?.link2?.target
+												: '_self'
 										}
 										className='n-btn primary-text medium primary-hover'>
-										{content?.link2?.title} {'>'}
-										{content?.link2?.target === '_blank' && (
+										{structure?.link2?.title} {'>'}
+										{structure?.link2?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}
@@ -51,10 +58,10 @@ const CesTexBlock2 = ({ data }) => {
 						</div>
 						<div className='col-12 col-md-5 text-start'>
 							<h5 className='text-white fs-2 mb-10'>
-								<span>{content?.specs?.value}</span>
+								<span>{structure?.specs?.value}</span>
 							</h5>
 							<ul style={{ lineHeight: '27px' }}>
-								{content?.list?.value.map((item, index) => (
+								{structure?.list?.value.map((item, index) => (
 									<li
 										key={index}
 										style={{ fontSize: '18px' }}
@@ -63,19 +70,23 @@ const CesTexBlock2 = ({ data }) => {
 									</li>
 								))}
 							</ul>
-							{content?.link1?.value ? (
+							{structure?.link1?.value ? (
 								<Link
 									target={
-										content?.link1?.target ? content?.link1?.target : '_self'
+										structure?.link1?.target
+											? structure?.link1?.target
+											: '_self'
 									}
-									href={content?.link1?.value}>
+									href={structure?.link1?.value}>
 									<a
 										target={
-											content?.link1?.target ? content?.link1?.target : '_self'
+											structure?.link1?.target
+												? structure?.link1?.target
+												: '_self'
 										}
 										className='n-btn primary-text medium primary-hover text-decoration-none'>
-										{content?.link1?.title} {'>'}
-										{content?.link1?.target === '_blank' && (
+										{structure?.link1?.title} {'>'}
+										{structure?.link1?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}

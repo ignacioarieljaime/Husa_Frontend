@@ -18,10 +18,10 @@ const BlockTVHero = ({ data: { structure } }) => {
 
 const BlockTVContainer = ({ structure }) => {
 	const parallaxController = useParallaxController()
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	const imageRef = useParallax({
 		speed: 10,
 		translateY: ['50px', '-150px']
@@ -38,15 +38,15 @@ const BlockTVContainer = ({ structure }) => {
 			<div className='black-parallax-box'>
 				<div
 					className='title gradient-text fs-5qx fs-xxl-4tx px-4 px-md-0'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 				<div className='row mx-0'>
 					<div
 						ref={imageRef.ref}
 						className='col-12 col-lg-7 ps-0 pl-4 pl-lg-0 image'>
-						{content?.image?.src && (
+						{structure?.image?.src && (
 							<CustomImage
-								src={content?.image?.src}
-								alt={content?.image?.alt}
+								src={structure?.image?.src}
+								alt={structure?.image?.alt}
 								onLoad={() => parallaxController.update()}
 								wrapperWidth={'100%'}
 							/>
@@ -57,16 +57,17 @@ const BlockTVContainer = ({ structure }) => {
 							<div
 								className='subtitle gradient-text'
 								dangerouslySetInnerHTML={{
-									__html: content?.text?.value
+									__html: structure?.text?.value
 								}}></div>
-							<Link href={content?.link?.value ? content?.link?.value : '/'}>
+							<Link
+								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a
 									target={
-										content?.link?.target ? content?.link?.target : '_self'
+										structure?.link?.target ? structure?.link?.target : '_self'
 									}
 									className='n-btn outline-white transparent medium w-fit d-block mt-4'>
-									{content?.link?.title}
-									{content?.link?.target === '_blank' && (
+									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
 										<img
 											style={{ marginLeft: '10px' }}
 											src={OpenPageOnNewTab.src}

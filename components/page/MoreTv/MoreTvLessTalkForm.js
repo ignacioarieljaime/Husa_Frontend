@@ -9,11 +9,12 @@ import Link from 'next/link'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function MoreTVLessTalkForm({ data }) {
+	const { structure } = data
 	const [activeCheckbox, setActiveCheckbox] = useState(false)
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section>
 			<div className='blue-bg-more-tv '>
@@ -22,19 +23,19 @@ function MoreTVLessTalkForm({ data }) {
 						<div className='row align-items-center'>
 							<div className='col-12 col-md-6 pe-lg-10'>
 								<h4 className='fs-3qx fw-normal text-white mb-10 mb-md-20'>
-									{content?.whiteTitle?.value}
+									{structure?.whiteTitle?.value}
 									<span className='d-block opacity-75'>
-										{content?.title?.value}
+										{structure?.title?.value}
 									</span>
 								</h4>
 								<div
 									className='fs-2 text-white fw-normal mb-7'
 									dangerouslySetInnerHTML={{
-										__html: content?.paragraph?.value
+										__html: structure?.paragraph?.value
 									}}></div>
 								<img
-									src={content?.image?.src}
-									alt={content?.image?.alt}
+									src={structure?.image?.src}
+									alt={structure?.image?.alt}
 									width='80%'
 									className='d-none d-md-block'
 								/>
@@ -43,7 +44,7 @@ function MoreTVLessTalkForm({ data }) {
 								<form action=''>
 									<div
 										dangerouslySetInnerHTML={{
-											__html: content?.formText?.value
+											__html: structure?.formText?.value
 										}}
 										className='fw-normal text-white mb-11'></div>
 									<p className='fw-normal text-white mb-2'>Select answer</p>
@@ -128,24 +129,24 @@ function MoreTVLessTalkForm({ data }) {
 												I agree to the
 												<Link
 													target={
-														content?.termsAndConditionsUrl?.target
-															? content?.termsAndConditionsUrl?.target
+														structure?.termsAndConditionsUrl?.target
+															? structure?.termsAndConditionsUrl?.target
 															: '_self'
 													}
 													href={
-														content?.termsAndConditionsUrl?.value
-															? content?.termsAndConditionsUrl?.value
+														structure?.termsAndConditionsUrl?.value
+															? structure?.termsAndConditionsUrl?.value
 															: '/'
 													}>
 													<a
 														target={
-															content?.termsAndConditionsUrl?.target
-																? content?.termsAndConditionsUrl?.target
+															structure?.termsAndConditionsUrl?.target
+																? structure?.termsAndConditionsUrl?.target
 																: '_self'
 														}
 														className='text-white ms-2'>
 														terms & conditions{' '}
-														{content?.termsAndConditionsUrl?.target ===
+														{structure?.termsAndConditionsUrl?.target ===
 															'_blank' && (
 															<img
 																style={{ marginLeft: '10px' }}

@@ -3,22 +3,22 @@ import CustomImage from 'components/common/CustomImage'
 
 const CircularImageBlocks = ({ data }) => {
 	const { structure } = data
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(structure)
-	})
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// })
 	return (
 		<section>
 			<div className='hvac_sales_cycle'>
 				<h2
 					className='title'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
 				<div className='cycle'>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							key={index}
 							className='cycle_item'
-							style={{ width: 100 / content?.list?.value.length + '%' }}>
+							style={{ width: 100 / structure?.list?.value.length + '%' }}>
 							<div className='image_container'>
 								<CustomImage
 									src={item.backgroundImage?.src}
@@ -41,7 +41,7 @@ const CircularImageBlocks = ({ data }) => {
 				</div>
 				<div
 					className='text'
-					dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 			</div>
 		</section>
 	)

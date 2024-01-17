@@ -3,19 +3,20 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const CareersCycleSection = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='careers_cycle_section'>
 				<div className='content'>
 					<h3
 						className='title pb-3 pt-6 py-md-7'
-						dangerouslySetInnerHTML={{ __html: content?.title1?.value }}></h3>
+						dangerouslySetInnerHTML={{ __html: structure?.title1?.value }}></h3>
 					<div className='list'>
-						{content?.list?.value.map((item, index) => (
+						{structure?.list?.value.map((item, index) => (
 							<div key={index} className='item'>
 								<div className='image_wrapper'>
 									<img
@@ -47,10 +48,12 @@ const CareersCycleSection = ({ data }) => {
 					<div className='second_article'>
 						<h3
 							className='title'
-							dangerouslySetInnerHTML={{ __html: content?.title2?.value }}></h3>
+							dangerouslySetInnerHTML={{
+								__html: structure?.title2?.value
+							}}></h3>
 						<h5
 							className='text'
-							dangerouslySetInnerHTML={{ __html: content?.text?.value }}></h5>
+							dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></h5>
 					</div>
 				</div>
 			</div>

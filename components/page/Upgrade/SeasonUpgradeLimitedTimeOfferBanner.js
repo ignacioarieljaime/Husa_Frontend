@@ -6,13 +6,14 @@ import { useState } from 'react'
 import { GetSingleProduct } from 'services/Product'
 
 const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
+	const { structure } = data
 	const [content, setContent] = useState(null)
 	const [product, setProduct] = useState()
 	const [showDialgo, setShowDialog] = useState(false)
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -38,24 +39,24 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 				id={data?.name + data?.id}
 				ref={ref}
 				style={{
-					backgroundImage: `url(${content?.background?.src})`
+					backgroundImage: `url(${structure?.background?.src})`
 				}}
 				className='season_upgrade_limited_time_banner'>
 				<div className='text_content pt-0 pt-md-4'>
-					<p className='pretitle'>{content?.subtitle?.value}</p>
+					<p className='pretitle'>{structure?.subtitle?.value}</p>
 					<h4
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: content?.title?.value
+							__html: structure?.title?.value
 						}}></h4>
-					<p
+					<div
 						className='text'
 						dangerouslySetInnerHTML={{
-							__html: content?.text?.value
-						}}></p>
+							__html: structure?.text?.value
+						}}></div>
 
-					{content?.link?.value ? (
-						content?.link?.value.includes('openChannelAdvisor:') ? (
+					{structure?.link?.value ? (
+						structure?.link?.value.includes('openChannelAdvisor:') ? (
 							<button
 								onClick={() => setShowDialog(true)}
 								className='n-btn medium danger-upgrade full_btn_md'>
@@ -63,11 +64,13 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 							</button>
 						) : (
 							<Link
-								target={content?.link?.target ? content?.link?.target : '_self'}
-								href={content?.link?.value}>
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								href={structure?.link?.value}>
 								<a
 									target={
-										content?.link?.target ? content?.link?.target : '_self'
+										structure?.link?.target ? structure?.link?.target : '_self'
 									}
 									className='n-btn medium danger-upgrade full_btn_md'>
 									Shop Eligible Models
@@ -77,8 +80,8 @@ const SeasonUpgradeLimitedTimeOfferBanner = ({ data }) => {
 					) : null}
 				</div>
 				<img
-					src={content?.image?.src}
-					alt={content?.image?.alt}
+					src={structure?.image?.src}
+					alt={structure?.image?.alt}
 					className='image'
 				/>
 			</div>

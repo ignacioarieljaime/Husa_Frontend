@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesTexBlock1 = ({ data }) => {
-	const [content, setContent] = useState({ data })
-
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	const { structure } = data
+	// const [content, setContent] = useState()
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section>
@@ -15,31 +15,33 @@ const CesTexBlock1 = ({ data }) => {
 				<div className='row mb-6'>
 					<div className='col-12 col-md-5'>
 						<img
-							src={content?.image?.src}
-							alt={content?.image?.alt}
+							src={structure?.image?.src}
+							alt={structure?.image?.alt}
 							width='100%'
 						/>
 					</div>
 					<div className='col-12 col-md-7'>
-						<h2 className='fs-1 fw-bolder-700'>{content?.title?.value}</h2>
-						<h4 className='fs-3 fw-bolder-700'>{content?.subtitle?.value}</h4>
+						<h2 className='fs-1 fw-bolder-700'>{structure?.title?.value}</h2>
+						<h4 className='fs-3 fw-bolder-700'>{structure?.subtitle?.value}</h4>
 						<div
 							className='description'
 							dangerouslySetInnerHTML={{
-								__html: content?.description?.value
+								__html: structure?.description?.value
 							}}></div>
-						{content?.link?.value ? (
+						{structure?.link?.value ? (
 							<Link
-								target={content?.link?.target ? content?.link?.target : '_self'}
-								href={content?.link?.value}>
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								href={structure?.link?.value}>
 								<a
 									target={
-										content?.link?.target ? content?.link?.target : '_self'
+										structure?.link?.target ? structure?.link?.target : '_self'
 									}
 									className='fw-bold medium'
 									style={{ color: '#00aaa6', textDecoration: 'none' }}>
-									{content?.link?.title} {'>'}
-									{content?.link?.target === '_blank' && (
+									{structure?.link?.title} {'>'}
+									{structure?.link?.target === '_blank' && (
 										<img
 											style={{ marginLeft: '10px' }}
 											src={OpenPageOnNewTab.src}
@@ -52,13 +54,13 @@ const CesTexBlock1 = ({ data }) => {
 							<div className='col-12 col-sm-6'>
 								<div className='d-flex flex-column justify-content-between align-items-start h-100'>
 									<h4 style={{ color: '#000' }} className='fs-5 fw-bolder-700'>
-										{content?.specs?.value}
+										{structure?.specs?.value}
 									</h4>
 									<ul>
-										{content?.list?.value.map((item, index) => {
+										{structure?.list?.value.map((item, index) => {
 											if (
 												index <
-												Math.ceil(content?.list?.value.length / 2) - 1
+												Math.ceil(structure?.list?.value.length / 2) - 1
 											)
 												return <li key={index}>{item?.title?.value}</li>
 										})}
@@ -67,30 +69,33 @@ const CesTexBlock1 = ({ data }) => {
 							</div>
 							<div className='col-12 col-sm-6'>
 								<ul>
-									{content?.list?.value.map((item, index) => {
-										if (index >= Math.ceil(content?.list?.value.length / 2) - 1)
+									{structure?.list?.value.map((item, index) => {
+										if (
+											index >=
+											Math.ceil(structure?.list?.value.length / 2) - 1
+										)
 											return <li key={index}>{item?.title?.value}</li>
 									})}
 								</ul>
 							</div>
-							{content?.productLink?.value ? (
+							{structure?.productLink?.value ? (
 								<Link
 									target={
-										content?.productLink?.target
-											? content?.productLink?.target
+										structure?.productLink?.target
+											? structure?.productLink?.target
 											: '_self'
 									}
-									href={content?.productLink?.value}>
+									href={structure?.productLink?.value}>
 									<a
 										target={
-											content?.productLink?.target
-												? content?.productLink?.target
+											structure?.productLink?.target
+												? structure?.productLink?.target
 												: '_self'
 										}
 										className='fw-bolder-700 fs-6 mt-4 medium'
 										style={{ color: '#00aaa6', textDecoration: 'none' }}>
-										{content?.productLink?.title} {'>'}
-										{content?.productLink?.target === '_blank' && (
+										{structure?.productLink?.title} {'>'}
+										{structure?.productLink?.target === '_blank' && (
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}

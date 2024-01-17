@@ -18,7 +18,8 @@ const SeasonUpgradeDealCounterBlockWeekItem = ({
 				? activeIndex - 1
 				: window.innerWidth <= 768 && activeIndex > 2
 				? activeIndex - 1
-				: 0
+				: 0,
+			100
 		)
 	}, [activeIndex])
 

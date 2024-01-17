@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
 const GoogleTvFeatureBlocksType1 = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	let { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section className='google_tv_feature_blocks'>
 			<div className='custom_container'>
@@ -15,11 +16,11 @@ const GoogleTvFeatureBlocksType1 = ({ data }) => {
 								<div
 									className='title mb-10'
 									dangerouslySetInnerHTML={{
-										__html: content?.block1?.value?.text?.value
+										__html: structure?.block1?.value?.text?.value
 									}}></div>
 								<img
-									src={content?.block1?.value?.image?.src}
-									alt={content?.block1?.value?.image?.alt}
+									src={structure?.block1?.value?.image?.src}
+									alt={structure?.block1?.value?.image?.alt}
 									width='100%'
 									className='mb-md-5'
 								/>
@@ -32,19 +33,19 @@ const GoogleTvFeatureBlocksType1 = ({ data }) => {
 								<div
 									className='title mb-10'
 									dangerouslySetInnerHTML={{
-										__html: content?.block2?.value?.text?.value
+										__html: structure?.block2?.value?.text?.value
 									}}></div>
 								<div className='d-flex justify-content-center align-items-center w-100'>
 									<img
-										src={content?.block2?.value?.image?.src}
-										alt={content?.block2?.value?.image?.alt}
+										src={structure?.block2?.value?.image?.src}
+										alt={structure?.block2?.value?.image?.alt}
 										width='100%'
 									/>
 								</div>
 								<div
 									className='subtitle mt-12 mt-md-0'
 									dangerouslySetInnerHTML={{
-										__html: content?.block2?.value?.subtitle?.value
+										__html: structure?.block2?.value?.subtitle?.value
 									}}></div>
 							</div>
 						</div>
