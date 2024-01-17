@@ -36,12 +36,15 @@ const LightBoxModal = ({
     const outSide = useOutsideClick(boxRef)
 
     function isLastPage(pageLength, totalLength, index) {
-        const result = index > totalLength - pageLength;
+        // const result = index > totalLength - pageLength;
         const isOnlyOnePage = (totalLength - pageLength) === 0
+
+        const lastCompletePage = Math.floor((totalLength - 1) / pageLength);
+        const lastPageIndex = totalLength - 1;
 
         if (index < pageLength && isOnlyOnePage) return true
         if (index < pageLength && !isOnlyOnePage) return false
-        return result
+        return index >= lastCompletePage * pageLength && index <= lastPageIndex;
     }
 
     const newIndexHandler = indexUpdate => {
