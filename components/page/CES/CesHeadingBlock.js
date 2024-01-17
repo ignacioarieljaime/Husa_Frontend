@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
 const CesHeadingBlock = ({ data }) => {
-	const [content, setContent] = useState({ data })
+	const { structure } = data
 
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section>
@@ -16,16 +17,16 @@ const CesHeadingBlock = ({ data }) => {
 					<div className='text-center'>
 						<h2
 							dangerouslySetInnerHTML={{
-								__html: content?.title?.value
+								__html: structure?.title?.value
 							}}></h2>
 					</div>
-					{content?.description?.value ? (
+					{structure?.description?.value ? (
 						<div className='text-center'>
 							<div
 								className='text-black mb-10'
 								style={{ fontSize: '20px' }}
 								dangerouslySetInnerHTML={{
-									__html: content?.description?.value
+									__html: structure?.description?.value
 								}}></div>
 						</div>
 					) : null}

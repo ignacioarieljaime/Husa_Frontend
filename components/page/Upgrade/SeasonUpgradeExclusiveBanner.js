@@ -5,11 +5,12 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const SeasonUpgradeExclusiveBanner = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -22,34 +23,38 @@ const SeasonUpgradeExclusiveBanner = ({ data }) => {
 				id={data?.name + data?.id}
 				ref={ref}
 				style={{
-					backgroundImage: `url(${content?.background?.src})`
+					backgroundImage: `url(${structure?.background?.src})`
 				}}
 				className='season_upgrade_exclusive_banner'>
 				<div className='content'>
 					<img
-						src={content?.image?.src}
-						alt={content?.image?.alt}
+						src={structure?.image?.src}
+						alt={structure?.image?.alt}
 						className='image'
 					/>
-					<p className='pretitle'>{content?.subtitle?.value}</p>
+					<p className='pretitle'>{structure?.subtitle?.value}</p>
 					<h3
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: content?.title?.value
+							__html: structure?.title?.value
 						}}></h3>
-					<p
+					<div
 						className='text mb-n1'
 						dangerouslySetInnerHTML={{
-							__html: content?.text?.value
-						}}></p>
-					{content?.link?.value && (
+							__html: structure?.text?.value
+						}}></div>
+					{structure?.link?.value && (
 						<Link
-							target={content?.link?.target ? content?.link?.target : '_self'}
-							href={content?.link?.value}>
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							href={structure?.link?.value}>
 							<a
-								target={content?.link?.target ? content?.link?.target : '_self'}
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								className='n-btn large danger-upgrade full_btn_md'>
-								{content?.link?.title}
+								{structure?.link?.title}
 							</a>
 						</Link>
 					)}

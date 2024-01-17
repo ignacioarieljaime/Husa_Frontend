@@ -4,16 +4,17 @@ import CesAwardsItem from './CesAwardsItem'
 import 'swiper/css'
 
 const CesAwards2 = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(data?.structure)
+	// }, [])
 	return (
 		<section>
 			<div className='ces_awards'>
 				<div
 					className='title mini'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 				<Swiper
 					navigation={false}
 					pagination={false}
@@ -22,7 +23,7 @@ const CesAwards2 = ({ data }) => {
 					centeredSlides={false}
 					grabCursor={true}
 					className='awards_slider'>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<SwiperSlide key={index}>
 							<CesAwardsItem data={item} />
 						</SwiperSlide>

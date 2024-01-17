@@ -16,6 +16,7 @@ import 'swiper/css'
 import SeasonUpgradeDealCounterBlockWeekItem from './SeasonUpgradeDealCounterBlockWeekItem'
 import { RouteHandler } from 'utils/routeHandler'
 const SeasonUpgradeDealCounterBlock = ({ data }) => {
+	const { structure } = data
 	const [content, setContent] = useState(null)
 	const windowSize = useWindowSize()
 	const [showDialgo, setShowDialog] = useState(false)
@@ -28,7 +29,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	)
 
 	useEffect(() => {
-		setContent(data?.structure)
+		setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -61,14 +62,14 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 				id={data?.name + data?.id}
 				ref={ref}
 				className={`season_upgrade_deal_counter ${
-					content?.template?.value === 'BlackFriday' ? 'black_friday' : ''
+					structure?.template?.value === 'BlackFriday' ? 'black_friday' : ''
 				}`}>
 				{content?.template?.value !== 'BlackFriday' && (
 					<>
 						<div className='text-center py-4 px-2'>
 							<img
 								src={DealOfTheWeek.src}
-								alt={content?.topImage?.alt}
+								alt={structure?.topImage?.alt}
 								className='top_image'
 							/>
 						</div>
@@ -84,11 +85,11 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 									<SwiperSlide key={index} className='w-fit'>
 										<SeasonUpgradeDealCounterBlockWeekItem
 											key={index}
-											active={index === content?.active?.value}
+											active={index === structure?.active?.value}
 											title={item?.title?.value}
-											activeIndex={content?.active?.value}
-											scroll={content?.active?.value > 2}
-											past={index < content?.active?.value}
+											activeIndex={structure?.active?.value}
+											scroll={structure?.active?.value > 2}
+											past={index < structure?.active?.value}
 										/>
 									</SwiperSlide>
 								))}
@@ -99,15 +100,15 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 				<div className='product'>
 					<div
 						className={`product_images ${
-							content?.template?.value !== 'BlackFriday'
+							structure?.template?.value !== 'BlackFriday'
 								? ''
 								: 'justify-content-end gap-0'
 						}`}>
-						{content?.template?.value !== 'BlackFriday' ? (
+						{structure?.template?.value !== 'BlackFriday' ? (
 							<div className='product_top'>
 								<img
 									src={Lockup.src}
-									alt={content?.topImage?.alt}
+									alt={structure?.topImage?.alt}
 									className='image'
 								/>
 								<div>
@@ -138,13 +139,13 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 								className='title mb-0'
 								dangerouslySetInnerHTML={{
 									__html:
-										content?.list?.value[content?.active?.value]?.product_title
-											?.value
+										structure?.list?.value[structure?.active?.value]
+											?.product_title?.value
 								}}></h4>
 						)}
-						{content?.list?.value[content?.active?.value]?.button?.value ? (
-							content?.list?.value[
-								content?.active?.value
+						{structure?.list?.value[structure?.active?.value]?.button?.value ? (
+							structure?.list?.value[
+								structure?.active?.value
 							]?.button?.value.includes('openChannelAdvisor:') ? (
 								<img
 									onClick={() => setShowDialog(true)}
@@ -152,52 +153,54 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 									style={{ cursor: 'pointer' }}
 									src={
 										windowSize[0] > 768
-											? content?.list?.value[content?.active?.value]
+											? structure?.list?.value[structure?.active?.value]
 													?.product_image?.src
-											: content?.list?.value[content?.active?.value]
+											: structure?.list?.value[structure?.active?.value]
 													?.product_image_responsive?.src
 									}
 									alt={
 										windowSize[0] > 768
-											? content?.list?.value[content?.active?.value]
+											? structure?.list?.value[structure?.active?.value]
 													?.product_image?.alt
-											: content?.list?.value[content?.active?.value]
+											: structure?.list?.value[structure?.active?.value]
 													?.product_image_responsive?.alt
 									}
 								/>
 							) : (
 								<Link
 									target={
-										content?.list?.value[content?.active?.value]?.button?.target
-											? content?.list?.value[content?.active?.value]?.button
+										structure?.list?.value[structure?.active?.value]?.button
+											?.target
+											? structure?.list?.value[structure?.active?.value]?.button
 													?.target
 											: '_self'
 									}
 									href={
-										content?.list?.value[content?.active?.value]?.button?.value
+										structure?.list?.value[structure?.active?.value]?.button
+											?.value
 									}>
 									<a
 										target={
-											content?.list?.value[content?.active?.value]?.button
+											structure?.list?.value[structure?.active?.value]?.button
 												?.target
-												? content?.list?.value[content?.active?.value]?.button
-														?.target
+												? structure?.list?.value[structure?.active?.value]
+														?.button?.target
 												: '_self'
 										}>
 										<img
 											className='image'
 											src={
 												windowSize[0] > 768
-													? content?.list?.value[content?.active?.value]
+													? structure?.list?.value[structure?.active?.value]
 															?.product_image?.src
-													: content?.list?.value[content?.active?.value]
+													: structure?.list?.value[structure?.active?.value]
 															?.product_image_responsive?.src
 											}
 											alt={
 												windowSize[0] > 768
-													? content?.list?.value[content?.active?.value]
+													? structure?.list?.value[structure?.active?.value]
 															?.product_image?.alt
-													: content?.list?.value[content?.active?.value]
+													: structure?.list?.value[structure?.active?.value]
 															?.product_image_responsive?.alt
 											}
 										/>
@@ -209,16 +212,16 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 								className='image'
 								src={
 									windowSize[0] > 768
-										? content?.list?.value[content?.active?.value]
+										? structure?.list?.value[structure?.active?.value]
 												?.product_image?.src
-										: content?.list?.value[content?.active?.value]
+										: structure?.list?.value[structure?.active?.value]
 												?.product_image_responsive?.src
 								}
 								alt={
 									windowSize[0] > 768
-										? content?.list?.value[content?.active?.value]
+										? structure?.list?.value[structure?.active?.value]
 												?.product_image?.alt
-										: content?.list?.value[content?.active?.value]
+										: structure?.list?.value[structure?.active?.value]
 												?.product_image_responsive?.alt
 								}
 							/>
@@ -226,12 +229,12 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 					</div>
 					<div className='product_info'>
 						<div className='main_info'>
-							{content?.template?.value !== 'BlackFriday' && (
+							{structure?.template?.value !== 'BlackFriday' && (
 								<h4
 									className='title'
 									dangerouslySetInnerHTML={{
 										__html:
-											content?.list?.value[content?.active?.value]
+											structure?.list?.value[structure?.active?.value]
 												?.product_title?.value
 									}}></h4>
 							)}
@@ -241,12 +244,12 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 									dangerouslySetInnerHTML={{
 										__html:
 											'<p>Save</p>' +
-											content?.list?.value[content?.active?.value]?.product_sale
-												?.value
+											structure?.list?.value[structure?.active?.value]
+												?.product_sale?.value
 									}}></div>
 								<div
 									className={`d-flex  mb-n2 mb-md-n3 ${
-										content?.template?.value === 'BlackFriday'
+										structure?.template?.value === 'BlackFriday'
 											? ' gap-3 flex-column justify-content-start align-items-start'
 											: ' gap-4 justify-content-start align-items-end'
 									}`}>
@@ -254,31 +257,31 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 										className='price'
 										dangerouslySetInnerHTML={{
 											__html:
-												content?.list?.value[content?.active?.value]?.price
+												structure?.list?.value[structure?.active?.value]?.price
 													?.value
 										}}></h3>
 									<div
 										className='old_price'
 										dangerouslySetInnerHTML={{
 											__html:
-												content?.list?.value[content?.active?.value]?.old_price
-													?.value
+												structure?.list?.value[structure?.active?.value]
+													?.old_price?.value
 										}}></div>
 								</div>
 							</div>
 						</div>
-						{content?.template?.value !== 'BlackFriday' && (
+						{structure?.template?.value !== 'BlackFriday' && (
 							<div
 								className='limited_offer'
 								dangerouslySetInnerHTML={{
 									__html:
-										content?.list?.value[content?.active?.value]?.blackbox_text
-											?.value
+										structure?.list?.value[structure?.active?.value]
+											?.blackbox_text?.value
 								}}></div>
 						)}
 						<ul className='product_specs'>
-							{content?.list?.value[
-								content?.active?.value
+							{structure?.list?.value[
+								structure?.active?.value
 							]?.product_specs?.value.map((item, index) => (
 								<li
 									key={index}
@@ -287,9 +290,9 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 									}}></li>
 							))}
 						</ul>
-						{content?.list?.value[content?.active?.value]?.button?.value ? (
-							content?.list?.value[
-								content?.active?.value
+						{structure?.list?.value[structure?.active?.value]?.button?.value ? (
+							structure?.list?.value[
+								structure?.active?.value
 							]?.button?.value.includes('openChannelAdvisor:') ? (
 								<button
 									onClick={() => setShowDialog(true)}
@@ -299,20 +302,22 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 							) : (
 								<Link
 									target={
-										content?.list?.value[content?.active?.value]?.button?.target
-											? content?.list?.value[content?.active?.value]?.button
+										structure?.list?.value[structure?.active?.value]?.button
+											?.target
+											? structure?.list?.value[structure?.active?.value]?.button
 													?.target
 											: '_self'
 									}
 									href={
-										content?.list?.value[content?.active?.value]?.button?.value
+										structure?.list?.value[structure?.active?.value]?.button
+											?.value
 									}>
 									<a
 										target={
-											content?.list?.value[content?.active?.value]?.button
+											structure?.list?.value[structure?.active?.value]?.button
 												?.target
-												? content?.list?.value[content?.active?.value]?.button
-														?.target
+												? structure?.list?.value[structure?.active?.value]
+														?.button?.target
 												: '_self'
 										}
 										className='n-btn medium full_btn_md danger-upgrade'>

@@ -2,45 +2,45 @@ import React, { useEffect, useState } from 'react'
 
 const FullFeature = ({ data }) => {
 	const { structure } = data
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section>
-			<div className={`full_feature ${content?.theme?.value}`}>
+			<div className={`full_feature ${structure?.theme?.value}`}>
 				<img
-					src={content?.background?.src}
-					alt={content?.background?.alt}
+					src={structure?.background?.src}
+					alt={structure?.background?.alt}
 					className='background'
 				/>
 				<div className='content'>
 					<img
-						src={content?.topImage?.src}
-						alt={content?.topImage?.alt}
+						src={structure?.topImage?.src}
+						alt={structure?.topImage?.alt}
 						className='image'
 					/>
-					<p className='subtitle'>{content?.subtitle?.value}</p>
+					<p className='subtitle'>{structure?.subtitle?.value}</p>
 					<h3
 						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
 					<div
 						className='text'
-						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 					<div className='images_row'>
 						<img
-							src={content?.bottomImage1?.src}
-							alt={content?.bottomImage1?.alt}
+							src={structure?.bottomImage1?.src}
+							alt={structure?.bottomImage1?.alt}
 							className='image'
 						/>
 						<img
-							src={content?.bottomImage2?.src}
-							alt={content?.bottomImage2?.alt}
+							src={structure?.bottomImage2?.src}
+							alt={structure?.bottomImage2?.alt}
 							className='image'
 						/>
 					</div>
-					<p className='note'>{content?.note?.value}</p>
+					<p className='note'>{structure?.note?.value}</p>
 				</div>
 			</div>
 		</section>

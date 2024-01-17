@@ -3,22 +3,22 @@ import UHDNewsItem from './UHDNewsItem'
 
 function UHDNewsBox({ data }) {
 	const { structure } = data
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section id={data.name + data.id}>
 			<div className='key_feature'>
 				<div className={'content'}>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							key={index}
 							className={`item ${
-								content?.list?.value.length < 4 ? 'banner' : 'small'
+								structure?.list?.value.length < 4 ? 'banner' : 'small'
 							} hover_active`}
-							style={{ width: 100 / content?.list?.value.length + '%' }}>
+							style={{ width: 100 / structure?.list?.value.length + '%' }}>
 							<div className={`image_wrapper `}>
 								{item?.image?.src && (
 									<img
@@ -45,7 +45,7 @@ function UHDNewsBox({ data }) {
 									</div>
 								)}
 								{item?.title?.value ? (
-									content?.list?.value.length > 2 ? (
+									structure?.list?.value.length > 2 ? (
 										<h5
 											className='title small'
 											dangerouslySetInnerHTML={{

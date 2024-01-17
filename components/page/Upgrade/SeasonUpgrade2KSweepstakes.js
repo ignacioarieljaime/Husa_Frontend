@@ -6,11 +6,12 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const SeasonUpgrade2KSweepstakes = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -23,36 +24,38 @@ const SeasonUpgrade2KSweepstakes = ({ data }) => {
 				id={data?.name + data?.id}
 				ref={ref}
 				className='season_upgrade_2k_sweepstakes'
-				style={{ backgroundImage: `url(${content?.background?.src})` }}>
+				style={{ backgroundImage: `url(${structure?.background?.src})` }}>
 				<img
 					className='top_image'
-					src={content?.topImage?.src}
-					alt={content?.topImage?.alt}
+					src={structure?.topImage?.src}
+					alt={structure?.topImage?.alt}
 				/>
 				<h3
 					className='title'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
 				<img
 					className='image'
-					src={content?.image?.src}
-					alt={content?.image?.alt}
+					src={structure?.image?.src}
+					alt={structure?.image?.alt}
 				/>
 				<div>
 					<div
 						className='subtitle'
 						dangerouslySetInnerHTML={{
-							__html: content?.subtitle?.value
+							__html: structure?.subtitle?.value
 						}}></div>
-					{content?.link?.value && (
+					{structure?.link?.value && (
 						<Link
-							href={content?.link?.value}
-							target={content?.link?.target ? content?.link?.target : '_self'}>
+							href={structure?.link?.value}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}>
 							<a
 								className='n-btn black medium d-block w-fit mx-auto'
 								target={
-									content?.link?.target ? content?.link?.target : '_self'
+									structure?.link?.target ? structure?.link?.target : '_self'
 								}>
-								{content?.link?.title}
+								{structure?.link?.title}
 							</a>
 						</Link>
 					)}

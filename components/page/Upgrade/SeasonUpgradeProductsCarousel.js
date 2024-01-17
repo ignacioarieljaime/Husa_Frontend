@@ -15,6 +15,7 @@ import ModalChanelAdviser from '../Product/ModalChanelAdviser'
 import { useRouter } from 'next/router'
 
 const SeasonUpgradeProductsCarousel = ({ data }) => {
+	const { structure } = data
 	const windowSize = useWindowSize()
 	const [content, setContent] = useState(null)
 	const [channelAdvisorData, setChannelAdvisorData] = useState(null)
@@ -22,7 +23,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -35,15 +36,15 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 			<div
 				id={data?.name + data?.id}
 				ref={ref}
-				className={`season_upgrade_carousel ${content?.text?.value} ${content?.template?.value}`}>
+				className={`season_upgrade_carousel ${structure?.text?.value} ${structure?.template?.value}`}>
 				<div className='text_content'>
-					<p className='pretitle'>{content?.subtitle?.value}</p>
+					<p className='pretitle'>{structure?.subtitle?.value}</p>
 					<Link href={'/'}>
 						<a className='text-decoration-none'>
 							<h2
 								className='title'
 								dangerouslySetInnerHTML={{
-									__html: content?.title?.value
+									__html: structure?.title?.value
 								}}></h2>
 						</a>
 					</Link>
@@ -73,8 +74,8 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 							key={index}>
 							<SeasonUpgradeProductsCarouselItem
 								data={item}
-								version={content?.template?.value}
-								length={content?.selected_products?.value.length / 2}
+								version={structure?.template?.value}
+								length={structure?.selected_products?.value.length / 2}
 								setChannelAdvisorData={setChannelAdvisorData}
 								setShowDialog={setShowDialog}
 							/>
@@ -83,22 +84,26 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 
 					<button
 						className={`swiper-button-next ${
-							content?.selected_products?.value.length > 3 ? 'd-flex' : 'd-none'
+							structure?.selected_products?.value.length > 3
+								? 'd-flex'
+								: 'd-none'
 						}`}>
 						<FontAwesomeIcon icon={faChevronRight} size='2xl' />
 					</button>
 					<button
 						className={`swiper-button-prev ${
-							content?.selected_products?.value.length > 3 ? 'd-flex' : 'd-none'
+							structure?.selected_products?.value.length > 3
+								? 'd-flex'
+								: 'd-none'
 						}`}>
 						<FontAwesomeIcon icon={faChevronLeft} size='2xl' />
 					</button>
 				</Swiper>
-				{content?.template?.value === 'v2' && (
+				{structure?.template?.value === 'v2' && (
 					<div
 						className='disclaimer'
 						dangerouslySetInnerHTML={{
-							__html: content?.disclaimer?.value
+							__html: structure?.disclaimer?.value
 						}}></div>
 				)}
 			</div>
