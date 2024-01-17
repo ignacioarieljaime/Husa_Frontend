@@ -62,12 +62,14 @@ function AwardsAndAccolades({ data, pim }) {
         if (firstChild && swiper && boolean === true) {
 			firstChild.classList.add('centerSlides');
 			ref.current.classList.add('hide-gradient');
+			ref.current.classList.remove('tooBig');
 			swiper.allowTouchMove = false;
         }
 
         if (firstChild && passedParams && boolean === false) {
 			firstChild.classList.remove('centerSlides');
 			ref.current.classList.remove('hide-gradient');
+			ref.current.classList.add('tooBig');
 			swiper.allowTouchMove = true;
 			if (windowSize[0] >= 768 && swiper.activeIndex === 0 && content?.list?.value) swiper.activeIndex = (content.list.value.length / 2) - 1;
         }
@@ -185,7 +187,7 @@ function AwardsAndAccolades({ data, pim }) {
 								slidesPerView={'auto'}
                                 slidesPerGroup={3}
 								navigation={{
-									enabled: swiperTooBig === true ? true : false,
+									enabled: true,
 									prevEl: navigationPrevRef.current,
 									nextEl: navigationNextRef.current
 								}}
@@ -219,7 +221,7 @@ function AwardsAndAccolades({ data, pim }) {
 										/>
 									</SwiperSlide>
 								))}
-                                {swiperTooBig &&
+
                                     <>
                                         <div className='swiper-button-prev' ref={navigationPrevRef}>
                                             <AwardsNavIcon />
@@ -228,7 +230,7 @@ function AwardsAndAccolades({ data, pim }) {
                                             <AwardsNavIcon />
                                         </div>
                                     </>
-                                }
+
 
 							</Swiper>
 						) : null}
