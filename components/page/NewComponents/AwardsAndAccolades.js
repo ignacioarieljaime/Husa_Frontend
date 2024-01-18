@@ -185,7 +185,7 @@ function AwardsAndAccolades({ data, pim }) {
 							<Swiper
                                 ref={swiperRef}
 								slidesPerView={'auto'}
-                                slidesPerGroup={3}
+                                slidesPerGroup={windowSize[0] <= 768 ? 1: 3}
 								navigation={{
 									enabled: true,
 									prevEl: navigationPrevRef.current,
@@ -200,9 +200,9 @@ function AwardsAndAccolades({ data, pim }) {
 								}
 								grabCursor={swiperTooBig === true ? true : false}
                                 allowTouchMove={swiperTooBig === true ? true : false}
-								spaceBetween={windowSize[0] < 768 ? 16 : 20}
+								spaceBetween={windowSize[0] <= 768 ? 4 : 20}
 								centeredSlides={swiperTooBig === true ? true : false}
-                                centeredSlidesBounds={true}
+                                centeredSlidesBounds={windowSize[0] <= 768 ? false : true}
 								modules={[Navigation, Pagination]}
 								className={`w-100`}
 								style={{
