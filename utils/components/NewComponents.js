@@ -14,5 +14,9 @@ module.exports.NewComponents = [
 	{
 		name: 'FullFeature',
 		path: 'components/page/NewComponents/FullFeature.js'
+	},
+	{
+		name: 'SignUpPopUp',
+		path: 'components/page/NewComponents/SignUpPopUp.js'
 	}
 ]
