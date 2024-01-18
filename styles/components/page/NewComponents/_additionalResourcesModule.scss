@@ -5,6 +5,9 @@
 	align-content: start;
 	justify-content: center;
 	gap: 32px;
+	@include mq(768) {
+		padding: 64px 16px;
+	}
 	&___title {
 		margin: 0 0 64px;
 		* {
@@ -23,7 +26,9 @@
 	&___content {
 		position: relative;
 		&___slider {
-			padding-bottom: 12px;
+			padding-bottom: 24px !important;
+			max-width: 1115px;
+			margin: 0 auto;
 			&___item {
 				width: 100%;
 				max-width: 361px;
@@ -36,7 +41,7 @@
 				justify-content: center;
 				align-items: center;
 				overflow: hidden;
-				transition: all 0.3s ease-in;
+				transition: box-shadow 0.3s ease-in !important;
 				margin-bottom: 12px;
 				&:hover {
 					box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
@@ -94,6 +99,82 @@
 						line-height: 16.2px; /* 135% */
 						color: #ababb0;
 						margin: 0;
+					}
+				}
+			}
+			&___controls_wrapper {
+				position: absolute;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 100%;
+				height: fit-content;
+				z-index: 2;
+				@include mq(1215) {
+					width: calc(100% + 48px);
+					left: -24px;
+				}
+				&___controls {
+					border: none;
+					width: 75px;
+					height: 75px;
+					z-index: 11;
+					background: #f0f2f2;
+					border-radius: 100%;
+					-webkit-border-radius: 100%;
+					-moz-border-radius: 100%;
+					-ms-border-radius: 100%;
+					-o-border-radius: 100%;
+					padding: 0 !important;
+					transition: all 0.3s ease-in;
+					opacity: 1;
+					&:hover {
+						background: #c7c7c9;
+						box-shadow: 0px 10px 16px 0px rgba(20, 37, 63, 0.06);
+					}
+					&:active {
+						background: #525454;
+						box-shadow: 0px 10px 16px 0px rgba(20, 37, 63, 0.06);
+					}
+					@include mq(768) {
+						display: none;
+					}
+					&::after {
+						color: #ffffff;
+						font-size: 18px;
+					}
+					&.prev {
+						left: 40px;
+						transform: rotate(180deg);
+					}
+					&.next {
+						right: 40px;
+					}
+					&.disabled {
+						background: #c7c7c9 !important;
+					}
+				}
+			}
+			.swiper-pagination {
+				padding: 12.5px 0;
+				bottom: -10px !important;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 4px;
+				.swiper-pagination-bullet {
+					margin: 0 !important;
+					width: 10px !important;
+					height: 10px !important;
+					background-color: #c7c7c9 !important;
+					transform: scale(1) !important;
+					&.swiper-pagination-bullet-active {
+						width: 15px !important;
+						height: 15px !important;
+						background-color: #525454 !important;
 					}
 				}
 			}
