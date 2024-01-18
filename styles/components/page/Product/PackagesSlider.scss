@@ -500,8 +500,8 @@
 				}
 			}
 			.thumbs_gallery {
-				width: 64px;
-				min-width: 64px;
+				width: 66px;
+				min-width: 66px;
 				height: 100%;
 				max-height: 450px;
 				position: relative;
@@ -515,12 +515,36 @@
 				}
 				.swiper-wrapper {
 					max-width: 60px;
+					margin-top: 3px;
 					@include mq(768) {
+						margin-top: 0px;
 						max-width: unset;
 					}
 					.swiper-slide-thumb-active {
 						.image {
-							border: 3px solid #383838;
+							outline: 3px solid #383838;
+							border: none;
+							&:hover {
+								outline: 3px solid #383838 !important;
+							}
+							@include mq(768) {
+								outline: none !important;
+								border: 3px solid #383838;
+								&:hover {
+									outline: none !important;
+								}
+							}
+						}
+					}
+					.swiper-slide-visible {
+						.image {
+							&:hover {
+								outline: 3px solid #8C8E8F;
+								cursor: pointer;
+								@include mq(768) {
+									outline: none;
+								}
+							}
 						}
 					}
 				}
@@ -670,11 +694,11 @@
 					.sizes_item {
 						display: flex;
 						width: fit-content;
-						padding: 11.5px 12px 9.5px;
+						padding: 9px 12px 9.5px;
 						justify-content: center;
 						align-items: center;
 						border: 1px solid #c7c7c9;
-						background: #f0f2f2;
+						background: white;
 						transition: all 0.3s ease;
 						border-radius: 8px;
 						box-shadow: none;
@@ -685,10 +709,13 @@
 						margin-bottom: 10px;
 						span {
 							display: block;
+							font-size: 14px;
+							font-weight: 400;
 							margin-bottom: -3px;
 							transition: all 0.3s ease;
 						}
 						&:hover {
+							background-color: #F0F2F2;
 							mix-blend-mode: darken;
 							box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
 						}
@@ -712,8 +739,8 @@
 				min-width: 80px !important;
 				padding: 11.5px 16px 9.5px !important;
 				border-radius: 1000px;
-				border: 1px solid #008885;
-				background: #008885;
+				border: 1px solid #00AAA6;
+				background: #00AAA6;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -748,4 +775,10 @@
 			}
 		}
 	}
+}
+
+
+
+.swiper-button-disabled {
+	display: none !important;
 }
