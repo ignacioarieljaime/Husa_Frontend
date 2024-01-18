@@ -14,16 +14,36 @@ const BlockFeatured = ({ data }) => {
 	const [content, setContent] = useState()
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
-	useEffect(() => {
+    useEffect(() => {
 		if (structure && structure?.list?.value.length > 0) {
-			let temp = structure?.list?.value.sort(
-				(a, b) =>
-					parseInt(b?.itemCenter?.value) - parseInt(a?.itemCenter?.value)
-			)
-			temp.unshift(temp.pop())
-			setContent(temp)
+			const list = structure?.list?.value;
+		
+			// Calculate the total weight based on itemCenter values
+			const totalWeight = list.reduce(
+			(sum, item) => sum + parseInt(item?.itemCenter?.value || 0),
+			0
+			);
+		
+			// Weighted random index
+			const getRandomWeightedIndex = () => {
+			let randomValue = Math.random() * totalWeight;
+			for (let i = 0; i < list.length; i++) {
+				randomValue -= parseInt(list[i]?.itemCenter?.value || 0);
+				if (randomValue <= 0) {
+				return i;
+				}
+			}
+			return list.length - 1;
+			};
+		
+			for (let i = list.length - 1; i > 0; i--) {
+			const j = getRandomWeightedIndex();
+			[list[i], list[j]] = [list[j], list[i]];
+			}
+		
+			setContent([...list]);
 		}
-	}, [])
+	}, [structure]);
 
 	return (
 		<section>
