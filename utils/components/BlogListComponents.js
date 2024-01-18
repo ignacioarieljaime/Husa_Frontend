@@ -22,5 +22,9 @@ module.exports.BlogListComponents = [
 	{
 		name: 'BlogListWithBigTitleAndLittleItem',
 		path: 'components/page/BlogList/BlogListWithBigTitleAndLittleItem'
+	},
+	{
+		name: 'BlogListMainBox',
+		path: 'components/page/BlogList/BlogListMainBox'
 	}
 ]
