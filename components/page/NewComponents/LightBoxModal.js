@@ -277,26 +277,24 @@ const LightBoxModal = ({
 			type: 'slide',
 			rewind: false,
 			gap: '0px',
+			pagination: false,
 			cover: true,
 			focus: currentIndex,
-			// isNavigation: true,
+			isNavigation: true,
 			start: activeItemIndex,
-			pagination: true,
-			perMove: 5,
-			perPage: 5
+			perMove: 5
 		}
 
 		const thumbsOptionsTransition = {
 			type: 'slide',
 			rewind: false,
 			gap: '0px',
+			pagination: false,
 			cover: true,
 			focus: 'left',
-			// isNavigation: true,
+			isNavigation: true,
 			start: activeItemIndex,
-			pagination: true,
-			perMove: 5,
-			perPage: 5
+			perMove: 5
 		}
 
 		if (thumbIndex !== 0 && thumbIndex % 5 === 0) {
