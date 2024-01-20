@@ -1,0 +1,81 @@
+.retail_list {
+	padding: 58px 65px;
+	&___content {
+		display: flex;
+		justify-content: center;
+		align-items: start;
+		flex-direction: column;
+		gap: 40px;
+		&___title {
+			margin: 0;
+			* {
+				font-size: 48px;
+				font-weight: 500;
+				line-height: 55.86px;
+				letter-spacing: -0.96px;
+				color: #000;
+				margin: 0;
+				u {
+					color: #8c8f8f;
+					text-decoration: none;
+				}
+			}
+		}
+		&___retailers {
+			height: auto;
+			max-height: 500px;
+			display: flex;
+			justify-content: start;
+			align-items: space-between;
+			flex-direction: column;
+			flex-wrap: wrap;
+			list-style: none;
+			width: 100%;
+			padding: 0;
+			margin: 0;
+			gap: 24px 8px;
+			&___item {
+				width: calc(20% - 7px);
+				max-width: 200px;
+				&___title {
+					margin: 0 0 24px;
+					* {
+						color: #8c8f8f;
+						font-size: 24px;
+						font-weight: 500;
+						line-height: 30px; /* 125% */
+						margin: 0;
+						letter-spacing: -0.48px;
+					}
+				}
+				&___subtitem {
+					&___title {
+						margin: 0;
+						* {
+							color: #000;
+							font-size: 16px;
+							font-weight: 400;
+							line-height: 21.6px;
+							letter-spacing: -0.32px;
+							margin: 0;
+						}
+					}
+					&___address {
+						margin: 0;
+						display: flex;
+						justify-content: center;
+						align-items: start;
+						flex-direction: column;
+						* {
+							color: #000;
+							font-size: 14px;
+							font-weight: 400;
+							line-height: 18.9px;
+							margin: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+}
