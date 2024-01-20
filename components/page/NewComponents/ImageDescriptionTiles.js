@@ -2,22 +2,22 @@ import React, { useEffect, useState } from 'react'
 
 const ImageDescriptionTiles = ({ data }) => {
 	const { structure } = data
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section id={data.name + data.id}>
 			<div className='key_feature'>
 				<div className={'content'}>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							key={index}
 							className={`item ${
-								content?.list?.value.length < 4 ? 'banner' : 'small'
-							} ${content?.shadow?.value ? 'hover_active' : ''}`}
-							style={{ width: 100 / content?.list?.value.length + '%' }}>
+								structure?.list?.value.length < 4 ? 'banner' : 'small'
+							} ${structure?.shadow?.value ? 'hover_active' : ''}`}
+							style={{ width: 100 / structure?.list?.value.length + '%' }}>
 							<div className={`image_wrapper `}>
 								{item?.image?.src && (
 									<img
@@ -29,7 +29,7 @@ const ImageDescriptionTiles = ({ data }) => {
 							</div>
 							<div
 								className={`content ${
-									content?.divider?.value ? 'divider' : ''
+									structure?.divider?.value ? 'divider' : ''
 								}`}>
 								{item?.smallImage?.value?.image?.src &&
 									item?.smallImage?.value?.text?.value && (
@@ -47,7 +47,7 @@ const ImageDescriptionTiles = ({ data }) => {
 										</div>
 									)}
 								{item?.title?.value ? (
-									content?.list?.value.length > 2 ? (
+									structure?.list?.value.length > 2 ? (
 										<h5
 											className='title small'
 											dangerouslySetInnerHTML={{

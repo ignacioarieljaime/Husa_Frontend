@@ -7,8 +7,11 @@ function ProductSliderLinkButtonV3({ data, pim, theme }) {
 	return (
 		<>
 			{pim?.name?.includes(data?.title) ? (
-				<span className={`sizes_item ${theme === 'light' ? 'white' : 'dark'}`}>
-					{data.title}
+				<span
+					className={`sizes_item active ${
+						theme === 'light' ? 'white' : 'dark'
+					}`}>
+					<span>{data.title}</span>
 				</span>
 			) : url ? (
 				<Link href={url}>
@@ -18,7 +21,7 @@ function ProductSliderLinkButtonV3({ data, pim, theme }) {
 								? 'btn-primary-new text-white'
 								: 'btn-outline-dark'
 						}`}>
-						{data.title}
+						<span>{data.title}</span>
 					</a>
 				</Link>
 			) : (
@@ -29,7 +32,7 @@ function ProductSliderLinkButtonV3({ data, pim, theme }) {
 							? 'btn-primary-new text-white'
 							: 'btn-outline-dark'
 					}`}>
-					{data.title}
+					<span>{data.title}</span>
 				</button>
 			)}
 		</>

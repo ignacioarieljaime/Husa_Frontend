@@ -2,24 +2,25 @@ import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 const CesNewsBlock = ({ data }) => {
-	const [content, setContent] = useState({ data })
+	const { structure } = data
 
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState({ data })
+	// useEffect(() => {
+	// 	setContent(data?.structure)
+	// }, [])
 
 	return (
 		<section>
 			<div className='ces_news_container py-13'>
 				<h2
 					className='text-center mb-15'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
 				<div className='row align-items-center'>
 					<div className='col-12 col-md-7 mb-6 mb-md-0'>
 						<h4 className='fs-4 fw-bolder-700 mb-5 text-black'>
-							{content?.subtitle?.value}
+							{structure?.subtitle?.value}
 						</h4>
-						{content?.list?.value.map(
+						{structure?.list?.value.map(
 							(item, index) =>
 								item?.link?.value && (
 									<Link
@@ -43,25 +44,25 @@ const CesNewsBlock = ({ data }) => {
 					</div>
 					<div className='col-12 col-md-5'>
 						<div className='ces_contact_box'>
-							<h4 className='title'>{content?.contact?.value} :</h4>
+							<h4 className='title'>{structure?.contact?.value} :</h4>
 							<p className='fs-6 fw-light mb-0 text-black'>
-								{content?.secondLink?.value ? (
+								{structure?.secondLink?.value ? (
 									<Link
 										target={
-											content?.secondLink?.target
-												? content?.secondLink?.target
+											structure?.secondLink?.target
+												? structure?.secondLink?.target
 												: '_self'
 										}
-										href={content?.secondLink?.value}>
+										href={structure?.secondLink?.value}>
 										<a
 											target={
-												content?.secondLink?.target
-													? content?.secondLink?.target
+												structure?.secondLink?.target
+													? structure?.secondLink?.target
 													: '_self'
 											}
 											className='me-1 link'>
-											{content?.secondLink?.title}
-											{content?.secondLink?.target === '_blank' && (
+											{structure?.secondLink?.title}
+											{structure?.secondLink?.target === '_blank' && (
 												<img
 													style={{ marginLeft: '10px' }}
 													src={OpenPageOnNewTab.src}
@@ -70,13 +71,13 @@ const CesNewsBlock = ({ data }) => {
 										</a>
 									</Link>
 								) : null}
-								{content?.text?.value}
+								{structure?.text?.value}
 							</p>
 							<p className='fs-6 fw-light mb-0 text-black text-break'>
-								{content?.email?.value}
+								{structure?.email?.value}
 							</p>
-							<h4 className='title'>{content?.companyTitle?.value}</h4>
-							<p className='address'>{content?.address?.value}</p>
+							<h4 className='title'>{structure?.companyTitle?.value}</h4>
+							<p className='address'>{structure?.address?.value}</p>
 						</div>
 					</div>
 				</div>

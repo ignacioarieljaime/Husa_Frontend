@@ -6,19 +6,20 @@ import { toast } from 'react-toastify'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const LaserTvInstallationConfirmation = ({ data }) => {
-	const [content, setContent] = useState()
+	const { structure } = data
+	// const [content, setContent] = useState()
 	const [isLoading, setIsLoading] = useState(true)
 	const router = useRouter()
 
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router?.query?.token) {
 			setIsLoading(false)
 			return
 		} else {
 			toast.error('Token not found')
 			setTimeout(() => {
-				router.push('404')
+				router.push('/404')
 			}, 3000)
 		}
 	}, [])
@@ -30,29 +31,31 @@ const LaserTvInstallationConfirmation = ({ data }) => {
 				style={{ maxWidth: '800px' }}>
 				{!isLoading ? (
 					<div className='status-container'>
-						{content?.image?.src ? (
+						{structure?.image?.src ? (
 							<img
 								className='status-image'
-								src={content?.image?.src}
-								alt={content?.image?.alt}
+								src={structure?.image?.src}
+								alt={structure?.image?.alt}
 							/>
 						) : null}
-						<h2 className='title'>{content?.title?.value}</h2>
+						<h2 className='title'>{structure?.title?.value}</h2>
 						<div
 							dangerouslySetInnerHTML={{
-								__html: content?.text?.value
+								__html: structure?.text?.value
 							}}></div>
-						{content?.link?.title && (
+						{structure?.link?.title && (
 							<Link
-								target={content?.link?.target ? content?.link?.target : '_self'}
-								href={content?.link?.value ? content?.link?.value : '/'}>
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
+								href={structure?.link?.value ? structure?.link?.value : '/'}>
 								<a
 									target={
-										content?.link?.target ? content?.link?.target : '_self'
+										structure?.link?.target ? structure?.link?.target : '_self'
 									}
 									className='n-btn outline-black medium mx-3 my-8 my-sm-4'>
-									{content?.link?.title}
-									{content?.link?.target === '_blank' && (
+									{structure?.link?.title}
+									{structure?.link?.target === '_blank' && (
 										<img
 											style={{ marginLeft: '10px' }}
 											src={OpenPageOnNewTab.src}

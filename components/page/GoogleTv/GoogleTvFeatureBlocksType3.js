@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
 const GoogleTvFeatureBlocksType3 = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	let { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section className='google_tv_feature_blocks'>
 			<div className='custom_container'>
@@ -13,14 +14,14 @@ const GoogleTvFeatureBlocksType3 = ({ data }) => {
 						<div className='block_4'>
 							<div className='content'>
 								<div className='title'>
-									{content?.block1?.value?.title?.value}
+									{structure?.block1?.value?.title?.value}
 								</div>
 								<div className='subtitle mb-10'>
-									{content?.block1?.value?.subtitle?.value}
+									{structure?.block1?.value?.subtitle?.value}
 								</div>
 								<img
-									src={content?.block1?.value?.image?.src}
-									alt={content?.block1?.value?.image?.alt}
+									src={structure?.block1?.value?.image?.src}
+									alt={structure?.block1?.value?.image?.alt}
 									width='40%'
 									height='80%'
 								/>
@@ -32,13 +33,13 @@ const GoogleTvFeatureBlocksType3 = ({ data }) => {
 							className='block_5'
 							style={{
 								backgroundImage:
-									'url(' + content?.block2?.value?.backgroundImage?.src + ')'
+									'url(' + structure?.block2?.value?.backgroundImage?.src + ')'
 							}}>
 							<div className='content'>
 								<div
 									className='title'
 									dangerouslySetInnerHTML={{
-										__html: content?.block2?.value?.text?.value
+										__html: structure?.block2?.value?.text?.value
 									}}></div>
 							</div>
 						</div>

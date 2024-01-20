@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 
 const HomeAppliancesBanner = ({ data }) => {
 	const { structure } = data
-	const [content, setContent] = useState(null)
+	// const [content, setContent] = useState(null)
 	const aspectRatio = useAspectRatio(structure?.image?.src)
 
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section>
@@ -24,13 +24,13 @@ const HomeAppliancesBanner = ({ data }) => {
 						  }
 						: {}
 				}>
-				<img src={content?.image?.src} alt={content?.image?.alt} />
+				<img src={structure?.image?.src} alt={structure?.image?.alt} />
 				<div className='content'>
-					<h4 className='subtitle'>{content?.subtitle?.value}</h4>
+					<h4 className='subtitle'>{structure?.subtitle?.value}</h4>
 					<h1
 						className='title'
 						dangerouslySetInnerHTML={{
-							__html: content?.title?.value
+							__html: structure?.title?.value
 						}}></h1>
 				</div>
 			</div>

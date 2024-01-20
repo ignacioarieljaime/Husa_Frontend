@@ -7,12 +7,13 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const SeasonUpgrade2KHeroBanner = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const router = useRouter()
 	const ref = useRef()
 	const windowSize = useWindowSize()
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -25,33 +26,35 @@ const SeasonUpgrade2KHeroBanner = ({ data }) => {
 				id={data?.name + data?.id}
 				ref={ref}
 				className='season_upgrade_2k_hero'
-				style={{ backgroundColor: content?.backgroundColor?.value }}>
+				style={{ backgroundColor: structure?.backgroundColor?.value }}>
 				<div
 					className='content_wrapper'
-					style={{ backgroundImage: `url(${content?.background?.src})` }}>
+					style={{ backgroundImage: `url(${structure?.background?.src})` }}>
 					<div className='content top'>
-						{content?.subtitle?.value && (
-							<p className='pretitle'>{content?.subtitle?.value}</p>
+						{structure?.subtitle?.value && (
+							<p className='pretitle'>{structure?.subtitle?.value}</p>
 						)}
 						<h4
 							className='title'
 							dangerouslySetInnerHTML={{
-								__html: content?.title?.value
+								__html: structure?.title?.value
 							}}></h4>
 					</div>
-					{windowSize[0] <= 768 && content?.link?.value ? (
+					{windowSize[0] <= 768 && structure?.link?.value ? (
 						<Link
-							href={content?.link?.value}
-							target={content?.link?.target ? content?.link?.target : '_self'}>
+							href={structure?.link?.value}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}>
 							<a
 								className='background_wrapper d-block'
 								target={
-									content?.link?.target ? content?.link?.target : '_self'
+									structure?.link?.target ? structure?.link?.target : '_self'
 								}>
 								<img
 									className='background'
-									src={content?.background?.src}
-									alt={content?.background?.alt}
+									src={structure?.background?.src}
+									alt={structure?.background?.alt}
 								/>
 							</a>
 						</Link>
@@ -59,20 +62,22 @@ const SeasonUpgrade2KHeroBanner = ({ data }) => {
 						<div className='background_wrapper'>
 							<img
 								className='background'
-								src={content?.background?.src}
-								alt={content?.background?.alt}
+								src={structure?.background?.src}
+								alt={structure?.background?.alt}
 							/>
 						</div>
 					)}
 
-					{content?.link?.value ? (
+					{structure?.link?.value ? (
 						<Link
-							href={content?.link?.value}
-							target={content?.link?.target ? content?.link?.target : '_self'}>
+							href={structure?.link?.value}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}>
 							<a
 								className='dummy d-none d-md-block'
 								target={
-									content?.link?.target ? content?.link?.target : '_self'
+									structure?.link?.target ? structure?.link?.target : '_self'
 								}></a>
 						</Link>
 					) : (
@@ -80,14 +85,16 @@ const SeasonUpgrade2KHeroBanner = ({ data }) => {
 					)}
 					<div className='content'>
 						<div className='awards'>
-							{content?.list?.value.map((item, index) => (
+							{structure?.list?.value.map((item, index) => (
 								<img
 									key={index}
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									style={{
 										width:
-											'calc(' + 100 / content?.list?.value.length + '% - 24px)'
+											'calc(' +
+											100 / structure?.list?.value.length +
+											'% - 24px)'
 									}}
 								/>
 							))}

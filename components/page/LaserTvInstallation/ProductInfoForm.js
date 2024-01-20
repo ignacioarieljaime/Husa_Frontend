@@ -56,7 +56,23 @@ const ProductInfoForm = ({ data, dispatch, errors }) => {
 		{
 			name: '90L5G-DLT90B',
 			value: '90L5G-DLT90B'
-		}
+		},
+		{
+			name: '120L9H-CINE120A',
+			value: '120L9H-CINE120A'
+		},
+		{
+			name: '100L9H-DLT100C',
+			value: '100L9H-DLT100C'
+		},
+		{
+			name: '120L5H-CINE120A',
+			value: '120L9H-CINE120A '
+		},
+		{
+			name: '100L5H-DLT100C',
+			value: '100L5H-DLT100C'
+		},
 	]
 	const retailers = [
 		{

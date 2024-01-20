@@ -10,14 +10,14 @@ import moment from 'moment'
 const CESArticles = ({ data }) => {
 	let { structure } = data
 	const [width] = useWindowSize()
-	const [content, setContent] = useState(null)
+	// const [content, setContent] = useState(null)
 	const [articles, setArticles] = useState([])
 	const [pagination, setPagination] = useState()
 	const router = useRouter()
 	const ref = useRef()
 
 	useEffect(() => {
-		setContent(structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -32,7 +32,7 @@ const CESArticles = ({ data }) => {
 
 	useEffect(() => {
 		setArticles(
-			content?.list?.value.filter((_article, index) => {
+			structure?.list?.value.filter((_article, index) => {
 				return (
 					(pagination?.current_page - 1) * 10 <= index &&
 					pagination?.current_page * 10 > index
@@ -49,7 +49,7 @@ const CESArticles = ({ data }) => {
 				className='news_press_archive container px-4'>
 				<div>
 					<div className='items_box'>
-						<h5>{content?.title?.value}</h5>
+						<h5>{structure?.title?.value}</h5>
 
 						<div className='items'>
 							{articles?.length
@@ -72,11 +72,7 @@ const CESArticles = ({ data }) => {
 													<div className='text_box'>
 														<span className='subject'>{item?.tag?.value}</span>
 
-														<h5>
-															<Link href={item?.link?.value || '/'}>
-																<a>{item?.title?.value}</a>
-															</Link>
-														</h5>
+														<h5>{item?.title?.value}</h5>
 														<span className='date'>
 															{item?.published_at
 																? moment(item?.published_at).format(

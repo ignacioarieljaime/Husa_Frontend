@@ -10,7 +10,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 
 const CESNavBar = ({ data }) => {
 	const { structure } = data
-	const [content, setContent] = useState()
+	// const [content, setContent] = useState()
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	const [menuStatus, setMenuStatus] = useState(false)
@@ -19,7 +19,7 @@ const CESNavBar = ({ data }) => {
 	const windowSize = useWindowSize()
 
 	useEffect(() => {
-		setContent(structure)
+		// setContent(structure)
 
 		window.addEventListener('scroll', () => {
 			if (menu?.current?.offsetTop <= window.scrollY + 64) {
@@ -40,18 +40,30 @@ const CESNavBar = ({ data }) => {
 		<section
 			ref={menu}
 			style={
-				content?.version?.value === 'primary'
+				structure?.version?.value === 'primary'
 					? {
 							position: ' sticky',
-							zIndex: `${lightBoxStatus && fix ? ' 99999' : lightBoxStatus && !fix ? ' 9998' : ' 99998'}`,
+							zIndex: `${
+								lightBoxStatus
+									? fix
+										? '99999'
+										: !fix
+										? '9998'
+										: '99998'
+									: fix
+									? '99999'
+									: !fix
+									? '100'
+									: '99998'
+							}`,
 							top: ' 0'
 					  }
 					: {}
 			}
 			id={data?.name + data?.id}>
 			<div
-				className={`ces_navbar ${content?.version?.value} ${
-					content?.version?.value === 'primary'
+				className={`ces_navbar ${structure?.version?.value} ${
+					structure?.version?.value === 'primary'
 						? menuStatus
 							? ''
 							: 'closed'
@@ -60,34 +72,34 @@ const CESNavBar = ({ data }) => {
 				style={
 					fix
 						? {
-								backgroundColor: content?.backgroundColor?.value || '#fff'
+								backgroundColor: structure?.backgroundColor?.value || '#fff'
 						  }
 						: {
-								backgroundColor: content?.backgroundColor?.value || '#fff'
+								backgroundColor: structure?.backgroundColor?.value || '#fff'
 						  }
 				}>
 				<ul
 					className={`ces_navbar___items_wrapper  ${
-						content?.list?.value.length >= 3 ? 'stack' : ''
+						structure?.list?.value.length >= 3 ? 'stack' : ''
 					}`}
 					style={{
-						justifyContent:
-							content?.list?.value?.length > 1 ? 'space-between' : 'center'
+						justifystructure:
+							structure?.list?.value?.length > 1 ? 'space-between' : 'center'
 					}}>
-					{content?.list?.value.map((item, index) =>
+					{structure?.list?.value.map((item, index) =>
 						item?.link?.title ? (
-							content?.version?.value === 'primary' ? (
+							structure?.version?.value === 'primary' ? (
 								item?.lightBox?.value ? (
 									<li className='ces_navbar___items_wrapper___link' key={index}>
 										<span
-											style={{ color: content?.fontColor?.value || '#000' }}
+											style={{ color: structure?.fontColor?.value || '#000' }}
 											onClick={() => {
 												setLightBoxStatus(true)
 												setLightBoxActiveIndex(index)
 											}}>
 											{item?.link?.title}
 										</span>
-										{index === 0 && content?.list?.value?.length > 1 ? (
+										{index === 0 && structure?.list?.value?.length > 1 ? (
 											<span
 												onClick={() => setMenuStatus(prev => !prev)}
 												className='ces_navbar___items_wrapper___link___menu_btn'>
@@ -106,7 +118,7 @@ const CESNavBar = ({ data }) => {
 											key='index'
 											href={item?.link?.value}>
 											<a
-												style={{ color: content?.fontColor?.value || '#000' }}
+												style={{ color: structure?.fontColor?.value || '#000' }}
 												target={
 													item?.link?.target ? item?.link?.target : '_self'
 												}>
@@ -119,7 +131,7 @@ const CESNavBar = ({ data }) => {
 												)}
 											</a>
 										</Link>
-										{index === 0 && content?.list?.value?.length > 1 ? (
+										{index === 0 && structure?.list?.value?.length > 1 ? (
 											<span
 												onClick={() => setMenuStatus(prev => !prev)}
 												className='ces_navbar___items_wrapper___link___menu_btn'>
@@ -135,12 +147,12 @@ const CESNavBar = ({ data }) => {
 									<li className='ces_navbar___items_wrapper___link' key={index}>
 										<span
 											style={{
-												color: content?.fontColor?.value || '#000',
+												color: structure?.fontColor?.value || '#000',
 												cursor: 'auto'
 											}}>
 											{item?.link?.title}
 										</span>
-										{index === 0 && content?.list?.value?.length > 1 ? (
+										{index === 0 && structure?.list?.value?.length > 1 ? (
 											<span
 												onClick={() => setMenuStatus(prev => !prev)}
 												className='ces_navbar___items_wrapper___link___menu_btn'>
@@ -159,7 +171,7 @@ const CESNavBar = ({ data }) => {
 										target={item?.link?.target ? item?.link?.target : '_self'}
 										href={item?.link?.value}>
 										<a
-											style={{ color: content?.fontColor?.value || '#000' }}
+											style={{ color: structure?.fontColor?.value || '#000' }}
 											target={
 												item?.link?.target ? item?.link?.target : '_self'
 											}>
@@ -177,7 +189,7 @@ const CESNavBar = ({ data }) => {
 								<li className={`ces_navbar___items_wrapper___link`} key={index}>
 									<span
 										style={{
-											color: content?.fontColor?.value || '#000',
+											color: structure?.fontColor?.value || '#000',
 											cursor: 'auto'
 										}}>
 										{item?.link?.title}
@@ -188,23 +200,23 @@ const CESNavBar = ({ data }) => {
 					)}
 				</ul>
 			</div>
-			{content?.list?.value[lightBoxActiveIndex]?.lightBox?.value && (
+			{structure?.list?.value[lightBoxActiveIndex]?.lightBox?.value && (
 				<LightBoxModal
 					id={data?.id}
 					caption={
-						content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
 							?.caption
 					}
 					video={
-						content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
 							?.video
 					}
 					image={
-						content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
 							?.image
 					}
 					link={
-						content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
 							?.link
 					}
 					isVisible={lightBoxStatus}

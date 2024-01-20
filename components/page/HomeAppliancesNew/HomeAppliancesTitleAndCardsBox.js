@@ -4,24 +4,24 @@ import React, { useEffect, useState } from 'react'
 
 const HomeAppliancesTitleAndCardsBox = ({ data }) => {
 	const { structure } = data
-	const [content, setContent] = useState(null)
+	// const [content, setContent] = useState(null)
 	const router = useRouter()
 
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	// theme
 	return (
 		<section>
 			<div className='ha_title_cards_box text-center'>
-				<div className='subtitle'>{content?.subtitle?.value}</div>
+				<div className='subtitle'>{structure?.subtitle?.value}</div>
 				<h2
 					className='title'
 					dangerouslySetInnerHTML={{
-						__html: content?.title?.value
+						__html: structure?.title?.value
 					}}></h2>
 				<div className='cards'>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							onClick={() =>
 								item?.link?.value && router.push(item?.link?.value)
