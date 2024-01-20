@@ -6,12 +6,13 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 
 const VideoAndImageBanner = ({ data }) => {
 	const { structure } = data
-	const [text, setText] = useState(null)
+	// const [content, setContent] = useState(null)
 	const aspectRatio = useAspectRatio(structure?.['backgroundImage ']?.src)
 
-	useEffect(() => {
-		setText(structure?.subtitle?.value)
-	}, [])
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
+
 	return (
 		<section>
 			<div className='video_and_image_banner'>
@@ -49,10 +50,13 @@ const VideoAndImageBanner = ({ data }) => {
 						}>
 						<video
 							loop={true}
-							autoplay={true}
+							autoPlay={true}
 							muted={true}
 							src={structure?.video?.value}></video>
-						<div dangerouslySetInnerHTML={{ __html: text }}></div>
+						<div
+							dangerouslySetInnerHTML={{
+								__html: structure?.subtitle?.value
+							}}></div>
 					</div>
 				</div>
 			</div>

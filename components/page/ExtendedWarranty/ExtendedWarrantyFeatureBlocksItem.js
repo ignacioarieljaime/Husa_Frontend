@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import CustomImage from '../../common/CustomImage'
+import Link from 'next/link'
 
 const ExtendedWarrantyFeatureBlocksItem = ({
 	image,
@@ -34,7 +35,25 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 			<div
 				dangerouslySetInnerHTML={{ __html: text }}
 				className={`fs-base mb-9 ${light ? 'light' : ''}`}></div>
-			{text.includes('Chat') ? (
+			{link?.value && (
+				<Link href={link?.value} target={link?.target ? link?.target : '_self'}>
+					<a
+						target={link?.target ? link?.target : '_self'}
+						className='n-btn primary-text medium'>
+						{link?.title}
+						{link?.title && (
+							<span>
+								<FontAwesomeIcon
+									icon={faChevronRight}
+									size={'sm'}
+									className='ms-2'
+								/>
+							</span>
+						)}
+					</a>
+				</Link>
+			)}
+			{/* {text.includes('Chat') ? (
 				<a
 					onClick={chatHandler}
 					style={{ cursor: 'pointer' }}
@@ -51,19 +70,23 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 					)}
 				</a>
 			) : (
-				<a href={link?.value} className='n-btn primary-text medium'>
-					{link?.title}
-					{link?.title && (
-						<span>
-							<FontAwesomeIcon
-								icon={faChevronRight}
-								size={'sm'}
-								className='ms-2'
-							/>
-						</span>
-					)}
-				</a>
-			)}
+				<Link href={link?.value} target={link?.target ? link?.target : '_self'}>
+					<a
+						target={link?.target ? link?.target : '_self'}
+						className='n-btn primary-text medium'>
+						{link?.title}
+						{link?.title && (
+							<span>
+								<FontAwesomeIcon
+									icon={faChevronRight}
+									size={'sm'}
+									className='ms-2'
+								/>
+							</span>
+						)}
+					</a>
+				</Link>
+			)} */}
 		</div>
 	)
 }

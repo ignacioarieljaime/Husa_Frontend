@@ -41,8 +41,10 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 						if (Array.isArray(colum))
 							return (
 								<>
-									{colum.map(item => (
-										<Link href={item.header.value ? item.header.value : ''}>
+									{colum.map((item, _index) => (
+										<Link
+											key={_index}
+											href={item.header.value ? item.header.value : ''}>
 											<a
 												target={
 													item.header?.target ? item.header?.target : '_self'
@@ -66,7 +68,7 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 							)
 						else
 							return (
-								<>
+								<React.Fragment key={index}>
 									<Link href={colum.header.value ? colum.header.value : ''}>
 										<a
 											target={
@@ -116,7 +118,7 @@ const HamburgerMenuDropdowns = ({ columns, asideHandler }) => {
 											))}
 										</ul>
 									)}
-								</>
+								</React.Fragment>
 							)
 					})}
 				</div>

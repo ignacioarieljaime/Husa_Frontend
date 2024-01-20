@@ -21,17 +21,17 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 	const [acceptRole, setAcceptRole] = useState(false)
 	const [modalCondition, setModalCondition] = useState(false)
 	const [dataSchema, setDataSchema] = useState({
-		first_name: null,
-		last_name: null,
-		email: null,
-		phone_number: null,
-		postal_code: null,
+		first_name: '',
+		last_name: '',
+		email: '',
+		phone_number: '',
+		postal_code: '',
 		product_category: pim?.Category?.name,
 		product_model: pim?.model,
 		series: pim?.series[0]?.title,
-		product_serial_number: null,
-		purchased_from: null,
-		date_of_purchase: null,
+		product_serial_number: '',
+		purchased_from: '',
+		date_of_purchase: '',
 		receipt_image: null
 	})
 	const [imageLoading, setImageLoading] = useState(false)
@@ -86,17 +86,17 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		setAcceptRole(false)
 		setFile(null)
 		setDataSchema({
-			first_name: null,
-			last_name: null,
-			email: null,
-			phone_number: null,
-			postal_code: null,
+			first_name: '',
+			last_name: '',
+			email: '',
+			phone_number: '',
+			postal_code: '',
 			product_category: pim?.Category?.name,
 			product_model: pim?.model,
 			series: pim?.custom_fields.find(item => item.title === 'h2 Title')?.value,
-			product_serial_number: null,
-			purchased_from: null,
-			date_of_purchase: null,
+			product_serial_number: '',
+			purchased_from: '',
+			date_of_purchase: '',
 			receipt_image: null,
 			future_news: '0'
 		})
@@ -120,7 +120,9 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 		}
 	}
 	return (
-		<section id={data.name + data.id} className='border-bottom border-dark'>
+		<section
+			id={'ProductSupportRegisterTab' + data.id}
+			className='border-bottom border-dark'>
 			<div className='container py-10'>
 				<div className='form-container mx-auto'>
 					<h4 className='text-center title mb-4'>{data?.title?.value}</h4>
@@ -311,7 +313,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 											type='file'
 											id='contact-file-input'
 											accept='.jpg, .png, .jpeg'
-											multiple='multiple'
+											multiple={true}
 											className='position-absolute curser-pointer top-0 right-0 w-100 h-100 opacity-0'
 											style={{ zIndex: 9 }}
 											onChange={e => uploadFile(e.target.files[0])}

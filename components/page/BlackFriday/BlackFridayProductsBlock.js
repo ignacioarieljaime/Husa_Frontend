@@ -5,13 +5,14 @@ import { GetProductsByIdsApi } from 'services/Product'
 import Spinner from 'components/common/Spinner'
 
 const BlackFridayProductsBlock = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const [products, setProducts] = useState('loading')
 	const [productFilter, setProductFilter] = useState()
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -19,15 +20,15 @@ const BlackFridayProductsBlock = ({ data }) => {
 		}
 	}, [])
 	useEffect(() => {
-		if (content?.list?.value && content?.list?.value?.length > 0) {
+		if (structure?.list?.value && structure?.list?.value?.length > 0) {
 			getProducts()
 		} else {
 			setProducts([])
 		}
-	}, [content?.list?.value])
+	}, [structure?.list?.value])
 
 	const getProducts = async () => {
-		let productsIds = content?.list?.value?.map(element => element?.id)
+		let productsIds = structure?.list?.value?.map(element => element?.id)
 
 		try {
 			let response = await GetProductsByIdsApi(router, productsIds)
@@ -46,7 +47,7 @@ const BlackFridayProductsBlock = ({ data }) => {
 					{products === 'loading' ? (
 						<Spinner />
 					) : (
-						content?.list?.value?.map((item, index) => (
+						structure?.list?.value?.map((item, index) => (
 							<BlackFridayProductsItem
 								key={index}
 								products={products.find(element => element.id === item?.id)}
@@ -55,10 +56,10 @@ const BlackFridayProductsBlock = ({ data }) => {
 						))
 					)}
 				</div>
-				{content?.text?.value ? (
+				{structure?.text?.value ? (
 					<div
 						className='note'
-						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				) : null}
 			</div>
 		</section>

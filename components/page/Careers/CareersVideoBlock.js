@@ -3,36 +3,37 @@ import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 
 const CareersVideoBlock = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	// const [iframe, setIframe] = useState('')
 	const videoRef = useRef()
 	const [playingStatus, setPlayingStatus] = useState(true)
 
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	useEffect(() => {
 		if (videoRef.current) videoRef.current.play()
-		// if (content?.videoType?.value === 'iframe') {
-		// 	if (content?.video?.value.includes('?')) {
-		// 		if (content?.video?.value.includes('https://player.vimeo.com')) {
+		// if (structure?.videoType?.value === 'iframe') {
+		// 	if (structure?.video?.value.includes('?')) {
+		// 		if (structure?.video?.value.includes('https://player.vimeo.com')) {
 		// 			setIframe(
-		// 				content?.video?.value.split('?')[0] +
+		// 				structure?.video?.value.split('?')[0] +
 		// 					'?' +
-		// 					content?.video?.value.split('?')[1].split('&amp;')[0] +
+		// 					structure?.video?.value.split('?')[1].split('&amp;')[0] +
 		// 					'&autoplay=1&muted=1&loop=1'
 		// 			)
 		// 		} else {
 		// 			setIframe(
-		// 				content?.video?.value.split('?')[0] + '?autoplay=1&muted=1&loop=1'
+		// 				structure?.video?.value.split('?')[0] + '?autoplay=1&muted=1&loop=1'
 		// 			)
 		// 		}
 		// 	} else {
-		// 		setIframe(content?.video?.value + '?autoplay=1&muted=1&loop=1')
+		// 		setIframe(structure?.video?.value + '?autoplay=1&muted=1&loop=1')
 		// 	}
 		// }
-	}, [content?.video?.value])
+	}, [structure?.video?.value])
 
 	const playVideo = _condition => {
 		if (_condition) {
@@ -47,23 +48,23 @@ const CareersVideoBlock = ({ data }) => {
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='careers_video_block'>
-				{content?.videoType?.value === 'link' ? (
+				{structure?.videoType?.value === 'link' ? (
 					<video
 						ref={videoRef}
 						muted={true}
 						autoPlay={true}
 						loop={true}
-						src={content?.video?.value}
+						src={structure?.video?.value}
 						onClick={() => playVideo(true)}></video>
 				) : (
 					<iframe
 						allow='autoplay; mute; loop; fullscreen; picture-in-picture'
-						src={content?.video?.value}
-						mozallowfullscreen
-						webkitallowfullscreen
-						allowfullscreen></iframe>
+						src={structure?.video?.value}
+						mozallowfullscreen='true'
+						webkitallowfullscreen='true'
+						allowFullScreen></iframe>
 				)}
-				{content?.videoType?.value === 'link' && !playingStatus && (
+				{structure?.videoType?.value === 'link' && !playingStatus && (
 					<button onClick={() => playVideo(playingStatus)}>
 						<TransparentPlayButton />
 					</button>

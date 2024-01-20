@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react'
 import AOS from 'aos'
 
 const LightRejection = ({ data }) => {
+	const { structure } = data
 	const [activeTab, setActiveTab] = useState(0)
-	const [content, setContent] = useState(null)
+	// const [content, setContent] = useState(null)
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		setTimeout(() => {
 			AOS.refresh()
 		}, 1500)
@@ -19,7 +20,7 @@ const LightRejection = ({ data }) => {
 						className='fs-5 fs-md-2hx text-white text-start mb-0 aos-init aos-animate'
 						data-aos='fade'
 						data-aos-duration='1000'>
-						{content?.title?.value}
+						{structure?.title?.value}
 					</h2>
 				</div>
 				<video
@@ -28,18 +29,18 @@ const LightRejection = ({ data }) => {
 					loop={true}
 					playsInline={true}
 					className='px-4 px-md-0'
-					src={content?.video?.value}
+					src={structure?.video?.value}
 				/>
 
 				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption fs-9 fs-md-2 mw-md-50 fw-light mb-8'
-						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 				<div className='position-relative'>
 					<div className='tabs-container mt-2 mt-md-4'>
-						{content?.tabs?.value.map((tab, index) => (
-							<div className='m-1 m-sm-3' key={index}>
+						{structure?.tabs?.value.map((tab, index) => (
+							<div key={index} className='m-1 m-sm-3'>
 								<button
 									className={`btn text-white tab-btn ${
 										activeTab === index ? 'active' : ''
@@ -52,8 +53,10 @@ const LightRejection = ({ data }) => {
 							</div>
 						))}
 					</div>
-					{content?.tabs?.value.map((tab, index) => (
-						<div className={`tab-image ${activeTab === index ? 'active' : ''}`}>
+					{structure?.tabs?.value.map((tab, index) => (
+						<div
+							key={index}
+							className={`tab-image ${activeTab === index ? 'active' : ''}`}>
 							<CustomImage src={tab?.image?.src} alt={tab?.image?.alt} />
 							<div
 								className='fs-9 fs-md-3 fw-light'
@@ -62,8 +65,8 @@ const LightRejection = ({ data }) => {
 					))}
 				</div>
 				<div className='d-flex justify-content-between  flex-wrap flex-sm-nowrap'>
-					{content?.specs?.value.map((spec, index) => (
-						<div className='d-flex flex-column '>
+					{structure?.specs?.value.map((spec, index) => (
+						<div key={index} className='d-flex flex-column '>
 							<div className='px-4 px-md-20 py-4 py-md-15 flex-grow-1 d-flex flex-column'>
 								<div
 									className='fs-sm-2 fs-md-2x fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
@@ -80,7 +83,9 @@ const LightRejection = ({ data }) => {
 							</div>
 							<div className='row justify-content-between align-items-start flex-md-nowrap mx-0 px-0 px-md-20 '>
 								{spec?.features?.value.map((feature, index) => (
-									<div className='feature mb-5 mb-md-0 px-4 px-md-0 mx-1'>
+									<div
+										key={index}
+										className='feature mb-5 mb-md-0 px-4 px-md-0 mx-1'>
 										<div
 											className='color-bar active'
 											data-aos='size-animation'

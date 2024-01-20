@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 const ProductSupportVideoGallery = ({ data }) => {
+	const { structure } = data
 	const [grid, setGrid] = useState([])
 	const [content, setContent] = useState(null)
 	useEffect(() => {
-		setContent(data?.structure)
+		setContent(structure)
 	}, [])
 	useEffect(() => {
 		const collection = []
 		const items = []
-		content?.list?.value.forEach((item, index) => {
+		structure?.list?.value.forEach((item, index) => {
 			items.push(item)
-			// console.log(content?.list?.value.length - 1 === index)
+			// console.log(structure?.list?.value.length - 1 === index)
 			if (index % 3 === 2) {
 				collection.push(items)
 				items = []
 			} else if (
-				content?.list?.value.length - 1 === index &&
+				structure?.list?.value.length - 1 === index &&
 				items.length < 3
 			) {
 				items.map(iframe => collection.push(iframe))
@@ -28,7 +29,7 @@ const ProductSupportVideoGallery = ({ data }) => {
 			<div className='product_support_video_gallery container'>
 				<h2
 					className='title'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
 				<div className='row align-items-stretch videos'>
 					{grid.length > 0 &&
 						grid?.map((item, index) => {
@@ -93,7 +94,7 @@ const ProductSupportVideoGallery = ({ data }) => {
 						})}
 				</div>
 				<div className='text-end mt-5'>
-					<p>{content?.list?.value.length} videos</p>
+					<p>{structure?.list?.value.length} videos</p>
 				</div>
 			</div>
 		</section>

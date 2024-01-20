@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 function TextEditor({ data }) {
 	let { structure } = data
-	const [text, setText] = useState(null)
-	useEffect(() => {
-		setText(structure?.text?.value ? structure?.text?.value : structure?.text)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section
 			style={{
@@ -17,7 +17,9 @@ function TextEditor({ data }) {
 				}}
 				className={`${'dark'} article text-editor text_editor mx-auto pt-5 px-6 pb-6`}
 				dangerouslySetInnerHTML={{
-					__html: text
+					__html: structure?.text?.value
+						? structure?.text?.value
+						: structure?.text
 				}}></article>
 		</section>
 	)

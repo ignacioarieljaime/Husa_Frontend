@@ -14,8 +14,13 @@ import 'swiper/css'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 	const [justify, setJustify] = useState('')
+	// const [content, setContent] = useState(null)
 
 	const windowSize = useWindowSize()
+
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	useEffect(() => {
 		if (windowSize[0] - structure?.list?.value.length * 296 - 40 - 256 > 16)

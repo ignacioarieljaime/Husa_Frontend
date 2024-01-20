@@ -10,8 +10,8 @@ function AuthorizedRetailersNote({ data }) {
 	return (
 		<section>
 			<div>
-				<div class='info-box px-8 py-18 p-md-18 mb-5 mt-18'>
-					<div class='grid-item'>
+				<div className='info-box px-8 py-18 p-md-18 mb-5 mt-18'>
+					<div className='grid-item'>
 						<img
 							src={InfoIcon.src}
 							alt='Alt Text for This Image Goes Here'

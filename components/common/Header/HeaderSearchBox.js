@@ -17,9 +17,9 @@ function HeaderSearchBox({
 	setSearchInputCondition
 }) {
 	const [result, setResult] = useState()
-	const [input, setInput] = useState()
+	const [input, setInput] = useState('')
 
-	const searchRef = useRef();
+	const searchRef = useRef()
 
 	useEffect(() => {
 		setResult()
@@ -28,9 +28,9 @@ function HeaderSearchBox({
 
 	useEffect(() => {
 		if (searchInputCondition) {
-			searchRef.current.focus();
+			searchRef.current.focus()
 		}
-	}, [searchInputCondition]);
+	}, [searchInputCondition])
 
 	const searchHandler = async _value => {
 		setInput(_value)
@@ -49,7 +49,7 @@ function HeaderSearchBox({
 			console.log(error)
 		}
 	}
-	
+
 	return (
 		<div className='container-fluid header_search_box'>
 			<form
@@ -70,7 +70,9 @@ function HeaderSearchBox({
 						className='search_field'
 						type='text'
 						ref={searchRef}
-						onTransitionEnd={() => searchInputCondition ? searchRef.current.focus() : null}
+						onTransitionEnd={() =>
+							searchInputCondition ? searchRef.current.focus() : null
+						}
 					/>
 					<button
 						onClick={() => setSearchInputCondition(false)}

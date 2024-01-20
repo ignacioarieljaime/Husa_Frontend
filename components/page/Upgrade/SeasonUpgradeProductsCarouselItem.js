@@ -57,7 +57,8 @@ const SeasonUpgradeProductsCarouselItem = ({
 
 	useEffect(() => {
 		swiper.slideTo(
-			window.innerWidth >= 768 ? (length % 2 === 0 ? length - 1 : length) : 0
+			window.innerWidth >= 768 ? (length % 2 === 0 ? length - 1 : length) : 0,
+			0
 		)
 	}, [length])
 

@@ -37,6 +37,7 @@
 @import './components/common/customCheckbox';
 @import './components/common/textBoxImage';
 @import './components/common/videoBanners.scss';
+@import './components/common/bambooHr';
 
 // L9J
 @import './components/page/L9G/colorFeature';
@@ -178,6 +179,8 @@
 @import './components/page/Ces/cesNavigation';
 @import './components/page/Ces/cesEvents';
 @import './components/page/Ces/cesCountdownTimerBlock';
+@import './components/page/Ces/cesCollage';
+@import './components/page/Ces/cesNavBar';
 
 // BLack Friday
 
@@ -218,6 +221,7 @@
 @import './components/page/newsRoom/newsInfoBox';
 @import './components/page/newsRoom/newsSingleLatestNews';
 @import './components/page/newsRoom/newsPressArchive';
+@import './components/page/newsRoom/newRoomAnnouncementsForm';
 
 // Careers
 @import './components/page/Careers/banner';
@@ -246,3 +250,4 @@
 @import './components/page/NewComponents/videoFeature';
 @import './components/page/NewComponents/fullFeature';
 @import './components/page/NewComponents/lightBox';
+@import './components/page/NewComponents/signupPopup';

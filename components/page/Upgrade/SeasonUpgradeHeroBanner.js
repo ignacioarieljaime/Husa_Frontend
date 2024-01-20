@@ -5,11 +5,12 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const SeasonUpgradeHeroBanner = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -24,25 +25,27 @@ const SeasonUpgradeHeroBanner = ({ data }) => {
 				ref={ref}
 				className='season_upgrade_hero_banner'>
 				<img
-					src={content?.backgound?.src}
-					alt={content?.backgound?.alt}
+					src={structure?.backgound?.src}
+					alt={structure?.backgound?.alt}
 					className='background'
 				/>
-				{content?.image?.src && (
+				{structure?.image?.src && (
 					<img
-						src={content?.image?.src}
-						alt={content?.image?.alt}
+						src={structure?.image?.src}
+						alt={structure?.image?.alt}
 						className='image'
 					/>
 				)}
-				{content?.link?.value && (
+				{structure?.link?.value && (
 					<Link
-						target={content?.link?.target ? content?.link?.target : '_self'}
-						href={content?.link?.value}>
+						target={structure?.link?.target ? structure?.link?.target : '_self'}
+						href={structure?.link?.value}>
 						<a
-							target={content?.link?.target ? content?.link?.target : '_self'}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
 							className='link'>
-							{content?.link?.title}
+							{structure?.link?.title}
 						</a>
 					</Link>
 				)}

@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react'
 
 function UnauthorizedListCommon({ data }) {
 	let { structure } = data
-	const [list, setList] = useState([])
-	useEffect(() => {
-		setList(structure?.list?.value)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section>
 			<article className='article unathorized-list'>
 				<div className='container-md'>
 					<div className='row justify-content-center align-items-stretch flex-wrap mx-auto px-3 pb-10'>
-						{list.map((item, index) => (
+						{structure?.list?.value.map((item, index) => (
 							<div
 								key={index}
 								className='list-container'

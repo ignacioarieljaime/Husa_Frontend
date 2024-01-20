@@ -4,10 +4,12 @@ import Link from 'next/link'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import { useWindowSize } from 'hooks/useWindowSize'
+import { useRouter } from 'next/router'
 
 const NewsRoomSlider = ({ data }) => {
 	let { structure } = data
 	const windowSize = useWindowSize()
+	const router = useRouter()
 	return (
 		<div className='news_room_slider'>
 			<Splide
@@ -26,41 +28,44 @@ const NewsRoomSlider = ({ data }) => {
 				className='news_room_slider_box'>
 				{structure?.list?.value.map((item, index) => (
 					<SplideSlide key={'slider-item-' + index}>
-						<Link
+						{/* <Link
 							href={item?.btn?.value || '/'}
 							// style={{ backgroundImage: `url(${item?.image?.src})` }}
-						>
-							<a className='slider_item d-block'>
-								<div className='slider_bg'>
-									{windowSize[0] >= 768 ? (
-										<img
-											src={item?.image?.src}
-											alt={item?.image?.alt}
-											className={'bg'}
-										/>
-									) : (
-										<img
-											src={item?.mobileImage?.src}
-											alt={item?.mobileImage?.alt}
-											className={'bg'}
-										/>
-									)}
-								</div>
-								<div className='slider_content'>
-									{item?.title?.value && <h5>{item?.title?.value}</h5>}
-									{item?.subtitle?.value && <h6>{item?.subtitle?.value}</h6>}
-									{item?.btn?.value && item?.btn?.title && (
-										<Link
-											target={item?.btn?.target || '_self'}
-											href={item?.btn?.value}>
-											<a target={item?.btn?.target || '_self'}>
-												{item?.btn?.title}
-											</a>
-										</Link>
-									)}
-								</div>
-							</a>
-						</Link>
+						> */}
+						<div
+							onClick={() => item?.btn?.value && router.push(item?.btn?.value)}
+							className='slider_item d-block'
+							style={{ cursor: 'pointer' }}>
+							<div className='slider_bg'>
+								{windowSize[0] >= 768 ? (
+									<img
+										src={item?.image?.src}
+										alt={item?.image?.alt}
+										className={'bg'}
+									/>
+								) : (
+									<img
+										src={item?.mobileImage?.src}
+										alt={item?.mobileImage?.alt}
+										className={'bg'}
+									/>
+								)}
+							</div>
+							<div className='slider_content'>
+								{item?.title?.value && <h5>{item?.title?.value}</h5>}
+								{item?.subtitle?.value && <h6>{item?.subtitle?.value}</h6>}
+								{item?.btn?.value && item?.btn?.title && (
+									<Link
+										target={item?.btn?.target || '_self'}
+										href={item?.btn?.value}>
+										<a target={item?.btn?.target || '_self'}>
+											{item?.btn?.title}
+										</a>
+									</Link>
+								)}
+							</div>
+						</div>
+						{/* </Link> */}
 						<h3 className='subheading'>{item?.subheading?.value}</h3>
 					</SplideSlide>
 				))}

@@ -3,11 +3,12 @@ import CustomImage from 'components/common/CustomImage'
 import Link from 'next/link'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
-const NotFound = ({ data: { structure } }) => {
-	const [text, setText] = useState(null)
-	useEffect(() => {
-		setText(structure?.text?.value)
-	}, [])
+const NotFound = ({ data }) => {
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section>
@@ -22,11 +23,13 @@ const NotFound = ({ data: { structure } }) => {
 					/>
 				</div>
 				<div className='content'>
-					<h1 class='title'>{structure?.title?.value}</h1>
+					<h1 className='title'>{structure?.title?.value}</h1>
 					<article className='article'>
 						<div
 							className='mb-12'
-							dangerouslySetInnerHTML={{ __html: text }}></div>
+							dangerouslySetInnerHTML={{
+								__html: structure?.text?.value
+							}}></div>
 						<div className='button_group'>
 							{structure?.link1?.value ? (
 								<Link href={structure?.link1?.value}>

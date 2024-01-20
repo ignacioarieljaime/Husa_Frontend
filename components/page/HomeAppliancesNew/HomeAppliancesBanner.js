@@ -1,9 +1,15 @@
 import { useAspectRatio } from 'hooks/useAspectRatio'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const HomeAppliancesBanner = ({ data }) => {
 	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const aspectRatio = useAspectRatio(structure?.image?.src)
+
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
+
 	return (
 		<section>
 			<div

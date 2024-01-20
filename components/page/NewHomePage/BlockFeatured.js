@@ -27,7 +27,6 @@ const BlockFeatured = ({ data }) => {
 				spaceBetween={8}
 				slidesPerView={'auto'}
 				grabCursor={true}
-				loop={content?.list?.value.length > 2 ? true : false}
 				modules={[Pagination, Navigation]}
 				breakpoints={{
 					768: {
@@ -39,8 +38,8 @@ const BlockFeatured = ({ data }) => {
 					<SwiperSlide key={index} className='slider-item'>
 						<BlockFeaturedItem
 							data={item}
-							length={content?.list?.value.length}
-							isLightBoxValid={content?.list?.value[index]?.lightbox?.value}
+							length={structure?.list?.value.length}
+							isLightBoxValid={structure?.list?.value[index]?.lightbox?.value}
 							activateLightBox={() => {
 								setLightBoxStatus(true)
 								setLightBoxActiveIndex(index)
@@ -49,23 +48,24 @@ const BlockFeatured = ({ data }) => {
 					</SwiperSlide>
 				))}
 			</Swiper>
-			{content?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
+			{structure?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
 				<LightBoxModal
+					zIndex={99999}
 					id={data?.id}
 					caption={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
 							?.caption
 					}
 					video={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
 							?.video
 					}
 					image={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
 							?.image
 					}
 					link={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
+						structure?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
 							?.link
 					}
 					isVisible={lightBoxStatus}

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
 const CesIframe = ({ data }) => {
-	const [content, setContent] = useState()
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	const { structure } = data
+	// const [content, setContent] = useState()
+	// useEffect(() => {
+	// 	setContent(data?.structure)
+	// }, [])
 
 	return (
 		<section>
@@ -13,16 +14,16 @@ const CesIframe = ({ data }) => {
 					<iframe
 						width='100%'
 						height='400px'
-						src={content?.iframeLink?.value}
+						src={structure?.iframeLink?.value}
 						title='YouTube video player'
-						frameborder='0'
+						frameBorder='0'
 						allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-						allowfullscreen=''></iframe>
+						allowFullScreen=''></iframe>
 				</div>
 				<article className='article'>
 					<div
 						className='text-white pt-7'
-						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</article>
 			</div>
 		</section>

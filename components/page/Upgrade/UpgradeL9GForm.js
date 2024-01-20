@@ -8,6 +8,7 @@ import Spinner from 'components/common/Spinner'
 import { toast } from 'react-toastify'
 
 const UpgradeL9GForm = ({ data }) => {
+	const { structure } = data
 	const [dataSchema, setDataSchema] = useState({
 		first_name: null,
 		last_name: null,
@@ -22,10 +23,10 @@ const UpgradeL9GForm = ({ data }) => {
 	const [acceptTerms, setAcceptTerms] = useState(false)
 	const [file, setFile] = useState(null)
 	const windowSize = useWindowSize()
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	const dataSchemaHandler = (_key, _value) => {
 		setDataSchema({ ...dataSchema, [_key]: _value })
 	}
@@ -91,7 +92,7 @@ const UpgradeL9GForm = ({ data }) => {
 					<article
 						className='article'
 						dangerouslySetInnerHTML={{
-							__html: content?.text?.value
+							__html: structure?.text?.value
 						}}></article>
 					<form onSubmit={submitData} className='row form mx-0'>
 						<div className='position-relative px-0 px-md-3 col-12 col-md-6'>
@@ -269,7 +270,7 @@ const UpgradeL9GForm = ({ data }) => {
 					<article
 						className='article purchase-conditions'
 						dangerouslySetInnerHTML={{
-							__html: content?.rule?.value
+							__html: structure?.rule?.value
 						}}></article>
 				</div>
 			</div>

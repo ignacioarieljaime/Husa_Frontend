@@ -3,17 +3,18 @@ import React, { useEffect, useState } from 'react'
 import BlockCardsItem from './BlockCardsItem'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
-const BlockCards = ({ data: { structure } }) => {
-	const [text, setText] = useState(null)
-	useEffect(() => {
-		setText(structure?.title?.value)
-	}, [])
+const BlockCards = ({ data }) => {
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section>
 			<div className='px-3 mt-0 mb-10 my-md-20'>
 				<div className='new-home-page-boxes mb-13'>
 					<div
-						dangerouslySetInnerHTML={{ __html: text }}
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
 						className='fs-3qx mb-16 header title'></div>
 					<div className='boxes'>
 						{structure?.list?.value.map((item, index) => (

@@ -12,7 +12,11 @@ const Awards = ({ data: { structure } }) => {
 				</div>
 				<div className='awards-list'>
 					{structure?.awards?.value.map((award, index) => (
-						<CustomImage src={award?.image?.src} alt={award?.image?.alt} />
+						<CustomImage
+							key={index}
+							src={award?.image?.src}
+							alt={award?.image?.alt}
+						/>
 					))}
 				</div>
 			</div>
