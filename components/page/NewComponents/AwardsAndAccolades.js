@@ -62,12 +62,14 @@ function AwardsAndAccolades({ data, pim }) {
         if (firstChild && swiper && boolean === true) {
 			firstChild.classList.add('centerSlides');
 			ref.current.classList.add('hide-gradient');
+			ref.current.classList.remove('tooBig');
 			swiper.allowTouchMove = false;
         }
 
         if (firstChild && passedParams && boolean === false) {
 			firstChild.classList.remove('centerSlides');
 			ref.current.classList.remove('hide-gradient');
+			ref.current.classList.add('tooBig');
 			swiper.allowTouchMove = true;
 			if (windowSize[0] >= 768 && swiper.activeIndex === 0 && content?.list?.value) swiper.activeIndex = (content.list.value.length / 2) - 1;
         }
@@ -183,9 +185,9 @@ function AwardsAndAccolades({ data, pim }) {
 							<Swiper
                                 ref={swiperRef}
 								slidesPerView={'auto'}
-                                slidesPerGroup={3}
+                                slidesPerGroup={windowSize[0] <= 768 ? 1: 3}
 								navigation={{
-									enabled: swiperTooBig === true ? true : false,
+									enabled: true,
 									prevEl: navigationPrevRef.current,
 									nextEl: navigationNextRef.current
 								}}
@@ -198,9 +200,9 @@ function AwardsAndAccolades({ data, pim }) {
 								}
 								grabCursor={swiperTooBig === true ? true : false}
                                 allowTouchMove={swiperTooBig === true ? true : false}
-								spaceBetween={windowSize[0] < 768 ? 16 : 20}
+								spaceBetween={windowSize[0] <= 768 ? 4 : 20}
 								centeredSlides={swiperTooBig === true ? true : false}
-                                centeredSlidesBounds={true}
+                                centeredSlidesBounds={windowSize[0] <= 768 ? false : true}
 								modules={[Navigation, Pagination]}
 								className={`w-100`}
 								style={{
@@ -219,7 +221,7 @@ function AwardsAndAccolades({ data, pim }) {
 										/>
 									</SwiperSlide>
 								))}
-                                {swiperTooBig &&
+
                                     <>
                                         <div className='swiper-button-prev' ref={navigationPrevRef}>
                                             <AwardsNavIcon />
@@ -228,7 +230,7 @@ function AwardsAndAccolades({ data, pim }) {
                                             <AwardsNavIcon />
                                         </div>
                                     </>
-                                }
+
 
 							</Swiper>
 						) : null}
