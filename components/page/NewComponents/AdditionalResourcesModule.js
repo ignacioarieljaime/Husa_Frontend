@@ -3,6 +3,7 @@ import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useEffect, useState } from 'react'
 import { Navigation, Pagination } from 'swiper'
 import { SwiperSlide, Swiper } from 'swiper/react'
+import AdditionalResourcesModuleItem from './AdditionalResourcesModuleItem'
 
 const AdditionalResourcesModule = ({ data }) => {
 	const { structure } = data
@@ -60,9 +61,13 @@ const AdditionalResourcesModule = ({ data }) => {
 						}`}
 						modules={[Pagination, Navigation]}>
 						{content?.list?.value.map((item, index) => (
-							<SwiperSlide key={index}></SwiperSlide>
+							<SwiperSlide
+								key={index}
+								className='additional_resources_module___content___slider___item'>
+								<AdditionalResourcesModuleItem data={item} />
+							</SwiperSlide>
 						))}
-						<SwiperSlide className='additional_resources_module___content___slider___item'>
+						{/* <SwiperSlide className='additional_resources_module___content___slider___item'>
 							<div className='additional_resources_module___content___slider___item___image_wrapper'>
 								<img
 									className='additional_resources_module___content___slider___item___image_wrapper___image'
@@ -176,7 +181,7 @@ const AdditionalResourcesModule = ({ data }) => {
 									June 6 2023
 								</p>
 							</div>
-						</SwiperSlide>
+						</SwiperSlide> */}
 					</Swiper>
 					<div className='additional_resources_module___content___slider___controls_wrapper'>
 						<button

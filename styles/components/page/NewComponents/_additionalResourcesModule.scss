@@ -29,6 +29,11 @@
 			padding-bottom: 24px !important;
 			max-width: 1115px;
 			margin: 0 auto;
+			.swiper-wrapper {
+				display: grid !important;
+				grid-template-rows: 1fr;
+				grid-template-columns: repeat(30, 1fr);
+			}
 			&___item {
 				width: 100%;
 				max-width: 361px;
@@ -36,69 +41,123 @@
 				border-radius: 50px;
 				border: 1px solid #f0f2f2;
 				background: #fff;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
+
 				overflow: hidden;
 				transition: box-shadow 0.3s ease-in !important;
 				margin-bottom: 12px;
 				&:hover {
 					box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
 				}
-				&___image_wrapper {
-					width: 100%;
-					height: 0;
-					padding-top: 50%;
-					// max-height: 180px;
-					position: relative;
-					overflow: hidden;
-					&___image {
-						position: absolute;
-						left: 0;
-						top: 0;
-						width: 100%;
-						height: 100%;
-						object-fit: cover;
-					}
-				}
-				&___body {
+				&___wrapper {
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
-					align-items: start;
-					text-align: start;
-					gap: 16px;
-					padding: 24px 40px;
-					&___subtitle {
-						font-size: 10px;
-						font-weight: 400;
-						line-height: 13.5px; /* 135% */
-						letter-spacing: 2px;
-						text-transform: uppercase;
-						color: #ababb0;
-						margin: 0;
+					align-items: center;
+					height: 100%;
+					text-decoration: none;
+					&___image_wrapper {
+						width: 100%;
+						// height: 0;
+						// padding-top: %;
+						height: 180px;
+						position: relative;
+						overflow: hidden;
+						&___image {
+							position: absolute;
+							left: 0;
+							top: 0;
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+						}
 					}
-					&___title {
-						color: #000;
-						font-size: 16px;
-						font-weight: 400;
-						line-height: 21.6px; /* 135% */
-						margin: 0;
-						* {
-							margin: 0;
+					&___body {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						align-items: start;
+						text-align: start;
+						gap: 16px;
+						padding: 24px 40px;
+						width: 100%;
+						height: calc(100% - 180px);
+						&___subtitle {
+							font-size: 10px;
+							font-weight: 400;
+							line-height: 13.5px; /* 135% */
+							letter-spacing: 2px;
+							text-transform: uppercase;
+							color: #ababb0;
+							margin: 0 0 16px;
+						}
+						&___title {
+							color: #000;
 							font-size: 16px;
 							font-weight: 400;
 							line-height: 21.6px; /* 135% */
-							color: #000;
+							margin: 0;
+							* {
+								margin: 0;
+								font-size: 16px;
+								font-weight: 400;
+								line-height: 21.6px; /* 135% */
+								color: #000;
+							}
 						}
-					}
-					&___date {
-						font-size: 12px;
-						font-weight: 400;
-						line-height: 16.2px; /* 135% */
-						color: #ababb0;
-						margin: 0;
+						&___bottom_row {
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							flex-wrap: wrap;
+							width: 100%;
+							&___date {
+								font-size: 12px;
+								font-weight: 400;
+								line-height: 16.2px; /* 135% */
+								color: #ababb0;
+								margin: 0;
+							}
+							&___link {
+								border-radius: 1000px;
+								border: 1px solid #000;
+								display: flex;
+								padding: 7px 16px;
+								justify-content: center;
+								align-items: center;
+								color: #000;
+								background-color: transparent;
+								gap: 8px;
+								font-size: 10px;
+								font-weight: 400;
+								line-height: 100%; /* 10px */
+								transition: all 0.3s ease-in;
+								text-decoration: none;
+								span {
+									display: block;
+									margin-bottom: -3px;
+								}
+								svg {
+									width: 12px;
+									height: 12px;
+									path {
+										transition: all 0.3s ease-in;
+										fill: #000;
+										stroke: #000;
+										stroke-width: 0.4px;
+									}
+								}
+								&:hover {
+									color: #fff;
+									background-color: #000;
+									svg {
+										path {
+											fill: #fff;
+											stroke: #fff;
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
