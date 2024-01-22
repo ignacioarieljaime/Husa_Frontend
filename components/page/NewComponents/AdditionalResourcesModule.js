@@ -15,24 +15,17 @@ const AdditionalResourcesModule = ({ data }) => {
 		setContent(structure)
 	}, [])
 
-	useEffect(() => {
-		console.log(swiperInstance)
-	}, [swiperInstance])
-
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='additional_resources_module'>
 				<h3
 					className='additional_resources_module___title'
-					// dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
-				>
-					<p>Additional Resources</p>
-				</h3>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
 				<div className='additional_resources_module___content'>
 					<Swiper
 						onSwiper={swiper => setSwiperInstance(swiper)}
-						// onSlideChange={swiper => setSwiperInstance(swiper)}
-						onUpdate={swiper => setSwiperInstance(swiper)}
+						onSlideChange={swiper => setSwiperInstance(swiper)}
+						// onUpdate={swiper => console.log(swiper)}
 						grabCursor={true}
 						roundLengths={true}
 						slidesPerView={1.1}
@@ -67,121 +60,6 @@ const AdditionalResourcesModule = ({ data }) => {
 								<AdditionalResourcesModuleItem data={item} />
 							</SwiperSlide>
 						))}
-						{/* <SwiperSlide className='additional_resources_module___content___slider___item'>
-							<div className='additional_resources_module___content___slider___item___image_wrapper'>
-								<img
-									className='additional_resources_module___content___slider___item___image_wrapper___image'
-									src={
-										'https://assets.hisenseportal.com/storage/hisense/asset/images/6656e427266c58.webp'
-									}
-									alt='title'
-								/>
-							</div>
-							<div className='additional_resources_module___content___slider___item___body'>
-								<p className='additional_resources_module___content___slider___item___body___subtitle'>
-									blogsense
-								</p>
-								<div className='additional_resources_module___content___slider___item___body___title'>
-									Hisense Unveils ULED X, A New Generation of Technology
-									Representing the Ultimate LED TV
-								</div>
-								<p className='additional_resources_module___content___slider___item___body___date'>
-									June 6 2023
-								</p>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide className='additional_resources_module___content___slider___item'>
-							<div className='additional_resources_module___content___slider___item___image_wrapper'>
-								<img
-									className='additional_resources_module___content___slider___item___image_wrapper___image'
-									src={
-										'https://assets.hisenseportal.com/storage/hisense/asset/images/6656e427266c58.webp'
-									}
-									alt='title'
-								/>
-							</div>
-							<div className='additional_resources_module___content___slider___item___body'>
-								<p className='additional_resources_module___content___slider___item___body___subtitle'>
-									blogsense
-								</p>
-								<div className='additional_resources_module___content___slider___item___body___title'>
-									Hisense Unveils ULED X, A New Generation of Technology
-									Representing the Ultimate LED TV
-								</div>
-								<p className='additional_resources_module___content___slider___item___body___date'>
-									June 6 2023
-								</p>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide className='additional_resources_module___content___slider___item'>
-							<div className='additional_resources_module___content___slider___item___image_wrapper'>
-								<img
-									className='additional_resources_module___content___slider___item___image_wrapper___image'
-									src={
-										'https://assets.hisenseportal.com/storage/hisense/asset/images/6656e427266c58.webp'
-									}
-									alt='title'
-								/>
-							</div>
-							<div className='additional_resources_module___content___slider___item___body'>
-								<p className='additional_resources_module___content___slider___item___body___subtitle'>
-									blogsense
-								</p>
-								<div className='additional_resources_module___content___slider___item___body___title'>
-									Hisense Unveils ULED X, A New Generation of Technology
-									Representing the Ultimate LED TV
-								</div>
-								<p className='additional_resources_module___content___slider___item___body___date'>
-									June 6 2023
-								</p>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide className='additional_resources_module___content___slider___item'>
-							<div className='additional_resources_module___content___slider___item___image_wrapper'>
-								<img
-									className='additional_resources_module___content___slider___item___image_wrapper___image'
-									src={
-										'https://assets.hisenseportal.com/storage/hisense/asset/images/6656e427266c58.webp'
-									}
-									alt='title'
-								/>
-							</div>
-							<div className='additional_resources_module___content___slider___item___body'>
-								<p className='additional_resources_module___content___slider___item___body___subtitle'>
-									blogsense
-								</p>
-								<div className='additional_resources_module___content___slider___item___body___title'>
-									Hisense Unveils ULED X, A New Generation of Technology
-									Representing the Ultimate LED TV
-								</div>
-								<p className='additional_resources_module___content___slider___item___body___date'>
-									June 6 2023
-								</p>
-							</div>
-						</SwiperSlide>
-						<SwiperSlide className='additional_resources_module___content___slider___item'>
-							<div className='additional_resources_module___content___slider___item___image_wrapper'>
-								<img
-									className='additional_resources_module___content___slider___item___image_wrapper___image'
-									src={
-										'https://assets.hisenseportal.com/storage/hisense/asset/images/6656e427266c58.webp'
-									}
-									alt='title'
-								/>
-							</div>
-							<div className='additional_resources_module___content___slider___item___body'>
-								<p className='additional_resources_module___content___slider___item___body___subtitle'>
-									blogsense
-								</p>
-								<div className='additional_resources_module___content___slider___item___body___title'>
-									Hisense Unveils ULED X, A New Generation of Technology
-									Representing the Ultimate LED TV
-								</div>
-								<p className='additional_resources_module___content___slider___item___body___date'>
-									June 6 2023
-								</p>
-							</div>
-						</SwiperSlide> */}
 					</Swiper>
 					<div className='additional_resources_module___content___slider___controls_wrapper'>
 						<button
