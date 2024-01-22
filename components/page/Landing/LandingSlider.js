@@ -30,7 +30,7 @@ function LandingSlider({ data }) {
 				pagination={true}
 				autoplay={
 					structure?.autoslide?.value === 'active' &&
-					structure?.list?.value.lenght > 1
+					structure?.list?.value.length > 1
 						? {
 								delay: 5000,
 								disableOnInteraction: false
@@ -58,7 +58,7 @@ function LandingSlider({ data }) {
 				// }}
 				className={`home-header-carousel lower-main ${
 					structure?.autoslide?.value === 'active' &&
-					structure?.list?.value.lenght > 1
+					structure?.list?.value.length > 1
 						? 'loading_pagination'
 						: ''
 				}`}>
