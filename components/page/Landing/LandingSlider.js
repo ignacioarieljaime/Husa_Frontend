@@ -30,7 +30,8 @@ function LandingSlider({ data }) {
 				navigation={true}
 				pagination={true}
 				autoplay={
-					structure?.autoslide?.value === 'active'
+					structure?.autoslide?.value === 'active' &&
+					structure?.list?.value.lenght > 1
 						? {
 								delay: 5000,
 								disableOnInteraction: false
@@ -57,7 +58,10 @@ function LandingSlider({ data }) {
 				// 			: '57%'
 				// }}
 				className={`home-header-carousel lower-main ${
-					structure?.autoslide?.value === 'active' ? 'loading_pagination' : ''
+					structure?.autoslide?.value === 'active' &&
+					structure?.list?.value.lenght > 1
+						? 'loading_pagination'
+						: ''
 				}`}>
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
