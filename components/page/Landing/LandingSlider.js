@@ -29,10 +29,14 @@ function LandingSlider({ data }) {
 				loop={true}
 				navigation={true}
 				pagination={true}
-				autoplay={{
-					delay: 5000,
-					disableOnInteraction: false
-				}}
+				autoplay={
+					structure?.autoslide?.value === 'active'
+						? {
+								delay: 5000,
+								disableOnInteraction: false
+						  }
+						: false
+				}
 				modules={[Navigation, Pagination, Autoplay]}
 				// style={{
 				// 	paddingTop:
@@ -52,7 +56,9 @@ function LandingSlider({ data }) {
 				// 			? (aspectRatioDesktop * 100).toFixed(2) - 9 + '%'
 				// 			: '57%'
 				// }}
-				className='home-header-carousel lower-main'>
+				className={`home-header-carousel lower-main ${
+					structure?.autoslide?.value === 'active' ? 'loading_pagination' : ''
+				}`}>
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
 						{item?.url?.value && !item?.lightbox?.value ? (
