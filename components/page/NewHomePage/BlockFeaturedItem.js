@@ -18,7 +18,7 @@ const BlockFeaturedItem = ({
 	const swiper = useSwiper()
 
 	useEffect(() => {
-		swiper.slideTo(length > 2 ? 1 : 0)
+		swiper.slideTo(length > 2 ? 1 : 0, 100)
 	}, [length])
 
 	return (

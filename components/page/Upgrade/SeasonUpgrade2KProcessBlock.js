@@ -9,11 +9,12 @@ import { useRouter } from 'next/router'
 import { useRef } from 'react'
 
 const SeasonUpgrade2KProcessBlock = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const router = useRouter()
 	const ref = useRef()
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -27,28 +28,28 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 				ref={ref}
 				className='season_upgrade_2k_process'>
 				<img
-					src={content?.background?.src}
-					alt={content?.background?.alt}
+					src={structure?.background?.src}
+					alt={structure?.background?.alt}
 					className='fixed_bg'
 				/>
 				<div className='text_content'>
-					{content?.title?.value && (
+					{structure?.title?.value && (
 						<h4
 							className='title'
 							dangerouslySetInnerHTML={{
-								__html: content?.title?.value
+								__html: structure?.title?.value
 							}}></h4>
 					)}
-					{content?.text?.value && (
+					{structure?.text?.value && (
 						<h6
 							className='text'
 							dangerouslySetInnerHTML={{
-								__html: content?.text?.value
+								__html: structure?.text?.value
 							}}></h6>
 					)}
 				</div>
 				<div className='process'>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							key={index}
 							className='item'
@@ -69,8 +70,8 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 										}
 										className='ball'
 										style={{
-											width: 750 / content?.list?.value.length + 'px',
-											height: 750 / content?.list?.value.length + 'px'
+											width: 750 / structure?.list?.value.length + 'px',
+											height: 750 / structure?.list?.value.length + 'px'
 										}}>
 										<div className='number'>{index + 1}</div>
 										<h5
@@ -84,8 +85,8 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 								<div
 									className='ball'
 									style={{
-										width: 750 / content?.list?.value.length + 'px',
-										height: 750 / content?.list?.value.length + 'px'
+										width: 750 / structure?.list?.value.length + 'px',
+										height: 750 / structure?.list?.value.length + 'px'
 									}}>
 									<div className='number'>{index + 1}</div>
 									<h5
@@ -139,7 +140,7 @@ const SeasonUpgrade2KProcessBlock = ({ data }) => {
 									src={WhiteArrow.src}
 									alt={'arrow'}
 									className='arrow'
-									width={68 / content?.list?.value.length + '%'}
+									width={68 / structure?.list?.value.length + '%'}
 								/>
 							) : null}
 						</div>

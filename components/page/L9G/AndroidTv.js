@@ -2,10 +2,11 @@ import CustomImage from 'components/common/CustomImage'
 import React, { useState, useEffect } from 'react'
 
 const AndroidTv = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section className='l9g'>
 			<div className='container-fluid py-10 py-md-20'>
@@ -14,12 +15,12 @@ const AndroidTv = ({ data }) => {
 					data-aos='fade'
 					data-aos-delay='0'
 					data-aos-duration='1000'>
-					<h2
+					<div
 						className='fs-5 l9g_big_title fs-md-2hx fw-bold mb-5'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 				</div>
 				<div className='row align-items-start px-1 px-md-17'>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div className='col-12 col-md-6' key={index}>
 							<article className=' text-start'>
 								<CustomImage

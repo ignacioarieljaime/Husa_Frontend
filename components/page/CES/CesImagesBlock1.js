@@ -3,21 +3,22 @@ import React, { useEffect, useState } from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesImagesBlock1 = ({ data }) => {
-	const [content, setContent] = useState({ data })
+	const { structure } = data
 
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	return (
 		<section className='w-100'>
 			<div className='ces_cards px-3 pt-3 pb-12'>
 				<div className='custom_container'>
-					{content?.blockTitle?.value ? (
+					{structure?.blockTitle?.value ? (
 						<div className='title'>
 							<h2
 								dangerouslySetInnerHTML={{
-									__html: content?.blockTitle?.value
+									__html: structure?.blockTitle?.value
 								}}></h2>
 						</div>
 					) : null}
@@ -27,8 +28,8 @@ const CesImagesBlock1 = ({ data }) => {
 							style={{ paddingTop: '40%' }}>
 							<div className='box-background'>
 								<img
-									src={content?.image1?.src}
-									alt={content?.image1?.alt}
+									src={structure?.image1?.src}
+									alt={structure?.image1?.alt}
 									width='100%'
 									height='100%'
 								/>
@@ -36,25 +37,25 @@ const CesImagesBlock1 = ({ data }) => {
 							<div className='box-content'>
 								<div className='d-flex flex-column justify-content-between align-items-center w-100'>
 									<h3 className='text-white mb-3 mb-md-8 title fs-2'>
-										{content?.title1?.value}
+										{structure?.title1?.value}
 									</h3>
-									{content?.link1?.value ? (
+									{structure?.link1?.value ? (
 										<Link
 											target={
-												content?.link1?.target
-													? content?.link1?.target
+												structure?.link1?.target
+													? structure?.link1?.target
 													: '_self'
 											}
-											href={content?.link1?.value}>
+											href={structure?.link1?.value}>
 											<a
 												target={
-													content?.link1?.target
-														? content?.link1?.target
+													structure?.link1?.target
+														? structure?.link1?.target
 														: '_self'
 												}
 												className='outline-white n-btn medium text-nowrap transparent d-block w-fit '>
-												{content?.link1?.title}
-												{content?.link1?.target === '_blank' && (
+												{structure?.link1?.title}
+												{structure?.link1?.target === '_blank' && (
 													<img
 														style={{ marginLeft: '10px' }}
 														src={OpenPageOnNewTab.src}
@@ -71,8 +72,8 @@ const CesImagesBlock1 = ({ data }) => {
 							style={{ paddingTop: '40%' }}>
 							<div className='box-background'>
 								<img
-									src={content?.image2?.src}
-									alt={content?.image2?.alt}
+									src={structure?.image2?.src}
+									alt={structure?.image2?.alt}
 									width='100%'
 									height='100%'
 								/>
@@ -80,25 +81,25 @@ const CesImagesBlock1 = ({ data }) => {
 							<div className='box-content'>
 								<div className='d-flex flex-column justify-content-between align-items-center w-100'>
 									<h3 className='text-white mb-3 mb-md-8 title fs-2'>
-										{content?.title2?.value}
+										{structure?.title2?.value}
 									</h3>
-									{content?.link2?.value ? (
+									{structure?.link2?.value ? (
 										<Link
 											target={
-												content?.link2?.target
-													? content?.link2?.target
+												structure?.link2?.target
+													? structure?.link2?.target
 													: '_self'
 											}
-											href={content?.link2?.value}>
+											href={structure?.link2?.value}>
 											<a
 												target={
-													content?.link2?.target
-														? content?.link2?.target
+													structure?.link2?.target
+														? structure?.link2?.target
 														: '_self'
 												}
 												className='n-btn transparent medium text-nowrap d-block w-fit outline-white '>
-												{content?.link2?.title}
-												{content?.link2?.target === '_blank' && (
+												{structure?.link2?.title}
+												{structure?.link2?.target === '_blank' && (
 													<img
 														style={{ marginLeft: '10px' }}
 														src={OpenPageOnNewTab.src}
