@@ -27,11 +27,19 @@ const HomeAppliancesBanner = ({ data }) => {
 				<img src={structure?.image?.src} alt={structure?.image?.alt} />
 				<div className='content'>
 					<h4 className='subtitle'>{structure?.subtitle?.value}</h4>
-					<h1
-						className='title'
-						dangerouslySetInnerHTML={{
-							__html: structure?.title?.value
-						}}></h1>
+					{structure?.title?.value && structure?.title?.value.includes('h1') ? (
+						<div
+							className='title'
+							dangerouslySetInnerHTML={{
+								__html: structure?.title?.value
+							}}></div>
+					) : (
+						<h1
+							className='title'
+							dangerouslySetInnerHTML={{
+								__html: structure?.title?.value
+							}}></h1>
+					)}
 				</div>
 			</div>
 		</section>
