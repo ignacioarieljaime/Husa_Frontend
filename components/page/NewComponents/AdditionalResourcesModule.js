@@ -4,12 +4,15 @@ import React, { useEffect, useState } from 'react'
 import { Navigation, Pagination } from 'swiper'
 import { SwiperSlide, Swiper } from 'swiper/react'
 import AdditionalResourcesModuleItem from './AdditionalResourcesModuleItem'
+import LightBoxModal from './LightBoxModal'
 
 const AdditionalResourcesModule = ({ data }) => {
 	const { structure } = data
 	const [content, setContent] = useState(null)
 	const [swiperInstance, setSwiperInstance] = useState(null)
 	const [width] = useWindowSize()
+	const [lightBoxStatus, setLightBoxStatus] = useState(false)
+	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 
 	useEffect(() => {
 		setContent(structure)
@@ -57,7 +60,7 @@ const AdditionalResourcesModule = ({ data }) => {
 							<SwiperSlide
 								key={index}
 								className='additional_resources_module___content___slider___item'>
-								<AdditionalResourcesModuleItem data={item} />
+								<AdditionalResourcesModuleItem data={item} index={index} lightboxHandler={() => setLightBoxStatus(prevState => !prevState)} setLightBoxActiveIndex={setLightBoxActiveIndex} />
 							</SwiperSlide>
 						))}
 					</Swiper>
@@ -79,6 +82,25 @@ const AdditionalResourcesModule = ({ data }) => {
 					</div>
 				</div>
 			</div>
+			{lightBoxStatus && (
+				<LightBoxModal
+					id={data?.id}
+					caption={
+						data?.structure?.list?.value[lightBoxActiveIndex]?.lightbox?.value?.caption
+					}
+					video={
+						data?.structure?.list?.value[lightBoxActiveIndex]?.lightbox?.value?.video
+					}
+					image={
+						data?.structure?.list?.value[lightBoxActiveIndex]?.lightbox?.value?.image
+					}
+					link={
+						data?.structure?.list?.value[lightBoxActiveIndex]?.lightbox?.value?.link
+					}
+					isVisible={lightBoxStatus}
+					visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+				/>
+			)}
 		</section>
 	)
 }
