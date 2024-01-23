@@ -24,6 +24,10 @@ module.exports.NewComponents = [
 		path: 'components/page/NewComponents/SignUpPopUp.js'
 	},
 	{
+		name: 'RetailList',
+		path: 'components/page/NewComponents/RetailList.js'
+	},
+	{
 		name: 'AwardsAndAccolades',
 		path: 'components/page/NewComponents/AwardsAndAccolades.js'
 	}
