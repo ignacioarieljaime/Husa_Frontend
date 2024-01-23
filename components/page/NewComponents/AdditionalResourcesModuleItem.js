@@ -4,7 +4,7 @@ import moment from 'moment'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-const AdditionalResourcesModuleItem = ({ data }) => {
+const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightBoxActiveIndex }) => {
 	const [cardData, setCardData] = useState({
 		link: '/',
 		target: '_self',
@@ -78,11 +78,37 @@ const AdditionalResourcesModuleItem = ({ data }) => {
 		}
 	}, [])
 
-	return (
-		<Link href={cardData.link} target={cardData.target}>
-			<a
-				target={cardData.target}
-				className='additional_resources_module___content___slider___item___wrapper'>
+	const ModuleContentDiv = ({ children }) => {
+		return (
+			<div className='additional_resources_module___content___slider___item___wrapper cursor-pointer'
+				onClick={(e) => {
+					e.stopPropagation()
+					if (data?.lightbox?.value?.image?.src || data?.lightbox?.value?.video?.value) {
+						setLightBoxActiveIndex(index)
+						lightboxHandler()
+					}
+				}}
+			>
+				{children}
+			</div>
+		);
+	};
+
+	const ModuleContentLink = ({ children }) => {
+		return (
+			<Link href={cardData.link} target={cardData.target}>
+				<a
+					target={cardData.target}
+					className='additional_resources_module___content___slider___item___wrapper'>
+					{children}
+				</a>
+			</Link>
+		);
+	};
+
+	const ModuleInnerContent = () => {
+		return (
+			<>
 				<div className='additional_resources_module___content___slider___item___wrapper___image_wrapper'>
 					{cardData?.video ? (
 						<iframe
@@ -129,9 +155,24 @@ const AdditionalResourcesModuleItem = ({ data }) => {
 						)}
 					</div>
 				</div>
-			</a>
-		</Link>
-	)
+			</>
+		);
+	};
+
+	if (data?.lightbox?.value?.image?.src || data?.lightbox?.value?.video?.value) {
+		return (
+			<ModuleContentDiv>
+				<ModuleInnerContent />
+			</ModuleContentDiv>
+		)
+	} else {
+		return (
+			<ModuleContentLink>
+				<ModuleInnerContent />
+			</ModuleContentLink>
+		)
+	}
+
 }
 
 export default AdditionalResourcesModuleItem
