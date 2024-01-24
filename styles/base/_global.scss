@@ -281,6 +281,18 @@ input {
 	p {
 		margin-bottom: 0;
 	}
+	&.version_2 {
+		padding: 0 16px;
+		.blog_description_box {
+			& > div {
+				p,
+				a {
+					font-size: 16px;
+					line-height: 22px;
+				}
+			}
+		}
+	}
 }
 
 .blog-search-text {
