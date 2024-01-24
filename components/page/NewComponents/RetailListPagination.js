@@ -87,14 +87,16 @@ const RetailListPagination = ({ pagination, handler, translate }) => {
 		}
 	}
 
+	console.log(pagination)
+
 	return (
 		<ul>
 			<li className='active'>
 				<button
 					onClick={() =>
-						handler(translate - 2, {
+						handler(0, {
 							...pagination,
-							current_page: pagination?.current_page - 2
+							current_page: 1
 						})
 					}
 					disabled={pagination?.current_page <= 2}>
@@ -139,12 +141,12 @@ const RetailListPagination = ({ pagination, handler, translate }) => {
 			<li className='active'>
 				<button
 					onClick={() =>
-						handler(translate + 2, {
+						handler(pagination?.last_page - 1, {
 							...pagination,
-							current_page: pagination?.current_page + 2
+							current_page: pagination?.last_page
 						})
 					}
-					disabled={pagination?.current_page + 2 >= pagination?.last_page}>
+					disabled={pagination?.current_page === pagination?.last_page}>
 					<PaginationDabbleArrow />
 				</button>
 			</li>
