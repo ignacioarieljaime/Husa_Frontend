@@ -7,6 +7,7 @@ import { Navigation, Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import AwardsAndAccoladesItems from './AwardsAndAccoladesItems'
 import QuoteIcon from 'components/icons/QuoteIcon'
+import LightBoxModal from '../NewComponents/LightBoxModal'
 
 function AwardsAndAccolades({ data, pim }) {
 	const ref = useRef(null)
@@ -17,6 +18,8 @@ function AwardsAndAccolades({ data, pim }) {
     const [swiperTooBig, setSwiperTooBig] = useState(undefined)
 	const navigationPrevRef = useRef(null)
 	const navigationNextRef = useRef(null)
+	const [lightBoxStatus, setLightBoxStatus] = useState(false)
+	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 
 	useEffect(() => {
 		setContent(data?.structure)
@@ -34,7 +37,6 @@ function AwardsAndAccolades({ data, pim }) {
 	}
 
     function sizeCheck(ref) {
-        
         if (ref?.current?.firstChild?.children) {
             let width = 0;
 
@@ -182,57 +184,87 @@ function AwardsAndAccolades({ data, pim }) {
 						{(content?.list?.value.length < 3 && windowSize[0] <= 768) ||
 						(content?.list?.value.length === 3 && windowSize[0] <= 1050) ||
 						content?.list?.value.length >= 4 ? (
-							<Swiper
-                                ref={swiperRef}
-								slidesPerView={'auto'}
-                                slidesPerGroup={windowSize[0] <= 768 ? 1: 3}
-								navigation={{
-									enabled: true,
-									prevEl: navigationPrevRef.current,
-									nextEl: navigationNextRef.current
-								}}
-								pagination={{
-                                    dynamicBullets: true,
-									clickable: true
-								}}
-								initialSlide={
-									windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
-								}
-								grabCursor={swiperTooBig === true ? true : false}
-                                allowTouchMove={swiperTooBig === true ? true : false}
-								spaceBetween={windowSize[0] <= 768 ? 4 : 20}
-								centeredSlides={swiperTooBig === true ? true : false}
-                                centeredSlidesBounds={windowSize[0] <= 768 ? false : true}
-								modules={[Navigation, Pagination]}
-								className={`w-100`}
-								style={{
-									gridTemplateColumns: `repeat(${
-										content?.list?.value.length
-									}, ${windowSize[0] <= 768 ? '288px' : '288px'})`
-								}}>
-								{content?.list?.value.map((item, index) => (
-									<SwiperSlide
-										style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
-										className={` w-fit`}
-										key={index}>
-										<AwardsAndAccoladesItems
-											data={item}
-											length={content?.list?.value.length / 2}
-										/>
-									</SwiperSlide>
-								))}
+							<>
+								<Swiper
+									ref={swiperRef}
+									slidesPerView={'auto'}
+									slidesPerGroup={windowSize[0] <= 768 ? 1: 3}
+									navigation={{
+										enabled: true,
+										prevEl: navigationPrevRef.current,
+										nextEl: navigationNextRef.current
+									}}
+									pagination={{
+										dynamicBullets: true,
+										clickable: true
+									}}
+									initialSlide={
+										windowSize[0] >= 768 ? content?.list?.value.length / 2 : 0
+									}
+									grabCursor={swiperTooBig === true ? true : false}
+									allowTouchMove={swiperTooBig === true ? true : false}
+									spaceBetween={windowSize[0] <= 768 ? 4 : 20}
+									centeredSlides={swiperTooBig === true ? true : false}
+									centeredSlidesBounds={windowSize[0] <= 768 ? false : true}
+									modules={[Navigation, Pagination]}
+									className={`w-100`}
+									style={{
+										gridTemplateColumns: `repeat(${
+											content?.list?.value.length
+										}, ${windowSize[0] <= 768 ? '288px' : '288px'})`
+									}}>
+									{content?.list?.value.map((item, index) => (
+										<SwiperSlide
+											style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
+											className={` w-fit`}
+											key={index}>
+											<AwardsAndAccoladesItems
+												data={item}
+												length={content?.list?.value.length / 2}
+												isLightBoxValid={content?.list?.value[index]?.lightBox?.value}
+												activateLightBox={() => {
+													setLightBoxStatus(true)
+													setLightBoxActiveIndex(index)
+												}}
+											/>
+										</SwiperSlide>
+									))}
 
-                                    <>
-                                        <div className='swiper-button-prev' ref={navigationPrevRef}>
-                                            <AwardsNavIcon />
-                                        </div>
-                                        <div className='swiper-button-next' ref={navigationNextRef}>
-                                            <AwardsNavIcon />
-                                        </div>
-                                    </>
+									<>
+										<div className='swiper-button-prev' ref={navigationPrevRef}>
+											<AwardsNavIcon />
+										</div>
+										<div className='swiper-button-next' ref={navigationNextRef}>
+											<AwardsNavIcon />
+										</div>
+									</>
+								</Swiper>
 
-
-							</Swiper>
+								{content?.list?.value[lightBoxActiveIndex]?.lightBox?.value && (
+									<LightBoxModal
+										zIndex={99999}
+										id={data?.id}
+										caption={
+											content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+												?.caption
+										}
+										video={
+											content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+												?.video
+										}
+										image={
+											content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+												?.image
+										}
+										link={
+											content?.list?.value[lightBoxActiveIndex]?.lightBoxObject?.value
+												?.link
+										}
+										isVisible={lightBoxStatus}
+										visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+									/>
+								)}
+							</>
 						) : null}
 					</>
 				)}
