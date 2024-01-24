@@ -172,6 +172,7 @@
 				width: 100%;
 				height: fit-content;
 				z-index: 2;
+				pointer-events: none;
 				@include mq(1215) {
 					width: calc(100% + 48px);
 					left: -24px;
@@ -208,13 +209,16 @@
 					&.prev {
 						left: 40px;
 						transform: rotate(180deg);
+						pointer-events: all;
 					}
 					&.next {
 						right: 40px;
+						pointer-events: all;
 					}
-					// &.disabled {
-					// 	background: #c7c7c9 !important;
-					// }
+					&.disabled {
+						// background: #c7c7c9 !important;
+						pointer-events: none;
+					}
 				}
 			}
 			.swiper-pagination {
@@ -239,4 +243,8 @@
 			}
 		}
 	}
+}
+
+.cursor-pointer {
+	cursor: pointer;
 }
