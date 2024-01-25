@@ -54,7 +54,7 @@ const BlockFeatured = ({ data }) => {
 				spaceBetween={8}
 				slidesPerView={'auto'}
 				grabCursor={true}
-				loop={content && content.length > 2 ? true : false}
+				loop={false}
 				modules={[Pagination, Navigation]}
 				breakpoints={{
 					768: {
