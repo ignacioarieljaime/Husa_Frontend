@@ -8,17 +8,7 @@ function BlogDescriptionBox({ data }) {
 	}, [])
 	return (
 		<section>
-			<div
-				style={
-					structure?.template?.value === 'template_2'
-						? {
-								maxWidth: '920px'
-						  }
-						: {}
-				}
-				className={`blog_text_container pb-20 pt-14 py-md-20 ${
-					structure?.template?.value === 'template_2' ? 'version_2' : ''
-				}`}>
+			<div className={`blog_text_container pb-20 pt-14 py-md-20`}>
 				<article className='blog-article blog_description_box'>
 					<h3>{structure?.title?.value}</h3>
 					<div dangerouslySetInnerHTML={{ __html: text }}></div>
