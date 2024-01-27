@@ -15,7 +15,11 @@ function TextEditor({ data }) {
 				style={{
 					maxWidth: `${structure?.width?.value}px`
 				}}
-				className={`${'dark'} article text-editor text_editor mx-auto pt-5 px-6 pb-6`}
+				className={`${'dark'} article text-editor text_editor mx-auto pt-5  pb-6 ${
+					structure?.template?.value === 'template_2'
+						? 'version_2 px-4'
+						: 'px-6'
+				}`}
 				dangerouslySetInnerHTML={{
 					__html: structure?.text?.value
 						? structure?.text?.value
