@@ -23,6 +23,7 @@ const HomeAppliancesCarousel = ({ data }) => {
 	}, [])
 
 	useEffect(() => {
+		// console.log(windowSize[0] - content?.list?.value.length * 296 - 40 - 256)
 		if (windowSize[0] - content?.list?.value.length * 296 - 40 - 256 > 16)
 			setJustify('justify_content_center')
 		else setJustify('')
