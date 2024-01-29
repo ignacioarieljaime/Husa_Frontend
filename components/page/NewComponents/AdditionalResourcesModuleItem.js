@@ -1,10 +1,17 @@
 import axios from 'axios'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
+import { useWindowSize } from 'hooks/useWindowSize'
 import moment from 'moment'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
+import { useSwiper } from 'swiper/react'
 
-const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightBoxActiveIndex }) => {
+const AdditionalResourcesModuleItem = ({
+	data,
+	index,
+	lightboxHandler,
+	setLightBoxActiveIndex
+}) => {
 	const [cardData, setCardData] = useState({
 		link: '/',
 		target: '_self',
@@ -13,6 +20,7 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 		date: '',
 		image: '',
 		video: '',
+		type: '',
 		button_title: '',
 		lightbox: {
 			caption: '',
@@ -21,12 +29,15 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 			link: ''
 		}
 	})
+	const [width] = useWindowSize()
+	const swiper = useSwiper()
 
 	function setPostData(_data) {
 		setCardData({
 			link: _data?.route,
 			title: _data?.title,
 			subtitle: _data?.tags.join(' '),
+			type: data?.type?.value,
 			date:
 				moment(_data?.published_at).format('MMM DD YYYY').split(' ')[0] +
 				' ' +
@@ -35,7 +46,7 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 				moment(_data?.published_at).format('MMM DD YYYY').split(' ')[2],
 			image: _data?.meta?.find(item => item.name === 'property="og:image"')
 				?.content,
-			button_titles: data?.button_title?.value
+			button_title: data?.button_title?.value
 		})
 	}
 
@@ -56,6 +67,10 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 	}
 
 	useEffect(() => {
+		if (swiper) {
+			// swiper.slideTo(width >= 860 ? 1 : 0)
+			// console.log('moved')
+		}
 		if (
 			data?.type?.value === 'link' ||
 			data?.type?.value === 'download' ||
@@ -66,10 +81,11 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 				target: data?.link?.target,
 				title: data?.title?.value,
 				subtitle: data?.subtitle?.value,
+				type: data?.type?.value,
 				date: data?.date?.value,
 				image: data?.image?.src,
 				video: data?.video?.value,
-				button_titles: data?.button_title?.value
+				button_title: data?.button_title?.value
 			})
 		} else if (data?.type?.value === 'news') {
 			getPostData('news', data?.selected_news?.value)
@@ -80,31 +96,34 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 
 	const ModuleContentDiv = ({ children }) => {
 		return (
-			<div className='additional_resources_module___content___slider___item___wrapper cursor-pointer'
-				onClick={(e) => {
+			<div
+				className='additional_resources_module___content___slider___item___wrapper cursor-pointer'
+				onClick={e => {
 					e.stopPropagation()
-					if (data?.lightbox?.value?.image?.src || data?.lightbox?.value?.video?.value) {
+					if (
+						data?.lightbox?.value?.image?.src ||
+						data?.lightbox?.value?.video?.value
+					) {
 						setLightBoxActiveIndex(index)
 						lightboxHandler()
 					}
-				}}
-			>
+				}}>
 				{children}
 			</div>
-		);
-	};
+		)
+	}
 
 	const ModuleContentLink = ({ children }) => {
 		return (
-			<Link href={cardData.link} target={cardData.target}>
+			<Link href={cardData?.link} target={cardData?.target}>
 				<a
-					target={cardData.target}
+					target={cardData?.target}
 					className='additional_resources_module___content___slider___item___wrapper'>
 					{children}
 				</a>
 			</Link>
-		);
-	};
+		)
+	}
 
 	const ModuleInnerContent = () => {
 		return (
@@ -143,7 +162,30 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 						<p className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___date'>
 							{cardData?.date}
 						</p>
-						{cardData?.button_title && (
+						{cardData.type === 'download' ? (
+							cardData.link ? (
+								<Link href={cardData.link} target={cardData.target}>
+									<a
+										target={cardData.target}
+										className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link'>
+										<span>{cardData?.button_title}</span>
+										<DownloadIconV2 color='#000' />
+									</a>
+								</Link>
+							) : cardData.image ? (
+								<a
+									href={
+										cardData.image.split('.com')[0] +
+										'.com/download/f' +
+										cardData.image.split('.com')[1]
+									}
+									target={cardData.target}
+									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link'>
+									<span>{cardData?.button_title}</span>
+									<DownloadIconV2 color='#000' />
+								</a>
+							) : null
+						) : cardData.link ? (
 							<Link href={cardData.link} target={cardData.target}>
 								<a
 									target={cardData.target}
@@ -152,27 +194,35 @@ const AdditionalResourcesModuleItem = ({ data, index, lightboxHandler, setLightB
 									<DownloadIconV2 color='#000' />
 								</a>
 							</Link>
-						)}
+						) : null}
 					</div>
 				</div>
 			</>
-		);
-	};
+		)
+	}
 
-	if (data?.lightbox?.value?.image?.src || data?.lightbox?.value?.video?.value) {
+	if (
+		data?.lightbox?.value?.image?.src ||
+		data?.lightbox?.value?.video?.value
+	) {
 		return (
 			<ModuleContentDiv>
 				<ModuleInnerContent />
 			</ModuleContentDiv>
 		)
-	} else {
+	} else if (cardData?.link) {
 		return (
 			<ModuleContentLink>
 				<ModuleInnerContent />
 			</ModuleContentLink>
 		)
+	} else {
+		return (
+			<div className='additional_resources_module___content___slider___item___wrapper'>
+				<ModuleInnerContent />
+			</div>
+		)
 	}
-
 }
 
 export default AdditionalResourcesModuleItem
