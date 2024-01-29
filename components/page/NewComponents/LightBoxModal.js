@@ -50,15 +50,15 @@ const LightBoxModal = ({
 	}
 
 	function isLastPage(pageLength, totalLength, index) {
-        // const result = index > totalLength - pageLength;
-        const isOnlyOnePage = (totalLength - pageLength) === 0
+		// const result = index > totalLength - pageLength;
+		const isOnlyOnePage = totalLength - pageLength === 0
 
-        const lastCompletePage = Math.floor((totalLength - 1) / pageLength);
-        const lastPageIndex = totalLength - 1;
+		const lastCompletePage = Math.floor((totalLength - 1) / pageLength)
+		const lastPageIndex = totalLength - 1
 
 		if (index < pageLength && isOnlyOnePage) return true
 		if (index < pageLength && !isOnlyOnePage) return false
-		return index >= lastCompletePage * pageLength && index <= lastPageIndex;
+		return index >= lastCompletePage * pageLength && index <= lastPageIndex
 	}
 
 	const newIndexHandler = indexUpdate => {
@@ -564,9 +564,11 @@ const LightBoxModal = ({
 												}
 												onArrowsUpdated={slide => newIndexHandler(slide.index)}>
 												{dataList.map((item, index) => (
-													<SplideSlide key={index}
-													onClick={() => splideInstance && splideInstance.go(index)}
-													>
+													<SplideSlide
+														key={index}
+														onClick={() =>
+															splideInstance && splideInstance.go(index)
+														}>
 														{renderChidren(false, item, index, false, {
 															pointerEvents: 'none'
 														})}
@@ -586,6 +588,25 @@ const LightBoxModal = ({
 															index * 5 <= currentIndex &&
 															currentIndex < (index + 1) * 5
 																? 'is_active'
+																: ''
+														}${
+															((index + 2) * 5 <= currentIndex &&
+																currentIndex < (index + 3) * 5) ||
+															((index - 2) * 5 <= currentIndex &&
+																currentIndex < (index - 1) * 5)
+																? 'is_small'
+																: ''
+														}${
+															((index + 3) * 5 <= currentIndex &&
+																currentIndex < (index + 4) * 5) ||
+															((index - 3) * 5 <= currentIndex &&
+																currentIndex < (index - 2) * 5)
+																? 'is_smaller'
+																: ''
+														}${
+															index < Math.ceil(currentIndex / 5) - 3 ||
+															index > Math.ceil(currentIndex / 5) + 3
+																? 'is_hidden'
 																: ''
 														}`}></li>
 												))}
