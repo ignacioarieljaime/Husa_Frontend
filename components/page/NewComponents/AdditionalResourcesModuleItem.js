@@ -20,6 +20,7 @@ const AdditionalResourcesModuleItem = ({
 		date: '',
 		image: '',
 		video: '',
+		type: '',
 		button_title: '',
 		lightbox: {
 			caption: '',
@@ -36,6 +37,7 @@ const AdditionalResourcesModuleItem = ({
 			link: _data?.route,
 			title: _data?.title,
 			subtitle: _data?.tags.join(' '),
+			type: data?.type?.value,
 			date:
 				moment(_data?.published_at).format('MMM DD YYYY').split(' ')[0] +
 				' ' +
@@ -79,6 +81,7 @@ const AdditionalResourcesModuleItem = ({
 				target: data?.link?.target,
 				title: data?.title?.value,
 				subtitle: data?.subtitle?.value,
+				type: data?.type?.value,
 				date: data?.date?.value,
 				image: data?.image?.src,
 				video: data?.video?.value,
@@ -159,8 +162,30 @@ const AdditionalResourcesModuleItem = ({
 						<p className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___date'>
 							{cardData?.date}
 						</p>
-						{index}
-						{cardData?.button_title && cardData?.link && (
+						{cardData.type === 'download' ? (
+							cardData.link ? (
+								<Link href={cardData.link} target={cardData.target}>
+									<a
+										target={cardData.target}
+										className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link'>
+										<span>{cardData?.button_title}</span>
+										<DownloadIconV2 color='#000' />
+									</a>
+								</Link>
+							) : cardData.image ? (
+								<a
+									href={
+										cardData.image.split('.com')[0] +
+										'.com/download/f' +
+										cardData.image.split('.com')[1]
+									}
+									target={cardData.target}
+									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link'>
+									<span>{cardData?.button_title}</span>
+									<DownloadIconV2 color='#000' />
+								</a>
+							) : null
+						) : cardData.link ? (
 							<Link href={cardData.link} target={cardData.target}>
 								<a
 									target={cardData.target}
@@ -169,7 +194,7 @@ const AdditionalResourcesModuleItem = ({
 									<DownloadIconV2 color='#000' />
 								</a>
 							</Link>
-						)}
+						) : null}
 					</div>
 				</div>
 			</>
