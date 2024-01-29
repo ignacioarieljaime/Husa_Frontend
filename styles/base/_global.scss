@@ -735,6 +735,14 @@ input {
 	a {
 		font-size: inherit !important;
 		line-height: inherit !important;
+		font-weight: inherit !important;
+	}
+	p {
+		font-weight: 300 !important;
+	}
+	h5,
+	h6 {
+		font-weight: 500 !important;
 	}
 	table {
 		border-collapse: collapse;
@@ -787,6 +795,62 @@ input {
 	}
 	* {
 		text-decoration: none !important;
+	}
+	&.version_2 {
+		* {
+			margin: 0 !important;
+			font-weight: 400 !important;
+		}
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-weight: 500 !important;
+		}
+		h1 {
+			font-size: 96px !important;
+			line-height: 109.44px !important; /* 114% */
+			min-height: 109.44px !important; /* 114% */
+			letter-spacing: -1.92px !important;
+		}
+		h2 {
+			font-size: 60px !important;
+			line-height: 68.4px !important; /* 114% */
+			min-height: 68.4px !important; /* 114% */
+			letter-spacing: -1.2px !important;
+		}
+		h3 {
+			font-size: 48px !important;
+			line-height: 55.86px !important; /* 116.375% */
+			min-height: 55.86px !important; /* 116.375% */
+			letter-spacing: -0.96px !important;
+		}
+		h4 {
+			font-size: 34px !important;
+			line-height: 45.9px !important; /* 135% */
+			min-height: 45.9px !important; /* 135% */
+			letter-spacing: -0.68px !important;
+		}
+		h5 {
+			font-size: 24px !important;
+			line-height: 30px !important; /* 125% */
+			min-height: 30px !important; /* 125% */
+			letter-spacing: -0.48px !important;
+		}
+		h6 {
+			font-size: 20px !important;
+			line-height: 25px !important; /* 125% */
+			min-height: 25px !important; /* 125% */
+			letter-spacing: -0.4px !important;
+		}
+		& > p,
+		& > a {
+			font-size: 16px !important;
+			line-height: 22px !important;
+			min-height: 22px !important;
+		}
 	}
 }
 
