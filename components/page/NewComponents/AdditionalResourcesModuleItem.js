@@ -185,7 +185,7 @@ const AdditionalResourcesModuleItem = ({
 									<DownloadIconV2 color='#000' />
 								</a>
 							) : null
-						) : cardData.link ? (
+						) : cardData.link && cardData.button_title ? (
 							<Link href={cardData.link} target={cardData.target}>
 								<a
 									target={cardData.target}
