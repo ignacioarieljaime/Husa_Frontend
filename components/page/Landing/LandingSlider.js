@@ -23,15 +23,16 @@ function LandingSlider({ data }) {
 	const router = useRouter()
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
+	const isMultipleSlides = structure?.list?.value.length > 1
 	return (
 		<>
 			<Swiper
-				loop={true}
-				navigation={true}
-				pagination={true}
+				loop={isMultipleSlides}
+				navigation={isMultipleSlides}
+				pagination={isMultipleSlides}
 				autoplay={
 					structure?.autoslide?.value === 'active' &&
-					structure?.list?.value.lenght > 1
+					structure?.list?.value.length > 1
 						? {
 								delay: 5000,
 								disableOnInteraction: false
@@ -59,7 +60,7 @@ function LandingSlider({ data }) {
 				// }}
 				className={`home-header-carousel lower-main ${
 					structure?.autoslide?.value === 'active' &&
-					structure?.list?.value.lenght > 1
+					structure?.list?.value.length > 1
 						? 'loading_pagination'
 						: ''
 				}`}>
