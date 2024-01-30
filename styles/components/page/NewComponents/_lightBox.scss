@@ -331,15 +331,12 @@
 						background: #525454;
 					}
 					&.is_small {
-						width: 7px !important;
-						height: 7px !important;
+						width: 10px !important;
+						height: 10px !important;
 					}
 					&.is_smaller {
-						width: 5px !important;
-						height: 5px !important;
-					}
-					&.is_hidden {
-						display: none;
+						width: 10px !important;
+						height: 10px !important;
 					}
 				}
 			}
