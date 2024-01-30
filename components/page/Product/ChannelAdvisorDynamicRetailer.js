@@ -7,38 +7,33 @@ import React, { useEffect, useState } from 'react'
 import ChannelAdvisorLocally from './ChannelAdvisorLocally'
 
 const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
-	const [data, setData] = useState('loading')
-	const [isLocally, setIsLocally] = useState(false)
+	const [scrollPosY, setScrollPosY] = useState(undefined)
+	
+	// Sets current scroll position for use in below useEffect
 	useEffect(() => {
-		if (condition) {
-			getChannelAdvisorData()
+		if (typeof window !== "undefined") {
+			setScrollPosY(window.scrollY)
 		}
 	}, [condition])
 
-	const getChannelAdvisorData = async () => {
-		setData('loading')
-		try {
-			let response = await axios(
-				`https://productcatalog.channeladvisor.com/api/v1/offers/models/${model}?maxLocationsPerRetailer=25&maxResultsPerRetailer=25&IncludeVariations=true&tag=Hisense%20US%20EN%20Widget`,
-				{
-					headers: {
-						Authorization:
-							'api-key ' + process.env.NEXT_PUBLIC_CHANNEL_ADVISOR_TOKEN
-					}
-				}
-			)
-			setData(response.data)
-		} catch (error) {
-			console.log(error)
+	/*
+		The pricespider widget wont load unless the page is scrolled after opening the drawer,
+		so this will scroll the page by 1 pixel to force it to load. Not a perfect solution but it works
+	*/
+	useEffect(() => {
+		if (typeof window !== "undefined" && condition) {
+			window.scrollTo(0, scrollPosY + 1);
 		}
-	}
+	}, [scrollPosY, condition])
+
 	return (
 		<div className='custom_channel_advisor'>
-			{data === 'loading' ? (
+			{!condition ? (
 				<Spinner />
 			) : (
 				<>
-					<div className='row justify-content-start flex-column align-items-center mb-2 mx-0 flex-nowrap'>
+					<div class='ps-widget' ps-sku={model}></div>{' '}
+					{/* <div className='row justify-content-start flex-column align-items-center mb-2 mx-0 flex-nowrap'>
 						<div className='col-3 w-100 custom_channel_advisor_product_image'>
 							<CustomImage
 								src={data?.ProductImage}
@@ -46,7 +41,6 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 								wrapperWidth={'100%'}
 								wrapperHeight={'256px'}
 							/>
-							{/* <img src={data?.ProductImage} alt={data?.Description} height={'256px'} /> */}
 						</div>
 						<div className='col-9 d-flex w-100 flex-column mb-5 text-center align-items-center'>
 							<p className='model'>model: {data?.ModelName}</p>
@@ -62,8 +56,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 								</a>
 							</Link>
 						</div>
-					</div>
-
+					</div> */}
 					{/* <div className='black_box'>
 						<div
 							style={{
@@ -72,7 +65,6 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 							className={`white_box ${!isLocally && 'active'}`}>
 							<button onClick={() => setIsLocally(false)}>BUY ONLINE</button>
 						</div> */}
-
 					{/* <div className={`white_box  ${isLocally && 'active'}`}>
 							<button
 								className='tab_button'
@@ -84,7 +76,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 							</button>
 						</div> */}
 					{/* </div> */}
-					{isLocally ? (
+					{/* {isLocally ? (
 						<ChannelAdvisorLocally productData={productData} model={model} />
 					) : (
 						<div>
@@ -93,18 +85,12 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 									<div
 										key={index}
 										className='d-flex justify-content-between align-items-center my-2 mx-4 py-2 '>
-										{/* <CustomImage src={item?.LogoUrl} wrapperWidth={'100px'} /> */}
 										<img
 											src={item?.LogoUrl}
 											width={'100'}
 											height={'100'}
 											style={{ objectFit: 'contain' }}
 										/>
-										{/* <div>
-											<div className='check'>Check Retailer</div>
-											<div className='status'>Available</div>
-										</div> */}
-
 										<Link
 											target={'_blank'}
 											href={item?.ProductLink ? item?.ProductLink : '/'}>
@@ -155,7 +141,7 @@ const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
 								<p className='no_retailer'>Check Back Soon for Availability.</p>
 							)}
 						</div>
-					)}
+					)} */}
 				</>
 			)}
 		</div>
