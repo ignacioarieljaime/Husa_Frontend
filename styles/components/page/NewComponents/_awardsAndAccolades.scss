@@ -262,6 +262,7 @@
 					padding: 20px;
 				}
 				&._has_link {
+					text-decoration: none;
 					@include mq(768) {
 						padding: 20px 20px 20px 20px !important;
 					}
@@ -481,4 +482,8 @@
 		padding-left: 0px !important;
 		padding-right: 0px !important;
 	}
+}
+
+.cursor-pointer {
+	cursor: pointer;
 }
