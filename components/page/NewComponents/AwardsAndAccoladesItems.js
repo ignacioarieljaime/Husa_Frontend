@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { useSwiper } from 'swiper/react'
 import QuoteIcon from 'components/icons/QuoteIcon'
 import PlayIcon from 'components/icons/PlayIcon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 const AwardsAndAccoladesItems = ({
 	data,
@@ -21,16 +23,20 @@ const AwardsAndAccoladesItems = ({
 			)
 	}, [length, swiper])
 	return (
-		<div className={`awards_and_accolades__cards_wrapper__card item__3 ${data?.link?.value && '_has_link'} ${isLightBoxValid ? 'cursor-pointer' : ''}`} onClick={() => isLightBoxValid && activateLightBox()}>
+		<div
+			className={`awards_and_accolades__cards_wrapper__card item__3 carousel_slider_item ${
+				data?.link?.value && '_has_link'
+			} ${isLightBoxValid ? 'cursor-pointer' : ''}`}
+			onClick={() => isLightBoxValid && activateLightBox()}>
 			<img
 				src={data?.image?.src}
 				className='awards_and_accolades__cards_wrapper__card__image'
 			/>
 			<div className='awards_and_accolades__cards_wrapper__card__content'>
 				<div className='awards_and_accolades__cards_wrapper__card__content__texts'>
-                    <span className='awards_and_accolades__cards_wrapper__card__content__texts__quote'>
-                        <QuoteIcon />
-                    </span>
+					<span className='awards_and_accolades__cards_wrapper__card__content__texts__quote'>
+						<QuoteIcon />
+					</span>
 					<h4
 						className='awards_and_accolades__cards_wrapper__card__content__texts__title'
 						dangerouslySetInnerHTML={{
@@ -46,9 +52,11 @@ const AwardsAndAccoladesItems = ({
 					<button
 						onClick={() => activateLightBox()}
 						className='n-btn small primary-text btn-outline awards_and_accolades__cards_wrapper__card__content__link'>
-						{data?.link?.title} {!!data.lightBoxObject.value.video.value && <PlayIcon />}
+						{data?.link?.title}{' '}
+						{!!data?.lightBoxObject?.value?.video?.value && <PlayIcon />}
 					</button>
-				): data?.link?.value && (
+				) : (
+					data?.link?.value && (
 						<Link
 							href={data?.link?.value}
 							target={data?.link?.target ? data.link?.target : '_self'}>
@@ -56,10 +64,13 @@ const AwardsAndAccoladesItems = ({
 								className='n-btn small primary-text btn-outline awards_and_accolades__cards_wrapper__card__content__link'
 								target={data?.link?.target ? data.link?.target : '_self'}>
 								{data?.link?.title}
+								{/* update for IMD - 923 */}
+								<FontAwesomeIcon icon={faChevronRight} size='xs' />
+								{/*  */}
 							</a>
 						</Link>
 					)
-				}
+				)}
 			</div>
 		</div>
 	)
