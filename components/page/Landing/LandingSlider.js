@@ -8,7 +8,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
 // import required modules
-import { Navigation, Pagination } from 'swiper'
+import { Autoplay, Navigation, Pagination } from 'swiper'
 import Link from 'next/link'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useAspectRatio } from 'hooks/useAspectRatio'
@@ -26,9 +26,19 @@ function LandingSlider({ data }) {
 	return (
 		<>
 			<Swiper
+				loop={true}
 				navigation={true}
 				pagination={true}
-				modules={[Navigation, Pagination]}
+				autoplay={
+					structure?.autoslide?.value === 'active' &&
+					structure?.list?.value.lenght > 1
+						? {
+								delay: 5000,
+								disableOnInteraction: false
+						  }
+						: false
+				}
+				modules={[Navigation, Pagination, Autoplay]}
 				// style={{
 				// 	paddingTop:
 				// 		size[0] < 550
@@ -47,7 +57,12 @@ function LandingSlider({ data }) {
 				// 			? (aspectRatioDesktop * 100).toFixed(2) - 9 + '%'
 				// 			: '57%'
 				// }}
-				className='home-header-carousel lower-main'>
+				className={`home-header-carousel lower-main ${
+					structure?.autoslide?.value === 'active' &&
+					structure?.list?.value.lenght > 1
+						? 'loading_pagination'
+						: ''
+				}`}>
 				{structure?.list?.value.map((item, index) => (
 					<SwiperSlide key={index}>
 						{item?.url?.value && !item?.lightbox?.value ? (
