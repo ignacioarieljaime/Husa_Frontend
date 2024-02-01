@@ -72,7 +72,7 @@ const NewsSearchFilter = ({
 	const getNews = async () => {
 		try {
 			let response = await axios.get(
-				`https://imcxm.dev-api-b.hisenseportal.com/api/husa/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 				{
 					headers: {
 						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
@@ -105,22 +105,24 @@ const NewsSearchFilter = ({
 	}
 
 	function reloadPage() {
-		router.reload();
+		router.reload()
 	}
 
-
 	const resetSearch = (year, product, search, reload) => {
-
-		if (year) filterHandler('year', '', false);
-		if (product) filterHandler('product', '', false);
-		if (search) filterHandler('search', '', false);
-		if (reload) reloadPage();
-		
+		if (year) filterHandler('year', '', false)
+		if (product) filterHandler('product', '', false)
+		if (search) filterHandler('search', '', false)
+		if (reload) reloadPage()
 	}
 
 	const resetVisible = () => {
-		if (filters.year.length === 0 && filters.product.length === 0 && filters.search.length === 0) return false
-		return true;
+		if (
+			filters.year.length === 0 &&
+			filters.product.length === 0 &&
+			filters.search.length === 0
+		)
+			return false
+		return true
 	}
 	// function confirmChanges() {
 	// 	filterHandler('', '', { ...tempFilters, page: 1 })
@@ -199,32 +201,31 @@ const NewsSearchFilter = ({
 											}}
 											onFocus={() => setSearchFocus(prev => !prev)}
 										/>
-										{searchFocus ?
+										{searchFocus ? (
 											<FontAwesomeIcon
-											icon={faClose}
-											size='md'
-											className='search-close p-1'
-											onMouseDown={(e) => {
-												e.preventDefault();
-												resetSearch(false, false, true, false);
-											}}
+												icon={faClose}
+												size='md'
+												className='search-close p-1'
+												onMouseDown={e => {
+													e.preventDefault()
+													resetSearch(false, false, true, false)
+												}}
 											/>
-											:
+										) : (
 											<MagnifierIcon stroke={'#8C8F8F'} />
-										}
+										)}
 									</div>
 								</div>
 
-								{resetVisible() &&
+								{resetVisible() && (
 									<div className='reset-container'>
-										<button className='reset-button'
-											onClick={() => resetSearch(true, true, true, true)}
-										>
+										<button
+											className='reset-button'
+											onClick={() => resetSearch(true, true, true, true)}>
 											Reset
 										</button>
 									</div>
-								}
-
+								)}
 							</div>
 						)}
 					</div>
