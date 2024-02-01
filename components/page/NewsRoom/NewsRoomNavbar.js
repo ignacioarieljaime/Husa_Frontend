@@ -64,7 +64,7 @@ const NewsRoomNavbar = ({ data }) => {
 	const getNews = async () => {
 		try {
 			let response = await axios.get(
-				`https://imcxm.dev-api-b.hisenseportal.com/api/husa/getPosts/meta?type=news&brand_id=3`,
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 				{
 					headers: {
 						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
