@@ -44,11 +44,11 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	async function getProduct() {
 		try {
 			let response = await axios.get(
-				`https://impim.dev-api.hisenseportal.com/api/cms/getProductsList?search=${
+				`${process.enc.PIM_API_ROUTE}/getProductsList?search=${
 					content?.list?.value[content?.active?.value]?.button?.value.split(
 						':'
 					)[1]
-				}&brand_id=3`
+				}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`
 			)
 			if (response?.data?.data.length) setProduct(response?.data?.data[0])
 		} catch (error) {
