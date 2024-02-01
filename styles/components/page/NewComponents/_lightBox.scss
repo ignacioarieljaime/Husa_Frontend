@@ -242,8 +242,8 @@
 					opacity: 1;
 					box-shadow: none;
 					transition: all 0.3s ease-in;
-					width: 75px;
-					height: 75px;
+					width: 2em;
+					height: 2em;
 					@include mq(768) {
 						width: 40px;
 						height: 40px;
@@ -251,8 +251,8 @@
 						transform: translate(0);
 					}
 					svg {
-						width: 30px;
-						height: 30px;
+						width: 16px;
+						height: 16px;
 						@include mq(768) {
 							width: 16px;
 							height: 16px;
@@ -273,17 +273,22 @@
 					}
 					&:disabled {
 						opacity: 1;
-						background-color: #c7c7c9 !important;
+						background-color: #ECECEC !important;
+						svg {
+							path {
+								fill: #F0F2F2
+							}
+						}
 					}
 					&.splide__arrow--prev {
-						left: -80px;
+						left: -46px;
 						@include mq(768) {
 							width: 40px !important;
 							height: 40px !important;
 						}
 					}
 					&.splide__arrow--next {
-						right: -80px;
+						right: -46px;
 						@include mq(768) {
 							width: 40px !important;
 							height: 40px !important;
