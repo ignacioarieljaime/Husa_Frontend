@@ -44,7 +44,7 @@ const SeasonUpgradeDealCounterBlock = ({ data }) => {
 	async function getProduct() {
 		try {
 			let response = await axios.get(
-				`${process.enc.PIM_API_ROUTE}/getProductsList?search=${
+				`${process.env.NEXT_PUBLIC_PIM_API_ROUTE}/getProductsList?search=${
 					content?.list?.value[content?.active?.value]?.button?.value.split(
 						':'
 					)[1]
