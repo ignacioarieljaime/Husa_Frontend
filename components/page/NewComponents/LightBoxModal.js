@@ -28,6 +28,7 @@ const LightBoxModal = ({
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
 	const [hasInteracted, setHasInteracted] = useState(false)
 	const [pagination, setPagination] = useState([])
+	const [activePaginationIndex, setActivePaginationIndex] = useState(null)
 	const [splideInstance, setSplideInstance] = useState(null)
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
@@ -65,6 +66,7 @@ const LightBoxModal = ({
 		const displayPerPage = 5
 		const lastPage = isLastPage(displayPerPage, dataList?.length, indexUpdate)
 		setCurrentIndex(indexUpdate)
+		setActivePaginationIndex(Math.floor(indexUpdate / 5))
 
 		if (lastPage) {
 			console.log('LP')
@@ -583,29 +585,23 @@ const LightBoxModal = ({
 														key={index}
 														onClick={() => {
 															splideInstance && splideInstance.go(index * 5)
+															setActivePaginationIndex(index)
 														}}
 														className={`lightbox___wrapper___splide_pagination___wrapper___item ${
-															index * 5 <= currentIndex &&
-															currentIndex < (index + 1) * 5
-																? 'is_active'
-																: ''
+															index === activePaginationIndex ? 'is_active' : ''
 														}${
-															((index + 2) * 5 <= currentIndex &&
-																currentIndex < (index + 3) * 5) ||
-															((index - 2) * 5 <= currentIndex &&
-																currentIndex < (index - 1) * 5)
+															activePaginationIndex + 1 === index ||
+															activePaginationIndex - 1 === index
 																? 'is_small'
 																: ''
 														}${
-															((index + 3) * 5 <= currentIndex &&
-																currentIndex < (index + 4) * 5) ||
-															((index - 3) * 5 <= currentIndex &&
-																currentIndex < (index - 2) * 5)
+															activePaginationIndex + 2 === index ||
+															activePaginationIndex - 2 === index
 																? 'is_smaller'
 																: ''
 														}${
-															index < Math.ceil(currentIndex / 5) - 3 ||
-															index > Math.ceil(currentIndex / 5) + 3
+															activePaginationIndex + 2 < index ||
+															activePaginationIndex - 2 > index
 																? 'is_hidden'
 																: ''
 														}`}></li>
