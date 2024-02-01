@@ -31,6 +31,7 @@ const AdditionalResourcesModuleItem = ({
 	})
 	const [width] = useWindowSize()
 	const swiper = useSwiper()
+	console.log(data)
 
 	function setPostData(_data) {
 		setCardData({
@@ -114,6 +115,33 @@ const AdditionalResourcesModuleItem = ({
 	}
 
 	const ModuleContentLink = ({ children }) => {
+		if (cardData.type === 'download') {
+			if (cardData.link) {
+				return (
+					<Link href={cardData.link} target={cardData.target}>
+						<a
+							target={cardData.target}
+							className='additional_resources_module___content___slider___item___wrapper'>
+							{children}
+						</a>
+					</Link>
+				)
+			}
+			if (cardData.image) {
+				return (
+					<a
+						href={
+							cardData.image.split('.com')[0] +
+							'.com/download/f' +
+							cardData.image.split('.com')[1]
+						}
+						target={cardData.target}
+						className='additional_resources_module___content___slider___item___wrapper'>
+						{children}
+					</a>
+				)
+			}
+		}
 		return (
 			<Link href={cardData?.link} target={cardData?.target}>
 				<a
@@ -167,7 +195,7 @@ const AdditionalResourcesModuleItem = ({
 								<Link href={cardData.link} target={cardData.target}>
 									<a
 										target={cardData.target}
-										className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link'>
+										className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link hoverEffect'>
 										<span>{cardData?.button_title}</span>
 										<DownloadIconV2 color='#000' />
 									</a>
@@ -180,7 +208,7 @@ const AdditionalResourcesModuleItem = ({
 										cardData.image.split('.com')[1]
 									}
 									target={cardData.target}
-									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link'>
+									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link hoverEffect'>
 									<span>{cardData?.button_title}</span>
 									<DownloadIconV2 color='#000' />
 								</a>
@@ -189,7 +217,7 @@ const AdditionalResourcesModuleItem = ({
 							<Link href={cardData.link} target={cardData.target}>
 								<a
 									target={cardData.target}
-									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link'>
+									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link hoverEffect'>
 									<span>{cardData?.button_title}</span>
 									<DownloadIconV2 color='#000' />
 								</a>
@@ -210,7 +238,7 @@ const AdditionalResourcesModuleItem = ({
 				<ModuleInnerContent />
 			</ModuleContentDiv>
 		)
-	} else if (cardData?.link) {
+	} else if (cardData?.link || cardData?.type === "download") {
 		return (
 			<ModuleContentLink>
 				<ModuleInnerContent />
