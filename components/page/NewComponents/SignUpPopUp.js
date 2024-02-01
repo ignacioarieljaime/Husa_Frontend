@@ -84,14 +84,13 @@ const SignUpPopUp = ({ data }) => {
 	return (
 		isOpen &&
 		!hasClosed && (
-			<div className='signup_popup'
+			<div
+				className='signup_popup'
 				onClick={() => {
 					if (outSide) {
 						closeHandler()
 					}
-				}
-			}
-			>
+				}}>
 				<div className='signup_popup___container' ref={popupRef}>
 					<div className='signup_popup___container___content'>
 						<div className='signup_popup___container___content___image'>
@@ -130,6 +129,7 @@ const SignUpPopUp = ({ data }) => {
 										) : (
 											<span>Subscribe</span>
 										)}
+										{''}
 									</button>
 
 									<button
