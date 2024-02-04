@@ -54,9 +54,9 @@ export async function GetBlogsByTagApi(
 	search,
 	count,
 	page,
-	exclude
+	exclude,
+	controller
 ) {
-	console.log(count)
 	let response = await axios.get(
 		`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts?type=blog${
 			tag
@@ -75,6 +75,7 @@ export async function GetBlogsByTagApi(
 		}&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 		{
 			headers: {
+				signal: controller ? controller.signal : undefined,
 				BrandId: process.env.NEXT_PUBLIC_BRAND_ID
 			}
 		}

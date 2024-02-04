@@ -22,73 +22,71 @@ function BlogListReadArticleBoxContainer({ structure, data }) {
 	})
 
 	return (
-		<section>
-			<div className='blog_text_container'>
-				<div className='row'>
-					<div className='col-12'>
-						<figure className='blog-article-box-full' ref={imageRef.ref}>
-							<div className='image-box'>
-								<Link target={'_self'} href={data?.route ? data?.route : '/'}>
-									<a className='d-block'>
-										<img
-											src={
-												data?.meta?.find(
-													item =>
-														item.name === 'property="og:image:square"' &&
-														item?.content !== ''
-												)?.content
-													? data?.meta?.find(
-															item =>
-																item.name === 'property="og:image:square"' &&
-																item?.content !== ''
-													  )?.content
-													: data?.meta?.find(
-															item => item.name === 'property="og:image"'
-													  )?.content
-											}
-											alt={data?.title}
-											style={{ objectFit: 'cover' }}
-											width='100%'
-											onLoad={() => parallaxController.update()}
-										/>
-									</a>
-								</Link>
-							</div>
-							<figcaption>
-								<div className='row justify-content-between align-items-center mt-5'>
-									<div className='col-12 col-md-9 order-2 order-md-1 mb-8'>
-										<h3 className='fs-3 mb-0'>{data?.title}</h3>
-									</div>
-									<div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
-										{data?.tags.map((item, index) => (
-											<span
-												key={index}
-												style={{
-													marginRight: '20px',
-													border: 'none',
-													background: 'transparent'
-												}}
-												className='text-primary-dark text-decoration-none'>
-												{item}
-											</span>
-										))}
-									</div>
-									<div className='col-12 order-3 text-start'>
-										<Link href={data?.route ? data?.route : '/'}>
-											<a
-												style={{ display: 'block' }}
-												className='n-btn blog-primary medium w-fit h-fit rounded-5 text-uppercase'>
-												read article
-											</a>
-										</Link>
-									</div>
+		<div id='articles' className='blog_text_container'>
+			<div className='row'>
+				<div className='col-12'>
+					<figure className='blog-article-box-full' ref={imageRef.ref}>
+						<div className='image-box'>
+							<Link target={'_self'} href={data?.route ? data?.route : '/'}>
+								<a className='d-block'>
+									<img
+										src={
+											data?.meta?.find(
+												item =>
+													item.name === 'property="og:image:square"' &&
+													item?.content !== ''
+											)?.content
+												? data?.meta?.find(
+														item =>
+															item.name === 'property="og:image:square"' &&
+															item?.content !== ''
+												  )?.content
+												: data?.meta?.find(
+														item => item.name === 'property="og:image"'
+												  )?.content
+										}
+										alt={data?.title}
+										style={{ objectFit: 'cover' }}
+										width='100%'
+										onLoad={() => parallaxController.update()}
+									/>
+								</a>
+							</Link>
+						</div>
+						<figcaption>
+							<div className='row justify-content-between align-items-center mt-5'>
+								<div className='col-12 col-md-9 order-2 order-md-1 mb-8'>
+									<h3 className='fs-3 mb-0'>{data?.title}</h3>
 								</div>
-							</figcaption>
-						</figure>
-					</div>
+								<div className='col-12 col-md-3 order-1 order-md-2 text-start text-md-end mb-3 mb-md-8'>
+									{data?.tags.map((item, index) => (
+										<span
+											key={index}
+											style={{
+												marginRight: '20px',
+												border: 'none',
+												background: 'transparent'
+											}}
+											className='text-primary-dark text-decoration-none'>
+											{item}
+										</span>
+									))}
+								</div>
+								<div className='col-12 order-3 text-start'>
+									<Link href={data?.route ? data?.route : '/'}>
+										<a
+											style={{ display: 'block' }}
+											className='n-btn blog-primary medium w-fit h-fit rounded-5 text-uppercase'>
+											read article
+										</a>
+									</Link>
+								</div>
+							</div>
+						</figcaption>
+					</figure>
 				</div>
 			</div>
-		</section>
+		</div>
 	)
 }
 
@@ -107,7 +105,7 @@ const BlogListSearchableComponent = ({ data }) => {
 
 	useEffect(() => {
 		getAllPosts()
-	}, [])
+	}, [filters])
 
 	// useEffect(() => {
 	// 	if (Array.isArray(blogsList)) {
@@ -224,101 +222,107 @@ const BlogListSearchableComponent = ({ data }) => {
 
 	return (
 		<section>
-			<BlogListFilterNavFilter
-				filters={filters}
-				filterHandler={(_key, _value, _a) => {
-					_a && Object.keys(_a).length > 0
-						? setFilters(_a)
-						: setFilters({ ...filters, [_key]: _value, page: 1 })
-				}}
-				title={structure?.title?.value}
-				link={structure?.titleLink}
-				yearTitle={
-					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
-				}
-				categoryTitle={
-					structure?.tag_placeholder?.value
-						? structure?.tag_placeholder?.value
-						: 'Tag'
-				}
-				newsSearchTitle={
-					structure?.blog_search?.value
-						? structure?.blog_search?.value
-						: 'search Blogs'
-				}
-				blogsList={blogsList}
-				targetRoute={structure?.link?.value}
-				newsLength={blogsList.length}
-			/>
-			<div id={data?.name + data?.id} className='blog_list_searchable'>
-				{singleBlog && (
-					<ParallaxProvider>
-						<BlogListReadArticleBoxContainer data={singleBlog} />
-					</ParallaxProvider>
-				)}
-				<div className='blog_text_container pt-5'>
-					{structure?.title?.value && (
-						<h2 className='fs-2tx fw-normal my-5 mb-md-15'>
-							{structure?.title?.value}
-						</h2>
+			<div className='blog_main_box'>
+				<BlogListFilterNavFilter
+					filters={filters}
+					filterHandler={(_key, _value, _a) => {
+						_a && Object.keys(_a).length > 0
+							? setFilters(_a)
+							: setFilters({ ...filters, [_key]: _value, page: 1 })
+					}}
+					title={structure?.title?.value}
+					link={structure?.titleLink}
+					yearTitle={
+						structure?.year_text?.value ? structure?.year_text?.value : 'Year'
+					}
+					categoryTitle={
+						structure?.tag_placeholder?.value
+							? structure?.tag_placeholder?.value
+							: 'Tag'
+					}
+					newsSearchTitle={
+						structure?.blog_search?.value
+							? structure?.blog_search?.value
+							: 'search Blogs'
+					}
+					blogsList={blogsList}
+					targetRoute={structure?.link?.value}
+					newsLength={blogsList.length}
+				/>
+				<div
+					id={data?.name + data?.id}
+					className='blog_main_box___blog_list_searchable'>
+					{singleBlog && (
+						<ParallaxProvider>
+							<BlogListReadArticleBoxContainer data={singleBlog} />
+						</ParallaxProvider>
 					)}
-					{gridBlogs &&
-						gridBlogs.map((item, index) => (
-							<BlogListLittleReadArticleBox key={index} data={item} />
-						))}
-				</div>
-				<div className='blog_text_container pb-10'>
-					{rowBlogs &&
-						rowBlogs?.map((item, index) => (
-							<BlogListSoundBardItem
-								getBlogs={getPosts}
-								key={index}
-								data={{
-									tag: {
-										value: item?.tags
-									},
-									link: {
-										title: 'READ ARTICLE',
-										value: item?.route
-									},
-									image: {
-										src: item?.meta?.find(
-											item =>
-												item.name === 'property="og:image:square"' &&
-												item?.content !== ''
-										)?.content
-											? item?.meta?.find(
-													item =>
-														item.name === 'property="og:image:square"' &&
-														item?.content !== ''
-											  )?.content
-											: item?.meta?.find(
-													item => item.name === 'property="og:image"'
-											  )?.content
-									},
-									title: {
-										value: item?.title
-									}
-								}}
-							/>
-						))}
-				</div>
-				<Link
-					target={structure?.link?.target ? structure?.link?.target : '_self'}
-					href={structure?.link?.value ? structure?.link?.value : '/'}>
-					<a
-						target={structure?.link?.target ? structure?.link?.target : '_self'}
-						style={{ display: 'block' }}
-						className='blog_list_searchable___main_link'>
-						{structure?.link?.title}
-						{structure?.link?.target === '_blank' && (
-							<img
-								style={{ marginLeft: '10px', objectFit: 'cover' }}
-								src={OpenPageOnNewTab.src}
-							/>
+					<div className='blog_text_container pt-5'>
+						{structure?.title?.value && (
+							<h2 className='fs-2tx fw-normal my-5 mb-md-15'>
+								{structure?.title?.value}
+							</h2>
 						)}
-					</a>
-				</Link>
+						{gridBlogs &&
+							gridBlogs.map((item, index) => (
+								<BlogListLittleReadArticleBox key={index} data={item} />
+							))}
+					</div>
+					<div className='blog_text_container pb-10'>
+						{rowBlogs &&
+							rowBlogs?.map((item, index) => (
+								<BlogListSoundBardItem
+									getBlogs={getPosts}
+									key={index}
+									data={{
+										tag: {
+											value: item?.tags
+										},
+										link: {
+											title: 'READ ARTICLE',
+											value: item?.route
+										},
+										image: {
+											src: item?.meta?.find(
+												item =>
+													item.name === 'property="og:image:square"' &&
+													item?.content !== ''
+											)?.content
+												? item?.meta?.find(
+														item =>
+															item.name === 'property="og:image:square"' &&
+															item?.content !== ''
+												  )?.content
+												: item?.meta?.find(
+														item => item.name === 'property="og:image"'
+												  )?.content
+										},
+										title: {
+											value: item?.title
+										}
+									}}
+								/>
+							))}
+					</div>
+					<Link
+						target={structure?.link?.target ? structure?.link?.target : '_self'}
+						href={structure?.link?.value ? structure?.link?.value : '/'}>
+						<a
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							style={{ display: 'block' }}
+							className='blog_main_box___blog_list_searchable___main_link'>
+							{structure?.link?.title}
+							{structure?.link?.target === '_blank' && (
+								<img
+									style={{ marginLeft: '10px', objectFit: 'cover' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							)}
+						</a>
+					</Link>
+				</div>
 			</div>
 		</section>
 	)

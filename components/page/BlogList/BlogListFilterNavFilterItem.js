@@ -59,7 +59,7 @@ const BlogListFilterNavFilterItem = ({
 						<div className='dropdown_label'>
 							{(filters && filters.length && filters.join(', ')) || title}
 						</div>
-						<SelectBoxAngleArrow />
+						<SelectBoxAngleArrow color='#525454' />
 					</span>
 					{openDropdown && (
 						<div>
@@ -81,7 +81,11 @@ const BlogListFilterNavFilterItem = ({
 												}}>
 												{filter && filter.length
 													? filter.includes(item) && (
-															<FontAwesomeIcon icon={faCheck} size='2xs' />
+															<FontAwesomeIcon
+																color='#fff'
+																icon={faCheck}
+																size='2xs'
+															/>
 													  )
 													: null}
 											</button>

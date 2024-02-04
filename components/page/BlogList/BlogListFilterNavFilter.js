@@ -18,7 +18,7 @@ for (let year = new Date().getFullYear(); year >= 1980; year--) {
 }
 
 const BlogListFilterNavFilter = ({
-	title = 'Featured News',
+	title = 'Featured Blogs',
 	filters,
 	yearTitle,
 	categoryTitle,
@@ -72,7 +72,7 @@ const BlogListFilterNavFilter = ({
 	const getNews = async () => {
 		try {
 			let response = await axios.get(
-				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 				{
 					headers: {
 						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
@@ -108,9 +108,9 @@ const BlogListFilterNavFilter = ({
 		router.reload()
 	}
 
-	const resetSearch = (year, product, search, reload) => {
+	const resetSearch = (year, tag, search, reload) => {
 		if (year) filterHandler('year', '', false)
-		if (product) filterHandler('product', '', false)
+		if (tag) filterHandler('tag', '', false)
 		if (search) filterHandler('search', '', false)
 		if (reload) reloadPage()
 	}
@@ -118,7 +118,7 @@ const BlogListFilterNavFilter = ({
 	const resetVisible = () => {
 		if (
 			filters?.year?.length === 0 &&
-			filters?.product?.length === 0 &&
+			filters?.tag?.length === 0 &&
 			filters?.search?.length === 0
 		)
 			return false
@@ -161,7 +161,7 @@ const BlogListFilterNavFilter = ({
 						{news &&
 							(filters.search.length > 0 ||
 								filters.year.length > 0 ||
-								filters.product.length > 0) && (
+								filters.tag.length > 0) && (
 								<div className='results'>{newsLength} Results</div>
 							)}
 
@@ -177,11 +177,11 @@ const BlogListFilterNavFilter = ({
 								/>
 								<BlogListFilterNavFilterItem
 									filterChangeHandler={filterHandler}
-									filters={filters?.product}
+									filters={filters?.tag}
 									title={categoryTitle}
 									data={filterData?.tags}
 									onClose={() => !results && redirectToResultsPage()}
-									dataKey='product'
+									dataKey='tag'
 								/>
 
 								<div className='custom_input_box'>

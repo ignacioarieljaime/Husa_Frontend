@@ -38,7 +38,7 @@ const FilterResponsive = ({
 		setModalIsOpen(false)
 		setFilterCounter(0)
 		onSearch('')
-		filterHandler('', '', { page: 1, search: '', product: [], year: [] })
+		filterHandler('', '', { page: 1, search: '', tag: [], year: [] })
 	}
 
 	function onFilterChange(_item, _k) {
@@ -115,7 +115,7 @@ const FilterResponsive = ({
 							modalIsOpen={modalIsOpen}
 							filterCounter={filterCounter}
 							filterController={onFilterChange}
-							dataKey={'product'}
+							dataKey={'tag'}
 							filters={filters}
 							allFilters={allFilters?.tags}
 						/>
@@ -123,7 +123,7 @@ const FilterResponsive = ({
 				</div>
 				{modalIsOpen && (
 					<div className='d-flex justify-content-center align-items-center gap-4 buttons p-4'>
-						<Link href='#products'>
+						<Link href='#articles'>
 							<a
 								className='n-btn primary'
 								style={{ padding: '11px 16px 9px' }}
