@@ -17,6 +17,18 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 	const [imageModal, setImageModal] = useState(false)
 	const [width] = useWindowSize()
+	const [thumbCanMove, setThumbCanMove] = useState(false)
+
+	if (thumbsSwiper) {
+		if (thumbsSwiper?.navigation?.nextEl) {
+			thumbsSwiper.navigation.nextEl.onmouseover=()=>setThumbCanMove(true)
+			thumbsSwiper.navigation.nextEl.onmouseout=()=>setThumbCanMove(false)
+		}
+		if (thumbsSwiper?.navigation?.prevEl) {
+			thumbsSwiper.navigation.prevEl.onmouseover=()=>setThumbCanMove(true)
+			thumbsSwiper.navigation.prevEl.onmouseout=()=>setThumbCanMove(false)
+		}
+	}
 
 	return (
 		<div className='product_gallery px-0'>
@@ -27,6 +39,14 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				slidesPerView={width >= 768 ? 'auto' : 4.45}
 				freeMode={true}
 				watchSlidesProgress={true}
+				allowSlideNext={thumbCanMove}
+				allowSlidePrev={thumbCanMove}
+				onNavigationNext={() => {
+					setThumbCanMove(true)
+				}}
+				onNavigationPrev={() => {
+					setThumbCanMove(true)
+				}}
 				navigation={width >= 768 ? true : false}
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='thumbs_gallery'>
@@ -35,7 +55,11 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						aria-hidden='true'
 						tabIndex={'-1'}
 						className='h-fit'
-						aria-label={`slide-${0}`}>
+						aria-label={`slide-${0}`}
+						onClick={() => {
+							setThumbCanMove(false)
+						}}
+						>
 						<figure className='image_wrapper'>
 							<img
 								src={firstImage}
@@ -54,7 +78,11 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								aria-hidden='true'
 								className='h-fit'
 								tabIndex={'-1'}
-								aria-label={`slide-${index + 1}`}>
+								aria-label={`slide-${index + 1}`}
+								onClick={() => {
+									setThumbCanMove(false)
+								}}
+								>
 								<figure className='image_wrapper'>
 									<img
 										src={item.url}
@@ -72,7 +100,11 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								aria-hidden='true'
 								className='h-fit'
 								tabIndex={'-1'}
-								aria-label={`slide-${index + 1}`}>
+								aria-label={`slide-${index + 1}`}
+								onClick={() => {
+									setThumbCanMove(false)
+								}}
+								>
 								<figure className='image_wrapper'>
 									<iframe
 										mute={true}
@@ -89,11 +121,15 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				thumbs={{
 					swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
 				}}
-				onSlideChange={swiper => thumbsSwiper.slideTo(swiper.activeIndex)}
+				onSlideChange={swiper => {
+					setThumbCanMove(true)
+					thumbsSwiper.slideTo(swiper.activeIndex)
+				}}
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='main_frame'>
 				{pim && pim?.length === 0 ? (
-					<SwiperSlide>
+					<SwiperSlide
+					>
 						<figure className='image_wrapper'>
 							<img
 								src={
@@ -120,7 +156,8 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 					</SwiperSlide>
 				) : null}
 				{firstImage ? (
-					<SwiperSlide key={'custom'}>
+					<SwiperSlide key={'custom'}
+					>
 						<figure className='image_wrapper'>
 							<img
 								src={firstImage}
@@ -143,7 +180,8 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				{pim &&
 					pim.map((item, index) =>
 						item.type_id === 1 && item.url !== firstImage ? (
-							<SwiperSlide key={index}>
+							<SwiperSlide key={index}
+							>
 								<figure className='image_wrapper'>
 									<img
 										src={item?.url}
