@@ -50,8 +50,38 @@ function AwardsAndAccolades({ data, pim }) {
         }
     }
 
+	function paginationHandler(bullet) {
+		if (bullet.classList.contains('hidden') &&
+		(bullet.classList.contains('swiper-pagination-bullet-active-next') ||
+		bullet.classList.contains('swiper-pagination-bullet-active-prev') ||
+		bullet.classList.contains('swiper-pagination-bullet-active-main'))) {
+			bullet.classList.remove('hidden');
+		}
+
+		if (!bullet.classList.contains('swiper-pagination-bullet-active-next') &&
+		!bullet.classList.contains('swiper-pagination-bullet-active-prev') &&
+		!bullet.classList.contains('swiper-pagination-bullet-active-main')) {
+			bullet.classList.add('hidden');
+		}
+	}
+
+	function extraPaginationRemover() {
+		const swiperNodes = swiperRef?.current?.childNodes
+		if (swiperNodes) {
+			for (let i = 0; i < swiperNodes.length; i++) {
+				if (swiperNodes[i].classList.contains('swiper-pagination')) {
+					swiperNodes[i].style.width = '200px';
+					swiperNodes[i].childNodes.forEach((bullet) => {
+						paginationHandler(bullet)
+					})
+				}
+			}
+		}
+	}
+
     useEffect(() => {
         if (swiperRef?.current?.firstChild?.children) sizeCheck(swiperRef);
+		if (windowSize[0] <= 768) extraPaginationRemover();
 	}, [windowSize[0]])
 
     // Helper function for useEffect
@@ -84,6 +114,7 @@ function AwardsAndAccolades({ data, pim }) {
         }
         if (swiperTooBig === true && swiperRef?.current) {
             swiperSizeHandler(false, swiperRef)
+			if (windowSize[0] <= 768) extraPaginationRemover();
         }
 	}, [swiperTooBig])
 
@@ -206,6 +237,9 @@ function AwardsAndAccolades({ data, pim }) {
 									spaceBetween={windowSize[0] <= 768 ? 4 : 20}
 									centeredSlides={swiperTooBig === true ? true : false}
 									centeredSlidesBounds={windowSize[0] <= 768 ? false : true}
+									onSlideChange={() => {
+										if (windowSize[0] <= 768) extraPaginationRemover()
+									}}
 									modules={[Navigation, Pagination]}
 									className={`w-100`}
 									style={{
