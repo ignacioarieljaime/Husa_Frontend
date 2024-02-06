@@ -30,5 +30,9 @@ module.exports.BlogListComponents = [
 	{
 		name: 'BlogListSearchableComponent',
 		path: 'components/page/BlogList/BlogListSearchableComponent'
+	},
+	{
+		name: 'BlogResults',
+		path: 'components/page/BlogList/BlogResults'
 	}
 ]
