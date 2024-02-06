@@ -87,6 +87,8 @@ function AwardsAndAccolades({ data, pim }) {
         }
 	}, [swiperTooBig])
 
+	console.log(content?.list?.value.length)
+
 	return (
 		<section>
 			<div
@@ -188,7 +190,7 @@ function AwardsAndAccolades({ data, pim }) {
 								<Swiper
 									ref={swiperRef}
 									slidesPerView={'auto'}
-									slidesPerGroup={windowSize[0] <= 768 ? 1: 3}
+									slidesPerGroup={windowSize[0] <= 768 ? 1 : (content?.list?.value.length % 3 === 0 ? 4 : 3)}
 									navigation={{
 										enabled: true,
 										prevEl: navigationPrevRef.current,
