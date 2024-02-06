@@ -87,8 +87,6 @@ function AwardsAndAccolades({ data, pim }) {
         }
 	}, [swiperTooBig])
 
-	console.log(content?.list?.value.length)
-
 	return (
 		<section>
 			<div
