@@ -41,9 +41,10 @@ const AdditionalResourcesModule = ({ data }) => {
 
 	const checkButtonsStatus = () => {
 		let newButtonsStatus = { ...slideButtonStatus }
+		const parentId = `#${data?.name + data?.id}`
 		if (
 			document
-				.querySelector(`.swiper-button-prev`)
+				.querySelector(`${parentId} .swiper-button-prev`)
 				.classList.contains('swiper-button-disabled')
 		) {
 			console.log('prev button disabled')
@@ -54,7 +55,7 @@ const AdditionalResourcesModule = ({ data }) => {
 		}
 		if (
 			document
-				.querySelector(`.swiper-button-next`)
+				.querySelector(`${parentId} .swiper-button-next`)
 				.classList.contains('swiper-button-disabled')
 		) {
 			console.log('next button disabled')
@@ -66,7 +67,7 @@ const AdditionalResourcesModule = ({ data }) => {
 
 		if (
 			document
-				.querySelector(`.swiper-button-prev`)
+				.querySelector(`${parentId} .swiper-button-prev`)
 				.classList.contains('swiper-button-lock')
 		) {
 			console.log('prev button locked')
@@ -77,7 +78,7 @@ const AdditionalResourcesModule = ({ data }) => {
 		}
 		if (
 			document
-				.querySelector(`.swiper-button-next`)
+				.querySelector(`${parentId} .swiper-button-next`)
 				.classList.contains('swiper-button-lock')
 		) {
 			console.log('next button locked')
@@ -90,11 +91,11 @@ const AdditionalResourcesModule = ({ data }) => {
 	}
 
 	const nextItemHandler = () => {
-		document.querySelector('.swiper-button-next').click()
+		document.querySelector(`#${data?.name + data?.id} .swiper-button-next`).click()
 	}
 
 	const prevItemHandler = () => {
-		document.querySelector('.swiper-button-prev').click()
+		document.querySelector(`#${data?.name + data?.id} .swiper-button-prev`).click()
 	}
 
 	return (
