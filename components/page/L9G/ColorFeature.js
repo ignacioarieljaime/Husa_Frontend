@@ -21,19 +21,16 @@ const ColorFeature = ({ data }) => {
 			element.setAttribute('data-aos-duration', '1000')
 		}
 	}, [structure])
-
-	const baseText = structure?.text?.value
-	const splitText = baseText.match(/<p>.*?<\/p>/g);
 	return (
 		<section className='l9g'>
 			<div className='color-feature'>
-				<div className='text px-md-20 px-6 top_text'>
+				<div className='text px-md-20 px-4 top_text'>
 					<div
-						className='fs-7 fs-md-3 fw-light mb-0 py-10 py-md-20 text-white split-text'
+						className='fs-7 fs-md-3 fw-light mb-0 py-10 py-md-20'
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 				<div className='row mx-0 justify-content-between'>
-					<div className='col-12 col-md-6 pr-md-3 ps-md-0 mb-4 mb-md-0 block-video'>
+					<div className='col-12 col-md-6 px-4 pr-md-3 ps-md-0 mb-4 mb-md-0 block-video'>
 						<video
 							width='100%'
 							height='100%'
@@ -57,7 +54,7 @@ const ColorFeature = ({ data }) => {
 							</div>
 						</div>
 					</div>
-					<div className='col-12 col-md-6 ps-md-0 pe-md-0 mb-4 mb-md-0 block-video'>
+					<div className='col-12 col-md-6 px-4 ps-md-3 pe-md-0 mb-4 mb-md-0 block-video'>
 						<video
 							width='100%'
 							height='100%'
