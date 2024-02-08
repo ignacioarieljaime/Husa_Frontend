@@ -8,9 +8,8 @@ const DolbyVision = ({ data: { structure } }) => {
 	}, [])
 	return (
 		<section className='l9g'>
-			<div className='dolby-vision py-4 pb-md-0 pt-md-0 px-0'>
-				<CustomImage src={structure?.image?.src} alt={structure?.image?.alt} />
-				<div className='px-4 px-md-20 py-6 pt-8 pt-md-20 pb-md-0'>
+			<div className='dolby-vision py-4 pb-md-0 pt-md-20 px-0'>
+				<div className='px-4 px-md-20 py-6 pt-8 py-md-20 mt-10'>
 					<h2
 						className='fs-5 fs-md-2hx text-white text-start mb-0 aos-init aos-animate'
 						data-aos='fade'
@@ -18,7 +17,8 @@ const DolbyVision = ({ data: { structure } }) => {
 						{structure?.title?.value}
 					</h2>
 				</div>
-				<div className='px-4 px-md-20 py-4 py-md-12'>
+				<CustomImage src={structure?.image?.src} alt={structure?.image?.alt} />
+				<div className='px-4 px-md-20 py-4 py-md-20'>
 					<div
 						className='caption mw-md-50 fs-9 fs-md-2 fw-light'
 						dangerouslySetInnerHTML={{ __html: text }}></div>
