@@ -797,16 +797,18 @@ input {
 		text-decoration: none !important;
 	}
 	&.version_2 {
-		* {
+		x {
 			margin: 0 !important;
+		}
+		*:not(p) {
 			font-weight: 400 !important;
 		}
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		h1:not(table h1),
+		h2:not(table h2),
+		h3:not(table h3),
+		h4:not(table h4),
+		h5:not(table h5),
+		h6:not(table h6) {
 			font-weight: 500 !important;
 		}
 		h1 {
