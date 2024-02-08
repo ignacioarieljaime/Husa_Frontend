@@ -74,7 +74,7 @@ function ProductFeatureWithImage({ data }) {
 
 						<h4
 							style={{
-								lineHeight: '55.86px',
+								lineHeight: 'unset',
 								fontSize: '48px',
 								color: structure?.theme?.value === 'dark' ? '#fff' : '#000',
 								fontWeight: '500',
@@ -85,8 +85,6 @@ function ProductFeatureWithImage({ data }) {
 							style={{
 								color: structure?.theme?.value === 'dark' ? '#fff' : '#000',
 								fontWeight: 400,
-								fontSize: '16px',
-								lineHeight: '21.6px',
 							}}>
 							{structure?.description?.value}
 						</p>
