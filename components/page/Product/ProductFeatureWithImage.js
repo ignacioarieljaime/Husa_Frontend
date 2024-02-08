@@ -83,8 +83,7 @@ function ProductFeatureWithImage({ data }) {
 						</h4>
 						<p
 							style={{
-								color: structure?.theme?.value === 'dark' ? '#fff' : '#000',
-								fontWeight: 400,
+								color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 							}}>
 							{structure?.description?.value}
 						</p>
