@@ -8,6 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import AwardsAndAccoladesItems from './AwardsAndAccoladesItems'
 import QuoteIcon from 'components/icons/QuoteIcon'
 import LightBoxModal from '../NewComponents/LightBoxModal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 function AwardsAndAccolades({ data, pim }) {
 	const ref = useRef(null)
@@ -190,6 +192,7 @@ function AwardsAndAccolades({ data, pim }) {
 														item?.link?.target ? item.link?.target : '_self'
 													}>
 													{item?.link?.title}
+													<FontAwesomeIcon icon={faChevronRight} size='xs' />
 												</a>
 											</Link>
 										)}
@@ -206,6 +209,7 @@ function AwardsAndAccolades({ data, pim }) {
 													item?.link?.target ? item.link?.target : '_self'
 												}>
 												{item?.link?.title}
+												<FontAwesomeIcon icon={faChevronRight} size='xs' />
 											</a>
 										</Link>
 									)}
