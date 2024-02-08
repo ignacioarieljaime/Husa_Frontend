@@ -17,7 +17,7 @@ function ProductStaticContent({ data }) {
 							className='image'
 						/>
 					)}
-					<h4 className='title fw-sm-normal fw-md-bold'>{structure.title.value}</h4>
+					<h4 className='title'>{structure.title.value}</h4>
 					<div
 						className='text'
 						dangerouslySetInnerHTML={{
