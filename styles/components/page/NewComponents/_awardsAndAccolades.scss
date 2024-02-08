@@ -438,20 +438,17 @@
 				opacity: 1;
 				margin: 0 2px;
 				&.swiper-pagination-bullet-active {
-					background: #00aaa6;
+					background: #525454;
 				}
 			}
 		}
 	}
 	.btn-outline {
-		padding: 12px 16px !important;
-		border: solid 1px #00aaa6 !important;
 		color: #00aaa6 !important;
 		background-color: rgba(0, 170, 166, 0) !important;
 	}
 	.btn-outline:hover {
-		color: white !important;
-		background-color: rgba(0, 170, 166, 1) !important;
+		color: #006664 !important;
 	}
 }
 
