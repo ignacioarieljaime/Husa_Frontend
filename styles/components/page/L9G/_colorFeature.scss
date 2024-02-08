@@ -1,6 +1,33 @@
 .color-feature {
+  background-color: #202020;
+
+  .split-text {
+    p:first-of-type {
+      max-width: 100%;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 30px;
+      margin-bottom: 0;
+      padding-bottom: 40px;
+      color: white;
+    }
+    p {
+      max-width: 700px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21.6px;
+      color: #BBBBBB;
+    }
+  }
   .block-video {
     position: relative;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    @include mqm(1200) {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
 
     video {
       object-fit: cover;
@@ -15,9 +42,23 @@
 
   @include mqm(1200) {
     .top_text {
-      p {
-        max-width: 790px;
-        font-size: 24px !important;
+      .split-text {
+        p:first-of-type {
+          max-width: 100% !important;
+          font-weight: 500 !important;
+          font-size: 48px !important;
+          line-height: 55.86px !important;
+          margin-bottom: 0 !important;
+          padding-bottom: 40px !important;
+          color: white !important;
+        }
+        p {
+          max-width: 700px !important;
+          font-weight: 400 !important;
+          font-size: 16px !important;
+          line-height: 21.6px !important;
+          color: #BBBBBB !important;
+        }
       }
     }
   }

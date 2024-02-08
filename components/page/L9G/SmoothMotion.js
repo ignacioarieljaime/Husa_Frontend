@@ -82,13 +82,6 @@ const SmoothMotionContainer = ({ data }) => {
 	return (
 		<section onDrag={e => setMousePosition(e.clientX)} className='l9g'>
 			<div className='smooth-motion py-4 pb-md-0 pt-md-10 px-0'>
-				<div className='px-4 px-md-20 py-6 pt-8 py-md-20'>
-					<div
-						className='title-card fs-5 fs-md-2hx text-white text-start mb-0 aos-init'
-						data-aos='fade'
-						data-aos-duration='1000'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
-				</div>
 				<div className='blured-image-container'>
 					<div className='screen'>
 						<img
@@ -115,9 +108,16 @@ const SmoothMotionContainer = ({ data }) => {
 					</div>
 				</div>
 				`
-				<div className='px-4 px-md-20 py-4 py-md-20'>
+				<div className='px-4 px-md-20 py-6 pt-8 pt-md-20 pb-md-0'>
 					<div
-						className='caption fs-9 fs-md-2 fw-light'
+						className='title-card fs-5 fs-md-2hx text-white text-start mb-0 aos-init'
+						data-aos='fade'
+						data-aos-duration='1000'
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
+				</div>
+				<div className='px-4 px-md-20 py-4 py-md-12'>
+					<div
+						className='caption mw-md-50 fs-9 fs-md-2 fw-light'
 						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 			</div>
