@@ -7,25 +7,6 @@ import React, { useEffect, useState } from 'react'
 import ChannelAdvisorLocally from './ChannelAdvisorLocally'
 
 const ChannelAdvisorDynamicRetailer = ({ model, condition, productData }) => {
-	const [scrollPosY, setScrollPosY] = useState(undefined)
-	
-	// Sets current scroll position for use in below useEffect
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			setScrollPosY(window.scrollY)
-		}
-	}, [condition])
-
-	/*
-		The pricespider widget wont load unless the page is scrolled after opening the drawer,
-		so this will scroll the page by 1 pixel to force it to load. Not a perfect solution but it works
-	*/
-	useEffect(() => {
-		if (typeof window !== "undefined" && condition) {
-			window.scrollTo(0, scrollPosY + 1);
-		}
-	}, [scrollPosY, condition])
-
 	return (
 		<div className='custom_channel_advisor'>
 			{!condition ? (
