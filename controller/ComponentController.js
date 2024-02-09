@@ -29,6 +29,12 @@ import  {  useEffect } from 'react'
 
 function Index${_page.id}({pim,data}) {
 	useEffect(() => {
+		const noSignUpPopUp = sessionStorage.getItem('noSignUpPopUp')
+
+		if (noSignUpPopUp) {
+			data.widgets = data.widgets?.filter(widget => widget?.name !== 'SignUpPopUp')
+		}
+
 		setTimeout(() => {
 			window.scrollTo(0, 0)
 		}, 500)

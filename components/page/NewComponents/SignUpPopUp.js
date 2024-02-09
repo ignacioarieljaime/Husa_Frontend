@@ -42,6 +42,7 @@ const SignUpPopUp = ({ data }) => {
 				setEmail('')
 				setHasClosed(true)
 				setIsOpen(false)
+				sessionStorage.setItem('noSignUpPopUp', '1')
 			} else {
 				toast.error('Submission Failed')
 			}
@@ -79,6 +80,7 @@ const SignUpPopUp = ({ data }) => {
 	const closeHandler = () => {
 		if (isOpen) setIsOpen(false)
 		if (!hasClosed) setHasClosed(true)
+		sessionStorage.setItem('noSignUpPopUp', '1')
 	}
 
 	return (
