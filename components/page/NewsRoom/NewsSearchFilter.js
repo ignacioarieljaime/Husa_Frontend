@@ -28,8 +28,7 @@ const NewsSearchFilter = ({
 	targetRoute,
 	results,
 	newsLength,
-	link,
-	color = '#989A9A', // hex code taken from cxm
+	link
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -149,13 +148,12 @@ const NewsSearchFilter = ({
 									target={link?.target ? link?.target : '_self'}>
 									<a
 										target={link?.target ? link?.target : '_self'}
-										style={{color: color}}
 										className='title'>
 										{title}
 									</a>
 								</Link>
 							) : (
-								<span className='title' style={{color: color}}>{title}</span>
+								<span className='title'>{title}</span>
 							)}
 						</div>
 						{news &&

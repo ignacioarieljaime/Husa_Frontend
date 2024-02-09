@@ -48,7 +48,6 @@ const NewsRoomMainBox = ({ data }) => {
 						: setFilters({ ...filters, [_key]: _value, page: 1 })
 				}}
 				title={structure?.title?.value}
-				color={structure?.titleColor?.value}
 				link={structure?.titleLink}
 				yearTitle={
 					structure?.year_text?.value ? structure?.year_text?.value : 'Year'
