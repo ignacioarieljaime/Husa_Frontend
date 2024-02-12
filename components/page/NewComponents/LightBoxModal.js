@@ -29,6 +29,7 @@ const LightBoxModal = ({
 	const [hasInteracted, setHasInteracted] = useState(false)
 	const [pagination, setPagination] = useState([])
 	const [activePaginationIndex, setActivePaginationIndex] = useState(null)
+	const [mainSplideInstance, setMainSplideInstance] = useState(null)
 	const [splideInstance, setSplideInstance] = useState(null)
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
@@ -69,7 +70,6 @@ const LightBoxModal = ({
 		setActivePaginationIndex(Math.floor(indexUpdate / 5))
 
 		if (lastPage) {
-			console.log('LP')
 			document.getElementsByClassName('splide__arrow--next')[0].disabled = true
 			document.getElementsByClassName('splide__arrow--prev')[0].disabled = false
 			if (indexUpdate < displayPerPage)
@@ -112,6 +112,30 @@ const LightBoxModal = ({
 		}
 	}
 
+	// const elemNextArrow = document.getElementsByClassName('splide__arrow--next')[0];
+	// const elemPrevArrow = document.getElementsByClassName('splide__arrow--prev')[0];
+
+	// if (elemNextArrow && elemPrevArrow) {
+
+	// 	if (!elemNextArrow.hasAttribute('listenerOnClick') && !elemPrevArrow.hasAttribute('listenerOnClick')) {
+
+	// 		elemNextArrow.addEventListener('click', function () {
+	// 			setTriggerSync(false)
+	// 		})
+	// 		elemPrevArrow.addEventListener('click', function () {
+	// 			setTriggerSync(false)
+	// 		})
+
+	// 		elemNextArrow.setAttribute('listenerOnClick', 'true')
+	// 		elemPrevArrow.setAttribute('listenerOnClick', 'true')
+			
+	// 		console.log("attributes added")
+	// 	}
+	// 	console.log(`after attribute check triggerSync is ${triggerSync}`)
+	// }
+	// console.log({"next": elemNextArrow, "prev": elemPrevArrow})
+
+
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
 		if (temp?.length > 100) temp = '<p>' + temp?.substring(0, 100) + '...</p>'
@@ -123,11 +147,11 @@ const LightBoxModal = ({
 			setPagination(new Array(Math.ceil(dataList?.length / 5)).fill({}))
 	}, [])
 
-	useEffect(() => {
-		if (mainSwiperRef.current && thumbsSwiperRef.current) {
-			mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
-		}
-	}, [mainSwiperRef, thumbsSwiperRef])
+	// useEffect(() => {
+	// 	if (mainSwiperRef.current && thumbsSwiperRef.current) {
+	// 		mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
+	// 	}
+	// }, [mainSwiperRef, thumbsSwiperRef])
 
 	useEffect(() => {
 		// Short desktop height handling
@@ -545,9 +569,11 @@ const LightBoxModal = ({
 												<Splide
 													options={mainOptions}
 													ref={mainSwiperRef}
-													onMove={(slide, newIndex, prevIndex, destIndex) =>
+													onMounted={splide => setMainSplideInstance(splide)}
+													onMove={(slide, newIndex, prevIndex, destIndex) => {
 														newIndexHandler(newIndex)
-													}>
+														if (splideInstance) splideInstance.go(newIndex)
+													}}>
 													{dataList.map((item, index) => (
 														<SplideSlide key={index}>
 															{renderChidren(true, item, index, true)}
@@ -568,9 +594,11 @@ const LightBoxModal = ({
 												{dataList.map((item, index) => (
 													<SplideSlide
 														key={index}
-														onClick={() =>
-															splideInstance && splideInstance.go(index)
-														}>
+														onClick={() => {
+															// if (!triggerSync) setTriggerSync(true)
+															if (splideInstance) splideInstance.go(index)
+															if (mainSplideInstance) mainSplideInstance.go(index)
+														}}>
 														{renderChidren(false, item, index, false, {
 															pointerEvents: 'none'
 														})}
@@ -588,21 +616,67 @@ const LightBoxModal = ({
 															setActivePaginationIndex(index)
 														}}
 														className={`lightbox___wrapper___splide_pagination___wrapper___item ${
-															index === activePaginationIndex ? 'is_active' : ''
-														}${
-															activePaginationIndex + 1 === index ||
-															activePaginationIndex - 1 === index
+															index * 5 <= currentIndex &&
+															currentIndex < (index + 1) * 5
+																? 'is_active'
+																:
+															((index + 2) * 5 <= currentIndex &&
+																currentIndex < (index + 3) * 5) ||
+															((index - 2) * 5 <= currentIndex &&
+																currentIndex < (index - 1) * 5)
 																? 'is_small'
-																: ''
-														}${
-															activePaginationIndex + 2 === index ||
-															activePaginationIndex - 2 === index
-																? 'is_smaller'
-																: ''
-														}${
-															activePaginationIndex + 2 < index ||
-															activePaginationIndex - 2 > index
-																? 'is_hidden'
+																:
+															((index + 3) * 5 < currentIndex &&
+																currentIndex < (index + 4) * 5) ||
+															((index - 3) * 5 < currentIndex &&
+																currentIndex < (index - 2) * 5)
+																? `is_smaller`
+																:
+															currentIndex < 5 && 
+															index < 5
+																? ''
+																:
+															isLastPage(5, dataList?.length, currentIndex) &&
+															index < Math.ceil(currentIndex / 5) - 4
+															? 'is_hidden'
+															:
+															isLastPage(5, dataList?.length, currentIndex) &&
+															(index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 3)
+															? ''
+															:
+															currentIndex < 5 &&
+															(index < Math.ceil(currentIndex / 5) - 5 ||
+															index > Math.ceil(currentIndex / 5) + 5)
+															? 'is_hidden'
+															:
+															currentIndex < 5 &&
+															index >= Math.ceil(0) &&
+															index < Math.ceil(currentIndex / 5) + 4
+															? ''
+															:
+															currentIndex < 10 && currentIndex >= 5 &&
+															(index < Math.ceil(currentIndex / 5) - 4 ||
+															index > Math.ceil(currentIndex / 5) + 4)
+															? 'is_hidden'
+															:
+															currentIndex < 10 && currentIndex >= 5 &&
+															index <= 4 &&
+															index >= 0
+															? ''
+															:
+															currentIndex < 15 && currentIndex >= 10 &&
+															(index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 2)
+															? 'is_hidden'
+															:
+															currentIndex > dataList?.length - 10 &&
+															index > ((dataList?.length - 25) / 5)
+															? ''
+															:
+															index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 2
+																? `is_hidden`
 																: ''
 														}`}></li>
 												))}
