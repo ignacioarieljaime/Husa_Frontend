@@ -22,11 +22,8 @@ const ColorFeature = ({ data }) => {
 		}
 	}, [structure])
 
-	//str.split()
-	console.log(structure?.text?.value)
 	const baseText = structure?.text?.value
 	const splitText = baseText.match(/<p>.*?<\/p>/g);
-	console.log(splitText)
 	return (
 		<section className='l9g'>
 			<div className='color-feature'>
