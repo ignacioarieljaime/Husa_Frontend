@@ -3,23 +3,24 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const AboutUsAwards = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section>
 			<div id={data?.name + data?.id} className='aboutus_awards'>
 				<div className='content'>
 					<h3
 						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h3>
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h3>
 					<div
 						className='text'
-						dangerouslySetInnerHTML={{ __html: content?.text?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: structure?.text?.value }}></div>
 				</div>
 				<div className='list'>
-					{content?.list?.value.map((item, index) => (
+					{structure?.list?.value.map((item, index) => (
 						<div
 							className='item'
 							key={index}

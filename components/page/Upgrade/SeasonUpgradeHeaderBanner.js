@@ -11,12 +11,13 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 
 const SeasonUpgradeHeaderBanner = ({ data }) => {
+	const { structure } = data
 	const [content, setContent] = useState(null)
 	const splideRef = useRef()
 	const router = useRouter()
 
 	useEffect(() => {
-		setContent(data?.structure)
+		setContent(structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -33,13 +34,17 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 			<div
 				id={data?.name + data?.id}
 				className='season_upgrade_header_banner'
-				style={{ backgroundColor: content?.backgroundColor?.value }}>
-				{content?.link?.value ? (
+				style={{ backgroundColor: structure?.backgroundColor?.value }}>
+				{structure?.link?.value ? (
 					<Link
-						href={content?.link?.value}
-						target={content?.link?.target ? content?.link?.target : '_self'}>
+						href={structure?.link?.value}
+						target={
+							structure?.link?.target ? structure?.link?.target : '_self'
+						}>
 						<a
-							target={content?.link?.target ? content?.link?.target : '_self'}
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
 							className='py-md-6 py-4'>
 							<Splide
 								ref={splideRef}
@@ -56,7 +61,7 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 									interval: 1500,
 									easing: 'linear'
 								}}>
-								{content?.list?.value.map((_item, index) => (
+								{structure?.list?.value.map((_item, index) => (
 									<SplideSlide key={index} className='item'>
 										<img src={_item.image.src} alt='featured' />
 									</SplideSlide>
@@ -81,7 +86,7 @@ const SeasonUpgradeHeaderBanner = ({ data }) => {
 								interval: 1500,
 								easing: 'linear'
 							}}>
-							{content?.list?.value.map((_item, index) => (
+							{structure?.list?.value.map((_item, index) => (
 								<SplideSlide key={index} className='item'>
 									<img src={_item.image.src} alt='featured' />
 								</SplideSlide>

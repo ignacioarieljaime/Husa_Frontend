@@ -28,7 +28,8 @@ const NewsSearchFilter = ({
 	targetRoute,
 	results,
 	newsLength,
-	link
+	link,
+	color = '#989A9A', // hex code taken from cxm
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -72,7 +73,7 @@ const NewsSearchFilter = ({
 	const getNews = async () => {
 		try {
 			let response = await axios.get(
-				`https://imcxm.dev-api.hisenseportal.com/api/husa/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 				{
 					headers: {
 						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
@@ -148,12 +149,13 @@ const NewsSearchFilter = ({
 									target={link?.target ? link?.target : '_self'}>
 									<a
 										target={link?.target ? link?.target : '_self'}
+										style={{color: color}}
 										className='title'>
 										{title}
 									</a>
 								</Link>
 							) : (
-								<span className='title'>{title}</span>
+								<span className='title' style={{color: color}}>{title}</span>
 							)}
 						</div>
 						{news &&

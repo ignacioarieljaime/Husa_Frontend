@@ -80,7 +80,7 @@ const CesCollageItem = ({ data, wrapperRef }) => {
 														allow='fullscreen; picture-in-picture'
 														mozallowfullscreen
 														webkitallowfullscreen
-														allowfullscreen
+														allowFullScreen
 														dataready={true}></iframe>
 													<div
 														className='ces_collage___collage_wrapper___media_list___item___overlay'

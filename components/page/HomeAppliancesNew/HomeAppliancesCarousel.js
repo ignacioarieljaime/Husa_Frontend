@@ -14,16 +14,16 @@ import 'swiper/css'
 const HomeAppliancesCarousel = ({ data }) => {
 	const { structure } = data
 	const [justify, setJustify] = useState('')
-	const [content, setContent] = useState(null)
+	// const [content, setContent] = useState(null)
 
 	const windowSize = useWindowSize()
 
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	useEffect(() => {
-		if (windowSize[0] - content?.list?.value.length * 296 - 40 - 256 > 16)
+		if (windowSize[0] - structure?.list?.value.length * 296 - 40 - 256 > 16)
 			setJustify('justify_content_center')
 		else setJustify('')
 	}, [windowSize])
@@ -31,16 +31,16 @@ const HomeAppliancesCarousel = ({ data }) => {
 	return (
 		<section>
 			<div
-				className={`ha_carousel text-center ${content?.theme?.value} ${
-					content?.list?.value.length > 4 ? 'extra_space_bottom' : ''
+				className={`ha_carousel text-center ${structure?.theme?.value} ${
+					structure?.list?.value.length > 4 ? 'extra_space_bottom' : ''
 				}`}>
-				{content?.subtitle?.value && (
-					<div className='subtitle'>{content?.subtitle?.value}</div>
+				{structure?.subtitle?.value && (
+					<div className='subtitle'>{structure?.subtitle?.value}</div>
 				)}
 				<h3
 					className='title'
 					dangerouslySetInnerHTML={{
-						__html: content?.title?.value
+						__html: structure?.title?.value
 					}}></h3>
 				<div className='slider_container'>
 					<Swiper
@@ -101,27 +101,31 @@ const HomeAppliancesCarousel = ({ data }) => {
 							// }
 						}}
 						className={`slider ${justify} ${
-							content?.list?.value.length > 4 ? '' : 'hide_controls'
+							structure?.list?.value.length > 4 ? '' : 'hide_controls'
 						}`}
 						modules={[Pagination, Navigation]}>
-						{content?.list?.value.map((item, index) => (
+						{structure?.list?.value.map((item, index) => (
 							<SwiperSlide key={index} className='slider_item'>
-								<HomeAppliancesCarouselitem data={item} structure={content} />
+								<HomeAppliancesCarouselitem data={item} structure={structure} />
 							</SwiperSlide>
 						))}
 					</Swiper>
 				</div>
-				{content?.link?.value && (
+				{structure?.link?.value && (
 					<div className='bottom_button'>
 						<Link
-							target={content?.link?.target ? content?.link?.target : '_self'}
-							href={content?.link?.value ? content?.link?.value : '/'}>
+							target={
+								structure?.link?.target ? structure?.link?.target : '_self'
+							}
+							href={structure?.link?.value ? structure?.link?.value : '/'}>
 							<a
-								target={content?.link?.target ? content?.link?.target : '_self'}
+								target={
+									structure?.link?.target ? structure?.link?.target : '_self'
+								}
 								style={{ width: '150px' }}
 								className='primary text-nowrap n-btn medium d-block mx-auto w-fit px-5 py-3'>
-								{content?.link?.title}
-								{content?.link?.target === '_blank' && (
+								{structure?.link?.title}
+								{structure?.link?.target === '_blank' && (
 									<img
 										style={{ marginLeft: '10px' }}
 										src={OpenPageOnNewTab.src}

@@ -4,11 +4,12 @@ import React, { useRef, useState, useEffect } from 'react'
 
 function SponsorshipVideoAndTextBox({ data }) {
 	const video = useRef()
+	const { structure } = data
 	const [playVideo, setPlayVideo] = useState(false)
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	const videoHandler = _condition => {
 		if (_condition) {
 			setPlayVideo(true)
@@ -19,12 +20,12 @@ function SponsorshipVideoAndTextBox({ data }) {
 		<section className='sponsor-ship-bg'>
 			<div className='pt-20'>
 				<div className='video-container rounded-0'>
-					{content?.video?.value?.includes('vimeo') ? (
-						<iframe src={content?.video?.value}></iframe>
+					{structure?.video?.value?.includes('vimeo') ? (
+						<iframe src={structure?.video?.value}></iframe>
 					) : (
 						<video
 							ref={video}
-							src={content?.video?.value}
+							src={structure?.video?.value}
 							id='blog-video'
 							width='100%'
 							height='100%'>
@@ -32,7 +33,7 @@ function SponsorshipVideoAndTextBox({ data }) {
 						</video>
 					)}
 
-					{!playVideo && !content?.video?.value?.includes('vimeo') ? (
+					{!playVideo && !structure?.video?.value?.includes('vimeo') ? (
 						<button
 							onClick={() => videoHandler(true)}
 							id='video-play-btn'
@@ -45,12 +46,14 @@ function SponsorshipVideoAndTextBox({ data }) {
 					<div className='row mt-20 text-white'>
 						<div className='col-12 col-md-6 pe-md-10'>
 							<div
-								dangerouslySetInnerHTML={{ __html: content?.leftText?.value }}
+								dangerouslySetInnerHTML={{ __html: structure?.leftText?.value }}
 								className='text-white fs-base'></div>
 						</div>
 						<div className='col-12 col-md-6 ps-md-10'>
 							<div
-								dangerouslySetInnerHTML={{ __html: content?.rightText?.value }}
+								dangerouslySetInnerHTML={{
+									__html: structure?.rightText?.value
+								}}
 								className='text-white fs-base'></div>
 						</div>
 					</div>

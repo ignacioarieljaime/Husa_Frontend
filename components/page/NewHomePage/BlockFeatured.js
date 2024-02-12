@@ -14,9 +14,36 @@ const BlockFeatured = ({ data }) => {
 	const [content, setContent] = useState()
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
-	useEffect(() => {
-		setContent(structure)
-	}, [])
+    useEffect(() => {
+		if (structure && structure?.list?.value.length > 0) {
+			const list = structure?.list?.value;
+		
+			// Calculate the total weight based on itemCenter values
+			const totalWeight = list.reduce(
+			(sum, item) => sum + parseInt(item?.itemCenter?.value || 0),
+			0
+			);
+		
+			// Weighted random index
+			const getRandomWeightedIndex = () => {
+			let randomValue = Math.random() * totalWeight;
+			for (let i = 0; i < list.length; i++) {
+				randomValue -= parseInt(list[i]?.itemCenter?.value || 0);
+				if (randomValue <= 0) {
+				return i;
+				}
+			}
+			return list.length - 1;
+			};
+		
+			for (let i = list.length - 1; i > 0; i--) {
+			const j = getRandomWeightedIndex();
+			[list[i], list[j]] = [list[j], list[i]];
+			}
+		
+			setContent([...list]);
+		}
+	}, [structure]);
 
 	return (
 		<section>
@@ -27,6 +54,7 @@ const BlockFeatured = ({ data }) => {
 				spaceBetween={8}
 				slidesPerView={'auto'}
 				grabCursor={true}
+				loop={false}
 				modules={[Pagination, Navigation]}
 				breakpoints={{
 					768: {
@@ -34,44 +62,37 @@ const BlockFeatured = ({ data }) => {
 					}
 				}}
 				className='news-slider'>
-				{content?.list?.value.map((item, index) => (
-					<SwiperSlide key={index} className='slider-item'>
-						<BlockFeaturedItem
-							data={item}
-							length={content?.list?.value.length}
-							isLightBoxValid={content?.list?.value[index]?.lightbox?.value}
-							activateLightBox={() => {
-								setLightBoxStatus(true)
-								setLightBoxActiveIndex(index)
-							}}
-						/>
-					</SwiperSlide>
-				))}
+				{content &&
+					content.length > 0 &&
+					content.map((item, index) => (
+						<SwiperSlide key={index} className='slider-item'>
+							<BlockFeaturedItem
+								data={item}
+								length={content.length}
+								isLightBoxValid={content[index]?.lightbox?.value}
+								activateLightBox={() => {
+									setLightBoxStatus(true)
+									setLightBoxActiveIndex(index)
+								}}
+							/>
+						</SwiperSlide>
+					))}
 			</Swiper>
-			{content?.list?.value[lightBoxActiveIndex]?.lightbox?.value && (
-				<LightBoxModal
-					zIndex={99999}
-					id={data?.id}
-					caption={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.caption
-					}
-					video={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.video
-					}
-					image={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.image
-					}
-					link={
-						content?.list?.value[lightBoxActiveIndex]?.lightboxObject?.value
-							?.link
-					}
-					isVisible={lightBoxStatus}
-					visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
-				/>
-			)}
+			{content &&
+				content.length > 0 &&
+				content[lightBoxActiveIndex]?.lightbox?.value && (
+					<LightBoxModal
+						id={data?.id}
+						caption={
+							content[lightBoxActiveIndex]?.lightboxObject?.value?.caption
+						}
+						video={content[lightBoxActiveIndex]?.lightboxObject?.value?.video}
+						image={content[lightBoxActiveIndex]?.lightboxObject?.value?.image}
+						link={content[lightBoxActiveIndex]?.lightboxObject?.value?.link}
+						isVisible={lightBoxStatus}
+						visibleHandler={() => setLightBoxStatus(prevState => !prevState)}
+					/>
+				)}
 		</section>
 	)
 }

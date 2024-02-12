@@ -1,5 +1,14 @@
 .lumens-of-brightness {
 	background: #1f1f1f;
+	div {
+		h2 {
+			font-size: 1.5rem;
+			line-height: 30px;
+			@media (min-width: 768px) {
+				font-size: 48px !important;
+			}
+		}
+	}
 	video {
 		object-fit: cover;
 		vertical-align: middle;
@@ -9,6 +18,11 @@
 	}
 	.caption {
 		color: #bbbbbb !important;
+		p {
+			max-width: 700px;
+			font-size: 16px;
+			line-height: 22.4px;
+		}
 	}
 	.feature {
 		.color-bar {
@@ -21,8 +35,15 @@
 			-webkit-transition: all 1s ease;
 			transition: all 1s ease;
 		}
+		.color-bar-title {
+			font-size: 20px;
+			@media (min-width: 768px) {
+				font-size: 34px !important;
+			}
+		}
 		.discription {
 			color: #bbbbbb;
+			font-size: 16px !important;
 		}
 	}
 }

@@ -10,12 +10,13 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 const SeasonUpgradeHeader = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const [openMenu, setOpenMenu] = useState(false)
 	const router = useRouter()
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	const windowSize = useWindowSize()
 
 	useEffect(() => {
@@ -27,40 +28,40 @@ const SeasonUpgradeHeader = ({ data }) => {
 			<section className='season_upgrade_header_sticky'>
 				<div id={data?.name + data?.id} className='season_upgrade_header'>
 					<div>
-						{content?.imageLink?.value ? (
+						{structure?.imageLink?.value ? (
 							<Link
 								target={
-									content?.imageLink?.target
-										? content?.imageLink?.target
+									structure?.imageLink?.target
+										? structure?.imageLink?.target
 										: '_self'
 								}
-								href={content?.imageLink?.value}>
+								href={structure?.imageLink?.value}>
 								<a
 									target={
-										content?.imageLink?.target
-											? content?.imageLink?.target
+										structure?.imageLink?.target
+											? structure?.imageLink?.target
 											: '_self'
 									}
 									className={`d-block`}>
 									<img
-										src={content?.image?.src}
-										alt={content?.image?.alt}
+										src={structure?.image?.src}
+										alt={structure?.image?.alt}
 										className='image'
 									/>
 								</a>
 							</Link>
 						) : (
 							<img
-								src={content?.image?.src}
-								alt={content?.image?.alt}
+								src={structure?.image?.src}
+								alt={structure?.image?.alt}
 								className='image'
 							/>
 						)}
-						<p className='gradient_text'>{content?.title?.value}</p>
+						<p className='gradient_text'>{structure?.title?.value}</p>
 					</div>
 					{windowSize[0] > 991 ? (
 						<ul className='nav flex-nowrap'>
-							{content?.list?.value.map(
+							{structure?.list?.value.map(
 								(item, index) =>
 									item?.link?.value && (
 										<li key={index}>
@@ -102,9 +103,9 @@ const SeasonUpgradeHeader = ({ data }) => {
 				</div>
 			</section>
 			<div className={`hamburger_menu_nav ${openMenu ? 'open' : ''}`}>
-				<p className='gradient_text'>{content?.title?.value}</p>
+				<p className='gradient_text'>{structure?.title?.value}</p>
 				<ul className='nav'>
-					{content?.list?.value.map(
+					{structure?.list?.value.map(
 						(item, index) =>
 							item?.link?.value && (
 								<li key={index}>

@@ -4,10 +4,11 @@ import React, { useState, useEffect } from 'react'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 const CesCards = ({ data }) => {
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [data])
+	const { structure } = data
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [data])
 
 	return (
 		<section>
@@ -15,57 +16,57 @@ const CesCards = ({ data }) => {
 				<div className='custom_container'>
 					<div
 						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></div>
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></div>
 					<div className='row justify-content-between align-items-center boxes px-3'>
-						{content?.block1?.value?.status?.value === 'active' ? (
+						{structure?.block1?.value?.status?.value === 'active' ? (
 							<div className='col-12 px-0'>
 								<div
 									className='tv-item full-size'
 									style={{
-										backgroundImage: `url(${content?.block1?.value?.backgroundImage?.src})`
+										backgroundImage: `url(${structure?.block1?.value?.backgroundImage?.src})`
 									}}>
 									<div className='content'>
 										<img
-											src={content?.block1?.value?.image1?.src}
-											alt={content?.block1?.value?.image1?.alt}
+											src={structure?.block1?.value?.image1?.src}
+											alt={structure?.block1?.value?.image1?.alt}
 											className='logo'
 										/>
 										<img
-											src={content?.block1?.value?.image2?.src}
-											alt={content?.block1?.value?.image2?.alt}
+											src={structure?.block1?.value?.image2?.src}
+											alt={structure?.block1?.value?.image2?.alt}
 											className='image'
 										/>
 										<div
 											className={`title ${
-												content?.block1?.value?.theme?.value === 'light'
+												structure?.block1?.value?.theme?.value === 'light'
 													? 'text-white'
 													: ''
 											}`}
 											dangerouslySetInnerHTML={{
-												__html: content?.block1?.value?.title?.value
+												__html: structure?.block1?.value?.title?.value
 											}}></div>
-										{content?.block1?.value?.link?.value ? (
+										{structure?.block1?.value?.link?.value ? (
 											<Link
 												target={
-													content?.block1?.value?.link?.target
-														? content?.block1?.value?.link?.target
+													structure?.block1?.value?.link?.target
+														? structure?.block1?.value?.link?.target
 														: '_self'
 												}
-												href={content?.block1?.value?.link?.value}>
+												href={structure?.block1?.value?.link?.value}>
 												<a
 													target={
-														content?.block1?.value?.link?.target
-															? content?.block1?.value?.link?.target
+														structure?.block1?.value?.link?.target
+															? structure?.block1?.value?.link?.target
 															: '_self'
 													}
 													className={`n-btn medium p-4 transparent text-nowrap d-block w-fit ${
-														content?.block1?.value?.theme?.value === 'light'
+														structure?.block1?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'
 													}`}>
-													{content?.block1?.value?.link?.title}
+													{structure?.block1?.value?.link?.title}
 
-													{content?.block1?.value?.link?.target ===
+													{structure?.block1?.value?.link?.target ===
 														'_blank' && (
 														<img
 															style={{ marginLeft: '10px' }}
@@ -79,44 +80,44 @@ const CesCards = ({ data }) => {
 								</div>
 							</div>
 						) : null}
-						{content?.block2?.value?.status?.value === 'active' ? (
+						{structure?.block2?.value?.status?.value === 'active' ? (
 							<div className='col-12 px-0'>
 								<div
 									className='tv-item full-size block2'
 									style={{
-										backgroundImage: `url(${content?.block2?.value?.backgroundImage?.src})`
+										backgroundImage: `url(${structure?.block2?.value?.backgroundImage?.src})`
 									}}>
 									<div className='content'>
 										<div
 											className={`title ${
-												content?.block2?.value?.theme?.value === 'light'
+												structure?.block2?.value?.theme?.value === 'light'
 													? 'text-white'
 													: ''
 											}`}
 											dangerouslySetInnerHTML={{
-												__html: content?.block2?.value?.title?.value
+												__html: structure?.block2?.value?.title?.value
 											}}></div>
-										{content?.block2?.value?.link?.value ? (
+										{structure?.block2?.value?.link?.value ? (
 											<Link
 												target={
-													content?.block2?.value?.link?.target
-														? content?.block2?.value?.link?.target
+													structure?.block2?.value?.link?.target
+														? structure?.block2?.value?.link?.target
 														: '_self'
 												}
-												href={content?.block2?.value?.link?.value}>
+												href={structure?.block2?.value?.link?.value}>
 												<a
 													target={
-														content?.block2?.value?.link?.target
-															? content?.block2?.value?.link?.target
+														structure?.block2?.value?.link?.target
+															? structure?.block2?.value?.link?.target
 															: '_self'
 													}
 													className={`n-btn medium p-4 transparent text-nowrap d-block w-fit ms-auto ${
-														content?.block2?.value?.theme?.value === 'light'
+														structure?.block2?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'
 													}`}>
-													{content?.block2?.value?.link?.title}
-													{content?.block2?.value?.link?.target ===
+													{structure?.block2?.value?.link?.title}
+													{structure?.block2?.value?.link?.target ===
 														'_blank' && (
 														<img
 															style={{ marginLeft: '10px' }}
@@ -130,7 +131,7 @@ const CesCards = ({ data }) => {
 								</div>
 							</div>
 						) : null}
-						{content?.list?.value.map((item, index) => (
+						{structure?.list?.value.map((item, index) => (
 							<div
 								key={index}
 								className={`box flex-column d-flex col-12 col-md-6`}>
@@ -188,54 +189,54 @@ const CesCards = ({ data }) => {
 								</div>
 							</div>
 						))}
-						{content?.block3?.value?.status?.value === 'active' ? (
+						{structure?.block3?.value?.status?.value === 'active' ? (
 							<div className='col-12 px-0'>
 								<div
 									className='tv-item full-size'
 									style={{
-										backgroundImage: `url(${content?.block3?.value?.backgroundImage?.src})`
+										backgroundImage: `url(${structure?.block3?.value?.backgroundImage?.src})`
 									}}>
 									<div className='content'>
 										<img
-											src={content?.block3?.value?.image1?.src}
-											alt={content?.block3?.value?.image1?.alt}
+											src={structure?.block3?.value?.image1?.src}
+											alt={structure?.block3?.value?.image1?.alt}
 											className='logo'
 										/>
 										<img
-											src={content?.block3?.value?.image2?.src}
-											alt={content?.block3?.value?.image2?.alt}
+											src={structure?.block3?.value?.image2?.src}
+											alt={structure?.block3?.value?.image2?.alt}
 											className='image'
 										/>
 										<div
 											className={`title ${
-												content?.block3?.value?.theme?.value === 'light'
+												structure?.block3?.value?.theme?.value === 'light'
 													? 'text-white'
 													: ''
 											}`}
 											dangerouslySetInnerHTML={{
-												__html: content?.block3?.value?.title?.value
+												__html: structure?.block3?.value?.title?.value
 											}}></div>
-										{content?.block3?.value?.link?.value ? (
+										{structure?.block3?.value?.link?.value ? (
 											<Link
 												target={
-													content?.block3?.value?.link?.target
-														? content?.block3?.value?.link?.target
+													structure?.block3?.value?.link?.target
+														? structure?.block3?.value?.link?.target
 														: '_self'
 												}
-												href={content?.block3?.value?.link?.value}>
+												href={structure?.block3?.value?.link?.value}>
 												<a
 													target={
-														content?.block3?.value?.link?.target
-															? content?.block3?.value?.link?.target
+														structure?.block3?.value?.link?.target
+															? structure?.block3?.value?.link?.target
 															: '_self'
 													}
 													className={`n-btn medium p-4 transparent text-nowrap d-block w-fit ${
-														content?.block3?.value?.theme?.value === 'light'
+														structure?.block3?.value?.theme?.value === 'light'
 															? 'outline-white'
 															: 'outline-black'
 													}`}>
-													{content?.block3?.value?.link?.title}
-													{content?.block3?.value?.link?.target ===
+													{structure?.block3?.value?.link?.title}
+													{structure?.block3?.value?.link?.target ===
 														'_blank' && (
 														<img
 															style={{ marginLeft: '10px' }}

@@ -47,7 +47,7 @@ const NewsIntro = ({ data, pim }) => {
 						<li>
 							<a
 								target='_blank'
-								href={`https://twitter.com/intent/tweet?url=<?=urlencode(${pageUrl})?>`}>
+								href={'https://twitter.com/intent/tweet?url=' + encodeURIComponent(pageUrl)}>
 								<TwitterNewsRoomIcon />
 							</a>
 						</li>{' '}

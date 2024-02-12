@@ -17,7 +17,8 @@ import { useRouter } from 'next/router'
 import Spinner from 'components/common/Spinner'
 
 const FirmwareBanner = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const [showModal, setShowModal] = useState(false)
 	const [searchTerm, setSearchTerm] = useState('')
 	const [model, setModel] = useState({})
@@ -25,9 +26,9 @@ const FirmwareBanner = ({ data }) => {
 
 	const router = useRouter()
 
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 
 	useEffect(() => {
 		if (model?.model?.title) getPageUrl(model?.model?.pid)
@@ -106,8 +107,8 @@ const FirmwareBanner = ({ data }) => {
 			<div className='firmware_banner'>
 				<div className='background'>
 					<CustomImage
-						src={content?.image?.src}
-						alt={content?.image?.alt}
+						src={structure?.image?.src}
+						alt={structure?.image?.alt}
 						wrapperHeight='100%'
 						wrapperWidth='100%'
 					/>
@@ -115,7 +116,7 @@ const FirmwareBanner = ({ data }) => {
 				<div className='content'>
 					<h2
 						className='title'
-						dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h2>
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h2>
 					<form className={`search_container`}>
 						<input
 							onChange={e => setSearchTerm(e.target.value)}
@@ -144,7 +145,7 @@ const FirmwareBanner = ({ data }) => {
 			</div>
 			{showModal && (
 				<FirmwareBannerModelNumberDialog
-					text={content?.text?.value}
+					text={structure?.text?.value}
 					onClose={() => setShowModal(false)}
 				/>
 			)}

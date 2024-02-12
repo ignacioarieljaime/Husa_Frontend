@@ -76,7 +76,7 @@ export async function getServerSideProps(context) {
 		});
 		let pim = await axios
 		.get(
-			'${process.enc.PIM_API_ROUTE}/getProduct/' + productId
+			'${process.env.PIM_API_ROUTE}/getProduct/' + productId
 		)
 		.then(response => {
 			console.log('get pim ssr data')

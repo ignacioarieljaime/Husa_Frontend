@@ -18,5 +18,13 @@ module.exports.NewComponents = [
 	{
 		name: 'AwardsAndAccolades',
 		path: 'components/page/NewComponents/AwardsAndAccolades.js'
+  },
+  {
+		name: 'SignUpPopUp',
+		path: 'components/page/NewComponents/SignUpPopUp.js'
+	},
+	{
+		name: 'RetailersList',
+		path: 'components/page/NewComponents/RetailersList.js'
 	}
 ]

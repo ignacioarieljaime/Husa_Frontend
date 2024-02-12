@@ -5,7 +5,8 @@ import { Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
 const NewsRoomAnnouncementsForm = ({ data }) => {
-	const [content, setContent] = useState(null)
+	const { structure } = data
+	// const [content, setContent] = useState(null)
 	const [loading, setLoading] = useState(false)
 	const [formBody, dispatch] = useReducer(
 		(state, updatedState) => ({
@@ -23,7 +24,7 @@ const NewsRoomAnnouncementsForm = ({ data }) => {
 	const ref = useRef()
 
 	useEffect(() => {
-		setContent(data?.structure)
+		// setContent(data?.structure)
 		if (router.asPath.includes(data?.name + data?.id)) {
 			setTimeout(() => {
 				ref.current.scrollIntoView()
@@ -69,7 +70,7 @@ const NewsRoomAnnouncementsForm = ({ data }) => {
 			<div className='news_announcements_form'>
 				<h6
 					className='news_announcements_form___title'
-					dangerouslySetInnerHTML={{ __html: content?.title?.value }}></h6>
+					dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h6>
 				<form
 					className='news_announcements_form___form'
 					onSubmit={submitHandler}>
@@ -121,7 +122,7 @@ const NewsRoomAnnouncementsForm = ({ data }) => {
 						{loading ? (
 							<Spinner color='#000' size='sm' />
 						) : (
-							<span>{content?.button_title?.value}</span>
+							<span>{structure?.button_title?.value}</span>
 						)}
 					</button>
 				</form>

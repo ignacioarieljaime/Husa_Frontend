@@ -4,10 +4,10 @@ import Image from 'public/assets/images/4k-uled/heading.jpg'
 
 function ContactUsAboutHisense({ data }) {
 	let { structure } = data
-	const [content, setContent] = useState(null)
-	useEffect(() => {
-		setContent(data?.structure)
-	}, [])
+	// const [content, setContent] = useState(null)
+	// useEffect(() => {
+	// 	setContent(structure)
+	// }, [])
 	return (
 		<section className=''>
 			<div className='row mx-0'>
@@ -15,23 +15,23 @@ function ContactUsAboutHisense({ data }) {
 					<article className='article row justify-content-center align-items-center h-100 mx-0 p-10 p-sm-20 p-md-5 p-lg-20'>
 						<div className='px-xl-20'>
 							<h4 className='mb-10 fs-2hx text-white'>
-								{content?.title?.value}
+								{structure?.title?.value}
 							</h4>
 							<div className='pb-8'>
 								<div
-									dangerouslySetInnerHTML={{ __html: content?.text?.value }}
+									dangerouslySetInnerHTML={{ __html: structure?.text?.value }}
 									className='fs-base fw-normal text-white mb-0'></div>
 							</div>
 							<div
-								dangerouslySetInnerHTML={{ __html: content?.address?.value }}
+								dangerouslySetInnerHTML={{ __html: structure?.address?.value }}
 								className='p-0 list-unstyled pt-8 border-primary border-top text-white fs-base fw-normal'></div>
 						</div>
 					</article>
 				</div>
 				<div className='col-12 col-md-6 px-0 header-secondary'>
 					<img
-						src={content?.image?.src}
-						alt={content?.image?.alt}
+						src={structure?.image?.src}
+						alt={structure?.image?.alt}
 						width='100%'
 						height='100%'
 					/>

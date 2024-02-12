@@ -12,14 +12,6 @@ const LumensOfBrightness = ({ data: { structure } }) => {
 	return (
 		<section className='l9g'>
 			<div className='lumens-of-brightness py-4 pb-md-0 pt-md-10 px-0'>
-				<div className='px-4 px-md-20 py-6 pt-8 py-md-20'>
-					<h2
-						className='fs-5 fs-md-2hx text-white text-start mb-0 aos-init aos-animate'
-						data-aos='fade'
-						data-aos-duration='1000'>
-						{structure?.title?.value}
-					</h2>
-				</div>
 				<video
 					muted={true}
 					autoPlay={true}
@@ -28,7 +20,15 @@ const LumensOfBrightness = ({ data: { structure } }) => {
 					className='px-4 px-md-0'>
 					<source src={structure?.video?.value} />
 				</video>
-				<div className='px-4 px-md-20 py-4 py-md-20'>
+				<div className='px-4 px-md-20 py-6 pt-8 pt-md-20 pb-md-0'>
+					<h2
+						className='text-white text-start mb-0 aos-init aos-animate'
+						data-aos='fade'
+						data-aos-duration='1000'>
+						{structure?.title?.value}
+					</h2>
+				</div>
+				<div className='px-4 px-md-20 py-4 py-md-12'>
 					<div
 						className='caption mw-md-50 fs-9 fs-md-2 fw-light'
 						dangerouslySetInnerHTML={{ __html: text }}></div>
@@ -44,7 +44,7 @@ const LumensOfBrightness = ({ data: { structure } }) => {
 										data-aos-duration='1000'
 										data-aos-delay='450'></div>
 									<div
-										className='fs-sm-2 fs-md-2hx fw-bolder-700 text-white mt-2 mt-md-8 aos-init aos-animate'
+										className='fs-sm-2 fs-md-2hx fw-bolder-700 text-white mt-2 mt-md-4 aos-init aos-animate color-bar-title'
 										data-aos='fade-zoom-in'
 										data-aos-duration='1000'
 										data-aos-delay='450'>
