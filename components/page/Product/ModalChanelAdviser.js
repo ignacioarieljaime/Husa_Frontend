@@ -31,7 +31,7 @@ function ModalChanelAdviser({
 				<button className='btn close-btn' onClick={() => handler(false)}>
 					<FontAwesomeIcon size='xl' icon={faXmark} />
 				</button>
-				<div>
+				{/* <div>
 						<img
 							src='/static/images/hisense-u8-uled-4k/related-product-item-2.png'
 							alt='featured image'
@@ -81,7 +81,7 @@ function ModalChanelAdviser({
 								SHOP NOW
 							</a>
 						</div>
-					</div>
+					</div> */}
 				{type === 'ChannelAdvisor' ? (
 					<>
 						<ChannelAdvisorDynamicRetailer
