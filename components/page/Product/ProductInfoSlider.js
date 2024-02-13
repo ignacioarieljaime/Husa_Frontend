@@ -18,16 +18,50 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	const [imageModal, setImageModal] = useState(false)
 	const [width] = useWindowSize()
 	const [thumbCanMove, setThumbCanMove] = useState(false)
+	const [isMobileDragging, setIsMobileDragging] = useState(false)
+	const [isMainDragging, setIsMainDragging] = useState(false)
 
-	if (thumbsSwiper) {
-		if (thumbsSwiper?.navigation?.nextEl) {
-			thumbsSwiper.navigation.nextEl.onmouseover=()=>setThumbCanMove(true)
-			thumbsSwiper.navigation.nextEl.onmouseout=()=>setThumbCanMove(false)
+	if (thumbsSwiper && width) {
+		if (width >= 768) {
+			if (thumbsSwiper?.navigation?.nextEl) {
+				thumbsSwiper.navigation.nextEl.onmouseover=()=>setThumbCanMove(true)
+				thumbsSwiper.navigation.nextEl.onmouseout=()=>setThumbCanMove(false)
+			}
+			if (thumbsSwiper?.navigation?.prevEl) {
+				thumbsSwiper.navigation.prevEl.onmouseover=()=>setThumbCanMove(true)
+				thumbsSwiper.navigation.prevEl.onmouseout=()=>setThumbCanMove(false)
+			}
 		}
-		if (thumbsSwiper?.navigation?.prevEl) {
-			thumbsSwiper.navigation.prevEl.onmouseover=()=>setThumbCanMove(true)
-			thumbsSwiper.navigation.prevEl.onmouseout=()=>setThumbCanMove(false)
+	}
+
+	const mobileDragHandler = () => {
+		if (width < 768 && !thumbCanMove) {
+			setThumbCanMove(true)
+			if (!isMobileDragging) setIsMobileDragging(true)
 		}
+	}
+
+	const mobileDragEndHandler = () => {
+		if (width < 768 && thumbCanMove && isMobileDragging) {
+			setThumbCanMove(false)
+		}
+		if (isMobileDragging) setIsMobileDragging(false)
+	}
+
+	const mainDragHandler = () => {
+		if (!isMainDragging) {
+			setIsMainDragging(true)
+			if (!thumbCanMove) setThumbCanMove(true)
+		}
+	}
+
+	const mainDragEndHandler = () => {
+		if (isMainDragging) setIsMainDragging(false)
+	}
+
+	const canMoveTriggerPrevention = () => {
+		if (isMainDragging) setIsMainDragging(false)
+		if (thumbCanMove) setThumbCanMove(false)
 	}
 
 	return (
@@ -47,6 +81,8 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				onNavigationPrev={() => {
 					setThumbCanMove(true)
 				}}
+				onSliderFirstMove={() => mobileDragHandler()}
+				onTouchEnd={() => mobileDragEndHandler()}
 				navigation={width >= 768 ? true : false}
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='thumbs_gallery'>
@@ -124,6 +160,12 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				onSlideChange={swiper => {
 					setThumbCanMove(true)
 					thumbsSwiper.slideTo(swiper.activeIndex)
+				}}
+				onSliderFirstMove={() => mainDragHandler()}
+				onTouchEnd={() => mainDragEndHandler()}
+				onSnapIndexChange={() => canMoveTriggerPrevention()}
+				onTransitionEnd={() => {
+					if (!isMainDragging) setThumbCanMove(false)
 				}}
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='main_frame'>
