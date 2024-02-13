@@ -29,7 +29,7 @@ const NewsSearchFilter = ({
 	results,
 	newsLength,
 	link,
-	color = '#989A9A', // hex code taken from cxm
+	color
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
