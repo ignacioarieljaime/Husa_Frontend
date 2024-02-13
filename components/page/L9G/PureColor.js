@@ -10,7 +10,7 @@ const PureColor = ({ data }) => {
 					data-aos='fade'
 					data-aos-duration='1000'
 					data-aos-delay='200'>
-					<h2 className='fs-5 fs-md-2hx text-white text-start py-5 px-5 px-md-20'>
+					<h2 className='fs-sm-1 fs-md-2hx fw-bold text-white text-start py-5 px-5 px-md-20'>
 						{structure?.title?.value}
 					</h2>
 				</div>

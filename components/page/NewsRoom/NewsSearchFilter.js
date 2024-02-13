@@ -29,7 +29,7 @@ const NewsSearchFilter = ({
 	results,
 	newsLength,
 	link,
-	color
+	color,
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
