@@ -133,15 +133,33 @@ const BlogListSearchableComponent = ({ data }) => {
 				filters.page,
 				getPostId()
 			)
+			console.log(response?.data?.data)
 			const filterdByOffset = response?.data?.data.filter(
 				(_, index) => index >= parseInt(structure['start-offset']?.value)
+			)
+			console.log(filterdByOffset)
+			console.log(
+				filterdByOffset.filter(
+					(_, index) =>
+						index > 0 && index < parseInt(structure['grid-count']?.value) + 1
+				)
+			)
+			console.log(
+				filterdByOffset.filter(
+					(_, index) =>
+						index >= parseInt(structure['grid-count']?.value) + 1 &&
+						index <
+							parseInt(structure['grid-count']?.value) +
+								parseInt(structure['row-count']?.value) +
+								1
+				)
 			)
 			setSingleBlog(filterdByOffset[0])
 			setGridBlogs(
 				handleItemToShow(
 					filterdByOffset.filter(
 						(_, index) =>
-							index > 0 && index < parseInt(structure['grid-count']?.value + 1)
+							index > 0 && index < parseInt(structure['grid-count']?.value) + 1
 					)
 				)
 			)
