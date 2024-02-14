@@ -31,6 +31,9 @@ const LightBoxModal = ({
 	const [activePaginationIndex, setActivePaginationIndex] = useState(null)
 	const [mainSplideInstance, setMainSplideInstance] = useState(null)
 	const [splideInstance, setSplideInstance] = useState(null)
+	const [mainSwipeCount, setMainSwipeCount] = useState(0)
+	const [thumbSwipeCount, setThumbSwipeCount] = useState(0)
+	const [wasPaginationClicked, setWasPaginationClicked] = useState(false)
 	const mainSwiperRef = useRef(null)
 	const thumbsSwiperRef = useRef(null)
 	const windowSize = useWindowSize()
@@ -373,6 +376,13 @@ const LightBoxModal = ({
 		}
 	}
 
+	// Helper function to assist with pagination navigation correctly applying 'is-active' class
+	function isWithin5(x, y) {
+		const roundedNum = Math.ceil(y / 5) * 5;
+		if (y >= x && y < (x + 5)) return true
+		return false
+	}
+
 	useEffect(() => {
 		if (isVisible) {
 			document.getElementById('main_body').style.marginRight =
@@ -385,6 +395,39 @@ const LightBoxModal = ({
 			document.getElementById('main_body').style.marginRight = '0px'
 		}
 	}, [isVisible])
+
+	// Makes the thumbnail carousel move to index of main carousel when main carousel slide is swiped to change slide
+	useEffect(() => {
+		if (splideInstance && mainSplideInstance) {
+			if (splideInstance.index !== mainSplideInstance.index) splideInstance.go(mainSplideInstance.index)
+		}
+	}, [mainSwipeCount])
+
+	// Prevents the thumbnail carousel navigation from setting thumbnail slide as active style (larger) when it doesnt match main carousel slide index
+	// Also sets correct active style if thumbnail carousel uses pagination to navigate to other pages and navigates back to original page of active slide
+	useEffect(() => {
+		if (splideInstance && mainSplideInstance && thumbsSwiperRef?.current?.slides) {
+			if (splideInstance.index !== mainSplideInstance.index && thumbsSwiperRef.current.slides[splideInstance.index]?.classList) {
+				const undesiredSlideClasses = thumbsSwiperRef.current.slides[splideInstance.index].classList
+
+				if (wasPaginationClicked && isWithin5(splideInstance.index, mainSplideInstance.index) && !undesiredSlideClasses.contains('is-active')) {
+					undesiredSlideClasses.add('is-active')
+				}
+				else if (wasPaginationClicked && isWithin5(splideInstance.index, mainSplideInstance.index) && undesiredSlideClasses.contains('is-active')) {
+					splideInstance.go(mainSplideInstance.index)
+				}
+				else if (undesiredSlideClasses.contains('is-active')) {
+					undesiredSlideClasses.remove('is-active')
+				}
+			}
+		}
+		if (wasPaginationClicked) setWasPaginationClicked(false)
+	}, [thumbSwipeCount])
+
+	const slideNavActionHandler = (stateSetter) => {
+		stateSetter(previousValue => ++previousValue)
+	}
+
 
 	return (
 		isVisible && (
@@ -573,7 +616,9 @@ const LightBoxModal = ({
 													onMove={(slide, newIndex, prevIndex, destIndex) => {
 														newIndexHandler(newIndex)
 														if (splideInstance) splideInstance.go(newIndex)
-													}}>
+													}}
+													onActive={() => slideNavActionHandler(setMainSwipeCount, "main")}
+													>
 													{dataList.map((item, index) => (
 														<SplideSlide key={index}>
 															{renderChidren(true, item, index, true)}
@@ -590,7 +635,9 @@ const LightBoxModal = ({
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
 												}
-												onArrowsUpdated={slide => newIndexHandler(slide.index)}>
+												onArrowsUpdated={slide => newIndexHandler(slide.index)}
+												onActive={() => slideNavActionHandler(setThumbSwipeCount, "thumb")}
+												>
 												{dataList.map((item, index) => (
 													<SplideSlide
 														key={index}
@@ -613,7 +660,7 @@ const LightBoxModal = ({
 														key={index}
 														onClick={() => {
 															splideInstance && splideInstance.go(index * 5)
-															setActivePaginationIndex(index)
+															setWasPaginationClicked(true)
 														}}
 														className={`lightbox___wrapper___splide_pagination___wrapper___item ${
 															index * 5 <= currentIndex &&
@@ -637,13 +684,20 @@ const LightBoxModal = ({
 																? ''
 																:
 															isLastPage(5, dataList?.length, currentIndex) &&
-															index < Math.ceil(currentIndex / 5) - 4
-															? 'is_hidden'
+															index < Math.ceil(currentIndex / 5) - 5
+															? `is_hidden`
+															:
+															isLastPage(5, dataList?.length, currentIndex) &&
+															(index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 3) &&
+															currentIndex % 5 === 0 &&
+															Math.ceil(currentIndex / 5) - 5 === index
+															? `is_hidden`
 															:
 															isLastPage(5, dataList?.length, currentIndex) &&
 															(index < Math.ceil(currentIndex / 5) - 2 ||
 															index > Math.ceil(currentIndex / 5) + 3)
-															? ''
+															? ``
 															:
 															currentIndex < 5 &&
 															(index < Math.ceil(currentIndex / 5) - 5 ||
