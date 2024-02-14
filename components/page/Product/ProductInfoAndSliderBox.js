@@ -129,7 +129,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 					<div className='text-center text-md-start'>
 						{pim?.buy_status === 'ChannelAdvisor' ? (
 							<div
-								className='ps-widget ps_wtb_btn w-fit mx-auto mx-md-0'
+								className='ps-widget ps_wtb_btn mx-auto mx-md-0'
 								ps-sku={pim?.model}></div>
 						) : (
 							<button
