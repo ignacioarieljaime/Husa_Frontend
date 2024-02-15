@@ -53,9 +53,8 @@ const BlogResults = ({ data }) => {
 	}, [blogs])
 
 	const getPostId = () => {
-		let ids = structure?.exclude_news?.value?.map(
-			item => `&exclude[]=${item.id}`
-		)
+		let ids = []
+		ids = structure?.exclude_news?.value?.map(item => `&exclude[]=${item.id}`)
 		return ids && ids.length ? ids.join(',').replaceAll(',', '') : null
 	}
 
