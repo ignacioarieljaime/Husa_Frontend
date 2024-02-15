@@ -105,7 +105,7 @@ const BlogListSearchableComponent = ({ data }) => {
 
 	useEffect(() => {
 		getAllPosts()
-	}, [filters])
+	}, [])
 
 	// useEffect(() => {
 	// 	if (Array.isArray(blogsList)) {

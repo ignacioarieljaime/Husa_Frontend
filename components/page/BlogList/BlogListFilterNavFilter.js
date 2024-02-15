@@ -48,9 +48,16 @@ const BlogListFilterNavFilter = ({
 		if (window.scrollY >= 60) setFix(false)
 		window.addEventListener('scroll', () => {
 			if (target?.current?.offsetTop >= window.scrollY + 60) {
+				document.getElementById('Header').classList.remove('full_transparent')
 				setFix(true)
 			} else {
+				document.getElementById('Header').classList.add('full_transparent')
 				setFix(false)
+			}
+			if (target?.current?.offsetTop >= window.scrollY + 20) {
+				document.getElementById('Header').classList.remove('full_transparent')
+			} else {
+				document.getElementById('Header').classList.add('full_transparent')
 			}
 		})
 	}, [])
@@ -139,9 +146,9 @@ const BlogListFilterNavFilter = ({
 			style={{
 				zIndex: !fix ? 1001 : 997
 			}}
-			className='newsroom_search'>
+			className={`newsroom_search ${!fix ? 'white_bg' : ''}`}>
 			<div className='news_room_search_filter'>
-				<div className=''>
+				<div className='position-relative'>
 					<div className='content'>
 						<div className='filter_title'>
 							{link?.value ? (

@@ -16,7 +16,8 @@ import HeaderNotification from './HeaderNotification'
 import { useWindowSize } from 'hooks/useWindowSize'
 import { useSelector } from 'react-redux'
 
-function Header({ data: { structure }, notification }) {
+function Header({ data, notification }) {
+	const { structure } = data
 	const { headerData: headerRedux } = useSelector(state => state.layoutData)
 	const [width] = useWindowSize()
 	const [theme, setTheme] = useState('dark')
@@ -26,7 +27,7 @@ function Header({ data: { structure }, notification }) {
 	const [searchInputCondition, setSearchInputCondition] = useState(false)
 	const [dropDown, setDropDown] = useState(null)
 	const [dropDownTimer, setDropDownTimer] = useState(true)
-	const [dropDownTimerCheck, setDropDownTimerCheck] = useState([]);
+	const [dropDownTimerCheck, setDropDownTimerCheck] = useState([])
 
 	useEffect(() => {
 		if (sessionStorage.getItem('headerData')) {
@@ -50,23 +51,33 @@ function Header({ data: { structure }, notification }) {
 
 	useEffect(() => {
 		if (headerData && dropDownTimerCheck.length === 0) {
-			setDropDownTimerCheck(Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false));
+			setDropDownTimerCheck(
+				Array.from(
+					{ length: headerData?.widgets?.center?.childs.length },
+					() => false
+				)
+			)
 		}
 	}, [headerData])
 
 	useEffect(() => {
+		const newDropDownTimerCheck = Array.from(
+			{ length: headerData?.widgets?.center?.childs.length },
+			() => false
+		)
 
-		const newDropDownTimerCheck = Array.from({ length: headerData?.widgets?.center?.childs.length }, () => false);
-
-		if (JSON.stringify(dropDownTimerCheck) === JSON.stringify(newDropDownTimerCheck)) {
-			setDropDownTimer(true);
+		if (
+			JSON.stringify(dropDownTimerCheck) ===
+			JSON.stringify(newDropDownTimerCheck)
+		) {
+			setDropDownTimer(true)
 		} else {
-			setDropDownTimer(false);
+			setDropDownTimer(false)
 		}
 	}, [dropDownTimerCheck, dropDownTimer])
 
 	return (
-		<header>
+		<header id={data?.name}>
 			<nav
 				className={`navbar navbar-expand justify-content-center  
 					theme-${theme}

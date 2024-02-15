@@ -21,6 +21,16 @@ header.blog {
       }
     }
   }
+
+  &.full_transparent {
+    * {
+      background: transparent !important;
+      color: transparent !important;
+      border-color: transparent !important;
+      fill: transparent !important;
+      stroke: transparent !important;
+    }
+  }
 }
 .search-articles {
   background: transparent;
