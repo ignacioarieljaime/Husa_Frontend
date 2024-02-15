@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -20,10 +21,28 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	const [imageModal, setImageModal] = useState(false)
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
+	const [hasQueryTriggered, setHasQueryTriggered] = useState(false)
 	const [width] = useWindowSize()
 	const [thumbCanMove, setThumbCanMove] = useState(false)
 	const [isMobileDragging, setIsMobileDragging] = useState(false)
 	const [isMainDragging, setIsMainDragging] = useState(false)
+
+    const router = useRouter()
+    const querySlide = router?.query?.slide
+    
+    const queryToNumber = () => {
+        const convertedValue = parseInt(querySlide, 10)
+        if (typeof convertedValue === 'number' && !isNaN(convertedValue)) return convertedValue
+        return null
+    }
+
+	const querySlideNumber = queryToNumber()
+
+	if (querySlideNumber && !hasQueryTriggered) {
+		if (lightBoxActiveIndex !== querySlideNumber) setLightBoxActiveIndex((querySlideNumber - 1))
+		if (!lightBoxStatus) setLightBoxStatus(true)
+		setHasQueryTriggered(true)
+	}
 
 	if (thumbsSwiper && width) {
 		if (width >= 768) {
