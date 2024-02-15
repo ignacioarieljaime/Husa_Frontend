@@ -124,12 +124,18 @@ const BlogListSearchableComponent = ({ data }) => {
 
 	const getAllPosts = async () => {
 		setBlogsList('loading')
+		const countValue = structure?.count?.value
+		const countNumber = typeof countValue === 'string' ? parseInt(structure?.count?.value, 10) : null;
+		let finalCountValue
+		if (countNumber) finalCountValue = (countNumber + 1).toString()
+		else finalCountValue = countValue
+
 		try {
 			let response = await GetBlogsByTagApi(
 				filters.tag,
 				filters.year,
 				filters.search,
-				structure?.count?.value,
+				finalCountValue,
 				filters.page,
 				getPostId()
 			)
