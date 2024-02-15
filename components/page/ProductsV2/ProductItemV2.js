@@ -186,43 +186,49 @@ const ProductItemV2 = ({ data }) => {
 													<span>View Product</span>
 												</a>
 											</Link>
-											<button
-												disabled={
-													currentItem?.product?.buy_status ===
-														'ChannelAdvisor' ||
-													currentItem?.product?.buy_status === 'Internal'
-														? false
-														: true
-												}
-												onClick={e => {
-													e.stopPropagation()
-													e.preventDefault()
-													currentItem?.product?.buy_status ===
-														'ChannelAdvisor' ||
-													currentItem?.product?.buy_status === 'Internal'
-														? dataLayerHandler()
-														: {}
-												}}
-												style={
-													currentItem?.product?.retailer
-														? { cursor: 'pointer' }
-														: {}
-												}
-												className={`channel_advisor_button w-100 ${
-													currentItem?.product?.buy_status ===
-														'ChannelAdvisor' ||
-													currentItem?.product?.buy_status === 'Internal'
-														? ''
-														: 'disabled_btn'
-												}`}>
-												<div>
-													{currentItem?.product?.buy_status ===
-														'ChannelAdvisor' ||
-													currentItem?.product?.buy_status === 'Internal'
-														? 'Where To Buy'
-														: 'coming soon'}
-												</div>
-											</button>
+											{currentItem?.product?.buy_status === 'ChannelAdvisor' ? (
+												<div
+													className='ps-widget price_spider_button w-100'
+													ps-sku={currentItem?.product?.model}></div>
+											) : (
+												<button
+													disabled={
+														currentItem?.product?.buy_status ===
+															'ChannelAdvisor' ||
+														currentItem?.product?.buy_status === 'Internal'
+															? false
+															: true
+													}
+													onClick={e => {
+														e.stopPropagation()
+														e.preventDefault()
+														currentItem?.product?.buy_status ===
+															'ChannelAdvisor' ||
+														currentItem?.product?.buy_status === 'Internal'
+															? dataLayerHandler()
+															: {}
+													}}
+													style={
+														currentItem?.product?.retailer
+															? { cursor: 'pointer' }
+															: {}
+													}
+													className={`channel_advisor_button w-100 ${
+														currentItem?.product?.buy_status ===
+															'ChannelAdvisor' ||
+														currentItem?.product?.buy_status === 'Internal'
+															? ''
+															: 'disabled_btn'
+													}`}>
+													<div>
+														{currentItem?.product?.buy_status ===
+															'ChannelAdvisor' ||
+														currentItem?.product?.buy_status === 'Internal'
+															? 'Where To Buy'
+															: 'coming soon'}
+													</div>
+												</button>
+											)}
 										</div>
 
 										{currentItem?.product &&

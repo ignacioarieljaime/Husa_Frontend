@@ -532,7 +532,8 @@
 								}
 							}
 						}
-						.channel_advisor_button {
+						.channel_advisor_button,
+						.price_spider_button {
 							display: flex;
 							min-width: 80px;
 							padding: 9px 16px 9.5px;
@@ -542,12 +543,15 @@
 							border: 1px solid #008885;
 							background: #008885;
 							transition: all 0.3s ease;
-							div {
+
+							div,
+							.ps-button-label {
 								color: #fff;
 								font-size: 14px;
 								line-height: 100%; /* 14px */
-								margin-bottom: -3px;
+								margin-bottom: -2px;
 								transition: all 0.3s ease;
+								display: block;
 							}
 							&:hover {
 								border-color: #006664;
@@ -556,6 +560,40 @@
 							&:active {
 								border-color: #000;
 								background: #000;
+							}
+						}
+						.price_spider_button {
+							display: none !important;
+							&.ps-enabled,
+							&.ps-disabled {
+								display: flex !important;
+							}
+							&.ps-disabled {
+								display: flex !important;
+								flex-direction: column;
+								border: 1px solid #333;
+								background: #333;
+								.ps-button-label {
+									color: #fff;
+									font-size: 14px;
+									line-height: 100%; /* 14px */
+									margin-bottom: -2px;
+									transition: all 0.3s ease;
+									display: block;
+								}
+								small {
+									// font-size: 10px;
+									// line-height: 100%; /* 14px */
+									display: none;
+								}
+								&:hover {
+									border-color: #333;
+									background: #333;
+								}
+								&:active {
+									border-color: #333;
+									background: #333;
+								}
 							}
 						}
 					}
@@ -606,7 +644,7 @@
 								}
 								&:hover {
 									mix-blend-mode: darken;
-									background-color: #F0F2F2;
+									background-color: #f0f2f2;
 									box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
 								}
 								&:active {
