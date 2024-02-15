@@ -126,29 +126,30 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						<div className='sizes pb-0'></div>
 					)}
 					<div className='text-center text-md-start'>
-						{pim?.buy_status === 'ChannelAdvisor' ? (
-							<div
-								className='ps-widget ps_wtb_btn w-fit mx-auto mx-md-0'
-								ps-sku={pim?.model}></div>
-						) : (
-							<button
-								className='wtb_btn mx-auto mx-md-0'
-								disabled={
-									pim?.buy_status !== 'ChannelAdvisor' &&
-									pim?.buy_status !== 'Internal'
-								}
-								onClick={() =>
-									pim?.buy_status === 'ChannelAdvisor' ||
-									pim?.buy_status === 'Internal'
-										? dataLayerHandler()
-										: {}
-								}>
-								{pim?.buy_status === 'ChannelAdvisor' ||
+						<button
+							className='wtb_btn mx-auto mx-md-0'
+							disabled={
+								pim?.buy_status !== 'ChannelAdvisor' &&
+								pim?.buy_status !== 'Internal'
+							}
+							onClick={() =>
+								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
-									? 'Where To Buy'
-									: 'coming soon'}
-							</button>
-						)}
+									? dataLayerHandler()
+									: {}
+							}>
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal'
+								? 'Where To Buy'
+								: 'coming soon'}
+							{/* {pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal' ? (
+								<img
+									style={{ marginLeft: '16px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							) : null} */}
+						</button>
 					</div>
 				</div>
 				<ProductInfoSlider
@@ -250,29 +251,30 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						<div className='sizes pb-0'></div>
 					)}
 					<div className='text-center text-md-start'>
-						{pim?.buy_status === 'ChannelAdvisor' ? (
-							<div
-								className='ps-widget ps_wtb_btn w-fit mx-auto mx-md-0'
-								ps-sku={pim?.model}></div>
-						) : (
-							<button
-								className='wtb_btn mx-auto mx-md-0'
-								disabled={
-									pim?.buy_status !== 'ChannelAdvisor' &&
-									pim?.buy_status !== 'Internal'
-								}
-								onClick={() =>
-									pim?.buy_status === 'ChannelAdvisor' ||
-									pim?.buy_status === 'Internal'
-										? dataLayerHandler()
-										: {}
-								}>
-								{pim?.buy_status === 'ChannelAdvisor' ||
+						<button
+							className='wtb_btn mx-auto mx-md-0'
+							disabled={
+								pim?.buy_status !== 'ChannelAdvisor' &&
+								pim?.buy_status !== 'Internal'
+							}
+							onClick={() =>
+								pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
-									? 'Where To Buy'
-									: 'coming soon'}
-							</button>
-						)}
+									? dataLayerHandler()
+									: {}
+							}>
+							{pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal'
+								? 'Where To Buy'
+								: 'coming soon'}
+							{/* {pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal' ? (
+								<img
+									style={{ marginLeft: '16px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							) : null} */}
+						</button>
 					</div>
 					{/* <div className='model-toggle '>
 						{pim?.series[0]?.values.map(
