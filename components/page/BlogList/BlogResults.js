@@ -15,6 +15,7 @@ const BlogResults = ({ data }) => {
 	const [width] = useWindowSize()
 	const [blogsLength, setBlogsLength] = useState()
 	const [blogs, setBlogs] = useState([])
+	const [finalBlogs, setFinalBlogs] = useState(null)
 	const [initLoading, setInitLoading] = useState(false)
 	const [pagination, setPagination] = useState()
 	const [filters, setFilters] = useState({
@@ -49,6 +50,7 @@ const BlogResults = ({ data }) => {
 	}, [filters])
 
 	useEffect(() => {
+		if (Array.isArray(blogs) && blogs.length > 0) setFinalBlogs(blogs.filter(item => item.title !== "Blog Results" && item.title !== "Hisense USA Blog"))
 		window.scrollTo({ top: 0 })
 	}, [blogs])
 
@@ -104,16 +106,16 @@ const BlogResults = ({ data }) => {
 							? structure?.blog_search?.value
 							: 'search Blogs'
 					}
-					blogsList={blogs}
-					newsLength={blogs.length}
+					blogsList={finalBlogs}
+					newsLength={finalBlogs?.length}
 					results
 				/>
 				<div className='blog_results___content'>
 					<div className='blog_results___content___list'>
 						{blogs === 'loading' || initLoading ? (
 							<Spinner />
-						) : Array.isArray(blogs) ? (
-							blogs.map((item, index) => (
+						) : Array.isArray(finalBlogs) ? (
+							finalBlogs.map((item, index) => (
 								<div
 									className='blog_results___content___list___item'
 									key={index}>
