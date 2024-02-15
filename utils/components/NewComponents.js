@@ -16,11 +16,19 @@ module.exports.NewComponents = [
 		path: 'components/page/NewComponents/FullFeature.js'
 	},
 	{
+		name: 'AdditionalResourcesModule',
+		path: 'components/page/NewComponents/AdditionalResourcesModule.js'
+	},
+	{
 		name: 'SignUpPopUp',
 		path: 'components/page/NewComponents/SignUpPopUp.js'
 	},
 	{
 		name: 'RetailersList',
 		path: 'components/page/NewComponents/RetailersList.js'
+	},
+	{
+		name: 'AwardsAndAccolades',
+		path: 'components/page/NewComponents/AwardsAndAccolades.js'
 	}
 ]

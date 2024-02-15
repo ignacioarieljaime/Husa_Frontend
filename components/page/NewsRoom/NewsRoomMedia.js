@@ -41,7 +41,9 @@ const NewsRoomMedia = ({ data }) => {
 								<a
 									target={
 										structure?.list?.value[0]?.main_link?.target || '_self'
-									}>
+									}
+									className={structure?.list?.value[0]?.downloadImage?.src ? 'no-icon' : ''}
+									>
 									{structure?.list?.value[0]?.main_link?.title}
 									{structure?.list?.value[0]?.downloadImage?.src && (
 										<CustomImage

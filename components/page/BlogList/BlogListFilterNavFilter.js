@@ -7,7 +7,7 @@ import SelectBoxAngleArrow from 'components/icons/SelectBoxAngleArrow'
 import { useWindowSize } from 'hooks/useWindowSize'
 import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
-import NewsSearchFilterItem from './NewsSearchFilterItem'
+import BlogListFilterNavFilterItem from './BlogListFilterNavFilterItem'
 import FilterResponsive from './responsiveFilter/FilterResponsive'
 import { useRouter } from 'next/router'
 
@@ -17,8 +17,8 @@ for (let year = new Date().getFullYear(); year >= 1980; year--) {
 	years.push(year)
 }
 
-const NewsSearchFilter = ({
-	title = 'Featured News',
+const BlogListFilterNavFilter = ({
+	title = 'Featured Blogs',
 	filters,
 	yearTitle,
 	categoryTitle,
@@ -28,8 +28,7 @@ const NewsSearchFilter = ({
 	targetRoute,
 	results,
 	newsLength,
-	link,
-	color
+	link
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -49,9 +48,16 @@ const NewsSearchFilter = ({
 		if (window.scrollY >= 60) setFix(false)
 		window.addEventListener('scroll', () => {
 			if (target?.current?.offsetTop >= window.scrollY + 60) {
+				document.getElementById('Header').classList.remove('full_transparent')
 				setFix(true)
 			} else {
+				document.getElementById('Header').classList.add('full_transparent')
 				setFix(false)
+			}
+			if (target?.current?.offsetTop >= window.scrollY + 20) {
+				document.getElementById('Header').classList.remove('full_transparent')
+			} else {
+				document.getElementById('Header').classList.add('full_transparent')
 			}
 		})
 	}, [])
@@ -109,18 +115,18 @@ const NewsSearchFilter = ({
 		router.reload()
 	}
 
-	const resetSearch = (year, product, search, reload) => {
+	const resetSearch = (year, tag, search, reload) => {
 		if (year) filterHandler('year', '', false)
-		if (product) filterHandler('product', '', false)
+		if (tag) filterHandler('tag', '', false)
 		if (search) filterHandler('search', '', false)
 		if (reload) reloadPage()
 	}
 
 	const resetVisible = () => {
 		if (
-			filters.year.length === 0 &&
-			filters.product.length === 0 &&
-			filters.search.length === 0
+			filters?.year?.length === 0 &&
+			filters?.tag?.length === 0 &&
+			filters?.search?.length === 0
 		)
 			return false
 		return true
@@ -140,9 +146,9 @@ const NewsSearchFilter = ({
 			style={{
 				zIndex: !fix ? 1001 : 997
 			}}
-			className='newsroom_search'>
+			className={`newsroom_search ${!fix ? 'white_bg' : ''}`}>
 			<div className='news_room_search_filter'>
-				<div className=''>
+				<div className='position-relative'>
 					<div className='content'>
 						<div className='filter_title'>
 							{link?.value ? (
@@ -151,25 +157,24 @@ const NewsSearchFilter = ({
 									target={link?.target ? link?.target : '_self'}>
 									<a
 										target={link?.target ? link?.target : '_self'}
-										style={{color: color}}
 										className='title'>
 										{title}
 									</a>
 								</Link>
 							) : (
-								<span className='title' style={{color: color}}>{title}</span>
+								<span className='title'>{title}</span>
 							)}
 						</div>
 						{news &&
 							(filters.search.length > 0 ||
 								filters.year.length > 0 ||
-								filters.product.length > 0) && (
+								filters.tag.length > 0) && (
 								<div className='results'>{newsLength} Results</div>
 							)}
 
 						{width >= 768 && (
 							<div className='filter_options'>
-								<NewsSearchFilterItem
+								<BlogListFilterNavFilterItem
 									filterChangeHandler={filterHandler}
 									filters={filters?.year}
 									title={yearTitle}
@@ -177,13 +182,13 @@ const NewsSearchFilter = ({
 									onClose={() => !results && redirectToResultsPage()}
 									dataKey='year'
 								/>
-								<NewsSearchFilterItem
+								<BlogListFilterNavFilterItem
 									filterChangeHandler={filterHandler}
-									filters={filters?.product}
+									filters={filters?.tag}
 									title={categoryTitle}
 									data={filterData?.tags}
 									onClose={() => !results && redirectToResultsPage()}
-									dataKey='product'
+									dataKey='tag'
 								/>
 
 								<div className='custom_input_box'>
@@ -251,4 +256,4 @@ const NewsSearchFilter = ({
 	)
 }
 
-export default NewsSearchFilter
+export default BlogListFilterNavFilter
