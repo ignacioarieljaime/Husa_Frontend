@@ -495,7 +495,10 @@
 				position: relative;
 				padding: 16px 0;
 				order: 1;
+				border-radius: 4px;
+				overflow: hidden;
 				@include mq(768) {
+					border-radius: 0;
 					padding: 0;
 					order: 2;
 					width: 100%;
@@ -557,13 +560,13 @@
 				}
 				.swiper-button-prev {
 					left: 50%;
-					top: -24px;
+					top: -26px;
 					border-radius: 4px 0 0 4px;
 					transform: translateX(-50%) rotate(90deg);
 				}
 				.swiper-button-next {
 					left: 50%;
-					bottom: -24px;
+					bottom: -26px;
 					top: unset;
 					border-radius: 0px 4px 4px 0px;
 					transform: translateX(-50%) rotate(90deg);
@@ -572,7 +575,7 @@
 				.swiper-button-next {
 					background: #f0f2f2;
 					width: 16px;
-					height: 64px;
+					height: 68px;
 					margin-top: 0;
 					transition: all 0.3s ease;
 					&::after {
