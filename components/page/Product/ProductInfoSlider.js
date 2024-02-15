@@ -11,11 +11,15 @@ import 'swiper/css/navigation'
 // import required modules
 import { FreeMode, Thumbs, Navigation } from 'swiper'
 import Expand from 'public/assets/images/expand.png'
-import Mute from 'public/assets/images/mute.png'
 import { useWindowSize } from 'hooks/useWindowSize'
+import LightBoxModal from '../NewComponents/LightBoxModal'
+import Play from 'public/assets/svgs/play.svg'
+
 function ProductInfoSlider({ pim, firstImage, allData }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 	const [imageModal, setImageModal] = useState(false)
+	const [lightBoxStatus, setLightBoxStatus] = useState(false)
+	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	const [width] = useWindowSize()
 	const [thumbCanMove, setThumbCanMove] = useState(false)
 	const [isMobileDragging, setIsMobileDragging] = useState(false)
@@ -63,6 +67,61 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 		if (isMainDragging) setIsMainDragging(false)
 		if (thumbCanMove) setThumbCanMove(false)
 	}
+	const itemTypeIds = [1, 5]
+
+	// Format pim data as valid props for LightBoxModal component
+	// TODO: replace all this with actual lightbox data once cxm options are updated
+	/** start */
+	const pimFirstImage = pim.filter(item => item.url === firstImage)
+	pim = pim.filter(item => itemTypeIds.includes(item.type_id) && item.url !== firstImage)
+	Array.prototype.unshift.apply(pim, pimFirstImage)
+	pim = pim.map((item, index) => {
+		return { ...item, order: index }
+	})
+	const playButton = Play.src
+	const blockVideo= 'autoplay=0&controls=0'
+
+	const lightBox = pim
+	.map(item => ({
+	  link: {
+		id: item.type_id,
+		type: "url",
+		title: "Download",
+		value: item.url,
+		hidden: false
+	  },
+	  image: {
+		id: item.subject_id,
+		alt: item.caption,
+		src: item.type_id === 5 ? playButton : item.url,
+		type: "image",
+		title: "Image",
+		hidden: false
+	  },
+	  video: {
+		id: item.type_id,
+		type: "string",
+		title: "Iframe Link",
+		value: item.type_id === 5 ? item.url : null,
+		hidden: false
+	  },
+	  caption: {
+		id: item.order,
+		type: "simpleText",
+		title: "Light Box Caption",
+		value: item.caption,
+		hidden: false
+	  },
+	  thumbnail_image: {
+		id: 4,
+		alt: item.caption,
+		src: item.type_id === 5 ? playButton : item.url,
+		type: "image",
+		title: "Thumbnail Image (for video)",
+		hidden: false
+	  }
+	}));
+	/** end */
 
 	return (
 		<div className='product_gallery px-0'>
@@ -142,10 +201,14 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								}}
 								>
 								<figure className='image_wrapper'>
-									<iframe
-										mute={true}
-										src={item?.url}
-										className='image'></iframe>
+									<img
+										src={playButton}
+										alt={item?.caption ? item?.caption : item?.title}
+										title={item?.caption ? item?.caption : item?.title}
+										aria-hidden='true'
+										className='image'
+										tabIndex='-1'
+									/>
 								</figure>
 							</SwiperSlide>
 						) : null
@@ -183,14 +246,10 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								className='image'
 							/>
 							<button
-								onClick={() =>
-									setImageModal(
-										allData?.Category?.customFields.find(
-											customFiledItem =>
-												customFiledItem?.custom_field?.name === 'upload pic'
-										)?.media?.external_url
-									)
-								}
+								onClick={() => {
+									setLightBoxActiveIndex(lightBoxActiveIndex)
+									setLightBoxStatus(true)
+								}}
 								className='resize_btn'>
 								<img src={Expand.src} width='16' />
 							</button>
@@ -212,7 +271,10 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								className='image'
 							/>
 							<button
-								onClick={() => setImageModal(firstImage)}
+								onClick={() => {
+									setLightBoxActiveIndex(0)
+									setLightBoxStatus(true)
+								}}
 								className='resize_btn'>
 								<img src={Expand.src} width='16' />
 							</button>
@@ -232,7 +294,10 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 										className='image'
 									/>
 									<button
-										onClick={() => setImageModal(item?.url)}
+										onClick={() => {
+											setLightBoxActiveIndex(item.order)
+											setLightBoxStatus(true)
+										}}
 										className='resize_btn'>
 										<img src={Expand.src} width='16' />
 									</button>
@@ -243,30 +308,18 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							</SwiperSlide>
 						) : item.type_id === 5 ? (
 							<SwiperSlide key={index}>
-								<figure className='video_wrapper'>
-									{/* <video
-											src={item?.url}
-											title={item?.caption ? item?.caption : item?.title}
-											alt={item?.caption ? item?.caption : item?.title}
-											className='video'
-										/> */}
-									<iframe
-										mute='true'
-										src={item?.url}
-										className='video'></iframe>
-									<p>{item?.caption ? item?.caption : item?.title}</p>
-									<div className='btns'>
-										{/* <button
-												// onClick={() => setImageModal(item?.url)}
-												className='resize_btn'>
-												<img src={Mute.src} width='16' />
-											</button> */}
-										<button
-											onClick={() => setImageModal(item?.url)}
-											className='resize_btn'>
-											<img src={Expand.src} width='16' />
-										</button>
-									</div>
+								<figure className='image_wrapper'>
+									{/* Replace iframe with thumbnail once implemented in cxm */}
+									<iframe src={item.url + (item.url.includes('?') ? `&` : '?') + blockVideo} autoplay="" controls className="image"></iframe>
+									<button
+										onClick={() => {
+											setLightBoxActiveIndex(item.order)
+											setLightBoxStatus(true)
+										}}
+										className='resize_btn'
+									>
+										<img src={Expand.src} width='16' />
+									</button>
 								</figure>
 								{/* <figcaption className='figure-caption'>
 										{item.title}
@@ -275,14 +328,23 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						) : null
 					)}
 			</Swiper>
-			{imageModal && (
-				<div
-					onClick={() => setImageModal(false)}
-					className='resized_image_modal'>
-					<div className='wrapper'>
-						<img src={imageModal} alt='bigger image' className='image' />
-					</div>
-				</div>
+			{lightBoxStatus && (
+				<LightBoxModal
+					zIndex={99997}
+					id={pim.id}
+					caption={lightBox[lightBoxActiveIndex]?.caption}
+					video={lightBox[lightBoxActiveIndex]?.video}
+					image={lightBox[lightBoxActiveIndex]?.image}
+					link={lightBox[lightBoxActiveIndex]?.link}
+					isVisible={lightBoxStatus}
+					visibleHandler={() => {
+						setLightBoxStatus(prevState => !prevState)
+						setLightBoxActiveIndex(lightBoxActiveIndex)
+					}}
+					activateSwiper
+					dataList={lightBox}
+					activeItemIndex={lightBoxActiveIndex}
+				/>
 			)}
 		</div>
 	)
