@@ -143,41 +143,6 @@
 				padding: 8.5px 16px 7.5px !important;
 				font-size: 14px;
 				line-height: 17px;
-				transition: all 0.3s ease-in;
-				&:hover {
-					border: 1px solid #006664;
-					background: #006664;
-				}
-				&:disabled {
-					color: #b3bac5 !important;
-				}
-			}
-			.ps-wtb {
-				padding: 0;
-
-				span {
-					display: block;
-					font-style: normal;
-					font-weight: 400;
-					border-radius: 1000px;
-					border: 1px solid #00aaa6;
-					color: #fff !important;
-					background: #00aaa6;
-					min-width: 80px !important;
-					padding: 8.5px 16px 7.5px !important;
-					font-size: 14px;
-					line-height: 14px;
-					font-family: 'hisense';
-					transition: all 0.3s ease-in;
-					&:hover {
-						border: 1px solid #006664;
-						background: #006664;
-						font-family: 'hisense';
-						font-size: 14px;
-						line-height: 14px;
-						font-weight: 400;
-					}
-				}
 				&:disabled {
 					color: #b3bac5 !important;
 				}
