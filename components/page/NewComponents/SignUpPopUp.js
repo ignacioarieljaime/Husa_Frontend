@@ -85,7 +85,8 @@ const SignUpPopUp = ({ data }) => {
 
 	return (
 		isOpen &&
-		!hasClosed && (
+		!hasClosed &&
+		!sessionStorage.getItem('noSignUpPopUp') && (
 			<div
 				className='signup_popup'
 				onClick={() => {
