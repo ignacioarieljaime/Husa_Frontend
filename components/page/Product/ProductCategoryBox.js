@@ -26,12 +26,18 @@ function ProductCategoryBox({ data, pim }) {
 
 	const dataLayerHandler = () => {
 		setChanelAdviserHandler(!chanelAdviserHandler)
+		// window.dataLayer.push({
+		// 	event: 'view_product',
+		// 	eventData: {
+		// 		product_id: pim?.model,
+		// 		category: pim?.Category?.name
+		// 	}
+		// })
 		window.dataLayer.push({
-			event: 'view_product',
-			eventData: {
-				product_id: pim?.model,
-				category: pim?.Category?.name
-			}
+			event: 'Online redirect',
+			category: 'PriceSpider Click',
+			action: 'PS-Redirect',
+			label: pim?.name
 		})
 	}
 
