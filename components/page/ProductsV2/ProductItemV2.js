@@ -78,12 +78,18 @@ const ProductItemV2 = ({ data }) => {
 
 	const dataLayerHandler = () => {
 		setChanelAdviserHandler(!chanelAdviserHandler)
+		// window.dataLayer.push({
+		// 	event: 'view_product',
+		// 	eventData: {
+		// 		product_id: currentItem?.model,
+		// 		category: currentItem?.category?.name
+		// 	}
+		// })
 		window.dataLayer.push({
-			event: 'view_product',
-			eventData: {
-				product_id: currentItem?.model,
-				category: currentItem?.category?.name
-			}
+			event: 'Online redirect',
+			category: 'PriceSpider Click',
+			action: 'PS-Redirect',
+			label: currentItem?.product?.name
 		})
 	}
 
