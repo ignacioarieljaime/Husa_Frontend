@@ -39,12 +39,13 @@ const AdditionalResourcesModuleItem = ({
 			title: _data?.title,
 			subtitle: _data?.tags.join(' '),
 			type: data?.type?.value,
-			date:
-				moment(_data?.published_at).format('MMM DD YYYY').split(' ')[0] +
-				' ' +
-				moment(_data?.published_at).format('MMM DD YYYY').split(' ')[1] +
-				' ' +
-				moment(_data?.published_at).format('MMM DD YYYY').split(' ')[2],
+			date: data?.date?.value
+				? data?.date?.value
+				: moment(_data?.published_at).format('MMM DD YYYY').split(' ')[0] +
+				  ' ' +
+				  moment(_data?.published_at).format('MMM DD YYYY').split(' ')[1] +
+				  ' ' +
+				  moment(_data?.published_at).format('MMM DD YYYY').split(' ')[2],
 			image: _data?.meta?.find(item => item.name === 'property="og:image"')
 				?.content,
 			button_title: data?.button_title?.value
@@ -78,7 +79,14 @@ const AdditionalResourcesModuleItem = ({
 			data?.type?.value === 'lightbox'
 		) {
 			setCardData({
-				link: data?.link?.value,
+				link:
+					data?.type?.value === 'download'
+						? data?.file?.src.includes('images')
+							? data?.file?.src.split('.com')[0] +
+							  '.com/download/f' +
+							  data?.file?.src.split('.com')[1]
+							: data?.file?.src
+						: data?.link?.value,
 				target: data?.link?.target,
 				title: data?.title?.value,
 				subtitle: data?.subtitle?.value,
@@ -238,7 +246,7 @@ const AdditionalResourcesModuleItem = ({
 				<ModuleInnerContent />
 			</ModuleContentDiv>
 		)
-	} else if (cardData?.link || cardData?.type === "download") {
+	} else if (cardData?.link || cardData?.type === 'download') {
 		return (
 			<ModuleContentLink>
 				<ModuleInnerContent />
