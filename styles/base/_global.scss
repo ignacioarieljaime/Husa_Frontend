@@ -845,6 +845,30 @@ input {
 			min-height: 25px !important; /* 125% */
 			letter-spacing: -0.4px !important;
 		}
+		table {
+			th {
+				vertical-align: middle;
+			}
+			p,
+			a {
+				font-size: 16px !important;
+				line-height: 22px !important;
+				min-height: 22px !important;
+			}
+		}
+		ul,
+		ol,
+		li {
+			font-size: 16px !important;
+			line-height: 22px !important;
+			min-height: 22px !important;
+			p,
+			a {
+				font-size: 16px !important;
+				line-height: 22px !important;
+				min-height: 22px !important;
+			}
+		}
 		& > p,
 		& > a {
 			font-size: 16px !important;
