@@ -797,16 +797,18 @@ input {
 		text-decoration: none !important;
 	}
 	&.version_2 {
-		* {
+		x {
 			margin: 0 !important;
+		}
+		*:not(p) {
 			font-weight: 400 !important;
 		}
-		h1,
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
+		h1:not(table h1),
+		h2:not(table h2),
+		h3:not(table h3),
+		h4:not(table h4),
+		h5:not(table h5),
+		h6:not(table h6) {
 			font-weight: 500 !important;
 		}
 		h1 {
@@ -874,6 +876,31 @@ input {
 			font-size: 16px !important;
 			line-height: 22px !important;
 			min-height: 22px !important;
+		}
+		span {
+			font-weight: 300 !important;
+		}
+		th > p {
+			font-size: 14px !important;
+			font-weight: 400 !important;
+		}
+		th > h4 {
+			font-size: 1.5rem !important;
+			line-height: 1.45em !important;
+		}
+		th > h5 {
+			font-size: 1.25rem !important;
+			line-height: 1.4em !important;
+		}
+		th > h6 {
+			font-size: 1rem !important;
+		}
+		ol > li > p,
+		ul > li > p,
+		ol > li > p > span,
+		ul > li > p > span {
+			font-size: 16px !important;
+			line-height: 22px !important;
 		}
 	}
 }
