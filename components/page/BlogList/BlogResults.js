@@ -50,13 +50,21 @@ const BlogResults = ({ data }) => {
 	}, [filters])
 
 	useEffect(() => {
-		if (Array.isArray(blogs) && blogs.length > 0) setFinalBlogs(blogs.filter(item => item.title !== "Blog Results" && item.title !== "Hisense USA Blog"))
+		if (Array.isArray(blogs) && blogs.length > 0)
+			setFinalBlogs(
+				blogs.filter(
+					item =>
+						item.title !== 'Blog Results' && item.title !== 'Hisense USA Blog'
+				)
+			)
 		window.scrollTo({ top: 0 })
 	}, [blogs])
 
 	const getPostId = () => {
 		let ids = []
-		ids = structure?.exclude_news?.value?.map(item => `&exclude[]=${item.id}`)
+		ids = structure?.exclude_blogs?.value?.map(
+			item => `&exclude[]=${item?.id?.value}`
+		)
 		return ids && ids.length ? ids.join(',').replaceAll(',', '') : null
 	}
 

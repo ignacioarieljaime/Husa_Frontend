@@ -116,8 +116,9 @@ const BlogListSearchableComponent = ({ data }) => {
 	// }, [blogsList])
 
 	const getPostId = () => {
-		let ids = structure?.exclude_news?.value?.map(
-			item => `&exclude[]=${item.id}`
+		let ids = []
+		ids = structure?.exclude_blogs?.value?.map(
+			item => `&exclude[]=${item?.id?.value}`
 		)
 		return ids && ids.length ? ids.join(',').replaceAll(',', '') : null
 	}
@@ -125,7 +126,10 @@ const BlogListSearchableComponent = ({ data }) => {
 	const getAllPosts = async () => {
 		setBlogsList('loading')
 		const countValue = structure?.count?.value
-		const countNumber = typeof countValue === 'string' ? parseInt(structure?.count?.value, 10) : null;
+		const countNumber =
+			typeof countValue === 'string'
+				? parseInt(structure?.count?.value, 10)
+				: null
 		let finalCountValue
 		if (countNumber) finalCountValue = (countNumber + 1).toString()
 		else finalCountValue = countValue
