@@ -151,13 +151,15 @@ const NewsSearchFilter = ({
 									target={link?.target ? link?.target : '_self'}>
 									<a
 										target={link?.target ? link?.target : '_self'}
-										style={{color: color}}
+										style={{ color: color }}
 										className='title'>
 										{title}
 									</a>
 								</Link>
 							) : (
-								<span className='title' style={{color: color}}>{title}</span>
+								<span className='title' style={{ color: color }}>
+									{title}
+								</span>
 							)}
 						</div>
 						{news &&
