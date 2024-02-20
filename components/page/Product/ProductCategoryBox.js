@@ -26,12 +26,18 @@ function ProductCategoryBox({ data, pim }) {
 
 	const dataLayerHandler = () => {
 		setChanelAdviserHandler(!chanelAdviserHandler)
+		// window.dataLayer.push({
+		// 	event: 'view_product',
+		// 	eventData: {
+		// 		product_id: pim?.model,
+		// 		category: pim?.Category?.name
+		// 	}
+		// })
 		window.dataLayer.push({
-			event: 'view_product',
-			eventData: {
-				product_id: pim?.model,
-				category: pim?.Category?.name
-			}
+			event: 'Online redirect',
+			category: 'PriceSpider Click',
+			action: 'PS-Redirect',
+			label: pim?.name
 		})
 	}
 
@@ -181,30 +187,34 @@ function ProductCategoryBox({ data, pim }) {
 							</>
 						)}
 						<li className='px-0'>
-							<button
-								className='wtb'
-								disabled={
-									pim?.buy_status !== 'ChannelAdvisor' &&
-									pim?.buy_status !== 'Internal'
-								}
-								onClick={() =>
-									pim?.buy_status === 'ChannelAdvisor' ||
+							{pim?.buy_status === 'ChannelAdvisor' ? (
+								<div className='ps-widget ps-wtb' ps-sku={pim?.model}></div>
+							) : (
+								<button
+									className='wtb'
+									disabled={
+										pim?.buy_status !== 'ChannelAdvisor' &&
+										pim?.buy_status !== 'Internal'
+									}
+									onClick={() =>
+										pim?.buy_status === 'ChannelAdvisor' ||
+										pim?.buy_status === 'Internal'
+											? dataLayerHandler()
+											: {}
+									}>
+									{pim?.buy_status === 'ChannelAdvisor' ||
 									pim?.buy_status === 'Internal'
-										? dataLayerHandler()
-										: {}
-								}>
-								{pim?.buy_status === 'ChannelAdvisor' ||
-								pim?.buy_status === 'Internal'
-									? 'Where To Buy'
-									: 'Coming Soon'}
-								{/* {pim?.buy_status === 'ChannelAdvisor' ||
+										? 'Where To Buy'
+										: 'Coming Soon'}
+									{/* {pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal' ? (
 									<img
 										style={{ marginLeft: '16px' }}
 										src={OpenPageOnNewTab.src}
 									/>
 								) : null} */}
-							</button>
+								</button>
+							)}
 						</li>
 					</ul>
 				</nav>
