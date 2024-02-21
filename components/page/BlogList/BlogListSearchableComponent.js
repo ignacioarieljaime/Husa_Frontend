@@ -286,11 +286,6 @@ const BlogListSearchableComponent = ({ data }) => {
 						</ParallaxProvider>
 					)}
 					<div className='blog_text_container pt-5'>
-						{structure?.title?.value && (
-							<h2 className='fs-2tx fw-normal my-5 mb-md-15'>
-								{structure?.title?.value}
-							</h2>
-						)}
 						{gridBlogs &&
 							gridBlogs.map((item, index) => (
 								<BlogListLittleReadArticleBox key={index} data={item} />
