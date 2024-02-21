@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -39,12 +39,15 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 
 	const querySlideNumber = queryToNumber()
 
-	if (querySlideNumber && !hasQueryTriggered) {
-		if (lightBoxActiveIndex !== querySlideNumber)
-			setLightBoxActiveIndex(querySlideNumber - 1)
-		if (!lightBoxStatus) setLightBoxStatus(true)
-		setHasQueryTriggered(true)
-	}
+	useEffect(() => {
+		if (querySlideNumber && !hasQueryTriggered) {
+			if (lightBoxActiveIndex !== querySlideNumber) setLightBoxActiveIndex((querySlideNumber - 1))
+			if (!lightBoxStatus && lightBoxActiveIndex === (querySlideNumber - 1)) {
+				setLightBoxStatus(true)
+				setHasQueryTriggered(true)
+			}
+		}
+	}, [querySlideNumber, hasQueryTriggered, lightBoxActiveIndex])
 
 	if (thumbsSwiper && width) {
 		if (width >= 768) {
@@ -89,6 +92,11 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 		if (thumbCanMove) setThumbCanMove(false)
 	}
 	const itemTypeIds = [1, 5]
+
+	const lightboxActivateClickHandler = (indexVal) => {
+		setLightBoxActiveIndex(indexVal)
+		setLightBoxStatus(true)
+	}
 
 	// Format pim data as valid props for LightBoxModal component
 	// TODO: replace all this with actual lightbox data once cxm options are updated
@@ -255,8 +263,13 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='main_frame'>
 				{pim && pim?.length === 0 ? (
-					<SwiperSlide>
-						<figure className='image_wrapper'>
+					<SwiperSlide
+					>
+						<figure className='image_wrapper cursor-pointer'
+							onClick={() => {
+								lightboxActivateClickHandler(lightBoxActiveIndex)
+							}}
+						>
 							<img
 								onClick={() => {
 									setLightBoxActiveIndex(item.order)
@@ -272,8 +285,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							/>
 							<button
 								onClick={() => {
-									setLightBoxActiveIndex(lightBoxActiveIndex)
-									setLightBoxStatus(true)
+									lightboxActivateClickHandler(lightBoxActiveIndex)
 								}}
 								className='resize_btn'>
 								<img src={Expand.src} width='16' />
@@ -282,8 +294,13 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 					</SwiperSlide>
 				) : null}
 				{firstImage ? (
-					<SwiperSlide key={'custom'}>
-						<figure className='image_wrapper'>
+					<SwiperSlide key={'custom'}
+					>
+						<figure className='image_wrapper cursor-pointer'
+							onClick={() => {
+								lightboxActivateClickHandler(0)
+							}}
+						>
 							<img
 								src={firstImage}
 								onClick={() => {
@@ -300,8 +317,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							/>
 							<button
 								onClick={() => {
-									setLightBoxActiveIndex(0)
-									setLightBoxStatus(true)
+									lightboxActivateClickHandler(0)
 								}}
 								className='resize_btn'>
 								<img src={Expand.src} width='16' />
@@ -312,8 +328,13 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				{pim &&
 					pim.map((item, index) =>
 						item.type_id === 1 && item.url !== firstImage ? (
-							<SwiperSlide key={index}>
-								<figure className='image_wrapper'>
+							<SwiperSlide key={index}
+							>
+								<figure className='image_wrapper cursor-pointer'
+									onClick={() => {
+										lightboxActivateClickHandler(item.order)
+									}}
+								>
 									<img
 										onClick={() => {
 											setLightBoxActiveIndex(item.order)
@@ -326,8 +347,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 									/>
 									<button
 										onClick={() => {
-											setLightBoxActiveIndex(item.order)
-											setLightBoxStatus(true)
+											lightboxActivateClickHandler(item.order)
 										}}
 										className='resize_btn'>
 										<img src={Expand.src} width='16' />
@@ -339,7 +359,11 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							</SwiperSlide>
 						) : item.type_id === 5 ? (
 							<SwiperSlide key={index}>
-								<figure className='image_wrapper'>
+								<figure className='image_wrapper cursor-pointer'
+									onClick={() => {
+										lightboxActivateClickHandler(item.order)
+									}}
+								>
 									{/* Replace iframe with thumbnail once implemented in cxm */}
 									<iframe
 										src={
@@ -358,8 +382,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 										className='position-absolute top-0 left-0 w-100 h-100'></div>
 									<button
 										onClick={() => {
-											setLightBoxActiveIndex(item.order)
-											setLightBoxStatus(true)
+											lightboxActivateClickHandler(item.order)
 										}}
 										className='resize_btn'>
 										<img src={Expand.src} width='16' />
