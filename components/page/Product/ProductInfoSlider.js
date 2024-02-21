@@ -28,12 +28,12 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	if (thumbsSwiper && width) {
 		if (width >= 768) {
 			if (thumbsSwiper?.navigation?.nextEl) {
-				thumbsSwiper.navigation.nextEl.onmouseover=()=>setThumbCanMove(true)
-				thumbsSwiper.navigation.nextEl.onmouseout=()=>setThumbCanMove(false)
+				thumbsSwiper.navigation.nextEl.onmouseover = () => setThumbCanMove(true)
+				thumbsSwiper.navigation.nextEl.onmouseout = () => setThumbCanMove(false)
 			}
 			if (thumbsSwiper?.navigation?.prevEl) {
-				thumbsSwiper.navigation.prevEl.onmouseover=()=>setThumbCanMove(true)
-				thumbsSwiper.navigation.prevEl.onmouseout=()=>setThumbCanMove(false)
+				thumbsSwiper.navigation.prevEl.onmouseover = () => setThumbCanMove(true)
+				thumbsSwiper.navigation.prevEl.onmouseout = () => setThumbCanMove(false)
 			}
 		}
 	}
@@ -73,54 +73,55 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	// TODO: replace all this with actual lightbox data once cxm options are updated
 	/** start */
 	const pimFirstImage = pim.filter(item => item.url === firstImage)
-	pim = pim.filter(item => itemTypeIds.includes(item.type_id) && item.url !== firstImage)
+	pim = pim.filter(
+		item => itemTypeIds.includes(item.type_id) && item.url !== firstImage
+	)
 	Array.prototype.unshift.apply(pim, pimFirstImage)
 	pim = pim.map((item, index) => {
 		return { ...item, order: index }
 	})
 	const playButton = Play.src
-	const blockVideo= 'autoplay=0&controls=0'
+	const blockVideo = 'autoplay=0&controls=0'
 
-	const lightBox = pim
-	.map(item => ({
-	  link: {
-		id: item.type_id,
-		type: "url",
-		title: "Download",
-		value: item.url,
-		hidden: false
-	  },
-	  image: {
-		id: item.subject_id,
-		alt: item.caption,
-		src: item.type_id === 5 ? playButton : item.url,
-		type: "image",
-		title: "Image",
-		hidden: false
-	  },
-	  video: {
-		id: item.type_id,
-		type: "string",
-		title: "Iframe Link",
-		value: item.type_id === 5 ? item.url : null,
-		hidden: false
-	  },
-	  caption: {
-		id: item.order,
-		type: "simpleText",
-		title: "Light Box Caption",
-		value: item.caption,
-		hidden: false
-	  },
-	  thumbnail_image: {
-		id: 4,
-		alt: item.caption,
-		src: item.type_id === 5 ? playButton : item.url,
-		type: "image",
-		title: "Thumbnail Image (for video)",
-		hidden: false
-	  }
-	}));
+	const lightBox = pim.map(item => ({
+		link: {
+			id: item.type_id,
+			type: 'url',
+			title: 'Download',
+			value: item.url,
+			hidden: false
+		},
+		image: {
+			id: item.subject_id,
+			alt: item.caption,
+			src: item.type_id === 5 ? playButton : item.url,
+			type: 'image',
+			title: 'Image',
+			hidden: false
+		},
+		video: {
+			id: item.type_id,
+			type: 'string',
+			title: 'Iframe Link',
+			value: item.type_id === 5 ? item.url : null,
+			hidden: false
+		},
+		caption: {
+			id: item.order,
+			type: 'simpleText',
+			title: 'Light Box Caption',
+			value: item.caption,
+			hidden: false
+		},
+		thumbnail_image: {
+			id: 4,
+			alt: item.caption,
+			src: item.type_id === 5 ? playButton : item.url,
+			type: 'image',
+			title: 'Thumbnail Image (for video)',
+			hidden: false
+		}
+	}))
 	/** end */
 
 	return (
@@ -153,8 +154,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						aria-label={`slide-${0}`}
 						onClick={() => {
 							setThumbCanMove(false)
-						}}
-						>
+						}}>
 						<figure className='image_wrapper'>
 							<img
 								src={firstImage}
@@ -176,8 +176,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								aria-label={`slide-${index + 1}`}
 								onClick={() => {
 									setThumbCanMove(false)
-								}}
-								>
+								}}>
 								<figure className='image_wrapper'>
 									<img
 										src={item.url}
@@ -198,8 +197,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								aria-label={`slide-${index + 1}`}
 								onClick={() => {
 									setThumbCanMove(false)
-								}}
-								>
+								}}>
 								<figure className='image_wrapper'>
 									<img
 										src={playButton}
@@ -233,10 +231,13 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='main_frame'>
 				{pim && pim?.length === 0 ? (
-					<SwiperSlide
-					>
+					<SwiperSlide>
 						<figure className='image_wrapper'>
 							<img
+								onClick={() => {
+									setLightBoxActiveIndex(item.order)
+									setLightBoxStatus(true)
+								}}
 								src={
 									allData?.Category?.customFields.find(
 										customFiledItem =>
@@ -257,11 +258,14 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 					</SwiperSlide>
 				) : null}
 				{firstImage ? (
-					<SwiperSlide key={'custom'}
-					>
+					<SwiperSlide key={'custom'}>
 						<figure className='image_wrapper'>
 							<img
 								src={firstImage}
+								onClick={() => {
+									setLightBoxActiveIndex(item.order)
+									setLightBoxStatus(true)
+								}}
 								// alt={firstImage}
 								// title={
 								// 	pim.find(item => item.order === 1)?.caption
@@ -284,10 +288,13 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				{pim &&
 					pim.map((item, index) =>
 						item.type_id === 1 && item.url !== firstImage ? (
-							<SwiperSlide key={index}
-							>
+							<SwiperSlide key={index}>
 								<figure className='image_wrapper'>
 									<img
+										onClick={() => {
+											setLightBoxActiveIndex(item.order)
+											setLightBoxStatus(true)
+										}}
 										src={item?.url}
 										title={item?.caption ? item?.caption : item?.title}
 										alt={item?.caption ? item?.caption : item?.title}
@@ -310,14 +317,27 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							<SwiperSlide key={index}>
 								<figure className='image_wrapper'>
 									{/* Replace iframe with thumbnail once implemented in cxm */}
-									<iframe src={item.url + (item.url.includes('?') ? `&` : '?') + blockVideo} autoplay="" controls className="image"></iframe>
+									<iframe
+										src={
+											item.url +
+											(item.url.includes('?') ? `&` : '?') +
+											blockVideo
+										}
+										autoplay=''
+										controls
+										className='image'></iframe>
+									<div
+										onClick={() => {
+											setLightBoxActiveIndex(item.order)
+											setLightBoxStatus(true)
+										}}
+										className='position-absolute top-0 left-0 w-100 h-100'></div>
 									<button
 										onClick={() => {
 											setLightBoxActiveIndex(item.order)
 											setLightBoxStatus(true)
 										}}
-										className='resize_btn'
-									>
+										className='resize_btn'>
 										<img src={Expand.src} width='16' />
 									</button>
 								</figure>
