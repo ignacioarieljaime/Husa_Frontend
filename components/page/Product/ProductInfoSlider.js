@@ -112,46 +112,56 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	const playButton = Play.src
 	const blockVideo = 'autoplay=0&controls=0'
 
-	const lightBox = pim.map(item => ({
-		link: {
-			id: item.type_id,
-			type: 'url',
-			title: 'Download',
-			value: item.url,
-			hidden: false
-		},
-		image: {
-			id: item.subject_id,
-			alt: item.caption,
-			src: item.type_id === 5 ? playButton : item.url,
-			type: 'image',
-			title: 'Image',
-			hidden: false
-		},
-		video: {
-			id: item.type_id,
-			type: 'string',
-			title: 'Iframe Link',
-			value: item.type_id === 5 ? item.url : null,
-			hidden: false
-		},
-		caption: {
-			id: item.order,
-			type: 'simpleText',
-			title: 'Light Box Caption',
-			value: item.caption,
-			hidden: false
-		},
-		thumbnail_image: {
-			id: 4,
-			alt: item.caption,
-			src: item.type_id === 5 ? playButton : item.url,
-			type: 'image',
-			title: 'Thumbnail Image (for video)',
-			hidden: false
-		}
-	}))
+	const lightBox = pim
+	.map(item => ({
+	  link: {
+		id: item.type_id,
+		type: "url",
+		title: "Download",
+		value: item.url,
+		hidden: false
+	  },
+	  image: {
+		id: item.subject_id,
+		alt: item.caption,
+		src: item.type_id === 5 ? playButton : item.url,
+		type: "image",
+		title: "Image",
+		hidden: false
+	  },
+	  video: {
+		id: item.type_id,
+		type: "string",
+		title: "Iframe Link",
+		value: item.type_id === 5 ? item.url : null,
+		hidden: false
+	  },
+	  caption: {
+		id: item.order,
+		type: "simpleText",
+		title: "Light Box Caption",
+		value: item.caption,
+		hidden: false
+	  },
+	//   thumbnail_image: {
+	// 	id: 4,
+	// 	alt: item.caption,
+	// 	src: item.type_id === 5 ? playButton : item.url,
+	// 	type: "image",
+	// 	title: "Thumbnail Image (for video)",
+	// 	hidden: false
+	//   }
+	}));
 	/** end */
+
+	const thumbControlRemover = (url) => {
+        let finalUrl = url
+        if (url.includes('&autoplay=1')) finalUrl = url.replace('&autoplay=1', '')
+        if (url.includes('&controls=1')) finalUrl = url.replace('&controls=1', '&controls=0')
+        if (!url.includes('&controls=0')) finalUrl = finalUrl + '&controls=0'
+
+        return finalUrl;
+    }
 
 	return (
 		<div className='product_gallery px-0'>
@@ -233,11 +243,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 										style={{
 											pointerEvents: 'none'
 										}}
-										src={
-											item?.url.includes('&autoplay=1')
-												? item?.url.replace('&autoplay=1', '')
-												: item?.url
-										}
+										src={thumbControlRemover(item?.url)}
 										className='image'></iframe>
 								</figure>
 							</SwiperSlide>
