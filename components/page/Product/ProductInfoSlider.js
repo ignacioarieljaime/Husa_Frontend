@@ -18,14 +18,18 @@ import Play from 'public/assets/svgs/play.svg'
 
 function ProductInfoSlider({ pim, firstImage, allData }) {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
+	const [mainSwiper, setMainSwiper] = useState(null)
 	const [imageModal, setImageModal] = useState(false)
 	const [lightBoxStatus, setLightBoxStatus] = useState(false)
 	const [lightBoxActiveIndex, setLightBoxActiveIndex] = useState(-1)
 	const [hasQueryTriggered, setHasQueryTriggered] = useState(false)
 	const [width] = useWindowSize()
+	const [mainDragEnabled, setMainDragEnabled] = useState(false)
 	const [thumbCanMove, setThumbCanMove] = useState(false)
 	const [isMobileDragging, setIsMobileDragging] = useState(false)
 	const [isMainDragging, setIsMainDragging] = useState(false)
+
+	const mainSwiperRef = useRef()
 
 	const router = useRouter()
 	const querySlide = router?.query?.slide
@@ -48,6 +52,22 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 			}
 		}
 	}, [querySlideNumber, hasQueryTriggered, lightBoxActiveIndex])
+
+	useEffect(() => {
+		if (width >= 768 && mainDragEnabled) {
+			setMainDragEnabled(false)
+			if (mainSwiperRef) {
+				if (mainSwiperRef?.current?.swiper?.allowTouchMove === true) mainSwiperRef.current.swiper.allowTouchMove = false;
+			}
+		}
+		if (width < 768 && !mainDragEnabled) {
+			setMainDragEnabled(true)
+			if (mainSwiperRef) {
+				if (mainSwiperRef?.current?.swiper?.allowTouchMove === false) mainSwiperRef.current.swiper.allowTouchMove = true;
+			}
+		}
+
+	}, [width])
 
 	if (thumbsSwiper && width) {
 		if (width >= 768) {
@@ -163,6 +183,14 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
         return finalUrl;
     }
 
+	// Fixes issue where clicking thumbnails doesnt move main slide if screen size has switched between mobile and desktop sizes
+	const thumbClickFixer = (e) => {
+		let ariaLabel = e.target.parentNode.parentNode.getAttribute('aria-label')
+		let ariaSlide = parseInt(ariaLabel.replace('slide-', ''), 10)
+		let slideNum = (ariaSlide - 1)
+		if (mainSwiper && width >= 768 && ariaSlide) mainSwiper.slideTo(slideNum)
+	}
+
 	return (
 		<div className='product_gallery px-0'>
 			<Swiper
@@ -191,7 +219,9 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						tabIndex={'-1'}
 						className='h-fit'
 						aria-label={`slide-${0}`}
-						onClick={() => {
+						onClick={(e) => {
+							e.stopPropagation()
+							thumbClickFixer(e)
 							setThumbCanMove(false)
 						}}>
 						<figure className='image_wrapper'>
@@ -213,7 +243,9 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								className='h-fit'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}
-								onClick={() => {
+								onClick={(e) => {
+									e.stopPropagation()
+									thumbClickFixer(e)
 									setThumbCanMove(false)
 								}}>
 								<figure className='image_wrapper'>
@@ -234,7 +266,9 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								className='h-fit cursor-pointer'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}
-								onClick={() => {
+								onClick={(e) => {
+									e.stopPropagation()
+									thumbClickFixer(e)
 									setThumbCanMove(false)
 								}}>
 								<figure className='image_wrapper'>
@@ -251,11 +285,14 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 					)}
 			</Swiper>
 			<Swiper
+				ref={mainSwiperRef}
+				onSwiper={setMainSwiper}
 				spaceBetween={20}
 				navigation={true}
 				thumbs={{
 					swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
 				}}
+				allowTouchMove={mainDragEnabled}
 				onSlideChange={swiper => {
 					setThumbCanMove(true)
 					thumbsSwiper.slideTo(swiper.activeIndex)
@@ -266,6 +303,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				onTransitionEnd={() => {
 					if (!isMainDragging) setThumbCanMove(false)
 				}}
+				speed={width >= 768 ? 0 : 300}
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='main_frame'>
 				{pim && pim?.length === 0 ? (
