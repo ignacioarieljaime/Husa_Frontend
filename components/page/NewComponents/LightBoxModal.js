@@ -201,6 +201,18 @@ const LightBoxModal = ({
 		desktopShortHeightFix()
 	}, [windowSize])
 
+	const thumbControlRemover = (url) => {
+        let finalUrl = url
+        if (url.includes('&autoplay=1')) finalUrl = url.replace('&autoplay=1', '')
+        if (url.includes('&controls=1')) finalUrl = url.replace('&controls=1', '&controls=0')
+        if (url.includes('&autoplay=1')) finalUrl = url.replace('&autoplay=1', '&autoplay=0')
+        if (url.includes('&autopause=0')) finalUrl = url.replace('&autopause=0', '&autopause=1')
+        if (!url.includes('&controls=0')) finalUrl = finalUrl + '&controls=0'
+        if (!url.includes('&autopause=1')) finalUrl = finalUrl + '&autopause=1'
+
+        return finalUrl;
+    }
+
 	function renderChidren(main, _data, _index, _caption, style) {
 		return (
 			<>
@@ -239,14 +251,7 @@ const LightBoxModal = ({
 					) : (
 						<iframe
 							id={'LightBox' + _index + _data?.video?.title}
-							src={
-								_data?.video?.value +
-								`${
-									_data?.video?.value && _data?.video?.value.includes('?')
-										? '&'
-										: '?'
-								}autopause=0`
-							}
+							src={thumbControlRemover(_data?.video?.value)}
 							alt={'LightBox' + id + video?.title}
 							title={'LightBox' + id + video?.title}
 							width='100%'

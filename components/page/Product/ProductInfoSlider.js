@@ -140,16 +140,25 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 		value: item.caption,
 		hidden: false
 	  },
-	  thumbnail_image: {
-		id: 4,
-		alt: item.caption,
-		src: item.type_id === 5 ? playButton : item.url,
-		type: "image",
-		title: "Thumbnail Image (for video)",
-		hidden: false
-	  }
+	//   thumbnail_image: {
+	// 	id: 4,
+	// 	alt: item.caption,
+	// 	src: item.type_id === 5 ? playButton : item.url,
+	// 	type: "image",
+	// 	title: "Thumbnail Image (for video)",
+	// 	hidden: false
+	//   }
 	}));
 	/** end */
+
+	const thumbControlRemover = (url) => {
+        let finalUrl = url
+        if (url.includes('&autoplay=1')) finalUrl = url.replace('&autoplay=1', '')
+        if (url.includes('&controls=1')) finalUrl = url.replace('&controls=1', '&controls=0')
+        if (!url.includes('&controls=0')) finalUrl = finalUrl + '&controls=0'
+
+        return finalUrl;
+    }
 
 	return (
 		<div className='product_gallery px-0'>
@@ -221,22 +230,20 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							<SwiperSlide
 								key={index}
 								aria-hidden='true'
-								className='h-fit'
+								className='h-fit cursor-pointer'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}
 								onClick={() => {
 									setThumbCanMove(false)
-								}}
-								>
+								}}>
 								<figure className='image_wrapper'>
-									<img
-										src={playButton}
-										alt={item?.caption ? item?.caption : item?.title}
-										title={item?.caption ? item?.caption : item?.title}
-										aria-hidden='true'
-										className='image'
-										tabIndex='-1'
-									/>
+									<iframe
+										mute={true}
+										style={{
+											pointerEvents: 'none'
+										}}
+										src={thumbControlRemover(item?.url)}
+										className='image'></iframe>
 								</figure>
 							</SwiperSlide>
 						) : null
