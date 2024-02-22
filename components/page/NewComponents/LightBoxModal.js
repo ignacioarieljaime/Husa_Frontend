@@ -23,12 +23,15 @@ const LightBoxModal = ({
 	activateSwiper,
 	dataList,
 	activeItemIndex,
-	zIndex
+	zIndex,
+	queryParam
 }) => {
 	const [currentIndex, setCurrentIndex] = useState(activeItemIndex)
 	const [hasInteracted, setHasInteracted] = useState(false)
 	const [pagination, setPagination] = useState([])
-	const [activePaginationIndex, setActivePaginationIndex] = useState(null)
+	const [queryParamState, setQueryParamState] = useState(queryParam)
+	// const [, ] = useState(activeItemIndex)
+	// const [, ] = useState(false)
 	const [mainSplideInstance, setMainSplideInstance] = useState(null)
 	const [splideInstance, setSplideInstance] = useState(null)
 	const [mainSwipeCount, setMainSwipeCount] = useState(0)
@@ -70,7 +73,6 @@ const LightBoxModal = ({
 		const displayPerPage = 5
 		const lastPage = isLastPage(displayPerPage, dataList?.length, indexUpdate)
 		setCurrentIndex(indexUpdate)
-		setActivePaginationIndex(Math.floor(indexUpdate / 5))
 
 		if (lastPage) {
 			document.getElementsByClassName('splide__arrow--next')[0].disabled = true
@@ -156,7 +158,7 @@ const LightBoxModal = ({
 	// 	}
 	// }, [mainSwiperRef, thumbsSwiperRef])
 
-	useEffect(() => {
+	function windowSizeMovementHandler() {
 		// Short desktop height handling
 		if (windowSize[1] < 651 && windowSize[0] > 768) {
 			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 86)
@@ -168,6 +170,10 @@ const LightBoxModal = ({
 		// Standard desktop size handling
 		if (windowSize[1] > 651 && windowSize[0] > 768)
 			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 99.25)
+	}
+
+	useEffect(() => {
+		windowSizeMovementHandler()
 	}, [currentIndex])
 
 	// Helper function for desktopShortHeightFix function
@@ -396,11 +402,15 @@ const LightBoxModal = ({
 		}
 	}, [isVisible])
 
-	// Makes the thumbnail carousel move to index of main carousel when main carousel slide is swiped to change slide
-	useEffect(() => {
+	function thumbSplideSyncer() {
 		if (splideInstance && mainSplideInstance) {
 			if (splideInstance.index !== mainSplideInstance.index) splideInstance.go(mainSplideInstance.index)
 		}
+	}
+
+	// Makes the thumbnail carousel move to index of main carousel when main carousel slide is swiped to change slide
+	useEffect(() => {
+		thumbSplideSyncer()
 	}, [mainSwipeCount])
 
 	// Prevents the thumbnail carousel navigation from setting thumbnail slide as active style (larger) when it doesnt match main carousel slide index
@@ -424,10 +434,50 @@ const LightBoxModal = ({
 		if (wasPaginationClicked) setWasPaginationClicked(false)
 	}, [thumbSwipeCount])
 
-	const slideNavActionHandler = (stateSetter) => {
+	const slideNavActionHandler = (stateSetter, string) => {
 		stateSetter(previousValue => ++previousValue)
+		// console.log(`action handler ${string}`)
 	}
 
+	useEffect(() => {
+		if (thumbsSwiperRef && thumbsSwiperRef.current?.splideRef?.current?.lastChild?.firstChild?.style?.transform) {
+			const thumbTransformValue = thumbsSwiperRef.current.splideRef.current.lastChild.firstChild.style.transform
+			if ((thumbTransformValue === 'translateX(0%)' || thumbTransformValue === 'translateX(0px)') && currentIndex >= 5) {
+				windowSizeMovementHandler()
+				// console.log("useEffect transform initiated")
+			}
+		}
+	}, [thumbsSwiperRef?.current?.splideRef?.current?.lastChild?.firstChild?.style?.transform])
+
+	// Thumbnail carousel parent, contains the transform value which needs to be tracked/overwritten when library attempts to overwrite value to 0
+	const splideListElem = document.getElementById("splide02-list");
+
+	// Creating a new MutationObserver, seems to be the only way to actually detect and fix the undesired splide__list transform value reset
+	// Console logs currently kept commented in case problem persists for easier troubleshooting
+	const observer = new MutationObserver((mutations) => { 
+		mutations.forEach((mutation) => { 
+		// console.log(mutation.type);  // mutation.type will be "attributes", "childList", or "characterData" 
+		// console.log({"mutation": mutation})
+		// console.log({"target": mutation.target})
+		// console.log({"mutation splide instance": splideInstance.index})
+		if (mutation.target.className === "splide__list") {
+			if (mutation.target.style.transform === "translateX(0px)" && currentIndex > 4 && splideInstance.index > 4) {
+				// console.log({"before re-assign": mutation.target.style.transform})
+				windowSizeMovementHandler()
+				// console.log("SPLIDE TRANSFORM INTENTIONALLY RE-ASSIGNED")
+			}
+			// console.log({"target": mutation.target})
+			// console.log("SPLIDE LIST MUTATION DETECTED")
+		}}); 
+	}); 
+
+	// Configuring the observer to watch for changes in splide__list for thumbnail carousel
+	const config = { attributes: true, childList: true, subtree: true }; 
+	if (splideListElem) observer.observe(splideListElem, config); 
+	
+   
+	// Later, you can disconnect the observer when you no longer need it 
+	// observer.disconnect(); 
 
 	return (
 		isVisible && (
