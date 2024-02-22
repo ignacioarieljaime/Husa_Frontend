@@ -33,21 +33,13 @@ export default function Document() {
 					type='text/javascript'
 					src='//cdn.pricespider.com/1/6998/ps-utid.js'
 					async></script>
-				{/* <script
+				<script
 					dangerouslySetInnerHTML={{
 						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM_ID}');`
-					}}></script> */}
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-						j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-						'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-						})(window,document,'script','dataLayer','GTM-KZJKKCTZ');`
 					}}></script>
 				<script src='/assets/js/ancher-fix.js'></script>
 			</Head>
@@ -64,15 +56,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('js', new Date());
 
   gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');`}</Script> */}
-				{/* <noscript
+				<noscript
 					dangerouslySetInnerHTML={{
 						__html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`
-					}}></noscript> */}
-				<noscript
-					dangerouslySetInnerHTML={{
-						__html: `><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZJKKCTZ"
-						height="0" width="0" style="display:none;visibility:hidden"></iframe>`
 					}}></noscript>
 				{/* <!-- Start of CicadaChat Livechat Script --> */}
 				{/* <script
