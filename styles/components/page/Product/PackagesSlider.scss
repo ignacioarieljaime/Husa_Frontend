@@ -684,7 +684,9 @@
 					gap: 4px;
 					.sizes_item {
 						display: flex;
-						width: fit-content;
+						min-width: 46px;
+						width: 46px;
+						max-width: 46px;
 						padding: 9px 12px 9.5px;
 						justify-content: center;
 						align-items: center;
@@ -702,6 +704,8 @@
 							display: block;
 							font-size: 14px;
 							font-weight: 400;
+							margin-left: auto;
+							margin-right: auto;
 							margin-bottom: -3px;
 							transition: all 0.3s ease;
 						}
@@ -714,8 +718,8 @@
 							background: #c7c7c9;
 						}
 						&.active {
-							border-color: #000;
-							background: #000;
+							border-color: #C6C6C8;
+							background: #707171;
 							span {
 								color: #fff;
 							}

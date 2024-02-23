@@ -507,11 +507,11 @@
 							align-items: center;
 							border-radius: 1000px;
 							border: 1px solid #008885;
-							background: #fff;
+							background: #008885;
 							text-decoration: none;
 							transition: all 0.3s ease;
 							span {
-								color: #008885;
+								color: white;
 								font-size: 14px;
 								line-height: 100%; /* 14px */
 								margin-bottom: -3px;
@@ -625,7 +625,9 @@
 							}
 							&___item {
 								display: flex;
-								width: fit-content;
+								min-width: 46px;
+								width: 46px;
+								max-width: 46px;
 								padding: 9px 12px 9.5px;
 								justify-content: center;
 								align-items: center;
@@ -639,6 +641,8 @@
 									color: #000;
 									font-size: 14px;
 									line-height: 100%; /* 14px */
+									margin-left: auto;
+									margin-right: auto;
 									margin-bottom: -3px;
 									transition: all 0.3s ease;
 								}
@@ -651,8 +655,8 @@
 									background: #c7c7c9;
 								}
 								&.active {
-									border-color: #000;
-									background: #000;
+									border-color: #C6C6C8;
+									background: #707171;
 									div {
 										color: #fff;
 									}
