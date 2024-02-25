@@ -37,7 +37,9 @@ const AdditionalResourcesModuleItem = ({
 		setCardData({
 			link: _data?.route,
 			title: _data?.title,
-			subtitle: _data?.tags.join(' '),
+			subtitle: data?.subtitle?.value
+				? data?.subtitle?.value
+				: _data?.tags.join(' '),
 			type: data?.type?.value,
 			date: data?.date?.value
 				? data?.date?.value
