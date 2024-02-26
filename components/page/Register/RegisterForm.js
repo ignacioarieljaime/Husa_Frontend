@@ -24,7 +24,7 @@ import { uploadToS3 } from 'services/s3'
 function RegisterForm({ data }) {
 	let { structure } = data
 	let router = useRouter()
-	const [disabled, setDisabled] = useState(false)
+	const [defaultMode, setDefaultMode] = useState(false)
 	const [categories, setCategories] = useState([])
 	const [categoryId, setCategoryId] = useState(null)
 	const [series, setSeries] = useState([])
@@ -51,11 +51,16 @@ function RegisterForm({ data }) {
 	})
 	const [errors, setErrors] = useState(null)
 	const [tickedSended, setTickedSended] = useState(null)
-	useEffect(() => {
-		!router.query?.ProductCategory && getCategories()
 
-		if (router.query?.SerialNumber) {
-			getModelsBySerialNumber()
+	useEffect(() => {
+		if (router.query?.SerialNumber && router.query?.InternalModelNumber) {
+			!router.query?.ProductCategory && getCategories()
+
+			if (router.query?.SerialNumber) {
+				getModelsBySerialNumber()
+			}
+		} else {
+			setDefaultMode(true)
 		}
 	}, [])
 
@@ -85,6 +90,15 @@ function RegisterForm({ data }) {
 		}
 	}, [models])
 
+	useEffect(() => {
+		if (defaultMode) {
+			getCategories(router.query?.ProductCategory)
+			if (router.query?.SerialNumber) {
+				getModelsBySerialNumber()
+			}
+		}
+	}, [defaultMode])
+
 	const dataSchemaHandler = (_key, _value) => {
 		if (router.query.SerialNumber && _key === 'product_model') {
 			setDataSchema({
@@ -96,11 +110,6 @@ function RegisterForm({ data }) {
 		}
 
 		if (_key === 'product_model') {
-			console.log({
-				...dataSchema,
-				product_model: _value?.model,
-				series: _value?.series?.length ? _value?.series[0]?.name : null
-			})
 			setDataSchema({
 				...dataSchema,
 				product_model: _value?.model,
@@ -111,12 +120,18 @@ function RegisterForm({ data }) {
 		}
 	}
 
-	const getCategories = async () => {
+	const getCategories = async _value => {
 		setCategories('loading')
 		try {
 			let response = await GetCategoriesApi(router)
 			if (response.status === 200) {
 				setCategories(response.data.data)
+				if (defaultMode) {
+					const selectedCategory = response.data.data.find(
+						item => item.name.toLowerCase().replaceAll(' ', '-') === _value
+					)
+					getSeriesModels(selectedCategory?.id)
+				}
 			}
 		} catch (error) {
 			setCategories([])
@@ -141,6 +156,10 @@ function RegisterForm({ data }) {
 				setModels(result)
 			}
 		} catch (error) {
+			if (error?.response?.status === 404) {
+				toast.error(error?.response?.data?.message)
+				setDefaultMode(true)
+			}
 			console.log(error)
 		}
 	}
@@ -313,7 +332,7 @@ function RegisterForm({ data }) {
 					onSubmit={submitData}
 					className='form-container-inner row active'
 					id='form-tab-1'>
-					{router.query?.ProductCategory ? (
+					{!defaultMode && router.query?.ProductCategory ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
 								placeholder={'PRODUCT CATEGORY'}
@@ -360,7 +379,9 @@ function RegisterForm({ data }) {
 							</div>
 						</div>
 					)} */}
-					{router.query?.InternalModelNumber && !router.query?.SerialNumber ? (
+					{!defaultMode &&
+					router.query?.InternalModelNumber &&
+					!router.query?.SerialNumber ? (
 						<div className='col-12  mb-10'>
 							<CustomInput
 								placeholder={'PLEASE SELECT YOUR MODEL'}
@@ -403,8 +424,11 @@ function RegisterForm({ data }) {
 						<CustomInput
 							placeholder={'SERIAL NUMBER'}
 							required={true}
-							disabled={router.query?.SerialNumber}
-							value={router.query?.SerialNumber}
+							disabled={
+								router.query?.SerialNumber &&
+								router.query?.SerialNumber.length > 0
+							}
+							value={dataSchema.product_serial_number}
 							onChange={_value =>
 								dataSchemaHandler('product_serial_number', _value)
 							}
