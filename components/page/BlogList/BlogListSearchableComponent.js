@@ -276,6 +276,7 @@ const BlogListSearchableComponent = ({ data }) => {
 					blogsList={blogsList}
 					targetRoute={structure?.link?.value}
 					newsLength={blogsList.length}
+					color={structure?.titleColor?.value}
 				/>
 				<div
 					id={data?.name + data?.id}
