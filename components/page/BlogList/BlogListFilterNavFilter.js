@@ -28,7 +28,8 @@ const BlogListFilterNavFilter = ({
 	targetRoute,
 	results,
 	newsLength,
-	link
+	link,
+	color = '#43898a'
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -157,12 +158,15 @@ const BlogListFilterNavFilter = ({
 									target={link?.target ? link?.target : '_self'}>
 									<a
 										target={link?.target ? link?.target : '_self'}
+										style={{ color: color }}
 										className='title'>
 										{title}
 									</a>
 								</Link>
 							) : (
-								<span className='title'>{title}</span>
+								<span className='title' style={{ color: color }}>
+									{title}
+								</span>
 							)}
 						</div>
 						{news &&
