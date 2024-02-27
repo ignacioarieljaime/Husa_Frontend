@@ -2,7 +2,6 @@ import React from 'react'
 import ExtendedWarrantyFeatureBlocksItem from './ExtendedWarrantyFeatureBlocksItem'
 
 const ExtendedWarrantyFeatureBlocks = ({ data: { structure } }) => {
-	console.log({structure})
 	const backgroundColorHandler = () => {
 		if (structure?.backgroundColor?.value) return structure?.backgroundColor?.value
 		return '#F0F2F2'
