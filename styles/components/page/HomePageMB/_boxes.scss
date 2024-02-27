@@ -92,11 +92,6 @@
         font-weight: 400;
       }
 
-      // p:nth-child(2) {
-      //   font-weight: 300 !important;
-      // }
-
-
       &:nth-child(n+2) {
         border-left: 0px transparent;
       }
@@ -154,6 +149,19 @@
   }
 }
 
+@media (max-width: 1200px) {
+  .support-flex-container {
+    width: calc(100% - 32px) !important;
+    max-width: calc(100% - 32px) !important;
+    flex-wrap: wrap !important;
+
+    .home-page-mb-discovery-item {
+      flex: 1 1 48%;
+    }
+  }
+  
+}
+
 @media (max-width: 768px) {
   .home-page-mb-discovery {
     .home-page-mb-discovery-item {
@@ -167,6 +175,17 @@
       &:nth-child(2) {
         border-left: 1px solid #cbcbcb;
       }
+    }
+  }
+
+  .support-flex-container {
+
+    .home-page-mb-discovery-item {
+      flex: 1 1 98%;
+    }
+
+    .home-page-mb-discovery-item:hover {
+      box-shadow: none !important;
     }
   }
 }
