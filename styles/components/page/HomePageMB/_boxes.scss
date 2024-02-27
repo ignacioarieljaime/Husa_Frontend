@@ -41,6 +41,75 @@
 .home-page-mb-discovery {
   text-align: center;
 
+  .support-cards-title {
+    margin-bottom: 40px;
+  }
+
+  .support-flex-container {
+    width: calc(93% - 32px);
+    max-width: calc(93% - 32px);
+    margin: 0 auto;
+    justify-content: center;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
+    
+    .home-page-mb-discovery-item {
+      position: relative;
+      border-radius: 25px;
+      padding: 16px !important;
+      text-decoration: none !important;
+
+      .support-card-img-container {
+        height: 100px;
+        text-align: center;
+
+        div > img {
+          vertical-align: middle;
+        }
+      }
+
+      div > p {
+        font-weight: 400 !important;
+      }
+      div > p > strong {
+        font-size: 20px !important;
+        font-weight: 500 !important;
+      }
+
+      .support-card-spacer {
+        height: 32px;
+      }
+
+      .support-btn-text {
+        position: absolute;
+        bottom: 28px;
+        left: 0;
+        right: 0;
+        margin-right: auto;
+        margin-left: auto;
+        font-weight: 400;
+      }
+
+      // p:nth-child(2) {
+      //   font-weight: 300 !important;
+      // }
+
+
+      &:nth-child(n+2) {
+        border-left: 0px transparent;
+      }
+    }
+
+    .home-page-mb-discovery-item:hover {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      .primary-text {
+        color: #007270 !important;
+      }
+    }
+  }
+
   .home-page-mb-discovery-item {
     padding: 60px 50px;
     text-align: center;

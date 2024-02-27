@@ -9,7 +9,8 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 	text,
 	link,
 	width,
-	light
+	light,
+	backgroundColor
 }) => {
 	const chatHandler = () => {
 		if (document.querySelector('.velaro-custom-launcher-frame iframe')) {
@@ -22,57 +23,73 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 			innerDoc.click()
 		}
 	}
-	return (
-		<div
-			className={`home-page-mb-discovery-item py-10 px-6 px-md-13 py-md-15`}
-			style={{ width: width + '%' }}>
-			<CustomImage
-				wrapperHeight={'70px'}
-				src={image?.src}
-				alt={image?.alt}
-				wrapperClass='mb-7'
-			/>
+
+
+	const ModuleContentDiv = ({ children }) => {
+		return (
 			<div
-				dangerouslySetInnerHTML={{ __html: text }}
-				className={`fs-base mb-9 ${light ? 'light' : ''}`}></div>
-			{link?.value && (
-				<Link href={link?.value} target={link?.target ? link?.target : '_self'}>
-					<a
-						target={link?.target ? link?.target : '_self'}
-						className='n-btn primary-text medium'>
-						{link?.title}
-						{link?.title && (
-							<span>
-								<FontAwesomeIcon
-									icon={faChevronRight}
-									size={'sm'}
-									className='ms-2'
-								/>
-							</span>
-						)}
-					</a>
-				</Link>
-			)}
-			{/* {text.includes('Chat') ? (
+			className={`home-page-mb-discovery-item py-10 px-6 px-md-13 py-md-15`}
+			style={{ width: width + '%', backgroundColor: backgroundColor }}
+			>
+				{children}
+			</div>
+		);
+	};
+
+	const ModuleContentLink = ({ children }) => {
+		return (
+			<Link
+			href={link?.value} target={link?.target ? link?.target : '_self'}
+			>
 				<a
-					onClick={chatHandler}
-					style={{ cursor: 'pointer' }}
-					className='n-btn primary-text medium'>
-					{link?.title}
-					{link?.title && (
-						<span>
-							<FontAwesomeIcon
-								icon={faChevronRight}
-								size={'sm'}
-								className='ms-2'
-							/>
-						</span>
-					)}
+					className={`home-page-mb-discovery-item py-10 px-6 px-md-13 py-md-15`}
+					style={{ width: width + '%', backgroundColor: backgroundColor }}
+					target={link?.target ? link?.target : '_self'}
+				>
+					{children}
 				</a>
-			) : (
-				<Link href={link?.value} target={link?.target ? link?.target : '_self'}>
+			</Link>
+		);
+	};
+
+	const ModuleInnerContent = () => {
+		return (
+			<>
+				<div className='support-card-img-container'>
+					<CustomImage
+						wrapperHeight={'64px'}
+						src={image?.src}
+						alt={image?.alt}
+						wrapperClass='mb-7'
+					/>
+				</div>
+
+				<div
+					dangerouslySetInnerHTML={{ __html: text }}
+					className={`fs-base mb-9 ${light ? 'light' : ''}`}></div>
+				<div className='support-card-spacer' />
+				{link?.value && (
+					<Link href={link?.value} target={link?.target ? link?.target : '_self'}>
+						<a
+							target={link?.target ? link?.target : '_self'}
+							className='n-btn primary-text support-btn-text'>
+							{link?.title}
+							{link?.title && (
+								<span>
+									<FontAwesomeIcon
+										icon={faChevronRight}
+										size={'sm'}
+										className='ms-2'
+									/>
+								</span>
+							)}
+						</a>
+					</Link>
+				)}
+				{/* {text.includes('Chat') ? (
 					<a
-						target={link?.target ? link?.target : '_self'}
+						onClick={chatHandler}
+						style={{ cursor: 'pointer' }}
 						className='n-btn primary-text medium'>
 						{link?.title}
 						{link?.title && (
@@ -85,10 +102,41 @@ const ExtendedWarrantyFeatureBlocksItem = ({
 							</span>
 						)}
 					</a>
-				</Link>
-			)} */}
-		</div>
-	)
+				) : (
+					<Link href={link?.value} target={link?.target ? link?.target : '_self'}>
+						<a
+							target={link?.target ? link?.target : '_self'}
+							className='n-btn primary-text medium'>
+							{link?.title}
+							{link?.title && (
+								<span>
+									<FontAwesomeIcon
+										icon={faChevronRight}
+										size={'sm'}
+										className='ms-2'
+									/>
+								</span>
+							)}
+						</a>
+					</Link>
+				)} */}
+			</>
+		);
+	};
+
+	if (link?.title) {
+		return (
+			<ModuleContentLink>
+				<ModuleInnerContent />
+			</ModuleContentLink>
+		)
+	} else {
+		return (
+			<ModuleContentDiv>
+				<ModuleInnerContent />
+			</ModuleContentDiv>
+		)
+	}
 }
 
 export default ExtendedWarrantyFeatureBlocksItem
