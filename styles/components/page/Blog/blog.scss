@@ -369,14 +369,16 @@ article.blog-article {
 										width: calc(100% - 2px);
 										height: calc(100% - 17px);
 										display: block;
-										background: #ffffffb0;
+										// background: #ffffffb0;
+										background-color: #FAFAFA !important;
 										border-radius: 0 0 9px 9px;
 										-webkit-border-radius: 0 0 9px 9px;
 										-moz-border-radius: 0 0 9px 9px;
 										-ms-border-radius: 0 0 9px 9px;
 										-o-border-radius: 0 0 9px 9px;
 									}
-									background: transparent !important;
+									// background: transparent !important;
+									background-color: #FAFAFA !important;
 									// background: rgba(255, 255, 255, 0.85) !important;
 									& > * {
 										position: relative;
