@@ -103,11 +103,11 @@ function BlogHead({ data: { structure }, pim }) {
 		<section>
 			<div className='blog-header overflow-hidden mt-20'>
 				<div className='px-3 mb-13'>
-					<div className='d-flex align-items-center justify-content-start flex-wrap gap-2 gap-sm-4 mb-10'>
+					<div className='d-flex align-items-center justify-content-start flex-wrap gap-2 gap-sm-4 mb-0'>
 						{pim?.tags?.map((item, index) => (
 							<span
 								key={index}
-								className='text-primary-dark fs-5 fw-normal d-block text-decoration-none'>
+								className='d-block text-decoration-none blog-article-sub-header'>
 								{item}
 							</span>
 						))}
@@ -134,7 +134,7 @@ function BlogHead({ data: { structure }, pim }) {
 						</a>
 					</Link> */}
 					<div
-						className='header-text header-gradient-text mb-12'
+						className='header-text header-gradient-text'
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<span>{structure?.sharingTitle?.value}</span>
 					<div className='row mt-7'>
