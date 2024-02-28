@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import {
 	faAngleDown,
 	faMagnifyingGlass
@@ -16,12 +16,19 @@ import axios from 'axios'
 import Spinner from 'components/common/Spinner'
 import CustomImage from '../../common/CustomImage'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
+import SearchIcon from 'components/icons/SearchIcon'
+
 const SupportNewProducts = ({ data }) => {
 	const [categoryId, setCategoryId] = useState()
 	const [activeSearchBox, setActiveSearchBox] = useState(false)
 	const [searchProductsList, setSearchProductsList] = useState()
 	const [searchBoxCondition, setSearchBoxCondition] = useState(false)
 	const [searchValue, setSearchValue] = useState('')
+	const [preLineText, setPreLineText] = useState(null)
+	const [viewAllBtnOffset, setViewAllBtnOffset] = useState()
+
+	const searchRef = useRef(null);
+	const dropdownRef = useRef(null);
 
 	let { structure } = data
 	useEffect(() => {
@@ -35,6 +42,33 @@ const SupportNewProducts = ({ data }) => {
 		return () => clearTimeout(timer)
 	}, [searchValue])
 
+	// Handles offset positioning of view all button for dropdown menu
+	useEffect(() => {
+		const resizeObserver = new ResizeObserver((entries) => {
+		  entries.forEach((entry) => {
+			if (entry.contentRect.height !== entry.target.previousHeight) {
+			  handleHeightChange(entry.contentRect.height);
+			}
+	
+			entry.target.previousHeight = entry.contentRect.height;
+		  });
+		});
+	
+		if (dropdownRef?.current) {
+		  resizeObserver.observe(dropdownRef.current);
+		}
+	
+		return () => {
+		  if (dropdownRef?.current) {
+			resizeObserver.unobserve(dropdownRef.current);
+		  }
+		};
+	}, []);
+
+	const handleHeightChange = (newHeight) => {
+		setViewAllBtnOffset(newHeight + (54 + 20)) // 54px input height, 20px for padding room on top
+	};
+
 	const searchHandler = async () => {
 		setSearchProductsList('loading')
 		try {
@@ -46,6 +80,7 @@ const SupportNewProducts = ({ data }) => {
 					}
 				}
 			)
+
 			let data = response.data.data.map(item => ({
 				route: item.route,
 				model: item?.product?.model
@@ -106,112 +141,171 @@ const SupportNewProducts = ({ data }) => {
 			}
 		}
 	}
+
+	const handleSearchFocus = () => {
+		if (searchRef?.current) {
+			searchRef.current.focus();
+		}
+	};
+
+	const renderBoldText = (model) => {
+		const searchString = searchValue;
+		const upperCaseModel = model.toUpperCase();
+		const upperCaseSearchString = searchString.toUpperCase();
+
+		const index = upperCaseModel.indexOf(upperCaseSearchString);
+
+	
+		if (index !== -1) {
+		  return (
+			<span className='support-dropdown-list-text'>
+			  {model.substring(0, index)}
+			  <strong>{upperCaseSearchString}</strong>
+			  {model.substring(index + searchString.length)}
+			</span>
+		  );
+		}
+	
+		return model;
+	};
+
+	const searchConditionFix = () => {
+		if (searchValue === '' && activeSearchBox && !searchBoxCondition) setSearchBoxCondition(true)
+	}
+
+	const renderPreListText = (isViewAllButton) => {
+		if (!preLineText) return;
+
+		if (isViewAllButton) {
+			if (preLineText) return `View all ${preLineText} Models`
+		}
+
+		if (searchValue !== '') return 'Matching results'
+		if (preLineText) return `All ${preLineText} Models`
+	}
+
+	const modelDoesNotExistHandler = () => {
+		if (searchProductsList && searchProductsList !== 'loading' && searchProductsList.length === 0) return true;
+		return false;
+	}
+
+	const modelDoesNotExist = modelDoesNotExistHandler();
+
+	const categoryLength = structure?.list?.value?.length;
+
 	return (
 		<section>
 			<div className='support-products'>
 				<h3 className='section-title container-fluid'>
 					Select a product category to get started.
 				</h3>
-				<Swiper
-					navigation={true}
-					pagination={false}
-					spaceBetween={35}
-					slidesPerView={'auto'}
-					centeredSlides={true}
-					grabCursor={true}
-					// dir='rtl'
-					modules={[Navigation]}
-					className='support-products-slider px-12'>
+
+				<div className='support-category-row-container' style={{gridTemplateColumns: `repeat(${categoryLength}, 1fr)`}}>
 					{structure?.list?.value.map((item, index) => (
-						<SwiperSlide key={index} className='slider-item '>
+						<button index={index} className={`slider-item slider-item-inner-button ${item?.category?.value === categoryId && 'support-selected'}`}
+							onClick={() => {
+								if (categoryId === item?.category?.value) return
+								searchActiveHandler(item?.category?.value)
+								setSearchValue('')
+								setSearchBoxCondition(!searchBoxCondition)
+								handleSearchFocus()
+								if (preLineText !== item?.link?.title) setPreLineText(item?.link?.title)
+							}}
+						>
 							<div className='d-flex flex-column '>
 								<CustomImage
 									src={item?.image?.src}
 									alt={item?.image?.alt}
 									title={item?.image?.title}
 									className='slider-image'
-									wrapperHeight={'92px'}
+									wrapperHeight={'100px'}
 								/>
-								<button
-									onClick={() => {
-										searchActiveHandler(item?.category?.value)
-										setSearchValue('')
-									}}
-									className={`slider-title n-btn outline-black medium ${
-										item?.category?.value === categoryId && 'bg-dark text-white'
-									}`}>
+								<span className='slider-item-text'>
 									{item?.link?.title}
-								</button>
+								</span>
 							</div>
-						</SwiperSlide>
+						</button>
 					))}
-				</Swiper>
-				{activeSearchBox && (
-					<div className='container-fluid d-flex justify-content-center mt-10'>
-						<div style={{ width: '320px' }} className='position-relative'>
-							<div
-								style={{ cursor: 'pointer' }}
-								onClick={() => setSearchBoxCondition(!searchBoxCondition)}
-								className='drop_down  d-flex justify-content-between border-bottom px-3 pb-3  border-dark'>
-								select your model
-								<FontAwesomeIcon icon={faAngleDown} />
-							</div>
-							{searchBoxCondition && (
-								<div className='w-100'>
-									<input
-										type='text'
-										className='border-bottom border-gray w-100 mt-2 border-0 py-2 px-3'
-										placeholder='search your model'
-										onChange={e => setSearchValue(e.target.value)}
-										onBlur={() =>
-											setTimeout(() => {
-												setSearchBoxCondition(false)
-											}, 500)
-										}
-									/>
-									<ul
-										className=' mt-3  d-flex flex-column gap-2 w-100 list bg-white list-unstyled py-4 px-4  overflow-auto'
-										style={{ maxHeight: '300px' }}>
-										{searchProductsList === 'loading' ? (
-											<li className='py-5'>
-												<Spinner size={20} />
-											</li>
-										) : Array.isArray(searchProductsList) &&
-										  searchProductsList.length > 0 ? (
-											searchProductsList.map((item, index) => (
-												<li key={'search-list-' + index}>
-													<Link
-														target={
-															item.route?.target ? item.route?.target : '_self'
-														}
-														href={item.route}>
-														<a
-															target={
-																item.route?.target
-																	? item.route?.target
-																	: '_self'
-															}
-															className='text-primary decora'>
-															{item.model}
-															{item.route?.target === '_blank' && (
-																<img
-																	style={{ marginLeft: '10px' }}
-																	src={OpenPageOnNewTab.src}
-																/>
-															)}
-														</a>
-													</Link>
-												</li>
-											))
-										) : (
-											<li>its empty</li>
-										)}
-									</ul>
-								</div>
-							)}
+				</div>
+
+					<div className='container-fluid d-flex justify-content-center mt-16'>
+						<div className='support-search-container'>
+							<input
+								ref={searchRef}
+								className={modelDoesNotExist ? 'search-is-error' : categoryId ? 'search-is-active' : ''}
+								type='text'
+								placeholder='find model number'
+								onChange={e => {
+									setSearchValue(e.target.value)
+									searchConditionFix()
+								}}
+								value={searchValue}
+								onBlur={() =>
+									setTimeout(() => {
+										setSearchBoxCondition(false)
+									}, 500)
+								}
+							/>
+							<SearchIcon color={categoryId ? 'black' : '#F0F2F2'} />
+							<ul
+								ref={dropdownRef}
+								className=' mt-0 d-flex flex-column gap-2 w-100 list bg-white list-unstyled py-4 px-4 overflow-auto'
+								style={{ maxHeight: '300px' }}>
+
+								<span className='support-search-prelist-text'>{renderPreListText(false)}</span>
+								
+								{searchProductsList === 'loading' ? (
+									<li className='py-5'>
+										<Spinner size={20} className={'support-loading-spinner'}/>
+									</li>
+								) : Array.isArray(searchProductsList) &&
+									searchProductsList.length > 0 ? (
+									searchProductsList.map((item, index) => (
+										<li key={'search-list-' + index}>
+											<Link
+												target={
+													item.route?.target ? item.route?.target : '_self'
+												}
+												href={item.route}>
+												<a
+													target={
+														item.route?.target
+															? item.route?.target
+															: '_self'
+													}
+													className='text-primary decora'>
+													{renderBoldText(item.model)}
+													{item.route?.target === '_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
+												</a>
+											</Link>
+										</li>
+									))
+								) : modelDoesNotExist && (
+									<li className='search-is-error-text'>
+										Model number doesn{`'`}t exist
+									</li>
+								)}
+							</ul>
+
+							{preLineText && searchValue !== '' && searchProductsList !== 'loading' &&
+								<button className='view-all-button'
+									style={{bottom: -viewAllBtnOffset + 'px'}}
+									onClick={() => {
+										setSearchValue('')
+										setSearchBoxCondition(true)
+										handleSearchFocus()
+									}}
+								>
+									{renderPreListText(true)}
+								</button>
+							}
 						</div>
 					</div>
-				)}
 			</div>
 		</section>
 	)
