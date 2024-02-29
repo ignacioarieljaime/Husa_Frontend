@@ -359,9 +359,14 @@ article.blog-article {
 						> div {
 							> div {
 								height: fit-content;
-								background: transparent !important;
+								background: rgba(240, 242, 242, 0.4) !important;
 								backdrop-filter: blur(50px)!important;
-								background-color: none !important;
+								border-radius: 0px 0px 10px 10px;
+								-webkit-border-radius: 0 0 10px 10px;
+								-moz-border-radius: 0 0 10px 10px;
+								-ms-border-radius: 0 0 10px 10px;
+								-o-border-radius: 0 0 10px 10px;
+								
 								ul {
 									margin: 0;
 									border-left: 1px solid #525454 !important;
@@ -383,7 +388,7 @@ article.blog-article {
 										-ms-border-radius: 0 0 0px 0px;
 										-o-border-radius: 0 0 0px 0px;
 									}
-									background-color: rgba(255, 255, 255, 0.75) !important;
+									background: rgba(240, 242, 242, 0.4) !important;
 									& > * {
 										position: relative;
 									}
@@ -391,7 +396,7 @@ article.blog-article {
 								.bottom-spacer {
 									height: 10px;
 									width: 100%;
-									background-color: rgba(255, 255, 255, 0.75) !important;
+									background: rgba(240, 242, 242, 0.4) !important;
 									border-left: 1px solid #525454 !important;
 									border-right:  1px solid #525454 !important;
 									border-top: 0px solid #525454 !important;
