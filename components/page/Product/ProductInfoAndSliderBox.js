@@ -34,18 +34,12 @@ function ProductInfoAndSliderBox({ pim, data }) {
 
 	const dataLayerHandler = () => {
 		setChanelAdviserHandler(!chanelAdviserHandler)
-		// window.dataLayer.push({
-		// 	event: 'view_product',
-		// 	eventData: {
-		// 		product_id: pim?.model,
-		// 		category: pim?.Category?.name
-		// 	}
-		// })
 		window.dataLayer.push({
-			event: 'Online redirect',
-			category: 'PriceSpider Click',
-			action: 'PS-Redirect',
-			label: pim?.name
+			event: 'view_product',
+			eventData: {
+				product_id: pim?.model,
+				category: pim?.Category?.name
+			}
 		})
 	}
 
@@ -133,31 +127,32 @@ function ProductInfoAndSliderBox({ pim, data }) {
 						<div className='sizes pb-0'></div>
 					)}
 					<div className='text-center text-md-start'>
-						{pim?.buy_status === 'ChannelAdvisor' ? (
-							<div
-								className='ps-widget ps_wtb_btn mx-auto mx-md-0'
-								ps-sku={pim?.model}></div>
-						) : (
-							<button
-								className='wtb_btn mx-auto mx-md-0'
-								disabled={
-									pim?.buy_status !== 'ChannelAdvisor' &&
-									pim?.buy_status !== 'Internal'
-								}
-								onClick={() =>
-									pim?.buy_status === 'ChannelAdvisor' ||
-									pim?.buy_status === 'Internal'
-										? dataLayerHandler()
-										: {}
-								}>
-								<span>
-									{pim?.buy_status === 'ChannelAdvisor' ||
-									pim?.buy_status === 'Internal'
-										? 'Where To Buy'
-										: 'coming soon'}
-								</span>
-							</button>
-						)}
+						<button
+							className='wtb_btn mx-auto mx-md-0'
+							disabled={
+								pim?.buy_status !== 'ChannelAdvisor' &&
+								pim?.buy_status !== 'Internal'
+							}
+							onClick={() =>
+								pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
+									? dataLayerHandler()
+									: {}
+							}>
+							<span>
+								{pim?.buy_status === 'ChannelAdvisor' ||
+								pim?.buy_status === 'Internal'
+									? 'Where To Buy'
+									: 'coming soon'}
+							</span>
+							{/* {pim?.buy_status === 'ChannelAdvisor' ||
+							pim?.buy_status === 'Internal' ? (
+								<img
+									style={{ marginLeft: '16px' }}
+									src={OpenPageOnNewTab.src}
+								/>
+							) : null} */}
+						</button>
 					</div>
 				</div>
 			</div>

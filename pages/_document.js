@@ -23,16 +23,9 @@ export default function Document() {
 					href='/favicon/favicon-16x16.png'
 					sizes='16x16'
 				/>
+
 				<link rel='shortcut icon' href='/favicon/favicon.ico' />
 				<link rel='manifest' href='/favicon/site.webmanifest'></link>
-				<meta name='ps-key' content='6998-659da0480715a3000dcb7a24' />
-				<meta name='ps-country' content='US' />
-				<meta name='ps-language' content='en' />
-				<script src='//cdn.pricespider.com/1/lib/ps-widget.js' async></script>
-				<script
-					type='text/javascript'
-					src='//cdn.pricespider.com/1/6998/ps-utid.js'
-					async></script>
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
