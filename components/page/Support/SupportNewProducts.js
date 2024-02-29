@@ -57,7 +57,7 @@ const SupportNewProducts = ({ data }) => {
 			})
 		})
 
-		if (dropdownRef?.current) {
+		if (dropdownRef?.current && !collapseProductsList && searchProductsList) {
 			resizeObserver.observe(dropdownRef.current)
 		}
 
@@ -66,7 +66,7 @@ const SupportNewProducts = ({ data }) => {
 				resizeObserver.unobserve(dropdownRef.current)
 			}
 		}
-	}, [])
+	}, [collapseProductsList, searchProductsList])
 
 	const handleHeightChange = newHeight => {
 		setViewAllBtnOffset(newHeight + (54 + 20)) // 54px input height, 20px for padding room on top
