@@ -121,13 +121,15 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	// TODO: replace all this with actual lightbox data once cxm options are updated
 	/** start */
 	const pimFirstImage = pim.filter(item => item.url === firstImage)
-	pim = pim.filter(item => itemTypeIds.includes(item.type_id) && item.url !== firstImage)
+	pim = pim.filter(
+		item => itemTypeIds.includes(item.type_id) && item.url !== firstImage
+	)
 	Array.prototype.unshift.apply(pim, pimFirstImage)
 	pim = pim.map((item, index) => {
 		return { ...item, order: index }
 	})
 	const playButton = Play.src
-	const blockVideo= 'autoplay=0&controls=0'
+	const blockVideo = 'autoplay=0&controls=0'
 
 	const lightBox = pim
 	.map(item => ({
@@ -312,6 +314,10 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							}}
 						>
 							<img
+								onClick={() => {
+									setLightBoxActiveIndex(item.order)
+									setLightBoxStatus(true)
+								}}
 								src={
 									allData?.Category?.customFields.find(
 										customFiledItem =>
@@ -340,6 +346,10 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						>
 							<img
 								src={firstImage}
+								onClick={() => {
+									setLightBoxActiveIndex(item.order)
+									setLightBoxStatus(true)
+								}}
 								// alt={firstImage}
 								// title={
 								// 	pim.find(item => item.order === 1)?.caption
@@ -369,6 +379,10 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 									}}
 								>
 									<img
+										onClick={() => {
+											setLightBoxActiveIndex(item.order)
+											setLightBoxStatus(true)
+										}}
 										src={item?.url}
 										title={item?.caption ? item?.caption : item?.title}
 										alt={item?.caption ? item?.caption : item?.title}
@@ -394,13 +408,26 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 									}}
 								>
 									{/* Replace iframe with thumbnail once implemented in cxm */}
-									<iframe src={item.url + (item.url.includes('?') ? `&` : '?') + blockVideo} autoplay="" controls className="image"></iframe>
+									<iframe
+										src={
+											item.url +
+											(item.url.includes('?') ? `&` : '?') +
+											blockVideo
+										}
+										autoplay=''
+										controls
+										className='image'></iframe>
+									<div
+										onClick={() => {
+											setLightBoxActiveIndex(item.order)
+											setLightBoxStatus(true)
+										}}
+										className='position-absolute top-0 left-0 w-100 h-100'></div>
 									<button
 										onClick={() => {
 											lightboxActivateClickHandler(item.order)
 										}}
-										className='resize_btn'
-									>
+										className='resize_btn'>
 										<img src={Expand.src} width='16' />
 									</button>
 								</figure>
