@@ -31,12 +31,18 @@ const ProductPackageHeader = ({ pim, data }) => {
 
 	const dataLayerHandler = () => {
 		setChanelAdviserHandler(!chanelAdviserHandler)
+		// window.dataLayer.push({
+		// 	event: 'view_product',
+		// 	eventData: {
+		// 		product_id: pim?.model,
+		// 		category: pim?.Category?.name
+		// 	}
+		// })
 		window.dataLayer.push({
-			event: 'view_product',
-			eventData: {
-				product_id: pim?.model,
-				category: pim?.Category?.name
-			}
+			event: 'Online redirect',
+			category: 'PriceSpider Click',
+			action: 'PS-Redirect',
+			label: pim?.name
 		})
 	}
 
@@ -82,30 +88,29 @@ const ProductPackageHeader = ({ pim, data }) => {
 					<div className='sizes pt-0'></div>
 
 					<div className='text-center text-md-start'>
-						<button
-							className='wtb_btn mx-auto mx-md-0'
-							disabled={
-								pim?.buy_status !== 'ChannelAdvisor' &&
-								pim?.buy_status !== 'Internal'
-							}
-							onClick={() =>
-								pim?.buy_status === 'ChannelAdvisor' ||
+						{pim?.buy_status === 'ChannelAdvisor' ? (
+							<div
+								className='ps-widget ps_wtb_btn w-fit mx-auto mx-md-0'
+								ps-sku={pim?.model}></div>
+						) : (
+							<button
+								className='wtb_btn mx-auto mx-md-0'
+								disabled={
+									pim?.buy_status !== 'ChannelAdvisor' &&
+									pim?.buy_status !== 'Internal'
+								}
+								onClick={() =>
+									pim?.buy_status === 'ChannelAdvisor' ||
+									pim?.buy_status === 'Internal'
+										? dataLayerHandler()
+										: {}
+								}>
+								{pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal'
-									? dataLayerHandler()
-									: {}
-							}>
-							{pim?.buy_status === 'ChannelAdvisor' ||
-							pim?.buy_status === 'Internal'
-								? 'Where To Buy'
-								: 'coming soon'}
-							{/* {pim?.buy_status === 'ChannelAdvisor' ||
-							pim?.buy_status === 'Internal' ? (
-								<img
-									style={{ marginLeft: '16px' }}
-									src={OpenPageOnNewTab.src}
-								/>
-							) : null} */}
-						</button>
+									? 'Where To Buy'
+									: 'coming soon'}
+							</button>
+						)}
 					</div>
 				</div>
 			</div>
