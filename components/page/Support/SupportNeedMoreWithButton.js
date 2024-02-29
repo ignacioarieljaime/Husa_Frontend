@@ -6,13 +6,15 @@ function SupportNeedMoreWithButton({ data }) {
 	let { structure } = data
 	return (
 		<section>
-			<div className='heading support-heading support-new-heading need_more_help_banner'>
-				<div className='heading-text'>
+			<div
+				className={` heading support-heading support-new-heading need_more_help_banner ${
+					structure?.template?.value === 'v2' ? 'version_2' : ''
+				}`}>
+				<div className='heading-text content'>
 					<h4
-						className='text-white fs-2hx fw-normal mb-7'
-						style={{ color: '#fff' }}>
-						{structure?.title?.value}
-					</h4>
+						className='text-white fs-2hx fw-normal mb-7 title'
+						style={{ color: '#fff' }}
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h4>
 					{structure?.link?.value && (
 						<Link
 							target={
@@ -23,7 +25,7 @@ function SupportNeedMoreWithButton({ data }) {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
-								className='n-btn outline-white medium transparent d-block w-fit mx-auto'>
+								className='n-btn outline-white medium transparent d-block w-fit mx-auto version_2_button'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img
