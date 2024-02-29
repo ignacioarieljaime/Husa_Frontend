@@ -24,12 +24,12 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	if (thumbsSwiper && width) {
 		if (width >= 768) {
 			if (thumbsSwiper?.navigation?.nextEl) {
-				thumbsSwiper.navigation.nextEl.onmouseover=()=>setThumbCanMove(true)
-				thumbsSwiper.navigation.nextEl.onmouseout=()=>setThumbCanMove(false)
+				thumbsSwiper.navigation.nextEl.onmouseover = () => setThumbCanMove(true)
+				thumbsSwiper.navigation.nextEl.onmouseout = () => setThumbCanMove(false)
 			}
 			if (thumbsSwiper?.navigation?.prevEl) {
-				thumbsSwiper.navigation.prevEl.onmouseover=()=>setThumbCanMove(true)
-				thumbsSwiper.navigation.prevEl.onmouseout=()=>setThumbCanMove(false)
+				thumbsSwiper.navigation.prevEl.onmouseover = () => setThumbCanMove(true)
+				thumbsSwiper.navigation.prevEl.onmouseout = () => setThumbCanMove(false)
 			}
 		}
 	}
@@ -94,8 +94,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						aria-label={`slide-${0}`}
 						onClick={() => {
 							setThumbCanMove(false)
-						}}
-						>
+						}}>
 						<figure className='image_wrapper'>
 							<img
 								src={firstImage}
@@ -117,8 +116,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								aria-label={`slide-${index + 1}`}
 								onClick={() => {
 									setThumbCanMove(false)
-								}}
-								>
+								}}>
 								<figure className='image_wrapper'>
 									<img
 										src={item.url}
@@ -134,17 +132,23 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							<SwiperSlide
 								key={index}
 								aria-hidden='true'
-								className='h-fit'
+								className='h-fit cursor-pointer'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}
 								onClick={() => {
 									setThumbCanMove(false)
-								}}
-								>
+								}}>
 								<figure className='image_wrapper'>
 									<iframe
 										mute={true}
-										src={item?.url}
+										style={{
+											pointerEvents: 'none'
+										}}
+										src={
+											item?.url.includes('&autoplay=1')
+												? item?.url.replace('&autoplay=1', '')
+												: item?.url
+										}
 										className='image'></iframe>
 								</figure>
 							</SwiperSlide>
@@ -170,8 +174,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='main_frame'>
 				{pim && pim?.length === 0 ? (
-					<SwiperSlide
-					>
+					<SwiperSlide>
 						<figure className='image_wrapper'>
 							<img
 								src={
@@ -198,8 +201,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 					</SwiperSlide>
 				) : null}
 				{firstImage ? (
-					<SwiperSlide key={'custom'}
-					>
+					<SwiperSlide key={'custom'}>
 						<figure className='image_wrapper'>
 							<img
 								src={firstImage}
@@ -222,8 +224,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				{pim &&
 					pim.map((item, index) =>
 						item.type_id === 1 && item.url !== firstImage ? (
-							<SwiperSlide key={index}
-							>
+							<SwiperSlide key={index}>
 								<figure className='image_wrapper'>
 									<img
 										src={item?.url}

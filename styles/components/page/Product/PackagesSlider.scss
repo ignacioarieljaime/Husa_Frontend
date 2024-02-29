@@ -512,7 +512,7 @@
 						max-width: unset;
 					}
 					.swiper-slide-thumb-active {
-						.image {
+						.image_wrapper {
 							outline: 3px solid #383838;
 							border: none;
 							&:hover {
@@ -528,7 +528,7 @@
 						}
 					}
 					.swiper-slide-visible {
-						.image {
+						.image_wrapper {
 							&:hover {
 								outline: 3px solid #8c8e8f;
 								cursor: pointer;
