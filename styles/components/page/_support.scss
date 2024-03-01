@@ -421,16 +421,33 @@
 		}
 
 		ul > li {
+			display: inline-flex;
+			flex-direction: row;
+			align-items: center;
 			padding: 3px 0px 3px 20px;
 			background-color: white !important;
 		}
 
-		ul > li > a {
+		ul > li> a > span {
+			display: inline-flex !important;
+			flex-direction: row;
+			align-items: center;
+		}
+
+		ul > li > a,
+		ul > li > a > span {
+			font-weight: 400;
+		}
+
+		ul > li > a,
+		ul > li > a > span,
+		ul > li > a > span > strong {
+			display: inline-block;
 			text-decoration: none;
 			font-size: 16px;
-			font-weight: 400;
 			line-height: 21.6px;
 			color: black !important;
+			overflow: hidden;
 			text-overflow: ellipsis;
 		}
 
@@ -735,7 +752,6 @@
 		left: 0;
 		height: auto;
 		width: 100%;
-		max-width: 320px;
 		border: 1px solid #c7c7c9;
 		border-radius: 16px;
 		padding: 4px;

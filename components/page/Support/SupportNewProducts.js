@@ -300,6 +300,7 @@ const SupportNewProducts = ({ data }) => {
 					/>
 					<SearchIcon color={categoryId ? 'black' : '#F0F2F2'} />
 					{!collapseProductsList && searchProductsList && (
+						<>
 						<ul
 							ref={dropdownRef}
 							className=' mt-0 d-flex flex-column gap-2 w-100 list bg-white list-unstyled py-4 px-4 overflow-auto'
@@ -343,22 +344,23 @@ const SupportNewProducts = ({ data }) => {
 								)
 							)}
 						</ul>
-					)}
 
-					{preLineText &&
-						searchValue !== '' &&
-						searchProductsList !== 'loading' && (
-							<button
-								className='view-all-button'
-								style={{ bottom: -viewAllBtnOffset + 'px' }}
-								onClick={() => {
-									setSearchValue('')
-									setSearchBoxCondition(true)
-									handleSearchFocus()
-								}}>
-								{renderPreListText(true)}
-							</button>
-						)}
+						{preLineText &&
+							searchValue !== '' &&
+							searchProductsList !== 'loading' && (
+								<button
+									className='view-all-button'
+									style={{ bottom: -viewAllBtnOffset + 'px' }}
+									onClick={() => {
+										setSearchValue('')
+										setSearchBoxCondition(true)
+										handleSearchFocus()
+									}}>
+									{renderPreListText(true)}
+								</button>
+							)}
+						</>
+					)}
 				</div>
 			</div>
 		</section>
