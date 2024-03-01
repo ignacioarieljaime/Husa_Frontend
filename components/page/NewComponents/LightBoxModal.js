@@ -412,7 +412,7 @@ const LightBoxModal = ({
 		// console.log({"target": mutation.target})
 		// console.log({"mutation splide instance": splideInstance.index})
 		if (mutation.target.className === "splide__list") {
-			if (mutation.target.style.transform === "translateX(0px)" && currentIndex > 4 && splideInstance.index > 4) {
+			if (mutation.target.style.transform === "translateX(0px)" && currentIndex && currentIndex > 4 && splideInstance && splideInstance.index > 4) {
 				// console.log({"before re-assign": mutation.target.style.transform})
 				windowSizeMovementHandler()
 				// console.log("SPLIDE TRANSFORM INTENTIONALLY RE-ASSIGNED")
