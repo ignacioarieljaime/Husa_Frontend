@@ -45,19 +45,33 @@ const LightBoxModal = ({
 
 	const outSide = useOutsideClick(boxRef)
 
+	function currentPagination(pageLength, totalLength, index) {
+		if (totalLength <= pageLength) return 1
+
+		for (let i = 0; i <= Math.floor((totalLength - 1) / pageLength); i++) {
+			if (
+				index < pageLength * (i + 1) &&
+				index >= pageLength * (i + 1) - pageLength
+			)
+				return (pageLength * (i + 1)) / pageLength
+		}
+	}
+
 	function isLastPage(pageLength, totalLength, index) {
-		const result = index > totalLength - pageLength
+		// const result = index > totalLength - pageLength;
 		const isOnlyOnePage = totalLength - pageLength === 0
+
+		const lastCompletePage = Math.floor((totalLength - 1) / pageLength)
+		const lastPageIndex = totalLength - 1
 
 		if (index < pageLength && isOnlyOnePage) return true
 		if (index < pageLength && !isOnlyOnePage) return false
-		return result
+		return index >= lastCompletePage * pageLength && index <= lastPageIndex
 	}
 
 	const newIndexHandler = indexUpdate => {
 		const displayPerPage = 5
 		const lastPage = isLastPage(displayPerPage, dataList?.length, indexUpdate)
-
 		setCurrentIndex(indexUpdate)
 
 		if (lastPage) {
@@ -103,6 +117,30 @@ const LightBoxModal = ({
 		}
 	}
 
+	// const elemNextArrow = document.getElementsByClassName('splide__arrow--next')[0];
+	// const elemPrevArrow = document.getElementsByClassName('splide__arrow--prev')[0];
+
+	// if (elemNextArrow && elemPrevArrow) {
+
+	// 	if (!elemNextArrow.hasAttribute('listenerOnClick') && !elemPrevArrow.hasAttribute('listenerOnClick')) {
+
+	// 		elemNextArrow.addEventListener('click', function () {
+	// 			setTriggerSync(false)
+	// 		})
+	// 		elemPrevArrow.addEventListener('click', function () {
+	// 			setTriggerSync(false)
+	// 		})
+
+	// 		elemNextArrow.setAttribute('listenerOnClick', 'true')
+	// 		elemPrevArrow.setAttribute('listenerOnClick', 'true')
+			
+	// 		console.log("attributes added")
+	// 	}
+	// 	console.log(`after attribute check triggerSync is ${triggerSync}`)
+	// }
+	// console.log({"next": elemNextArrow, "prev": elemPrevArrow})
+
+
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
 		if (temp?.length > 100) temp = '<p>' + temp?.substring(0, 100) + '...</p>'
@@ -110,10 +148,15 @@ const LightBoxModal = ({
 	}
 
 	useEffect(() => {
-		if (mainSwiperRef.current && thumbsSwiperRef.current) {
-			mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
-		}
-	}, [mainSwiperRef, thumbsSwiperRef])
+		if (dataList && dataList.length > 0)
+			setPagination(new Array(Math.ceil(dataList?.length / 5)).fill({}))
+	}, [])
+
+	// useEffect(() => {
+	// 	if (mainSwiperRef.current && thumbsSwiperRef.current) {
+	// 		mainSwiperRef.current.sync(thumbsSwiperRef.current.splide)
+	// 	}
+	// }, [mainSwiperRef, thumbsSwiperRef])
 
 	function windowSizeMovementHandler() {
 		// Short desktop height handling
@@ -121,7 +164,7 @@ const LightBoxModal = ({
 			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 86)
 		} else if (windowSize[0] <= 768) {
 			// Standard mobile size handling
-			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 94.67)
+			listMovementHandler(5, Math.ceil(dataList?.length / 5) * 5, 94.95)
 		}
 
 		// Standard desktop size handling
@@ -162,8 +205,8 @@ const LightBoxModal = ({
 			'lightbox___wrapper___thumbnails_carousel'
 		)[0]
 		let carouselContainer = document.getElementsByClassName(
-			'splide is-initialized splide--slide splide--ltr splide--draggable splide--nav is-active'
-		)[0]
+			'splide is-overflow is-initialized splide--slide splide--ltr splide--draggable is-active'
+		)[1]
 		// let splideTrack = document.getElementById('splide02-track') MIGHT NEED, might control the container of slides height?
 		let splideList = document.getElementsByClassName('splide__list')[1]
 
@@ -301,7 +344,9 @@ const LightBoxModal = ({
 			focus: currentIndex,
 			isNavigation: true,
 			start: activeItemIndex,
-			perMove: 5
+			pagination: false,
+			perMove: 5,
+			perPage: 5
 		}
 
 		const thumbsOptionsTransition = {
@@ -313,7 +358,9 @@ const LightBoxModal = ({
 			focus: 'left',
 			isNavigation: true,
 			start: activeItemIndex,
-			perMove: 5
+			pagination: false,
+			perMove: 5,
+			perPage: 5
 		}
 
 		if (thumbIndex !== 0 && thumbIndex % 5 === 0) {
@@ -338,6 +385,13 @@ const LightBoxModal = ({
 				setHasInteracted(true)
 			}
 		}
+	}
+
+	// Helper function to assist with pagination navigation correctly applying 'is-active' class
+	function isWithin5(x, y) {
+		const roundedNum = Math.ceil(y / 5) * 5;
+		if (y >= x && y < (x + 5)) return true
+		return false
 	}
 
 	useEffect(() => {
@@ -412,7 +466,7 @@ const LightBoxModal = ({
 		// console.log({"target": mutation.target})
 		// console.log({"mutation splide instance": splideInstance.index})
 		if (mutation.target.className === "splide__list") {
-			if (mutation.target.style.transform === "translateX(0px)" && currentIndex > 4 && splideInstance.index > 4) {
+			if (mutation.target.style.transform === "translateX(0px)" && currentIndex && currentIndex > 4 && splideInstance && splideInstance.index > 4) {
 				// console.log({"before re-assign": mutation.target.style.transform})
 				windowSizeMovementHandler()
 				// console.log("SPLIDE TRANSFORM INTENTIONALLY RE-ASSIGNED")
@@ -452,7 +506,7 @@ const LightBoxModal = ({
 										windowSize[1] < 651
 											? 1 * windowSize[1] - 32 + 'px'
 											: windowSize[1] < 800
-											? 1.3 * windowSize[1] - 32 + 'px'
+											? 1.15 * windowSize[1] - 32 + 'px'
 											: '880px',
 									zIndex: windowSize[1] < 651 ? `${zIndex + 10}` : `${zIndex}`
 							  }
@@ -613,9 +667,13 @@ const LightBoxModal = ({
 												<Splide
 													options={mainOptions}
 													ref={mainSwiperRef}
-													onMove={(slide, newIndex, prevIndex, destIndex) =>
+													onMounted={splide => setMainSplideInstance(splide)}
+													onMove={(slide, newIndex, prevIndex, destIndex) => {
 														newIndexHandler(newIndex)
-													}>
+														if (splideInstance) splideInstance.go(newIndex)
+													}}
+													onActive={() => slideNavActionHandler(setMainSwipeCount, "main")}
+													>
 													{dataList.map((item, index) => (
 														<SplideSlide key={index}>
 															{renderChidren(true, item, index, true)}
@@ -628,18 +686,110 @@ const LightBoxModal = ({
 											<Splide
 												options={thumbPageHandler(currentIndex)}
 												ref={thumbsSwiperRef}
+												onMounted={splide => setSplideInstance(splide)}
 												onMove={(slide, newIndex, prevIndex, destIndex) =>
 													newIndexHandler(newIndex)
 												}
-												onArrowsUpdated={slide => newIndexHandler(slide.index)}>
+												onArrowsUpdated={slide => newIndexHandler(slide.index)}
+												onActive={() => slideNavActionHandler(setThumbSwipeCount, "thumb")}
+												>
 												{dataList.map((item, index) => (
-													<SplideSlide key={index}>
+													<SplideSlide
+														key={index}
+														onClick={() => {
+															// if (!triggerSync) setTriggerSync(true)
+															if (splideInstance) splideInstance.go(index)
+															if (mainSplideInstance) mainSplideInstance.go(index)
+														}}>
 														{renderChidren(false, item, index, false, {
 															pointerEvents: 'none'
 														})}
 													</SplideSlide>
 												))}
 											</Splide>
+										</div>
+										<div className='lightbox___wrapper___splide_pagination'>
+											<ul className='lightbox___wrapper___splide_pagination___wrapper'>
+												{pagination.map((_, index) => (
+													<li
+														key={index}
+														onClick={() => {
+															splideInstance && splideInstance.go(index * 5)
+															setWasPaginationClicked(true)
+														}}
+														className={`lightbox___wrapper___splide_pagination___wrapper___item ${
+															index * 5 <= currentIndex &&
+															currentIndex < (index + 1) * 5
+																? 'is_active'
+																:
+															((index + 2) * 5 <= currentIndex &&
+																currentIndex < (index + 3) * 5) ||
+															((index - 2) * 5 <= currentIndex &&
+																currentIndex < (index - 1) * 5)
+																? 'is_small'
+																:
+															((index + 3) * 5 < currentIndex &&
+																currentIndex < (index + 4) * 5) ||
+															((index - 3) * 5 < currentIndex &&
+																currentIndex < (index - 2) * 5)
+																? `is_smaller`
+																:
+															currentIndex < 5 && 
+															index < 5
+																? ''
+																:
+															isLastPage(5, dataList?.length, currentIndex) &&
+															index < Math.ceil(currentIndex / 5) - 5
+															? `is_hidden`
+															:
+															isLastPage(5, dataList?.length, currentIndex) &&
+															(index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 3) &&
+															currentIndex % 5 === 0 &&
+															Math.ceil(currentIndex / 5) - 5 === index
+															? `is_hidden`
+															:
+															isLastPage(5, dataList?.length, currentIndex) &&
+															(index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 3)
+															? ``
+															:
+															currentIndex < 5 &&
+															(index < Math.ceil(currentIndex / 5) - 5 ||
+															index > Math.ceil(currentIndex / 5) + 5)
+															? 'is_hidden'
+															:
+															currentIndex < 5 &&
+															index >= Math.ceil(0) &&
+															index < Math.ceil(currentIndex / 5) + 4
+															? ''
+															:
+															currentIndex < 10 && currentIndex >= 5 &&
+															(index < Math.ceil(currentIndex / 5) - 4 ||
+															index > Math.ceil(currentIndex / 5) + 4)
+															? 'is_hidden'
+															:
+															currentIndex < 10 && currentIndex >= 5 &&
+															index <= 4 &&
+															index >= 0
+															? ''
+															:
+															currentIndex < 15 && currentIndex >= 10 &&
+															(index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 2)
+															? 'is_hidden'
+															:
+															currentIndex > dataList?.length - 10 &&
+															index > ((dataList?.length - 25) / 5)
+															? ''
+															:
+															index < Math.ceil(currentIndex / 5) - 2 ||
+															index > Math.ceil(currentIndex / 5) + 2
+																? `is_hidden`
+																: ''
+														}`}></li>
+												))}
+											</ul>
 										</div>
 									</div>
 								</div>
