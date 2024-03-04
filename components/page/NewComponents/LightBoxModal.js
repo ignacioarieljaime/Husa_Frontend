@@ -117,29 +117,6 @@ const LightBoxModal = ({
 		}
 	}
 
-	// const elemNextArrow = document.getElementsByClassName('splide__arrow--next')[0];
-	// const elemPrevArrow = document.getElementsByClassName('splide__arrow--prev')[0];
-
-	// if (elemNextArrow && elemPrevArrow) {
-
-	// 	if (!elemNextArrow.hasAttribute('listenerOnClick') && !elemPrevArrow.hasAttribute('listenerOnClick')) {
-
-	// 		elemNextArrow.addEventListener('click', function () {
-	// 			setTriggerSync(false)
-	// 		})
-	// 		elemPrevArrow.addEventListener('click', function () {
-	// 			setTriggerSync(false)
-	// 		})
-
-	// 		elemNextArrow.setAttribute('listenerOnClick', 'true')
-	// 		elemPrevArrow.setAttribute('listenerOnClick', 'true')
-			
-	// 		console.log("attributes added")
-	// 	}
-	// 	console.log(`after attribute check triggerSync is ${triggerSync}`)
-	// }
-	// console.log({"next": elemNextArrow, "prev": elemPrevArrow})
-
 
 	function validateCaptions(_caption) {
 		let temp = _caption?.split('<p>')[1]?.split('</p>')[0]
@@ -454,6 +431,12 @@ const LightBoxModal = ({
 		}
 	}, [thumbsSwiperRef?.current?.splideRef?.current?.lastChild?.firstChild?.style?.transform])
 
+
+	/*
+	
+	COMMENTED OUT FOR DEPLOYMENT
+	IMD-962 requires bug fix, uncomment this code when attempting further fixes
+
 	// Thumbnail carousel parent, contains the transform value which needs to be tracked/overwritten when library attempts to overwrite value to 0
 	const splideListElem = document.getElementById("splide02-list");
 
@@ -482,7 +465,11 @@ const LightBoxModal = ({
 	
    
 	// Later, you can disconnect the observer when you no longer need it 
-	// observer.disconnect(); 
+	// observer.disconnect();
+	
+	*/
+
+
 
 	return (
 		isVisible && (
