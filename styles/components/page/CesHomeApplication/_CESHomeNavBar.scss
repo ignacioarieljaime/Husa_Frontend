@@ -136,9 +136,9 @@
 				font-style: normal;
 				font-weight: 400;
 				border-radius: 1000px;
-				border: 1px solid #00aaa6;
+				border: 1px solid #008885;
 				color: #fff !important;
-				background: #00aaa6;
+				background: #008885;
 				min-width: 80px !important;
 				padding: 8.5px 16px 7.5px !important;
 				font-size: 14px;
@@ -154,15 +154,29 @@
 			}
 			.ps-wtb {
 				padding: 0;
+				border: 1px solid #008885 !important;
+				background-color: transparent;
+				&:hover {
+					//006664
+					border: 1px solid #006664 !important;
+					background-color: #006664;
+					span {
+						border: 1px solid #006664 !important;
+						background: #006664 !important;
+						font-size: 14px;
+						line-height: 14px;
+						font-weight: 400;
+					}
+				}
 
 				span {
 					display: block;
 					font-style: normal;
 					font-weight: 400;
 					border-radius: 1000px;
-					border: 1px solid #00aaa6;
+					border: 1px solid #008885 !important;
 					color: #fff !important;
-					background: #00aaa6;
+					background: #008885 !important;
 					min-width: 80px !important;
 					padding: 8.5px 16px 7.5px !important;
 					font-size: 14px;
