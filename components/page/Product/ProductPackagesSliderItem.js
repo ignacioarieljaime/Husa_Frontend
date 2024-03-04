@@ -4,8 +4,6 @@ import { RouteHandler } from 'utils/routeHandler'
 import CustomImage from 'components/common/CustomImage'
 
 const ProductPackagesSliderItem = ({ data }) => {
-	console.log(data)
-
 	return (
 		<div>
 			<CustomImage src={data?.image} alt={data?.name} />
