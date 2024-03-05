@@ -718,7 +718,7 @@
 							background: #c7c7c9;
 						}
 						&.active {
-							border-color: #c6c6c8;
+							border-color: #C6C6C8;
 							background: #707171;
 							span {
 								color: #fff;
@@ -782,7 +782,7 @@
 				font-size: 14px;
 				line-height: 11px;
 				font-weight: 400;
-				// color: #fff;
+				color: #fff !important;
 				font-family: 'hisense' !important;
 				@include mq(768) {
 					width: 100%;
@@ -806,7 +806,7 @@
 					font-size: 14px;
 					line-height: 11px;
 					font-weight: 400;
-					// color: #fff;
+					color: #fff !important;
 					display: block;
 					margin-bottom: -2px;
 				}
