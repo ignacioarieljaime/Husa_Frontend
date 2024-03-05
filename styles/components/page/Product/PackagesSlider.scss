@@ -775,7 +775,7 @@
 				font-size: 14px;
 				line-height: 11px;
 				font-weight: 400;
-				color: #fff !important;
+				// color: #fff;
 				font-family: 'hisense' !important;
 				@include mq(768) {
 					width: 100%;
@@ -795,7 +795,7 @@
 					font-size: 14px;
 					line-height: 11px;
 					font-weight: 400;
-					color: #fff !important;
+					// color: #fff;
 					display: block;
 					margin-bottom: -2px;
 				}
