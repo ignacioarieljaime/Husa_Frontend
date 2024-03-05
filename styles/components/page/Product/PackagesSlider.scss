@@ -484,19 +484,7 @@
 				}
 				.swiper-button-prev,
 				.swiper-button-next {
-					background: #00aaa6;
-					width: 24px;
-					height: 24px;
-					top: unset;
-					bottom: -95px;
-					border-radius: 50%;
-					&::after {
-						font-size: 10px;
-						color: white;
-					}
-					@include mq(768) {
-						display: none;
-					}
+					display: none;
 				}
 			}
 			.thumbs_gallery {
@@ -507,7 +495,10 @@
 				position: relative;
 				padding: 16px 0;
 				order: 1;
+				border-radius: 4px;
+				overflow: hidden;
 				@include mq(768) {
+					border-radius: 0;
 					padding: 0;
 					order: 2;
 					width: 100%;
@@ -521,7 +512,7 @@
 						max-width: unset;
 					}
 					.swiper-slide-thumb-active {
-						.image {
+						.image_wrapper {
 							outline: 3px solid #383838;
 							border: none;
 							&:hover {
@@ -537,7 +528,7 @@
 						}
 					}
 					.swiper-slide-visible {
-						.image {
+						.image_wrapper {
 							&:hover {
 								outline: 3px solid #8c8e8f;
 								cursor: pointer;
@@ -569,13 +560,13 @@
 				}
 				.swiper-button-prev {
 					left: 50%;
-					top: -24px;
+					top: -26px;
 					border-radius: 4px 0 0 4px;
 					transform: translateX(-50%) rotate(90deg);
 				}
 				.swiper-button-next {
 					left: 50%;
-					bottom: -24px;
+					bottom: -26px;
 					top: unset;
 					border-radius: 0px 4px 4px 0px;
 					transform: translateX(-50%) rotate(90deg);
@@ -584,7 +575,7 @@
 				.swiper-button-next {
 					background: #f0f2f2;
 					width: 16px;
-					height: 64px;
+					height: 68px;
 					margin-top: 0;
 					transition: all 0.3s ease;
 					&::after {
@@ -693,7 +684,9 @@
 					gap: 4px;
 					.sizes_item {
 						display: flex;
-						width: fit-content;
+						min-width: 46px;
+						width: 46px;
+						max-width: 46px;
 						padding: 9px 12px 9.5px;
 						justify-content: center;
 						align-items: center;
@@ -711,6 +704,8 @@
 							display: block;
 							font-size: 14px;
 							font-weight: 400;
+							margin-left: auto;
+							margin-right: auto;
 							margin-bottom: -3px;
 							transition: all 0.3s ease;
 						}
@@ -723,8 +718,8 @@
 							background: #c7c7c9;
 						}
 						&.active {
-							border-color: #000;
-							background: #000;
+							border-color: #C6C6C8;
+							background: #707171;
 							span {
 								color: #fff;
 							}
@@ -777,8 +772,8 @@
 				min-width: 80px !important;
 				padding: 11.5px 16px 9.5px !important;
 				width: fit-content;
-				border: 1px solid #038985 !important;
-				background-color: #038985 !important;
+				border: 1px solid #038985;
+				background-color: #038985;
 				border-radius: 1000px;
 				display: flex;
 				justify-content: center;
@@ -793,12 +788,8 @@
 					width: 100%;
 				}
 				&:hover {
-					border: 1px solid #006664 !important;
-					background: #006664 !important;
-					color: white !important;
-					span {
-						color: white !important;
-					}
+					border: 1px solid #006664;
+					background: #006664;
 				}
 				&:active {
 					border: 1px solid #000;
