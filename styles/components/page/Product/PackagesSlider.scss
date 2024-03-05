@@ -484,7 +484,19 @@
 				}
 				.swiper-button-prev,
 				.swiper-button-next {
-					display: none;
+					background: #00aaa6;
+					width: 24px;
+					height: 24px;
+					top: unset;
+					bottom: -95px;
+					border-radius: 50%;
+					&::after {
+						font-size: 10px;
+						color: white;
+					}
+					@include mq(768) {
+						display: none;
+					}
 				}
 			}
 			.thumbs_gallery {
@@ -495,10 +507,7 @@
 				position: relative;
 				padding: 16px 0;
 				order: 1;
-				border-radius: 4px;
-				overflow: hidden;
 				@include mq(768) {
-					border-radius: 0;
 					padding: 0;
 					order: 2;
 					width: 100%;
@@ -512,7 +521,7 @@
 						max-width: unset;
 					}
 					.swiper-slide-thumb-active {
-						.image_wrapper {
+						.image {
 							outline: 3px solid #383838;
 							border: none;
 							&:hover {
@@ -528,7 +537,7 @@
 						}
 					}
 					.swiper-slide-visible {
-						.image_wrapper {
+						.image {
 							&:hover {
 								outline: 3px solid #8c8e8f;
 								cursor: pointer;
@@ -560,13 +569,13 @@
 				}
 				.swiper-button-prev {
 					left: 50%;
-					top: -26px;
+					top: -24px;
 					border-radius: 4px 0 0 4px;
 					transform: translateX(-50%) rotate(90deg);
 				}
 				.swiper-button-next {
 					left: 50%;
-					bottom: -26px;
+					bottom: -24px;
 					top: unset;
 					border-radius: 0px 4px 4px 0px;
 					transform: translateX(-50%) rotate(90deg);
@@ -575,7 +584,7 @@
 				.swiper-button-next {
 					background: #f0f2f2;
 					width: 16px;
-					height: 68px;
+					height: 64px;
 					margin-top: 0;
 					transition: all 0.3s ease;
 					&::after {
@@ -759,6 +768,7 @@
 					line-height: 11px;
 					font-weight: 400;
 					color: #fff !important;
+					border: 1px solid #038985;
 					display: block;
 					margin-bottom: -2 px;
 				}
@@ -767,6 +777,8 @@
 				min-width: 80px !important;
 				padding: 11.5px 16px 9.5px !important;
 				width: fit-content;
+				border: 1px solid #038985 !important;
+				background-color: #038985 !important;
 				border-radius: 1000px;
 				display: flex;
 				justify-content: center;
@@ -775,14 +787,18 @@
 				font-size: 14px;
 				line-height: 11px;
 				font-weight: 400;
-				// color: #fff;
+				color: #fff !important;
 				font-family: 'hisense' !important;
 				@include mq(768) {
 					width: 100%;
 				}
 				&:hover {
-					border: 1px solid #006664;
-					background: #006664;
+					border: 1px solid #006664 !important;
+					background: #006664 !important;
+					color: white !important;
+					span {
+						color: white !important;
+					}
 				}
 				&:active {
 					border: 1px solid #000;
@@ -795,7 +811,7 @@
 					font-size: 14px;
 					line-height: 11px;
 					font-weight: 400;
-					// color: #fff;
+					color: #fff !important;
 					display: block;
 					margin-bottom: -2px;
 				}
