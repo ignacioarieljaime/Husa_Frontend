@@ -21,6 +21,7 @@ import SupportNewProductsSelectBox from './SupportNewProductsSelectBox'
 import { useWindowSize } from 'hooks/useWindowSize'
 
 const SupportNewProducts = ({ data }) => {
+	const [showDropwdown, setShowDropwdown] = useState(false)
 	const [collapseProductsList, setCollapseProductsList] = useState(true)
 	const [categoryId, setCategoryId] = useState()
 	const [activeSearchBox, setActiveSearchBox] = useState(false)
@@ -34,6 +35,21 @@ const SupportNewProducts = ({ data }) => {
 	const dropdownRef = useRef(null)
 
 	let { structure } = data
+
+	useEffect(() => {
+		// max-width + scrollbar + padding
+		if (width >= 1372 + 17 + 48) setShowDropwdown(false)
+		else setShowDropwdown(true)
+	}, [width])
+
+	useEffect(() => {
+		if (width < 1437 && categoryId == undefined)
+			setCategoryId(
+				structure?.list?.value.find(item => item?.category?.value === 3)
+					?.category?.value
+			)
+	}, [showDropwdown])
+
 	useEffect(() => {
 		if (!searchBoxCondition) {
 			return
@@ -160,7 +176,10 @@ const SupportNewProducts = ({ data }) => {
 
 		if (index !== -1) {
 			return (
-				<span className='support-dropdown-list-text'>
+				<span
+					className={`support-dropdown-list-text ${
+						upperCaseSearchString.length ? 'searched' : ''
+					}`}>
 					{model.substring(0, index)}
 					<strong>{upperCaseSearchString}</strong>
 					{model.substring(index + searchString.length)}
@@ -212,7 +231,10 @@ const SupportNewProducts = ({ data }) => {
 
 	return (
 		<section>
-			<div className='support-products'>
+			<div
+				className={`support-products ${
+					showDropwdown ? 'dropdown_container' : ''
+				}`}>
 				<div className='support-products___texts'>
 					{structure?.title?.value && (
 						<h2
@@ -230,7 +252,7 @@ const SupportNewProducts = ({ data }) => {
 					)}
 				</div>
 
-				{width > 1200 ? (
+				{!showDropwdown ? (
 					<div
 						className='support-category-row-container'
 						style={{ gridTemplateColumns: `repeat(${categoryLength}, 1fr)` }}>
@@ -301,64 +323,66 @@ const SupportNewProducts = ({ data }) => {
 					<SearchIcon color={categoryId ? 'black' : '#F0F2F2'} />
 					{!collapseProductsList && searchProductsList && (
 						<>
-						<ul
-							ref={dropdownRef}
-							className=' mt-0 d-flex flex-column gap-2 w-100 list bg-white list-unstyled py-4 px-4 overflow-auto'
-							style={{ maxHeight: '300px' }}>
-							<span className='support-search-prelist-text'>
-								{renderPreListText(false)}
-							</span>
+							<ul
+								ref={dropdownRef}
+								className=' mt-0 d-flex flex-column gap-2 w-100 list bg-white list-unstyled py-4 px-4 overflow-auto'
+								style={{ maxHeight: '300px' }}>
+								<span className='support-search-prelist-text'>
+									{renderPreListText(false)}
+								</span>
 
-							{searchProductsList === 'loading' ? (
-								<li className='py-5'>
-									<Spinner size={20} className={'support-loading-spinner'} />
-								</li>
-							) : Array.isArray(searchProductsList) &&
-							  searchProductsList.length > 0 ? (
-								searchProductsList.map((item, index) => (
-									<li key={'search-list-' + index}>
-										<Link
-											target={item.route?.target ? item.route?.target : '_self'}
-											href={item.route}>
-											<a
+								{searchProductsList === 'loading' ? (
+									<li className='py-5'>
+										<Spinner size={20} className={'support-loading-spinner'} />
+									</li>
+								) : Array.isArray(searchProductsList) &&
+								  searchProductsList.length > 0 ? (
+									searchProductsList.map((item, index) => (
+										<li key={'search-list-' + index}>
+											<Link
 												target={
 													item.route?.target ? item.route?.target : '_self'
 												}
-												className='text-primary decora'>
-												{renderBoldText(item.model)}
-												{item.route?.target === '_blank' && (
-													<img
-														style={{ marginLeft: '10px' }}
-														src={OpenPageOnNewTab.src}
-													/>
-												)}
-											</a>
-										</Link>
-									</li>
-								))
-							) : (
-								modelDoesNotExist && (
-									<li className='search-is-error-text'>
-										Model number doesn{`'`}t exist
-									</li>
-								)
-							)}
-						</ul>
+												href={item.route}>
+												<a
+													target={
+														item.route?.target ? item.route?.target : '_self'
+													}
+													className='text-primary decora'>
+													{renderBoldText(item.model)}
+													{item.route?.target === '_blank' && (
+														<img
+															style={{ marginLeft: '10px' }}
+															src={OpenPageOnNewTab.src}
+														/>
+													)}
+												</a>
+											</Link>
+										</li>
+									))
+								) : (
+									modelDoesNotExist && (
+										<li className='search-is-error-text'>
+											Model number doesn{`'`}t exist
+										</li>
+									)
+								)}
+							</ul>
 
-						{preLineText &&
-							searchValue !== '' &&
-							searchProductsList !== 'loading' && (
-								<button
-									className='view-all-button'
-									style={{ bottom: -viewAllBtnOffset + 'px' }}
-									onClick={() => {
-										setSearchValue('')
-										setSearchBoxCondition(true)
-										handleSearchFocus()
-									}}>
-									{renderPreListText(true)}
-								</button>
-							)}
+							{preLineText &&
+								searchValue !== '' &&
+								searchProductsList !== 'loading' && (
+									<button
+										className='view-all-button'
+										style={{ bottom: -viewAllBtnOffset + 'px' }}
+										onClick={() => {
+											setSearchValue('')
+											setSearchBoxCondition(true)
+											handleSearchFocus()
+										}}>
+										{renderPreListText(true)}
+									</button>
+								)}
 						</>
 					)}
 				</div>
