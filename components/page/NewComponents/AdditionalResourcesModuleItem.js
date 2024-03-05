@@ -1,5 +1,7 @@
 import axios from 'axios'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
+import PlayIcon from 'components/icons/PlayIconV2'
+import ArrowRight from 'components/icons/ArrowRight'
 import { useWindowSize } from 'hooks/useWindowSize'
 import moment from 'moment'
 import Link from 'next/link'
@@ -10,7 +12,8 @@ const AdditionalResourcesModuleItem = ({
 	data,
 	index,
 	lightboxHandler,
-	setLightBoxActiveIndex
+	setLightBoxActiveIndex,
+	hasVideo
 }) => {
 	const [cardData, setCardData] = useState({
 		link: '/',
@@ -104,6 +107,9 @@ const AdditionalResourcesModuleItem = ({
 			getPostData('blog', data?.selected_blog?.value)
 		}
 	}, [])
+
+	console.log({"index": index, "data": cardData})
+	console.log({"hasVid": hasVideo})
 
 	const ModuleContentDiv = ({ children }) => {
 		return (
@@ -207,7 +213,7 @@ const AdditionalResourcesModuleItem = ({
 										target={cardData.target}
 										className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link hoverEffect'>
 										<span>{cardData?.button_title}</span>
-										<DownloadIconV2 color='#000' />
+										<DownloadIconV2 color='#00AAA6' />
 									</a>
 								</Link>
 							) : cardData.image ? (
@@ -220,16 +226,32 @@ const AdditionalResourcesModuleItem = ({
 									target={cardData.target}
 									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link hoverEffect'>
 									<span>{cardData?.button_title}</span>
-									<DownloadIconV2 color='#000' />
+									<DownloadIconV2 color='#00AAA6' />
 								</a>
 							) : null
+						) : cardData.type === 'lightbox' ? (
+							<Link href={cardData.link} target={cardData.target}>
+								<a
+									target={cardData.target}
+									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link hoverEffect'>
+									<span>{cardData?.button_title}</span>
+									{hasVideo ? (
+											<PlayIcon color='#00AAA6' />
+										) :
+										(
+											<ArrowRight color='#00AAA6' height='8px' width='8px'/>
+										)
+									}
+									
+								</a>
+							</Link>
 						) : cardData.link && cardData.button_title ? (
 							<Link href={cardData.link} target={cardData.target}>
 								<a
 									target={cardData.target}
 									className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___link hoverEffect'>
 									<span>{cardData?.button_title}</span>
-									<DownloadIconV2 color='#000' />
+									<ArrowRight color='#00AAA6' height='8px' width='8px'/>
 								</a>
 							</Link>
 						) : null}
