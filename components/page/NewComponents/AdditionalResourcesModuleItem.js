@@ -1,6 +1,6 @@
 import axios from 'axios'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
-import PlayIcon from 'components/icons/PlayIcon'
+import PlayIcon from 'components/icons/PlayIconV2'
 import ArrowRight from 'components/icons/ArrowRight'
 import { useWindowSize } from 'hooks/useWindowSize'
 import moment from 'moment'
