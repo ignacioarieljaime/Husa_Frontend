@@ -777,8 +777,8 @@
 				min-width: 80px !important;
 				padding: 11.5px 16px 9.5px !important;
 				width: fit-content;
-				border: 1px solid #038985;
-				background-color: #038985;
+				border: 1px solid #038985 !important;
+				background-color: #038985 !important;
 				border-radius: 1000px;
 				display: flex;
 				justify-content: center;
@@ -793,8 +793,12 @@
 					width: 100%;
 				}
 				&:hover {
-					border: 1px solid #006664;
-					background: #006664;
+					border: 1px solid #006664 !important;
+					background: #006664 !important;
+					color: white !important;
+					span {
+						color: white !important;
+					}
 				}
 				&:active {
 					border: 1px solid #000;
