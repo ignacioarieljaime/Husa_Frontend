@@ -173,6 +173,7 @@ const AdditionalResourcesModule = ({ data }) => {
 										setLightBoxStatus(prevState => !prevState)
 									}
 									setLightBoxActiveIndex={setLightBoxActiveIndex}
+									hasVideo={data?.structure?.list?.value[index]?.lightbox?.value?.video?.value}
 								/>
 							</SwiperSlide>
 						))}
