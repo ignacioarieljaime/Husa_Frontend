@@ -438,6 +438,19 @@
 			align-items: center;
 			padding: 3px 0px 3px 20px;
 			background-color: white !important;
+			border-radius: 10px;
+			&:hover {
+				background-color: #F0F2F2 !important;
+				a,
+				span,
+				a > span,
+				.searched,
+				.support-dropdown-list-text,
+				.support-dropdown-list-text > span,
+				.support-dropdown-list-text > strong {
+					color: #008885 !important;
+				}
+			}
 		}
 
 		ul > li > a > span {
@@ -474,6 +487,12 @@
 			}
 			strong {
 				color: black;
+			}
+		}
+
+		ul > li:hover {
+			a > .searched{
+				color: #008885 !important;
 			}
 		}
 

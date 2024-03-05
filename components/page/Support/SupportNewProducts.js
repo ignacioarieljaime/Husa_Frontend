@@ -222,12 +222,14 @@ const SupportNewProducts = ({ data }) => {
 
 	const categoryClickHandler = item => {
 		if (categoryId === item?.category?.value) return
+		if (searchRef?.current?.disabled) searchRef.current.disabled = false;
 		searchActiveHandler(item?.category?.value)
 		setSearchValue('')
 		setSearchBoxCondition(!searchBoxCondition)
 		handleSearchFocus()
 		if (preLineText !== item?.link?.title) setPreLineText(item?.link?.title)
 	}
+	console.log({"test": categoryId})
 
 	return (
 		<section>
@@ -304,6 +306,7 @@ const SupportNewProducts = ({ data }) => {
 									: ''
 								: ''
 						}
+						disabled={!categoryId}
 						type='text'
 						placeholder='find model number'
 						onChange={e => {
