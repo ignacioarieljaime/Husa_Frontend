@@ -13,6 +13,7 @@ const ProductPackageHeader = ({ pim, data }) => {
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 	useEffect(() => {
 		sortMPNData()
+		window?.PriceSpider.rebind()
 	}, [])
 
 	const sortMPNData = () => {
