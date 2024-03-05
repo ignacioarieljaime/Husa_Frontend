@@ -22,6 +22,7 @@ function ProductCategoryBox({ data, pim }) {
 				setFix(false)
 			}
 		})
+		window?.PriceSpider.rebind()
 	}, [])
 
 	const dataLayerHandler = () => {

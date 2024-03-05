@@ -39,6 +39,10 @@ const ProductItemV2 = ({ data }) => {
 	const [screenSize, setScreenSize] = useState(null)
 
 	useEffect(() => {
+		window?.PriceSpider.rebind()
+	}, [])
+
+	useEffect(() => {
 		if (screenSize && screenSize.length) {
 			setCurrentItem(
 				screenSize.find(item => item?.id?.value == data?.id?.value)
