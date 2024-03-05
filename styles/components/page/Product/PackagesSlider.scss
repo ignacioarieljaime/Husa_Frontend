@@ -718,7 +718,7 @@
 							background: #c7c7c9;
 						}
 						&.active {
-							border-color: #C6C6C8;
+							border-color: #c6c6c8;
 							background: #707171;
 							span {
 								color: #fff;
@@ -772,8 +772,6 @@
 				min-width: 80px !important;
 				padding: 11.5px 16px 9.5px !important;
 				width: fit-content;
-				border: 1px solid #038985;
-				background-color: #038985;
 				border-radius: 1000px;
 				display: flex;
 				justify-content: center;
@@ -782,7 +780,7 @@
 				font-size: 14px;
 				line-height: 11px;
 				font-weight: 400;
-				color: #fff !important;
+				// color: #fff;
 				font-family: 'hisense' !important;
 				@include mq(768) {
 					width: 100%;
@@ -802,7 +800,7 @@
 					font-size: 14px;
 					line-height: 11px;
 					font-weight: 400;
-					color: #fff !important;
+					// color: #fff;
 					display: block;
 					margin-bottom: -2px;
 				}

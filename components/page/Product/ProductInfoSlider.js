@@ -45,8 +45,9 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 
 	useEffect(() => {
 		if (querySlideNumber && !hasQueryTriggered) {
-			if (lightBoxActiveIndex !== querySlideNumber) setLightBoxActiveIndex((querySlideNumber - 1))
-			if (!lightBoxStatus && lightBoxActiveIndex === (querySlideNumber - 1)) {
+			if (lightBoxActiveIndex !== querySlideNumber)
+				setLightBoxActiveIndex(querySlideNumber - 1)
+			if (!lightBoxStatus && lightBoxActiveIndex === querySlideNumber - 1) {
 				setLightBoxStatus(true)
 				setHasQueryTriggered(true)
 			}
@@ -57,16 +58,17 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 		if (width >= 768 && mainDragEnabled) {
 			setMainDragEnabled(false)
 			if (mainSwiperRef) {
-				if (mainSwiperRef?.current?.swiper?.allowTouchMove === true) mainSwiperRef.current.swiper.allowTouchMove = false;
+				if (mainSwiperRef?.current?.swiper?.allowTouchMove === true)
+					mainSwiperRef.current.swiper.allowTouchMove = false
 			}
 		}
 		if (width < 768 && !mainDragEnabled) {
 			setMainDragEnabled(true)
 			if (mainSwiperRef) {
-				if (mainSwiperRef?.current?.swiper?.allowTouchMove === false) mainSwiperRef.current.swiper.allowTouchMove = true;
+				if (mainSwiperRef?.current?.swiper?.allowTouchMove === false)
+					mainSwiperRef.current.swiper.allowTouchMove = true
 			}
 		}
-
 	}, [width])
 
 	if (thumbsSwiper && width) {
@@ -113,7 +115,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	}
 	const itemTypeIds = [1, 5]
 
-	const lightboxActivateClickHandler = (indexVal) => {
+	const lightboxActivateClickHandler = indexVal => {
 		setLightBoxActiveIndex(indexVal)
 		setLightBoxStatus(true)
 	}
@@ -132,62 +134,62 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 	const playButton = Play.src
 	const blockVideo = 'autoplay=0&controls=0'
 
-	const lightBox = pim
-	.map(item => ({
-	  link: {
-		id: item.type_id,
-		type: "url",
-		title: "Download",
-		value: item.url,
-		hidden: false
-	  },
-	  image: {
-		id: item.subject_id,
-		alt: item.caption,
-		src: item.type_id === 5 ? playButton : item.url,
-		type: "image",
-		title: "Image",
-		hidden: false
-	  },
-	  video: {
-		id: item.type_id,
-		type: "string",
-		title: "Iframe Link",
-		value: item.type_id === 5 ? item.url : null,
-		hidden: false
-	  },
-	  caption: {
-		id: item.order,
-		type: "simpleText",
-		title: "Light Box Caption",
-		value: item.caption,
-		hidden: false
-	  },
-	//   thumbnail_image: {
-	// 	id: 4,
-	// 	alt: item.caption,
-	// 	src: item.type_id === 5 ? playButton : item.url,
-	// 	type: "image",
-	// 	title: "Thumbnail Image (for video)",
-	// 	hidden: false
-	//   }
-	}));
+	const lightBox = pim.map(item => ({
+		link: {
+			id: item.type_id,
+			type: 'url',
+			title: 'Download',
+			value: item.url,
+			hidden: false
+		},
+		image: {
+			id: item.subject_id,
+			alt: item.caption,
+			src: item.type_id === 5 ? playButton : item.url,
+			type: 'image',
+			title: 'Image',
+			hidden: false
+		},
+		video: {
+			id: item.type_id,
+			type: 'string',
+			title: 'Iframe Link',
+			value: item.type_id === 5 ? item.url : null,
+			hidden: false
+		},
+		caption: {
+			id: item.order,
+			type: 'simpleText',
+			title: 'Light Box Caption',
+			value: item.caption,
+			hidden: false
+		}
+		//   thumbnail_image: {
+		// 	id: 4,
+		// 	alt: item.caption,
+		// 	src: item.type_id === 5 ? playButton : item.url,
+		// 	type: "image",
+		// 	title: "Thumbnail Image (for video)",
+		// 	hidden: false
+		//   }
+	}))
 	/** end */
 
-	const thumbControlRemover = (url) => {
-        let finalUrl = url
-        if (url.includes('&autoplay=1')) finalUrl = url.replace('&autoplay=1', '')
-        if (url.includes('&controls=1')) finalUrl = url.replace('&controls=1', '&controls=0')
-        if (!url.includes('&controls=0')) finalUrl = finalUrl + '&controls=0'
+	const thumbControlRemover = url => {
+		let finalUrl = url
+		if (url.includes('&autoplay=1')) finalUrl = url.replace('&autoplay=1', '')
+		if (url.includes('&controls=1'))
+			finalUrl = url.replace('&controls=1', '&controls=0')
+		if (!url.includes('&controls=0')) finalUrl = finalUrl + '&controls=0'
 
-        return finalUrl;
-    }
+		return finalUrl
+	}
 
 	// Fixes issue where clicking thumbnails doesnt move main slide if screen size has switched between mobile and desktop sizes
-	const thumbClickFixer = (e) => {
+	const thumbClickFixer = e => {
 		let ariaLabel = e.target.parentNode.parentNode.getAttribute('aria-label')
 		let ariaSlide = parseInt(ariaLabel.replace('slide-', ''), 10)
-		let slideNum = (ariaSlide - 1)
+		let slideNum = ariaSlide - 1
 		if (mainSwiper && width >= 768 && ariaSlide) mainSwiper.slideTo(slideNum)
 	}
 
@@ -219,7 +221,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 						tabIndex={'-1'}
 						className='h-fit'
 						aria-label={`slide-${0}`}
-						onClick={(e) => {
+						onClick={e => {
 							e.stopPropagation()
 							thumbClickFixer(e)
 							setThumbCanMove(false)
@@ -243,7 +245,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								className='h-fit'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}
-								onClick={(e) => {
+								onClick={e => {
 									e.stopPropagation()
 									thumbClickFixer(e)
 									setThumbCanMove(false)
@@ -266,7 +268,7 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 								className='h-fit cursor-pointer'
 								tabIndex={'-1'}
 								aria-label={`slide-${index + 1}`}
-								onClick={(e) => {
+								onClick={e => {
 									e.stopPropagation()
 									thumbClickFixer(e)
 									setThumbCanMove(false)
@@ -307,13 +309,12 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				modules={[FreeMode, Thumbs, Navigation]}
 				className='main_frame'>
 				{pim && pim?.length === 0 ? (
-					<SwiperSlide
-					>
-						<figure className='image_wrapper cursor-pointer'
+					<SwiperSlide>
+						<figure
+							className='image_wrapper cursor-pointer'
 							onClick={() => {
 								lightboxActivateClickHandler(lightBoxActiveIndex)
-							}}
-						>
+							}}>
 							<img
 								onClick={() => {
 									setLightBoxActiveIndex(item.order)
@@ -338,13 +339,12 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 					</SwiperSlide>
 				) : null}
 				{firstImage ? (
-					<SwiperSlide key={'custom'}
-					>
-						<figure className='image_wrapper cursor-pointer'
+					<SwiperSlide key={'custom'}>
+						<figure
+							className='image_wrapper cursor-pointer'
 							onClick={() => {
 								lightboxActivateClickHandler(0)
-							}}
-						>
+							}}>
 							<img
 								src={firstImage}
 								onClick={() => {
@@ -372,13 +372,12 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 				{pim &&
 					pim.map((item, index) =>
 						item.type_id === 1 && item.url !== firstImage ? (
-							<SwiperSlide key={index}
-							>
-								<figure className='image_wrapper cursor-pointer'
+							<SwiperSlide key={index}>
+								<figure
+									className='image_wrapper cursor-pointer'
 									onClick={() => {
 										lightboxActivateClickHandler(item.order)
-									}}
-								>
+									}}>
 									<img
 										onClick={() => {
 											setLightBoxActiveIndex(item.order)
@@ -403,11 +402,11 @@ function ProductInfoSlider({ pim, firstImage, allData }) {
 							</SwiperSlide>
 						) : item.type_id === 5 ? (
 							<SwiperSlide key={index}>
-								<figure className='image_wrapper cursor-pointer'
+								<figure
+									className='image_wrapper cursor-pointer'
 									onClick={() => {
 										lightboxActivateClickHandler(item.order)
-									}}
-								>
+									}}>
 									{/* Replace iframe with thumbnail once implemented in cxm */}
 									<iframe
 										src={
