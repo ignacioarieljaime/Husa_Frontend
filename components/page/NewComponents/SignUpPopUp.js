@@ -42,6 +42,7 @@ const SignUpPopUp = ({ data }) => {
 				setEmail('')
 				setHasClosed(true)
 				setIsOpen(false)
+				sessionStorage.setItem('noSignUpPopUp', '1')
 			} else {
 				toast.error('Submission Failed')
 			}
@@ -79,19 +80,20 @@ const SignUpPopUp = ({ data }) => {
 	const closeHandler = () => {
 		if (isOpen) setIsOpen(false)
 		if (!hasClosed) setHasClosed(true)
+		sessionStorage.setItem('noSignUpPopUp', '1')
 	}
 
 	return (
 		isOpen &&
-		!hasClosed && (
-			<div className='signup_popup'
+		!hasClosed &&
+		!sessionStorage.getItem('noSignUpPopUp') && (
+			<div
+				className='signup_popup'
 				onClick={() => {
 					if (outSide) {
 						closeHandler()
 					}
-				}
-			}
-			>
+				}}>
 				<div className='signup_popup___container' ref={popupRef}>
 					<div className='signup_popup___container___content'>
 						<div className='signup_popup___container___content___image'>
@@ -130,6 +132,7 @@ const SignUpPopUp = ({ data }) => {
 										) : (
 											<span>Subscribe</span>
 										)}
+										{''}
 									</button>
 
 									<button

@@ -495,7 +495,10 @@
 				position: relative;
 				padding: 16px 0;
 				order: 1;
+				border-radius: 4px;
+				overflow: hidden;
 				@include mq(768) {
+					border-radius: 0;
 					padding: 0;
 					order: 2;
 					width: 100%;
@@ -509,7 +512,7 @@
 						max-width: unset;
 					}
 					.swiper-slide-thumb-active {
-						.image {
+						.image_wrapper {
 							outline: 3px solid #383838;
 							border: none;
 							&:hover {
@@ -525,7 +528,7 @@
 						}
 					}
 					.swiper-slide-visible {
-						.image {
+						.image_wrapper {
 							&:hover {
 								outline: 3px solid #8c8e8f;
 								cursor: pointer;
@@ -557,13 +560,13 @@
 				}
 				.swiper-button-prev {
 					left: 50%;
-					top: -24px;
+					top: -26px;
 					border-radius: 4px 0 0 4px;
 					transform: translateX(-50%) rotate(90deg);
 				}
 				.swiper-button-next {
 					left: 50%;
-					bottom: -24px;
+					bottom: -26px;
 					top: unset;
 					border-radius: 0px 4px 4px 0px;
 					transform: translateX(-50%) rotate(90deg);
@@ -572,7 +575,7 @@
 				.swiper-button-next {
 					background: #f0f2f2;
 					width: 16px;
-					height: 64px;
+					height: 68px;
 					margin-top: 0;
 					transition: all 0.3s ease;
 					&::after {
@@ -733,6 +736,10 @@
 				justify-content: center;
 				align-items: center;
 				transition: all 0.3s ease-in;
+				color: #fff !important;
+				font-size: 14px;
+				line-height: 11px;
+				font-weight: 400;
 				@include mq(768) {
 					width: 100%;
 				}
@@ -754,6 +761,43 @@
 					color: #fff !important;
 					display: block;
 					margin-bottom: -2 px;
+				}
+			}
+			.ps_wtb_btn {
+				min-width: 80px !important;
+				padding: 11.5px 16px 9.5px !important;
+				width: fit-content;
+				border-radius: 1000px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				transition: all 0.3s ease-in;
+				font-size: 14px;
+				line-height: 11px;
+				font-weight: 400;
+				color: #fff !important;
+				font-family: 'hisense' !important;
+				@include mq(768) {
+					width: 100%;
+				}
+				&:hover {
+					border: 1px solid #006664;
+					background: #006664;
+				}
+				&:active {
+					border: 1px solid #000;
+					background: #000;
+				}
+				&:disabled {
+					color: #b3bac5 !important;
+				}
+				span {
+					font-size: 14px;
+					line-height: 11px;
+					font-weight: 400;
+					color: #fff !important;
+					display: block;
+					margin-bottom: -2px;
 				}
 			}
 			.package-details {

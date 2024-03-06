@@ -31,7 +31,7 @@ export default function Document() {
 				<script src='//cdn.pricespider.com/1/lib/ps-widget.js' async></script>
 				<script
 					type='text/javascript'
-					src='//cdn.pricespider.com/1/6998/ps-uƟd.js'
+					src='//cdn.pricespider.com/1/6998/ps-utid.js'
 					async></script>
 				<script
 					dangerouslySetInnerHTML={{

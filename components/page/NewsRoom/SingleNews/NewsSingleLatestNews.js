@@ -35,11 +35,15 @@ const NewsSingleLatestNews = ({ data, pim }) => {
 					}
 				}
 			)
-
-			setNews(response.data.data)
+			sortNews(response.data.data)
 		} catch (error) {
 			console.log(error)
 		}
+	}
+
+	function sortNews(_news) {
+		const filteredNews = _news.filter(news => news?.id !== pim?.id)
+		setNews(filteredNews)
 	}
 
 	return (

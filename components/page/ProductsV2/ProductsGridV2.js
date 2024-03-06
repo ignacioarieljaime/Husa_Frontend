@@ -152,6 +152,7 @@ const ProductsGridV2 = ({ data }) => {
 			)
 			justifyViewPort()
 		}
+		window?.PriceSpider.rebind()
 	}, [products, searchTermFilter])
 
 	// const orderProducts = _data => {

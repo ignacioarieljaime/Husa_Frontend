@@ -369,3 +369,34 @@
 		}
 	}
 }
+
+.dolby-vision {
+	div {
+		h2 {
+			font-size: 1.5rem;
+			line-height: 30px;
+			@media (min-width: 768px) {
+				font-size: 48px !important;
+			}
+		}
+		.caption {
+			color: #bbbbbb !important;
+			p {
+				max-width: 700px;
+				font-size: 16px;
+				line-height: 22.4px;
+			}
+		}
+	}
+}
+
+.smooth-motion {
+	div {
+		div {
+			p {
+				font-size: 16px;
+				font-weight: 400;
+			}
+		}
+	}
+}
