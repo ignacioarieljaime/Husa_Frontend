@@ -1,16 +1,11 @@
-import dynamic from 'next/dynamic'
-import React, { useEffect, useState } from 'react'
-import ProductInfoSliderV2 from './ProductInfoSliderV2'
+import React, { useState } from 'react'
 import ProductSliderLinkButtonV3 from './ProductSliderLinkButtonV3'
-// component
-const ModalChanelAdviser = dynamic(() => import('./ModalChanelAdviser'))
-const ProductInfoSlider = dynamic(() => import('./ProductInfoSlider'))
-const ProductSliderLinkButtonV2 = dynamic(() =>
-	import('./ProductSliderLinkButtonV2')
-)
-import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon_white.png'
+import {
+	ProductInfoSlider,
+	ModalChanelAdviser
+} from './ProductInfoAndSliderBoxV2'
 
-function ProductInfoAndSliderBoxV2({ pim, data }) {
+export function ProductInfoAndSliderBoxV2({ pim, data }) {
 	let { structure } = data
 	const [chanelAdviserHandler, setChanelAdviserHandler] = useState(false)
 
@@ -31,10 +26,17 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 		})
 	}
 
-	useEffect(() => {
-		window?.PriceSpider.rebind()
-	}, [])
-
+	// useEffect(() => {
+	// 	window?.PriceSpider.rebind()
+	// }, [])
+	// useEffect(() => {
+	// 	const script = document.createElement('script')
+	// 	script.id = 'custom-ps-widgets-script'
+	// 	script.src = '//cdn.pricespider.com/1/lib/ps-widget.js'
+	// 	script.async = true
+	// 	document.body.appendChild(script)
+	// 	return () => document.body.removeChild(script)
+	// }, [])
 	return (
 		<section
 			id={data.name + data.id}
@@ -77,26 +79,26 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 					</p>
 
 					{/* <h2
-						className={`title ${
-							pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-								? 'text-dark mb-5'
-								: 'text-dark fs-2hx mb-1'
-						} ${structure?.theme.value === 'light' && 'text-white'}`}>
-						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-							? pim?.custom_fields.find(item => item.title === 'h2 Title')
-									?.value
-							: pim?.custom_fields?.find(item => item.title === 'Product Type')
-									?.value}
-					</h2> */}
+                className={`title ${
+                    pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+                        ? 'text-dark mb-5'
+                        : 'text-dark fs-2hx mb-1'
+                } ${structure?.theme.value === 'light' && 'text-white'}`}>
+                {pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+                    ? pim?.custom_fields.find(item => item.title === 'h2 Title')
+                            ?.value
+                    : pim?.custom_fields?.find(item => item.title === 'Product Type')
+                            ?.value}
+            </h2> */}
 					{/* <h1
-						className={`serie  mb-8 ${
-							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
-						}`}>
-						{pim?.custom_fields.find(item => item.title === 'span Title')?.value
-							? pim?.custom_fields.find(item => item.title === 'span Title')
-									?.value
-							: pim?.name}
-					</h1> */}
+                className={`serie  mb-8 ${
+                    structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+                }`}>
+                {pim?.custom_fields.find(item => item.title === 'span Title')?.value
+                    ? pim?.custom_fields.find(item => item.title === 'span Title')
+                            ?.value
+                    : pim?.name}
+            </h1> */}
 					<div
 						className={`mb-8 text-uppercase ${
 							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
@@ -104,11 +106,11 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						{data?.structure?.description?.value}
 					</div>
 					{/* <p
-						className={`${
-							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
-						}`}>
-						Model: {pim?.model}
-					</p> */}
+                className={`${
+                    structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+                }`}>
+                Model: {pim?.model}
+            </p> */}
 					{pim?.series[0]?.values && pim?.series[0]?.values.length > 0 ? (
 						<div className='sizes'>
 							<p
@@ -201,26 +203,26 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 					</p>
 
 					{/* <h2
-						className={`title ${
-							pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-								? 'text-dark mb-5'
-								: 'text-dark fs-2hx mb-1'
-						} ${structure?.theme.value === 'light' && 'text-white'}`}>
-						{pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
-							? pim?.custom_fields.find(item => item.title === 'h2 Title')
-									?.value
-							: pim?.custom_fields?.find(item => item.title === 'Product Type')
-									?.value}
-					</h2> */}
+                className={`title ${
+                    pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+                        ? 'text-dark mb-5'
+                        : 'text-dark fs-2hx mb-1'
+                } ${structure?.theme.value === 'light' && 'text-white'}`}>
+                {pim?.custom_fields.find(item => item.title === 'h2 Title')?.value
+                    ? pim?.custom_fields.find(item => item.title === 'h2 Title')
+                            ?.value
+                    : pim?.custom_fields?.find(item => item.title === 'Product Type')
+                            ?.value}
+            </h2> */}
 					{/* <h1
-						className={`serie  mb-8 ${
-							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
-						}`}>
-						{pim?.custom_fields.find(item => item.title === 'span Title')?.value
-							? pim?.custom_fields.find(item => item.title === 'span Title')
-									?.value
-							: pim?.name}
-					</h1> */}
+                className={`serie  mb-8 ${
+                    structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+                }`}>
+                {pim?.custom_fields.find(item => item.title === 'span Title')?.value
+                    ? pim?.custom_fields.find(item => item.title === 'span Title')
+                            ?.value
+                    : pim?.name}
+            </h1> */}
 					<div
 						className={`mb-8 text-uppercase ${
 							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
@@ -228,11 +230,11 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						{data?.structure?.description?.value}
 					</div>
 					{/* <p
-						className={`${
-							structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
-						}`}>
-						Model: {pim?.model}
-					</p> */}
+                className={`${
+                    structure?.theme.value === 'light' ? 'text-white' : 'text-dark'
+                }`}>
+                Model: {pim?.model}
+            </p> */}
 					{pim?.series[0]?.values && pim?.series[0]?.values.length > 0 ? (
 						<div className='sizes'>
 							<p
@@ -286,38 +288,38 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 						)}
 					</div>
 					{/* <div className='model-toggle '>
-						{pim?.series[0]?.values.map(
-							(item, index) =>
-								item.title && (
-									<ProductSliderLinkButtonV2
-										key={index}
-										data={item}
-										pim={pim}
-									/>
-								)
-						)}
-					</div>
-					<div className='product-rating'></div>
-					<button
-						className={`pdp_where_to_buy_btn ${
-							pim?.buy_status === 'ChannelAdvisor' ||
-							pim?.buy_status === 'Internal'
-								? ''
-								: 'disabled'
-						} px-6 py-3 ${structure?.theme.value === 'light' && 'light_hover'}`}
-						disabled={pim?.buy_status ? false : true}
-						style={{ color: data?.structure?.backgroundColor?.value }}
-						onClick={() =>
-							pim?.buy_status === 'ChannelAdvisor' ||
-							pim?.buy_status === 'Internal'
-								? dataLayerHandler()
-								: {}
-						}>
-						{pim?.buy_status === 'ChannelAdvisor' ||
-						pim?.buy_status === 'Internal'
-							? 'Where To Buy'
-							: 'coming soon'}
-					</button> */}
+                {pim?.series[0]?.values.map(
+                    (item, index) =>
+                        item.title && (
+                            <ProductSliderLinkButtonV2
+                                key={index}
+                                data={item}
+                                pim={pim}
+                            />
+                        )
+                )}
+            </div>
+            <div className='product-rating'></div>
+            <button
+                className={`pdp_where_to_buy_btn ${
+                    pim?.buy_status === 'ChannelAdvisor' ||
+                    pim?.buy_status === 'Internal'
+                        ? ''
+                        : 'disabled'
+                } px-6 py-3 ${structure?.theme.value === 'light' && 'light_hover'}`}
+                disabled={pim?.buy_status ? false : true}
+                style={{ color: data?.structure?.backgroundColor?.value }}
+                onClick={() =>
+                    pim?.buy_status === 'ChannelAdvisor' ||
+                    pim?.buy_status === 'Internal'
+                        ? dataLayerHandler()
+                        : {}
+                }>
+                {pim?.buy_status === 'ChannelAdvisor' ||
+                pim?.buy_status === 'Internal'
+                    ? 'Where To Buy'
+                    : 'coming soon'}
+            </button> */}
 				</div>
 			</div>
 			{pim && (
@@ -333,5 +335,3 @@ function ProductInfoAndSliderBoxV2({ pim, data }) {
 		</section>
 	)
 }
-
-export default ProductInfoAndSliderBoxV2

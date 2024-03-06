@@ -30,6 +30,7 @@ function ProductInfoAndSliderBox({ pim, data }) {
 				}))
 			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
 		}
+		window?.PriceSpider.rebind()
 	}, [])
 
 	const dataLayerHandler = () => {
