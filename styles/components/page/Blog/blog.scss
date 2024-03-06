@@ -359,36 +359,44 @@ article.blog-article {
 						> div {
 							> div {
 								height: fit-content;
-								background: rgba(240, 242, 242, 0.4) !important;
-								backdrop-filter: blur(50px)!important;
+								background: transparent !important;
+								// backdrop-filter: blur(50px) !important;
 								border-radius: 0px 0px 10px 10px;
 								-webkit-border-radius: 0 0 10px 10px;
 								-moz-border-radius: 0 0 10px 10px;
 								-ms-border-radius: 0 0 10px 10px;
 								-o-border-radius: 0 0 10px 10px;
-								
+
 								ul {
 									margin: 0;
 									border-left: 1px solid #525454 !important;
-									border-right:  1px solid #525454 !important;
+									border-right: 1px solid #525454 !important;
 									border-top: 0px solid #525454 !important;
-									border-bottom:  0px solid #525454 !important;
-									border-radius: 0px 0px 0px 0px;
-									&::before {
+									border-bottom: 1px solid #525454 !important;
+									border-radius: 0px 0px 10px 10px;
+									background: transparent !important;
+									&::before,
+									&::after {
 										content: '';
+										background: rgba(240, 242, 242, 0.4) !important;
 										position: absolute;
 										left: 1px;
 										top: 16px;
+										z-index: -2;
 										width: calc(100% - 2px);
 										height: calc(100% - 17px);
 										display: block;
-										border-radius: 0 0 0px 0px;
-										-webkit-border-radius: 0 0 0px 0px;
-										-moz-border-radius: 0 0 0px 0px;
-										-ms-border-radius: 0 0 0px 0px;
-										-o-border-radius: 0 0 0px 0px;
+										border-radius: 0 0 10px 10px;
+										-webkit-border-radius: 0 0 10px 10px;
+										-moz-border-radius: 0 0 10px 10px;
+										-ms-border-radius: 0 0 10px 10px;
+										-o-border-radius: 0 0 10px 10px;
 									}
-									background: rgba(240, 242, 242, 0.4) !important;
+									&::after {
+										z-index: -1;
+										backdrop-filter: blur(50px) !important;
+										background: rgba(255, 255, 255, 0.5568627451) !important;
+									}
 									& > * {
 										position: relative;
 									}
@@ -398,9 +406,9 @@ article.blog-article {
 									width: 100%;
 									background: rgba(240, 242, 242, 0.4) !important;
 									border-left: 1px solid #525454 !important;
-									border-right:  1px solid #525454 !important;
+									border-right: 1px solid #525454 !important;
 									border-top: 0px solid #525454 !important;
-									border-bottom:  1px solid #525454 !important;
+									border-bottom: 1px solid #525454 !important;
 									border-radius: 0px 0px 10px 10px;
 									-webkit-border-radius: 0 0 10px 10px;
 									-moz-border-radius: 0 0 10px 10px;
