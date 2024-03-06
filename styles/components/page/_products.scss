@@ -539,14 +539,15 @@
 							padding: 9px 16px 9.5px;
 							justify-content: center;
 							align-items: center;
+							color: #008885;
 							border-radius: 1000px;
 							border: 1px solid #008885;
-							background: #008885;
+							background: transparent;
 							transition: all 0.3s ease;
 
 							div,
 							.ps-button-label {
-								color: #fff;
+								color: #008885;
 								font-size: 14px;
 								line-height: 100%; /* 14px */
 								margin-bottom: -2px;
@@ -554,8 +555,15 @@
 								display: block;
 							}
 							&:hover {
+								color: white;
 								border-color: #006664;
 								background: #006664;
+								.ps-button-label {
+									color: white;
+								}
+								div {
+									color: white;
+								}
 							}
 							&:active {
 								border-color: #000;
