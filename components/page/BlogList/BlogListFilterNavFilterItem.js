@@ -93,7 +93,7 @@ const BlogListFilterNavFilterItem = ({
 										</li>
 									))}
 							</ul>
-							<div className='bottom-spacer' />
+							{/* <div className='bottom-spacer' /> */}
 						</div>
 					)}
 				</div>
