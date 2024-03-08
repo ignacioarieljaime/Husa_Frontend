@@ -256,6 +256,7 @@
 		max-width: 1372px;
 		height: auto;
 		gap: 16px;
+		padding-bottom: 5px;
 		margin: auto;
 		text-align: center;
 		justify-content: start;
@@ -285,6 +286,18 @@
 				line-height: 18.9px; /* 135% */
 				color: black;
 				padding-top: 16px;
+			}
+		}
+
+		.false {
+			&:hover {
+				background-color: #C7C7C9;
+				border: 1px solid #D0D2D4;
+				box-shadow: 0 2px 5px rgba(0,0,0,.2);
+			}
+			&:active {
+				background-color: #8C8F8F;
+				border: 1px solid #A1A5A9;
 			}
 		}
 
