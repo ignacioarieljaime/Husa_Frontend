@@ -38,5 +38,9 @@ module.exports.ProductSupportComponents = [
 	{
 		name: 'FirmwareBanner',
 		path: 'components/page/ProductSupport/FirmwareBanner'
-	}
+	},
+	{
+		name: 'ReplacementParts',
+		path: 'components/page/ProductSupport/ReplacementParts'
+	},
 ]
