@@ -194,6 +194,7 @@ const LightBoxModal = ({
 		)
 
 		if (windowSize[1] < 651 && windowSize[0] > 768) {
+			console.log({"hello add": lightBoxWrapper})
 			lightBoxWrapper?.classList.add('wrapper-short-responsive-fix')
 			splideList?.classList.add('splide-list-height-fix')
 
@@ -205,6 +206,7 @@ const LightBoxModal = ({
 		}
 
 		if (windowSize[1] > 651 && nextFix && prevFix) {
+			console.log({"hello remove": lightBoxWrapper})
 			lightBoxWrapper?.classList.remove('wrapper-short-responsive-fix')
 			splideList?.classList.remove('splide-list-height-fix')
 
@@ -432,13 +434,10 @@ const LightBoxModal = ({
 	}, [thumbsSwiperRef?.current?.splideRef?.current?.lastChild?.firstChild?.style?.transform])
 
 
-	/*
-	
-	COMMENTED OUT FOR DEPLOYMENT
-	IMD-962 requires bug fix, uncomment this code when attempting further fixes
 
 	// Thumbnail carousel parent, contains the transform value which needs to be tracked/overwritten when library attempts to overwrite value to 0
 	const splideListElem = document.getElementById("splide02-list");
+	const thumbInnerNode = thumbsSwiperRef?.current?.splideRef?.current?.childNodes[1]?.childNodes[0]
 
 	// Creating a new MutationObserver, seems to be the only way to actually detect and fix the undesired splide__list transform value reset
 	// Console logs currently kept commented in case problem persists for easier troubleshooting
@@ -448,7 +447,8 @@ const LightBoxModal = ({
 		// console.log({"mutation": mutation})
 		// console.log({"target": mutation.target})
 		// console.log({"mutation splide instance": splideInstance.index})
-		if (mutation.target.className === "splide__list") {
+		if (mutation.target.className.includes("splide__list")) {
+			if (mutation.target.style.transform) console.log("hello is " + mutation.target.style.transform)
 			if (mutation.target.style.transform === "translateX(0px)" && currentIndex && currentIndex > 4 && splideInstance && splideInstance.index > 4) {
 				// console.log({"before re-assign": mutation.target.style.transform})
 				windowSizeMovementHandler()
@@ -461,14 +461,13 @@ const LightBoxModal = ({
 
 	// Configuring the observer to watch for changes in splide__list for thumbnail carousel
 	const config = { attributes: true, childList: true, subtree: true }; 
-	if (splideListElem) observer.observe(splideListElem, config); 
+	if (thumbInnerNode) observer.observe(thumbInnerNode, config); 
+	// if (thumbInnerNode) console.log({"hello thumbInnerNode": thumbInnerNode})
 	
    
 	// Later, you can disconnect the observer when you no longer need it 
 	// observer.disconnect();
 	
-	*/
-
 
 
 	return (
