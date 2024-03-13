@@ -85,7 +85,7 @@ const BlogResults = ({ data }) => {
 			setPagination(response.data.meta)
 
 			// Removes 2 from amount if year is 2024 because 'Blog Results' and 'Hisense USA Blog' articles from 2024 are excluded from list
-			if (filters.year?.length === 0 || (filters.year?.length === 1 && filters.year[0] === 2024)) setBlogsLength((response.data?.meta?.total) - 2)
+			if (filters.search === '' && (filters.year?.length === 0 || (filters.year?.length === 1 && filters.year[0] === 2024))) setBlogsLength((response.data?.meta?.total) - 2)
 			else setBlogsLength(response.data?.meta?.total)
 		} catch (error) {
 			console.log(error)
