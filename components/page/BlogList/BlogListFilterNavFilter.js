@@ -24,10 +24,10 @@ const BlogListFilterNavFilter = ({
 	categoryTitle,
 	newsSearchTitle,
 	filterHandler,
-	news,
+	blogs,
 	targetRoute,
 	results,
-	newsLength,
+	blogsLength,
 	link,
 	color = '#43898a'
 }) => {
@@ -169,12 +169,12 @@ const BlogListFilterNavFilter = ({
 								</span>
 							)}
 						</div>
-						{news &&
-							(filters.search.length > 0 ||
-								filters.year.length > 0 ||
-								filters.tag.length > 0) && (
-								<div className='results'>{newsLength} Results</div>
-							)}
+						{results && blogs && (
+							// (filters.search.length > 0 ||
+							// 	filters.year.length > 0 ||
+							// 	filters.tag.length > 0) &&
+							<div className='results'>{blogsLength} Results</div>
+						)}
 
 						{width >= 768 && (
 							<div className='filter_options'>
@@ -250,7 +250,7 @@ const BlogListFilterNavFilter = ({
 					categoryTitle={categoryTitle}
 					newsSearchTitle={newsSearchTitle}
 					filterHandler={filterHandler}
-					news={news}
+					news={blogs}
 					onSearch={_v => setSearchTerm(_v)}
 					searchTerm={searchTerm}
 					onClose={() => !results && redirectToResultsPage()}

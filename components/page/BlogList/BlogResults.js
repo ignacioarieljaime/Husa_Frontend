@@ -114,8 +114,8 @@ const BlogResults = ({ data }) => {
 							? structure?.blog_search?.value
 							: 'search Blogs'
 					}
-					blogsList={finalBlogs}
-					newsLength={finalBlogs?.length}
+					blogs={finalBlogs}
+					blogsLength={blogsLength}
 					results
 				/>
 				<div className='blog_results___content'>
