@@ -7,7 +7,11 @@ function ProductFeatureWithImage({ data }) {
 		<section>
 			{structure?.template?.value === 'v2' ? (
 				<div
-					style={{ background: structure?.backgroundColor?.value }}
+					style={{
+						background: structure?.backgroundColor?.value,
+						borderTop: structure?.border?.value ? `5px solid white` : 'none',
+						borderBottom: structure?.border?.value ? `5px solid white` : 'none'
+					}}
 					className={`product_feature_image theme_${structure?.theme?.value} ${
 						structure?.theme?.value === 'dark' ? 'text-white' : ''
 					} ${
@@ -48,15 +52,36 @@ function ProductFeatureWithImage({ data }) {
 							</h5>
 						)}
 					</div>
-					<img
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
-						className='image'
-					/>
+					<div
+						className='image_container'
+						style={
+							structure?.rounded?.value
+								? {
+										padding: '40px'
+								  }
+								: { padding: '0px' }
+						}>
+						<img
+							src={structure?.image?.src}
+							alt={structure?.image?.alt}
+							className='image'
+							style={
+								structure?.rounded?.value
+									? {
+											borderRadius: '40px'
+									  }
+									: {}
+							}
+						/>
+					</div>
 				</div>
 			) : (
 				<div
-					style={{ background: structure?.backgroundColor?.value }}
+					style={{
+						background: structure?.backgroundColor?.value,
+						borderTop: structure?.border?.value ? `5px solid white` : 'none',
+						borderBottom: structure?.border?.value ? `5px solid white` : 'none'
+					}}
 					className={`row description-blocks theme-${structure?.theme?.value} ${
 						structure?.theme?.value === 'dark' ? 'text-white' : ''
 					} align-items-stretch ${
@@ -64,38 +89,51 @@ function ProductFeatureWithImage({ data }) {
 					}`}>
 					<article className='introduction col-12 col-md-6 order-2'>
 						<h4
+							className='subtitle'
 							style={{
-								color: structure?.theme?.value === 'dark' ? '#fff' : '#000',
-								fontSize: '20px',
-								fontWeight: '500',
+								color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 							}}>
 							{structure?.littleTitle?.value}
 						</h4>
 
-						<h4
+						<h3
+							className='title'
 							style={{
-								lineHeight: '55.86px',
-								fontSize: '48px',
-								color: structure?.theme?.value === 'dark' ? '#fff' : '#000',
-								fontWeight: '500',
+								color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 							}}>
 							{structure?.title?.value}
-						</h4>
+						</h3>
 						<p
+							className='text'
 							style={{
-								color: structure?.theme?.value === 'dark' ? '#fff' : '#000',
-								fontWeight: 400,
-								fontSize: '16px',
-								lineHeight: '21.6px',
+								color: structure?.theme?.value === 'dark' ? '#fff' : '#000'
 							}}>
 							{structure?.description?.value}
 						</p>
 					</article>
-					<CustomImage
-						src={structure?.image?.src}
-						alt={structure?.image?.alt}
-						wrapperClass='p-0 col-12 col-md-6 order-1'
-					/>
+					<div
+						className='image_container col-12 col-md-6 order-1 d-flex justify-content-center align-items-center'
+						style={
+							structure?.rounded?.value
+								? {
+										padding: '40px'
+								  }
+								: { padding: '0px' }
+						}>
+						<CustomImage
+							src={structure?.image?.src}
+							alt={structure?.image?.alt}
+							style={
+								structure?.rounded?.value
+									? {
+											borderRadius: '40px',
+											overflow: 'hidden'
+									  }
+									: {}
+							}
+							wrapperClass='w-full h-full'
+						/>
+					</div>
 				</div>
 			)}
 		</section>
