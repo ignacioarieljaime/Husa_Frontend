@@ -1,7 +1,9 @@
+import { useWindowSize } from 'hooks/useWindowSize'
 import React, { useEffect, useState } from 'react'
 
 const ImageDescriptionTiles = ({ data }) => {
 	const { structure } = data
+	const [width] = useWindowSize()
 	// const [content, setContent] = useState(null)
 	// useEffect(() => {
 	// 	setContent(structure)
@@ -10,14 +12,27 @@ const ImageDescriptionTiles = ({ data }) => {
 	return (
 		<section id={data.name + data.id}>
 			<div className='key_feature'>
-				<div className={'content'}>
+				<div
+					className={'content'}
+					style={{
+						gridTemplateColumns: `repeat(${structure?.list?.value.length}, 1fr)`
+					}}>
 					{structure?.list?.value.map((item, index) => (
 						<div
 							key={index}
 							className={`item ${
 								structure?.list?.value.length < 4 ? 'banner' : 'small'
 							} ${structure?.shadow?.value ? 'hover_active' : ''}`}
-							style={{ width: 100 / structure?.list?.value.length + '%' }}>
+							style={{
+								gridColumn:
+									width > 991
+										? `${index + 1}/${index + 2}`
+										: width > 575
+										? index % 2 === 0
+											? '1/2'
+											: '2/3'
+										: '1/2'
+							}}>
 							<div className={`image_wrapper `}>
 								{item?.image?.src && (
 									<img
@@ -46,28 +61,30 @@ const ImageDescriptionTiles = ({ data }) => {
 											)}
 										</div>
 									)}
-								{item?.title?.value ? (
-									structure?.list?.value.length > 2 ? (
-										<h5
-											className='title small'
+								<div className='titles_box'>
+									{item?.title?.value ? (
+										structure?.list?.value.length > 2 ? (
+											<h5
+												className='title small'
+												dangerouslySetInnerHTML={{
+													__html: item?.title?.value
+												}}></h5>
+										) : (
+											<h4
+												className='title large'
+												dangerouslySetInnerHTML={{
+													__html: item?.title?.value
+												}}></h4>
+										)
+									) : null}
+									{item?.subtitle?.value && (
+										<div
+											className='subtitle'
 											dangerouslySetInnerHTML={{
-												__html: item?.title?.value
-											}}></h5>
-									) : (
-										<h4
-											className='title large'
-											dangerouslySetInnerHTML={{
-												__html: item?.title?.value
-											}}></h4>
-									)
-								) : null}
-								{item?.subtitle?.value && (
-									<div
-										className='subtitle'
-										dangerouslySetInnerHTML={{
-											__html: item?.subtitle?.value
-										}}></div>
-								)}
+												__html: item?.subtitle?.value
+											}}></div>
+									)}
+								</div>
 								{item?.text?.value && (
 									<div
 										className='description'
