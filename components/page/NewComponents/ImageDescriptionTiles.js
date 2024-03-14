@@ -1,49 +1,34 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ImageDescriptionTiles = ({ data }) => {
 	const { structure } = data
-
-	const containerRef = useRef()
 	// const [content, setContent] = useState(null)
 	// useEffect(() => {
 	// 	setContent(structure)
 	// }, [])
-	const dividerSizeHandler = (boolean) => {
-		const isForHeight = boolean
-		if (containerRef && containerRef?.current?.clientHeight && containerRef?.current?.childNodes[0]?.childNodes[0]?.clientHeight) {
-
-			// subtracting height of image container from the container element height
-			// 128px to subtract bottom + top padding of 64px
-			// 16px for inner content padding
-			if (isForHeight) return containerRef.current.clientHeight - containerRef.current.childNodes[0].childNodes[0].clientHeight - 128 - 16
-			return containerRef.current.childNodes[0].childNodes[0].clientHeight + 16
-		}
-	}
-	const dividerHeight = dividerSizeHandler(true)
-	const dividerPosition = dividerSizeHandler(false)
 
 	return (
 		<section id={data.name + data.id}>
 			<div className='key_feature'>
-				<div ref={containerRef} className={'content'}>
+				<div className={'content'}>
 					{structure?.list?.value.map((item, index) => (
 						<div
 							key={index}
-							className={`centered-item item ${
+							className={`item ${
 								structure?.list?.value.length < 4 ? 'banner' : 'small'
 							} ${structure?.shadow?.value ? 'hover_active' : ''}`}
 							style={{ width: 100 / structure?.list?.value.length + '%' }}>
-							<div className={`image_wrapper rounded-image`}>
+							<div className={`image_wrapper `}>
 								{item?.image?.src && (
 									<img
 										src={item?.image?.src}
 										alt={item?.image?.alt}
-										className='image rounded-image'
+										className='image'
 									/>
 								)}
 							</div>
 							<div
-								className={`centered-content content ${
+								className={`content ${
 									structure?.divider?.value ? 'divider' : ''
 								}`}>
 								{item?.smallImage?.value?.image?.src &&
@@ -64,13 +49,13 @@ const ImageDescriptionTiles = ({ data }) => {
 								{item?.title?.value ? (
 									structure?.list?.value.length > 2 ? (
 										<h5
-											className='description-tile-title'
+											className='title small'
 											dangerouslySetInnerHTML={{
 												__html: item?.title?.value
 											}}></h5>
 									) : (
 										<h4
-											className='description-tile-title'
+											className='title large'
 											dangerouslySetInnerHTML={{
 												__html: item?.title?.value
 											}}></h4>
@@ -78,14 +63,14 @@ const ImageDescriptionTiles = ({ data }) => {
 								) : null}
 								{item?.subtitle?.value && (
 									<div
-										className='description-tile-subtitle'
+										className='subtitle'
 										dangerouslySetInnerHTML={{
 											__html: item?.subtitle?.value
 										}}></div>
 								)}
 								{item?.text?.value && (
 									<div
-										className='description-tile-description'
+										className='description'
 										dangerouslySetInnerHTML={{
 											__html: item?.text?.value
 										}}></div>
@@ -98,12 +83,6 @@ const ImageDescriptionTiles = ({ data }) => {
 										}}></div>
 								)}
 							</div>
-
-							{index < (structure?.list?.value?.length - 1) &&
-							<div className='description-tile-divider'
-							style={{height: dividerHeight, top: dividerPosition}}
-							/>
-						}
 						</div>
 					))}
 				</div>
