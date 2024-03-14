@@ -59,10 +59,10 @@
 			letter-spacing: -0.48px;
 			@include mq(768) {
 				max-width: unset !important;
-				text-align: center;
-				font-size: 16px;
-				line-height: 21px; /* 135% */
-				letter-spacing: -0.32px;
+				// text-align: center;
+				font-size: 10px;
+				line-height: 13.5px; /* 135% */
+				letter-spacing: 2px;
 			}
 		}
 		.title {
@@ -74,7 +74,7 @@
 			letter-spacing: -0.96px;
 			@include mq(768) {
 				max-width: unset !important;
-				text-align: center;
+				// text-align: center;
 				font-size: 24px;
 				line-height: 24px; /* 125% */
 				letter-spacing: -0.48px;
@@ -84,23 +84,31 @@
 			width: 100%;
 			margin: 0;
 			font-size: 24px;
-			font-weight: 500;
+			font-weight: 400;
 			line-height: 30px; /* 125% */
 			letter-spacing: -0.48px;
 			@include mq(768) {
 				max-width: unset !important;
-				font-size: 16px;
-				line-height: 21px; /* 135% */
+				font-size: 14px;
+				line-height: 19px; /* 135% */
 				letter-spacing: -0.32px;
 			}
 		}
 	}
-	.image {
+	.image_container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 50%;
 		height: auto;
-		object-fit: cover;
 		@include mq(768) {
 			width: 100%;
+			padding: 20px 20px 0 !important;
+		}
+		.image {
+			height: auto;
+			width: 100%;
+			object-fit: contain;
 		}
 	}
 }

@@ -196,43 +196,59 @@ input[type='number']::-webkit-outer-spin-button {
 /* description blocks */
 .description-blocks {
 	margin: 0;
+	.image_container {
+		@include mq(768) {
+			padding: 20px 20px 0 !important;
+		}
+	}
 }
 .description-blocks .introduction {
 	padding: 72px 128px;
 	margin: auto;
+	@include mq(768) {
+		padding: 32px 16px !important;
+	}
 }
 .description-blocks .introduction h4 {
 	margin-bottom: 50px;
-	font-weight: 700;
-	font-size: 15px;
-	line-height: 32px;
+	font-weight: 500;
+	font-size: 20px;
+	line-height: 24px;
+	@include mq(768) {
+		margin-bottom: 30px;
+		font-size: 10px;
+		line-height: 13.5px; /* 135% */
+		letter-spacing: 2px;
+	}
 }
-.description-blocks .introduction h2 {
+.description-blocks .introduction h3 {
 	margin-bottom: 40px;
-	font-size: 42px;
-	font-weight: 700;
-	line-height: 48px;
+	font-size: 48px;
+	font-weight: 500;
+	line-height: 55.86px;
+	@include mq(768) {
+		margin-bottom: 30px;
+		font-size: 24px;
+		line-height: 24px; /* 125% */
+		letter-spacing: -0.48px;
+	}
 }
 .description-blocks .introduction p {
 	margin-bottom: 40px;
-	font-size: 18px;
-	line-height: 30px;
-	font-weight: 300;
+	font-size: 20px;
+	line-height: 22px;
+	font-weight: 400;
+	@include mq(768) {
+		margin-bottom: 20px;
+		font-size: 14px;
+		line-height: 19px; /* 135% */
+		letter-spacing: -0.32px;
+	}
 }
 .description-blocks .introduction a {
 	font-size: 18px;
 	color: #00aaa6;
 	text-decoration: none;
-}
-@media (max-width: 768px) {
-	.description-blocks .introduction h2 {
-		font-size: 32px;
-		line-height: 36px;
-	}
-	.description-blocks .introduction p {
-		font-size: 14px;
-		line-height: 24px;
-	}
 }
 
 @media (max-width: 1400px) {
@@ -242,7 +258,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 @media (min-width: 1920px) {
-	.description-blocks .introduction h2 {
+	.description-blocks .introduction h3 {
 		font-size: 52.5px;
 		line-height: 60px;
 	}
