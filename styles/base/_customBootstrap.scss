@@ -1674,6 +1674,16 @@ header {
 			color: #fff;
 		}
 	}
+
+	section > .ps-widget {
+		color: black !important;
+		background-color: white !important;
+
+		&:hover {
+			color: white !important;
+			background-color: black !important;
+		}
+	}
 }
 
 /* white-advertisement-banner */
