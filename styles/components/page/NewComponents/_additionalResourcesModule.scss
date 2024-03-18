@@ -238,7 +238,7 @@
 				background: #fff;
 				overflow: hidden;
 
-				transition: box-shadow 0.3s ease-in !important;
+				transition: box-shadow 0.15s ease-in !important;
 				margin-bottom: 12px;
 
 				height: 100%;
@@ -395,6 +395,9 @@
 									}
 								}
 							}
+						}
+						.middle-alignment {
+							justify-content: center;
 						}
 					}
 				}

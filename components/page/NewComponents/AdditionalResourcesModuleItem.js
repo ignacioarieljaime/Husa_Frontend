@@ -192,10 +192,13 @@ const AdditionalResourcesModuleItem = ({
 							className='additional_resources_module___content___slider___item___wrapper___body___title'
 							dangerouslySetInnerHTML={{ __html: cardData?.title }}></div>
 					</div>
-					<div className='additional_resources_module___content___slider___item___wrapper___body___bottom_row'>
-						<p className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___date'>
-							{cardData?.date}
-						</p>
+					<div className={`additional_resources_module___content___slider___item___wrapper___body___bottom_row ${!cardData?.date ? 'middle-alignment' : ''}`}>
+						{cardData?.date &&
+							<p className='additional_resources_module___content___slider___item___wrapper___body___bottom_row___date'>
+								{cardData.date}
+							</p>
+						}
+
 						{cardData.type === 'download' ? (
 							cardData.link ? (
 								<Link href={cardData.link} target={cardData.target}>
