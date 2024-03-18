@@ -126,6 +126,7 @@ const AdditionalResourcesModule = ({ data }) => {
 							dynamicBullets: true,
 							clickable: true
 						}}
+						speed={150}
 						breakpoints={{
 							2375: {
 								slidesPerView: 'auto',
