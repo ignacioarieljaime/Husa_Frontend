@@ -85,7 +85,7 @@ const ImageDescriptionTiles = ({ data }) => {
 								)}
 								{item?.text?.value && (
 									<div
-										className='description-tile-description'
+										className={`description-tile-description ${!item?.subtitle?.value ? 'description-tile-description-filler-margin' : ''}`}
 										dangerouslySetInnerHTML={{
 											__html: item?.text?.value
 										}}></div>
