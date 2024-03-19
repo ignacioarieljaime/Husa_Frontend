@@ -329,7 +329,7 @@ article.blog-article {
 			}
 		}
 		.news_room_search_filter {
-			background: rgba(240, 242, 242, 0.4) !important;
+			background: rgba(240, 242, 242, 1) !important;
 			&::before {
 				content: '';
 				position: absolute;
@@ -338,10 +338,6 @@ article.blog-article {
 				width: 100%;
 				height: 100%;
 				display: block;
-				backdrop-filter: blur(50px) !important;
-				@include mq(768) {
-					backdrop-filter: blur(0) !important;
-				}
 			}
 			.filter_title {
 				.title {
@@ -423,6 +419,7 @@ article.blog-article {
 							border: 1px solid #525454;
 							.dropdown_label {
 								color: #525454;
+								overflow: visible;
 							}
 						}
 						> div {
@@ -430,11 +427,27 @@ article.blog-article {
 								background-color: #fff;
 								border: 1px solid #525454;
 								border-top: none;
+								overflow-x: hidden;
 								li {
 									display: flex;
 									justify-content: space-between;
 									align-items: center;
 									padding: 12px 0;
+									.seemless-gradient,
+									.seemless-gradient-scrolled {
+										position: absolute;
+										top: 40%;
+										left: -13%;
+										right: auto;
+										width: 135%;
+										height: 100%;
+									}
+									.seemless-gradient {
+										background: linear-gradient(180deg, rgba(240,242,242,1) 30%, rgba(240,242,242,0) 100%) !important;
+									}
+									.seemless-gradient-scrolled {
+										background: linear-gradient(180deg, rgba(248,249,249,1) 30%, rgba(248,249,249,0) 100%) !important;
+									}
 									.checkbox {
 										border: 1px solid #525454;
 										color: #525454;
@@ -444,6 +457,7 @@ article.blog-article {
 										}
 									}
 									span {
+										z-index: 2;
 										color: #525454;
 									}
 								}
@@ -471,6 +485,17 @@ article.blog-article {
 				> button {
 					border: 1px solid #525454;
 					color: #525454;
+				}
+			}
+		}
+
+		.top-blog-with-blur {
+			background: rgba(240, 242, 242, 0.4) !important;
+			&::before {
+				content: '';
+				backdrop-filter: blur(50px) !important;
+				@include mq(768) {
+					backdrop-filter: blur(0) !important;
 				}
 			}
 		}
