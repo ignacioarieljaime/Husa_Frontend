@@ -36,6 +36,7 @@ const BlogListFilterNavFilter = ({
 	const [filterData, setFilterData] = useState()
 	const [searchTerm, setSearchTerm] = useState('')
 	const [fix, setFix] = useState(false)
+	const [isTransparent, setIsTransparent] = useState(false)
 	const [searchFocus, setSearchFocus] = useState(false)
 	const target = useRef()
 	const router = useRouter()
@@ -48,6 +49,10 @@ const BlogListFilterNavFilter = ({
 		if (window.scrollY < 61) setFix(true)
 		if (window.scrollY >= 60) setFix(false)
 		window.addEventListener('scroll', () => {
+			// .5 helps prevent rare occurance of scrollY somewtimes being .5 behind the offset
+			if ((window.scrollY + .5) < target?.current?.offsetTop) setIsTransparent(false)
+			if ((window.scrollY + .5) >= target?.current?.offsetTop) setIsTransparent(true)
+
 			if (target?.current?.offsetTop >= window.scrollY + 60) {
 				document.getElementById('Header').classList.remove('full_transparent')
 				setFix(true)
@@ -148,7 +153,7 @@ const BlogListFilterNavFilter = ({
 				zIndex: !fix ? 1001 : 997
 			}}
 			className={`newsroom_search ${!fix ? 'white_bg' : ''}`}>
-			<div className='news_room_search_filter'>
+			<div className={`news_room_search_filter ${isTransparent ? 'top-blog-with-blur' : ''}`}>
 				<div className='position-relative'>
 					<div className='content'>
 						<div className='filter_title'>
@@ -184,6 +189,8 @@ const BlogListFilterNavFilter = ({
 									title={yearTitle}
 									data={filterData?.years}
 									onClose={() => !results && redirectToResultsPage()}
+									parentFix={fix}
+									parentTransparent={isTransparent}
 									dataKey='year'
 								/>
 								<BlogListFilterNavFilterItem
@@ -192,6 +199,8 @@ const BlogListFilterNavFilter = ({
 									title={categoryTitle}
 									data={filterData?.tags}
 									onClose={() => !results && redirectToResultsPage()}
+									parentFix={fix}
+									parentTransparent={isTransparent}
 									dataKey='tag'
 								/>
 

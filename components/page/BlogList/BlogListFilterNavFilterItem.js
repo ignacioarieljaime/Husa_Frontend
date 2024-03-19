@@ -13,7 +13,9 @@ const BlogListFilterNavFilterItem = ({
 	data,
 	dataKey,
 	className,
-	onClose
+	onClose,
+	parentFix,
+	parentTransparent
 }) => {
 	const [openDropdown, setOpenDropdown] = useState(false)
 	const [filter, setFilter] = useState(filters)
@@ -68,6 +70,12 @@ const BlogListFilterNavFilterItem = ({
 									?.sort((a, b) => b - a)
 									?.map((item, index) => (
 										<li key={index}>
+											{index === 0 && parentFix &&
+												<div className='seemless-gradient' />
+											}
+											{index === 0 && !parentFix && !parentTransparent &&
+												<div className='seemless-gradient-scrolled' />
+											}
 											<button
 												className={`checkbox ${
 													filter && filter.length
