@@ -733,12 +733,14 @@ input {
 
 .text_editor {
 	a {
+		color: #00aaa6;
 		font-size: inherit !important;
 		line-height: inherit !important;
 		font-weight: inherit !important;
 	}
 	p {
 		font-weight: 300 !important;
+		margin-bottom: 0;
 	}
 	h5,
 	h6 {
@@ -801,7 +803,7 @@ input {
 			margin: 0 !important;
 		}
 		*:not(p) {
-			font-weight: 400 !important;
+			font-weight: 400;
 		}
 		h1:not(table h1),
 		h2:not(table h2),
@@ -901,6 +903,12 @@ input {
 		ul > li > p > span {
 			font-size: 16px !important;
 			line-height: 22px !important;
+		}
+	}
+
+	&.article {
+		p {
+			margin-bottom: 0;
 		}
 	}
 }
