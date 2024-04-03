@@ -1,59 +1,75 @@
 .ql-align-center {
-	text-align: center !important;
+  text-align: center !important;
 }
 .article {
-	p {
-		margin-bottom: 24px;
-		font-size: 18px;
-		line-height: 30px;
-	}
-	a {
-		word-wrap: break-word;
-	}
-	h1,
-	h2,
-	h3,.extra_title {
-		font-size: 42px;
-		margin: 32px 0;
-		line-height: 48px;
-	}
-	&.all-m-0 {
-		p {
-			margin: 0;
-		}
-	}
+  p {
+    margin-bottom: 0;
+    font-size: 18px;
+    line-height: 30px;
+  }
+  a {
+    word-wrap: break-word;
+  }
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  .extra_title {
+    font-size: 42px;
+    margin: 0;
+    line-height: 48px;
+  }
+  &.all-m-0 {
+    p {
+      margin: 0;
+    }
+  }
 }
 .space-125 {
-	letter-spacing: 0.125em;
+  letter-spacing: 0.125em;
 }
 
 @media (max-width: 768px) {
-	.article {
-		h1,
-		h2,
-		h3 {
-			font-size: 32px;
-		}
-		&.all-m-0 {
-			p {
-				margin-bottom: 8px;
-			}
-		}
-	}
+  .article {
+    h1,
+    h2,
+    h3 {
+      font-size: 32px;
+    }
+    &.all-m-0 {
+      p {
+        margin-bottom: 8px;
+      }
+    }
+  }
 }
 
 @media (min-width: 1400px) {
-	.article {
-		// h1,
-		// h2,
-		// h3 {
-		// 	font-size: 52.5px;
-		// }
+  .article {
+    // h1,
+    // h2,
+    // h3 {
+    // 	font-size: 52.5px;
+    // }
 
-		&.all-m-0 {
-			p {
-				margin-bottom: 8px;
-			}
-		}
-	}
+    &.all-m-0 {
+      p {
+        margin-bottom: 8px;
+      }
+    }
+  }
 }
