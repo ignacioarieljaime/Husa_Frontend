@@ -6,23 +6,30 @@ export const HomeAppliancesHeaderCategoryItem = _data => {
 
 	return (
 		<li>
-			<div
-				className='image'
-				style={{
-					width:
-						aspectRatio > 1
-							? ((1 / aspectRatio) * 60).toFixed(2) + '%'
-							: aspectRatio < 1
-							? ((1 / aspectRatio) * 100).toFixed(2) + '%'
-							: '45%'
-				}}>
-				<img
-					src={_data?.data?.image?.src}
-					alt={_data?.data?.image?.alt}
-					height={'100%'}
-				/>
-			</div>
-			<h6>{_data?.data?.title?.value}</h6>
+			<a
+				href={_data?.data?.link.value}
+				className='text-decoration-none'
+				style={{ color: '#000000' }}>
+				<div
+					className='image'
+					style={{
+						width:
+							aspectRatio > 1
+								? ((1 / aspectRatio) * 60).toFixed(2) + '%'
+								: aspectRatio < 1
+								? ((1 / aspectRatio) * 100).toFixed(2) + '%'
+								: '45%'
+					}}>
+					<img
+						src={_data?.data?.image?.src}
+						alt={_data?.data?.image?.alt}
+						height={'100%'}
+					/>
+				</div>
+				{_data?.data?.title?.value && (
+					<div className='cat-label' dangerouslySetInnerHTML={{ __html: _data.data.title.value }} />
+				)}
+			</a>
 		</li>
 	)
 }
@@ -30,11 +37,18 @@ const HomeAppliancesHeaderCategory = ({ data }) => {
 	const { structure } = data
 	return (
 		<section>
-			<div className='ha_header_cat'>
+			<div
+				className='ha_header_cat'
+				style={
+					structure?.backgroundColor?.value
+						? { background: structure.backgroundColor.value }
+						: undefined
+				}>
 				<div className='content'>
-					<h4
+					<div
 						className='title'
-						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}></h4>
+						dangerouslySetInnerHTML={{ __html: structure?.title?.value }}
+					/>
 					<ul className='category'>
 						{structure?.list?.value.map((item, index) => (
 							<HomeAppliancesHeaderCategoryItem data={item} key={index} />
