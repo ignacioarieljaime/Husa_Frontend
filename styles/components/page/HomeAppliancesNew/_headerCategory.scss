@@ -1,6 +1,19 @@
+@media (min-width: 992px) {
+	.scrolled{
+		padding-top: 176px;
+
+		.ha_header_cat {
+			position: fixed;
+			left: 0;
+			width: 100%;
+			z-index: 997;
+		}
+	}
+}
 .ha_header_cat {
 	background-color: #fffffd;
 	padding: 32px 16px;
+	max-height: 176px;
 
 	.content {
 		display: flex;
