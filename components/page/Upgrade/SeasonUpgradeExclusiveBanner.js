@@ -11,7 +11,7 @@ const SeasonUpgradeExclusiveBanner = ({ data }) => {
 	const ref = useRef()
 	useEffect(() => {
 		// setContent(structure)
-		if (router.asPath.includes(data?.name + data?.id)) {
+		if (router.asPath.includes(data?.name + data?.id)) { 
 			setTimeout(() => {
 				ref.current.scrollIntoView()
 			}, 1000)
@@ -32,7 +32,11 @@ const SeasonUpgradeExclusiveBanner = ({ data }) => {
 						alt={structure?.image?.alt}
 						className='image'
 					/>
-					<p className='pretitle'>{structure?.subtitle?.value}</p>
+					<p 
+						className='pretitle' 
+						dangerouslySetInnerHTML={{
+							__html: structure?.subtitle?.value
+						}}></p>
 					<h3
 						className='title'
 						dangerouslySetInnerHTML={{

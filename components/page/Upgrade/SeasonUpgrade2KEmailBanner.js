@@ -53,12 +53,16 @@ const SeasonUpgradeEmailBanner = ({ data }) => {
 	return (
 		<section>
 			<div
-				id={data?.name + data?.id}
+				id={data?.name + data?.id} 
 				ref={ref}
 				className='season_upgrade_email_banner'>
 				<div className='content' style={{ maxWidth: '980px' }}>
 					<div className='text_content'>
-						<p className='pretitle'>{structure?.subtitle?.value}</p>
+						<p 
+							className='pretitle'
+							dangerouslySetInnerHTML={{
+							__html: structure?.subtitle?.value
+							}}></p>
 						<h3
 							className='title'
 							dangerouslySetInnerHTML={{

@@ -10,7 +10,7 @@
 	@include mq(768) {
 		padding: 16px 0;
 		gap: 16px;
-		flex-wrap: wrap;
+		flex-wrap: wrap; 
 		flex-direction: column-reverse;
 	}
 	.text_content {
@@ -104,7 +104,7 @@
 		gap: 32px;
 		padding: 32px;
 		width: 100%;
-		max-width: 856px;
+		max-width: 900px;
 		margin: 0 auto;
 		text-align: center;
 		@include mq(768) {
@@ -169,10 +169,14 @@
 			}
 		}
 		.n-btn {
-			color: #000;
-			background: linear-gradient(90deg, #aff63c 0%, #62e3b5 100%);
+			color: #fff;
+			background: #00AAA6;;
 			border: none;
-			font-weight: 500;
+			font-family: "Hisense Alfabet";
+			font-size: 24px;
+			font-weight: 400;
+			line-height: 24px;
+			text-align: center;
 			padding: 10px 24px 6px !important;
 			@include mq(768) {
 				padding: 10px 16px 6px !important;
@@ -188,9 +192,10 @@
 
 .season_upgrade_email_banner {
 	padding: 48px 0;
-	background: linear-gradient(90deg, #aef53b 25.83%, #60e2b7 100%);
+	background: /* linear-gradient(90deg, #aef53b 25.83%, #60e2b7 100%); */ linear-gradient(90deg, #D9C56F 0%, #D5BF67 100%),
+			linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
 	@include mq(768) {
-		background: linear-gradient(143deg, #aef53b 25.83%, #60e2b7 100%);
+		background: linear-gradient(90deg, #D9C56F 0%, #D5BF67 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05));
 		padding: 0;
 	}
 	.content {
@@ -201,7 +206,7 @@
 		gap: 32px;
 		padding: 32px;
 		width: 100%;
-		max-width: 659px;
+		max-width: 650px;
 		margin: 0 auto;
 		text-align: center;
 		@include mq(768) {
@@ -217,11 +222,12 @@
 				gap: 16px;
 			}
 			.pretitle {
-				color: #e23717;
-				font-family: 'archivo-expanded';
+				color: linear-gradient(90deg, #E4D483 0%, #CAB054 100%);
+				font-family: "Archivo Expanded";
 				font-size: 16px;
 				font-weight: 900;
-				line-height: 21.6px; /* 135% */
+				line-height: 21.6px;
+				text-align: center;
 				text-transform: uppercase;
 				margin: 0;
 				@include mq(768) {
@@ -233,12 +239,13 @@
 			.title {
 				margin: 0;
 				* {
-					color: #000;
-					font-family: 'archivo-expanded';
+					color: #fff;
+					font-family: "Archivo Expanded";
 					font-size: 48px;
 					font-weight: 900;
-					line-height: 48px; /* 100% */
-					letter-spacing: -0.96px;
+					line-height: 48px;
+					letter-spacing: -0.02em;
+					text-align: center;					
 					text-transform: uppercase;
 					margin: 0;
 					@include mq(768) {
@@ -251,13 +258,15 @@
 			.text {
 				margin: 0;
 				* {
-					color: #000;
+					color: #fff;
+					font-family: "Hisense Alfabet";
 					font-size: 16px;
-					font-weight: 300;
-					line-height: 21.6px; /* 135% */
+					font-weight: 400;
+					line-height: 21.6px;
+					text-align: center;
 					margin: 0;
 					@include mq(768) {
-						font-weight: 500;
+						font-weight: 400;
 						font-size: 14px;
 						line-height: 18.9px; /* 135% */
 					}
@@ -276,7 +285,7 @@
 			}
 			.input {
 				border-radius: 12px;
-				background: rgba(0, 0, 0, 0.32);
+				background: #00000052;;
 				border: none;
 				display: flex;
 				min-width: 80px;
@@ -310,7 +319,9 @@
 				padding: 8px 0px;
 				justify-content: center;
 				align-items: center;
+				background: #000000;
 				gap: 8px;
+				border: 2px solid #000000;
 				@include mq(768) {
 					margin: 0 auto;
 					align-items: start;
@@ -321,8 +332,9 @@
 
 				button {
 					border-radius: 3px;
-					border: 2px solid #000;
-					background: #000;
+					border: 2px solid #00AAA6;
+					background: #00AAA6;;
+					color: #fff;
 					width: 15px;
 					height: 15px;
 					min-width: 15px;
@@ -334,10 +346,11 @@
 				}
 				p {
 					color: #000;
+					font-family: Hisense Alfabet;
 					font-size: 12px;
-					font-style: normal;
 					font-weight: 400;
 					line-height: 16.2px;
+					text-align: left;
 					margin: 0;
 					text-align: start;
 					* {
