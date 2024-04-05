@@ -112,7 +112,7 @@
 			gap: 12px;
 		}
 		.pretitle {
-			color: #aef53b;
+			color: linear-gradient(90deg, #E4D483 0%, #CAB054 100%);
 			font-family: 'archivo-expanded';
 			font-size: 16px;
 			font-weight: 900;
@@ -221,7 +221,7 @@
 				gap: 16px;
 			}
 			.pretitle {
-				color: linear-gradient(90deg, #E4D483 0%, #CAB054 100%);
+				color: #fff;
 				font-family: "archivo-expanded";
 				font-size: 16px;
 				font-weight: 900;
@@ -238,7 +238,7 @@
 			.title {
 				margin: 0;
 				* {
-					color: #fff;
+					color: #000;
 					font-family: "archivo-expanded";
 					font-size: 48px;
 					font-weight: 900;
@@ -257,7 +257,7 @@
 			.text {
 				margin: 0;
 				* {
-					color: #fff;
+					color: #000;
 					font-size: 16px;
 					font-weight: 400;
 					line-height: 21.6px;
