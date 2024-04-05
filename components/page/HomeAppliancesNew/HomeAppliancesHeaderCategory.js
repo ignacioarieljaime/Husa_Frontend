@@ -1,5 +1,5 @@
+import { useEffect, useState } from 'react'
 import { useAspectRatio } from 'hooks/useAspectRatio'
-import React from 'react'
 
 export const HomeAppliancesHeaderCategoryItem = _data => {
 	const aspectRatio = useAspectRatio(_data?.data?.image?.src)
@@ -27,7 +27,10 @@ export const HomeAppliancesHeaderCategoryItem = _data => {
 					/>
 				</div>
 				{_data?.data?.title?.value && (
-					<div className='cat-label' dangerouslySetInnerHTML={{ __html: _data.data.title.value }} />
+					<div
+						className='cat-label'
+						dangerouslySetInnerHTML={{ __html: _data.data.title.value }}
+					/>
 				)}
 			</a>
 		</li>
@@ -35,14 +38,43 @@ export const HomeAppliancesHeaderCategoryItem = _data => {
 }
 const HomeAppliancesHeaderCategory = ({ data }) => {
 	const { structure } = data
+	const [scrolled, setScrolled] = useState(false)
+	const [topVal, setTopVal] = useState(0)
+
+	useEffect(() => {
+		const scrollEvent = () => {
+			if (window) {
+				setScrolled(
+					window.innerWidth > 1109
+						? window.scrollY > 0
+						: window.innerWidth > 991
+						? window.scrollY > 0
+						: false
+				)
+				setTopVal(
+					window.innerWidth > 1109 && window.scrollY > 0
+						? 62
+						: window.innerWidth > 991 && window.scrollY > 0
+						? 100
+						: 0
+				)
+			}
+		}
+		if (window) window.addEventListener('scroll', scrollEvent)
+
+		return () => {
+			if (window) window.removeEventListener('scroll', scrollEvent)
+		}
+	}, [])
+
 	return (
-		<section>
+		<section className={scrolled ? 'scrolled' : undefined}>
 			<div
 				className='ha_header_cat'
 				style={
 					structure?.backgroundColor?.value
-						? { background: structure.backgroundColor.value }
-						: undefined
+						? { background: structure.backgroundColor.value, top: topVal }
+						: { top: topVal }
 				}>
 				<div className='content'>
 					<div
