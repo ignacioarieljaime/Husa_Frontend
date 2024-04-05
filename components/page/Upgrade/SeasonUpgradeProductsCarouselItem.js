@@ -154,7 +154,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 											onClick={() => {
 												setShowSizes(prev => !prev)
 											}}
-											className='show_sizes_btn'>
+											className='show_sizes_btn'>											
 											<span
 												className={`label ${labelOff ? 'mx-auto ps-5' : ''}`}>
 												{labelOff
@@ -167,6 +167,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 								) : (
 									<div className='content'>
 										<div className='sizes'>
+											
 											<ul className='size_list'>
 												{series.map((item, index) => (
 													<li
@@ -279,9 +280,14 @@ const SeasonUpgradeProductsCarouselItem = ({
 						<h4 className='price'>{activeItem?.new_price?.value}</h4>
 						<p className='old_price '>{activeItem?.old_price?.value}</p>
 					</div>
-					<button onClick={setData} className='n-btn medium black w-100'>
-						Shop Deal
-					</button>
+					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
+						<button onClick={setData} className='n-btn medium btn-outline-primary w-100'>
+							View Product
+						</button>
+						<button onClick={setData} className='n-btn medium btn-primary w-100'>
+							Shop Deal
+						</button>
+					</div>
 				</div>
 			</div>
 		</>

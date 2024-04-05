@@ -95,7 +95,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 							structure?.selected_products?.value.length > 3
 								? 'd-flex'
 								: 'd-none'
-						}`}>
+						}`}> 
 						<FontAwesomeIcon icon={faChevronLeft} size='2xl' />
 					</button>
 				</Swiper>
