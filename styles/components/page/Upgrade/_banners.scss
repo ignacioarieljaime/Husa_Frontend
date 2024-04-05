@@ -21,7 +21,7 @@
 		gap: 32px;
 		padding: 30px;
 		width: 100%;
-		max-width: 900px;
+		max-width: 970px;
 		text-align: center;
 		@include mq(768) {
 			padding: 16px;
@@ -66,7 +66,6 @@
 			* {
 				margin: 0;
 				color: #fff;
-				font-family: "Hisense Alfabet";
 				font-size: 16px;
 				font-weight: 300;
 				line-height: 21.6px; /* 135% */
@@ -105,7 +104,7 @@
 		gap: 32px;
 		padding: 32px;
 		width: 100%;
-		max-width: 900px;
+		max-width: 970px;
 		margin: 0 auto;
 		text-align: center;
 		@include mq(768) {
@@ -173,7 +172,6 @@
 			color: #fff;
 			background: #00AAA6;;
 			border: none;
-			font-family: "Hisense Alfabet";
 			font-size: 24px;
 			font-weight: 400;
 			line-height: 24px;
@@ -260,7 +258,6 @@
 				margin: 0;
 				* {
 					color: #fff;
-					font-family: "Hisense Alfabet";
 					font-size: 16px;
 					font-weight: 400;
 					line-height: 21.6px;
@@ -321,7 +318,6 @@
 				justify-content: center;
 				align-items: center;
 				gap: 8px;
-				border: 2px solid #000000;
 				@include mq(768) {
 					margin: 0 auto;
 					align-items: start;
@@ -332,8 +328,8 @@
 
 				button {
 					border-radius: 3px;
-					border: 2px solid #00AAA6;
-					background: #00AAA6;;
+					border: 2px solid #000;
+					background: #000;
 					color: #fff;
 					width: 15px;
 					height: 15px;
@@ -346,7 +342,6 @@
 				}
 				p {
 					color: #000;
-					font-family: "Hisense Alfabet";
 					font-size: 12px;
 					font-weight: 400;
 					line-height: 16.2px;
@@ -355,6 +350,27 @@
 					text-align: start;
 					* {
 						color: #000;
+					}
+				}
+			}
+			.n-btn {
+				color: #fff;
+				background: #00AAA6;
+				;
+				border: none;
+				font-size: 24px;
+				font-weight: 400;
+				line-height: 24px;
+				text-align: center;
+				padding: 10px 24px 6px !important;
+				@include mq(768) {
+					padding: 10px 16px 6px !important;
+					font-size: 14px;
+					line-height: 19px;
+
+					/* 135% */
+					&:hover {
+						transform: scale(1.02);
 					}
 				}
 			}
