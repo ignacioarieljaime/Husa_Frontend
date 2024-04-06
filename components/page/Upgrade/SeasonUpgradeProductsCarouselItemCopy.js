@@ -335,13 +335,9 @@ const SeasonUpgradeProductsCarouselItem = ({
 					
 					<div className='w-100'>
 						<div className='d-flex gap-1'>
-							{url ? (
-								<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
-									<a className='n-btn-outline'>View Product</a>
-								</Link>
-							) : (
-								""
-							)}
+							<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
+								<a className='n-btn-outline'>View Product</a>
+							</Link>
 							<button onClick={setData} className='n-btn btn-primary text-white w-50'>
 								Shop Deal
 							</button>
