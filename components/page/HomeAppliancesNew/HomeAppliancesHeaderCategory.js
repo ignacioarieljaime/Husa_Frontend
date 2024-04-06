@@ -3,12 +3,17 @@ import { useAspectRatio } from 'hooks/useAspectRatio'
 
 export const HomeAppliancesHeaderCategoryItem = _data => {
 	const aspectRatio = useAspectRatio(_data?.data?.image?.src)
+	if (typeof window === 'undefined') return null
 
 	return (
 		<li>
 			<a
 				href={_data?.data?.link.value}
-				className='text-decoration-none'
+				className={`text-decoration-none${
+					window.location.href.includes(_data?.data?.link.value)
+						? ' active'
+						: ''
+				}`}
 				style={{ color: '#000000' }}>
 				<div
 					className='image'
@@ -39,24 +44,16 @@ export const HomeAppliancesHeaderCategoryItem = _data => {
 const HomeAppliancesHeaderCategory = ({ data }) => {
 	const { structure } = data
 	const [scrolled, setScrolled] = useState(false)
-	const [topVal, setTopVal] = useState(0)
 
 	useEffect(() => {
 		const scrollEvent = () => {
 			if (window) {
 				setScrolled(
 					window.innerWidth > 1109
-						? window.scrollY > 0
+						? window.scrollY > 64
 						: window.innerWidth > 991
-						? window.scrollY > 0
+						? window.scrollY > 102
 						: false
-				)
-				setTopVal(
-					window.innerWidth > 1109 && window.scrollY > 0
-						? 62
-						: window.innerWidth > 991 && window.scrollY > 0
-						? 100
-						: 0
 				)
 			}
 		}
@@ -71,11 +68,11 @@ const HomeAppliancesHeaderCategory = ({ data }) => {
 		<section className={scrolled ? 'scrolled' : undefined}>
 			<div
 				className='ha_header_cat'
-				style={
-					structure?.backgroundColor?.value
-						? { background: structure.backgroundColor.value, top: topVal }
-						: { top: topVal }
-				}>
+				style={{
+					...(structure?.backgroundColor?.value
+						? { background: structure.backgroundColor.value }
+						: {})
+				}}>
 				<div className='content'>
 					<div
 						className='title'
