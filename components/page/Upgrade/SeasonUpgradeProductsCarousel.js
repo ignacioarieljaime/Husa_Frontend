@@ -4,7 +4,7 @@ import { SwiperSlide, Swiper } from 'swiper/react'
 import { Navigation } from 'swiper'
 import 'swiper/css/navigation'
 import 'swiper/css'
-import SeasonUpgradeProductsCarouselItem from './SeasonUpgradeProductsCarouselItem'
+import SeasonUpgradeProductsCarouselItem from './SeasonUpgradeProductsCarouselItemCopy'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faChevronLeft,
