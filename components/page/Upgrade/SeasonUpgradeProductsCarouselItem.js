@@ -294,9 +294,6 @@ const SeasonUpgradeProductsCarouselItem = ({
 						<p className='old_price '>{activeItem?.old_price?.value}</p>
 					</div>
 					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
-						<button onClick={setData} className='n-btn medium btn-outline-primary w-100'>
-							View Product
-						</button>
 						<button onClick={setData} className='n-btn medium btn-primary w-100'>
 							Shop Deal
 						</button>
