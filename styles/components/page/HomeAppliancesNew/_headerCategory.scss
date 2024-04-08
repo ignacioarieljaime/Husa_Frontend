@@ -1,26 +1,35 @@
 @media (min-width: 992px) {
-	.scrolled{
-		padding-top: 176px;
+	.scrolled {
+		padding-top: 88px;
 
 		.ha_header_cat {
 			position: fixed;
+			margin-top: 0;
 			left: 0;
+			top: 0;
 			width: 100%;
-			z-index: 997;
+			z-index: 999;
 		}
 	}
 }
 .ha_header_cat {
-	background-color: #fffffd;
-	padding: 32px 16px;
-	max-height: 176px;
+	background-color: #ffffff;
+	height: 88px;
+	max-height: 88px;
+	padding: 0 16px;
+
+	@media (max-width: 1109px) and (min-width: 992px) {
+		margin-top: 38px;
+	}
 
 	.content {
+		align-items: center;
 		display: flex;
+		height: 100%;
 		justify-content: flex-start;
 		margin: 0 auto;
-		align-items: center;
 		max-width: 1600px;
+
 		@include mq(768) {
 			flex-wrap: wrap;
 		}
@@ -45,6 +54,7 @@
 				margin: 0;
 			}
 		}
+
 		.category {
 			padding: 0;
 			margin: 0;
@@ -53,53 +63,72 @@
 			display: flex;
 			justify-content: flex-end;
 			align-items: center;
+
 			@include mq(991) {
 				width: 100%;
 				margin-left: 4%;
 			}
+
 			@include mq(768) {
 				width: 100%;
 				margin-left: 0;
 				justify-content: space-between;
 				flex-wrap: wrap;
 			}
+
 			li {
-				max-width: 130px;
-				width: 100%;
+				align-items: center;
+				display: flex;
+				justify-content: center;
 				margin: 0 12px;
+				max-width: 130px;
 				text-align: center;
+				width: 100%;
+
 				@include mq(768) {
 					width: 20%;
 					max-width: unset;
 				}
+
 				@include mq(575) {
 					width: 40%;
 				}
 
 				a {
-					&:hover {
+					width: 100%;
+
+					&.active {
+						cursor: default;
+						pointer-events: none;
+					}
+
+					&:not(.active):hover {
 						opacity: 0.5;
 					}
 				}
 
 				.image {
-					height: 0;
-					padding-top: 45%;
 					position: relative;
 					width: 60%;
-					max-width: 64px;
-					margin: 0 auto 16px;
+					min-height: 50px;
+					max-height: 50px;
+					min-width: 50px;
+					max-width: 50px;
+					margin: 0 auto 4px;
+
 					img {
 						position: absolute;
 						left: 0;
 						top: 0;
 						width: 100%;
 						height: 100%;
+
 						@include mq(768) {
 							width: 100%;
 						}
 					}
 				}
+
 				.cat-label {
 					p {
 						font-size: 16px;
@@ -107,6 +136,7 @@
 						font-weight: 400;
 						line-height: 21.6px;
 						letter-spacing: -0.32px;
+						margin-bottom: 0;
 					}
 				}
 			}
@@ -139,13 +169,16 @@
 				width: auto;
 
 				li {
-					margin-inline:0;
+					margin-inline: 0;
 
 					a {
 						.image {
-							max-width: 30px;
-							padding-top: 30px;
 							margin-bottom: 0;
+							max-height: 30px;
+							max-width: 30px;
+							min-height: 30px;
+							min-width: 30px;
+							padding-top: 30px;
 
 							img {
 							}
