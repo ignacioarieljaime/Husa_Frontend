@@ -640,6 +640,9 @@
 			@include mq(768) {
 				width: 100%;
 				max-width: unset;
+				border-bottom: 1px solid #C7C7C9;
+				padding-bottom: 16px;
+				margin-bottom: 16px;
 			}
 			.model {
 				font-size: 28px;
@@ -718,7 +721,7 @@
 							background: #c7c7c9;
 						}
 						&.active {
-							border-color: #C6C6C8;
+							border-color: #c6c6c8;
 							background: #707171;
 							span {
 								color: #fff;
@@ -815,6 +818,33 @@
 				ul {
 					padding-left: 20px;
 				}
+			}
+		}
+	}
+
+	&.new_badge {
+		position: relative;
+
+		&::before {
+			background-color: #d83a49;
+			color: #ffffff;
+			content: 'New';
+			font-size: 16px;
+			font-weight: 400;
+			height: 53px;
+			line-height: 16px;
+			padding: 32px 40px 10px 40px;
+			position: absolute;
+			right: -6px;
+			rotate: 45deg;
+			text-align: center;
+			top: -6px;
+			translate: 33px;
+			width: 117px;
+
+			@include mq(768) {
+				right: -8px;
+				top: 0;
 			}
 		}
 	}
