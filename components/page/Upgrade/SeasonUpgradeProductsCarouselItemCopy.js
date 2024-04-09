@@ -183,7 +183,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 						)}
 					</ul>				
 
-					{/* <div ref={boxRef} className='serie_selector'>
+					<div ref={boxRef} className='serie_selector' style={{display: 'none'}}>
 						{series && series.length > 1 && (
 							<div
 								className={`screen_size_selector ${
@@ -278,7 +278,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 								</ul>
 							</div>
 						)}
-					</div> */}
+					</div>
 					{/* {series && series.length > 1 && (
 						<div
 							className={`screen_size_selector ${
