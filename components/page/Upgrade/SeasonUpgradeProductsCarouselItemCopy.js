@@ -27,13 +27,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 	const swiper = useSwiper()
 	const boxRef = useRef()
 	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))
-	const [customDate, setCustomDate] = useState('')
 	const [url, setUrl] = useState()
-
-	useEffect(() => {
-		if (data?.expiry?.value && data?.expiry?.value.length > 0)
-			setCustomDate(moment(data?.expiry?.value).format('MMM DD'))
-	}, [data?.expiry?.value])
 
 	useEffect(() => {
 		swiper.allowTouchMove = !showSizes
@@ -110,8 +104,8 @@ const SeasonUpgradeProductsCarouselItem = ({
 					product?.isNew || version === 'v2' ? 'new' : ''
 				} h-100 w-100`}>
 				<div className='column'>
-					{data?.tag_copy && data?.tag_copy?.value && data?.tag_copy?.value.length > 0 && (
-						<div className='tag_copy'>{data?.tag_copy?.value}</div>
+					{data?.series_products?.newItem?.tag_copy && data?.series_products?.newItem?.tag_copy?.value && data?.series_products?.newItem?.tag_copy?.value.length > 0 && (
+						<div className='tag_copy'>{data?.series_products?.newItem?.tag_copy?.value}</div>
 					)}
 					<div className='image_wrapper'>
 						{RouteHandler(activeItem?.id?.value, 'product') ? (
@@ -128,11 +122,8 @@ const SeasonUpgradeProductsCarouselItem = ({
 							<img src={product?.image} alt='tv' className='image' />
 						)}
 					</div>
-					{data?.model?.value && data?.model?.value.length > 0 && (
-						<>
-						<p className='model'>{data?.model?.value}</p>
-						<p>{activeItem?.customTitle.value}</p>
-						</>
+					{product?.model && product?.model.length > 0 && (
+						<p className='model'>{product?.model}</p>
 					)}
 					<div className='d-flex justify-content-between align-items-start gap-1 w-100'>
 						{activeItem?.customTitle?.value ? (
