@@ -10,7 +10,7 @@ import { RouteHandler } from 'utils/routeHandler'
 import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
 
-const SeasonUpgradeProductsCarouselItem = ({
+const SeasonUpgradeProductsCarouselItemCopy = ({
 	data,
 	version,
 	setChannelAdvisorData,
@@ -29,10 +29,12 @@ const SeasonUpgradeProductsCarouselItem = ({
 	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))
 	const [url, setUrl] = useState()
 
+	swiper.allowTouchMove = true
+	/* 
 	useEffect(() => {
 		swiper.allowTouchMove = !showSizes
 	}, [showSizes])
-
+ 	*/
 	useEffect(() => {
 		setSeries(
 			data?.series_products?.value.sort(
@@ -359,4 +361,4 @@ const SeasonUpgradeProductsCarouselItem = ({
 	)
 }
 
-export default SeasonUpgradeProductsCarouselItem
+export default SeasonUpgradeProductsCarouselItemCopy
