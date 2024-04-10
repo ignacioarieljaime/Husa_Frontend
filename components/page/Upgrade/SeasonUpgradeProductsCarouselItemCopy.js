@@ -10,7 +10,7 @@ import { RouteHandler } from 'utils/routeHandler'
 import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
 
-const SeasonUpgradeProductsCarouselItem = ({
+const SeasonUpgradeProductsCarouselItemCopy = ({
 	data,
 	version,
 	setChannelAdvisorData,
@@ -27,18 +27,14 @@ const SeasonUpgradeProductsCarouselItem = ({
 	const swiper = useSwiper()
 	const boxRef = useRef()
 	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))
-	const [customDate, setCustomDate] = useState('')
 	const [url, setUrl] = useState()
 
-	useEffect(() => {
-		if (data?.expiry?.value && data?.expiry?.value.length > 0)
-			setCustomDate(moment(data?.expiry?.value).format('MMM DD'))
-	}, [data?.expiry?.value])
-
+	swiper.allowTouchMove = true
+	/* 
 	useEffect(() => {
 		swiper.allowTouchMove = !showSizes
 	}, [showSizes])
-
+ 	*/
 	useEffect(() => {
 		setSeries(
 			data?.series_products?.value.sort(
@@ -110,8 +106,8 @@ const SeasonUpgradeProductsCarouselItem = ({
 					product?.isNew || version === 'v2' ? 'new' : ''
 				} h-100 w-100`}>
 				<div className='column'>
-					{customDate.length > 0 && (
-						<div className='expiry'>Expires {customDate}</div>
+					{data?.series_products?.newItem?.tag_copy && data?.series_products?.newItem?.tag_copy?.value && data?.series_products?.newItem?.tag_copy?.value.length > 0 && (
+						<div className='tag_copy'>{data?.series_products?.newItem?.tag_copy?.value}</div>
 					)}
 					<div className='image_wrapper'>
 						{RouteHandler(activeItem?.id?.value, 'product') ? (
@@ -128,8 +124,8 @@ const SeasonUpgradeProductsCarouselItem = ({
 							<img src={product?.image} alt='tv' className='image' />
 						)}
 					</div>
-					{data?.model?.value && data?.model?.value.length > 0 && (
-						<p className='model'>{data?.model?.value}</p>
+					{product?.model && product?.model.length > 0 && (
+						<p className='model'>{product?.model}</p>
 					)}
 					<div className='d-flex justify-content-between align-items-start gap-1 w-100'>
 						{activeItem?.customTitle?.value ? (
@@ -157,31 +153,35 @@ const SeasonUpgradeProductsCarouselItem = ({
 								pointerEvents: 'all'
 							}}></div>
 					)}
-					<div>Sizes:</div>
-					<ul className='size_list list-unstyled d-flex gap-1 flex-wrap justify-content-center'>
-						{series.map(
-							(item, index) =>
-							item.name.value && (
-								<li key={'type-item-' + index}>
-									<button
-										onClick={() => {
-											setActiveItem(item)
-											setActiveSizeIndex(index)
-										}}
-										className={
-											`   
-											${
-											activeSizeIndex === index 
-												? 'active indicator'
-												: ''
-											}`}
-										>
-										{item?.name?.value}
-									</button>
-								</li>
-							)
-						)}
-					</ul>				
+					{series.length > 1  && (
+						<>
+							<div>Sizes:</div>
+							<ul className='size_list list-unstyled d-flex gap-1 flex-wrap justify-content-center'>
+								{series.map(
+									(item, index) =>
+									item.name.value && (
+										<li key={'type-item-' + index}>
+											<button
+												onClick={() => {
+													setActiveItem(item)
+													setActiveSizeIndex(index)
+												}}
+												className={
+													`   
+													${
+														activeSizeIndex === index 
+														? 'active indicator'
+														: ''
+													}`}
+													>
+												{item?.name?.value}
+											</button>
+										</li>
+									)
+								)}
+							</ul>
+						</>
+					)}
 
 					{/* <div ref={boxRef} className='serie_selector'>
 						{series && series.length > 1 && (
@@ -210,32 +210,32 @@ const SeasonUpgradeProductsCarouselItem = ({
 										<div className='new-sizes'>
 											
 											<ul className='list-unstyled d-flex gap-3 flex-wrap justify-content-center'>
-							{series.map(
-								(item, index) =>
-									item.name.value && (
-										<li key={'type-item-' + index}>
-											<button
-												onClick={() => {
-													setActiveItem(item)
-													setActiveSizeIndex(index)
-												}}
-												className={
-													`px-3 w-100 py-1 border-1 border product-mini-link border-dark mb-0 d-flex btn-outline-dark text-dark 
-													${
-													activeSizeIndex === index 
-														? 'active'
-														: ''
-													}`}
-												style={{ 
-													width: 100 / series.length + '%' 
-												}}
-												>
-												{item?.name?.value}
-											</button>
-										</li>
-									)
-							)}
-						</ul>
+											{series.map(
+												(item, index) =>
+													item.name.value && (
+														<li key={'type-item-' + index}>
+															<button
+																onClick={() => {
+																	setActiveItem(item)
+																	setActiveSizeIndex(index)
+																}}
+																className={
+																	`px-3 w-100 py-1 border-1 border product-mini-link border-dark mb-0 d-flex btn-outline-dark text-dark 
+																	${
+																	activeSizeIndex === index 
+																		? 'active'
+																		: ''
+																	}`}
+																style={{ 
+																	width: 100 / series.length + '%' 
+																}}
+																>
+																{item?.name?.value}
+															</button>
+														</li>
+													)
+											)}
+										</ul>
 											<span
 												style={{
 													width: 100 / series.length + '%',
@@ -322,12 +322,15 @@ const SeasonUpgradeProductsCarouselItem = ({
 						{activeItem?.features?.value.map((item, index) => (
 							<li
 								key={index}
-								dangerouslySetInnerHTML={{ __html: item?.text?.value }}></li>
+								dangerouslySetInnerHTML={{ __html: item?.text?.value }}>
+							</li>
 						))}
 					</ul>
 				</div>
 				<div className='column'>
-					<div className='off'>Save {activeItem?.discount_amount?.value}</div>
+					{activeItem?.discount_amount?.value && (
+						<div className='off'>{activeItem?.discount_amount?.value}</div>
+					)}
 					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
 						<h4 className='price'>{activeItem?.new_price?.value}</h4>
 						<p className='old_price '>{activeItem?.old_price?.value}</p>
@@ -358,4 +361,4 @@ const SeasonUpgradeProductsCarouselItem = ({
 	)
 }
 
-export default SeasonUpgradeProductsCarouselItem
+export default SeasonUpgradeProductsCarouselItemCopy

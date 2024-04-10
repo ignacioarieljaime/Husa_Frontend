@@ -4,7 +4,7 @@ import { SwiperSlide, Swiper } from 'swiper/react'
 import { Navigation } from 'swiper'
 import 'swiper/css/navigation'
 import 'swiper/css'
-import SeasonUpgradeProductsCarouselItem from './SeasonUpgradeProductsCarouselItemCopy'
+import SeasonUpgradeProductsCarouselItemCopy from './SeasonUpgradeProductsCarouselItemCopy'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faChevronLeft,
@@ -72,7 +72,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 							style={{ gridColumn: index + 1 + ' / ' + (index + 2) }}
 							className='w-fit h-100'
 							key={index}>
-							<SeasonUpgradeProductsCarouselItem
+							<SeasonUpgradeProductsCarouselItemCopy
 								data={item}
 								version={structure?.template?.value}
 								length={structure?.selected_products?.value.length / 2}
@@ -84,7 +84,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 
 					<button
 						className={`swiper-button-next ${
-							structure?.selected_products?.value.length > 3
+							structure?.selected_products?.value.length > 2
 								? 'd-flex'
 								: 'd-none'
 						}`}>
@@ -92,7 +92,7 @@ const SeasonUpgradeProductsCarousel = ({ data }) => {
 					</button>
 					<button
 						className={`swiper-button-prev ${
-							structure?.selected_products?.value.length > 3
+							structure?.selected_products?.value.length > 2
 								? 'd-flex'
 								: 'd-none'
 						}`}> 
