@@ -15,6 +15,7 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 	version,
 	setChannelAdvisorData,
 	setShowDialog,
+	pim,
 	length
 }) => {
 	const [showSizes, setShowSizes] = useState(false)
@@ -30,11 +31,37 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 	const [url, setUrl] = useState()
 
 	swiper.allowTouchMove = true
-	/* 
+	
 	useEffect(() => {
-		swiper.allowTouchMove = !showSizes
-	}, [showSizes])
- 	*/
+		if (Array.isArray(pim?.series[0]?.values)) {
+			let addSizeToItem = pim?.series[0].values
+				.filter(item => item?.title && item?.productsList[0]?.status_id === 1)
+				.map(item => ({
+					...item,
+					size: item?.title ? Number(item?.title?.replaceAll('"', '')) : 0
+				}))
+			setScreenSize(addSizeToItem.sort((a, b) => a.size - b.size))
+		}
+		window?.PriceSpider.rebind()
+	}, [])
+
+	const dataLayerHandler = () => {
+		setChanelAdviserHandler(!chanelAdviserHandler)
+		// window.dataLayer.push({
+		// 	event: 'view_product',
+		// 	eventData: {
+		// 		product_id: pim?.model,
+		// 		category: pim?.Category?.name
+		// 	}
+		// })
+		window.dataLayer.push({
+			event: 'Online redirect',
+			category: 'PriceSpider Click',
+			action: 'PS-Redirect',
+			label: pim?.name
+		})
+	}
+
 	useEffect(() => {
 		setSeries(
 			data?.series_products?.value.sort(
@@ -349,9 +376,36 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 									View Product
 								</button>
 							)}
-							<button onClick={setData} className='n-btn btn-primary text-white w-50'> 
-								Shop Deal
-							</button>
+							
+							{pim?.isNew === 0 && (
+								<div className='text-center text-md-start'>
+									{pim?.buy_status === 'ChannelAdvisor' ? (
+										<div
+											className='ps-widget ps_wtb_btn mx-auto mx-md-0'
+											ps-sku={pim?.model}></div>
+									) : (
+										<button
+											className='wtb_btn mx-auto mx-md-0'
+											disabled={
+												pim?.buy_status !== 'ChannelAdvisor' &&
+												pim?.buy_status !== 'Internal'
+											}
+											onClick={() =>
+												pim?.buy_status === 'ChannelAdvisor' ||
+												pim?.buy_status === 'Internal'
+													? dataLayerHandler()
+													: {}
+											}>
+											<span>
+												{pim?.buy_status === 'ChannelAdvisor' ||
+												pim?.buy_status === 'Internal'
+													? 'Where To Buy'
+													: 'coming soon'}
+											</span>
+										</button>
+									)}
+								</div>
+							)}
 						</div>
 					</div>
 
