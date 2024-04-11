@@ -188,7 +188,8 @@ function ProductCategoryBox({ data, pim }) {
 							</>
 						)}
 						<li className='px-0'>
-							{pim?.buy_status === 'ChannelAdvisor' ? (
+							<div className='ps-widget ps-wtb' ps-sku={pim?.model}></div>
+							{/* {pim?.buy_status === 'ChannelAdvisor' ? (
 								<div className='ps-widget ps-wtb' ps-sku={pim?.model}></div>
 							) : (
 								<button
@@ -207,15 +208,15 @@ function ProductCategoryBox({ data, pim }) {
 									pim?.buy_status === 'Internal'
 										? 'Where To Buy'
 										: 'Coming Soon'}
-									{/* {pim?.buy_status === 'ChannelAdvisor' ||
+									{pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal' ? (
 									<img
 										style={{ marginLeft: '16px' }}
 										src={OpenPageOnNewTab.src}
 									/>
-								) : null} */}
+								) : null}
 								</button>
-							)}
+							)} */}
 						</li>
 					</ul>
 				</nav>
