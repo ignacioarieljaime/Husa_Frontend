@@ -71,15 +71,15 @@ const SeasonUpgradeProductsCarouselItem = ({
 		setChannelAdvisorData({
 			product: product,
 			productId: product?.id,
-			type: 'static',
+			type: 'Internal',
 			model: product?.model,
-			customizeRetailerId: activeItem?.retailers?.value?.map(
-				retailer =>
-					retailer?.status?.value === 'active' && {
-						id: retailer?.id?.value,
-						name: retailer?.name?.value
-					}
-			)
+			// customizeRetailerId: activeItem?.retailers?.value?.map(
+			// 	retailer =>
+			// 		retailer?.status?.value === 'active' && {
+			// 			id: retailer?.id?.value,
+			// 			name: retailer?.name?.value
+			// 		}
+			// )
 		})
 		setShowDialog(true)
 	}
