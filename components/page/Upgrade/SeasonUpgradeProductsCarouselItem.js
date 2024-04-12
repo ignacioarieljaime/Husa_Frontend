@@ -67,6 +67,10 @@ const SeasonUpgradeProductsCarouselItem = ({
 		getProduct()
 	}, [activeItem])
 
+	useEffect(() => {
+		window?.PriceSpider.rebind()
+	}, [])
+
 	function setData() {
 		setChannelAdvisorData({
 			product: product,
@@ -292,9 +296,12 @@ const SeasonUpgradeProductsCarouselItem = ({
 						<p className='old_price '>{activeItem?.old_price?.value}</p>
 					</div>
 					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
-						<button onClick={setData} className='n-btn medium btn-primary w-100'>
-							Shop Deal
-						</button>
+							<div className='ps-widget ps-wtb' ps-sku={product?.model}>
+								<span className='btn-label'>Shop Deal</span>
+							</div>
+							{/* <button onClick={setData} className='n-btn btn-primary text-white w-50'> 
+								Shop Deal
+							</button> */}
 					</div>
 				</div>
 			</div>
