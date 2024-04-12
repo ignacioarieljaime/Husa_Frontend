@@ -329,33 +329,6 @@
 				margin: 0;
 			}
 
-			.ps-wtb {
-				background-color: var(--primary-color) !important;
-				border-color: var(--primary-color) !important;
-				color: #ffffff;
-				transition: all 0.3s ease-in;
-				line-height: 38px;
-
-				&:hover {
-					background-color: var(--primary-color) !important;
-					border-color: var(--primary-color) !important;
-					line-height: 38px;
-					opacity: 0.7;
-					transition: all 0.3s ease-in-out;
-				}
-
-				.btn-label{
-					font-weight: 400;
-					font-size: 14px;
-					line-height: 20px;
-					text-align: center;
-				}
-
-				.ps-button-label{
-					display: none;
-				}
-			}
-
 			.n-btn-outline {
 				color: #00AAA6;
 				background: #fff;
