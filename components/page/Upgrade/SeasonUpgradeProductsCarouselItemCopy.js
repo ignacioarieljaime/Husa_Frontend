@@ -11,7 +11,6 @@ import useOutsideClick from 'hooks/useOutsideClick'
 import { useRef } from 'react'
 
 const SeasonUpgradeProductsCarouselItemCopy = ({
-	pim,
 	data,
 	version,
 	setChannelAdvisorData,
@@ -72,10 +71,6 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 		getProduct()
 	}, [activeItem])
 
-	useEffect(() => {
-		window?.PriceSpider.rebind()
-	}, [])
-
 	function setData() {
 		setChannelAdvisorData({
 			product: product,
@@ -91,12 +86,6 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 			// )
 		})
 		setShowDialog(true)
-		window.dataLayer.push({
-			event: 'Online redirect',
-			category: 'PriceSpider Click',
-			action: 'PS-Redirect',
-			label: product?.name
-		})
 	}
 
 	async function getProduct() {
@@ -360,12 +349,9 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 									View Product
 								</button>
 							)}
-							<div className='ps-widget ps-wtb' ps-sku={product?.model}>
-								<span className='btn-label'>Shop Deal</span>
-							</div>
-							{/* <button onClick={setData} className='n-btn btn-primary text-white w-50'> 
+							<button onClick={setData} className='n-btn btn-primary text-white w-50'> 
 								Shop Deal
-							</button> */}
+							</button>
 						</div>
 					</div>
 
