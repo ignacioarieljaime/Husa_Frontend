@@ -82,12 +82,6 @@ const SeasonUpgradeProductsCarouselItem = ({
 			// )
 		})
 		setShowDialog(true)
-		window.dataLayer.push({
-			event: 'Online redirect',
-			category: 'PriceSpider Click',
-			action: 'PS-Redirect',
-			label: pim?.name
-		})
 	}
 
 	async function getProduct() {
