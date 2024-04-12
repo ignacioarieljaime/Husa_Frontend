@@ -56,139 +56,64 @@ function ProductCategoryBox({ data, pim }) {
 						<li className='model me-md-auto px-0'>
 							<span>{pim?.model}</span>
 						</li>
-						{windowSize[0] > 768 ? (
-							<>
-								{structure?.tags?.value.map((item, index) => (
-									<li className='px-0' key={`category-item-${index}`}>
-										<Link
-											target={
-												item.target?.target ? item.target?.target : '_self'
-											}
-											href={item.target.value ? item.target.value : '/'}>
-											<a
-												className='link'
-												target={
-													item.target?.target ? item.target?.target : '_self'
-												}>
-												<span className=' underline-on-hover text-uppercase'>
-													{item.title.value}
-
-													{item.target?.target === '_blank' && (
-														<img
-															style={{ marginLeft: '10px' }}
-															src={OpenPageOnNewTab.src}
-														/>
-													)}
-												</span>
-											</a>
-										</Link>
-									</li>
-								))}
-
-								<li className='px-0'>
-									<Link
-										href={
-											// structure?.support?.value ? structure?.support.value : '/'
-											`/support/${
-												router.pathname
-													.split('/')
-													[router.pathname.split('/').length - 1].startsWith(
-														'H'
-													)
-													? router.pathname
-															.split('/')
-															[router.pathname.split('/').length - 1].replace(
-																'H',
-																'h'
-															)
-													: router.pathname.split('/')[
-															router.pathname.split('/').length - 1
-													  ]
-											}`
+						{structure?.tags?.value.map((item, index) => (
+							<li className='px-0' key={`category-item-${index}`}>
+								<Link
+									target={
+										item.target?.target ? item.target?.target : '_self'
+									}
+									href={item.target.value ? item.target.value : '/'}>
+									<a
+										className='link'
+										target={
+											item.target?.target ? item.target?.target : '_self'
 										}>
-										<a className='link'>
-											<span className='underline-on-hover text-uppercase'>
-												{' '}
-												Support
-											</span>
-										</a>
-									</Link>
-								</li>
-							</>
-						) : (
-							<>
-								<li className='px-0 ms-auto'>
-									<button
-										className='menu_btn'
-										onClick={() => setOpenList(prevState => !prevState)}>
-										<img src={ellipsisMenu.src} />
-									</button>
-								</li>
-								{openList && (
-									<ul className='menu'>
-										{structure?.tags?.value.map((item, index) => (
-											<li className='px-0' key={`category-item-${index}`}>
-												<Link
-													target={
-														item.target?.target ? item.target?.target : '_self'
-													}
-													href={item.target.value ? item.target.value : '/'}>
-													<a
-														className='link'
-														target={
-															item.target?.target
-																? item.target?.target
-																: '_self'
-														}>
-														<span className=' underline-on-hover text-uppercase'>
-															{item.title.value}
+										<span className=' underline-on-hover text-uppercase'>
+											{item.title.value}
 
-															{item.target?.target === '_blank' && (
-																<img
-																	style={{ marginLeft: '10px' }}
-																	src={OpenPageOnNewTab.src}
-																/>
-															)}
-														</span>
-													</a>
-												</Link>
-											</li>
-										))}
-
-										<li className='px-0'>
-											<Link
-												href={
-													// structure?.support?.value ? structure?.support.value : '/'
-													`/support/${
-														router.pathname
-															.split('/')
-															[
-																router.pathname.split('/').length - 1
-															].startsWith('H')
-															? router.pathname
-																	.split('/')
-																	[
-																		router.pathname.split('/').length - 1
-																	].replace('H', 'h')
-															: router.pathname.split('/')[
-																	router.pathname.split('/').length - 1
-															  ]
-													}`
-												}>
-												<a className='link'>
-													<span className='underline-on-hover text-uppercase'>
-														{' '}
-														Support
-													</span>
-												</a>
-											</Link>
-										</li>
-									</ul>
-								)}
-							</>
-						)}
+											{item.target?.target === '_blank' && (
+												<img
+													style={{ marginLeft: '10px' }}
+													src={OpenPageOnNewTab.src}
+												/>
+											)}
+										</span>
+									</a>
+								</Link>
+							</li>
+						))}
 						<li className='px-0'>
-							{pim?.buy_status === 'ChannelAdvisor' ? (
+							<Link
+								href={
+									// structure?.support?.value ? structure?.support.value : '/'
+									`/support/${
+										router.pathname
+											.split('/')
+											[router.pathname.split('/').length - 1].startsWith(
+												'H'
+											)
+											? router.pathname
+													.split('/')
+													[router.pathname.split('/').length - 1].replace(
+														'H',
+														'h'
+													)
+											: router.pathname.split('/')[
+													router.pathname.split('/').length - 1
+												]
+									}`
+								}>
+								<a className='link'>
+									<span className='underline-on-hover text-uppercase'>
+										{' '}
+										Support
+									</span>
+								</a>
+							</Link>
+						</li>
+						<li className='px-0'>
+							<div className='ps-widget ps-wtb' ps-sku={pim?.model}></div>
+							{/* {pim?.buy_status === 'ChannelAdvisor' ? (
 								<div className='ps-widget ps-wtb' ps-sku={pim?.model}></div>
 							) : (
 								<button
@@ -207,15 +132,15 @@ function ProductCategoryBox({ data, pim }) {
 									pim?.buy_status === 'Internal'
 										? 'Where To Buy'
 										: 'Coming Soon'}
-									{/* {pim?.buy_status === 'ChannelAdvisor' ||
+									{pim?.buy_status === 'ChannelAdvisor' ||
 								pim?.buy_status === 'Internal' ? (
 									<img
 										style={{ marginLeft: '16px' }}
 										src={OpenPageOnNewTab.src}
 									/>
-								) : null} */}
+								) : null}
 								</button>
-							)}
+							)} */}
 						</li>
 					</ul>
 				</nav>
