@@ -163,7 +163,7 @@
 			.category {
 				column-gap: 4%;
 				flex-grow: 1;
-				flex-wrap: wrap;
+				flex-wrap: nowrap;
 				justify-content: flex-end;
 				margin-left: 0;
 				width: auto;
@@ -179,14 +179,27 @@
 							min-height: 30px;
 							min-width: 30px;
 							padding-top: 30px;
-
-							img {
-							}
 						}
 
 						.cat-label {
 							p {
 								margin-bottom: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: 390px) {
+		.content {
+			.category {
+				li {
+					a {
+						.cat-label {
+							p {
+								font-size: 12px;
 							}
 						}
 					}
