@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { GetSingleProduct } from 'services/Product'
@@ -8,7 +8,7 @@ import Link from 'next/link'
 import moment from 'moment'
 import { RouteHandler } from 'utils/routeHandler'
 import useOutsideClick from 'hooks/useOutsideClick'
-import { useRef } from 'react'
+import Spinner from 'components/common/Spinner'
 
 const SeasonUpgradeProductsCarouselItemCopy = ({
 	pim,
@@ -21,6 +21,7 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 	const [showSizes, setShowSizes] = useState(false)
 	const [activeSizeIndex, setActiveSizeIndex] = useState(0)
 	const [labelOff, setLabelOff] = useState(false)
+	const [loading, setLoading] = useState(false)
 	const [activeItem, setActiveItem] = useState(null)
 	const [series, setSeries] = useState([])
 	const [product, setProduct] = useState()
@@ -52,7 +53,11 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 			setActiveSizeIndex(
 				series.findIndex(item => item?.id?.value == data?.id?.value)
 			)
-			setUrl(RouteHandler(series.findIndex(item => item?.id?.value == data?.id?.value)))
+			setUrl(
+				RouteHandler(
+					series.findIndex(item => item?.id?.value == data?.id?.value)
+				)
+			)
 		}
 		if (series && series.length <= 5) {
 			setShowSizes(true)
@@ -73,15 +78,19 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 	}, [activeItem])
 
 	useEffect(() => {
-		window?.PriceSpider.rebind()
-	}, [])
+		setLoading(true)
+		setTimeout(() => {
+			window?.PriceSpider.rebind()
+			setLoading(false)
+		}, 1000)
+	}, [product?.model])
 
 	function setData() {
 		setChannelAdvisorData({
 			product: product,
 			productId: product?.id,
 			type: 'Internal',
-			model: product?.model,
+			model: product?.model
 			// customizeRetailerId: activeItem?.retailers?.value?.map(
 			// 	retailer =>
 			// 		retailer?.status?.value === 'active' && {
@@ -111,9 +120,13 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 					product?.isNew || version === 'v2' ? 'new' : ''
 				} h-100 w-100`}>
 				<div className='column'>
-					{data?.series_products?.newItem?.tag_copy && data?.series_products?.newItem?.tag_copy?.value && data?.series_products?.newItem?.tag_copy?.value.length > 0 && (
-						<div className='tag_copy'>{data?.series_products?.newItem?.tag_copy?.value}</div>
-					)}
+					{data?.series_products?.newItem?.tag_copy &&
+						data?.series_products?.newItem?.tag_copy?.value &&
+						data?.series_products?.newItem?.tag_copy?.value.length > 0 && (
+							<div className='tag_copy'>
+								{data?.series_products?.newItem?.tag_copy?.value}
+							</div>
+						)}
 					<div className='image_wrapper'>
 						{RouteHandler(activeItem?.id?.value, 'product') ? (
 							<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
@@ -158,31 +171,25 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 								pointerEvents: 'all'
 							}}></div>
 					)}
-					{series.length > 1  && (
+					{series.length > 1 && (
 						<>
 							<div>Sizes:</div>
 							<ul className='size_list list-unstyled d-flex gap-1 flex-wrap justify-content-center'>
 								{series.map(
 									(item, index) =>
-									item.name.value && (
-										<li key={'type-item-' + index}>
-											<button
-												onClick={() => {
-													setActiveItem(item)
-													setActiveSizeIndex(index)
-												}}
-												className={
-													`   
-													${
-														activeSizeIndex === index 
-														? 'active indicator'
-														: ''
-													}`}
-													>
-												{item?.name?.value}
-											</button>
-										</li>
-									)
+										item.name.value && (
+											<li key={'type-item-' + index}>
+												<button
+													onClick={() => {
+														setActiveItem(item)
+														setActiveSizeIndex(index)
+													}}
+													className={`   
+													${activeSizeIndex === index ? 'active indicator' : ''}`}>
+													{item?.name?.value}
+												</button>
+											</li>
+										)
 								)}
 							</ul>
 						</>
@@ -327,8 +334,7 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 						{activeItem?.features?.value.map((item, index) => (
 							<li
 								key={index}
-								dangerouslySetInnerHTML={{ __html: item?.text?.value }}>
-							</li>
+								dangerouslySetInnerHTML={{ __html: item?.text?.value }}></li>
 						))}
 					</ul>
 				</div>
@@ -339,30 +345,33 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 					<div className='d-flex justify-content-start align-items-end gap-4 mb-n1 w-100'>
 						<h4 className='price'>{activeItem?.new_price?.value}</h4>
 						<p className='old_price '>{activeItem?.old_price?.value}</p>
-					</div>					
-					
+					</div>
+
 					<div className='w-100'>
 						<div className='d-flex gap-1'>
 							{RouteHandler(activeItem?.id?.value, 'product') ? (
 								<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
-									<a className='n-btn-outline'>
-										View Product
-									</a>
+									<a className='n-btn-outline'>View Product</a>
 								</Link>
 							) : (
-								<button className='n-btn btn-primary text-white w-50'> 
+								<button className='n-btn btn-primary text-white w-50'>
 									View Product
 								</button>
 							)}
-							<div className='ps-widget ps-wtb' ps-sku={product?.model}>
-								<span className='btn-label'>Shop Deal</span>
+							<div
+								className={`ps-widget ps-wtb ${loading ? 'loading' : 'loaded'}`}
+								ps-sku={product?.model}>
+								{loading ? (
+									<Spinner className={'spinner'} size={25} />
+								) : (
+									<span className='btn-label'>Shop Deal</span>
+								)}
 							</div>
 							{/* <button onClick={setData} className='n-btn btn-primary text-white w-50'> 
 								Shop Deal
 							</button> */}
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</>
