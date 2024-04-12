@@ -69,7 +69,7 @@ const SeasonUpgradeProductsCarouselItem = ({
 
 	useEffect(() => {
 		window?.PriceSpider.rebind()
-	}, [])
+	}, [product?.model])
 
 	function setData() {
 		setChannelAdvisorData({
