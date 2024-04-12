@@ -335,6 +335,12 @@
 				color: #ffffff;
 				transition: all 0.3s ease-in;
 				line-height: 38px;
+				flex-grow: 1;
+				display: none;
+
+				&.ps-enabled{
+					display: block;
+				}
 
 				&:hover {
 					background-color: var(--primary-color) !important;
@@ -352,6 +358,10 @@
 				}
 
 				.ps-button-label{
+					display: none;
+				}
+
+				.ps-button-label + span {
 					display: none;
 				}
 			}
