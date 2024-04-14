@@ -20,6 +20,9 @@ function Layout({ children, meta, title, header }) {
 	const dispatch = useDispatch()
 	const [showGoTop, setShowGoTop] = useState(false)
 	const router = useRouter()
+	const p = router.asPath.slice(1);
+	const canonicalURL = `${process.env.SITE_URL}${p}`.split("?")[0];
+
 	const [showChild, setShowChild] = useState(false)
 
 	useEffect(() => {
@@ -114,6 +117,7 @@ function Layout({ children, meta, title, header }) {
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				<meta name='apple-touch-fullscreen' content='yes' />
 				<meta name='apple-mobile-web-app-capable' content='yes' />
+		        <link rel="canonical" href={canonicalURL} />
 				{meta &&
 					meta.map((item, index) =>
 						item.rel === 'blank' ? (
