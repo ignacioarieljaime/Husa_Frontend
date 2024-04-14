@@ -99,31 +99,46 @@
 
 .product_nav {
 	background: #232323;
-	padding: 16px;
+	height: 66px;
 	position: sticky;
 	top: 0;
+
 	.nav {
-		max-width: 1120px;
-		margin: 0 auto;
+		height: 100%;
+
 		.items {
 			list-style: none;
 			padding: 0;
 			margin: 0;
 			gap: 32px;
 			width: 100%;
+
 			@include mq(768) {
 				gap: 8px;
 			}
+
+			li {
+				height: 100%;
+			}
+
 			.model {
+				align-items: center;
+				color: #8c8f8f;
+				display: flex;
 				font-size: 16px;
 				font-style: normal;
 				font-weight: 400;
-				line-height: 21.6px;
 				letter-spacing: -0.32px;
-				color: #00aaa6;
+				line-height: 21.6px;
+				margin-left: 40px;
 			}
+
 			.link {
+				align-items: center;
+				display: flex;
+				height: 100%;
 				text-decoration: none;
+
 				span {
 					font-size: 14px;
 					font-style: normal;
@@ -132,36 +147,58 @@
 					color: #fff;
 				}
 			}
+
 			.wtb {
+				align-items: center;
+				background: #008885;
+				border: 1px solid #008885;
+				border-radius: 0;
+				color: #ffffff !important;
+				display: flex;
+				font-size: 14px;
 				font-style: normal;
 				font-weight: 400;
-				border-radius: 1000px;
-				border: 1px solid #008885;
-				color: #fff !important;
-				background: #008885;
-				min-width: 80px !important;
-				padding: 8.5px 16px 7.5px !important;
-				font-size: 14px;
+				height: 100%;
+				justify-content: center;
 				line-height: 17px;
+				min-width: 214px !important;
+				padding: 8.5px 16px 7.5px !important;
 				transition: all 0.3s ease-in;
+
 				&:hover {
 					border: 1px solid #006664;
 					background: #006664;
 				}
+
 				&:disabled {
 					color: #b3bac5 !important;
 				}
 			}
+
 			.ps-wtb {
-				padding: 0;
-				border: 1px solid #008885 !important;
-				background-color: transparent;
+				align-items: center;
+				background: #008885;
+				border: 1px solid #008885;
+				border-radius: 0;
+				color: #ffffff !important;
+				display: flex !important;
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				height: 100%;
+				justify-content: center;
+				line-height: 17px;
+				min-width: 214px !important;
+				padding: 8.5px 16px 7.5px !important;
+				transition: all 0.3s ease-in;
+
 				&:hover {
-					//006664
 					border: 1px solid #006664 !important;
 					background-color: #006664;
+					border-radius: 0;
+
 					span {
-						border: 1px solid #006664 !important;
+						border: none !important;
 						background: #006664 !important;
 						font-size: 14px;
 						line-height: 14px;
@@ -170,32 +207,21 @@
 				}
 
 				span {
+					border: none !important;
 					display: block;
 					font-style: normal;
 					font-weight: 400;
-					border-radius: 1000px;
-					border: 1px solid #008885 !important;
-					color: #fff !important;
-					background: #008885 !important;
-					min-width: 80px !important;
-					padding: 8.5px 16px 7.5px !important;
 					font-size: 14px;
 					line-height: 14px;
 					font-family: 'hisense';
 					transition: all 0.3s ease-in;
-					&:hover {
-						border: 1px solid #006664;
-						background: #006664;
-						font-family: 'hisense';
-						font-size: 14px;
-						line-height: 14px;
-						font-weight: 400;
-					}
 				}
+
 				&:disabled {
 					color: #b3bac5 !important;
 				}
 			}
+
 			.menu_btn {
 				border: none;
 				padding: 0px;
@@ -216,6 +242,92 @@
 					padding: 12px;
 					.link {
 						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	@include mq(768) {
+		height: 41px;
+		position: fixed;
+		top: unset;
+		bottom: 0;
+
+		.nav {
+			.items {
+				.model {
+					display: none;
+				}
+
+				li {
+					margin-inline: auto;
+
+					.link {
+						span {
+							font-size: 12px;
+							line-height: 17px;
+						}
+					}
+
+					&:last-child {
+						width: 24.61%;
+						min-width: 96px;
+						margin-left: auto;
+						margin-right: 0;
+					}
+				}
+
+				.wtb,
+				.ps-wtb {
+					font-size: 12px;
+					width: 100% !important;
+					min-width: unset !important;
+					padding-inline: 0 !important;
+
+					&:hover {	
+						span {
+							font-size: 12px;
+							line-height: 17px;
+						}
+					}
+	
+					span {
+						font-size: 12px;
+						line-height: 17px;
+					}
+				}
+			}
+		}
+	}
+
+	@include mq(389) {
+		.nav {
+			.items {
+				li {
+					.link {
+						span {
+							font-size: 10px;
+						}
+					}
+
+					&:last-child {
+						min-width: 81px;
+					}
+				}
+
+				.wtb,
+				.ps-wtb {
+					font-size: 10px;
+
+					&:hover {	
+						span {
+							font-size: 10px;
+						}
+					}
+	
+					span {
+						font-size: 10px;
 					}
 				}
 			}
