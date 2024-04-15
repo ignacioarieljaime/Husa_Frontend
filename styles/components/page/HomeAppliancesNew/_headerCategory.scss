@@ -157,7 +157,7 @@
 			padding-inline: 20px;
 
 			.title {
-				margin-bottom: 0;
+				display: none;
 			}
 
 			.category {
@@ -199,7 +199,8 @@
 					a {
 						.cat-label {
 							p {
-								font-size: 12px;
+								font-size: 10px;
+								line-height: 14px;
 							}
 						}
 					}
