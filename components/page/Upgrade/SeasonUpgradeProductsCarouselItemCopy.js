@@ -120,21 +120,27 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 					product?.isNew || version === 'v2' ? 'new' : ''
 				} h-100 w-100`}>
 				<div className='column'>
-					{data?.series_products?.newItem?.tag_copy &&
-						data?.series_products?.newItem?.tag_copy?.value &&
-						data?.series_products?.newItem?.tag_copy?.value.length > 0 && (
+					{activeItem?.tag_copy?.value && activeItem?.tag_copy?.value.length > 0 ? (
+						<div className='tag_copy'>
+							{activeItem?.tag_copy?.value}
+						</div>
+					) : (
+						data?.tag_copy &&
+						data?.tag_copy?.value &&
+						data?.tag_copy?.value.length > 0 && (
 							<div className='tag_copy'>
-								{data?.series_products?.newItem?.tag_copy?.value}
+								{data?.tag_copy?.value}
 							</div>
-						)}
+						)
+					)}
 					<div className='image_wrapper'>
 						{RouteHandler(activeItem?.id?.value, 'product') ? (
 							<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
 								<a className='d-block w-100 h-100'>
 									<img
-										src={data?.customImage?.src || product?.image}
 										alt='tv'
 										className='image'
+										src={data?.customImage?.src || product?.image}
 									/>
 								</a>
 							</Link>
