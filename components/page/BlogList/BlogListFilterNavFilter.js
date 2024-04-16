@@ -1,16 +1,16 @@
+import React, { useEffect, useRef, useState } from 'react'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useRouter } from 'next/router'
 import axios from 'axios'
-import AngleArrow from 'components/icons/AngleArrow'
-import MagnifierIcon from 'components/icons/MagnifierIcon'
-import SelectBoxAngleArrow from 'components/icons/SelectBoxAngleArrow'
-import { useWindowSize } from 'hooks/useWindowSize'
+import clsx from 'clsx'
 import Link from 'next/link'
-import React, { useEffect, useRef, useState } from 'react'
+
+import MagnifierIcon from 'components/icons/MagnifierIcon'
+import { useWindowSize } from 'hooks/useWindowSize'
+
 import BlogListFilterNavFilterItem from './BlogListFilterNavFilterItem'
 import FilterResponsive from './responsiveFilter/FilterResponsive'
-import { useRouter } from 'next/router'
-import clsx from 'clsx'
 
 let years = []
 
