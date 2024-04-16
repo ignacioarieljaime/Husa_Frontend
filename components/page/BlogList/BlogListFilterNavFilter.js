@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import BlogListFilterNavFilterItem from './BlogListFilterNavFilterItem'
 import FilterResponsive from './responsiveFilter/FilterResponsive'
 import { useRouter } from 'next/router'
+import clsx from 'clsx'
 
 let years = []
 
@@ -85,7 +86,7 @@ const BlogListFilterNavFilter = ({
 	const getNews = async () => {
 		try {
 			let response = await axios.get(
-				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts/meta?type=news&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
+				`${process.env.NEXT_PUBLIC_CXM_API_ROUTE}/getPosts/meta?type=blog&brand_id=${process.env.NEXT_PUBLIC_BRAND_ID}`,
 				{
 					headers: {
 						BrandId: process.env.NEXT_PUBLIC_BRAND_ID
@@ -152,7 +153,7 @@ const BlogListFilterNavFilter = ({
 			style={{
 				zIndex: !fix ? 1001 : 997
 			}}
-			className={`newsroom_search ${!fix ? 'white_bg' : ''}`}>
+			className={clsx("newsroom_search", !fix && 'white_bg')}>
 			<div className={`news_room_search_filter ${isTransparent ? 'top-blog-with-blur' : ''}`}>
 				<div className='position-relative'>
 					<div className='content'>
