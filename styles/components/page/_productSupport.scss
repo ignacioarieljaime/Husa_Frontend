@@ -464,3 +464,18 @@
 
 
 }
+.product-support-section{
+	.form-container{
+		input.form-container-inner-input {
+			background:none;
+			border:1px solid #C7C7C9;
+			border-radius: 12px;
+			padding:12px;
+			min-height:54px;
+
+			&::placeholder{
+				color:#8C8F8F;
+			}
+		}
+	}
+}

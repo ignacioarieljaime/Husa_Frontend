@@ -122,7 +122,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 	return (
 		<section
 			id={'ProductSupportRegisterTab' + data.id}
-			className='border-bottom border-dark'>
+			className='product-support-section border-bottom border-dark'>
 			<div className='container py-10'>
 				<div className='form-container mx-auto'>
 					<h4 className='text-center title mb-4'>{data?.title?.value}</h4>
@@ -134,7 +134,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 						action=''
 						className='form-container-inner row active'
 						id='form-tab-1'>
-						<div className='col-12 mb-10 custom-select-box'>
+						<div className='col-12 col-md-6 mb-4 custom-select-box'>
 							<CustomInput
 								disabled={true}
 								placeholder={'PLEASE SELECT YOUR PRODUCT'}
@@ -146,7 +146,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 						</div>
 
 						{pim?.series.length !== 0 && (
-							<div className='col-12 mb-10 custom-select-box'>
+							<div className='col-12 col-md-6 mb-4 custom-select-box'>
 								<CustomInput
 									disabled={true}
 									placeholder={'PLEASE SELECT YOUR MODEL'}
@@ -158,7 +158,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 							</div>
 						)}
 
-						<div className='col-12 mb-10 custom-select-box'>
+						<div className='col-12 col-md-6 mb-4 custom-select-box'>
 							<CustomInput
 								rightText={
 									dataSchema?.product_category === 'Air Products' &&
@@ -172,7 +172,17 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.product_model && errors?.product_model[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-4'>
+							<CustomInput
+								placeholder={'FIRST NAME'}
+								onChange={_value => dataSchemaHandler('first_name', _value)}
+								required={true}
+							/>
+							<div className='input_error_message'>
+								{errors?.first_name && errors?.first_name[0]}
+							</div>
+						</div>
+						<div className='col-12 col-md-6 mb-4'>
 							<CustomInput
 								placeholder={'SERIAL NUMBER'}
 								required={true}
@@ -180,12 +190,6 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 									dataSchemaHandler('product_serial_number', _value)
 								}
 							/>
-							<div className='input_error_message'>
-								{errors?.product_serial_number &&
-									errors?.product_serial_number[0]}
-							</div>
-						</div>
-						<div className='col-12 col-md-6 mb-10 d-flex'>
 							<button
 								className='modal-btn'
 								type='button'
@@ -197,18 +201,12 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								/>
 								<span className='ms-2'>Where do I find the serial number?</span>
 							</button>
-						</div>
-						<div className='col-12 col-md-6 mb-10'>
-							<CustomInput
-								placeholder={'FIRST NAME'}
-								onChange={_value => dataSchemaHandler('first_name', _value)}
-								required={true}
-							/>
 							<div className='input_error_message'>
-								{errors?.first_name && errors?.first_name[0]}
+								{errors?.product_serial_number &&
+									errors?.product_serial_number[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-4'>
 							<CustomInput
 								placeholder={'LAST NAME'}
 								onChange={_value => dataSchemaHandler('last_name', _value)}
@@ -218,7 +216,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.last_name && errors?.last_name[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-4'>
 							<CustomInput
 								placeholder={'EMAIL'}
 								type={'email'}
@@ -229,7 +227,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.email && errors?.email[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-4'>
 							<CustomInput
 								placeholder={'POSTAL CODE/ZIP'}
 								onChange={_value => dataSchemaHandler('postal_code', _value)}
@@ -241,7 +239,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.postal_code && errors?.postal_code[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-4'>
 							<CustomInput
 								onChange={_value => dataSchemaHandler('phone_number', _value)}
 								placeholder={'PHONE NUMBER'}
@@ -251,7 +249,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.phone_number && errors?.phone_number[0]}
 							</div>
 						</div>
-						<div className='col-12 col-md-6 mb-10'>
+						<div className='col-12 col-md-6 mb-4'>
 							<CustomInput
 								onChange={_value => dataSchemaHandler('purchased_from', _value)}
 								placeholder={'PURCHASED FROM'}
@@ -261,7 +259,7 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 								{errors?.purchased_from && errors?.purchased_from[0]}
 							</div>
 						</div>
-						<div className='col-12 mb-10 position-relative'>
+						<div className='col-12 col-md-6 mb-4 position-relative'>
 							<label
 								className={`label_on_date_input ${
 									inputFocused || dataSchema.date_of_purchase ? 'focused' : ''
