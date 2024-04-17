@@ -246,7 +246,7 @@ function RegisterForm({ data }) {
 
 			if (response.status === 200) {
 				e.target.reset()
-				router.push('/support/confirmation');
+				router.push('/support/register/registration-confirmation');
 				resetData()
 				// toast.success('Registered Successfully', {
 				// 	toastId: 'ticket-sended'
@@ -258,7 +258,7 @@ function RegisterForm({ data }) {
 				})
 				setTickedSended(false)
 			}
-			setLoading(false)
+			//setLoading(false)
 		} catch (error) {
 			setTickedSended(false)
 			toast.error("Registeration wasn't Successful", {
@@ -634,11 +634,9 @@ function RegisterForm({ data }) {
 							disabled={loading}
 							type='submit'
 							className='n-btn outline-black  mx-auto align-items-center text-center'>
-							<span className='underline-on-hover'>
-								{' '}
+							{loading ? (<Spinner size={25} />) : (<span className='underline-on-hover'>
 								{structure?.subtitle?.value}
-							</span>
-							{loading && <Spinner size={25} />}
+							</span>)}
 						</button>
 						{tickedSended === true ? (
 							<div className='mt-3' style={{ color: 'green' }}>

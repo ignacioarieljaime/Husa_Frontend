@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 
 function CustomSelectBox({
-	required = false,
+	required = true,
 	title,
 	options,
 	onChange,
@@ -102,10 +102,12 @@ function CustomSelectBox({
 						name='product'
 						checked='checked'
 						disabled
+						required
 					/>
 					{isSearchable && options !== 'loading' ? (
 						<div className='search_box__arrow'>
 							<input
+								required
 								placeholder={placeholder}
 								onInput={e => searchHandler(e.target.value)}
 								onBlur={() =>

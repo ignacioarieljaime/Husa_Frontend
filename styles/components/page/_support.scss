@@ -888,6 +888,15 @@
 
 .support-register{
 	.form-container{
+		.custom-select-box{
+			.form-container-inner-input{
+				&:focus{
+					box-shadow:none;
+				border-color: #00AAA6;
+  			border-radius: 12px 12px 0px 0px;
+				}
+			}
+		}
 		.article{
 			p {
 				color: #ABABB0;
@@ -916,7 +925,6 @@
 			&:focus{
 				box-shadow:none;
 				border-color: #00AAA6;
-  			border-radius: 12px 12px 0px 0px;
 			}
 			.input-text{
 				font-size: 16px;
