@@ -12,7 +12,7 @@ module.exports = {
 				? {
 						userAgent: '*',
 						allow: '/',
-						disallow: ['/televisions/all-tvs', '/audio/home-audio', '/home-appliance/dishwashers/all-dishwashers', '/home-appliance/refrigerators/all-refrigerators', '/home-appliance/microwave-ovens/all-microwave-ovens', '/home-appliance/electric-range', '/home-appliance/kitchen-suites', '/air-products/all-air-products',]
+						disallow: ['/televisions/all-tvs', '/audio/home-audio', '/home-appliance/dishwashers/all-dishwashers', '/home-appliance/refrigerators/all-refrigerators', '/home-appliance/microwave-ovens/all-microwave-ovens', '/home-appliance/electric-range', '/home-appliance/kitchen-suites', '/air-products/all-air-products', '/assets', '/download', '/storage', '_next']
 				  }
 				: {
 						userAgent: '*',

@@ -117,7 +117,9 @@ function Layout({ children, meta, title, header }) {
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				<meta name='apple-touch-fullscreen' content='yes' />
 				<meta name='apple-mobile-web-app-capable' content='yes' />
-		        <link rel="canonical" href={canonicalURL} />
+		        {/* Canonical tags */}
+				<link rel="canonical" href={canonicalURL} />
+
 				{meta &&
 					meta.map((item, index) =>
 						item.rel === 'blank' ? (
