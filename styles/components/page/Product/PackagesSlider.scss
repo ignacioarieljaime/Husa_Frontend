@@ -637,10 +637,15 @@
 		.product_info {
 			width: calc(50% - 40px);
 			max-width: 450px;
+
 			@include mq(768) {
 				width: 100%;
 				max-width: unset;
+				border-bottom: 1px solid #C7C7C9;
+				padding-bottom: 16px;
+				margin-bottom: 16px;
 			}
+
 			.model {
 				font-size: 28px;
 				font-style: normal;
@@ -649,7 +654,13 @@
 				letter-spacing: -0.56px;
 				color: #8c8f8f;
 				margin-bottom: 20px;
+
+				@include mq(768) {
+					font-size: 16px;
+					line-height: 25px;
+				}
 			}
+		
 			.title {
 				color: #212529;
 				font-size: 34px;
@@ -718,7 +729,7 @@
 							background: #c7c7c9;
 						}
 						&.active {
-							border-color: #C6C6C8;
+							border-color: #c6c6c8;
 							background: #707171;
 							span {
 								color: #fff;
@@ -815,6 +826,34 @@
 				ul {
 					padding-left: 20px;
 				}
+			}
+		}
+	}
+
+	&.new_badge {
+		position: relative;
+		overflow-x: hidden;
+
+		&::before {
+			background-color: #d83a49;
+			color: #ffffff;
+			content: 'New';
+			font-size: 16px;
+			font-weight: 400;
+			height: 53px;
+			line-height: 16px;
+			padding: 32px 40px 10px 40px;
+			position: absolute;
+			right: -6px;
+			rotate: 45deg;
+			text-align: center;
+			top: -6px;
+			translate: 33px;
+			width: 117px;
+
+			@include mq(768) {
+				right: -8px;
+				top: 0;
 			}
 		}
 	}
