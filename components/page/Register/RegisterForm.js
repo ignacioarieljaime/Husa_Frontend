@@ -326,7 +326,7 @@ function RegisterForm({ data }) {
 		return ''
 	}
 
-	const purchased_by = ['Best Buy','Amazon','Brands Mart']
+	const purchased_by = ['Best Buy','Amazon','Walmart','Brands Mart','Electronic Express','P.C.Richard & Son']
 	return (
 		<section className="support-register">
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
@@ -517,7 +517,7 @@ function RegisterForm({ data }) {
 					</div>
 					<div className='col-12 col-md-6 mb-4'>
 						<CustomInput
-							placeholder={'Postal Code/ZIP'}
+							placeholder={'Postal Code/Zip'}
 							onChange={_value => dataSchemaHandler('postal_code', _value)}
 							required={true}
 							type='number'
@@ -594,7 +594,8 @@ function RegisterForm({ data }) {
 										id='contact-file-input'
 										accept='.jpg, .png, .jpeg'
 										multiple={true}
-										onChange={uploadFile}
+											onChange={uploadFile}
+											required
 									/>
 										<div className="file-upload-info">
 											<h6>Upload Receipt</h6>

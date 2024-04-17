@@ -4,7 +4,7 @@ import useOutsideClick from 'hooks/useOutsideClick';
 import React, { useRef, useState } from 'react';
 
 function PurchasedFromSelectBox({
-  required = false,
+  required = true,
   title,
   options,
   onChange,
@@ -49,6 +49,7 @@ function PurchasedFromSelectBox({
             name='product'
             checked='checked'
             disabled
+            required={required}
           />
           <div
             onClick={() => setShowSearchList(!showSearchList)}
