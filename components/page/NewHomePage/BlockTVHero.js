@@ -65,6 +65,7 @@ const BlockTVContainer = ({ structure }) => {
 									target={
 										structure?.link?.target ? structure?.link?.target : '_self'
 									}
+									title={structure?.link?.title}
 									className='n-btn outline-white transparent medium w-fit d-block mt-4'>
 									{structure?.link?.title}
 									{structure?.link?.target === '_blank' && (

@@ -79,12 +79,14 @@ const BlockFeaturedItem = ({
 								href={data?.link?.value}>
 								<a
 									target={data?.link?.target ? data?.link?.target : '_self'}
+									title={data?.link?.title}
 									className='n-btn outline-white transparent d-block w-fit medium mx-auto'>
 									{data?.link?.title}
 									{data?.link?.target === '_blank' && (
 										<img
 											style={{ marginLeft: '10px' }}
 											src={OpenPageOnNewTab.src}
+											alt={data?.link?.title}
 										/>
 									)}
 								</a>

@@ -26,12 +26,14 @@ const HomePageMBTextedBoxes = ({ data }) => {
 							target={
 								structure?.link?.target ? structure?.link?.target : '_self'
 							}
+							title={item?.url?.title}
 							className='n-btn outline-black medium mt-20'>
 							{structure?.link?.title}{' '}
 							{structure?.link?.target === '_blank' && (
 								<img
 									style={{ marginLeft: '10px' }}
 									src={OpenPageOnNewTab.src}
+									alt={item?.url?.title}
 								/>
 							)}
 						</a>

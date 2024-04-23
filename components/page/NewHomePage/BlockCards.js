@@ -38,12 +38,14 @@ const BlockCards = ({ data }) => {
 								target={
 									structure?.link?.target ? structure?.link?.target : '_self'
 								}
+								title={structure?.link?.title}
 								className='n-btn outline-black d-block w-fit mx-auto medium'>
 								{structure?.link?.title}
 								{structure?.link?.target === '_blank' && (
 									<img
 										style={{ marginLeft: '10px' }}
 										src={OpenPageOnNewTab.src}
+										alt={structure?.link?.title}
 									/>
 								)}
 							</a>

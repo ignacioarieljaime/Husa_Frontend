@@ -43,6 +43,8 @@ function ProductCategoryBox({ data, pim }) {
 	}
 
 	let { structure } = data
+	let modelName = structure?.support?.value.split('/')
+	console.log(modelName[3])
 	return (
 		<>
 			{' '}
@@ -83,6 +85,7 @@ function ProductCategoryBox({ data, pim }) {
 							</li>
 						))}
 						<li className='px-0'>
+							
 							<Link
 								href={
 									// structure?.support?.value ? structure?.support.value : '/'
@@ -101,7 +104,7 @@ function ProductCategoryBox({ data, pim }) {
 											: router.pathname.split('/')[
 													router.pathname.split('/').length - 1
 												]
-									}`
+									}?model=${modelName[3]}`
 								}>
 								<a className='link'>
 									<span className='underline-on-hover text-uppercase'>

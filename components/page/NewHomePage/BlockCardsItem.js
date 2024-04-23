@@ -67,12 +67,14 @@ const BlockCardsItem = ({ data, itemCount, index }) => {
 							href={link?.value ? link?.value : '/'}>
 							<a
 								target={link?.target ? link?.target : '_self'}
+								title={link?.title}
 								className='n-btn outline-white transparent d-block w-fit medium'>
 								{link?.title}
 								{link?.target === '_blank' && (
 									<img
 										style={{ marginLeft: '10px' }}
 										src={OpenPageOnNewTab.src}
+										alt={link?.title}
 									/>
 								)}
 							</a>

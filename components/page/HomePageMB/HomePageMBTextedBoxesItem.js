@@ -37,6 +37,7 @@ const HomePageMBTextedBoxesItem = ({
 							href={link?.value}>
 							<a
 								target={link?.target ? link?.target : '_self'}
+								title={link?.title}
 								className='n-btn outline-white medium d-block w-fit mx-auto transparent'>
 								{link?.title}
 								{link?.target === '_blank' && (

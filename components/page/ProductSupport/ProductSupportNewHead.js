@@ -18,8 +18,11 @@ function ProductSupportNewHead({ pim }) {
 	const downloadRef = useRef()
 
 	useEffect(() => {
-		if (router?.query?.model && typeof router?.query?.model === 'string')
+		if (router?.query?.model && typeof router?.query?.model === 'string') {
 			setFirmwareData(JSON.parse(router?.query?.model))
+		}
+		console.log('not working')
+		// setFirmwareData(pim?.model)
 		//
 		if (pim?.image) {
 			setImage(pim?.image)
@@ -83,7 +86,7 @@ function ProductSupportNewHead({ pim }) {
 						<div className='d-flex flex-column justify-content-center align-items-start h-100'>
 							<h1 className='fs-2 fw-bold mb-8'>{pim?.name}</h1>
 							<p className='text-primary-new mb-10'>Model: {pim?.model}</p>
-							<p className='fs-base fw-normal mb-0'>Document Downloads</p>
+							<p className='fs-base fw-normal mb-0'>Document Download</p>
 							<div className='row align-items-stretch w-100'>
 								{pim?.assets.map(
 									(item, index) =>

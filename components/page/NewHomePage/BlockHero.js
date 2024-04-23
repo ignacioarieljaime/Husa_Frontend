@@ -65,6 +65,7 @@ const BlockHero = ({ data: { structure } }) => {
 											<img
 												style={{ marginLeft: '10px' }}
 												src={OpenPageOnNewTab.src}
+												alt={structure?.link?.title}
 											/>
 										)}
 									</a>
