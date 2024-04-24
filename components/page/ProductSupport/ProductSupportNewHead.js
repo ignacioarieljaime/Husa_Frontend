@@ -16,8 +16,9 @@ function ProductSupportNewHead({ pim }) {
 	const [image, setImage] = useState('')
 	const router = useRouter()
 	const downloadRef = useRef()
-
+	
 	useEffect(() => {
+
 		if (router?.query?.model && typeof router?.query?.model === 'string')
 			setFirmwareData(JSON.parse(router?.query?.model))
 		//
