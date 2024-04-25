@@ -4157,6 +4157,10 @@ fieldset:disabled .btn {
 	color: var(--bs-navbar-brand-color);
 }
 
+.navbar-brand svg {
+	max-width: 135px;
+}
+
 .navbar-brand:focus,
 .navbar-brand:hover {
 	color: var(--bs-navbar-brand-hover-color);
