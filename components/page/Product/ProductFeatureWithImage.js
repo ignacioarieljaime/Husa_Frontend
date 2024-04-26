@@ -88,7 +88,6 @@ function ProductFeatureWithImage({ data }) {
                         structure?.direction?.value === 'ltr' ? 'flex-row-reverse' : ''
                     }`}>
                     <div className='content'>
-                        {/* You can customize this part with new elements specific to v3 */}
                         <h3 className='title'>{structure?.title?.value}</h3>
                         <h4 className='subtitle'>{structure?.littleTitle?.value}</h4>
                         <h5 className='text'>{structure?.description?.value}</h5>
