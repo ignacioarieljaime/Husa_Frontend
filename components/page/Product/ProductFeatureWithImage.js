@@ -89,7 +89,7 @@ function ProductFeatureWithImage({ data }) {
                     }`}>
                     <div className='content'>
                         <h3 className='title'>{structure?.title?.value}</h3>
-                        <h4 className='subtitle'>{structure?.littleTitle?.value}</h4>
+                        <h4 className='subtitle' style={{ color: structure?.theme?.value === 'dark' ? '#8C8F8F' : undefined }}> {structure?.littleTitle?.value} </h4>
                         <h5 className='text'>{structure?.description?.value}</h5>
                     </div>
                     <div
