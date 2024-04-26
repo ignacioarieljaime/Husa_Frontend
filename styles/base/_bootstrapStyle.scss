@@ -419,6 +419,14 @@ svg {
 	vertical-align: middle;
 }
 
+svg {
+
+	width: 100%;
+	height: auto;
+	max-width: 32px;
+	max-height: 32px;
+}
+
 table {
 	caption-side: bottom;
 	border-collapse: collapse;
@@ -4147,6 +4155,10 @@ fieldset:disabled .btn {
 	margin-right: var(--bs-navbar-brand-margin-end);
 	font-size: var(--bs-navbar-brand-font-size);
 	color: var(--bs-navbar-brand-color);
+}
+
+.navbar-brand svg {
+	max-width: 135px;
 }
 
 .navbar-brand:focus,
