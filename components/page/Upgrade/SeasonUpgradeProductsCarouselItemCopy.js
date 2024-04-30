@@ -28,7 +28,7 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 	const router = useRouter()
 	const swiper = useSwiper()
 	const boxRef = useRef()
-	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))
+	const outSide = useOutsideClick(boxRef, () => setShowSizes(false))	
 	const [url, setUrl] = useState()
 
 	swiper.allowTouchMove = true
@@ -354,7 +354,7 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 					</div>
 
 					<div className='w-100'>
-						<div className='d-flex gap-1'>
+						<div className='d-flex gap-1 justify-content-between'>
 							{RouteHandler(activeItem?.id?.value, 'product') ? (
 								<Link href={RouteHandler(activeItem?.id?.value, 'product')}>
 									<a className='n-btn-outline'>View Product</a>

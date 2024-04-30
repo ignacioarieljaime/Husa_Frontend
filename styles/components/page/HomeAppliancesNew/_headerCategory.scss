@@ -93,17 +93,18 @@
 				@include mq(575) {
 					width: 40%;
 				}
-
+				
 				a {
 					width: 100%;
-
+					
 					&.active {
 						cursor: default;
 						pointer-events: none;
 					}
-
+					
 					&:not(.active):hover {
-						opacity: 0.5;
+						color: #fff;
+						background: rgb(0, 170, 166);
 					}
 				}
 
@@ -125,6 +126,9 @@
 
 						@include mq(768) {
 							width: 100%;
+						}
+						&:hover {
+							color: #00AAA6;
 						}
 					}
 				}
