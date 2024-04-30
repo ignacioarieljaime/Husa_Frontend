@@ -8,7 +8,7 @@ module.exports = {
 	generateRobotsTxt: true,
 	robotsTxtOptions: {
 		policies: [
-			(robotAccessibility === true)
+			robotAccessibility
 				? {
 						userAgent: '*',
 						allow: '/',
