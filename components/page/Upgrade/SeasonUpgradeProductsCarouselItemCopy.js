@@ -368,7 +368,7 @@ const SeasonUpgradeProductsCarouselItemCopy = ({
 								className={`ps-widget ps-wtb ${loading ? 'loading' : 'loaded'}`}
 								ps-sku={product?.model}>
 								{loading ? (
-									<Spinner className={'spinner'} size={25} />
+									<Spinner className={'spinner'} size={10} />
 								) : (
 									<span className='btn-label'>Shop Deal</span>
 								)}
