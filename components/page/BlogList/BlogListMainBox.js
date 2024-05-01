@@ -19,6 +19,7 @@ function BlogListMainBox({ data: { structure }, pim }) {
 			window.document.body.style.overflow = 'unset'
 		}
 	}, [blogsList])
+	
 
 	const getAllPosts = async () => {
 		setBlogsList('loading')
@@ -107,7 +108,6 @@ function BlogListMainBox({ data: { structure }, pim }) {
 			console.log(error)
 		}
 	}
-
 	return (
 		<section>
 			<div className='blog_text_container mt-0 mt-md-20 pt-5'>

@@ -229,7 +229,6 @@ const BlogListSearchableComponent = ({ data }) => {
 			console.log(error)
 		}
 	}
-
 	return (
 		<section>
 			<div className='blog_main_box'>

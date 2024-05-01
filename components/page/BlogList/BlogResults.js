@@ -67,7 +67,6 @@ const BlogResults = ({ data }) => {
 		)
 		return ids && ids.length ? ids.join(',').replaceAll(',', '') : null
 	}
-
 	const getBLogs = async () => {
 		try {
 			setBlogs('loading')
@@ -80,7 +79,6 @@ const BlogResults = ({ data }) => {
 				getPostId(),
 				controller
 			)
-			console.log(response)
 			setBlogs(response.data.data)
 			setPagination(response.data.meta)
 
@@ -120,8 +118,11 @@ const BlogResults = ({ data }) => {
 					blogs={finalBlogs}
 					blogsLength={blogsLength}
 					results
+					data={structure}
 				/>
-				<div className='blog_results___content'>
+				{blogsLength && blogsLength > 0
+					? (
+					<div className='blog_results___content'>
 					<div className='blog_results___content___list'>
 						{blogs === 'loading' || initLoading ? (
 							<Spinner />
@@ -197,7 +198,9 @@ const BlogResults = ({ data }) => {
 							pagination={pagination}
 						/>
 					)}
-				</div>
+						</div>) : (<div className='blog_results___content'>
+						<h3>No results found</h3></div>)}
+				
 			</div>
 		</section>
 	)
