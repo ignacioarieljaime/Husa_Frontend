@@ -81,14 +81,14 @@ const NewsSingleSlider = ({ data }) => {
 									</svg>
 								</button> */}
 								<a
-									className='n-btn white medium'
+									className='btn btn-outline-white  medium justify-content-between'
 									href={
 										item?.image?.src.split('.com')[0] +
 										'.com/download/f' +
 										item?.image?.src.split('.com')[1]
 									}>
 									<span>{item?.downloadBtn?.title}</span>{' '}
-									<DownloadIconV2 width='16' height='15' />
+									<DownloadIconV2 width='16' height='16' />
 								</a>
 							</div>
 
