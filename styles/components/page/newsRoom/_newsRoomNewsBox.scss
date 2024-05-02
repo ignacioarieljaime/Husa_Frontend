@@ -700,6 +700,10 @@
 				line-height: 21.6px; /* 135% */
 				letter-spacing: -0.32px;
 			}
+			svg {
+				max-width: 20px;
+				max-height: 20px;
+			}
 		}
 		.buttons {
 			.n-btn {
@@ -862,6 +866,11 @@
 						top: 0px;
 					}
 				}
+				svg {
+					max-width: 20px;
+					max-height: 20px;
+				}
+
 			}
 			.search_list {
 				width: 100%;
