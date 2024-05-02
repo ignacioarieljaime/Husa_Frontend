@@ -708,11 +708,18 @@
 				font-weight: 400;
 				line-height: 120%; /* 12px */
 				padding: 13px 16px 11px;
+				align-items: center;
+				justify-content: space-between;
+				min-width: 120px;
 				span {
 					font-size: 10px;
 					font-style: normal;
 					font-weight: 400;
 					line-height: 120%; /* 12px */
+				}
+				svg {
+					max-width: 12px;
+					max-height: 12px;
 				}
 			}
 			.outline-black {
