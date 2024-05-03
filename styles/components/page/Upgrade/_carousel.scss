@@ -343,10 +343,10 @@
 					padding: 8px 10px;
 					justify-content: center;
 					align-items: center;
-					color: #008885;
+					color: #fff;
 					border-radius: 50px;
-					border: 1px solid #008885;
-					background: transparent;
+					border: 1px solid #00CCCC;
+					background: #00CCCC;
 					transition: all .3s ease;
 					font-size: 12px;
 					line-height: 14px;
@@ -354,8 +354,8 @@
 				}
 				&:hover {
 					color: #fff;
-					border-color: #006664;
-					background: #006664;
+					border-color: #00AAA6;
+					background: #00AAA6;
 				}
 
 				.spinner{
@@ -400,11 +400,11 @@
 				justify-content: center;
 				align-items: center;
 				border-radius: 50px;
-				border: 1px solid #008885;
-				background: #008885;
+				border: 1px solid #00CCCC;
+				background: #fff;
 				text-decoration: none;
 				transition: all .3s ease;
-				color: #fff;
+				color: #00CCCC;
 				font-size: 12px;
 				line-height: 14px;
 				@include mq(768) {
@@ -417,8 +417,9 @@
 					}
 				}
 				&:hover {
-					border-color: #006664;
-					background: #006664;
+					border-color: #00AAA6;
+					background: #00AAA6;
+					color: #fff;
 				}
 			}
 			.serie_selector {
