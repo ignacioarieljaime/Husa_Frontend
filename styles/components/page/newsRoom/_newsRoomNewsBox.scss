@@ -463,7 +463,12 @@
 						cursor: pointer;
 						outline: inherit;
 					}
-
+					span{
+						svg{
+							max-width: 20px;
+							max-height:20px;
+						}
+					}
 					.select_box_custom {
 						position: relative;
 						width: 200px;
@@ -607,6 +612,8 @@
 								-moz-transform: translateY(-50%);
 								-ms-transform: translateY(-50%);
 								-o-transform: translateY(-50%);
+								max-width: 20px;
+								max-height:20px;
 							}
 							input {
 								width: 300px;
