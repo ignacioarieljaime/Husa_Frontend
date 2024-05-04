@@ -101,10 +101,21 @@
 						cursor: default;
 						pointer-events: none;
 					}
-					
+					img:last-child {
+						display: none;
+					}
 					&:not(.active):hover {
-						color: #fff;
-						background: rgb(0, 170, 166);
+						img:last-child {
+							display: block;
+						}
+						img:first-child {
+							display: none;
+						}
+						.cat-label {
+							p {
+								color:#00AAA6 !important;
+							};
+						}
 					}
 				}
 

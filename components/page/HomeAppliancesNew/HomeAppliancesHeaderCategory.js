@@ -30,6 +30,11 @@ export const HomeAppliancesHeaderCategoryItem = _data => {
 						alt={_data?.data?.image?.alt}
 						height={'100%'}
 					/>
+					<img
+						src={_data?.data?.image_hover?.src}
+						alt={_data?.data?.image_hover?.alt}
+						height={'100%'}
+					/>
 				</div>
 				{_data?.data?.title?.value && (
 					<div
