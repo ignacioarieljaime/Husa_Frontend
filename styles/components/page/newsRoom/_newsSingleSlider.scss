@@ -3,6 +3,13 @@
 	@include mq(768) {
 		margin-bottom: 48px;
 	}
+	.splide__list{
+		.slider_item{
+			.buttons{
+				margin-top:13px;
+			}
+		}
+	}
 	.slider_item {
 		height: 0;
 		padding-top: 39.8%;
@@ -58,7 +65,7 @@
 			gap: 16px;
 			z-index: 55;
 			@include mq(768) {
-				top: 30px;
+				top: 50px;
 				right: 50%;
 				transform: translateX(50%);
 				width: 300px;
@@ -78,39 +85,40 @@
 				font-size: 14px;
 				line-height: 14px;
 				text-align: center;
-				gap: 8px;
+				gap: 0px;
 				border: 1px solid #000;
 				border-radius: 50px;
-				min-width: 210px;
+				min-width:185px;
 				padding: 12px 16px ;
 				height: 34px;
+				background-color:#fff;
 				@include mq(768) {
-					font-size: 10px !important;
-					line-height: 10px !important;
+					font-size: 12px !important;
+					line-height: 12px !important;
 					padding: 8px 16px 6px !important;
 					height: 28px;
 				}
 				svg {
 					max-width: 24px;
-					max-height: 24px;
+					max-height: 18px;
 					transition: inherit;
 					path {
 						transition: inherit;
 						fill: #000;
 					}
 				}
-				&:hover {
-					background-color: #000;
-					color: #fff;
-					border-color: #000;
-					svg {
-						path {
-							fill: #fff;
-							stroke: #fff;
-						}
-					}
+				// &:hover {
+				// 	background-color: #000;
+				// 	color: #fff;
+				// 	border-color: #000;
+				// 	svg {
+				// 		path {
+				// 			fill: #fff;
+				// 			stroke: #fff;
+				// 		}
+				// 	}
 
-				}
+				// }
 			}
 			a {
 				svg {
