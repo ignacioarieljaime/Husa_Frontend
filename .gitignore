@@ -43,6 +43,8 @@ yarn-error.log*
 /utils/*.json
 
 
+
+
 # robots.txt
 /public/robots.txt
 /public/assets/robots.txt
@@ -59,3 +61,4 @@ next-env.d.ts
 
 # Sentry
 # .sentryclirc
+next-sitemap.config.js

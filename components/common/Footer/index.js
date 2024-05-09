@@ -97,7 +97,9 @@ function Footer({ data }) {
 			<div className={`new_footer ${theme}`}>
 				<div className='content'>
 					<div className='headline'>
-						<Logo color='#00AAA6' />
+						<div className='footer-logo'>
+							<Logo color='#00AAA6' />
+						</div>
 						<div className='social_media'>
 							<div className='d-flex justify-content-between align-items-center'>
 								{footerData?.widgets?.socials.map((item, index) => (

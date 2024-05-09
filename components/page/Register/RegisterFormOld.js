@@ -18,7 +18,6 @@ import { getFirmWareModels } from 'services/servicePortal'
 import DownloadIcon from 'components/icons/DownloadIcon'
 import DownloadIconV2 from 'components/icons/DownloadIconV2'
 import RegisterFormSelectBox from './RegisterFormSelectBox'
-import PurchasedFromSelectBox from './PurchasedFromSelectBox'
 import { uploadToS3 } from 'services/s3'
 // import PDFDownload from 'public/assets/pdf/How_to_identify_HVAC_model_and_serial_number.pdf'
 
@@ -31,7 +30,6 @@ function RegisterForm({ data }) {
 	const [series, setSeries] = useState([])
 	const [models, setModels] = useState([])
 	const [activeCheckBox, setActiveCheckBox] = useState(false)
-	const [addClassName, setAddClassName] = useState(false)
 	const [modalCondition, setModalCondition] = useState(false)
 	const [loading, setLoading] = useState(false)
 	const [file, setFile] = useState(null)
@@ -246,19 +244,18 @@ function RegisterForm({ data }) {
 
 			if (response.status === 200) {
 				e.target.reset()
-				router.push('/support/register/registration-confirmation');
 				resetData()
-				// toast.success('Registered Successfully', {
-				// 	toastId: 'ticket-sended'
-				// })
-				//setTickedSended(true)
+				toast.success('Registered Successfully', {
+					toastId: 'ticket-sended'
+				})
+				setTickedSended(true)
 			} else {
 				toast.error("Registeration wasn't Successful", {
 					toastId: 'ticket-error'
 				})
 				setTickedSended(false)
 			}
-			//setLoading(false)
+			setLoading(false)
 		} catch (error) {
 			setTickedSended(false)
 			toast.error("Registeration wasn't Successful", {
@@ -275,7 +272,6 @@ function RegisterForm({ data }) {
 	}
 	const resetData = () => {
 		setActiveCheckBox(false)
-		setAddClassName(false)
 		setFile(null)
 		setDataSchema({
 			first_name: null,
@@ -325,14 +321,11 @@ function RegisterForm({ data }) {
 		}
 		return ''
 	}
-
-	const purchased_by = ['Best Buy','Amazon','Walmart','Brands Mart','Electronic Express','P.C.Richard & Son']
 	return (
-		<section className="support-register">
+		<section>
 			<div className='container form-container px-8 px-md-20 mt-20 py-10'>
 				<article className='article'>
-					<h2 className='text-center mb-3'>{structure?.title?.value}</h2>
-					<p className='text-center mb-17'>Get started by registering your Hisense product.</p>
+					<h2 className='text-center mb-17'>{structure?.title?.value}</h2>
 				</article>
 				<form
 					action=''
@@ -340,22 +333,22 @@ function RegisterForm({ data }) {
 					className='form-container-inner row active'
 					id='form-tab-1'>
 					{!defaultMode && router.query?.ProductCategory ? (
-						<div className='col-12 col-md-6 mb-4'>
+						<div className='col-12  mb-10'>
 							<CustomInput
-								placeholder={'Product Category'}
+								placeholder={'PRODUCT CATEGORY'}
 								required={true}
 								disabled={dataSchema?.product_category}
 								value={dataSchema?.product_category}
 							/>
 						</div>
 					) : (
-						<div className='col-12 col-md-6 mb-4 custom-select-box'>
+						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={
 									router.query?.type
-										? router.query?.type || 'Select Your Product Category'
+										? router.query?.type || 'PLEASE SELECT YOUR PRODUCT'
 										: dataSchema?.product_category ||
-										  'Select Your Product Category'
+										  'PLEASE SELECT YOUR PRODUCT'
 								}
 								required={true}
 								options={categories}
@@ -371,7 +364,7 @@ function RegisterForm({ data }) {
 					)}
 
 					{/* {series?.length !== 0 && (
-						<div className='col-12 mb-4 custom-select-box'>
+						<div className='col-12 mb-10 custom-select-box'>
 							<CustomSelectBox
 								title={'PLEASE SELECT YOUR SERIES'}
 								required={true}
@@ -387,23 +380,25 @@ function RegisterForm({ data }) {
 						</div>
 					)} */}
 					{!defaultMode &&
-						router.query?.InternalModelNumber &&
-						!router.query?.SerialNumber ? (
-						<div className='col-12 col-md-6 mb-4'>
+					router.query?.InternalModelNumber &&
+					!router.query?.SerialNumber ? (
+						<div className='col-12  mb-10'>
 							<CustomInput
-								placeholder={'Select Your Product Model'}
+								placeholder={'PLEASE SELECT YOUR MODEL'}
 								required={true}
 								disabled={dataSchema?.product_model}
 								value={dataSchema?.product_model}
 							/>
 						</div>
 					) : models === 'loading' ||
-							(Array.isArray(models) && models?.length !== 0) ? (
-								<div className='col-12 col-md-6 mb-4'>
-									<fieldset>
+					  (Array.isArray(models) && models?.length !== 0) ? (
+						<div className='col-12 mb-10'>
 							<RegisterFormSelectBox
-								rightText=""
-								placeholder={'Select Your Product Model'}
+								rightText={
+									dataSchema?.product_category === 'Air Products' &&
+									'(Outdoor Model for split system)'
+								}
+								placeholder={'PLEASE SELECT YOUR MODEL'}
 								isSearchable
 								required={true}
 								options={models}
@@ -412,64 +407,23 @@ function RegisterForm({ data }) {
 								onChange={_value => {
 									dataSchemaHandler('product_model', _value)
 								}}
-										/>
-										{dataSchema?.product_category === 'Air Products' ? (<span className="additional-text">(Outdoor Model for split system)</span>) : null}
+							/>
 							<div className='input_error_message'>
 								{errors?.product_model
 									? errors?.product_model[0] +
-									' Please make sure you have selected a product model from the list.'
+									  ' Please make sure you have selected a product model from the list.'
 									: router.query?.ProductCategory &&
-									errors?.ModelNumber &&
-									errors?.ModelNumber[0] +
-									' Please make sure you have selected a product model from the list.'}
+									  errors?.ModelNumber &&
+									  errors?.ModelNumber[0] +
+											' Please make sure you have selected a product model from the list.'}
 							</div>
-						</fieldset>
-								</div>
-						
-						) : (
-							<div className='col-12 col-md-6 mb-4'>
-						<fieldset disabled className="disabled-box">
-							<RegisterFormSelectBox
-								rightText=""
-								placeholder={'Select Your Product Model'}
-								isSearchable
-								required={true}
-								options={models}
-								dataSchemaValue={dataSchema?.product_model}
-								onValueClear={dataSchema?.product_category}
-								onChange={_value => {
-									dataSchemaHandler('product_model', _value)
-								}}
-										/>
-										{dataSchema?.product_category === 'Air Products' ? (<span className="additional-text">(Outdoor Model for split system)</span>) : null}
-							<div className='input_error_message'>
-								{errors?.product_model
-									? errors?.product_model[0] +
-									' Please make sure you have selected a product model from the list.'
-									: router.query?.ProductCategory &&
-									errors?.ModelNumber &&
-									errors?.ModelNumber[0] +
-									' Please make sure you have selected a product model from the list.'}
-							</div>
-									</fieldset>
-									</div>
-					)}
-          
-          <div className='col-12 col-md-6 mb-4'>
-						<CustomInput
-							placeholder={'First Name'}
-							onChange={_value => dataSchemaHandler('first_name', _value)}
-							required={true}
-							value={dataSchema.first_name}
-						/>
-						<div className='input_error_message'>
-							{errors?.first_name && errors?.first_name[0]}
 						</div>
-					</div>
-					<div className='col-12 col-md-6 mb-4'>
+					) : null}
+
+					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
-							placeholder={'Serial Number'}
-							required={false}
+							placeholder={'SERIAL NUMBER'}
+							required={true}
 							disabled={
 								router.query?.SerialNumber &&
 								router.query?.SerialNumber.length > 0
@@ -478,9 +432,11 @@ function RegisterForm({ data }) {
 							onChange={_value =>
 								dataSchemaHandler('product_serial_number', _value)
 							}
-            />
-            <button
-							className='modal-btn mt-2 d-block'
+						/>
+					</div>
+					<div className='col-12 col-md-6 mb-10 d-grid gap-2 '>
+						<button
+							className='modal-btn'
 							type='button'
 							onClick={() => setModalCondition(true)}>
 							<FontAwesomeIcon
@@ -488,13 +444,23 @@ function RegisterForm({ data }) {
 								style={{ width: '25px' }}
 								size={'xl'}
 							/>
-							<span className='ms-2 i-button'>Where do i find my model number?</span>
+							<span className='ms-2'> Where do I find the serial number?</span>
 						</button>
 					</div>
-	
-					<div className='col-12 col-md-6 mb-4'>
+					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
-							placeholder={'Last Name'}
+							placeholder={'FIRST NAME'}
+							onChange={_value => dataSchemaHandler('first_name', _value)}
+							required={true}
+							value={dataSchema.first_name}
+						/>
+						<div className='input_error_message'>
+							{errors?.first_name && errors?.first_name[0]}
+						</div>
+					</div>
+					<div className='col-12 col-md-6 mb-10'>
+						<CustomInput
+							placeholder={'LAST NAME'}
 							onChange={_value => dataSchemaHandler('last_name', _value)}
 							required={true}
 							value={dataSchema.last_name}
@@ -503,9 +469,9 @@ function RegisterForm({ data }) {
 							{errors?.last_name && errors?.last_name[0]}
 						</div>
 					</div>
-					<div className='col-12 col-md-6 mb-4'>
+					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
-							placeholder={'Email'}
+							placeholder={'EMAIL'}
 							onChange={_value => dataSchemaHandler('email', _value)}
 							required={true}
 							type={'email'}
@@ -515,9 +481,9 @@ function RegisterForm({ data }) {
 							{errors?.email && errors?.email[0]}
 						</div>
 					</div>
-					<div className='col-12 col-md-6 mb-4'>
+					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
-							placeholder={'Postal Code/Zip'}
+							placeholder={'POSTAL CODE/ZIP'}
 							onChange={_value => dataSchemaHandler('postal_code', _value)}
 							required={true}
 							type='number'
@@ -527,9 +493,9 @@ function RegisterForm({ data }) {
 							{errors?.postal_code && errors?.postal_code[0]}
 						</div>
 					</div>
-					<div className='col-12 col-md-6 mb-4'>
+					<div className='col-12 col-md-6 mb-10'>
 						<CustomInput
-							placeholder={'Phone Number'}
+							placeholder={'PHONE NUMBER'}
 							required={true}
 							onChange={_value => dataSchemaHandler('phone_number', _value)}
 							value={dataSchema.phone_number}
@@ -538,29 +504,20 @@ function RegisterForm({ data }) {
 							{errors?.phone_number && errors?.phone_number[0]}
 						</div>
 					</div>
-					<div className='col-12 col-md-6 mb-4'>
-						<PurchasedFromSelectBox
-							title="Purchased From"
-								placeholder={'Purchased From'}
-								required={true}
-								options={purchased_by}
-								dataSchemaValue={dataSchema.purchased_from}
-								onChange={_value => dataSchemaHandler('purchased_from', _value)}
-						/>
-
-						{/* <CustomInput
+					<div className='col-12 col-md-6 mb-10'>
+						<CustomInput
 							onChange={_value => dataSchemaHandler('purchased_from', _value)}
-							placeholder={'Purchased From'}
+							placeholder={'PURCHASED FROM'}
 							required={true}
 							value={dataSchema.purchased_from}
-						/> */}
+						/>
 						<div className='input_error_message'>
 							{errors?.purchased_from && errors?.purchased_from[0]}
 						</div>
 					</div>
-					<div className='col-12 col-md-6 mb-4'>
+					<div className='col-12 mb-10'>
+						<label htmlFor='date-input'>Date of Purchase</label>
 						<CustomInput
-							placeholder={`Purchased Date`}
 							type='date'
 							onChange={_value => dataSchemaHandler('date_of_purchase', _value)}
 							required={true}
@@ -571,7 +528,6 @@ function RegisterForm({ data }) {
 						</div>
 					</div>
 					<div className='col-12 mb-10 file-upload position-relative'>
-						<label className="input-label">Upload Receipt</label>
 						<div className='file-upload-box position-relative'>
 							{imageLoading && (
 								<div className='image_loading'>
@@ -594,13 +550,10 @@ function RegisterForm({ data }) {
 										id='contact-file-input'
 										accept='.jpg, .png, .jpeg'
 										multiple={true}
-											onChange={uploadFile}
-											required
+										onChange={uploadFile}
 									/>
-										<div className="file-upload-info">
-											<h6>Upload Receipt</h6>
-											<p>or drag and drop file</p>
-									</div>
+									<div>Drag & Drop a File Here</div>
+									<p>Upload receipt here</p>
 								</>
 							)}
 						</div>
@@ -608,13 +561,12 @@ function RegisterForm({ data }) {
 							{errors?.receipt_image && errors?.receipt_image[0]}
 						</div>
 					</div>
-					<div className={`col-12 mb-6 news-check text-center justify-content-center ${addClassName ? "active" : ""}`}>
+					<div className='col-12 mb-10 news-check'>
 						<span
 							className='form-checkbox-span'
 							onClick={() => {
 								setActiveCheckBox(!activeCheckBox)
 								dataSchemaHandler('future_news', !activeCheckBox ? '1' : '0')
-								setAddClassName(addClassName ? false : true)
 							}}>
 							{/* <i className='fa-solid fa-check d-none' id='form-checkbox-check'></i> */}
 							{activeCheckBox && <FontAwesomeIcon icon={faCheck} />}
@@ -624,20 +576,22 @@ function RegisterForm({ data }) {
 								type='checkbox'
 								name='news'
 								id='form-checkbox-input'
-								className='d-none acceptance-check'
+								className='d-none'
 							/>
 							Sign up for special deals, news, and important product
 							information.
 						</label>
 					</div>
-					<div className='col-12 text-center my-6'>
+					<div className='col-12 text-center my-12'>
 						<button
 							disabled={loading}
 							type='submit'
-							className='n-btn outline-black  mx-auto align-items-center text-center'>
-							{loading ? (<Spinner size={25} />) : (<span className='underline-on-hover'>
+							className='n-btn outline-black medium d-flex mx-auto align-items-center'>
+							<span className='me-2 underline-on-hover'>
+								{' '}
 								{structure?.subtitle?.value}
-							</span>)}
+							</span>
+							{loading && <Spinner size={25} />}
 						</button>
 						{tickedSended === true ? (
 							<div className='mt-3' style={{ color: 'green' }}>

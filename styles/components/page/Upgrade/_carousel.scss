@@ -249,6 +249,11 @@
 					@include mq(768) {
 						padding: 10px 4px;
 					}
+					&:not(.indicator):hover {
+						mix-blend-mode: darken;
+						background-color: #f0f2f2;
+						box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .15);
+					}
 				}
 
 				.indicator {
@@ -332,34 +337,33 @@
 
 			.ps-wtb {
 				&.ps-enabled, &.loading, &.loaded {
-					background-color: var(--primary-color) !important;
-					border-color: var(--primary-color) !important;
-					border-radius: 25px;
-					color: #ffffff;
-					display: block;
-					flex-grow: 1;
-					line-height: 38px;
+					display: flex;
+					width: 100%;
+					min-width: 90px;
+					padding: 8px 10px;
+					justify-content: center;
+					align-items: center;
+					color: #fff;
+					border-radius: 50px;
+					border: 1px solid #00CCCC;
+					background: #00CCCC;
+					transition: all .3s ease;
+					font-size: 12px;
+					line-height: 14px;
 					text-align: center;
-					transition: all 0.3s ease-in;
-
-					&:hover {
-						background-color: var(--primary-color) !important;
-						border-color: var(--primary-color) !important;
-						line-height: 38px;
-						opacity: 0.7;
-						transition: all 0.3s ease-in-out;
-					}
+				}
+				&:hover {
+					color: #fff;
+					border-color: #00AAA6;
+					background: #00AAA6;
 				}
 
 				.spinner{
-					height: 100%;
+					height: 10px;
 				}
 
 				.btn-label {
-					color: #ffffff;
 					display: inline !important;
-					font-size: 14px;
-					line-height: 20px;
 				}
 
 				.ps-button-label {
@@ -389,26 +393,33 @@
 			}
 
 			.n-btn-outline {
-				color: #00aaa6;
+				display: flex;
+				min-width: 90px;
+				width: 100%;
+				padding: 8px 10px;
+				justify-content: center;
+				align-items: center;
+				border-radius: 50px;
+				border: 1px solid #00CCCC;
 				background: #fff;
-				border: 1px solid #00aaa6;
-				border-radius: 25px;
-				font-size: 14px;
-				font-weight: 400;
-				line-height: 14px;
-				text-align: center;
 				text-decoration: none;
-				padding: 12px 16px 12px 16px;
-
+				transition: all .3s ease;
+				color: #00CCCC;
+				font-size: 12px;
+				line-height: 14px;
 				@include mq(768) {
-					padding: 12px 16px 12px 16px;
-					font-size: 14px;
-					line-height: 14px;
+					/* padding: 12px 16px 12px 16px;
+					 */
 
 					/* 135% */
 					&:hover {
 						transform: scale(1.02);
 					}
+				}
+				&:hover {
+					border-color: #00AAA6;
+					background: #00AAA6;
+					color: #fff;
 				}
 			}
 			.serie_selector {

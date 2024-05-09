@@ -1,11 +1,11 @@
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown,faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import useOutsideClick from 'hooks/useOutsideClick'
 import React, { useRef, useState } from 'react'
 import { useEffect } from 'react'
 
 function RegisterFormSelectBox({
-	required = false,
+	required,
 	title,
 	options,
 	onChange,
@@ -112,6 +112,7 @@ function RegisterFormSelectBox({
 							name='product'
 							checked='checked'
 							disabled
+							required={required}
 						/>
 						{isSearchable && options !== 'loading' ? (
 							<div

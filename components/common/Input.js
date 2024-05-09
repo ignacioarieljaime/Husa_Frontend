@@ -1,5 +1,7 @@
 import { string } from 'joi'
 import React, { useState } from 'react'
+import { faChevronDown, faCalendar, faCalendarDay, faCalendarWeek, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function CustomInput({
 	placeholder,
@@ -31,14 +33,21 @@ function CustomInput({
 		return (
 			<div className='position-relative'>
 				<span
+					className="date-placeholder"
 					style={{
-						position: 'absolute',
-						left: 0,
-						top: '3px',
-						background: 'white',
-						padding: '5px 20px'
+							position: 'absolute',
+							background: 'white',
 					}}>
-					{value || 'MM-DD-YYYY'}
+					{value || (
+							<>
+									<FontAwesomeIcon
+											style={{ width: '15px',marginRight:"5px" }}
+											icon={faCalendarAlt}
+											size={'2x'}
+									/>
+									Purchased Date
+							</>
+					)}
 				</span>
 				<input
 					disabled={disabled}
@@ -48,7 +57,7 @@ function CustomInput({
 					onChange={e => {
 						onChange(convertData(e.target.value, 'revers'))
 					}}
-					className={`form-container-inner-input ${className}`}
+					className={`form-control form-container-inner-input ${className}`}
 					placeholder={placeholder}
 					required={required}
 					defaultValue={defaultValue && defaultValue}

@@ -852,6 +852,16 @@ ul.header_dropdown_sublist.sublist {
 }
 
 .header_search_box {
+  .search-form{
+    .search-box{
+      button{
+        svg{
+          max-width: 20px;
+          max-height:20px;
+        }
+      }
+    }
+  }
   .search_result_box {
     position: absolute;
     padding: 28px 36px 48px;
@@ -891,6 +901,8 @@ ul.header_dropdown_sublist.sublist {
 
             svg {
               margin-right: 13px;
+              max-width:20px;
+              max-height:20px;
             }
           }
         }

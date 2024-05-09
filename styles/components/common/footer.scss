@@ -200,6 +200,12 @@ footer {
         justify-content: space-between;
         align-items: center;
         flex-wrap: nowrap;
+        .footer-logo {
+          width:100%;
+          svg {
+            max-width: fit-content;
+          }
+        }
         @include mq(768) {
           justify-content: center;
           flex-wrap: wrap;

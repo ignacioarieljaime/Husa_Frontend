@@ -93,17 +93,29 @@
 				@include mq(575) {
 					width: 40%;
 				}
-
+				
 				a {
 					width: 100%;
-
+					
 					&.active {
 						cursor: default;
 						pointer-events: none;
 					}
-
+					img:last-child {
+						display: none;
+					}
 					&:not(.active):hover {
-						opacity: 0.5;
+						img:last-child {
+							display: block;
+						}
+						img:first-child {
+							display: none;
+						}
+						.cat-label {
+							p {
+								color:#00AAA6 !important;
+							};
+						}
 					}
 				}
 
@@ -125,6 +137,9 @@
 
 						@include mq(768) {
 							width: 100%;
+						}
+						&:hover {
+							color: #00AAA6;
 						}
 					}
 				}
