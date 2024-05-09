@@ -30,7 +30,8 @@ const BlogListFilterNavFilter = ({
 	results,
 	blogsLength,
 	link,
-	color = '#43898a'
+	color = '#43898a',
+	data
 }) => {
 	const [width] = useWindowSize()
 	const [timer, setTimer] = useState(null)
@@ -98,7 +99,6 @@ const BlogListFilterNavFilter = ({
 			console.log(error)
 		}
 	}
-
 	function redirectToResultsPage() {
 		if (
 			Object.keys(filters).some(
@@ -147,6 +147,7 @@ const BlogListFilterNavFilter = ({
 	// 		})
 	// 	}, 500)
 	// }
+
 	return (
 		<div
 			ref={target}
@@ -193,6 +194,7 @@ const BlogListFilterNavFilter = ({
 									parentFix={fix}
 									parentTransparent={isTransparent}
 									dataKey='year'
+									structureData={data}
 								/>
 								<BlogListFilterNavFilterItem
 									filterChangeHandler={filterHandler}
@@ -203,6 +205,8 @@ const BlogListFilterNavFilter = ({
 									parentFix={fix}
 									parentTransparent={isTransparent}
 									dataKey='tag'
+									tagList={blogs}
+									structureData={data}
 								/>
 
 								<div className='custom_input_box'>

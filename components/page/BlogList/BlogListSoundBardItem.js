@@ -21,7 +21,7 @@ function BlogListSoundBardItemContainer({ data, getBlogs }) {
 		speed: 10,
 		translateY: [0, -5]
 	})
-
+	
 	return (
 		<div className='row align-items-center py-8 border-bottom mx-0 blog-article-box-row'>
 			<figure className='col-12 col-md-9 mb-0 px-0'>
