@@ -77,7 +77,7 @@ function ProductDetailsBox({ pim, data }) {
 					}  rounded-5 `}
 					onClick={() => setShowMore(!showMore)}>
 					<span className='d-block'>
-						<span className='me-8'>
+						<span className='me-8 ms-8'>
 							{showMore ? '	Hide Specs' : 'Full  Specs'}
 						</span>
 						<FontAwesomeIcon
