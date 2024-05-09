@@ -82,6 +82,45 @@ header.blog {
     left: 0;
   }
 }
+@media (min-width:990px) {
+  #Header{
+    .navbar{
+      .navbar-nav{
+        .nav-item{
+          .nav-link{
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1100px) {
+  #Header{
+    .navbar{
+      .navbar-nav{
+        .nav-item{
+          .nav-link{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1330px) {
+  #Header{
+    .navbar{
+      .navbar-nav{
+        .nav-item{
+          .nav-link{
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
 
 /* header secondary 2 */
 .header-secondary2 {

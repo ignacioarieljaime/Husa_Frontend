@@ -1187,3 +1187,63 @@ input {
 		}
 	}
 }
+body{
+	.swiper{
+    button{
+      svg{
+        width: 30px;
+      }
+    }
+  }
+}
+body {
+	.season_upgrade_carousel{
+		.carousel{
+			.item {
+				.size_list{
+					li{
+						button{
+							min-width: 46px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width:992px) {
+  .swiper{
+    button{
+      svg{
+        width: 30px;
+      }
+    }
+    .swiper-wrapper{
+      .swiper-slide{
+        .item{
+          .column{
+            .n-btn-outline{
+              font-size: 12px;
+							padding: 8px 16px;
+            }
+            .ps-widget{
+							display: flex !important;
+							align-items: center;
+							justify-content: center;
+							line-height: unset !important;
+              span{
+								font-size: 12px;
+								line-height: unset;
+							}
+							small{
+								font-size: 12px;
+								line-height: unset;
+							}
+            }
+          }
+        }
+      }
+    }
+  }
+  }
