@@ -1,7 +1,7 @@
 .news_single_slider {
-	margin-bottom: 72px;
+	margin-bottom:0px;
 	@include mq(768) {
-		margin-bottom: 48px;
+		margin-bottom:0px;
 	}
 	.splide__list{
 		.slider_item{
