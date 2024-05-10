@@ -32,7 +32,6 @@ function RegisterSupportConfirmation({ data }) {
 	// Usage
   const handleClick = () => {
 		removeItemFromLocalStorage('product_register')
-		console.log('Link clicked!')
 	}
 	
 
