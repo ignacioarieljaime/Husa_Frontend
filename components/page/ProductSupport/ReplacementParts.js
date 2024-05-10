@@ -5,7 +5,7 @@ function ReplacementParts({ data }) {
     let { structure } = data
 
     function removePTags(string) {
-        return string.replace(/<\/?p>/g, '');
+        //return string.replace(/<\/?p>/g, '');
     }
 
     const title = removePTags(structure?.title?.value)
