@@ -28,6 +28,14 @@ module.exports.SupportComponents = [
 		path: 'components/page/Support/SupportNeedAssistance'
 	},
 	{
+		name: 'ProductSupportNavBarInfo',
+		path: 'components/page/Support/ProductSupportNavBarInfo'
+	},
+	{
+		name: 'RegisterSupportConfirmation',
+		path: 'components/page/Support/RegisterSupportConfirmation'
+	},
+	{
 		name: 'SupportNewProducts',
 		path: 'components/page/Support/SupportNewProducts'
 	},

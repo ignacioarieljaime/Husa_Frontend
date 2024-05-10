@@ -649,7 +649,18 @@
 					"name": "SupportNeedAssistance",
 					"props": {},
 					"data": "hello"
+				},
+				{
+					"name": "RegisterSupportConfirmation",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "ProductSupportNavBarInfo",
+					"props": {},
+					"data": "hello"
 				}
+				
 			]
 		},
 		{
@@ -1262,6 +1273,11 @@
 				},
 				{
 					"name": "FAQs",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FAQSupport",
 					"props": {},
 					"data": "hello"
 				},

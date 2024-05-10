@@ -65,6 +65,10 @@ module.exports.L9GComponents = [
 		path: 'components/page/L9G/FAQs'
 	},
 	{
+		name: 'FAQSupport',
+		path: 'components/page/L9G/FAQSupport'
+	},
+	{
 		name: 'Specs',
 		path: 'components/page/L9G/Specs'
 	},
