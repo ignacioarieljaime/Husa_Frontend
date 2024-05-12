@@ -111,7 +111,10 @@ const ProductItemV2 = ({ data }) => {
 								<div className='new_item'>
 									<span>NEW</span>
 								</div>
-							) : null}
+							) : <div className='new_item'>
+								<span>NEW</span>
+								</div>
+							}
 							<div className='product_item_v2_content h-100'>
 								<div className='first_content w-100'>
 									<Link href={url ? url : '/'}>
