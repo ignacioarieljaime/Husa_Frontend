@@ -651,10 +651,16 @@
 					"data": "hello"
 				},
 				{
+					"name": "RegisterSupportConfirmation",
+					"props": {},
+					"data": "hello"
+				},
+				{
 					"name": "SubNavBar",
 					"props": {},
 					"data": "hello"
 				}
+				
 			]
 		},
 		{
@@ -1267,6 +1273,11 @@
 				},
 				{
 					"name": "FAQs",
+					"props": {},
+					"data": "hello"
+				},
+				{
+					"name": "FAQSupport",
 					"props": {},
 					"data": "hello"
 				},

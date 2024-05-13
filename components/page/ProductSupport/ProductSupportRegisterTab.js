@@ -7,6 +7,7 @@ import {
 	faCircleInfo,
 	faXmark
 } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
 import ProductSupportRegisterModal from './ProductSupportRegisterModal'
 import PurchasedFromSelectBox from '../Register/PurchasedFromSelectBox'
 import CustomInput from 'components/common/Input'
@@ -19,6 +20,8 @@ import { uploadToS3 } from 'services/s3'
 
 const ProductSupportRegisterTab = ({ pim, data }) => {
 	let { structure } = data
+  let router = useRouter()
+
 	const [acceptRole, setAcceptRole] = useState(false)
 	const [modalCondition, setModalCondition] = useState(false)
 	const [dataSchema, setDataSchema] = useState({
@@ -46,19 +49,24 @@ const ProductSupportRegisterTab = ({ pim, data }) => {
 	const dataSchemaHandler = (_title, _value) => {
 		setDataSchema({ ...dataSchema, [_title]: _value })
 	}
+  const setValueInLocalStorage = (key, value) => {
+		if (typeof window !== 'undefined') {
+			localStorage.setItem(key, JSON.stringify(value))
+		}
+	}
 
 	const submitData = async e => {
 		e.preventDefault()
 		setLoading(true)
 		setErrors(null)
-		console.log(dataSchema)
-		return;
 		try {
 			let response = await axios.post(
 				`${process.env.NEXT_PUBLIC_CRM_API_ROUTE}/F639711a39b936`,
 				{ ...dataSchema, future_news: acceptRole ? '1' : '0' }
 			)
 			if (response.status === 200) {
+        setValueInLocalStorage('product_register', false)
+				router.push('/support/register/registration-confirmation')
 				toast.success('Registered Successfully', {
 					toastId: 'ticket-sended'
 				})

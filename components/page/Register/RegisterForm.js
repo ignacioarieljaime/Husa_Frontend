@@ -54,6 +54,12 @@ function RegisterForm({ data }) {
 	const [errors, setErrors] = useState(null)
 	const [tickedSended, setTickedSended] = useState(null)
 
+  const setValueInLocalStorage = (key, value) => {
+		if (typeof window !== 'undefined') {
+			localStorage.setItem(key, JSON.stringify(value))
+		}
+	}
+
 	useEffect(() => {
 		if (router.query?.SerialNumber && router.query?.InternalModelNumber) {
 			!router.query?.ProductCategory && getCategories()
@@ -245,6 +251,7 @@ function RegisterForm({ data }) {
 				  )
 
 			if (response.status === 200) {
+        setValueInLocalStorage('product_register', true)
 				e.target.reset()
 				router.push('/support/register/registration-confirmation');
 				resetData()
