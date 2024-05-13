@@ -649,6 +649,11 @@
 					"name": "SupportNeedAssistance",
 					"props": {},
 					"data": "hello"
+				},
+				{
+					"name": "SubNavBar",
+					"props": {},
+					"data": "hello"
 				}
 			]
 		},

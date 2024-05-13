@@ -43,4 +43,8 @@ module.exports.ProductSupportComponents = [
 		name: 'ReplacementParts',
 		path: 'components/page/ProductSupport/ReplacementParts'
 	},
+	{
+		name: 'SubNavBar',
+		path: 'components/page/ProductSupport/SubNavBar'
+	},
 ]
