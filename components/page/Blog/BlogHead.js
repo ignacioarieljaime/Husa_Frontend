@@ -11,9 +11,12 @@ import { toast } from 'react-toastify'
 import {
 	FacebookShareButton,
 	TwitterShareButton,
-	LinkedinShareButton
+	LinkedinShareButton,
 } from 'react-share'
 import XTwitterIcon from 'components/icons/XTwitterIcon'
+import LinkedinIcon from 'components/icons/LinkedinIcon'
+import FacebookIcon from 'components/icons/FacebookIcon'
+import LinkIcon from 'components/icons/LinkIcon'
 import OpenPageOnNewTab from 'public/assets/images/OpenNewPageIcon.png'
 
 function BlogHead({ data: { structure }, pim }) {
@@ -37,7 +40,7 @@ function BlogHead({ data: { structure }, pim }) {
 			icon: faTwitter
 		}
 	}
-
+	console.log(structure?.list?.value);
 	useEffect(() => {
 		setText(structure?.title?.value)
 		setLocation(window.location.href)
@@ -56,7 +59,7 @@ function BlogHead({ data: { structure }, pim }) {
 			twitter: 'Twitter'
 		}
 
-		if (icon === faLink)
+		if (icon === faLink) {
 			return (
 				<button
 					key={index}
@@ -67,23 +70,42 @@ function BlogHead({ data: { structure }, pim }) {
 							event: dataLayer[val]
 						})
 					}}>
-					<FontAwesomeIcon icon={icon} size={'xl'} />
+					<LinkIcon />
 				</button>
 			)
+		}
 		if (icon === faTwitter)
-			return (
-				<Component
-					url={location}
-					key={index}
-					onClick={() => {
-						window.dataLayer.push({
-							event: dataLayer[val]
-						})
-					}}
-					className='fill-primary-dark-important px-2 mx-1'>
-					<XTwitterIcon />
-				</Component>
-			)
+			{
+				return (
+					<Component
+						url={location}
+						key={index}
+						onClick={() => {
+							window.dataLayer.push({
+								event: dataLayer[val]
+							})
+						}}
+						className='fill-primary-dark-important px-2 mx-1'>
+							<XTwitterIcon />
+					</Component>
+				)
+			}
+			if (icon === faFacebook)
+				{
+					return (
+						<Component
+							url={location}
+							key={index}
+							onClick={() => {
+								window.dataLayer.push({
+									event: dataLayer[val]
+								})
+							}}
+							className='text-primary-dark bg-transparent px-2 mx-1'>
+								<FacebookIcon />
+						</Component>
+					)
+				}
 		return (
 			<Component
 				url={location}
@@ -94,7 +116,7 @@ function BlogHead({ data: { structure }, pim }) {
 					})
 				}}
 				className='text-primary-dark px-2 mx-1'>
-				<FontAwesomeIcon icon={icon} size={'xl'} />
+    				<LinkedinIcon />
 			</Component>
 		)
 	}
@@ -137,7 +159,7 @@ function BlogHead({ data: { structure }, pim }) {
 						className='header-text header-gradient-text'
 						dangerouslySetInnerHTML={{ __html: text }}></div>
 					<span>{structure?.sharingTitle?.value}</span>
-					<div className='row mt-7'>
+					<div className='row mt-7' style={{color: "43898a"}}>
 						{structure?.list?.value.map((item, index) =>
 							buttonGenerator(
 								socialMedia[item?.socialMedia?.value].button,

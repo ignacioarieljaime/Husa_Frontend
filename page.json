@@ -656,7 +656,7 @@
 					"data": "hello"
 				},
 				{
-					"name": "ProductSupportNavBarInfo",
+					"name": "SubNavBar",
 					"props": {},
 					"data": "hello"
 				}
